@@ -1,0 +1,6 @@
+{
+  "twitter:card": "summary_large_image",
+  "twitter:title": "{{ page.title }} | {{ site.title }}",
+  "twitter:description": "{{ page.description | default: 'ASI Saga - A digital chronicle dedicated to the genesis of Artificial Super Intelligence and its boundless possibilities for the future of mankind.' }}",
+  "twitter:image": "{{ site.url }}{% if page.twitter_image %}{{ page.twitter_image }}{% else %}/assets/images/asi-saga-twitter-image.jpg{% endif %}"
+}

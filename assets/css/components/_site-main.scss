@@ -1,0 +1,14 @@
+// SCSS for the main content area of the site
+// Merged .site-content styles into .site-main for semantic structure
+
+.site-main {
+  // Place any previous .site-content styles here, or extend Bootstrap utilities as needed
+  @extend .container-fluid;
+  // Add more layout or spacing utilities as required
+}
+
+// If there were any .site-content specific styles, merge them here as nested selectors
+// Example:
+// .site-main {
+//   // former .site-content styles
+// }

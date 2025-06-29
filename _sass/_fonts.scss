@@ -1,0 +1,16 @@
+// _fonts.scss
+// Third-party font imports for the site
+// Only import font-face or @import rules here
+
+// Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Merriweather:wght@300;400&display=swap');
+// Google Fonts preconnect (for reference, not used in SCSS but documented)
+// <link rel="preconnect" href="https://fonts.googleapis.com">
+// <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+// Font Awesome
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+// Font Awesome CDN: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
+
+// gstatic (for Google Fonts, preconnect reference)
+// <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

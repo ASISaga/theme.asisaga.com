@@ -1,104 +1,31 @@
 <head>
     <!-- 
     Head component containing all meta tags, title, CSS, and JavaScript resources
-    This component sets up the document metadata and loads all required resources for the site
+    Refactored to use subcomponents in _includes/head/
     -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Skip to main content link for accessibility -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const mainContent = document.getElementById('skip-target');
-        if (mainContent) {
-          const skipLink = document.createElement('a');
-          skipLink.href = '#skip-target';
-          skipLink.className = 'skip-link';
-          skipLink.innerText = 'Skip to main content';
-          document.body.insertBefore(skipLink, document.body.firstChild);
-        }
-      });
-    </script>
-
-    <!-- Setup Google Analytics -->
-    {% include head-custom-google-analytics.html %}
-
-    <!-- Enhanced SEO tags -->
-    {% if page.description %}
-    <meta name="description" content="{{ page.description }}">
-    {% else %}
-    <meta name="description" content="ASI Saga - A digital chronicle dedicated to the genesis of Artificial Super Intelligence and its boundless possibilities for the future of mankind.">
-    {% endif %}
-    <meta name="keywords" content="ASI, artificial super intelligence, future technology, AI evolution{% if page.keywords %}, {{ page.keywords }}{% endif %}">
-    <meta name="author" content="ASI Saga">
-
-    <!-- Open Graph Protocol for social sharing -->
-    <meta property="og:title" content="{{ page.title }} | {{ site.title }}">
-    {% if page.description %}
-    <meta property="og:description" content="{{ page.description }}">
-    {% else %}
-    <meta property="og:description" content="ASI Saga - A digital chronicle dedicated to the genesis of Artificial Super Intelligence and its boundless possibilities for the future of mankind.">
-    {% endif %}
-    <meta property="og:image" content="{{ site.url }}{% if page.og_image %}{{ page.og_image }}{% else %}/assets/images/asi-saga-og-image.jpg{% endif %}">
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ page.title }} | {{ site.title }}">
-    {% if page.description %}
-    <meta name="twitter:description" content="{{ page.description }}">
-    {% else %}
-    <meta name="twitter:description" content="ASI Saga - A digital chronicle dedicated to the genesis of Artificial Super Intelligence and its boundless possibilities for the future of mankind.">
-    {% endif %}
-    <meta name="twitter:image" content="{{ site.url }}{% if page.twitter_image %}{{ page.twitter_image }}{% else %}/assets/images/asi-saga-twitter-image.jpg{% endif %}">
-
     <!-- Main stylesheet -->
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- AOS (Animate On Scroll) library for scroll animations -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    
-    <!-- Main JavaScript file -->
-    <script type="module" src="{{ '/assets/js/script.js' | relative_url }}"></script>
 
-    <!-- Favicon -->
+    <!-- Google Analytics setup (externalized JS) -->
+    <script src="{{ '/assets/js/analytics.js' | relative_url }}"
+            data-ga-id="{{ site.google_analytics | escape }}"
+            data-ga-mid="{{ site.google_analytics_measurement_id | escape }}"></script>
+
+    <!-- Favicon and device icons -->
     <link id="favicon" rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
-    <!-- More favicon formats for different devices -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
     <link rel="manifest" href="{{ '/assets/site.webmanifest' | relative_url }}">
-    
-    <!-- Google Fonts - Adding Montserrat for headings and a readable serif for body text -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
 
+    <!-- Google Fonts, Font Awesome, and AOS CSS moved to SCSS partials (_fonts.scss, _icons.scss, _animations.scss) -->
     <title>{{ page.title }} | {{ site.title }}</title>
 
-    <!-- Structured data for better search results -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "ASI Saga",
-      "url": "{{ site.url }}",
-      "logo": "{{ site.url }}/assets/images/logo.png",
-      "description": "A digital chronicle dedicated to the genesis of Artificial Super Intelligence",
-      "sameAs": [
-        "https://twitter.com/ASISaga",
-        "https://linkedin.com/company/asi-saga",
-        "https://github.com/asisaga"
-      ]
-    }
-    </script>
-    
-    <!-- This tag is used for Jekyll SEO tag plugin to generate SEO meta tags -->
+    <!-- Jekyll SEO tag plugin -->
     {% seo %}
+    <script type="module" src="{{ '/assets/js/script.js' | relative_url }}"></script>
 </head>

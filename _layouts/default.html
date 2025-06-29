@@ -7,18 +7,18 @@ This template defines the basic structure of all pages, including:
 - Body structure with header, main content, and footer
 -->
 <html lang="{{ site.lang | default: 'en-US' }}">
-  <head>
-    <!-- Include the head component with all meta tags, CSS, and JS dependencies -->
-    {% include head.html %}
-  </head>
+  
+  <!-- Include the head component with all meta tags, CSS, and JS dependencies -->
+  {% include head.html %}
+  
   <body>
     <!-- Site header with navigation -->
-    {% include header.html %}    <!-- Main content container with skip target for accessibility -->
+    {% include header.html %}    
+    
+    <!-- Main content container with skip target for accessibility -->
     <main class="site-main" id="skip-target" tabindex="-1">
-      <div class="site-content">
-        <!-- Page content inserted here by Jekyll -->
-        {{ content }}
-      </div>
+      <!-- Page content inserted here by Jekyll -->
+      {{ content }}
     </main>
 
     <!-- Site footer -->
