@@ -1,0 +1,24 @@
+// Common base styles
+// Only includes custom styles that aren't covered by Bootstrap
+
+// Remove focus outline for mouse users, keep for keyboard
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// Section spacing (custom to the project)
+.section {
+  padding: $section-padding-y $section-padding-x;
+}
+
+/*
+  Note: Many common styles have been removed as they're already provided by Bootstrap:
+  - Box-sizing reset
+  - Body background and text adjustments
+  - Image max-width behavior
+  - Form element basic styling
+  - Container styling
+  - Table styling
+  
+  For these elements, rely on Bootstrap's default styling.
+*/

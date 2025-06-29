@@ -1,0 +1,74 @@
+// Theme file for consistent styling across all pages
+// Note: All color variables have been moved to _colors.scss
+
+// CSS Variables for consistent theming throughout the site
+// Simplified to use our reduced color palette
+:root {
+  // Primary color 
+  --color-primary: #{$primary};
+  --color-primary-light: #{$primary-light};
+  --color-primary-dark: #{$primary-dark};
+  
+  // Secondary and Accent colors
+  --color-secondary: #{$secondary};
+  --color-accent: #{$accent};
+  // Neutral colors
+  --color-light: #{$light};
+  --color-light-rgb: 248, 249, 250; // RGB values of $light for rgba() usage
+  --color-dark: #{$dark};
+  --color-text: #{$text-color}; // For consistent text color
+  
+  // Section backgrounds
+  --color-section-bg-primary: #{$section-bg-primary};
+  --color-section-bg-secondary: #{$section-bg-secondary};
+}
+
+// Dark mode theme variables - Simplified
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #{$dark-mode-bg};
+    --color-text: #{$dark-mode-text};
+    --color-border: #{$dark-mode-border};
+  }
+  
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+}
+
+// Consistent theme styling for sections - Simplified
+.section {
+  &.section-light {
+    background-color: var(--color-light);
+  }
+  
+  &.section-dark {
+    background-color: var(--color-dark);
+    color: $light;
+  }
+  
+  &.section-primary {
+    background-color: var(--color-section-bg-primary);
+  }
+  
+  &.section-secondary {
+    background-color: var(--color-section-bg-secondary);
+  }
+}
+
+// Simplified gradient backgrounds - moved to utilities
+// All gradient classes are now defined in _utilities.scss for consistency
+
+/* 
+  Theme Usage Guidelines:
+  
+  1. Use CSS variables for consistent colors across components
+  2. For themed sections, use .section with modifiers:
+     - .section.section-light
+     - .section.section-dark
+     - .section.section-primary
+     - .section.section-secondary
+  3. For gradient backgrounds, use .gradient-primary or .gradient-secondary
+  4. For most other styling, leverage Bootstrap's built-in utility classes
+*/

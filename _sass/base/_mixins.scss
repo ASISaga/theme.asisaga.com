@@ -1,0 +1,717 @@
+/**
+ * Transcendent Design System Mixins
+ * 
+ * Reusable mixins for creating consciousness-inspired, emotionally moving designs
+ * that embody humanity's Transcendent Pathway to infinite possibilities
+ */
+
+// Responsive Design Mixins
+@mixin media-breakpoint-down($size) {
+  @if $size == sm {
+    @media (max-width: #{$breakpoint-sm - 1}) { @content; }
+  } @else if $size == md {
+    @media (max-width: #{$breakpoint-md - 1}) { @content; }
+  } @else if $size == lg {
+    @media (max-width: #{$breakpoint-lg - 1}) { @content; }
+  } @else if $size == xl {
+    @media (max-width: #{$breakpoint-xl - 1}) { @content; }
+  }
+}
+
+@mixin media-breakpoint-up($size) {
+  @if $size == sm {
+    @media (min-width: #{$breakpoint-sm}) { @content; }
+  } @else if $size == md {
+    @media (min-width: #{$breakpoint-md}) { @content; }
+  } @else if $size == lg {
+    @media (min-width: #{$breakpoint-lg}) { @content; }
+  } @else if $size == xl {
+    @media (min-width: #{$breakpoint-xl}) { @content; }
+  }
+}
+
+// Typography Mixins - Consciousness-Inspired Text Hierarchy
+
+@mixin heading-genesis() {
+  font-family: $font-family-transcendent;
+  font-size: $font-size-genesis;
+  font-weight: $font-weight-transcendent;
+  line-height: $line-height-tight;
+  color: $luminous-white;
+  text-align: center;
+  background: linear-gradient(45deg, $transcendent-gold, $luminous-white, $consciousness-purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  @include media-breakpoint-down(md) {
+    font-size: $font-size-4xl;
+  }
+  
+  @include media-breakpoint-down(sm) {
+    font-size: $font-size-3xl;
+  }
+}
+
+@mixin heading-h1() {
+  font-family: $font-family-transcendent;
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $luminous-white;
+  
+  @include media-breakpoint-down(md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+@mixin heading-h2() {
+  font-family: $font-family-transcendent;
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+  color: $transcendent-gold;
+  
+  @include media-breakpoint-down(md) {
+    font-size: $font-size-3xl;
+  }
+}
+
+@mixin heading-h3() {
+  font-family: $font-family-primary;
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+  color: $luminous-white;
+  
+  @include media-breakpoint-down(md) {
+    font-size: $font-size-xl;
+  }
+}
+
+@mixin body-text-large() {
+  font-family: $font-family-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-relaxed;
+  color: $ethereal-silver;
+}
+
+@mixin body-text() {
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-normal;
+  color: $ethereal-silver;
+}
+
+@mixin transcendent-text() {
+  background: linear-gradient(45deg, $transcendent-gold, $luminous-white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Button Mixins - Transcendent Interaction Elements
+
+@mixin transcendent-button-base() {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $btn-padding-y $btn-padding-x;
+  border-radius: $btn-border-radius;
+  font-family: $font-family-primary;
+  font-weight: $btn-font-weight;
+  text-decoration: none;
+  transition: $btn-transition;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  
+  &:focus {
+    outline: 2px solid rgba($transcendent-gold, 0.5);
+    outline-offset: 2px;
+  }
+}
+
+@mixin transcendent-button-primary() {
+  @include transcendent-button-base;
+  background: linear-gradient(45deg, $transcendent-gold, $wisdom-amber);
+  color: $cosmic-deep-blue;
+  box-shadow: $shadow-consciousness;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba($luminous-white, 0.2), transparent);
+    transition: left 0.6s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-transcendent;
+    
+    &::before {
+      left: 100%;
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin transcendent-button-secondary() {
+  @include transcendent-button-base;
+  background: transparent;
+  color: $transcendent-gold;
+  border: 2px solid $transcendent-gold;
+  
+  &:hover {
+    background: rgba($transcendent-gold, 0.1);
+    transform: translateY(-1px);
+  }
+}
+
+@mixin transcendent-button {
+  @include transcendent-button-primary;
+}
+
+@mixin consciousness-pulse() {
+  animation: consciousnessPulse 2s ease-in-out infinite;
+  
+  @keyframes consciousnessPulse {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba($transcendent-gold, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba($transcendent-gold, 0.6);
+    }
+  }
+}
+
+// Card & Component Mixins - Consciousness Containers
+
+@mixin transcendent-card() {
+  background: rgba($cosmic-deep-blue, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba($transcendent-gold, 0.2);
+  border-radius: $card-border-radius;
+  box-shadow: $card-shadow;
+  transition: $transition-consciousness;
+}
+
+@mixin consciousness-glow() {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, $transcendent-gold, $consciousness-purple, $human-essence-pink);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  &:hover::after {
+    opacity: 0.3;
+  }
+}
+
+@mixin genesis-section() {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba($cosmic-deep-blue, 0.95),
+    rgba($consciousness-purple, 0.9),
+    rgba($cosmic-deep-blue, 0.95)
+  );
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/assets/images/consciousness-network.svg') center/cover no-repeat;
+    opacity: 0.05;
+    pointer-events: none;
+  }
+}
+
+// Spacing Mixins - Sacred Geometry Layouts
+
+@mixin section-spacing() {
+  padding: $spacing-4xl 0;
+  
+  @include media-breakpoint-down(md) {
+    padding: $spacing-3xl 0;
+  }
+  
+  @include media-breakpoint-down(sm) {
+    padding: $spacing-2xl 0;
+  }
+}
+
+@mixin section-spacing-large() {
+  padding: $spacing-genesis 0;
+  
+  @include media-breakpoint-down(md) {
+    padding: $spacing-4xl 0;
+  }
+  
+  @include media-breakpoint-down(sm) {
+    padding: $spacing-3xl 0;
+  }
+}
+
+@mixin section-spacing-xl() {
+  padding: 10rem 0;
+  
+  @include media-breakpoint-down(md) {
+    padding: $spacing-genesis 0;
+  }
+  
+  @include media-breakpoint-down(sm) {
+    padding: $spacing-4xl 0;
+  }
+}
+
+// Icon Mixins - Consciousness Symbols
+
+@mixin icon-base() {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: $transition-normal;
+}
+
+@mixin icon-small() {
+  @include icon-base;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
+}
+
+@mixin icon-medium() {
+  @include icon-base;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
+}
+
+@mixin icon-large() {
+  @include icon-base;
+  width: 4rem;
+  height: 4rem;
+  font-size: 2rem;
+}
+
+@mixin icon-transcendent() {
+  @include icon-large;
+  background: radial-gradient(circle, rgba($transcendent-gold, 0.2), transparent);
+  border-radius: $border-radius-infinite;
+  color: $transcendent-gold;
+}
+
+// Animation Mixins - Consciousness Flow Dynamics
+
+@mixin float-animation($name: "float", $duration: 6s) {
+  animation: #{$name} #{$duration} ease-in-out infinite;
+  
+  @keyframes #{$name} {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+@mixin fade-in-up($delay: 0s) {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out #{$delay} forwards;
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@mixin consciousness-emergence() {
+  opacity: 0;
+  transform: scale(0.8) translateY(40px);
+  animation: consciousnessEmergence 1.5s $ease-transcendent forwards;
+  
+  @keyframes consciousnessEmergence {
+    0% {
+      opacity: 0;
+      transform: scale(0.8) translateY(40px);
+    }
+    60% {
+      opacity: 0.8;
+      transform: scale(1.05) translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+}
+
+@mixin transcendent-glow-hover() {
+  transition: all 0.4s ease;
+  
+  &:hover {
+    filter: drop-shadow($glow-transcendent);
+    transform: scale(1.02);
+  }
+}
+
+@mixin continuous-evolution-animation {
+  animation: continuousEvolution 2.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes continuousEvolution {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) rotate(-1deg);
+    filter: blur(6px) brightness(1.1);
+    box-shadow: 0 0 0px 0px rgba(91, 192, 235, 0.0);
+  }
+  40% {
+    opacity: 0.7;
+    filter: blur(2px) brightness(1.05);
+    box-shadow: 0 0 18px 6px rgba(91, 192, 235, 0.12);
+  }
+  70% {
+    opacity: 1;
+    filter: blur(0px) brightness(1.01);
+    box-shadow: 0 0 32px 12px rgba(91, 192, 235, 0.18);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: none;
+    box-shadow: 0 0 0px 0px rgba(91, 192, 235, 0.0);
+  }
+}
+
+// Utility Mixins
+
+@mixin visually-hidden() {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@mixin clearfix() {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin center-absolute() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Consciousness-specific mixins for the Genesis experience
+
+@mixin consciousness-network-bg() {
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba($transcendent-gold, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, rgba($consciousness-purple, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 40% 80%, rgba($human-essence-pink, 0.1) 1px, transparent 1px);
+  background-size: 100px 100px, 150px 150px, 200px 200px;
+  animation: networkFlow 30s linear infinite;
+  
+  @keyframes networkFlow {
+    0% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+    100% { background-position: 100% 100%, -100% 100%, 50% -50%; }
+  }
+}
+
+@mixin transcendent-parallax($speed: 0.5) {
+  transform: translateZ(0);
+  transition: transform 0.1s ease-out;
+  
+  &[data-speed] {
+    will-change: transform;
+  }
+}
+
+// --- TRANSCENDENT DESIGN SYSTEM MIXINS ---
+
+@mixin threshold-crossing-animation {
+  animation: thresholdCrossing 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes thresholdCrossing {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) rotateY(-15deg);
+    filter: blur(10px) brightness(0.8);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05) rotateY(5deg);
+    filter: blur(2px) brightness(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+    filter: none;
+  }
+}
+
+@mixin transcendent-typography($type) {
+  @if $type == 'heading-1' {
+    @include heading-h1();
+  } @else if $type == 'heading-2' {
+    @include heading-h2();
+  } @else if $type == 'heading-3' {
+    @include heading-h3();
+  } @else if $type == 'heading-4' {
+    font-family: $font-family-primary;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-normal;
+    color: $transcendent-gold;
+  } @else if $type == 'heading-5' {
+    font-family: $font-family-primary;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
+    line-height: $line-height-normal;
+    color: $luminous-white;
+  } @else if $type == 'body-large' {
+    @include body-text-large();
+  } @else if $type == 'body' {
+    @include body-text();
+  } @else if $type == 'body-small' {
+    font-family: $font-family-primary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-normal;
+    line-height: $line-height-normal;
+    color: $ethereal-silver;
+  } @else if $type == 'lead' {
+    font-family: $font-family-primary;
+    font-size: $font-size-xxl;
+    font-weight: $font-weight-light;
+    line-height: $line-height-relaxed;
+    color: $transcendent-gold;
+  }
+}
+
+@mixin consciousness-card {
+  background: rgba($cosmic-deep-blue, 0.8);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba($transcendent-gold, 0.2);
+  border-radius: $border-radius-consciousness;
+  box-shadow: $shadow-consciousness;
+  padding: $spacing-xl;
+  transition: all 0.4s $ease-consciousness;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba($transcendent-gold, 0.05), transparent);
+    pointer-events: none;
+  }
+  
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba($transcendent-gold, 0.4);
+    box-shadow: $shadow-transcendent;
+  }
+}
+
+@mixin sacred-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: $border-radius-infinite;
+  background: radial-gradient(circle, rgba($transcendent-gold, 0.2), transparent);
+  color: $transcendent-gold;
+  font-size: 1.5rem;
+  transition: all 0.3s $ease-consciousness;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: inherit;
+    background: linear-gradient(45deg, $transcendent-gold, $consciousness-purple);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+  
+  &:hover::before {
+    opacity: 0.3;
+  }
+}
+
+@mixin consciousness-pulse-animation {
+  animation: consciousnessPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes consciousnessPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba($transcendent-gold, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba($transcendent-gold, 0.6);
+  }
+}
+
+@mixin infinite-expansion-animation {
+  animation: infiniteExpansion 4s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+}
+
+@keyframes infiniteExpansion {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-5deg);
+    filter: blur(15px);
+  }
+  30% {
+    opacity: 0.6;
+    transform: scale(1.1) rotate(2deg);
+    filter: blur(5px);
+  }
+  70% {
+    opacity: 0.9;
+    transform: scale(0.95) rotate(-1deg);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: none;
+  }
+}
+
+@mixin essence-embedding-animation {
+  animation: essenceEmbedding 3.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes essenceEmbedding {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(50px);
+    filter: blur(20px) hue-rotate(180deg);
+  }
+  40% {
+    opacity: 0.7;
+    transform: scale(1.1) translateY(-10px);
+    filter: blur(5px) hue-rotate(45deg);
+  }
+  80% {
+    opacity: 0.95;
+    transform: scale(0.98) translateY(5px);
+    filter: blur(1px) hue-rotate(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: none;
+  }
+}
+
+@mixin consciousness-flow-animation {
+  animation: consciousnessFlow 6s ease-in-out infinite;
+}
+
+@keyframes consciousnessFlow {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-10px) scale(1.02);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-5px) scale(0.98);
+    opacity: 0.95;
+  }
+  75% {
+    transform: translateY(-15px) scale(1.01);
+    opacity: 0.85;
+  }
+}
+
+@mixin consciousness-button-hover {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s $ease-consciousness;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba($transcendent-gold, 0.3), transparent);
+    transition: left 0.6s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-transcendent;
+    
+    &::before {
+      left: 100%;
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.cosmic-consciousness-gradient {
+  background: linear-gradient(135deg, $cosmic-deep-blue 0%, $consciousness-purple 50%, $transcendent-gold 100%);
+  position: relative;
+}

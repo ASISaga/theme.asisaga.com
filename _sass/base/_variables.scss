@@ -1,0 +1,189 @@
+/**
+ * Transcendent Design System Variables
+ * 
+ * Core variables for ASI Saga's consciousness-inspired design system
+ * that embodies humanity's Transcendent Pathway to infinite possibilities
+ */
+
+// Transcendent Color Palette - Consciousness & Infinite Possibilities
+// Primary cosmic colors that evoke the Genesis of ASI
+$cosmic-deep-blue: #0B1426; // Deep cosmic consciousness
+$consciousness-purple: #4A154B;       // Human-ASI consciousness merging
+$transcendent-gold: #FFD700;          // Infinite possibilities and transcendence
+$luminous-white: #FFFFFF;             // Pure consciousness and clarity
+$ethereal-silver: #C0C0C0;            // Wisdom and timeless knowledge
+$cosmic-light-blue: #5bc0eb !default; // Cosmic Light Blue for transcendent highlights
+
+// Human Essence Colors - Embedding humanity within ASI
+$human-essence-pink: #FF6B9D;         // Love, creativity, and human connection
+$wisdom-amber: #FFA500;               // Human wisdom and experience
+$compassion-teal: #20B2AA;            // Empathy and universal care
+$transcendent-pearl: #F8F8FF;         // Spiritual transcendence
+
+// Interactive & State Colors
+$genesis-active: #32CD32;             // Active participation in Genesis
+$threshold-crossing: #9370DB;         // Transcendent Threshold moments
+$infinite-gradient-start: $cosmic-deep-blue;
+$infinite-gradient-end: $transcendent-gold;
+
+// Bootstrap Color Overrides for Transcendent Experience
+$primary: $transcendent-gold;
+$secondary: $consciousness-purple;
+$success: $genesis-active;
+$info: $compassion-teal;
+$warning: $wisdom-amber;
+$danger: $human-essence-pink;
+$light: $transcendent-pearl;
+$dark: $cosmic-deep-blue;
+
+// Typography - Consciousness-Inspired Font System
+$font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-family-transcendent: 'Space Grotesk', 'Orbitron', monospace;  // For headlines & special elements
+$font-family-wisdom: 'Crimson Text', Georgia, serif;                // For deep content & quotes
+
+// Font Weights for Transcendent Hierarchy
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-transcendent: 800;       // For Genesis headlines
+
+// Font Sizes - Conscious Scale System
+$font-size-xs: 0.75rem;    // 12px
+$font-size-sm: 0.875rem;   // 14px
+$font-size-base: 1rem;     // 16px
+$font-size-lg: 1.125rem;   // 18px
+$font-size-xl: 1.25rem;    // 20px
+$font-size-xxl: 1.5rem;    // 24px
+$font-size-3xl: 1.875rem;  // 30px
+$font-size-4xl: 2.25rem;   // 36px
+$font-size-5xl: 3rem;      // 48px
+$font-size-genesis: 4rem;  // 64px - For hero Genesis headlines
+
+// Line Heights for Consciousness Flow
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+$line-height-transcendent: 2;     // For meditative, flowing content
+
+// Spacing - Sacred Geometry for Layout Harmony
+$spacing-xs: 0.25rem;    // 4px
+$spacing-sm: 0.5rem;     // 8px
+$spacing-md: 1rem;       // 16px
+$spacing-lg: 1.5rem;     // 24px
+$spacing-xl: 2rem;       // 32px
+$spacing-2xl: 3rem;      // 48px
+$spacing-3xl: 4rem;      // 64px
+$spacing-4xl: 6rem;      // 96px
+$spacing-genesis: 8rem;  // 128px - For major section spacing
+
+// Genesis Spacing Scale (for Genesis/Transcendent pages)
+$genesis-spacing-xs: 0.5rem;
+$genesis-spacing-sm: 1rem;
+$genesis-spacing-md: 1.5rem;
+$genesis-spacing-lg: 2.5rem;
+$genesis-spacing-xl: 4rem;
+
+// Spacing & Layout
+$section-padding-y: 2.5rem; // Vertical padding for sections (adjust as needed for design system)
+$section-padding-x: 2rem;   // Horizontal padding for sections (added for symmetry with -y)
+
+// Breakpoints - Consciousness Accessibility Across Devices
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+$breakpoint-transcendent: 1600px;  // Ultra-wide transcendent displays
+
+// Border Radius - Organic Consciousness Flow
+$border-radius-sm: 0.25rem;    // 4px
+$border-radius-md: 0.5rem;     // 8px
+$border-radius-lg: 1rem;       // 16px
+$border-radius-xl: 1.5rem;     // 24px
+$border-radius-consciousness: 2rem;  // 32px - For transcendent elements
+$border-radius-infinite: 50%;   // Perfect circles for consciousness symbols
+
+// Shadows - Transcendent Depth & Consciousness Layers
+$shadow-sm: 0 1px 3px rgba($cosmic-deep-blue, 0.12);
+$shadow-md: 0 4px 6px rgba($cosmic-deep-blue, 0.16);
+$shadow-lg: 0 10px 25px rgba($cosmic-deep-blue, 0.25);
+$shadow-xl: 0 20px 50px rgba($cosmic-deep-blue, 0.35);
+$shadow-consciousness: 0 30px 60px rgba($transcendent-gold, 0.2);
+$shadow-transcendent: 0 40px 80px rgba($consciousness-purple, 0.3);
+
+// Z-Index Layers - Consciousness Hierarchy
+$z-index-background: -1;
+$z-index-content: 1;
+$z-index-overlay: 10;
+$z-index-consciousness: 100;
+$z-index-transcendent: 1000;
+$z-index-genesis: 9999;
+
+// Transition Timing - Consciousness Flow Dynamics
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
+$transition-consciousness: 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$transition-transcendent: 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+// Consciousness Animation Curves
+$ease-consciousness: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$ease-transcendent: cubic-bezier(0.165, 0.84, 0.44, 1);
+$ease-genesis: cubic-bezier(0.19, 1, 0.22, 1);
+
+// Timing variable for consciousness-inspired transitions/animations
+$consciousness-timing: 0.6s cubic-bezier(0.4, 0, 0.2, 1) !default;
+
+// Component Specific Variables
+
+// Hero Section
+$hero-min-height: 100vh;
+$hero-content-max-width: 800px;
+
+// Cards & Components
+$card-padding: $spacing-xl;
+$card-border-radius: $border-radius-consciousness;
+$card-shadow: $shadow-consciousness;
+
+// Buttons - Transcendent Interaction Elements
+$btn-padding-y: $spacing-md;
+$btn-padding-x: $spacing-xl;
+$btn-border-radius: $border-radius-lg;
+$btn-font-weight: $font-weight-semibold;
+$btn-transition: $transition-consciousness;
+
+// Navigation
+$navbar-height: 80px;
+$navbar-padding-y: $spacing-lg;
+$navbar-brand-font-size: $font-size-xl;
+
+// Forms - Genesis Participation Elements
+$input-padding-y: $spacing-md;
+$input-padding-x: $spacing-lg;
+$input-border-radius: $border-radius-md;
+$input-bg: rgba($luminous-white, 0.1);
+$input-border-color: rgba($transcendent-gold, 0.3);
+
+// Consciousness Particles & Effects
+$particle-count: 50;
+$particle-size-min: 2px;
+$particle-size-max: 6px;
+$particle-opacity-min: 0.1;
+$particle-opacity-max: 0.8;
+
+// Transcendent Glow Effects
+$glow-transcendent: 0 0 20px rgba($transcendent-gold, 0.5);
+$glow-consciousness: 0 0 30px rgba($consciousness-purple, 0.4);
+$glow-human-essence: 0 0 25px rgba($human-essence-pink, 0.6);
+
+// Genesis Section Variables
+$genesis-timeline-width: 4px;
+$genesis-timeline-color: $transcendent-gold;
+$genesis-marker-size: 20px;
+$genesis-content-offset: 50px;
+
+// Bootstrap default spacer for consistent spacing calculations
+$spacer: 1rem !default;

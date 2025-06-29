@@ -1,0 +1,82 @@
+// Custom responsive adjustments that aren't available in Bootstrap
+// Most responsive utilities have been removed as Bootstrap provides them through its utility classes
+
+// Component-specific responsive adjustments
+@media (max-width: $breakpoint-sm) {
+  .navbar-main { border-radius: 0 0 $border-radius-sm $border-radius-sm; }
+  .product-card { border-radius: $border-radius-sm; }
+  .section { border-radius: $border-radius-sm; }
+  .section-title { font-size: $font-size-lg; }
+}
+
+// Custom responsive font sizes not covered by Bootstrap
+.fs-responsive-xl {
+  font-size: $font-size-xl;
+  
+  @media (max-width: $breakpoint-lg-max) {
+    font-size: $font-size-lg;
+  }
+  
+  @media (max-width: $breakpoint-sm-max) {
+    font-size: $font-size-base * 1.5;
+  }
+}
+
+.fs-responsive-lg {
+  font-size: $font-size-lg;
+  
+  @media (max-width: $breakpoint-lg-max) {
+    font-size: $font-size-base * 1.1;
+  }
+  
+  @media (max-width: $breakpoint-sm-max) {
+    font-size: $font-size-base;
+  }
+}
+
+// Custom responsive spacing for sections
+@include media-breakpoint-down(md) {
+  .section {
+    padding: ($section-padding-y * 0.75) ($section-padding-x * 0.75);
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .section {
+    padding: ($section-padding-y * 0.5) ($section-padding-x * 0.5);
+  }
+}
+
+// Fix for navbar on mobile devices
+@include media-breakpoint-down(md) {
+  .site-header .navbar-collapse {
+    background-color: $dark; // Using consolidated dark color for better contrast
+    padding: 0.5rem;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+  }
+}
+
+/*
+  Note: The following Bootstrap responsive utilities should be used instead of custom classes:
+  
+  - Responsive display utilities: 
+    .d-none, .d-sm-block, .d-md-none, etc.
+  
+  - Responsive text alignment: 
+    .text-center, .text-sm-start, .text-md-end, etc.
+  
+  - Responsive margin/padding: 
+    .mt-3, .mt-sm-5, .mb-md-4, etc.
+  
+  - Responsive flex utilities: 
+    .flex-column, .flex-sm-row, .align-items-md-center, etc.
+  
+  - Responsive image utilities:
+    .img-fluid (no custom classes needed)
+  
+  - Responsive tables:
+    .table-responsive, .table-responsive-md, etc.
+  
+  Bootstrap documentation: https://getbootstrap.com/docs/5.3/utilities/
+*/

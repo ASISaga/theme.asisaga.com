@@ -1,0 +1,64 @@
+// filepath: c:\Development\RealmOfAgents\asisaga.github.io\assets\css\_base\_typography.scss
+// Typography styles for ASI Saga website
+// This file contains only typography overrides not covered by Bootstrap
+
+// Font sizes
+$font-size-xl: 1.5rem;     // 24px 
+
+// Font weights
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+
+// Custom font settings
+$font-family-headings: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+
+// Custom heading font family (this needs to be kept since it's specific to this project)
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $font-family-headings;
+}
+
+// Custom blockquote styling that differs from Bootstrap
+blockquote {
+  padding-left: 1rem;
+  border-left: 0.25rem solid $border-color;
+  font-style: italic;
+  
+  footer {
+    font-style: normal;
+    color: $text-muted;
+    margin-top: 0.5rem;
+    
+    &::before {
+      content: "— ";
+    }
+  }
+}
+
+// Responsive font size adjustments (if needed beyond Bootstrap breakpoints)
+@mixin responsive-headings {
+  @include media-breakpoint-up(md) {
+    h1, .h1 { font-size: $font-size-base * 3; }
+    h2, .h2 { font-size: $font-size-base * 2.5; }
+  }
+  
+  @include media-breakpoint-up(lg) {
+    h1, .h1 { font-size: $font-size-base * 3.5; }
+  }
+}
+
+// Apply responsive typography
+@include responsive-headings;
+
+/*
+  Note: Most typography styles are now handled by Bootstrap.
+  This file only contains project-specific overrides.
+  
+  Bootstrap Typography Classes to Use:
+  - Font weight: .fw-light, .fw-normal, .fw-bold, etc.
+  - Text alignment: .text-start, .text-center, .text-end
+  - Text transformation: .text-uppercase, .text-lowercase, .text-capitalize
+  - Text colors: .text-primary, .text-secondary, .text-body, .text-muted
+  
+  For more details: https://getbootstrap.com/docs/5.3/utilities/text/
+*/

@@ -1,0 +1,124 @@
+// filepath: c:\Development\RealmOfAgents\asisaga.github.io\assets\css\_base\_colors.scss
+// Core color variables for ASI Saga website
+// Streamlined color system with reduced color variations
+
+// ----------------------------------------
+// Core Colors - Primary palette
+// ----------------------------------------
+$primary: #0d6efd;
+$primary-light: lighten($primary, 15%);
+$primary-dark: darken($primary, 10%);
+
+// ----------------------------------------
+// Secondary and Accent - Limited palette
+// ----------------------------------------
+$secondary: #6c757d;
+$accent: #ff5722; // Single accent color
+
+// ----------------------------------------
+// Neutral Colors - For text and backgrounds
+// ----------------------------------------
+$white: #fff;
+$light: #f8f9fa;    // Consolidated from bg-light and section-bg-light
+$dark: #212529;     // Consolidated from bg-dark and section-bg-dark
+$gray: #dee2e6;     // Consolidated border color
+
+// ----------------------------------------
+// Semantic Colors - Functional usage
+// ----------------------------------------
+$text-color: $dark;
+$text-muted: $secondary;
+$text-light: $light;
+$bg-light: $light;  // Using consolidated color
+$bg-dark: $dark;    // Using consolidated color
+$border-color: $gray;
+$shadow-color: rgba(0, 0, 0, 0.15);
+
+// ----------------------------------------
+// Component-specific colors
+// Only keep truly unique colors that can't use core palette
+// ----------------------------------------
+$section-bg-primary: #e9f2ff;  // Unique, keep
+$section-bg-secondary: #f1f1f1; // Could potentially use $light instead
+
+// Box shadows - defining here to ensure $shadow-color is available
+$box-shadow: 0 0.5rem 1rem $shadow-color;
+
+// ----------------------------------------
+// Utility Class Color Map
+// ----------------------------------------
+// Simplified theme colors map for Bootstrap with necessary contextual colors
+// Adding info color based on primary for Bootstrap components that depend on it
+$info: #0dcaf0; // Standard Bootstrap info color
+$warning: #ffc107; // Standard Bootstrap warning color 
+$danger: #dc3545; // Standard Bootstrap danger color
+$success: #198754; // Standard Bootstrap success color
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "accent": $accent,
+  "info": $info,
+  "warning": $warning, 
+  "danger": $danger,
+  "success": $success,
+  "light": $light,
+  "dark": $dark
+);
+
+// ----------------------------------------
+// Dark Mode Colors - Simplified
+// ----------------------------------------
+$dark-mode-bg: #121212;
+$dark-mode-text: $light;
+$dark-mode-border: #495057;
+
+// -----------------------------------------
+// Custom text colors - REDUCED to essential only
+// -----------------------------------------
+// For 'accent' color (which isn't in default Bootstrap)
+.text-accent { color: $accent !important; }
+
+// Single white transparency class (instead of multiple)
+.text-white-75 { color: rgba(255, 255, 255, 0.75) !important; }
+
+// -----------------------------------------
+// Custom background colors - REDUCED
+// -----------------------------------------
+// For 'accent' color (which isn't in default Bootstrap)
+.bg-accent { background-color: $accent !important; }
+
+// -----------------------------------------
+// Custom background gradients - MOVED TO _utilities.scss
+// -----------------------------------------
+// All gradient utilities are now consolidated in _utilities.scss for easier maintenance
+// The duplicate definitions here have been removed to prevent conflicts
+
+// -----------------------------------------
+// Component-specific color variables
+// -----------------------------------------
+
+// Header component colors
+$header-text-color: $white;
+$header-text-muted: rgba(255, 255, 255, 0.75);
+$header-link-hover-color: rgba(255, 255, 255, 0.5);
+$header-link-hover-bg: rgba(255, 255, 255, 0.1);
+$header-toggle-color: rgba(255, 255, 255, 0.65);
+$header-toggle-focus-shadow: rgba(255, 255, 255, 0.25);
+$header-mobile-border: rgba(255, 255, 255, 0.1);
+
+// Footer component colors
+$footer-text-color: $white;
+$footer-text-muted: rgba(255, 255, 255, 0.75);
+$footer-link-color: $light;
+
+// Navbar component colors
+$navbar-link-color: $white;
+$navbar-link-hover-color: rgba(255, 255, 255, 0.5);
+$navbar-link-hover-bg: rgba(33, 37, 41, 0.5); // dark-subtle
+$navbar-dropdown-item-color: $white;
+$navbar-dropdown-item-hover-bg: $secondary;
+$navbar-divider-color: $secondary;
+
+// Transcendent Experience Colors
+$transcendent-white: #fff;

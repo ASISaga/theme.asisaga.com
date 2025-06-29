@@ -1,0 +1,122 @@
+// Accessibility styles for the ASI Saga website
+
+// Skip link for keyboard navigation
+.skip-link {
+  position: absolute;
+  top: -50px;
+  left: 10px;
+  padding: 8px 15px;
+  background-color: $primary;
+  color: $white;
+  z-index: 9999;
+  transition: top 0.3s ease;
+  border-radius: 0 0 5px 5px;
+  text-decoration: none;
+  font-weight: $font-weight-medium;
+  
+  &:focus {
+    top: 0;
+    outline: 3px solid $warning;
+    text-decoration: underline;
+  }
+}
+
+// Enhanced focus styles
+:focus {
+  outline: 2px solid $primary;
+  outline-offset: 2px;
+}
+
+// Form validation and accessibility
+.form-control {
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($primary, 0.25);
+  }
+}
+
+.form-label {
+  font-weight: $font-weight-medium;
+}
+
+// Screen reader only content
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable {
+  @extend .sr-only;
+  
+  &:active,
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}
+
+// ARIA attributes
+[aria-hidden="true"] {
+  display: none !important;
+}
+
+// Improve readability
+.content-section {
+  max-width: 75ch;
+  margin-left: auto;
+  margin-right: auto;
+  
+  p {
+    line-height: 1.6;
+  }
+}
+
+// Keyboard navigable components
+.nav-link,
+.btn,
+.card,
+a {
+  &:focus-visible {
+    outline: 3px solid $primary;
+    outline-offset: 3px;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+// Accessible tables
+.table {
+  &.accessible {
+    border-collapse: separate;
+    border-spacing: 0;
+    
+    thead th {
+      background-color: $dark;
+      color: $white;
+      font-weight: $font-weight-bold;
+    }
+    
+    th, td {
+      padding: 0.75rem;
+      border: 1px solid $gray-300;
+    }
+    
+    // For tables with row headers
+    &.row-headers {
+      th[scope="row"] {
+        background-color: $light;
+        font-weight: $font-weight-medium;
+      }
+    }
+  }
+}

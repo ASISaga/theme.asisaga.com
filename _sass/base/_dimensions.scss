@@ -1,0 +1,85 @@
+// Centralized dimensions for ASI Saga website
+// All size values should be defined here and referenced in component files
+
+// SCSS calculation helper
+$pixel-adjustment: 0.02;
+
+// --------------------------------------------
+// Spacing - Base unit and derived values
+// --------------------------------------------
+$spacing-base: 0.25rem; // 4px base unit
+$spacing-xs: $spacing-base; // 0.25rem / 4px
+$spacing-sm: $spacing-base * 2; // 0.5rem / 8px
+$spacing-md: $spacing-base * 4; // 1rem / 16px
+$spacing-lg: $spacing-base * 6; // 1.5rem / 24px
+$spacing-xl: $spacing-base * 8; // 2rem / 32px
+$spacing-2xl: $spacing-base * 12; // 3rem / 48px
+$spacing-3xl: $spacing-base * 16; // 4rem / 64px
+
+// --------------------------------------------
+// Border values
+// --------------------------------------------
+$border-width-default: 1px;
+$border-width-thick: 2px;
+$border-width-accent: 4px; // Used for highlight borders
+$border-width-separator: 1px;
+
+// --------------------------------------------
+// Font sizes
+// --------------------------------------------
+$font-size-xs: 0.75rem; // 12px
+$font-size-sm: 0.875rem; // 14px
+$font-size-base: 1rem; // 16px
+$font-size-md: 1.125rem; // 18px
+$font-size-lg: 1.25rem; // 20px
+$font-size-xl: 1.5rem; // 24px
+$font-size-2xl: 2rem; // 32px
+$font-size-3xl: 2.5rem; // 40px
+$font-size-4xl: 3rem; // 48px
+
+// --------------------------------------------
+// Icon dimensions
+// --------------------------------------------
+$icon-size-sm: 1rem; // 16px
+$icon-size-md: 1.5rem; // 24px
+$icon-size-lg: 2rem; // 32px
+$icon-size-xl: 3rem; // 48px
+
+// --------------------------------------------
+// Component-specific dimensions
+// --------------------------------------------
+// Header
+$header-logo-height: 2.5rem; // 40px
+
+// LinkedIn component
+$linkedin-avatar-size: 3.75rem; // 60px
+
+// Product components
+$product-border-accent-width: 4px;
+$product-item-hover-translate: -5px;
+$product-code-max-height: 31.25rem; // 500px
+$product-code-font-size: $font-size-sm; // 14px
+
+// --------------------------------------------
+// Content widths
+// --------------------------------------------
+$content-width-narrow: 48rem; // 768px
+$content-width-default: 50rem; // 800px
+
+// --------------------------------------------
+// Responsive breakpoints
+// --------------------------------------------
+// These should match Bootstrap's breakpoints for consistency
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+// Breakpoint queries (max-width values)
+$breakpoint-sm-max: 575.98px;  // $breakpoint-sm - 0.02
+$breakpoint-md-max: 767.98px;  // $breakpoint-md - 0.02
+$breakpoint-lg-max: 991.98px;  // $breakpoint-lg - 0.02
+$breakpoint-xl-max: 1199.98px; // $breakpoint-xl - 0.02
+$breakpoint-xxl-max: 1399.98px; // $breakpoint-xxl - 0.02

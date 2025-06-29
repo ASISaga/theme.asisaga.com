@@ -1,0 +1,132 @@
+// Custom utilities - Only include what Bootstrap doesn't provide
+
+/*
+  BOOTSTRAP FIRST APPROACH:
+  
+  For most styling needs, use Bootstrap's built-in utilities instead of creating custom ones:
+  
+  - Spacing: .m*, .p* (.mt-3, .px-4, etc.)
+  - Typography: .fs-*, .fw-*, .fst-*, .text-* (.fs-5, .fw-bold, etc.)
+  - Colors: .text-*, .bg-* (.text-primary, .bg-light, etc.)
+  - Flex: .d-flex, .flex-*, .justify-content-*, .align-items-* 
+  - Borders: .border, .border-* (.border-primary, .border-1, etc.)
+  - Sizing: .w-*, .h-* (.w-100, .h-auto, etc.)
+  - Display: .d-* (.d-block, .d-none, etc.)
+  - Max-width: .mw-100, .container, .container-*
+  - Min-height: .min-vh-100 (Note: we've added custom .min-vh-50, see below)
+  - Ratio: .ratio, .ratio-16x9
+*/
+
+// -----------------------------------------
+// Custom viewport height utilities
+// -----------------------------------------
+.min-vh-50 {
+  min-height: 50vh !important;
+}
+
+// -----------------------------------------
+// Custom gradient backgrounds
+// -----------------------------------------
+// NOTE: There are gradient definitions in both _colors.scss and _utilities.scss
+// Consolidating all gradient utilities here for clarity
+
+// Main gradients (vertical)
+.bg-gradient-primary {
+  background: linear-gradient(180deg, $primary, darken($primary, 10%)) !important;
+}
+
+.bg-gradient-primary-light {
+  background: linear-gradient(180deg, $white, $primary-light) !important; 
+}
+
+.bg-gradient-accent {
+  background: linear-gradient(180deg, $accent, darken($accent, 10%)) !important;
+}
+
+// Custom background colors (non-gradient)
+.bg-primary-light {
+  background-color: $primary-light !important;
+}
+
+// Special gradients for specific sections
+.bg-gradient-hero {
+  background: linear-gradient(135deg, lighten($primary, 25%), $white) !important;
+}
+
+.bg-gradient-cta {
+  background: linear-gradient(135deg, lighten($accent, 25%), $white) !important;
+}
+
+// -----------------------------------------
+// Custom button variants (for accent color not in Bootstrap)
+// -----------------------------------------
+.btn-accent {
+  @extend .btn;
+  color: $white;
+  background-color: $accent;
+  border-color: $accent;
+  
+  &:hover,
+  &:focus,
+  &:active {
+    color: $white;
+    background-color: darken($accent, 10%);
+    border-color: darken($accent, 12.5%);
+  }
+}
+
+.btn-outline-accent {
+  @extend .btn;
+  color: $accent;
+  border-color: $accent;
+  
+  &:hover,
+  &:focus,
+  &:active {
+    color: $white;
+    background-color: $accent;
+    border-color: $accent;
+  }
+}
+
+// -----------------------------------------
+// Skip to main content (Accessibility)
+// -----------------------------------------
+.skip-to-content {
+  @extend .visually-hidden; // Bootstrap's class for screen reader accessibility
+  @extend .visually-hidden-focusable; // Shows content when focused
+  
+  // Additional custom styling for the skip link
+  background: $primary;
+  color: white;
+  padding: 0.5rem 1rem;
+  z-index: 1100; // Above navbar
+}
+
+// -----------------------------------------
+// Custom spacing utilities
+// -----------------------------------------
+// Consider using Bootstrap's built-in spacing utilities instead:
+// .mt-{1-5}, .mb-{1-5}, .mx-auto, etc.
+
+// -----------------------------------------
+// Custom sizing utilities
+// -----------------------------------------
+// For most cases, use Bootstrap's container utilities:
+// .container, .container-sm, .container-md, .container-lg, .container-xl, .container-fluid
+//
+// Only include truly custom sizes that Bootstrap doesn't provide
+.mw-768 {
+  max-width: $content-width-narrow !important; // Using centralized dimension variable
+}
+
+.mw-800 {
+  max-width: $content-width-default !important; // Using centralized dimension variable
+}
+
+// -----------------------------------------
+// Transition utilities
+// -----------------------------------------
+.transition {
+  transition: all 0.3s ease !important;
+}
