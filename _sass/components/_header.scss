@@ -1,0 +1,93 @@
+// Site Header - Uses Bootstrap utility classes with minimal custom CSS
+.site-header {  // Core navbar structure
+  @extend .navbar;
+  @extend .navbar-expand-lg;
+  @extend .bg-dark; // Changed to dark to match footer
+  @extend .navbar-dark; // Use Bootstrap's dark navbar styling
+  @extend .rounded-bottom;
+  @extend .py-3;  
+  @extend .mb-4;
+
+  // Brand container
+  .site-header__brand {
+    @extend .navbar-brand;
+    @extend .d-flex;
+    @extend .align-items-center;
+    @extend .text-decoration-none;
+    @extend .overflow-hidden;
+    @extend .flex-grow-1;
+    color: $header-text-color;
+
+    // Brand row container
+    .header-brand-row {
+      @extend .d-flex;
+      @extend .align-items-center;
+
+      // Logo container
+      .header-logo {
+        @extend .me-3;
+        @extend .flex-shrink-0;
+      }
+
+      // Title container
+      .header-title {
+        @extend .d-flex;
+        @extend .flex-column;
+        @extend .overflow-hidden;
+      }
+    }
+  }
+  // Header title
+  .site-header__title {
+    @extend .fw-bold;
+    @extend .m-0;
+    @extend .fs-4;
+    @extend .lh-sm;
+    @extend .text-truncate;
+    color: $header-text-color;
+  }
+  // Header tagline
+  .site-header__tagline {
+    @extend .m-0;
+    @extend .small;
+    @extend .text-truncate;
+    color: $header-text-muted; // Using centralized color variable
+  }
+  // Logo image - minimal custom styling needed
+  .site-header__logo-img {
+    height: $header-logo-height; // Using centralized dimension variable
+    width: auto;  }
+  
+  // Mobile menu toggle button
+  .site-header-toggler {
+    @extend .navbar-toggler;
+    @extend .ms-auto;
+    @extend .border-0; // Remove border for cleaner look
+    @extend .navbar-dark; // Use light toggle icon on dark background
+    color: $header-toggle-color; // Using centralized color variable
+    
+    &:focus {
+      box-shadow: 0 0 0 0.25rem $header-toggle-focus-shadow; // Using centralized color variable
+    }
+  }
+  // Toggle icon
+  .site-header-toggler-icon {
+    @extend .navbar-toggler-icon;
+  }
+  
+  // Navigation container
+  .site-header-nav {
+    @extend .navbar-collapse;
+    @extend .justify-content-end;
+
+    // Ensure consistent styling when collapsed/expanded
+    &.collapsing,
+    &.show {
+      @extend .bg-dark; // Using Bootstrap's dark background utility
+      @extend .mt-2; // Add spacing when expanded on mobile
+      @extend .p-2; // Add padding when expanded on mobile
+      @extend .rounded; // Rounded corners when expanded
+      border-top: 1px solid $header-mobile-border; // Using centralized color variable
+    }
+  }
+}

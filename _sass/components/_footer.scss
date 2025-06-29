@@ -1,0 +1,77 @@
+// Footer styling - Using Bootstrap native classes where possible
+.site-footer {
+  @extend .py-4; // Bootstrap padding utility
+  @extend .mt-5; // Bootstrap margin utility
+  @extend .bg-dark; // Bootstrap background utility
+  color: $footer-text-color; // Using centralized color variable
+
+  // Footer container
+  .site-footer__container {
+    @extend .container-xl; // Bootstrap container utility
+  }
+  // Copyright section
+  .site-footer__copyright {
+    @extend .text-center; // Bootstrap text alignment utility
+    @extend .mb-4; // Bootstrap margin utility
+
+    .site-footer__copyright-text {
+      @extend .mb-0; // Bootstrap margin utility
+      @extend .small; // Bootstrap text size utility
+      color: $footer-text-muted; // Using centralized color variable
+    }
+  }
+
+  // Social media section
+  .site-footer__social {
+    @extend .d-flex; // Bootstrap display utility
+    @extend .justify-content-center; // Bootstrap flex utility
+    @extend .mb-4; // Bootstrap margin utility
+
+    .site-footer__social-item {
+      @extend .mx-2; // Bootstrap margin utility
+    }
+  }
+
+  // Footer links section
+  .site-footer__links {
+    @extend .text-center; // Bootstrap text alignment utility
+  }
+  // Navigation list
+  .site-footer__nav-list {
+    @extend .d-flex; // Bootstrap display utility
+    @extend .flex-wrap; // Bootstrap flex utility
+    @extend .justify-content-center; // Bootstrap flex utility
+    @extend .list-unstyled; // Bootstrap list utility
+    @extend .ps-0; // Bootstrap padding utility
+    @extend .mb-0; // Bootstrap margin utility
+
+    // Responsive behavior
+    @include media-breakpoint-down(sm) {
+      flex-direction: column !important; // Same effect as Bootstrap's .flex-column
+    }
+  }
+  // Navigation items
+  .site-footer__nav-item {
+    @extend .px-3; // Bootstrap padding utility
+    @extend .mb-2; // Bootstrap margin utility
+
+    // Responsive behavior
+    @include media-breakpoint-down(sm) {
+      padding-left: 0 !important; // Same effect as Bootstrap's .px-0
+      padding-right: 0 !important; // Same effect as Bootstrap's .px-0
+      padding-top: 0.25rem !important; // Same effect as Bootstrap's .py-1
+      padding-bottom: 0.25rem !important; // Same effect as Bootstrap's .py-1
+    }
+  }
+  // Navigation links
+  .site-footer__nav-link {
+    @extend .text-decoration-none; // Bootstrap text decoration utility
+    @extend .transition; // Bootstrap transition utility if available
+    color: $footer-text-muted; // Using centralized color variable
+
+    &:hover {
+      color: $footer-text-color; // Using centralized color variable
+      @extend .text-decoration-underline; // Bootstrap text decoration utility
+    }
+  }
+}

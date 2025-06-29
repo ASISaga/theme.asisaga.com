@@ -31,3 +31,14 @@
 @import "base/responsive";
 @import "base/theme";
 @import "base/base-section";
+
+// Reusable component mixins (must be imported before other components)
+@import "components/section-component";
+@import "components/layout-component";
+@import "components/header-component";
+
+// Individual components
+@import "components/footer";
+@import "components/header";
+@import "components/navbar";
+@import "components/section-header";
