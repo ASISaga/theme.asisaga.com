@@ -8,6 +8,9 @@ import './common/opengraph.js';
 import './common/twitter-card.js';
 import './common/structured-data.js';
 
+// Navbar JS for keyboard navigation
+import './common/navbar-keyboard.js';
+
 // Import custom animations and interactions
 import "./common/animations.js"
 
