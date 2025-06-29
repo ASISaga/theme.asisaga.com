@@ -1,0 +1,123 @@
+<!-- 
+Navigation bar component that dynamically generates menu items based on site.data.nav
+This component handles three types of navigation items:
+1. Dropdown menus with subcategories
+2. Active page highlighting
+3. Regular navigation links
+-->
+<nav role="navigation" aria-label="Main navigation">
+  <ul class="site-navbar">
+      {% for nav in site.data.nav %}
+        {% if nav.subcategories != null %}
+              <!-- Dropdown menu item with subcategories -->
+              <li class="navbar-item dropdown">
+                  <!-- Parent dropdown link that toggles dropdown visibility -->
+                  <a class="navbar-link dropdown-toggle" href="#" 
+                     id="navbarDropdown{{ forloop.index }}" 
+                     role="button" 
+                     data-bs-toggle="dropdown" 
+                     aria-expanded="false"
+                     aria-haspopup="true">
+                      {{ nav.title }}
+                  </a>
+                  <!-- Dropdown menu container -->
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown{{ forloop.index }}">
+                      {% for subcategory in nav.subcategories %}
+                          <!-- Individual dropdown menu item -->
+                          <li>
+                              <a class="dropdown-item" href="{{ site.url }}{{ subcategory.url }}"
+                                 {% if page.url == subcategory.url %}aria-current="page"{% endif %}>
+                                  {{ subcategory.title }}
+                              </a>
+                          </li>
+                          {% if forloop.last == false %}
+                              <!-- Divider between dropdown items (except after the last item) -->
+                              <li><hr class="dropdown-divider"></li>
+                          {% endif %}
+                      {% endfor %}
+                  </ul>
+              </li>
+          {% elsif nav.title == page.title %}
+              <!-- Active menu item (current page) -->
+              <li class="navbar-item-active">
+                  <a class="navbar-link" href="{{ nav.url }}" aria-current="page">
+                      {{ nav.title }}
+                  </a>
+              </li>
+          {% else %}
+              <!-- Standard menu item -->
+              <li class="navbar-item">
+                  <a class="navbar-link" href="{{ site.url }}{{ nav.url }}">
+                      {{ nav.title }}
+                  </a>
+              </li>
+          {% endif %}
+      {% endfor %}
+  </ul>
+  
+  <!-- Mobile navigation toggle button -->
+  <button class="navbar-toggler" 
+          type="button" 
+          aria-controls="mobileNavigation" 
+          aria-expanded="false" 
+          aria-label="Toggle navigation">
+    <i class="fas fa-bars" aria-hidden="true"></i>
+    <span class="sr-only">Menu</span>
+  </button>
+</nav>
+
+<!-- JavaScript for keyboard navigation in dropdown menus -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Handle keyboard navigation in dropdown menus
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    
+    dropdownToggles.forEach(toggle => {
+      toggle.addEventListener('keydown', function(e) {
+        // Open dropdown on arrow down or enter
+        if ((e.key === 'ArrowDown' || e.key === 'Enter') && !toggle.getAttribute('aria-expanded') === 'true') {
+          e.preventDefault();
+          toggle.click();
+          
+          // Focus first dropdown item
+          const dropdown = document.querySelector(`[aria-labelledby="${toggle.id}"]`);
+          if (dropdown) {
+            const firstItem = dropdown.querySelector('a');
+            if (firstItem) firstItem.focus();
+          }
+        }
+      });
+    });
+    
+    // Handle keyboard navigation within dropdown items
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+    
+    dropdownItems.forEach((item, index, items) => {
+      item.addEventListener('keydown', function(e) {
+        // Handle arrow navigation within dropdown
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          const nextItem = items[index + 1];
+          if (nextItem) nextItem.focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (index === 0) {
+            // If first item, go back to toggle
+            const toggleId = item.closest('.dropdown-menu').getAttribute('aria-labelledby');
+            document.getElementById(toggleId).focus();
+          } else {
+            const prevItem = items[index - 1];
+            if (prevItem) prevItem.focus();
+          }
+        } else if (e.key === 'Escape') {
+          e.preventDefault();
+          // Close dropdown and focus toggle
+          const toggleId = item.closest('.dropdown-menu').getAttribute('aria-labelledby');
+          const toggle = document.getElementById(toggleId);
+          toggle.click();
+          toggle.focus();
+        }
+      });
+    });
+  });
+</script>
