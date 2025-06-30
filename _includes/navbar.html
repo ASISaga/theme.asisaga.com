@@ -7,7 +7,7 @@ This component handles three types of navigation items:
 -->
 <nav role="navigation" aria-label="Main navigation">
   <ul class="site-navbar">
-    <pre>{{ site.data | jsonify }}</pre>
+    <pre>{{ site.data.nav | jsonify }}</pre>
       {% for nav in site.data.nav %}
         {% if nav.subcategories != null %}
               <!-- Dropdown menu item with subcategories -->
