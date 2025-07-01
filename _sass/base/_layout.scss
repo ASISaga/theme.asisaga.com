@@ -1,9 +1,10 @@
 // Base layout styles for overall site structure
 
+
 .site-main {
   @extend .w-100;
   @extend .min-vh-50; // Using our custom utility for 50% viewport height
-  @extend .py-3;      // Bootstrap padding for 1rem top/bottom
+  @extend .py-0;      // Set padding to 0 for top/bottom
 
   .site-content {
     // Assuming a container that spans full width up to 1320px, similar to .container-xl
