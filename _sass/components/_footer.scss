@@ -1,7 +1,8 @@
 // Footer styling - Using Bootstrap native classes where possible
+
 .site-footer {
   @extend .py-4; // Bootstrap padding utility
-  @extend .mt-5; // Bootstrap margin utility
+  @extend .mt-0; // Set margin-top to 0
   @extend .bg-dark; // Bootstrap background utility
   color: $footer-text-color; // Using centralized color variable
 
