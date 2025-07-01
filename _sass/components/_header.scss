@@ -5,8 +5,8 @@
   @extend .bg-dark; // Changed to dark to match footer
   @extend .navbar-dark; // Use Bootstrap's dark navbar styling
   @extend .rounded-bottom;
-  @extend .py-3;  
-  @extend .mb-4;
+  @extend .py-3;
+  margin: 0 !important;
 
   // Brand container
   .site-header__brand {
