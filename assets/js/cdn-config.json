@@ -1,0 +1,7 @@
+{
+  "bootstrap": {
+    "url": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js",
+    "integrity": "sha384-ENjdO4Dr2bkBIFxQpeoA6DQD1Cj6k1rj6a2Qp1pXhZl5F5D5L2mYk5t5p5j5l5t5",
+    "crossorigin": "anonymous"
+  }
+}
