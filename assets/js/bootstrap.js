@@ -3,6 +3,7 @@ import * as bootstrap from './vendor/bootstrap.esm.min.js';
 
 // Ensure Bootstrap JS initialization runs after DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('[bootstrap.js] DOMContentLoaded: Initializing Bootstrap JS components...');
   // Enable all tooltips
   document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
     new bootstrap.Tooltip(el);
