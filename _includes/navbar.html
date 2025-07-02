@@ -5,8 +5,8 @@ This component handles three types of navigation items:
 2. Active page highlighting
 3. Regular navigation links
 -->
-<nav role="navigation" aria-label="Main navigation">
-  <ul class="site-navbar">
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <ul class="site-navbar navbar-nav">
       {% for nav in site.data.nav %}
         {% if nav.subcategories != null %}
               <!-- Dropdown menu item with subcategories -->
