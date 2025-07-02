@@ -1,78 +1,80 @@
 // Footer styling - Using Bootstrap native classes where possible
 
 .site-footer {
-  @extend .py-0; // Bootstrap padding utility
-  @extend .mt-0; // Set margin-top to 0
-  @extend .bg-dark; // Bootstrap background utility
-  color: $footer-text-color; // Using centralized color variable
+  @extend .py-0;
+  @extend .mt-0;
+  @extend .bg-dark;
+  color: $footer-text-color;
+  min-height: 50px;
+  height: 50%;
+  margin: 0 !important;
+  padding: 0 !important;
 
-  // Footer container
   .site-footer__container {
-    @extend .container-xl; // Bootstrap container utility
+    @extend .container-xl;
+    margin: 0 !important;
+    padding: 0 !important;
   }
-  // Copyright section
   .site-footer__copyright {
-    @extend .text-center; // Bootstrap text alignment utility
-    @extend .mb-4; // Bootstrap margin utility
-
+    @extend .text-center;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
     .site-footer__copyright-text {
-      @extend .mb-0; // Bootstrap margin utility
-      @extend .small; // Bootstrap text size utility
-      color: $footer-text-muted; // Using centralized color variable
+      @extend .mb-0;
+      @extend .small;
+      color: $footer-text-muted;
+      margin: 0 !important;
+      padding: 0 !important;
     }
   }
-
-  // Social media section
   .site-footer__social {
-    @extend .d-flex; // Bootstrap display utility
-    @extend .justify-content-center; // Bootstrap flex utility
-    @extend .mb-4; // Bootstrap margin utility
-
+    @extend .d-flex;
+    @extend .justify-content-center;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
     .site-footer__social-item {
-      @extend .mx-2; // Bootstrap margin utility
+      margin: 0 0.25rem !important;
+      padding: 0 !important;
     }
   }
-
-  // Footer links section
   .site-footer__links {
-    @extend .text-center; // Bootstrap text alignment utility
+    @extend .text-center;
+    margin: 0 !important;
+    padding: 0 !important;
   }
-  // Navigation list
   .site-footer__nav-list {
-    @extend .d-flex; // Bootstrap display utility
-    @extend .flex-wrap; // Bootstrap flex utility
-    @extend .justify-content-center; // Bootstrap flex utility
-    @extend .list-unstyled; // Bootstrap list utility
-    @extend .ps-0; // Bootstrap padding utility
-    @extend .mb-0; // Bootstrap margin utility
-
-    // Responsive behavior
+    @extend .d-flex;
+    @extend .flex-wrap;
+    @extend .justify-content-center;
+    @extend .list-unstyled;
+    @extend .ps-0;
+    @extend .mb-0;
+    margin: 0 !important;
+    padding: 0 !important;
     @include media-breakpoint-down(sm) {
-      flex-direction: column !important; // Same effect as Bootstrap's .flex-column
+      flex-direction: column !important;
     }
   }
-  // Navigation items
   .site-footer__nav-item {
-    @extend .px-3; // Bootstrap padding utility
-    @extend .mb-2; // Bootstrap margin utility
-
-    // Responsive behavior
+    @extend .px-1;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
     @include media-breakpoint-down(sm) {
-      padding-left: 0 !important; // Same effect as Bootstrap's .px-0
-      padding-right: 0 !important; // Same effect as Bootstrap's .px-0
-      padding-top: 0.25rem !important; // Same effect as Bootstrap's .py-1
-      padding-bottom: 0.25rem !important; // Same effect as Bootstrap's .py-1
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
     }
   }
-  // Navigation links
   .site-footer__nav-link {
-    @extend .text-decoration-none; // Bootstrap text decoration utility
-    @extend .transition; // Bootstrap transition utility if available
-    color: $footer-text-muted; // Using centralized color variable
-
+    @extend .text-decoration-none;
+    @extend .transition;
+    color: $footer-text-muted;
+    padding: 0 !important;
+    margin: 0 !important;
     &:hover {
-      color: $footer-text-color; // Using centralized color variable
-      @extend .text-decoration-underline; // Bootstrap text decoration utility
+      color: $footer-text-color;
+      @extend .text-decoration-underline;
     }
   }
 }
