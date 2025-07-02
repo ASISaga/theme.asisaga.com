@@ -15,5 +15,5 @@ import './common/navbar-keyboard.js';
 import "./common/animations.js"
 
 // Import Bootstrap JS for core functionality
-import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-import 'https://kit.fontawesome.com/a076d05399.js';
+import "Bootstrap.js"
+import "fontawesome.js"
