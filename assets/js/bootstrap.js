@@ -13,7 +13,9 @@ class BootstrapLoader {
           const bootstrapConfig = config.bootstrap;
           const bootstrapScript = document.createElement('script');
           bootstrapScript.src = bootstrapConfig.url;
-          bootstrapScript.integrity = bootstrapConfig.integrity;
+          if (bootstrapConfig.integrity) {
+            bootstrapScript.integrity = bootstrapConfig.integrity;
+          }
           bootstrapScript.crossOrigin = bootstrapConfig.crossorigin;
           document.head.appendChild(bootstrapScript);
           bootstrapScript.onload = () => this.initializeBootstrapComponents();
