@@ -1,5 +1,5 @@
 // import Bootstrap namespace from the vendored file
-import * as bootstrap from '{{ "/vendor/bootstrap.esm.min.js" | prepend: site.baseurl }}';
+import * as bootstrap from './vendor/bootstrap.esm.min.js';
 
 // example: enable all tooltips
 document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
