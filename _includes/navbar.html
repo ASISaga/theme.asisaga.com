@@ -21,18 +21,18 @@ This component handles three types of navigation items:
                       {{ nav.title }}
                   </a>
                   <!-- Dropdown menu container -->
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown{{ forloop.index }}">
+                  <ul class="dropdown-menu navbar-dropdown" aria-labelledby="navbarDropdown{{ forloop.index }}">
                       {% for subcategory in nav.subcategories %}
                           <!-- Individual dropdown menu item -->
                           <li>
-                              <a class="dropdown-item" href="{{ site.url }}{{ subcategory.url }}"
+                              <a class="dropdown-item navbar-dropdown-item" href="{{ site.url }}{{ subcategory.url }}"
                                  {% if page.url == subcategory.url %}aria-current="page"{% endif %}>
                                   {{ subcategory.title }}
                               </a>
                           </li>
                           {% if forloop.last == false %}
                               <!-- Divider between dropdown items (except after the last item) -->
-                              <li><hr class="dropdown-divider"></li>
+                              <li><hr class="dropdown-divider navbar-divider"></li>
                           {% endif %}
                       {% endfor %}
                   </ul>
