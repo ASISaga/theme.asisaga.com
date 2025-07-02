@@ -1,5 +1,6 @@
 class BootstrapLoader {
-  constructor(configUrl = './cdn-config.json') {
+  // Use relative path to shared cdn-config.json for all subdomains
+  constructor(configUrl = '/assets/json/cdn-config.json') {
     this.configUrl = configUrl;
     this.loadBootstrap();
   }
