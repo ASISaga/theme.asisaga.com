@@ -16,5 +16,5 @@
 // import "./common/animations.js";        // Handles site-wide custom animations and effects
 
 // Import Bootstrap JS for core functionality
-import "./bootstrap.js"
+import "./common/bootstrap.js";      // Loads Bootstrap JS components dynamically
 //import "./fontawesome.js"
