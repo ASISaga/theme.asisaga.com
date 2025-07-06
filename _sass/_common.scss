@@ -1,44 +1,44 @@
 
 // Third party libraries
-@use "base/fonts";
-@use "base/icons";
+@import "base/fonts";
+@import "base/icons";
 
 // Bootstrap dependencies - core functions, variables, and mixins
-@use "bootstrap/functions";
-@use "bootstrap/variables";
-@use "bootstrap/variables-dark";
-@use "bootstrap/mixins";
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/variables-dark";
+@import "bootstrap/mixins";
 
 // Custom Base Styles 
 // These are loaded before the main Bootstrap SASS file to allow 
 // Bootstrap's !default variables to be overridden if needed.
-@use "base/colors";
-@use "base/dimensions";
-@use "base/variables";
-@use "base/typography";
-@use "base/mixins";
-@use "base/animations";
-@use "base/accessibility";
+@import "base/colors";
+@import "base/dimensions";
+@import "base/variables";
+@import "base/typography";
+@import "base/mixins";
+@import "base/animations";
+@import "base/accessibility";
 
 // Bootstrap main SASS file (loads all of Bootstrap)
 // This will now use any overridden variables from base/variables.scss
-@use "bootstrap/bootstrap";
+@import "bootstrap/bootstrap";
 
 // Remaining base styles that don't impact Bootstrap variables
-@use "base/utilities";
-@use "base/layout";
-@use "base/common";
-@use "base/responsive";
-@use "base/theme";
-@use "base/base-section";
+@import "base/utilities";
+@import "base/layout";
+@import "base/common";
+@import "base/responsive";
+@import "base/theme";
+@import "base/base-section";
 
 // Reusable component mixins (must be loaded before other components)
-@use "components/section-component";
-@use "components/layout-component";
-@use "components/header-component";
+@import "components/section-component";
+@import "components/layout-component";
+@import "components/header-component";
 
 // Individual components
-@use "components/footer";
-@use "components/header";
-@use "components/navbar";
-@use "components/section-header";
+@import "components/footer";
+@import "components/header";
+@import "components/navbar";
+@import "components/section-header";
