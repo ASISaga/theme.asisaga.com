@@ -1,43 +1,44 @@
+
 // Third party libraries
-@import "base/fonts";
-@import "base/icons";
+@use "base/fonts";
+@use "base/icons";
 
 // Bootstrap dependencies - core functions, variables, and mixins
-@import "bootstrap/functions";
-@import "bootstrap/variables";
-@import "bootstrap/variables-dark";
-@import "bootstrap/mixins";
+@use "bootstrap/functions";
+@use "bootstrap/variables";
+@use "bootstrap/variables-dark";
+@use "bootstrap/mixins";
 
 // Custom Base Styles 
-// These are imported before the main Bootstrap SASS file to allow 
+// These are loaded before the main Bootstrap SASS file to allow 
 // Bootstrap's !default variables to be overridden if needed.
-@import "base/colors"; // Correct import for _colors.scss in _sass/base/
-@import "base/dimensions";
-@import "base/variables";
-@import "base/typography";
-@import "base/mixins";
-@import "base/animations";
-@import "base/accessibility";
+@use "base/colors";
+@use "base/dimensions";
+@use "base/variables";
+@use "base/typography";
+@use "base/mixins";
+@use "base/animations";
+@use "base/accessibility";
 
-// Bootstrap main SASS file (imports all of Bootstrap)
+// Bootstrap main SASS file (loads all of Bootstrap)
 // This will now use any overridden variables from base/variables.scss
-@import "bootstrap/bootstrap";
+@use "bootstrap/bootstrap";
 
 // Remaining base styles that don't impact Bootstrap variables
-@import "base/utilities";
-@import "base/layout";
-@import "base/common";
-@import "base/responsive";
-@import "base/theme";
-@import "base/base-section";
+@use "base/utilities";
+@use "base/layout";
+@use "base/common";
+@use "base/responsive";
+@use "base/theme";
+@use "base/base-section";
 
-// Reusable component mixins (must be imported before other components)
-@import "components/section-component";
-@import "components/layout-component";
-@import "components/header-component";
+// Reusable component mixins (must be loaded before other components)
+@use "components/section-component";
+@use "components/layout-component";
+@use "components/header-component";
 
 // Individual components
-@import "components/footer";
-@import "components/header";
-@import "components/navbar";
-@import "components/section-header";
+@use "components/footer";
+@use "components/header";
+@use "components/navbar";
+@use "components/section-header";
