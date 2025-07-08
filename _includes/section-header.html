@@ -1,0 +1,31 @@
+{% comment %}
+Section Header Component
+Parameters:
+- title: The main title text for the section
+- subtitle: Optional subtitle text below the title
+- description: Optional longer description text
+- alignment: Optional alignment (default: center, options: left)
+- style: Optional style variation (default, alt)
+{% endcomment %}
+
+{% assign header_class = "section-header" %}
+{% if include.alignment == "left" %}
+  {% assign header_class = header_class | append: " section-header-left" %}
+{% endif %}
+{% if include.style == "alt" %}
+  {% assign header_class = header_class | append: " section-header-alt" %}
+{% endif %}
+
+<div class="{{ header_class }}">
+  {% if include.title %}
+    <h2 class="section-title">{{ include.title }}</h2>
+  {% endif %}
+  
+  {% if include.subtitle %}
+    <h3 class="section-subtitle">{{ include.subtitle }}</h3>
+  {% endif %}
+  
+  {% if include.description %}
+    <p class="section-description">{{ include.description }}</p>
+  {% endif %}
+</div>
