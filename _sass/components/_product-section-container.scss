@@ -1,0 +1,32 @@
+// Product Section Container Component Styles
+// Corresponds to product-section-container.html include
+
+.product-section {
+  @extend .py-5; // Bootstrap padding
+  
+  // Add margin to sections that aren't the first one
+  &:not(:first-of-type) {
+    @extend .mt-4;
+  }
+
+  // Background variations
+  &.product-section-light {
+    @extend .bg-light;
+  }
+  
+  &.product-section-primary {
+    @extend .bg-gradient-primary;
+  }
+
+  &.product-section-accent {
+    @extend .bg-gradient-accent;
+  }
+  
+  // Section header is styled in _section-header.scss
+  
+  // Container for section content
+  .product-section-content {
+    @extend .container;
+    @extend .py-3;
+  }
+}

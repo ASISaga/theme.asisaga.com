@@ -1,0 +1,91 @@
+// Products grid component mixins
+// For displaying product cards in grid layouts
+
+// Base products grid component
+@mixin products-grid-component($prefix: 'products') {
+  .#{$prefix} {
+    &-section {
+      @extend .mb-5;
+      @extend .py-4;
+    }
+    
+    &-title {
+      @extend .text-center;
+      @extend .mb-4;
+      @extend .display-5;
+    }
+    
+    &-subtitle {
+      @extend .text-center;
+      @extend .text-secondary;
+      @extend .mb-4;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    &-grid {
+      @extend .row;
+      @extend .row-cols-1;
+      @extend .row-cols-md-2;
+      @extend .row-cols-lg-3;
+      @extend .g-4;
+    }
+    
+    &-item {
+      @extend .h-100;
+      
+      &-card {
+        @extend .card;
+        @extend .shadow-sm;
+        @extend .h-100;
+        @include transition;
+        
+        &:hover {
+          transform: translateY(-5px);
+          @extend .shadow;
+        }
+      }
+      
+      &-body {
+        @extend .card-body;
+        @extend .d-flex;
+        @extend .flex-column;
+      }
+      
+      &-title {
+        @extend .card-title;
+        @extend .fw-bold;
+        @extend .text-primary;
+      }
+      
+      &-description {
+        @extend .card-text;
+        @extend .flex-grow-1;
+      }
+      
+      &-link {
+        @extend .btn;
+        @extend .btn-outline-primary;
+        @extend .mt-3;
+        
+        &:hover {
+          @extend .btn-primary;
+        }
+      }
+    }
+  }
+}
+
+// Featured products grid with accent styling
+@mixin featured-products-grid-component($prefix: 'products', $accent-color: $primary) {
+  @include products-grid-component($prefix);
+  
+  .#{$prefix} {
+    &-item {
+      &-card {
+        border-top: 3px solid $accent-color;
+      }
+    }
+  }
+}

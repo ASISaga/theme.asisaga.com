@@ -1,0 +1,64 @@
+// Hero component mixins
+// For hero/banner sections at the top of pages
+
+// Base hero component
+@mixin hero-component($prefix: 'hero') {
+  .#{$prefix} {
+    &-section {
+      @extend .d-flex;
+      @extend .flex-column;
+      @extend .align-items-center;
+      @extend .justify-content-center;
+      @extend .shadow;
+      @extend .rounded;
+      @extend .text-center;
+      @extend .mb-5;
+      @extend .py-5;
+      @extend .px-3;
+    }
+    
+    &-content {
+      @extend .mx-auto;
+      @extend .container;
+      @extend .px-4;
+      max-width: 800px;
+    }
+    
+    &-title {
+      @extend .display-4;
+      @extend .fw-bold;
+      @extend .text-primary;
+      @extend .mb-3;
+    }
+    
+    &-description {
+      @extend .fs-5;
+      @extend .text-secondary;
+      @extend .mb-4;
+    }
+
+    &-button {
+      @extend .btn;
+      @extend .btn-primary;
+      @extend .rounded-pill;
+      @extend .px-4;
+      @extend .py-2;
+      
+      &:hover {
+        transform: translateY(-2px);
+        @extend .shadow-sm;
+      }
+    }
+  }
+}
+
+// Gradient hero component
+@mixin gradient-hero-component($prefix: 'hero', $start-color: rgba($primary, 0.1), $end-color: rgba($white, 1)) {
+  @include hero-component($prefix);
+  
+  .#{$prefix} {
+    &-section {
+      background: linear-gradient(135deg, $start-color 0%, $end-color 100%);
+    }
+  }
+}
