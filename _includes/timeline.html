@@ -1,0 +1,445 @@
+{% comment %}
+Enhanced Interactive Timeline Component
+Parameters:
+- title: The title for the timeline section
+- items: An array of timeline items, each with title, date, content, and image
+- autoplay: Enable automatic progression (optional, default: false)
+- interval: Autoplay interval in milliseconds (optional, default: 8000)
+- show_progress: Show progress indicator (optional, default: true)
+{% endcomment %}
+
+<section class="timeline-section enhanced-timeline" aria-labelledby="timeline-heading">
+  {% if include.title %}
+    <h2 class="timeline-title" id="timeline-heading">{{ include.title }}</h2>
+  {% endif %}
+  
+  <!-- Timeline Controls -->
+  <div class="timeline-controls" role="toolbar" aria-label="Timeline controls">
+    <button class="timeline-control-btn timeline-prev" aria-label="Previous chapter" disabled>
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="timeline-control-btn timeline-play-pause" aria-label="Play timeline">
+      <i class="fas fa-play" aria-hidden="true"></i>
+    </button>
+    <button class="timeline-control-btn timeline-next" aria-label="Next chapter">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <!-- Progress Indicator -->
+  {% if include.show_progress != false %}
+  <div class="timeline-progress-container" aria-hidden="true">
+    <div class="timeline-progress-bar">
+      <div class="timeline-progress-fill"></div>
+    </div>
+    <div class="timeline-progress-text">
+      <span class="current-chapter">1</span> / <span class="total-chapters">{{ items.size }}</span>
+    </div>
+  </div>
+  {% endif %}
+  
+  <div class="timeline-container" data-autoplay="{{ include.autoplay | default: false }}" data-interval="{{ include.interval | default: 8000 }}">
+    <!-- Timeline track with enhanced styling -->
+    <div class="timeline-track" aria-hidden="true">
+      <div class="timeline-progress-line"></div>
+    </div>
+    
+    <!-- Timeline markers with enhanced interactions -->
+    <div class="timeline-markers" role="tablist" aria-label="Timeline navigation">
+      {% for item in items %}
+        <div class="timeline-marker {% if forloop.first %}active{% endif %}" 
+             id="timeline-tab-{{ forloop.index }}"
+             data-content-id="timeline-content-{{ forloop.index }}"
+             data-chapter="{{ forloop.index }}"
+             role="tab"
+             aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+             aria-controls="timeline-content-{{ forloop.index }}"
+             tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+             data-title="{{ item.title }}"
+             data-aos="fade-up" 
+             data-aos-delay="{{ forloop.index | times: 100 }}" 
+             data-aos-duration="800">
+          <div class="timeline-marker-dot">
+            <div class="timeline-marker-pulse"></div>
+            <div class="timeline-marker-number">{{ forloop.index }}</div>
+          </div>
+          <div class="timeline-marker-label">
+            <span class="timeline-marker-date">{{ item.date }}</span>
+            <span class="timeline-marker-title">{{ item.title }}</span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    
+    <!-- Timeline content panels with enhanced layout -->
+    <div class="timeline-content-container">
+      {% for item in items %}
+        <div class="timeline-content {% if forloop.first %}active{% endif %}"
+             id="timeline-content-{{ forloop.index }}"
+             role="tabpanel"
+             aria-labelledby="timeline-tab-{{ forloop.index }}"
+             {% unless forloop.first %}aria-hidden="true"{% endunless %}>
+          
+          <!-- Enhanced content layout -->
+          <div class="timeline-content-inner">
+            <div class="timeline-content-visual">
+              {% if item.image %}
+                <div class="timeline-content-image">
+                  <img src="{{ item.image }}" alt="{{ item.title }}" loading="lazy">
+                  <div class="timeline-content-overlay"></div>
+                </div>
+              {% endif %}
+              
+              <!-- Animated background elements -->
+              <div class="timeline-content-bg-elements">
+                <div class="bg-particle"></div>
+                <div class="bg-particle"></div>
+                <div class="bg-particle"></div>
+              </div>
+            </div>
+            
+            <div class="timeline-content-text">
+              <div class="timeline-content-header">
+                <h3 class="timeline-content-title">{{ item.title }}</h3>
+                <span class="timeline-content-date">{{ item.date }}</span>
+              </div>
+              
+              <div class="timeline-content-body">
+                <p class="timeline-content-description">{{ item.content }}</p>
+                
+                <!-- Expandable content -->
+                {% if item.expanded_content %}
+                <div class="timeline-content-expanded" aria-hidden="true">
+                  {{ item.expanded_content }}
+                </div>
+                <button class="timeline-expand-btn" aria-expanded="false">
+                  <span class="expand-text">Read More</span>
+                  <span class="collapse-text">Read Less</span>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                {% endif %}
+              </div>
+              
+              <!-- Action buttons -->
+              <div class="timeline-content-actions">
+                {% if item.learn_more_url %}
+                <a href="{{ item.learn_more_url }}" class="timeline-action-btn timeline-learn-more">
+                  Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+                {% endif %}
+                
+                {% if item.interactive_demo %}
+                <button class="timeline-action-btn timeline-demo-btn" data-demo="{{ item.interactive_demo }}">
+                  Interactive Demo <i class="fas fa-play" aria-hidden="true"></i>
+                </button>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  
+  <!-- Keyboard navigation help -->
+  <div class="timeline-help" aria-hidden="true">
+    <small>Use arrow keys to navigate, Space to play/pause, Enter to select</small>
+  </div>
+</section>
+
+<!-- Enhanced Timeline JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const timelineContainer = document.querySelector('.timeline-container');
+  if (!timelineContainer) return;
+  
+  const timelineMarkers = document.querySelectorAll('.timeline-marker');
+  const timelineContents = document.querySelectorAll('.timeline-content');
+  const progressFill = document.querySelector('.timeline-progress-fill');
+  const currentChapterSpan = document.querySelector('.current-chapter');
+  const totalChaptersSpan = document.querySelector('.total-chapters');
+  
+  // Control buttons
+  const prevBtn = document.querySelector('.timeline-prev');
+  const nextBtn = document.querySelector('.timeline-next');
+  const playPauseBtn = document.querySelector('.timeline-play-pause');
+  
+  // Autoplay settings
+  const autoplay = timelineContainer.dataset.autoplay === 'true';
+  const interval = parseInt(timelineContainer.dataset.interval) || 8000;
+  let isPlaying = autoplay;
+  let autoplayTimer = null;
+  let currentIndex = 0;
+  
+  // Initialize timeline
+  initializeTimeline();
+  
+  function initializeTimeline() {
+    // Set up event listeners
+    timelineMarkers.forEach((marker, index) => {
+      marker.addEventListener('click', () => activateTimelineItem(index));
+      marker.addEventListener('keydown', handleKeyboardNavigation);
+    });
+    
+    // Control button listeners
+    prevBtn?.addEventListener('click', () => navigateTimeline(-1));
+    nextBtn?.addEventListener('click', () => navigateTimeline(1));
+    playPauseBtn?.addEventListener('click', toggleAutoplay);
+    
+    // Expand/collapse listeners
+    document.querySelectorAll('.timeline-expand-btn').forEach(btn => {
+      btn.addEventListener('click', toggleExpandedContent);
+    });
+    
+    // Demo button listeners
+    document.querySelectorAll('.timeline-demo-btn').forEach(btn => {
+      btn.addEventListener('click', launchDemo);
+    });
+    
+    // Update progress
+    updateProgress();
+    updateControls();
+    
+    // Start autoplay if enabled
+    if (isPlaying) {
+      startAutoplay();
+    }
+    
+    // Initialize animation observers
+    initializeAnimationObservers();
+  }
+  
+  function activateTimelineItem(index) {
+    if (index < 0 || index >= timelineMarkers.length) return;
+    
+    currentIndex = index;
+    
+    // Update marker states with animation
+    timelineMarkers.forEach((marker, i) => {
+      const isActive = i === index;
+      marker.classList.toggle('active', isActive);
+      marker.setAttribute('aria-selected', isActive);
+      marker.setAttribute('tabindex', isActive ? '0' : '-1');
+      
+      // Add animation classes
+      if (isActive) {
+        marker.classList.add('activating');
+        setTimeout(() => marker.classList.remove('activating'), 600);
+      }
+    });
+    
+    // Update content panels with smooth transitions
+    timelineContents.forEach((content, i) => {
+      const isActive = i === index;
+      
+      if (isActive) {
+        content.classList.add('activating');
+        setTimeout(() => {
+          content.classList.add('active');
+          content.removeAttribute('aria-hidden');
+          content.classList.remove('activating');
+        }, 150);
+      } else {
+        content.classList.remove('active');
+        content.setAttribute('aria-hidden', 'true');
+      }
+    });
+    
+    // Update progress and controls
+    updateProgress();
+    updateControls();
+    
+    // Announce to screen readers
+    announceChange();
+    
+    // Restart autoplay if playing
+    if (isPlaying) {
+      resetAutoplay();
+    }
+  }
+  
+  function navigateTimeline(direction) {
+    const newIndex = currentIndex + direction;
+    if (newIndex >= 0 && newIndex < timelineMarkers.length) {
+      activateTimelineItem(newIndex);
+    }
+  }
+  
+  function handleKeyboardNavigation(event) {
+    const marker = event.target.closest('.timeline-marker');
+    const currentIndex = Array.from(timelineMarkers).indexOf(marker);
+    
+    switch (event.key) {
+      case 'ArrowLeft':
+      case 'ArrowUp':
+        event.preventDefault();
+        navigateTimeline(-1);
+        break;
+      case 'ArrowRight':
+      case 'ArrowDown':
+        event.preventDefault();
+        navigateTimeline(1);
+        break;
+      case ' ':
+        event.preventDefault();
+        toggleAutoplay();
+        break;
+      case 'Enter':
+        event.preventDefault();
+        activateTimelineItem(currentIndex);
+        break;
+      case 'Home':
+        event.preventDefault();
+        activateTimelineItem(0);
+        break;
+      case 'End':
+        event.preventDefault();
+        activateTimelineItem(timelineMarkers.length - 1);
+        break;
+    }
+  }
+  
+  function toggleAutoplay() {
+    isPlaying = !isPlaying;
+    
+    if (isPlaying) {
+      startAutoplay();
+      playPauseBtn.innerHTML = '<i class="fas fa-pause" aria-hidden="true"></i>';
+      playPauseBtn.setAttribute('aria-label', 'Pause timeline');
+    } else {
+      stopAutoplay();
+      playPauseBtn.innerHTML = '<i class="fas fa-play" aria-hidden="true"></i>';
+      playPauseBtn.setAttribute('aria-label', 'Play timeline');
+    }
+  }
+  
+  function startAutoplay() {
+    if (autoplayTimer) clearInterval(autoplayTimer);
+    
+    autoplayTimer = setInterval(() => {
+      const nextIndex = (currentIndex + 1) % timelineMarkers.length;
+      activateTimelineItem(nextIndex);
+    }, interval);
+  }
+  
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+  
+  function resetAutoplay() {
+    if (isPlaying) {
+      stopAutoplay();
+      startAutoplay();
+    }
+  }
+  
+  function updateProgress() {
+    if (progressFill && currentChapterSpan) {
+      const progress = ((currentIndex + 1) / timelineMarkers.length) * 100;
+      progressFill.style.width = progress + '%';
+      currentChapterSpan.textContent = currentIndex + 1;
+    }
+  }
+  
+  function updateControls() {
+    if (prevBtn) {
+      prevBtn.disabled = currentIndex === 0;
+    }
+    if (nextBtn) {
+      nextBtn.disabled = currentIndex === timelineMarkers.length - 1;
+    }
+  }
+  
+  function toggleExpandedContent(event) {
+    const btn = event.target.closest('.timeline-expand-btn');
+    const expandedContent = btn.previousElementSibling;
+    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+    
+    btn.setAttribute('aria-expanded', !isExpanded);
+    expandedContent.setAttribute('aria-hidden', isExpanded);
+    expandedContent.classList.toggle('expanded');
+    btn.classList.toggle('expanded');
+  }
+  
+  function launchDemo(event) {
+    const btn = event.target.closest('.timeline-demo-btn');
+    const demoType = btn.dataset.demo;
+    
+    // Implement demo launching logic based on demo type
+    console.log('Launching demo:', demoType);
+    
+    // Create modal or redirect to demo page
+    createDemoModal(demoType);
+  }
+  
+  function createDemoModal(demoType) {
+    // Create and show demo modal
+    const modal = document.createElement('div');
+    modal.className = 'timeline-demo-modal';
+    modal.innerHTML = `
+      <div class="timeline-demo-content">
+        <div class="timeline-demo-header">
+          <h3>Interactive Demo: ${demoType}</h3>
+          <button class="timeline-demo-close" aria-label="Close demo">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="timeline-demo-body">
+          <p>Demo content for ${demoType} would load here...</p>
+        </div>
+      </div>
+    `;
+    
+    document.body.appendChild(modal);
+    modal.classList.add('active');
+    
+    // Close demo modal
+    modal.querySelector('.timeline-demo-close').addEventListener('click', () => {
+      modal.classList.remove('active');
+      setTimeout(() => modal.remove(), 300);
+    });
+  }
+  
+  function announceChange() {
+    const activeContent = document.querySelector('.timeline-content.active');
+    const title = activeContent?.querySelector('.timeline-content-title')?.textContent;
+    
+    if (title) {
+      const liveRegion = document.getElementById('timeline-live-region') || createLiveRegion();
+      liveRegion.textContent = `Now viewing: ${title}`;
+    }
+  }
+  
+  function createLiveRegion() {
+    const liveRegion = document.createElement('div');
+    liveRegion.id = 'timeline-live-region';
+    liveRegion.className = 'sr-only';
+    liveRegion.setAttribute('aria-live', 'polite');
+    document.body.appendChild(liveRegion);
+    return liveRegion;
+  }
+  
+  function initializeAnimationObservers() {
+    // Intersection observer for triggering animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    // Observe timeline elements
+    timelineMarkers.forEach(marker => observer.observe(marker));
+    timelineContents.forEach(content => observer.observe(content));
+  }
+  
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', () => {
+    stopAutoplay();
+  });
+});
+</script>

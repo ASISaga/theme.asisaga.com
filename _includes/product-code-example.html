@@ -1,0 +1,26 @@
+{% comment %}
+Product Code Example Component
+Parameters:
+- code_example: Object with language and code properties
+- title: Optional title for the code example
+- section_title: Optional section title
+- section_description: Optional section description
+{% endcomment %}
+
+<section class="product-code-example-section product-section-light">
+  {% if include.section_title or include.section_description %}
+    {% include section-header.html 
+      title=include.section_title
+      description=include.section_description
+    %}
+  {% endif %}
+  
+  <div class="product-code-container">
+    <div class="product-code-example">
+      {% if include.title %}
+        <h3 class="fw-bold mb-3">{{ include.title }}</h3>
+      {% endif %}
+      <pre class="product-code-block"><code class="language-{{ include.code_example.language }}">{{ include.code_example.code }}</code></pre>
+    </div>
+  </div>
+</section>

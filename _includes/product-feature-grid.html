@@ -1,0 +1,47 @@
+{% comment %}
+Product Feature Grid Component
+Parameters:
+- items: Array of feature items with title, description, and icon/list_items/features
+- card_style: Optional style variation (default, primary, accent)
+- feature_list_name: The name of the list property in each item (list_items, features, benefits)
+{% endcomment %}
+
+{% assign card_class = "product-card" %}
+{% if include.card_style %}
+  {% assign card_class = card_class | append: " product-card-" | append: include.card_style %}
+{% endif %}
+
+{% assign items = include.items | default: [] %}
+
+<div class="product-feature-grid">
+  {% for item in items %}
+  <div class="{{ card_class }}">
+    {% if item.icon %}
+    <div class="product-card-icon">
+      <i class="{{ item.icon }}"></i>
+    </div>
+    {% endif %}
+    
+    <h3 class="product-card-title">{{ item.title }}</h3>
+    <p class="product-card-description">{{ item.description }}</p>
+    
+    {% if item.list_items or item.features or item.benefits %}
+      <ul class="product-card-list">
+        {% if item.list_items %}
+          {% for list_item in item.list_items %}
+            <li class="product-card-list-item">{{ list_item }}</li>
+          {% endfor %}
+        {% elsif item.features %}
+          {% for feature in item.features %}
+            <li class="product-card-list-item">{{ feature }}</li>
+          {% endfor %}
+        {% elsif item.benefits %}
+          {% for benefit in item.benefits %}
+            <li class="product-card-list-item">{{ benefit }}</li>
+          {% endfor %}
+        {% endif %}
+      </ul>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>

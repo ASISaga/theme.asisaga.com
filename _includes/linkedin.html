@@ -1,0 +1,28 @@
+<!-- LinkedIn Sign In Button -->
+
+<button id="linkedin-signin" type="button" class="linkedin-signin-btn">
+    <img src="{{ '/assets/images/LinkedIn-SignIn-Default.png' | relative_url }}" alt="Sign in with LinkedIn" class="default-img img-fluid">
+    <img src="{{ '/assets/images/LinkedIn-SignIn-Hover.png' | relative_url }}" alt="Sign in with LinkedIn" class="hover-img img-fluid">
+    <img src="{{ '/assets/images/LinkedIn-SignIn-Active.png' | relative_url }}" alt="Sign in with LinkedIn" class="active-img img-fluid">
+</button>
+
+<!-- 
+LinkedIn social media integration component
+This component displays a LinkedIn icon with a link to the site's LinkedIn profile
+Uses the site.linkedin_username value from _config.yml
+-->
+<a href="https://www.linkedin.com/in/{{ site.linkedin_username | cgi_escape | escape }}" 
+   class="linkedin-link" 
+   title="LinkedIn Profile" 
+   target="_blank" 
+   rel="noopener noreferrer">
+  <!-- LinkedIn SVG icon -->
+  <svg class="linkedin-icon" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"></path>
+  </svg>
+  <span class="linkedin-text">LinkedIn</span>
+</a>
+
+<link rel="stylesheet" href="{{ '/assets/css/linkedin-style.css' | relative_url }}">
+
+<script src="{{ '/assets/js/linkedin-auth.js' | relative_url }}"></script>

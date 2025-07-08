@@ -1,0 +1,40 @@
+<!-- 
+Product card component used to display individual products in a grid layout
+This component creates a responsive card with image, title, description, and action buttons
+Parameters:
+- product: The product object with title, image, description, and url properties
+-->
+<div class="product-card">
+  <!-- Product image section with linked image -->
+  <div class="product-card__image-container">
+    {% if product.image %}
+      <img src="{{ product.image | relative_url }}" alt="{{ product.title }}" class="product-card__image">
+    {% else %}
+      <!-- Default placeholder when no image is provided -->
+      <div class="product-card__image-placeholder ratio ratio-4x3">
+        <span class="product-card__placeholder-text">{{ product.title | slice: 0, 1 }}</span>
+      </div>
+    {% endif %}
+  </div>
+  
+  <!-- Product content section with title and description -->
+  <div class="product-card__content">
+    <h3 class="product-card__title">{{ product.title }}</h3>
+    <p class="product-card__description">{{ product.description }}</p>
+  </div>
+  
+  <!-- Action buttons section -->
+  <div class="product-card__actions">
+    <!-- Primary action button linking to the product detail page -->
+    <a href="{{ product.url | relative_url }}" class="product-card__btn">
+      Learn More
+    </a>
+    
+    <!-- Optional secondary action buttons can be added based on product properties -->
+    {% if product.demo_url %}
+      <a href="{{ product.demo_url }}" class="product-card__btn product-card__btn--outline" target="_blank">
+        View Demo
+      </a>
+    {% endif %}
+  </div>
+</div>

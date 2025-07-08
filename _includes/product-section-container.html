@@ -1,0 +1,24 @@
+{% comment %}
+Product Section Container Component
+Parameters:
+- title: The section title
+- description: Optional description text for the section
+- section_style: Optional style (default or light)
+- content: The section content to be placed inside the container (passed via capture)
+{% endcomment %}
+
+{% assign section_class = "product-section" %}
+{% if include.section_style == "light" %}
+  {% assign section_class = section_class | append: " product-section-light" %}
+{% endif %}
+
+<section class="{{ section_class }}">
+  {% include section-header.html 
+    title=include.title 
+    description=include.description
+  %}
+  
+  <div class="product-section-content">
+    {{ include.content }}
+  </div>
+</section>

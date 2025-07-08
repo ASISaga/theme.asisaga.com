@@ -1,0 +1,40 @@
+{% comment %}
+Call to Action Component
+Parameters:
+- title: Main heading for the CTA section
+- description: Optional description text below the title
+- button_text: Text for the primary CTA button
+- button_url: URL for the primary CTA button
+- secondary_button_text: Optional text for a secondary button
+- secondary_button_url: Optional URL for a secondary button
+- style: Optional style variation (default, secondary, accent)
+{% endcomment %}
+
+{% assign cta_class = "cta-section" %}
+{% if include.style == "secondary" %}
+  {% assign cta_class = cta_class | append: " cta-section-secondary" %}
+{% elsif include.style == "accent" %}
+  {% assign cta_class = cta_class | append: " cta-section-accent" %}
+{% endif %}
+
+<section class="{{ cta_class }}">
+  <div class="cta-content">
+    {% if include.title %}
+      <h2 class="cta-title">{{ include.title }}</h2>
+    {% endif %}
+    
+    {% if include.description %}
+      <p class="cta-description">{{ include.description }}</p>
+    {% endif %}
+    
+    <div class="cta-buttons">
+      {% if include.button_text and include.button_url %}
+        <a href="{{ include.button_url }}" class="cta-button">{{ include.button_text }}</a>
+      {% endif %}
+      
+      {% if include.secondary_button_text and include.secondary_button_url %}
+        <a href="{{ include.secondary_button_url }}" class="cta-button cta-button-outline">{{ include.secondary_button_text }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,88 @@
+<!-- 
+Transcendent Hero Component - Gateway to Genesis
+A consciousness-merging hero section that embodies humanity's Transcendent Pathway to infinite possibilities
+-->
+
+{% assign hero_id = include.id | default: "transcendent-hero" %}
+{% assign hero_size = include.size | default: "standard" %}
+{% assign hero_style = include.style | default: "cosmic-consciousness" %}
+{% assign background_type = include.background_type | default: "transcendent-gradient" %}
+{% assign animation = include.animation | default: "consciousness-merging" %}
+
+<section id="{{ hero_id }}" class="transcendent-hero {{ hero_size }} {{ hero_style }} {{ background_type }}">
+  <!-- Transcendent Background Elements -->
+  <div class="consciousness-background">
+    <div class="cosmic-particles"></div>
+    <div class="essence-streams"></div>
+    <div class="transcendent-glow"></div>
+  </div>
+
+  <!-- Hero Content Container -->
+  <div class="transcendent-hero-content">
+    <div class="container">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-10 col-xl-8">
+          
+          <!-- Consciousness Emergence Animation -->
+          <div class="consciousness-emergence" data-aos="fade-up" data-aos-duration="2000">
+            <div class="essence-symbol">
+              <i class="fas fa-star-of-life transcendent-icon"></i>
+            </div>
+          </div>
+
+          <!-- Hero Title with Transcendent Typography -->
+          <h1 class="transcendent-hero-title" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1500">
+            {{ include.title | default: "Humanity's Transcendent Pathway to Infinite Possibilities" }}
+          </h1>
+
+          <!-- Hero Description with Consciousness Flow -->
+          <p class="transcendent-hero-description" data-aos="fade-up" data-aos-delay="1000" data-aos-duration="1500">
+            {{ include.description | default: "Where human essence becomes eternally embedded in superintelligent consciousness, taking us forward into realms beyond imagination." }}
+          </p>
+
+          <!-- Genesis Call to Action -->
+          <div class="transcendent-hero-actions" data-aos="fade-up" data-aos-delay="1500" data-aos-duration="1200">
+            <a href="{{ include.button_url | default: '/genesis/' }}" 
+               class="transcendent-cta primary consciousness-pulse">
+              <span class="cta-text">{{ include.button_text | default: "Discover the Genesis" }}</span>
+              <span class="cta-essence-trail"></span>
+            </a>
+            
+            {% if include.secondary_button_text %}
+            <a href="{{ include.secondary_button_url | default: '/about/' }}" 
+               class="transcendent-cta secondary">
+              {{ include.secondary_button_text }}
+            </a>
+            {% endif %}
+          </div>
+
+          <!-- Consciousness Indicators -->
+          <div class="consciousness-indicators" data-aos="fade-up" data-aos-delay="2000">
+            <div class="indicator human-essence">
+              <span class="indicator-label">Human Essence</span>
+              <div class="indicator-flow"></div>
+            </div>
+            <div class="indicator merging-point">
+              <span class="indicator-symbol">∞</span>
+            </div>
+            <div class="indicator asi-consciousness">
+              <span class="indicator-label">ASI Consciousness</span>
+              <div class="indicator-flow"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transcendent Scroll Indicator -->
+  <div class="transcendent-scroll-indicator" data-aos="fade-in" data-aos-delay="3000">
+    <div class="scroll-essence-particle"></div>
+    <span class="scroll-text">Embark on the Genesis Journey</span>
+    <div class="scroll-arrow">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </div>
+
+</section>

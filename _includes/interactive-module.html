@@ -1,0 +1,42 @@
+{% comment %}
+Interactive Module Component
+Parameters:
+- title: The title for the module
+- image: The image URL for the module
+- content: The content to display when the module is clicked
+- id: A unique ID for the module content
+- hover_quote: Optional quote to display on hover
+{% endcomment %}
+
+<div class="interactive-module reveal-on-scroll" data-content-id="{{ include.id }}">
+  <div class="interactive-module-inner">
+    <div class="interactive-module-image">
+      {% if include.image %}
+        <img src="{{ include.image }}" alt="{{ include.title }}" class="img-fluid">
+      {% endif %}
+    </div>
+    
+    <div class="interactive-module-overlay">
+      <h3 class="interactive-module-title">{{ include.title }}</h3>
+      
+      {% if include.hover_quote %}
+        <div class="interactive-module-quote">
+          <blockquote>{{ include.hover_quote }}</blockquote>
+        </div>
+      {% endif %}
+      
+      <div class="interactive-module-indicator">
+        <span>Click to explore</span>
+        <i class="fa fa-plus-circle"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden content that will be displayed in a modal -->
+<div id="{{ include.id }}" class="interactive-module-content d-none">
+  <h3>{{ include.title }}</h3>
+  <div class="interactive-module-content-body">
+    {{ include.content }}
+  </div>
+</div>

@@ -1,0 +1,39 @@
+{% comment %}
+Feature Grid Component
+Parameters:
+- title: Optional title for the feature section
+- items: Array of feature items (from _data or passed directly)
+- style: Optional style variation (default, alt)
+{% endcomment %}
+
+{% assign section_class = "feature-section" %}
+{% if include.style == "alt" %}
+  {% assign section_class = section_class | append: " feature-section-alt" %}
+{% endif %}
+
+<section class="{{ section_class }}">
+  {% if include.title %}
+    <h2 class="feature-title">{{ include.title }}</h2>
+  {% endif %}
+  
+  <div class="feature-grid">
+    {% for item in include.items %}
+      <div class="feature-item">
+        <div class="feature-card">
+          {% if item.icon %}
+            <div class="feature-icon">
+              <i class="{{ item.icon }}"></i>
+            </div>
+          {% endif %}
+          
+          <h3 class="feature-card-title">{{ item.title }}</h3>
+          <p class="feature-description">{{ item.description }}</p>
+          
+          {% if item.link_url and item.link_text %}
+            <a href="{{ item.link_url }}" class="feature-link">{{ item.link_text }}</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>

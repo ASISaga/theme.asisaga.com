@@ -1,0 +1,19 @@
+{% comment %}
+Product Benefits Component
+Parameters:
+- items: Array of benefit items with highlight and description properties
+- section_title: The title for this section
+{% endcomment %}
+
+<section class="product-benefits-section product-section-light">
+  {% include section-header.html title=include.section_title %}
+  <div class="product-list-container">
+    <ul class="product-list">
+      {% for item in include.items %}
+      <li class="product-list-item">
+        <span class="product-list-highlight">{{ item.highlight }}:</span> {{ item.description }}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

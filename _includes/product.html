@@ -1,0 +1,25 @@
+<!-- 
+Product Component
+This include provides a standardized structure for product pages
+Parameters:
+- product_class: CSS class for the product container
+- title: Product title (default: page.title)
+- button_text: Optional button text for hero
+- button_url: Optional button URL for hero
+- hero_style: Optional style for hero
+- content: The main content (passed via capture block)
+-->
+
+{% assign product_path = include.product_path | default: page.path %}
+{% assign product_data = site.data[product_path | split: '/' | slice: -2, 1 | first | replace: '-', '_'] %}
+
+<div class="product-container {{ include.product_class }}">  <!-- Hero section with product introduction -->  {% include hero.html 
+    title=include.title
+    description=include.description
+    button_text=include.button_text
+    button_url=include.button_url
+    style=include.hero_style
+  %}
+
+  {{ include.content }}
+</div>

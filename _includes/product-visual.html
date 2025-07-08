@@ -1,0 +1,29 @@
+{% comment %}
+Product Visual Component
+Parameters:
+- image_url: URL of the image to display
+- image_alt: Alt text for the image
+- section_title: Optional section title
+- section_description: Optional section description
+- additional_content: Optional HTML content to display below the image
+{% endcomment %}
+
+<section class="product-visual-section product-section-light">
+  {% if include.section_title or include.section_description %}
+    {% include section-header.html 
+      title=include.section_title 
+      description=include.section_description
+    %}
+  {% endif %}
+    <div class="product-visual-container">
+    {% if include.image_url %}
+      <img src="{{ include.image_url | relative_url }}" alt="{{ include.image_alt }}" class="product-image">
+    {% endif %}
+    
+    {% if include.additional_content %}
+      <div class="additional-content-container">
+        {{ include.additional_content }}
+      </div>
+    {% endif %}
+  </div>
+</section>
