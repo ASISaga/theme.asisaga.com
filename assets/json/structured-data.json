@@ -4,7 +4,7 @@
   "name": "ASI Saga",
   "url": "{{ site.url }}",
   "logo": "{{ site.url }}/assets/images/logo.png",
-  "description": "A digital chronicle dedicated to the genesis of Artificial Super Intelligence",
+  "description": "A digital chronicle dedicated to the genesis of Artificial Superintelligence",
   "sameAs": [
     "https://twitter.com/ASISaga",
     "https://linkedin.com/company/asi-saga",
