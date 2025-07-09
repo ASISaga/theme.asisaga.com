@@ -7,7 +7,7 @@ This component handles three types of navigation items:
 -->
 <nav class="navbar" role="navigation" aria-label="Main navigation">
   <ul class="site-navbar navbar-nav">
-      {% for nav in site.data.nav %}
+      {% for nav in site.navigation.nav %}
         {% if nav.subcategories != null %}
               <!-- Dropdown menu item with subcategories -->
               <li class="navbar-item dropdown">
