@@ -18,3 +18,4 @@
 // Import Bootstrap JS for core functionality
 import "./common/bootstrap.js";      // Loads Bootstrap JS components dynamically
 //import "./fontawesome.js"
+import "./common/footer.js";        // Handles footer interactions and back-to-top button

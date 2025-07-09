@@ -3,54 +3,35 @@ Site footer component that appears at the bottom of each page
 Contains copyright information, social media links, and secondary navigation
 -->
 <footer class="site-footer" role="contentinfo">
-  <div class="site-footer__container">
+  <div class="site-footer__container site-footer__row">
     <!-- Copyright section with dynamic year and site title from config -->
     <div class="site-footer__copyright">
       <p class="site-footer__copyright-text">&copy; {{ 'now' | date: "%Y" }} {{ site.title | default: site.github.repository_name }}. All rights reserved.</p>
     </div>
-    
     <!-- Social media links section -->
     <div class="site-footer__social" aria-labelledby="social-heading">
       <h2 id="social-heading" class="sr-only">Connect with us</h2>
-      <!-- LinkedIn integration if configured -->
-      {% if site.linkedin_username %}
+      {% assign social_links = site.data.nav.social_links %}
+      {% for link in social_links %}
         <div class="site-footer__social-item">
-          {% include linkedin.html %}
+          <a href="{{ link.url }}" class="site-footer__social-link" aria-label="{{ link.aria_label }}">
+            <i class="{{ link.icon }}" aria-hidden="true"></i>
+            <span class="sr-only">{{ link.name }}</span>
+          </a>
         </div>
-      {% endif %}
-      
-      <!-- Additional social media icons -->
-      <div class="site-footer__social-item">
-        <a href="https://twitter.com/ASISaga" class="site-footer__social-link" aria-label="Follow us on Twitter">
-          <i class="fab fa-twitter" aria-hidden="true"></i>
-          <span class="sr-only">Twitter</span>
-        </a>
-      </div>
-      <div class="site-footer__social-item">
-        <a href="https://github.com/asisaga" class="site-footer__social-link" aria-label="Visit our GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i>
-          <span class="sr-only">GitHub</span>
-        </a>
-      </div>
+      {% endfor %}
     </div>
-    
     <!-- Secondary footer navigation -->
     <div class="site-footer__links" aria-labelledby="footer-nav-heading">
       <h2 id="footer-nav-heading" class="sr-only">Footer Navigation</h2>
       <nav aria-label="Footer navigation">
         <ul class="site-footer__nav-list">
-          <li class="site-footer__nav-item">
-            <a href="{{ site.url }}/about/" class="site-footer__nav-link">About</a>
-          </li>
-          <li class="site-footer__nav-item">
-            <a href="{{ site.url }}/sitemap/" class="site-footer__nav-link">Sitemap</a>
-          </li>
-          <li class="site-footer__nav-item">
-            <a href="{{ site.url }}/privacy-policy/" class="site-footer__nav-link">Privacy Policy</a>
-          </li>
-          <li class="site-footer__nav-item">
-            <a href="{{ site.url }}/contact/" class="site-footer__nav-link">Contact</a>
-          </li>
+          {% assign footer_nav = site.data.nav.footer_nav %}
+          {% for item in footer_nav %}
+            <li class="site-footer__nav-item">
+              <a href="{{ item.url }}" class="site-footer__nav-link">{{ item.title }}</a>
+            </li>
+          {% endfor %}
         </ul>
       </nav>
     </div>
@@ -60,30 +41,5 @@ Contains copyright information, social media links, and secondary navigation
   <button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
     <i class="fas fa-arrow-up" aria-hidden="true"></i>
   </button>
-  
-  <script>
-    // Back to top button functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const backToTopButton = document.getElementById('back-to-top');
-      
-      if (backToTopButton) {
-        // Show button when page is scrolled down
-        window.addEventListener('scroll', function() {
-          if (window.pageYOffset > 300) {
-            backToTopButton.classList.add('show');
-          } else {
-            backToTopButton.classList.remove('show');
-          }
-        });
-        
-        // Smooth scroll to top when button is clicked
-        backToTopButton.addEventListener('click', function() {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-        });
-      }
-    });
-  </script>
+  {%- comment -%} SCSS partial imported in main stylesheet, no direct CSS link needed {%- endcomment -%}
 </footer>

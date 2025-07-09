@@ -1,3 +1,31 @@
+// Footer single row layout for desktop
+.site-footer__row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+  @media (min-width: 900px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+
+    .site-footer__copyright,
+    .site-footer__social,
+    .site-footer__links {
+      margin: 0 1.5rem;
+    }
+  }
+}
+
+.site-footer__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  box-sizing: border-box;
+}
 // Footer styling - Using Bootstrap native classes where possible
 
 .site-footer {
