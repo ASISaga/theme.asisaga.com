@@ -25,7 +25,7 @@ This component handles three types of navigation items:
                       {% for subcategory in nav.subcategories %}
                           <!-- Individual dropdown menu item -->
                           <li>
-                              <a class="dropdown-item navbar-dropdown-item" href="{{ site.url }}{{ subcategory.url }}"
+                              <a class="dropdown-item navbar-dropdown-item" href="{{ subcategory.url }}"
                                  {% if page.url == subcategory.url %}aria-current="page"{% endif %}>
                                   {{ subcategory.title }}
                               </a>
