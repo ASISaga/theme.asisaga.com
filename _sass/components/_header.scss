@@ -1,5 +1,9 @@
 // Site Header - Uses Bootstrap utility classes with minimal custom CSS
-.site-header {  // Core navbar structure
+// Core navbar structure
+.site-header {
+  width: 100vw;
+  left: 0;
+  right: 0;
   @extend .navbar;
   @extend .navbar-expand-lg;
   @extend .bg-dark; // Changed to dark to match footer

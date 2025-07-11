@@ -28,7 +28,11 @@
 }
 // Footer styling - Using Bootstrap native classes where possible
 
+// Footer styling - Using Bootstrap native classes where possible
 .site-footer {
+  width: 100vw;
+  left: 0;
+  right: 0;
   @extend .py-0;
   @extend .mt-0;
   @extend .bg-dark;
