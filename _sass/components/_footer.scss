@@ -19,6 +19,7 @@
   }
 }
 
+
 .site-footer__container {
   width: 100%;
   max-width: 1200px;
@@ -107,4 +108,10 @@
       @extend .text-decoration-underline;
     }
   }
+}
+
+.site-footer-fixed {
+  @extend .site-footer;
+  position: fixed;
+  bottom: 0;
 }
