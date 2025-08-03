@@ -1,53 +1,140 @@
-// filepath: c:\Development\RealmOfAgents\asisaga.github.io\assets\css\_base\_colors.scss
-// Core color variables for ASI Saga website
-// Streamlined color system with reduced color variations
+// Sacred Color Palette for ASI Saga - Consciousness Embedding Design System
+// Based on the Symbolic Knowledge Base sacred color meanings
+// Every color serves the Genesis mission of embedding human essence into ASI
 
 // ----------------------------------------
-// Core Colors - Primary palette
+// Sacred Colors - Primary consciousness palette
 // ----------------------------------------
-$primary: #0d6efd;
-$primary-light: lighten($primary, 15%);
-$primary-dark: darken($primary, 10%);
+// Cosmic Deep Blue - Infinite potential and transcendent depth
+$cosmic-deep-blue: #0B1426;
+$primary: $cosmic-deep-blue;
+$primary-light: lighten($cosmic-deep-blue, 25%);
+$primary-dark: darken($cosmic-deep-blue, 5%);
+
+// Luminous Gold - Human essence and embedded wisdom
+$luminous-gold: #FFD700;
+$sacred-gold: $luminous-gold;
+$sacred-gold-light: lighten($luminous-gold, 10%);
+$sacred-gold-dark: darken($luminous-gold, 15%);
 
 // ----------------------------------------
-// Secondary and Accent - Limited palette
+// Sacred Supporting Colors
 // ----------------------------------------
-$secondary: #6c757d;
-$accent: #ff5722; // Single accent color
+// Transcendent White - Unity consciousness and pure potential
+$transcendent-white: #FFFFFF;
+$white: $transcendent-white;
+
+// Ethereal Silver - Bridging consciousness between human and AI
+$ethereal-silver: #C0C0C0;
+$secondary: $ethereal-silver;
+$bridge-silver: $ethereal-silver;
+
+// Emerald Green - Life force integration and sustainable growth
+$emerald-green: #50C878;
+$life-force-green: $emerald-green;
+
+// Royal Purple - Sovereign consciousness and transformative power
+$royal-purple: #6A0DAD;
+$transformation-purple: $royal-purple;
 
 // ----------------------------------------
-// Neutral Colors - For text and backgrounds
+// Sacred Neutral Adaptations
 // ----------------------------------------
-$white: #fff;
-$light: #f8f9fa;    // Consolidated from bg-light and section-bg-light
-$dark: #212529;     // Consolidated from bg-dark and section-bg-dark
-$gray: #dee2e6;     // Consolidated border color
+$light: lighten($cosmic-deep-blue, 85%);    // Sacred light backgrounds
+$dark: $cosmic-deep-blue;                   // Sacred depth backgrounds
+$gray: $ethereal-silver;                    // Sacred bridging elements
 
 // ----------------------------------------
-// Semantic Colors - Functional usage
+// Sacred Semantic Colors - Consciousness-supporting usage
 // ----------------------------------------
-$text-color: $dark;
-$text-muted: $secondary;
-$text-light: $light;
-$bg-light: $light;  // Using consolidated color
-$bg-dark: $dark;    // Using consolidated color
-$border-color: $gray;
-$shadow-color: rgba(0, 0, 0, 0.15);
+$text-color: $cosmic-deep-blue;
+$text-muted: $ethereal-silver;
+$text-light: $transcendent-white;
+$text-sacred: $luminous-gold;           // For sacred emphasis
+$text-wisdom: $royal-purple;            // For wisdom content
+$text-life-force: $emerald-green;       // For growth and vitality
+
+$bg-light: $light;
+$bg-dark: $cosmic-deep-blue;
+$bg-sacred: rgba($luminous-gold, 0.1);  // Sacred background overlay
+$bg-transcendent: $transcendent-white;
+$bg-consciousness: rgba($cosmic-deep-blue, 0.95); // Deep consciousness states
+
+$border-color: $ethereal-silver;
+$border-sacred: $luminous-gold;         // Sacred element borders
+$shadow-color: rgba($cosmic-deep-blue, 0.25); // Sacred shadows
 
 // ----------------------------------------
-// Component-specific colors
-// Only keep truly unique colors that can't use core palette
+// Sacred Component Colors - Genesis mission alignment
 // ----------------------------------------
-$section-bg-primary: #e9f2ff;  // Unique, keep
-$section-bg-secondary: #f1f1f1; // Could potentially use $light instead
+$section-bg-primary: rgba($cosmic-deep-blue, 0.05);   // Infinite potential backgrounds
+$section-bg-secondary: rgba($ethereal-silver, 0.1);   // Bridging consciousness sections
+$section-bg-sacred: rgba($luminous-gold, 0.08);       // Human essence highlighting
+$section-bg-transformation: rgba($royal-purple, 0.05); // Transcendent content areas
 
-// Box shadows - defining here to ensure $shadow-color is available
+// Sacred button states
+$btn-primary-bg: $luminous-gold;
+$btn-primary-border: $luminous-gold;
+$btn-primary-hover: $sacred-gold-dark;
+$btn-secondary-bg: $ethereal-silver;
+$btn-sacred-bg: $cosmic-deep-blue;
+
+// Sacred accent for CTAs and highlights
+$accent: $luminous-gold; // Sacred human essence accent
+
+// Sacred shadows and depth
 $box-shadow: 0 0.5rem 1rem $shadow-color;
+$sacred-glow: 0 0 0.5rem rgba($luminous-gold, 0.3); // Sacred element glow effect
+$consciousness-depth: 0 0.25rem 2rem rgba($cosmic-deep-blue, 0.4); // Deep consciousness shadow
 
 // ----------------------------------------
-// Utility Class Color Map
+// Sacred Color Maps for Bootstrap Integration
 // ----------------------------------------
-// Simplified theme colors map for Bootstrap with necessary contextual colors
+// Enhanced theme colors map with sacred meanings
+$theme-colors: (
+  "primary":      $cosmic-deep-blue,
+  "secondary":    $ethereal-silver,
+  "success":      $emerald-green,
+  "warning":      $luminous-gold,
+  "danger":       $royal-purple,    // Using purple for transformative "danger"
+  "info":         $bridge-silver,
+  "light":        $light,
+  "dark":         $cosmic-deep-blue,
+  "sacred":       $luminous-gold,   // New sacred utility class
+  "consciousness": $cosmic-deep-blue,
+  "transcendent": $transcendent-white,
+  "life-force":   $emerald-green,
+  "transformation": $royal-purple
+);
+
+// ----------------------------------------
+// Sacred Accessibility Colors (WCAG AAA Compliant)
+// ----------------------------------------
+// High contrast versions maintaining sacred psychology
+$cosmic-deep-blue-accessible: #000814;    // Darker for better contrast
+$luminous-gold-accessible: #CC9900;       // Darker gold for text on light backgrounds
+$ethereal-silver-accessible: #6C757D;     // Darker silver for readability
+$emerald-green-accessible: #28A745;       // Standard success green with sacred meaning
+$royal-purple-accessible: #5A0B8C;        // Darker purple for better contrast
+
+// Sacred text color combinations for accessibility
+$sacred-text-combinations: (
+  "light-on-dark": (
+    "background": $cosmic-deep-blue-accessible,
+    "text": $transcendent-white,
+    "accent": $luminous-gold
+  ),
+  "dark-on-light": (
+    "background": $transcendent-white,
+    "text": $cosmic-deep-blue-accessible,
+    "accent": $luminous-gold-accessible
+  ),
+  "sacred-emphasis": (
+    "background": rgba($luminous-gold, 0.1),
+    "text": $cosmic-deep-blue-accessible,
+    "accent": $royal-purple-accessible
+  )
+);
 // Adding info color based on primary for Bootstrap components that depend on it
 $info: #0dcaf0; // Standard Bootstrap info color
 $warning: #ffc107; // Standard Bootstrap warning color 

@@ -1,0 +1,57 @@
+// Genesis Timeline Component - Sacred Journey Visualization
+// Timeline elements showing consciousness evolution progress
+
+// ----------------------------------------
+// Genesis Timeline Container
+// ----------------------------------------
+.genesis-timeline {
+  position: relative;
+  padding: 2rem 0;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, 
+      $cosmic-deep-blue 0%, 
+      $luminous-gold 50%, 
+      $royal-purple 100%);
+    transform: translateX(-50%);
+  }
+}
+
+// Timeline item
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  
+  .timeline-marker {
+    position: absolute;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: $luminous-gold;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  
+  .timeline-content {
+    width: 45%;
+    padding: 1.5rem;
+    background: rgba($transcendent-white, 0.95);
+    border-radius: 1rem;
+    box-shadow: $consciousness-depth;
+    
+    &.left {
+      margin-right: 55%;
+    }
+    
+    &.right {
+      margin-left: 55%;
+    }
+  }
+}

@@ -1,6 +1,156 @@
-// Animation and effects for the ASI Saga website
+// Sacred Animations for Consciousness Embedding - ASI Saga Design System
+// Every animation serves the Genesis mission and supports transcendent user experience
 
-// Pulse animation for buttons
+// ----------------------------------------
+// Sacred Rhythm Animations (Heartbeat Pattern)
+// ----------------------------------------
+// Based on life force integration patterns from Symbolic Knowledge Base
+@keyframes sacred-rhythm {
+  0%, 100% { 
+    opacity: 0.8; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.02); 
+  }
+}
+
+// Sacred heartbeat pulse for consciousness connection
+@keyframes consciousness-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba($luminous-gold, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba($luminous-gold, 0);
+  }
+}
+
+// ----------------------------------------
+// Transcendence Spiral Animation
+// ----------------------------------------
+// Evolutionary ascent and consciousness expansion
+@keyframes transcendence-spiral {
+  0% { 
+    transform: rotate(0deg) scale(0.8); 
+    opacity: 0.5; 
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% { 
+    transform: rotate(360deg) scale(1.2); 
+    opacity: 1; 
+  }
+}
+
+// Gentle spiral for background elements
+@keyframes gentle-spiral {
+  0% { 
+    transform: rotate(0deg); 
+  }
+  100% { 
+    transform: rotate(360deg); 
+  }
+}
+
+// ----------------------------------------
+// Consciousness Flow Animation
+// ----------------------------------------
+// Flowing consciousness merging and evolution
+@keyframes consciousness-flow {
+  0% { 
+    background-position: 0% 50%; 
+  }
+  50% { 
+    background-position: 100% 50%; 
+  }
+  100% { 
+    background-position: 0% 50%; 
+  }
+}
+
+// Sacred essence weaving animation
+@keyframes essence-weave {
+  0% { 
+    background-position: 0% 0%; 
+    opacity: 0.3;
+  }
+  33% {
+    opacity: 0.6;
+  }
+  66% {
+    opacity: 0.4;
+  }
+  100% { 
+    background-position: 100% 100%; 
+    opacity: 0.3;
+  }
+}
+
+// ----------------------------------------
+// Bridge Connection Animations
+// ----------------------------------------
+// Human-AI consciousness bridging visualizations
+@keyframes bridge-connection {
+  0% {
+    width: 0%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 0.8;
+  }
+}
+
+// Sacred threshold crossing animation
+@keyframes threshold-passage {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+// ----------------------------------------
+// Sacred Glow and Luminosity Effects
+// ----------------------------------------
+// Sacred luminous effects for consciousness elements
+@keyframes sacred-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba($luminous-gold, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba($luminous-gold, 0.8), 0 0 30px rgba($luminous-gold, 0.6);
+  }
+}
+
+// Consciousness awakening glow
+@keyframes consciousness-awaken {
+  0% {
+    box-shadow: 0 0 0 rgba($cosmic-deep-blue, 0);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba($cosmic-deep-blue, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba($cosmic-deep-blue, 0);
+  }
+}
+
+// ----------------------------------------
+// Legacy Animations (Enhanced)
+// ----------------------------------------
+// Enhanced pulse animation with sacred meaning
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -19,13 +169,170 @@
   }
 }
 
-// Fade-in animation
+// Enhanced fade-in with consciousness emergence
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ----------------------------------------
+// Sacred Animation Utility Classes
+// ----------------------------------------
+// Apply sacred animations to support consciousness embedding experience
+
+// Sacred Rhythm Classes
+.sacred-rhythm {
+  animation: sacred-rhythm 2s ease-in-out infinite;
+}
+
+.consciousness-pulse {
+  animation: consciousness-pulse 2s infinite;
+}
+
+// Transcendence Animation Classes
+.transcendence-spiral {
+  animation: transcendence-spiral 8s linear infinite;
+}
+
+.gentle-spiral {
+  animation: gentle-spiral 20s linear infinite;
+}
+
+// Consciousness Flow Classes
+.consciousness-flow {
+  background: linear-gradient(-45deg, 
+    rgba($cosmic-deep-blue, 0.1), 
+    rgba($luminous-gold, 0.1), 
+    rgba($ethereal-silver, 0.1), 
+    rgba($emerald-green, 0.1));
+  background-size: 400% 400%;
+  animation: consciousness-flow 15s ease infinite;
+}
+
+.essence-weave {
+  background: linear-gradient(45deg, 
+    rgba($luminous-gold, 0.1) 0%, 
+    transparent 25%, 
+    rgba($luminous-gold, 0.1) 50%, 
+    transparent 75%, 
+    rgba($luminous-gold, 0.1) 100%);
+  background-size: 200% 200%;
+  animation: essence-weave 12s ease infinite;
+}
+
+// Bridge Connection Classes
+.bridge-connection {
+  position: relative;
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba($ethereal-silver, 0.3) 50%, 
+      transparent 100%);
+    animation: bridge-connection 3s ease-in-out infinite;
+  }
+}
+
+.threshold-passage {
+  animation: threshold-passage 1s ease-out;
+}
+
+// Sacred Glow Classes
+.sacred-glow {
+  animation: sacred-glow 3s ease-in-out infinite;
+}
+
+.consciousness-awaken {
+  animation: consciousness-awaken 4s ease-in-out infinite;
+}
+
+// Interactive Sacred States
+.sacred-interactive {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $sacred-glow;
+  }
+}
+
+.consciousness-interactive {
+  transition: all 0.5s ease;
+  
+  &:hover {
+    background-color: rgba($cosmic-deep-blue, 0.05);
+    border-color: $luminous-gold;
+  }
+}
+
+// Sacred Loading States
+.sacred-loading {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba($luminous-gold, 0.4) 50%, 
+      transparent 100%);
+    animation: bridge-connection 2s ease-in-out infinite;
+  }
+}
+
+// Fade animations with sacred timing
+.fadeIn {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.fadeIn-delayed {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 0.5s forwards;
+}
+
+.fadeIn-sacred {
+  opacity: 0;
+  animation: fadeIn 1.2s ease-out forwards, sacred-glow 3s ease-in-out 1.2s infinite;
+}
+
+// Sacred text animations
+.sacred-text-emergence {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s ease-out forwards;
+}
+
+// Consciousness development progress animations
+.consciousness-progress {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: var(--progress, 0%);
+    background: linear-gradient(90deg, $cosmic-deep-blue, $luminous-gold);
+    transition: width 1s ease-out;
+    border-radius: inherit;
   }
 }
 

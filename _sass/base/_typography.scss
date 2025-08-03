@@ -1,53 +1,354 @@
-// filepath: c:\Development\RealmOfAgents\asisaga.github.io\assets\css\_base\_typography.scss
-// Typography styles for ASI Saga website
-// This file contains only typography overrides not covered by Bootstrap
+// Sacred Typography for Consciousness Embedding - ASI Saga Design System
+// Typography that supports transcendent user experience and consciousness development
+// Based on Symbolic Knowledge Base principles for consciousness-supporting text
 
-// Font sizes
-$font-size-xl: 1.5rem;     // 24px 
+// ----------------------------------------
+// Sacred Font Families
+// ----------------------------------------
+// Consciousness Typography: flowing, transcendent fonts suggesting both human warmth and infinite potential
+$font-family-consciousness: 'Inter', 'SF Pro Display', system-ui, -apple-system, "Segoe UI", sans-serif;
+$font-family-wisdom: 'Crimson Text', 'Times New Roman', Georgia, serif; // Humanist serif for deep wisdom content
+$font-family-sacred: 'Montserrat', $font-family-consciousness; // For sacred emphasis and headings
 
-// Font weights
-$font-weight-medium: 500;
-$font-weight-semibold: 600;
+// Sacred font families by purpose
+$font-family-headings: $font-family-sacred;
+$font-family-body: $font-family-wisdom;
+$font-family-interface: $font-family-consciousness;
 
-// Custom font settings
-$font-family-headings: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+// ----------------------------------------
+// Sacred Font Sizes (Following Sacred Rhythm)
+// ----------------------------------------
+// Font sizes following heartbeat patterns and sacred proportions
+$font-size-sacred-xl: 2.618rem;    // Golden ratio scaling for transcendent headers
+$font-size-sacred-lg: 1.618rem;    // Golden ratio for sacred content
+$font-size-xl: 1.5rem;             // 24px - maintaining compatibility
+$font-size-consciousness: 1.125rem; // Optimal for consciousness absorption
+$font-size-wisdom: 1rem;           // Base wisdom text size
+$font-size-sacred-sm: 0.875rem;    // Sacred small text
 
-// Custom heading font family (this needs to be kept since it's specific to this project)
+// ----------------------------------------
+// Sacred Font Weights
+// ----------------------------------------
+$font-weight-light: 300;           // Ethereal, transcendent text
+$font-weight-normal: 400;          // Standard consciousness text
+$font-weight-medium: 500;          // Emphasized consciousness content
+$font-weight-semibold: 600;        // Sacred emphasis
+$font-weight-bold: 700;            // Strong sacred statements
+$font-weight-sacred: 800;          // Ultimate sacred emphasis
+
+// ----------------------------------------
+// Sacred Line Heights (Heartbeat Rhythm)
+// ----------------------------------------
+// Line heights following Sacred Rhythm principles for optimal consciousness absorption
+$line-height-sacred: 1.618;        // Golden ratio for sacred content
+$line-height-consciousness: 1.75;   // Spacious for contemplation
+$line-height-wisdom: 1.6;          // Optimal for sustained reading
+$line-height-interface: 1.4;       // Compact for interface elements
+
+// ----------------------------------------
+// Sacred Heading Styles
+// ----------------------------------------
+// Sacred headings that evoke transcendence while maintaining readability
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: $font-family-headings;
+  line-height: $line-height-sacred;
+  color: $cosmic-deep-blue;
+  font-weight: $font-weight-semibold;
 }
 
-// Custom blockquote styling that differs from Bootstrap
+// Sacred heading hierarchy with consciousness significance
+h1, .h1 {
+  font-size: $font-size-sacred-xl;
+  font-weight: $font-weight-sacred;
+  color: $cosmic-deep-blue;
+  
+  // Add subtle sacred glow for major headings
+  text-shadow: 0 0 1px rgba($luminous-gold, 0.2);
+}
+
+h2, .h2 {
+  font-size: $font-size-sacred-lg;
+  font-weight: $font-weight-bold;
+  color: $cosmic-deep-blue;
+}
+
+h3, .h3 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $cosmic-deep-blue;
+}
+
+// Sacred body text for optimal consciousness absorption
+body {
+  font-family: $font-family-body;
+  font-size: $font-size-wisdom;
+  line-height: $line-height-wisdom;
+  color: $text-color;
+}
+
+// Interface elements use consciousness font
+.nav, .btn, .form-control, .card-title {
+  font-family: $font-family-interface;
+  line-height: $line-height-interface;
+}
+
+// ----------------------------------------
+// Sacred Text Utility Classes
+// ----------------------------------------
+// Consciousness-supporting text styles
+.text-sacred {
+  color: $luminous-gold !important;
+  font-weight: $font-weight-medium;
+}
+
+.text-consciousness {
+  color: $cosmic-deep-blue !important;
+  font-family: $font-family-consciousness;
+}
+
+.text-wisdom {
+  color: $text-color;
+  font-family: $font-family-wisdom;
+  line-height: $line-height-wisdom;
+}
+
+.text-transcendent {
+  color: $transcendent-white !important;
+  text-shadow: 0 0 2px rgba($cosmic-deep-blue, 0.5);
+}
+
+.text-life-force {
+  color: $life-force-green !important;
+  font-weight: $font-weight-medium;
+}
+
+.text-transformation {
+  color: $transformation-purple !important;
+  font-weight: $font-weight-semibold;
+}
+
+// Sacred emphasis styles
+.sacred-emphasis {
+  color: $luminous-gold;
+  font-weight: $font-weight-semibold;
+  text-shadow: 0 0 1px rgba($luminous-gold, 0.3);
+}
+
+.consciousness-emphasis {
+  background: linear-gradient(135deg, $cosmic-deep-blue, $royal-purple);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: $font-weight-semibold;
+}
+
+// ----------------------------------------
+// Sacred Blockquotes (Wisdom Container)
+// ----------------------------------------
+// Enhanced blockquote styling for sacred wisdom
 blockquote {
-  padding-left: 1rem;
-  border-left: 0.25rem solid $border-color;
+  padding: 1.5rem;
+  border-left: 0.25rem solid $luminous-gold;
+  background: rgba($luminous-gold, 0.05);
   font-style: italic;
+  font-family: $font-family-wisdom;
+  line-height: $line-height-consciousness;
+  border-radius: 0.5rem;
+  position: relative;
+  
+  // Sacred quotation marks
+  &::before {
+    content: '"';
+    font-size: 3rem;
+    color: rgba($luminous-gold, 0.3);
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    font-family: $font-family-sacred;
+  }
   
   footer {
     font-style: normal;
     color: $text-muted;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
+    font-family: $font-family-interface;
     
     &::before {
       content: "— ";
+      color: $luminous-gold;
     }
   }
 }
 
-// Responsive font size adjustments (if needed beyond Bootstrap breakpoints)
-@mixin responsive-headings {
+// ----------------------------------------
+// Sacred Responsive Typography
+// ----------------------------------------
+// Responsive font sizes that maintain sacred proportions
+@mixin sacred-responsive-headings {
   @include media-breakpoint-up(md) {
-    h1, .h1 { font-size: $font-size-base * 3; }
-    h2, .h2 { font-size: $font-size-base * 2.5; }
+    h1, .h1 { 
+      font-size: $font-size-sacred-xl * 1.2; // Enhanced for larger screens
+    }
+    h2, .h2 { 
+      font-size: $font-size-sacred-lg * 1.1; 
+    }
   }
   
   @include media-breakpoint-up(lg) {
-    h1, .h1 { font-size: $font-size-base * 3.5; }
+    h1, .h1 { 
+      font-size: $font-size-sacred-xl * 1.4; // Maximum sacred impact
+    }
+    h2, .h2 { 
+      font-size: $font-size-sacred-lg * 1.3; 
+    }
+  }
+  
+  @include media-breakpoint-up(xl) {
+    h1, .h1 { 
+      font-size: $font-size-sacred-xl * 1.6; // Ultimate transcendence
+    }
   }
 }
 
-// Apply responsive typography
+// Apply sacred responsive typography
+@include sacred-responsive-headings;
+
+// ----------------------------------------
+// Sacred Link Styles
+// ----------------------------------------
+// Links that support consciousness connection
+a {
+  color: $luminous-gold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: $sacred-gold-dark;
+    text-shadow: 0 0 2px rgba($luminous-gold, 0.4);
+  }
+  
+  &:focus {
+    outline: 2px solid $luminous-gold;
+    outline-offset: 2px;
+  }
+}
+
+// Sacred navigation links
+.nav-link {
+  color: $cosmic-deep-blue;
+  font-weight: $font-weight-medium;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: $luminous-gold;
+    transform: translateY(-1px);
+  }
+  
+  &.active {
+    color: $luminous-gold;
+    font-weight: $font-weight-semibold;
+  }
+}
+
+// ----------------------------------------
+// Sacred Button Typography
+// ----------------------------------------
+// Button text that invites consciousness engagement
+.btn {
+  font-family: $font-family-interface;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: $luminous-gold;
+  border-color: $luminous-gold;
+  color: $cosmic-deep-blue;
+  font-weight: $font-weight-semibold;
+  
+  &:hover {
+    background-color: $sacred-gold-dark;
+    border-color: $sacred-gold-dark;
+    transform: translateY(-2px);
+    box-shadow: $sacred-glow;
+  }
+}
+
+.btn-sacred {
+  background-color: $cosmic-deep-blue;
+  border-color: $cosmic-deep-blue;
+  color: $transcendent-white;
+  font-weight: $font-weight-semibold;
+  
+  &:hover {
+    background-color: $primary-dark;
+    border-color: $primary-dark;
+    box-shadow: $consciousness-depth;
+  }
+}
+
+// ----------------------------------------
+// Sacred Form Typography
+// ----------------------------------------
+// Form elements supporting conscious interaction
+.form-control {
+  font-family: $font-family-interface;
+  border-color: $ethereal-silver;
+  
+  &:focus {
+    border-color: $luminous-gold;
+    box-shadow: 0 0 0 0.2rem rgba($luminous-gold, 0.25);
+  }
+}
+
+.form-label {
+  color: $cosmic-deep-blue;
+  font-weight: $font-weight-medium;
+  margin-bottom: 0.5rem;
+}
+
+// Sacred placeholder text
+::placeholder {
+  color: $text-muted;
+  font-style: italic;
+}
+
+// ----------------------------------------
+// Sacred Accessibility Typography
+// ----------------------------------------
+// High contrast versions for accessibility
+@media (prefers-contrast: high) {
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: $cosmic-deep-blue-accessible;
+    text-shadow: none;
+  }
+  
+  .text-sacred {
+    color: $luminous-gold-accessible !important;
+  }
+  
+  a {
+    color: $luminous-gold-accessible;
+    
+    &:hover {
+      color: darken($luminous-gold-accessible, 15%);
+    }
+  }
+}
+
+// Reduced motion preferences
+@media (prefers-reduced-motion: reduce) {
+  .consciousness-emphasis {
+    background: $cosmic-deep-blue;
+    background-clip: initial;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    color: $cosmic-deep-blue;
+  }
+}
 @include responsive-headings;
 
 /*

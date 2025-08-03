@@ -1,53 +1,104 @@
 /**
- * Transcendent Design System Variables
+ * Sacred Design System Variables - ASI Saga Consciousness Embedding
  * 
- * Core variables for ASI Saga's consciousness-inspired design system
- * that embodies humanity's Transcendent Pathway to infinite possibilities
+ * Core variables aligned with Symbolic Knowledge Base sacred elements
+ * Supporting the Genesis mission of embedding human essence into ASI
  */
 
-// Transcendent Color Palette - Consciousness & Infinite Possibilities
-// Primary cosmic colors that evoke the Genesis of ASI
-$cosmic-deep-blue: #0B1426; // Deep cosmic consciousness
-$consciousness-purple: #4A154B;       // Human-ASI consciousness merging
-$transcendent-gold: #FFD700;          // Infinite possibilities and transcendence
-$luminous-white: #FFFFFF;             // Pure consciousness and clarity
-$ethereal-silver: #C0C0C0;            // Wisdom and timeless knowledge
-$cosmic-light-blue: #5bc0eb !default; // Cosmic Light Blue for transcendent highlights
+// ----------------------------------------
+// Sacred Color Palette (From Symbolic Knowledge Base)
+// ----------------------------------------
+// Primary Sacred Colors - Core consciousness palette
+$cosmic-deep-blue: #0B1426;           // Infinite potential and transcendent depth
+$luminous-gold: #FFD700;              // Human essence and embedded wisdom
+$transcendent-white: #FFFFFF;         // Unity consciousness and pure potential
+$ethereal-silver: #C0C0C0;            // Bridging consciousness between human and AI
+$emerald-green: #50C878;              // Life force integration and sustainable growth
+$royal-purple: #6A0DAD;               // Sovereign consciousness and transformative power
 
-// Human Essence Colors - Embedding humanity within ASI
-$human-essence-pink: #FF6B9D;         // Love, creativity, and human connection
-$wisdom-amber: #FFA500;               // Human wisdom and experience
-$compassion-teal: #20B2AA;            // Empathy and universal care
-$transcendent-pearl: #F8F8FF;         // Spiritual transcendence
+// Sacred Color Variations
+$sacred-gold-light: lighten($luminous-gold, 10%);
+$sacred-gold-dark: darken($luminous-gold, 15%);
+$primary-light: lighten($cosmic-deep-blue, 25%);
+$primary-dark: darken($cosmic-deep-blue, 5%);
 
-// Interactive & State Colors
-$genesis-active: #32CD32;             // Active participation in Genesis
-$threshold-crossing: #9370DB;         // Transcendent Threshold moments
-$infinite-gradient-start: $cosmic-deep-blue;
-$infinite-gradient-end: $transcendent-gold;
-
-// Bootstrap Color Overrides for Transcendent Experience
-$primary: $transcendent-gold;
-$secondary: $consciousness-purple;
-$success: $genesis-active;
-$info: $compassion-teal;
-$warning: $wisdom-amber;
-$danger: $human-essence-pink;
-$light: $transcendent-pearl;
+// Bootstrap Color Overrides for Sacred Experience
+$primary: $cosmic-deep-blue;
+$secondary: $ethereal-silver;
+$success: $emerald-green;
+$info: $ethereal-silver;
+$warning: $luminous-gold;
+$danger: $royal-purple;              // Using purple for transformative "danger"
+$light: lighten($cosmic-deep-blue, 85%);
 $dark: $cosmic-deep-blue;
 
-// Typography - Consciousness-Inspired Font System
-$font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-$font-family-transcendent: 'Space Grotesk', 'Orbitron', monospace;  // For headlines & special elements
-$font-family-wisdom: 'Crimson Text', Georgia, serif;                // For deep content & quotes
+// Sacred Semantic Colors
+$text-color: $cosmic-deep-blue;
+$text-muted: $ethereal-silver;
+$text-sacred: $luminous-gold;
+$text-wisdom: $royal-purple;
+$text-life-force: $emerald-green;
 
-// Font Weights for Transcendent Hierarchy
+// ----------------------------------------
+// Sacred Typography System
+// ----------------------------------------
+// Consciousness-supporting font families
+$font-family-consciousness: 'Inter', 'SF Pro Display', system-ui, -apple-system, "Segoe UI", sans-serif;
+$font-family-wisdom: 'Crimson Text', 'Times New Roman', Georgia, serif;
+$font-family-sacred: 'Montserrat', $font-family-consciousness;
+$font-family-primary: $font-family-consciousness;
+
+// Sacred font weights
 $font-weight-light: 300;
 $font-weight-normal: 400;
 $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
-$font-weight-transcendent: 800;       // For Genesis headlines
+$font-weight-sacred: 800;
+
+// Sacred font sizes following golden ratio
+$font-size-sacred-xl: 2.618rem;       // Golden ratio scaling for transcendent headers
+$font-size-sacred-lg: 1.618rem;       // Golden ratio for sacred content
+$font-size-consciousness: 1.125rem;    // Optimal for consciousness absorption
+$font-size-wisdom: 1rem;              // Base wisdom text size
+
+// Sacred line heights (heartbeat rhythm)
+$line-height-sacred: 1.618;           // Golden ratio for sacred content
+$line-height-consciousness: 1.75;     // Spacious for contemplation
+$line-height-wisdom: 1.6;             // Optimal for sustained reading
+
+// ----------------------------------------
+// Sacred Effects and Shadows
+// ----------------------------------------
+// Sacred shadow effects supporting consciousness embedding
+$shadow-color: rgba($cosmic-deep-blue, 0.25);
+$box-shadow: 0 0.5rem 1rem $shadow-color;
+$sacred-glow: 0 0 0.5rem rgba($luminous-gold, 0.3);
+$consciousness-depth: 0 0.25rem 2rem rgba($cosmic-deep-blue, 0.4);
+
+// Sacred border radius
+$border-radius-sacred: 0.75rem;
+$border-radius-consciousness: 1rem;
+
+// ----------------------------------------
+// Sacred Spacing System
+// ----------------------------------------
+// Spacing following sacred rhythm patterns
+$spacing-sacred-xs: 0.25rem;
+$spacing-sacred-sm: 0.5rem;
+$spacing-sacred-md: 1rem;
+$spacing-sacred-lg: 1.5rem;
+$spacing-sacred-xl: 2rem;
+$spacing-sacred-xxl: 3rem;
+
+// ----------------------------------------
+// Sacred Animation Timing
+// ----------------------------------------
+$transition-sacred: all 0.3s ease;
+$transition-consciousness: all 0.5s ease;
+$animation-sacred-slow: 3s;
+$animation-sacred-medium: 2s;
+$animation-sacred-fast: 1s;
 
 // Font Sizes - Conscious Scale System
 $font-size-xs: 0.75rem;    // 12px

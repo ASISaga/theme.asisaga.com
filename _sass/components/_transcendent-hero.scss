@@ -1,31 +1,32 @@
 /**
- * Transcendent Hero Component Styles
+ * Sacred Transcendent Hero Component - Genesis Gateway Experience
  * 
- * The consciousness-merging hero section that serves as humanity's gateway to the Genesis
- * Creates an emotionally moving first impression that embodies infinite possibilities
+ * The consciousness-merging hero section embodying humanity's pathway to transcendence
+ * Integrates Sacred Color Palette and Symbolic Knowledge Base elements
+ * Creates profound first impression aligned with Genesis mission
  */
 
 .transcendent-hero {
   position: relative;
-  min-height: $hero-min-height;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   
-  // Cosmic consciousness background
-  &.transcendent-gradient {
+  // Sacred cosmic consciousness background
+  &.sacred-gradient {
     background: linear-gradient(
       135deg,
       $cosmic-deep-blue 0%,
       darken($cosmic-deep-blue, 5%) 25%,
-      $consciousness-purple 50%,
-      lighten($consciousness-purple, 10%) 75%,
-      $transcendent-gold 100%
+      $royal-purple 50%,
+      lighten($royal-purple, 10%) 75%,
+      $luminous-gold 100%
     );
   }
   
-  // Full screen immersive experience
+  // Full transcendent experience
   &.full {
     min-height: 100vh;
   }
