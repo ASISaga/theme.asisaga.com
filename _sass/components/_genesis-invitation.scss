@@ -18,8 +18,8 @@
       45deg,
       $cosmic-deep-blue 0%,
       darken($cosmic-deep-blue, 8%) 25%,
-      $consciousness-purple 50%,
-      darken($consciousness-purple, 5%) 75%,
+      $transformation-purple 50%,
+      darken($transformation-purple, 5%) 75%,
       $cosmic-deep-blue 100%
     );
   }
@@ -36,7 +36,7 @@
       background-image: 
         radial-gradient(2px 2px at 20px 30px, rgba($luminous-gold, 0.4), transparent),
         radial-gradient(2px 2px at 40px 70px, rgba($ethereal-silver, 0.3), transparent),
-        radial-gradient(1px 1px at 90px 40px, rgba($consciousness-purple, 0.5), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba($transformation-purple, 0.5), transparent),
         radial-gradient(1px 1px at 130px 80px, rgba($human-essence-pink, 0.3), transparent),
         radial-gradient(2px 2px at 160px 30px, rgba($luminous-gold, 0.2), transparent);
       background-repeat: repeat;
@@ -68,7 +68,7 @@
     background: 
       radial-gradient(circle at 25% 25%, rgba($luminous-gold, 0.3) 1px, transparent 1px),
       radial-gradient(circle at 75% 75%, rgba($ethereal-silver, 0.2) 1px, transparent 1px),
-      radial-gradient(circle at 50% 10%, rgba($consciousness-purple, 0.25) 1px, transparent 1px);
+      radial-gradient(circle at 50% 10%, rgba($transformation-purple, 0.25) 1px, transparent 1px);
     background-size: 100px 100px, 150px 150px, 200px 200px;
     animation: cosmicRotation 120s linear infinite;
   }
@@ -98,7 +98,7 @@
       90deg,
       transparent 0%,
       rgba($luminous-gold, 0.1) 25%,
-      rgba($consciousness-purple, 0.15) 50%,
+      rgba($transformation-purple, 0.15) 50%,
       rgba($human-essence-pink, 0.1) 75%,
       transparent 100%
     );
@@ -123,7 +123,7 @@
     background: radial-gradient(
       circle,
       rgba($luminous-gold, 0.2) 0%,
-      rgba($consciousness-purple, 0.1) 50%,
+      rgba($transformation-purple, 0.1) 50%,
       transparent 100%
     );
     border: 2px solid rgba($luminous-gold, 0.4);
@@ -159,7 +159,7 @@
         top: -2rem;
         left: -2rem;
         animation: ringPulse2 6s infinite;
-        border-color: rgba($consciousness-purple, 0.2);
+        border-color: rgba($transformation-purple, 0.2);
       }
       
       &.ring-3 {
@@ -189,7 +189,7 @@
     45deg,
     $luminous-gold 0%,
     $luminous-white 25%,
-    $consciousness-purple 50%,
+    $transformation-purple 50%,
     $luminous-white 75%,
     $luminous-gold 100%
   );
@@ -374,7 +374,7 @@
       width: 65%;
       
       .stream-flow::before {
-        background: linear-gradient(to right, $consciousness-purple, transparent);
+        background: linear-gradient(to right, $transformation-purple, transparent);
         animation-delay: 3s;
       }
     }
@@ -406,7 +406,7 @@
     background: radial-gradient(
       circle,
       rgba($luminous-gold, 0.1),
-      rgba($consciousness-purple, 0.05),
+      rgba($transformation-purple, 0.05),
       transparent
     );
     animation: consciousnessFieldPulse 3s ease-in-out infinite;
@@ -433,7 +433,7 @@
   .consciousness-pulse {
     width: 40px;
     height: 4px;
-    background: linear-gradient(to right, $luminous-gold, $consciousness-purple);
+    background: linear-gradient(to right, $luminous-gold, $transformation-purple);
     margin: 0 auto;
     border-radius: 2px;
     animation: consciousnessPulseBar 2s ease-in-out infinite;

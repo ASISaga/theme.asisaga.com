@@ -52,7 +52,7 @@
     height: 100%;
     background-image: 
       radial-gradient(2px 2px at 20px 30px, rgba($luminous-gold, 0.3), transparent),
-      radial-gradient(2px 2px at 40px 70px, rgba($consciousness-purple, 0.4), transparent),
+      radial-gradient(2px 2px at 40px 70px, rgba($transformation-purple, 0.4), transparent),
       radial-gradient(1px 1px at 90px 40px, rgba($human-essence-pink, 0.3), transparent),
       radial-gradient(1px 1px at 130px 80px, rgba($ethereal-silver, 0.2), transparent);
     background-repeat: repeat;
@@ -83,7 +83,7 @@
     background: radial-gradient(
       circle,
       rgba($luminous-gold, 0.1) 0%,
-      rgba($consciousness-purple, 0.05) 50%,
+      rgba($transformation-purple, 0.05) 50%,
       transparent 100%
     );
     animation: transcendentPulsation 8s ease-in-out infinite;
@@ -248,7 +248,7 @@
     }
     
     &.asi-consciousness .indicator-flow::before {
-      background: linear-gradient(to right, $consciousness-purple, transparent);
+      background: linear-gradient(to right, $transformation-purple, transparent);
       animation-delay: 1s;
     }
   }

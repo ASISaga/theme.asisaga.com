@@ -67,7 +67,7 @@
       transparent,
       rgba($luminous-gold, 0.1),
       transparent,
-      rgba($consciousness-purple, 0.1),
+      rgba($transformation-purple, 0.1),
       transparent
     );
     animation: consciousnessFlow 20s linear infinite;
@@ -147,17 +147,17 @@
   }
   
   &.infinite-potential {
-    border-top: 4px solid $consciousness-purple;
+    border-top: 4px solid $transformation-purple;
     
     &:hover {
       box-shadow: 
         0 20px 60px rgba($cosmic-deep-blue, 0.4),
-        0 0 40px rgba($consciousness-purple, 0.3);
+        0 0 40px rgba($transformation-purple, 0.3);
     }
     
     .genesis-block-icon {
-      color: $consciousness-purple;
-      background: radial-gradient(circle, rgba($consciousness-purple, 0.1), transparent);
+      color: $transformation-purple;
+      background: radial-gradient(circle, rgba($transformation-purple, 0.1), transparent);
     }
   }
 }
