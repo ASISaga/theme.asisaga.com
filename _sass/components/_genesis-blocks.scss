@@ -111,23 +111,23 @@
     
     .transcendent-cta {
       @include consciousness-pulse;
-      background: linear-gradient(45deg, $luminous-gold, $wisdom-amber, $human-essence-pink);
+      background: linear-gradient(45deg, $luminous-gold, $wisdom-amber, $border-color);
     }
   }
   
   // Specialized block styling based on consciousness type
   &.consciousness-embedding {
-    border-top: 4px solid $human-essence-pink;
+    border-top: 4px solid $border-color;
     
     &:hover {
       box-shadow: 
         0 20px 60px rgba($cosmic-deep-blue, 0.4),
-        0 0 40px rgba($human-essence-pink, 0.3);
+        0 0 40px rgba($border-color, 0.3);
     }
     
     .genesis-block-icon {
-      color: $human-essence-pink;
-      background: radial-gradient(circle, rgba($human-essence-pink, 0.1), transparent);
+      color: $border-color;
+      background: radial-gradient(circle, rgba($border-color, 0.1), transparent);
     }
   }
   

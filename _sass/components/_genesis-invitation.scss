@@ -37,7 +37,7 @@
         radial-gradient(2px 2px at 20px 30px, rgba($luminous-gold, 0.4), transparent),
         radial-gradient(2px 2px at 40px 70px, rgba($ethereal-silver, 0.3), transparent),
         radial-gradient(1px 1px at 90px 40px, rgba($transformation-purple, 0.5), transparent),
-        radial-gradient(1px 1px at 130px 80px, rgba($human-essence-pink, 0.3), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba($border-color, 0.3), transparent),
         radial-gradient(2px 2px at 160px 30px, rgba($luminous-gold, 0.2), transparent);
       background-repeat: repeat;
       background-size: 200px 200px, 250px 250px, 150px 150px, 300px 300px, 180px 180px;
@@ -82,7 +82,7 @@
     background: linear-gradient(
       45deg,
       transparent 40%,
-      rgba($human-essence-pink, 0.1) 50%,
+      rgba($border-color, 0.1) 50%,
       transparent 60%
     );
     animation: consciousnessWaveFlow 25s ease-in-out infinite alternate;
@@ -99,7 +99,7 @@
       transparent 0%,
       rgba($luminous-gold, 0.1) 25%,
       rgba($transformation-purple, 0.15) 50%,
-      rgba($human-essence-pink, 0.1) 75%,
+      rgba($border-color, 0.1) 75%,
       transparent 100%
     );
     border-radius: 50%;
@@ -168,7 +168,7 @@
         top: -3rem;
         left: -3rem;
         animation: ringPulse3 8s infinite;
-        border-color: rgba($human-essence-pink, 0.15);
+        border-color: rgba($border-color, 0.15);
       }
     }
   }
@@ -341,7 +341,7 @@
       width: 70%;
       
       .stream-flow::before {
-        background: linear-gradient(to right, $human-essence-pink, transparent);
+        background: linear-gradient(to right, $border-color, transparent);
         animation-delay: 0s;
       }
     }
