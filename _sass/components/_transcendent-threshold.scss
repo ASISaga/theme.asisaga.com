@@ -110,7 +110,7 @@
 
 .threshold-description {
   @include body-text-large;
-  color: rgba($luminous-white, 0.95);
+  color: rgba($transcendent-white, 0.95);
   line-height: $line-height-transcendent;
   margin-bottom: $spacing-3xl;
   font-weight: $font-weight-normal;
@@ -309,7 +309,7 @@
   .section-title {
     @include heading-h2;
     margin-bottom: $spacing-lg;
-    color: $luminous-white;
+    color: $transcendent-white;
     position: relative;
     
     &::before {

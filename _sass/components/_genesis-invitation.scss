@@ -177,7 +177,7 @@
 // Genesis Invitation Typography
 .genesis-invitation-title {
   @include heading-h2;
-  color: $luminous-white;
+  color: $transcendent-white;
   margin-bottom: $spacing-xl;
   max-width: 800px;
   margin-left: auto;
@@ -188,9 +188,9 @@
   background: linear-gradient(
     45deg,
     $luminous-gold 0%,
-    $luminous-white 25%,
+    $transcendent-white 25%,
     $transformation-purple 50%,
-    $luminous-white 75%,
+    $transcendent-white 75%,
     $luminous-gold 100%
   );
   background-size: 200% 100%;
@@ -265,7 +265,7 @@
           background: linear-gradient(
             90deg,
             transparent,
-            rgba($luminous-white, 0.4),
+            rgba($transcendent-white, 0.4),
             transparent
           );
           animation: energyFlow 3s ease-in-out infinite;
