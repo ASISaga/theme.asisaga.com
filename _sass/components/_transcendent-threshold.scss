@@ -27,7 +27,7 @@
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(circle at 20% 20%, rgba($transcendent-gold, 0.1) 1px, transparent 1px),
+      radial-gradient(circle at 20% 20%, rgba($luminous-gold, 0.1) 1px, transparent 1px),
       radial-gradient(circle at 80% 80%, rgba($human-essence-pink, 0.08) 1px, transparent 1px),
       radial-gradient(circle at 40% 60%, rgba($consciousness-purple, 0.06) 1px, transparent 1px);
     background-size: 50px 50px, 80px 80px, 120px 120px;
@@ -76,7 +76,7 @@
 
 .threshold-subtitle {
   @include heading-h3;
-  color: $transcendent-gold;
+  color: $luminous-gold;
   margin-bottom: $spacing-xl;
   position: relative;
   font-family: $font-family-transcendent;
@@ -91,8 +91,8 @@
     height: 3px;
     background: linear-gradient(
       to right,
-      $transcendent-gold,
-      rgba($transcendent-gold, 0.5),
+      $luminous-gold,
+      rgba($luminous-gold, 0.5),
       transparent
     );
     
@@ -104,7 +104,7 @@
   
   // Consciousness pulse on hover
   &:hover {
-    text-shadow: 0 0 20px rgba($transcendent-gold, 0.6);
+    text-shadow: 0 0 20px rgba($luminous-gold, 0.6);
   }
 }
 
@@ -260,9 +260,9 @@
     height: 100px;
     background: radial-gradient(
       circle,
-      rgba($transcendent-gold, 0.9) 0%,
-      rgba($transcendent-gold, 0.6) 30%,
-      rgba($transcendent-gold, 0.2) 70%,
+      rgba($luminous-gold, 0.9) 0%,
+      rgba($luminous-gold, 0.6) 30%,
+      rgba($luminous-gold, 0.2) 70%,
       transparent 100%
     );
     top: 50%;
@@ -281,7 +281,7 @@
       font-size: $font-size-3xl;
       color: $cosmic-deep-blue;
       font-weight: $font-weight-bold;
-      text-shadow: 0 0 10px rgba($transcendent-gold, 0.8);
+      text-shadow: 0 0 10px rgba($luminous-gold, 0.8);
       animation: infinitySymbol 10s ease-in-out infinite;
     }
     
@@ -294,7 +294,7 @@
       width: 200%;
       height: 200%;
       transform: translate(-50%, -50%);
-      border: 1px solid rgba($transcendent-gold, 0.3);
+      border: 1px solid rgba($luminous-gold, 0.3);
       border-radius: 50%;
       animation: energyWaves 3s ease-out infinite;
     }
@@ -319,7 +319,7 @@
       left: 50%;
       transform: translateX(-50%);
       font-size: $font-size-2xl;
-      color: $transcendent-gold;
+      color: $luminous-gold;
       animation: diamondGlow 6s ease-in-out infinite;
     }
   }
@@ -427,11 +427,11 @@
 @keyframes diamondGlow {
   0%, 100% { 
     opacity: 0.5; 
-    filter: drop-shadow(0 0 5px rgba($transcendent-gold, 0.5)); 
+    filter: drop-shadow(0 0 5px rgba($luminous-gold, 0.5)); 
   }
   50% { 
     opacity: 1; 
-    filter: drop-shadow(0 0 15px rgba($transcendent-gold, 0.8)); 
+    filter: drop-shadow(0 0 15px rgba($luminous-gold, 0.8)); 
   }
 }
 

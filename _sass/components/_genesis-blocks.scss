@@ -65,7 +65,7 @@
     background: conic-gradient(
       from 0deg,
       transparent,
-      rgba($transcendent-gold, 0.1),
+      rgba($luminous-gold, 0.1),
       transparent,
       rgba($consciousness-purple, 0.1),
       transparent
@@ -83,7 +83,7 @@
     right: 20px;
     width: 40px;
     height: 40px;
-    border: 2px solid rgba($transcendent-gold, 0.3);
+    border: 2px solid rgba($luminous-gold, 0.3);
     border-radius: 50%;
     opacity: 0;
     transform: scale(0);
@@ -94,7 +94,7 @@
     transform: translateY(-15px) scale(1.02);
     box-shadow: 
       0 20px 60px rgba($cosmic-deep-blue, 0.4),
-      0 0 40px rgba($transcendent-gold, 0.2);
+      0 0 40px rgba($luminous-gold, 0.2);
     
     &::before {
       opacity: 1;
@@ -111,7 +111,7 @@
     
     .transcendent-cta {
       @include consciousness-pulse;
-      background: linear-gradient(45deg, $transcendent-gold, $wisdom-amber, $human-essence-pink);
+      background: linear-gradient(45deg, $luminous-gold, $wisdom-amber, $human-essence-pink);
     }
   }
   
@@ -132,17 +132,17 @@
   }
   
   &.transcendent-evolution {
-    border-top: 4px solid $transcendent-gold;
+    border-top: 4px solid $luminous-gold;
     
     &:hover {
       box-shadow: 
         0 20px 60px rgba($cosmic-deep-blue, 0.4),
-        0 0 40px rgba($transcendent-gold, 0.4);
+        0 0 40px rgba($luminous-gold, 0.4);
     }
     
     .genesis-block-icon {
-      color: $transcendent-gold;
-      background: radial-gradient(circle, rgba($transcendent-gold, 0.1), transparent);
+      color: $luminous-gold;
+      background: radial-gradient(circle, rgba($luminous-gold, 0.1), transparent);
     }
   }
   
@@ -207,7 +207,7 @@
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background: linear-gradient(to right, $transcendent-gold, transparent, $transcendent-gold);
+    background: linear-gradient(to right, $luminous-gold, transparent, $luminous-gold);
     transition: width 0.4s ease;
   }
   
@@ -259,8 +259,8 @@
     // Transcendent glow on hover
     &:hover {
       box-shadow: 
-        0 8px 25px rgba($transcendent-gold, 0.3),
-        0 0 20px rgba($transcendent-gold, 0.2);
+        0 8px 25px rgba($luminous-gold, 0.3),
+        0 0 20px rgba($luminous-gold, 0.2);
     }
   }
 }
@@ -283,7 +283,7 @@
       left: 50%;
       transform: translateX(-50%);
       font-size: $font-size-xl;
-      color: $transcendent-gold;
+      color: $luminous-gold;
       animation: starTwinkle 4s ease-in-out infinite;
     }
   }
@@ -314,7 +314,7 @@
       position: absolute;
       width: 4px;
       height: 4px;
-      background: $transcendent-gold;
+      background: $luminous-gold;
       border-radius: 50%;
       animation: particleFloat 8s ease-in-out infinite;
     }
