@@ -349,7 +349,7 @@ a {
     color: $cosmic-deep-blue;
   }
 }
-@include responsive-headings;
+@include sacred-responsive-headings;
 
 /*
   Note: Most typography styles are now handled by Bootstrap.
