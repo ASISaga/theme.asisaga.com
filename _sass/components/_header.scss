@@ -6,8 +6,8 @@
   right: 0;
   @extend .navbar;
   @extend .navbar-expand-lg;
-  @extend .bg-dark; // Changed to dark to match footer
-  @extend .navbar-dark; // Use Bootstrap's dark navbar styling
+  background: transparent !important;
+  box-shadow: none !important;
   @extend .rounded-bottom;
   @extend .py-0;
   margin: 0 !important;
@@ -87,11 +87,11 @@
     // Ensure consistent styling when collapsed/expanded
     &.collapsing,
     &.show {
-      @extend .bg-dark; // Using Bootstrap's dark background utility
-      @extend .mt-2; // Add spacing when expanded on mobile
-      @extend .p-2; // Add padding when expanded on mobile
-      @extend .rounded; // Rounded corners when expanded
-      border-top: 1px solid $header-mobile-border; // Using centralized color variable
+      background: rgba(0,0,0,0.6);
+      @extend .mt-2;
+      @extend .p-2;
+      @extend .rounded;
+      border-top: none;
     }
   }
 }
