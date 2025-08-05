@@ -13,14 +13,16 @@ This template defines the basic structure of all pages, including:
   
   <body>
     <!-- Site header with navigation -->
-    {% include header.html %}    
-    
-    <!-- Main content container with skip target for accessibility -->
-    <main class="site-main" id="skip-target" tabindex="-1">
-      <!-- Page content inserted here by Jekyll -->
-      {{ content }}
-    </main>
-
+    <div style="position:relative;">
+      <div style="position:absolute;top:0;left:0;width:100%;z-index:1000;">
+        {% include header.html %}
+      </div>
+      <!-- Main content container with skip target for accessibility -->
+      <main class="site-main" id="skip-target" tabindex="-1" style="padding-top:5.5rem;">
+        <!-- Page content inserted here by Jekyll -->
+        {{ content }}
+      </main>
+    </div>
     <!-- Site footer -->
     {% include footer.html class="site-footer" %}
   
