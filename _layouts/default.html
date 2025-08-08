@@ -12,19 +12,20 @@ This template defines the basic structure of all pages, including:
   {% include head.html %}
   
   <body>
-    <!-- Site header with navigation -->
-    <div style="position:relative;">
+    <!-- Site header and footer with overlapping effect -->
+    <div style="position:relative;min-height:100vh;">
       <div style="position:absolute;top:0;left:0;width:100%;z-index:1000;">
         {% include header.html %}
       </div>
       <!-- Main content container with skip target for accessibility -->
-      <main class="site-main" id="skip-target" tabindex="-1" style="padding-top:5.5rem;">
+      <main class="site-main" id="skip-target" tabindex="-1" style="padding-top:5.5rem;padding-bottom:4rem;">
         <!-- Page content inserted here by Jekyll -->
         {{ content }}
       </main>
+      <div style="position:absolute;bottom:0;left:0;width:100%;z-index:1000;">
+        {% include footer.html class="site-footer" %}
+      </div>
     </div>
-    <!-- Site footer -->
-    {% include footer.html class="site-footer" %}
   
   </body>
 </html>

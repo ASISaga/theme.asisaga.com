@@ -36,7 +36,7 @@
   right: 0;
   @extend .py-0;
   @extend .mt-0;
-  @extend .bg-dark;
+  background: transparent !important;
   color: $footer-text-color;
   min-height: 50px;
   height: 50%;
