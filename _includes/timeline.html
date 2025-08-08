@@ -56,9 +56,7 @@ Parameters:
              aria-controls="timeline-content-{{ forloop.index }}"
              tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
              data-title="{{ item.title }}"
-             data-aos="fade-up" 
-             data-aos-delay="{{ forloop.index | times: 100 }}" 
-             data-aos-duration="800">
+             class="timeline-marker fadeIn"
           <div class="timeline-marker-dot">
             <div class="timeline-marker-pulse"></div>
             <div class="timeline-marker-number">{{ forloop.index }}</div>

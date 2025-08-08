@@ -40,17 +40,17 @@ Parameters:
   </div>
   
   <!-- Content overlay -->
-  <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+  <div class="hero-content fadeIn">
     {% if include.title %}
-      <h1 class="hero-title reveal-on-scroll" id="hero-heading">{{ include.title }}</h1>
+  <h1 class="hero-title fadeIn-sacred" id="hero-heading">{{ include.title }}</h1>
     {% endif %}
     
     {% if include.description %}
-      <p class="hero-description reveal-on-scroll">{{ include.description }}</p>
+  <p class="hero-description fadeIn">{{ include.description }}</p>
     {% endif %}
     
     {% if include.button_text and include.button_url %}
-      <div class="hero-cta reveal-on-scroll" data-aos="fade-up" data-aos-delay="200">
+  <div class="hero-cta fadeIn" >
         <a href="{{ include.button_url }}" class="btn btn-primary btn-lg pulse hero-button" aria-label="{{ include.button_text }}">
           {{ include.button_text }}
         </a>
@@ -58,7 +58,7 @@ Parameters:
     {% endif %}
     
     {% if include.size == "full" %}
-      <div class="hero-scroll-indicator" data-aos="fade-up" data-aos-delay="400">
+  <div class="hero-scroll-indicator fadeIn">
         <a href="#content" class="hero-scroll-icon" aria-label="Scroll down to content">
           <i class="fas fa-chevron-down" aria-hidden="true"></i>
         </a>
