@@ -4,10 +4,11 @@ description: "Theme, UI, SCSS, and JS design guidance for the ASI Saga theme. Ap
 ---
 
 theme.asisaga.com — Theme Instructions
+This instructions file applies to the theme.asisaga.com theme repository for all asisaga.com subdomains.
 
 ## Theme Structure
 - This repo is the shared Jekyll theme for all ASI Saga subdomains.
-- All layouts, includes, SCSS, and JS in this repo are merged into each subdomain at build time.
+- All layouts, includes, SCSS, JS, and the site head (meta tags, CSS/JS includes, etc.) in this repo are merged into each subdomain at build time and apply globally.
 - Do not copy theme files into subdomains; update here for shared changes.
 - Structure is documented in `website_structure.json` — keep it updated.
 
@@ -21,8 +22,10 @@ theme.asisaga.com — Theme Instructions
 - Each HTML page must have a matching SCSS file in `/_sass/pages/`.
 - Each HTML element in a component/page must have exactly one SCSS class in its respective file.
 
+
 ## JavaScript
-- All shared JS goes in `/assets/js/common.js`.
+- All shared JS goes in `/assets/js/common.js` (theme).
+- Each subdomain must have `/assets/js/script.js` as its main entry point, which must import `/assets/js/common.js` from the theme first, then load subdomain-specific JS.
 - Do not duplicate shared JS in subdomains; always import from the theme.
 - Use ES6 modules and import/export syntax.
 - Use semantic, kebab-case file names for scripts.
@@ -35,11 +38,12 @@ theme.asisaga.com — Theme Instructions
 - Use event delegation for dynamic content.
 - Ensure all interactive elements are accessible.
 
+
 ## SCSS
 - All theme SCSS is in `/_sass`.
-- Entry point: `/_sass/_common.scss`.
-- Theme provides `style.scss` in `/assets/css` (entry point for all subdomains).
-- `style.scss` loads both `_common.scss` (theme) and `_main.scss` (subdomain).
+- The main entry point for CSS is `/assets/css/style.scss` (in the theme). This file is compiled by GitHub Pages/Jekyll into `style.css` and included in the site head.
+- `style.scss` imports `_common.scss` from the theme's root `_sass` (shared styles), then `_main.scss` from the subdomain's root `_sass` (subdomain-specific styles).
+- All further style additions or overrides must be made in SCSS files only, never in CSS files. Do not add or edit CSS directly; always use SCSS partials and structure.
 - Do not edit or add SCSS in `/assets/css` except for `style.scss` imports.
 - Use Bootstrap v5.3.5 and prioritize its utilities/components.
 - Customize Bootstrap via SCSS variables, not direct overrides.
