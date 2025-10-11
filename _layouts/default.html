@@ -19,10 +19,10 @@ This template defines the basic structure of all pages, including:
     <!-- Page layout container -->
     <div class="page-layout" style="position:relative;min-height:100vh;display:flex;flex-direction:column;">
       
-      <!-- Site header -->
-      <header class="site-header" role="banner" style="position:relative;z-index:1000;flex-shrink:0;">
+      <!-- Site header (header element and role defined in header.html include) -->
+      <div style="position:relative;z-index:1000;flex-shrink:0;">
         {% include header.html %}
-      </header>
+      </div>
       
       <!-- Main content container with proper semantic structure -->
       <main class="site-main layout-container section-container" id="skip-target" tabindex="-1" role="main" style="flex-grow:1;padding:2rem 0;contain:layout style;">
@@ -32,10 +32,10 @@ This template defines the basic structure of all pages, including:
         </div>
       </main>
       
-      <!-- Site footer -->
-      <footer class="site-footer" role="contentinfo" style="position:relative;z-index:1000;flex-shrink:0;">
+      <!-- Site footer (footer element and role defined in footer.html include) -->
+      <div style="position:relative;z-index:1000;flex-shrink:0;">
         {% include footer.html class="site-footer" %}
-      </footer>
+      </div>
       
     </div>
   
