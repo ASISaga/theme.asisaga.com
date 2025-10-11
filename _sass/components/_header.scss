@@ -41,7 +41,7 @@
       }
     }
   }
-  // Header title
+  // Header title - Enhanced for accessibility
   .site-header__title {
     @extend .fw-bold;
     @extend .m-0;
@@ -49,13 +49,17 @@
     @extend .lh-sm;
     @extend .text-truncate;
     color: $header-text-color;
+    // Remove any text-shadow for better accessibility
+    text-shadow: none !important;
   }
-  // Header tagline
+  // Header tagline - Enhanced for accessibility
   .site-header__tagline {
     @extend .m-0;
     @extend .small;
     @extend .text-truncate;
-    color: $header-text-muted; // Using centralized color variable
+    color: $header-text-muted; // Using centralized color variable (now with better contrast)
+    // Remove any text-shadow for better accessibility
+    text-shadow: none !important;
   }
   // Logo image - minimal custom styling needed
   .site-header__logo-img {

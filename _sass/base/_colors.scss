@@ -185,24 +185,24 @@ $dark-mode-border: #495057;
 // Component-specific color variables
 // -----------------------------------------
 
-// Header component colors
+// Header component colors - Enhanced for WCAG AA contrast
 $header-text-color: $white;
-$header-text-muted: rgba(255, 255, 255, 0.75);
-$header-link-hover-color: rgba(255, 255, 255, 0.5);
-$header-link-hover-bg: rgba(255, 255, 255, 0.1);
-$header-toggle-color: rgba(255, 255, 255, 0.65);
-$header-toggle-focus-shadow: rgba(255, 255, 255, 0.25);
-$header-mobile-border: rgba(255, 255, 255, 0.1);
+$header-text-muted: rgba(255, 255, 255, 0.95); // Increased opacity for better contrast
+$header-link-hover-color: rgba(255, 255, 255, 0.85); // Better contrast for hover
+$header-link-hover-bg: rgba(255, 255, 255, 0.15);
+$header-toggle-color: rgba(255, 255, 255, 0.9); // Much better contrast
+$header-toggle-focus-shadow: rgba(255, 255, 255, 0.5);
+$header-mobile-border: rgba(255, 255, 255, 0.2);
 
-// Footer component colors
+// Footer component colors - Enhanced for WCAG AA contrast
 $footer-text-color: $white;
-$footer-text-muted: rgba(255, 255, 255, 0.75);
-$footer-link-color: $light;
+$footer-text-muted: rgba(255, 255, 255, 0.95); // Much better contrast ratio
+$footer-link-color: $white; // Using white instead of light for better contrast
 
-// Navbar component colors
+// Navbar component colors - Enhanced for accessibility
 $navbar-link-color: $white;
-$navbar-link-hover-color: rgba(255, 255, 255, 0.5);
-$navbar-link-hover-bg: rgba(33, 37, 41, 0.5); // dark-subtle
+$navbar-link-hover-color: rgba(255, 255, 255, 0.85); // Better contrast for hover
+$navbar-link-hover-bg: rgba(33, 37, 41, 0.7); // Darker for better contrast
 $navbar-dropdown-item-color: $white;
 $navbar-dropdown-item-hover-bg: $secondary;
 $navbar-divider-color: $secondary;

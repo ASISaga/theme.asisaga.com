@@ -5,26 +5,38 @@ This template defines the basic structure of all pages, including:
 - Document type and language
 - Head section with meta tags, title, stylesheets and scripts
 - Body structure with header, main content, and footer
+- Enhanced accessibility and layout structure
 -->
 <html lang="{{ site.lang | default: 'en-US' }}">
   
   <!-- Include the head component with all meta tags, CSS, and JS dependencies -->
   {% include head.html %}
   
-  <body>
-    <!-- Site header and footer with overlapping effect -->
-    <div style="position:relative;min-height:100vh;">
-      <div style="position:absolute;top:0;left:0;width:100%;z-index:1000;">
+  <body class="layout-container high-contrast">
+    <!-- Skip navigation for accessibility -->
+    <a href="#skip-target" class="sr-only focus-visible accessible-link">Skip to main content</a>
+    
+    <!-- Page layout container -->
+    <div class="page-layout" style="position:relative;min-height:100vh;display:flex;flex-direction:column;">
+      
+      <!-- Site header -->
+      <header class="site-header" role="banner" style="position:relative;z-index:1000;flex-shrink:0;">
         {% include header.html %}
-      </div>
-      <!-- Main content container with skip target for accessibility -->
-      <main class="site-main" id="skip-target" tabindex="-1" style="padding-top:5.5rem;padding-bottom:4rem;">
+      </header>
+      
+      <!-- Main content container with proper semantic structure -->
+      <main class="site-main layout-container section-container" id="skip-target" tabindex="-1" role="main" style="flex-grow:1;padding:2rem 0;contain:layout style;">
         <!-- Page content inserted here by Jekyll -->
-        {{ content }}
+        <div class="content-wrapper article-container">
+          {{ content }}
+        </div>
       </main>
-      <div style="position:absolute;bottom:0;left:0;width:100%;z-index:1000;">
+      
+      <!-- Site footer -->
+      <footer class="site-footer" role="contentinfo" style="position:relative;z-index:1000;flex-shrink:0;">
         {% include footer.html class="site-footer" %}
-      </div>
+      </footer>
+      
     </div>
   
   </body>

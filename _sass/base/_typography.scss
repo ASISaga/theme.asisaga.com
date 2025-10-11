@@ -57,14 +57,14 @@ h1, h2, h3, h4, h5, h6,
   font-weight: $font-weight-semibold;
 }
 
-// Sacred heading hierarchy with consciousness significance
+// Sacred heading hierarchy with consciousness significance  
 h1, .h1 {
   font-size: $font-size-sacred-xl;
   font-weight: $font-weight-sacred;
   color: $cosmic-deep-blue;
   
-  // Add subtle sacred glow for major headings
-  text-shadow: 0 0 1px rgba($luminous-gold, 0.2);
+  // Remove text-shadow for better accessibility - relying on solid color contrast
+  text-shadow: none;
 }
 
 h2, .h2 {
@@ -115,7 +115,8 @@ body {
 
 .text-transcendent {
   color: $transcendent-white !important;
-  text-shadow: 0 0 2px rgba($cosmic-deep-blue, 0.5);
+  // Remove text-shadow for better accessibility
+  text-shadow: none;
 }
 
 .text-life-force {
@@ -132,7 +133,8 @@ body {
 .sacred-emphasis {
   color: $luminous-gold;
   font-weight: $font-weight-semibold;
-  text-shadow: 0 0 1px rgba($luminous-gold, 0.3);
+  // Remove text-shadow for better accessibility
+  text-shadow: none;
 }
 
 .consciousness-emphasis {
