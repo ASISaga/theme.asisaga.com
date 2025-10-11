@@ -1,0 +1,76 @@
+// Form component mixins
+// Used for consistent form styling across the site
+
+// Base form component
+@mixin form-component($prefix: 'form') {
+  .#{$prefix} {
+    width: 100%;
+    
+    &-row {
+      @extend .row;
+      @extend .justify-content-center;
+      @extend .mt-4;
+    }
+    
+    &-col {
+      @extend .col-md-8;
+      @extend .p-4;
+      @extend .bg-light;
+      @extend .rounded;
+      @extend .shadow-sm;
+    }
+    
+    &-group {
+      @extend .mb-4;
+    }
+    
+    &-label {
+      @extend .form-label;
+      @extend .fw-bold;
+      color: $dark;
+    }
+    
+    &-input {
+      @extend .form-control;
+      @extend .border-0;
+      @extend .shadow-sm;
+      
+      &:focus {
+        @extend .shadow;
+        border-color: $primary;
+      }
+    }
+    
+    &-textarea {
+      @extend .form-control;
+      @extend .border-0;
+      @extend .shadow-sm;
+      min-height: 150px;
+      
+      &:focus {
+        @extend .shadow;
+        border-color: $primary;
+      }
+    }
+    
+    &-submit {
+      @extend .btn;
+      @extend .btn-primary;
+      @extend .px-4;
+      @extend .py-2;
+      @extend .fw-bold;
+    }
+  }
+}
+
+// Contact form variant
+@mixin contact-form-component($prefix: 'contact-form') {
+  @include form-component($prefix);
+  
+  // Any contact-specific form overrides can go here
+  .#{$prefix} {
+    &-container {
+      @extend .mb-5;
+    }
+  }
+}

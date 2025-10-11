@@ -1,40 +1,59 @@
+@use 'sass:color';
+
 // Reusable section component patterns
 // Used for consistent section styling across the site
 
 // Base section component for content sections
 @mixin section-component($prefix: 'section') {
   .#{$prefix} {
-    @extend .py-5;
+    // TODO: Replace @extend .py-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .py-5;
     
     &-container {
-      @extend .container;
+      // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
+    @include container-fluid() with proper mixin or direct styles for Jekyll compatibility
+    // @extend with direct styles for Jekyll compatibility
+    @include container-fluid();
     }
     
     &-title {
-      @extend .display-4;
-      @extend .text-center;
-      @extend .mb-4;
+      // TODO: Replace @extend .display-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .display-4;
+      // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-center;
+      // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-4;
     }
     
     &-subtitle {
-      @extend .h4;
-      @extend .text-center;
-      @extend .mb-3;
-      @extend .text-muted;
+      // TODO: Replace @extend .h4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .h4;
+      // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-center;
+      // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-3;
+      // TODO: Replace @extend .text-muted with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-muted;
     }
     
     &-intro {
-      @extend .lead;
-      @extend .text-center;
-      @extend .mb-5;
+      // TODO: Replace @extend .lead with proper mixin or direct styles for Jekyll compatibility
+    // @extend .lead;
+      // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-center;
+      // TODO: Replace @extend .mb-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-5;
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
     }
     
     &-content {
-      @extend .row;
-      @extend .justify-content-center;
+      // Replaced // TODO: Replace @extend with direct styles
+    display: flex;
+    flex-wrap: wrap;
+      // TODO: Replace @extend .justify-content-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .justify-content-center;
     }
   }
 }

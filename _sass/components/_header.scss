@@ -1,65 +1,92 @@
+@use 'sass:color';
+
 // Site Header - Uses Bootstrap utility classes with minimal custom CSS
 // Core navbar structure
 .site-header {
   width: 100vw;
   left: 0;
   right: 0;
-  @extend .navbar;
-  @extend .navbar-expand-lg;
+  // TODO: Replace @extend .navbar with proper mixin or direct styles for Jekyll compatibility
+    // @extend .navbar;
+  // TODO: Replace @extend .navbar-expand-lg with proper mixin or direct styles for Jekyll compatibility
+    // @extend .navbar-expand-lg;
   background: transparent !important;
   box-shadow: none !important;
-  @extend .rounded-bottom;
-  @extend .py-0;
+  // TODO: Replace @extend .rounded-bottom with proper mixin or direct styles for Jekyll compatibility
+    // @extend .rounded-bottom;
+  // TODO: Replace @extend .py-0 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .py-0;
   margin: 0 !important;
 
   // Brand container
   .site-header__brand {
-    @extend .navbar-brand;
-    @extend .d-flex;
-    @extend .align-items-center;
-    @extend .text-decoration-none;
-    @extend .overflow-hidden;
-    @extend .flex-grow-1;
+    // TODO: Replace @extend .navbar-brand with proper mixin or direct styles for Jekyll compatibility
+    // @extend .navbar-brand;
+    // TODO: Replace @extend .d-flex with proper mixin or direct styles for Jekyll compatibility
+    // @extend .d-flex;
+    // TODO: Replace @extend .align-items-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .align-items-center;
+    // TODO: Replace @extend .text-decoration-none with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-decoration-none;
+    // TODO: Replace @extend .overflow-hidden with proper mixin or direct styles for Jekyll compatibility
+    // @extend .overflow-hidden;
+    // TODO: Replace @extend .flex-grow-1 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .flex-grow-1;
     color: $header-text-color;
 
     // Brand row container
     .header-brand-row {
-      @extend .d-flex;
-      @extend .align-items-center;
+      // TODO: Replace @extend .d-flex with proper mixin or direct styles for Jekyll compatibility
+    // @extend .d-flex;
+      // TODO: Replace @extend .align-items-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .align-items-center;
 
       // Logo container
       .header-logo {
-        @extend .me-3;
-        @extend .flex-shrink-0;
+        // TODO: Replace @extend .me-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .me-3;
+        // TODO: Replace @extend .flex-shrink-0 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .flex-shrink-0;
       }
 
       // Title container
       .header-title {
-        @extend .d-flex;
-        @extend .flex-column;
-        @extend .overflow-hidden;
+        // TODO: Replace @extend .d-flex with proper mixin or direct styles for Jekyll compatibility
+    // @extend .d-flex;
+        // TODO: Replace @extend .flex-column with proper mixin or direct styles for Jekyll compatibility
+    // @extend .flex-column;
+        // TODO: Replace @extend .overflow-hidden with proper mixin or direct styles for Jekyll compatibility
+    // @extend .overflow-hidden;
       }
     }
   }
   // Header title - Enhanced for accessibility
   .site-header__title {
-    @extend .fw-bold;
-    @extend .m-0;
-    @extend .fs-4;
-    @extend .lh-sm;
-    @extend .text-truncate;
+    // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fw-bold;
+    // TODO: Replace @extend .m-0 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .m-0;
+    // TODO: Replace @extend .fs-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fs-4;
+    // TODO: Replace @extend .lh-sm with proper mixin or direct styles for Jekyll compatibility
+    // @extend .lh-sm;
+    // TODO: Replace @extend .text-truncate with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-truncate;
     color: $header-text-color;
     // Remove any text-shadow for better accessibility
-    text-shadow: none !important;
+    /* text-shadow: none !important; */ /* Removed for accessibility - can interfere with text readability */
   }
   // Header tagline - Enhanced for accessibility
   .site-header__tagline {
-    @extend .m-0;
-    @extend .small;
-    @extend .text-truncate;
+    // TODO: Replace @extend .m-0 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .m-0;
+    // TODO: Replace @extend .small with proper mixin or direct styles for Jekyll compatibility
+    // @extend .small;
+    // TODO: Replace @extend .text-truncate with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-truncate;
     color: $header-text-muted; // Using centralized color variable (now with better contrast)
     // Remove any text-shadow for better accessibility
-    text-shadow: none !important;
+    /* text-shadow: none !important; */ /* Removed for accessibility - can interfere with text readability */
   }
   // Logo image - minimal custom styling needed
   .site-header__logo-img {
@@ -68,10 +95,14 @@
   
   // Mobile menu toggle button
   .site-header-toggler {
-    @extend .navbar-toggler;
-    @extend .ms-auto;
-    @extend .border-0; // Remove border for cleaner look
-    @extend .navbar-dark; // Use light toggle icon on dark background
+    // TODO: Replace @extend .navbar-toggler with proper mixin or direct styles for Jekyll compatibility
+    // @extend .navbar-toggler;
+    // TODO: Replace @extend .ms-auto with proper mixin or direct styles for Jekyll compatibility
+    // @extend .ms-auto;
+    // TODO: Replace @extend .border-0 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .border-0; // Remove border for cleaner look
+    // TODO: Replace @extend .navbar-dark with proper mixin or direct styles for Jekyll compatibility
+    // @extend .navbar-dark; // Use light toggle icon on dark background
     color: $header-toggle-color; // Using centralized color variable
     
     &:focus {
@@ -80,21 +111,27 @@
   }
   // Toggle icon
   .site-header-toggler-icon {
-    @extend .navbar-toggler-icon;
+    // TODO: Replace @extend .navbar-toggler-icon with proper mixin or direct styles for Jekyll compatibility
+    // @extend .navbar-toggler-icon;
   }
   
   // Navigation container
   .site-header-nav {
-    @extend .navbar-collapse;
-    @extend .justify-content-end;
+    // TODO: Replace @extend .navbar-collapse with proper mixin or direct styles for Jekyll compatibility
+    // @extend .navbar-collapse;
+    // TODO: Replace @extend .justify-content-end with proper mixin or direct styles for Jekyll compatibility
+    // @extend .justify-content-end;
 
     // Ensure consistent styling when collapsed/expanded
     &.collapsing,
     &.show {
       background: rgba(0,0,0,0.6);
-      @extend .mt-2;
-      @extend .p-2;
-      @extend .rounded;
+      // TODO: Replace @extend .mt-2 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mt-2;
+      // TODO: Replace @extend .p-2 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .p-2;
+      // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
+    // @extend .rounded;
       border-top: none;
     }
   }

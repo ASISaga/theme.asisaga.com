@@ -1,0 +1,72 @@
+// Reusable section component patterns
+// Used for consistent section styling across the site
+
+// Base section component for content sections
+@mixin section-component($prefix: 'section') {
+  .#{$prefix} {
+    @extend .py-5;
+    
+    &-container {
+      @extend .container;
+    }
+    
+    &-title {
+      @extend .display-4;
+      @extend .text-center;
+      @extend .mb-4;
+    }
+    
+    &-subtitle {
+      @extend .h4;
+      @extend .text-center;
+      @extend .mb-3;
+      @extend .text-muted;
+    }
+    
+    &-intro {
+      @extend .lead;
+      @extend .text-center;
+      @extend .mb-5;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    &-content {
+      @extend .row;
+      @extend .justify-content-center;
+    }
+  }
+}
+
+// Alternate background section
+@mixin alt-section-component($prefix: 'section', $bg-color: rgba($light, 0.5)) {
+  @include section-component($prefix);
+  
+  .#{$prefix} {
+    background-color: $bg-color;
+  }
+}
+
+// Section with header and divider
+@mixin header-section-component($prefix: 'section') {
+  @include section-component($prefix);
+  
+  .#{$prefix} {
+    &-title {
+      position: relative;
+      padding-bottom: $spacing-md;
+      
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: $primary;
+      }
+    }
+  }
+}

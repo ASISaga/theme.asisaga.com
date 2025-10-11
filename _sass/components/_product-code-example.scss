@@ -1,29 +1,44 @@
+@use 'sass:color';
+
 // Product Code Example Component Styles
 // Corresponds to product-code-example.html include
 
 .product-code-example-section {
-  @extend .py-5;
+  // TODO: Replace @extend .py-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .py-5;
   
   &.product-section-light {
-    @extend .bg-light;
+    // TODO: Replace @extend .bg-light with proper mixin or direct styles for Jekyll compatibility
+    // @extend .bg-light;
   }
   
   .product-code-container {
-    @extend .container;
-    @extend .py-3;
+    // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
+    @include container-fluid() with proper mixin or direct styles for Jekyll compatibility
+    // @extend with direct styles for Jekyll compatibility
+    @include container-fluid();
+    // TODO: Replace @extend .py-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .py-3;
     
     .product-code-example {
-      @extend .bg-dark;
-      @extend .p-3;
-      @extend .rounded;
-      @extend .shadow;
+      // TODO: Replace @extend .bg-dark with proper mixin or direct styles for Jekyll compatibility
+    // @extend .bg-dark;
+      // TODO: Replace @extend .p-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .p-3;
+      // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
+    // @extend .rounded;
+      // TODO: Replace @extend .shadow with proper mixin or direct styles for Jekyll compatibility
+    // @extend .shadow;
       
       .product-code-title {
-        @extend .text-white;
-        @extend .mb-3;
+        // TODO: Replace @extend .text-white with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-white;
+        // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-3;
       }
         .product-code-block {
-        @extend .m-0;
+        // TODO: Replace @extend .m-0 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .m-0;
         max-height: $product-code-max-height; // Using centralized dimension variable
         overflow-y: auto;
         

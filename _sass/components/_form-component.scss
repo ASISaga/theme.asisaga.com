@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Form component mixins
 // Used for consistent form styling across the site
 
@@ -7,58 +9,94 @@
     width: 100%;
     
     &-row {
-      @extend .row;
-      @extend .justify-content-center;
-      @extend .mt-4;
+      // Replaced // TODO: Replace @extend with direct styles
+    display: flex;
+    flex-wrap: wrap;
+      // TODO: Replace @extend .justify-content-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .justify-content-center;
+      // TODO: Replace @extend .mt-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mt-4;
     }
     
     &-col {
-      @extend .col-md-8;
-      @extend .p-4;
-      @extend .bg-light;
-      @extend .rounded;
-      @extend .shadow-sm;
+      // TODO: Replace @extend .col-md-8 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .col-md-8;
+      // TODO: Replace @extend .p-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .p-4;
+      // TODO: Replace @extend .bg-light with proper mixin or direct styles for Jekyll compatibility
+    // @extend .bg-light;
+      // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
+    // @extend .rounded;
+      // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
+    // @extend .shadow-sm;
     }
     
     &-group {
-      @extend .mb-4;
+      // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-4;
     }
     
     &-label {
-      @extend .form-label;
-      @extend .fw-bold;
+      // TODO: Replace @extend .form-label with proper mixin or direct styles for Jekyll compatibility
+    // @extend .form-label;
+      // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fw-bold;
       color: $dark;
     }
     
     &-input {
-      @extend .form-control;
-      @extend .border-0;
-      @extend .shadow-sm;
+      // TODO: Replace @extend .form-control with proper mixin or direct styles for Jekyll compatibility
+    // @extend .form-control;
+      // TODO: Replace @extend .border-0 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .border-0;
+      // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
+    // @extend .shadow-sm;
       
       &:focus {
-        @extend .shadow;
+        // TODO: Replace @extend .shadow with proper mixin or direct styles for Jekyll compatibility
+    // @extend .shadow;
         border-color: $primary;
       }
     }
     
     &-textarea {
-      @extend .form-control;
-      @extend .border-0;
-      @extend .shadow-sm;
+      // TODO: Replace @extend .form-control with proper mixin or direct styles for Jekyll compatibility
+    // @extend .form-control;
+      // TODO: Replace @extend .border-0 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .border-0;
+      // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
+    // @extend .shadow-sm;
       min-height: 150px;
       
       &:focus {
-        @extend .shadow;
+        // TODO: Replace @extend .shadow with proper mixin or direct styles for Jekyll compatibility
+    // @extend .shadow;
         border-color: $primary;
       }
     }
     
     &-submit {
-      @extend .btn;
-      @extend .btn-primary;
-      @extend .px-4;
-      @extend .py-2;
-      @extend .fw-bold;
+      // Base button styles (replaced @extend)
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.375rem;
+      // TODO: Replace @extend .btn-primary with proper mixin or direct styles for Jekyll compatibility
+    // @extend .btn-primary;
+      // TODO: Replace @extend .px-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .px-4;
+      // TODO: Replace @extend .py-2 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .py-2;
+      // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fw-bold;
     }
   }
 }
@@ -70,7 +108,8 @@
   // Any contact-specific form overrides can go here
   .#{$prefix} {
     &-container {
-      @extend .mb-5;
+      // TODO: Replace @extend .mb-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-5;
     }
   }
 }

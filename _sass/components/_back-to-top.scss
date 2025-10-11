@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Back to top button styles
 
 .back-to-top {
@@ -21,7 +23,7 @@
   
   &.show {
     bottom: 20px;
-    opacity: 0.8;
+    opacity: 0.9 /* Increased for accessibility */;
     
     &:hover,
     &:focus {

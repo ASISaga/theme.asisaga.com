@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Header section component mixins
 // Used for page headers and hero sections
 
@@ -5,37 +7,52 @@
 @mixin header-component($prefix: 'header') {
   .#{$prefix} {
     &-section {
-      @extend .py-5;
-      @extend .mb-5;
-      @extend .text-center;
-      @extend .rounded;
-      @extend .shadow-sm;
+      // TODO: Replace @extend .py-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .py-5;
+      // TODO: Replace @extend .mb-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-5;
+      // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-center;
+      // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
+    // @extend .rounded;
+      // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
+    // @extend .shadow-sm;
     }
     
     &-title {
-      @extend .display-4;
-      @extend .fw-bold;
-      @extend .mb-3;
+      // TODO: Replace @extend .display-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .display-4;
+      // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fw-bold;
+      // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-3;
     }
     
     &-subtitle {
-      @extend .fs-5;
-      @extend .text-secondary;
-      @extend .mb-4;
+      // TODO: Replace @extend .fs-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fs-5;
+      // TODO: Replace @extend .text-secondary with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-secondary;
+      // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-4;
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
     }
     
     &-content {
-      @extend .container;
-      @extend .px-4;
+      // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
+    @include container-fluid() with proper mixin or direct styles for Jekyll compatibility
+    // @extend with direct styles for Jekyll compatibility
+    @include container-fluid();
+      // TODO: Replace @extend .px-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .px-4;
     }
   }
 }
 
 // Gradient header component
-@mixin gradient-header-component($prefix: 'header', $start-color: lighten($primary, 40%), $end-color: $white) {
+@mixin gradient-header-component($prefix: 'header', $start-color: color.adjust($primary, $lightness: 40%), $end-color: $white) {
   @include header-component($prefix);
   
   .#{$prefix} {

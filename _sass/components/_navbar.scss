@@ -1,36 +1,49 @@
+@use 'sass:color';
+
 // Styles for _includes/navbar.html - Leveraging Bootstrap's native classes
 
 // The main <ul> container for the navigation items
 .site-navbar { // This class name is used in navbar.html for the root <ul>
-  @extend .navbar-nav; // Bootstrap class for a list of navigation links
+  // TODO: Replace @extend .navbar-nav with proper mixin or direct styles for Jekyll compatibility
+    // @extend .navbar-nav; // Bootstrap class for a list of navigation links
 
   // Styling for individual list items within the navbar
   .navbar-item {
-    @extend .nav-item; // Bootstrap class for a single navigation item
-    @extend .mx-1; // Add horizontal spacing between nav items
+    // TODO: Replace @extend .nav-item with proper mixin or direct styles for Jekyll compatibility
+    // @extend .nav-item; // Bootstrap class for a single navigation item
+    // TODO: Replace @extend .mx-1 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mx-1; // Add horizontal spacing between nav items
 
     // Specific styling for dropdown items
     &.dropdown {
-      @extend .dropdown; // Bootstrap class to make it a dropdown container
+      // TODO: Replace @extend .dropdown with proper mixin or direct styles for Jekyll compatibility
+    // @extend .dropdown; // Bootstrap class to make it a dropdown container
     }
   }
 
   // Styling for active navigation items
   .navbar-item-active {
-    @extend .nav-item; // Bootstrap class for a single navigation item
-    @extend .mx-1; // Add horizontal spacing between nav items
+    // TODO: Replace @extend .nav-item with proper mixin or direct styles for Jekyll compatibility
+    // @extend .nav-item; // Bootstrap class for a single navigation item
+    // TODO: Replace @extend .mx-1 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mx-1; // Add horizontal spacing between nav items
 
     .navbar-link {
-      @extend .active; // Bootstrap class to mark the link as active
-      @extend .fw-bold; // Make active items bold
+      // TODO: Replace @extend .active with proper mixin or direct styles for Jekyll compatibility
+    // @extend .active; // Bootstrap class to mark the link as active
+      // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fw-bold; // Make active items bold
       // Bootstrap's .active class handles the active state styling
     }
   }
   // Styling for navigation links
   .navbar-link {
-    @extend .nav-link; // Bootstrap class for navigation links
-    @extend .px-2; // Add padding to make clickable area larger
-    @extend .rounded; // Rounded corners for hover states
+    // TODO: Replace @extend .nav-link with proper mixin or direct styles for Jekyll compatibility
+    // @extend .nav-link; // Bootstrap class for navigation links
+    // TODO: Replace @extend .px-2 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .px-2; // Add padding to make clickable area larger
+    // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
+    // @extend .rounded; // Rounded corners for hover states
     color: $navbar-link-color; // Using centralized color variable
 
     &:hover {
@@ -40,24 +53,31 @@
 
     // Styling for dropdown toggle links
     &[data-bs-toggle="dropdown"] {
-      @extend .dropdown-toggle; // Bootstrap class for dropdown toggle arrows
+      // TODO: Replace @extend .dropdown-toggle with proper mixin or direct styles for Jekyll compatibility
+    // @extend .dropdown-toggle; // Bootstrap class for dropdown toggle arrows
     }
   }
 
   // Styling for the dropdown menu itself
   .navbar-dropdown {
-    @extend .dropdown-menu; // Bootstrap class for the dropdown menu
-    @extend .dropdown-menu-dark; // Bootstrap's dark dropdown styling
-    @extend .shadow; // Add shadow for depth
-    @extend .border-0; // Remove border for cleaner look
-    @extend .mt-2; // Add margin top for better spacing
+    // TODO: Replace @extend .dropdown-menu with proper mixin or direct styles for Jekyll compatibility
+    // @extend .dropdown-menu; // Bootstrap class for the dropdown menu
+    // TODO: Replace @extend .dropdown-menu-dark with proper mixin or direct styles for Jekyll compatibility
+    // @extend .dropdown-menu-dark; // Bootstrap's dark dropdown styling
+    // TODO: Replace @extend .shadow with proper mixin or direct styles for Jekyll compatibility
+    // @extend .shadow; // Add shadow for depth
+    // TODO: Replace @extend .border-0 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .border-0; // Remove border for cleaner look
+    // TODO: Replace @extend .mt-2 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mt-2; // Add margin top for better spacing
   }
 
   // Container for each dropdown item
   // Removed .navbar-dropdown-item-container as it was an empty ruleset
   // Styling for individual items within a dropdown menu
   .navbar-dropdown-item {
-    @extend .dropdown-item; // Bootstrap class for a dropdown item
+    // TODO: Replace @extend .dropdown-item with proper mixin or direct styles for Jekyll compatibility
+    // @extend .dropdown-item; // Bootstrap class for a dropdown item
     color: $navbar-dropdown-item-color; // Using centralized color variable
 
     &:hover,
@@ -68,8 +88,10 @@
   }
   // Styling for dividers within a dropdown menu
   .navbar-divider {
-    @extend .dropdown-divider; // Bootstrap class for a dropdown divider
-    @extend .my-1; // Add vertical margin for better spacing
+    // TODO: Replace @extend .dropdown-divider with proper mixin or direct styles for Jekyll compatibility
+    // @extend .dropdown-divider; // Bootstrap class for a dropdown divider
+    // TODO: Replace @extend .my-1 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .my-1; // Add vertical margin for better spacing
     border-color: $navbar-divider-color; // Using centralized color variable
   }
 }

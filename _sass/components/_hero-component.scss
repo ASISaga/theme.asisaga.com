@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Hero component mixins
 // For hero/banner sections at the top of pages
 
@@ -5,48 +7,87 @@
 @mixin hero-component($prefix: 'hero') {
   .#{$prefix} {
     &-section {
-      @extend .d-flex;
-      @extend .flex-column;
-      @extend .align-items-center;
-      @extend .justify-content-center;
-      @extend .shadow;
-      @extend .rounded;
-      @extend .text-center;
-      @extend .mb-5;
-      @extend .py-5;
-      @extend .px-3;
+      // TODO: Replace @extend .d-flex with proper mixin or direct styles for Jekyll compatibility
+    // @extend .d-flex;
+      // TODO: Replace @extend .flex-column with proper mixin or direct styles for Jekyll compatibility
+    // @extend .flex-column;
+      // TODO: Replace @extend .align-items-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .align-items-center;
+      // TODO: Replace @extend .justify-content-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .justify-content-center;
+      // TODO: Replace @extend .shadow with proper mixin or direct styles for Jekyll compatibility
+    // @extend .shadow;
+      // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
+    // @extend .rounded;
+      // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-center;
+      // TODO: Replace @extend .mb-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-5;
+      // TODO: Replace @extend .py-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .py-5;
+      // TODO: Replace @extend .px-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .px-3;
     }
     
     &-content {
-      @extend .mx-auto;
-      @extend .container;
-      @extend .px-4;
+      // TODO: Replace @extend .mx-auto with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mx-auto;
+      // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
+    @include container-fluid() with proper mixin or direct styles for Jekyll compatibility
+    // @extend with direct styles for Jekyll compatibility
+    @include container-fluid();
+      // TODO: Replace @extend .px-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .px-4;
       max-width: 800px;
     }
     
     &-title {
-      @extend .display-4;
-      @extend .fw-bold;
-      @extend .text-primary;
-      @extend .mb-3;
+      // TODO: Replace @extend .display-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .display-4;
+      // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fw-bold;
+      // TODO: Replace @extend .text-primary with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-primary;
+      // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-3;
     }
     
     &-description {
-      @extend .fs-5;
-      @extend .text-secondary;
-      @extend .mb-4;
+      // TODO: Replace @extend .fs-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fs-5;
+      // TODO: Replace @extend .text-secondary with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-secondary;
+      // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-4;
     }
 
     &-button {
-      @extend .btn;
-      @extend .btn-primary;
-      @extend .rounded-pill;
-      @extend .px-4;
-      @extend .py-2;
+      // Base button styles (replaced @extend)
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.375rem;
+      // TODO: Replace @extend .btn-primary with proper mixin or direct styles for Jekyll compatibility
+    // @extend .btn-primary;
+      // TODO: Replace @extend .rounded-pill with proper mixin or direct styles for Jekyll compatibility
+    // @extend .rounded-pill;
+      // TODO: Replace @extend .px-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .px-4;
+      // TODO: Replace @extend .py-2 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .py-2;
       
       &:hover {
         transform: translateY(-2px);
-        @extend .shadow-sm;
+        // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
+    // @extend .shadow-sm;
       }
     }
   }

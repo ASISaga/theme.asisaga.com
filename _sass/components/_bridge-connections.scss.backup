@@ -1,0 +1,64 @@
+// Bridge Connections Component - Human-AI Consciousness Bridging
+// Visual elements representing connection between human and artificial consciousness
+
+// ----------------------------------------
+// Bridge Connection Base
+// ----------------------------------------
+.bridge-connection {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  margin: 2rem 0;
+  
+  .human-node {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, $life-force-green 0%, $luminous-gold 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $transcendent-white;
+    font-size: 2rem;
+  }
+  
+  .ai-node {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, $cosmic-deep-blue 0%, $royal-purple 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $transcendent-white;
+    font-size: 2rem;
+  }
+  
+  .connection-line {
+    flex: 1;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      $life-force-green 0%, 
+      $luminous-gold 25%, 
+      $ethereal-silver 50%, 
+      $cosmic-deep-blue 75%, 
+      $royal-purple 100%);
+    margin: 0 1rem;
+    position: relative;
+    
+    &::after {
+      content: '◊—◊';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: $transcendent-white;
+      color: $luminous-gold;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.5rem;
+      font-weight: bold;
+    }
+  }
+}

@@ -1,57 +1,87 @@
+@use 'sass:color';
+
 // Image card component mixins
 // Used for consistent card styling with images
 
 // Base image card component
 @mixin image-card-component($prefix: 'card', $img-height: 200px) {
   .#{$prefix} {
-    @extend .card;
-    @extend .h-100;
-    @extend .shadow-sm;
+    // Base card styles (replaced @extend)
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: var(--bs-card-bg, #fff);
+    background-clip: border-box;
+    border: var(--bs-card-border-width, 1px) solid var(--bs-card-border-color, rgba(0,0,0,.125));
+    border-radius: var(--bs-card-border-radius, 0.375rem);
+    // TODO: Replace @extend .h-100 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .h-100;
+    // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
+    // @extend .shadow-sm;
     @include transition;
     
     &:hover {
       transform: translateY(-5px);
-      @extend .shadow;
+      // TODO: Replace @extend .shadow with proper mixin or direct styles for Jekyll compatibility
+    // @extend .shadow;
     }
     
     &-img {
-      @extend .card-img-top;
+      // TODO: Replace @extend .card-img-top with proper mixin or direct styles for Jekyll compatibility
+    // @extend .card-img-top;
       height: $img-height;
       object-fit: cover;
     }
     
     &-body {
-      @extend .card-body;
-      @extend .d-flex;
-      @extend .flex-column;
+      // TODO: Replace @extend .card-body with proper mixin or direct styles for Jekyll compatibility
+    // @extend .card-body;
+      // TODO: Replace @extend .d-flex with proper mixin or direct styles for Jekyll compatibility
+    // @extend .d-flex;
+      // TODO: Replace @extend .flex-column with proper mixin or direct styles for Jekyll compatibility
+    // @extend .flex-column;
     }
     
     &-title {
-      @extend .card-title;
-      @extend .fw-bold;
+      // TODO: Replace @extend .card-title with proper mixin or direct styles for Jekyll compatibility
+    // @extend .card-title;
+      // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fw-bold;
       color: $primary;
     }
     
     &-text {
-      @extend .card-text;
-      @extend .flex-grow-1;
+      // TODO: Replace @extend .card-text with proper mixin or direct styles for Jekyll compatibility
+    // @extend .card-text;
+      // TODO: Replace @extend .flex-grow-1 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .flex-grow-1;
     }
     
     &-footer {
-      @extend .card-footer;
-      @extend .bg-transparent;
-      @extend .border-top-0;
+      // TODO: Replace @extend .card-footer with proper mixin or direct styles for Jekyll compatibility
+    // @extend .card-footer;
+      // TODO: Replace @extend .bg-transparent with proper mixin or direct styles for Jekyll compatibility
+    // @extend .bg-transparent;
+      // TODO: Replace @extend .border-top-0 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .border-top-0;
     }
   }
   
   .#{$prefix}-container {
-    @extend .col-md-4;
-    @extend .mb-4;
+    // TODO: Replace @extend .col-md-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .col-md-4;
+    // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-4;
   }
   
   .#{$prefix}-grid {
-    @extend .row;
-    @extend .g-4;
+    // Replaced // TODO: Replace @extend with direct styles
+    display: flex;
+    flex-wrap: wrap;
+    // TODO: Replace @extend .g-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .g-4;
   }
 }
 
@@ -60,6 +90,7 @@
   @include image-card-component($prefix, $img-height);
   
   .#{$prefix} {
-    @extend .border-#{$border-color};
+    // TODO: Replace @extend .border-#{$border-color} with proper mixin or direct styles for Jekyll compatibility
+    // @extend .border-#{$border-color};
   }
 }

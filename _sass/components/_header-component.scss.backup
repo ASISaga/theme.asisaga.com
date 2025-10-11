@@ -1,0 +1,50 @@
+// Header section component mixins
+// Used for page headers and hero sections
+
+// Base header section component
+@mixin header-component($prefix: 'header') {
+  .#{$prefix} {
+    &-section {
+      @extend .py-5;
+      @extend .mb-5;
+      @extend .text-center;
+      @extend .rounded;
+      @extend .shadow-sm;
+    }
+    
+    &-title {
+      @extend .display-4;
+      @extend .fw-bold;
+      @extend .mb-3;
+    }
+    
+    &-subtitle {
+      @extend .fs-5;
+      @extend .text-secondary;
+      @extend .mb-4;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    &-content {
+      @extend .container;
+      @extend .px-4;
+    }
+  }
+}
+
+// Gradient header component
+@mixin gradient-header-component($prefix: 'header', $start-color: lighten($primary, 40%), $end-color: $white) {
+  @include header-component($prefix);
+  
+  .#{$prefix} {
+    &-section {
+      background: linear-gradient(135deg, $start-color 0%, $end-color 100%);
+    }
+    
+    &-title {
+      color: $primary;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+// Content section component mixins
+// Used for text-based content sections
+
+// Base content section component
+@mixin content-section-component($prefix: 'content') {
+  .#{$prefix} {
+    &-section {
+      @extend .mb-5;
+      @extend .py-4;
+    }
+    
+    &-container {
+      max-width: 768px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    &-title {
+      @extend .fs-4;
+      @extend .fw-bold;
+      @extend .text-primary;
+      @extend .mb-3;
+      @extend .mt-4;
+      
+      &:first-child {
+        @extend .mt-0;
+      }
+    }
+    
+    &-text {
+      @extend .mb-4;
+      line-height: 1.7;
+    }
+  }
+}
+
+// Content section with dividers
+@mixin divider-content-section-component($prefix: 'content') {
+  @include content-section-component($prefix);
+  
+  .#{$prefix} {
+    &-title {
+      padding-bottom: $spacing-sm;
+      border-bottom: 2px solid rgba($primary, 0.2);
+    }
+  }
+}

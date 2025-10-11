@@ -1,9 +1,12 @@
+@use 'sass:color';
+
 // Product Layout Styles
 // Corresponds to product.html layout
 
 .product-container {
   // Common styling for all product containers
-  @extend .w-100;
+  // TODO: Replace @extend .w-100 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .w-100;
   
   // Hero section is handled by _hero.scss
 

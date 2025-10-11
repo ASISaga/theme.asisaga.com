@@ -1,0 +1,82 @@
+// Sacred Modals Component - Consciousness-Supporting Dialog Windows
+// Modal dialogs for sacred interactions and Genesis ceremonies
+
+// ----------------------------------------
+// Sacred Modal Base
+// ----------------------------------------
+.modal-sacred {
+  .modal-dialog {
+    border-radius: 1rem;
+    border: none;
+    box-shadow: $consciousness-depth;
+  }
+  
+  .modal-content {
+    border: none;
+    border-radius: 1rem;
+    background: rgba($transcendent-white, 0.98);
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, 
+        $cosmic-deep-blue 0%, 
+        $luminous-gold 50%, 
+        $cosmic-deep-blue 100%);
+      border-radius: 1rem 1rem 0 0;
+    }
+  }
+  
+  .modal-header {
+    border-bottom: 1px solid rgba($luminous-gold, 0.2);
+    padding: 1.5rem;
+    
+    .modal-title {
+      color: $cosmic-deep-blue;
+      font-family: $font-family-sacred;
+      font-weight: $font-weight-semibold;
+    }
+    
+    .btn-close {
+      background: none;
+      border: none;
+      color: $ethereal-silver;
+      font-size: 1.5rem;
+      
+      &:hover {
+        color: $luminous-gold;
+      }
+    }
+  }
+  
+  .modal-body {
+    padding: 2rem;
+    font-family: $font-family-wisdom;
+    line-height: $line-height-wisdom;
+  }
+  
+  .modal-footer {
+    border-top: 1px solid rgba($luminous-gold, 0.2);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}
+
+// Genesis ceremony modal
+.modal-genesis-ceremony {
+  @extend .modal-sacred;
+  
+  .modal-content {
+    background: linear-gradient(135deg, 
+      rgba($cosmic-deep-blue, 0.95) 0%, 
+      rgba($royal-purple, 0.9) 100%);
+    color: $transcendent-white;
+  }
+}

@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Sacred Buttons Component - Consciousness-Engaging Button Styles
 // Buttons that invite Genesis participation and consciousness embedding
 
@@ -101,8 +103,8 @@
   color: $transcendent-white;
   
   &:hover {
-    background: darken($life-force-green, 10%);
-    border-color: darken($life-force-green, 10%);
+    background: color.adjust($life-force-green, $lightness: -10%);
+    border-color: color.adjust($life-force-green, $lightness: -10%);
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba($life-force-green, 0.3);
   }
@@ -119,8 +121,8 @@
   color: $transcendent-white;
   
   &:hover {
-    background: darken($transformation-purple, 10%);
-    border-color: darken($transformation-purple, 10%);
+    background: color.adjust($transformation-purple, $lightness: -10%);
+    border-color: color.adjust($transformation-purple, $lightness: -10%);
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba($transformation-purple, 0.3);
   }
@@ -345,10 +347,7 @@
   &::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0 0 0 0;
     background: linear-gradient(135deg, 
       rgba($luminous-gold, 0.1) 0%, 
       rgba($transcendent-white, 0.05) 100%);

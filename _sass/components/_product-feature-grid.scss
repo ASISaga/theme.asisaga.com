@@ -1,25 +1,41 @@
+@use 'sass:color';
+
 // Product Feature Grid Component Styles
 // Corresponds to product-feature-grid.html include
 
 .product-feature-grid {
   // Use Bootstrap grid system
-  @extend .container;
-  @extend .row;
-  @extend .justify-content-center;
+  // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
+    @include container-fluid() with proper mixin or direct styles for Jekyll compatibility
+    // @extend with direct styles for Jekyll compatibility
+    @include container-fluid();
+  // Replaced // TODO: Replace @extend with direct styles
+    display: flex;
+    flex-wrap: wrap;
+  // TODO: Replace @extend .justify-content-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .justify-content-center;
   
   // Individual feature cards
   .product-card {
-    @extend .col-md-4;
-    @extend .p-4;
-    @extend .mb-4;
-    @extend .h-100;
-    @extend .bg-white;
-    @extend .rounded;
-    @extend .border;
+    // TODO: Replace @extend .col-md-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .col-md-4;
+    // TODO: Replace @extend .p-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .p-4;
+    // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-4;
+    // TODO: Replace @extend .h-100 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .h-100;
+    // TODO: Replace @extend .bg-white with proper mixin or direct styles for Jekyll compatibility
+    // @extend .bg-white;
+    // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
+    // @extend .rounded;
+    // TODO: Replace @extend .border with proper mixin or direct styles for Jekyll compatibility
+    // @extend .border;
     @include transition(all, 0.3s, ease);
       &:hover {
       transform: translateY($product-item-hover-translate); // Using centralized dimension variable
-      @extend .shadow;
+      // TODO: Replace @extend .shadow with proper mixin or direct styles for Jekyll compatibility
+    // @extend .shadow;
     }
     
     // Card style variations
@@ -33,7 +49,8 @@
     
     // Card components
     .product-card-icon {
-      @extend .mb-3;
+      // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-3;
         i {
         font-size: $font-size-2xl; // Using centralized dimension variable
         color: var(--color-primary);
@@ -41,20 +58,25 @@
     }
     
     .product-card-title {
-      @extend .mb-3;
-      @extend .fw-bold;
+      // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-3;
+      // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fw-bold;
     }
     
     .product-card-description {
-      @extend .mb-3;
+      // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-3;
       color: var(--color-text);
     }
     
     // Card list items (for features, benefits, etc.)
     .product-card-list {
-      @extend .list-unstyled;
+      // TODO: Replace @extend .list-unstyled with proper mixin or direct styles for Jekyll compatibility
+    // @extend .list-unstyled;
         .product-card-list-item {
-        @extend .mb-2;
+        // TODO: Replace @extend .mb-2 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-2;
         position: relative;
         padding-left: $spacing-md + $spacing-xs; // 1.25rem using centralized dimension variables
         

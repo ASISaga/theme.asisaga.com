@@ -1,29 +1,47 @@
+@use 'sass:color';
+
 // Feature Grid component - Using Bootstrap native classes
 // A reusable pattern for displaying features in a responsive grid
 
 .feature-section {
-  @extend .mb-5; // Bootstrap margin utility
-  @extend .py-5; // Bootstrap padding utility for top/bottom spacing
+  // TODO: Replace @extend .mb-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-5; // Bootstrap margin utility
+  // TODO: Replace @extend .py-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .py-5; // Bootstrap padding utility for top/bottom spacing
   
   .feature-title {
-    @extend .text-center; // Bootstrap text alignment utility
-    @extend .mb-4; // Bootstrap margin utility
-    @extend .fs-2; // Bootstrap font-size utility
-    @extend .fw-bold; // Bootstrap font-weight utility
-    @extend .text-primary; // Bootstrap text color utility
+    // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-center; // Bootstrap text alignment utility
+    // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-4; // Bootstrap margin utility
+    // TODO: Replace @extend .fs-2 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fs-2; // Bootstrap font-size utility
+    // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fw-bold; // Bootstrap font-weight utility
+    // TODO: Replace @extend .text-primary with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-primary; // Bootstrap text color utility
   }
   
   .feature-grid {
-    @extend .row; // Bootstrap grid row
-    @extend .g-4; // Bootstrap grid gap utility
-    @extend .justify-content-center; // Bootstrap flex utility
+    // Replaced // TODO: Replace @extend with direct styles
+    display: flex;
+    flex-wrap: wrap; // Bootstrap grid row
+    // TODO: Replace @extend .g-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .g-4; // Bootstrap grid gap utility
+    // TODO: Replace @extend .justify-content-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .justify-content-center; // Bootstrap flex utility
     
     .feature-item {
-      @extend .col-12; // Bootstrap column utility - full width on mobile
-      @extend .col-md-6; // Bootstrap column utility - half width on medium screens
-      @extend .col-lg-4; // Bootstrap column utility - third width on large screens
-      @extend .h-100; // Bootstrap height utility
-      @extend .transition; // Bootstrap transition utility if available
+      // TODO: Replace @extend .col-12 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .col-12; // Bootstrap column utility - full width on mobile
+      // TODO: Replace @extend .col-md-6 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .col-md-6; // Bootstrap column utility - half width on medium screens
+      // TODO: Replace @extend .col-lg-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .col-lg-4; // Bootstrap column utility - third width on large screens
+      // TODO: Replace @extend .h-100 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .h-100; // Bootstrap height utility
+      // TODO: Replace @extend .transition with proper mixin or direct styles for Jekyll compatibility
+    // @extend .transition; // Bootstrap transition utility if available
       
       &:hover {
         transform: translateY(-5px); // Keep this custom transform effect
@@ -31,37 +49,52 @@
     }
     
     .feature-card {
-      @extend .h-100; // Bootstrap height utility
-      @extend .p-4; // Bootstrap padding utility
-      @extend .rounded; // Bootstrap border-radius utility
-      @extend .shadow-sm; // Bootstrap box-shadow utility
-      @extend .bg-white; // Bootstrap background color utility
+      // TODO: Replace @extend .h-100 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .h-100; // Bootstrap height utility
+      // TODO: Replace @extend .p-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .p-4; // Bootstrap padding utility
+      // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
+    // @extend .rounded; // Bootstrap border-radius utility
+      // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
+    // @extend .shadow-sm; // Bootstrap box-shadow utility
+      // TODO: Replace @extend .bg-white with proper mixin or direct styles for Jekyll compatibility
+    // @extend .bg-white; // Bootstrap background color utility
     }
     
     .feature-icon {
-      @extend .fs-1; // Bootstrap font-size utility
-      @extend .text-primary; // Bootstrap text color utility
-      @extend .mb-3; // Bootstrap margin utility
+      // TODO: Replace @extend .fs-1 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fs-1; // Bootstrap font-size utility
+      // TODO: Replace @extend .text-primary with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-primary; // Bootstrap text color utility
+      // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-3; // Bootstrap margin utility
     }
     
     .feature-card-title {
-      @extend .fw-bold; // Bootstrap font-weight utility
-      @extend .mb-3; // Bootstrap margin utility
+      // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fw-bold; // Bootstrap font-weight utility
+      // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-3; // Bootstrap margin utility
     }
     
     .feature-description {
-      @extend .text-body-secondary; // Bootstrap text color utility for secondary text
+      // TODO: Replace @extend .text-body-secondary with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-body-secondary; // Bootstrap text color utility for secondary text
     }
   }
   
   // Alternative styles
   &.feature-section-alt {
-    @extend .bg-light; // Bootstrap background utility
+    // TODO: Replace @extend .bg-light with proper mixin or direct styles for Jekyll compatibility
+    // @extend .bg-light; // Bootstrap background utility
     
     .feature-card {
-      @extend .border-start; // Bootstrap border utility
-      @extend .border-4; // Bootstrap border-width utility
-      @extend .border-primary; // Bootstrap border-color utility
+      // TODO: Replace @extend .border-start with proper mixin or direct styles for Jekyll compatibility
+    // @extend .border-start; // Bootstrap border utility
+      // TODO: Replace @extend .border-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .border-4; // Bootstrap border-width utility
+      // TODO: Replace @extend .border-primary with proper mixin or direct styles for Jekyll compatibility
+    // @extend .border-primary; // Bootstrap border-color utility
     }
   }
 }

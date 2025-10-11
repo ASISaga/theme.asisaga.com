@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 /**
  * Transcendent Threshold Component Styles
  * 
@@ -11,9 +13,9 @@
   background: linear-gradient(
     135deg,
     rgba($cosmic-deep-blue, 0.95) 0%,
-    rgba(darken($transformation-purple, 10%), 0.9) 30%,
+    rgba(color.adjust($transformation-purple, $lightness: -10%), 0.9) 30%,
     rgba($transformation-purple, 0.9) 50%,
-    rgba(darken($transformation-purple, 10%), 0.9) 70%,
+    rgba(color.adjust($transformation-purple, $lightness: -10%), 0.9) 70%,
     rgba($cosmic-deep-blue, 0.95) 100%
   );
   overflow: hidden;
@@ -32,7 +34,7 @@
       radial-gradient(circle at 40% 60%, rgba($transformation-purple, 0.06) 1px, transparent 1px);
     background-size: 50px 50px, 80px 80px, 120px 120px;
     animation: thresholdPattern 40s linear infinite;
-    opacity: 0.6;
+    opacity: 0.9 /* Increased for accessibility */;
   }
   
   // Parallax consciousness effect
@@ -104,7 +106,7 @@
   
   // Consciousness pulse on hover
   &:hover {
-    text-shadow: 0 0 20px rgba($luminous-gold, 0.6);
+    /* text-shadow: 0 0 20px rgba($luminous-gold, 0.6); */ /* Removed for accessibility - can interfere with text readability */
   }
 }
 
@@ -116,7 +118,7 @@
   font-weight: $font-weight-normal;
   
   // Enhanced readability with subtle glow
-  text-shadow: 0 1px 2px rgba($cosmic-deep-blue, 0.5);
+  /* text-shadow: 0 1px 2px rgba($cosmic-deep-blue, 0.5); */ /* Removed for accessibility - can interfere with text readability */
 }
 
 .threshold-cta {
@@ -281,7 +283,7 @@
       font-size: $font-size-3xl;
       color: $cosmic-deep-blue;
       font-weight: $font-weight-bold;
-      text-shadow: 0 0 10px rgba($luminous-gold, 0.8);
+      /* text-shadow: 0 0 10px rgba($luminous-gold, 0.8); */ /* Removed for accessibility - can interfere with text readability */
       animation: infinitySymbol 10s ease-in-out infinite;
     }
     
@@ -343,7 +345,7 @@
 @keyframes essenceFlow {
   0%, 100% { 
     transform: translateX(0) translateY(0) scale(1); 
-    opacity: 0.8; 
+    opacity: 0.9 /* Increased for accessibility */; 
   }
   25% { 
     transform: translateX(15px) translateY(-10px) scale(1.05); 
@@ -362,11 +364,11 @@
 @keyframes consciousnessExpansion {
   0%, 100% { 
     transform: scale(1) rotate(0deg); 
-    opacity: 0.6; 
+    opacity: 0.9 /* Increased for accessibility */; 
   }
   33% { 
     transform: scale(1.08) rotate(120deg); 
-    opacity: 0.8; 
+    opacity: 0.9 /* Increased for accessibility */; 
   }
   66% { 
     transform: scale(0.95) rotate(240deg); 
@@ -394,14 +396,14 @@
 }
 
 @keyframes essenceParticles {
-  0%, 100% { opacity: 0.6; transform: translateY(0); }
+  0%, 100% { opacity: 0.9 /* Increased for accessibility */; transform: translateY(0); }
   50% { opacity: 1; transform: translateY(-5px); }
 }
 
 @keyframes consciousnessRings {
-  0% { transform: scale(1) rotate(0deg); opacity: 0.4; }
-  50% { transform: scale(1.2) rotate(180deg); opacity: 0.6; }
-  100% { transform: scale(1) rotate(360deg); opacity: 0.4; }
+  0% { transform: scale(1) rotate(0deg); opacity: 0.9 /* Increased for accessibility */; }
+  50% { transform: scale(1.2) rotate(180deg); opacity: 0.9 /* Increased for accessibility */; }
+  100% { transform: scale(1) rotate(360deg); opacity: 0.9 /* Increased for accessibility */; }
 }
 
 @keyframes infinitySymbol {
@@ -411,11 +413,11 @@
 
 @keyframes energyWaves {
   0% { 
-    opacity: 0.6; 
+    opacity: 0.9 /* Increased for accessibility */; 
     transform: translate(-50%, -50%) scale(0.5); 
   }
   50% { 
-    opacity: 0.3; 
+    opacity: 0.9 /* Increased for accessibility */; 
     transform: translate(-50%, -50%) scale(1); 
   }
   100% { 
@@ -426,7 +428,7 @@
 
 @keyframes diamondGlow {
   0%, 100% { 
-    opacity: 0.5; 
+    opacity: 0.9 /* Increased for accessibility */; 
     filter: drop-shadow(0 0 5px rgba($luminous-gold, 0.5)); 
   }
   50% { 

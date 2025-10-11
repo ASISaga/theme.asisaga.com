@@ -1,41 +1,59 @@
+@use 'sass:color';
+
 // Product Visual Component Styles
 // Corresponds to product-visual.html include
 
 .product-visual-section {
-  @extend .py-5;
+  // TODO: Replace @extend .py-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .py-5;
   
   &.product-section-light {
-    @extend .bg-light;
+    // TODO: Replace @extend .bg-light with proper mixin or direct styles for Jekyll compatibility
+    // @extend .bg-light;
   }
   
   .product-visual-container {
-    @extend .container;
-    @extend .text-center;
-    @extend .my-4;
+    // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
+    @include container-fluid() with proper mixin or direct styles for Jekyll compatibility
+    // @extend with direct styles for Jekyll compatibility
+    @include container-fluid();
+    // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-center;
+    // TODO: Replace @extend .my-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .my-4;
     
     .product-image {
-      @extend .img-fluid;
-      @extend .rounded;
-      @extend .shadow-sm;
+      // TODO: Replace @extend .img-fluid with proper mixin or direct styles for Jekyll compatibility
+    // @extend .img-fluid;
+      // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
+    // @extend .rounded;
+      // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
+    // @extend .shadow-sm;
       max-width: 100%;
       height: auto;
     }
     
     .additional-content-container {
-      @extend .mt-4;
-      @extend .text-start; // Align text to the left for readability
+      // TODO: Replace @extend .mt-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mt-4;
+      // TODO: Replace @extend .text-start with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-start; // Align text to the left for readability
       
       h3 {
-        @extend .fw-bold;
-        @extend .mb-3;
+        // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fw-bold;
+        // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-3;
         color: var(--color-primary);
       }
       
       ul {
-        @extend .list-unstyled;
+        // TODO: Replace @extend .list-unstyled with proper mixin or direct styles for Jekyll compatibility
+    // @extend .list-unstyled;
         
         li {
-          @extend .mb-2;
+          // TODO: Replace @extend .mb-2 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-2;
         }
       }
     }

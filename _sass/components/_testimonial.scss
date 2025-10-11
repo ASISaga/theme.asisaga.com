@@ -1,65 +1,99 @@
+@use 'sass:color';
+
 // Testimonial component - Using Bootstrap native classes
 // Reusable testimonial styling for customer quotes and feedback
 
 .testimonial-section {
-  @extend .py-5; // Bootstrap padding utility
-  @extend .bg-light; // Bootstrap background utility
-  @extend .mb-5; // Bootstrap margin utility
+  // TODO: Replace @extend .py-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .py-5; // Bootstrap padding utility
+  // TODO: Replace @extend .bg-light with proper mixin or direct styles for Jekyll compatibility
+    // @extend .bg-light; // Bootstrap background utility
+  // TODO: Replace @extend .mb-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-5; // Bootstrap margin utility
   
   .testimonial-container {
-    @extend .container; // Bootstrap container
+    // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
+    @include container-fluid() with proper mixin or direct styles for Jekyll compatibility
+    // @extend with direct styles for Jekyll compatibility
+    @include container-fluid(); // Bootstrap container
   }
   
   .testimonial-grid {
-    @extend .row; // Bootstrap row
-    @extend .g-4; // Bootstrap gap utility
+    // Replaced // TODO: Replace @extend with direct styles
+    display: flex;
+    flex-wrap: wrap; // Bootstrap row
+    // TODO: Replace @extend .g-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .g-4; // Bootstrap gap utility
   }
   
   .testimonial-item {
-    @extend .col-12; // Bootstrap column utility
-    @extend .col-md-6; // Bootstrap column utility
-    @extend .col-lg-4; // Bootstrap column utility
-    @extend .mb-4; // Bootstrap margin utility
+    // TODO: Replace @extend .col-12 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .col-12; // Bootstrap column utility
+    // TODO: Replace @extend .col-md-6 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .col-md-6; // Bootstrap column utility
+    // TODO: Replace @extend .col-lg-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .col-lg-4; // Bootstrap column utility
+    // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-4; // Bootstrap margin utility
   }
   
   .testimonial-card {
-    @extend .bg-white; // Bootstrap background utility
-    @extend .rounded; // Bootstrap border-radius utility
-    @extend .p-4; // Bootstrap padding utility
-    @extend .shadow-sm; // Bootstrap shadow utility
-    @extend .h-100; // Bootstrap height utility
-    @extend .border-start; // Bootstrap border utility
-    @extend .border-4; // Bootstrap border-width utility
-    @extend .border-primary; // Bootstrap border-color utility
+    // TODO: Replace @extend .bg-white with proper mixin or direct styles for Jekyll compatibility
+    // @extend .bg-white; // Bootstrap background utility
+    // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
+    // @extend .rounded; // Bootstrap border-radius utility
+    // TODO: Replace @extend .p-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .p-4; // Bootstrap padding utility
+    // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
+    // @extend .shadow-sm; // Bootstrap shadow utility
+    // TODO: Replace @extend .h-100 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .h-100; // Bootstrap height utility
+    // TODO: Replace @extend .border-start with proper mixin or direct styles for Jekyll compatibility
+    // @extend .border-start; // Bootstrap border utility
+    // TODO: Replace @extend .border-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .border-4; // Bootstrap border-width utility
+    // TODO: Replace @extend .border-primary with proper mixin or direct styles for Jekyll compatibility
+    // @extend .border-primary; // Bootstrap border-color utility
     
     .testimonial-text {
-      @extend .fst-italic; // Bootstrap font-style utility
-      @extend .mb-3; // Bootstrap margin utility
-      @extend .pb-3; // Bootstrap padding utility
-      @extend .border-bottom; // Bootstrap border utility
+      // TODO: Replace @extend .fst-italic with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fst-italic; // Bootstrap font-style utility
+      // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-3; // Bootstrap margin utility
+      // TODO: Replace @extend .pb-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .pb-3; // Bootstrap padding utility
+      // TODO: Replace @extend .border-bottom with proper mixin or direct styles for Jekyll compatibility
+    // @extend .border-bottom; // Bootstrap border utility
     }
     
     .testimonial-author {
-      @extend .text-end; // Bootstrap text alignment utility
+      // TODO: Replace @extend .text-end with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-end; // Bootstrap text alignment utility
     }
     
     .testimonial-name {
-      @extend .fw-bold; // Bootstrap font-weight utility
-      @extend .mb-0; // Bootstrap margin utility
+      // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fw-bold; // Bootstrap font-weight utility
+      // TODO: Replace @extend .mb-0 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-0; // Bootstrap margin utility
     }
     
     .testimonial-company {
-      @extend .text-muted; // Bootstrap text color utility
-      @extend .small; // Bootstrap text size utility
+      // TODO: Replace @extend .text-muted with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-muted; // Bootstrap text color utility
+      // TODO: Replace @extend .small with proper mixin or direct styles for Jekyll compatibility
+    // @extend .small; // Bootstrap text size utility
     }
   }
   
   // Variants
   &.testimonial-section-alt {
-    @extend .bg-white; // Bootstrap background utility
+    // TODO: Replace @extend .bg-white with proper mixin or direct styles for Jekyll compatibility
+    // @extend .bg-white; // Bootstrap background utility
     
     .testimonial-card {
-      @extend .bg-light; // Bootstrap background utility
+      // TODO: Replace @extend .bg-light with proper mixin or direct styles for Jekyll compatibility
+    // @extend .bg-light; // Bootstrap background utility
     }
   }
 }

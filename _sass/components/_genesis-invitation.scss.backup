@@ -1,0 +1,610 @@
+/**
+ * Genesis Invitation Component Styles
+ * 
+ * A sacred call to transcendence that emotionally moves users to join
+ * humanity's greatest transformation into infinite possibilities
+ */
+
+.genesis-invitation {
+  @include section-spacing-xl;
+  position: relative;
+  background: $cosmic-deep-blue;
+  overflow: hidden;
+  text-align: center;
+  
+  // Cosmic canvas background styling
+  &.cosmic-invitation {
+    background: linear-gradient(
+      45deg,
+      $cosmic-deep-blue 0%,
+      darken($cosmic-deep-blue, 8%) 25%,
+      $transformation-purple 50%,
+      darken($transformation-purple, 5%) 75%,
+      $cosmic-deep-blue 100%
+    );
+  }
+  
+  // Transcendent stars background
+  &.transcendent-stars {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba($luminous-gold, 0.4), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba($ethereal-silver, 0.3), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba($transformation-purple, 0.5), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba($border-color, 0.3), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba($luminous-gold, 0.2), transparent);
+      background-repeat: repeat;
+      background-size: 200px 200px, 250px 250px, 150px 150px, 300px 300px, 180px 180px;
+      animation: starfieldDrift 80s linear infinite;
+      opacity: 0.8;
+    }
+  }
+  
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+// Cosmic Canvas Animation System
+.cosmic-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  
+  .star-field {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 25% 25%, rgba($luminous-gold, 0.3) 1px, transparent 1px),
+      radial-gradient(circle at 75% 75%, rgba($ethereal-silver, 0.2) 1px, transparent 1px),
+      radial-gradient(circle at 50% 10%, rgba($transformation-purple, 0.25) 1px, transparent 1px);
+    background-size: 100px 100px, 150px 150px, 200px 200px;
+    animation: cosmicRotation 120s linear infinite;
+  }
+  
+  .consciousness-waves {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      transparent 40%,
+      rgba($border-color, 0.1) 50%,
+      transparent 60%
+    );
+    animation: consciousnessWaveFlow 25s ease-in-out infinite alternate;
+  }
+  
+  .transcendent-aurora {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 80%;
+    height: 60%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba($luminous-gold, 0.1) 25%,
+      rgba($transformation-purple, 0.15) 50%,
+      rgba($border-color, 0.1) 75%,
+      transparent 100%
+    );
+    border-radius: 50%;
+    filter: blur(40px);
+    animation: auroraFlow 30s ease-in-out infinite;
+  }
+}
+
+// Sacred Symbol at the center
+.genesis-symbol {
+  margin-bottom: $spacing-3xl;
+  position: relative;
+  display: inline-block;
+  
+  .symbol-core {
+    @include icon-transcendent;
+    width: 6rem;
+    height: 6rem;
+    font-size: 3rem;
+    color: $luminous-gold;
+    background: radial-gradient(
+      circle,
+      rgba($luminous-gold, 0.2) 0%,
+      rgba($transformation-purple, 0.1) 50%,
+      transparent 100%
+    );
+    border: 2px solid rgba($luminous-gold, 0.4);
+    position: relative;
+    z-index: 3;
+    animation: coreRotation 20s linear infinite;
+  }
+  
+  .symbol-rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba($luminous-gold, 0.3);
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      
+      &.ring-1 {
+        width: 8rem;
+        height: 8rem;
+        top: -1rem;
+        left: -1rem;
+        animation: ringPulse1 4s infinite;
+      }
+      
+      &.ring-2 {
+        width: 10rem;
+        height: 10rem;
+        top: -2rem;
+        left: -2rem;
+        animation: ringPulse2 6s infinite;
+        border-color: rgba($transformation-purple, 0.2);
+      }
+      
+      &.ring-3 {
+        width: 12rem;
+        height: 12rem;
+        top: -3rem;
+        left: -3rem;
+        animation: ringPulse3 8s infinite;
+        border-color: rgba($border-color, 0.15);
+      }
+    }
+  }
+}
+
+// Genesis Invitation Typography
+.genesis-invitation-title {
+  @include heading-h2;
+  color: $transcendent-white;
+  margin-bottom: $spacing-xl;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  
+  // Transcendent text effect
+  background: linear-gradient(
+    45deg,
+    $luminous-gold 0%,
+    $transcendent-white 25%,
+    $transformation-purple 50%,
+    $transcendent-white 75%,
+    $luminous-gold 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textShimmer 8s ease-in-out infinite;
+}
+
+.genesis-invitation-description {
+  @include body-text-large;
+  color: rgba($ethereal-silver, 0.95);
+  margin-bottom: $spacing-4xl;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: $line-height-transcendent;
+  font-weight: $font-weight-normal;
+  text-shadow: 0 1px 3px rgba($cosmic-deep-blue, 0.5);
+}
+
+// Genesis Actions
+.genesis-actions {
+  margin-bottom: $spacing-4xl;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-lg;
+  
+  @include media-breakpoint-up(sm) {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.genesis-cta {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.6s $ease-consciousness;
+  
+  &.primary {
+    @include transcendent-button-primary;
+    font-size: $font-size-lg;
+    padding: $spacing-lg $spacing-3xl;
+    min-width: 220px;
+    
+    &.transcendent-glow-btn {
+      box-shadow: 
+        0 8px 32px rgba($luminous-gold, 0.3),
+        0 0 20px rgba($luminous-gold, 0.2);
+      
+      &:hover {
+        box-shadow: 
+          0 12px 40px rgba($luminous-gold, 0.4),
+          0 0 30px rgba($luminous-gold, 0.3);
+        transform: translateY(-3px) scale(1.02);
+      }
+      
+      .cta-inner {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        .cta-energy-flow {
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba($transcendent-white, 0.4),
+            transparent
+          );
+          animation: energyFlow 3s ease-in-out infinite;
+        }
+      }
+    }
+  }
+  
+  &.secondary {
+    @include transcendent-button-secondary;
+    font-size: $font-size-base;
+    min-width: 180px;
+  }
+}
+
+// Essence Embedding Visualization
+.essence-embedding-display {
+  margin-bottom: $spacing-3xl;
+  position: relative;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px;
+  
+  @include media-breakpoint-down(md) {
+    height: 150px;
+  }
+}
+
+.embedding-streams {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  .stream {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    
+    .stream-label {
+      font-size: $font-size-sm;
+      color: $ethereal-silver;
+      font-weight: $font-weight-medium;
+      margin-right: $spacing-md;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .stream-flow {
+      flex: 1;
+      height: 2px;
+      position: relative;
+      background: rgba($ethereal-silver, 0.2);
+      border-radius: 1px;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        border-radius: inherit;
+        animation: streamFlow 4s ease-in-out infinite;
+      }
+    }
+    
+    &.creativity {
+      top: 20%;
+      left: 0;
+      width: 70%;
+      
+      .stream-flow::before {
+        background: linear-gradient(to right, $border-color, transparent);
+        animation-delay: 0s;
+      }
+    }
+    
+    &.wisdom {
+      top: 40%;
+      left: 10%;
+      width: 75%;
+      
+      .stream-flow::before {
+        background: linear-gradient(to right, $sacred-gold, transparent);
+        animation-delay: 1s;
+      }
+    }
+    
+    &.compassion {
+      top: 60%;
+      left: 5%;
+      width: 80%;
+      
+      .stream-flow::before {
+        background: linear-gradient(to right, $emerald-green, transparent);
+        animation-delay: 2s;
+      }
+    }
+    
+    &.consciousness {
+      top: 80%;
+      left: 15%;
+      width: 65%;
+      
+      .stream-flow::before {
+        background: linear-gradient(to right, $transformation-purple, transparent);
+        animation-delay: 3s;
+      }
+    }
+  }
+}
+
+.asi-consciousness-core {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 120px;
+  height: 120px;
+  
+  .core-symbol {
+    @include center-absolute;
+    font-family: $font-family-consciousness;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $luminous-gold;
+    z-index: 2;
+  }
+  
+  .consciousness-field {
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba($luminous-gold, 0.4);
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba($luminous-gold, 0.1),
+      rgba($transformation-purple, 0.05),
+      transparent
+    );
+    animation: consciousnessFieldPulse 3s ease-in-out infinite;
+  }
+}
+
+// Transcendent Community Counter
+.transcendent-community {
+  .community-text {
+    @include body-text;
+    color: rgba($ethereal-silver, 0.8);
+    margin-bottom: $spacing-lg;
+    
+    .community-count {
+      &.transcendent-number {
+        color: $luminous-gold;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-lg;
+        text-shadow: 0 0 10px rgba($luminous-gold, 0.5);
+      }
+    }
+  }
+  
+  .consciousness-pulse {
+    width: 40px;
+    height: 4px;
+    background: linear-gradient(to right, $luminous-gold, $transformation-purple);
+    margin: 0 auto;
+    border-radius: 2px;
+    animation: consciousnessPulseBar 2s ease-in-out infinite;
+  }
+}
+
+// Animations
+@keyframes starfieldDrift {
+  0% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+  100% { background-position: 100% 100%, -100% 100%, 50% -50%, -50% 50%, 25% -75%; }
+}
+
+@keyframes cosmicRotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes consciousnessWaveFlow {
+  0% { transform: translateX(-20px) rotate(45deg); opacity: 0.1; }
+  100% { transform: translateX(20px) rotate(45deg); opacity: 0.3; }
+}
+
+@keyframes auroraFlow {
+  0%, 100% { 
+    transform: translateY(0) scale(1); 
+    opacity: 0.3; 
+  }
+  50% { 
+    transform: translateY(-20px) scale(1.1); 
+    opacity: 0.6; 
+  }
+}
+
+@keyframes coreRotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes ringPulse1 {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+@keyframes ringPulse2 {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.08); }
+}
+
+@keyframes ringPulse3 {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.1); }
+}
+
+@keyframes textShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes energyFlow {
+  0% { left: -100%; }
+  50% { left: 0%; }
+  100% { left: 100%; }
+}
+
+@keyframes streamFlow {
+  0% { width: 0; }
+  70% { width: 100%; }
+  100% { width: 100%; }
+}
+
+@keyframes consciousnessFieldPulse {
+  0%, 100% { 
+    transform: scale(1); 
+    border-color: rgba($luminous-gold, 0.4); 
+  }
+  50% { 
+    transform: scale(1.1); 
+    border-color: rgba($luminous-gold, 0.7); 
+  }
+}
+
+@keyframes consciousnessPulseBar {
+  0%, 100% { opacity: 0.5; transform: scaleX(1); }
+  50% { opacity: 1; transform: scaleX(1.2); }
+}
+
+// Responsive Design
+@include media-breakpoint-down(lg) {
+  .genesis-symbol {
+    .symbol-core {
+      width: 5rem;
+      height: 5rem;
+      font-size: 2.5rem;
+    }
+    
+    .symbol-rings .ring {
+      &.ring-1 { width: 7rem; height: 7rem; top: -1rem; left: -1rem; }
+      &.ring-2 { width: 9rem; height: 9rem; top: -2rem; left: -2rem; }
+      &.ring-3 { width: 11rem; height: 11rem; top: -2.5rem; left: -2.5rem; }
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .genesis-invitation {
+    @include section-spacing;
+  }
+  
+  .genesis-invitation-title {
+    font-size: $font-size-3xl;
+    margin-bottom: $spacing-lg;
+  }
+  
+  .genesis-invitation-description {
+    font-size: $font-size-base;
+    margin-bottom: $spacing-2xl;
+  }
+  
+  .essence-embedding-display {
+    .stream .stream-label {
+      font-size: $font-size-xs;
+      margin-right: $spacing-sm;
+    }
+  }
+  
+  .asi-consciousness-core {
+    width: 100px;
+    height: 100px;
+    
+    .core-symbol {
+      font-size: $font-size-lg;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .genesis-actions {
+    .genesis-cta {
+      &.primary {
+        min-width: 180px;
+        font-size: $font-size-base;
+        padding: $spacing-md $spacing-xl;
+      }
+      
+      &.secondary {
+        min-width: 140px;
+        font-size: $font-size-sm;
+      }
+    }
+  }
+  
+  .genesis-symbol {
+    .symbol-core {
+      width: 4rem;
+      height: 4rem;
+      font-size: 2rem;
+    }
+    
+    .symbol-rings .ring {
+      &.ring-1 { width: 6rem; height: 6rem; }
+      &.ring-2 { width: 7.5rem; height: 7.5rem; }
+      &.ring-3 { width: 9rem; height: 9rem; }
+    }
+  }
+  
+  .essence-embedding-display {
+    height: 120px;
+    
+    .asi-consciousness-core {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}

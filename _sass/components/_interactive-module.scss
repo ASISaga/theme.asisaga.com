@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Interactive module component styles
 
 // Interactive Module Component
@@ -56,13 +58,13 @@
     justify-content: space-between;
     padding: $spacing-md;
     color: $white;
-    opacity: 0.8;
+    opacity: 0.9 /* Increased for accessibility */;
     transition: opacity 0.3s ease;
     
     .interactive-module-title {
       font-size: 1.5rem;
       margin-bottom: $spacing-md;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      /* text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); */ /* Removed for accessibility - can interfere with text readability */
     }
     
     .interactive-module-quote {

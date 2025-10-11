@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Sacred Forms Component - Consciousness-Supporting Form Elements
 // Forms that facilitate sacred dialogue and Genesis participation
 
@@ -58,7 +60,8 @@
 
 // Sacred textarea for wisdom sharing
 .form-control-wisdom {
-  @extend .form-control-sacred;
+  // TODO: Replace @extend .form-control-sacred with proper mixin or direct styles for Jekyll compatibility
+    // @extend .form-control-sacred;
   min-height: 120px;
   resize: vertical;
   font-family: $font-family-wisdom;
@@ -67,7 +70,8 @@
 
 // Sacred select dropdown
 .form-select-sacred {
-  @extend .form-control-sacred;
+  // TODO: Replace @extend .form-control-sacred with proper mixin or direct styles for Jekyll compatibility
+    // @extend .form-control-sacred;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23FFD700' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 6 7 7 7-7'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
@@ -193,7 +197,8 @@
 }
 
 .form-check-radio {
-  @extend .form-check-sacred;
+  // TODO: Replace @extend .form-check-sacred with proper mixin or direct styles for Jekyll compatibility
+    // @extend .form-check-sacred;
   
   .form-check-input {
     border-radius: 50%;

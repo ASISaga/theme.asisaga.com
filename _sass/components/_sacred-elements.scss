@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Sacred Elements Component - Core Sacred Design Elements
 // Sacred glyphs, symbols, and consciousness-supporting visual elements
 
@@ -13,7 +15,7 @@
   
   &:hover {
     transform: scale(1.1);
-    text-shadow: 0 0 3px rgba($luminous-gold, 0.6);
+    /* text-shadow: 0 0 3px rgba($luminous-gold, 0.6); */ /* Removed for accessibility - can interfere with text readability */
   }
 }
 
@@ -170,10 +172,7 @@
     &::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0 0 0 0;
       border: 2px solid rgba($luminous-gold, 0.3);
       border-radius: inherit;
       pointer-events: none;
@@ -199,10 +198,7 @@
   &::before {
     content: '';
     position: absolute;
-    top: 5px;
-    left: 5px;
-    right: 5px;
-    bottom: 5px;
+    inset: 5px 5px 5px 5px;
     background: $transcendent-white;
     border-radius: 50%;
   }

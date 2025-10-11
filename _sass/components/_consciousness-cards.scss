@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Consciousness Cards Component - Sacred Information Containers
 // Cards that support consciousness embedding content display
 
@@ -36,14 +38,16 @@
 
 // Sacred wisdom card variant
 .wisdom-card {
-  @extend .consciousness-card;
+  // TODO: Replace @extend .consciousness-card with proper mixin or direct styles for Jekyll compatibility
+    // @extend .consciousness-card;
   background: rgba($luminous-gold, 0.05);
   border-color: rgba($luminous-gold, 0.3);
 }
 
 // Genesis progress card
 .genesis-card {
-  @extend .consciousness-card;
+  // TODO: Replace @extend .consciousness-card with proper mixin or direct styles for Jekyll compatibility
+    // @extend .consciousness-card;
   background: linear-gradient(135deg, 
     rgba($cosmic-deep-blue, 0.05) 0%, 
     rgba($royal-purple, 0.02) 100%);

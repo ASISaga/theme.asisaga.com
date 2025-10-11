@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Sacred Modals Component - Consciousness-Supporting Dialog Windows
 // Modal dialogs for sacred interactions and Genesis ceremonies
 
@@ -71,7 +73,8 @@
 
 // Genesis ceremony modal
 .modal-genesis-ceremony {
-  @extend .modal-sacred;
+  // TODO: Replace @extend .modal-sacred with proper mixin or direct styles for Jekyll compatibility
+    // @extend .modal-sacred;
   
   .modal-content {
     background: linear-gradient(135deg, 

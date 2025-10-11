@@ -1,67 +1,116 @@
+@use 'sass:color';
+
 // Hero component - Using Bootstrap native classes
 // A reusable hero/header section for page headers with consistent styling
 
 .hero-section {
-  @extend .d-flex; // Bootstrap display utility
-  @extend .flex-column; // Bootstrap flex utility
-  @extend .align-items-center; // Bootstrap flex utility
-  @extend .justify-content-center; // Bootstrap flex utility
-  @extend .shadow; // Bootstrap shadow utility  
-  @extend .bg-light; // Bootstrap background utility (replace with custom gradient if needed)
-  @extend .rounded; // Bootstrap border-radius utility
-  @extend .text-center; // Bootstrap text alignment utility
-  @extend .mb-5; // Bootstrap margin utility
-  @extend .py-5; // Bootstrap padding utility
-  @extend .px-3; // Bootstrap padding utility
+  // TODO: Replace @extend .d-flex with proper mixin or direct styles for Jekyll compatibility
+    // @extend .d-flex; // Bootstrap display utility
+  // TODO: Replace @extend .flex-column with proper mixin or direct styles for Jekyll compatibility
+    // @extend .flex-column; // Bootstrap flex utility
+  // TODO: Replace @extend .align-items-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .align-items-center; // Bootstrap flex utility
+  // TODO: Replace @extend .justify-content-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .justify-content-center; // Bootstrap flex utility
+  // TODO: Replace @extend .shadow with proper mixin or direct styles for Jekyll compatibility
+    // @extend .shadow; // Bootstrap shadow utility  
+  // TODO: Replace @extend .bg-light with proper mixin or direct styles for Jekyll compatibility
+    // @extend .bg-light; // Bootstrap background utility (replace with custom gradient if needed)
+  // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
+    // @extend .rounded; // Bootstrap border-radius utility
+  // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-center; // Bootstrap text alignment utility
+  // TODO: Replace @extend .mb-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-5; // Bootstrap margin utility
+  // TODO: Replace @extend .py-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .py-5; // Bootstrap padding utility
+  // TODO: Replace @extend .px-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .px-3; // Bootstrap padding utility
   
   .hero-content {
-    @extend .mx-auto; // Bootstrap margin utility
-    @extend .container; // Bootstrap container - replaces custom max-width
-    @extend .px-4; // Bootstrap padding utility
+    // TODO: Replace @extend .mx-auto with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mx-auto; // Bootstrap margin utility
+    // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
+    @include container-fluid() with proper mixin or direct styles for Jekyll compatibility
+    // @extend with direct styles for Jekyll compatibility
+    @include container-fluid(); // Bootstrap container - replaces custom max-width
+    // TODO: Replace @extend .px-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .px-4; // Bootstrap padding utility
   }
   
   .hero-title {
-    @extend .fw-bold; // Bootstrap font-weight utility
-    @extend .text-primary; // Bootstrap text color utility
-    @extend .mb-3; // Bootstrap margin utility
-    @extend .display-5; // Bootstrap display heading utility
+    // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fw-bold; // Bootstrap font-weight utility
+    // TODO: Replace @extend .text-primary with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-primary; // Bootstrap text color utility
+    // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-3; // Bootstrap margin utility
+    // TODO: Replace @extend .display-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .display-5; // Bootstrap display heading utility
   }
   
   .hero-description {
-    @extend .text-secondary; // Bootstrap text color utility
-    @extend .mb-4; // Bootstrap margin utility
-    @extend .fs-5; // Bootstrap font-size utility
-    @extend .mx-auto; // Bootstrap margin utility
-    @extend .col-lg-8; // Bootstrap column utility for max-width on larger screens
+    // TODO: Replace @extend .text-secondary with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-secondary; // Bootstrap text color utility
+    // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-4; // Bootstrap margin utility
+    // TODO: Replace @extend .fs-5 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fs-5; // Bootstrap font-size utility
+    // TODO: Replace @extend .mx-auto with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mx-auto; // Bootstrap margin utility
+    // TODO: Replace @extend .col-lg-8 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .col-lg-8; // Bootstrap column utility for max-width on larger screens
   }
 
   .hero-button {
-    @extend .btn; // Bootstrap button utility
-    @extend .btn-primary; // Bootstrap button utility
-    @extend .rounded-pill; // Bootstrap border-radius utility
-    @extend .px-4; // Bootstrap padding utility
-    @extend .py-2; // Bootstrap padding utility
+    // Base button styles (replaced @extend)
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.375rem; // Bootstrap button utility
+    // TODO: Replace @extend .btn-primary with proper mixin or direct styles for Jekyll compatibility
+    // @extend .btn-primary; // Bootstrap button utility
+    // TODO: Replace @extend .rounded-pill with proper mixin or direct styles for Jekyll compatibility
+    // @extend .rounded-pill; // Bootstrap border-radius utility
+    // TODO: Replace @extend .px-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .px-4; // Bootstrap padding utility
+    // TODO: Replace @extend .py-2 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .py-2; // Bootstrap padding utility
   }
   
   // Variant modifiers
   &.hero-section-sm {
-    @extend .py-4; // Bootstrap padding utility
+    // TODO: Replace @extend .py-4 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .py-4; // Bootstrap padding utility
     
     .hero-title {
-      @extend .display-6; // Bootstrap display heading utility (smaller)
+      // TODO: Replace @extend .display-6 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .display-6; // Bootstrap display heading utility (smaller)
     }
     
     .hero-description {
-      @extend .fs-6; // Bootstrap font-size utility (smaller)
+      // TODO: Replace @extend .fs-6 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fs-6; // Bootstrap font-size utility (smaller)
     }
   }
   
   &.hero-section-alt {
-    @extend .bg-secondary; // Bootstrap background utility
-    @extend .bg-opacity-10; // Bootstrap opacity utility
+    // TODO: Replace @extend .bg-secondary with proper mixin or direct styles for Jekyll compatibility
+    // @extend .bg-secondary; // Bootstrap background utility
+    // TODO: Replace @extend .bg-opacity-10 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .bg-opacity-10; // Bootstrap opacity utility
     
     .hero-title {
-      @extend .text-secondary; // Bootstrap text color utility
+      // TODO: Replace @extend .text-secondary with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-secondary; // Bootstrap text color utility
     }
   }
 }
