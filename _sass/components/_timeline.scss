@@ -4,22 +4,21 @@
 
 // Timeline component
 .timeline-section {
-  // TODO: Replace @extend .py-5 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .py-5; // Bootstrap vertical padding
-  // TODO: Replace @extend .mb-5 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-5; // Bootstrap margin bottom
+  // Bootstrap vertical padding
+  @include padding-y(3rem); // Equivalent to .py-5
   position: relative;
   
   .timeline-title {
-    // TODO: Replace @extend .section-title with proper mixin or direct styles for Jekyll compatibility
-    // @extend .section-title;
+  // Section title utility
+  font-size: 2rem;
+  font-weight: 700;
+  color: $primary;
     text-align: center;
-    margin-bottom: $spacing-lg;
   }
   
   .timeline-container {
     position: relative;
-    padding: $spacing-lg 0;
+    @include padding-vertical($spacing-lg);
   }
   
   // The horizontal track line
@@ -28,7 +27,7 @@
     top: 60px;
     left: 0;
     right: 0;
-    height: 4px;
+    @include height(4px);
     background-color: $primary-light;
     z-index: 1;
   }
@@ -41,17 +40,15 @@
     
     .timeline-marker {
       // Improved focus styles for accessibility
+      // Improved focus styles for accessibility
       &:focus {
-        outline: none;
-        
-        .timeline-marker-dot {
-          box-shadow: 0 0 0 3px rgba($primary, 0.5);
-        }
+        outline: 2px solid $primary;
+        outline-offset: 3px;
       }
-      
-      // Visible focus indicator for keyboard users
+      // Enhanced keyboard focus indicator
       &:focus-visible {
         .timeline-marker-dot {
+          box-shadow: 0 0 0 3px rgba($primary, 0.5);
           outline: 2px solid $primary;
           outline-offset: 3px;
         }
@@ -78,28 +75,26 @@
         }
       }
       
-      .timeline-marker-dot {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background-color: $primary;
-        margin-bottom: $spacing-sm;
-        transition: all 0.3s ease;
-      }
-      
-      .timeline-marker-label {
-        font-size: 0.9rem;
-        color: $text-muted;
-        transition: color 0.3s ease;
-      }
+// Base marker dot and label styles (moved outside .timeline-marker for specificity)
+.timeline-section .timeline-markers .timeline-marker-dot {
+  @include size(20px);
+  border-radius: 50%;
+  background-color: $primary;
+  transition: all 0.3s ease;
+}
+.timeline-section .timeline-markers .timeline-marker-label {
+  font-size: 0.9rem;
+  color: $text-muted;
+  transition: color 0.3s ease;
+}
     }
   }
   
   // Timeline content panels
   .timeline-content-container {
-    margin-top: $spacing-lg;
+
     position: relative;
-    min-height: 400px;
+    @include min-height(400px);
     
     .timeline-content {
       position: absolute;
@@ -128,8 +123,8 @@
           flex: 0 0 40%;
           
           img {
-            width: 100%;
-            height: 100%;
+            @include width-full;
+            @include height-full;
             object-fit: cover;
           }
           
@@ -140,10 +135,10 @@
         
         .timeline-content-text {
           flex: 0 0 60%;
-          padding: $spacing-md;
+          @include padding($spacing-md);
           
           .timeline-content-title {
-            margin-bottom: $spacing-sm;
+
             color: $primary;
           }
           

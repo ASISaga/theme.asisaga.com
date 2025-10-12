@@ -30,7 +30,7 @@
   
   // Full transcendent experience
   &.full {
-    min-height: 100vh;
+    @include min-height-screen;
   }
   
   // Standard hero height
@@ -44,14 +44,14 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  @include width-full;
+  @include height-full;
   z-index: 1;
   
   .cosmic-particles {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    @include width-full;
+    @include height-full;
     background-image: 
       radial-gradient(2px 2px at 20px 30px, rgba($luminous-gold, 0.3), transparent),
       radial-gradient(2px 2px at 40px 70px, rgba($transformation-purple, 0.4), transparent),
@@ -79,8 +79,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 800px;
-    height: 800px;
+    @include size(800px);
     transform: translate(-50%, -50%);
     background: radial-gradient(
       circle,
@@ -106,12 +105,10 @@
 
 // Consciousness Emergence Animation
 .consciousness-emergence {
-  margin-bottom: $spacing-2xl;
   
   .essence-symbol {
     @include icon-transcendent;
-    width: 6rem;
-    height: 6rem;
+    @include size-hero-icon;
     margin: 0 auto;
     animation: consciousnessRotation 20s linear infinite;
     
@@ -126,7 +123,6 @@
 // Hero Typography
 .transcendent-hero-title {
   @include heading-genesis;
-  margin-bottom: $spacing-xl;
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
@@ -137,7 +133,6 @@
 
 .transcendent-hero-description {
   @include body-text-large;
-  margin-bottom: $spacing-3xl;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -147,7 +142,6 @@
 
 // Hero Actions
 .transcendent-hero-actions {
-  margin-bottom: $spacing-3xl;
   display: flex;
   flex-direction: column;
   align-items: center;

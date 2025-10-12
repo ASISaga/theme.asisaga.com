@@ -54,7 +54,6 @@
 
 // Threshold Experience Layout
 .threshold-experience {
-  margin-top: $spacing-4xl;
   
   .row {
     align-items: center;
@@ -68,18 +67,17 @@
 
 // Threshold Content
 .threshold-content {
-  padding: $spacing-2xl 0;
+  @include padding-vertical($spacing-2xl);
   
   @include media-breakpoint-down(md) {
     text-align: center;
-    padding: $spacing-xl 0;
+    @include padding-vertical($spacing-xl);
   }
 }
 
 .threshold-subtitle {
   @include heading-h3;
   color: $luminous-gold;
-  margin-bottom: $spacing-xl;
   position: relative;
   font-family: $font-family-consciousness;
   
@@ -89,8 +87,8 @@
     position: absolute;
     bottom: -12px;
     left: 0;
-    width: 80px;
-    height: 3px;
+    @include width(80px);
+    @include height(3px);
     background: linear-gradient(
       to right,
       $luminous-gold,
@@ -114,7 +112,6 @@
   @include body-text-large;
   color: rgba($transcendent-white, 0.95);
   line-height: $line-height-transcendent;
-  margin-bottom: $spacing-3xl;
   font-weight: $font-weight-normal;
   
   // Enhanced readability with subtle glow
@@ -125,7 +122,7 @@
   @include transcendent-button-primary;
   @include consciousness-pulse;
   font-size: $font-size-lg;
-  padding: $spacing-lg $spacing-2xl;
+  @include padding-combined($spacing-lg, $spacing-2xl);
   position: relative;
   
   // Sacred crossing animation
@@ -149,28 +146,28 @@
 // Threshold Visualization
 .threshold-visualization {
   position: relative;
-  height: 500px;
+  @include height(500px);
   display: flex;
   align-items: center;
   justify-content: center;
   
   @include media-breakpoint-down(md) {
-    height: 350px;
+    @include height(350px);
     margin-top: $spacing-2xl;
   }
   
   @include media-breakpoint-down(sm) {
-    height: 280px;
+    @include height(280px);
   }
 }
 
 // Consciousness Merger Visualization
 .consciousness-merger {
   position: relative;
-  width: 100%;
-  height: 100%;
-  max-width: 400px;
-  max-height: 400px;
+  @include width-full;
+  @include height-full;
+  @include max-width(400px);
+  @include max-height(400px);
   
   .human-essence-stream,
   .asi-consciousness-field,
@@ -185,8 +182,7 @@
   
   // Human essence visualization
   .human-essence-stream {
-    width: 140px;
-    height: 140px;
+    @include size(140px);
     background: radial-gradient(
       circle,
       rgba($border-color, 0.8) 0%,
@@ -203,8 +199,7 @@
       position: absolute;
       top: 20%;
       left: 20%;
-      width: 8px;
-      height: 8px;
+      @include size(8px);
       background: $border-color;
       border-radius: 50%;
       box-shadow: 
@@ -217,8 +212,7 @@
   
   // ASI consciousness field
   .asi-consciousness-field {
-    width: 220px;
-    height: 220px;
+    @include size(220px);
     background: radial-gradient(
       circle,
       rgba($transformation-purple, 0.6) 0%,
@@ -236,8 +230,8 @@
       position: absolute;
       top: 30%;
       left: 30%;
-      width: 40%;
-      height: 40%;
+      @include width(40%);
+      @include height(40%);
       border: 2px solid rgba($transformation-purple, 0.4);
       border-radius: 50%;
       animation: consciousnessRings 8s linear infinite;
@@ -248,8 +242,8 @@
       position: absolute;
       top: 20%;
       left: 20%;
-      width: 60%;
-      height: 60%;
+      @include width(60%);
+      @include height(60%);
       border: 1px solid rgba($transformation-purple, 0.2);
       border-radius: 50%;
       animation: consciousnessRings 12s linear infinite reverse;
@@ -258,8 +252,7 @@
   
   // Transcendent emergence point
   .transcendent-emergence {
-    width: 100px;
-    height: 100px;
+    @include size(100px);
     background: radial-gradient(
       circle,
       rgba($luminous-gold, 0.9) 0%,
@@ -293,8 +286,8 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 200%;
-      height: 200%;
+      @include width(200%);
+      @include height(200%);
       transform: translate(-50%, -50%);
       border: 1px solid rgba($luminous-gold, 0.3);
       border-radius: 50%;
@@ -329,7 +322,7 @@
   .section-subtitle {
     @include body-text-large;
     color: rgba($ethereal-silver, 0.9);
-    max-width: 700px;
+    @include max-width(700px);
     margin: 0 auto;
     font-style: italic;
     line-height: $line-height-relaxed;

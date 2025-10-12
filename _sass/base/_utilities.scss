@@ -1,3 +1,187 @@
+// Comprehensive utility mixins for common CSS patterns
+
+// Spacing utilities
+@mixin pad($size) {
+  padding: map.get($spacers, $size) !important;
+}
+
+@mixin pad-x($size) {
+  padding-left: map.get($spacers, $size) !important;
+  padding-right: map.get($spacers, $size) !important;
+}
+
+@mixin pad-y($size) {
+  padding-top: map.get($spacers, $size) !important;
+  padding-bottom: map.get($spacers, $size) !important;
+}
+
+@mixin mar($size) {
+  margin: map.get($spacers, $size) !important;
+}
+
+@mixin mar-x($size) {
+  margin-left: map.get($spacers, $size) !important;
+  margin-right: map.get($spacers, $size) !important;
+}
+
+@mixin mar-y($size) {
+  margin-top: map.get($spacers, $size) !important;
+  margin-bottom: map.get($spacers, $size) !important;
+}
+
+@mixin mar-t($size) {
+  margin-top: map.get($spacers, $size) !important;
+}
+
+@mixin mar-b($size) {
+  margin-bottom: map.get($spacers, $size) !important;
+}
+
+// Layout utilities
+@mixin d-flex {
+  display: flex !important;
+}
+
+@mixin d-block {
+  display: block !important;
+}
+
+@mixin d-inline-block {
+  display: inline-block !important;
+}
+
+@mixin d-inline-flex {
+  display: inline-flex !important;
+}
+
+@mixin align-items($value) {
+  align-items: $value !important;
+}
+
+@mixin justify-content($value) {
+  justify-content: $value !important;
+}
+
+@mixin flex-direction($value) {
+  flex-direction: $value !important;
+}
+
+@mixin flex-wrap($value) {
+  flex-wrap: $value !important;
+}
+
+@mixin flex($value) {
+  flex: $value !important;
+}
+
+// Text alignment utilities
+@mixin text-center {
+  text-align: center !important;
+}
+
+@mixin text-left {
+  text-align: left !important;
+}
+
+@mixin text-right {
+  text-align: right !important;
+}
+
+// Background utilities
+@mixin bg-primary {
+  background-color: $primary !important;
+}
+
+@mixin bg-secondary {
+  background-color: $secondary !important;
+}
+
+@mixin bg-light {
+  background-color: $gray-100 !important;
+}
+
+@mixin bg-white {
+  background-color: #fff !important;
+}
+
+// Position utilities
+@mixin position-relative {
+  position: relative !important;
+}
+
+@mixin position-absolute {
+  position: absolute !important;
+}
+
+@mixin position-fixed {
+  position: fixed !important;
+}
+
+// Width/Height utilities
+// Border radius utility
+@mixin border-radius($radius) {
+  border-radius: $radius !important;
+}
+
+// Box shadow utility
+@mixin box-shadow($shadow) {
+  box-shadow: $shadow !important;
+}
+
+// Font size utility
+@mixin font-size($size) {
+  font-size: $size !important;
+}
+
+// Font weight utility
+@mixin font-weight($weight) {
+  font-weight: $weight !important;
+}
+
+// Line height utility
+@mixin line-height($lh) {
+  line-height: $lh !important;
+}
+
+// Color utility
+@mixin color($color) {
+  color: $color !important;
+}
+
+// Background gradient utility
+@mixin background-gradient($gradient) {
+  background: $gradient !important;
+}
+
+// Max width utility
+@mixin max-width($width) {
+  max-width: $width !important;
+}
+
+// Min height utility
+@mixin min-height($height) {
+  min-height: $height !important;
+}
+@mixin w-100 {
+  width: 100% !important;
+}
+
+@mixin h-100 {
+  height: 100% !important;
+}
+// Bootstrap utility class aliases for encapsulation (only for classes with no SCSS mixin/function)
+.bg-light-alias { @extend .bg-light; }
+.text-center-alias { @extend .text-center; }
+.nav-alias { @extend .nav; }
+.nav-pills-alias { @extend .nav-pills; }
+.justify-content-center-alias { @extend .justify-content-center; }
+.mb-4-alias { @extend .mb-4; }
+.nav-item-alias { @extend .nav-item; }
+.mx-2-alias { @extend .mx-2; }
+.btn-alias { @extend .btn; }
+.btn-outline-primary-alias { @extend .btn-outline-primary; }
+.px-4-alias { @extend .px-4; }
+.py-2-alias { @extend .py-2; }
 // Custom utilities - Only include what Bootstrap doesn't provide
 
 /*

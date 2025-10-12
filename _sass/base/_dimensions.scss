@@ -83,3 +83,233 @@ $breakpoint-md-max: 767.98px;  // $breakpoint-md - 0.02
 $breakpoint-lg-max: 991.98px;  // $breakpoint-lg - 0.02
 $breakpoint-xl-max: 1199.98px; // $breakpoint-xl - 0.02
 $breakpoint-xxl-max: 1399.98px; // $breakpoint-xxl - 0.02
+
+// --------------------------------------------
+// Margin Mixins - Standardized spacing patterns
+// --------------------------------------------
+
+// Margin all sides
+@mixin margin($size) {
+  margin: $size;
+}
+
+// Margin top
+@mixin margin-top($size) {
+  margin-top: $size;
+}
+
+// Margin bottom  
+@mixin margin-bottom($size) {
+  margin-bottom: $size;
+}
+
+// Margin left
+@mixin margin-left($size) {
+  margin-left: $size;
+}
+
+// Margin right
+@mixin margin-right($size) {
+  margin-right: $size;
+}
+
+// Horizontal margins (left and right)
+@mixin margin-horizontal($size) {
+  margin-left: $size;
+  margin-right: $size;
+}
+
+// Vertical margins (top and bottom)
+@mixin margin-vertical($size) {
+  margin-top: $size;
+  margin-bottom: $size;
+}
+
+// Auto centering (horizontal)
+@mixin margin-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Full auto centering with top/bottom margins
+@mixin margin-center-with-vertical($vertical-size) {
+  margin: $vertical-size auto;
+}
+
+// Common margin patterns using spacing scale
+@mixin margin-section {
+  @include margin-vertical($spacing-3xl);
+}
+
+@mixin margin-component {
+  @include margin-bottom($spacing-2xl);
+}
+
+@mixin margin-element {
+  @include margin-bottom($spacing-lg);
+}
+
+@mixin margin-content {
+  @include margin-bottom($spacing-md);
+}
+
+// --------------------------------------------
+// Padding Mixins - Standardized spacing patterns
+// --------------------------------------------
+
+// Padding all sides
+@mixin padding($size) {
+  padding: $size;
+}
+
+// Padding top
+@mixin padding-top($size) {
+  padding-top: $size;
+}
+
+// Padding bottom  
+@mixin padding-bottom($size) {
+  padding-bottom: $size;
+}
+
+// Padding left
+@mixin padding-left($size) {
+  padding-left: $size;
+}
+
+// Padding right
+@mixin padding-right($size) {
+  padding-right: $size;
+}
+
+// Horizontal padding (left and right)
+@mixin padding-horizontal($size) {
+  padding-left: $size;
+  padding-right: $size;
+}
+
+// Vertical padding (top and bottom)
+@mixin padding-vertical($size) {
+  padding-top: $size;
+  padding-bottom: $size;
+}
+
+// Combined padding (vertical, horizontal)
+@mixin padding-combined($vertical, $horizontal) {
+  padding: $vertical $horizontal;
+}
+
+// Common padding patterns using spacing scale
+@mixin padding-section {
+  @include padding-vertical($spacing-3xl);
+}
+
+@mixin padding-component {
+  @include padding($spacing-2xl);
+}
+
+@mixin padding-element {
+  @include padding($spacing-lg);
+}
+
+@mixin padding-content {
+  @include padding($spacing-md);
+}
+
+@mixin padding-tight {
+  @include padding($spacing-sm);
+}
+
+// --------------------------------------------
+// Width & Height Mixins - Standardized sizing
+// --------------------------------------------
+
+// Width mixins
+@mixin width($size) {
+  width: $size;
+}
+
+@mixin min-width($size) {
+  min-width: $size;
+}
+
+@mixin max-width($size) {
+  max-width: $size;
+}
+
+@mixin width-full {
+  @include width(100%);
+}
+
+@mixin width-half {
+  @include width(50%);
+}
+
+@mixin width-content {
+  @include max-width($content-width-default);
+}
+
+@mixin width-narrow {
+  @include max-width($content-width-narrow);
+}
+
+// Height mixins
+@mixin height($size) {
+  height: $size;
+}
+
+@mixin min-height($size) {
+  min-height: $size;
+}
+
+@mixin max-height($size) {
+  max-height: $size;
+}
+
+@mixin height-full {
+  @include height(100%);
+}
+
+@mixin height-screen {
+  @include height(100vh);
+}
+
+@mixin min-height-screen {
+  @include min-height(100vh);
+}
+
+// Square sizing (width and height equal)
+@mixin size($dimension) {
+  @include width($dimension);
+  @include height($dimension);
+}
+
+// Icon sizing patterns
+@mixin size-icon-sm {
+  @include size($icon-size-sm);
+}
+
+@mixin size-icon-md {
+  @include size($icon-size-md);
+}
+
+@mixin size-icon-lg {
+  @include size($icon-size-lg);
+}
+
+@mixin size-icon-xl {
+  @include size($icon-size-xl);
+}
+
+// Common sizing patterns
+@mixin size-hero-icon {
+  @include size(6rem);
+}
+
+@mixin size-feature-icon {
+  @include size(4rem);
+}
+
+@mixin size-small-icon {
+  @include size(2rem);
+}

@@ -11,6 +11,157 @@
   padding: $section-padding-y $section-padding-x;
 }
 
+// --------------------------------------------
+// Margin Utility Classes - Use sparingly, prefer inheriting from body
+// --------------------------------------------
+
+// Standard margin patterns
+.margin-section {
+  @include margin-section;
+}
+
+.margin-component {
+  @include margin-component;
+}
+
+.margin-element {
+  @include margin-element;
+}
+
+.margin-content {
+  @include margin-content;
+}
+
+// Auto centering utilities
+.margin-center {
+  @include margin-center;
+}
+
+.margin-center-lg {
+  @include margin-center-with-vertical($spacing-lg);
+}
+
+.margin-center-xl {
+  @include margin-center-with-vertical($spacing-xl);
+}
+
+// Reset margins when needed
+.margin-reset {
+  @include margin(0);
+}
+
+.margin-top-reset {
+  @include margin-top(0);
+}
+
+.margin-bottom-reset {
+  @include margin-bottom(0);
+}
+
+// --------------------------------------------
+// Padding Utility Classes - Use sparingly, prefer mixins
+// --------------------------------------------
+
+// Standard padding patterns
+.padding-section {
+  @include padding-section;
+}
+
+.padding-component {
+  @include padding-component;
+}
+
+.padding-element {
+  @include padding-element;
+}
+
+.padding-content {
+  @include padding-content;
+}
+
+.padding-tight {
+  @include padding-tight;
+}
+
+// Reset padding when needed
+.padding-reset {
+  @include padding(0);
+}
+
+.padding-vertical-reset {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.padding-horizontal-reset {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+// --------------------------------------------
+// Size Utility Classes - Use sparingly, prefer mixins
+// --------------------------------------------
+
+// Width utilities
+.width-full {
+  @include width-full;
+}
+
+.width-half {
+  @include width-half;
+}
+
+.width-content {
+  @include width-content;
+}
+
+.width-narrow {
+  @include width-narrow;
+}
+
+// Height utilities
+.height-full {
+  @include height-full;
+}
+
+.height-screen {
+  @include height-screen;
+}
+
+.min-height-screen {
+  @include min-height-screen;
+}
+
+// Icon size utilities
+.size-icon-sm {
+  @include size-icon-sm;
+}
+
+.size-icon-md {
+  @include size-icon-md;
+}
+
+.size-icon-lg {
+  @include size-icon-lg;
+}
+
+.size-icon-xl {
+  @include size-icon-xl;
+}
+
+// Feature icon sizes
+.size-hero-icon {
+  @include size-hero-icon;
+}
+
+.size-feature-icon {
+  @include size-feature-icon;
+}
+
+.size-small-icon {
+  @include size-small-icon;
+}
+
 /*
   Note: Many common styles have been removed as they're already provided by Bootstrap:
   - Box-sizing reset

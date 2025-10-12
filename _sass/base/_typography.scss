@@ -85,6 +85,9 @@ body {
   font-size: $font-size-wisdom;
   line-height: $line-height-wisdom;
   color: $text-color;
+  // Standardized body dimensions - inherited by all elements unless overridden
+  @include margin(0); // Reset browser defaults
+  @include padding(0); // Reset browser defaults for consistency
 }
 
 // Interface elements use consciousness font
