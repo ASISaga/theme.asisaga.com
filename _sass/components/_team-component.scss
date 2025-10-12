@@ -20,19 +20,19 @@
     
     &-title {
       // Bootstrap display utility
-      font-size: 2.5rem; // .display-5
-      font-weight: 300;
+      @include font-size-2xl; // .display-5
+      @include font-weight-light;
       // Bootstrap margin utility
       // Bootstrap text color utility
-      color: $primary; // .text-primary
+      @include text-primary; // .text-primary
     }
     
     &-subtitle {
       // Bootstrap heading utility
-      font-size: 1.25rem; // .h5
-      font-weight: 500;
+      @include font-size-lg; // .h5
+      @include font-weight-medium;
       // Bootstrap text color utility
-      color: #6c757d; // .text-muted
+      @include text-muted; // .text-muted
       // Bootstrap margin utility
     }
     
@@ -82,9 +82,9 @@
       
       &-name {
     // Bootstrap font-weight utility
-    font-weight: 700; // .fw-bold
+    @include font-weight-bold; // .fw-bold
     // Bootstrap text color utility
-    color: $primary; // .text-primary
+    @include text-primary; // .text-primary
     // Bootstrap margin utility
     // Bootstrap margin utility
       }

@@ -5,3 +5,180 @@
 // Font Awesome
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
 // Font Awesome CDN: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
+
+// --------------------------------------------
+// Icon Size Variables (from dimensions)
+// --------------------------------------------
+$icon-size-xs: 0.75rem;
+$icon-size-sm: 1rem;
+$icon-size-md: 1.5rem;
+$icon-size-lg: 2rem;
+$icon-size-xl: 3rem;
+$icon-size-2xl: 4rem;
+$icon-size-3xl: 5rem;
+
+// Sacred icon sizes
+$icon-size-hero: 6rem;
+$icon-size-feature: 4rem;
+$icon-size-small: 2rem;
+
+// --------------------------------------------
+// Icon Mixins - Standardized icon styling
+// --------------------------------------------
+
+// Icon size mixins
+@mixin icon-size($size) {
+  font-size: $size;
+  width: $size;
+  height: $size;
+  line-height: 1;
+}
+
+@mixin icon-xs {
+  @include icon-size($icon-size-xs);
+}
+
+@mixin icon-sm {
+  @include icon-size($icon-size-sm);
+}
+
+@mixin icon-md {
+  @include icon-size($icon-size-md);
+}
+
+@mixin icon-lg {
+  @include icon-size($icon-size-lg);
+}
+
+@mixin icon-xl {
+  @include icon-size($icon-size-xl);
+}
+
+@mixin icon-2xl {
+  @include icon-size($icon-size-2xl);
+}
+
+@mixin icon-3xl {
+  @include icon-size($icon-size-3xl);
+}
+
+// Sacred icon size mixins
+@mixin icon-hero {
+  @include icon-size($icon-size-hero);
+}
+
+@mixin icon-feature {
+  @include icon-size($icon-size-feature);
+}
+
+@mixin icon-small {
+  @include icon-size($icon-size-small);
+}
+
+// Icon styling mixins
+@mixin icon-base {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+@mixin icon-sacred {
+  @include icon-base;
+  color: $luminous-gold;
+}
+
+@mixin icon-consciousness {
+  @include icon-base;
+  color: $cosmic-deep-blue;
+}
+
+@mixin icon-transcendent {
+  @include icon-base;
+  color: $transcendent-white;
+}
+
+@mixin icon-transformation {
+  @include icon-base;
+  color: $transformation-purple;
+}
+
+@mixin icon-life-force {
+  @include icon-base;
+  color: $emerald-green;
+}
+
+// Icon container mixins
+@mixin icon-container($size: $icon-size-md) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include size($size);
+  border-radius: 50%;
+}
+
+@mixin icon-container-sacred($size: $icon-size-md) {
+  @include icon-container($size);
+  @include bg-sacred;
+  @include border-sacred;
+  border-width: 2px;
+  border-style: solid;
+}
+
+@mixin icon-container-consciousness($size: $icon-size-md) {
+  @include icon-container($size);
+  @include bg-consciousness;
+  @include shadow-consciousness;
+}
+
+@mixin icon-container-transcendent($size: $icon-size-md) {
+  @include icon-container($size);
+  @include bg-transcendent;
+  border: 1px solid $ethereal-silver;
+}
+
+// Interactive icon mixins
+@mixin icon-interactive {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+@mixin icon-sacred-interactive {
+  @include icon-interactive;
+  
+  &:hover {
+    color: $sacred-gold-dark;
+    filter: drop-shadow(0 0 8px rgba($luminous-gold, 0.5));
+  }
+}
+
+@mixin icon-consciousness-interactive {
+  @include icon-interactive;
+  
+  &:hover {
+    color: $primary-light;
+    filter: drop-shadow(0 0 8px rgba($cosmic-deep-blue, 0.3));
+  }
+}
+
+// Combined icon mixins for common patterns
+@mixin icon-hero-sacred {
+  @include icon-hero;
+  @include icon-sacred;
+  @include icon-sacred-interactive;
+}
+
+@mixin icon-feature-consciousness {
+  @include icon-feature;
+  @include icon-consciousness;
+  @include icon-consciousness-interactive;
+}
+
+@mixin icon-small-transcendent {
+  @include icon-small;
+  @include icon-transcendent;
+  @include icon-interactive;
+}

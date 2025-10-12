@@ -40,8 +40,8 @@
     // @extend .py-0;
   // TODO: Replace @extend .mt-0 with proper mixin or direct styles for Jekyll compatibility
     // @extend .mt-0;
-  background: transparent !important;
-  color: $footer-text-color;
+  @include bg-transparent;
+  @include text-footer-color;
   min-height: 50px;
   height: 50%;
   margin: 0 !important;
@@ -63,7 +63,7 @@
     // @extend .mb-0;
       // TODO: Replace @extend .small with proper mixin or direct styles for Jekyll compatibility
     // @extend .small;
-      color: $footer-text-muted;
+      @include text-footer-muted;
       margin: 0 !important;
       padding: 0 !important;
     }
@@ -120,11 +120,11 @@
     // @extend .text-decoration-none;
     // TODO: Replace @extend .transition with proper mixin or direct styles for Jekyll compatibility
     // @extend .transition;
-    color: $footer-text-muted;
+    @include text-footer-muted;
     padding: 0 !important;
     margin: 0 !important;
     &:hover {
-      color: $footer-text-color;
+      @include text-footer-color;
       // TODO: Replace @extend .text-decoration-underline with proper mixin or direct styles for Jekyll compatibility
     // @extend .text-decoration-underline;
     }

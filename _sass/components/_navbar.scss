@@ -44,11 +44,11 @@
     // @extend .px-2; // Add padding to make clickable area larger
     // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
     // @extend .rounded; // Rounded corners for hover states
-    color: $navbar-link-color; // Using centralized color variable
+    @include text-navbar-link;
 
     &:hover {
-      color: $navbar-link-hover-color; // Using centralized color variable
-      background-color: $navbar-link-hover-bg; // Using centralized color variable
+      @include text-navbar-link-hover;
+      @include bg-navbar-link-hover;
     }
 
     // Styling for dropdown toggle links
@@ -78,12 +78,12 @@
   .navbar-dropdown-item {
     // TODO: Replace @extend .dropdown-item with proper mixin or direct styles for Jekyll compatibility
     // @extend .dropdown-item; // Bootstrap class for a dropdown item
-    color: $navbar-dropdown-item-color; // Using centralized color variable
+    @include text-navbar-dropdown-item;
 
     &:hover,
     &:focus {
-      color: $navbar-dropdown-item-color; // Keep text color same on hover/focus
-      background-color: $navbar-dropdown-item-hover-bg; // Using centralized color variable
+      @include text-navbar-dropdown-item;
+      @include bg-navbar-dropdown-item-hover;
     }
   }
   // Styling for dividers within a dropdown menu
@@ -92,6 +92,6 @@
     // @extend .dropdown-divider; // Bootstrap class for a dropdown divider
     // TODO: Replace @extend .my-1 with proper mixin or direct styles for Jekyll compatibility
     // @extend .my-1; // Add vertical margin for better spacing
-    border-color: $navbar-divider-color; // Using centralized color variable
+    @include border-navbar-divider;
   }
 }

@@ -23,9 +23,7 @@
     @include transition;
     
     &:hover {
-      transform: translateY(-5px);
-      // TODO: Replace @extend .shadow with proper mixin or direct styles for Jekyll compatibility
-    // @extend .shadow;
+      @include animate-card-hover;
     }
     
     &-body {
@@ -42,7 +40,7 @@
     // @extend .card-title;
       // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
     // @extend .fw-bold;
-      color: $primary;
+      @include text-primary;
     }
     
     &-text {
@@ -83,7 +81,7 @@
   @include card-component($prefix);
   
   .#{$prefix} {
-    border-left: $border-width solid $border-color;
+    @include border-left-primary($border-width);
   }
 }
 
@@ -92,7 +90,7 @@
   @include card-component($prefix);
   
   .#{$prefix} {
-    background-color: $bg-color;
+    @include bg-primary-light;
     // TODO: Replace @extend .border-primary with proper mixin or direct styles for Jekyll compatibility
     // @extend .border-primary;
   }

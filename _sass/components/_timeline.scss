@@ -10,9 +10,9 @@
   
   .timeline-title {
   // Section title utility
-  font-size: 2rem;
-  font-weight: 700;
-  color: $primary;
+  @include font-size-xl;
+  @include font-weight-bold;
+  @include text-primary;
     text-align: center;
   }
   
@@ -28,7 +28,7 @@
     left: 0;
     right: 0;
     @include height(4px);
-    background-color: $primary-light;
+    @include bg-primary-light;
     z-index: 1;
   }
     // Timeline markers (clickable dots)
@@ -65,13 +65,13 @@
       
       &.active {
         .timeline-marker-dot {
-          background-color: $accent;
+          @include bg-accent;
           transform: scale(1.2);
         }
         
         .timeline-marker-label {
-          color: $primary;
-          font-weight: $font-weight-semibold;
+          @include text-primary;
+          @include font-weight-semibold;
         }
       }
       
@@ -79,8 +79,8 @@
 .timeline-section .timeline-markers .timeline-marker-dot {
   @include size(20px);
   border-radius: 50%;
-  background-color: $primary;
-  transition: all 0.3s ease;
+  @include bg-primary;
+  @include transition(all, $animation-duration-normal, $ease-out);
 }
 .timeline-section .timeline-markers .timeline-marker-label {
   font-size: 0.9rem;

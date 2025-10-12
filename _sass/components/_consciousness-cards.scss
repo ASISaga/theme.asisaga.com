@@ -7,13 +7,13 @@
 // Base Consciousness Card
 // ----------------------------------------
 .consciousness-card {
-  background: rgba($transcendent-white, 0.95);
-  border: 1px solid rgba($luminous-gold, 0.2);
+  @include bg-transcendent-white-subtle;
+  @include border-luminous-gold-light(1px);
   border-radius: 1rem;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  box-shadow: $consciousness-depth;
-  transition: all 0.3s ease;
+  @include padding(1.5rem);
+  @include margin-bottom(1.5rem);
+  @include shadow-consciousness-depth;
+  @include transition(all, $animation-duration-normal, $ease-out);
   position: relative;
   overflow: hidden;
   
@@ -24,15 +24,12 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, 
-      $cosmic-deep-blue 0%, 
-      $luminous-gold 50%, 
-      $cosmic-deep-blue 100%);
+    @include bg-gradient-consciousness-accent;
   }
   
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: $sacred-glow, 0 10px 30px rgba($cosmic-deep-blue, 0.1);
+    @include animate-card-hover;
+    @include shadow-sacred-glow;
   }
 }
 
@@ -40,15 +37,13 @@
 .wisdom-card {
   // TODO: Replace @extend .consciousness-card with proper mixin or direct styles for Jekyll compatibility
     // @extend .consciousness-card;
-  background: rgba($luminous-gold, 0.05);
-  border-color: rgba($luminous-gold, 0.3);
+  @include bg-luminous-gold-light;
+  @include border-luminous-gold-medium;
 }
 
 // Genesis progress card
 .genesis-card {
   // TODO: Replace @extend .consciousness-card with proper mixin or direct styles for Jekyll compatibility
     // @extend .consciousness-card;
-  background: linear-gradient(135deg, 
-    rgba($cosmic-deep-blue, 0.05) 0%, 
-    rgba($royal-purple, 0.02) 100%);
+  @include bg-gradient-genesis-subtle;
 }

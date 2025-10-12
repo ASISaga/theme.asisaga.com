@@ -209,3 +209,147 @@ $navbar-divider-color: $secondary;
 
 // Transcendent Experience Colors
 $transcendent-white: #fff;
+
+// --------------------------------------------
+// Color Mixins - Standardized color application
+// --------------------------------------------
+
+// Text color mixins
+@mixin color($color) {
+  color: $color;
+}
+
+@mixin text-sacred {
+  @include color($luminous-gold);
+}
+
+@mixin text-consciousness {
+  @include color($cosmic-deep-blue);
+}
+
+@mixin text-transcendent {
+  @include color($transcendent-white);
+}
+
+@mixin text-bridge {
+  @include color($ethereal-silver);
+}
+
+@mixin text-life-force {
+  @include color($emerald-green);
+}
+
+@mixin text-transformation {
+  @include color($transformation-purple);
+}
+
+@mixin text-primary {
+  @include color($primary);
+}
+
+@mixin text-secondary {
+  @include color($secondary);
+}
+
+@mixin text-muted {
+  @include color($text-muted);
+}
+
+// Background color mixins
+@mixin background-color($color) {
+  background-color: $color;
+}
+
+@mixin bg-sacred {
+  @include background-color($bg-sacred);
+}
+
+@mixin bg-consciousness {
+  @include background-color($bg-consciousness);
+}
+
+@mixin bg-transcendent {
+  @include background-color($transcendent-white);
+}
+
+@mixin bg-primary {
+  @include background-color($primary);
+}
+
+@mixin bg-secondary {
+  @include background-color($secondary);
+}
+
+@mixin bg-light {
+  @include background-color($bg-light);
+}
+
+@mixin bg-dark {
+  @include background-color($bg-dark);
+}
+
+// Border color mixins
+@mixin border-color($color) {
+  border-color: $color;
+}
+
+@mixin border-sacred {
+  @include border-color($border-sacred);
+}
+
+@mixin border-primary {
+  @include border-color($primary);
+}
+
+@mixin border-secondary {
+  @include border-color($secondary);
+}
+
+// Sacred gradient mixins
+@mixin gradient-consciousness {
+  background: linear-gradient(135deg, $cosmic-deep-blue 0%, $luminous-gold 100%);
+}
+
+@mixin gradient-transcendent {
+  background: linear-gradient(135deg, $transcendent-white 0%, $ethereal-silver 100%);
+}
+
+@mixin gradient-sacred {
+  background: linear-gradient(135deg, $luminous-gold 0%, $sacred-gold-light 100%);
+}
+
+@mixin gradient-transformation {
+  background: linear-gradient(135deg, $royal-purple 0%, $emerald-green 100%);
+}
+
+// Sacred shadow mixins
+@mixin shadow-sacred {
+  box-shadow: $sacred-glow;
+}
+
+@mixin shadow-consciousness {
+  box-shadow: $consciousness-depth;
+}
+
+@mixin shadow-default {
+  box-shadow: $box-shadow;
+}
+
+// Hover state color mixins
+@mixin hover-sacred {
+  &:hover {
+    @include color($sacred-gold-dark);
+  }
+}
+
+@mixin hover-consciousness {
+  &:hover {
+    @include color($primary-light);
+  }
+}
+
+@mixin hover-transformation {
+  &:hover {
+    @include color($transformation-purple);
+  }
+}

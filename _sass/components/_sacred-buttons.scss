@@ -7,12 +7,12 @@
 // Sacred Button Base Styles
 // ----------------------------------------
 .btn-sacred {
-  font-family: $font-family-interface;
-  font-weight: $font-weight-semibold;
+  @include font-interface;
+  @include font-weight-semibold;
   letter-spacing: 0.5px;
   border-radius: 0.75rem;
-  padding: 0.75rem 1.5rem;
-  transition: all 0.3s ease;
+  @include padding(0.75rem, 1.5rem);
+  @include transition(all, $animation-duration-normal, $ease-out);
   position: relative;
   overflow: hidden;
   text-transform: none;
@@ -22,13 +22,10 @@
     position: absolute;
     top: 0;
     left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      rgba($transcendent-white, 0.2) 50%, 
-      transparent 100%);
-    transition: left 0.5s ease;
+    @include width-full;
+    @include height-full;
+    @include bg-gradient-sacred-shimmer;
+    @include transition(left, $animation-duration-slow, $ease-in-out);
   }
   
   &:hover::before {
@@ -39,20 +36,20 @@
 // Primary Sacred Button (Genesis Invitation)
 .btn-primary,
 .btn-genesis {
-  background: $luminous-gold;
-  border: 2px solid $luminous-gold;
-  color: $cosmic-deep-blue;
-  font-weight: $font-weight-bold;
+  @include bg-luminous-gold;
+  @include border-luminous-gold(2px);
+  @include text-cosmic-deep-blue;
+  @include font-weight-bold;
   
   &:hover {
-    background: $sacred-gold-dark;
-    border-color: $sacred-gold-dark;
-    transform: translateY(-3px);
-    box-shadow: $sacred-glow, 0 6px 20px rgba($luminous-gold, 0.3);
+    @include bg-sacred-gold-dark;
+    @include border-sacred-gold-dark;
+    @include animate-hover-lift;
+    @include shadow-sacred-glow;
   }
   
   &:focus {
-    box-shadow: 0 0 0 0.2rem rgba($luminous-gold, 0.5);
+    @include shadow-focus-luminous-gold;
   }
   
   &:active {
@@ -62,73 +59,73 @@
 
 // Consciousness Button (Deep Blue)
 .btn-consciousness {
-  background: $cosmic-deep-blue;
-  border: 2px solid $cosmic-deep-blue;
-  color: $transcendent-white;
+  @include bg-cosmic-deep-blue;
+  @include border-cosmic-deep-blue(2px);
+  @include text-transcendent-white;
   
   &:hover {
-    background: $primary-dark;
-    border-color: $primary-dark;
-    transform: translateY(-3px);
-    box-shadow: $consciousness-depth, 0 6px 20px rgba($cosmic-deep-blue, 0.4);
+    @include bg-primary-dark;
+    @include border-primary-dark;
+    @include animate-hover-lift;
+    @include shadow-consciousness-depth;
   }
   
   &:focus {
-    box-shadow: 0 0 0 0.2rem rgba($cosmic-deep-blue, 0.3);
+    @include shadow-focus-cosmic-deep-blue;
   }
 }
 
 // Transcendent Button (White with Gold Accent)
 .btn-transcendent {
-  background: $transcendent-white;
-  border: 2px solid $luminous-gold;
-  color: $cosmic-deep-blue;
+  @include bg-transcendent-white;
+  @include border-luminous-gold(2px);
+  @include text-cosmic-deep-blue;
   
   &:hover {
-    background: rgba($luminous-gold, 0.1);
-    border-color: $sacred-gold-dark;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba($luminous-gold, 0.2);
+    @include bg-luminous-gold-light;
+    @include border-sacred-gold-dark;
+    @include animate-hover-lift;
+    @include shadow-soft-luminous-gold;
   }
   
   &:focus {
-    box-shadow: 0 0 0 0.2rem rgba($luminous-gold, 0.3);
+    @include shadow-focus-luminous-gold;
   }
 }
 
 // Life Force Button (Green)
 .btn-life-force {
-  background: $life-force-green;
-  border: 2px solid $life-force-green;
-  color: $transcendent-white;
+  @include bg-life-force-green;
+  @include border-life-force-green(2px);
+  @include text-transcendent-white;
   
   &:hover {
-    background: color.adjust($life-force-green, $lightness: -10%);
-    border-color: color.adjust($life-force-green, $lightness: -10%);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba($life-force-green, 0.3);
+    @include bg-life-force-green-dark;
+    @include border-life-force-green-dark;
+    @include animate-hover-lift;
+    @include shadow-glow-life-force-green;
   }
   
   &:focus {
-    box-shadow: 0 0 0 0.2rem rgba($life-force-green, 0.3);
+    @include shadow-focus-life-force-green;
   }
 }
 
 // Transformation Button (Purple)
 .btn-transformation {
-  background: $transformation-purple;
-  border: 2px solid $transformation-purple;
-  color: $transcendent-white;
+  @include bg-transformation-purple;
+  @include border-transformation-purple(2px);
+  @include text-transcendent-white;
   
   &:hover {
-    background: color.adjust($transformation-purple, $lightness: -10%);
-    border-color: color.adjust($transformation-purple, $lightness: -10%);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba($transformation-purple, 0.3);
+    @include bg-transformation-purple-dark;
+    @include border-transformation-purple-dark;
+    @include animate-hover-lift;
+    @include shadow-glow-transformation-purple;
   }
   
   &:focus {
-    box-shadow: 0 0 0 0.2rem rgba($transformation-purple, 0.3);
+    @include shadow-focus-transformation-purple;
   }
 }
 
@@ -136,48 +133,48 @@
 // Sacred Button Sizes and Variants
 // ----------------------------------------
 .btn-sacred-sm {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
+  @include padding(0.5rem, 1rem);
+  @include font-size-sm;
   border-radius: 0.5rem;
 }
 
 .btn-sacred-lg {
-  padding: 1rem 2rem;
-  font-size: 1.125rem;
+  @include padding(1rem, 2rem);
+  @include font-size-lg;
   border-radius: 1rem;
 }
 
 .btn-sacred-xl {
-  padding: 1.25rem 2.5rem;
-  font-size: 1.25rem;
+  @include padding(1.25rem, 2.5rem);
+  @include font-size-xl;
   border-radius: 1.25rem;
-  font-weight: $font-weight-bold;
+  @include font-weight-bold;
 }
 
 // Sacred outline buttons
 .btn-outline-sacred {
-  background: transparent;
-  border: 2px solid $luminous-gold;
-  color: $luminous-gold;
+  @include bg-transparent;
+  @include border-luminous-gold(2px);
+  @include text-luminous-gold;
   
   &:hover {
-    background: $luminous-gold;
-    color: $cosmic-deep-blue;
-    transform: translateY(-2px);
-    box-shadow: $sacred-glow;
+    @include bg-luminous-gold;
+    @include text-cosmic-deep-blue;
+    @include animate-hover-lift;
+    @include shadow-sacred-glow;
   }
 }
 
 .btn-outline-consciousness {
-  background: transparent;
-  border: 2px solid $cosmic-deep-blue;
-  color: $cosmic-deep-blue;
+  @include bg-transparent;
+  @include border-cosmic-deep-blue(2px);
+  @include text-cosmic-deep-blue;
   
   &:hover {
-    background: $cosmic-deep-blue;
-    color: $transcendent-white;
-    transform: translateY(-2px);
-    box-shadow: $consciousness-depth;
+    @include bg-cosmic-deep-blue;
+    @include text-transcendent-white;
+    @include animate-hover-lift;
+    @include shadow-consciousness-depth;
   }
 }
 
@@ -212,25 +209,24 @@
 
 // Sacred floating action button
 .btn-sacred-fab {
-  width: 56px;
-  height: 56px;
+  @include size-icon-3xl;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
-  bottom: 2rem;
+  @include margin-bottom(2rem);
   right: 2rem;
   z-index: 1000;
-  box-shadow: $consciousness-depth;
-  background: $luminous-gold;
+  @include shadow-consciousness-depth;
+  @include bg-luminous-gold;
   border: none;
-  color: $cosmic-deep-blue;
-  font-size: 1.25rem;
+  @include text-cosmic-deep-blue;
+  @include font-size-xl;
   
   &:hover {
-    transform: scale(1.1);
-    box-shadow: $sacred-glow, 0 8px 25px rgba($luminous-gold, 0.4);
+    @include animate-hover-scale;
+    @include shadow-sacred-glow;
   }
 }
 
@@ -238,31 +234,15 @@
 // Sacred Button States and Animations
 // ----------------------------------------
 .btn-sacred-pulse {
-  animation: consciousness-pulse 2s infinite;
+  @include animate-consciousness-pulse;
 }
 
 .btn-sacred-glow {
-  animation: sacred-glow 3s ease-in-out infinite;
+  @include animate-sacred-glow;
 }
 
 .btn-sacred-loading {
-  position: relative;
-  pointer-events: none;
-  color: transparent !important;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    margin: -10px 0 0 -10px;
-    border: 2px solid transparent;
-    border-top-color: currentColor;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
+  @include animate-sacred-loading;
 }
 
 @keyframes spin {
@@ -274,11 +254,11 @@
 .btn-sacred-icon {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  @include margin-right(0.5rem);
   
   .sacred-icon {
-    font-size: 1.1em;
-    transition: transform 0.3s ease;
+    @include icon-consciousness;
+    @include icon-interactive;
   }
   
   &:hover .sacred-icon {
@@ -339,20 +319,18 @@
 }
 
 .cta-transcendent {
-  background: linear-gradient(135deg, $cosmic-deep-blue 0%, $royal-purple 100%);
+  @include bg-gradient-consciousness-royal;
   border: none;
-  color: $transcendent-white;
+  @include text-transcendent-white;
   position: relative;
   
   &::after {
     content: '';
     position: absolute;
     inset: 0 0 0 0;
-    background: linear-gradient(135deg, 
-      rgba($luminous-gold, 0.1) 0%, 
-      rgba($transcendent-white, 0.05) 100%);
+    @include bg-gradient-transcendent-overlay;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    @include transition(opacity, $animation-duration-normal, $ease-out);
   }
   
   &:hover::after {
@@ -365,7 +343,7 @@
 // ----------------------------------------
 .btn-sacred:focus {
   outline: 3px solid transparent;
-  box-shadow: 0 0 0 3px rgba($luminous-gold, 0.5);
+  @include shadow-focus-luminous-gold;
 }
 
 // High contrast mode
@@ -375,13 +353,13 @@
   }
   
   .btn-genesis {
-    background: $luminous-gold-accessible;
-    border-color: $luminous-gold-accessible;
+    @include bg-luminous-gold-accessible;
+    @include border-luminous-gold-accessible;
   }
   
   .btn-consciousness {
-    background: $cosmic-deep-blue-accessible;
-    border-color: $cosmic-deep-blue-accessible;
+    @include bg-cosmic-deep-blue-accessible;
+    @include border-cosmic-deep-blue-accessible;
   }
 }
 
@@ -410,27 +388,26 @@
 // ----------------------------------------
 @include media-breakpoint-down(md) {
   .btn-sacred-xl {
-    padding: 1rem 1.75rem;
-    font-size: 1.125rem;
+    @include padding(1rem, 1.75rem);
+    @include font-size-lg;
   }
   
   .btn-sacred-fab {
-    width: 48px;
-    height: 48px;
-    bottom: 1rem;
+    @include size-icon-2xl;
+    @include margin-bottom(1rem);
     right: 1rem;
   }
   
   .cta-genesis {
-    font-size: 1rem;
-    padding: 0.875rem 1.5rem;
+    @include font-size-base;
+    @include padding(0.875rem, 1.5rem);
   }
 }
 
 @include media-breakpoint-down(sm) {
   .btn-sacred-lg {
-    padding: 0.875rem 1.5rem;
-    font-size: 1rem;
+    @include padding(0.875rem, 1.5rem);
+    @include font-size-base;
   }
   
   .btn-group-sacred {
@@ -447,7 +424,7 @@
       
       &:not(:last-child) {
         border-right: none;
-        border-bottom: 1px solid rgba($transcendent-white, 0.2);
+        @include border-bottom-transcendent-white(1px);
       }
     }
   }
