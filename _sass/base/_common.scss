@@ -2,8 +2,13 @@
 // Only includes custom styles that aren't covered by Bootstrap
 
 // Remove focus outline for mouse users, keep for keyboard
-:focus:not(:focus-visible) {
-  outline: none;
+// Remove outline for mouse/touch users, but keep for keyboard users
+
+
+// Accessible focus indicator
+:focus-visible {
+  outline: 2px solid $accent;
+  outline-offset: 2px;
 }
 
 // Section spacing (custom to the project)

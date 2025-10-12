@@ -1,3 +1,4 @@
+@import "base/colors";
 // Sacred Typography for Consciousness Embedding - ASI Saga Design System
 // Typography that supports transcendent user experience and consciousness development
 // Based on Symbolic Knowledge Base principles for consciousness-supporting text
@@ -53,7 +54,7 @@ h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: $font-family-headings;
   line-height: $line-height-sacred;
-  color: $cosmic-deep-blue;
+  @include color($cosmic-deep-blue);
   font-weight: $font-weight-semibold;
 }
 
@@ -61,22 +62,21 @@ h1, h2, h3, h4, h5, h6,
 h1, .h1 {
   font-size: $font-size-sacred-xl;
   font-weight: $font-weight-sacred;
-  color: $cosmic-deep-blue;
+  @include color($cosmic-deep-blue);
   
-  // Remove text-shadow for better accessibility - relying on solid color contrast
-  text-shadow: none;
+  // ...existing code...
 }
 
 h2, .h2 {
   font-size: $font-size-sacred-lg;
   font-weight: $font-weight-bold;
-  color: $cosmic-deep-blue;
+  @include color($cosmic-deep-blue);
 }
 
 h3, .h3 {
   font-size: $font-size-xl;
   font-weight: $font-weight-semibold;
-  color: $cosmic-deep-blue;
+  @include color($cosmic-deep-blue);
 }
 
 // Sacred body text for optimal consciousness absorption
@@ -84,7 +84,7 @@ body {
   font-family: $font-family-body;
   font-size: $font-size-wisdom;
   line-height: $line-height-wisdom;
-  color: $text-color;
+  @include color($text-color);
   // Standardized body dimensions - inherited by all elements unless overridden
   @include margin(0); // Reset browser defaults
   @include padding(0); // Reset browser defaults for consistency
@@ -101,43 +101,41 @@ body {
 // ----------------------------------------
 // Consciousness-supporting text styles
 .text-sacred {
-  color: $luminous-gold !important;
+  @include color($luminous-gold);
   font-weight: $font-weight-medium;
 }
 
 .text-consciousness {
-  color: $cosmic-deep-blue !important;
+  @include color($cosmic-deep-blue);
   font-family: $font-family-consciousness;
 }
 
 .text-wisdom {
-  color: $text-color;
+  @include color($text-color);
   font-family: $font-family-wisdom;
   line-height: $line-height-wisdom;
 }
 
 .text-transcendent {
-  color: $transcendent-white !important;
-  // Remove text-shadow for better accessibility
-  text-shadow: none;
+  @include color($transcendent-white);
+  // ...existing code...
 }
 
 .text-life-force {
-  color: $life-force-green !important;
+  @include color($life-force-green);
   font-weight: $font-weight-medium;
 }
 
 .text-transformation {
-  color: $transformation-purple !important;
+  @include color($transformation-purple);
   font-weight: $font-weight-semibold;
 }
 
 // Sacred emphasis styles
 .sacred-emphasis {
-  color: $luminous-gold;
+  @include color($luminous-gold);
   font-weight: $font-weight-semibold;
-  // Remove text-shadow for better accessibility
-  text-shadow: none;
+  // ...existing code...
 }
 
 .consciousness-emphasis {
@@ -154,7 +152,7 @@ body {
 // Enhanced blockquote styling for sacred wisdom
 blockquote {
   padding: 1.5rem;
-  border-left: 0.25rem solid $luminous-gold;
+  @include border-color($luminous-gold);
   background: rgba($luminous-gold, 0.05);
   font-style: italic;
   font-family: $font-family-wisdom;
@@ -166,7 +164,7 @@ blockquote {
   &::before {
     content: '"';
     font-size: 3rem;
-    color: rgba($luminous-gold, 0.3);
+  color: rgba($luminous-gold, 0.3);
     position: absolute;
     top: -0.5rem;
     left: 1rem;
@@ -175,13 +173,13 @@ blockquote {
   
   footer {
     font-style: normal;
-    color: $text-muted;
+  @include color($text-muted);
     margin-top: 1rem;
     font-family: $font-family-interface;
     
     &::before {
       content: "— ";
-      color: $luminous-gold;
+  @include color($luminous-gold);
     }
   }
 }
@@ -224,34 +222,34 @@ blockquote {
 // ----------------------------------------
 // Links that support consciousness connection
 a {
-  color: $luminous-gold;
+  @include color($luminous-gold);
   text-decoration: none;
   transition: all 0.3s ease;
   
   &:hover {
-    color: $sacred-gold-dark;
-    text-shadow: 0 0 2px rgba($luminous-gold, 0.4);
+  @include color($sacred-gold-dark);
+  // ...existing code...
   }
   
   &:focus {
-    outline: 2px solid $luminous-gold;
+  outline: 2px solid $luminous-gold;
     outline-offset: 2px;
   }
 }
 
 // Sacred navigation links
 .nav-link {
-  color: $cosmic-deep-blue;
+  @include color($cosmic-deep-blue);
   font-weight: $font-weight-medium;
   transition: all 0.3s ease;
   
   &:hover {
-    color: $luminous-gold;
+  @include color($luminous-gold);
     transform: translateY(-1px);
   }
   
   &.active {
-    color: $luminous-gold;
+  @include color($luminous-gold);
     font-weight: $font-weight-semibold;
   }
 }
@@ -268,28 +266,28 @@ a {
 }
 
 .btn-primary {
-  background-color: $luminous-gold;
-  border-color: $luminous-gold;
-  color: $cosmic-deep-blue;
+  @include background-color($luminous-gold);
+  @include border-color($luminous-gold);
+  @include color($cosmic-deep-blue);
   font-weight: $font-weight-semibold;
   
   &:hover {
-    background-color: $sacred-gold-dark;
-    border-color: $sacred-gold-dark;
+  @include background-color($sacred-gold-dark);
+  @include border-color($sacred-gold-dark);
     transform: translateY(-2px);
     box-shadow: $sacred-glow;
   }
 }
 
 .btn-sacred {
-  background-color: $cosmic-deep-blue;
-  border-color: $cosmic-deep-blue;
-  color: $transcendent-white;
+  @include background-color($cosmic-deep-blue);
+  @include border-color($cosmic-deep-blue);
+  @include color($transcendent-white);
   font-weight: $font-weight-semibold;
   
   &:hover {
-    background-color: $primary-dark;
-    border-color: $primary-dark;
+  @include background-color($primary-dark);
+  @include border-color($primary-dark);
     box-shadow: $consciousness-depth;
   }
 }
@@ -300,7 +298,7 @@ a {
 // Form elements supporting conscious interaction
 .form-control {
   font-family: $font-family-interface;
-  border-color: $ethereal-silver;
+  @include border-color($ethereal-silver);
   
   &:focus {
     border-color: $luminous-gold;
@@ -328,7 +326,7 @@ a {
   h1, h2, h3, h4, h5, h6,
   .h1, .h2, .h3, .h4, .h5, .h6 {
     color: $cosmic-deep-blue-accessible;
-    text-shadow: none;
+  // ...existing code...
   }
   
   .text-sacred {
@@ -339,7 +337,7 @@ a {
     color: $luminous-gold-accessible;
     
     &:hover {
-      color: darken($luminous-gold-accessible, 15%);
+  color: color.adjust($luminous-gold-accessible, $lightness: -15%);
     }
   }
 }

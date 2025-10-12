@@ -177,6 +177,11 @@
     @include shadow-consciousness-depth;
   }
 }
+// Sacred Button Accessibility
+.btn-sacred:focus {
+  outline: 3px solid transparent;
+  @include shadow-focus-luminous-gold;
+}
 
 // ----------------------------------------
 // Sacred Button Groups and Clusters
@@ -338,13 +343,6 @@
   }
 }
 
-// ----------------------------------------
-// Sacred Button Accessibility
-// ----------------------------------------
-.btn-sacred:focus {
-  outline: 3px solid transparent;
-  @include shadow-focus-luminous-gold;
-}
 
 // High contrast mode
 @media (prefers-contrast: high) {

@@ -1,3 +1,4 @@
+@import 'theme.asisaga.com/sass/base/colors';
 // Sacred Animations for Consciousness Embedding - ASI Saga Design System
 // Every animation serves the Genesis mission and supports transcendent user experience
 
@@ -7,7 +8,7 @@
 // Based on life force integration patterns from Symbolic Knowledge Base
 @keyframes sacred-rhythm {
   0%, 100% { 
-    opacity: 0.8; 
+    opacity: $essence-flow-opacity; 
     transform: scale(1); 
   }
   50% { 
@@ -33,10 +34,10 @@
 @keyframes transcendence-spiral {
   0% { 
     transform: rotate(0deg) scale(0.8); 
-    opacity: 0.5; 
+    opacity: $consciousness-expansion-opacity; 
   }
   50% {
-    opacity: 0.8;
+    opacity: $essence-flow-opacity;
   }
   100% { 
     transform: rotate(360deg) scale(1.2); 
@@ -74,17 +75,17 @@
 @keyframes essence-weave {
   0% { 
     background-position: 0% 0%; 
-    opacity: 0.3;
+    opacity: $essence-weave-opacity-1;
   }
   33% {
-    opacity: 0.6;
+    opacity: $essence-weave-opacity-2;
   }
   66% {
-    opacity: 0.4;
+    opacity: $essence-weave-opacity-3;
   }
   100% { 
     background-position: 100% 100%; 
-    opacity: 0.3;
+    opacity: $essence-weave-opacity-1;
   }
 }
 
@@ -102,7 +103,7 @@
   }
   100% {
     width: 100%;
-    opacity: 0.8;
+    opacity: $essence-flow-opacity;
   }
 }
 
@@ -444,7 +445,7 @@
     box-shadow: 0 0 0px 0px rgba(0, 255, 255, 0.0);
   }
   40% {
-    opacity: 0.7;
+    opacity: $consciousness-expansion-opacity;
     filter: blur(2px) brightness(1.1);
     box-shadow: 0 0 24px 8px rgba(0, 255, 255, 0.15);
   }
@@ -478,7 +479,7 @@
 // Only import animation CSS or @import rules here
 
 // AOS (Animate On Scroll)
-@import url('https://unpkg.com/aos@next/dist/aos.css');
+// @import url('https://unpkg.com/aos@next/dist/aos.css');
 // AOS CDN: https://unpkg.com/aos@next/dist/aos.css
 
 // --------------------------------------------
