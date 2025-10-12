@@ -337,7 +337,7 @@ a {
     color: $luminous-gold-accessible;
     
     &:hover {
-  color: color.adjust($luminous-gold-accessible, $lightness: -15%);
+  color: darken($luminous-gold-accessible, 15%);
     }
   }
 }
