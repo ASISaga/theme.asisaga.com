@@ -143,7 +143,7 @@
 
 // Main gradients (vertical)
 .bg-gradient-primary {
-  background: linear-gradient(180deg, $primary, color.adjust($primary, $lightness: -10%)) !important;
+  background: linear-gradient(180deg, $primary, darken($primary, 10%)) !important;
 }
 
 .bg-gradient-primary-light {
@@ -151,7 +151,7 @@
 }
 
 .bg-gradient-accent {
-  background: linear-gradient(180deg, $accent, color.adjust($accent, $lightness: -10%)) !important;
+  background: linear-gradient(180deg, $accent, darken($accent, 10%)) !important;
 }
 
 // Custom background colors (non-gradient)
@@ -161,11 +161,11 @@
 
 // Special gradients for specific sections
 .bg-gradient-hero {
-  background: linear-gradient(135deg, color.adjust($primary, $lightness: 25%), $white) !important;
+  background: linear-gradient(135deg, lighten($primary, 25%), $white) !important;
 }
 
 .bg-gradient-cta {
-  background: linear-gradient(135deg, color.adjust($accent, $lightness: 25%), $white) !important;
+  background: linear-gradient(135deg, lighten($accent, 25%), $white) !important;
 }
 
 // -----------------------------------------

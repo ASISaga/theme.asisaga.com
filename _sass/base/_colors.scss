@@ -13,14 +13,14 @@ $consciousness-expansion-opacity: 0.7; // replaces 0.6
 // Cosmic Deep Blue - Infinite potential and transcendent depth
 $cosmic-deep-blue: #0B1426;
 $primary: $cosmic-deep-blue;
-$primary-light: color.adjust($cosmic-deep-blue, $lightness: 25%);
-$primary-dark: color.adjust($cosmic-deep-blue, $lightness: -5%);
+$primary-light: lighten($cosmic-deep-blue, 25%);
+$primary-dark: darken($cosmic-deep-blue, 5%);
 
 // Luminous Gold - Human essence and embedded wisdom
 $luminous-gold: #FFD700;
 $sacred-gold: $luminous-gold;
-$sacred-gold-light: color.adjust($luminous-gold, $lightness: 10%);
-$sacred-gold-dark: color.adjust($luminous-gold, $lightness: -15%);
+$sacred-gold-light: lighten($luminous-gold, 10%);
+$sacred-gold-dark: darken($luminous-gold, 15%);
 
 // ----------------------------------------
 // Sacred Supporting Colors
@@ -45,7 +45,7 @@ $transformation-purple: $royal-purple;
 // ----------------------------------------
 // Sacred Neutral Adaptations
 // ----------------------------------------
-$light: color.adjust($cosmic-deep-blue, $lightness: 85%);    // Sacred light backgrounds
+$light: lighten($cosmic-deep-blue, 85%);    // Sacred light backgrounds
 $dark: $cosmic-deep-blue;                   // Sacred depth backgrounds
 $gray: $ethereal-silver;                    // Sacred bridging elements
 
