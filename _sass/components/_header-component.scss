@@ -52,7 +52,7 @@
 }
 
 // Gradient header component
-@mixin gradient-header-component($prefix: 'header', $start-color: color.adjust($primary, $lightness: 40%), $end-color: $white) {
+@mixin gradient-header-component($prefix: 'header', $start-color: lighten($primary, 40%), $end-color: $white) {
   @include header-component($prefix);
   
   .#{$prefix} {

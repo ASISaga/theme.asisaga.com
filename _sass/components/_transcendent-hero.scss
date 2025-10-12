@@ -21,9 +21,9 @@
     background: linear-gradient(
       135deg,
       $cosmic-deep-blue 0%,
-      color.adjust($cosmic-deep-blue, $lightness: -5%) 25%,
+  darken($cosmic-deep-blue, 5%) 25%,
       $royal-purple 50%,
-      color.adjust($royal-purple, $lightness: 10%) 75%,
+  lighten($royal-purple, 10%) 75%,
       $luminous-gold 100%
     );
   }

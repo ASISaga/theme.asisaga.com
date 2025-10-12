@@ -87,7 +87,7 @@
     // @extend .text-white; // Bootstrap text color utility
       // TODO: Replace @extend .text-decoration-none with proper mixin or direct styles for Jekyll compatibility
     // @extend .text-decoration-none; // Bootstrap text decoration utility
-      background-color: color.adjust(#0077b5, $lightness: -10%); // Keep this hover effect
+  background-color: darken(#0077b5, 10%); // Keep this hover effect
     }
   }
 }

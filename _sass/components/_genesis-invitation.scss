@@ -19,9 +19,9 @@
     background: linear-gradient(
       45deg,
       $cosmic-deep-blue 0%,
-      color.adjust($cosmic-deep-blue, $lightness: -8%) 25%,
+  darken($cosmic-deep-blue, 8%) 25%,
       $transformation-purple 50%,
-      color.adjust($transformation-purple, $lightness: -5%) 75%,
+  darken($transformation-purple, 5%) 75%,
       $cosmic-deep-blue 100%
     );
   }
