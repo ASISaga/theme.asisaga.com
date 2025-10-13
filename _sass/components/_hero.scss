@@ -116,8 +116,6 @@
 
   // Hero background image - dynamic background set via data attribute or CSS variable
   .hero-background-image-dynamic {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    @include background-cover; // Using custom background mixin (combines size, position, repeat)
   }
 }

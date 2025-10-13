@@ -4,29 +4,29 @@
 
 // Page layout container - full viewport height with flex column layout
 .page-layout {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  @include position-relative; // Using custom position mixin
+  @include min-height-screen; // Using custom min-height mixin
+  @include d-flex; // Using custom display flex mixin
+  @include flex-direction(column); // Using custom flex-direction mixin
 }
 
 // Header wrapper - fixed z-index positioning
 .header-wrapper {
-  position: relative;
+  @include position-relative; // Using custom position mixin
   z-index: $zindex-dropdown; // Bootstrap z-index variable (1000)
-  flex-shrink: 0;
+  @include flex-shrink(0); // Using custom flex-shrink mixin
 }
 
 // Main content area - flexible growth
 .main-content {
-  flex-grow: 1;
+  @include flex-grow(1); // Using custom flex-grow mixin
   @include padding-vertical(2rem); // Using custom padding mixin
-  contain: layout style;
+  @include contain(layout style); // Using custom contain mixin
 }
 
 // Footer wrapper - fixed z-index positioning
 .footer-wrapper {
-  position: relative;
+  @include position-relative; // Using custom position mixin
   z-index: $zindex-dropdown; // Bootstrap z-index variable (1000)
-  flex-shrink: 0;
+  @include flex-shrink(0); // Using custom flex-shrink mixin
 }

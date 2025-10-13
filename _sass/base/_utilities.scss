@@ -40,6 +40,14 @@
   flex: $value !important;
 }
 
+@mixin flex-grow($value) {
+  flex-grow: $value !important;
+}
+
+@mixin flex-shrink($value) {
+  flex-shrink: $value !important;
+}
+
 // Text alignment utilities
 @mixin text-center {
   text-align: center !important;
@@ -70,6 +78,24 @@
   background-color: #fff !important;
 }
 
+@mixin background-size($size) {
+  background-size: $size !important;
+}
+
+@mixin background-position($position) {
+  background-position: $position !important;
+}
+
+@mixin background-repeat($repeat) {
+  background-repeat: $repeat !important;
+}
+
+@mixin background-cover {
+  @include background-size(cover);
+  @include background-position(center);
+  @include background-repeat(no-repeat);
+}
+
 // Position utilities
 @mixin position-relative {
   position: relative !important;
@@ -81,6 +107,11 @@
 
 @mixin position-fixed {
   position: fixed !important;
+}
+
+// Contain utility (CSS containment)
+@mixin contain($value) {
+  contain: $value !important;
 }
 
 // Width/Height utilities
