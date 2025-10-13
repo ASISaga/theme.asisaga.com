@@ -1,0 +1,32 @@
+// Default Layout Styles
+// Purpose: Base layout structure for all pages using default.html template
+// Using Bootstrap mixins and variables for all styling
+
+// Page layout container - full viewport height with flex column layout
+.page-layout {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// Header wrapper - fixed z-index positioning
+.header-wrapper {
+  position: relative;
+  z-index: $zindex-dropdown; // Bootstrap z-index variable (1000)
+  flex-shrink: 0;
+}
+
+// Main content area - flexible growth
+.main-content {
+  flex-grow: 1;
+  @include padding-vertical(2rem); // Using custom padding mixin
+  contain: layout style;
+}
+
+// Footer wrapper - fixed z-index positioning
+.footer-wrapper {
+  position: relative;
+  z-index: $zindex-dropdown; // Bootstrap z-index variable (1000)
+  flex-shrink: 0;
+}

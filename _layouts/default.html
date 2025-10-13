@@ -17,15 +17,15 @@ This template defines the basic structure of all pages, including:
     <a href="#skip-target" class="sr-only focus-visible accessible-link">Skip to main content</a>
     
     <!-- Page layout container -->
-    <div class="page-layout" style="position:relative;min-height:100vh;display:flex;flex-direction:column;">
+    <div class="page-layout">
       
       <!-- Site header (header element and role defined in header.html include) -->
-      <div style="position:relative;z-index:1000;flex-shrink:0;">
+      <div class="header-wrapper">
         {% include header.html %}
       </div>
       
       <!-- Main content container with proper semantic structure -->
-      <main class="site-main layout-container section-container" id="skip-target" tabindex="-1" role="main" style="flex-grow:1;padding:2rem 0;contain:layout style;">
+      <main class="site-main layout-container section-container main-content" id="skip-target" tabindex="-1" role="main">
         <!-- Page content inserted here by Jekyll -->
         <div class="content-wrapper article-container">
           {{ content }}
@@ -33,7 +33,7 @@ This template defines the basic structure of all pages, including:
       </main>
       
       <!-- Site footer (footer element and role defined in footer.html include) -->
-      <div style="position:relative;z-index:1000;flex-shrink:0;">
+      <div class="footer-wrapper">
         {% include footer.html class="site-footer" %}
       </div>
       

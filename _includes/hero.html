@@ -33,7 +33,8 @@ Parameters:
         <!-- Note: Video is decorative only and contains no important content -->
       </video>
     {% elsif include.background_image %}
-      <div class="hero-background-image" style="background-image: url('{{ include.background_image }}')"></div>
+      <!-- Inline style required: Dynamic background image URL passed as parameter -->
+      <div class="hero-background-image hero-background-image-dynamic" style="--hero-bg-image: url('{{ include.background_image }}'); background-image: var(--hero-bg-image);"></div>
     {% else %}
       <div class="hero-background-gradient"></div>
     {% endif %}
