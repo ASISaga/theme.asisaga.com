@@ -142,4 +142,69 @@ default
 
 ---
 
-# Hierarchy Overview
+# Layout Selection Guide
+
+Use this guide to choose the correct layout for a new page.  
+All layouts inherit from `default`.
+
+---
+
+## Step 1: Identify the Content Type
+1. **Is this a general page with no special structure?**  
+   → Use `default`.
+
+2. **Is this editorial content?**  
+   - Blog post or news entry → Use `post`.  
+   - Long-form article or knowledge piece → Use `article`.  
+   - Index of posts, projects, or resources → Use `archive`.  
+   - Author or team profile → Use `profile`.
+
+3. **Is this a marketing or promotional page?**  
+   - Campaign or landing page → Use `landing`.  
+   - Media-heavy showcase → Use `gallery`.  
+   - Contact, signup, or feedback form → Use `form`.
+
+4. **Is this documentation or knowledge support?**  
+   - Documentation or knowledge base → Use `docs`.  
+   - Frequently asked questions → Use `faq`.
+
+5. **Is this an application or interactive page?**  
+   - Data dashboard → Use `dashboard`.  
+   - Real-time or threaded conversation → Use `chatroom`.  
+   - Search results → Use `search`.  
+   - User or admin settings → Use `settings`.
+
+6. **Is this a utility or special-purpose page?**  
+   - Error, maintenance, or legal → Use `minimal`.  
+   - Intro, splash, or coming soon → Use `splash`.
+
+---
+
+## Step 2: Confirm Structural Needs
+- **Does the page need a universal grid (e.g., sidebar + main)?**  
+  → Choose a layout that enforces it (`docs`, `dashboard`, `chatroom`).  
+
+- **Does the page need flexible sections with different grids?**  
+  → Use a layout that delegates grid to includes (`landing`, `gallery`).  
+
+- **Does the page need no grid at all?**  
+  → Use `default`, `minimal`, or `splash`.
+
+---
+
+## Step 3: Apply Governance Rules
+- Containers are always defined in layouts.  
+- Rows and columns are only added in content or includes, unless the layout enforces a universal grid.  
+- Includes are modular:  
+  - Simple = no grid.  
+  - Fixed = in layouts.  
+  - Complex/dynamic = in includes with their own grid.  
+
+---
+
+## Quick Reference
+- **Editorial** → `post`, `article`, `archive`, `profile`  
+- **Marketing** → `landing`, `gallery`, `form`  
+- **Knowledge** → `docs`, `faq`  
+- **Application** → `dashboard`, `chatroom`, `search`, `settings`  
+- **Utility** → `minimal`, `splash`
