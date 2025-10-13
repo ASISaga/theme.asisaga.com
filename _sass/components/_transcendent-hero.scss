@@ -421,3 +421,14 @@
   @extend .transcendent-cta;
   @include transcendent-button-secondary;
 }
+
+.transcendent-hero-row {
+  @extend .row;
+  justify-content: center;
+  text-align: center;
+}
+
+.transcendent-icon {
+  @extend .fas;
+  @extend .fa-star-of-life;
+}
