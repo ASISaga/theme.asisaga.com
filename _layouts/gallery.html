@@ -1,0 +1,39 @@
+---
+layout: scrollable
+---
+<!-- 
+Gallery Layout
+Purpose: Image or media gallery pages with grid display
+Features: Lightbox, filtering, masonry/grid layout
+-->
+<div class="gallery-layout">
+  <div class="container">
+    <!-- Gallery Header -->
+    <header class="gallery-header text-center mb-5">
+      {% if page.title %}
+      <h1 class="gallery-title display-4 fw-bold mb-3">{{ page.title }}</h1>
+      {% endif %}
+      
+      {% if page.description %}
+      <p class="gallery-description lead text-muted mb-4">{{ page.description }}</p>
+      {% endif %}
+      
+      <!-- Gallery Filters -->
+      {% if page.categories %}
+      <div class="gallery-filters mb-4">
+        <button class="btn btn-outline-primary active me-2 mb-2" data-filter="all">All</button>
+        {% for category in page.categories %}
+        <button class="btn btn-outline-primary me-2 mb-2" data-filter="{{ category.slug }}">{{ category.name }}</button>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </header>
+    
+    <!-- Gallery Grid -->
+    <div class="gallery-grid">
+      <div class="row g-4">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+---
+layout: minimal-base
+---
+<!-- 
+Minimal Layout
+Purpose: Error, maintenance, or legal pages with minimal chrome
+Features: Centered content, minimal navigation, simple design
+-->
+<div class="minimal-layout-content">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="text-center py-5">
+        {% if page.error_code %}
+        <h1 class="display-1 fw-bold mb-4">{{ page.error_code }}</h1>
+        {% endif %}
+        
+        {% if page.title %}
+        <h2 class="display-5 fw-bold mb-3">{{ page.title }}</h2>
+        {% endif %}
+        
+        {% if page.description %}
+        <p class="lead text-muted mb-4">{{ page.description }}</p>
+        {% endif %}
+        
+        {{ content }}
+        
+        {% if page.show_home_link %}
+        <div class="mt-4">
+          <a href="/" class="btn btn-primary">Go to Homepage</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

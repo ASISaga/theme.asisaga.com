@@ -1,0 +1,19 @@
+// Landing Layout Styles
+
+.landing-layout {
+  .landing-hero {
+    background-color: $primary;
+    color: $transcendent-white;
+    padding: $spacing-sacred-xxl 0;
+    
+    .min-vh-50 {
+      min-height: 50vh;
+    }
+  }
+  
+  .landing-cta {
+    background-color: $bg-light;
+    padding: $spacing-sacred-xxl 0;
+    text-align: center;
+  }
+}

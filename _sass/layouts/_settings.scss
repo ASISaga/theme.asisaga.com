@@ -1,0 +1,28 @@
+// Settings Layout Styles
+
+.settings-layout {
+  height: 100%;
+  
+  .settings-nav {
+    .nav-link {
+      padding: $spacing-sm $spacing-md;
+      
+      &.active {
+        background-color: $bg-light;
+        color: $primary;
+      }
+    }
+  }
+  
+  .settings-title {
+    font-size: $font-size-xxl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sacred-lg;
+  }
+  
+  .settings-actions {
+    margin-top: $spacing-sacred-lg;
+    padding-top: $spacing-sacred-lg;
+    border-top: 1px solid $border-color;
+  }
+}

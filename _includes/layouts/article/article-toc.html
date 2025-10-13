@@ -1,0 +1,29 @@
+<!-- 
+Article TOC Component
+Displays table of contents for article layout
+-->
+<aside class="article-toc-component sticky-top">
+  <nav class="card" aria-label="Table of contents">
+    <div class="card-body">
+      <h6 class="card-title fw-bold mb-3">Table of Contents</h6>
+      {% if include.items %}
+      <ul class="nav flex-column">
+        {% for item in include.items %}
+        <li class="nav-item">
+          <a class="nav-link py-1 px-0" href="{{ item.url }}">{{ item.title }}</a>
+          {% if item.children %}
+          <ul class="nav flex-column ms-3">
+            {% for child in item.children %}
+            <li class="nav-item">
+              <a class="nav-link py-1 px-0" href="{{ child.url }}">{{ child.title }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </nav>
+</aside>

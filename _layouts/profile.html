@@ -1,0 +1,84 @@
+---
+layout: scrollable
+---
+<!-- 
+Profile Layout
+Purpose: Author or team member profile pages
+Features: Profile header with photo, bio, social links, activity feed
+-->
+<div class="profile-layout">
+  <div class="container">
+    <!-- Profile Header -->
+    <header class="profile-header mb-5">
+      <div class="row align-items-center">
+        <div class="col-lg-3 text-center mb-4 mb-lg-0">
+          {% if page.profile_image %}
+          <img src="{{ page.profile_image }}" alt="{{ page.name }}" class="profile-image rounded-circle img-fluid mb-3">
+          {% else %}
+          <div class="profile-image-placeholder rounded-circle bg-secondary d-inline-flex align-items-center justify-content-center">
+            <i class="fas fa-user fa-5x text-white" aria-hidden="true"></i>
+          </div>
+          {% endif %}
+        </div>
+        
+        <div class="col-lg-9">
+          {% if page.name %}
+          <h1 class="profile-name display-4 fw-bold mb-2">{{ page.name }}</h1>
+          {% endif %}
+          
+          {% if page.role %}
+          <p class="profile-role lead text-muted mb-3">{{ page.role }}</p>
+          {% endif %}
+          
+          {% if page.bio %}
+          <p class="profile-bio mb-3">{{ page.bio }}</p>
+          {% endif %}
+          
+          {% if page.social_links %}
+          <div class="profile-social-links">
+            {% for link in page.social_links %}
+            <a href="{{ link.url }}" class="btn btn-outline-primary btn-sm me-2 mb-2" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-{{ link.platform }}" aria-hidden="true"></i>
+              {{ link.platform | capitalize }}
+            </a>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </header>
+    
+    <!-- Profile Content -->
+    <div class="profile-content">
+      <div class="row">
+        <div class="col-lg-8">
+          {{ content }}
+        </div>
+        
+        <aside class="col-lg-4">
+          {% if page.stats %}
+          <div class="profile-stats card mb-4">
+            <div class="card-body">
+              <h5 class="card-title fw-bold mb-3">Statistics</h5>
+              <!-- Stats can be displayed here -->
+            </div>
+          </div>
+          {% endif %}
+          
+          {% if page.skills %}
+          <div class="profile-skills card">
+            <div class="card-body">
+              <h5 class="card-title fw-bold mb-3">Skills</h5>
+              <div class="d-flex flex-wrap gap-2">
+                {% for skill in page.skills %}
+                <span class="badge bg-primary">{{ skill }}</span>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>

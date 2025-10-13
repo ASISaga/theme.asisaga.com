@@ -1,0 +1,16 @@
+// Scrollable Layout Styles
+// Purpose: Standard vertical flow pages with natural scrolling
+
+.scrollable-layout {
+  width: 100%;
+  
+  .container-fluid {
+    padding-right: $spacing-md;
+    padding-left: $spacing-md;
+    
+    @include media-breakpoint-up(md) {
+      padding-right: $spacing-lg;
+      padding-left: $spacing-lg;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+<!-- 
+Form Field Component
+Reusable form field with validation
+-->
+<div class="form-field-component mb-3">
+  <label for="{{ include.id }}" class="form-label {% if include.required %}required{% endif %}">
+    {{ include.label }}
+    {% if include.required %}<span class="text-danger">*</span>{% endif %}
+  </label>
+  
+  {% if include.type == 'textarea' %}
+  <textarea 
+    class="form-control" 
+    id="{{ include.id }}" 
+    name="{{ include.name | default: include.id }}"
+    rows="{{ include.rows | default: 4 }}"
+    placeholder="{{ include.placeholder }}"
+    {% if include.required %}required{% endif %}
+    aria-describedby="{{ include.id }}-help"
+  ></textarea>
+  {% elsif include.type == 'select' %}
+  <select 
+    class="form-select" 
+    id="{{ include.id }}" 
+    name="{{ include.name | default: include.id }}"
+    {% if include.required %}required{% endif %}
+    aria-describedby="{{ include.id }}-help"
+  >
+    <option value="">Choose...</option>
+    {% for option in include.options %}
+    <option value="{{ option.value }}">{{ option.label }}</option>
+    {% endfor %}
+  </select>
+  {% else %}
+  <input 
+    type="{{ include.type | default: 'text' }}" 
+    class="form-control" 
+    id="{{ include.id }}" 
+    name="{{ include.name | default: include.id }}"
+    placeholder="{{ include.placeholder }}"
+    {% if include.required %}required{% endif %}
+    aria-describedby="{{ include.id }}-help"
+  >
+  {% endif %}
+  
+  {% if include.help_text %}
+  <div id="{{ include.id }}-help" class="form-text">{{ include.help_text }}</div>
+  {% endif %}
+</div>

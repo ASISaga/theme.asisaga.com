@@ -1,0 +1,40 @@
+<!-- 
+Archive Item Component
+Displays a single item in an archive listing
+-->
+<article class="archive-item-component mb-4 pb-4 border-bottom">
+  <div class="row">
+    {% if include.image %}
+    <div class="col-md-4 mb-3 mb-md-0">
+      <a href="{{ include.url }}">
+        <img src="{{ include.image }}" alt="{{ include.title }}" class="img-fluid rounded">
+      </a>
+    </div>
+    <div class="col-md-8">
+    {% else %}
+    <div class="col-md-12">
+    {% endif %}
+      <h3 class="h4 mb-2">
+        <a href="{{ include.url }}" class="text-decoration-none">{{ include.title }}</a>
+      </h3>
+      
+      {% if include.date %}
+      <p class="text-muted small mb-2">
+        <time datetime="{{ include.date | date_to_xmlschema }}">{{ include.date | date: "%B %d, %Y" }}</time>
+      </p>
+      {% endif %}
+      
+      {% if include.excerpt %}
+      <p class="mb-2">{{ include.excerpt }}</p>
+      {% endif %}
+      
+      {% if include.tags %}
+      <div class="archive-item-tags">
+        {% for tag in include.tags %}
+        <span class="badge bg-light text-dark me-1">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</article>

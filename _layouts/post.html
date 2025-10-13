@@ -1,0 +1,67 @@
+---
+layout: scrollable
+---
+<!-- 
+Post Layout
+Purpose: Blog posts and news entries with article-style formatting
+Features: Post metadata, author info, sharing options, comments section
+-->
+<article class="post-layout">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <!-- Post Header -->
+        <header class="post-header mb-4">
+          {% if page.title %}
+          <h1 class="post-title display-4 fw-bold mb-3">{{ page.title }}</h1>
+          {% endif %}
+          
+          {% if page.date or page.author %}
+          <div class="post-meta text-muted mb-3">
+            {% if page.date %}
+            <time datetime="{{ page.date | date_to_xmlschema }}" class="me-3">
+              <i class="far fa-calendar" aria-hidden="true"></i>
+              {{ page.date | date: "%B %d, %Y" }}
+            </time>
+            {% endif %}
+            {% if page.author %}
+            <span class="post-author">
+              <i class="far fa-user" aria-hidden="true"></i>
+              {{ page.author }}
+            </span>
+            {% endif %}
+          </div>
+          {% endif %}
+          
+          {% if page.tags or page.categories %}
+          <div class="post-tags mb-3">
+            {% for tag in page.tags %}
+            <span class="badge bg-secondary me-1">{{ tag }}</span>
+            {% endfor %}
+            {% for category in page.categories %}
+            <span class="badge bg-primary me-1">{{ category }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </header>
+        
+        <!-- Post Content -->
+        <div class="post-content">
+          {{ content }}
+        </div>
+        
+        <!-- Post Footer -->
+        <footer class="post-footer mt-5 pt-4 border-top">
+          {% if page.share %}
+          <div class="post-share mb-3">
+            <h5 class="fw-bold mb-2">Share this post</h5>
+            <div class="share-buttons">
+              <!-- Social sharing buttons can be added here -->
+            </div>
+          </div>
+          {% endif %}
+        </footer>
+      </div>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,25 @@
+// Article TOC Component Styles
+
+.article-toc-component {
+  &.sticky-top {
+    top: $spacing-xl;
+  }
+  
+  .card-body {
+    padding: $spacing-md;
+  }
+  
+  .card-title {
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-md;
+  }
+  
+  .nav-link {
+    padding: $spacing-xs 0;
+    color: $text-color;
+    
+    &:hover {
+      color: $primary;
+    }
+  }
+}

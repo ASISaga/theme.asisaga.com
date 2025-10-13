@@ -1,0 +1,32 @@
+---
+layout: fixed-height
+---
+<!-- 
+Dashboard Layout
+Purpose: Data-heavy or app-like pages with metrics and widgets
+Features: Widget grid, real-time data, charts, KPIs
+-->
+<div class="dashboard-layout h-100">
+  <!-- Dashboard Header -->
+  <header class="dashboard-header border-bottom bg-white px-4 py-3 mb-3">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        {% if page.title %}
+        <h1 class="dashboard-title h3 mb-0">{{ page.title }}</h1>
+        {% endif %}
+      </div>
+      <div class="dashboard-actions">
+        {% if page.actions %}
+        {% for action in page.actions %}
+        <button type="button" class="btn btn-sm btn-outline-primary me-2">{{ action }}</button>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </header>
+  
+  <!-- Dashboard Content -->
+  <div class="dashboard-content px-4">
+    {{ content }}
+  </div>
+</div>

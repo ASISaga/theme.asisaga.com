@@ -1,0 +1,34 @@
+// Archive Layout Styles
+
+.archive-layout {
+  .archive-header {
+    margin-bottom: $spacing-sacred-xxl;
+  }
+  
+  .archive-title {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sacred-md;
+    
+    @include media-breakpoint-down(md) {
+      font-size: $font-size-3xl;
+    }
+  }
+  
+  .archive-description {
+    font-size: $font-size-lg;
+    color: $text-muted;
+    margin-bottom: $spacing-sacred-lg;
+  }
+  
+  .archive-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+    margin-bottom: $spacing-sacred-lg;
+  }
+  
+  .archive-pagination {
+    margin-top: $spacing-sacred-xxl;
+  }
+}

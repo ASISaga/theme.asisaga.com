@@ -1,0 +1,42 @@
+// Docs Layout Styles
+
+.docs-layout {
+  .docs-sidebar {
+    background-color: $bg-light;
+    border-right: 1px solid $border-color;
+    
+    .docs-sidebar-sticky {
+      top: $spacing-xl;
+    }
+  }
+  
+  .docs-search {
+    margin-bottom: $spacing-sacred-lg;
+  }
+  
+  .docs-content {
+    padding: $spacing-sacred-lg;
+  }
+  
+  .docs-title {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sacred-lg;
+    
+    @include media-breakpoint-down(md) {
+      font-size: $font-size-3xl;
+    }
+  }
+  
+  .docs-pagination {
+    margin-top: $spacing-sacred-xxl;
+    padding-top: $spacing-sacred-lg;
+    border-top: 1px solid $border-color;
+  }
+  
+  .docs-toc {
+    .docs-toc-sticky {
+      top: $spacing-xl;
+    }
+  }
+}

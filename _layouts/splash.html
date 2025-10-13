@@ -1,0 +1,83 @@
+---
+layout: minimal-base
+---
+<!-- 
+Splash Layout
+Purpose: Intro, coming soon, or lightweight splash pages
+Features: Full-screen design, countdown timers, email capture
+-->
+<div class="splash-layout-content">
+  <div class="row min-vh-75 align-items-center justify-content-center">
+    <div class="col-lg-8 text-center">
+      {% if page.logo %}
+      <img src="{{ page.logo }}" alt="{{ page.title }}" class="splash-logo mb-4">
+      {% endif %}
+      
+      {% if page.title %}
+      <h1 class="display-3 fw-bold mb-4">{{ page.title }}</h1>
+      {% endif %}
+      
+      {% if page.subtitle %}
+      <p class="lead text-muted mb-5">{{ page.subtitle }}</p>
+      {% endif %}
+      
+      {{ content }}
+      
+      {% if page.countdown %}
+      <!-- Countdown Timer -->
+      <div class="splash-countdown my-5">
+        <div class="row justify-content-center">
+          <div class="col-auto">
+            <div class="text-center">
+              <div class="display-4 fw-bold" id="days">00</div>
+              <small class="text-muted">Days</small>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="text-center">
+              <div class="display-4 fw-bold" id="hours">00</div>
+              <small class="text-muted">Hours</small>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="text-center">
+              <div class="display-4 fw-bold" id="minutes">00</div>
+              <small class="text-muted">Minutes</small>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="text-center">
+              <div class="display-4 fw-bold" id="seconds">00</div>
+              <small class="text-muted">Seconds</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      
+      {% if page.email_capture %}
+      <!-- Email Capture Form -->
+      <div class="splash-email-capture">
+        <form class="row g-2">
+          <div class="col-auto flex-grow-1">
+            <input type="email" class="form-control form-control-lg" placeholder="Enter your email" aria-label="Email address">
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary btn-lg">{{ page.email_capture.button_text | default: "Notify Me" }}</button>
+          </div>
+        </form>
+      </div>
+      {% endif %}
+      
+      {% if page.social_links %}
+      <div class="splash-social mt-5">
+        {% for link in page.social_links %}
+        <a href="{{ link.url }}" class="btn btn-outline-secondary btn-sm me-2" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-{{ link.platform }}" aria-hidden="true"></i>
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

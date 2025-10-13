@@ -1,0 +1,64 @@
+<!-- 
+Splash Countdown Component
+Displays a countdown timer for splash pages
+-->
+<div class="splash-countdown-component my-5">
+  <div class="row justify-content-center g-3">
+    <div class="col-auto">
+      <div class="countdown-unit text-center p-3 border rounded">
+        <div class="countdown-value display-4 fw-bold" data-unit="days">00</div>
+        <div class="countdown-label text-muted small mt-2">Days</div>
+      </div>
+    </div>
+    <div class="col-auto">
+      <div class="countdown-unit text-center p-3 border rounded">
+        <div class="countdown-value display-4 fw-bold" data-unit="hours">00</div>
+        <div class="countdown-label text-muted small mt-2">Hours</div>
+      </div>
+    </div>
+    <div class="col-auto">
+      <div class="countdown-unit text-center p-3 border rounded">
+        <div class="countdown-value display-4 fw-bold" data-unit="minutes">00</div>
+        <div class="countdown-label text-muted small mt-2">Minutes</div>
+      </div>
+    </div>
+    <div class="col-auto">
+      <div class="countdown-unit text-center p-3 border rounded">
+        <div class="countdown-value display-4 fw-bold" data-unit="seconds">00</div>
+        <div class="countdown-label text-muted small mt-2">Seconds</div>
+      </div>
+    </div>
+  </div>
+  
+  {% if include.target_date %}
+  <script>
+    // Countdown timer script
+    (function() {
+      const targetDate = new Date('{{ include.target_date }}').getTime();
+      
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+        
+        if (distance < 0) {
+          document.querySelectorAll('[data-unit]').forEach(el => el.textContent = '00');
+          return;
+        }
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        document.querySelector('[data-unit="days"]').textContent = String(days).padStart(2, '0');
+        document.querySelector('[data-unit="hours"]').textContent = String(hours).padStart(2, '0');
+        document.querySelector('[data-unit="minutes"]').textContent = String(minutes).padStart(2, '0');
+        document.querySelector('[data-unit="seconds"]').textContent = String(seconds).padStart(2, '0');
+      }
+      
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    })();
+  </script>
+  {% endif %}
+</div>
