@@ -1,6 +1,15 @@
 // Form Layout Styles
 
 .form-layout {
+  .form-layout-row {
+    @extend .row;
+    justify-content: center;
+  }
+  
+  .form-layout-col {
+    @extend .col-lg-8;
+  }
+  
   .form-header {
     text-align: center;
     margin-bottom: $spacing-sacred-xxl;
@@ -34,8 +43,29 @@
     }
   }
   
+  .form-progress-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+  }
+  
+  .form-progress-step {
+    color: $text-muted;
+  }
+  
   .form-footer {
     margin-top: $spacing-sacred-lg;
     text-align: center;
+  }
+  
+  .form-help-text {
+    color: $text-muted;
+    font-size: $font-size-sm;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-privacy-link {
+    color: $text-muted;
+    font-size: $font-size-sm;
   }
 }

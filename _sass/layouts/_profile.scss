@@ -5,13 +5,40 @@
     margin-bottom: $spacing-sacred-xxl;
   }
   
+  .profile-header-row {
+    @extend .row;
+    align-items: center;
+  }
+  
+  .profile-image-col {
+    @extend .col-lg-3;
+    text-align: center;
+    margin-bottom: $spacing-sacred-lg;
+    
+    @include media-breakpoint-up(lg) {
+      margin-bottom: 0;
+    }
+  }
+  
+  .profile-info-col {
+    @extend .col-lg-9;
+  }
+  
   .profile-image {
     max-width: 200px;
+    border-radius: 50%;
+    width: 100%;
+    margin-bottom: $spacing-sacred-md;
   }
   
   .profile-image-placeholder {
     width: 200px;
     height: 200px;
+    border-radius: 50%;
+    background-color: $secondary;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .profile-name {
@@ -34,11 +61,40 @@
     margin-bottom: $spacing-sacred-md;
   }
   
+  .profile-social-link {
+    @extend .btn;
+    @extend .btn-outline-primary;
+    @extend .btn-sm;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
   .profile-stats {
+    @extend .card;
     margin-bottom: $spacing-sacred-lg;
   }
   
+  .profile-stats-title,
+  .profile-skills-title {
+    @extend .card-title;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sacred-md;
+  }
+  
   .profile-skills {
+    @extend .card;
     margin-bottom: $spacing-sacred-lg;
   }
+  
+  .profile-skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .profile-skill-badge {
+    @extend .badge;
+    @extend .bg-primary;
+  }
 }
+

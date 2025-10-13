@@ -2,11 +2,14 @@
 
 .docs-layout {
   .docs-sidebar {
+    @extend .col-lg-3;
+    @extend .col-xl-2;
     background-color: $bg-light;
     border-right: 1px solid $border-color;
     
     .docs-sidebar-sticky {
-      top: $spacing-xl;
+      @extend .sticky-top;
+      padding-top: $spacing-sacred-lg;
     }
   }
   
@@ -14,8 +17,20 @@
     margin-bottom: $spacing-sacred-lg;
   }
   
+  .docs-nav-children {
+    @extend .nav;
+    @extend .flex-column;
+    margin-left: 1rem;
+  }
+  
   .docs-content {
+    @extend .col-lg-9;
+    @extend .col-xl-8;
     padding: $spacing-sacred-lg;
+  }
+  
+  .docs-breadcrumb {
+    margin-bottom: $spacing-sacred-lg;
   }
   
   .docs-title {
@@ -34,9 +49,37 @@
     border-top: 1px solid $border-color;
   }
   
+  .docs-pagination-next {
+    @extend .col-6;
+    text-align: end;
+  }
+  
+  .docs-pagination-link {
+    text-decoration: none;
+  }
+  
+  .docs-pagination-label {
+    color: $text-muted;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  
   .docs-toc {
+    @extend .col-xl-2;
+    display: none;
+    
+    @include media-breakpoint-up(xl) {
+      display: block;
+    }
+    
     .docs-toc-sticky {
-      top: $spacing-xl;
+      @extend .sticky-top;
     }
   }
+  
+  .docs-toc-title {
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sacred-md;
+  }
 }
+
