@@ -12,6 +12,9 @@
 // Navbar JS for keyboard navigation
 // import './common/navbar-keyboard.js';   // Enables keyboard navigation for the navbar
 
+// Header enhancements
+import "./common/header-scroll.js";   // Transparent header on scroll
+
 // Import custom animations and interactions
 // import "./common/animations.js";        // Handles site-wide custom animations and effects
 
