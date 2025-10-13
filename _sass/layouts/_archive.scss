@@ -29,12 +29,39 @@
   }
   
   .archive-view-toggle {
-    @extend .btn-group;
+    // Using direct btn-group styles instead of @extend
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+    
+    > .archive-view-btn {
+      position: relative;
+      flex: 1 1 auto;
+      
+      &:not(:last-child) {
+        @include border-end-radius(0);
+      }
+      
+      &:not(:first-child) {
+        @include border-start-radius(0);
+        margin-left: calc($btn-border-width * -1);
+      }
+    }
   }
   
   .archive-view-btn {
-    @extend .btn;
-    @extend .btn-outline-secondary;
+    // Using direct button styles instead of @extend
+    @include button-variant(
+      $background: transparent,
+      $border: $btn-border-width solid $secondary,
+      $color: $secondary,
+      $hover-background: $secondary,
+      $hover-border: $secondary,
+      $hover-color: $white,
+      $active-background: $secondary,
+      $active-border: $secondary,
+      $active-color: $white
+    );
   }
   
   .archive-pagination {
@@ -42,7 +69,10 @@
   }
   
   .pagination-list {
-    @extend .pagination;
+    // Using direct pagination styles instead of @extend
+    display: flex;
+    padding-left: 0;
+    list-style: none;
     justify-content: center;
   }
 }

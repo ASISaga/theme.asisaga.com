@@ -2,13 +2,18 @@
 
 
 .site-main {
-  @extend .w-100;
-  @extend .min-vh-50; // Using our custom utility for 50% viewport height
-  @extend .py-0;      // Set padding to 0 for top/bottom
+  // Using direct styles instead of @extend for Jekyll compatibility
+  width: 100%;
+  min-height: 50vh; // Using 50% viewport height
+  padding-top: 0;
+  padding-bottom: 0;
 
   .site-content {
-    // Assuming a container that spans full width up to 1320px, similar to .container-xl
-    // If a full-width fluid container is needed, .container-fluid would be more appropriate.
-    @extend .container-xl; 
+    // Using Bootstrap container mixin for xl breakpoint (max-width: 1320px)
+    @include make-container();
+    
+    @include media-breakpoint-up(xl) {
+      max-width: map-get($container-max-widths, xl);
+    }
   }
 }

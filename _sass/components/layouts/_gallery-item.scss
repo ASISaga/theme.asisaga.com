@@ -1,28 +1,54 @@
 // Gallery Item Component Styles
 
 .gallery-item-component {
-  @extend .col-md-4;
+  // Using Bootstrap grid mixin instead of @extend for .col-md-4
+  @include make-col-ready();
+  
+  @include media-breakpoint-up(md) {
+    @include make-col(4);
+  }
+  
   margin-bottom: $spacing-sacred-lg;
   
   .gallery-item-card {
-    @extend .card;
+    // Using direct card styles instead of @extend
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: $card-bg;
+    background-clip: border-box;
+    border: $card-border-width solid $card-border-color;
+    @include border-radius($card-border-radius);
     height: 100%;
   }
   
   .gallery-item-image {
-    @extend .card-img-top;
+    // Using direct card-img-top styles instead of @extend
+    flex-shrink: 0;
+    width: 100%;
+    @include border-top-radius($card-border-radius);
   }
   
   .gallery-item-body {
-    @extend .card-body;
+    // Using direct card-body styles instead of @extend
+    flex: 1 1 auto;
+    padding: $card-spacer-y $card-spacer-x;
   }
   
   .gallery-item-title {
-    @extend .card-title;
+    // Using direct card-title styles instead of @extend
+    margin-bottom: $card-title-spacer-y;
+    font-weight: $card-title-font-weight;
+    line-height: $card-title-line-height;
   }
   
   .gallery-item-description {
-    @extend .card-text;
+    // Using direct card-text styles instead of @extend
+    &:last-child {
+      margin-bottom: 0;
+    }
     color: $text-muted;
     font-size: $font-size-sm;
   }

@@ -5,7 +5,8 @@
   margin-bottom: $spacing-sacred-xxl;
   
   .countdown-container {
-    @extend .row;
+    // Using Bootstrap grid mixin instead of @extend for .row
+    @include make-row();
     justify-content: center;
     gap: 1rem;
   }

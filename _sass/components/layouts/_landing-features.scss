@@ -11,12 +11,18 @@
   }
   
   .landing-features-row {
-    @extend .row;
+    // Using Bootstrap grid mixin instead of @extend for .row
+    @include make-row();
     gap: 1rem;
   }
   
   .landing-feature-col {
-    @extend .col-md-4;
+    // Using Bootstrap grid mixin instead of @extend for .col-md-4
+    @include make-col-ready();
+    
+    @include media-breakpoint-up(md) {
+      @include make-col(4);
+    }
   }
   
   .feature-card {

@@ -1,28 +1,44 @@
 // Base styles for generic section elements
 
 .section {
-  @extend .bg-gradient-primary-light; // Using our new custom utility class for gradient background
-  @extend .rounded;
-  @extend .shadow; // Bootstrap shadow utility
-  @extend .mb-5;
-  @extend .py-5;    // Bootstrap padding (approx for 3rem y)
-  @extend .px-3;    // Bootstrap padding (approx for 1.5rem x, assuming $section-padding-x is similar to .px-3 or .px-4)
-  @extend .container-xl; // Assuming section content should be constrained like .site-content
+  // Using direct styles and mixins instead of @extend for Jekyll compatibility
+  // Background gradient
+  background: linear-gradient(135deg, rgba($primary, 0.1) 0%, rgba($light, 1) 100%);
+  // Border radius
+  border-radius: $border-radius;
+  // Shadow
+  box-shadow: $box-shadow;
+  // Margin bottom
+  margin-bottom: $spacer * 3; // 3rem
+  // Padding vertical
+  padding-top: $spacer * 3; // 3rem
+  padding-bottom: $spacer * 3; // 3rem
+  // Padding horizontal
+  padding-left: $spacer; // 1rem
+  padding-right: $spacer; // 1rem
+  // Container constraints
+  @include make-container();
+  
+  @include media-breakpoint-up(xl) {
+    max-width: map-get($container-max-widths, xl);
+  }
 
   .section-title {
-    @extend .text-center;
-    @extend .fw-bold;
-    @extend .mb-4; // Bootstrap margin (approx for 1.5rem)
-    @extend .text-primary;
-    @extend .fs-3; // Bootstrap font size (approx for $font-size-xl)
+    // Using direct styles instead of @extend
+    text-align: center;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacer * 1.5; // 1.5rem
+    color: $primary;
+    font-size: $h3-font-size;
   }
 
   .section-lead {
-    @extend .text-center;
-    @extend .mb-4; // Bootstrap margin (approx for 1.5rem)
-    @extend .text-secondary;
-    @extend .fst-italic;
-    @extend .fs-5; // Bootstrap font size (approx for $font-size-lg)
+    // Using direct styles instead of @extend
+    text-align: center;
+    margin-bottom: $spacer * 1.5; // 1.5rem
+    color: $secondary;
+    font-style: italic;
+    font-size: $font-size-lg;
   }
 
   // .section-row and .section-column are removed as Bootstrap .row and .col-* should be used directly in HTML
