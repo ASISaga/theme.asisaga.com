@@ -19,7 +19,10 @@ _samples/
 │   ├── sample-docs.md
 │   └── sample-faq.md
 ├── application/         # Interactive application layouts
-│   └── sample-dashboard.md
+│   ├── sample-dashboard.md
+│   ├── sample-chatroom.md
+│   ├── sample-search.md
+│   └── sample-settings.md
 └── utility/             # Utility and special-purpose layouts
     ├── sample-404.md
     └── sample-splash.md
@@ -79,6 +82,9 @@ Each sample demonstrates:
 ### Application Samples
 
 - **sample-dashboard.md**: Analytics dashboard with widgets and metrics
+- **sample-chatroom.md**: Real-time chat interface with messages
+- **sample-search.md**: Search results page with filters
+- **sample-settings.md**: User settings with tabbed interface
 
 ### Utility Samples
 
@@ -196,6 +202,9 @@ When built, samples are accessible at:
 | Docs | `/samples/knowledge/sample-docs.html` |
 | FAQ | `/samples/knowledge/sample-faq.html` |
 | Dashboard | `/samples/application/sample-dashboard.html` |
+| Chatroom | `/samples/application/sample-chatroom.html` |
+| Search | `/samples/application/sample-search.html` |
+| Settings | `/samples/application/sample-settings.html` |
 | 404 | `/samples/utility/sample-404.html` |
 | Splash | `/samples/utility/sample-splash.html` |
 
