@@ -2,6 +2,28 @@
 // Purpose: Base layout structure for all pages using default.html template
 // Using Bootstrap mixins and variables for all styling
 
+.layout-container {
+  &.high-contrast {
+    // High contrast mode styles if needed
+  }
+}
+
+// Skip link for accessibility
+.skip-link {
+  @extend .sr-only;
+  @extend .focus-visible;
+  
+  &:focus {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: $primary;
+    color: $white;
+    padding: 1rem;
+    z-index: 9999;
+  }
+}
+
 // Page layout container - full viewport height with flex column layout
 .page-layout {
   @include position-relative; // Using custom position mixin
@@ -18,10 +40,15 @@
 }
 
 // Main content area - flexible growth
-.main-content {
+.site-main {
   @include flex-grow(1); // Using custom flex-grow mixin
   @include padding-vertical(2rem); // Using custom padding mixin
   @include contain(layout style); // Using custom contain mixin
+}
+
+// Content wrapper
+.content-wrapper {
+  // Content styles can be added here if needed
 }
 
 // Footer wrapper - fixed z-index positioning

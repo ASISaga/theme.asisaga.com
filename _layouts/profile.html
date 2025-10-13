@@ -9,35 +9,35 @@ Features: Profile header with photo, bio, social links, activity feed
 <div class="profile-layout">
   <div class="container">
     <!-- Profile Header -->
-    <header class="profile-header mb-5">
-      <div class="row align-items-center">
-        <div class="col-lg-3 text-center mb-4 mb-lg-0">
+    <header class="profile-header">
+      <div class="profile-header-row">
+        <div class="profile-image-col">
           {% if page.profile_image %}
-          <img src="{{ page.profile_image }}" alt="{{ page.name }}" class="profile-image rounded-circle img-fluid mb-3">
+          <img src="{{ page.profile_image }}" alt="{{ page.name }}" class="profile-image">
           {% else %}
-          <div class="profile-image-placeholder rounded-circle bg-secondary d-inline-flex align-items-center justify-content-center">
-            <i class="fas fa-user fa-5x text-white" aria-hidden="true"></i>
+          <div class="profile-image-placeholder">
+            <i class="profile-placeholder-icon" aria-hidden="true"></i>
           </div>
           {% endif %}
         </div>
         
-        <div class="col-lg-9">
+        <div class="profile-info-col">
           {% if page.name %}
-          <h1 class="profile-name display-4 fw-bold mb-2">{{ page.name }}</h1>
+          <h1 class="profile-name">{{ page.name }}</h1>
           {% endif %}
           
           {% if page.role %}
-          <p class="profile-role lead text-muted mb-3">{{ page.role }}</p>
+          <p class="profile-role">{{ page.role }}</p>
           {% endif %}
           
           {% if page.bio %}
-          <p class="profile-bio mb-3">{{ page.bio }}</p>
+          <p class="profile-bio">{{ page.bio }}</p>
           {% endif %}
           
           {% if page.social_links %}
           <div class="profile-social-links">
             {% for link in page.social_links %}
-            <a href="{{ link.url }}" class="btn btn-outline-primary btn-sm me-2 mb-2" target="_blank" rel="noopener noreferrer">
+            <a href="{{ link.url }}" class="profile-social-link" target="_blank" rel="noopener noreferrer">
               <i class="fab fa-{{ link.platform }}" aria-hidden="true"></i>
               {{ link.platform | capitalize }}
             </a>
@@ -57,21 +57,21 @@ Features: Profile header with photo, bio, social links, activity feed
         
         <aside class="col-lg-4">
           {% if page.stats %}
-          <div class="profile-stats card mb-4">
+          <div class="profile-stats">
             <div class="card-body">
-              <h5 class="card-title fw-bold mb-3">Statistics</h5>
+              <h5 class="profile-stats-title">Statistics</h5>
               <!-- Stats can be displayed here -->
             </div>
           </div>
           {% endif %}
           
           {% if page.skills %}
-          <div class="profile-skills card">
+          <div class="profile-skills">
             <div class="card-body">
-              <h5 class="card-title fw-bold mb-3">Skills</h5>
-              <div class="d-flex flex-wrap gap-2">
+              <h5 class="profile-skills-title">Skills</h5>
+              <div class="profile-skills-list">
                 {% for skill in page.skills %}
-                <span class="badge bg-primary">{{ skill }}</span>
+                <span class="profile-skill-badge">{{ skill }}</span>
                 {% endfor %}
               </div>
             </div>

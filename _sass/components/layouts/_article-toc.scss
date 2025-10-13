@@ -1,20 +1,36 @@
 // Article TOC Component Styles
 
 .article-toc-component {
-  &.sticky-top {
-    top: $spacing-xl;
+  @extend .sticky-top;
+  top: $spacing-xl;
+  
+  .article-toc-nav {
+    @extend .card;
   }
   
   .card-body {
     padding: $spacing-md;
   }
   
-  .card-title {
+  .article-toc-title {
+    @extend .card-title;
     font-weight: $font-weight-bold;
     margin-bottom: $spacing-md;
   }
   
-  .nav-link {
+  .article-toc-list {
+    @extend .nav;
+    @extend .flex-column;
+  }
+  
+  .article-toc-sublist {
+    @extend .nav;
+    @extend .flex-column;
+    margin-left: 1rem;
+  }
+  
+  .article-toc-link {
+    @extend .nav-link;
     padding: $spacing-xs 0;
     color: $text-color;
     

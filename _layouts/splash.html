@@ -7,48 +7,48 @@ Purpose: Intro, coming soon, or lightweight splash pages
 Features: Full-screen design, countdown timers, email capture
 -->
 <div class="splash-layout-content">
-  <div class="row min-vh-75 align-items-center justify-content-center">
-    <div class="col-lg-8 text-center">
+  <div class="splash-container">
+    <div class="splash-content">
       {% if page.logo %}
-      <img src="{{ page.logo }}" alt="{{ page.title }}" class="splash-logo mb-4">
+      <img src="{{ page.logo }}" alt="{{ page.title }}" class="splash-logo">
       {% endif %}
       
       {% if page.title %}
-      <h1 class="display-3 fw-bold mb-4">{{ page.title }}</h1>
+      <h1 class="splash-title">{{ page.title }}</h1>
       {% endif %}
       
       {% if page.subtitle %}
-      <p class="lead text-muted mb-5">{{ page.subtitle }}</p>
+      <p class="splash-subtitle">{{ page.subtitle }}</p>
       {% endif %}
       
       {{ content }}
       
       {% if page.countdown %}
       <!-- Countdown Timer -->
-      <div class="splash-countdown my-5">
-        <div class="row justify-content-center">
+      <div class="splash-countdown">
+        <div class="splash-countdown-row">
           <div class="col-auto">
-            <div class="text-center">
-              <div class="display-4 fw-bold" id="days">00</div>
-              <small class="text-muted">Days</small>
+            <div class="splash-countdown-unit">
+              <div class="splash-countdown-value" id="days">00</div>
+              <small class="splash-countdown-label">Days</small>
             </div>
           </div>
           <div class="col-auto">
-            <div class="text-center">
-              <div class="display-4 fw-bold" id="hours">00</div>
-              <small class="text-muted">Hours</small>
+            <div class="splash-countdown-unit">
+              <div class="splash-countdown-value" id="hours">00</div>
+              <small class="splash-countdown-label">Hours</small>
             </div>
           </div>
           <div class="col-auto">
-            <div class="text-center">
-              <div class="display-4 fw-bold" id="minutes">00</div>
-              <small class="text-muted">Minutes</small>
+            <div class="splash-countdown-unit">
+              <div class="splash-countdown-value" id="minutes">00</div>
+              <small class="splash-countdown-label">Minutes</small>
             </div>
           </div>
           <div class="col-auto">
-            <div class="text-center">
-              <div class="display-4 fw-bold" id="seconds">00</div>
-              <small class="text-muted">Seconds</small>
+            <div class="splash-countdown-unit">
+              <div class="splash-countdown-value" id="seconds">00</div>
+              <small class="splash-countdown-label">Seconds</small>
             </div>
           </div>
         </div>
@@ -58,21 +58,21 @@ Features: Full-screen design, countdown timers, email capture
       {% if page.email_capture %}
       <!-- Email Capture Form -->
       <div class="splash-email-capture">
-        <form class="row g-2">
-          <div class="col-auto flex-grow-1">
-            <input type="email" class="form-control form-control-lg" placeholder="Enter your email" aria-label="Email address">
+        <form class="splash-email-form">
+          <div class="splash-email-input-col">
+            <input type="email" class="splash-email-input" placeholder="Enter your email" aria-label="Email address">
           </div>
           <div class="col-auto">
-            <button type="submit" class="btn btn-primary btn-lg">{{ page.email_capture.button_text | default: "Notify Me" }}</button>
+            <button type="submit" class="splash-email-btn">{{ page.email_capture.button_text | default: "Notify Me" }}</button>
           </div>
         </form>
       </div>
       {% endif %}
       
       {% if page.social_links %}
-      <div class="splash-social mt-5">
+      <div class="splash-social">
         {% for link in page.social_links %}
-        <a href="{{ link.url }}" class="btn btn-outline-secondary btn-sm me-2" target="_blank" rel="noopener noreferrer">
+        <a href="{{ link.url }}" class="splash-social-link" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-{{ link.platform }}" aria-hidden="true"></i>
         </a>
         {% endfor %}

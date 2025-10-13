@@ -1,0 +1,55 @@
+// Archive Item Component Styles
+
+.archive-item-component {
+  margin-bottom: $spacing-sacred-lg;
+  padding-bottom: $spacing-sacred-lg;
+  border-bottom: 1px solid $border-color;
+  
+  .archive-item-image-col {
+    @extend .col-md-4;
+    margin-bottom: $spacing-sacred-md;
+    
+    @include media-breakpoint-up(md) {
+      margin-bottom: 0;
+    }
+  }
+  
+  .archive-item-content-col {
+    @extend .col-md-8;
+  }
+  
+  .archive-item-content-full {
+    @extend .col-md-12;
+  }
+  
+  .archive-item-image {
+    @extend .img-fluid;
+    @extend .rounded;
+  }
+  
+  .archive-item-title {
+    font-size: $font-size-xl;
+    margin-bottom: 0.5rem;
+  }
+  
+  .archive-item-link {
+    text-decoration: none;
+  }
+  
+  .archive-item-date {
+    color: $text-muted;
+    font-size: $font-size-sm;
+    margin-bottom: 0.5rem;
+  }
+  
+  .archive-item-excerpt {
+    margin-bottom: 0.5rem;
+  }
+  
+  .archive-item-tag {
+    @extend .badge;
+    @extend .bg-light;
+    @extend .text-dark;
+    margin-right: 0.25rem;
+  }
+}

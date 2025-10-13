@@ -12,9 +12,25 @@
     flex-shrink: 0;
   }
   
+  .chatroom-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
   .chatroom-title {
     font-size: $font-size-xl;
     margin-bottom: 0;
+  }
+  
+  .chatroom-participants {
+    color: $text-muted;
+  }
+  
+  .chatroom-settings-btn {
+    @extend .btn;
+    @extend .btn-sm;
+    @extend .btn-outline-secondary;
   }
   
   .chatroom-messages {
@@ -28,5 +44,15 @@
     background-color: $transcendent-white;
     padding: $spacing-md $spacing-sacred-lg;
     flex-shrink: 0;
+  }
+  
+  .chatroom-input-form {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .chatroom-send-btn {
+    @extend .btn;
+    @extend .btn-primary;
   }
 }

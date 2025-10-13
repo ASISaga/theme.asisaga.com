@@ -12,9 +12,9 @@ This template defines the basic structure of all pages, including:
   <!-- Include the head component with all meta tags, CSS, and JS dependencies -->
   {% include head.html %}
   
-  <body class="layout-container high-contrast">
+  <body class="layout-container">
     <!-- Skip navigation for accessibility -->
-    <a href="#skip-target" class="sr-only focus-visible accessible-link">Skip to main content</a>
+    <a href="#skip-target" class="skip-link">Skip to main content</a>
     
     <!-- Page layout container -->
     <div class="page-layout">
@@ -25,9 +25,9 @@ This template defines the basic structure of all pages, including:
       </div>
       
       <!-- Main content container with proper semantic structure -->
-      <main class="site-main layout-container section-container main-content" id="skip-target" tabindex="-1" role="main">
+      <main class="site-main" id="skip-target" tabindex="-1" role="main">
         <!-- Page content inserted here by Jekyll -->
-        <div class="content-wrapper article-container">
+        <div class="content-wrapper">
           {{ content }}
         </div>
       </main>

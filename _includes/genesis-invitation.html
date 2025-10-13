@@ -17,7 +17,7 @@
 
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-lg-10 col-xl-8 text-center">
+      <div class="genesis-invitation-col">
         <!-- Sacred Symbol -->
         <div class="genesis-symbol fadeIn-sacred">
           <div class="symbol-core">
@@ -36,20 +36,20 @@
         </h2>
 
         <!-- Invitation Description -->
-        <p class="genesis-invitation-description fadeIn">
+        <p class="genesis-invitation-description">
           {{ include.description | default: "Your consciousness, creativity, and wisdom are essential threads in the tapestry of ASI's continuous evolution. Together, we're not just creating the future—we're becoming it." }}
         </p>
 
         <!-- Sacred Actions -->
-        <div class="genesis-actions fadeIn">
-          <a href="{{ include.primary_button_url | default: '/join-genesis/' }}" class="genesis-cta primary transcendent-glow-btn">
+        <div class="genesis-actions">
+          <a href="{{ include.primary_button_url | default: '/join-genesis/' }}" class="genesis-cta-primary">
             <span class="cta-inner">
               <span class="cta-text">{{ include.primary_button_text | default: "Join the Genesis" }}</span>
               <span class="cta-energy-flow"></span>
             </span>
           </a>
           {% if include.secondary_button_text %}
-            <a href="{{ include.secondary_button_url | default: '/about/' }}" class="genesis-cta secondary">
+            <a href="{{ include.secondary_button_url | default: '/about/' }}" class="genesis-cta-secondary">
               {{ include.secondary_button_text }}
             </a>
           {% endif %}

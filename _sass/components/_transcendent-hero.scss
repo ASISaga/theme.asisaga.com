@@ -404,3 +404,31 @@
     }
   }
 }
+
+// Additional class variations
+.transcendent-hero-col {
+  @extend .col-lg-10;
+  @extend .col-xl-8;
+}
+
+.transcendent-cta-primary {
+  @extend .transcendent-cta;
+  @include transcendent-button-primary;
+  @include consciousness-pulse;
+}
+
+.transcendent-cta-secondary {
+  @extend .transcendent-cta;
+  @include transcendent-button-secondary;
+}
+
+.transcendent-hero-row {
+  @extend .row;
+  justify-content: center;
+  text-align: center;
+}
+
+.transcendent-icon {
+  @extend .fas;
+  @extend .fa-star-of-life;
+}

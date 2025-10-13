@@ -1,0 +1,30 @@
+// Splash Countdown Component Styles
+
+.splash-countdown-component {
+  margin-top: $spacing-sacred-xxl;
+  margin-bottom: $spacing-sacred-xxl;
+  
+  .countdown-container {
+    @extend .row;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .countdown-unit {
+    text-align: center;
+    padding: 1rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+  }
+  
+  .countdown-value {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+  }
+  
+  .countdown-label {
+    color: $text-muted;
+    font-size: $font-size-sm;
+    margin-top: 0.5rem;
+  }
+}

@@ -24,11 +24,25 @@
   .archive-controls {
     display: flex;
     flex-wrap: wrap;
-    gap: $spacing-md;
+    gap: 1rem;
     margin-bottom: $spacing-sacred-lg;
+  }
+  
+  .archive-view-toggle {
+    @extend .btn-group;
+  }
+  
+  .archive-view-btn {
+    @extend .btn;
+    @extend .btn-outline-secondary;
   }
   
   .archive-pagination {
     margin-top: $spacing-sacred-xxl;
+  }
+  
+  .pagination-list {
+    @extend .pagination;
+    justify-content: center;
   }
 }

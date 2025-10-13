@@ -2,7 +2,7 @@
 
 .gallery-layout {
   .gallery-header {
-    text-center;
+    text-align: center;
     margin-bottom: $spacing-sacred-xxl;
   }
   
@@ -26,9 +26,15 @@
     margin-bottom: $spacing-sacred-lg;
   }
   
-  .gallery-grid {
-    .row {
-      gap: $spacing-sacred-lg;
-    }
+  .gallery-filter-btn {
+    @extend .btn;
+    @extend .btn-outline-primary;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .gallery-grid-row {
+    @extend .row;
+    gap: 1rem;
   }
 }

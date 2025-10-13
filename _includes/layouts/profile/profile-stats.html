@@ -2,28 +2,28 @@
 Profile Stats Component
 Displays user profile statistics
 -->
-<div class="profile-stats-component card">
+<div class="profile-stats-component">
   <div class="card-body">
-    <h5 class="card-title fw-bold mb-3">{{ include.title | default: "Statistics" }}</h5>
-    <div class="row text-center">
+    <h5 class="profile-stats-title">{{ include.title | default: "Statistics" }}</h5>
+    <div class="profile-stats-row">
       {% if include.posts %}
-      <div class="col-4 mb-3">
-        <div class="stat-value h3 fw-bold mb-0">{{ include.posts }}</div>
-        <div class="stat-label text-muted small">Posts</div>
+      <div class="profile-stat-col">
+        <div class="stat-value">{{ include.posts }}</div>
+        <div class="stat-label">Posts</div>
       </div>
       {% endif %}
       
       {% if include.followers %}
-      <div class="col-4 mb-3">
-        <div class="stat-value h3 fw-bold mb-0">{{ include.followers }}</div>
-        <div class="stat-label text-muted small">Followers</div>
+      <div class="profile-stat-col">
+        <div class="stat-value">{{ include.followers }}</div>
+        <div class="stat-label">Followers</div>
       </div>
       {% endif %}
       
       {% if include.following %}
-      <div class="col-4 mb-3">
-        <div class="stat-value h3 fw-bold mb-0">{{ include.following }}</div>
-        <div class="stat-label text-muted small">Following</div>
+      <div class="profile-stat-col">
+        <div class="stat-value">{{ include.following }}</div>
+        <div class="stat-label">Following</div>
       </div>
       {% endif %}
     </div>

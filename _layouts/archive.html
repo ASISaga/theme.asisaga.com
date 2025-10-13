@@ -9,17 +9,17 @@ Features: Filtering, sorting, pagination, grid/list view toggle
 <div class="archive-layout">
   <div class="container">
     <!-- Archive Header -->
-    <header class="archive-header mb-5">
+    <header class="archive-header">
       {% if page.title %}
-      <h1 class="archive-title display-4 fw-bold mb-3">{{ page.title }}</h1>
+      <h1 class="archive-title">{{ page.title }}</h1>
       {% endif %}
       
       {% if page.description %}
-      <p class="archive-description lead text-muted mb-4">{{ page.description }}</p>
+      <p class="archive-description">{{ page.description }}</p>
       {% endif %}
       
       <!-- Archive Controls -->
-      <div class="archive-controls d-flex flex-wrap gap-3 mb-4">
+      <div class="archive-controls">
         {% if page.show_filters %}
         <div class="archive-filters">
           <select class="form-select" aria-label="Filter items">
@@ -40,11 +40,11 @@ Features: Filtering, sorting, pagination, grid/list view toggle
         {% endif %}
         
         {% if page.show_view_toggle %}
-        <div class="archive-view-toggle btn-group" role="group">
-          <button type="button" class="btn btn-outline-secondary active" aria-label="Grid view">
+        <div class="archive-view-toggle" role="group">
+          <button type="button" class="archive-view-btn active" aria-label="Grid view">
             <i class="fas fa-th" aria-hidden="true"></i>
           </button>
-          <button type="button" class="btn btn-outline-secondary" aria-label="List view">
+          <button type="button" class="archive-view-btn" aria-label="List view">
             <i class="fas fa-list" aria-hidden="true"></i>
           </button>
         </div>
@@ -59,8 +59,8 @@ Features: Filtering, sorting, pagination, grid/list view toggle
     
     <!-- Pagination -->
     {% if page.show_pagination %}
-    <nav class="archive-pagination mt-5" aria-label="Archive pagination">
-      <ul class="pagination justify-content-center">
+    <nav class="archive-pagination" aria-label="Archive pagination">
+      <ul class="pagination-list">
         <!-- Pagination items will be generated here -->
       </ul>
     </nav>

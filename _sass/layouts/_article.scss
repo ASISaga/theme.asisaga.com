@@ -1,8 +1,31 @@
 // Article Layout Styles
 
 .article-layout {
-  .article-toc {
-    top: $spacing-xl;
+  .article-toc-sidebar {
+    @extend .col-lg-3;
+    display: none;
+    
+    @include media-breakpoint-up(lg) {
+      display: block;
+    }
+  }
+  
+  .article-toc-sticky {
+    @extend .sticky-top;
+  }
+  
+  .article-toc-nav {
+    @extend .nav;
+    @extend .flex-column;
+  }
+  
+  .article-toc-title {
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sacred-md;
+  }
+  
+  .article-main-col {
+    @extend .col-lg-9;
   }
   
   .article-header {
@@ -30,6 +53,14 @@
     margin-bottom: $spacing-sacred-lg;
   }
   
+  .article-meta-date {
+    margin-right: 1rem;
+  }
+  
+  .article-author {
+    margin-right: 1rem;
+  }
+  
   .article-content {
     font-size: $font-size-lg;
     line-height: $line-height-relaxed;
@@ -39,5 +70,10 @@
     margin-top: $spacing-sacred-xxl;
     padding-top: $spacing-sacred-xxl;
     border-top: 1px solid $border-color;
+  }
+  
+  .article-footer-title {
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sacred-md;
   }
 }

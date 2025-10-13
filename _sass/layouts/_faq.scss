@@ -28,9 +28,33 @@
     margin-right: auto;
   }
   
+  .faq-search-input {
+    @extend .form-control;
+    @extend .form-control-lg;
+  }
+  
   .faq-categories {
     margin-bottom: $spacing-sacred-xxl;
     text-align: center;
+  }
+  
+  .faq-categories-group {
+    @extend .btn-group;
+    flex-wrap: wrap;
+  }
+  
+  .faq-category-btn {
+    @extend .btn;
+    @extend .btn-outline-primary;
+  }
+  
+  .faq-content-row {
+    @extend .row;
+    justify-content: center;
+  }
+  
+  .faq-content-col {
+    @extend .col-lg-10;
   }
   
   .faq-footer {
@@ -38,5 +62,20 @@
     padding-top: $spacing-sacred-xxl;
     border-top: 1px solid $border-color;
     text-align: center;
+  }
+  
+  .faq-footer-title {
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sacred-md;
+  }
+  
+  .faq-footer-description {
+    color: $text-muted;
+    margin-bottom: $spacing-sacred-lg;
+  }
+  
+  .faq-footer-btn {
+    @extend .btn;
+    @extend .btn-primary;
   }
 }

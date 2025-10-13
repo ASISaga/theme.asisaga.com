@@ -1,0 +1,41 @@
+// Landing Features Component Styles
+
+.landing-features-component {
+  padding: $spacing-sacred-xxl 0;
+  
+  .landing-features-title {
+    text-align: center;
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sacred-xxl;
+  }
+  
+  .landing-features-row {
+    @extend .row;
+    gap: 1rem;
+  }
+  
+  .landing-feature-col {
+    @extend .col-md-4;
+  }
+  
+  .feature-card {
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  .feature-icon {
+    margin-bottom: $spacing-sacred-md;
+  }
+  
+  .feature-title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sacred-md;
+  }
+  
+  .feature-description {
+    color: $text-muted;
+    margin-bottom: 0;
+  }
+}

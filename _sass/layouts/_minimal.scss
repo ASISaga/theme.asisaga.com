@@ -1,19 +1,44 @@
 // Minimal Layout Styles
 
 .minimal-layout-content {
-  .text-center {
+  .minimal-layout-row {
+    @extend .row;
+    justify-content: center;
+  }
+  
+  .minimal-layout-col {
+    @extend .col-lg-6;
+  }
+  
+  .minimal-layout-centered {
+    text-align: center;
     padding: $spacing-sacred-xxl 0;
   }
   
-  .display-1 {
+  .minimal-error-code {
+    font-size: $font-size-6xl;
+    font-weight: $font-weight-bold;
     margin-bottom: $spacing-sacred-lg;
   }
   
-  .display-5 {
+  .minimal-title {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
     margin-bottom: $spacing-sacred-md;
   }
   
-  .lead {
+  .minimal-description {
+    font-size: $font-size-lg;
+    color: $text-muted;
     margin-bottom: $spacing-sacred-lg;
+  }
+  
+  .minimal-home-link {
+    margin-top: $spacing-sacred-lg;
+  }
+  
+  .minimal-home-btn {
+    @extend .btn;
+    @extend .btn-primary;
   }
 }
