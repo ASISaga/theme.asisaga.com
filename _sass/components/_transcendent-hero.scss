@@ -404,3 +404,20 @@
     }
   }
 }
+
+// Additional class variations
+.transcendent-hero-col {
+  @extend .col-lg-10;
+  @extend .col-xl-8;
+}
+
+.transcendent-cta-primary {
+  @extend .transcendent-cta;
+  @include transcendent-button-primary;
+  @include consciousness-pulse;
+}
+
+.transcendent-cta-secondary {
+  @extend .transcendent-cta;
+  @include transcendent-button-secondary;
+}

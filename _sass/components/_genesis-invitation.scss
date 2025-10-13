@@ -610,3 +610,21 @@
     }
   }
 }
+
+// Additional class variations
+.genesis-invitation-col {
+  @extend .col-lg-10;
+  @extend .col-xl-8;
+  text-align: center;
+}
+
+.genesis-cta-primary {
+  @extend .genesis-cta;
+  @extend .primary;
+  @extend .transcendent-glow-btn;
+}
+
+.genesis-cta-secondary {
+  @extend .genesis-cta;
+  @extend .secondary;
+}
