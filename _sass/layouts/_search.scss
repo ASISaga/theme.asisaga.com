@@ -13,26 +13,50 @@
   }
   
   .search-header-row {
-    @extend .row;
+    // Using Bootstrap grid mixin instead of @extend for .row
+    @include make-row();
     align-items: center;
   }
   
   .search-header-col {
-    @extend .col-lg-8;
+    // Using Bootstrap grid mixin instead of @extend for .col-lg-8
+    @include make-col-ready();
+    
+    @include media-breakpoint-up(lg) {
+      @include make-col(8);
+    }
   }
   
   .search-input-group {
-    @extend .input-group;
-    @extend .input-group-lg;
+    // Using direct input-group styles instead of @extend
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    font-size: $input-font-size-lg;
+    
+    > .form-control {
+      position: relative;
+      flex: 1 1 auto;
+      width: 1%;
+      min-width: 0;
+    }
   }
   
   .search-submit-btn {
-    @extend .btn;
-    @extend .btn-primary;
+    // Using direct button styles instead of @extend
+    @include button-variant($primary, $primary);
   }
   
   .search-results-count-col {
-    @extend .col-lg-4;
+    // Using Bootstrap grid mixin instead of @extend for .col-lg-4
+    @include make-col-ready();
+    
+    @include media-breakpoint-up(lg) {
+      @include make-col(4);
+    }
+    
     text-align: end;
   }
   
@@ -47,12 +71,19 @@
   }
   
   .search-content-container {
-    @extend .container-fluid;
+    // Using Bootstrap container mixin instead of @extend for .container-fluid
+    @include make-container();
     padding: $spacing-md $spacing-sacred-lg;
   }
   
   .search-filters-sidebar {
-    @extend .col-lg-3;
+    // Using Bootstrap grid mixin instead of @extend for .col-lg-3
+    @include make-col-ready();
+    
+    @include media-breakpoint-up(lg) {
+      @include make-col(3);
+    }
+    
     margin-bottom: $spacing-sacred-lg;
     
     @include media-breakpoint-up(lg) {
@@ -75,6 +106,11 @@
   }
   
   .search-results-main {
-    @extend .col-lg-9;
+    // Using Bootstrap grid mixin instead of @extend for .col-lg-9
+    @include make-col-ready();
+    
+    @include media-breakpoint-up(lg) {
+      @include make-col(9);
+    }
   }
 }

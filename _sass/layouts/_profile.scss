@@ -6,12 +6,19 @@
   }
   
   .profile-header-row {
-    @extend .row;
+    // Using Bootstrap grid mixin instead of @extend for .row
+    @include make-row();
     align-items: center;
   }
   
   .profile-image-col {
-    @extend .col-lg-3;
+    // Using Bootstrap grid mixin instead of @extend for .col-lg-3
+    @include make-col-ready();
+    
+    @include media-breakpoint-up(lg) {
+      @include make-col(3);
+    }
+    
     text-align: center;
     margin-bottom: $spacing-sacred-lg;
     
@@ -21,7 +28,12 @@
   }
   
   .profile-info-col {
-    @extend .col-lg-9;
+    // Using Bootstrap grid mixin instead of @extend for .col-lg-9
+    @include make-col-ready();
+    
+    @include media-breakpoint-up(lg) {
+      @include make-col(9);
+    }
   }
   
   .profile-image {
@@ -62,27 +74,56 @@
   }
   
   .profile-social-link {
-    @extend .btn;
-    @extend .btn-outline-primary;
-    @extend .btn-sm;
+    // Using direct button styles instead of @extend
+    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+    @include button-variant(
+      $background: transparent,
+      $border: $btn-border-width solid $primary,
+      $color: $primary,
+      $hover-background: $primary,
+      $hover-border: $primary,
+      $hover-color: $white,
+      $active-background: $primary,
+      $active-border: $primary,
+      $active-color: $white
+    );
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
   }
   
   .profile-stats {
-    @extend .card;
+    // Using direct card styles instead of @extend
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: $card-bg;
+    background-clip: border-box;
+    border: $card-border-width solid $card-border-color;
+    @include border-radius($card-border-radius);
     margin-bottom: $spacing-sacred-lg;
   }
   
   .profile-stats-title,
   .profile-skills-title {
-    @extend .card-title;
-    font-weight: $font-weight-bold;
+    // Using direct card-title styles instead of @extend
     margin-bottom: $spacing-sacred-md;
+    font-weight: $font-weight-bold;
+    line-height: $card-title-line-height;
   }
   
   .profile-skills {
-    @extend .card;
+    // Using direct card styles instead of @extend
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: $card-bg;
+    background-clip: border-box;
+    border: $card-border-width solid $card-border-color;
+    @include border-radius($card-border-radius);
     margin-bottom: $spacing-sacred-lg;
   }
   
@@ -93,15 +134,30 @@
   }
   
   .profile-skill-badge {
-    @extend .badge;
-    @extend .bg-primary;
+    // Using direct badge styles instead of @extend
+    display: inline-block;
+    padding: $badge-padding-y $badge-padding-x;
+    font-size: $badge-font-size;
+    font-weight: $badge-font-weight;
+    line-height: 1;
+    color: $white;
+    background-color: $primary;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    @include border-radius($badge-border-radius);
   }
 }
 
 
 .profile-placeholder-icon {
-  @extend .fas;
-  @extend .fa-user;
-  @extend .fa-5x;
-  @extend .text-white;
+  // Using direct FontAwesome and utility styles instead of @extend
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 5em;
+  color: $white;
+  
+  &:before {
+    content: "\f007"; // fa-user icon
+  }
 }

@@ -2,12 +2,18 @@
 
 .form-layout {
   .form-layout-row {
-    @extend .row;
+    // Using Bootstrap grid mixin instead of @extend for .row
+    @include make-row();
     justify-content: center;
   }
   
   .form-layout-col {
-    @extend .col-lg-8;
+    // Using Bootstrap grid mixin instead of @extend for .col-lg-8
+    @include make-col-ready();
+    
+    @include media-breakpoint-up(lg) {
+      @include make-col(8);
+    }
   }
   
   .form-header {

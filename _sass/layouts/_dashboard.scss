@@ -27,9 +27,19 @@
   }
   
   .dashboard-action-btn {
-    @extend .btn;
-    @extend .btn-sm;
-    @extend .btn-outline-primary;
+    // Using direct button styles instead of @extend
+    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+    @include button-variant(
+      $background: transparent,
+      $border: $btn-border-width solid $primary,
+      $color: $primary,
+      $hover-background: $primary,
+      $hover-border: $primary,
+      $hover-color: $white,
+      $active-background: $primary,
+      $active-border: $primary,
+      $active-color: $white
+    );
     margin-right: 0.5rem;
   }
   

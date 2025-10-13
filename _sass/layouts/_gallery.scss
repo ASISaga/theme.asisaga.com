@@ -27,14 +27,25 @@
   }
   
   .gallery-filter-btn {
-    @extend .btn;
-    @extend .btn-outline-primary;
+    // Using direct button styles instead of @extend
+    @include button-variant(
+      $background: transparent,
+      $border: $btn-border-width solid $primary,
+      $color: $primary,
+      $hover-background: $primary,
+      $hover-border: $primary,
+      $hover-color: $white,
+      $active-background: $primary,
+      $active-border: $primary,
+      $active-color: $white
+    );
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
   }
   
   .gallery-grid-row {
-    @extend .row;
+    // Using Bootstrap grid mixin instead of @extend for .row
+    @include make-row();
     gap: 1rem;
   }
 }

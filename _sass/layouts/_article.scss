@@ -2,21 +2,32 @@
 
 .article-layout {
   .article-toc-sidebar {
-    @extend .col-lg-3;
+    // Using Bootstrap grid mixin instead of @extend for .col-lg-3
+    @include make-col-ready();
+    
     display: none;
     
     @include media-breakpoint-up(lg) {
+      @include make-col(3);
       display: block;
     }
   }
   
   .article-toc-sticky {
-    @extend .sticky-top;
+    // Using direct sticky styles instead of @extend for .sticky-top
+    position: sticky;
+    top: 0;
+    z-index: $zindex-sticky;
   }
   
   .article-toc-nav {
-    @extend .nav;
-    @extend .flex-column;
+    // Using direct nav and flex-column styles instead of @extend
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
   }
   
   .article-toc-title {
@@ -25,7 +36,12 @@
   }
   
   .article-main-col {
-    @extend .col-lg-9;
+    // Using Bootstrap grid mixin instead of @extend for .col-lg-9
+    @include make-col-ready();
+    
+    @include media-breakpoint-up(lg) {
+      @include make-col(9);
+    }
   }
   
   .article-header {

@@ -29,8 +29,22 @@
   }
   
   .faq-search-input {
-    @extend .form-control;
-    @extend .form-control-lg;
+    // Using direct form-control styles instead of @extend
+    display: block;
+    width: 100%;
+    padding: $input-padding-y-lg $input-padding-x-lg;
+    font-family: $input-font-family;
+    font-size: $input-font-size-lg;
+    font-weight: $input-font-weight;
+    line-height: $input-line-height;
+    color: $input-color;
+    background-color: $input-bg;
+    background-clip: padding-box;
+    border: $input-border-width solid $input-border-color;
+    appearance: none;
+    @include border-radius($input-border-radius-lg);
+    @include box-shadow($input-box-shadow);
+    @include transition($input-transition);
   }
   
   .faq-categories {
@@ -39,22 +53,55 @@
   }
   
   .faq-categories-group {
-    @extend .btn-group;
+    // Using direct btn-group styles instead of @extend
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
     flex-wrap: wrap;
+    
+    > .faq-category-btn {
+      position: relative;
+      flex: 1 1 auto;
+      
+      &:not(:last-child) {
+        @include border-end-radius(0);
+      }
+      
+      &:not(:first-child) {
+        @include border-start-radius(0);
+        margin-left: calc($btn-border-width * -1);
+      }
+    }
   }
   
   .faq-category-btn {
-    @extend .btn;
-    @extend .btn-outline-primary;
+    // Using direct button styles instead of @extend
+    @include button-variant(
+      $background: transparent,
+      $border: $btn-border-width solid $primary,
+      $color: $primary,
+      $hover-background: $primary,
+      $hover-border: $primary,
+      $hover-color: $white,
+      $active-background: $primary,
+      $active-border: $primary,
+      $active-color: $white
+    );
   }
   
   .faq-content-row {
-    @extend .row;
+    // Using Bootstrap grid mixin instead of @extend for .row
+    @include make-row();
     justify-content: center;
   }
   
   .faq-content-col {
-    @extend .col-lg-10;
+    // Using Bootstrap grid mixin instead of @extend for .col-lg-10
+    @include make-col-ready();
+    
+    @include media-breakpoint-up(lg) {
+      @include make-col(10);
+    }
   }
   
   .faq-footer {
@@ -75,7 +122,7 @@
   }
   
   .faq-footer-btn {
-    @extend .btn;
-    @extend .btn-primary;
+    // Using direct button styles instead of @extend
+    @include button-variant($primary, $primary);
   }
 }

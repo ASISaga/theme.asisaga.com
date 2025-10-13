@@ -28,9 +28,19 @@
   }
   
   .chatroom-settings-btn {
-    @extend .btn;
-    @extend .btn-sm;
-    @extend .btn-outline-secondary;
+    // Using direct button styles instead of @extend
+    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+    @include button-variant(
+      $background: transparent,
+      $border: $btn-border-width solid $secondary,
+      $color: $secondary,
+      $hover-background: $secondary,
+      $hover-border: $secondary,
+      $hover-color: $white,
+      $active-background: $secondary,
+      $active-border: $secondary,
+      $active-color: $white
+    );
   }
   
   .chatroom-messages {
@@ -52,7 +62,7 @@
   }
   
   .chatroom-send-btn {
-    @extend .btn;
-    @extend .btn-primary;
+    // Using direct button styles instead of @extend
+    @include button-variant($primary, $primary);
   }
 }
