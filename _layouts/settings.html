@@ -6,14 +6,14 @@ Settings Layout
 Purpose: User or admin settings pages with tabbed interface
 Features: Tabbed navigation, form sections, save actions
 -->
-<div class="settings-layout h-100">
-  <div class="container-fluid h-100">
-    <div class="row h-100">
+<div class="settings-layout">
+  <div class="container-fluid">
+    <div class="row">
       <!-- Settings Sidebar -->
-      <aside class="col-lg-3 border-end bg-light py-4">
-        <h4 class="fw-bold mb-4 px-3">Settings</h4>
+      <aside class="settings-sidebar col-lg-3">
+        <h4 class="settings-sidebar-heading">Settings</h4>
         <nav class="settings-nav" aria-label="Settings navigation">
-          <ul class="nav flex-column">
+          <ul class="nav">
             {% if page.tabs %}
             {% for tab in page.tabs %}
             <li class="nav-item">
@@ -31,10 +31,10 @@ Features: Tabbed navigation, form sections, save actions
       </aside>
       
       <!-- Settings Content -->
-      <main class="col-lg-9 py-4">
+      <main class="settings-main col-lg-9">
         <div class="settings-content">
           {% if page.title %}
-          <h2 class="settings-title h3 fw-bold mb-4">{{ page.title }}</h2>
+          <h2 class="settings-title">{{ page.title }}</h2>
           {% endif %}
           
           <div class="tab-content">
@@ -42,9 +42,9 @@ Features: Tabbed navigation, form sections, save actions
           </div>
           
           <!-- Settings Actions -->
-          <div class="settings-actions mt-4 pt-4 border-top">
-            <button type="button" class="btn btn-primary me-2">Save Changes</button>
-            <button type="button" class="btn btn-outline-secondary">Cancel</button>
+          <div class="settings-actions">
+            <button type="button" class="settings-save-btn">Save Changes</button>
+            <button type="button" class="settings-cancel-btn">Cancel</button>
           </div>
         </div>
       </main>

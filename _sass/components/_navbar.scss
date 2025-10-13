@@ -22,11 +22,6 @@
     @media (min-width: 992px) {
       margin: 0 0.5rem;
     }
-
-    // Specific styling for dropdown items
-    &.dropdown {
-      position: relative;
-    }
   }
 
   // Styling for active navigation items
@@ -48,6 +43,7 @@
       }
     }
   }
+  
   // Styling for navigation links - Enhanced futuristic design
   .navbar-link {
     display: block;
@@ -87,7 +83,7 @@
     }
 
     // Styling for dropdown toggle links
-    &[data-bs-toggle="dropdown"] {
+    &.dropdown-toggle {
       &::after {
         display: inline-block;
         margin-left: 0.5rem;
@@ -106,13 +102,17 @@
     }
   }
 
+  // Extend Bootstrap dropdown to be relative positioned when inside navbar-item
+  .dropdown {
+    position: relative;
+  }
+
   // Styling for the dropdown menu - Enhanced with modern design
-  .navbar-dropdown {
+  .dropdown-menu {
     position: absolute;
     top: 100%;
     left: 0;
     z-index: 1000;
-    display: none;
     min-width: 12rem;
     padding: 0.5rem 0;
     margin: 0.5rem 0 0;
@@ -134,15 +134,10 @@
       margin-top: 0.5rem;
       border-radius: 0.5rem;
     }
-    
-    &.show {
-      display: block;
-    }
   }
 
-  // Container for each dropdown item
   // Styling for individual items within a dropdown menu
-  .navbar-dropdown-item {
+  .dropdown-item {
     display: block;
     width: 100%;
     padding: 0.5rem 1.5rem;
@@ -170,7 +165,7 @@
   }
   
   // Styling for dividers within a dropdown menu
-  .navbar-divider {
+  .dropdown-divider {
     height: 0;
     margin: 0.5rem 0;
     overflow: hidden;

@@ -26,6 +26,7 @@
 
 // Remaining base styles that don't impact Bootstrap variables
 @import "base/utilities";
+@import "base/utilities-combined";
 @import "base/layout";
 @import "base/common";
 @import "base/responsive";
@@ -114,3 +115,4 @@
 // Layout-specific components
 @import "components/layouts/article-toc";
 @import "components/layouts/dashboard-sample";
+@import "components/layouts/post-meta";

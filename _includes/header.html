@@ -2,8 +2,8 @@
 Main header component that appears at the top of each page
 Contains the site's logo, navigation menu, and optional mobile navigation toggler
 -->
-<header class="site-header navbar navbar-expand-lg container-fluid" role="banner" aria-label="Site header">
-  <a class="navbar-brand site-header__brand" href="/">
+<header class="site-header" role="banner" aria-label="Site header">
+  <a class="site-header__brand" href="/">
     <div class="header-brand-row">
       <!-- Site logo section with link to homepage -->
       <div class="header-logo">
@@ -20,7 +20,7 @@ Contains the site's logo, navigation menu, and optional mobile navigation toggle
     <span class="site-header-toggler-icon"></span>
   </button>
   <!-- Navigation menu container that collapses on mobile -->
-  <div id="site-header-nav" class="collapse navbar-collapse site-header-nav">
+  <div id="site-header-nav" class="collapse site-header-nav">
     {% include navbar.html %}
   </div>
 </header>
