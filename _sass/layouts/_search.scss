@@ -71,9 +71,14 @@
   }
   
   .search-content-container {
-    // Using Bootstrap container mixin instead of @extend for .container-fluid
-    @include make-container();
-    padding: $spacing-md $spacing-sacred-lg;
+    // Using direct styles instead of @extend for .container-fluid
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x, 0.75rem) * .5);
+    padding-left: calc(var(--bs-gutter-x, 0.75rem) * .5);
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: $spacing-md;
+    padding-bottom: $spacing-sacred-lg;
   }
   
   .search-filters-sidebar {

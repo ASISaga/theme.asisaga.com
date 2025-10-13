@@ -51,17 +51,7 @@
   
   .archive-view-btn {
     // Using direct button styles instead of @extend
-    @include button-variant(
-      $background: transparent,
-      $border: $btn-border-width solid $secondary,
-      $color: $secondary,
-      $hover-background: $secondary,
-      $hover-border: $secondary,
-      $hover-color: $white,
-      $active-background: $secondary,
-      $active-border: $secondary,
-      $active-color: $white
-    );
+    @include button-outline-variant($secondary);
   }
   
   .archive-pagination {

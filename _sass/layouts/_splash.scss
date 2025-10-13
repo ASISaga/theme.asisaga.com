@@ -117,17 +117,7 @@
   .splash-social-link {
     // Using direct button styles instead of @extend
     @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
-    @include button-variant(
-      $background: transparent,
-      $border: $btn-border-width solid $secondary,
-      $color: $secondary,
-      $hover-background: $secondary,
-      $hover-border: $secondary,
-      $hover-color: $white,
-      $active-background: $secondary,
-      $active-border: $secondary,
-      $active-color: $white
-    );
+    @include button-outline-variant($secondary);
     margin-right: 0.5rem;
   }
 }
