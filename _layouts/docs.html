@@ -1,0 +1,111 @@
+---
+layout: scrollable
+---
+<!-- 
+Docs Layout
+Purpose: Documentation or knowledge base pages with navigation
+Features: Sidebar navigation, breadcrumbs, previous/next links, search
+-->
+<div class="docs-layout">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Docs Sidebar -->
+      <aside class="col-lg-3 col-xl-2 docs-sidebar bg-light border-end">
+        <div class="sticky-top pt-4" style="top: 2rem;">
+          {% if page.search %}
+          <div class="docs-search mb-4">
+            <input type="search" class="form-control" placeholder="Search docs..." aria-label="Search documentation">
+          </div>
+          {% endif %}
+          
+          <nav class="docs-nav" aria-label="Documentation navigation">
+            {% if page.nav_items %}
+            <ul class="nav flex-column">
+              {% for item in page.nav_items %}
+              <li class="nav-item">
+                <a class="nav-link {% if page.url == item.url %}active{% endif %}" href="{{ item.url }}">
+                  {{ item.title }}
+                </a>
+                {% if item.children %}
+                <ul class="nav flex-column ms-3">
+                  {% for child in item.children %}
+                  <li class="nav-item">
+                    <a class="nav-link {% if page.url == child.url %}active{% endif %}" href="{{ child.url }}">
+                      {{ child.title }}
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </nav>
+        </div>
+      </aside>
+      
+      <!-- Docs Main Content -->
+      <main class="col-lg-9 col-xl-8 docs-content px-4 py-4">
+        <!-- Breadcrumbs -->
+        {% if page.breadcrumbs %}
+        <nav aria-label="breadcrumb" class="mb-4">
+          <ol class="breadcrumb">
+            {% for crumb in page.breadcrumbs %}
+            <li class="breadcrumb-item {% if forloop.last %}active{% endif %}">
+              {% if forloop.last %}
+                {{ crumb.title }}
+              {% else %}
+                <a href="{{ crumb.url }}">{{ crumb.title }}</a>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ol>
+        </nav>
+        {% endif %}
+        
+        <article class="docs-article">
+          {% if page.title %}
+          <h1 class="docs-title display-5 fw-bold mb-4">{{ page.title }}</h1>
+          {% endif %}
+          
+          {{ content }}
+        </article>
+        
+        <!-- Previous/Next Navigation -->
+        {% if page.prev or page.next %}
+        <nav class="docs-pagination mt-5 pt-4 border-top" aria-label="Page navigation">
+          <div class="row">
+            <div class="col-6">
+              {% if page.prev %}
+              <a href="{{ page.prev.url }}" class="text-decoration-none">
+                <small class="text-muted d-block mb-1">← Previous</small>
+                <strong>{{ page.prev.title }}</strong>
+              </a>
+              {% endif %}
+            </div>
+            <div class="col-6 text-end">
+              {% if page.next %}
+              <a href="{{ page.next.url }}" class="text-decoration-none">
+                <small class="text-muted d-block mb-1">Next →</small>
+                <strong>{{ page.next.title }}</strong>
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </nav>
+        {% endif %}
+      </main>
+      
+      <!-- Optional Right Sidebar (Table of Contents) -->
+      <aside class="col-xl-2 d-none d-xl-block docs-toc">
+        <div class="sticky-top pt-4" style="top: 2rem;">
+          <h6 class="fw-bold mb-3">On this page</h6>
+          <nav class="nav flex-column">
+            <!-- Auto-generated TOC can go here -->
+          </nav>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>

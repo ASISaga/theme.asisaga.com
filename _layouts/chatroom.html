@@ -1,0 +1,43 @@
+---
+layout: fixed-height
+---
+<!-- 
+Chatroom Layout
+Purpose: Real-time or threaded conversation pages
+Features: Message list, input area, user list, real-time updates
+-->
+<div class="chatroom-layout h-100 d-flex flex-column">
+  <!-- Chatroom Header -->
+  <header class="chatroom-header border-bottom bg-white px-4 py-3 flex-shrink-0">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        {% if page.title %}
+        <h1 class="chatroom-title h4 mb-0">{{ page.title }}</h1>
+        {% endif %}
+        {% if page.participants %}
+        <small class="text-muted">{{ page.participants }} participants</small>
+        {% endif %}
+      </div>
+      <div class="chatroom-actions">
+        <button type="button" class="btn btn-sm btn-outline-secondary" aria-label="Settings">
+          <i class="fas fa-cog" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Chatroom Messages Area -->
+  <div class="chatroom-messages flex-grow-1 overflow-auto px-4 py-3">
+    {{ content }}
+  </div>
+  
+  <!-- Chatroom Input Area -->
+  <footer class="chatroom-input border-top bg-white px-4 py-3 flex-shrink-0">
+    <form class="d-flex gap-2">
+      <input type="text" class="form-control" placeholder="Type a message..." aria-label="Message input">
+      <button type="submit" class="btn btn-primary" aria-label="Send message">
+        <i class="fas fa-paper-plane" aria-hidden="true"></i>
+      </button>
+    </form>
+  </footer>
+</div>

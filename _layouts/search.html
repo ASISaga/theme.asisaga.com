@@ -1,0 +1,59 @@
+---
+layout: fixed-height
+---
+<!-- 
+Search Layout
+Purpose: Search results with filters and faceted navigation
+Features: Search bar, filters, results list, pagination
+-->
+<div class="search-layout h-100 d-flex flex-column">
+  <!-- Search Header -->
+  <header class="search-header border-bottom bg-white px-4 py-3 flex-shrink-0">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <form class="search-form">
+          <div class="input-group input-group-lg">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" value="{{ page.query }}">
+            <button class="btn btn-primary" type="submit" aria-label="Search">
+              <i class="fas fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-4 text-end">
+        {% if page.results_count %}
+        <p class="mb-0 text-muted">{{ page.results_count }} results found</p>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+  
+  <!-- Search Content -->
+  <div class="search-content flex-grow-1 overflow-auto">
+    <div class="container-fluid px-4 py-3">
+      <div class="row">
+        <!-- Search Filters Sidebar -->
+        <aside class="col-lg-3 mb-4 mb-lg-0">
+          <div class="search-filters">
+            <h5 class="fw-bold mb-3">Filters</h5>
+            {% if page.filters %}
+            {% for filter in page.filters %}
+            <div class="filter-group mb-4">
+              <h6 class="fw-bold mb-2">{{ filter.name }}</h6>
+              <!-- Filter options -->
+            </div>
+            {% endfor %}
+            {% endif %}
+          </div>
+        </aside>
+        
+        <!-- Search Results -->
+        <main class="col-lg-9">
+          <div class="search-results">
+            {{ content }}
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</div>

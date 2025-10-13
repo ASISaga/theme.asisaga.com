@@ -1,0 +1,47 @@
+---
+layout: scrollable
+---
+<!-- 
+Landing Layout
+Purpose: Campaign or marketing landing pages with conversion focus
+Features: Hero section, features, testimonials, CTA sections
+-->
+<div class="landing-layout">
+  <!-- Hero Section -->
+  {% if page.hero %}
+  <section class="landing-hero bg-primary text-white py-5">
+    <div class="container">
+      <div class="row align-items-center min-vh-50">
+        <div class="col-lg-6">
+          <h1 class="display-3 fw-bold mb-4">{{ page.hero.title }}</h1>
+          <p class="lead mb-4">{{ page.hero.subtitle }}</p>
+          {% if page.hero.cta %}
+          <a href="{{ page.hero.cta.url }}" class="btn btn-light btn-lg">{{ page.hero.cta.text }}</a>
+          {% endif %}
+        </div>
+        {% if page.hero.image %}
+        <div class="col-lg-6">
+          <img src="{{ page.hero.image }}" alt="{{ page.hero.title }}" class="img-fluid">
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  
+  <!-- Main Content -->
+  <div class="landing-content">
+    {{ content }}
+  </div>
+  
+  <!-- CTA Section -->
+  {% if page.final_cta %}
+  <section class="landing-cta bg-light py-5">
+    <div class="container text-center">
+      <h2 class="display-5 fw-bold mb-3">{{ page.final_cta.title }}</h2>
+      <p class="lead mb-4">{{ page.final_cta.description }}</p>
+      <a href="{{ page.final_cta.url }}" class="btn btn-primary btn-lg">{{ page.final_cta.text }}</a>
+    </div>
+  </section>
+  {% endif %}
+</div>
