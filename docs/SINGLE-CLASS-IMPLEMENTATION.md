@@ -16,7 +16,7 @@ The following Bootstrap classes are **required** for JavaScript functionality an
 - `dropdown-menu` - For dropdown containers
 - `dropdown-item` - For dropdown items
 - `dropdown-divider` - For dropdown separators
-- `modal`, `modal-fade` - For modal.js
+- `modal`, `fade` - For modal.js and transitions
 - `modal-dialog`, `modal-content`, `modal-header`, `modal-body`, `modal-footer` - For modal structure
 - `btn-close` - For dismissible components
 - `tab-pane`, `tab-content` - For tabs.js
@@ -164,7 +164,7 @@ The following Bootstrap classes are **required** for JavaScript functionality an
 <button class="btn-secondary">
 ```
 
-**SCSS Changes**: Created combined modal and button classes in `_utilities-combined.scss`
+**SCSS Changes**: Created combined modal class in `_utilities-combined.scss`. Note: `.btn-secondary` includes all base `btn` styles plus secondary variant styling.
 
 ## Utility Classes Created
 
