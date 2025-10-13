@@ -1,0 +1,29 @@
+<!-- 
+Dashboard Widget Component
+Displays a dashboard metric card/widget
+-->
+<div class="col-md-{{ include.columns | default: '3' }} dashboard-widget-component mb-4">
+  <div class="card h-100">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-start mb-3">
+        <h5 class="card-title text-muted mb-0">{{ include.title }}</h5>
+        {% if include.icon %}
+        <i class="{{ include.icon }} text-primary" aria-hidden="true"></i>
+        {% endif %}
+      </div>
+      
+      <div class="widget-value">
+        <h2 class="display-6 fw-bold mb-0">{{ include.value }}</h2>
+      </div>
+      
+      {% if include.change %}
+      <div class="widget-change mt-2">
+        <span class="badge {% if include.change > 0 %}bg-success{% else %}bg-danger{% endif %}">
+          {% if include.change > 0 %}+{% endif %}{{ include.change }}%
+        </span>
+        <small class="text-muted ms-2">vs last period</small>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<!-- 
+Post Meta Component
+Displays post metadata including date, author, reading time, and tags
+-->
+<div class="post-meta-component mb-4">
+  {% if include.date or include.author or include.reading_time %}
+  <div class="meta-info text-muted mb-3">
+    {% if include.date %}
+    <span class="meta-date me-3">
+      <i class="far fa-calendar" aria-hidden="true"></i>
+      <time datetime="{{ include.date | date_to_xmlschema }}">{{ include.date | date: "%B %d, %Y" }}</time>
+    </span>
+    {% endif %}
+    
+    {% if include.author %}
+    <span class="meta-author me-3">
+      <i class="far fa-user" aria-hidden="true"></i>
+      {{ include.author }}
+    </span>
+    {% endif %}
+    
+    {% if include.reading_time %}
+    <span class="meta-reading-time">
+      <i class="far fa-clock" aria-hidden="true"></i>
+      {{ include.reading_time }} min read
+    </span>
+    {% endif %}
+  </div>
+  {% endif %}
+  
+  {% if include.tags %}
+  <div class="meta-tags">
+    {% for tag in include.tags %}
+    <span class="badge bg-secondary me-1 mb-1">{{ tag }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>

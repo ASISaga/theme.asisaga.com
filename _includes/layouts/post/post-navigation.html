@@ -1,0 +1,24 @@
+<!-- 
+Post Navigation Component
+Displays previous and next post links
+-->
+<nav class="post-navigation border-top pt-4 mt-5" aria-label="Post navigation">
+  <div class="row">
+    <div class="col-md-6 mb-3 mb-md-0">
+      {% if include.prev %}
+      <a href="{{ include.prev.url }}" class="text-decoration-none d-block">
+        <small class="text-muted d-block mb-1">← Previous Post</small>
+        <strong class="d-block">{{ include.prev.title }}</strong>
+      </a>
+      {% endif %}
+    </div>
+    <div class="col-md-6 text-md-end">
+      {% if include.next %}
+      <a href="{{ include.next.url }}" class="text-decoration-none d-block">
+        <small class="text-muted d-block mb-1">Next Post →</small>
+        <strong class="d-block">{{ include.next.title }}</strong>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</nav>

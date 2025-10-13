@@ -1,0 +1,28 @@
+<!-- 
+FAQ Item Component
+Displays a single FAQ item with accordion behavior
+-->
+<div class="faq-item-component accordion-item">
+  <h3 class="accordion-header" id="faq-{{ include.id }}">
+    <button 
+      class="accordion-button {% unless include.expanded %}collapsed{% endunless %}" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#collapse-{{ include.id }}" 
+      aria-expanded="{% if include.expanded %}true{% else %}false{% endif %}" 
+      aria-controls="collapse-{{ include.id }}"
+    >
+      {{ include.question }}
+    </button>
+  </h3>
+  <div 
+    id="collapse-{{ include.id }}" 
+    class="accordion-collapse collapse {% if include.expanded %}show{% endif %}" 
+    aria-labelledby="faq-{{ include.id }}"
+    {% if include.parent %}data-bs-parent="#{{ include.parent }}"{% endif %}
+  >
+    <div class="accordion-body">
+      {{ include.answer }}
+    </div>
+  </div>
+</div>

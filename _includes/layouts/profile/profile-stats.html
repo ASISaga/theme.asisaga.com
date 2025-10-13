@@ -1,0 +1,31 @@
+<!-- 
+Profile Stats Component
+Displays user profile statistics
+-->
+<div class="profile-stats-component card">
+  <div class="card-body">
+    <h5 class="card-title fw-bold mb-3">{{ include.title | default: "Statistics" }}</h5>
+    <div class="row text-center">
+      {% if include.posts %}
+      <div class="col-4 mb-3">
+        <div class="stat-value h3 fw-bold mb-0">{{ include.posts }}</div>
+        <div class="stat-label text-muted small">Posts</div>
+      </div>
+      {% endif %}
+      
+      {% if include.followers %}
+      <div class="col-4 mb-3">
+        <div class="stat-value h3 fw-bold mb-0">{{ include.followers }}</div>
+        <div class="stat-label text-muted small">Followers</div>
+      </div>
+      {% endif %}
+      
+      {% if include.following %}
+      <div class="col-4 mb-3">
+        <div class="stat-value h3 fw-bold mb-0">{{ include.following }}</div>
+        <div class="stat-label text-muted small">Following</div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

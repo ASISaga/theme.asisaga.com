@@ -1,0 +1,21 @@
+<!-- 
+Gallery Item Component
+Displays a single gallery item with lightbox support
+-->
+<div class="col-md-{{ include.columns | default: '4' }} gallery-item-component mb-4" data-category="{{ include.category }}">
+  <div class="card h-100">
+    <a href="{{ include.full_image }}" data-lightbox="gallery" data-title="{{ include.title }}">
+      <img src="{{ include.thumbnail }}" alt="{{ include.title }}" class="card-img-top">
+    </a>
+    {% if include.title or include.description %}
+    <div class="card-body">
+      {% if include.title %}
+      <h5 class="card-title">{{ include.title }}</h5>
+      {% endif %}
+      {% if include.description %}
+      <p class="card-text text-muted small">{{ include.description }}</p>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
