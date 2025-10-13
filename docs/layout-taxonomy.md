@@ -3,6 +3,30 @@
 All layouts inherit from `default`, which provides the global scaffolding (HTML, head, body, header, footer, and a `.container` for content).  
 Specialized layouts extend `default` to serve specific content archetypes.
 
+# Hierarchy Overview
+
+default
+├── Content-Driven
+│   ├── post
+│   ├── article
+│   ├── archive
+│   └── profile
+├── Marketing
+│   ├── landing
+│   ├── gallery
+│   └── form
+├── Knowledge
+│   ├── docs
+│   └── faq
+├── Application & Interactive
+│   ├── dashboard
+│   ├── chatroom
+│   ├── search
+│   └── settings
+└── Utility
+    ├── minimal
+    └── splash
+
 ---
 
 ## 1. Base Layout
