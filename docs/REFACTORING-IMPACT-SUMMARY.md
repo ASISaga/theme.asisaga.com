@@ -12,7 +12,7 @@ Initial scan identified **359+ HTML elements** with 3+ classes across `_includes
 3. **Create reusable patterns**: Built combined utility classes for common patterns
 4. **Establish guidelines**: Documented approach for future development
 
-## Files Refactored (18 total)
+## Files Refactored (20 total)
 
 ### Component Includes (6 files)
 | File | Before Example | After Example | Classes Reduced |
@@ -31,20 +31,22 @@ Initial scan identified **359+ HTML elements** with 3+ classes across `_includes
 | `settings.html` | `class="col-lg-3 border-end bg-light py-4"` | `class="settings-sidebar col-lg-3"` | 4 → 2* |
 | `landing.html` | `class="display-3 fw-bold mb-4"` | `class="landing-hero-title"` | 3 → 1 |
 
-*Note: Bootstrap grid classes (col-*) are kept for responsive layout functionality
+*Note: Bootstrap grid classes (col-*) are kept for responsive layout functionality. Similarly, JavaScript-dependent classes (collapse, dropdown, modal, fade) are retained for Bootstrap component functionality.
 
-### SCSS Files Created/Updated (8 files)
+### SCSS Files Created/Updated (9 files)
 1. `_sass/base/_utilities-combined.scss` (NEW) - 20+ combined utility classes
-2. `_sass/components/_header.scss` - Merged navbar + utilities
-3. `_sass/components/_navbar.scss` - Enhanced dropdown styling
-4. `_sass/components/_hero.scss` - Consolidated button styles
-5. `_sass/components/layouts/_dashboard-sample.scss` - Added widget styles
-6. `_sass/components/layouts/_post-meta.scss` (NEW) - Post metadata styles
-7. `_sass/layouts/_settings.scss` - Enhanced semantic classes
-8. `_sass/layouts/_landing.scss` - Added hero & CTA styles
+2. `_sass/_common.scss` (UPDATED) - Import new utilities and components
+3. `_sass/components/_header.scss` - Merged navbar + utilities
+4. `_sass/components/_navbar.scss` - Enhanced dropdown styling
+5. `_sass/components/_hero.scss` - Consolidated button styles
+6. `_sass/components/layouts/_dashboard-sample.scss` - Added widget styles
+7. `_sass/components/layouts/_post-meta.scss` (NEW) - Post metadata styles
+8. `_sass/layouts/_settings.scss` - Enhanced semantic classes
+9. `_sass/layouts/_landing.scss` - Added hero & CTA styles
 
-### Documentation (1 file)
+### Documentation (2 files)
 - `docs/SINGLE-CLASS-IMPLEMENTATION.md` - Comprehensive guide with examples and patterns
+- `docs/REFACTORING-IMPACT-SUMMARY.md` - Metrics and impact analysis
 
 ## Key Achievements
 
