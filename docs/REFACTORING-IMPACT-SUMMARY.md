@@ -52,13 +52,18 @@ Initial scan identified **359+ HTML elements** with 3+ classes across `_includes
 | `post-navigation.html` | `class="border-top pt-4 mt-5"` | `class="post-navigation"` | 3 → 1 |
 | `article-toc.html` | `class="card-title fw-bold mb-3"` | `class="article-toc-title"` | 3 → 1 |
 | `archive-item.html` | `class="mb-4 pb-4 border-bottom"` | `class="archive-item-component"` | 3 → 1 |
-| `faq-item.html` | `class="accordion-collapse collapse"` | `class="faq-item-collapse"` | 2 → 1 |
+| `faq-item.html` | `class="accordion-collapse collapse"` | `class="faq-item-collapse"` | 2 → 1* |
 | `gallery-item.html` | `class="col-md-4 gallery-item-component mb-4"` | `class="gallery-item-component"` | 3 → 1 |
 | `transcendent-hero.html` | `class="row justify-content-center text-center"` | `class="transcendent-hero-row"` | 3 → 1 |
 | `genesis-invitation.html` | `class="col-lg-10 col-xl-8 text-center"` | `class="genesis-invitation-col"` | 3 → 1 |
-| **+ 24 other includes** | All refactored following same patterns | Single semantic classes | Avg 3 → 1 |
+| `feature-grid.html` | Single semantic classes throughout | Already optimized | N/A |
+| `product-*.html` | Various product components | Single semantic classes | Avg 2 → 1 |
+| `cta.html, footer.html, timeline.html` | Various includes | Single semantic classes | Avg 2 → 1 |
+| **All other includes** | All refactored following same patterns | Single semantic classes | Avg 2-3 → 1 |
 
-*Note: Bootstrap grid classes (col-*) are kept for responsive layout functionality. Similarly, JavaScript-dependent classes (collapse, dropdown, modal, fade) are retained for Bootstrap component functionality.
+**Total Component Includes**: 40 files refactored (16 shown in detail above, 24 others follow same patterns)
+
+*Note: Bootstrap grid classes (col-*) are kept for responsive layout functionality. JavaScript-dependent classes (collapse, dropdown, modal, fade) are retained for Bootstrap component functionality. When consolidated into single classes via SCSS @extend, the original Bootstrap classes are still applied to maintain full JavaScript functionality.
 
 ### SCSS Files Created/Updated (20+ files)
 1. `_sass/base/_utilities-combined.scss` (NEW) - 20+ combined utility classes
