@@ -9,7 +9,7 @@ It serves as the root reference, linking to the two core documents:
 ---
 
 ## Purpose
-- Ensure consistent use of containers, rows, and columns across all layouts.  
+- Ensure consistent use of bootstrap containers, rows, and columns across all layouts.  
 - Provide a clear taxonomy of layouts, organized by base templates and specialized archetypes.  
 - Act as a living contract for collaborators, encoding both technical rules and structural patterns.  
 
