@@ -1,109 +1,121 @@
 # Layout Taxonomy
 
-This taxonomy defines the standard layouts for the site.  
-Each layout specifies its purpose, container strategy, grid rules, and fixed includes.  
-Use this as a reference when creating or assigning layouts.
+All layouts inherit from `default`, which provides the global scaffolding (HTML, head, body, header, footer, and a `.container` for content).  
+Specialized layouts extend `default` to serve specific content archetypes.
 
 ---
 
-## 1. `default`
-- **Purpose**: Base layout for general pages.  
-- **Container strategy**: `.container` for main content.  
-- **Grid rules**: No enforced rows/columns.  
-- **Fixed includes**: Header, footer.  
+## 1. Base Layout
+- **`default`**
+  - Purpose: Root layout for all pages.
+  - Provides: Global scaffolding, header, footer, and a `.container`.
+  - Grid rules: No enforced rows/columns.
 
 ---
 
-## 2. `post`
-- **Purpose**: Blog posts, articles, news entries.  
-- **Container strategy**: `.container` for readability.  
-- **Grid rules**: Single column, optional sidebar.  
-- **Fixed includes**: Blog header, blog footer.  
+## 2. Content-Driven Layouts
+- **`post`**
+  - Purpose: Blog posts, news entries.
+  - Container: `.container` for readability.
+  - Grid: Single column, optional sidebar.
+  - Includes: Blog header, blog footer.
+
+- **`article`**
+  - Purpose: Long-form editorial or knowledge articles.
+  - Container: `.container`.
+  - Grid: Single column with optional inline media grids.
+  - Includes: Article header (title, author, metadata), footer.
+
+- **`archive`**
+  - Purpose: Index pages listing posts, projects, or resources.
+  - Container: `.container`.
+  - Grid: Rows/columns for card grids or lists.
+  - Includes: Header, footer.
+
+- **`profile`**
+  - Purpose: Author or team member profile pages.
+  - Container: `.container`.
+  - Grid: Two-column layout (profile info + content).
+  - Includes: Header, footer.
 
 ---
 
-## 3. `landing`
-- **Purpose**: Marketing or campaign landing pages.  
-- **Container strategy**: Mix of `.container` and `.container-fluid` for edge‑to‑edge sections.  
-- **Grid rules**: Rows/columns defined in includes (hero, features, CTA).  
-- **Fixed includes**: Hero, CTA, footer.  
+## 3. Marketing Layouts
+- **`landing`**
+  - Purpose: Campaign or marketing landing pages.
+  - Container: Mix of `.container` and `.container-fluid`.
+  - Grid: Rows/columns defined in includes (hero, features, CTA).
+  - Includes: Hero, CTA, footer.
+
+- **`gallery`**
+  - Purpose: Image or media gallery pages.
+  - Container: `.container-fluid` for full-bleed visuals.
+  - Grid: Responsive multi-column grid.
+  - Includes: Header, footer.
+
+- **`form`**
+  - Purpose: Contact, signup, or feedback forms.
+  - Container: `.container`.
+  - Grid: Centered single column, optional two-column split.
+  - Includes: Header, footer.
 
 ---
 
-## 4. `docs`
-- **Purpose**: Documentation or knowledge base pages.  
-- **Container strategy**: `.container-fluid` for full width.  
-- **Grid rules**: Fixed two‑column grid (sidebar + main content).  
-- **Fixed includes**: Docs sidebar, footer.  
+## 4. Knowledge & Documentation Layouts
+- **`docs`**
+  - Purpose: Documentation or knowledge base.
+  - Container: `.container-fluid`.
+  - Grid: Fixed two-column grid (sidebar + main content).
+  - Includes: Docs sidebar, footer.
+
+- **`faq`**
+  - Purpose: Frequently asked questions.
+  - Container: `.container`.
+  - Grid: Single column with collapsible sections.
+  - Includes: Header, footer.
 
 ---
 
-## 5. `dashboard`
-- **Purpose**: Data‑heavy or app‑like pages.  
-- **Container strategy**: `.container-fluid` for flexibility.  
-- **Grid rules**: Universal row/column skeleton (e.g., 3–4 widget columns).  
-- **Fixed includes**: Navigation, sidebar, footer.  
+## 5. Application & Interactive Layouts
+- **`dashboard`**
+  - Purpose: Data-heavy or app-like pages.
+  - Container: `.container-fluid`.
+  - Grid: Universal row/column skeleton (e.g., 3–4 widget columns).
+  - Includes: Navigation, sidebar, footer.
+
+- **`chatroom`**
+  - Purpose: Real-time or threaded conversation pages.
+  - Container: `.container-fluid`.
+  - Grid: Two-column grid (chat stream + sidebar).
+  - Includes: Chat header, footer, optional sidebar.
+
+- **`search`**
+  - Purpose: Search results pages.
+  - Container: `.container`.
+  - Grid: Single column with optional sidebar for filters.
+  - Includes: Header, footer.
+
+- **`settings`**
+  - Purpose: User or admin settings pages.
+  - Container: `.container`.
+  - Grid: Two-column layout (nav + form).
+  - Includes: Header, footer.
 
 ---
 
-## 6. `minimal`
-- **Purpose**: Utility pages such as 404, maintenance, or legal notices.  
-- **Container strategy**: `.container`.  
-- **Grid rules**: No rows/columns.  
-- **Fixed includes**: Footer only.  
+## 6. Utility Layouts
+- **`minimal`**
+  - Purpose: Utility pages (404, maintenance, legal).
+  - Container: `.container`.
+  - Grid: No rows/columns.
+  - Includes: Footer only.
+
+- **`splash`**
+  - Purpose: Intro or coming-soon pages.
+  - Container: `.container-fluid`.
+  - Grid: Centered single column.
+  - Includes: Logo, CTA.
 
 ---
 
-## 7. `archive`
-- **Purpose**: Index pages listing posts, projects, or resources.  
-- **Container strategy**: `.container`.  
-- **Grid rules**: Rows/columns for card grids or lists.  
-- **Fixed includes**: Header, footer.  
-
----
-
-## 8. `profile`
-- **Purpose**: Author or team member profile pages.  
-- **Container strategy**: `.container`.  
-- **Grid rules**: Two‑column layout (profile info + content).  
-- **Fixed includes**: Header, footer.  
-
----
-
-## 9. `gallery`
-- **Purpose**: Image or media gallery pages.  
-- **Container strategy**: `.container-fluid` for full‑bleed visuals.  
-- **Grid rules**: Responsive multi‑column grid.  
-- **Fixed includes**: Header, footer.  
-
----
-
-## 10. `form`
-- **Purpose**: Contact, signup, or feedback forms.  
-- **Container strategy**: `.container`.  
-- **Grid rules**: Centered single column, optional two‑column split.  
-- **Fixed includes**: Header, footer.  
-
----
-
-## 11. `search`
-- **Purpose**: Search results pages.  
-- **Container strategy**: `.container`.  
-- **Grid rules**: Single column with optional sidebar for filters.  
-- **Fixed includes**: Header, footer.  
-
----
-
-## Rules Recap
-1. Containers are always defined in layouts.  
-2. Rows and columns are optional and only used when grid alignment is required.  
-   - Place them in content or includes.  
-   - Place them in layouts only if the grid is universal.  
-3. Includes follow three categories:  
-   - Simple includes → no grid.  
-   - Fixed wireframes → defined in layouts.  
-   - Complex/dynamic wireframes → defined in includes with their own grid.  
-
----
-
-This taxonomy provides a modular, extensible set of layouts that map directly to common content archetypes. It ensures layouts remain lean, grid usage is intentional, and includes are reusable.
+# Hierarchy Overview
