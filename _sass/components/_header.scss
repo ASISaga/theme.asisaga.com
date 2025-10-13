@@ -3,11 +3,29 @@
 // Site Header - Enhanced transparent and responsive design
 // Core navbar structure with Bootstrap 5.3+ integration
 .site-header {
+  // Base navbar styles (from Bootstrap .navbar)
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  
+  // Container-fluid styles (from Bootstrap .container-fluid)
   width: 100%;
+  padding-right: calc(var(--bs-gutter-x, 1.5rem) * .5);
+  padding-left: calc(var(--bs-gutter-x, 1.5rem) * .5);
+  margin-right: auto;
+  margin-left: auto;
+  
+  // Navbar expand-lg styles (from Bootstrap .navbar-expand-lg)
+  @media (min-width: 992px) {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+  
+  // Sticky positioning for header
   position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 1030;
   transition: all 0.3s ease;
   
@@ -18,7 +36,8 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   
   // Enhanced padding for better spacing
-  padding: 0.75rem 0;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   
   // Scrolled state - more opaque background
   &.scrolled {

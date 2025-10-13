@@ -5,8 +5,8 @@ This component handles three types of navigation items:
 2. Active page highlighting
 3. Regular navigation links
 -->
-<nav class="navbar" role="navigation" aria-label="Main navigation">
-  <ul class="site-navbar navbar-nav">
+<nav role="navigation" aria-label="Main navigation">
+  <ul class="site-navbar">
       {% for nav in site.data.nav.navigation %}
         {% if nav.subcategories != null %}
               <!-- Dropdown menu item with subcategories -->
@@ -21,18 +21,18 @@ This component handles three types of navigation items:
                       {{ nav.title }}
                   </a>
                   <!-- Dropdown menu container -->
-                  <ul class="dropdown-menu navbar-dropdown" aria-labelledby="navbarDropdown{{ forloop.index }}">
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown{{ forloop.index }}">
                       {% for subcategory in nav.subcategories %}
                           <!-- Individual dropdown menu item -->
                           <li>
-                              <a class="dropdown-item navbar-dropdown-item" href="{{ subcategory.url }}"
+                              <a class="dropdown-item" href="{{ subcategory.url }}"
                                  {% if page.url == subcategory.url %}aria-current="page"{% endif %}>
                                   {{ subcategory.title }}
                               </a>
                           </li>
                           {% if forloop.last == false %}
                               <!-- Divider between dropdown items (except after the last item) -->
-                              <li><hr class="dropdown-divider navbar-divider"></li>
+                              <li><hr class="dropdown-divider"></li>
                           {% endif %}
                       {% endfor %}
                   </ul>
