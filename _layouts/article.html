@@ -10,11 +10,11 @@ Features: Table of contents, reading progress, enhanced typography
   <div class="container">
     <div class="row">
       <!-- Article Sidebar (Table of Contents) -->
-      <aside class="col-lg-3 d-none d-lg-block">
-        <div class="article-toc sticky-top">
+      <aside class="article-toc-sidebar">
+        <div class="article-toc-sticky">
           {% if page.toc %}
-          <nav class="nav flex-column">
-            <h6 class="fw-bold mb-3">Table of Contents</h6>
+          <nav class="article-toc-nav">
+            <h6 class="article-toc-title">Table of Contents</h6>
             <!-- TOC will be auto-generated or manually specified -->
             {{ page.toc }}
           </nav>
@@ -23,40 +23,40 @@ Features: Table of contents, reading progress, enhanced typography
       </aside>
       
       <!-- Article Main Content -->
-      <div class="col-lg-9">
-        <header class="article-header mb-5">
+      <div class="article-main-col">
+        <header class="article-header">
           {% if page.title %}
-          <h1 class="article-title display-3 fw-bold mb-3">{{ page.title }}</h1>
+          <h1 class="article-title">{{ page.title }}</h1>
           {% endif %}
           
           {% if page.subtitle %}
-          <p class="article-subtitle lead text-muted mb-4">{{ page.subtitle }}</p>
+          <p class="article-subtitle">{{ page.subtitle }}</p>
           {% endif %}
           
           {% if page.date or page.author or page.reading_time %}
-          <div class="article-meta text-muted mb-4">
+          <div class="article-meta">
             {% if page.date %}
-            <time datetime="{{ page.date | date_to_xmlschema }}" class="me-3">
+            <time datetime="{{ page.date | date_to_xmlschema }}" class="article-meta-date">
               {{ page.date | date: "%B %d, %Y" }}
             </time>
             {% endif %}
             {% if page.author %}
-            <span class="article-author me-3">By {{ page.author }}</span>
+            <span class="article-author">By {{ page.author }}</span>
             {% endif %}
             {% if page.reading_time %}
-            <span class="reading-time">{{ page.reading_time }} min read</span>
+            <span class="article-reading-time">{{ page.reading_time }} min read</span>
             {% endif %}
           </div>
           {% endif %}
         </header>
         
-        <div class="article-content prose">
+        <div class="article-content">
           {{ content }}
         </div>
         
         {% if page.related_articles %}
-        <footer class="article-footer mt-5 pt-5 border-top">
-          <h4 class="fw-bold mb-3">Related Articles</h4>
+        <footer class="article-footer">
+          <h4 class="article-footer-title">Related Articles</h4>
           <div class="row">
             <!-- Related articles can be listed here -->
           </div>

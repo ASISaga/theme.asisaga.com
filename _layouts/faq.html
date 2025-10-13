@@ -9,30 +9,30 @@ Features: Search, categories, accordion interface
 <div class="faq-layout">
   <div class="container">
     <!-- FAQ Header -->
-    <header class="faq-header text-center mb-5">
+    <header class="faq-header">
       {% if page.title %}
-      <h1 class="faq-title display-4 fw-bold mb-3">{{ page.title }}</h1>
+      <h1 class="faq-title">{{ page.title }}</h1>
       {% endif %}
       
       {% if page.description %}
-      <p class="faq-description lead text-muted mb-4">{{ page.description }}</p>
+      <p class="faq-description">{{ page.description }}</p>
       {% endif %}
       
       <!-- FAQ Search -->
       {% if page.search %}
       <div class="faq-search">
-        <input type="search" class="form-control form-control-lg" placeholder="Search FAQ..." aria-label="Search frequently asked questions">
+        <input type="search" class="faq-search-input" placeholder="Search FAQ..." aria-label="Search frequently asked questions">
       </div>
       {% endif %}
     </header>
     
     <!-- FAQ Categories -->
     {% if page.categories %}
-    <div class="faq-categories mb-5 text-center">
-      <div class="btn-group flex-wrap" role="group" aria-label="FAQ categories">
-        <button type="button" class="btn btn-outline-primary active">All</button>
+    <div class="faq-categories">
+      <div class="faq-categories-group" role="group" aria-label="FAQ categories">
+        <button type="button" class="faq-category-btn active">All</button>
         {% for category in page.categories %}
-        <button type="button" class="btn btn-outline-primary">{{ category }}</button>
+        <button type="button" class="faq-category-btn">{{ category }}</button>
         {% endfor %}
       </div>
     </div>
@@ -40,8 +40,8 @@ Features: Search, categories, accordion interface
     
     <!-- FAQ Content -->
     <div class="faq-content">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
+      <div class="faq-content-row">
+        <div class="faq-content-col">
           {{ content }}
         </div>
       </div>
@@ -49,10 +49,10 @@ Features: Search, categories, accordion interface
     
     <!-- FAQ Footer -->
     {% if page.contact_cta %}
-    <footer class="faq-footer mt-5 pt-5 text-center border-top">
-      <h4 class="fw-bold mb-3">Still have questions?</h4>
-      <p class="text-muted mb-4">{{ page.contact_cta.description }}</p>
-      <a href="{{ page.contact_cta.url }}" class="btn btn-primary">{{ page.contact_cta.text }}</a>
+    <footer class="faq-footer">
+      <h4 class="faq-footer-title">Still have questions?</h4>
+      <p class="faq-footer-description">{{ page.contact_cta.description }}</p>
+      <a href="{{ page.contact_cta.url }}" class="faq-footer-btn">{{ page.contact_cta.text }}</a>
     </footer>
     {% endif %}
   </div>

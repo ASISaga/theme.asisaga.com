@@ -9,17 +9,17 @@ Features: Post metadata, author info, sharing options, comments section
 <article class="post-layout">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 mx-auto">
+      <div class="post-main-col">
         <!-- Post Header -->
-        <header class="post-header mb-4">
+        <header class="post-header">
           {% if page.title %}
-          <h1 class="post-title display-4 fw-bold mb-3">{{ page.title }}</h1>
+          <h1 class="post-title">{{ page.title }}</h1>
           {% endif %}
           
           {% if page.date or page.author %}
-          <div class="post-meta text-muted mb-3">
+          <div class="post-meta">
             {% if page.date %}
-            <time datetime="{{ page.date | date_to_xmlschema }}" class="me-3">
+            <time datetime="{{ page.date | date_to_xmlschema }}" class="post-meta-date">
               <i class="far fa-calendar" aria-hidden="true"></i>
               {{ page.date | date: "%B %d, %Y" }}
             </time>
@@ -34,12 +34,12 @@ Features: Post metadata, author info, sharing options, comments section
           {% endif %}
           
           {% if page.tags or page.categories %}
-          <div class="post-tags mb-3">
+          <div class="post-tags">
             {% for tag in page.tags %}
-            <span class="badge bg-secondary me-1">{{ tag }}</span>
+            <span class="post-tag">{{ tag }}</span>
             {% endfor %}
             {% for category in page.categories %}
-            <span class="badge bg-primary me-1">{{ category }}</span>
+            <span class="post-category">{{ category }}</span>
             {% endfor %}
           </div>
           {% endif %}
@@ -51,10 +51,10 @@ Features: Post metadata, author info, sharing options, comments section
         </div>
         
         <!-- Post Footer -->
-        <footer class="post-footer mt-5 pt-4 border-top">
+        <footer class="post-footer">
           {% if page.share %}
-          <div class="post-share mb-3">
-            <h5 class="fw-bold mb-2">Share this post</h5>
+          <div class="post-share">
+            <h5 class="post-share-title">Share this post</h5>
             <div class="share-buttons">
               <!-- Social sharing buttons can be added here -->
             </div>

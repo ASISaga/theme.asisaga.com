@@ -1,6 +1,12 @@
 // Post Layout Styles
 
 .post-layout {
+  .post-main-col {
+    @extend .col-lg-8;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
   .post-header {
     margin-bottom: $spacing-sacred-lg;
   }
@@ -20,8 +26,24 @@
     margin-bottom: $spacing-sacred-md;
   }
   
+  .post-meta-date {
+    margin-right: 1rem;
+  }
+  
   .post-tags {
     margin-bottom: $spacing-sacred-md;
+  }
+  
+  .post-tag {
+    @extend .badge;
+    @extend .bg-secondary;
+    margin-right: 0.25rem;
+  }
+  
+  .post-category {
+    @extend .badge;
+    @extend .bg-primary;
+    margin-right: 0.25rem;
   }
   
   .post-content {
@@ -33,5 +55,14 @@
     margin-top: $spacing-sacred-xxl;
     padding-top: $spacing-sacred-lg;
     border-top: 1px solid $border-color;
+  }
+  
+  .post-share {
+    margin-bottom: $spacing-sacred-md;
+  }
+  
+  .post-share-title {
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.5rem;
   }
 }

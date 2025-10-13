@@ -3,6 +3,18 @@
 .splash-layout-content {
   min-height: 75vh;
   
+  .splash-container {
+    @extend .row;
+    min-height: 75vh;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .splash-content {
+    @extend .col-lg-8;
+    text-align: center;
+  }
+  
   .splash-logo {
     max-width: 200px;
     margin-bottom: $spacing-sacred-lg;
@@ -28,13 +40,59 @@
     margin: $spacing-sacred-xxl 0;
   }
   
+  .splash-countdown-row {
+    @extend .row;
+    justify-content: center;
+  }
+  
+  .splash-countdown-unit {
+    text-align: center;
+  }
+  
+  .splash-countdown-value {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+  }
+  
+  .splash-countdown-label {
+    color: $text-muted;
+  }
+  
   .splash-email-capture {
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
   }
   
+  .splash-email-form {
+    @extend .row;
+    gap: 0.5rem;
+  }
+  
+  .splash-email-input-col {
+    @extend .col-auto;
+    flex-grow: 1;
+  }
+  
+  .splash-email-input {
+    @extend .form-control;
+    @extend .form-control-lg;
+  }
+  
+  .splash-email-btn {
+    @extend .btn;
+    @extend .btn-primary;
+    @extend .btn-lg;
+  }
+  
   .splash-social {
     margin-top: $spacing-sacred-xxl;
+  }
+  
+  .splash-social-link {
+    @extend .btn;
+    @extend .btn-outline-secondary;
+    @extend .btn-sm;
+    margin-right: 0.5rem;
   }
 }
