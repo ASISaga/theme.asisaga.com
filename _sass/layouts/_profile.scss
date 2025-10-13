@@ -1,0 +1,44 @@
+// Profile Layout Styles
+
+.profile-layout {
+  .profile-header {
+    margin-bottom: $spacing-sacred-xxl;
+  }
+  
+  .profile-image {
+    max-width: 200px;
+  }
+  
+  .profile-image-placeholder {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .profile-name {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sacred-sm;
+    
+    @include media-breakpoint-down(md) {
+      font-size: $font-size-3xl;
+    }
+  }
+  
+  .profile-role {
+    font-size: $font-size-lg;
+    color: $text-muted;
+    margin-bottom: $spacing-sacred-md;
+  }
+  
+  .profile-bio {
+    margin-bottom: $spacing-sacred-md;
+  }
+  
+  .profile-stats {
+    margin-bottom: $spacing-sacred-lg;
+  }
+  
+  .profile-skills {
+    margin-bottom: $spacing-sacred-lg;
+  }
+}

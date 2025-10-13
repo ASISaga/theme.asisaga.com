@@ -1,0 +1,43 @@
+// Article Layout Styles
+
+.article-layout {
+  .article-toc {
+    top: $spacing-xl;
+  }
+  
+  .article-header {
+    margin-bottom: $spacing-sacred-xxl;
+  }
+  
+  .article-title {
+    font-size: $font-size-5xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sacred-md;
+    
+    @include media-breakpoint-down(md) {
+      font-size: $font-size-4xl;
+    }
+  }
+  
+  .article-subtitle {
+    font-size: $font-size-lg;
+    color: $text-muted;
+    margin-bottom: $spacing-sacred-lg;
+  }
+  
+  .article-meta {
+    color: $text-muted;
+    margin-bottom: $spacing-sacred-lg;
+  }
+  
+  .article-content {
+    font-size: $font-size-lg;
+    line-height: $line-height-relaxed;
+  }
+  
+  .article-footer {
+    margin-top: $spacing-sacred-xxl;
+    padding-top: $spacing-sacred-xxl;
+    border-top: 1px solid $border-color;
+  }
+}

@@ -8,9 +8,9 @@ Container: Uses .container-fluid with flexbox or grid
 Behavior: Header/footer pinned, central panel scrollable (overflow-y: auto)
 Used by: dashboard, chatroom, search, settings
 -->
-<div class="fixed-height-layout" style="display: flex; flex-direction: column; height: calc(100vh - 200px); overflow: hidden;">
-  <div class="container-fluid h-100" style="display: flex; flex-direction: column; overflow: hidden;">
-    <div class="fixed-height-content" style="flex: 1; overflow-y: auto; overflow-x: hidden;">
+<div class="fixed-height-layout">
+  <div class="container-fluid h-100">
+    <div class="fixed-height-content">
       {{ content }}
     </div>
   </div>

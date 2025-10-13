@@ -26,8 +26,8 @@ Features: Form validation, progress indicators, success messages
           {% if page.show_progress and page.steps %}
           <!-- Progress Indicator -->
           <div class="form-progress mb-4">
-            <div class="progress" style="height: 4px;">
-              <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <div class="d-flex justify-content-between mt-2">
               {% for step in page.steps %}

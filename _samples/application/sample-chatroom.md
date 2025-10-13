@@ -9,7 +9,7 @@ participants: 12
   <!-- Message from user 1 -->
   <div class="message mb-3">
     <div class="d-flex align-items-start">
-      <div class="avatar bg-primary text-white rounded-circle me-3 flex-shrink-0" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+      <div class="avatar bg-primary text-white rounded-circle me-3 flex-shrink-0">
         <strong>JD</strong>
       </div>
       <div class="message-content flex-grow-1">
@@ -27,7 +27,7 @@ participants: 12
   <!-- Message from user 2 -->
   <div class="message mb-3">
     <div class="d-flex align-items-start">
-      <div class="avatar bg-success text-white rounded-circle me-3 flex-shrink-0" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+      <div class="avatar bg-success text-white rounded-circle me-3 flex-shrink-0">
         <strong>SJ</strong>
       </div>
       <div class="message-content flex-grow-1">
@@ -45,7 +45,7 @@ participants: 12
   <!-- Message from user 3 -->
   <div class="message mb-3">
     <div class="d-flex align-items-start">
-      <div class="avatar bg-warning text-dark rounded-circle me-3 flex-shrink-0" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+      <div class="avatar bg-warning text-dark rounded-circle me-3 flex-shrink-0">
         <strong>MP</strong>
       </div>
       <div class="message-content flex-grow-1">
@@ -63,7 +63,7 @@ participants: 12
   <!-- Current user message (right-aligned) -->
   <div class="message mb-3">
     <div class="d-flex align-items-start flex-row-reverse">
-      <div class="avatar bg-info text-white rounded-circle ms-3 flex-shrink-0" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+      <div class="avatar bg-info text-white rounded-circle ms-3 flex-shrink-0">
         <strong>You</strong>
       </div>
       <div class="message-content flex-grow-1">
@@ -90,7 +90,7 @@ participants: 12
   <!-- Message from user 4 -->
   <div class="message mb-3">
     <div class="d-flex align-items-start">
-      <div class="avatar bg-danger text-white rounded-circle me-3 flex-shrink-0" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+      <div class="avatar bg-danger text-white rounded-circle me-3 flex-shrink-0">
         <strong>EC</strong>
       </div>
       <div class="message-content flex-grow-1">
@@ -108,7 +108,7 @@ participants: 12
   <!-- Typing indicator -->
   <div class="message mb-3">
     <div class="d-flex align-items-start">
-      <div class="avatar bg-secondary text-white rounded-circle me-3 flex-shrink-0" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+      <div class="avatar bg-secondary text-white rounded-circle me-3 flex-shrink-0">
         <strong>JD</strong>
       </div>
       <div class="message-content flex-grow-1">

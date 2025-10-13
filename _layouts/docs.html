@@ -11,7 +11,7 @@ Features: Sidebar navigation, breadcrumbs, previous/next links, search
     <div class="row">
       <!-- Docs Sidebar -->
       <aside class="col-lg-3 col-xl-2 docs-sidebar bg-light border-end">
-        <div class="sticky-top pt-4" style="top: 2rem;">
+        <div class="sticky-top pt-4 docs-sidebar-sticky">
           {% if page.search %}
           <div class="docs-search mb-4">
             <input type="search" class="form-control" placeholder="Search docs..." aria-label="Search documentation">
@@ -99,7 +99,7 @@ Features: Sidebar navigation, breadcrumbs, previous/next links, search
       
       <!-- Optional Right Sidebar (Table of Contents) -->
       <aside class="col-xl-2 d-none d-xl-block docs-toc">
-        <div class="sticky-top pt-4" style="top: 2rem;">
+        <div class="sticky-top docs-toc-sticky">
           <h6 class="fw-bold mb-3">On this page</h6>
           <nav class="nav flex-column">
             <!-- Auto-generated TOC can go here -->

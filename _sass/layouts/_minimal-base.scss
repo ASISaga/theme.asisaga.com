@@ -1,0 +1,16 @@
+// Minimal Base Layout Styles
+// Purpose: Utility or lightweight pages with minimal chrome
+
+.minimal-layout {
+  width: 100%;
+  
+  .container {
+    padding-right: $spacing-md;
+    padding-left: $spacing-md;
+    
+    @include media-breakpoint-up(md) {
+      padding-right: $spacing-lg;
+      padding-left: $spacing-lg;
+    }
+  }
+}

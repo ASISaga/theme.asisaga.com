@@ -13,9 +13,9 @@ Features: Profile header with photo, bio, social links, activity feed
       <div class="row align-items-center">
         <div class="col-lg-3 text-center mb-4 mb-lg-0">
           {% if page.profile_image %}
-          <img src="{{ page.profile_image }}" alt="{{ page.name }}" class="profile-image rounded-circle img-fluid mb-3" style="max-width: 200px;">
+          <img src="{{ page.profile_image }}" alt="{{ page.name }}" class="profile-image rounded-circle img-fluid mb-3">
           {% else %}
-          <div class="profile-image-placeholder rounded-circle bg-secondary d-inline-flex align-items-center justify-content-center" style="width: 200px; height: 200px;">
+          <div class="profile-image-placeholder rounded-circle bg-secondary d-inline-flex align-items-center justify-content-center">
             <i class="fas fa-user fa-5x text-white" aria-hidden="true"></i>
           </div>
           {% endif %}

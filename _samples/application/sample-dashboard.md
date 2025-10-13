@@ -45,7 +45,7 @@ actions: ["Export", "Refresh", "Settings"]
         <h5 class="card-title mb-0">Traffic Overview</h5>
       </div>
       <div class="card-body">
-        <div class="chart-container" style="height: 300px;">
+        <div class="chart-container">
           <!-- Chart would go here -->
           <div class="d-flex align-items-center justify-content-center h-100 text-muted">
             <div class="text-center">

@@ -10,7 +10,7 @@ Features: Full-screen design, countdown timers, email capture
   <div class="row min-vh-75 align-items-center justify-content-center">
     <div class="col-lg-8 text-center">
       {% if page.logo %}
-      <img src="{{ page.logo }}" alt="{{ page.title }}" class="splash-logo mb-4" style="max-width: 200px;">
+      <img src="{{ page.logo }}" alt="{{ page.title }}" class="splash-logo mb-4">
       {% endif %}
       
       {% if page.title %}
@@ -57,7 +57,7 @@ Features: Full-screen design, countdown timers, email capture
       
       {% if page.email_capture %}
       <!-- Email Capture Form -->
-      <div class="splash-email-capture mx-auto" style="max-width: 500px;">
+      <div class="splash-email-capture">
         <form class="row g-2">
           <div class="col-auto flex-grow-1">
             <input type="email" class="form-control form-control-lg" placeholder="Enter your email" aria-label="Email address">

@@ -1,0 +1,32 @@
+// Chatroom Layout Styles
+
+.chatroom-layout {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  .chatroom-header {
+    border-bottom: 1px solid $border-color;
+    background-color: $transcendent-white;
+    padding: $spacing-md $spacing-sacred-lg;
+    flex-shrink: 0;
+  }
+  
+  .chatroom-title {
+    font-size: $font-size-xl;
+    margin-bottom: 0;
+  }
+  
+  .chatroom-messages {
+    flex-grow: 1;
+    overflow: auto;
+    padding: $spacing-md $spacing-sacred-lg;
+  }
+  
+  .chatroom-input {
+    border-top: 1px solid $border-color;
+    background-color: $transcendent-white;
+    padding: $spacing-md $spacing-sacred-lg;
+    flex-shrink: 0;
+  }
+}

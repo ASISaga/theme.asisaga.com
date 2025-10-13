@@ -1,0 +1,26 @@
+// Dashboard Layout Styles
+
+.dashboard-layout {
+  height: 100%;
+  
+  .dashboard-header {
+    border-bottom: 1px solid $border-color;
+    background-color: $transcendent-white;
+    padding: $spacing-md $spacing-sacred-lg;
+    margin-bottom: $spacing-md;
+  }
+  
+  .dashboard-title {
+    font-size: $font-size-xxl;
+    margin-bottom: 0;
+  }
+  
+  .dashboard-actions {
+    display: flex;
+    gap: $spacing-sm;
+  }
+  
+  .dashboard-content {
+    padding: 0 $spacing-sacred-lg;
+  }
+}

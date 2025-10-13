@@ -1,0 +1,19 @@
+// Minimal Layout Styles
+
+.minimal-layout-content {
+  .text-center {
+    padding: $spacing-sacred-xxl 0;
+  }
+  
+  .display-1 {
+    margin-bottom: $spacing-sacred-lg;
+  }
+  
+  .display-5 {
+    margin-bottom: $spacing-sacred-md;
+  }
+  
+  .lead {
+    margin-bottom: $spacing-sacred-lg;
+  }
+}

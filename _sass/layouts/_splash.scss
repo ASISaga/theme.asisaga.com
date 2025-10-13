@@ -1,0 +1,40 @@
+// Splash Layout Styles
+
+.splash-layout-content {
+  min-height: 75vh;
+  
+  .splash-logo {
+    max-width: 200px;
+    margin-bottom: $spacing-sacred-lg;
+  }
+  
+  .splash-title {
+    font-size: $font-size-5xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sacred-lg;
+    
+    @include media-breakpoint-down(md) {
+      font-size: $font-size-4xl;
+    }
+  }
+  
+  .splash-subtitle {
+    font-size: $font-size-lg;
+    color: $text-muted;
+    margin-bottom: $spacing-sacred-xxl;
+  }
+  
+  .splash-countdown {
+    margin: $spacing-sacred-xxl 0;
+  }
+  
+  .splash-email-capture {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .splash-social {
+    margin-top: $spacing-sacred-xxl;
+  }
+}

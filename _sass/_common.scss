@@ -89,3 +89,27 @@
 @import "components/genesis-blocks";
 @import "components/transcendent-threshold";
 @import "components/genesis-invitation";
+
+// Layout Styles - Base templates and specialized layouts
+@import "layouts/scrollable";
+@import "layouts/fixed-height";
+@import "layouts/minimal-base";
+@import "layouts/post";
+@import "layouts/article";
+@import "layouts/archive";
+@import "layouts/profile";
+@import "layouts/landing";
+@import "layouts/gallery";
+@import "layouts/form";
+@import "layouts/docs";
+@import "layouts/faq";
+@import "layouts/dashboard";
+@import "layouts/chatroom";
+@import "layouts/search";
+@import "layouts/settings";
+@import "layouts/minimal";
+@import "layouts/splash";
+
+// Layout-specific components
+@import "components/layouts/article-toc";
+@import "components/layouts/dashboard-sample";

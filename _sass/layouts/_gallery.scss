@@ -1,0 +1,34 @@
+// Gallery Layout Styles
+
+.gallery-layout {
+  .gallery-header {
+    text-center;
+    margin-bottom: $spacing-sacred-xxl;
+  }
+  
+  .gallery-title {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sacred-md;
+    
+    @include media-breakpoint-down(md) {
+      font-size: $font-size-3xl;
+    }
+  }
+  
+  .gallery-description {
+    font-size: $font-size-lg;
+    color: $text-muted;
+    margin-bottom: $spacing-sacred-lg;
+  }
+  
+  .gallery-filters {
+    margin-bottom: $spacing-sacred-lg;
+  }
+  
+  .gallery-grid {
+    .row {
+      gap: $spacing-sacred-lg;
+    }
+  }
+}

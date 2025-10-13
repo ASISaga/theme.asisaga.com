@@ -1,0 +1,25 @@
+// Search Layout Styles
+
+.search-layout {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  .search-header {
+    border-bottom: 1px solid $border-color;
+    background-color: $transcendent-white;
+    padding: $spacing-md $spacing-sacred-lg;
+    flex-shrink: 0;
+  }
+  
+  .search-content {
+    flex-grow: 1;
+    overflow: auto;
+  }
+  
+  .search-filters {
+    .filter-group {
+      margin-bottom: $spacing-sacred-lg;
+    }
+  }
+}
