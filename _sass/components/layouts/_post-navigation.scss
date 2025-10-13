@@ -1,0 +1,39 @@
+// Post Navigation Component Styles
+
+.post-navigation {
+  border-top: 1px solid $border-color;
+  padding-top: $spacing-sacred-lg;
+  margin-top: $spacing-sacred-xxl;
+  
+  .post-navigation-prev {
+    @extend .col-md-6;
+    margin-bottom: $spacing-sacred-md;
+    
+    @include media-breakpoint-up(md) {
+      margin-bottom: 0;
+    }
+  }
+  
+  .post-navigation-next {
+    @extend .col-md-6;
+    
+    @include media-breakpoint-up(md) {
+      text-align: end;
+    }
+  }
+  
+  .post-navigation-link {
+    text-decoration: none;
+    display: block;
+  }
+  
+  .post-navigation-label {
+    color: $text-muted;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  
+  .post-navigation-title {
+    display: block;
+  }
+}

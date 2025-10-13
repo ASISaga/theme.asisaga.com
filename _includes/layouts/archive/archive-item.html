@@ -2,36 +2,36 @@
 Archive Item Component
 Displays a single item in an archive listing
 -->
-<article class="archive-item-component mb-4 pb-4 border-bottom">
+<article class="archive-item-component">
   <div class="row">
     {% if include.image %}
-    <div class="col-md-4 mb-3 mb-md-0">
+    <div class="archive-item-image-col">
       <a href="{{ include.url }}">
-        <img src="{{ include.image }}" alt="{{ include.title }}" class="img-fluid rounded">
+        <img src="{{ include.image }}" alt="{{ include.title }}" class="archive-item-image">
       </a>
     </div>
-    <div class="col-md-8">
+    <div class="archive-item-content-col">
     {% else %}
-    <div class="col-md-12">
+    <div class="archive-item-content-full">
     {% endif %}
-      <h3 class="h4 mb-2">
-        <a href="{{ include.url }}" class="text-decoration-none">{{ include.title }}</a>
+      <h3 class="archive-item-title">
+        <a href="{{ include.url }}" class="archive-item-link">{{ include.title }}</a>
       </h3>
       
       {% if include.date %}
-      <p class="text-muted small mb-2">
+      <p class="archive-item-date">
         <time datetime="{{ include.date | date_to_xmlschema }}">{{ include.date | date: "%B %d, %Y" }}</time>
       </p>
       {% endif %}
       
       {% if include.excerpt %}
-      <p class="mb-2">{{ include.excerpt }}</p>
+      <p class="archive-item-excerpt">{{ include.excerpt }}</p>
       {% endif %}
       
       {% if include.tags %}
       <div class="archive-item-tags">
         {% for tag in include.tags %}
-        <span class="badge bg-light text-dark me-1">{{ tag }}</span>
+        <span class="archive-item-tag">{{ tag }}</span>
         {% endfor %}
       </div>
       {% endif %}

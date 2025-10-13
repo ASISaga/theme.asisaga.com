@@ -1,0 +1,14 @@
+// FAQ Item Component Styles
+
+.faq-item-component {
+  @extend .accordion-item;
+  
+  .faq-item-button {
+    @extend .accordion-button;
+  }
+  
+  .faq-item-collapse {
+    @extend .accordion-collapse;
+    @extend .collapse;
+  }
+}

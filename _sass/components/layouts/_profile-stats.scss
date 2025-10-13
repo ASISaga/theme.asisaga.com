@@ -1,0 +1,32 @@
+// Profile Stats Component Styles
+
+.profile-stats-component {
+  @extend .card;
+  
+  .profile-stats-title {
+    @extend .card-title;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sacred-md;
+  }
+  
+  .profile-stats-row {
+    @extend .row;
+    text-align: center;
+  }
+  
+  .profile-stat-col {
+    @extend .col-4;
+    margin-bottom: $spacing-sacred-md;
+  }
+  
+  .stat-value {
+    font-size: $font-size-xxl;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0;
+  }
+  
+  .stat-label {
+    color: $text-muted;
+    font-size: $font-size-sm;
+  }
+}

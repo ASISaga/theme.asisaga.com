@@ -1,0 +1,29 @@
+// Gallery Item Component Styles
+
+.gallery-item-component {
+  @extend .col-md-4;
+  margin-bottom: $spacing-sacred-lg;
+  
+  .gallery-item-card {
+    @extend .card;
+    height: 100%;
+  }
+  
+  .gallery-item-image {
+    @extend .card-img-top;
+  }
+  
+  .gallery-item-body {
+    @extend .card-body;
+  }
+  
+  .gallery-item-title {
+    @extend .card-title;
+  }
+  
+  .gallery-item-description {
+    @extend .card-text;
+    color: $text-muted;
+    font-size: $font-size-sm;
+  }
+}
