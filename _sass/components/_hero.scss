@@ -113,4 +113,9 @@
     // @extend .text-secondary; // Bootstrap text color utility
     }
   }
+
+  // Hero background image - dynamic background set via data attribute or CSS variable
+  .hero-background-image-dynamic {
+    @include background-cover; // Using custom background mixin (combines size, position, repeat)
+  }
 }
