@@ -8,36 +8,11 @@ Features: Message list, input area, user list, real-time updates
 -->
 <div class="chatroom-layout">
   <!-- Chatroom Header -->
-  <header class="chatroom-header">
-    <div class="chatroom-header-content">
-      <div>
-        {% if page.title %}
-        <h1 class="chatroom-title">{{ page.title }}</h1>
-        {% endif %}
-        {% if page.participants %}
-        <small class="chatroom-participants">{{ page.participants }} participants</small>
-        {% endif %}
-      </div>
-      <div class="chatroom-actions">
-        <button type="button" class="chatroom-settings-btn" aria-label="Settings">
-          <i class="fas fa-cog" aria-hidden="true"></i>
-        </button>
-      </div>
-    </div>
-  </header>
-  
+  {% include chatroom/header.html %}
+
   <!-- Chatroom Messages Area -->
-  <div class="chatroom-messages">
-    {{ content }}
-  </div>
-  
+  {% include chatroom/messages.html %}
+
   <!-- Chatroom Input Area -->
-  <footer class="chatroom-input">
-    <form class="chatroom-input-form">
-      <input type="text" class="form-control" placeholder="Type a message..." aria-label="Message input">
-      <button type="submit" class="chatroom-send-btn" aria-label="Send message">
-        <i class="fas fa-paper-plane" aria-hidden="true"></i>
-      </button>
-    </form>
-  </footer>
+  {% include chatroom/input.html %}
 </div>
