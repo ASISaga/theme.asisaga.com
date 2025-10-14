@@ -6,7 +6,13 @@
   border-bottom: 1px solid $border-color;
   
   .archive-item-image-col {
-    @extend .col-md-4;
+    // Using Bootstrap grid mixin instead of @extend for .col-md-4
+    @include make-col-ready();
+    
+    @include media-breakpoint-up(md) {
+      @include make-col(4);
+    }
+    
     margin-bottom: $spacing-sacred-md;
     
     @include media-breakpoint-up(md) {
@@ -15,16 +21,28 @@
   }
   
   .archive-item-content-col {
-    @extend .col-md-8;
+    // Using Bootstrap grid mixin instead of @extend for .col-md-8
+    @include make-col-ready();
+    
+    @include media-breakpoint-up(md) {
+      @include make-col(8);
+    }
   }
   
   .archive-item-content-full {
-    @extend .col-md-12;
+    // Using Bootstrap grid mixin instead of @extend for .col-md-12
+    @include make-col-ready();
+    
+    @include media-breakpoint-up(md) {
+      @include make-col(12);
+    }
   }
   
   .archive-item-image {
-    @extend .img-fluid;
-    @extend .rounded;
+    // Using direct styles instead of @extend for .img-fluid and .rounded
+    max-width: 100%;
+    height: auto;
+    border-radius: $border-radius;
   }
   
   .archive-item-title {
@@ -47,9 +65,18 @@
   }
   
   .archive-item-tag {
-    @extend .badge;
-    @extend .bg-light;
-    @extend .text-dark;
+    // Using direct badge styles instead of @extend
+    display: inline-block;
+    padding: $badge-padding-y $badge-padding-x;
+    font-size: $badge-font-size;
+    font-weight: $badge-font-weight;
+    line-height: 1;
+    color: $dark;
+    background-color: $light;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    @include border-radius($badge-border-radius);
     margin-right: 0.25rem;
   }
 }

@@ -27,9 +27,9 @@
   }
   
   .dashboard-action-btn {
-    @extend .btn;
-    @extend .btn-sm;
-    @extend .btn-outline-primary;
+    // Using direct button styles instead of @extend
+    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+    @include button-outline-variant($primary);
     margin-right: 0.5rem;
   }
   

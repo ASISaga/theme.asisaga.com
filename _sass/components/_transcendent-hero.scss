@@ -407,28 +407,46 @@
 
 // Additional class variations
 .transcendent-hero-col {
-  @extend .col-lg-10;
-  @extend .col-xl-8;
+  // Using Bootstrap grid mixin instead of @extend for .col-lg-10 and .col-xl-8
+  @include make-col-ready();
+  
+  @include media-breakpoint-up(lg) {
+    @include make-col(10);
+  }
+  
+  @include media-breakpoint-up(xl) {
+    @include make-col(8);
+  }
 }
 
 .transcendent-cta-primary {
-  @extend .transcendent-cta;
+  // Combining transcendent-cta with button mixins
   @include transcendent-button-primary;
   @include consciousness-pulse;
+  min-width: 200px;
+  padding: $spacing-md $spacing-2xl;
 }
 
 .transcendent-cta-secondary {
-  @extend .transcendent-cta;
+  // Combining transcendent-cta with button mixin
   @include transcendent-button-secondary;
+  min-width: 180px;
+  padding: $spacing-md $spacing-xl;
 }
 
 .transcendent-hero-row {
-  @extend .row;
+  // Using Bootstrap grid mixin instead of @extend for .row
+  @include make-row();
   justify-content: center;
   text-align: center;
 }
 
 .transcendent-icon {
-  @extend .fas;
-  @extend .fa-star-of-life;
+  // Using direct FontAwesome styles instead of @extend
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  
+  &:before {
+    content: "\f621"; // fa-star-of-life icon
+  }
 }

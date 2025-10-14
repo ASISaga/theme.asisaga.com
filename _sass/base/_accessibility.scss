@@ -52,7 +52,8 @@
 }
 
 .sr-only-focusable {
-  @extend .sr-only;
+  // Using visually-hidden mixin instead of @extend for Jekyll compatibility
+  @include visually-hidden;
   
   &:active,
   &:focus {

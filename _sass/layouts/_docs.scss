@@ -2,13 +2,25 @@
 
 .docs-layout {
   .docs-sidebar {
-    @extend .col-lg-3;
-    @extend .col-xl-2;
+    // Using Bootstrap grid mixin instead of @extend for .col-lg-3 and .col-xl-2
+    @include make-col-ready();
+    
+    @include media-breakpoint-up(lg) {
+      @include make-col(3);
+    }
+    
+    @include media-breakpoint-up(xl) {
+      @include make-col(2);
+    }
+    
     background-color: $bg-light;
     border-right: 1px solid $border-color;
     
     .docs-sidebar-sticky {
-      @extend .sticky-top;
+      // Using direct sticky styles instead of @extend for .sticky-top
+      position: sticky;
+      top: 0;
+      z-index: $zindex-sticky;
       padding-top: $spacing-sacred-lg;
     }
   }
@@ -18,14 +30,28 @@
   }
   
   .docs-nav-children {
-    @extend .nav;
-    @extend .flex-column;
+    // Using direct nav and flex-column styles instead of @extend
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
     margin-left: 1rem;
+    list-style: none;
   }
   
   .docs-content {
-    @extend .col-lg-9;
-    @extend .col-xl-8;
+    // Using Bootstrap grid mixin instead of @extend for .col-lg-9 and .col-xl-8
+    @include make-col-ready();
+    
+    @include media-breakpoint-up(lg) {
+      @include make-col(9);
+    }
+    
+    @include media-breakpoint-up(xl) {
+      @include make-col(8);
+    }
+    
     padding: $spacing-sacred-lg;
   }
   
@@ -50,7 +76,9 @@
   }
   
   .docs-pagination-next {
-    @extend .col-6;
+    // Using Bootstrap grid mixin instead of @extend for .col-6
+    @include make-col-ready();
+    @include make-col(6);
     text-align: end;
   }
   
@@ -65,15 +93,21 @@
   }
   
   .docs-toc {
-    @extend .col-xl-2;
+    // Using Bootstrap grid mixin instead of @extend for .col-xl-2
+    @include make-col-ready();
+    
     display: none;
     
     @include media-breakpoint-up(xl) {
+      @include make-col(2);
       display: block;
     }
     
     .docs-toc-sticky {
-      @extend .sticky-top;
+      // Using direct sticky styles instead of @extend for .sticky-top
+      position: sticky;
+      top: 0;
+      z-index: $zindex-sticky;
     }
   }
   

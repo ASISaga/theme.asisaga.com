@@ -1,11 +1,22 @@
 // Article TOC Component Styles
 
 .article-toc-component {
-  @extend .sticky-top;
+  // Using direct sticky styles instead of @extend for .sticky-top
+  position: sticky;
   top: $spacing-xl;
+  z-index: $zindex-sticky;
   
   .article-toc-nav {
-    @extend .card;
+    // Using direct card styles instead of @extend
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: $card-bg;
+    background-clip: border-box;
+    border: $card-border-width solid $card-border-color;
+    @include border-radius($card-border-radius);
   }
   
   .card-body {
@@ -13,26 +24,40 @@
   }
   
   .article-toc-title {
-    @extend .card-title;
-    font-weight: $font-weight-bold;
+    // Using direct card-title styles instead of @extend
     margin-bottom: $spacing-md;
+    font-weight: $font-weight-bold;
+    line-height: $card-title-line-height;
   }
   
   .article-toc-list {
-    @extend .nav;
-    @extend .flex-column;
+    // Using direct nav and flex-column styles instead of @extend
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
   }
   
   .article-toc-sublist {
-    @extend .nav;
-    @extend .flex-column;
+    // Using direct nav and flex-column styles instead of @extend
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
     margin-left: 1rem;
+    list-style: none;
   }
   
   .article-toc-link {
-    @extend .nav-link;
+    // Using direct nav-link styles instead of @extend
+    display: block;
     padding: $spacing-xs 0;
     color: $text-color;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out;
     
     &:hover {
       color: $primary;

@@ -10,16 +10,23 @@
 
 // Skip link for accessibility
 .skip-link {
-  @extend .sr-only;
-  @extend .focus-visible;
+  // Using visually-hidden mixin instead of @extend for Jekyll compatibility
+  @include visually-hidden;
   
   &:focus {
+    // Override visually-hidden on focus
     position: absolute;
     top: 0;
     left: 0;
+    width: auto;
+    height: auto;
+    padding: 1rem;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
     background: $primary;
     color: $white;
-    padding: 1rem;
     z-index: 9999;
   }
 }

@@ -6,7 +6,13 @@
   margin-top: $spacing-sacred-xxl;
   
   .post-navigation-prev {
-    @extend .col-md-6;
+    // Using Bootstrap grid mixin instead of @extend for .col-md-6
+    @include make-col-ready();
+    
+    @include media-breakpoint-up(md) {
+      @include make-col(6);
+    }
+    
     margin-bottom: $spacing-sacred-md;
     
     @include media-breakpoint-up(md) {
@@ -15,9 +21,11 @@
   }
   
   .post-navigation-next {
-    @extend .col-md-6;
+    // Using Bootstrap grid mixin instead of @extend for .col-md-6
+    @include make-col-ready();
     
     @include media-breakpoint-up(md) {
+      @include make-col(6);
       text-align: end;
     }
   }
