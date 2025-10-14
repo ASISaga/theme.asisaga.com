@@ -33,7 +33,7 @@
       // TODO: Replace @extend .mx-auto with proper mixin or direct styles for Jekyll compatibility
     // @extend .mx-auto;
       // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
-    @include container-fluid() with proper mixin or direct styles for Jekyll compatibility
+  @include container-fluid(); // with proper mixin or direct styles for Jekyll compatibility
     // @extend with direct styles for Jekyll compatibility
     @include container-fluid();
       // TODO: Replace @extend .px-4 with proper mixin or direct styles for Jekyll compatibility

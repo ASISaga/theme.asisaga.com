@@ -8,7 +8,7 @@
   .#{$prefix} {
     &-container {
       // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
-    @include container-fluid() with proper mixin or direct styles for Jekyll compatibility
+  @include container-fluid(); // with proper mixin or direct styles for Jekyll compatibility
     // @extend with direct styles for Jekyll compatibility
     @include container-fluid();
     }

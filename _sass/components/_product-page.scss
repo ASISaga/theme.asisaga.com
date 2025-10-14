@@ -51,7 +51,7 @@
   // Features/Concepts grid (now in _product-feature-grid.scss)
   .product-grid {
     // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
-    @include container-fluid() with proper mixin or direct styles for Jekyll compatibility
+  @include container-fluid(); // with proper mixin or direct styles for Jekyll compatibility
     // @extend with direct styles for Jekyll compatibility
     @include container-fluid();
     // Replaced // TODO: Replace @extend with direct styles
