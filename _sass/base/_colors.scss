@@ -1,3 +1,7 @@
+// Mixin for footer text color
+@mixin text-footer-color {
+  color: $footer-color;
+}
 $essence-particle-shadow-opacity: 0.7; // replaces 0.8 in box-shadow
 $essence-float-opacity: 0.85; // replaces 0.8 in essenceFloat
 // Animation opacities for particles and effects
