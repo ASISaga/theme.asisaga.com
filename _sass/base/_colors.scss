@@ -362,3 +362,7 @@ $transcendent-white: #fff;
     @include color($transformation-purple);
   }
 }
+
+@mixin bg-transparent {
+  background-color: transparent !important;
+}
