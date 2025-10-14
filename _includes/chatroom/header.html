@@ -1,18 +1,36 @@
-<!-- _includes/chatroom-header.html -->
+<!-- _includes/chatroom/header.html -->
 <header class="chatroom-header">
     <div class="chatroom-header-content">
-        <div>
-            {% if page.title %}
-            <h1 class="chatroom-title">{{ page.title }}</h1>
-            {% endif %}
-            {% if page.participants %}
-            <small class="chatroom-participants">{{ page.participants }} participants</small>
-            {% endif %}
+        <div class="chatroom-header-left">
+            <h1 class="chatroom-title">{{ include.title | default: page.title | default: "Chat" }}</h1>
+            <div class="chatroom-header-info">
+                {% if include.participants or page.participants %}
+                <span class="chatroom-participants">{{ include.participants | default: page.participants }}
+                    participants</span>
+                {% endif %}
+                {% if include.typing_indicator %}
+                <div class="chatroom-typing-indicator" id="typing-indicator">
+                    {{ include.typing_indicator }}
+                </div>
+                {% endif %}
+            </div>
         </div>
-        <div class="chatroom-actions">
-            <button type="button" class="chatroom-settings-btn" aria-label="Settings">
-                <i class="fas fa-cog" aria-hidden="true"></i>
-            </button>
+        <div class="chatroom-header-right">
+            {% if include.connection_status %}
+            <div class="chatroom-status-container">
+                <span class="chatroom-status" id="connection-status">
+                    {{ include.connection_status }}
+                </span>
+            </div>
+            {% endif %}
+            <div class="chatroom-actions">
+                {% if include.extra_actions %}
+                {{ include.extra_actions }}
+                {% endif %}
+                <button type="button" class="chatroom-settings-btn" aria-label="Settings">
+                    <i class="fas fa-cog" aria-hidden="true"></i>
+                </button>
+            </div>
         </div>
     </div>
 </header>

@@ -1,9 +1,42 @@
-<!-- _includes/chatroom-input.html -->
+<!-- _includes/chatroom/input.html -->
 <footer class="chatroom-input">
-    <form class="chatroom-input-form">
-        <input type="text" class="form-control" placeholder="Type a message..." aria-label="Message input">
-        <button type="submit" class="chatroom-send-btn" aria-label="Send message">
-            <i class="fas fa-paper-plane" aria-hidden="true"></i>
-        </button>
-    </form>
+    <div class="chatroom-input-container">
+        {% if include.show_avatar %}
+        <div class="chatroom-input-avatar-container">
+            <img src="{{ include.avatar_url | default: '/assets/images/default-avatar.png' }}" alt="Your avatar"
+                class="chatroom-input-avatar">
+        </div>
+        {% endif %}
+        <div class="chatroom-input-content">
+            <div class="chatroom-input-field-container">
+                <textarea class="chatroom-input-field" id="chatroom-input-control"
+                    placeholder="{{ include.placeholder | default: 'Type a message...' }}" aria-label="Message input"
+                    rows="{{ include.rows | default: 1 }}"
+                    maxlength="{{ include.maxlength | default: 1000 }}"></textarea>
+                {% if include.extra_input_actions %}
+                <div class="chatroom-input-actions">
+                    {{ include.extra_input_actions }}
+                </div>
+                {% endif %}
+            </div>
+            {% if include.show_toolbar %}
+            <div class="chatroom-input-toolbar">
+                <div class="chatroom-input-toolbar-left">
+                    {{ include.toolbar_left }}
+                </div>
+                <div class="chatroom-input-toolbar-right">
+                    {{ include.toolbar_right }}
+                    <button class="chatroom-input-send-btn" type="button" title="Send Message"
+                        aria-label="Send Message">
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            {% else %}
+            <button class="chatroom-input-send-btn" type="button" title="Send Message" aria-label="Send Message">
+                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+            </button>
+            {% endif %}
+        </div>
+    </div>
 </footer>

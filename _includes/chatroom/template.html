@@ -1,0 +1,27 @@
+<!-- Chatroom Template -->
+<div class="chatroom-layout">
+    <!-- Chatroom Header -->
+    {% include chatroom/header.html
+    title=page.title
+    participants=page.participants
+    typing_indicator=page.typing_indicator
+    connection_status=page.connection_status
+    extra_actions=page.extra_actions
+    %}
+
+    <!-- Chatroom Messages Area -->
+    {% include chatroom/messages.html %}
+
+    <!-- Chatroom Input Area -->
+    {% include chatroom/input.html
+    show_avatar=page.show_avatar
+    avatar_url=page.avatar_url
+    placeholder=page.placeholder
+    rows=page.rows
+    maxlength=page.maxlength
+    show_toolbar=page.show_toolbar
+    extra_input_actions=page.extra_input_actions
+    toolbar_left=page.toolbar_left
+    toolbar_right=page.toolbar_right
+    %}
+</div>
