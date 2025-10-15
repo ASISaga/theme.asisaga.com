@@ -371,3 +371,8 @@ $transcendent-white: #fff;
 @mixin text-footer-color {
   color: $footer-text-color;
 }
+
+// Mixin for muted footer text color
+@mixin text-footer-muted {
+  color: $footer-text-muted;
+}
