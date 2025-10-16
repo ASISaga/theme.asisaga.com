@@ -6,11 +6,12 @@
 
 // Custom Base Styles and Variable Overrides
 // These must be loaded BEFORE any Bootstrap imports to ensure all variables are defined
+
 @import "base/colors";
 @import "base/dimensions";
 @import "base/variables";
-@import "base/typography";
 @import "base/mixins";
+@import "base/typography";
 @import "base/animations";
 @import "base/accessibility";
 
