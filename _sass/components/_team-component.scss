@@ -21,7 +21,7 @@
     &-title {
       // Bootstrap display utility
       @include font-size-2xl; // .display-5
-      @include font-weight-light;
+  @include font-light;
       // Bootstrap margin utility
       // Bootstrap text color utility
       @include text-primary; // .text-primary
@@ -30,7 +30,7 @@
     &-subtitle {
       // Bootstrap heading utility
       @include font-size-lg; // .h5
-      @include font-weight-medium;
+  @include font-medium;
       // Bootstrap text color utility
       @include text-muted; // .text-muted
       // Bootstrap margin utility
@@ -82,7 +82,7 @@
       
       &-name {
     // Bootstrap font-weight utility
-    @include font-weight-bold; // .fw-bold
+  @include font-bold; // .fw-bold
     // Bootstrap text color utility
     @include text-primary; // .text-primary
     // Bootstrap margin utility

@@ -8,7 +8,7 @@
 // ----------------------------------------
 .btn-sacred {
   @include font-interface;
-  @include font-weight-semibold;
+  @include font-semibold;
   letter-spacing: 0.5px;
   border-radius: 0.75rem;
   @include padding(0.75rem, 1.5rem);
@@ -39,7 +39,7 @@
   @include bg-luminous-gold;
   @include border-luminous-gold(2px);
   @include text-cosmic-deep-blue;
-  @include font-weight-bold;
+  @include font-bold;
   
   &:hover {
     @include bg-sacred-gold-dark;
@@ -148,7 +148,7 @@
   @include padding(1.25rem, 2.5rem);
   @include font-xl;
   border-radius: 1.25rem;
-  @include font-weight-bold;
+  @include font-bold;
 }
 
 // Sacred outline buttons

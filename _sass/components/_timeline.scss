@@ -11,7 +11,7 @@
   .timeline-title {
   // Section title utility
   @include font-xl;
-  @include font-weight-bold;
+  @include font-bold;
   @include text-primary;
     text-align: center;
   }
@@ -71,7 +71,7 @@
         
         .timeline-marker-label {
           @include text-primary;
-          @include font-weight-semibold;
+          @include font-semibold;
         }
       }
       
