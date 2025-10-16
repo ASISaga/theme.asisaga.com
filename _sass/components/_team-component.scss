@@ -8,7 +8,7 @@
   .#{$prefix} {
     &-section {
       // Bootstrap padding utility
-      @include padding-y(3rem); // .py-5
+  @include padding-vertical(3rem); // .py-5
       // Bootstrap background utility
       background-color: $gray-100; // .bg-light
       // Bootstrap border-radius utility

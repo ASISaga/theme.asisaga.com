@@ -5,7 +5,7 @@
 // Timeline component
 .timeline-section {
   // Bootstrap vertical padding
-  @include padding-y(3rem); // Equivalent to .py-5
+  @include padding-vertical(3rem); // Equivalent to .py-5
   position: relative;
   
   .timeline-title {
