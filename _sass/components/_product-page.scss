@@ -51,9 +51,9 @@
   // Features/Concepts grid (now in _product-feature-grid.scss)
   .product-grid {
     // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
-  @include make-container(); // with proper mixin or direct styles for Jekyll compatibility
-    // @extend with direct styles for Jekyll compatibility
-    @include make-container();
+  @include make-container();
+  // @extend with direct styles for Jekyll compatibility
+  @include make-container();
     // Replaced // TODO: Replace @extend with direct styles
     display: flex;
     flex-wrap: wrap;
@@ -124,8 +124,8 @@
   .product-visual-container {
     // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
   @include make-container();
-    // @extend with direct styles for Jekyll compatibility
-    @include make-container();
+  // @extend with direct styles for Jekyll compatibility
+  @include make-container();
     // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
     // @extend .text-center;
     // TODO: Replace @extend .my-4 with proper mixin or direct styles for Jekyll compatibility
@@ -145,8 +145,8 @@
   .product-code-container {
     // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
   @include make-container();
-    // @extend with direct styles for Jekyll compatibility
-    @include make-container();
+  // @extend with direct styles for Jekyll compatibility
+  @include make-container();
     // TODO: Replace @extend .py-3 with proper mixin or direct styles for Jekyll compatibility
     // @extend .py-3;
     
@@ -171,9 +171,9 @@
   // Benefits/List container (now in _product-benefits-list.scss)
   .product-list-container {
     // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
-    @include make-container() with proper mixin or direct styles for Jekyll compatibility
-    // @extend with direct styles for Jekyll compatibility
-    @include make-container();
+  @include make-container();
+  // @extend with direct styles for Jekyll compatibility
+  @include make-container();
     
     .product-list {
       // TODO: Replace @extend .list-unstyled with proper mixin or direct styles for Jekyll compatibility
