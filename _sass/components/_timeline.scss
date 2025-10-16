@@ -65,7 +65,7 @@
       
       &.active {
         .timeline-marker-dot {
-          @include bg-accent;
+          @include background-color($accent);
           transform: scale(1.2);
         }
         
