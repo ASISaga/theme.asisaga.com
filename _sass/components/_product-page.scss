@@ -123,7 +123,7 @@
   // Visual content container (now in _product-visual.scss)
   .product-visual-container {
     // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
-    @include make-container() with proper mixin or direct styles for Jekyll compatibility
+  @include make-container();
     // @extend with direct styles for Jekyll compatibility
     @include make-container();
     // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
