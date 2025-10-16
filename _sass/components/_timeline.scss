@@ -10,7 +10,7 @@
   
   .timeline-title {
   // Section title utility
-  @include font-size-xl;
+  @include font-xl;
   @include font-weight-bold;
   @include text-primary;
     text-align: center;

@@ -146,7 +146,7 @@
 
 .btn-sacred-xl {
   @include padding(1.25rem, 2.5rem);
-  @include font-size-xl;
+  @include font-xl;
   border-radius: 1.25rem;
   @include font-weight-bold;
 }
