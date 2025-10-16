@@ -6,7 +6,7 @@
 
 .testimonial-section {
   // Bootstrap padding utility
-  @include padding-y(3rem); // Equivalent to .py-5
+  @include padding-vertical(3rem); // Equivalent to .py-5
   // Bootstrap background utility
   background-color: $gray-100; // Equivalent to .bg-light
   
