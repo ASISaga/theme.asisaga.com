@@ -144,7 +144,7 @@
   // Implementation/code example container (now in _product-code-example.scss)
   .product-code-container {
     // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
-    @include make-container() with proper mixin or direct styles for Jekyll compatibility
+  @include make-container();
     // @extend with direct styles for Jekyll compatibility
     @include make-container();
     // TODO: Replace @extend .py-3 with proper mixin or direct styles for Jekyll compatibility
