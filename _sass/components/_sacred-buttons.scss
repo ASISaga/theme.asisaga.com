@@ -11,7 +11,7 @@
   @include font-semibold;
   letter-spacing: 0.5px;
   border-radius: 0.75rem;
-  @include padding(0.75rem, 1.5rem);
+  @include padding-combined(0.75rem, 1.5rem);
   @include transition(all, $animation-duration-normal, $ease-out);
   position: relative;
   overflow: hidden;
@@ -133,19 +133,19 @@
 // Sacred Button Sizes and Variants
 // ----------------------------------------
 .btn-sacred-sm {
-  @include padding(0.5rem, 1rem);
+  @include padding-combined(0.5rem, 1rem);
   @include font-size-sm;
   border-radius: 0.5rem;
 }
 
 .btn-sacred-lg {
-  @include padding(1rem, 2rem);
+  @include padding-combined(1rem, 2rem);
   @include font-size-lg;
   border-radius: 1rem;
 }
 
 .btn-sacred-xl {
-  @include padding(1.25rem, 2.5rem);
+  @include padding-combined(1.25rem, 2.5rem);
   @include font-xl;
   border-radius: 1.25rem;
   @include font-bold;
@@ -386,7 +386,7 @@
 // ----------------------------------------
 @include media-breakpoint-down(md) {
   .btn-sacred-xl {
-    @include padding(1rem, 1.75rem);
+  @include padding-combined(1rem, 1.75rem);
     @include font-size-lg;
   }
   
@@ -398,13 +398,13 @@
   
   .cta-genesis {
     @include font-size-base;
-    @include padding(0.875rem, 1.5rem);
+  @include padding-combined(0.875rem, 1.5rem);
   }
 }
 
 @include media-breakpoint-down(sm) {
   .btn-sacred-lg {
-    @include padding(0.875rem, 1.5rem);
+  @include padding-combined(0.875rem, 1.5rem);
     @include font-size-base;
   }
   
