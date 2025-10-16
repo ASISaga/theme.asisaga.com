@@ -28,7 +28,7 @@
     left: 0;
     right: 0;
     @include height(4px);
-    @include bg-primary-light;
+  @include background-color($primary-light);
     z-index: 1;
   }
     // Timeline markers (clickable dots)

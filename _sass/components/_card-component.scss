@@ -90,7 +90,7 @@
   @include card-component($prefix);
   
   .#{$prefix} {
-    @include bg-primary-light;
+  @include background-color($primary-light);
     // TODO: Replace @extend .border-primary with proper mixin or direct styles for Jekyll compatibility
     // @extend .border-primary;
   }
