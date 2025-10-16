@@ -10,10 +10,10 @@
 @import "base/colors";
 @import "base/dimensions";
 @import "base/variables";
+
 @import "base/mixins";
 @import "base/typography";
 @import "base/animations";
-@import "base/accessibility";
 
 // Bootstrap dependencies - core functions, variables, and mixins
 @import "bootstrap/functions";
@@ -21,9 +21,13 @@
 @import "bootstrap/variables-dark";
 @import "bootstrap/mixins";
 
+
 // Bootstrap main SASS file (loads all of Bootstrap)
 // This will now use any overridden variables from base/variables.scss
 @import "bootstrap/bootstrap";
+
+// Import accessibility after Bootstrap so Bootstrap variables are available
+@import "base/accessibility";
 
 // Remaining base styles that don't impact Bootstrap variables
 @import "base/utilities";
