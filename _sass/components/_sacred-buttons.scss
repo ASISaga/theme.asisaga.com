@@ -37,7 +37,7 @@
 .btn-primary,
 .btn-genesis {
   @include bg-luminous-gold;
-  @include border-luminous-gold(2px);
+  @include border-luminous-gold;
   @include text-cosmic-deep-blue;
   @include font-bold;
   
@@ -78,7 +78,7 @@
 // Transcendent Button (White with Gold Accent)
 .btn-transcendent {
   @include bg-transcendent-white;
-  @include border-luminous-gold(2px);
+  @include border-luminous-gold;
   @include text-cosmic-deep-blue;
   
   &:hover {
@@ -154,7 +154,7 @@
 // Sacred outline buttons
 .btn-outline-sacred {
   @include bg-transparent;
-  @include border-luminous-gold(2px);
+  @include border-luminous-gold;
   @include text-luminous-gold;
   
   &:hover {
