@@ -351,6 +351,9 @@ $transcendent-white: #fff;
 }
 
 // Sacred shadow mixins
+@mixin shadow-focus-luminous-gold {
+  box-shadow: 0 0 0 0.2rem rgba($luminous-gold, 0.5);
+}
 @mixin shadow-sacred-glow {
   box-shadow: $sacred-glow;
 }
