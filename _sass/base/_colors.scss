@@ -455,3 +455,10 @@ $transcendent-white: #fff;
 @mixin text-footer-muted {
   color: $footer-text-muted;
 }
+
+// Mixin for primary dark background utility
+@mixin bg-primary-dark {
+  background-color: $primary-dark !important;
+  color: $transcendent-white !important;
+}
+
