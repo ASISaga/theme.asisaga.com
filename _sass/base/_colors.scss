@@ -294,6 +294,11 @@ $transcendent-white: #fff;
   @include background-color($transcendent-white);
 }
 
+// Add missing bg-transcendent-white mixin for button/component usage
+@mixin bg-transcendent-white {
+  background-color: $transcendent-white;
+}
+
 @mixin bg-primary {
   @include background-color($primary);
 }
