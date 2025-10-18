@@ -265,6 +265,9 @@ $transcendent-white: #fff;
 }
 
 // Background color mixins
+@mixin bg-luminous-gold {
+  background-color: $luminous-gold;
+}
 @mixin background-color($color) {
   background-color: $color;
 }
