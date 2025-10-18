@@ -34,6 +34,9 @@
 @mixin font-size-sm {
   font-size: $font-size-sm;
 }
+@mixin font-size-lg {
+  font-size: $font-size-lg;
+}
 
 @mixin heading-genesis() {
   font-family: $font-family-consciousness;
