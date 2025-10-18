@@ -351,8 +351,8 @@ $transcendent-white: #fff;
 }
 
 // Sacred shadow mixins
-@mixin border-cosmic-deep-blue {
-  border-color: $cosmic-deep-blue;
+@mixin border-cosmic-deep-blue($width) {
+  border: $width solid $cosmic-deep-blue;
 }
 @mixin bg-cosmic-deep-blue {
   background-color: $cosmic-deep-blue;
