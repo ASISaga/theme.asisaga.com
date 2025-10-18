@@ -11,6 +11,9 @@
     @media (max-width: #{$breakpoint-sm - 1}) { @content; }
   } @else if $size == md {
     @media (max-width: #{$breakpoint-md - 1}) { @content; }
+@mixin font-size-xl {
+  font-size: 2rem;
+}
   } @else if $size == lg {
     @media (max-width: #{$breakpoint-lg - 1}) { @content; }
   } @else if $size == xl {
