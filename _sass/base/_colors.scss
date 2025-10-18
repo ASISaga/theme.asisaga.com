@@ -315,6 +315,10 @@ $transcendent-white: #fff;
 }
 
 // Sacred gradient mixins
+// Sacred shimmer gradient for buttons and highlights
+@mixin bg-gradient-sacred-shimmer {
+  background: linear-gradient(90deg, $sacred-gold-light 0%, $luminous-gold 50%, $sacred-gold-dark 100%);
+}
 @mixin gradient-consciousness {
   background: linear-gradient(135deg, $cosmic-deep-blue 0%, $luminous-gold 100%);
 }
