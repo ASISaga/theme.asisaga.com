@@ -118,6 +118,17 @@ $line-height-normal: 1.5;
 $line-height-relaxed: 1.75;
 $line-height-transcendent: 2;     // For meditative, flowing content
 
+// --- Bootstrap variable overrides to prevent nil/null errors ---
+$font-size-root: 16px !default;
+$headings-font-family: $font-family-primary !default;
+$headings-font-style: normal !default;
+$display-font-family: $font-family-primary !default;
+$display-font-style: normal !default;
+$hr-bg-color: $gray-200 !default;
+$hr-height: 1px !default;
+$hr-border-color: $gray-400 !default;
+$legend-font-weight: 400 !default;
+
 // Spacing - Sacred Geometry for Layout Harmony
 $spacing-xs: 0.25rem;    // 4px
 $spacing-sm: 0.5rem;     // 8px
