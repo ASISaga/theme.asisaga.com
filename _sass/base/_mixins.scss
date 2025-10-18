@@ -63,6 +63,9 @@
 @mixin border-life-force-green($args...) {
   border: $args $life-force-green;
 }
+@mixin border-transformation-purple($args...) {
+  border: $args $transformation-purple;
+}
 
 @mixin heading-h1() {
   font-family: $font-family-consciousness;
