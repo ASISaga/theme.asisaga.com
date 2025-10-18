@@ -351,6 +351,9 @@ $transcendent-white: #fff;
 }
 
 // Sacred shadow mixins
+@mixin shadow-sacred-glow {
+  box-shadow: $sacred-glow;
+}
 @mixin shadow-sacred {
   box-shadow: $sacred-glow;
 }
