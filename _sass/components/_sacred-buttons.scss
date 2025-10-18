@@ -186,6 +186,9 @@
   }
 }
 // Sacred Button Accessibility
+@mixin bg-gradient-transcendent-overlay {
+  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+}
 .btn-sacred:focus {
   outline: 3px solid transparent;
   @include shadow-focus-luminous-gold;
