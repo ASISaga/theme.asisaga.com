@@ -351,6 +351,53 @@ $transcendent-white: #fff;
 }
 
 // Sacred shadow mixins
+@mixin bg-cosmic-deep-blue {
+  background-color: $cosmic-deep-blue;
+}
+
+@mixin shadow-focus-cosmic-deep-blue {
+  box-shadow: 0 0 0 0.2rem rgba($cosmic-deep-blue, 0.5);
+}
+
+@mixin shadow-soft-luminous-gold {
+  box-shadow: 0 2px 8px 0 rgba($luminous-gold, 0.15);
+}
+
+@mixin bg-luminous-gold-light {
+  background-color: $luminous-gold-light;
+}
+
+@mixin shadow-glow-life-force-green {
+  box-shadow: 0 0 8px 2px rgba($life-force-green, 0.4);
+}
+
+@mixin shadow-focus-life-force-green {
+  box-shadow: 0 0 0 0.2rem rgba($life-force-green, 0.5);
+}
+
+@mixin bg-life-force-green-dark {
+  background-color: $life-force-green-dark;
+}
+
+@mixin border-life-force-green-dark {
+  border-color: $life-force-green-dark;
+}
+
+@mixin shadow-glow-transformation-purple {
+  box-shadow: 0 0 8px 2px rgba($transformation-purple, 0.4);
+}
+
+@mixin shadow-focus-transformation-purple {
+  box-shadow: 0 0 0 0.2rem rgba($transformation-purple, 0.5);
+}
+
+@mixin bg-transformation-purple-dark {
+  background-color: $transformation-purple-dark;
+}
+
+@mixin border-transformation-purple-dark {
+  border-color: $transformation-purple-dark;
+}
 @mixin shadow-focus-luminous-gold {
   box-shadow: 0 0 0 0.2rem rgba($luminous-gold, 0.5);
 }
