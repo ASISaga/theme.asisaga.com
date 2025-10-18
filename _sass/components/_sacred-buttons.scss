@@ -360,6 +360,9 @@
   background: linear-gradient(90deg, #FFD700 0%, #FFFACD 100%);
 }
 @media (prefers-contrast: high) {
+@mixin border-luminous-gold-accessible {
+  border: 2px solid #FFD700;
+}
   .btn-sacred {
     border-width: 3px;
   }
