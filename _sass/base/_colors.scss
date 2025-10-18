@@ -26,6 +26,9 @@ $sacred-gold: $luminous-gold;
 $sacred-gold-light: lighten($luminous-gold, 10%);
 $sacred-gold-dark: darken($luminous-gold, 15%);
 
+// Add missing luminous-gold-light variable for button/component usage
+$luminous-gold-light: lighten($luminous-gold, 10%);
+
 // ----------------------------------------
 // Sacred Supporting Colors
 // ----------------------------------------
