@@ -243,6 +243,10 @@ $transcendent-white: #fff;
   @include color($transcendent-white);
 }
 
+@mixin text-transcendent-white {
+  @include color($transcendent-white);
+}
+
 @mixin text-bridge {
   @include color($ethereal-silver);
 }
