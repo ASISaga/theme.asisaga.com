@@ -7,20 +7,20 @@
 // Custom Base Styles and Variable Overrides
 // These must be loaded BEFORE any Bootstrap imports to ensure all variables are defined
 
-@import "base/colors";
-@import "base/dimensions";
-@import "base/variables";
 
-@import "base/mixins";
-@import "base/typography";
-@import "base/animations";
-
-// Bootstrap dependencies - core functions, variables, and mixins
+// Load Bootstrap dependencies and variables first
 @import "bootstrap/functions";
 @import "bootstrap/variables";
 @import "bootstrap/variables-dark";
 @import "bootstrap/mixins";
 
+// Now load theme base styles and variable overrides
+@import "base/colors";
+@import "base/dimensions";
+@import "base/variables";
+@import "base/mixins";
+@import "base/typography";
+@import "base/animations";
 
 // Bootstrap main SASS file (loads all of Bootstrap)
 // This will now use any overridden variables from base/variables.scss
