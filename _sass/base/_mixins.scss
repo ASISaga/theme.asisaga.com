@@ -31,6 +31,9 @@
 }
 
 // Typography Mixins - Consciousness-Inspired Text Hierarchy
+@mixin font-size-sm {
+  font-size: $font-size-sm;
+}
 
 @mixin heading-genesis() {
   font-family: $font-family-consciousness;
