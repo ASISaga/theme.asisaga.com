@@ -301,6 +301,9 @@ $transcendent-white: #fff;
 }
 
 // Border color mixins
+@mixin border-luminous-gold {
+  border-color: $luminous-gold;
+}
 @mixin border-color($color) {
   border-color: $color;
 }
