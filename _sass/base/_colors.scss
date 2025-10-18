@@ -224,6 +224,9 @@ $transcendent-white: #fff;
 // --------------------------------------------
 
 // Text color mixins
+@mixin text-cosmic-deep-blue {
+  color: $cosmic-deep-blue;
+}
 @mixin color($color) {
   color: $color;
 }
