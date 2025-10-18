@@ -56,6 +56,10 @@
 @mixin bg-life-force-green {
   background-color: $life-force-green;
 }
+// Border Color Mixins
+@mixin border-life-force-green {
+  border-color: $life-force-green;
+}
 
 @mixin heading-h1() {
   font-family: $font-family-consciousness;
