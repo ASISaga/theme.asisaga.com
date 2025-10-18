@@ -424,6 +424,11 @@ $transcendent-white: #fff;
   box-shadow: $consciousness-depth;
 }
 
+// Add missing shadow-consciousness-depth mixin for button/component usage
+@mixin shadow-consciousness-depth {
+  box-shadow: $consciousness-depth;
+}
+
 @mixin shadow-default {
   box-shadow: $box-shadow;
 }
