@@ -177,6 +177,10 @@
   
   &:hover {
     transform: translateY(-2px);
+
+    @mixin font-size($size) {
+      font-size: $size;
+    }
     box-shadow: $shadow-transcendent;
     
     &::before {
