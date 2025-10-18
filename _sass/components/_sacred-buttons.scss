@@ -356,6 +356,9 @@
 
 
 // High contrast mode
+@mixin bg-luminous-gold-accessible {
+  background: linear-gradient(90deg, #FFD700 0%, #FFFACD 100%);
+}
 @media (prefers-contrast: high) {
   .btn-sacred {
     border-width: 3px;
