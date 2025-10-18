@@ -329,6 +329,11 @@ $transcendent-white: #fff;
   @include border-color($primary);
 }
 
+// Add missing border-primary-dark mixin for button and component usage
+@mixin border-primary-dark {
+  @include border-color($primary-dark);
+}
+
 @mixin border-secondary {
   @include border-color($secondary);
 }
