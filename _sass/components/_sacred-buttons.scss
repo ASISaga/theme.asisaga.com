@@ -360,6 +360,9 @@
   background: linear-gradient(90deg, #FFD700 0%, #FFFACD 100%);
 }
 @media (prefers-contrast: high) {
+@mixin bg-cosmic-deep-blue-accessible {
+  background: #001f3f;
+}
 @mixin border-luminous-gold-accessible {
   border: 2px solid #FFD700;
 }
