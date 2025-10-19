@@ -152,33 +152,30 @@
     justify-content: center;
   }
   
-  .transcendent-cta {
-    @include transcendent-button-primary;
-    position: relative;
-    min-width: 200px;
-    font-size: $font-size-lg;
+    .transcendent-cta {
+      @include transcendent-cta;
     
-    &.primary {
-      &.consciousness-pulse {
-        @include consciousness-pulse;
-      }
+      &.primary {
+        &.consciousness-pulse {
+          @include consciousness-pulse;
+        }
       
-      .cta-essence-trail {
-        position: absolute;
-        top: 50%;
-        right: -30px;
-        width: 20px;
-        height: 2px;
-        background: linear-gradient(to right, $luminous-gold, transparent);
-        opacity: 0;
-        animation: essenceTrail 2s ease-in-out infinite 1s;
+        .cta-essence-trail {
+          position: absolute;
+          top: 50%;
+          right: -30px;
+          width: 20px;
+          height: 2px;
+          background: linear-gradient(to right, $luminous-gold, transparent);
+          opacity: 0;
+          animation: essenceTrail 2s ease-in-out infinite 1s;
+        }
+      }
+    
+      &.secondary {
+        @include transcendent-button-secondary;
       }
     }
-    
-    &.secondary {
-      @include transcendent-button-secondary;
-    }
-  }
 }
 
 // Consciousness Indicators
@@ -407,28 +404,27 @@
 
 // Additional class variations
 .transcendent-hero-col {
-  @extend .col-lg-10;
-  @extend .col-xl-8;
+  @include make-col(10, lg);
+  @include make-col(8, xl);
 }
 
 .transcendent-cta-primary {
-  @extend .transcendent-cta;
+  @include transcendent-cta;
   @include transcendent-button-primary;
   @include consciousness-pulse;
 }
 
 .transcendent-cta-secondary {
-  @extend .transcendent-cta;
+  @include transcendent-cta;
   @include transcendent-button-secondary;
 }
 
 .transcendent-hero-row {
-  @extend .row;
+  @include make-row();
   justify-content: center;
   text-align: center;
 }
 
 .transcendent-icon {
-  @extend .fas;
-  @extend .fa-star-of-life;
+  @include fa-icon('star-of-life');
 }
