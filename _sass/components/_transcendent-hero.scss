@@ -411,8 +411,16 @@
 
 // Additional class variations
 .transcendent-hero-col {
-  @include make-col(10, lg);
-  @include make-col(8, xl);
+  @include make-col(10);
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 1200px) {
+  .transcendent-hero-col {
+    max-width: 66.66667%;
+  }
 }
 
 .transcendent-cta-primary {
