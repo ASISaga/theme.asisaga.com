@@ -1,3 +1,10 @@
+// Mixin: transcendent-cta
+@mixin transcendent-cta {
+  @include transcendent-button-primary;
+  position: relative;
+  min-width: 200px;
+  font-size: $font-size-lg;
+}
 @use 'sass:color';
 
 /**
