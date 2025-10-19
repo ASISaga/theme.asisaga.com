@@ -85,6 +85,12 @@ $line-height-loose: 1.8;
 @mixin font-size($size) {
   font-size: $size;
 }
+@mixin font-size-base {
+  font-size: $font-size-base;
+}
+@mixin font-size-2xl {
+  font-size: $font-size-2xl;
+}
 
 @mixin font-xs {
   @include font-size($font-size-xs);

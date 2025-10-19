@@ -303,6 +303,9 @@ $transcendent-white: #fff;
 @mixin bg-transcendent-white {
   background-color: $transcendent-white;
 }
+@mixin bg-transcendent-white-subtle {
+  background-color: rgba($transcendent-white, 0.85);
+}
 
 @mixin bg-primary {
   @include background-color($primary);
@@ -347,11 +350,26 @@ $transcendent-white: #fff;
 @mixin border-secondary {
   @include border-color($secondary);
 }
+@mixin border-luminous-gold-medium {
+  border-color: lighten($luminous-gold, 5%);
+}
+@mixin border-left-primary($width: 2px) {
+  border-left: $width solid $primary;
+}
+@mixin border-bottom-transcendent-white($width: 2px) {
+  border-bottom: $width solid $transcendent-white;
+}
 
 // Sacred gradient mixins
 // Sacred shimmer gradient for buttons and highlights
 @mixin bg-gradient-sacred-shimmer {
   background: linear-gradient(90deg, $sacred-gold-light 0%, $luminous-gold 50%, $sacred-gold-dark 100%);
+}
+@mixin bg-gradient-consciousness-accent {
+  background: linear-gradient(135deg, $cosmic-deep-blue 0%, $luminous-gold 100%);
+}
+@mixin bg-gradient-genesis-subtle {
+  background: linear-gradient(135deg, $luminous-gold 0%, $sacred-gold-light 100%);
 }
 @mixin gradient-consciousness {
   background: linear-gradient(135deg, $cosmic-deep-blue 0%, $luminous-gold 100%);
@@ -372,6 +390,10 @@ $transcendent-white: #fff;
 // Sacred shadow mixins
 @mixin border-cosmic-deep-blue($width) {
   border: $width solid $cosmic-deep-blue;
+}
+// Accessible border for high-contrast mode
+@mixin border-cosmic-deep-blue-accessible {
+  border: 2px solid #001f3f;
 }
 @mixin bg-cosmic-deep-blue {
   background-color: $cosmic-deep-blue;
