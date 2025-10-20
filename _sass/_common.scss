@@ -8,11 +8,15 @@
 // These must be loaded BEFORE any Bootstrap imports to ensure all variables are defined
 
 
+
 // Load Bootstrap dependencies and variables first
 @import "bootstrap/functions";
 @import "bootstrap/variables";
 @import "bootstrap/variables-dark";
 @import "bootstrap/mixins";
+
+// Load Font Awesome mixins for fa-icon support
+@import "fontawesome/mixins";
 
 // Now load theme base styles and variable overrides
 @import "base/colors";
