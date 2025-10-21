@@ -441,5 +441,10 @@
 }
 
 .transcendent-icon {
-  @include fa-icon('star-of-life');
+  @include fa-icon; // base icon styling
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  &:before {
+    content: "\f621"; // star-of-life glyph
+  }
 }
