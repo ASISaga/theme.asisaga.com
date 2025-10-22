@@ -1,3 +1,6 @@
+// Font Awesome v4 - Load this first to make variables available globally
+@import "fontawesome/font-awesome";
+
 // Third party libraries
 @import "base/fonts";
 @import "base/icons";
@@ -18,8 +21,6 @@
 @import "fontawesome/mixins";
 @import "fontawesome/core";
 @import "fontawesome/solid";
-// Load Font Awesome v4 main SCSS
-@import "fontawesome/font-awesome";
 
 // Now load theme base styles and variable overrides
 @import "base/colors";
