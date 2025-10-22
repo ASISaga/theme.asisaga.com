@@ -17,11 +17,6 @@
 @import "bootstrap/variables-dark";
 @import "bootstrap/mixins";
 
-// Load Font Awesome mixins for fa-icon support
-@import "fontawesome/mixins";
-@import "fontawesome/core";
-@import "fontawesome/solid";
-
 // Now load theme base styles and variable overrides
 @import "base/colors";
 @import "base/dimensions";
