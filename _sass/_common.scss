@@ -18,6 +18,8 @@
 @import "fontawesome/mixins";
 @import "fontawesome/core";
 @import "fontawesome/solid";
+// Load Font Awesome v5 main SCSS
+@import "fontawesome/fontawesome";
 
 // Now load theme base styles and variable overrides
 @import "base/colors";
