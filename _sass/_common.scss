@@ -1,4 +1,3 @@
-
 // Third party libraries
 @import "base/fonts";
 @import "base/icons";
@@ -17,6 +16,8 @@
 
 // Load Font Awesome mixins for fa-icon support
 @import "fontawesome/mixins";
+@import "fontawesome/core";
+@import "fontawesome/solid";
 
 // Now load theme base styles and variable overrides
 @import "base/colors";
