@@ -1,6 +1,4 @@
-
-
-import { Dropdown, Tooltip, Popover, Toast } from './bootstrap.esm.min.js';
+import { Dropdown, Tooltip, Popover, Toast } from '../vendor/bootstrap.esm.js';
 
 class BootstrapLoader {
   initializeBootstrapComponents() {
