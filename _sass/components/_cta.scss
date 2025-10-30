@@ -4,28 +4,17 @@
 // A reusable CTA section with consistent styling across pages
 
 .cta-section {
-  // TODO: Replace @extend .d-flex with proper mixin or direct styles for Jekyll compatibility
-    // @extend .d-flex; // Bootstrap display utility
-  // TODO: Replace @extend .flex-column with proper mixin or direct styles for Jekyll compatibility
-    // @extend .flex-column; // Bootstrap flex utility
-  // TODO: Replace @extend .align-items-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .align-items-center; // Bootstrap flex utility
-  // TODO: Replace @extend .justify-content-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .justify-content-center; // Bootstrap flex utility
-  // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
-    // @extend .shadow-sm; // Bootstrap shadow utility
-  // TODO: Replace @extend .bg-light with proper mixin or direct styles for Jekyll compatibility
-    // @extend .bg-light; // Bootstrap background utility (replacing custom gradient)
-  // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
-    // @extend .rounded; // Bootstrap border-radius utility
-  // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-center; // Bootstrap text alignment utility
-  // TODO: Replace @extend .mb-5 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-5; // Bootstrap margin utility
-  // TODO: Replace @extend .py-5 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .py-5; // Bootstrap padding utility
-  // TODO: Replace @extend .px-3 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .px-3; // Bootstrap padding utility
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  background: linear-gradient(135deg, rgba($cosmic-deep-blue, 0.95) 0%, rgba($royal-purple, 0.85) 100%);
+  border-radius: 0.375rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 3rem 1rem;
+  color: $transcendent-white;
   
   .cta-content {
     // TODO: Replace @extend .mx-auto with proper mixin or direct styles for Jekyll compatibility
@@ -35,23 +24,16 @@
   }
   
   .cta-title {
-    // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
-    // @extend .fw-bold; // Bootstrap font-weight utility
-    // TODO: Replace @extend .text-primary with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-primary; // Bootstrap text color utility
-    // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-3; // Bootstrap margin utility
-    // TODO: Replace @extend .fs-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .fs-4; // Bootstrap font-size utility
+    font-weight: 700;
+    color: $luminous-gold;
+    margin-bottom: 1rem;
+    font-size: 2rem;
   }
   
   .cta-description {
-    // TODO: Replace @extend .text-secondary with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-secondary; // Bootstrap text color utility
-    // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-4; // Bootstrap margin utility
-    // TODO: Replace @extend .lead with proper mixin or direct styles for Jekyll compatibility
-    // @extend .lead; // Bootstrap lead text utility
+    color: $transcendent-white;
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
   }
   
   .cta-buttons {
