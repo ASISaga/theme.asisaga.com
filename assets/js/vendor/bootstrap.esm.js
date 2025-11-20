@@ -3,7 +3,7 @@
   * Copyright 2011-2025 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
-import * as Popper from '@popperjs/core';
+import *as Popper from "./popper.esm.js";
 
 /**
  * --------------------------------------------------------------------------
@@ -193,7 +193,7 @@ const findShadowRoot = element => {
   }
   return findShadowRoot(element.parentNode);
 };
-const noop = () => {};
+const noop = () => { };
 
 /**
  * Trick to restart an element's animation
