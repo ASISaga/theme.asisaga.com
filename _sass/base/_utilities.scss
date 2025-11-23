@@ -251,3 +251,12 @@
 .transition {
   transition: all 0.3s ease !important;
 }
+
+// -----------------------------------------
+// Focus-visible utility for keyboard focus outlines
+// Ensures `.focus-visible` exists so `@extend .focus-visible` works
+// Provides explicit visible outline for keyboard users
+.focus-visible:focus {
+  outline: 3px solid $primary !important;
+  outline-offset: 2px !important;
+}

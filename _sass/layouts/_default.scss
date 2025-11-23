@@ -11,7 +11,7 @@
 // Skip link for accessibility
 .skip-link {
   @extend .sr-only;
-  @extend .focus-visible;
+  @extend .focus-visible !optional;
   
   &:focus {
     position: absolute;
