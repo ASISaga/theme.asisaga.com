@@ -13,7 +13,7 @@
     border: var(--bs-card-border-width, 1px) solid var(--bs-card-border-color, rgba(0,0,0,.125));
     border-radius: var(--bs-card-border-radius, 0.375rem); // Bootstrap card component
   // TODO: Replace @extend .h-100 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .h-100; // Bootstrap height utility for equal height cards
+    @include height-full; // Bootstrap height utility for equal height cards
   // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
     // @extend .mb-4; // Bootstrap margin utility
   // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility

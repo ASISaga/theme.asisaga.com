@@ -39,7 +39,7 @@
       // TODO: Replace @extend .col-lg-4 with proper mixin or direct styles for Jekyll compatibility
     // @extend .col-lg-4; // Bootstrap column utility - third width on large screens
       // TODO: Replace @extend .h-100 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .h-100; // Bootstrap height utility
+    @include height-full; // Bootstrap height utility
       // TODO: Replace @extend .transition with proper mixin or direct styles for Jekyll compatibility
     // @extend .transition; // Bootstrap transition utility if available
       
@@ -50,7 +50,7 @@
     
     .feature-card {
       // TODO: Replace @extend .h-100 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .h-100; // Bootstrap height utility
+    @include height-full; // Bootstrap height utility
       // TODO: Replace @extend .p-4 with proper mixin or direct styles for Jekyll compatibility
     // @extend .p-4; // Bootstrap padding utility
       // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility

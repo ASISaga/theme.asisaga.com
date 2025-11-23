@@ -17,7 +17,7 @@
     border: var(--bs-card-border-width, 1px) solid var(--bs-card-border-color, rgba(0,0,0,.125));
     border-radius: var(--bs-card-border-radius, 0.375rem);
     // TODO: Replace @extend .h-100 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .h-100;
+    @include height-full;
     // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
     // @extend .shadow-sm;
     @include transition;
