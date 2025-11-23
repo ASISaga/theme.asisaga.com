@@ -12,6 +12,6 @@ tools:
 {
   "nodeModulesPath": "${workspaceFolder}/Website/node_modules",
   "vendorDir": "${workspaceFolder}/Website/theme.asisaga.com/assets/js/vendor",
-  "viteConfig": "${workspaceFolder}/Website/vite.config.js"
+  "viteConfig": "${workspaceFolder}/Website/theme.asisaga.com/vite.config.js"
 }
 ```
