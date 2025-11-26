@@ -1,6 +1,12 @@
 // Landing Layout Styles
 
 .landing-layout {
+  // CSS containment for layout optimization and performance
+  // - contain: layout style - Prevents layout calculations from affecting parent/sibling elements
+  // - isolation: isolate - Creates new stacking context to prevent z-index conflicts
+  contain: layout style;
+  isolation: isolate;
+  
   .landing-hero {
     background-color: $primary;
     color: $transcendent-white;

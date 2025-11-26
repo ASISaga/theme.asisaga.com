@@ -3,6 +3,8 @@
 
 .scrollable-layout {
   width: 100%;
+  contain: layout style;
+  isolation: isolate;
   
   .container-fluid {
     padding-right: $spacing-md;

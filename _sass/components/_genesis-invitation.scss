@@ -613,18 +613,48 @@
 
 // Additional class variations
 .genesis-invitation-col {
-  @extend .col-lg-10;
-  @extend .col-xl-8;
+  // Replaced @extend with direct Bootstrap column properties for Jekyll compatibility
+  flex: 0 0 auto;
+  width: 100%;
+  
+  @media (min-width: 992px) {
+    width: 83.33333333%; // col-lg-10
+  }
+  
+  @media (min-width: 1200px) {
+    width: 66.66666667%; // col-xl-8
+  }
+  
   text-align: center;
 }
 
 .genesis-cta-primary {
-  @extend .genesis-cta;
-  @extend .primary;
-  @extend .transcendent-glow-btn;
+  // Replaced @extend with direct properties for Jekyll compatibility
+  // Combines .genesis-cta, .primary, and .transcendent-glow-btn styles
+  position: relative;
+  overflow: hidden;
+  transition: all 0.6s $ease-consciousness;
+  @include transcendent-button-primary;
+  font-size: $font-size-lg;
+  padding: $spacing-lg $spacing-3xl;
+  min-width: 220px;
+  box-shadow: 
+    0 8px 32px rgba($luminous-gold, 0.3),
+    0 0 20px rgba($luminous-gold, 0.2);
+  
+  &:hover {
+    box-shadow: 
+      0 12px 40px rgba($luminous-gold, 0.4),
+      0 0 30px rgba($luminous-gold, 0.3);
+    transform: translateY(-3px) scale(1.02);
+  }
 }
 
 .genesis-cta-secondary {
-  @extend .genesis-cta;
-  @extend .secondary;
+  // Replaced @extend with direct properties for Jekyll compatibility
+  // Combines .genesis-cta and .secondary styles
+  position: relative;
+  overflow: hidden;
+  transition: all 0.6s $ease-consciousness;
+  @include transcendent-button-secondary;
 }
