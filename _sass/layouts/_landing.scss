@@ -1,6 +1,9 @@
 // Landing Layout Styles
 
 .landing-layout {
+  contain: layout style;
+  isolation: isolate;
+  
   .landing-hero {
     background-color: $primary;
     color: $transcendent-white;

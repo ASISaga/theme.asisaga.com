@@ -10,8 +10,16 @@
 
 // Skip link for accessibility
 .skip-link {
-  @extend .sr-only;
-  @extend .focus-visible !optional;
+  // Replaced @extend with direct properties for Jekyll compatibility
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
   
   &:focus {
     position: absolute;
@@ -21,6 +29,11 @@
     color: $white;
     padding: 1rem;
     z-index: 9999;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
   }
 }
 

@@ -3,6 +3,8 @@
 
 .minimal-layout {
   width: 100%;
+  contain: layout style;
+  isolation: isolate;
   
   .container {
     padding-right: $spacing-md;

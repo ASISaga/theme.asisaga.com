@@ -1,14 +1,27 @@
 // Base layout styles for overall site structure
 
-
 .site-main {
-  @extend .w-100;
-  @extend .min-vh-50; // Using our custom utility for 50% viewport height
-  @extend .py-0;      // Set padding to 0 for top/bottom
+  // Replaced @extend with direct properties for Jekyll compatibility
+  width: 100%;
+  min-height: 50vh; // 50% viewport height
+  padding-top: 0;
+  padding-bottom: 0;
 
   .site-content {
     // Assuming a container that spans full width up to 1320px, similar to .container-xl
-    // If a full-width fluid container is needed, .container-fluid would be more appropriate.
-    @extend .container-xl; 
+    // Replaced @extend with direct properties for Jekyll compatibility
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x, 0.75rem) * 0.5);
+    padding-left: calc(var(--bs-gutter-x, 0.75rem) * 0.5);
+    margin-right: auto;
+    margin-left: auto;
+    
+    @media (min-width: 1200px) {
+      max-width: 1140px;
+    }
+    
+    @media (min-width: 1400px) {
+      max-width: 1320px;
+    }
   }
 }
