@@ -28,9 +28,8 @@
   }
   
   .chatroom-settings-btn {
-    @extend .btn;
-    @extend .btn-sm;
-    @extend .btn-outline-secondary;
+    @include button-outline-variant($secondary);
+    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius);
   }
   
   .chatroom-messages {
@@ -52,7 +51,6 @@
   }
   
   .chatroom-send-btn {
-    @extend .btn;
-    @extend .btn-primary;
+    @include button-variant($primary, $primary);
   }
 }

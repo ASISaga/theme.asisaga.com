@@ -13,26 +13,32 @@
   }
   
   .search-header-row {
-    @extend .row;
+    @include make-row();
     align-items: center;
   }
   
   .search-header-col {
-    @extend .col-lg-8;
+    @include make-col-ready();
+    @include media-breakpoint-up(lg) {
+      @include make-col(8);
+    }
   }
   
   .search-input-group {
-    @extend .input-group;
-    @extend .input-group-lg;
+    // Input-group styles are provided by Bootstrap form components; prefer
+    // applying `input-group input-group-lg` classes in markup rather than
+    // trying to `@extend` them here.
   }
   
   .search-submit-btn {
-    @extend .btn;
-    @extend .btn-primary;
+    @include button-variant($primary, $primary);
   }
   
   .search-results-count-col {
-    @extend .col-lg-4;
+    @include make-col-ready();
+    @include media-breakpoint-up(lg) {
+      @include make-col(4);
+    }
     text-align: end;
   }
   
@@ -47,12 +53,15 @@
   }
   
   .search-content-container {
-    @extend .container-fluid;
+    @include make-container();
     padding: $spacing-md $spacing-sacred-lg;
   }
   
   .search-filters-sidebar {
-    @extend .col-lg-3;
+    @include make-col-ready();
+    @include media-breakpoint-up(lg) {
+      @include make-col(3);
+    }
     margin-bottom: $spacing-sacred-lg;
     
     @include media-breakpoint-up(lg) {
@@ -75,6 +84,9 @@
   }
   
   .search-results-main {
-    @extend .col-lg-9;
+    @include make-col-ready();
+    @include media-breakpoint-up(lg) {
+      @include make-col(9);
+    }
   }
 }

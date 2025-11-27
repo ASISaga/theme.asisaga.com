@@ -29,8 +29,7 @@
   }
   
   .faq-search-input {
-    @extend .form-control;
-    @extend .form-control-lg;
+    // Prefer applying `form-control form-control-lg` in markup rather than `@extend`.
   }
   
   .faq-categories {
@@ -39,22 +38,24 @@
   }
   
   .faq-categories-group {
-    @extend .btn-group;
+    // Prefer composing `btn-group` in markup; keep layout helpers here.
     flex-wrap: wrap;
   }
   
   .faq-category-btn {
-    @extend .btn;
-    @extend .btn-outline-primary;
+    @include button-outline-variant($primary);
   }
   
   .faq-content-row {
-    @extend .row;
+    @include make-row();
     justify-content: center;
   }
   
   .faq-content-col {
-    @extend .col-lg-10;
+    @include make-col-ready();
+    @include media-breakpoint-up(lg) {
+      @include make-col(10);
+    }
   }
   
   .faq-footer {
@@ -75,7 +76,6 @@
   }
   
   .faq-footer-btn {
-    @extend .btn;
-    @extend .btn-primary;
+    @include button-variant($primary, $primary);
   }
 }

@@ -27,14 +27,13 @@
   }
   
   .gallery-filter-btn {
-    @extend .btn;
-    @extend .btn-outline-primary;
+    @include button-outline-variant($primary);
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
   }
   
   .gallery-grid-row {
-    @extend .row;
+    @include make-row();
     gap: 1rem;
   }
 }

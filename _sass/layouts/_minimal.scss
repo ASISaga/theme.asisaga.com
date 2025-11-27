@@ -2,12 +2,15 @@
 
 .minimal-layout-content {
   .minimal-layout-row {
-    @extend .row;
+    @include make-row();
     justify-content: center;
   }
   
   .minimal-layout-col {
-    @extend .col-lg-6;
+    @include make-col-ready();
+    @include media-breakpoint-up(lg) {
+      @include make-col(6);
+    }
   }
   
   .minimal-layout-centered {
@@ -38,7 +41,6 @@
   }
   
   .minimal-home-btn {
-    @extend .btn;
-    @extend .btn-primary;
+    @include button-variant($primary, $primary);
   }
 }

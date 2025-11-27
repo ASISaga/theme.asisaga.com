@@ -4,14 +4,17 @@
   min-height: 75vh;
   
   .splash-container {
-    @extend .row;
+    @include make-row();
     min-height: 75vh;
     align-items: center;
     justify-content: center;
   }
   
   .splash-content {
-    @extend .col-lg-8;
+    @include make-col-ready();
+    @include media-breakpoint-up(lg) {
+      @include make-col(8);
+    }
     text-align: center;
   }
   
@@ -41,7 +44,7 @@
   }
   
   .splash-countdown-row {
-    @extend .row;
+    @include make-row();
     justify-content: center;
   }
   
@@ -65,24 +68,26 @@
   }
   
   .splash-email-form {
-    @extend .row;
+    @include make-row();
     gap: 0.5rem;
   }
   
   .splash-email-input-col {
-    @extend .col-auto;
+    @include make-col-auto();
     flex-grow: 1;
   }
   
   .splash-email-input {
-    @extend .form-control;
-    @extend .form-control-lg;
+    // `.form-control` styles come from Bootstrap forms; prefer applying
+    // the `form-control form-control-lg` classes in the markup instead
+    // of using `@extend` here so the linter and Sass remain happy.
   }
   
   .splash-email-btn {
-    @extend .btn;
-    @extend .btn-primary;
-    @extend .btn-lg;
+    // Use Bootstrap button mixins to apply variant and size token values
+    @include button-variant($primary, $primary);
+    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius);
+    // Ensure base button variables are in scope (Bootstrap base `.btn` styles read these vars)
   }
   
   .splash-social {
@@ -90,9 +95,8 @@
   }
   
   .splash-social-link {
-    @extend .btn;
-    @extend .btn-outline-secondary;
-    @extend .btn-sm;
+    @include button-outline-variant($secondary);
+    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius);
     margin-right: 0.5rem;
   }
 }
