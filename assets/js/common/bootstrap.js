@@ -19,7 +19,9 @@ class BootstrapLoader {
     document.querySelectorAll('[data-bs-toggle="dropdown"]').forEach(el => new Dropdown(el));
 
     // Initialize collapse components (for mobile nav)
-    document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(el => new Collapse(el));
+    // Collapse must be initialized on collapsible content elements (.collapse), not toggle buttons.
+    // Using { toggle: false } prevents auto-toggling on init; toggle buttons handle show/hide.
+    document.querySelectorAll('.collapse').forEach(el => new Collapse(el, { toggle: false }));
 
     // Initialize toasts if present
     const toastEl = document.getElementById('myToast');
