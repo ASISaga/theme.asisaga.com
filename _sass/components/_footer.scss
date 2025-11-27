@@ -36,43 +36,36 @@
   width: 100vw;
   left: 0;
   right: 0;
-  // TODO: Replace @extend .py-0 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .py-0;
-  // TODO: Replace @extend .mt-0 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mt-0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
   @include bg-transparent;
   @include text-footer-color;
   min-height: 50px;
   height: 50%;
   margin: 0 !important;
-  padding: 0 !important;
+  padding: 1rem 0 !important;
 
   .site-footer__container {
-    // TODO: Replace @extend .container-xl with proper mixin or direct styles for Jekyll compatibility
-    // @extend .container-xl;
-    margin: 0 !important;
-    padding: 0 !important;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
   }
   .site-footer__copyright {
-    // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-center;
+    text-align: center;
     margin-bottom: 0 !important;
     padding: 0 !important;
     .site-footer__copyright-text {
-      // TODO: Replace @extend .mb-0 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-0;
-      // TODO: Replace @extend .small with proper mixin or direct styles for Jekyll compatibility
-    // @extend .small;
+      font-size: 0.875rem;
       @include text-footer-muted;
       margin: 0 !important;
       padding: 0 !important;
     }
   }
   .site-footer__social {
-    // TODO: Replace @extend .d-flex with proper mixin or direct styles for Jekyll compatibility
-    // @extend .d-flex;
-    // TODO: Replace @extend .justify-content-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .justify-content-center;
+    display: flex;
+    justify-content: center;
     margin-bottom: 0 !important;
     padding: 0 !important;
     .site-footer__social-item {
@@ -87,18 +80,11 @@
     padding: 0 !important;
   }
   .site-footer__nav-list {
-    // TODO: Replace @extend .d-flex with proper mixin or direct styles for Jekyll compatibility
-    // @extend .d-flex;
-    // TODO: Replace @extend .flex-wrap with proper mixin or direct styles for Jekyll compatibility
-    // @extend .flex-wrap;
-    // TODO: Replace @extend .justify-content-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .justify-content-center;
-    // TODO: Replace @extend .list-unstyled with proper mixin or direct styles for Jekyll compatibility
-    // @extend .list-unstyled;
-    // TODO: Replace @extend .ps-0 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .ps-0;
-    // TODO: Replace @extend .mb-0 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding-left: 0;
     margin: 0 !important;
     padding: 0 !important;
     @include media-breakpoint-down(sm) {
@@ -106,8 +92,7 @@
     }
   }
 .site-footer__nav-item {
-  // TODO: Replace @extend .px-3 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .px-3;
+  padding: 0 0.75rem;
   margin-bottom: 0 !important;
   // Remove only vertical padding on mobile, keep horizontal for spacing
   @include media-breakpoint-down(sm) {
@@ -116,24 +101,23 @@
   }
 }
   .site-footer__nav-link {
-    // TODO: Replace @extend .text-decoration-none with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-decoration-none;
-    // TODO: Replace @extend .transition with proper mixin or direct styles for Jekyll compatibility
-    // @extend .transition;
+    text-decoration: none;
+    transition: all 0.3s ease;
     @include text-footer-muted;
     padding: 0 !important;
     margin: 0 !important;
     &:hover {
       @include text-footer-color;
-      // TODO: Replace @extend .text-decoration-underline with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-decoration-underline;
+      text-decoration: underline;
     }
   }
 }
 
 .site-footer-fixed {
-  // TODO: Replace @extend .site-footer with proper mixin or direct styles for Jekyll compatibility
-    // @extend .site-footer;
+  // Inherits all site-footer styles through HTML class usage
+  // Additional styles for fixed positioning
   position: fixed;
   bottom: 0;
+  width: 100%;
+  z-index: 1000;
 }

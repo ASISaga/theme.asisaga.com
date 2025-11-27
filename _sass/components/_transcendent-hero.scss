@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Mixin: transcendent-cta
 @mixin transcendent-cta {
   @include transcendent-button-primary;
@@ -5,7 +7,6 @@
   min-width: 200px;
   font-size: $font-size-lg;
 }
-@use 'sass:color';
 
 /**
  * Sacred Transcendent Hero Component - Genesis Gateway Experience
