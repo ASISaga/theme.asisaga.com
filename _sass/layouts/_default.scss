@@ -69,4 +69,5 @@
   @include position-relative; // Using custom position mixin
   z-index: $zindex-dropdown; // Bootstrap z-index variable (1000)
   @include flex-shrink(0); // Using custom flex-shrink mixin
+  background: $cosmic-deep-blue; // Dark background for footer section
 }
