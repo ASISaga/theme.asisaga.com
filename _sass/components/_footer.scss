@@ -36,15 +36,12 @@
   width: 100vw;
   left: 0;
   right: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  margin-top: 0;
   @include bg-transparent;
   @include text-footer-color;
   min-height: 50px;
   height: 50%;
-  margin: 0 !important;
-  padding: 1rem 0 !important;
+  margin: 0;
+  padding: 1rem 0;
 
   .site-footer__container {
     width: 100%;
@@ -54,58 +51,56 @@
   }
   .site-footer__copyright {
     text-align: center;
-    margin-bottom: 0 !important;
-    padding: 0 !important;
+    margin-bottom: 0;
+    padding: 0;
     .site-footer__copyright-text {
       font-size: 0.875rem;
       @include text-footer-muted;
-      margin: 0 !important;
-      padding: 0 !important;
+      margin: 0;
+      padding: 0;
     }
   }
   .site-footer__social {
     display: flex;
     justify-content: center;
-    margin-bottom: 0 !important;
-    padding: 0 !important;
+    margin-bottom: 0;
+    padding: 0;
     .site-footer__social-item {
-      margin: 0 0.25rem !important;
-      padding: 0 !important;
+      margin: 0 0.25rem;
+      padding: 0;
     }
   }
   .site-footer__links {
-    // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-center;
-    margin: 0 !important;
-    padding: 0 !important;
+    text-align: center;
+    margin: 0;
+    padding: 0;
   }
   .site-footer__nav-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     list-style: none;
-    padding-left: 0;
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0;
     @include media-breakpoint-down(sm) {
-      flex-direction: column !important;
+      flex-direction: column;
     }
   }
 .site-footer__nav-item {
   padding: 0 0.75rem;
-  margin-bottom: 0 !important;
+  margin-bottom: 0;
   // Remove only vertical padding on mobile, keep horizontal for spacing
   @include media-breakpoint-down(sm) {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
   .site-footer__nav-link {
     text-decoration: none;
     transition: all 0.3s ease;
     @include text-footer-muted;
-    padding: 0 !important;
-    margin: 0 !important;
+    padding: 0;
+    margin: 0;
     &:hover {
       @include text-footer-color;
       text-decoration: underline;
@@ -113,9 +108,8 @@
   }
 }
 
+// Fixed footer variant - use both classes in HTML: class="site-footer site-footer-fixed"
 .site-footer-fixed {
-  // Inherits all site-footer styles through HTML class usage
-  // Additional styles for fixed positioning
   position: fixed;
   bottom: 0;
   width: 100%;
