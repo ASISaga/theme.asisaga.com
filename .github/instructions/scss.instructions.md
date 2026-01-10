@@ -4,7 +4,7 @@ description: "SCSS guidance for the ASI Saga theme. Applies to theme `_sass` par
 ---
 
 SCSS & Styling Instructions
-This file contains rules for SCSS structure, Bootstrap customization, responsive design, and color/contrast requirements.
+This file contains rules for SCSS structure, modern CSS usage, responsive design, and color/contrast requirements.
 
 ## Structure & Entry Points
 - All theme SCSS lives in `/_sass`.
@@ -13,9 +13,16 @@ This file contains rules for SCSS structure, Bootstrap customization, responsive
 
 ## SCSS Rules
 - Make additions in SCSS partials only; never edit compiled CSS directly.
-- Use SCSS variables to customize Bootstrap; prefer variables over overrides.
+- Use CSS custom properties (CSS variables) for runtime theming instead of SCSS variables where appropriate.
 - Each HTML component must have exactly one SCSS class defined in its matching partial.
 - Limit nesting to 3-4 levels and use the parent selector `&` for modifiers.
+
+## Modern CSS Approach
+- This theme uses modern CSS Grid and Flexbox instead of Bootstrap.
+- Use CSS custom properties defined in `_sass/base/_css-variables.scss` for theming.
+- Use the grid system from `_sass/base/_grid.scss` for layouts.
+- Use utility classes from `_sass/base/_utilities-modern.scss` for common patterns.
+- Interactive components (dropdowns, modals, collapse) use custom ES6 JavaScript.
 
 ## Layout & CSS Requirements (MANDATORY)
 - All layout containers MUST use CSS containment: `contain: layout style; isolation: isolate;`.
@@ -37,6 +44,7 @@ This file contains rules for SCSS structure, Bootstrap customization, responsive
 - Minimum font size 16px.
 
 ## Best Practices
-- Use Bootstrap v5.3.5 utilities where appropriate.
-- Prefer `@include` mixins and utility classes rather than deep custom rules.
+- Use modern CSS Grid and Flexbox for layouts.
+- Prefer CSS custom properties for runtime theming.
+- Use `@include` mixins rather than deep custom rules.
 - Add descriptive comments in SCSS partials.

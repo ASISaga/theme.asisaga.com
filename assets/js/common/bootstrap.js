@@ -1,6 +1,7 @@
 import { initDropdowns } from './dropdown.js';
 import { initCollapse } from './collapse.js';
 import { initModals } from './modal.js';
+import { initTabs } from './tab.js';
 
 /**
  * Modern component initializer
@@ -20,6 +21,9 @@ class ComponentLoader {
 
     // Initialize modals
     initModals();
+
+    // Initialize tabs
+    initTabs();
 
     console.log('Modern components initialized');
   }

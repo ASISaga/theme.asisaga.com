@@ -1,0 +1,111 @@
+/**
+ * Modern Tab Styles
+ * Simple tab navigation styles
+ */
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: $cosmic-deep-blue;
+  text-decoration: none;
+  transition: var(--transition-base, all 0.3s ease);
+  // MANDATORY: Touch target minimum 44px
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+
+  &:hover,
+  &:focus {
+    color: darken($cosmic-deep-blue, 10%);
+  }
+
+  &:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 var(--focus-ring-width, 0.25rem) var(--focus-ring-color);
+  }
+
+  &.disabled,
+  &:disabled {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  &.active {
+    color: $cosmic-deep-blue;
+    font-weight: 600;
+  }
+}
+
+.nav-item {
+  margin-bottom: 0;
+}
+
+// Tab content
+.tab-content {
+  > .tab-pane {
+    display: none;
+  }
+
+  > .active {
+    display: block;
+  }
+}
+
+.tab-pane {
+  &.fade {
+    transition: opacity 0.15s linear;
+    opacity: 0;
+
+    &.show {
+      opacity: 1;
+    }
+  }
+}
+
+// Tabs variant
+.nav-tabs {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+
+  .nav-link {
+    margin-bottom: -1px;
+    background: none;
+    border: 1px solid transparent;
+    border-top-left-radius: var(--border-radius, 0.25rem);
+    border-top-right-radius: var(--border-radius, 0.25rem);
+
+    &:hover,
+    &:focus {
+      border-color: rgba(0, 0, 0, 0.05);
+      isolation: isolate;
+    }
+
+    &.active {
+      color: $cosmic-deep-blue;
+      background-color: #fff;
+      border-color: rgba(0, 0, 0, 0.125) rgba(0, 0, 0, 0.125) #fff;
+    }
+  }
+}
+
+// Pills variant
+.nav-pills {
+  .nav-link {
+    background: none;
+    border: 0;
+    border-radius: var(--border-radius, 0.25rem);
+
+    &.active {
+      color: #fff;
+      background-color: $cosmic-deep-blue;
+    }
+  }
+}
