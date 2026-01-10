@@ -1,0 +1,77 @@
+/**
+ * Modern CSS Custom Properties
+ * Replaces Bootstrap's SCSS variables with native CSS custom properties
+ * for better runtime theming and modern CSS capabilities
+ */
+
+:root {
+  // Breakpoints
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1400px;
+
+  // Container max-widths
+  --container-sm: 540px;
+  --container-md: 720px;
+  --container-lg: 960px;
+  --container-xl: 1140px;
+  --container-xxl: 1320px;
+
+  // Spacing scale (using existing sacred spacing)
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 3rem;
+  --space-xxxl: 4rem;
+
+  // Grid
+  --grid-columns: 12;
+  --grid-gap: 1.5rem;
+  --grid-row-gap: 1.5rem;
+  --grid-column-gap: 1.5rem;
+
+  // Z-index layers
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  // Transitions
+  --transition-base: all 0.3s ease;
+  --transition-fast: all 0.15s ease;
+  --transition-slow: all 0.5s ease;
+
+  // Border radius (using sacred values)
+  --border-radius: 0.25rem;
+  --border-radius-sm: 0.2rem;
+  --border-radius-lg: 0.5rem;
+  --border-radius-xl: 0.75rem;
+  --border-radius-xxl: 1rem;
+  --border-radius-pill: 50rem;
+  --border-radius-circle: 50%;
+
+  // Shadows
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+
+  // Typography
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.125rem;
+  --line-height-base: 1.5;
+  --line-height-sm: 1.25;
+  --line-height-lg: 2;
+
+  // Focus ring
+  --focus-ring-width: 0.25rem;
+  --focus-ring-opacity: 0.25;
+  --focus-ring-color: rgba(13, 110, 253, 0.25);
+}

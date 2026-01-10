@@ -5,19 +5,7 @@
 @import "base/fonts";
 @import "base/icons";
 
-
 // Custom Base Styles and Variable Overrides
-// These must be loaded BEFORE any Bootstrap imports to ensure all variables are defined
-
-
-
-// Load Bootstrap dependencies and variables first
-@import "bootstrap/functions";
-@import "bootstrap/variables";
-@import "bootstrap/variables-dark";
-@import "bootstrap/mixins";
-
-// Now load theme base styles and variable overrides
 @import "base/colors";
 @import "base/dimensions";
 @import "base/variables";
@@ -25,14 +13,15 @@
 @import "base/typography";
 @import "base/animations";
 
-// Bootstrap main SASS file (loads all of Bootstrap)
-// This will now use any overridden variables from base/variables.scss
-@import "bootstrap/bootstrap";
+// Modern CSS - Replaces Bootstrap
+@import "base/css-variables";
+@import "base/grid";
+@import "base/utilities-modern";
 
-// Import accessibility after Bootstrap so Bootstrap variables are available
+// Accessibility styles
 @import "base/accessibility";
 
-// Remaining base styles that don't impact Bootstrap variables
+// Remaining base styles
 @import "base/utilities";
 @import "base/utilities-combined";
 @import "base/layout";
@@ -40,6 +29,11 @@
 @import "base/responsive";
 @import "base/theme";
 @import "base/base-section";
+
+// Modern Interactive Components (Replaces Bootstrap JS components)
+@import "components/dropdown";
+@import "components/collapse";
+@import "components/modal";
 
 // Reusable component mixins (must be loaded before other components)
 @import "components/section-component";

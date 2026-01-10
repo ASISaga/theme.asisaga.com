@@ -1,38 +1,35 @@
-import { Dropdown, Tooltip, Popover, Toast, Collapse } from '../vendor/bootstrap.esm.js';
+import { initDropdowns } from './dropdown.js';
+import { initCollapse } from './collapse.js';
+import { initModals } from './modal.js';
 
 /**
- * Bootstrap component initializer
- * Initializes all Bootstrap interactive components on page load
+ * Modern component initializer
+ * Replaces Bootstrap with native ES6 components
+ * Initializes all interactive components on page load
  */
-class BootstrapLoader {
+class ComponentLoader {
   /**
-   * Initialize all Bootstrap components used in the site
+   * Initialize all modern components used in the site
    */
-  initializeBootstrapComponents() {
-    // Initialize tooltips
-    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => new Tooltip(el));
-
-    // Initialize popovers
-    document.querySelectorAll('[data-bs-toggle="popover"]').forEach(el => new Popover(el));
-
+  initializeComponents() {
     // Initialize dropdowns (critical for nav dropdowns)
-    document.querySelectorAll('[data-bs-toggle="dropdown"]').forEach(el => new Dropdown(el));
+    initDropdowns();
 
-    // Initialize collapse components (for mobile nav)
-    document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(el => new Collapse(el));
+    // Initialize collapse components (for mobile nav and accordions)
+    initCollapse();
 
-    // Initialize toasts if present
-    const toastEl = document.getElementById('myToast');
-    if (toastEl) new Toast(toastEl).show();
+    // Initialize modals
+    initModals();
+
+    console.log('Modern components initialized');
   }
 }
 
-// Initialize Bootstrap components when DOM is ready
+// Initialize modern components when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  const loader = new BootstrapLoader();
-  loader.initializeBootstrapComponents();
-  console.log('Bootstrap components initialized');
+  const loader = new ComponentLoader();
+  loader.initializeComponents();
 });
 
 // Export for potential use in other modules
-export { BootstrapLoader };
+export { ComponentLoader };

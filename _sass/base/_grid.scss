@@ -1,0 +1,173 @@
+/**
+ * Modern CSS Grid System
+ * Replaces Bootstrap grid with native CSS Grid and Flexbox
+ * Follows MANDATORY requirements: responsive, CSS containment, no horizontal overflow
+ */
+
+// Container
+.container,
+.container-fluid {
+  width: 100%;
+  padding-right: var(--grid-column-gap, 1.5rem);
+  padding-left: var(--grid-column-gap, 1.5rem);
+  margin-right: auto;
+  margin-left: auto;
+  contain: layout style;
+  isolation: isolate;
+}
+
+.container {
+  @media (min-width: 576px) {
+    max-width: var(--container-sm, 540px);
+  }
+  @media (min-width: 768px) {
+    max-width: var(--container-md, 720px);
+  }
+  @media (min-width: 992px) {
+    max-width: var(--container-lg, 960px);
+  }
+  @media (min-width: 1200px) {
+    max-width: var(--container-xl, 1140px);
+  }
+  @media (min-width: 1400px) {
+    max-width: var(--container-xxl, 1320px);
+  }
+}
+
+// Grid system using CSS Grid (modern approach)
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns, 12), 1fr);
+  gap: var(--grid-gap, 1.5rem);
+  contain: layout style;
+  isolation: isolate;
+}
+
+// Responsive grid - MANDATORY auto-fit pattern
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--grid-gap, 1.5rem);
+  contain: layout style;
+  isolation: isolate;
+}
+
+// Row using Flexbox (for Bootstrap compatibility)
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: calc(var(--grid-column-gap, 1.5rem) * -0.5);
+  margin-left: calc(var(--grid-column-gap, 1.5rem) * -0.5);
+  contain: layout style;
+  isolation: isolate;
+
+  > * {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--grid-column-gap, 1.5rem) * 0.5);
+    padding-left: calc(var(--grid-column-gap, 1.5rem) * 0.5);
+  }
+}
+
+// Column classes
+.col {
+  flex: 1 0 0%;
+}
+
+.col-auto {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+// Generate column classes
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    flex: 0 0 auto;
+    width: percentage($i / 12);
+  }
+}
+
+// Responsive columns
+@media (min-width: 576px) {
+  @for $i from 1 through 12 {
+    .col-sm-#{$i} {
+      flex: 0 0 auto;
+      width: percentage($i / 12);
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  @for $i from 1 through 12 {
+    .col-md-#{$i} {
+      flex: 0 0 auto;
+      width: percentage($i / 12);
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  @for $i from 1 through 12 {
+    .col-lg-#{$i} {
+      flex: 0 0 auto;
+      width: percentage($i / 12);
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  @for $i from 1 through 12 {
+    .col-xl-#{$i} {
+      flex: 0 0 auto;
+      width: percentage($i / 12);
+    }
+  }
+}
+
+@media (min-width: 1400px) {
+  @for $i from 1 through 12 {
+    .col-xxl-#{$i} {
+      flex: 0 0 auto;
+      width: percentage($i / 12);
+    }
+  }
+}
+
+// Spacing utilities
+.g-0 { gap: 0; margin-right: 0; margin-left: 0; }
+.g-1 { gap: var(--space-xs, 0.25rem); }
+.g-2 { gap: var(--space-sm, 0.5rem); }
+.g-3 { gap: var(--space-md, 1rem); }
+.g-4 { gap: var(--space-lg, 1.5rem); }
+.g-5 { gap: var(--space-xl, 2rem); }
+
+// Margin utilities
+.m-0 { margin: 0; }
+.m-1 { margin: var(--space-xs, 0.25rem); }
+.m-2 { margin: var(--space-sm, 0.5rem); }
+.m-3 { margin: var(--space-md, 1rem); }
+.m-4 { margin: var(--space-lg, 1.5rem); }
+.m-5 { margin: var(--space-xl, 2rem); }
+
+.my-0 { margin-top: 0; margin-bottom: 0; }
+.my-1 { margin-top: var(--space-xs, 0.25rem); margin-bottom: var(--space-xs, 0.25rem); }
+.my-2 { margin-top: var(--space-sm, 0.5rem); margin-bottom: var(--space-sm, 0.5rem); }
+.my-3 { margin-top: var(--space-md, 1rem); margin-bottom: var(--space-md, 1rem); }
+.my-4 { margin-top: var(--space-lg, 1.5rem); margin-bottom: var(--space-lg, 1.5rem); }
+.my-5 { margin-top: var(--space-xl, 2rem); margin-bottom: var(--space-xl, 2rem); }
+
+.mx-0 { margin-left: 0; margin-right: 0; }
+.mx-1 { margin-left: var(--space-xs, 0.25rem); margin-right: var(--space-xs, 0.25rem); }
+.mx-2 { margin-left: var(--space-sm, 0.5rem); margin-right: var(--space-sm, 0.5rem); }
+.mx-3 { margin-left: var(--space-md, 1rem); margin-right: var(--space-md, 1rem); }
+.mx-4 { margin-left: var(--space-lg, 1.5rem); margin-right: var(--space-lg, 1.5rem); }
+.mx-5 { margin-left: var(--space-xl, 2rem); margin-right: var(--space-xl, 2rem); }
+
+// Padding utilities
+.p-0 { padding: 0; }
+.p-1 { padding: var(--space-xs, 0.25rem); }
+.p-2 { padding: var(--space-sm, 0.5rem); }
+.p-3 { padding: var(--space-md, 1rem); }
+.p-4 { padding: var(--space-lg, 1.5rem); }
+.p-5 { padding: var(--space-xl, 2rem); }
