@@ -68,7 +68,7 @@ class Dropdown {
     // Focus first menu item
     const firstItem = this.menu.querySelector('a, button');
     if (firstItem) {
-      setTimeout(() => firstItem.focus(), 0);
+      requestAnimationFrame(() => firstItem.focus());
     }
   }
 

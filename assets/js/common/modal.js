@@ -10,6 +10,7 @@ class Modal {
     this.isOpen = false;
     this.backdrop = null;
     this.focusedElementBeforeModal = null;
+    this.focusableSelector = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
     this.init();
   }
 
@@ -57,9 +58,9 @@ class Modal {
     this.createBackdrop();
     
     // Focus the modal
-    const firstFocusable = this.modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    const firstFocusable = this.modal.querySelector(this.focusableSelector);
     if (firstFocusable) {
-      setTimeout(() => firstFocusable.focus(), 100);
+      requestAnimationFrame(() => firstFocusable.focus());
     }
     
     // Dispatch custom event
@@ -104,8 +105,8 @@ class Modal {
     if (this.backdrop) {
       this.backdrop.classList.remove('show');
       setTimeout(() => {
-        if (this.backdrop && this.backdrop.parentNode) {
-          this.backdrop.parentNode.removeChild(this.backdrop);
+        if (this.backdrop) {
+          this.backdrop.remove();
         }
         this.backdrop = null;
       }, 150);
@@ -113,9 +114,7 @@ class Modal {
   }
 
   trapFocus(e) {
-    const focusableElements = this.modal.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    );
+    const focusableElements = this.modal.querySelectorAll(this.focusableSelector);
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
 

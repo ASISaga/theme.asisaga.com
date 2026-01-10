@@ -32,9 +32,8 @@ class Collapse {
       this.parent = document.querySelector(parentId);
     }
 
-    // Set initial state
-    this.isOpen = this.target.classList.contains('show') || 
-                  this.trigger.getAttribute('aria-expanded') === 'true';
+    // Set initial state based on classes and attributes
+    this.isOpen = this.getInitialState();
     
     // Set up event listeners
     this.trigger.addEventListener('click', (e) => {
@@ -49,6 +48,11 @@ class Collapse {
         this.toggle();
       }
     });
+  }
+
+  getInitialState() {
+    return this.target.classList.contains('show') || 
+           this.trigger.getAttribute('aria-expanded') === 'true';
   }
 
   toggle() {
