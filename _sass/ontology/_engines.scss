@@ -1,0 +1,76 @@
+/**
+ * PROJECT GENESIS: THEME ENGINE DRIVERS (INTERNAL)
+ * --------------------------------------------------------------------------
+ * These mixins are the "Physical Manifestation" layer. 
+ * They are triggered by the agnostic Ontological Interface.
+ */
+
+// --- SPATIAL ENGINE ---
+@mixin _theme-engine-environment($logic) {
+  display: grid;
+  @if $logic == 'distributed' {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: var(--space-bento);
+    container-type: inline-size;
+  } 
+  @else if $logic == 'focused' {
+    grid-template-columns: 1fr;
+    max-width: var(--width-reading);
+    margin-inline: auto;
+    gap: var(--space-narrative);
+  }
+  @else if $logic == 'manifest' {
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-tight);
+  }
+}
+
+// --- MATERIAL ENGINE ---
+@mixin _theme-engine-entity($nature) {
+  border-radius: var(--radius-bento);
+  @if $nature == 'primary' {
+    background: var(--glass-heavy);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--accent-low);
+    box-shadow: var(--shadow-ambient);
+  }
+  @else if $nature == 'imperative' {
+    background: var(--glass-alert);
+    border: 1px solid var(--accent-neon);
+    animation: pulse-border 2s infinite;
+  }
+  @else if $nature == 'latent' {
+    opacity: 0.6;
+    filter: grayscale(0.5);
+  }
+}
+
+// --- COGNITIVE ENGINE ---
+@mixin _theme-engine-cognition($intent) {
+  @if $intent == 'axiom' {
+    font-size: var(--size-hero);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-vibrant);
+  }
+  @else if $intent == 'protocol' {
+    font-family: var(--font-mono);
+    font-size: var(--size-data);
+    background: var(--bg-code-shield);
+    padding: 0.2em 0.4em;
+  }
+}
+
+// --- INTERACTION ENGINE ---
+@mixin _theme-engine-synapse($vector) {
+  transition: all var(--motion-snap);
+  @if $vector == 'navigate' {
+    cursor: alias;
+    &:hover { color: var(--accent-neon); }
+  }
+  @else if $vector == 'execute' {
+    cursor: pointer;
+    background: var(--accent-neon);
+    &:active { transform: scale(0.98); }
+  }
+}
