@@ -376,7 +376,7 @@
     // Deep-space, high-contrast, zero-distraction
     background: var(--atmosphere-void, oklch(0.08 0.02 255));
     color: var(--text-void, oklch(0.98 0.01 90));
-    box-shadow: inset 0 0 60px oklch(0.05 0.01 260);
+    box-shadow: inset 0 0 60px var(--shadow-void-inset, oklch(0.05 0.01 260));
   }
   @else if $vibe == 'vibrant' {
     // High-energy, data-saturated, high-neon
