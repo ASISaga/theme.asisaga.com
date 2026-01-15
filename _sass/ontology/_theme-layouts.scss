@@ -51,10 +51,6 @@
     @include genesis-synapse('navigate');  // Clickable logo
   }
   
-  &__logo-img {
-    // Logo styling handled by entity
-  }
-  
   &__title {
     @include genesis-cognition('axiom');  // Site title (large)
   }
@@ -79,10 +75,6 @@
 // Mobile navigation toggle
 .site-header-toggler {
   @include genesis-synapse('execute');  // Action button
-  
-  &-icon {
-    // Icon styling
-  }
 }
 
 // Navigation container
@@ -200,18 +192,6 @@
 
 .hero-background {
   @include genesis-entity('latent');  // Background layer
-  
-  &-video {
-    // Video background
-  }
-  
-  &-image-dynamic {
-    // Dynamic image background
-  }
-  
-  &-gradient {
-    @include genesis-atmosphere('vibrant');  // Gradient background
-  }
 }
 
 .hero-content {
@@ -250,13 +230,11 @@
   @include genesis-entity('primary');  // Standard card
   
   &--elevated {
-    @include genesis-entity('primary');
-    @include genesis-atmosphere('ethereal');  // Enhanced elevation
+    @include genesis-atmosphere('ethereal');  // Enhanced elevation only
   }
   
   &--accent {
-    @include genesis-entity('primary');
-    @include genesis-atmosphere('vibrant');  // Accent styling
+    @include genesis-atmosphere('vibrant');  // Accent styling only
   }
   
   &__header {
@@ -923,10 +901,6 @@
   &__button {
     @include genesis-synapse('social');  // Social sharing
   }
-  
-  &__icon {
-    // Icon styling
-  }
 }
 
 // Content modal
@@ -963,9 +937,19 @@
 // UTILITY CLASSES (Ontology-based)
 // ============================================================================
 
-// Screen reader only
+// Screen reader only - Critical accessibility utility
 .sr-only {
-  // Accessibility utility - keep as is (CSS requirement)
+  // Keep existing CSS from legacy system - required for proper screen reader behavior
+  // This utility requires raw CSS properties for accessibility compliance
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 // Focus visible
