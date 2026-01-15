@@ -1,0 +1,49 @@
+---
+---
+// Test compilation of ontology system
+@import "ontology/index";
+
+// Simple test to verify all mixins work
+.ontology-test-container {
+  @include genesis-environment('distributed');
+  @include genesis-atmosphere('neutral');
+  
+  .test-card {
+    @include genesis-entity('primary');
+    @include genesis-state('stable');
+    
+    .test-title {
+      @include genesis-cognition('axiom');
+    }
+    
+    .test-body {
+      @include genesis-cognition('discourse');
+    }
+    
+    .test-code {
+      @include genesis-cognition('protocol');
+    }
+    
+    .test-button {
+      @include genesis-synapse('execute');
+    }
+    
+    .test-link {
+      @include genesis-synapse('navigate');
+    }
+  }
+  
+  .test-alert {
+    @include genesis-entity('imperative');
+    @include genesis-state('evolving');
+  }
+  
+  .test-timeline {
+    @include genesis-environment('chronological');
+  }
+  
+  .test-dashboard {
+    @include genesis-environment('manifest');
+    @include genesis-atmosphere('vibrant');
+  }
+}
