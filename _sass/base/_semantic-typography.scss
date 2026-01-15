@@ -1,0 +1,307 @@
+// ============================================================================
+// SEMANTIC TYPOGRAPHY & MATERIALITY
+// ============================================================================
+// Fluid, responsive typography using clamp() for perfect scaling
+// Material primitives for consistent "digital glass" aesthetic
+// ============================================================================
+
+// ----------------------------------------
+// FLUID TYPOGRAPHY SCALE
+// ----------------------------------------
+// Using clamp() for perfect responsiveness without media queries
+// Format: clamp(min, preferred, max)
+
+// Heading Scales
+$font-h1: clamp(2.5rem, 5vw + 1rem, 4rem);        // 40px - 64px
+$font-h2: clamp(2rem, 4vw + 0.5rem, 3rem);        // 32px - 48px
+$font-h3: clamp(1.5rem, 3vw + 0.5rem, 2.25rem);   // 24px - 36px
+$font-h4: clamp(1.25rem, 2.5vw + 0.25rem, 1.875rem); // 20px - 30px
+$font-h5: clamp(1.125rem, 2vw + 0.25rem, 1.5rem); // 18px - 24px
+$font-h6: clamp(1rem, 1.5vw + 0.25rem, 1.25rem);  // 16px - 20px
+
+// Body Text Scales
+$font-body-lg: clamp(1.125rem, 1vw + 0.5rem, 1.25rem);  // 18px - 20px
+$font-body: clamp(1rem, 0.5vw + 0.75rem, 1.125rem);     // 16px - 18px
+$font-body-sm: clamp(0.875rem, 0.5vw + 0.5rem, 1rem);   // 14px - 16px
+$font-body-xs: clamp(0.75rem, 0.25vw + 0.5rem, 0.875rem); // 12px - 14px
+
+// Display Scales - Hero/Landing
+$font-display-xl: clamp(3.5rem, 8vw + 1rem, 6rem);     // 56px - 96px
+$font-display-lg: clamp(3rem, 6vw + 1rem, 5rem);       // 48px - 80px
+$font-display-md: clamp(2.5rem, 5vw + 0.5rem, 4rem);   // 40px - 64px
+
+// ----------------------------------------
+// TYPOGRAPHY SYSTEM
+// ----------------------------------------
+
+// Headings
+h1, .h1 {
+  font-size: $font-h1;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: $text-primary;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+h2, .h2 {
+  font-size: $font-h2;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: $text-primary;
+  margin-bottom: clamp(0.875rem, 1.75vw, 1.25rem);
+}
+
+h3, .h3 {
+  font-size: $font-h3;
+  font-weight: 600;
+  line-height: 1.4;
+  color: $text-primary;
+  margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+}
+
+h4, .h4 {
+  font-size: $font-h4;
+  font-weight: 600;
+  line-height: 1.5;
+  color: $text-primary;
+  margin-bottom: clamp(0.625rem, 1.25vw, 0.875rem);
+}
+
+h5, .h5 {
+  font-size: $font-h5;
+  font-weight: 500;
+  line-height: 1.5;
+  color: $text-primary;
+  margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+h6, .h6 {
+  font-size: $font-h6;
+  font-weight: 500;
+  line-height: 1.6;
+  color: $text-primary;
+  margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+// Body Text
+p, .body-text {
+  font-size: $font-body;
+  line-height: 1.6;
+  color: $text-primary;
+  margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Display Text - Hero sections
+.display-xl {
+  font-size: $font-display-xl;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: $text-primary;
+}
+
+.display-lg {
+  font-size: $font-display-lg;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: $text-primary;
+}
+
+.display-md {
+  font-size: $font-display-md;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: $text-primary;
+}
+
+// ----------------------------------------
+// TEXT STYLES & UTILITIES
+// ----------------------------------------
+
+.text-lg {
+  font-size: $font-body-lg;
+  line-height: 1.6;
+}
+
+.text-sm {
+  font-size: $font-body-sm;
+  line-height: 1.5;
+}
+
+.text-xs {
+  font-size: $font-body-xs;
+  line-height: 1.4;
+}
+
+// Weight utilities
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+
+// Color utilities
+.text-primary { color: $text-primary; }
+.text-secondary { color: $text-secondary; }
+.text-accent { color: $text-accent; }
+.text-consciousness { color: $text-consciousness; }
+.text-life-force { color: $text-life-force; }
+.text-transformation { color: $text-transformation; }
+.text-inverse { color: $text-inverse; }
+
+// ----------------------------------------
+// MATERIAL PRIMITIVES - Digital Glass Effects
+// ============================================================================
+
+// Glass Surface - Primary material
+.material-glass {
+  background: oklch(0.20 0.04 245 / 0.75);
+  backdrop-filter: blur(12px) saturate(1.5);
+  -webkit-backdrop-filter: blur(12px) saturate(1.5);
+  border: 1px solid oklch(0.35 0.05 248 / 0.4);
+}
+
+// Glass Elevated - Stronger glass effect
+.material-glass-elevated {
+  background: oklch(0.24 0.05 244 / 0.85);
+  backdrop-filter: blur(16px) saturate(1.8);
+  -webkit-backdrop-filter: blur(16px) saturate(1.8);
+  border: 1px solid oklch(0.35 0.05 248 / 0.6);
+}
+
+// Glass Subtle - Lighter glass effect
+.material-glass-subtle {
+  background: oklch(0.18 0.03 246 / 0.6);
+  backdrop-filter: blur(8px) saturate(1.2);
+  -webkit-backdrop-filter: blur(8px) saturate(1.2);
+  border: 1px solid oklch(0.35 0.05 248 / 0.3);
+}
+
+// Glass Accent - Gold-tinted glass
+.material-glass-accent {
+  background: oklch(0.22 0.06 85 / 0.7);
+  backdrop-filter: blur(12px) saturate(1.5);
+  -webkit-backdrop-filter: blur(12px) saturate(1.5);
+  border: 1px solid oklch(0.85 0.16 85 / 0.4);
+}
+
+// ----------------------------------------
+// HEADER/FOOTER MATERIALS
+// ----------------------------------------
+
+.material-header {
+  background: oklch(0.18 0.03 248 / 0.95);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  border-bottom: 1px solid oklch(0.35 0.05 248 / 0.3);
+  box-shadow: 0 4px 6px oklch(0.15 0.03 250 / 0.1);
+}
+
+.material-footer {
+  background: oklch(0.16 0.03 252 / 0.95);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  border-top: 1px solid oklch(0.35 0.05 248 / 0.3);
+}
+
+// ----------------------------------------
+// OVERLAY MATERIALS
+// ----------------------------------------
+
+.material-overlay {
+  background: oklch(0.15 0.03 250 / 0.85);
+  backdrop-filter: blur(24px) saturate(2);
+  -webkit-backdrop-filter: blur(24px) saturate(2);
+}
+
+.material-modal {
+  background: oklch(0.18 0.03 248 / 0.95);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  border: 1px solid oklch(0.35 0.05 248 / 0.5);
+  box-shadow: 
+    0 20px 50px oklch(0.15 0.03 250 / 0.35),
+    0 0 20px oklch(0.85 0.16 85 / 0.1);
+}
+
+// ----------------------------------------
+// MASK EFFECTS
+// ----------------------------------------
+
+// Gradient fade masks
+.mask-fade-bottom {
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.mask-fade-top {
+  mask-image: linear-gradient(to top, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, black 80%, transparent 100%);
+}
+
+.mask-fade-edges {
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+// Radial fade masks
+.mask-fade-radial {
+  mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+}
+
+// ----------------------------------------
+// ACCESSIBILITY OVERRIDES
+// ----------------------------------------
+
+// High contrast mode - disable glass effects
+@media (prefers-contrast: high) {
+  .material-glass,
+  .material-glass-elevated,
+  .material-glass-subtle,
+  .material-glass-accent,
+  .material-header,
+  .material-footer,
+  .material-overlay,
+  .material-modal {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: $surface-primary;
+    border-width: 2px;
+  }
+}
+
+// Print styles - remove effects
+@media print {
+  .material-glass,
+  .material-glass-elevated,
+  .material-glass-subtle,
+  .material-glass-accent,
+  .material-header,
+  .material-footer,
+  .material-overlay,
+  .material-modal {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: white;
+    border: 1px solid black;
+    box-shadow: none;
+  }
+  
+  .mask-fade-bottom,
+  .mask-fade-top,
+  .mask-fade-edges,
+  .mask-fade-radial {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}

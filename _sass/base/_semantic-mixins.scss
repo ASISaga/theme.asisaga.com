@@ -1,0 +1,383 @@
+// ============================================================================
+// SEMANTIC MIXINS - Replacement for Bootstrap Mixins
+// ============================================================================
+// Lean, focused mixins for the semantic design system
+// No Bootstrap dependencies
+// ============================================================================
+
+// ----------------------------------------
+// LAYOUT MIXINS
+// ----------------------------------------
+
+@mixin position-relative {
+  position: relative;
+}
+
+@mixin position-absolute {
+  position: absolute;
+}
+
+@mixin position-fixed {
+  position: fixed;
+}
+
+@mixin d-flex {
+  display: flex;
+}
+
+@mixin d-grid {
+  display: grid;
+}
+
+@mixin d-inline-flex {
+  display: inline-flex;
+}
+
+@mixin flex-direction($direction) {
+  flex-direction: $direction;
+}
+
+@mixin flex-wrap($wrap: wrap) {
+  flex-wrap: $wrap;
+}
+
+@mixin flex-grow($grow: 1) {
+  flex-grow: $grow;
+}
+
+@mixin flex-shrink($shrink: 0) {
+  flex-shrink: $shrink;
+}
+
+@mixin align-items($align) {
+  align-items: $align;
+}
+
+@mixin justify-content($justify) {
+  justify-content: $justify;
+}
+
+// ----------------------------------------
+// SPACING MIXINS
+// ----------------------------------------
+
+@mixin padding-vertical($value) {
+  padding-top: $value;
+  padding-bottom: $value;
+}
+
+@mixin padding-horizontal($value) {
+  padding-left: $value;
+  padding-right: $value;
+}
+
+@mixin padding-combined($vertical, $horizontal) {
+  padding-top: $vertical;
+  padding-bottom: $vertical;
+  padding-left: $horizontal;
+  padding-right: $horizontal;
+}
+
+@mixin margin-vertical($value) {
+  margin-top: $value;
+  margin-bottom: $value;
+}
+
+@mixin margin-horizontal($value) {
+  margin-left: $value;
+  margin-right: $value;
+}
+
+// Semantic spacing mixins
+@mixin padding-section {
+  padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);
+}
+
+@mixin padding-component {
+  padding: clamp(1.5rem, 3vw, 3rem) clamp(1rem, 2vw, 1.5rem);
+}
+
+@mixin padding-element {
+  padding: clamp(1rem, 2vw, 2rem) clamp(0.75rem, 1.5vw, 1rem);
+}
+
+@mixin padding-content {
+  padding: clamp(0.75rem, 1.5vw, 1.5rem) clamp(0.5rem, 1vw, 0.75rem);
+}
+
+@mixin padding-tight {
+  padding: clamp(0.5rem, 1vw, 1rem) clamp(0.25rem, 0.5vw, 0.5rem);
+}
+
+// ----------------------------------------
+// SIZE MIXINS
+// ----------------------------------------
+
+@mixin min-height-screen {
+  min-height: 100vh;
+  min-height: 100dvh; // Dynamic viewport height for mobile
+}
+
+@mixin min-height($height) {
+  min-height: $height;
+}
+
+@mixin max-width($width) {
+  max-width: $width;
+}
+
+@mixin full-width {
+  width: 100%;
+}
+
+@mixin full-height {
+  height: 100%;
+}
+
+// ----------------------------------------
+// CSS CONTAINMENT MIXINS
+// ----------------------------------------
+
+@mixin contain($value) {
+  contain: $value;
+  isolation: isolate;
+}
+
+@mixin contain-layout {
+  contain: layout style;
+  isolation: isolate;
+}
+
+@mixin contain-paint {
+  contain: paint;
+  isolation: isolate;
+}
+
+// ----------------------------------------
+// BUTTON MIXINS
+// ----------------------------------------
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.25rem, 2.5vw, 2rem);
+  border-radius: clamp(0.5rem, 1vw, 1rem);
+  font-size: clamp(0.875rem, 1vw, 1rem);
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+  &:focus-visible {
+    outline: 2px solid $state-focus-ring;
+    outline-offset: 2px;
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-variant($bg, $border, $text, $hover-bg: null, $hover-border: null) {
+  @include button-base;
+  background: $bg;
+  border-color: $border;
+  color: $text;
+  
+  @if $hover-bg {
+    &:hover:not(:disabled) {
+      background: $hover-bg;
+      border-color: if($hover-border, $hover-border, $hover-bg);
+    }
+  } @else {
+    &:hover:not(:disabled) {
+      background: oklch(from $bg calc(l * 0.9) c h);
+      border-color: oklch(from $border calc(l * 0.9) c h);
+    }
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+}
+
+@mixin button-outline-variant($color) {
+  @include button-base;
+  background: transparent;
+  border-color: $color;
+  color: $color;
+  
+  &:hover:not(:disabled) {
+    background: $color;
+    color: $surface-primary;
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+}
+
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  border-radius: $border-radius;
+}
+
+// ----------------------------------------
+// GLASSMORPHISM MIXINS
+// ----------------------------------------
+
+@mixin glass-surface($opacity: 0.75, $blur: 12px) {
+  background: oklch(0.20 0.04 245 / $opacity);
+  backdrop-filter: blur($blur) saturate(1.5);
+  -webkit-backdrop-filter: blur($blur) saturate(1.5);
+}
+
+@mixin glass-border($opacity: 0.4) {
+  border: 1px solid oklch(0.35 0.05 248 / $opacity);
+}
+
+@mixin glass-glow($color: $accent-glow, $intensity: 0.15) {
+  box-shadow: 0 0 20px oklch(from $color l c h / $intensity);
+}
+
+// ----------------------------------------
+// RESPONSIVE MIXINS
+// ----------------------------------------
+
+@mixin breakpoint-sm {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin breakpoint-md {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin breakpoint-lg {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin breakpoint-xl {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin breakpoint-xxl {
+  @media (min-width: 1400px) {
+    @content;
+  }
+}
+
+// Mobile-first breakpoints
+@mixin mobile-only {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablet-and-up {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop-and-up {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+// ----------------------------------------
+// ACCESSIBILITY MIXINS
+// ----------------------------------------
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@mixin focus-visible {
+  &:focus-visible {
+    outline: 2px solid $state-focus-ring;
+    outline-offset: 2px;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+@mixin high-contrast {
+  @media (prefers-contrast: high) {
+    @content;
+  }
+}
+
+// ----------------------------------------
+// ANIMATION MIXINS
+// ----------------------------------------
+
+@mixin transition($properties...) {
+  transition: $properties;
+  
+  @include reduced-motion {
+    transition: none;
+  }
+}
+
+@mixin animate($name, $duration, $timing: ease, $iteration: 1) {
+  animation: $name $duration $timing $iteration;
+  
+  @include reduced-motion {
+    animation: none;
+  }
+}
+
+// ----------------------------------------
+// TRUNCATION MIXINS
+// ----------------------------------------
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// ----------------------------------------
+// Z-INDEX MIXINS
+// ----------------------------------------
+
+@mixin z-index-background { z-index: -1; }
+@mixin z-index-content { z-index: 1; }
+@mixin z-index-overlay { z-index: 10; }
+@mixin z-index-consciousness { z-index: 100; }
+@mixin z-index-transcendent { z-index: 1000; }
+@mixin z-index-genesis { z-index: 9999; }
