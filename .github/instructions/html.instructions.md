@@ -7,11 +7,32 @@ description: "HTML & Liquid templating for the ASI Saga semantic design system. 
 
 This file contains guidance for Jekyll templates using the semantic design system with Bento Engine layouts.
 
+## 🌟 PRIMARY METHOD: Ontology-Based HTML + SCSS
+
+**For all new development, use semantic HTML with ontological SCSS mapping.**
+
+The Genesis Semantic Engine provides the best separation of concerns. Your HTML should:
+1. Use meaningful, semantic class names (WHAT it is, not HOW it looks)
+2. Employ semantic HTML5 elements appropriately
+3. Have corresponding SCSS that maps classes to ontological roles
+
+This approach keeps HTML clean and allows complete visual redesigns without touching HTML.
+
+---
+
 ## Architecture Overview
-- **NO Bootstrap classes** - Use semantic Bento Engine layouts
-- **Accessibility-first** - Semantic HTML5 with ARIA where needed
-- **Glassmorphism components** - Material design primitives
-- **Container queries** - Components adapt to container size, not viewport
+
+### Primary: Ontology System (Recommended)
+- **Semantic HTML** - Meaningful class names describing content role
+- **SCSS mapping** - Classes mapped to ontological mixins
+- **Zero inline styles** - All styling via SCSS ontology system
+- **Complete separation** - HTML focuses on structure and semantics
+
+### Legacy: Direct CSS Classes (Backward Compatible)
+- **Bento Engine classes** - Layout and grid classes in HTML
+- **Material Primitive classes** - Glassmorphism effects in HTML
+- **Bootstrap compatibility** - For gradual migration
+- **Maintained but deprecated** - Use ontology for new work
 
 ## Theme Structure
 - Theme is the single source for layouts, includes, and shared site head
@@ -21,26 +42,78 @@ This file contains guidance for Jekyll templates using the semantic design syste
 
 ## Semantic Layout Patterns
 
-### Container Selection
-Replace Bootstrap containers with Bento viewports:
-```liquid
-<!-- Instead of: <div class="container"> -->
+### Primary Method: Ontology-Based
+
+Use semantic class names in HTML, then map to ontological mixins in SCSS:
+
+**HTML:**
+```html
+<main class="blog-post">
+  <header class="post-header">
+    <h1 class="post-title">My Article Title</h1>
+    <time class="post-date">2026-01-15</time>
+  </header>
+  
+  <article class="post-content">
+    <p>Article body text goes here...</p>
+  </article>
+  
+  <footer class="post-footer">
+    <a href="/next" class="read-more">Read More</a>
+  </footer>
+</main>
+```
+
+**SCSS (in subdomain):**
+```scss
+---
+---
+@import "ontology/index";
+
+.blog-post {
+  @include genesis-environment('focused');  // Reading layout
+  
+  .post-header {
+    @include genesis-entity('primary');     // Elevated card
+    
+    .post-title { @include genesis-cognition('axiom'); }
+    .post-date { @include genesis-cognition('gloss'); }
+  }
+  
+  .post-content {
+    @include genesis-cognition('discourse');  // Body text
+  }
+  
+  .post-footer {
+    @include genesis-entity('secondary');     // Lighter card
+    
+    .read-more { @include genesis-synapse('navigate'); }
+  }
+}
+```
+
+### Legacy Method: Direct CSS Classes (Not Recommended)
+
+For backward compatibility only:
+
+**Container Selection:**
+```html
+<!-- Legacy Bento containers (deprecated, use ontology instead) -->
 <div class="genesis-viewport">         <!-- Full-width, max 1600px -->
 <div class="consciousness-viewport">   <!-- Content-focused, max 1200px -->
 <div class="essence-viewport">         <!-- Narrow content, max 800px -->
 ```
 
-### Grid Layouts
-Replace Bootstrap .row/.col-* with Bento layouts:
-```liquid
-<!-- Instead of: <div class="row"><div class="col-md-6"> -->
+**Grid Layouts:**
+```html
+<!-- Legacy Bento layouts (deprecated, use ontology instead) -->
 <div class="bento-layout">            <!-- Auto-fit responsive grid -->
   <div class="bento-card">            <!-- Glassmorphism card -->
 ```
 
-### Dashboard Layouts
-Use named grid areas for complex layouts:
-```liquid
+**Dashboard Layouts:**
+```html
+<!-- Legacy named grid (deprecated, use ontology instead) -->
 <div class="bento-dashboard">
   <header class="bento-dashboard__header">...</header>
   <aside class="bento-dashboard__sidebar">...</aside>
@@ -48,9 +121,9 @@ Use named grid areas for complex layouts:
 </div>
 ```
 
-### Component Cards
-Use Bento cards with variants:
-```liquid
+**Component Cards:**
+```html
+<!-- Legacy Bento cards (deprecated, use ontology instead) -->
 <div class="bento-card">               <!-- Base glassmorphism -->
 <div class="bento-card bento-card--elevated">  <!-- Enhanced depth -->
 <div class="bento-card bento-card--accent">    <!-- Gold-tinted -->
@@ -93,8 +166,38 @@ Use Bento cards with variants:
 
 ## Material Design Primitives
 
-### Glassmorphism Surfaces
+### Primary Method: Ontology-Based
+
+Use semantic class names, map to ontological mixins in SCSS:
+
+**HTML:**
 ```html
+<div class="alert-panel">
+  <h2 class="alert-title">Important Notice</h2>
+  <p class="alert-message">System maintenance scheduled.</p>
+  <button class="dismiss-action">Dismiss</button>
+</div>
+```
+
+**SCSS:**
+```scss
+.alert-panel {
+  @include genesis-entity('imperative');    // Urgent styling
+  @include genesis-state('stable');         // Normal state
+  
+  .alert-title { @include genesis-cognition('axiom'); }
+  .alert-message { @include genesis-cognition('discourse'); }
+  .dismiss-action { @include genesis-synapse('destructive'); }
+}
+```
+
+### Legacy Method: Direct Glassmorphism Classes (Not Recommended)
+
+For backward compatibility only:
+
+**Glassmorphism Surfaces:**
+```html
+<!-- Legacy Material classes (deprecated, use ontology instead) -->
 <div class="material-glass">          <!-- Base glass surface -->
 <div class="material-glass-elevated"> <!-- Stronger blur/depth -->
 <div class="material-glass-subtle">   <!-- Lighter glass -->
@@ -104,22 +207,56 @@ Use Bento cards with variants:
 <div class="material-overlay">        <!-- Full-screen overlays -->
 ```
 
-### Mask Effects
+**Mask Effects:**
 ```html
+<!-- Legacy mask utilities (deprecated, use ontology instead) -->
 <div class="mask-fade-bottom">        <!-- Fade to transparent at bottom -->
 <div class="mask-fade-top">           <!-- Fade to transparent at top -->
 <div class="mask-fade-edges">         <!-- Fade horizontal edges -->
 <div class="mask-fade-radial">        <!-- Radial fade from center -->
 ```
 
-## Typography Classes
+## Typography
+
+### Primary Method: Ontology-Based
+
+Use semantic elements and classes, map to cognition mixins in SCSS:
+
+**HTML:**
 ```html
+<article class="research-paper">
+  <h1 class="paper-title">Neural Networks and Consciousness</h1>
+  <p class="paper-abstract">This study explores...</p>
+  <pre class="code-sample">const result = analyze(data);</pre>
+  <aside class="paper-note">See also: related research</aside>
+  <span class="paper-tag">AI</span>
+  <span class="paper-tag">Consciousness</span>
+</article>
+```
+
+**SCSS:**
+```scss
+.research-paper {
+  .paper-title { @include genesis-cognition('axiom'); }      // Large headline
+  .paper-abstract { @include genesis-cognition('discourse'); } // Body text
+  .code-sample { @include genesis-cognition('protocol'); }    // Code/technical
+  .paper-note { @include genesis-cognition('gloss'); }        // Small annotation
+  .paper-tag { @include genesis-cognition('quantum'); }       // Tiny tag
+}
+```
+
+### Legacy Method: Direct Typography Classes (Not Recommended)
+
+For backward compatibility only:
+
+```html
+<!-- Legacy typography classes (deprecated, use ontology instead) -->
 <h1 class="display-xl">Hero Headline</h1>  <!-- 56px-96px fluid -->
 <h2 class="display-lg">Section Title</h2>  <!-- 48px-80px fluid -->
 <p class="text-lg">Large body text</p>     <!-- 18px-20px fluid -->
 <p class="text-sm">Small text</p>          <!-- 14px-16px fluid -->
 
-<!-- Color utilities -->
+<!-- Legacy color utilities (deprecated, use ontology instead) -->
 <span class="text-accent">Highlighted</span>
 <span class="text-consciousness">Neural AI</span>
 <span class="text-life-force">Growth</span>
@@ -133,45 +270,283 @@ Use Bento cards with variants:
 - Provide sensible defaults for missing data
 
 ## Component Development
-- Break complex UI into small includes with clear parameters
-- Document include parameters in file header comments
-- Each component has ONE matching SCSS partial
-- Components should be resilient to missing data
 
-## Responsive Design
-- Mobile-first approach
-- Test at 375px, 768px, 1440px minimum
-- Use Bento responsive utilities: `.bento-stack-mobile`, `.bento-hide-mobile`
-- Container queries handle component density automatically
+### Primary Method: Ontology-Based Components
 
-## Bootstrap Compatibility (Temporary)
-Legacy components may still use Bootstrap classes via compatibility layer:
-- `.container`, `.row`, `.col-*` are supported but deprecated
-- Gradually migrate to `.bento-layout` and `.bento-card`
-- Use semantic Bento classes for all new components
+When creating new reusable components:
 
-## Examples
+1. **Use semantic HTML** with meaningful class names
+2. **Create matching SCSS** using ontology mixins
+3. **Document parameters** in include file header
+4. **Keep components resilient** to missing data
 
-### Before (Bootstrap):
-```html
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">Content</div>
-    <div class="col-md-6">Content</div>
-  </div>
+**Example: Alert Component**
+
+`_includes/alert.html`:
+```liquid
+{% comment %}
+Alert Component (Ontology-Based)
+Parameters:
+- type: 'urgent' | 'info' | 'warning' (default: 'info')
+- title: Alert heading text
+- message: Alert body text
+- dismissible: true | false (default: false)
+{% endcomment %}
+
+<div class="alert alert--{{ include.type | default: 'info' }}">
+  {% if include.title %}
+  <h3 class="alert__title">{{ include.title }}</h3>
+  {% endif %}
+  
+  {% if include.message %}
+  <p class="alert__message">{{ include.message }}</p>
+  {% endif %}
+  
+  {% if include.dismissible %}
+  <button class="alert__dismiss" aria-label="Dismiss alert">×</button>
+  {% endif %}
 </div>
 ```
 
-### After (Bento Engine):
+Corresponding SCSS (in subdomain or theme):
+```scss
+@import "ontology/index";
+
+.alert {
+  @include genesis-entity('primary');
+  @include genesis-state('stable');
+  
+  &--urgent {
+    @include genesis-entity('imperative');
+    @include genesis-atmosphere('vibrant');
+  }
+  
+  &--info {
+    @include genesis-entity('secondary');
+    @include genesis-atmosphere('neutral');
+  }
+  
+  &--warning {
+    @include genesis-entity('secondary');
+    @include genesis-atmosphere('ethereal');
+  }
+  
+  .alert__title { @include genesis-cognition('motive'); }
+  .alert__message { @include genesis-cognition('discourse'); }
+  .alert__dismiss { @include genesis-synapse('destructive'); }
+}
+```
+
+### Best Practices
+
+- Break complex UI into small includes with clear parameters
+- Document include parameters in file header comments
+- Each component has ONE matching SCSS partial (using ontology)
+- Components should be resilient to missing data
+- Use semantic class naming (BEM-style: `.component`, `.component__element`, `.component--modifier`)
+
+## Responsive Design
+
+### Primary Method: Ontology-Based Responsiveness
+
+The ontology system handles responsiveness automatically through:
+- Fluid typography (clamp() values scale with viewport)
+- Responsive grids (`genesis-environment('distributed')` auto-fits)
+- Container queries (components adapt to their container)
+
+You generally **don't need** responsive utility classes with ontology.
+
+**HTML stays clean:**
 ```html
-<div class="consciousness-viewport">
-  <div class="bento-layout">
-    <div class="bento-card">
-      <div class="bento-card__header">
-        <h3 class="bento-card__title">Title</h3>
-      </div>
-      <div class="bento-card__body">Content</div>
+<div class="product-grid">
+  <article class="product-card">
+    <h2 class="product-name">Product Name</h2>
+    <p class="product-description">Description...</p>
+    <button class="buy-button">Buy Now</button>
+  </article>
+</div>
+```
+
+**SCSS handles all responsiveness:**
+```scss
+.product-grid {
+  @include genesis-environment('distributed');  // Auto-responsive grid
+  
+  .product-card {
+    @include genesis-entity('primary');  // Responsive padding/spacing
+    
+    .product-name { @include genesis-cognition('axiom'); }     // Fluid scale
+    .product-description { @include genesis-cognition('discourse'); }
+    .buy-button { @include genesis-synapse('execute'); }
+  }
+}
+```
+
+### Testing Guidelines
+- Mobile-first approach required
+- Test at 375px, 768px, 1440px minimum
+- Touch targets automatically ≥ 44px via ontology
+- Minimum font size: 16px (enforced by ontology fluid scales)
+
+### Legacy: Bento Responsive Utilities (Not Recommended)
+
+For backward compatibility only:
+```html
+<!-- Legacy responsive utilities (deprecated, ontology handles this) -->
+<div class="bento-stack-mobile">  <!-- Stack on mobile -->
+<div class="bento-hide-mobile">   <!-- Hide on mobile -->
+```
+
+## Legacy Systems (Backward Compatibility Only)
+
+**Note**: These are maintained for backward compatibility but NOT recommended for new development.
+
+### Bootstrap Compatibility (Temporary)
+Legacy components may still use Bootstrap classes via compatibility layer:
+- `.container`, `.row`, `.col-*` are supported but deprecated
+- Gradually migrate to ontology-based approach
+- Use semantic HTML + ontology SCSS for all new components
+
+### Migration Path
+
+**Before (Bootstrap/Bento):**
+```html
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="bento-card">Content</div>
+    </div>
+    <div class="col-md-6">
+      <div class="bento-card">Content</div>
     </div>
   </div>
 </div>
 ```
+
+**After (Ontology - Recommended):**
+
+HTML:
+```html
+<div class="content-grid">
+  <article class="content-card">Content</article>
+  <article class="content-card">Content</article>
+</div>
+```
+
+SCSS:
+```scss
+@import "ontology/index";
+
+.content-grid {
+  @include genesis-environment('distributed');  // Auto-fit grid
+  
+  .content-card {
+    @include genesis-entity('primary');  // Glassmorphism card
+  }
+}
+```
+
+## Complete Example: Blog Post Page
+
+### HTML (Semantic & Clean)
+
+```html
+---
+layout: default
+title: "My Blog Post"
+---
+
+<article class="blog-post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <time class="post-date" datetime="{{ page.date }}">
+      {{ page.date | date: "%B %d, %Y" }}
+    </time>
+    <div class="post-tags">
+      {% for tag in page.tags %}
+      <span class="post-tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  </header>
+  
+  <div class="post-content">
+    {{ content }}
+  </div>
+  
+  <footer class="post-footer">
+    <div class="post-share">
+      <span class="share-label">Share:</span>
+      <a href="#" class="share-twitter">Twitter</a>
+      <a href="#" class="share-linkedin">LinkedIn</a>
+    </div>
+    
+    <a href="/blog" class="back-link">← Back to Blog</a>
+  </footer>
+</article>
+```
+
+### SCSS (Ontology Mapping)
+
+```scss
+---
+---
+@import "ontology/index";
+
+.blog-post {
+  @include genesis-environment('focused');     // Reading-optimized
+  @include genesis-atmosphere('ethereal');     // Light, peaceful
+  
+  .post-header {
+    @include genesis-entity('primary');        // Elevated card
+    
+    .post-title { 
+      @include genesis-cognition('axiom');     // Large headline
+    }
+    
+    .post-date { 
+      @include genesis-cognition('gloss');     // Small metadata
+    }
+    
+    .post-tags {
+      @include genesis-environment('associative'); // Horizontal flex
+    }
+    
+    .post-tag {
+      @include genesis-cognition('quantum');   // Tiny chip
+    }
+  }
+  
+  .post-content {
+    @include genesis-cognition('discourse');   // Body prose
+  }
+  
+  .post-footer {
+    @include genesis-entity('secondary');      // Lighter card
+    
+    .post-share {
+      @include genesis-environment('associative');
+    }
+    
+    .share-label {
+      @include genesis-cognition('gloss');
+    }
+    
+    .share-twitter,
+    .share-linkedin {
+      @include genesis-synapse('social');      // Social buttons
+    }
+    
+    .back-link {
+      @include genesis-synapse('navigate');    // Navigation link
+    }
+  }
+}
+```
+
+### Result
+- Clean, semantic HTML focusing on structure
+- Complete visual styling via ontology SCSS
+- Fully responsive without media queries
+- Accessible and keyboard-navigable
+- Single source of truth for styling
+- Easy to redesign without touching HTML
