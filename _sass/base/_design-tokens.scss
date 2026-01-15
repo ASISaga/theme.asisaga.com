@@ -1,0 +1,208 @@
+// ============================================================================
+// DESIGN TOKENS - The DNA of ASI Saga Semantic Design System
+// ============================================================================
+// High-Dynamic-Range Color Primitives using OKLCH color space
+// OKLCH provides perceptually uniform colors across the spectrum
+// Format: oklch(lightness chroma hue / alpha)
+// ============================================================================
+
+// ----------------------------------------
+// GENESIS PALETTE - Raw OKLCH Primitives
+// ----------------------------------------
+// These are the atomic color values - never use directly in components
+// Always map through semantic tokens below
+
+// Void & Depth Colors
+$color-void: oklch(0.15 0.03 250);              // Deep cosmic void
+$color-neural-depth: oklch(0.20 0.04 245);      // Neural network depth
+$color-quantum-dark: oklch(0.12 0.02 255);      // Quantum darkness
+
+// Luminance & Energy Colors  
+$color-neon-pulse: oklch(0.88 0.18 95);         // Radiant neon energy
+$color-neural-violet: oklch(0.55 0.25 290);     // Neural violet consciousness
+$color-quantum-cyan: oklch(0.75 0.15 210);      // Quantum cyan glow
+
+// Essence Colors
+$color-essence-gold: oklch(0.85 0.16 85);       // Human essence gold
+$color-transcendent-white: oklch(0.98 0.01 90); // Pure transcendent white
+$color-bridge-silver: oklch(0.70 0.02 220);     // Bridging consciousness silver
+
+// Life & Growth Colors
+$color-life-emerald: oklch(0.65 0.18 155);      // Life force emerald
+$color-growth-jade: oklch(0.60 0.15 165);       // Sustainable growth jade
+
+// Transformation Colors
+$color-royal-amethyst: oklch(0.45 0.22 300);    // Royal transformation purple
+$color-sovereign-indigo: oklch(0.40 0.20 285);  // Sovereign consciousness indigo
+
+// ----------------------------------------
+// SEMANTIC SURFACE TOKENS
+// ----------------------------------------
+// Map raw primitives to functional surface purposes
+
+$surface-primary: $color-void;                           // Primary backgrounds
+$surface-elevated: oklch(0.18 0.03 248);                 // Elevated cards/sections
+$surface-overlay: oklch(0.16 0.03 252 / 0.95);          // Modal/overlay backgrounds
+$surface-glass: oklch(0.20 0.04 245 / 0.75);            // Glassmorphism surfaces
+$surface-transcendent: $color-transcendent-white;        // Light mode surfaces
+
+// ----------------------------------------
+// SEMANTIC TEXT TOKENS
+// ----------------------------------------
+// Map raw primitives to functional text purposes
+
+$text-primary: $color-transcendent-white;                // Primary text on dark
+$text-secondary: $color-bridge-silver;                   // Secondary/muted text
+$text-accent: $color-essence-gold;                       // Accent/emphasis text
+$text-consciousness: $color-neural-violet;               // Consciousness-related text
+$text-life-force: $color-life-emerald;                   // Growth/vitality text
+$text-transformation: $color-royal-amethyst;             // Transformation text
+$text-inverse: $color-void;                              // Text on light backgrounds
+
+// ----------------------------------------
+// SEMANTIC ACCENT TOKENS
+// ----------------------------------------
+// Map raw primitives to functional accent purposes
+
+$accent-glow: $color-neon-pulse;                         // Primary glow/highlights
+$accent-neural: $color-neural-violet;                    // Neural/AI accents
+$accent-quantum: $color-quantum-cyan;                    // Quantum/tech accents
+$accent-essence: $color-essence-gold;                    // Human essence accents
+$accent-life: $color-life-emerald;                       // Life force accents
+$accent-sovereign: $color-royal-amethyst;                // Sovereign/transform accents
+
+// ----------------------------------------
+// SEMANTIC BORDER TOKENS
+// ----------------------------------------
+$border-primary: oklch(0.30 0.04 250);                   // Primary borders
+$border-elevated: oklch(0.35 0.05 248);                  // Elevated borders
+$border-accent: $color-essence-gold;                     // Accent borders
+$border-glow: oklch(0.85 0.16 85 / 0.3);                // Glowing borders
+$border-neural: oklch(0.55 0.25 290 / 0.4);             // Neural borders
+
+// ----------------------------------------
+// SEMANTIC STATE TOKENS
+// ----------------------------------------
+$state-hover-surface: oklch(0.22 0.04 246);              // Hover state surface
+$state-active-surface: oklch(0.25 0.05 244);             // Active state surface
+$state-focus-ring: oklch(0.85 0.16 85 / 0.5);           // Focus ring color
+$state-disabled-surface: oklch(0.18 0.02 250);           // Disabled surface
+$state-disabled-text: oklch(0.50 0.02 220);              // Disabled text
+
+// ----------------------------------------
+// SEMANTIC GRADIENT TOKENS
+// ----------------------------------------
+$gradient-consciousness: linear-gradient(135deg, $color-void 0%, $color-neural-violet 100%);
+$gradient-transcendent: linear-gradient(135deg, $color-transcendent-white 0%, $color-bridge-silver 100%);
+$gradient-essence: linear-gradient(135deg, $color-essence-gold 0%, $color-neon-pulse 100%);
+$gradient-transformation: linear-gradient(135deg, $color-royal-amethyst 0%, $color-life-emerald 100%);
+$gradient-quantum: linear-gradient(135deg, $color-quantum-cyan 0%, $color-neural-violet 100%);
+
+// ----------------------------------------
+// SEMANTIC SHADOW TOKENS
+// ----------------------------------------
+$shadow-sm: 0 1px 3px oklch(0.15 0.03 250 / 0.12);
+$shadow-md: 0 4px 6px oklch(0.15 0.03 250 / 0.16);
+$shadow-lg: 0 10px 25px oklch(0.15 0.03 250 / 0.25);
+$shadow-xl: 0 20px 50px oklch(0.15 0.03 250 / 0.35);
+$shadow-glow-essence: 0 0 20px oklch(0.85 0.16 85 / 0.5);
+$shadow-glow-neural: 0 0 30px oklch(0.55 0.25 290 / 0.4);
+$shadow-glow-quantum: 0 0 25px oklch(0.75 0.15 210 / 0.6);
+
+// ----------------------------------------
+// LEGACY COMPATIBILITY LAYER
+// ----------------------------------------
+// Map new tokens to old variable names for gradual migration
+// These will be deprecated in future versions
+
+$cosmic-deep-blue: $color-void;
+$luminous-gold: $color-essence-gold;
+$transcendent-white: $color-transcendent-white;
+$ethereal-silver: $color-bridge-silver;
+$emerald-green: $color-life-emerald;
+$royal-purple: $color-royal-amethyst;
+
+$primary: $surface-primary;
+$secondary: $text-secondary;
+$accent: $accent-essence;
+
+// Text colors
+$text-color: $text-inverse;                              // For light backgrounds
+$text-light: $text-primary;                              // For dark backgrounds
+$text-muted: $text-secondary;
+$text-sacred: $accent-essence;
+
+// Background colors
+$bg-dark: $surface-primary;
+$bg-light: $surface-transcendent;
+$bg-consciousness: $surface-overlay;
+$bg-transcendent: $surface-transcendent;
+
+// Border colors
+$border-color: $border-primary;
+$border-sacred: $border-accent;
+
+// Shadow colors
+$box-shadow: $shadow-md;
+$sacred-glow: $shadow-glow-essence;
+$consciousness-depth: $shadow-lg;
+
+// Component-specific legacy mappings
+$white: $color-transcendent-white;
+$light: oklch(0.92 0.02 220);
+$dark: $color-void;
+
+// State colors for legacy compatibility
+$primary-light: oklch(0.35 0.06 248);
+$primary-dark: oklch(0.10 0.02 252);
+$sacred-gold-light: oklch(0.90 0.14 88);
+$sacred-gold-dark: oklch(0.75 0.18 82);
+
+// ----------------------------------------
+// BOOTSTRAP COMPATIBILITY LAYER
+// ----------------------------------------
+// Button variables for components still using Bootstrap mixins
+$btn-padding-y-sm: 0.5rem;
+$btn-padding-x-sm: 1rem;
+$btn-padding-y: 0.75rem;
+$btn-padding-x: 1.5rem;
+$btn-padding-y-lg: 1rem;
+$btn-padding-x-lg: 2rem;
+$btn-font-size-sm: 0.875rem;
+$btn-font-size: 1rem;
+$btn-font-size-lg: 1.125rem;
+$btn-border-radius: clamp(0.5rem, 1vw, 1rem);
+$btn-border-radius-sm: 0.5rem;
+$btn-border-radius-lg: 1rem;
+
+// Z-index variables
+$zindex-dropdown: 1000;
+$zindex-sticky: 1020;
+$zindex-fixed: 1030;
+$zindex-modal-backdrop: 1040;
+$zindex-modal: 1050;
+$zindex-popover: 1060;
+$zindex-tooltip: 1070;
+
+// Grid variables for legacy compatibility
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+);
+
+// Color variables needed by some components
+$gray-200: oklch(0.85 0.01 220);
+$gray-400: oklch(0.65 0.01 220);
+$gray-600: oklch(0.50 0.01 220);

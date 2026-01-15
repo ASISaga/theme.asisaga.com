@@ -1,3 +1,10 @@
+// ============================================================================
+// SEMANTIC DESIGN SYSTEM - ASI Saga Theme
+// ============================================================================
+// OKLCH-based design tokens with native CSS Grid and Glassmorphism
+// No Bootstrap dependencies - Pure semantic architecture
+// ============================================================================
+
 // Font Awesome v4 - Load this first to make variables available globally
 @import "fontawesome/font-awesome";
 
@@ -5,19 +12,16 @@
 @import "base/fonts";
 @import "base/icons";
 
+// ----------------------------------------
+// DESIGN FOUNDATION - The DNA
+// ----------------------------------------
+// Load design tokens and semantic system first
+@import "base/design-tokens";      // OKLCH primitives and semantic tokens
+@import "base/semantic-mixins";    // Semantic mixins replacing Bootstrap
+@import "base/semantic-typography"; // Fluid typography and material primitives
+@import "base/ambient-layer";      // Sentient ambient atmosphere
 
-// Custom Base Styles and Variable Overrides
-// These must be loaded BEFORE any Bootstrap imports to ensure all variables are defined
-
-
-
-// Load Bootstrap dependencies and variables first
-@import "bootstrap/functions";
-@import "bootstrap/variables";
-@import "bootstrap/variables-dark";
-@import "bootstrap/mixins";
-
-// Now load theme base styles and variable overrides
+// Legacy color system (for gradual migration)
 @import "base/colors";
 @import "base/dimensions";
 @import "base/variables";
@@ -25,14 +29,18 @@
 @import "base/typography";
 @import "base/animations";
 
-// Bootstrap main SASS file (loads all of Bootstrap)
-// This will now use any overridden variables from base/variables.scss
-@import "bootstrap/bootstrap";
-
-// Import accessibility after Bootstrap so Bootstrap variables are available
+// ----------------------------------------
+// ACCESSIBILITY & BASE STYLES
+// ----------------------------------------
 @import "base/accessibility";
 
-// Remaining base styles that don't impact Bootstrap variables
+// ----------------------------------------
+// LAYOUT SYSTEM - Bento Engine
+// ----------------------------------------
+@import "layouts/bento-engine";     // Native CSS Grid system
+@import "base/bootstrap-compat";    // Bootstrap compatibility layer for gradual migration
+
+// Remaining base styles
 @import "base/utilities";
 @import "base/utilities-combined";
 @import "base/layout";
