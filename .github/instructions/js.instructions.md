@@ -3,8 +3,24 @@ applyTo: "**/*.js,assets/js/**"
 description: "JavaScript guidance for the ASI Saga theme. Applies to shared and subdomain JS files under `assets/js`."
 ---
 
-JavaScript & Interaction Instructions
+# JavaScript & Interaction Instructions
+
 This file contains guidance for shared JavaScript in the theme and integration rules for subdomain scripts.
+
+## 🌟 Philosophy: Progressive Enhancement
+
+JavaScript should **enhance** the semantic HTML and ontological SCSS foundation, never replace it.
+
+- **Core content** accessible without JavaScript
+- **Interactions** layered on top of semantic structure
+- **Behavior hooks** via `data-*` attributes, not classes
+- **Accessibility** maintained at all levels
+
+### 🧬 Part of Living Genome
+
+Your JavaScript may reveal interaction patterns not covered by existing `genesis-synapse` variants. If you find yourself repeatedly implementing the same interaction type that lacks semantic identity, consider proposing a new synapse variant (see `.github/AGENTS.MD`).
+
+---
 
 ## Entry Points & Structure
 - All shared JS should live in the theme's `assets/js/common.js`.
@@ -32,3 +48,127 @@ This file contains guidance for shared JavaScript in the theme and integration r
 - Avoid inline JS in templates.
 - Use feature detection and graceful fallback for older browsers.
 - Avoid direct DOM querying in many places; prefer well-scoped component initialization.
+
+## Semantic Interaction Patterns
+
+### Mapping to Synapse Variants
+
+When implementing interactions, think about their **semantic purpose**:
+
+**Navigation Actions** → `genesis-synapse('navigate')`
+```javascript
+// Links that take user to different page/section
+document.querySelectorAll('[data-synapse="navigate"]').forEach(link => {
+  // Add navigation enhancements (preload, analytics, etc.)
+});
+```
+
+**Execution Actions** → `genesis-synapse('execute')`
+```javascript
+// Buttons that perform local state changes
+document.querySelectorAll('[data-synapse="execute"]').forEach(button => {
+  // Add execution feedback (loading states, confirmation)
+});
+```
+
+**Inquiry Actions** → `genesis-synapse('inquiry')`
+```javascript
+// Controls that request more information
+document.querySelectorAll('[data-synapse="inquiry"]').forEach(control => {
+  // Add search, filter, expand behaviors
+});
+```
+
+**Destructive Actions** → `genesis-synapse('destructive')`
+```javascript
+// Dangerous operations requiring confirmation
+document.querySelectorAll('[data-synapse="destructive"]').forEach(button => {
+  button.addEventListener('click', (e) => {
+    if (!confirm('Are you sure?')) {
+      e.preventDefault();
+    }
+  });
+});
+```
+
+### When to Propose New Synapse Variant
+
+If you implement a repeated interaction pattern without clear synapse mapping:
+
+**Examples of potential new variants**:
+- Drag-and-drop reordering → `synapse('reorder')`
+- Real-time collaboration cursors → `synapse('collaborate')`
+- Undo/redo actions → `synapse('temporal')`
+- Vote/rate interactions → `synapse('evaluate')`
+
+**How to propose**:
+1. Identify the semantic intent (not implementation)
+2. Check if combination of existing variants works
+3. Use Ontological Proposition template if genuine gap
+4. Submit to theme repository
+
+See `.github/prompts/subdomain-evolution-agent.prompt.md` for guidance.
+
+## Integration with Ontological States
+
+JavaScript can dynamically apply state changes:
+
+```javascript
+// Update visual state based on data condition
+function updateContentState(element, dataState) {
+  // Remove existing state classes
+  element.classList.remove('state-stable', 'state-evolving', 'state-deprecated');
+  
+  // Apply appropriate semantic state
+  if (dataState === 'loading') {
+    element.classList.add('state-evolving');
+  } else if (dataState === 'verified') {
+    element.classList.add('state-stable');
+  } else if (dataState === 'outdated') {
+    element.classList.add('state-deprecated');
+  }
+}
+```
+
+**Note**: State classes should map to `genesis-state()` mixins in SCSS:
+```scss
+.content-item {
+  &.state-stable { @include genesis-state('stable'); }
+  &.state-evolving { @include genesis-state('evolving'); }
+  &.state-deprecated { @include genesis-state('deprecated'); }
+}
+```
+
+## Evolutionary Considerations
+
+### Identifying Gaps Through Implementation
+
+As you build interactive features, watch for patterns:
+
+- **Repeated custom behavior** that feels universal
+- **Semantic meaning** that existing synapses don't capture
+- **State transitions** not covered by current state variants
+
+These are opportunities for ontological evolution!
+
+### Documentation
+
+When implementing complex interactions, document the semantic mapping:
+
+```javascript
+/**
+ * Real-time collaboration presence system
+ * 
+ * Semantic Intent: Show who is currently viewing/editing
+ * Current Mapping: 
+ *   - User avatars: entity('primary')
+ *   - Active state: state('evolving')
+ *   - Inactive: state('latent')
+ * 
+ * Potential Evolution: Consider `entity('presence')` variant
+ * if pattern becomes universal across subdomains.
+ */
+class CollaborationPresence {
+  // Implementation...
+}
+```

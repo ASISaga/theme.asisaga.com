@@ -36,6 +36,22 @@ The Genesis Semantic Engine is the **primary and recommended interface** for sty
 
 **Golden Rule**: NEVER use raw CSS properties (margin, padding, color, etc.) in subdomain SCSS. All styling comes from ontological mixins.
 
+### 🧬 Evolutionary System
+
+The Genesis Ontology is a **Living Genome** that grows through semantic propositions:
+
+- **Found a semantic gap?** Submit an Ontological Proposition PR to theme repository
+- **Need guidance?** Consult `.github/AGENTS.MD` and `.github/prompts/subdomain-evolution-agent.prompt.md`
+- **Uncertain about mixins?** Review `GENOME.md` for variant history and usage examples
+- **Visual changes only?** Use existing mixins - don't create PRs for visual preferences
+
+**Before creating a PR**, ask:
+1. Can I combine existing mixins to achieve this?
+2. Is this a semantic role or just a visual preference?
+3. Would other subdomains benefit from this pattern?
+
+See [Evolution Mechanism](#evolution-mechanism) below for full details.
+
 ---
 
 ## Architecture Overview
@@ -476,3 +492,117 @@ When working on theme engine or legacy components:
 - Add descriptive comments in partials
 - Test color contrast before committing (WCAG AA minimum)
 - Use fluid clamp() for all sizing
+
+## Evolution Mechanism
+
+### 🧬 Living Genome System
+
+The Genesis Ontology grows organically through **Ontological Propositions** from subdomains.
+
+**For Subdomain Developers**:
+
+When you discover a semantic pattern not covered by existing ontology:
+
+1. **Analyze First**:
+   - Review all 31 variants in [Complete Ontological Categories](#complete-ontological-categories-all-31-variants)
+   - Try combining existing mixins creatively
+   - Ask: "Is this semantic (WHAT) or visual (HOW)?"
+
+2. **If Genuine Gap Exists**:
+   - Use PR template: `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md`
+   - Follow guidance: `.github/prompts/subdomain-evolution-agent.prompt.md`
+   - Submit to theme repository with label: `ontological-proposition`
+
+3. **Theme Agent Reviews**:
+   - Checks for redundancy with existing variants
+   - Validates universal applicability
+   - Decides: Accept, Refactor, or Reject with guidance
+
+4. **Upon Approval**:
+   - Theme Agent implements in `_sass/ontology/_engines.scss`
+   - Updates `GENOME.md` with variant history
+   - Documents in `INTEGRATION-GUIDE.md`
+   - You adopt new variant in your subdomain
+
+**Valid Proposition Examples**:
+- ✅ "Need to represent uncertain/calculating data state" → `cognition('speculation')`
+- ✅ "Require visual distinction for draft vs. published content" → `state('draft')`
+- ✅ "Social proof elements need semantic identity" → `entity('testimonial')`
+
+**Invalid Proposition Examples**:
+- ❌ "Cards should have 24px border radius" → Visual detail, use existing `entity()` variants
+- ❌ "Text should be bigger" → Use existing `cognition()` scales
+- ❌ "Want purple accent color" → Engine concern, not semantic role
+
+**For Theme Maintainers**:
+
+As Theme Genome Agent, you:
+
+1. **Review Incoming PRs**:
+   - Apply decision tree from `.github/prompts/theme-genome-agent.prompt.md`
+   - Reject visual-only requests firmly but kindly
+   - Guide submitters to semantic thinking
+
+2. **Maintain Ontological Purity**:
+   - Interface layer (`_interface.scss`) contains ZERO CSS properties
+   - All visual implementation in Engine layer (`_engines.scss`)
+   - Document every variant's origin in code comments
+
+3. **Document Evolution**:
+   ```scss
+   /**
+    * @param $intent [new-variant] 
+    * ORIGIN: PR #XX (subdomain-name.asisaga.com)
+    * INTENT: One-line semantic purpose
+    * EVOLUTION: History of changes to this variant
+    * @since Version X.X
+    */
+   ```
+
+4. **Update GENOME.md**:
+   - Track all additions, refactorings, deprecations
+   - Document "why" for each change
+   - Measure adoption and impact
+
+**Decision Tree** (for Theme Agent):
+```
+PR Received
+├─ Redundancy Check: Covered by existing mixins?
+│  ├─ YES → Deny; guide to existing solution
+│  └─ NO → Continue
+├─ Generalization: Universal or domain-specific?
+│  ├─ Universal → Add to global interface
+│  └─ Unique → Consider sub-species variant
+└─ Refactoring: Should categories be restructured?
+   └─ Update if needed, maintain compatibility
+```
+
+### Resources
+
+**For All Developers**:
+- **Agent Guide**: `.github/AGENTS.MD` - Complete ecosystem architecture
+- **Evolution History**: `GENOME.md` - Variant registry and growth tracking
+- **API Reference**: `_sass/ontology/INTEGRATION-GUIDE.md` - All mixins documented
+
+**For Subdomain Developers**:
+- **Proposition Guide**: `.github/prompts/subdomain-evolution-agent.prompt.md`
+- **PR Template**: `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md`
+- **Refactor Workflow**: `_sass/ontology/refactor-agent.md`
+
+**For Theme Maintainers**:
+- **Genome Agent Prompt**: `.github/prompts/theme-genome-agent.prompt.md`
+- **Review Checklist**: In AGENTS.MD
+- **Response Templates**: In theme-genome-agent.prompt.md
+
+### Philosophy
+
+The ontology is **alive** - it grows through collective intelligence:
+
+- **Subdomains** identify gaps through real-world usage
+- **Theme Agent** filters and refines propositions
+- **GENOME.md** preserves the "why" behind every decision
+- **Documentation** self-updates with each evolution
+
+This creates a **design system with memory** - future developers understand not just WHAT exists, but WHY it was created and WHO needed it.
+
+**Think semantically. Document thoroughly. Evolve consciously.**

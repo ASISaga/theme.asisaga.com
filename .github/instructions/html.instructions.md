@@ -18,6 +18,16 @@ The Genesis Semantic Engine provides the best separation of concerns. Your HTML 
 
 This approach keeps HTML clean and allows complete visual redesigns without touching HTML.
 
+### 🧬 Part of Living Genome
+
+Your HTML structure feeds the evolutionary system:
+
+- **Semantic class names** enable clear SCSS mapping to ontological roles
+- **Meaningful structure** helps identify gaps in current ontology
+- **Content-first thinking** separates WHAT from HOW
+
+When your HTML reveals a pattern not covered by existing ontology, you can propose evolution through the Ontological Proposition system (see `.github/AGENTS.MD`).
+
 ---
 
 ## Architecture Overview
@@ -550,3 +560,71 @@ title: "My Blog Post"
 - Accessible and keyboard-navigable
 - Single source of truth for styling
 - Easy to redesign without touching HTML
+
+## Semantic Class Naming Best Practices
+
+### Content-First Naming
+
+**Think about WHAT the element represents**:
+- ✅ `.research-paper`, `.paper-title`, `.paper-abstract`
+- ✅ `.user-profile`, `.profile-avatar`, `.profile-bio`
+- ✅ `.product-card`, `.product-name`, `.product-price`
+
+**Avoid describing HOW it looks**:
+- ❌ `.blue-box`, `.large-text`, `.rounded-card`
+- ❌ `.with-shadow`, `.bold-heading`, `.small-label`
+
+### BEM-Style Structure (Recommended)
+
+Use Block-Element-Modifier pattern for clarity:
+
+```html
+<!-- Block: main component -->
+<article class="research-paper">
+  
+  <!-- Elements: parts of the block -->
+  <header class="research-paper__header">
+    <h1 class="research-paper__title">Title</h1>
+    <time class="research-paper__date">Date</time>
+  </header>
+  
+  <!-- Modifiers: variations -->
+  <div class="research-paper__content research-paper__content--draft">
+    Content...
+  </div>
+</article>
+```
+
+Then map in SCSS:
+```scss
+.research-paper {
+  @include genesis-environment('focused');
+  
+  &__header {
+    @include genesis-entity('primary');
+  }
+  
+  &__title {
+    @include genesis-cognition('axiom');
+  }
+  
+  &__content {
+    @include genesis-cognition('discourse');
+    
+    &--draft {
+      @include genesis-state('simulated');
+    }
+  }
+}
+```
+
+### Naming Triggers Evolution
+
+When you struggle to name an element semantically, you may have found an ontological gap:
+
+**Example**: You have content that's "currently calculating but not final"
+- Existing: `protocol` (technical) + `stable` (normal state)
+- Gap: No semantic variant for "uncertain/in-progress calculation"
+- Solution: Propose `cognition('speculation')` or `state('calculating')`
+
+This is when you create an Ontological Proposition (see `.github/AGENTS.MD`).
