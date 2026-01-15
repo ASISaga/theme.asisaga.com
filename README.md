@@ -75,21 +75,83 @@ The Genesis Semantic SCSS Engine provides clean separation of concerns:
 
 ---
 
+## 🧬 Evolution Mechanism - Living Genome
+
+The Genesis Semantic Design System is a **Living Genome** that grows through intelligent collaboration between AI agents and developers.
+
+### For Developers & Subdomains
+
+**Found a semantic gap?** The ontology doesn't cover every pattern yet - it evolves!
+
+1. **Review existing variants**: Check all 31 variants in [INTEGRATION-GUIDE.md](_sass/ontology/INTEGRATION-GUIDE.md)
+2. **Try combinations**: Mix ontological mixins creatively
+3. **Propose evolution**: If genuine gap exists, create [Ontological Proposition PR](.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md)
+4. **Theme Agent reviews**: Your proposal is evaluated for semantic purity and universal applicability
+5. **Approval & implementation**: New variants are documented in [GENOME.md](GENOME.md) with origin story
+
+**Resources**:
+- **[AGENTS.MD](.github/AGENTS.MD)** - Complete agent ecosystem architecture
+- **[Subdomain Evolution Agent](.github/prompts/subdomain-evolution-agent.prompt.md)** - How to propose changes
+- **[GENOME.md](GENOME.md)** - Evolutionary history and variant registry
+
+### For AI Agents
+
+**You are part of an intelligent ecosystem!**
+
+- **Theme Genome Agent**: Reviews PRs, maintains ontological purity, updates documentation
+- **Subdomain Evolution Agent**: Identifies gaps, creates well-formed propositions
+- **SCSS Refactor Agent**: Migrates legacy CSS to ontological system
+
+**Essential Reading**:
+- **[AGENTS.MD](.github/AGENTS.MD)** - Your role in the ecosystem (17KB comprehensive guide)
+- **[AGENT-WORKFLOWS.md](.github/AGENT-WORKFLOWS.md)** - Complete workflows and decision trees
+- **[AGENT-QUICK-REFERENCE.md](.github/AGENT-QUICK-REFERENCE.md)** - Fast lookup cheat sheet
+
+**Agent Prompts**:
+- [Theme Genome Agent](.github/prompts/theme-genome-agent.prompt.md) - Ontological gatekeeper
+- [Subdomain Evolution Agent](.github/prompts/subdomain-evolution-agent.prompt.md) - Proposition creator
+- [SCSS Refactor Agent](.github/prompts/scss-refactor-agent.prompt.md) - Migration specialist
+
+### Philosophy
+
+Every variant has an **origin story**. [GENOME.md](GENOME.md) documents:
+- Which subdomain requested it
+- What semantic gap it filled
+- How the system evolved
+
+This creates **design with memory** - future developers understand not just WHAT exists, but WHY.
+
+**Read the founding philosophy**: [evolution.md](evolution.md)
+
+---
+
 ## 📖 Documentation
 
 ### Primary Documentation (Ontology System)
 
+**Core Architecture**:
 - **[Ontology Architecture Overview](_sass/ontology/Readme.md)** - Three-tier system SOP
 - **[Complete API Reference](_sass/ontology/INTEGRATION-GUIDE.md)** - All 6 categories with examples
 - **[Implementation Summary](_sass/ontology/IMPLEMENTATION-SUMMARY.md)** - System status and features
-- **[AI Migration Guide](_sass/ontology/refactor-agent.md)** - Automated conversion instructions
+
+**Evolution & Intelligence**:
+- **[AGENTS.MD](.github/AGENTS.MD)** - AI agent ecosystem architecture
+- **[GENOME.md](GENOME.md)** - Evolutionary history and variant registry
+- **[evolution.md](evolution.md)** - Philosophical foundation
+- **[AGENT-WORKFLOWS.md](.github/AGENT-WORKFLOWS.md)** - Complete workflows
+- **[AGENT-QUICK-REFERENCE.md](.github/AGENT-QUICK-REFERENCE.md)** - Fast lookup guide
+
+**Developer Guides**:
+- **[SCSS Refactor Guide](_sass/ontology/refactor-agent.md)** - Migration workflow
+- **[SCSS Instructions](.github/instructions/scss.instructions.md)** - Coding standards
+- **[HTML Instructions](.github/instructions/html.instructions.md)** - Template best practices
+- **[JS Instructions](.github/instructions/js.instructions.md)** - Integration patterns
 
 ### Quick References
 
 - **[Ontology Demo](docs/ontology-demo.html)** - Visual HTML demonstration
 - **[Semantic Quick Reference](docs/SEMANTIC-QUICK-REFERENCE.md)** - Tokens and classes
-- **[SCSS Instructions](.github/instructions/scss.instructions.md)** - AI agent guidance
-- **[HTML Instructions](.github/instructions/html.instructions.md)** - Template best practices
+- **[PR Template](.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md)** - Propose new variants
 
 ### Legacy Documentation (Backward Compatibility)
 
@@ -300,6 +362,15 @@ Legacy classes (Bento, Material) remain functional:
 - ✅ Zero raw CSS in interface layer
 - ✅ Complete accessibility support
 - ✅ 150+ CSS custom properties
+- ✅ **Living Genome** - Evolutionary system with agent ecosystem
+
+### Evolution & Intelligence
+- ✅ AI agent ecosystem for ontological governance
+- ✅ Ontological Proposition system for growth
+- ✅ GENOME.md tracks variant history and origin
+- ✅ Automated refactoring workflows
+- ✅ Theme Genome Agent reviews all changes
+- ✅ Self-documenting code with "why" captured
 
 ### Legacy Systems (Backward Compatible)
 - ✅ Bento Engine layouts (`.bento-layout`, `.bento-card`)
@@ -320,6 +391,20 @@ Legacy classes (Bento, Material) remain functional:
 
 ```
 theme.asisaga.com/
+├── .github/
+│   ├── AGENTS.MD               # Agent ecosystem architecture
+│   ├── AGENT-WORKFLOWS.md      # Complete workflows
+│   ├── AGENT-QUICK-REFERENCE.md # Fast lookup guide
+│   ├── instructions/           # AI coding standards
+│   │   ├── scss.instructions.md
+│   │   ├── html.instructions.md
+│   │   └── js.instructions.md
+│   ├── prompts/                # Agent-specific prompts
+│   │   ├── theme-genome-agent.prompt.md
+│   │   ├── subdomain-evolution-agent.prompt.md
+│   │   └── scss-refactor-agent.prompt.md
+│   └── PULL_REQUEST_TEMPLATE/
+│       └── ontological_proposition.md
 ├── _sass/
 │   ├── ontology/              # PRIMARY: Genesis Semantic Engine
 │   │   ├── _index.scss        # Main entry point
@@ -327,7 +412,8 @@ theme.asisaga.com/
 │   │   ├── _engines.scss      # Visual implementation
 │   │   ├── _tokens.scss       # CSS custom properties
 │   │   ├── Readme.md          # Architecture overview
-│   │   └── INTEGRATION-GUIDE.md
+│   │   ├── INTEGRATION-GUIDE.md # Complete API reference
+│   │   └── refactor-agent.md  # Migration workflow
 │   ├── base/                  # Design tokens and utilities
 │   ├── components/            # UI components (legacy & ontology)
 │   ├── layouts/               # Page layouts
@@ -335,7 +421,8 @@ theme.asisaga.com/
 ├── _includes/                 # Reusable HTML components
 ├── _layouts/                  # Page templates
 ├── docs/                      # Documentation and guides
-├── .github/instructions/      # AI agent guidance
+├── GENOME.md                  # Evolutionary history tracker
+├── evolution.md               # Philosophical foundation
 └── assets/
     ├── css/
     └── js/
@@ -345,8 +432,24 @@ theme.asisaga.com/
 
 ## 🤝 Contributing
 
-### For New Features
-1. Use ontology mixins exclusively
+### For New Features & Ontological Evolution
+
+**Found a semantic pattern not covered by current ontology?**
+
+1. **Review existing variants** in [INTEGRATION-GUIDE.md](_sass/ontology/INTEGRATION-GUIDE.md)
+2. **Try combinations** of existing mixins first
+3. **Create Ontological Proposition** using [PR template](.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md)
+4. **Submit to theme repository** with label `ontological-proposition`
+5. **Theme Genome Agent reviews** and provides feedback
+
+See [Subdomain Evolution Agent guide](.github/prompts/subdomain-evolution-agent.prompt.md) for detailed workflow.
+
+### For Code Contributions
+
+**Using Ontology System**:
+1. Use ontology mixins exclusively (no raw CSS)
+2. Map HTML semantics to ontological roles
+3. Follow [SCSS Instructions](.github/instructions/scss.instructions.md)
 2. Add engine variants if semantic pattern is missing
 3. Update documentation with examples
 4. Test accessibility and responsiveness
