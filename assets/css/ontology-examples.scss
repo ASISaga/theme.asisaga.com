@@ -1,0 +1,333 @@
+---
+---
+/**
+ * Ontology System Examples - Demonstration SCSS
+ * 
+ * This file demonstrates the Genesis Semantic Engine by styling all example
+ * components using ONLY ontological mixins - zero raw CSS properties.
+ * 
+ * Each class is mapped to its semantic role via ontology mixins.
+ */
+
+@import "ontology/index";
+
+// ============================================================================
+// MAIN PAGE LAYOUT
+// ============================================================================
+.ontology-examples-page {
+  @include genesis-environment('focused');  // Centered reading layout
+  @include genesis-atmosphere('neutral');   // Standard vibe
+}
+
+// ============================================================================
+// HEADER SECTION
+// ============================================================================
+.examples-header {
+  @include genesis-entity('primary');       // Elevated card
+  
+  .examples-title {
+    @include genesis-cognition('axiom');    // Large headline
+  }
+  
+  .examples-intro {
+    @include genesis-cognition('discourse'); // Body text
+  }
+}
+
+// ============================================================================
+// EXAMPLE SECTIONS (Containers)
+// ============================================================================
+.example-section {
+  @include genesis-entity('secondary');     // Lighter container
+  
+  .section-heading {
+    @include genesis-cognition('motive');   // Instructional heading
+  }
+  
+  .section-description {
+    @include genesis-cognition('discourse'); // Body text
+  }
+}
+
+.example-demo {
+  @include genesis-entity('aggregate');     // Demo container
+}
+
+// ============================================================================
+// EXAMPLE 1: BLOG POST
+// ============================================================================
+.blog-post-example {
+  @include genesis-environment('focused');  // Reading-optimized layout
+  @include genesis-atmosphere('ethereal');  // Light, peaceful vibe
+  
+  .post-header-example {
+    @include genesis-entity('primary');     // Elevated card
+    
+    .post-title-example {
+      @include genesis-cognition('axiom');  // Large headline
+    }
+    
+    .post-date-example {
+      @include genesis-cognition('gloss');  // Small metadata
+    }
+    
+    .post-tags-example {
+      @include genesis-environment('associative'); // Horizontal flex
+    }
+    
+    .post-tag-example {
+      @include genesis-cognition('quantum'); // Tiny chip
+    }
+  }
+  
+  .post-content-example {
+    @include genesis-cognition('discourse'); // Body prose
+  }
+  
+  .post-footer-example {
+    @include genesis-entity('secondary');    // Lighter card
+    
+    .share-section-example {
+      @include genesis-environment('associative'); // Horizontal layout
+    }
+    
+    .share-label-example {
+      @include genesis-cognition('gloss');   // Small label
+    }
+    
+    .share-twitter-example,
+    .share-linkedin-example {
+      @include genesis-synapse('social');    // Social buttons
+    }
+    
+    .back-link-example {
+      @include genesis-synapse('navigate');  // Navigation link
+    }
+  }
+}
+
+// ============================================================================
+// EXAMPLE 2: PRODUCT GRID
+// ============================================================================
+.product-grid-example {
+  @include genesis-environment('distributed'); // Auto-fit responsive grid
+  
+  .product-card-example {
+    @include genesis-entity('primary');        // Glassmorphism card
+    
+    .product-name-example {
+      @include genesis-cognition('motive');    // Persuasive text
+    }
+    
+    .product-description-example {
+      @include genesis-cognition('discourse'); // Body text
+    }
+    
+    .product-price-example {
+      @include genesis-cognition('axiom');     // Large, prominent
+    }
+    
+    .buy-button-example {
+      @include genesis-synapse('execute');     // Primary action button
+    }
+  }
+}
+
+// ============================================================================
+// EXAMPLE 3: ALERTS
+// ============================================================================
+.alerts-container-example {
+  @include genesis-environment('chronological'); // Vertical stack
+}
+
+.alert-example {
+  @include genesis-entity('secondary');         // Base alert style
+  @include genesis-state('stable');             // Normal state
+  @include genesis-environment('associative');  // Horizontal flex
+  
+  &.alert-urgent-example {
+    @include genesis-entity('imperative');      // Pulsing neon border
+    @include genesis-state('evolving');         // Animated indicator
+    @include genesis-atmosphere('vibrant');     // High-energy vibe
+  }
+  
+  &.alert-info-example {
+    @include genesis-entity('secondary');       // Standard alert
+    @include genesis-atmosphere('neutral');     // Calm vibe
+  }
+  
+  .alert-title-example {
+    @include genesis-cognition('motive');       // Instructional heading
+  }
+  
+  .alert-message-example {
+    @include genesis-cognition('discourse');    // Body text
+  }
+  
+  .alert-close-example {
+    @include genesis-synapse('destructive');    // Dangerous action
+  }
+}
+
+// ============================================================================
+// EXAMPLE 4: DASHBOARD
+// ============================================================================
+.analytics-dashboard-example {
+  @include genesis-environment('distributed');  // Grid layout
+  @include genesis-atmosphere('vibrant');       // High-energy vibe
+  
+  .metric-card-example {
+    @include genesis-entity('primary');         // Glassmorphism card
+    @include genesis-state('evolving');         // Live updating indicator
+    
+    .metric-value-example {
+      @include genesis-cognition('axiom');      // Large number
+    }
+    
+    .metric-label-example {
+      @include genesis-cognition('gloss');      // Small label
+    }
+    
+    .metric-trend-example {
+      @include genesis-cognition('gloss');      // Small metadata
+    }
+  }
+}
+
+// ============================================================================
+// EXAMPLE 5: RESEARCH TIMELINE
+// ============================================================================
+.research-timeline-example {
+  @include genesis-environment('chronological'); // Vertical timeline
+  
+  .research-item-example {
+    @include genesis-entity('primary');          // Main card
+    @include genesis-state('stable');            // Normal state
+    
+    &.research-item-archived-example {
+      @include genesis-entity('ancestral');      // Archived appearance
+    }
+    
+    &.research-item-draft-example {
+      @include genesis-entity('latent');         // Dimmed, inactive
+      @include genesis-state('simulated');       // Projected/draft
+    }
+    
+    .paper-title-example {
+      @include genesis-cognition('motive');      // Persuasive heading
+    }
+    
+    .paper-ref-example {
+      @include genesis-cognition('protocol');    // Code/reference style
+    }
+    
+    .paper-abstract-example {
+      @include genesis-cognition('discourse');   // Body text
+    }
+    
+    .download-link-example {
+      @include genesis-synapse('execute');       // Action button
+    }
+    
+    .draft-status-example {
+      @include genesis-cognition('gloss');       // Small status text
+    }
+  }
+}
+
+// ============================================================================
+// EXAMPLE 6: CODE DOCUMENTATION
+// ============================================================================
+.code-doc-example {
+  @include genesis-entity('primary');            // Card container
+  
+  .code-doc-title-example {
+    @include genesis-cognition('motive');        // Heading
+  }
+  
+  .code-doc-description-example {
+    @include genesis-cognition('discourse');     // Body text
+  }
+  
+  .code-block-example {
+    @include genesis-cognition('protocol');      // Code block styling
+  }
+  
+  .code-note-example {
+    @include genesis-cognition('gloss');         // Small note
+  }
+  
+  .try-button-example {
+    @include genesis-synapse('inquiry');         // Secondary action
+  }
+}
+
+// ============================================================================
+// SCSS CODE EXPLANATION SECTION
+// ============================================================================
+.code-explanation-example {
+  @include genesis-entity('secondary');          // Container
+  
+  .explanation-heading-example {
+    @include genesis-cognition('motive');        // Heading
+  }
+  
+  .scss-code-example {
+    @include genesis-cognition('protocol');      // Code display
+  }
+  
+  .key-point-example {
+    @include genesis-entity('imperative');       // Important callout
+    @include genesis-cognition('motive');        // Instructional text
+  }
+}
+
+// ============================================================================
+// FOOTER SECTION
+// ============================================================================
+.examples-footer {
+  @include genesis-entity('primary');            // Elevated footer
+  
+  .footer-heading-example {
+    @include genesis-cognition('axiom');         // Large heading
+  }
+  
+  .resources-grid-example {
+    @include genesis-environment('distributed'); // Grid layout
+  }
+  
+  .resource-link-example {
+    @include genesis-entity('primary');          // Card for each resource
+    @include genesis-synapse('navigate');        // Clickable link behavior
+    
+    .resource-title-example {
+      @include genesis-cognition('motive');      // Persuasive heading
+    }
+    
+    .resource-desc-example {
+      @include genesis-cognition('discourse');   // Description text
+    }
+  }
+}
+
+// ============================================================================
+// SUMMARY
+// ============================================================================
+/**
+ * This SCSS file contains ZERO raw CSS properties.
+ * 
+ * Everything is styled through semantic ontological roles:
+ * - Layout: genesis-environment()
+ * - Cards: genesis-entity()
+ * - Typography: genesis-cognition()
+ * - Interactions: genesis-synapse()
+ * - States: genesis-state()
+ * - Vibes: genesis-atmosphere()
+ * 
+ * The theme engine (_sass/ontology/_engines.scss) handles all actual CSS.
+ * 
+ * This demonstrates the power of the three-tier architecture:
+ * - HTML describes WHAT the content is
+ * - SCSS maps to semantic ROLES
+ * - Theme engine defines the APPEARANCE
+ */
