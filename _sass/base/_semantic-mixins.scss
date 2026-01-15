@@ -196,8 +196,7 @@
     }
   } @else {
     &:hover:not(:disabled) {
-      background: oklch(from $bg calc(l * 0.9) c h);
-      border-color: oklch(from $border calc(l * 0.9) c h);
+      filter: brightness(0.9);
     }
   }
   
@@ -243,7 +242,7 @@
 }
 
 @mixin glass-glow($color: $accent-glow, $intensity: 0.15) {
-  box-shadow: 0 0 20px oklch(from $color l c h / $intensity);
+  box-shadow: 0 0 20px rgba(255, 215, 0, $intensity);
 }
 
 // ----------------------------------------
