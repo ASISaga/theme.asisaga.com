@@ -99,6 +99,118 @@ Use mixins from `_sass/base/_semantic-mixins.scss`:
 - Support `prefers-contrast: high` - disable glass effects, increase borders
 - Never rely on color alone for meaning
 
+## Ontology System - Genesis Semantic Engine (MANDATORY FOR SUBDOMAINS)
+
+### Three-Tier Architecture
+The Genesis Semantic Engine provides a rigorous separation between content and presentation:
+
+**Tier 1: Content (Subdomain HTML)**
+- Defines WHAT the data is
+- No style attributes; 1 semantic class per element
+
+**Tier 2: Interface (Ontological API)**
+- Defines the ROLE of the content
+- Agnostic; no CSS properties allowed
+- Import via: `@import "ontology/index";`
+
+**Tier 3: Engine (Physical Manifestation)**
+- Defines the LOOK (OKLCH, Bento, Glassmorphism)
+- The ONLY place for raw CSS properties
+
+### Using the Ontological API
+
+**Import in subdomain SCSS:**
+```scss
+---
+---
+@import "ontology/index";  // Must be first import
+
+.my-content {
+  @include genesis-environment('focused');  // Layout
+  @include genesis-entity('primary');       // Visual weight
+  @include genesis-cognition('axiom');      // Typography
+  @include genesis-synapse('execute');      // Interaction
+  @include genesis-state('stable');         // Temporal state
+  @include genesis-atmosphere('ethereal');  // Sensory vibe
+}
+```
+
+### Complete Ontological Categories
+
+**1. `genesis-environment($logic)` - Layout Organization**
+- `'distributed'` - Bento grid (auto-fit responsive)
+- `'focused'` - Single column reading (max 70ch)
+- `'associative'` - Network/connections (flexbox)
+- `'chronological'` - Timeline (vertical sequence)
+- `'manifest'` - Dashboard (12-column grid)
+
+**2. `genesis-entity($nature)` - Visual Presence**
+- `'primary'` - Main content (glassmorphism)
+- `'secondary'` - Supporting context (lighter)
+- `'imperative'` - Urgent alert (pulsing neon)
+- `'latent'` - Inactive/dormant (dimmed)
+- `'aggregate'` - Container (larger padding)
+- `'ancestral'` - Archived (muted historical)
+
+**3. `genesis-cognition($intent)` - Information Type**
+- `'axiom'` - Headlines (2-3.5rem, bold)
+- `'discourse'` - Body text (1-1.125rem, serif)
+- `'protocol'` - Code/technical (monospace)
+- `'gloss'` - Annotations (small, muted)
+- `'motive'` - Instructional (semibold, accent)
+- `'quantum'` - Tags/chips (tiny, uppercase)
+
+**4. `genesis-synapse($vector)` - Interaction**
+- `'navigate'` - Links to other pages
+- `'execute'` - Action buttons
+- `'inquiry'` - Search/expand actions
+- `'destructive'` - Delete/reset (danger)
+- `'social'` - Social sharing links
+
+**5. `genesis-state($condition)` - Temporal State**
+- `'stable'` - Normal/verified
+- `'evolving'` - Live updating
+- `'deprecated'` - No longer current
+- `'locked'` - Access restricted
+- `'simulated'` - Projected/not live
+
+**6. `genesis-atmosphere($vibe)` - Sensory Feel**
+- `'neutral'` - Standard appearance
+- `'ethereal'` - Light, minimal
+- `'void'` - Dark, immersive
+- `'vibrant'` - Colorful, energetic
+
+### Subdomain SCSS Rules (MANDATORY)
+
+**ZERO Raw CSS:** Subdomain SCSS files MUST NOT contain:
+- `margin`, `padding`, `display`, `color`, `font-size`, `background`, etc.
+- Any pixel (`px`), rem, or other unit values
+- Any color values (hex, rgb, oklch, etc.)
+
+**Only use ontological mixins** - All styling comes from the engine layer.
+
+❌ **WRONG:**
+```scss
+.my-card {
+  padding: 2rem;
+  background: #1a1a2e;
+  border-radius: 12px;
+}
+```
+
+✅ **CORRECT:**
+```scss
+.my-card {
+  @include genesis-entity('primary');
+}
+```
+
+### Documentation & Examples
+- Full guide: `_sass/ontology/INTEGRATION-GUIDE.md`
+- Examples: `_sass/ontology/_sample.scss`
+- Architecture: `_sass/ontology/Readme.md`
+- AI migration: `_sass/ontology/refactor-agent.md`
+
 ## Bootstrap Compatibility
 - Legacy components may use Bootstrap classes via compatibility layer
 - Gradually migrate to Bento Engine and semantic classes

@@ -1,27 +1,265 @@
-// research-paper-mirror.scss
-.paper-container {
-  @include genesis-environment('focused'); // Linear reading.
-  @include genesis-atmosphere('ethereal'); // High clarity, low noise.
+/**
+ * PROJECT GENESIS: COMPREHENSIVE USAGE EXAMPLES
+ * --------------------------------------------------------------------------
+ * This file demonstrates the complete ontological API with real-world examples.
+ * These patterns can be used in subdomain repositories.
+ */
 
-  .header-block {
-    @include genesis-entity('primary'); 
-    .main-title { @include genesis-cognition('axiom'); }
-    .author-meta { @include genesis-cognition('gloss'); }
-  }
+// ============================================================================
+// EXAMPLE 1: Research Paper / Blog Post Layout
+// ============================================================================
+// A focused reading experience with clear information hierarchy
+.research-paper {
+  @include genesis-environment('focused');  // Linear reading layout
+  @include genesis-atmosphere('ethereal');  // Light, distraction-free vibe
 
-  .ethical-prose {
-    @include genesis-cognition('discourse'); // Reading text.
+  .paper-header {
+    @include genesis-entity('primary');     // Main content block
     
-    .code-proof {
-      @include genesis-entity('secondary');
-      @include genesis-cognition('protocol'); // Code snippet.
+    .title {
+      @include genesis-cognition('axiom'); // Large, bold headline
+    }
+    
+    .authors {
+      @include genesis-cognition('gloss'); // Small, secondary info
+    }
+    
+    .metadata {
+      @include genesis-cognition('quantum'); // Tags/chips for categories
     }
   }
 
-  .action-footer {
-    .download-btn { @include genesis-synapse('execute'); }
-    .related-node { @include genesis-synapse('navigate'); }
+  .abstract {
+    @include genesis-entity('secondary');   // Supporting context
+    @include genesis-cognition('discourse'); // Standard reading text
   }
-  
-  .last-updated { @include genesis-state('stable'); }
+
+  .content {
+    @include genesis-cognition('discourse'); // Body prose
+    
+    .code-block {
+      @include genesis-entity('secondary');
+      @include genesis-cognition('protocol'); // Code/technical data
+    }
+    
+    .footnote {
+      @include genesis-cognition('gloss');   // Annotations
+    }
+  }
+
+  .actions {
+    .download-pdf {
+      @include genesis-synapse('execute');   // Action button
+    }
+    
+    .cite-link {
+      @include genesis-synapse('navigate');  // External link
+    }
+    
+    .share-social {
+      @include genesis-synapse('social');    // Social sharing
+    }
+  }
+
+  .last-updated {
+    @include genesis-state('stable');        // Content is verified
+  }
+}
+
+// ============================================================================
+// EXAMPLE 2: Dashboard / Monitoring Interface
+// ============================================================================
+// High-density system oversight with live data
+.system-dashboard {
+  @include genesis-environment('manifest'); // 12-column grid
+  @include genesis-atmosphere('vibrant');   // High-energy, data-rich
+
+  .status-card {
+    @include genesis-entity('primary');
+    @include genesis-state('evolving');     // Live updating content
+    
+    .metric-value {
+      @include genesis-cognition('axiom');  // Large numbers
+    }
+    
+    .metric-label {
+      @include genesis-cognition('gloss');  // Small labels
+    }
+  }
+
+  .alert-card {
+    @include genesis-entity('imperative');  // Urgent system alert
+    
+    .alert-message {
+      @include genesis-cognition('motive'); // Important instruction
+    }
+    
+    .dismiss-btn {
+      @include genesis-synapse('execute');
+    }
+  }
+
+  .historical-data {
+    @include genesis-entity('ancestral');   // Archived information
+    @include genesis-state('deprecated');   // No longer current
+  }
+
+  .simulation-panel {
+    @include genesis-entity('aggregate');
+    @include genesis-state('simulated');    // Projected data, not live
+  }
+}
+
+// ============================================================================
+// EXAMPLE 3: Project Timeline / History
+// ============================================================================
+// Chronological event stream
+.project-timeline {
+  @include genesis-environment('chronological'); // Time-linear layout
+  @include genesis-atmosphere('neutral');        // Standard appearance
+
+  .timeline-event {
+    @include genesis-entity('primary');
+    
+    .event-date {
+      @include genesis-cognition('quantum');     // Small date badge
+    }
+    
+    .event-title {
+      @include genesis-cognition('motive');      // Emphasis text
+    }
+    
+    .event-description {
+      @include genesis-cognition('discourse');   // Body text
+    }
+    
+    .event-link {
+      @include genesis-synapse('navigate');      // Link to details
+    }
+  }
+
+  .future-event {
+    @include genesis-entity('latent');           // Upcoming, not active
+  }
+
+  .milestone {
+    @include genesis-entity('imperative');       // Critical milestone
+  }
+}
+
+// ============================================================================
+// EXAMPLE 4: Knowledge Network / Graph View
+// ============================================================================
+// Connections-focused layout
+.knowledge-network {
+  @include genesis-environment('associative');  // Network layout
+  @include genesis-atmosphere('void');          // Deep-space, minimal
+
+  .concept-node {
+    @include genesis-entity('primary');
+    
+    .concept-name {
+      @include genesis-cognition('motive');     // Clear labels
+    }
+    
+    .expand-btn {
+      @include genesis-synapse('inquiry');      // Request more data
+    }
+  }
+
+  .connection-link {
+    @include genesis-synapse('navigate');       // Link between nodes
+  }
+
+  .locked-concept {
+    @include genesis-entity('primary');
+    @include genesis-state('locked');           // Requires permission
+  }
+}
+
+// ============================================================================
+// EXAMPLE 5: Product Grid / Portfolio
+// ============================================================================
+// Distributed autonomous entities
+.product-grid {
+  @include genesis-environment('distributed'); // Bento grid
+  @include genesis-atmosphere('neutral');
+
+  .product-card {
+    @include genesis-entity('primary');
+    
+    .product-image {
+      @include genesis-entity('aggregate');    // Container for media
+    }
+    
+    .product-title {
+      @include genesis-cognition('axiom');     // Product name
+    }
+    
+    .product-description {
+      @include genesis-cognition('discourse'); // Details
+    }
+    
+    .product-price {
+      @include genesis-cognition('motive');    // Emphasis on price
+    }
+    
+    .product-tags {
+      @include genesis-cognition('quantum');   // Category chips
+    }
+    
+    .view-details {
+      @include genesis-synapse('navigate');    // Link to product page
+    }
+    
+    .add-to-cart {
+      @include genesis-synapse('execute');     // Action button
+    }
+  }
+
+  .featured-product {
+    @include genesis-entity('imperative');     // Highlighted product
+  }
+
+  .out-of-stock {
+    @include genesis-entity('latent');         // Unavailable
+    @include genesis-state('deprecated');      // Not currently available
+  }
+}
+
+// ============================================================================
+// EXAMPLE 6: Settings Panel / Configuration
+// ============================================================================
+// Form-focused interface
+.settings-panel {
+  @include genesis-environment('focused');    // Narrow, focused layout
+  @include genesis-atmosphere('neutral');
+
+  .setting-group {
+    @include genesis-entity('secondary');
+    
+    .group-title {
+      @include genesis-cognition('motive');   // Section header
+    }
+    
+    .setting-description {
+      @include genesis-cognition('discourse'); // Explanatory text
+    }
+    
+    .setting-label {
+      @include genesis-cognition('gloss');    // Form labels
+    }
+  }
+
+  .save-button {
+    @include genesis-synapse('execute');      // Save changes
+  }
+
+  .reset-button {
+    @include genesis-synapse('destructive');  // Dangerous action
+  }
+
+  .search-settings {
+    @include genesis-synapse('inquiry');      // Search/filter
+  }
 }

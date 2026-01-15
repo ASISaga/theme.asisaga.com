@@ -1,0 +1,194 @@
+/**
+ * PROJECT GENESIS: CSS CUSTOM PROPERTIES
+ * --------------------------------------------------------------------------
+ * These CSS custom properties define the visual language used by the Engine layer.
+ * They map to the OKLCH-based semantic design tokens from base/_design-tokens.scss
+ * 
+ * This file is the bridge between SCSS variables and CSS custom properties,
+ * allowing the ontology system to work with modern CSS features.
+ */
+
+:root {
+  /* ============================================================================
+     SPACING TOKENS
+     ============================================================================ */
+  --space-bento: clamp(1.5rem, 3vw, 2.5rem);
+  --space-narrative: clamp(1.5rem, 2.5vw, 2rem);
+  --space-network: clamp(1rem, 2vw, 1.5rem);
+  --space-timeline: clamp(1rem, 2vw, 1.5rem);
+  --space-tight: clamp(0.75rem, 1.5vw, 1rem);
+  
+  /* ============================================================================
+     SIZING TOKENS
+     ============================================================================ */
+  --width-reading: 70ch;
+  --width-container: clamp(320px, 90vw, 1600px);
+  --width-narrow: clamp(320px, 85vw, 800px);
+  
+  /* ============================================================================
+     BORDER RADIUS TOKENS
+     ============================================================================ */
+  --radius-bento: clamp(0.75rem, 1.5vw, 1.25rem);
+  --radius-button: clamp(0.5rem, 1vw, 0.75rem);
+  
+  /* ============================================================================
+     MOTION TOKENS
+     ============================================================================ */
+  --motion-fluid: 0.3s ease;
+  --motion-snap: 0.2s ease;
+  --motion-slow: 0.5s ease;
+  
+  /* ============================================================================
+     TYPOGRAPHY TOKENS
+     ============================================================================ */
+  --font-consciousness: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-wisdom: Georgia, "Times New Roman", serif;
+  --font-sacred: Montserrat, -apple-system, sans-serif;
+  --font-mono: "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
+  
+  --size-hero: clamp(2rem, 5vw, 3.5rem);
+  --size-title: clamp(1.5rem, 3.5vw, 2.5rem);
+  --size-body: clamp(1rem, 1.5vw, 1.125rem);
+  --size-small: clamp(0.8rem, 1vw, 0.875rem);
+  --size-tiny: clamp(0.75rem, 0.9vw, 0.8rem);
+  --size-data: clamp(0.875rem, 1vw, 0.95rem);
+  --size-button: clamp(0.95rem, 1.2vw, 1.05rem);
+  
+  /* ============================================================================
+     PADDING TOKENS
+     ============================================================================ */
+  --padding-inline: clamp(1rem, 3vw, 2rem);
+  --padding-entity-primary: clamp(1.5rem, 3vw, 2rem);
+  --padding-entity-secondary: clamp(1rem, 2vw, 1.5rem);
+  --padding-entity-aggregate: clamp(2rem, 4vw, 3rem);
+  --padding-button: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+  --padding-button-sm: clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem);
+  
+  /* ============================================================================
+     SURFACE TOKENS (Glassmorphism)
+     ============================================================================ */
+  --glass-heavy: oklch(0.20 0.04 245 / 0.85);
+  --glass-light: oklch(0.18 0.03 248 / 0.6);
+  --glass-alert: oklch(0.25 0.08 20 / 0.7);
+  --glass-dormant: oklch(0.18 0.02 250 / 0.4);
+  --glass-container: oklch(0.16 0.03 252 / 0.7);
+  --glass-archive: oklch(0.17 0.02 255 / 0.5);
+  --glass-hover: oklch(0.22 0.04 246);
+  
+  /* ============================================================================
+     ACCENT TOKENS
+     ============================================================================ */
+  --accent-neon: oklch(0.88 0.18 95);
+  --accent-neon-hover: oklch(0.92 0.20 95);
+  --accent-neural: oklch(0.55 0.25 290);
+  --accent-low: oklch(0.85 0.16 85 / 0.2);
+  
+  /* ============================================================================
+     TEXT TOKENS
+     ============================================================================ */
+  --text-vibrant: oklch(0.98 0.01 90);
+  --text-primary: oklch(0.98 0.01 90);
+  --text-secondary: oklch(0.70 0.02 220);
+  --text-accent: oklch(0.85 0.16 85);
+  --text-inverse: oklch(0.15 0.03 250);
+  --text-link: oklch(0.75 0.15 210);
+  --text-code: oklch(0.75 0.15 210);
+  --text-chip: oklch(0.88 0.18 95);
+  --text-void: oklch(0.98 0.01 90);
+  
+  /* ============================================================================
+     BORDER TOKENS
+     ============================================================================ */
+  --border-subtle: oklch(0.30 0.04 250 / 0.3);
+  --border-dormant: oklch(0.25 0.02 250 / 0.2);
+  --border-container: oklch(0.32 0.05 248 / 0.4);
+  --border-archive: oklch(0.28 0.03 255 / 0.3);
+  --border-code: oklch(0.25 0.04 250);
+  --border-simulation: oklch(0.75 0.15 210 / 0.5);
+  
+  /* ============================================================================
+     SHADOW TOKENS
+     ============================================================================ */
+  --shadow-ambient: 0 4px 12px oklch(0.15 0.03 250 / 0.2);
+  --shadow-void-inset: oklch(0.05 0.01 260);
+  
+  /* ============================================================================
+     BACKGROUND TOKENS
+     ============================================================================ */
+  --bg-code-shield: oklch(0.14 0.02 250 / 0.8);
+  --bg-chip: oklch(0.20 0.04 245 / 0.6);
+  
+  /* ============================================================================
+     FOCUS TOKENS
+     ============================================================================ */
+  --focus-ring: oklch(0.85 0.16 85 / 0.5);
+  
+  /* ============================================================================
+     DANGER/DESTRUCTIVE TOKENS
+     ============================================================================ */
+  --danger-bg: oklch(0.45 0.22 25);
+  --danger-border: oklch(0.55 0.25 25);
+  --danger-hover: oklch(0.50 0.24 25);
+  --danger-glow: oklch(0.45 0.22 25 / 0.5);
+  
+  /* ============================================================================
+     SOCIAL TOKENS
+     ============================================================================ */
+  --social-bg: oklch(0.55 0.25 290 / 0.3);
+  --social-border: oklch(0.55 0.25 290);
+  --social-hover: oklch(0.55 0.25 290 / 0.5);
+  --social-glow: oklch(0.55 0.25 290 / 0.4);
+  
+  /* ============================================================================
+     WARNING TOKENS
+     ============================================================================ */
+  --warning-color: oklch(0.75 0.18 65);
+  
+  /* ============================================================================
+     ATMOSPHERE TOKENS
+     ============================================================================ */
+  --atmosphere-ethereal: oklch(0.98 0.01 90 / 0.05);
+  --glow-ethereal: oklch(0.98 0.01 90 / 0.1);
+  --atmosphere-void: oklch(0.08 0.02 255);
+  --atmosphere-vibrant: oklch(0.20 0.06 245 / 0.9);
+}
+
+/* ============================================================================
+   ACCESSIBILITY - Reduced Motion Support
+   ============================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fluid: 0s;
+    --motion-snap: 0s;
+    --motion-slow: 0s;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01s !important;
+  }
+}
+
+/* ============================================================================
+   ACCESSIBILITY - High Contrast Support
+   ============================================================================ */
+@media (prefers-contrast: high) {
+  :root {
+    /* Disable glassmorphism in high contrast mode */
+    --glass-heavy: oklch(0.15 0.03 250);
+    --glass-light: oklch(0.18 0.03 248);
+    --glass-alert: oklch(0.20 0.08 20);
+    --glass-dormant: oklch(0.18 0.02 250);
+    --glass-container: oklch(0.16 0.03 252);
+    --glass-archive: oklch(0.17 0.02 255);
+    
+    /* Increase border visibility */
+    --border-subtle: oklch(0.50 0.04 250);
+    --border-dormant: oklch(0.45 0.02 250);
+    --border-container: oklch(0.52 0.05 248);
+    --border-archive: oklch(0.48 0.03 255);
+  }
+}
