@@ -46,6 +46,13 @@
 @import "interface";
 
 // ============================================================================
+// STEP 4: THEME LAYOUTS & COMPONENTS (Theme-specific ontology mappings)
+// ============================================================================
+// Ontology-based styling for all theme layouts and components.
+// This applies ontology mixins to theme HTML (layouts, includes).
+@import "theme-layouts";
+
+// ============================================================================
 // EXPORT NOTICE
 // ============================================================================
 // After importing this file, you have access to the complete ontological API:
@@ -56,5 +63,7 @@
 // - genesis-synapse($vector)
 // - genesis-state($condition)
 // - genesis-atmosphere($vibe)
+// 
+// Plus all theme layout and component styles (ontology-based).
 // 
 // See Readme.md for complete documentation and usage examples.
