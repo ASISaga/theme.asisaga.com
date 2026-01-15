@@ -3,74 +3,411 @@
  * --------------------------------------------------------------------------
  * These mixins are the "Physical Manifestation" layer. 
  * They are triggered by the agnostic Ontological Interface.
+ * 
+ * CRITICAL RULE: This is the ONLY file where raw CSS properties are allowed.
+ * All values MUST use CSS custom properties defined in the design token system.
  */
 
-// --- SPATIAL ENGINE ---
+// ============================================================================
+// SPATIAL ENGINE - Environment Layout Logic
+// ============================================================================
 @mixin _theme-engine-environment($logic) {
   display: grid;
+  contain: layout style;
+  isolation: isolate;
+  
   @if $logic == 'distributed' {
+    // Autonomous entities in non-linear grid (Bento)
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-    gap: var(--space-bento);
+    gap: var(--space-bento, clamp(1.5rem, 3vw, 2.5rem));
     container-type: inline-size;
   } 
   @else if $logic == 'focused' {
+    // Singular narrative thread for deep reading
     grid-template-columns: 1fr;
-    max-width: var(--width-reading);
+    max-width: var(--width-reading, 70ch);
     margin-inline: auto;
-    gap: var(--space-narrative);
+    gap: var(--space-narrative, clamp(1.5rem, 2.5vw, 2rem));
+    padding-inline: var(--padding-inline, clamp(1rem, 3vw, 2rem));
+  }
+  @else if $logic == 'associative' {
+    // Network where connections outweigh nodes
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-network, clamp(1rem, 2vw, 1.5rem));
+    justify-content: center;
+    align-items: flex-start;
+  }
+  @else if $logic == 'chronological' {
+    // Time-linear stream of sequential events
+    grid-template-columns: 1fr;
+    gap: var(--space-timeline, clamp(1rem, 2vw, 1.5rem));
+    position: relative;
   }
   @else if $logic == 'manifest' {
+    // High-density dashboard for system oversight
     grid-template-columns: repeat(12, 1fr);
-    gap: var(--space-tight);
+    gap: var(--space-tight, clamp(0.75rem, 1.5vw, 1rem));
+    container-type: inline-size;
   }
 }
 
-// --- MATERIAL ENGINE ---
+// ============================================================================
+// MATERIAL ENGINE - Entity Presence & Weight
+// ============================================================================
 @mixin _theme-engine-entity($nature) {
-  border-radius: var(--radius-bento);
+  border-radius: var(--radius-bento, clamp(0.75rem, 1.5vw, 1.25rem));
+  transition: all var(--motion-fluid, 0.3s ease);
+  
   @if $nature == 'primary' {
-    background: var(--glass-heavy);
+    // Fundamental object of current view (glassmorphism)
+    background: var(--glass-heavy, oklch(0.20 0.04 245 / 0.85));
     backdrop-filter: blur(20px);
-    border: 1px solid var(--accent-low);
-    box-shadow: var(--shadow-ambient);
+    border: 1px solid var(--accent-low, oklch(0.85 0.16 85 / 0.2));
+    box-shadow: var(--shadow-ambient, 0 4px 12px oklch(0.15 0.03 250 / 0.2));
+    padding: var(--padding-entity-primary, clamp(1.5rem, 3vw, 2rem));
+  }
+  @else if $nature == 'secondary' {
+    // Supportive, contextual data
+    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    padding: var(--padding-entity-secondary, clamp(1rem, 2vw, 1.5rem));
   }
   @else if $nature == 'imperative' {
-    background: var(--glass-alert);
-    border: 1px solid var(--accent-neon);
+    // System-critical, high-urgency signal
+    background: var(--glass-alert, oklch(0.25 0.08 20 / 0.7));
+    border: 2px solid var(--accent-neon, oklch(0.88 0.18 95));
+    box-shadow: 0 0 20px var(--accent-neon, oklch(0.88 0.18 95 / 0.5));
     animation: pulse-border 2s infinite;
+    padding: var(--padding-entity-primary, clamp(1.5rem, 3vw, 2rem));
   }
   @else if $nature == 'latent' {
+    // Backgrounded info awaiting activation
+    background: var(--glass-dormant, oklch(0.18 0.02 250 / 0.4));
     opacity: 0.6;
     filter: grayscale(0.5);
+    border: 1px solid var(--border-dormant, oklch(0.25 0.02 250 / 0.2));
+    padding: var(--padding-entity-secondary, clamp(1rem, 2vw, 1.5rem));
+  }
+  @else if $nature == 'aggregate' {
+    // Container summarizing multiple entities
+    background: var(--glass-container, oklch(0.16 0.03 252 / 0.7));
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border-container, oklch(0.32 0.05 248 / 0.4));
+    padding: var(--padding-entity-aggregate, clamp(2rem, 4vw, 3rem));
+  }
+  @else if $nature == 'ancestral' {
+    // Archived or historical data (legacy state)
+    background: var(--glass-archive, oklch(0.17 0.02 255 / 0.5));
+    border: 1px solid var(--border-archive, oklch(0.28 0.03 255 / 0.3));
+    opacity: 0.8;
+    padding: var(--padding-entity-secondary, clamp(1rem, 2vw, 1.5rem));
   }
 }
 
-// --- COGNITIVE ENGINE ---
+// ============================================================================
+// COGNITIVE ENGINE - Information Intent & Typography
+// ============================================================================
 @mixin _theme-engine-cognition($intent) {
   @if $intent == 'axiom' {
-    font-size: var(--size-hero);
+    // Foundational thesis or headline
+    font-size: var(--size-hero, clamp(2rem, 5vw, 3.5rem));
     font-weight: 800;
     letter-spacing: -0.03em;
-    color: var(--text-vibrant);
+    line-height: 1.1;
+    color: var(--text-vibrant, oklch(0.98 0.01 90));
+    font-family: var(--font-consciousness, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  }
+  @else if $intent == 'discourse' {
+    // Standard information exchange (prose)
+    font-size: var(--size-body, clamp(1rem, 1.5vw, 1.125rem));
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    font-family: var(--font-wisdom, Georgia, "Times New Roman", serif);
   }
   @else if $intent == 'protocol' {
-    font-family: var(--font-mono);
-    font-size: var(--size-data);
-    background: var(--bg-code-shield);
-    padding: 0.2em 0.4em;
+    // Technical/mathematical proof (code/logs)
+    font-family: var(--font-mono, "SF Mono", Monaco, "Cascadia Code", monospace);
+    font-size: var(--size-data, clamp(0.875rem, 1vw, 0.95rem));
+    line-height: 1.5;
+    background: var(--bg-code-shield, oklch(0.14 0.02 250 / 0.8));
+    color: var(--text-code, oklch(0.75 0.15 210));
+    padding: 0.2em 0.5em;
+    border-radius: 0.25em;
+    border: 1px solid var(--border-code, oklch(0.25 0.04 250));
+  }
+  @else if $intent == 'gloss' {
+    // Minor annotations or citations
+    font-size: var(--size-small, clamp(0.8rem, 1vw, 0.875rem));
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--text-secondary, oklch(0.70 0.02 220));
+    opacity: 0.85;
+  }
+  @else if $intent == 'motive' {
+    // Persuasive or instructional guidance
+    font-size: var(--size-body, clamp(1rem, 1.5vw, 1.125rem));
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--text-accent, oklch(0.85 0.16 85));
+    font-family: var(--font-sacred, Montserrat, sans-serif);
+  }
+  @else if $intent == 'quantum' {
+    // Small, high-density fragments (tags/chips)
+    font-size: var(--size-tiny, clamp(0.75rem, 0.9vw, 0.8rem));
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-chip, oklch(0.88 0.18 95));
+    padding: 0.25em 0.75em;
+    background: var(--bg-chip, oklch(0.20 0.04 245 / 0.6));
+    border-radius: 999px;
+    display: inline-block;
   }
 }
 
-// --- INTERACTION ENGINE ---
+// ============================================================================
+// INTERACTION ENGINE - Synapse Vectors
+// ============================================================================
 @mixin _theme-engine-synapse($vector) {
-  transition: all var(--motion-snap);
+  transition: all var(--motion-snap, 0.2s ease);
+  cursor: pointer;
+  
   @if $vector == 'navigate' {
-    cursor: alias;
-    &:hover { color: var(--accent-neon); }
+    // Portal to different semantic coordinate
+    color: var(--text-link, oklch(0.75 0.15 210));
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    
+    &:hover {
+      color: var(--accent-neon, oklch(0.88 0.18 95));
+      border-bottom-color: var(--accent-neon, oklch(0.88 0.18 95));
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
   }
   @else if $vector == 'execute' {
-    cursor: pointer;
-    background: var(--accent-neon);
-    &:active { transform: scale(0.98); }
+    // Local function or state modification
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
+    background: var(--accent-neon, oklch(0.88 0.18 95));
+    color: var(--text-inverse, oklch(0.15 0.03 250));
+    border: none;
+    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    font-weight: 600;
+    font-size: var(--size-button, clamp(0.95rem, 1.2vw, 1.05rem));
+    
+    &:hover {
+      background: var(--accent-neon-hover, oklch(0.92 0.20 95));
+      box-shadow: 0 4px 12px var(--accent-neon, oklch(0.88 0.18 95 / 0.4));
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      transform: scale(0.98) translateY(0);
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'inquiry' {
+    // Request for more data (expand/search)
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: var(--padding-button-sm, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
+    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250));
+    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    
+    &:hover {
+      background: var(--glass-hover, oklch(0.22 0.04 246));
+      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'destructive' {
+    // Permanent removal or system reset
+    padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
+    background: var(--danger-bg, oklch(0.45 0.22 25));
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    border: 1px solid var(--danger-border, oklch(0.55 0.25 25));
+    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    
+    &:hover {
+      background: var(--danger-hover, oklch(0.50 0.24 25));
+      box-shadow: 0 0 15px var(--danger-glow, oklch(0.45 0.22 25 / 0.5));
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--danger-border, oklch(0.55 0.25 25));
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'social' {
+    // Neural link to other observers
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: var(--padding-button-sm, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
+    background: var(--social-bg, oklch(0.55 0.25 290 / 0.3));
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    border: 1px solid var(--social-border, oklch(0.55 0.25 290));
+    border-radius: 999px;
+    
+    &:hover {
+      background: var(--social-hover, oklch(0.55 0.25 290 / 0.5));
+      box-shadow: 0 0 15px var(--social-glow, oklch(0.55 0.25 290 / 0.4));
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--social-border, oklch(0.55 0.25 290));
+      outline-offset: 2px;
+    }
+  }
+}
+
+// ============================================================================
+// STATE ENGINE - System Temporality
+// ============================================================================
+@mixin _theme-engine-state($condition) {
+  @if $condition == 'stable' {
+    // System is in equilibrium
+    opacity: 1;
+    filter: none;
+  }
+  @else if $condition == 'evolving' {
+    // Content is currently being updated/streamed
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--accent-neon, oklch(0.88 0.18 95)),
+        transparent
+      );
+      animation: evolving-sweep 2s infinite;
+    }
+  }
+  @else if $condition == 'deprecated' {
+    // Information is no longer verified
+    opacity: 0.5;
+    filter: grayscale(0.7);
+    text-decoration: line-through;
+    position: relative;
+    
+    &::before {
+      content: '⚠';
+      position: absolute;
+      top: -0.5em;
+      right: -0.5em;
+      font-size: 0.75em;
+      color: var(--warning-color, oklch(0.75 0.18 65));
+    }
+  }
+  @else if $condition == 'locked' {
+    // Data is immutable and requires clearance
+    position: relative;
+    pointer-events: none;
+    user-select: none;
+    
+    &::before {
+      content: '🔒';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2em;
+      opacity: 0.3;
+    }
+    
+    filter: blur(2px);
+  }
+  @else if $condition == 'simulated' {
+    // Data is a projection, not a live log
+    border: 2px dashed var(--border-simulation, oklch(0.75 0.15 210 / 0.5));
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      oklch(0.75 0.15 210 / 0.05) 10px,
+      oklch(0.75 0.15 210 / 0.05) 20px
+    );
+  }
+}
+
+// ============================================================================
+// ATMOSPHERE ENGINE - Sensory Texture
+// ============================================================================
+@mixin _theme-engine-atmosphere($vibe) {
+  @if $vibe == 'neutral' {
+    // Standard system transparency
+    // No additional styling needed - base state
+  }
+  @else if $vibe == 'ethereal' {
+    // High-transparency, light-based focus
+    backdrop-filter: blur(30px) saturate(1.5) brightness(1.1);
+    background: var(--atmosphere-ethereal, oklch(0.98 0.01 90 / 0.05));
+    box-shadow: inset 0 0 40px var(--glow-ethereal, oklch(0.98 0.01 90 / 0.1));
+  }
+  @else if $vibe == 'void' {
+    // Deep-space, high-contrast, zero-distraction
+    background: var(--atmosphere-void, oklch(0.08 0.02 255));
+    color: var(--text-void, oklch(0.98 0.01 90));
+    box-shadow: inset 0 0 60px oklch(0.05 0.01 260);
+  }
+  @else if $vibe == 'vibrant' {
+    // High-energy, data-saturated, high-neon
+    background: var(--atmosphere-vibrant, oklch(0.20 0.06 245 / 0.9));
+    border: 2px solid var(--accent-neon, oklch(0.88 0.18 95));
+    box-shadow: 
+      0 0 20px var(--accent-neon, oklch(0.88 0.18 95 / 0.3)),
+      inset 0 0 30px var(--accent-neural, oklch(0.55 0.25 290 / 0.2));
+    backdrop-filter: blur(20px) saturate(2);
+  }
+}
+
+// ============================================================================
+// ANIMATIONS (Supporting the Engines)
+// ============================================================================
+@keyframes pulse-border {
+  0%, 100% {
+    border-color: var(--accent-neon, oklch(0.88 0.18 95));
+    box-shadow: 0 0 20px var(--accent-neon, oklch(0.88 0.18 95 / 0.5));
+  }
+  50% {
+    border-color: var(--accent-neural, oklch(0.55 0.25 290));
+    box-shadow: 0 0 30px var(--accent-neural, oklch(0.55 0.25 290 / 0.7));
+  }
+}
+
+@keyframes evolving-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }

@@ -21,6 +21,13 @@
 @import "base/semantic-typography"; // Fluid typography and material primitives
 @import "base/ambient-layer";      // Sentient ambient atmosphere
 
+// ----------------------------------------
+// ONTOLOGY SYSTEM - Genesis Semantic Engine
+// ----------------------------------------
+// Three-tier architecture for subdomain integration
+// Import early to make ontological API available throughout the system
+@import "ontology/index";          // Semantic SCSS engine (tokens, engines, interface)
+
 // Legacy color system (for gradual migration)
 @import "base/colors";
 @import "base/dimensions";

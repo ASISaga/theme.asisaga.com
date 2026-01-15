@@ -1,0 +1,60 @@
+/**
+ * PROJECT GENESIS: ONTOLOGY SYSTEM INDEX
+ * --------------------------------------------------------------------------
+ * This is the main entry point for the semantic SCSS engine.
+ * Import this file to gain access to the complete ontological interface.
+ * 
+ * ARCHITECTURE:
+ * 
+ * Tier 1: Content (Subdomain HTML)
+ *   - Defines WHAT the data is
+ *   - No style attributes; 1 class per element
+ * 
+ * Tier 2: Interface (This system - _interface.scss)
+ *   - Defines the ROLE of the content
+ *   - Agnostic; no CSS properties allowed
+ *   - Semantic API exposed to subdomains
+ * 
+ * Tier 3: Engine (_engines.scss)
+ *   - Defines the LOOK (OKLCH, Bento)
+ *   - The only place for raw CSS/Pixels
+ *   - Physical manifestation layer
+ * 
+ * IMPORT ORDER:
+ * 1. CSS Custom Properties (tokens) - Design token mappings
+ * 2. Engine Layer (implementation) - Physical manifestation
+ * 3. Interface Layer (API) - Semantic contracts
+ */
+
+// ============================================================================
+// STEP 1: CSS CUSTOM PROPERTIES
+// ============================================================================
+// Define all CSS custom properties that engines will use
+@import "tokens";
+
+// ============================================================================
+// STEP 2: ENGINE LAYER (Internal Implementation)
+// ============================================================================
+// These mixins contain the actual CSS. Only they can use properties.
+@import "engines";
+
+// ============================================================================
+// STEP 3: INTERFACE LAYER (Public API)
+// ============================================================================
+// These mixins are the semantic API for subdomains.
+// They ONLY delegate to engines - no CSS properties.
+@import "interface";
+
+// ============================================================================
+// EXPORT NOTICE
+// ============================================================================
+// After importing this file, you have access to the complete ontological API:
+// 
+// - genesis-environment($logic)
+// - genesis-entity($nature)
+// - genesis-cognition($intent)
+// - genesis-synapse($vector)
+// - genesis-state($condition)
+// - genesis-atmosphere($vibe)
+// 
+// See Readme.md for complete documentation and usage examples.
