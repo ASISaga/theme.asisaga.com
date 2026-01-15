@@ -50,7 +50,7 @@ The Genesis Ontology is a **Living Genome** that grows through semantic proposit
 2. Is this a semantic role or just a visual preference?
 3. Would other subdomains benefit from this pattern?
 
-See [Evolution Mechanism](#evolution-mechanism) below for full details.
+See [Ontology System - Genesis Semantic Engine (PRIMARY METHOD)](#ontology-system---genesis-semantic-engine-primary-method) below or [INTEGRATION-GUIDE.md](../../_sass/ontology/INTEGRATION-GUIDE.md) for complete details.
 
 ---
 

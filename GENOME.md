@@ -439,11 +439,43 @@ The Genesis Semantic Engine launched with a three-tier architecture and six core
 3. Maintain backward compatibility
 4. Document the "why" thoroughly
 
----
+## 🤝 Maintaining the Genome
 
-**Living Document**: This genome evolves with the system.  
-**Maintained By**: Theme Genome Agent  
-**Review Cadence**: Updated with every ontological change  
-**Version**: Synchronized with ontology version
+### Maintenance Responsibility
 
-*The genome remembers. The genome grows. The genome is alive.* 🧬
+**Primary Maintainer**: Theme Genome Agent (AI)  
+**Backup**: Theme Repository Maintainers (Human)  
+**Review Cadence**: Updated with every ontological change
+
+### Update Triggers
+
+This document MUST be updated when:
+- ✅ New variant is added (via approved PR)
+- ✅ Existing variant is refactored or deprecated
+- ✅ Category structure changes
+- ✅ Version number changes (minor/major releases)
+
+### Update Process
+
+1. **Automatic** (AI Agent):
+   - Theme Genome Agent updates during PR merge
+   - Adds variant to registry with origin PR
+   - Documents in evolutionary history section
+   - Updates metrics and adoption data
+
+2. **Manual** (Human, if needed):
+   - Edit GENOME.md directly
+   - Follow existing format for new variants
+   - Commit with clear message referencing PR
+   - Notify Theme Genome Agent of manual update
+
+### Synchronization Check
+
+**Monthly**: Verify GENOME.md matches actual codebase
+- All variants in `_engines.scss` documented in GENOME.md
+- No orphaned documentation (variants removed from code)
+- Usage metrics updated from analytics
+- Adoption counts accurate
+
+**Version**: Synchronized with ontology version  
+**Last Review**: 2026-01-15

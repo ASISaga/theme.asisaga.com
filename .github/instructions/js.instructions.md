@@ -20,8 +20,6 @@ JavaScript should **enhance** the semantic HTML and ontological SCSS foundation,
 
 Your JavaScript may reveal interaction patterns not covered by existing `genesis-synapse` variants. If you find yourself repeatedly implementing the same interaction type that lacks semantic identity, consider proposing a new synapse variant (see `.github/AGENTS.MD`).
 
----
-
 ## Entry Points & Structure
 - All shared JS should live in the theme's `assets/js/common.js`.
 - Each subdomain must have `assets/js/script.js` which imports `common.js` first, then subdomain-specific modules.

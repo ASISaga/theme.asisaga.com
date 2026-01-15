@@ -99,7 +99,7 @@ For every approved PR, you MUST:
    - Explain when to use vs. existing variants
    - Provide code examples
 
-3. **Maintain `GENOME.md`** (create if doesn't exist):
+3. **Update GENOME.md**:
    ```markdown
    ## vX.X - Variant Name (YYYY-MM)
    

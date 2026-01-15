@@ -216,12 +216,12 @@ Please reframe as: "We need to represent [WHAT], because [WHY]"
 
 This is achievable by combining:
 
-\`\`\`scss
+```scss
 .your-element {
   @include genesis-entity('primary');
   @include genesis-state('evolving');
 }
-\`\`\`
+```
 
 Does this meet your needs?
 ```

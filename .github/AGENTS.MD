@@ -516,11 +516,11 @@ Theme Agent should review:
 
 ### Required Reading (Priority Order)
 
-1. **[AGENTS.MD](.github/AGENTS.MD)** - This file
+1. **[AGENTS.MD](AGENTS.MD)** - This file
 2. **[evolution.md](../evolution.md)** - Philosophical foundation
-3. **[Ontology Integration Guide](_sass/ontology/INTEGRATION-GUIDE.md)** - Complete API
-4. **[SCSS Instructions](.github/instructions/scss.instructions.md)** - Coding standards
-5. **[HTML Instructions](.github/instructions/html.instructions.md)** - Template best practices
+3. **[Ontology Integration Guide](../_sass/ontology/INTEGRATION-GUIDE.md)** - Complete API
+4. **[SCSS Instructions](instructions/scss.instructions.md)** - Coding standards
+5. **[HTML Instructions](instructions/html.instructions.md)** - Template best practices
 
 ### Optional Deep Dives
 
