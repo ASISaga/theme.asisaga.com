@@ -38,6 +38,7 @@
 // LAYOUT SYSTEM - Bento Engine
 // ----------------------------------------
 @import "layouts/bento-engine";     // Native CSS Grid system
+@import "base/bootstrap-compat";    // Bootstrap compatibility layer for gradual migration
 
 // Remaining base styles
 @import "base/utilities";
