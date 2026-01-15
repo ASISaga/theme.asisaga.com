@@ -706,22 +706,22 @@ SCSS:
 
 ### Documentation
 
-- **[Ontology Architecture Overview](_sass/ontology/Readme.md)** - Three-tier system SOP
-- **[Complete API Reference](_sass/ontology/INTEGRATION-GUIDE.md)** - All categories and variants
-- **[Implementation Summary](_sass/ontology/IMPLEMENTATION-SUMMARY.md)** - System status
-- **[AI Migration Agent](_sass/ontology/refactor-agent.md)** - Automated conversion
+- **[Ontology Architecture Overview](/_sass/ontology/Readme.md)** - Three-tier system SOP
+- **[Complete API Reference](/_sass/ontology/INTEGRATION-GUIDE.md)** - All categories and variants
+- **[Implementation Summary](/_sass/ontology/IMPLEMENTATION-SUMMARY.md)** - System status
+- **[AI Migration Agent](/_sass/ontology/refactor-agent.md)** - Automated conversion
 
 ### Examples
 
-- **[Sample SCSS](_sass/ontology/_sample.scss)** - 6+ complete usage patterns
-- **[Visual Demo](ontology-demo.html)** - HTML structure demonstration
-- **[This Migration Guide](ONTOLOGY-MIGRATION-GUIDE.md)** - You are here
+- **[Sample SCSS](/_sass/ontology/_sample.scss)** - 6+ complete usage patterns
+- **[Visual Demo](/docs/ontology-demo.html)** - HTML structure demonstration
+- **[This Migration Guide](/docs/ONTOLOGY-MIGRATION-GUIDE.md)** - You are here
 
 ### Quick References
 
-- **[SCSS Instructions](../.github/instructions/scss.instructions.md)** - AI agent guidance
-- **[HTML Instructions](../.github/instructions/html.instructions.md)** - Template best practices
-- **[Semantic Quick Reference](SEMANTIC-QUICK-REFERENCE.md)** - Token and class reference
+- **[SCSS Instructions](/.github/instructions/scss.instructions.md)** - AI agent guidance
+- **[HTML Instructions](/.github/instructions/html.instructions.md)** - Template best practices
+- **[Semantic Quick Reference](/docs/SEMANTIC-QUICK-REFERENCE.md)** - Token and class reference
 
 ---
 

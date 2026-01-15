@@ -290,10 +290,10 @@ Defines sensory feel:
 
 ### Learn More
 
-- **[Complete API Reference](_sass/ontology/INTEGRATION-GUIDE.md)** - All categories explained
-- **[Architecture Overview](_sass/ontology/Readme.md)** - Three-tier system details
-- **[Migration Guide](ONTOLOGY-MIGRATION-GUIDE.md)** - Convert existing components
-- **[Sample Patterns](_sass/ontology/_sample.scss)** - 6+ complete examples
+- **[Complete API Reference](/_sass/ontology/INTEGRATION-GUIDE.md)** - All categories explained
+- **[Architecture Overview](/_sass/ontology/Readme.md)** - Three-tier system details
+- **[Migration Guide](/docs/ONTOLOGY-MIGRATION-GUIDE.md)** - Convert existing components
+- **[Sample Patterns](/_sass/ontology/_sample.scss)** - 6+ complete examples
 
 ### Try It
 
