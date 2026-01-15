@@ -1,0 +1,27 @@
+// research-paper-mirror.scss
+.paper-container {
+  @include genesis-environment('focused'); // Linear reading.
+  @include genesis-atmosphere('ethereal'); // High clarity, low noise.
+
+  .header-block {
+    @include genesis-entity('primary'); 
+    .main-title { @include genesis-cognition('axiom'); }
+    .author-meta { @include genesis-cognition('gloss'); }
+  }
+
+  .ethical-prose {
+    @include genesis-cognition('discourse'); // Reading text.
+    
+    .code-proof {
+      @include genesis-entity('secondary');
+      @include genesis-cognition('protocol'); // Code snippet.
+    }
+  }
+
+  .action-footer {
+    .download-btn { @include genesis-synapse('execute'); }
+    .related-node { @include genesis-synapse('navigate'); }
+  }
+  
+  .last-updated { @include genesis-state('stable'); }
+}
