@@ -57,44 +57,61 @@ npm run lint:scss:report
 
 ## Current Status
 
-As of the initial setup:
-- **Total errors**: 202 (down from 570 after auto-fix)
-- **Critical @extend violations**: 61 in 11 files (needs manual fixing)
-- **Nesting depth issues**: 18 in 8 files (needs refactoring)
-- **Auto-fixable issues**: 15 remaining (run `npm run lint:scss:fix`)
+**Latest Update (January 2026)**: Bootstrap compatibility files removed, all @extend violations fixed!
+
+- **Total errors**: 18 (down from 202, 91% reduction)
+- **Critical @extend violations**: 0 (all fixed! ✅)
+- **Nesting depth issues**: 18 in 8 files (non-critical, needs refactoring)
+- **Bootstrap files**: 3 deleted (550 lines removed)
+
+### Detection Capabilities
+
+**New in latest update**:
+- ✅ Detects undefined SCSS functions
+- ✅ Detects undefined mixins (via standard rules)
+- ✅ Detects missing variables (reports undefined var references)
+- ✅ Allows known SCSS functions: `percentage`, `oklch`, `clamp`, `calc`, `var`, etc.
 
 ## Files with Known Issues
 
 ### Files with @extend violations (Priority: HIGH)
 
-These files MUST be refactored to remove @extend:
-- `_sass/base/_base-section.scss`
-- `_sass/components/layouts/_archive-item.scss`
-- `_sass/components/layouts/_article-toc.scss`
-- `_sass/components/layouts/_faq-item.scss`
-- `_sass/components/layouts/_gallery-item.scss`
-- `_sass/components/layouts/_landing-features.scss`
-- `_sass/components/layouts/_post-navigation.scss`
-- `_sass/components/layouts/_profile-stats.scss`
-- `_sass/components/layouts/_splash-countdown.scss`
-- `_sass/layouts/_archive.scss`
-- `_sass/layouts/_article.scss`
+~~These files have been FIXED! All @extend violations removed.~~ ✅
+
+**Previously had issues (NOW FIXED)**:
+- ~~`_sass/base/_base-section.scss`~~ DELETED (Bootstrap compat file)
+- ~~`_sass/base/_utilities.scss`~~ DELETED (261 lines)
+- ~~`_sass/base/_utilities-combined.scss`~~ DELETED (261 lines)
+- ~~`_sass/components/layouts/_archive-item.scss`~~ FIXED
+- ~~`_sass/components/layouts/_article-toc.scss`~~ FIXED
+- ~~`_sass/components/layouts/_faq-item.scss`~~ FIXED
+- ~~`_sass/components/layouts/_gallery-item.scss`~~ FIXED
+- ~~`_sass/components/layouts/_landing-features.scss`~~ FIXED
+- ~~`_sass/components/layouts/_post-navigation.scss`~~ FIXED
+- ~~`_sass/components/layouts/_profile-stats.scss`~~ FIXED
+- ~~`_sass/components/layouts/_splash-countdown.scss`~~ FIXED
+- ~~`_sass/layouts/_archive.scss`~~ FIXED
+- ~~`_sass/layouts/_article.scss`~~ FIXED
 
 ### Files with nesting depth issues (Priority: MEDIUM)
 
-These files should be refactored to reduce nesting:
-- `_sass/components/_genesis-invitation.scss`
-- `_sass/components/_header.scss`
-- `_sass/components/_product-benefits-list.scss`
-- `_sass/components/_product-code-example.scss`
-- `_sass/components/_product-feature-grid.scss`
-- `_sass/components/_product-page.scss`
-- `_sass/components/_product-visual.scss`
-- `_sass/components/_timeline.scss`
+These files should be refactored to reduce nesting (18 warnings total):
+- `_sass/components/_genesis-invitation.scss` (1 warning)
+- `_sass/components/_header.scss` (2 warnings)
+- `_sass/components/_product-benefits-list.scss` (1 warning)
+- `_sass/components/_product-code-example.scss` (1 warning)
+- `_sass/components/_product-feature-grid.scss` (1 warning)
+- `_sass/components/_product-page.scss` (2 warnings)
+- `_sass/components/_product-visual.scss` (1 warning)
+- `_sass/components/_timeline.scss` (9 warnings)
+
+**Note**: These are design issues that don't break builds. They can be refactored incrementally.
 
 ## How to Fix Common Issues
 
-### Replacing @extend
+### Replacing @extend (COMPLETED ✅)
+
+~~All @extend violations have been fixed!~~ Here's how they were resolved:
 
 **Before:**
 ```scss

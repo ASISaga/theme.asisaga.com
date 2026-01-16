@@ -274,10 +274,15 @@ npm run lint:scss:report
 - ✅ **No ID selectors** - Use classes for styling
 
 **Best Practices** (recommended):
-- Use CSS custom properties from token system
+- Use CSS custom properties from design token system
 - Prefer kebab-case for variable names
 - Keep selectors specific but not overly nested
 - Use semantic class names (WHAT, not HOW)
+
+**Detection Capabilities** (new):
+- ✅ **Detects undefined SCSS functions** - Catches typos and missing imports
+- ✅ **Detects undefined mixins** - Standard linting catches missing mixin calls
+- ✅ **Validates function usage** - Allows known SCSS functions (percentage, oklch, etc.)
 
 ### Linting in Copilot Sessions
 
@@ -293,25 +298,39 @@ npm run lint:scss:report
 - ❌ Nesting too deeply (refactor to reduce nesting)
 - ❌ Using `0px` instead of `0`
 - ❌ ID selectors in styles (use classes instead)
+- ❌ Undefined functions/mixins (will be caught by linter)
 
-**Note**: Some files may have pre-existing linting issues. Focus on ensuring **new code** passes the linter. Legacy code can be refactored incrementally.
+**Note**: All critical @extend violations have been fixed! Remaining issues are nesting depth warnings (non-critical).
 
-### Known Issues to Fix
+### Bootstrap Compatibility Removed
 
-The following legacy files contain @extend violations (forbidden in Jekyll SCSS):
-- `_sass/base/_base-section.scss`
-- `_sass/components/layouts/_archive-item.scss`
-- `_sass/components/layouts/_article-toc.scss`
-- `_sass/components/layouts/_faq-item.scss`
-- `_sass/components/layouts/_gallery-item.scss`
-- `_sass/components/layouts/_landing-features.scss`
-- `_sass/components/layouts/_post-navigation.scss`
-- `_sass/components/layouts/_profile-stats.scss`
-- `_sass/components/layouts/_splash-countdown.scss`
-- `_sass/layouts/_archive.scss`
-- `_sass/layouts/_article.scss`
+**Bootstrap compatibility files have been deleted** (January 2026 update):
+- ~~`_sass/base/_base-section.scss`~~ DELETED (28 lines)
+- ~~`_sass/base/_utilities.scss`~~ DELETED (261 lines)
+- ~~`_sass/base/_utilities-combined.scss`~~ DELETED (261 lines)
 
-**How to fix @extend violations**:
+Total: **550 lines of Bootstrap compatibility code removed**
+
+### @extend Violations Fixed
+
+~~The following legacy files contained @extend violations - ALL FIXED!~~
+
+**Fixed files** (all @extend removed, replaced with CSS properties):
+- ~~`_sass/base/_base-section.scss`~~ DELETED
+- ~~`_sass/components/layouts/_archive-item.scss`~~ FIXED
+- ~~`_sass/components/layouts/_article-toc.scss`~~ FIXED
+- ~~`_sass/components/layouts/_faq-item.scss`~~ FIXED
+- ~~`_sass/components/layouts/_gallery-item.scss`~~ FIXED
+- ~~`_sass/components/layouts/_landing-features.scss`~~ FIXED
+- ~~`_sass/components/layouts/_post-navigation.scss`~~ FIXED
+- ~~`_sass/components/layouts/_profile-stats.scss`~~ FIXED
+- ~~`_sass/components/layouts/_splash-countdown.scss`~~ FIXED
+- ~~`_sass/layouts/_archive.scss`~~ FIXED
+- ~~`_sass/layouts/_article.scss`~~ FIXED
+
+**Result**: 0 @extend violations remaining! ✅
+
+**How @extend violations were fixed**:
 
 Instead of using @extend with utility classes:
 ```scss
