@@ -84,15 +84,13 @@ bundle exec jekyll build --trace
 
 ### Related Issue
 - Original issue: "Conversion error: Jekyll::Converters::Scss encountered an error while converting 'assets/css/style.scss': Undefined mixin 'background-cover'"
-- Resolution: Added missing mixin definition in commit b1d44a4
+- Resolution: Added missing mixin definition to `_sass/base/_semantic-mixins.scss`
 
 ### Future Improvements
 If stylelint-scss adds support for detecting undefined mixins in the future, update `.stylelintrc.yml`:
 ```yaml
 # When available:
-scss/at-mixin-no-unknown:
-  - true
-  - severity: error
+scss/at-mixin-no-unknown: true
 ```
 
 ## See Also
