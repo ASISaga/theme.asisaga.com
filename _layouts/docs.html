@@ -75,7 +75,7 @@ Features: Sidebar navigation, breadcrumbs, previous/next links, search
         <!-- Previous/Next Navigation -->
         {% if page.prev or page.next %}
         <nav class="docs-pagination" aria-label="Page navigation">
-          <div class="row">
+          <div class="docs-nav-grid">
             <div class="docs-nav-item">
               {% if page.prev %}
               <a href="{{ page.prev.url }}" class="docs-pagination-link">
