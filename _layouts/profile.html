@@ -7,7 +7,7 @@ Purpose: Author or team member profile pages
 Features: Profile header with photo, bio, social links, activity feed
 -->
 <div class="profile-layout">
-  <div class="container">
+  <div class="profile-wrapper">
     <!-- Profile Header -->
     <header class="profile-header">
       <div class="profile-header-row">
@@ -50,12 +50,12 @@ Features: Profile header with photo, bio, social links, activity feed
     
     <!-- Profile Content -->
     <div class="profile-content">
-      <div class="row">
-        <div class="col-lg-8">
+      <div class="profile-content-grid">
+        <div class="profile-content-main">
           {{ content }}
         </div>
         
-        <aside class="col-lg-4">
+        <aside class="profile-sidebar">
           {% if page.stats %}
           <div class="profile-stats">
             <div class="card-body">

@@ -7,7 +7,7 @@ Purpose: Frequently asked questions with accordion/expandable sections
 Features: Search, categories, accordion interface
 -->
 <div class="faq-layout">
-  <div class="container">
+  <div class="faq-wrapper">
     <!-- FAQ Header -->
     <header class="faq-header">
       {% if page.title %}
@@ -40,8 +40,8 @@ Features: Search, categories, accordion interface
     
     <!-- FAQ Content -->
     <div class="faq-content">
-      <div class="faq-content-row">
-        <div class="faq-content-col">
+      <div class="faq-content-grid">
+        <div class="faq-content-main">
           {{ content }}
         </div>
       </div>

@@ -27,25 +27,25 @@ Features: Full-screen design, countdown timers, email capture
       <!-- Countdown Timer -->
       <div class="splash-countdown">
         <div class="splash-countdown-row">
-          <div class="col-auto">
+          <div class="countdown-item">
             <div class="splash-countdown-unit">
               <div class="splash-countdown-value" id="days">00</div>
               <small class="splash-countdown-label">Days</small>
             </div>
           </div>
-          <div class="col-auto">
+          <div class="countdown-item">
             <div class="splash-countdown-unit">
               <div class="splash-countdown-value" id="hours">00</div>
               <small class="splash-countdown-label">Hours</small>
             </div>
           </div>
-          <div class="col-auto">
+          <div class="countdown-item">
             <div class="splash-countdown-unit">
               <div class="splash-countdown-value" id="minutes">00</div>
               <small class="splash-countdown-label">Minutes</small>
             </div>
           </div>
-          <div class="col-auto">
+          <div class="countdown-item">
             <div class="splash-countdown-unit">
               <div class="splash-countdown-value" id="seconds">00</div>
               <small class="splash-countdown-label">Seconds</small>
@@ -62,7 +62,7 @@ Features: Full-screen design, countdown timers, email capture
           <div class="splash-email-input-col">
             <input type="email" class="splash-email-input" placeholder="Enter your email" aria-label="Email address">
           </div>
-          <div class="col-auto">
+          <div class="countdown-item">
             <button type="submit" class="splash-email-btn">{{ page.email_capture.button_text | default: "Notify Me" }}</button>
           </div>
         </form>

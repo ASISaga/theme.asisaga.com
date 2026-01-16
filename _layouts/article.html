@@ -7,8 +7,8 @@ Purpose: Long-form editorial or knowledge articles with enhanced readability
 Features: Table of contents, reading progress, enhanced typography
 -->
 <article class="article-layout">
-  <div class="container">
-    <div class="row">
+  <div class="article-wrapper">
+    <div class="article-grid">
       <!-- Article Sidebar (Table of Contents) -->
       <aside class="article-toc-sidebar">
         <div class="article-toc-sticky">
@@ -57,7 +57,7 @@ Features: Table of contents, reading progress, enhanced typography
         {% if page.related_articles %}
         <footer class="article-footer">
           <h4 class="article-footer-title">Related Articles</h4>
-          <div class="row">
+          <div class="article-nav-grid">
             <!-- Related articles can be listed here -->
           </div>
         </footer>
