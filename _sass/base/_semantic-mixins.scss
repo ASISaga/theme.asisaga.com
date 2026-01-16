@@ -314,6 +314,19 @@
   border-width: 0;
 }
 
+@mixin visually-hidden-focusable {
+  &:active,
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}
+
 @mixin focus-visible {
   &:focus-visible {
     outline: 2px solid $state-focus-ring;
