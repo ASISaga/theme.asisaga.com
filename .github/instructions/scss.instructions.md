@@ -246,6 +246,56 @@ When working on theme engine or legacy component SCSS:
 - Each component has ONE matching SCSS partial
 - Use CSS custom properties from token system, not hardcoded values
 
+## Linting & Code Quality
+
+### Running the Linter
+
+The repository uses **stylelint** to enforce SCSS code quality and consistency:
+
+```bash
+# Lint all SCSS files
+npm run lint:scss
+
+# Automatically fix issues where possible
+npm run lint:scss:fix
+
+# Get detailed verbose output
+npm run lint:scss:report
+```
+
+### Linting Rules Enforced
+
+**Critical Rules** (must follow):
+- ❌ **NEVER use `@extend`** - Causes Jekyll build errors (will fail lint)
+- ✅ **Max 3 nesting levels** - Prevents overly complex selectors
+- ✅ **No duplicate properties** - Ensures clean declarations
+- ✅ **Remove units from zero values** - Use `0` not `0px`
+- ✅ **BEM-style class naming** - `.block__element--modifier` pattern
+- ✅ **No ID selectors** - Use classes for styling
+
+**Best Practices** (recommended):
+- Use CSS custom properties from token system
+- Prefer kebab-case for variable names
+- Keep selectors specific but not overly nested
+- Use semantic class names (WHAT, not HOW)
+
+### Linting in Copilot Sessions
+
+**During GitHub Copilot coding sessions**:
+
+1. **Before making SCSS changes**: Run `npm run lint:scss` to establish baseline
+2. **After making changes**: Run `npm run lint:scss` to catch issues early
+3. **Before committing**: Ensure all critical linting errors are fixed
+4. **Use auto-fix**: Run `npm run lint:scss:fix` for automatic formatting fixes
+
+**Common linting issues to watch for**:
+- ❌ Using `@extend` (replace with mixins or CSS custom properties)
+- ❌ Nesting too deeply (refactor to reduce nesting)
+- ❌ Using `0px` instead of `0`
+- ❌ ID selectors in styles (use classes instead)
+
+**Note**: Some files may have pre-existing linting issues. Focus on ensuring **new code** passes the linter. Legacy code can be refactored incrementally.
+
 ## Color & Contrast (MANDATORY)
 - Text MUST be solid colors, WCAG AA compliant
 - NEVER use opacity < 0.9 for text (breaks contrast)
