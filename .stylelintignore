@@ -1,0 +1,21 @@
+# Build outputs
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Dependencies
+node_modules/
+
+# Vendor files
+_sass/vendor/**
+_sass/fontawesome/**
+
+# JavaScript
+assets/js/**
+
+# Files with Jekyll front matter (will be checked separately)
+# Note: stylelint doesn't handle Jekyll front matter well
+# These files should be linted manually or with a custom script
+assets/css/style.scss
+assets/css/ontology-examples.scss

@@ -1,21 +1,33 @@
 // Profile Stats Component Styles
 
 .profile-stats-component {
-  @extend .card;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+  border-radius: var(--radius-bento, 0.75rem);
+  padding: 1rem;
   
   .profile-stats-title {
-    @extend .card-title;
     font-weight: $font-weight-bold;
     margin-bottom: $spacing-sacred-md;
   }
   
   .profile-stats-row {
-    @extend .row;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -0.75rem;
+    margin-left: -0.75rem;
     text-align: center;
   }
   
   .profile-stat-col {
-    @extend .col-4;
+    flex: 0 0 auto;
+    width: 33.33333333%;
     margin-bottom: $spacing-sacred-md;
   }
   

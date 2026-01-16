@@ -1,0 +1,230 @@
+extends:
+  - stylelint-config-standard-scss
+
+plugins:
+  - stylelint-order
+  - stylelint-scss
+
+rules:
+  # ========================================
+  # CRITICAL RULES FOR THIS REPOSITORY
+  # ========================================
+  
+  # NEVER use @extend (causes Jekyll build errors)
+  at-rule-disallowed-list:
+    - extend
+  
+  # Limit nesting to 3 levels (specified in instructions)
+  max-nesting-depth:
+    - 3
+    - ignore:
+        - blockless-at-rules
+        - pseudo-classes
+  
+  # Color format requirements
+  color-function-notation: null  # Allow both modern (oklch) and legacy formats
+  color-hex-length: null  # Allow both short and long hex codes
+  alpha-value-notation: null  # Allow both percentage and number for alpha
+  hue-degree-notation: null  # Allow both deg and unitless for hue
+  lightness-notation: null  # Allow both percentage and decimal for lightness
+  
+  # ========================================
+  # DESIGN SYSTEM REQUIREMENTS
+  # ========================================
+  
+  # Prefer CSS custom properties over hardcoded values
+  # (Informational - not auto-fixable)
+  scss/dollar-variable-pattern:
+    - "^[a-z][a-zA-Z0-9-]*$"
+    - message: "Use kebab-case for Sass variables"
+  
+  # Ensure proper use of design tokens
+  custom-property-pattern:
+    - "^[a-z][a-zA-Z0-9-]*$"
+    - message: "Use kebab-case for CSS custom properties"
+  
+  # ========================================
+  # CODE QUALITY
+  # ========================================
+  
+  # Require proper selector naming
+  selector-class-pattern:
+    - "^[a-z][a-zA-Z0-9-_]*(__[a-z][a-zA-Z0-9-]*)?(-{1,2}[a-z][a-zA-Z0-9-]*)?$"
+    - message: "Use BEM-style naming: .block__element--modifier"
+    - resolveNestedSelectors: true
+  
+  # Property ordering for consistency (informational only)
+  order/properties-order: null  # Disabled for now - too strict for existing codebase
+  
+  # ========================================
+  # SCSS SPECIFIC
+  # ========================================
+  
+  # Consistent use of @ for at-rules
+  at-rule-no-unknown:
+    - true
+    - ignoreAtRules:
+        - use
+        - forward
+        - include
+        - mixin
+        - function
+        - if
+        - else
+        - each
+        - for
+        - while
+        - return
+        - warn
+        - error
+        - debug
+        - at-root
+        - content
+  
+  # Prefer @use over @import (but allow @import for Jekyll compatibility)
+  scss/load-partial-extension: never
+  scss/at-rule-no-unknown: true
+  
+  # Consistent variable usage
+  scss/dollar-variable-colon-space-after: always
+  scss/dollar-variable-colon-space-before: never
+  scss/dollar-variable-empty-line-before: null  # Don't enforce blank lines
+  
+  # Operator spacing
+  scss/operator-no-newline-after: true
+  scss/operator-no-newline-before: true
+  scss/operator-no-unspaced: true
+  
+  # SCSS formatting (relaxed for existing code)
+  scss/double-slash-comment-empty-line-before: null
+  scss/at-mixin-argumentless-call-parentheses: null
+  scss/at-else-closing-brace-space-after: null
+  scss/at-else-closing-brace-newline-after: null
+  scss/at-if-closing-brace-space-after: null
+  scss/at-if-closing-brace-newline-after: null
+  scss/at-mixin-pattern: null
+  scss/comment-no-empty: null
+  scss/no-global-function-names: null  # Allow global functions for backward compatibility
+  
+  # Detect missing variables and mixins
+  scss/at-mixin-no-risky-nesting-selector: true  # Prevent risky nesting in mixins
+  function-no-unknown:
+    - true
+    - ignoreFunctions:
+        - fade
+        - fade-in
+        - fade-out
+        - lighten
+        - darken
+        - saturate
+        - desaturate
+        - rgba
+        - rgb
+        - hsl
+        - hsla
+        - oklch
+        - clamp
+        - min
+        - max
+        - calc
+        - var
+        - percentage  # SCSS function for converting to percentage
+  
+  # ========================================
+  # ACCESSIBILITY REQUIREMENTS
+  # ========================================
+  
+  # (Font weight notation relaxed - see relaxed rules section)
+  
+  # ========================================
+  # FORMATTING
+  # ========================================
+  
+  # No empty sources
+  no-empty-source: null  # Allow empty files
+  
+  # Declaration block
+  declaration-block-no-duplicate-properties:
+    - true
+    - ignore:
+        - consecutive-duplicates-with-different-values
+  
+  # Selector formatting
+  selector-max-id: 0  # Avoid ID selectors
+  
+  # Unit formatting
+  length-zero-no-unit:
+    - true
+    - ignore:
+        - custom-properties  # Allow 0px in custom properties
+  
+  # Empty lines
+  at-rule-empty-line-before: null  # Don't enforce empty lines before at-rules
+  declaration-empty-line-before: null  # Don't enforce empty lines before declarations
+  
+  # Keyframes
+  keyframes-name-pattern: null  # Allow any naming style for keyframes
+  
+  # Rules
+  rule-empty-line-before: null  # Don't enforce empty lines before rules
+  
+  # ========================================
+  # RELAXED RULES (for flexibility)
+  # ========================================
+  
+  # Allow vendor prefixes (for compatibility)
+  property-no-vendor-prefix: null
+  value-no-vendor-prefix: null
+  
+  # Allow important (sometimes needed for overrides)
+  declaration-no-important: null
+  
+  # Allow empty blocks (for placeholder selectors)
+  block-no-empty: null
+  
+  # Allow descending specificity (needed for cascading)
+  no-descending-specificity: null
+  
+  # Allow unknown properties (for CSS custom properties)
+  property-no-unknown:
+    - true
+    - ignoreProperties:
+        - /^--/  # Allow CSS custom properties
+  
+  # Allow unknown pseudo-classes (for vendor-specific ones)
+  selector-pseudo-class-no-unknown:
+    - true
+    - ignorePseudoClasses:
+        - global
+        - local
+  
+  # Relaxed formatting rules
+  media-feature-range-notation: null  # Allow both range and prefix notation
+  declaration-block-single-line-max-declarations: null
+  comment-empty-line-before: null  # Don't enforce empty lines before comments
+  value-keyword-case: null  # Allow both uppercase and lowercase keywords
+  shorthand-property-no-redundant-values: null
+  number-max-precision: null  # Allow any precision for numbers
+  declaration-block-no-redundant-longhand-properties: null
+  selector-pseudo-element-colon-notation: null  # Allow both : and ::
+  font-weight-notation: null  # Allow both numeric and keyword
+  font-family-no-missing-generic-family-keyword: null
+  custom-property-empty-line-before: null
+  import-notation: null  # Allow both url() and string notation for @import
+  no-duplicate-selectors: null  # Allow duplicate selectors (may be intentional for specificity)
+
+# Ignore patterns
+ignoreFiles:
+  - "node_modules/**"
+  - "_site/**"
+  - ".sass-cache/**"
+  - ".jekyll-cache/**"
+  - "_sass/vendor/**"
+  - "_sass/fontawesome/**"
+  - "assets/js/**"
+  - "_sass/ontology/_test.scss"  # Test file with Jekyll front matter
+  
+# Ignore Jekyll front matter
+ignorePatterns:
+  - "^---$"
+  - "^---[\\s\\S]*?---$"

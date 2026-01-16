@@ -48,13 +48,10 @@
 @import "base/layout-wrappers";     // Modern layout containers (replaces Bootstrap)
 
 // Remaining base styles
-@import "base/utilities";
-@import "base/utilities-combined";
 @import "base/layout";
 @import "base/common";
 @import "base/responsive";
 @import "base/theme";
-@import "base/base-section";
 
 // Reusable component mixins (must be loaded before other components)
 @import "components/section-component";

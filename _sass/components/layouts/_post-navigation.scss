@@ -6,18 +6,19 @@
   margin-top: $spacing-sacred-xxl;
   
   .post-navigation-prev {
-    @extend .col-md-6;
     margin-bottom: $spacing-sacred-md;
     
     @include media-breakpoint-up(md) {
+      flex: 0 0 auto;
+      width: 50%;
       margin-bottom: 0;
     }
   }
   
   .post-navigation-next {
-    @extend .col-md-6;
-    
     @include media-breakpoint-up(md) {
+      flex: 0 0 auto;
+      width: 50%;
       text-align: end;
     }
   }

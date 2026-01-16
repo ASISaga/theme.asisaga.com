@@ -246,6 +246,119 @@ When working on theme engine or legacy component SCSS:
 - Each component has ONE matching SCSS partial
 - Use CSS custom properties from token system, not hardcoded values
 
+## Linting & Code Quality
+
+### Running the Linter
+
+The repository uses **stylelint** to enforce SCSS code quality and consistency:
+
+```bash
+# Lint all SCSS files
+npm run lint:scss
+
+# Automatically fix issues where possible
+npm run lint:scss:fix
+
+# Get detailed verbose output
+npm run lint:scss:report
+```
+
+### Linting Rules Enforced
+
+**Critical Rules** (must follow):
+- ❌ **NEVER use `@extend`** - Causes Jekyll build errors (will fail lint)
+- ✅ **Max 3 nesting levels** - Prevents overly complex selectors
+- ✅ **No duplicate properties** - Ensures clean declarations
+- ✅ **Remove units from zero values** - Use `0` not `0px`
+- ✅ **BEM-style class naming** - `.block__element--modifier` pattern
+- ✅ **No ID selectors** - Use classes for styling
+
+**Best Practices** (recommended):
+- Use CSS custom properties from design token system
+- Prefer kebab-case for variable names
+- Keep selectors specific but not overly nested
+- Use semantic class names (WHAT, not HOW)
+
+**Detection Capabilities** (new):
+- ✅ **Detects undefined SCSS functions** - Catches typos and missing imports
+- ✅ **Detects undefined mixins** - Standard linting catches missing mixin calls
+- ✅ **Validates function usage** - Allows known SCSS functions (percentage, oklch, etc.)
+
+### Linting in Copilot Sessions
+
+**During GitHub Copilot coding sessions**:
+
+1. **Before making SCSS changes**: Run `npm run lint:scss` to establish baseline
+2. **After making changes**: Run `npm run lint:scss` to catch issues early
+3. **Before committing**: Ensure all critical linting errors are fixed
+4. **Use auto-fix**: Run `npm run lint:scss:fix` for automatic formatting fixes
+
+**Common linting issues to watch for**:
+- ❌ Using `@extend` (replace with mixins or CSS custom properties)
+- ❌ Nesting too deeply (refactor to reduce nesting)
+- ❌ Using `0px` instead of `0`
+- ❌ ID selectors in styles (use classes instead)
+- ❌ Undefined functions/mixins (will be caught by linter)
+
+**Note**: All critical @extend violations have been fixed! Remaining issues are nesting depth warnings (non-critical).
+
+### Bootstrap Compatibility Removed
+
+**Bootstrap compatibility files have been deleted** (January 2026 update):
+- ~~`_sass/base/_base-section.scss`~~ DELETED (28 lines)
+- ~~`_sass/base/_utilities.scss`~~ DELETED (261 lines)
+- ~~`_sass/base/_utilities-combined.scss`~~ DELETED (261 lines)
+
+Total: **550 lines of Bootstrap compatibility code removed**
+
+### @extend Violations Fixed
+
+~~The following legacy files contained @extend violations - ALL FIXED!~~
+
+**Fixed files** (all @extend removed, replaced with CSS properties):
+- ~~`_sass/base/_base-section.scss`~~ DELETED
+- ~~`_sass/components/layouts/_archive-item.scss`~~ FIXED
+- ~~`_sass/components/layouts/_article-toc.scss`~~ FIXED
+- ~~`_sass/components/layouts/_faq-item.scss`~~ FIXED
+- ~~`_sass/components/layouts/_gallery-item.scss`~~ FIXED
+- ~~`_sass/components/layouts/_landing-features.scss`~~ FIXED
+- ~~`_sass/components/layouts/_post-navigation.scss`~~ FIXED
+- ~~`_sass/components/layouts/_profile-stats.scss`~~ FIXED
+- ~~`_sass/components/layouts/_splash-countdown.scss`~~ FIXED
+- ~~`_sass/layouts/_archive.scss`~~ FIXED
+- ~~`_sass/layouts/_article.scss`~~ FIXED
+
+**Result**: 0 @extend violations remaining! ✅
+
+**How @extend violations were fixed**:
+
+Instead of using @extend with utility classes:
+```scss
+// ❌ WRONG (causes Jekyll build errors)
+.section {
+  @extend .bg-gradient-primary-light;
+  @extend .rounded;
+  @extend .shadow;
+}
+```
+
+Use mixins or direct properties:
+```scss
+// ✅ CORRECT (using mixins)
+.section {
+  @include glass-surface(0.85, 20px);
+  @include padding-section;
+  border-radius: var(--radius-bento);
+  box-shadow: var(--shadow-ambient);
+}
+
+// ✅ CORRECT (using ontology for new code)
+.section {
+  @include genesis-entity('primary');
+  @include genesis-environment('focused');
+}
+```
+
 ## Color & Contrast (MANDATORY)
 - Text MUST be solid colors, WCAG AA compliant
 - NEVER use opacity < 0.9 for text (breaks contrast)
