@@ -384,6 +384,22 @@
 }
 
 // ----------------------------------------
+// BACKGROUND MIXINS
+// ----------------------------------------
+
+@mixin background-cover {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin background-contain {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+// ----------------------------------------
 // Z-INDEX MIXINS
 // ----------------------------------------
 

@@ -107,6 +107,9 @@ rules:
   scss/no-global-function-names: null  # Allow global functions for backward compatibility
   
   # Detect missing variables and mixins
+  # NOTE: Stylelint-scss does NOT have a rule to detect undefined mixins (@include with non-existent mixin)
+  # This is a known limitation. Undefined mixins will only be caught at build time by Jekyll/Sass.
+  # Always run Jekyll build to catch these errors before committing.
   scss/at-mixin-no-risky-nesting-selector: true  # Prevent risky nesting in mixins
   function-no-unknown:
     - true
