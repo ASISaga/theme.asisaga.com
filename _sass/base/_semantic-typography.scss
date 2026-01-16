@@ -12,23 +12,23 @@
 // Format: clamp(min, preferred, max)
 
 // Heading Scales
-$font-h1: clamp(2.5rem, 5vw + 1rem, 4rem);        // 40px - 64px
-$font-h2: clamp(2rem, 4vw + 0.5rem, 3rem);        // 32px - 48px
-$font-h3: clamp(1.5rem, 3vw + 0.5rem, 2.25rem);   // 24px - 36px
-$font-h4: clamp(1.25rem, 2.5vw + 0.25rem, 1.875rem); // 20px - 30px
-$font-h5: clamp(1.125rem, 2vw + 0.25rem, 1.5rem); // 18px - 24px
-$font-h6: clamp(1rem, 1.5vw + 0.25rem, 1.25rem);  // 16px - 20px
+$font-h1: clamp(2.5rem, calc(5vw + 1rem), 4rem);        // 40px - 64px
+$font-h2: clamp(2rem, calc(4vw + 0.5rem), 3rem);        // 32px - 48px
+$font-h3: clamp(1.5rem, calc(3vw + 0.5rem), 2.25rem);   // 24px - 36px
+$font-h4: clamp(1.25rem, calc(2.5vw + 0.25rem), 1.875rem); // 20px - 30px
+$font-h5: clamp(1.125rem, calc(2vw + 0.25rem), 1.5rem); // 18px - 24px
+$font-h6: clamp(1rem, calc(1.5vw + 0.25rem), 1.25rem);  // 16px - 20px
 
 // Body Text Scales
-$font-body-lg: clamp(1.125rem, 1vw + 0.5rem, 1.25rem);  // 18px - 20px
-$font-body: clamp(1rem, 0.5vw + 0.75rem, 1.125rem);     // 16px - 18px
-$font-body-sm: clamp(0.875rem, 0.5vw + 0.5rem, 1rem);   // 14px - 16px
-$font-body-xs: clamp(0.75rem, 0.25vw + 0.5rem, 0.875rem); // 12px - 14px
+$font-body-lg: clamp(1.125rem, calc(1vw + 0.5rem), 1.25rem);  // 18px - 20px
+$font-body: clamp(1rem, calc(0.5vw + 0.75rem), 1.125rem);     // 16px - 18px
+$font-body-sm: clamp(0.875rem, calc(0.5vw + 0.5rem), 1rem);   // 14px - 16px
+$font-body-xs: clamp(0.75rem, calc(0.25vw + 0.5rem), 0.875rem); // 12px - 14px
 
 // Display Scales - Hero/Landing
-$font-display-xl: clamp(3.5rem, 8vw + 1rem, 6rem);     // 56px - 96px
-$font-display-lg: clamp(3rem, 6vw + 1rem, 5rem);       // 48px - 80px
-$font-display-md: clamp(2.5rem, 5vw + 0.5rem, 4rem);   // 40px - 64px
+$font-display-xl: clamp(3.5rem, calc(8vw + 1rem), 6rem);     // 56px - 96px
+$font-display-lg: clamp(3rem, calc(6vw + 1rem), 5rem);       // 48px - 80px
+$font-display-md: clamp(2.5rem, calc(5vw + 0.5rem), 4rem);   // 40px - 64px
 
 // ----------------------------------------
 // TYPOGRAPHY SYSTEM
