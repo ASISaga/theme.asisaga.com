@@ -2,21 +2,26 @@
 
 .article-layout {
   .article-toc-sidebar {
-    @extend .col-lg-3;
     display: none;
     
     @include media-breakpoint-up(lg) {
       display: block;
+      flex: 0 0 auto;
+      width: 25%;
     }
   }
   
   .article-toc-sticky {
-    @extend .sticky-top;
+    position: sticky;
+    top: 0;
   }
   
   .article-toc-nav {
-    @extend .nav;
-    @extend .flex-column;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
   }
   
   .article-toc-title {
@@ -25,7 +30,10 @@
   }
   
   .article-main-col {
-    @extend .col-lg-9;
+    @include media-breakpoint-up(lg) {
+      flex: 0 0 auto;
+      width: 75%;
+    }
   }
   
   .article-header {

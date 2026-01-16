@@ -106,6 +106,30 @@ rules:
   scss/comment-no-empty: null
   scss/no-global-function-names: null  # Allow global functions for backward compatibility
   
+  # Detect missing variables and mixins
+  scss/at-mixin-no-risky-nesting-selector: true  # Prevent risky nesting in mixins
+  function-no-unknown:
+    - true
+    - ignoreFunctions:
+        - fade
+        - fade-in
+        - fade-out
+        - lighten
+        - darken
+        - saturate
+        - desaturate
+        - rgba
+        - rgb
+        - hsl
+        - hsla
+        - oklch
+        - clamp
+        - min
+        - max
+        - calc
+        - var
+        - percentage  # SCSS function for converting to percentage
+  
   # ========================================
   # ACCESSIBILITY REQUIREMENTS
   # ========================================
@@ -198,6 +222,7 @@ ignoreFiles:
   - "_sass/vendor/**"
   - "_sass/fontawesome/**"
   - "assets/js/**"
+  - "_sass/ontology/_test.scss"  # Test file with Jekyll front matter
   
 # Ignore Jekyll front matter
 ignorePatterns:
