@@ -296,6 +296,50 @@ npm run lint:scss:report
 
 **Note**: Some files may have pre-existing linting issues. Focus on ensuring **new code** passes the linter. Legacy code can be refactored incrementally.
 
+### Known Issues to Fix
+
+The following legacy files contain @extend violations (forbidden in Jekyll SCSS):
+- `_sass/base/_base-section.scss`
+- `_sass/components/layouts/_archive-item.scss`
+- `_sass/components/layouts/_article-toc.scss`
+- `_sass/components/layouts/_faq-item.scss`
+- `_sass/components/layouts/_gallery-item.scss`
+- `_sass/components/layouts/_landing-features.scss`
+- `_sass/components/layouts/_post-navigation.scss`
+- `_sass/components/layouts/_profile-stats.scss`
+- `_sass/components/layouts/_splash-countdown.scss`
+- `_sass/layouts/_archive.scss`
+- `_sass/layouts/_article.scss`
+
+**How to fix @extend violations**:
+
+Instead of using @extend with utility classes:
+```scss
+// ❌ WRONG (causes Jekyll build errors)
+.section {
+  @extend .bg-gradient-primary-light;
+  @extend .rounded;
+  @extend .shadow;
+}
+```
+
+Use mixins or direct properties:
+```scss
+// ✅ CORRECT (using mixins)
+.section {
+  @include glass-surface(0.85, 20px);
+  @include padding-section;
+  border-radius: var(--radius-bento);
+  box-shadow: var(--shadow-ambient);
+}
+
+// ✅ CORRECT (using ontology for new code)
+.section {
+  @include genesis-entity('primary');
+  @include genesis-environment('focused');
+}
+```
+
 ## Color & Contrast (MANDATORY)
 - Text MUST be solid colors, WCAG AA compliant
 - NEVER use opacity < 0.9 for text (breaks contrast)
