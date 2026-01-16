@@ -7,8 +7,8 @@ Purpose: Documentation or knowledge base pages with navigation
 Features: Sidebar navigation, breadcrumbs, previous/next links, search
 -->
 <div class="docs-layout">
-  <div class="container-fluid">
-    <div class="row">
+  <div class="docs-wrapper">
+    <div class="docs-grid">
       <!-- Docs Sidebar -->
       <aside class="docs-sidebar">
         <div class="docs-sidebar-sticky">
@@ -76,7 +76,7 @@ Features: Sidebar navigation, breadcrumbs, previous/next links, search
         {% if page.prev or page.next %}
         <nav class="docs-pagination" aria-label="Page navigation">
           <div class="row">
-            <div class="col-6">
+            <div class="docs-nav-item">
               {% if page.prev %}
               <a href="{{ page.prev.url }}" class="docs-pagination-link">
                 <small class="docs-pagination-label">← Previous</small>

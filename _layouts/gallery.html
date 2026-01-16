@@ -7,7 +7,7 @@ Purpose: Image or media gallery pages with grid display
 Features: Lightbox, filtering, masonry/grid layout
 -->
 <div class="gallery-layout">
-  <div class="container">
+  <div class="gallery-wrapper">
     <!-- Gallery Header -->
     <header class="gallery-header">
       {% if page.title %}
@@ -31,7 +31,7 @@ Features: Lightbox, filtering, masonry/grid layout
     
     <!-- Gallery Grid -->
     <div class="gallery-grid">
-      <div class="gallery-grid-row">
+      <div class="gallery-grid-layout">
         {{ content }}
       </div>
     </div>

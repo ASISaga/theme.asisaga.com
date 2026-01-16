@@ -7,10 +7,10 @@ Purpose: User or admin settings pages with tabbed interface
 Features: Tabbed navigation, form sections, save actions
 -->
 <div class="settings-layout">
-  <div class="container-fluid">
-    <div class="row">
+  <div class="settings-wrapper">
+    <div class="settings-grid">
       <!-- Settings Sidebar -->
-      <aside class="settings-sidebar col-lg-3">
+      <aside class="settings-sidebar">
         <h4 class="settings-sidebar-heading">Settings</h4>
         <nav class="settings-nav" aria-label="Settings navigation">
           <ul class="nav">
@@ -31,7 +31,7 @@ Features: Tabbed navigation, form sections, save actions
       </aside>
       
       <!-- Settings Content -->
-      <main class="settings-main col-lg-9">
+      <main class="settings-main">
         <div class="settings-content">
           {% if page.title %}
           <h2 class="settings-title">{{ page.title }}</h2>

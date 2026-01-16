@@ -10,9 +10,9 @@ Features: Hero section, features, testimonials, CTA sections
   <!-- Hero Section -->
   {% if page.hero %}
   <section class="landing-hero">
-    <div class="container">
-      <div class="landing-hero-row">
-        <div class="col-lg-6">
+    <div class="landing-wrapper">
+      <div class="landing-hero-grid">
+        <div class="landing-hero-col">
           <h1 class="landing-hero-title">{{ page.hero.title }}</h1>
           <p class="landing-hero-subtitle">{{ page.hero.subtitle }}</p>
           {% if page.hero.cta %}
@@ -20,7 +20,7 @@ Features: Hero section, features, testimonials, CTA sections
           {% endif %}
         </div>
         {% if page.hero.image %}
-        <div class="col-lg-6">
+        <div class="landing-hero-col">
           <img src="{{ page.hero.image }}" alt="{{ page.hero.title }}" class="landing-hero-image">
         </div>
         {% endif %}

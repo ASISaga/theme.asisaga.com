@@ -3,14 +3,14 @@ Landing Features Component
 Displays feature grid for landing pages
 -->
 <section class="landing-features-component">
-  <div class="container">
+  <div class="landing-features-wrapper">
     {% if include.title %}
     <h2 class="landing-features-title">{{ include.title }}</h2>
     {% endif %}
     
-    <div class="landing-features-row">
+    <div class="landing-features-grid">
       {% for feature in include.features %}
-      <div class="landing-feature-col">
+      <div class="landing-feature-item">
         <div class="feature-card">
           {% if feature.icon %}
           <div class="feature-icon">

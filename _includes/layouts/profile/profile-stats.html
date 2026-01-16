@@ -5,23 +5,23 @@ Displays user profile statistics
 <div class="profile-stats-component">
   <div class="card-body">
     <h5 class="profile-stats-title">{{ include.title | default: "Statistics" }}</h5>
-    <div class="profile-stats-row">
+    <div class="profile-stats-grid">
       {% if include.posts %}
-      <div class="profile-stat-col">
+      <div class="profile-stat-item">
         <div class="stat-value">{{ include.posts }}</div>
         <div class="stat-label">Posts</div>
       </div>
       {% endif %}
       
       {% if include.followers %}
-      <div class="profile-stat-col">
+      <div class="profile-stat-item">
         <div class="stat-value">{{ include.followers }}</div>
         <div class="stat-label">Followers</div>
       </div>
       {% endif %}
       
       {% if include.following %}
-      <div class="profile-stat-col">
+      <div class="profile-stat-item">
         <div class="stat-value">{{ include.following }}</div>
         <div class="stat-label">Following</div>
       </div>
