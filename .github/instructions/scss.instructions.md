@@ -263,6 +263,52 @@ npm run lint:scss:fix
 npm run lint:scss:report
 ```
 
+### Sass Test Compilation (REQUIRED)
+
+**Stylelint cannot detect undefined mixins or variables.** Use Sass test compilation to catch these errors:
+
+```bash
+# Test compile all SCSS (REQUIRED before committing)
+npm run test:scss
+
+# Test with verbose output (for debugging)
+npm run test:scss:verbose
+
+# Run both linting and compilation tests
+npm test
+```
+
+**Why this is necessary:**
+- ✅ **Catches undefined variables** - `$gray-100`, `$text-dark`, etc.
+- ✅ **Catches undefined mixins** - `@include non-existent-mixin`
+- ✅ **Catches missing mixin parameters** - `@include button-variant($bg, $border)` missing `$text`
+- ✅ **Catches undefined functions** - Custom SCSS functions
+- ✅ **Fast feedback** - Compiles in 2-5 seconds vs 30-60 seconds for Jekyll
+
+**Example error output:**
+```bash
+Error: Undefined variable.
+   ╷
+10 │   background-color: $gray-100;
+   │                     ^^^^^^^^^
+   ╵
+  _sass/components/_testimonial.scss 10:21
+
+Error: Missing argument $text.
+    ┌──> _sass/layouts/_faq.scss
+79  │     @include button-variant($primary, $primary);
+    │     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invocation
+```
+
+**Development workflow:**
+1. Make SCSS changes
+2. Run `npm run test:scss` to test compilation
+3. Fix any errors reported
+4. Run `npm run lint:scss` to check code style
+5. Commit when both pass
+
+**See also:** [STYLELINT-LIMITATIONS.md](../../STYLELINT-LIMITATIONS.md) for complete documentation on Sass testing.
+
 ### Linting Rules Enforced
 
 **Critical Rules** (must follow):
@@ -279,26 +325,46 @@ npm run lint:scss:report
 - Keep selectors specific but not overly nested
 - Use semantic class names (WHAT, not HOW)
 
-**Detection Capabilities** (new):
-- ✅ **Detects undefined SCSS functions** - Catches typos and missing imports
-- ✅ **Detects undefined mixins** - Standard linting catches missing mixin calls
-- ✅ **Validates function usage** - Allows known SCSS functions (percentage, oklch, etc.)
+**Detection Capabilities:**
+- ✅ **Stylelint detects**: Code style, naming patterns, duplicate properties, invalid CSS syntax
+- ❌ **Stylelint CANNOT detect**: Undefined mixins, undefined variables, missing mixin parameters
+- ✅ **Sass test compilation detects**: All undefined mixins, variables, functions, and parameter mismatches
 
-### Linting in Copilot Sessions
+**Use BOTH tools:**
+- `npm run lint:scss` - For code style and best practices
+- `npm run test:scss` - For undefined mixins/variables (REQUIRED)
+- `npm test` - Runs both (recommended before committing)
+
+### Linting and Testing in Copilot Sessions
 
 **During GitHub Copilot coding sessions**:
 
-1. **Before making SCSS changes**: Run `npm run lint:scss` to establish baseline
-2. **After making changes**: Run `npm run lint:scss` to catch issues early
-3. **Before committing**: Ensure all critical linting errors are fixed
+1. **Before making SCSS changes**: Run `npm test` to establish baseline
+2. **After making changes**: Run `npm run test:scss` for fast compilation feedback
+3. **Before committing**: Run `npm test` to ensure both linting and compilation pass
 4. **Use auto-fix**: Run `npm run lint:scss:fix` for automatic formatting fixes
 
-**Common linting issues to watch for**:
+**Required workflow:**
+```bash
+# Fast iteration during development
+npm run test:scss
+
+# Before committing (runs both linter and compiler)
+npm test
+```
+
+**Common issues caught by Sass test compilation:**
+- ❌ Undefined variables (e.g., `$gray-100`, `$text-dark`)
+- ❌ Undefined mixins (e.g., `@include non-existent-mixin`)
+- ❌ Missing mixin parameters (e.g., `button-variant($bg, $border)` needs `$text`)
+- ❌ Incorrect function calls
+- ❌ Import order issues (using before defining)
+
+**Common linting issues to watch for:**
 - ❌ Using `@extend` (replace with mixins or CSS custom properties)
 - ❌ Nesting too deeply (refactor to reduce nesting)
 - ❌ Using `0px` instead of `0`
 - ❌ ID selectors in styles (use classes instead)
-- ❌ Undefined functions/mixins (will be caught by linter)
 
 **Note**: All critical @extend violations have been fixed! Remaining issues are nesting depth warnings (non-critical).
 

@@ -9,7 +9,7 @@
     "lint:scss:report": "stylelint \"_sass/**/*.scss\" \"assets/css/**/*.scss\" --formatter verbose",
     "test:scss": "sass --no-source-map --load-path=_sass _sass/_test-compile.scss /tmp/test-compile.css",
     "test:scss:verbose": "sass --no-source-map --load-path=_sass --verbose _sass/_test-compile.scss /tmp/test-compile.css",
-    "test": "npm run lint:scss && npm run test:scss"
+    "test": "npm run test:scss && npm run lint:scss"
   },
   "keywords": [
     "jekyll",
