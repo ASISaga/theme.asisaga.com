@@ -85,7 +85,7 @@
   
   .splash-email-btn {
     // Use Bootstrap button mixins to apply variant and size token values
-    @include button-variant($primary, $primary);
+    @include button-variant($primary, $primary, $text-light);
     @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius);
     // Ensure base button variables are in scope (Bootstrap base `.btn` styles read these vars)
   }
