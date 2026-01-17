@@ -41,6 +41,6 @@
   }
   
   .minimal-home-btn {
-    @include button-variant($primary, $primary);
+    @include button-variant($primary, $primary, $text-light);
   }
 }

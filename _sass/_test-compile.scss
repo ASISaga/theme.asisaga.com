@@ -1,0 +1,71 @@
+/**
+ * SASS TEST COMPILATION FILE
+ * ============================================================================
+ * This file imports all theme SCSS to test compilation and catch errors
+ * that stylelint cannot detect (undefined mixins, functions, variables).
+ * 
+ * This file should NOT be used in production - it's for testing only.
+ * 
+ * Usage: npm run test:scss
+ */
+
+// Import the main common file which includes all theme SCSS
+@import "common";
+
+// Test: ontology examples (imports ontology/index)
+// Create a test scope to avoid conflicts
+.ontology-examples-test {
+  // This exercises the ontology system
+  @include genesis-environment('distributed');
+  @include genesis-entity('primary');
+  @include genesis-cognition('axiom');
+  @include genesis-synapse('navigate');
+  @include genesis-state('stable');
+  @include genesis-atmosphere('neutral');
+}
+
+// Test all ontology variants to ensure they compile
+.ontology-comprehensive-test {
+  // All environment variants
+  &.env-distributed { @include genesis-environment('distributed'); }
+  &.env-focused { @include genesis-environment('focused'); }
+  &.env-associative { @include genesis-environment('associative'); }
+  &.env-chronological { @include genesis-environment('chronological'); }
+  &.env-manifest { @include genesis-environment('manifest'); }
+  
+  // All entity variants
+  &.entity-primary { @include genesis-entity('primary'); }
+  &.entity-secondary { @include genesis-entity('secondary'); }
+  &.entity-imperative { @include genesis-entity('imperative'); }
+  &.entity-latent { @include genesis-entity('latent'); }
+  &.entity-aggregate { @include genesis-entity('aggregate'); }
+  &.entity-ancestral { @include genesis-entity('ancestral'); }
+  
+  // All cognition variants
+  &.cog-axiom { @include genesis-cognition('axiom'); }
+  &.cog-discourse { @include genesis-cognition('discourse'); }
+  &.cog-protocol { @include genesis-cognition('protocol'); }
+  &.cog-gloss { @include genesis-cognition('gloss'); }
+  &.cog-motive { @include genesis-cognition('motive'); }
+  &.cog-quantum { @include genesis-cognition('quantum'); }
+  
+  // All synapse variants
+  &.syn-navigate { @include genesis-synapse('navigate'); }
+  &.syn-execute { @include genesis-synapse('execute'); }
+  &.syn-inquiry { @include genesis-synapse('inquiry'); }
+  &.syn-destructive { @include genesis-synapse('destructive'); }
+  &.syn-social { @include genesis-synapse('social'); }
+  
+  // All state variants
+  &.state-stable { @include genesis-state('stable'); }
+  &.state-evolving { @include genesis-state('evolving'); }
+  &.state-deprecated { @include genesis-state('deprecated'); }
+  &.state-locked { @include genesis-state('locked'); }
+  &.state-simulated { @include genesis-state('simulated'); }
+  
+  // All atmosphere variants
+  &.atmos-neutral { @include genesis-atmosphere('neutral'); }
+  &.atmos-ethereal { @include genesis-atmosphere('ethereal'); }
+  &.atmos-void { @include genesis-atmosphere('void'); }
+  &.atmos-vibrant { @include genesis-atmosphere('vibrant'); }
+}

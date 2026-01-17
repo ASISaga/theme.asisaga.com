@@ -8,6 +8,9 @@ _site/
 .jekyll-cache/
 .jekyll-metadata
 
+# SCSS test compilation output
+/tmp/test-compile.css
+
 # IDE
 .idea/
 .vscode/
