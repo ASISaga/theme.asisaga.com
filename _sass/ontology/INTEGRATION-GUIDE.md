@@ -99,6 +99,8 @@ For each class in your HTML, determine its ontological role and apply the approp
 - `'latent'` - Backgrounded info awaiting activation (dimmed, grayscale filter)
 - `'aggregate'` - A container summarizing multiple entities (larger padding, container styling)
 - `'ancestral'` - Archived or historical data (muted, legacy appearance)
+- `'image-adaptive'` ⭐ **NEW v2.1.0** - Responsive image that maintains aspect ratio
+- `'embed-responsive'` ⭐ **NEW v2.1.0** - Embedded content (iframe, video) with aspect ratio
 
 **Example:**
 ```scss
@@ -112,6 +114,15 @@ For each class in your HTML, determine its ontological role and apply the approp
 
 .critical-alert {
   @include genesis-entity('imperative');   // Urgent notification
+}
+
+// New in v2.1.0: Media responsiveness
+.hero-image-container {
+  @include genesis-entity('image-adaptive');  // Responsive 16:9 image
+}
+
+.video-embed-container {
+  @include genesis-entity('embed-responsive'); // YouTube/Vimeo responsive wrapper
 }
 ```
 
@@ -211,6 +222,8 @@ For each class in your HTML, determine its ontological role and apply the approp
 - `'ethereal'` - High-transparency, light-based focus (bright, minimal)
 - `'void'` - Deep-space, high-contrast, zero-distraction (dark, immersive)
 - `'vibrant'` - High-energy, data-saturated, high-neon (colorful, energetic)
+- `'spacious-mobile'` ⭐ **NEW v2.1.0** - Generous spacing on mobile for touch-friendliness
+- `'dense-desktop'` ⭐ **NEW v2.1.0** - High information density on large screens
 
 **Example:**
 ```scss
@@ -224,6 +237,15 @@ For each class in your HTML, determine its ontological role and apply the approp
 
 .analytics-dashboard {
   @include genesis-atmosphere('vibrant');   // Energetic, data-rich
+}
+
+// New in v2.1.0: Content density variants
+.hero-section {
+  @include genesis-atmosphere('spacious-mobile'); // Touch-friendly mobile spacing
+}
+
+.team-grid {
+  @include genesis-atmosphere('dense-desktop');   // 1 col mobile → 4 cols desktop
 }
 ```
 
@@ -376,12 +398,116 @@ You can combine multiple ontological mixins on the same element for rich semanti
 
 ---
 
+## ⭐ Responsive Design Enhancements (v2.1.0)
+
+### Automatic Responsive Behavior
+
+**All existing variants are now responsive by default** - no changes needed to your code!
+
+#### Touch Targets (WCAG 2.1 Compliant)
+All `genesis-synapse` variants now have **44x44px minimum touch targets on mobile**:
+
+```scss
+.my-button {
+  @include genesis-synapse('execute'); // Automatically 44x44px on mobile
+}
+
+.nav-link {
+  @include genesis-synapse('navigate'); // Automatically touch-friendly
+}
+```
+
+#### Responsive Typography
+All `genesis-cognition` variants now scale appropriately:
+
+```scss
+.page-title {
+  @include genesis-cognition('axiom');
+  // Mobile: 32px → Tablet: 40px → Desktop: 56px (automatic)
+}
+
+.body-text {
+  @include genesis-cognition('discourse');
+  // Always ≥16px on mobile (prevents iOS zoom)
+}
+```
+
+#### Responsive Grids
+`genesis-environment('distributed')` now adapts automatically:
+
+```scss
+.product-grid {
+  @include genesis-environment('distributed');
+  // Mobile: 1 column → Tablet: 2 columns → Desktop: auto-fit
+}
+```
+
+### New Responsive Variants
+
+#### Media Responsiveness
+
+Replace inline styles and fixed dimensions with semantic media variants:
+
+**Before (inline styles):**
+```html
+<iframe src="map" width="100%" height="450" style="border:0;"></iframe>
+```
+
+**After (semantic):**
+```html
+<div class="map-container">
+  <iframe src="map" allowfullscreen loading="lazy"></iframe>
+</div>
+```
+
+```scss
+.map-container {
+  @include genesis-entity('embed-responsive'); // Maintains 16:9 ratio
+}
+```
+
+**Image optimization:**
+```scss
+.hero-image-wrapper {
+  @include genesis-entity('image-adaptive');
+  // Maintains aspect ratio, object-fit cover, responsive
+}
+```
+
+#### Content Density
+
+Control spacing and layout density across viewports:
+
+```scss
+.hero-section {
+  @include genesis-atmosphere('spacious-mobile');
+  // 3rem padding mobile → 2rem desktop
+  // Generous touch-friendly spacing
+}
+
+.team-showcase {
+  @include genesis-atmosphere('dense-desktop');
+  // 1 column mobile → 2 columns tablet → auto-fit desktop
+  // Cap at 4 columns on ultrawide
+}
+```
+
+### Migration Benefits
+
+- ✅ **WCAG 2.1 compliance** - All touch targets now meet accessibility standards
+- ✅ **Better mobile UX** - Typography scales, spacing adapts
+- ✅ **Performance** - Media responsive variants support proper image sizing
+- ✅ **No code changes needed** - Existing code gets automatic improvements
+- ✅ **Zero raw CSS** - All responsive behavior in semantic mixins
+
+---
+
 ## Troubleshooting
 
 ### "My styles aren't applying"
 - Ensure you imported `@import "ontology/index";` at the top of your SCSS file
 - Check that your class names in HTML match your SCSS selectors
-- Verify the theme repository has the latest ontology system
+- Verify the theme repository has the latest ontology system (v2.1.0+)
 
 ### "I need a custom style not covered by the API"
 - First, check if combining existing mixins achieves your goal
