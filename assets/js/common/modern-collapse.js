@@ -23,11 +23,11 @@ class ModernCollapse {
     // Toggle on click
     this.toggle.addEventListener('click', (e) => {
       e.preventDefault();
-      this.toggle();
+      this.toggleCollapse();
     });
   }
   
-  toggle() {
+  toggleCollapse() {
     this.isOpen ? this.close() : this.open();
   }
   
@@ -73,7 +73,7 @@ class MobileNavCollapse {
   init() {
     this.toggle.addEventListener('click', (e) => {
       e.preventDefault();
-      this.toggle();
+      this.toggleNav();
     });
     
     // Close on escape
@@ -84,17 +84,18 @@ class MobileNavCollapse {
       }
     });
     
-    // Close on outside click (mobile only)
-    if (window.innerWidth < 992) {
-      document.addEventListener('click', (e) => {
-        if (!this.toggle.contains(e.target) && !this.nav.contains(e.target) && this.isOpen) {
-          this.close();
-        }
-      });
-    }
+    // Close on outside click (mobile only) - checked dynamically
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth < 992 && 
+          !this.toggle.contains(e.target) && 
+          !this.nav.contains(e.target) && 
+          this.isOpen) {
+        this.close();
+      }
+    });
   }
   
-  toggle() {
+  toggleNav() {
     this.isOpen ? this.close() : this.open();
   }
   

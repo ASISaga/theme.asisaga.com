@@ -28,7 +28,7 @@
   transition: max-height 0.35s ease;
   
   &.is-open {
-    max-height: 2000px; // Adjust based on content
+    max-height: var(--collapse-max-height, 100vh); // Use CSS variable or viewport height
   }
 }
 

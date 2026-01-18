@@ -23,7 +23,7 @@ class ModernDropdown {
     this.toggle.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      this.toggle();
+      this.toggleDropdown();
     });
     
     // Close on outside click
@@ -47,7 +47,7 @@ class ModernDropdown {
     });
   }
   
-  toggle() {
+  toggleDropdown() {
     this.isOpen ? this.close() : this.open();
   }
   
