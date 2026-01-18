@@ -967,10 +967,18 @@
 
 // Collapse utility (for mobile navigation)
 .collapse {
-  @include genesis-state('latent');  // Hidden state
+  // Bootstrap collapse - hidden by default
+  display: none;
   
   &.show {
-    @include genesis-state('stable');  // Visible state
+    display: block;
+  }
+  
+  // Collapsing animation state
+  &.collapsing {
+    display: block;
+    transition: height 0.35s ease;
+    overflow: hidden;
   }
 }
 
