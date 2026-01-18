@@ -151,7 +151,7 @@ This enables:
 
 ### Bootstrap Grid
 
-**Container max-widths** (legacy, for backward compatibility):
+**Container max-widths** (Bootstrap compatibility layer - maintained for gradual migration to ontology system):
 
 ```scss
 $container-max-widths: (

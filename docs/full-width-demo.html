@@ -12,45 +12,53 @@ to verify subdomain websites can use full viewport width
   .full-width-demo {
     width: 100%;
     padding: 2rem;
-    background: linear-gradient(135deg, oklch(0.15 0.04 245) 0%, oklch(0.25 0.06 280) 100%);
-    border: 2px solid oklch(0.88 0.18 95);
+    background: linear-gradient(135deg, 
+      var(--surface-primary, oklch(0.15 0.04 245)) 0%, 
+      var(--surface-elevated, oklch(0.25 0.06 280)) 100%);
+    border: 2px solid var(--accent-glow, oklch(0.88 0.18 95));
     margin-bottom: 2rem;
   }
   
   .full-width-demo h2 {
-    color: oklch(0.88 0.18 95);
+    color: var(--accent-glow, oklch(0.88 0.18 95));
     font-size: 2rem;
     margin-bottom: 1rem;
   }
   
   .full-width-demo p {
-    color: oklch(0.98 0.01 90);
+    color: var(--text-primary, oklch(0.98 0.01 90));
     font-size: 1.125rem;
     line-height: 1.6;
   }
   
   .width-indicator {
-    background: oklch(0.20 0.04 245 / 0.8);
+    background: var(--surface-glass, oklch(0.20 0.04 245 / 0.8));
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 0.5rem;
-    color: oklch(0.75 0.15 210);
-    font-family: monospace;
+    color: var(--text-secondary, oklch(0.75 0.15 210));
+    font-family: var(--font-mono, monospace);
   }
   
   .constrained-demo {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
-    background: oklch(0.20 0.04 245 / 0.5);
-    border: 1px solid oklch(0.55 0.25 290);
+    background: var(--surface-glass-subtle, oklch(0.20 0.04 245 / 0.5));
+    border: 1px solid var(--accent-neural, oklch(0.55 0.25 290));
   }
   
   .constrained-demo h2 {
-    color: oklch(0.88 0.18 95);
+    color: var(--accent-glow, oklch(0.88 0.18 95));
     font-size: 1.5rem;
     margin-bottom: 1rem;
   }
+  
+  .constrained-demo ul {
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    line-height: 1.8;
+  }
+
 </style>
 
 <div class="full-width-demo">
@@ -75,7 +83,7 @@ to verify subdomain websites can use full viewport width
 
 <div class="constrained-demo">
   <h2>✅ Verification Points</h2>
-  <ul style="color: oklch(0.98 0.01 90); line-height: 1.8;">
+  <ul>
     <li><strong>Desktop:</strong> Full-width sections touch both edges of viewport</li>
     <li><strong>Mobile:</strong> Content is full-width, not half-width</li>
     <li><strong>Tablet:</strong> Responsive padding maintains touch-friendliness</li>

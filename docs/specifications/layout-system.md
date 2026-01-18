@@ -869,9 +869,9 @@ To create full-width content in a subdomain:
 ### Migration Notes
 
 **Before (Constrained)**:
-- `.layout-container` used `genesis-environment('focused')` → 70ch max-width
+- `.layout-container` used `genesis-environment('focused')` → 70ch max-width (where 'ch' = character width unit, ~70 characters of text)
 - `.content-wrapper` used `genesis-environment('focused')` → 70ch max-width
-- Result: Content constrained to ~70 character width on desktop, half-width on mobile
+- Result: Content constrained to approximately 70 character width on desktop, half-width on mobile
 
 **After (Full Width)**:
 - `.layout-container` has `width: 100%` and `min-height: 100vh`
