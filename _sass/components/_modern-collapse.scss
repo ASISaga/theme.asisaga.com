@@ -1,0 +1,95 @@
+/**
+ * Modern CSS Collapse - No Bootstrap Required
+ * Uses CSS Grid and modern animations
+ */
+
+.collapse {
+  // Container for collapsible content
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+  overflow: hidden;
+  
+  // Show state
+  &.is-open {
+    grid-template-rows: 1fr;
+  }
+  
+  // Inner wrapper (required for grid animation to work)
+  &__content {
+    min-height: 0; // Required for grid animation
+  }
+}
+
+// Alternative collapse using max-height (for simple cases)
+.collapse-simple {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  
+  &.is-open {
+    max-height: var(--collapse-max-height, 100vh); // Use CSS variable or viewport height
+  }
+}
+
+// Collapse toggle button
+.collapse-toggle {
+  cursor: pointer;
+  user-select: none;
+  
+  // Arrow indicator
+  &::after {
+    content: "";
+    display: inline-block;
+    margin-left: 0.5rem;
+    vertical-align: 0.15em;
+    width: 0;
+    height: 0;
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    transition: transform 0.3s ease;
+  }
+  
+  // Rotate arrow when expanded
+  &.is-expanded::after,
+  &[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+  }
+}
+
+// Mobile navigation collapse
+.nav-collapse {
+  // Hidden by default on mobile
+  @media (max-width: 991px) {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+    overflow: hidden;
+    
+    &__content {
+      min-height: 0;
+    }
+    
+    &.is-open {
+      grid-template-rows: 1fr;
+      
+      .nav-collapse__content {
+        background: rgba(11, 20, 38, 0.98);
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+  
+  // Always visible on desktop
+  @media (min-width: 992px) {
+    display: block;
+    grid-template-rows: none;
+    overflow: visible;
+  }
+}

@@ -1,0 +1,86 @@
+---
+layout: default
+title: Full Width Layout Test
+permalink: /full-width-test/
+---
+
+<!-- Test page to verify full-width layout fixes -->
+<div class="full-width-test-page">
+  <section class="hero-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 4rem 2rem; text-align: center; color: white;">
+    <h1>Full Width Layout Test</h1>
+    <p class="lead">This page tests that the layout is truly full-width on all devices</p>
+  </section>
+
+  <section style="padding: 2rem; background: rgba(255, 215, 0, 0.1);">
+    <h2>Full Width Section</h2>
+    <p>This section should span the full width of the viewport on both desktop and mobile.</p>
+    <p>On desktop, you should see this content extend to the edges (with some padding).</p>
+    <p>On mobile, this should also be full width without extra side margins.</p>
+  </section>
+
+  <section style="padding: 2rem; background: rgba(102, 126, 234, 0.1);">
+    <h2>Navigation Test</h2>
+    <p><strong>Desktop:</strong> The navigation menu should be visible in the header and dropdown menus should be hidden until you click them.</p>
+    <p><strong>Mobile:</strong> The hamburger menu should be visible, and clicking it should toggle the navigation menu visibility.</p>
+    <p><strong>Dropdowns:</strong> Menu items with dropdowns should only show their submenu when clicked, not be visible all the time.</p>
+  </section>
+
+  <section style="padding: 2rem; background: rgba(118, 75, 162, 0.1);">
+    <h2>Grid Test</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+      <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px;">
+        <h3>Card 1</h3>
+        <p>This is a test card in a responsive grid</p>
+      </div>
+      <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px;">
+        <h3>Card 2</h3>
+        <p>This is a test card in a responsive grid</p>
+      </div>
+      <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px;">
+        <h3>Card 3</h3>
+        <p>This is a test card in a responsive grid</p>
+      </div>
+      <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px;">
+        <h3>Card 4</h3>
+        <p>This is a test card in a responsive grid</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 2rem; background: rgba(255, 215, 0, 0.1);">
+    <h2>Expected Behavior</h2>
+    <ul>
+      <li>✅ Content should span full viewport width on desktop</li>
+      <li>✅ Content should span full viewport width on mobile</li>
+      <li>✅ Header should be full width and properly sized on mobile</li>
+      <li>✅ Navigation dropdowns should be hidden by default</li>
+      <li>✅ Mobile menu should collapse/expand on hamburger click</li>
+      <li>✅ No horizontal scrollbar should appear</li>
+    </ul>
+  </section>
+
+  <section style="padding: 2rem; background: rgba(102, 126, 234, 0.1);">
+    <h2>Viewport Information</h2>
+    <p id="viewport-info" style="font-family: monospace; background: rgba(0, 0, 0, 0.5); padding: 1rem; border-radius: 4px;">
+      Loading viewport info...
+    </p>
+  </section>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function updateViewportInfo() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const docWidth = document.documentElement.scrollWidth;
+      const info = `Viewport Width: ${width}px
+Viewport Height: ${height}px
+Document Width: ${docWidth}px
+Device: ${width < 768 ? 'Mobile' : width < 1024 ? 'Tablet' : 'Desktop'}`;
+      document.getElementById('viewport-info').innerText = info;
+    }
+    
+    updateViewportInfo();
+    window.addEventListener('resize', updateViewportInfo);
+  });
+</script>

@@ -12,10 +12,9 @@ This component handles three types of navigation items:
               <!-- Dropdown menu item with subcategories -->
               <li class="navbar-item dropdown">
                   <!-- Parent dropdown link that toggles dropdown visibility -->
-                  <a class="navbar-link dropdown-toggle" href="#" 
+                  <a class="navbar-link" href="#" 
                      id="navbarDropdown{{ forloop.index }}" 
                      role="button" 
-                     data-bs-toggle="dropdown" 
                      aria-expanded="false"
                      aria-haspopup="true">
                       {{ nav.title }}
@@ -56,4 +55,4 @@ This component handles three types of navigation items:
   </ul>
   
 </nav>
-<!-- Note: mobile toggling is handled by the header's toggler button (#site-header-nav) -->
+<!-- Note: mobile toggling is handled by the header's toggler button with data-nav-toggle -->

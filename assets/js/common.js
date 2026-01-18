@@ -18,7 +18,9 @@ import "./common/header-scroll.js";   // Transparent header on scroll
 // Import custom animations and interactions
 // import "./common/animations.js";        // Handles site-wide custom animations and effects
 
-// Import Bootstrap JS for core functionality
-import "./common/bootstrap.js";      // Loads Bootstrap JS components dynamically
-//import "./fontawesome.js"
-import "./common/footer.js";        // Handles footer interactions and back-to-top button
+// Modern components (no Bootstrap) - Vanilla JavaScript
+import "./common/modern-dropdown.js";  // Modern dropdown component
+import "./common/modern-collapse.js";  // Modern collapse component
+
+// Footer interactions
+import "./common/footer.js";          // Handles footer interactions and back-to-top button
