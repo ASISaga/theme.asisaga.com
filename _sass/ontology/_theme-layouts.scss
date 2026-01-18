@@ -44,7 +44,8 @@
 // ============================================================================
 
 .header-wrapper {
-  @include genesis-entity('primary');  // Elevated header
+  // No entity styling - header itself has styling
+  width: 100%;
 }
 
 .site-header {
@@ -91,7 +92,8 @@
 // ============================================================================
 
 .footer-wrapper {
-  @include genesis-entity('secondary');  // Footer container
+  // No entity styling - footer itself has styling
+  width: 100%;
 }
 
 .site-footer {
@@ -417,8 +419,10 @@
 
 // Default layout
 .site-main {
-  @include genesis-environment('focused');  // Centered content
+  // No environment constraint - allow full width for subdomain layouts
+  // Individual page layouts can apply their own constraints if needed
   @include genesis-entity('primary');       // Main content area
+  width: 100%;
 }
 
 // Archive layout
