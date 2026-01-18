@@ -1,6 +1,7 @@
 @use 'sass:color';
 
-// Futuristic Responsive Navbar - Enhanced for Bootstrap 5.3+
+// Modern Responsive Navbar - No Bootstrap Required
+// Uses modern CSS with vanilla JavaScript enhancement
 
 // The main navigation container
 .site-navbar {
@@ -77,73 +78,92 @@
       }
     }
     
-    &:focus {
+    &:focus-visible {
       outline: none;
       box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.3);
     }
+  }
 
-    // Styling for dropdown toggle links
-    &.dropdown-toggle {
+  // Modern dropdown using CSS (no Bootstrap)
+  .dropdown {
+    position: relative;
+    
+    // Dropdown toggle
+    .navbar-link {
       &::after {
+        content: "";
         display: inline-block;
         margin-left: 0.5rem;
         vertical-align: 0.15em;
-        content: "";
+        width: 0;
+        height: 0;
         border-top: 0.3em solid;
         border-right: 0.3em solid transparent;
         border-bottom: 0;
         border-left: 0.3em solid transparent;
         transition: transform 0.3s ease;
       }
+    }
+    
+    // Dropdown menu - uses modern CSS
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 1000;
+      min-width: 12rem;
+      padding: 0.5rem 0;
+      margin: 0.5rem 0 0;
+      font-size: 1rem;
+      text-align: left;
+      list-style: none;
+      background: rgba(11, 20, 38, 0.98);
+      backdrop-filter: blur(10px);
+      background-clip: padding-box;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
       
-      &[aria-expanded="true"]::after {
-        transform: rotate(180deg);
+      // Hidden by default - modern CSS approach
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+      
+      // Mobile full-width dropdown
+      @media (max-width: 991px) {
+        position: static;
+        width: 100%;
+        margin-top: 0.5rem;
       }
     }
-  }
-
-  // Extend Bootstrap dropdown to be relative positioned when inside navbar-item
-  .dropdown {
-    position: relative;
-  }
-
-  // Styling for the dropdown menu - Enhanced with modern design
-  .dropdown-menu {
-    // Hidden by default per Bootstrap dropdown component specification
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    min-width: 12rem;
-    padding: 0.5rem 0;
-    margin: 0.5rem 0 0;
-    font-size: 1rem;
-    color: $navbar-dropdown-item-color;
-    text-align: left;
-    list-style: none;
-    background: rgba(11, 20, 38, 0.98);
-    backdrop-filter: blur(10px);
-    background-clip: padding-box;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     
-    // Show when active
-    &.show {
-      display: block;
+    // Show dropdown on hover (desktop) or with .is-open class (mobile/JS)
+    &:hover .dropdown-menu,
+    &:focus-within .dropdown-menu {
+      @media (min-width: 992px) {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
     }
     
-    // Mobile full-width dropdown
-    @media (max-width: 991px) {
-      position: static;
-      width: 100%;
-      margin-top: 0.5rem;
-      border-radius: 0.5rem;
+    // JS-controlled state for mobile
+    .dropdown-menu.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    // Rotate arrow when open
+    &:hover .navbar-link::after,
+    &:focus-within .navbar-link::after,
+    .navbar-link[aria-expanded="true"]::after {
+      transform: rotate(180deg);
     }
   }
 
-  // Styling for individual items within a dropdown menu
+  // Dropdown items
   .dropdown-item {
     display: block;
     width: 100%;
@@ -165,13 +185,13 @@
       transform: translateX(5px);
     }
     
-    &:focus {
+    &:focus-visible {
       outline: none;
       box-shadow: inset 0 0 0 2px rgba(255, 215, 0, 0.3);
     }
   }
   
-  // Styling for dividers within a dropdown menu
+  // Dropdown divider
   .dropdown-divider {
     height: 0;
     margin: 0.5rem 0;

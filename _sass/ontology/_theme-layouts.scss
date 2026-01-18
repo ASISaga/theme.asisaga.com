@@ -965,22 +965,55 @@
   @include genesis-state('stable');  // Focus state styling
 }
 
-// Collapse utility (for mobile navigation)
+// Collapse utility (for mobile navigation) - Modern CSS Grid approach
 .collapse {
-  // Bootstrap collapse - hidden by default
-  display: none;
+  // Modern CSS Grid animation for smooth collapse
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+  overflow: hidden;
   
-  &.show {
-    display: block;
+  // Inner content wrapper (required for grid animation)
+  > * {
+    min-height: 0;
+  }
+  
+  // Show state
+  &.is-open {
+    grid-template-rows: 1fr;
   }
   
   // Collapsing animation state
-  &.collapsing {
-    display: block;
-    transition: height 0.35s ease;
+  &.is-collapsing {
     overflow: hidden;
   }
 }
+
+// Mobile navigation specific collapse
+.nav-collapse {
+  @media (max-width: 991px) {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+    overflow: hidden;
+    
+    > * {
+      min-height: 0;
+    }
+    
+    &.is-open {
+      grid-template-rows: 1fr;
+    }
+  }
+  
+  // Always visible on desktop
+  @media (min-width: 992px) {
+    display: block;
+    grid-template-rows: none;
+    overflow: visible;
+  }
+}
+
 
 // ============================================================================
 // RESPONSIVE CONTAINER UTILITIES (Legacy support during migration)

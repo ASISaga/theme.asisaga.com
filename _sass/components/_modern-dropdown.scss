@@ -1,0 +1,138 @@
+/**
+ * Modern CSS Dropdown - No Bootstrap Required
+ * Uses :focus-within and modern CSS for accessibility
+ */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  
+  // Dropdown toggle button
+  &__toggle {
+    cursor: pointer;
+    user-select: none;
+    
+    // Arrow indicator
+    &::after {
+      content: "";
+      display: inline-block;
+      margin-left: 0.5rem;
+      vertical-align: 0.15em;
+      width: 0;
+      height: 0;
+      border-top: 0.3em solid;
+      border-right: 0.3em solid transparent;
+      border-bottom: 0;
+      border-left: 0.3em solid transparent;
+      transition: transform 0.3s ease;
+    }
+  }
+  
+  // Dropdown menu
+  &__menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    min-width: 12rem;
+    padding: 0.5rem 0;
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
+    text-align: left;
+    list-style: none;
+    background: rgba(11, 20, 38, 0.98);
+    backdrop-filter: blur(10px);
+    background-clip: padding-box;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    
+    // Hidden by default
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    
+    // Mobile full-width dropdown
+    @media (max-width: 991px) {
+      position: static;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+  }
+  
+  // Show dropdown on hover or focus-within
+  &:hover &__menu,
+  &:focus-within &__menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  // Rotate arrow when open
+  &:hover &__toggle::after,
+  &:focus-within &__toggle::after {
+    transform: rotate(180deg);
+  }
+  
+  // Dropdown items
+  &__item {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background: transparent;
+    border: 0;
+    transition: all 0.2s ease;
+    
+    &:hover,
+    &:focus {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(5px);
+      outline: none;
+    }
+    
+    &:focus-visible {
+      box-shadow: inset 0 0 0 2px rgba(255, 215, 0, 0.3);
+    }
+  }
+  
+  // Dropdown divider
+  &__divider {
+    height: 0;
+    margin: 0.5rem 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0.3;
+  }
+}
+
+// JavaScript-enhanced version (for better mobile control)
+.dropdown[data-dropdown-enhanced] {
+  .dropdown__menu {
+    // Keep hidden by default for JS-enhanced dropdowns
+    &:not(.is-open) {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+    }
+    
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+  
+  // Don't use hover on JS-enhanced dropdowns on mobile
+  @media (max-width: 991px) {
+    &:hover .dropdown__menu:not(.is-open) {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
