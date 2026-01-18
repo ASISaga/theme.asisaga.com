@@ -1,0 +1,84 @@
+---
+layout: default
+title: Full Width Layout Demo
+---
+
+<!-- 
+This demo page tests the full-width layout without wrapper constraints
+to verify subdomain websites can use full viewport width
+-->
+
+<style>
+  .full-width-demo {
+    width: 100%;
+    padding: 2rem;
+    background: linear-gradient(135deg, oklch(0.15 0.04 245) 0%, oklch(0.25 0.06 280) 100%);
+    border: 2px solid oklch(0.88 0.18 95);
+    margin-bottom: 2rem;
+  }
+  
+  .full-width-demo h2 {
+    color: oklch(0.88 0.18 95);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .full-width-demo p {
+    color: oklch(0.98 0.01 90);
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  
+  .width-indicator {
+    background: oklch(0.20 0.04 245 / 0.8);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    color: oklch(0.75 0.15 210);
+    font-family: monospace;
+  }
+  
+  .constrained-demo {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: oklch(0.20 0.04 245 / 0.5);
+    border: 1px solid oklch(0.55 0.25 290);
+  }
+  
+  .constrained-demo h2 {
+    color: oklch(0.88 0.18 95);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+</style>
+
+<div class="full-width-demo">
+  <h2>✓ Full Width Layout Test</h2>
+  <p>This section should span the full viewport width on all screen sizes.</p>
+  <div class="width-indicator">
+    Current layout-container width: 100% (no max-width constraint)<br>
+    Current content-wrapper width: 100% (no max-width constraint)
+  </div>
+</div>
+
+<div class="constrained-demo">
+  <h2>↔ Constrained Width Demo (1200px max)</h2>
+  <p>This section has a max-width of 1200px to show the contrast with full-width layout.</p>
+  <p>Individual page wrappers can still apply their own constraints when needed for readability.</p>
+</div>
+
+<div class="full-width-demo">
+  <h2>📱 Mobile Behavior</h2>
+  <p>On mobile devices (< 768px), this should still span the full width of the screen without being constrained to half-width.</p>
+</div>
+
+<div class="constrained-demo">
+  <h2>✅ Verification Points</h2>
+  <ul style="color: oklch(0.98 0.01 90); line-height: 1.8;">
+    <li><strong>Desktop:</strong> Full-width sections touch both edges of viewport</li>
+    <li><strong>Mobile:</strong> Content is full-width, not half-width</li>
+    <li><strong>Tablet:</strong> Responsive padding maintains touch-friendliness</li>
+    <li><strong>Constrained sections:</strong> Still work with max-width when needed</li>
+  </ul>
+</div>
