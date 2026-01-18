@@ -87,6 +87,118 @@
       grid-template-columns: repeat(12, 1fr);
     }
   }
+  @else if $logic == 'navigation-primary' {
+    // Main site navigation - horizontal desktop → mobile drawer
+    // Desktop: horizontal header
+    @media (min-width: 768px) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      gap: var(--space-nav, clamp(1rem, 2vw, 2rem));
+      padding: var(--padding-nav, clamp(1rem, 2vw, 1.5rem));
+    }
+    
+    // Mobile: off-canvas drawer pattern
+    @media (max-width: 767px) {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 80%;
+      max-width: 320px;
+      height: 100vh;
+      padding: 2rem 1.5rem;
+      transition: left 0.3s ease-in-out;
+      z-index: 1001;
+      overflow-y: auto;
+      
+      // Apply glassmorphism to mobile nav
+      background: var(--glass-heavy, oklch(0.20 0.04 245 / 0.95));
+      backdrop-filter: blur(20px);
+      box-shadow: 2px 0 20px oklch(0.10 0.03 250 / 0.3);
+      
+      // Open state (controlled by JavaScript)
+      &.nav-open {
+        left: 0;
+      }
+      
+      // Navigation items stack vertically on mobile
+      > * {
+        display: block;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+  @else if $logic == 'navigation-secondary' {
+    // Contextual navigation - breadcrumbs, footer nav
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-nav-secondary, clamp(0.5rem, 1vw, 1rem));
+    align-items: center;
+    
+    // Desktop: full visibility
+    @media (min-width: 768px) {
+      justify-content: flex-start;
+      
+      > * {
+        display: inline-flex;
+      }
+    }
+    
+    // Tablet: condensed with potential overflow
+    @media (min-width: 768px) and (max-width: 1023px) {
+      font-size: 0.9rem;
+    }
+    
+    // Mobile: minimal or hidden (controlled by subdomain)
+    @media (max-width: 767px) {
+      font-size: 0.85rem;
+      justify-content: center;
+      
+      // Allow subdomains to hide non-essential items
+      .secondary-only {
+        display: none;
+      }
+    }
+  }
+  @else if $logic == 'interaction-form' {
+    // Form layout optimized for data entry
+    display: grid;
+    gap: 1.5rem;
+    
+    // Mobile: force single column for clarity
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    
+    // Tablet: 2-column where appropriate
+    @media (min-width: 768px) and (max-width: 1023px) {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem 1.25rem;
+    }
+    
+    // Desktop: allow multi-column with intelligent fitting
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem 1.5rem;
+    }
+    
+    // Form-specific child elements
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    // Ensure full-width elements span all columns
+    .form-full-width {
+      grid-column: 1 / -1;
+    }
+  }
 }
 
 // ============================================================================
@@ -149,18 +261,12 @@
     overflow: hidden;
     border-radius: var(--radius-bento, clamp(0.75rem, 1.5vw, 1.25rem));
     
-    img {
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-    
-    // Aspect ratio preservation (16:9 default)
+    // Aspect ratio preservation (configurable via CSS custom property)
+    // Default: 16:9 (56.25%), also supports: 4:3 (75%), 1:1 (100%), 21:9 (42.86%)
     &::before {
       content: '';
       display: block;
-      padding-top: 56.25%; // 16:9 ratio
+      padding-top: var(--aspect-ratio, 56.25%); // Default 16:9
     }
     
     // Position image absolutely within aspect ratio container
@@ -170,15 +276,38 @@
       left: 0;
       width: 100%;
       height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    // Common aspect ratio modifiers (for convenience)
+    &.ratio-square {
+      --aspect-ratio: 100%; // 1:1
+    }
+    
+    &.ratio-4-3 {
+      --aspect-ratio: 75%; // 4:3
+    }
+    
+    &.ratio-21-9 {
+      --aspect-ratio: 42.86%; // 21:9 ultrawide
+    }
+    
+    &.ratio-portrait {
+      --aspect-ratio: 133.33%; // 3:4 portrait
     }
   }
   @else if $nature == 'embed-responsive' {
     // Embedded content (iframe, video) that maintains aspect ratio
     position: relative;
     width: 100%;
-    padding-top: 56.25%; // Default 16:9 aspect ratio
     overflow: hidden;
     border-radius: var(--radius-bento, clamp(0.75rem, 1.5vw, 1.25rem));
+    
+    // Aspect ratio preservation (configurable via CSS custom property)
+    // Default: 16:9 (56.25%), also supports: 4:3 (75%), 1:1 (100%), 21:9 (42.86%)
+    padding-top: var(--aspect-ratio, 56.25%); // Default 16:9
     
     iframe,
     embed,
@@ -190,6 +319,23 @@
       width: 100%;
       height: 100%;
       border: 0;
+    }
+    
+    // Common aspect ratio modifiers
+    &.ratio-square {
+      --aspect-ratio: 100%; // 1:1
+    }
+    
+    &.ratio-4-3 {
+      --aspect-ratio: 75%; // 4:3 (traditional video)
+    }
+    
+    &.ratio-21-9 {
+      --aspect-ratio: 42.86%; // 21:9 ultrawide
+    }
+    
+    &.ratio-9-16 {
+      --aspect-ratio: 177.78%; // 9:16 vertical video (TikTok, Stories)
     }
   }
 }
@@ -481,6 +627,65 @@
       outline-offset: 2px;
     }
   }
+  @else if $vector == 'input-primary' {
+    // Primary form input with responsive touch optimization
+    display: block;
+    width: 100%;
+    font-size: 1rem; // 16px minimum prevents iOS zoom
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-input, clamp(0.375rem, 0.75vw, 0.5rem));
+    background: var(--input-bg, oklch(0.18 0.03 248 / 0.6));
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    border: 1px solid var(--border-input, oklch(0.30 0.04 250 / 0.5));
+    transition: all var(--motion-snap, 0.2s ease);
+    
+    // Mobile: larger touch target
+    @media (max-width: 767px) {
+      min-height: 44px;
+      padding: 0.875rem 1rem;
+      font-size: 1rem; // Ensure 16px to prevent zoom
+    }
+    
+    // Tablet: balanced sizing
+    @media (min-width: 768px) and (max-width: 1023px) {
+      min-height: 42px;
+      padding: 0.75rem 1rem;
+    }
+    
+    // Desktop: standard sizing
+    @media (min-width: 1024px) {
+      min-height: 40px;
+      padding: 0.625rem 1rem;
+    }
+    
+    &:hover {
+      background: var(--input-hover, oklch(0.22 0.04 246 / 0.7));
+      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.6));
+    }
+    
+    &:focus {
+      outline: none;
+      background: var(--input-focus, oklch(0.20 0.04 245 / 0.8));
+      border-color: var(--accent-neon, oklch(0.88 0.18 95));
+      box-shadow: 0 0 0 3px var(--accent-neon, oklch(0.88 0.18 95 / 0.2));
+    }
+    
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: var(--input-disabled, oklch(0.16 0.02 250 / 0.4));
+    }
+    
+    // Invalid state
+    &:invalid,
+    &.error {
+      border-color: var(--danger-border, oklch(0.55 0.25 25));
+      
+      &:focus {
+        box-shadow: 0 0 0 3px var(--danger-border, oklch(0.55 0.25 25 / 0.2));
+      }
+    }
+  }
 }
 
 // ============================================================================
@@ -556,6 +761,41 @@
       oklch(0.75 0.15 210 / 0.05) 10px,
       oklch(0.75 0.15 210 / 0.05) 20px
     );
+  }
+  @else if $condition == 'scroll-triggered' {
+    // Content with scroll-based animations
+    // Initial state (before scroll trigger)
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+    
+    // Triggered state (added by JavaScript)
+    &.aos-animate,
+    &.scroll-triggered,
+    &.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    // Respect reduced motion preference (accessibility)
+    @media (prefers-reduced-motion: reduce) {
+      opacity: 1;
+      transform: none;
+      transition: none;
+      will-change: auto;
+    }
+    
+    // Mobile: simpler, faster animations for performance
+    @media (max-width: 767px) {
+      transition-duration: 0.4s;
+      transform: translateY(20px); // Shorter distance
+    }
+    
+    // Desktop: allow richer animations
+    @media (min-width: 1024px) {
+      transition-duration: 0.7s;
+    }
   }
 }
 
@@ -647,6 +887,45 @@
     // Ultrawide: cap at 4 columns
     @media (min-width: 1920px) {
       grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  @else if $vibe == 'viewport-aware' {
+    // Content sized relative to viewport (hero sections)
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+    // Use modern dynamic viewport height (accounts for mobile browser chrome)
+    min-height: 100vh;
+    min-height: 100dvh; // Dynamic viewport height for mobile
+    
+    // Mobile: reduce height to account for browser chrome
+    @media (max-width: 767px) {
+      min-height: 70vh;
+      min-height: 70dvh;
+      padding: 2rem 1rem;
+    }
+    
+    // Tablet: moderate viewport usage
+    @media (min-width: 768px) and (max-width: 1023px) {
+      min-height: 85vh;
+      min-height: 85dvh;
+      padding: 3rem 2rem;
+    }
+    
+    // Desktop: full viewport
+    @media (min-width: 1024px) {
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: 4rem 3rem;
+    }
+    
+    // Prevent content overflow on short viewports
+    @media (max-height: 600px) {
+      min-height: auto;
+      padding: 3rem 1rem;
     }
   }
 }

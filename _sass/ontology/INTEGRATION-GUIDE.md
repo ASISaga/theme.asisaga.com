@@ -76,6 +76,9 @@ For each class in your HTML, determine its ontological role and apply the approp
 - `'associative'` - Network where connections outweigh nodes (flexbox wrap)
 - `'chronological'` - Time-linear stream of sequential events (single column)
 - `'manifest'` - High-density dashboard for system oversight (12-column grid)
+- `'navigation-primary'` ⭐ **NEW v2.2.0** - Main site navigation (horizontal desktop → mobile drawer)
+- `'navigation-secondary'` ⭐ **NEW v2.2.0** - Contextual navigation (breadcrumbs, footer nav)
+- `'interaction-form'` ⭐ **NEW v2.2.0** - Form layout optimized for data entry
 
 **Example:**
 ```scss
@@ -85,6 +88,15 @@ For each class in your HTML, determine its ontological role and apply the approp
 
 .project-grid {
   @include genesis-environment('distributed');  // Card grid layout
+}
+
+// New in v2.2.0: Navigation and forms
+.site-nav {
+  @include genesis-environment('navigation-primary');  // Responsive navigation
+}
+
+.contact-form-fields {
+  @include genesis-environment('interaction-form');  // Responsive form layout
 }
 ```
 
@@ -121,8 +133,24 @@ For each class in your HTML, determine its ontological role and apply the approp
   @include genesis-entity('image-adaptive');  // Responsive 16:9 image
 }
 
+// New in v2.2.0: Configurable aspect ratios
+.portrait-image {
+  @include genesis-entity('image-adaptive');
+  --aspect-ratio: 133.33%; // 3:4 portrait
+}
+
+// Or use convenience classes:
+.square-image.ratio-square {
+  @include genesis-entity('image-adaptive');  // Automatic 1:1
+}
+
 .video-embed-container {
   @include genesis-entity('embed-responsive'); // YouTube/Vimeo responsive wrapper
+}
+
+// Vertical video (TikTok, Instagram Stories):
+.vertical-video.ratio-9-16 {
+  @include genesis-entity('embed-responsive');
 }
 ```
 
@@ -167,6 +195,7 @@ For each class in your HTML, determine its ontological role and apply the approp
 - `'inquiry'` - A request for more data / expand / search (secondary button, outlined)
 - `'destructive'` - Permanent removal or system reset (danger button, red tones)
 - `'social'` - Neural link to other observers (social sharing button, rounded)
+- `'input-primary'` ⭐ **NEW v2.2.0** - Primary form input with responsive touch optimization
 
 **Example:**
 ```scss
@@ -185,6 +214,15 @@ For each class in your HTML, determine its ontological role and apply the approp
 .delete-button {
   @include genesis-synapse('destructive');  // Dangerous action
 }
+
+// New in v2.2.0: Form inputs
+.email-field {
+  @include genesis-synapse('input-primary');  // Responsive form input
+}
+
+.password-field {
+  @include genesis-synapse('input-primary');  // Automatic WCAG compliance
+}
 ```
 
 ---
@@ -197,6 +235,7 @@ For each class in your HTML, determine its ontological role and apply the approp
 - `'deprecated'` - Information is no longer verified (strikethrough, warning icon)
 - `'locked'` - Data is immutable and requires clearance (blur effect, lock icon)
 - `'simulated'` - Data is a projection, not live (dashed border, diagonal stripes)
+- `'scroll-triggered'` ⭐ **NEW v2.2.0** - Content with scroll-based animations
 
 **Example:**
 ```scss
@@ -211,6 +250,12 @@ For each class in your HTML, determine its ontological role and apply the approp
 .private-content {
   @include genesis-state('locked');        // Access restricted
 }
+
+// New in v2.2.0: Scroll animations
+.fade-in-section {
+  @include genesis-state('scroll-triggered');  // Fade in on scroll
+}
+// Requires JavaScript to add .aos-animate, .scroll-triggered, or .is-visible class
 ```
 
 ---
@@ -224,6 +269,7 @@ For each class in your HTML, determine its ontological role and apply the approp
 - `'vibrant'` - High-energy, data-saturated, high-neon (colorful, energetic)
 - `'spacious-mobile'` ⭐ **NEW v2.1.0** - Generous spacing on mobile for touch-friendliness
 - `'dense-desktop'` ⭐ **NEW v2.1.0** - High information density on large screens
+- `'viewport-aware'` ⭐ **NEW v2.2.0** - Content sized relative to viewport (hero sections)
 
 **Example:**
 ```scss
@@ -246,6 +292,11 @@ For each class in your HTML, determine its ontological role and apply the approp
 
 .team-grid {
   @include genesis-atmosphere('dense-desktop');   // 1 col mobile → 4 cols desktop
+}
+
+// New in v2.2.0: Viewport awareness
+.splash-screen {
+  @include genesis-atmosphere('viewport-aware');  // Full-height hero section
 }
 ```
 
