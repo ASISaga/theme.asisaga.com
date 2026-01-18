@@ -109,7 +109,8 @@
 
   // Styling for the dropdown menu - Enhanced with modern design
   .dropdown-menu {
-    display: none; // Hidden by default
+    // Hidden by default per Bootstrap dropdown component specification
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
