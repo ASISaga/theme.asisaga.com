@@ -72,9 +72,13 @@ default.html (Root)
 - Skip-to-content link
 - Accessibility landmarks
 
-**Grid**: Container in content-wrapper (optional, depends on child layout)
+**Layout Behavior**:
+- `.layout-container`: Full viewport width (`width: 100%`, no max-width constraint)
+- `.content-wrapper`: Full width (`width: 100%`, no max-width constraint)
+- Individual page layouts can apply their own width constraints via specific wrapper classes
+- This allows subdomain websites to use full viewport width without constraints
 
-**SCSS**: `_sass/layouts/_default.scss`
+**SCSS**: `_sass/layouts/_default.scss`, `_sass/ontology/_theme-layouts.scss`
 
 ## Base Templates
 
@@ -804,6 +808,77 @@ When creating or modifying layouts:
 - [ ] Sample page created in `_samples/`
 - [ ] Documented in layout taxonomy
 - [ ] Grid rules followed
+
+## Width Constraints and Full-Width Layouts
+
+### Default Behavior (Full Width)
+
+As of the January 2026 update, the theme's base layout structure allows **full viewport width** by default:
+
+- `.layout-container`: `width: 100%` with no max-width constraint
+- `.content-wrapper`: `width: 100%` with no max-width constraint
+- `.page-layout`: Uses `genesis-environment('chronological')` for vertical stacking without width constraints
+
+This enables subdomain websites to span the full viewport width on all screen sizes without being constrained.
+
+### Individual Layout Constraints
+
+Specific page layouts can still apply their own width constraints when appropriate for content readability:
+
+**Standard Content Layouts** (max-width: 1200px):
+- `.article-wrapper`, `.post-wrapper`, `.landing-wrapper`
+- `.archive-wrapper`, `.faq-wrapper`, `.profile-wrapper`
+- `.gallery-wrapper`, `.form-wrapper`, `.minimal-wrapper`
+- `.scrollable-wrapper`, `.fixed-height-wrapper`
+
+**Wide Layouts** (max-width: 1600px):
+- `.settings-wrapper`, `.docs-wrapper`
+
+These constraints are defined in `_sass/base/_layout-wrappers.scss` and include:
+- Responsive padding: `clamp(1rem, 3vw, 2rem)`
+- Auto-centering: `margin-inline: auto`
+- Layout containment: `contain: layout style`
+
+### Creating Full-Width Content
+
+To create full-width content in a subdomain:
+
+1. **Use the default layout** without specific wrapper classes:
+   ```html
+   ---
+   layout: default
+   ---
+   <div class="my-full-width-content">
+     <!-- Content spans full viewport width -->
+   </div>
+   ```
+
+2. **Mix full-width and constrained sections**:
+   ```html
+   <div class="full-width-section">
+     <!-- Full viewport width -->
+   </div>
+   
+   <div class="article-wrapper">
+     <!-- Constrained to 1200px max-width -->
+   </div>
+   ```
+
+3. **Demo page**: See `docs/full-width-demo.html` for a working example
+
+### Migration Notes
+
+**Before (Constrained)**:
+- `.layout-container` used `genesis-environment('focused')` → 70ch max-width
+- `.content-wrapper` used `genesis-environment('focused')` → 70ch max-width
+- Result: Content constrained to ~70 character width on desktop, half-width on mobile
+
+**After (Full Width)**:
+- `.layout-container` has `width: 100%` and `min-height: 100vh`
+- `.content-wrapper` has `width: 100%`
+- Result: Full viewport width unless layout-specific wrapper applies constraint
+
+Individual page layouts that need width constraints already have them through their specific wrapper classes in `_sass/base/_layout-wrappers.scss`.
 
 ## Related Documentation
 
