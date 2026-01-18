@@ -32,6 +32,8 @@
    * @param $nature [latent]: Backgrounded info awaiting activation.
    * @param $nature [aggregate]: A container summarizing multiple entities.
    * @param $nature [ancestral]: Archived or historical data (legacy state).
+   * @param $nature [image-adaptive]: Image that loads appropriate resolution for viewport.
+   * @param $nature [embed-responsive]: Embedded content that maintains aspect ratio.
    */
   @include _theme-engine-entity($nature);
 }
@@ -92,6 +94,8 @@
    * @param $vibe [ethereal]: High-transparency, light-based focus.
    * @param $vibe [void]: Deep-space, high-contrast, zero-distraction.
    * @param $vibe [vibrant]: High-energy, data-saturated, high-neon.
+   * @param $vibe [spacious-mobile]: Generous spacing on mobile for touch-friendliness.
+   * @param $vibe [dense-desktop]: High information density on large screens.
    */
   @include _theme-engine-atmosphere($vibe);
 }

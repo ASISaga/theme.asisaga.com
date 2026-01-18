@@ -17,10 +17,33 @@
   isolation: isolate;
   
   @if $logic == 'distributed' {
-    // Autonomous entities in non-linear grid (Bento)
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-    gap: var(--space-bento, clamp(1.5rem, 3vw, 2.5rem));
+    // Autonomous entities in non-linear grid (Bento) - responsive by default
     container-type: inline-size;
+    
+    // Mobile: single column for clarity
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    // Tablet: 2 columns
+    @media (min-width: 768px) and (max-width: 1023px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+    }
+    
+    // Desktop: auto-fit with min/max
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    // Ultrawide: cap at 4 columns for readability
+    @media (min-width: 1920px) {
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 1600px;
+      margin: 0 auto;
+    }
   } 
   @else if $logic == 'focused' {
     // Singular narrative thread for deep reading
@@ -45,10 +68,24 @@
     position: relative;
   }
   @else if $logic == 'manifest' {
-    // High-density dashboard for system oversight
-    grid-template-columns: repeat(12, 1fr);
+    // High-density dashboard for system oversight - responsive grid
     gap: var(--space-tight, clamp(0.75rem, 1.5vw, 1rem));
     container-type: inline-size;
+    
+    // Mobile: simplified 2-column layout
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    // Tablet: 6-column grid
+    @media (min-width: 768px) and (max-width: 1023px) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+    
+    // Desktop: full 12-column grid
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(12, 1fr);
+    }
   }
 }
 
@@ -104,6 +141,57 @@
     opacity: 0.8;
     padding: var(--padding-entity-secondary, clamp(1rem, 2vw, 1.5rem));
   }
+  @else if $nature == 'image-adaptive' {
+    // Responsive image that maintains aspect ratio and loads appropriate resolution
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-radius: var(--radius-bento, clamp(0.75rem, 1.5vw, 1.25rem));
+    
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    
+    // Aspect ratio preservation (16:9 default)
+    &::before {
+      content: '';
+      display: block;
+      padding-top: 56.25%; // 16:9 ratio
+    }
+    
+    // Position image absolutely within aspect ratio container
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  @else if $nature == 'embed-responsive' {
+    // Embedded content (iframe, video) that maintains aspect ratio
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; // Default 16:9 aspect ratio
+    overflow: hidden;
+    border-radius: var(--radius-bento, clamp(0.75rem, 1.5vw, 1.25rem));
+    
+    iframe,
+    embed,
+    object,
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
 }
 
 // ============================================================================
@@ -111,21 +199,43 @@
 // ============================================================================
 @mixin _theme-engine-cognition($intent) {
   @if $intent == 'axiom' {
-    // Foundational thesis or headline
+    // Foundational thesis or headline - responsive scaling
     font-size: var(--size-hero, clamp(2rem, 5vw, 3.5rem));
     font-weight: 800;
     letter-spacing: -0.03em;
     line-height: 1.1;
     color: var(--text-vibrant, oklch(0.98 0.01 90));
     font-family: var(--font-consciousness, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+    
+    // Enhanced mobile readability
+    @media (max-width: 767px) {
+      font-size: 2rem; // 32px minimum on mobile
+      line-height: 1.25;
+    }
+    
+    @media (min-width: 768px) and (max-width: 1023px) {
+      font-size: 2.5rem; // 40px on tablet
+      line-height: 1.2;
+    }
+    
+    @media (min-width: 1024px) {
+      font-size: 3.5rem; // 56px on desktop
+      line-height: 1.15;
+    }
   }
   @else if $intent == 'discourse' {
-    // Standard information exchange (prose)
+    // Standard information exchange (prose) - responsive scaling
     font-size: var(--size-body, clamp(1rem, 1.5vw, 1.125rem));
     font-weight: 400;
     line-height: 1.6;
     color: var(--text-primary, oklch(0.98 0.01 90));
     font-family: var(--font-wisdom, Georgia, "Times New Roman", serif);
+    
+    // Ensure mobile readability (16px minimum to prevent iOS zoom)
+    @media (max-width: 767px) {
+      font-size: 1rem; // Never smaller than 16px
+      line-height: 1.65; // Slightly more leading for mobile
+    }
   }
   @else if $intent == 'protocol' {
     // Technical/mathematical proof (code/logs)
@@ -137,14 +247,26 @@
     padding: 0.2em 0.5em;
     border-radius: 0.25em;
     border: 1px solid var(--border-code, oklch(0.25 0.04 250));
+    
+    // Mobile: ensure readable code size
+    @media (max-width: 767px) {
+      font-size: 0.875rem; // 14px minimum for code
+      line-height: 1.6;
+    }
   }
   @else if $intent == 'gloss' {
-    // Minor annotations or citations
+    // Minor annotations or citations - ensure minimum readability
     font-size: var(--size-small, clamp(0.8rem, 1vw, 0.875rem));
     font-weight: 400;
     line-height: 1.4;
     color: var(--text-secondary, oklch(0.70 0.02 220));
     opacity: 0.85;
+    
+    // Mobile: minimum 14px for accessibility
+    @media (max-width: 767px) {
+      font-size: 0.875rem; // 14px minimum
+      line-height: 1.5;
+    }
   }
   @else if $intent == 'motive' {
     // Persuasive or instructional guidance
@@ -153,6 +275,11 @@
     line-height: 1.5;
     color: var(--text-accent, oklch(0.85 0.16 85));
     font-family: var(--font-sacred, Montserrat, sans-serif);
+    
+    // Mobile readability
+    @media (max-width: 767px) {
+      font-size: 1rem; // 16px minimum
+    }
   }
   @else if $intent == 'quantum' {
     // Small, high-density fragments (tags/chips)
@@ -165,6 +292,12 @@
     background: var(--bg-chip, oklch(0.20 0.04 245 / 0.6));
     border-radius: 999px;
     display: inline-block;
+    
+    // Mobile: ensure tag readability
+    @media (max-width: 767px) {
+      font-size: 0.75rem; // 12px for tags (acceptable for non-primary content)
+      letter-spacing: 0.08em; // More spacing on mobile for clarity
+    }
   }
 }
 
@@ -180,6 +313,23 @@
     color: var(--text-link, oklch(0.75 0.15 210));
     text-decoration: none;
     border-bottom: 1px solid transparent;
+    display: inline-block;
+    
+    // WCAG 2.1: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-height: 44px;
+      padding-block: 0.5rem;
+      
+      // Expand tap zone without visual change
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        z-index: -1;
+      }
+    }
     
     &:hover {
       color: var(--accent-neon, oklch(0.88 0.18 95));
@@ -204,6 +354,19 @@
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     font-weight: 600;
     font-size: var(--size-button, clamp(0.95rem, 1.2vw, 1.05rem));
+    
+    // WCAG 2.1: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.75rem 1.75rem;
+    }
+    
+    // Tablet: moderate sizing
+    @media (min-width: 768px) and (max-width: 1023px) {
+      min-height: 42px;
+      padding: 0.688rem 1.625rem;
+    }
     
     &:hover {
       background: var(--accent-neon-hover, oklch(0.92 0.20 95));
@@ -231,6 +394,17 @@
     border: 1px solid var(--border-subtle, oklch(0.30 0.04 250));
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     
+    // WCAG 2.1: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.75rem 1.5rem;
+    }
+    
+    @media (min-width: 768px) and (max-width: 1023px) {
+      min-height: 42px;
+    }
+    
     &:hover {
       background: var(--glass-hover, oklch(0.22 0.04 246));
       border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
@@ -243,11 +417,25 @@
   }
   @else if $vector == 'destructive' {
     // Permanent removal or system reset
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
     background: var(--danger-bg, oklch(0.45 0.22 25));
     color: var(--text-primary, oklch(0.98 0.01 90));
     border: 1px solid var(--danger-border, oklch(0.55 0.25 25));
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    
+    // WCAG 2.1: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.75rem 1.75rem;
+    }
+    
+    @media (min-width: 768px) and (max-width: 1023px) {
+      min-height: 42px;
+    }
     
     &:hover {
       background: var(--danger-hover, oklch(0.50 0.24 25));
@@ -269,6 +457,19 @@
     color: var(--text-primary, oklch(0.98 0.01 90));
     border: 1px solid var(--social-border, oklch(0.55 0.25 290));
     border-radius: 999px;
+    
+    // WCAG 2.1: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0.75rem;
+    }
+    
+    // Desktop: can be more compact
+    @media (min-width: 768px) {
+      min-width: 36px;
+      min-height: 36px;
+    }
     
     &:hover {
       background: var(--social-hover, oklch(0.55 0.25 290 / 0.5));
@@ -386,6 +587,67 @@
       0 0 20px var(--accent-neon, oklch(0.88 0.18 95 / 0.3)),
       inset 0 0 30px var(--accent-neural, oklch(0.55 0.25 290 / 0.2));
     backdrop-filter: blur(20px) saturate(2);
+  }
+  @else if $vibe == 'spacious-mobile' {
+    // Content that needs generous spacing on mobile for touch-friendliness
+    // Mobile: generous spacing
+    @media (max-width: 767px) {
+      padding: 3rem 1.5rem;
+      margin-bottom: 2.5rem;
+      
+      > * + * {
+        margin-top: 1.5rem;
+      }
+    }
+    
+    // Tablet: moderate spacing
+    @media (min-width: 768px) and (max-width: 1023px) {
+      padding: 2.5rem 2rem;
+      margin-bottom: 2rem;
+      
+      > * + * {
+        margin-top: 1.25rem;
+      }
+    }
+    
+    // Desktop: compact
+    @media (min-width: 1024px) {
+      padding: 2rem 3rem;
+      margin-bottom: 1.5rem;
+      
+      > * + * {
+        margin-top: 1rem;
+      }
+    }
+  }
+  @else if $vibe == 'dense-desktop' {
+    // Content that benefits from high information density on large screens
+    // Mobile: minimal density (single column, simple)
+    @media (max-width: 767px) {
+      > * {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+    }
+    
+    // Tablet: moderate density (2 columns)
+    @media (min-width: 768px) and (max-width: 1023px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    
+    // Desktop: high density (auto-fit grid)
+    @media (min-width: 1024px) {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    // Ultrawide: cap at 4 columns
+    @media (min-width: 1920px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 }
 
