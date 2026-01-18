@@ -136,7 +136,9 @@
   
   // Mobile menu toggle button - Enhanced futuristic design
   .site-header-toggler {
-    padding: 0.5rem 0.75rem;
+    padding: 0.75rem 1rem; // Increased from 0.5rem 0.75rem for better touch targets
+    min-width: 44px;  // WCAG AA minimum touch target
+    min-height: 44px; // WCAG AA minimum touch target
     margin-left: auto;
     border: 2px solid transparent;
     background: transparent;
@@ -144,6 +146,9 @@
     color: $header-toggle-color;
     transition: all 0.3s ease;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
     &:hover {
       background: rgba(255, 255, 255, 0.1);
@@ -186,14 +191,13 @@
     align-items: center;
     justify-content: flex-end;
     
-    // Mobile collapsed state
+    // Mobile collapsed state - using .is-open class for consistency with JS
     @media (max-width: 991px) {
-      &:not(.show) {
+      &:not(.is-open) {
         display: none;
       }
       
-      &.collapsing,
-      &.show {
+      &.is-open {
         display: block;
         background: rgba(11, 20, 38, 0.98);
         margin-top: 1rem;

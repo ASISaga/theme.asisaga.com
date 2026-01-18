@@ -6,8 +6,9 @@
 class ModernDropdown {
   constructor(element) {
     this.dropdown = element;
-    this.toggle = element.querySelector('.dropdown__toggle, [data-dropdown-toggle]');
-    this.menu = element.querySelector('.dropdown__menu, [data-dropdown-menu]');
+    // Support both generic dropdown and navbar-specific selectors
+    this.toggle = element.querySelector('.dropdown__toggle, [data-dropdown-toggle], .navbar-link');
+    this.menu = element.querySelector('.dropdown__menu, [data-dropdown-menu], .dropdown-menu');
     
     if (!this.toggle || !this.menu) return;
     
