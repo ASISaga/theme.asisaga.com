@@ -14,19 +14,23 @@
 // BASE LAYOUT STRUCTURE
 // ============================================================================
 
-// Main page container
+// Main page container - full width, no constraints
 .layout-container {
-  @include genesis-environment('focused');  // Centered layout
   @include genesis-atmosphere('neutral');   // Standard vibe
+  // No environment constraint - allow full viewport width
+  width: 100%;
+  min-height: 100vh;
 }
 
 .page-layout {
   @include genesis-environment('chronological');  // Vertical stack
 }
 
-// Content wrapper
+// Content wrapper - full width by default, let page content control width
 .content-wrapper {
-  @include genesis-environment('focused');  // Centered reading width
+  // No environment constraint - allow full width for subdomain layouts
+  // Individual page wrappers can apply their own constraints if needed
+  width: 100%;
 }
 
 // Skip link for accessibility

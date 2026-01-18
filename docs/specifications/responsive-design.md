@@ -97,9 +97,61 @@ $grid-breakpoints: (
 
 ## Grid System
 
+### Theme Layout Containers (January 2026 Update)
+
+**Full-width by default**:
+
+The theme's base layout structure (`default.html`) now provides full viewport width by default:
+
+```scss
+.layout-container {
+  width: 100%;          // Full viewport width
+  min-height: 100vh;    // Full viewport height
+}
+
+.content-wrapper {
+  width: 100%;          // No max-width constraint
+}
+
+.page-layout {
+  @include genesis-environment('chronological');  // Vertical stack, no width constraint
+}
+```
+
+**Individual layout wrappers** apply their own constraints when appropriate:
+
+```scss
+// Standard content layouts (max-width: 1200px)
+.article-wrapper,
+.post-wrapper,
+.landing-wrapper,
+.archive-wrapper,
+.gallery-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+}
+
+// Wide layouts (max-width: 1600px)
+.settings-wrapper,
+.docs-wrapper {
+  width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+}
+```
+
+This enables:
+- ✅ Subdomain websites can use full viewport width
+- ✅ No more forced 70ch constraint on all content
+- ✅ Individual layouts control their own width as needed
+- ✅ Responsive padding adapts to viewport size
+
 ### Bootstrap Grid
 
-**Container max-widths**:
+**Container max-widths** (Bootstrap compatibility layer - maintained for gradual migration to ontology system):
 
 ```scss
 $container-max-widths: (
