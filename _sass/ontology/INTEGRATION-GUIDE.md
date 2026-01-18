@@ -76,6 +76,9 @@ For each class in your HTML, determine its ontological role and apply the approp
 - `'associative'` - Network where connections outweigh nodes (flexbox wrap)
 - `'chronological'` - Time-linear stream of sequential events (single column)
 - `'manifest'` - High-density dashboard for system oversight (12-column grid)
+- `'navigation-primary'` ⭐ **NEW v2.2.0** - Main site navigation (horizontal desktop → mobile drawer)
+- `'navigation-secondary'` ⭐ **NEW v2.2.0** - Contextual navigation (breadcrumbs, footer nav)
+- `'interaction-form'` ⭐ **NEW v2.2.0** - Form layout optimized for data entry
 
 **Example:**
 ```scss
@@ -85,6 +88,15 @@ For each class in your HTML, determine its ontological role and apply the approp
 
 .project-grid {
   @include genesis-environment('distributed');  // Card grid layout
+}
+
+// New in v2.2.0: Navigation and forms
+.site-nav {
+  @include genesis-environment('navigation-primary');  // Responsive navigation
+}
+
+.contact-form-fields {
+  @include genesis-environment('interaction-form');  // Responsive form layout
 }
 ```
 
@@ -99,6 +111,8 @@ For each class in your HTML, determine its ontological role and apply the approp
 - `'latent'` - Backgrounded info awaiting activation (dimmed, grayscale filter)
 - `'aggregate'` - A container summarizing multiple entities (larger padding, container styling)
 - `'ancestral'` - Archived or historical data (muted, legacy appearance)
+- `'image-adaptive'` ⭐ **NEW v2.1.0** - Responsive image that maintains aspect ratio
+- `'embed-responsive'` ⭐ **NEW v2.1.0** - Embedded content (iframe, video) with aspect ratio
 
 **Example:**
 ```scss
@@ -112,6 +126,31 @@ For each class in your HTML, determine its ontological role and apply the approp
 
 .critical-alert {
   @include genesis-entity('imperative');   // Urgent notification
+}
+
+// New in v2.1.0: Media responsiveness
+.hero-image-container {
+  @include genesis-entity('image-adaptive');  // Responsive 16:9 image
+}
+
+// New in v2.2.0: Configurable aspect ratios
+.portrait-image {
+  @include genesis-entity('image-adaptive');
+  --aspect-ratio: 133.33%; // 3:4 portrait
+}
+
+// Or use convenience classes:
+.square-image.ratio-square {
+  @include genesis-entity('image-adaptive');  // Automatic 1:1
+}
+
+.video-embed-container {
+  @include genesis-entity('embed-responsive'); // YouTube/Vimeo responsive wrapper
+}
+
+// Vertical video (TikTok, Instagram Stories):
+.vertical-video.ratio-9-16 {
+  @include genesis-entity('embed-responsive');
 }
 ```
 
@@ -156,6 +195,7 @@ For each class in your HTML, determine its ontological role and apply the approp
 - `'inquiry'` - A request for more data / expand / search (secondary button, outlined)
 - `'destructive'` - Permanent removal or system reset (danger button, red tones)
 - `'social'` - Neural link to other observers (social sharing button, rounded)
+- `'input-primary'` ⭐ **NEW v2.2.0** - Primary form input with responsive touch optimization
 
 **Example:**
 ```scss
@@ -174,6 +214,15 @@ For each class in your HTML, determine its ontological role and apply the approp
 .delete-button {
   @include genesis-synapse('destructive');  // Dangerous action
 }
+
+// New in v2.2.0: Form inputs
+.email-field {
+  @include genesis-synapse('input-primary');  // Responsive form input
+}
+
+.password-field {
+  @include genesis-synapse('input-primary');  // Automatic WCAG compliance
+}
 ```
 
 ---
@@ -186,6 +235,7 @@ For each class in your HTML, determine its ontological role and apply the approp
 - `'deprecated'` - Information is no longer verified (strikethrough, warning icon)
 - `'locked'` - Data is immutable and requires clearance (blur effect, lock icon)
 - `'simulated'` - Data is a projection, not live (dashed border, diagonal stripes)
+- `'scroll-triggered'` ⭐ **NEW v2.2.0** - Content with scroll-based animations
 
 **Example:**
 ```scss
@@ -200,6 +250,12 @@ For each class in your HTML, determine its ontological role and apply the approp
 .private-content {
   @include genesis-state('locked');        // Access restricted
 }
+
+// New in v2.2.0: Scroll animations
+.fade-in-section {
+  @include genesis-state('scroll-triggered');  // Fade in on scroll
+}
+// Requires JavaScript to add .aos-animate, .scroll-triggered, or .is-visible class
 ```
 
 ---
@@ -211,6 +267,9 @@ For each class in your HTML, determine its ontological role and apply the approp
 - `'ethereal'` - High-transparency, light-based focus (bright, minimal)
 - `'void'` - Deep-space, high-contrast, zero-distraction (dark, immersive)
 - `'vibrant'` - High-energy, data-saturated, high-neon (colorful, energetic)
+- `'spacious-mobile'` ⭐ **NEW v2.1.0** - Generous spacing on mobile for touch-friendliness
+- `'dense-desktop'` ⭐ **NEW v2.1.0** - High information density on large screens
+- `'viewport-aware'` ⭐ **NEW v2.2.0** - Content sized relative to viewport (hero sections)
 
 **Example:**
 ```scss
@@ -224,6 +283,20 @@ For each class in your HTML, determine its ontological role and apply the approp
 
 .analytics-dashboard {
   @include genesis-atmosphere('vibrant');   // Energetic, data-rich
+}
+
+// New in v2.1.0: Content density variants
+.hero-section {
+  @include genesis-atmosphere('spacious-mobile'); // Touch-friendly mobile spacing
+}
+
+.team-grid {
+  @include genesis-atmosphere('dense-desktop');   // 1 col mobile → 4 cols desktop
+}
+
+// New in v2.2.0: Viewport awareness
+.splash-screen {
+  @include genesis-atmosphere('viewport-aware');  // Full-height hero section
 }
 ```
 
@@ -376,12 +449,116 @@ You can combine multiple ontological mixins on the same element for rich semanti
 
 ---
 
+## ⭐ Responsive Design Enhancements (v2.1.0)
+
+### Automatic Responsive Behavior
+
+**All existing variants are now responsive by default** - no changes needed to your code!
+
+#### Touch Targets (WCAG 2.1 Compliant)
+All `genesis-synapse` variants now have **44x44px minimum touch targets on mobile**:
+
+```scss
+.my-button {
+  @include genesis-synapse('execute'); // Automatically 44x44px on mobile
+}
+
+.nav-link {
+  @include genesis-synapse('navigate'); // Automatically touch-friendly
+}
+```
+
+#### Responsive Typography
+All `genesis-cognition` variants now scale appropriately:
+
+```scss
+.page-title {
+  @include genesis-cognition('axiom');
+  // Mobile: 32px → Tablet: 40px → Desktop: 56px (automatic)
+}
+
+.body-text {
+  @include genesis-cognition('discourse');
+  // Always ≥16px on mobile (prevents iOS zoom)
+}
+```
+
+#### Responsive Grids
+`genesis-environment('distributed')` now adapts automatically:
+
+```scss
+.product-grid {
+  @include genesis-environment('distributed');
+  // Mobile: 1 column → Tablet: 2 columns → Desktop: auto-fit
+}
+```
+
+### New Responsive Variants
+
+#### Media Responsiveness
+
+Replace inline styles and fixed dimensions with semantic media variants:
+
+**Before (inline styles):**
+```html
+<iframe src="map" width="100%" height="450" style="border:0;"></iframe>
+```
+
+**After (semantic):**
+```html
+<div class="map-container">
+  <iframe src="map" allowfullscreen loading="lazy"></iframe>
+</div>
+```
+
+```scss
+.map-container {
+  @include genesis-entity('embed-responsive'); // Maintains 16:9 ratio
+}
+```
+
+**Image optimization:**
+```scss
+.hero-image-wrapper {
+  @include genesis-entity('image-adaptive');
+  // Maintains aspect ratio, object-fit cover, responsive
+}
+```
+
+#### Content Density
+
+Control spacing and layout density across viewports:
+
+```scss
+.hero-section {
+  @include genesis-atmosphere('spacious-mobile');
+  // 3rem padding mobile → 2rem desktop
+  // Generous touch-friendly spacing
+}
+
+.team-showcase {
+  @include genesis-atmosphere('dense-desktop');
+  // 1 column mobile → 2 columns tablet → auto-fit desktop
+  // Cap at 4 columns on ultrawide
+}
+```
+
+### Migration Benefits
+
+- ✅ **WCAG 2.1 compliance** - All touch targets now meet accessibility standards
+- ✅ **Better mobile UX** - Typography scales, spacing adapts
+- ✅ **Performance** - Media responsive variants support proper image sizing
+- ✅ **No code changes needed** - Existing code gets automatic improvements
+- ✅ **Zero raw CSS** - All responsive behavior in semantic mixins
+
+---
+
 ## Troubleshooting
 
 ### "My styles aren't applying"
 - Ensure you imported `@import "ontology/index";` at the top of your SCSS file
 - Check that your class names in HTML match your SCSS selectors
-- Verify the theme repository has the latest ontology system
+- Verify the theme repository has the latest ontology system (v2.1.0+)
 
 ### "I need a custom style not covered by the API"
 - First, check if combining existing mixins achieves your goal

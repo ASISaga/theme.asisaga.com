@@ -16,6 +16,9 @@
    * @param $logic [associative]: A network where connections outweigh the nodes.
    * @param $logic [chronological]: A time-linear stream of sequential events.
    * @param $logic [manifest]: A high-density dashboard for total system oversight.
+   * @param $logic [navigation-primary]: Main site navigation (horizontal desktop → mobile drawer).
+   * @param $logic [navigation-secondary]: Contextual navigation (breadcrumbs, footer nav).
+   * @param $logic [interaction-form]: Form layout optimized for data entry.
    */
   @include _theme-engine-environment($logic);
 }
@@ -32,6 +35,8 @@
    * @param $nature [latent]: Backgrounded info awaiting activation.
    * @param $nature [aggregate]: A container summarizing multiple entities.
    * @param $nature [ancestral]: Archived or historical data (legacy state).
+   * @param $nature [image-adaptive]: Image that loads appropriate resolution for viewport.
+   * @param $nature [embed-responsive]: Embedded content that maintains aspect ratio.
    */
   @include _theme-engine-entity($nature);
 }
@@ -63,6 +68,7 @@
    * @param $vector [inquiry]: A request for more data (Expand/Search).
    * @param $vector [destructive]: Permanent removal or system reset.
    * @param $vector [social]: Neural link to other human/AI observers.
+   * @param $vector [input-primary]: Primary form input with responsive touch optimization.
    */
   @include _theme-engine-synapse($vector);
 }
@@ -78,6 +84,7 @@
    * @param $condition [deprecated]: Information is no longer verified.
    * @param $condition [locked]: Data is immutable and requires clearance.
    * @param $condition [simulated]: The data is a projection, not a live log.
+   * @param $condition [scroll-triggered]: Content with scroll-based animations.
    */
   @include _theme-engine-state($condition);
 }
@@ -92,6 +99,9 @@
    * @param $vibe [ethereal]: High-transparency, light-based focus.
    * @param $vibe [void]: Deep-space, high-contrast, zero-distraction.
    * @param $vibe [vibrant]: High-energy, data-saturated, high-neon.
+   * @param $vibe [spacious-mobile]: Generous spacing on mobile for touch-friendliness.
+   * @param $vibe [dense-desktop]: High information density on large screens.
+   * @param $vibe [viewport-aware]: Content sized relative to viewport (hero sections).
    */
   @include _theme-engine-atmosphere($vibe);
 }
