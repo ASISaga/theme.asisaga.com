@@ -1,10 +1,18 @@
-# Agent Skills for Genesis Semantic Design System v2.1
+# Agent Skills for Genesis Semantic Design System v2.2
 
-**Version**: 2.1.0 - Integrated Validation & Automation  
+**Version**: 2.2.0 - Figma MCP Integration  
 **Last Updated**: 2026-01-19  
-**Status**: Production Ready with Automated Testing
+**Status**: Production Ready with Figma Design Bridge
 
 This directory contains Agent Skills for the Genesis Semantic Design System - a living genome architecture that manages the ontological evolution of the ASI Saga theme repository.
+
+## 🚀 What's New in v2.2
+
+- ✅ **Figma MCP Integration** - Direct design-to-code translation
+- ✅ **Design Token Extraction** - Automated Figma token mapping to OKLCH
+- ✅ **Design-Code Traceability** - Maintain Figma source references
+- ✅ **Comprehensive Token Guide** - Complete design token translation reference
+- ✅ **7 Production-Ready Skills** - Full ecosystem coverage
 
 ## 🚀 What's New in v2.1
 
@@ -47,7 +55,29 @@ Identifies semantic gaps in the design system and creates well-formed propositio
 
 **Use when**: Subdomain development reveals missing semantic patterns, or repeatedly combining mixins in the same way.
 
-### 3. scss-refactor-agent
+### 3. figma-design-bridge-agent (NEW v2.2)
+
+**Role**: Design-to-Code Translation Specialist
+
+Translates Figma designs into Genesis Semantic Design System code. Extracts design tokens via Figma MCP, maps components to ontological variants, and maintains bidirectional design-code traceability.
+
+**Use when**: Implementing Figma designs, extracting design tokens, validating implementation against Figma source, identifying semantic gaps from design patterns.
+
+**MCP Integration**: `https://mcp.figma.com/mcp`
+
+**Resources**:
+- `figma-mcp.md` - Complete Figma MCP integration guide
+- `references/DESIGN-TOKENS-GUIDE.md` - Design token translation reference
+
+**Capabilities**:
+- Extract design tokens from Figma (colors, typography, spacing, effects)
+- Convert hex colors to OKLCH format
+- Map Figma components to ontological variants
+- Generate semantic HTML and ontological SCSS
+- Identify semantic gaps revealed by design
+- Document Figma source and mapping decisions
+
+### 4. scss-refactor-agent
 
 **Role**: Ontology Migration Expert
 
@@ -64,7 +94,7 @@ Converts legacy CSS/SCSS into ontological mixin-based code, ensuring "zero-CSS c
 **NEW Resources**:
 - `references/REFACTORING-GUIDE.md` - Comprehensive refactoring guide
 
-### 4. html-template-agent
+### 5. html-template-agent
 
 **Role**: Semantic Structure and Accessibility Expert
 
@@ -78,7 +108,7 @@ Ensures all HTML follows semantic best practices, uses meaningful content-first 
 ./.github/skills/html-template-agent/scripts/validate-html.sh path/to/template.html
 ```
 
-### 5. responsive-design-agent
+### 6. responsive-design-agent
 
 **Role**: Mobile-First Responsive Specialist
 
@@ -86,7 +116,7 @@ Implements mobile-first responsive patterns with proper WCAG 2.5.5 touch targets
 
 **Use when**: Implementing responsive layouts, optimizing mobile UX, or ensuring accessibility compliance across viewport sizes.
 
-### 6. futuristic-effects-agent
+### 7. futuristic-effects-agent
 
 **Role**: Advanced Visual Effects Specialist
 
@@ -152,6 +182,23 @@ npm run lint:scss
 ./.github/skills/theme-genome-agent/scripts/validate-ontology.sh
 
 # Test all changes
+npm test
+```
+
+**Workflow 4: Figma Design Implementation (NEW v2.2)**
+```bash
+# 1. Access Figma design
+# Use Figma Design Bridge Agent to extract tokens and map components
+
+# 2. Generate implementation
+# Create semantic HTML + ontological SCSS with Figma source references
+
+# 3. Validate implementation
+./.github/skills/html-template-agent/scripts/validate-html.sh component.html
+./.github/skills/scss-refactor-agent/scripts/validate-scss.sh component.scss
+
+# 4. Test and verify
+npm run test:scss
 npm test
 ```
 
@@ -252,10 +299,13 @@ When adding new skills:
 
 ## Version
 
-**Skills Version**: 2.0  
-**Aligned with**: Genesis Semantic Design System v2.0+  
-**Last Updated**: 2026-01-19
+**Skills Version**: 2.2  
+**Aligned with**: Genesis Semantic Design System v2.2+  
+**Last Updated**: 2026-01-19  
+**New in 2.2**: Figma MCP Integration with design-to-code workflows
 
 ---
 
-**See also**: [Agent Skills Documentation](https://agentskills.io) for the complete specification and best practices.
+**See also**: 
+- [Agent Skills Documentation](https://agentskills.io) for the complete specification
+- [Figma MCP Integration Guide](../../figma-mcp.md) for design workflows

@@ -1,8 +1,8 @@
-# 🚀 Agent Ecosystem - Supercharged v2.1
+# 🚀 Agent Ecosystem - Supercharged v2.2
 
-**Version**: 2.1.0 - Integrated Validation & Automation  
+**Version**: 2.2.0 - Figma MCP Integration  
 **Last Updated**: 2026-01-19  
-**Status**: Production Ready with Automated Validation
+**Status**: Production Ready with Figma Design Bridge
 
 ---
 
@@ -15,6 +15,7 @@
 | **Instructions** | Coding standards & guidelines | `.github/instructions/` |
 | **Validation** | Automated testing scripts | `.github/skills/*/scripts/` |
 | **References** | Detailed specifications | `.github/skills/*/references/` |
+| **Figma Integration** | Design-to-code workflows | `figma-mcp.md` |
 
 ---
 
@@ -48,6 +49,42 @@
 - ✅ Creates ontological propositions
 - ✅ Submits well-formed PRs
 - ✅ Analyzes variant coverage
+
+---
+
+### Design Integration
+
+#### Figma Design Bridge Agent (NEW v2.2)
+**Skill**: `.github/skills/figma-design-bridge-agent/`  
+**Prompt**: `.github/prompts/figma-design-bridge-agent.prompt.md`  
+**Reference**: `figma-mcp.md`  
+**Tokens Guide**: `references/DESIGN-TOKENS-GUIDE.md`
+
+**Capabilities**:
+- ✅ Extracts design tokens from Figma via MCP
+- ✅ Translates Figma components to ontological code
+- ✅ Converts colors to OKLCH format
+- ✅ Maps typography to cognition variants
+- ✅ Identifies semantic gaps from design patterns
+- ✅ Maintains design-code traceability
+
+**Quick Start**:
+```bash
+# Access Figma design file via MCP
+# Extract component properties
+# Generate semantic HTML + ontological SCSS
+# Document mapping decisions
+
+# See complete guide:
+cat figma-mcp.md
+cat .github/skills/figma-design-bridge-agent/references/DESIGN-TOKENS-GUIDE.md
+```
+
+**Integration Points**:
+- Uses Figma MCP server: `https://mcp.figma.com/mcp`
+- Collaborates with SCSS Refactor Agent for validation
+- Works with HTML Template Agent for semantic structure
+- Submits propositions to Theme Genome Agent when needed
 
 ---
 
@@ -132,7 +169,33 @@ npm run test:scss
 npm test
 ```
 
-### Workflow 2: Ontological Evolution
+### Workflow 2: Figma Design Implementation (NEW v2.2)
+
+```bash
+# 1. Access Figma design via MCP
+# Use Figma Design Bridge Agent to:
+# - Extract design tokens (colors, typography, spacing)
+# - Analyze component structure
+# - Map to ontological variants
+
+# 2. Generate implementation
+# - Semantic HTML with BEM naming
+# - Ontological SCSS (zero raw CSS)
+# - Document Figma source and mapping decisions
+
+# 3. Validate implementation
+./.github/skills/html-template-agent/scripts/validate-html.sh component.html
+./.github/skills/scss-refactor-agent/scripts/validate-scss.sh component.scss
+
+# 4. Test responsiveness
+npm run test:scss
+npm test
+
+# 5. If semantic gap found, create proposition
+# Use Subdomain Evolution Agent → Theme Genome Agent workflow
+```
+
+### Workflow 3: Ontological Evolution
 
 ```bash
 # 1. Validate current ontology
