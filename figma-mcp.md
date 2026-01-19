@@ -1,6 +1,6 @@
 # Figma MCP Integration Guide
 
-**Version**: 1.0  
+**Version**: 2.0 - Bidirectional Sync  
 **MCP Server**: https://mcp.figma.com/mcp  
 **Integration Status**: Active in Copilot Coding Agent  
 **Last Updated**: 2026-01-19
@@ -9,41 +9,55 @@
 
 ## 🎨 Overview
 
-The Figma Model Context Protocol (MCP) integration enables seamless design-to-code workflows within the Genesis Semantic Design System ecosystem. This integration allows AI agents to directly access Figma design files, extract design tokens, inspect component structures, and translate design intent into ontological code.
+The Figma Model Context Protocol (MCP) integration enables **bidirectional** design-code workflows within the Genesis Semantic Design System ecosystem. This integration allows AI agents to:
+- **Design → Code**: Extract design tokens, inspect component structures, and translate design intent into ontological code
+- **Code → Design**: Push implementation changes back to Figma, update design tokens, and sync component variants
 
 ### Key Capabilities
 
 The Figma MCP server provides tools for:
 
-1. **Design File Access**
+1. **Design File Access (Read & Write)**
    - Read Figma files and retrieve component metadata
+   - Write updates to Figma components and styles
    - Access design tokens (colors, typography, spacing)
+   - Update design token values from code
    - Inspect layer hierarchy and component structure
 
-2. **Design Token Extraction**
-   - Extract color values (convert to OKLCH for Genesis system)
-   - Retrieve typography scales (map to cognition variants)
-   - Access spacing systems (map to environment padding/margins)
+2. **Design Token Extraction & Sync**
+   - **Design → Code**: Extract color values (convert to OKLCH for Genesis system)
+   - **Code → Design**: Push OKLCH token updates back to Figma variables
+   - **Design → Code**: Retrieve typography scales (map to cognition variants)
+   - **Code → Design**: Update Figma text styles from implemented typography
+   - **Design → Code**: Access spacing systems (map to environment padding/margins)
+   - **Code → Design**: Sync spacing tokens to Figma auto-layout settings
 
-3. **Component Analysis**
-   - Analyze component variants and states
-   - Identify interaction patterns
-   - Map design components to ontological entities
+3. **Component Analysis & Synchronization**
+   - **Design → Code**: Analyze component variants and states
+   - **Code → Design**: Create/update Figma component variants from implementation
+   - **Design → Code**: Identify interaction patterns
+   - **Code → Design**: Update component descriptions with ontological mapping
+   - **Design → Code**: Map design components to ontological entities
+   - **Code → Design**: Tag Figma components with Genesis categories
 
-4. **Collaborative Workflows**
+4. **Bidirectional Workflows**
    - Reference design specifications during development
+   - Push implementation refinements back to design
    - Validate implementation against design source
-   - Maintain design-code synchronization
+   - Update design based on code improvements
+   - Maintain continuous design-code synchronization
+   - Track change history in both directions
 
 ---
 
 ## 🧬 Integration with Genesis Ontology
 
-The Figma MCP integration enhances the three-tier ontological architecture:
+The Figma MCP integration enhances the three-tier ontological architecture with **bidirectional synchronization**:
 
-### Design → Content → Interface → Engine
+### Bidirectional Flow: Design ↔ Code ↔ Interface ↔ Engine
 
 ```
+          DESIGN → CODE FLOW
 Figma Design File
     ↓ (Figma MCP extracts)
 Design Tokens & Components
@@ -51,6 +65,17 @@ Design Tokens & Components
 Ontological Variants
     ↓ (Developer applies)
 Genesis Semantic SCSS
+    ↓ (Compiled to)
+Production CSS
+
+          CODE → DESIGN FLOW
+Production CSS
+    ↓ (Agent analyzes)
+Ontological Patterns Used
+    ↓ (Agent reverse-maps)
+Design Token Values
+    ↓ (Figma MCP writes)
+Updated Figma Components & Variables
 ```
 
 ### Mapping Strategy
@@ -103,26 +128,87 @@ During code review:
 4. Suggests refinements if design intent unclear
 ```
 
+### 4. Code-to-Design Token Sync (NEW - Bidirectional)
+
+When implementation refines design tokens:
+
+```bash
+# Developer updates OKLCH token in code
+# Agent detects token change
+# Converts OKLCH back to RGB/hex
+# Uses Figma MCP to update Figma variable
+# Designer sees updated token in Figma
+```
+
+**Agent Role**: Figma Design Bridge Agent with write permissions
+
+### 5. Component Variant Sync (NEW - Bidirectional)
+
+When new ontological variant is implemented:
+
+```markdown
+1. Developer implements new component variant in code
+2. Agent analyzes ontological mapping
+3. Translates semantic variant to Figma component properties
+4. Uses Figma MCP to create/update Figma component variant
+5. Adds ontological metadata to Figma component description
+6. Designer sees implementation-driven variant in Figma
+```
+
+### 6. Implementation Feedback Loop (NEW - Bidirectional)
+
+When code reveals design improvements:
+
+```markdown
+1. Developer discovers better spacing/layout during implementation
+2. Agent captures improved values from SCSS
+3. Converts ontological tokens back to Figma auto-layout
+4. Uses Figma MCP to update component in Figma
+5. Adds implementation notes to Figma component
+6. Designer reviews and approves or iterates
+```
+2. Compares implemented spacing, colors, typography
+3. Ensures semantic mapping is appropriate
+4. Suggests refinements if design intent unclear
+```
+
 ---
 
 ## 🛠️ Available MCP Tools
 
 The Figma MCP server exposes the following tool categories:
 
-### File & Node Access
+### File & Node Access (Read & Write)
 - Read design file metadata
+- Write updates to file properties
 - Access specific nodes/components
+- Update node properties and styles
 - Traverse layer hierarchy
+- Create new components/frames
 
-### Design Token Queries
+### Design Token Queries & Updates
 - Extract color variables
+- Update color variable values
 - Query typography styles
+- Modify text style properties
 - Access spacing/sizing tokens
+- Sync spacing values to auto-layout
 
-### Component Analysis
+### Component Analysis & Modification
 - List component variants
+- Create new component variants
 - Inspect component properties
+- Update component descriptions and metadata
 - Analyze component states
+- Add custom properties and tags
+
+### Bidirectional Sync Operations (NEW)
+- Push token changes from code to Figma
+- Update component variants from implementation
+- Sync spacing values bidirectionally
+- Add implementation metadata to designs
+- Track change provenance (code or design initiated)
+- Maintain version history for sync operations
 
 ### Export & Assets
 - Export design assets
@@ -150,6 +236,9 @@ The Figma MCP server exposes the following tool categories:
 3. **Translate components to ontological roles**, not pixel-perfect CSS
 4. **Validate semantic mapping** with Figma Design Bridge Agent
 5. **Document mapping decisions** in code comments
+6. **Push improvements back to Figma** when implementation reveals better approaches
+7. **Add implementation notes** to Figma component descriptions
+8. **Maintain bidirectional sync** for design token changes
 
 ### For Agents
 
@@ -158,6 +247,9 @@ The Figma MCP server exposes the following tool categories:
 3. **Maintain design-code bidirectional traceability**
 4. **Suggest design improvements** for better semantic clarity
 5. **Automate repetitive translation** patterns
+6. **Push validated changes back to Figma** to keep design in sync
+7. **Add metadata to Figma components** documenting ontological mapping
+8. **Track change provenance** (design-initiated vs code-initiated)
 
 ---
 
@@ -243,27 +335,105 @@ Auto Layout: Horizontal padding 24px, Vertical padding 16px
 
 ---
 
+### Scenario: Code-to-Design Sync (NEW - Bidirectional)
+
+**Step 1: Developer implements component with improvements**
+```scss
+// Developer discovers better spacing during implementation
+.alert {
+  @include genesis-entity('primary');
+  
+  // Implementation refinement: better visual hierarchy
+  &__title {
+    @include genesis-cognition('motive');  // Changed from 'axiom'
+    // Better semantic fit - instructional rather than foundational
+  }
+}
+```
+
+**Step 2: Agent detects improvement**
+```javascript
+// Agent analyzes committed code
+{
+  component: "alert",
+  changes: [{
+    element: "title",
+    oldMapping: "cognition('axiom')",
+    newMapping: "cognition('motive')",
+    reason: "Better semantic fit for instructional content"
+  }]
+}
+```
+
+**Step 3: Agent syncs to Figma**
+```javascript
+// Agent uses Figma MCP to update design
+figmaMCP.updateComponent({
+  fileKey: "alert-components",
+  componentId: "alert-title",
+  updates: {
+    textStyle: "Instructional/Medium",  // Mapped from motive
+    description: "Ontology: genesis-cognition('motive') - Instructional text, changed from 'axiom' based on implementation learnings"
+  }
+});
+```
+
+**Step 4: Designer reviews in Figma**
+```
+Figma Component: Alert → Title
+- Text style updated to: Instructional/Medium
+- Component description shows:
+  "Updated from implementation: 2026-01-19
+   Ontological mapping: genesis-cognition('motive')
+   Rationale: Better semantic fit for instructional alert titles
+   Previous: genesis-cognition('axiom')"
+   
+Designer can:
+✓ Accept the change (already applied)
+✗ Revert if design intent was different
+💬 Add feedback to component notes
+```
+
+**Step 5: Continuous sync**
+```markdown
+- Developer makes token refinement: spacing increased
+- Agent converts SCSS token back to Figma auto-layout
+- Figma component updated automatically
+- Designer sees change, approves
+- Design and code stay in perfect sync
+```
+
+---
+
 ## 🔄 Evolutionary Feedback Loop
 
-### Design → Code → Evolution
+### Bidirectional Design ↔ Code → Evolution (UPDATED)
 
 1. **Design reveals semantic gap**
    - Designer creates component not covered by ontology
    - Figma Design Bridge Agent identifies missing semantic role
 
-2. **Ontological Proposition**
+2. **OR Code reveals design improvement**
+   - Developer discovers better semantic mapping during implementation
+   - Agent captures improvement and syncs back to Figma
+   - Designer reviews code-initiated design update
+
+3. **Ontological Proposition**
    - Agent creates well-formed proposition PR
    - Theme Genome Agent reviews for universal applicability
+   - Can be initiated from either design or code side
 
-3. **System Evolution**
+4. **System Evolution**
    - New variant added to Genesis Ontology
-   - GENOME.md updated with design-driven evolution
-   - Figma component library aligned with ontology
+   - GENOME.md updated with evolution source (design or code driven)
+   - Both Figma component library and code aligned with new ontology
+   - Bidirectional sync ensures consistency
 
-4. **Continuous Sync**
-   - Design system and code ontology stay aligned
-   - Semantic roles evolve together
-   - Bidirectional traceability maintained
+5. **Continuous Sync**
+   - Design system and code ontology stay perfectly aligned
+   - Semantic roles evolve together from both directions
+   - Complete bidirectional traceability maintained
+   - Change history tracked with provenance (design vs code initiated)
 
 ---
 
@@ -283,13 +453,37 @@ Auto Layout: Horizontal padding 24px, Vertical padding 16px
 
 ---
 
-## 🎯 Future Enhancements
+## 🎯 Current Capabilities & Roadmap
 
-- **Automated token sync** - Webhook integration for design token updates
-- **Bidirectional design updates** - Push code changes back to Figma
-- **Visual regression testing** - Compare implementation to design specs
-- **AI-powered semantic suggestions** - Auto-recommend ontological mappings
-- **Design system analytics** - Track ontology usage and evolution patterns
+### ✅ Implemented (v2.0 - Bidirectional)
+
+- **Design → Code workflows**
+  - Token extraction and OKLCH conversion
+  - Component analysis and ontological mapping
+  - Semantic HTML and SCSS generation
+  - Design validation and traceability
+
+- **Code → Design workflows** (NEW)
+  - Push token changes from code to Figma variables
+  - Update Figma component variants from implementation
+  - Sync spacing values to auto-layout settings
+  - Add implementation metadata to Figma components
+  - Track change provenance and history
+
+- **Bidirectional synchronization**
+  - Continuous design-code alignment
+  - Conflict detection and resolution
+  - Version tracking in both directions
+  - Change review workflows
+
+### 🔮 Future Enhancements (v2.1+)
+
+- **Automated webhook sync** - Real-time bidirectional updates on save
+- **Visual regression testing** - Automated screenshot comparison
+- **AI-powered conflict resolution** - Smart merge of design and code changes
+- **Design system analytics** - Track usage patterns and evolution metrics
+- **Collaborative review tools** - In-Figma code review and approval flows
+- **Multi-directional sync** - Support for additional design tools beyond Figma
 
 ---
 

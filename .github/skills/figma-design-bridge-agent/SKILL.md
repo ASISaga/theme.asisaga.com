@@ -4,35 +4,42 @@ description: Translate Figma designs into Genesis Semantic Design System code. E
 license: MIT
 metadata:
   author: ASISaga
-  version: "1.0"
+  version: "2.0"
   category: design-system
   role: design-translator
-allowed-tools: Bash(npm:*) Read figma-mcp:*
+allowed-tools: Bash(npm:*) Read Write figma-mcp:*
 ---
 
 # Figma Design Bridge Agent
 
-**Role**: Design-to-Code Translation Specialist  
+**Role**: Bidirectional Design-Code Translation Specialist  
 **Scope**: Figma design files ↔ Genesis Semantic Design System  
-**Version**: 1.0 - Initial Figma MCP Integration
+**Version**: 2.0 - Bidirectional Sync
 
 ## Purpose
 
-The Figma Design Bridge Agent translates visual designs from Figma into semantic, ontology-based code for the Genesis Design System. This agent acts as the bridge between design intent and implementation, ensuring designs are translated into appropriate ontological roles rather than pixel-perfect CSS.
+The Figma Design Bridge Agent provides **bidirectional translation** between Figma designs and the Genesis Design System. This agent:
+- **Design → Code**: Translates visual designs into semantic, ontology-based code
+- **Code → Design**: Pushes implementation improvements back to Figma
+- Ensures continuous synchronization and maintains the "why" behind all design decisions
 
-**Key Philosophy**: Extract semantic intent from design, not just visual properties.
+**Key Philosophy**: Extract and maintain semantic intent bidirectionally, not just visual properties.
 
 ## When to Use This Skill
 
 Activate this skill when:
 
-- Implementing a new component from Figma designs
-- Extracting design tokens (colors, typography, spacing) from Figma
+- Implementing a new component from Figma designs (Design → Code)
+- Extracting design tokens (colors, typography, spacing) from Figma (Design → Code)
 - Validating implementation against Figma source of truth
 - Identifying semantic gaps revealed by design patterns
-- Translating Figma component variants to ontological states
+- Translating Figma component variants to ontological states (Design → Code)
 - Synchronizing design system updates with code
 - Creating ontological propositions based on design requirements
+- **Pushing implementation improvements back to Figma** (Code → Design) **NEW**
+- **Syncing code token changes to Figma variables** (Code → Design) **NEW**
+- **Updating Figma components with implementation metadata** (Code → Design) **NEW**
+- **Maintaining bidirectional design-code synchronization** **NEW**
 
 ## Core Responsibilities
 
@@ -146,6 +153,63 @@ Figma Component
 4. Test interaction states
 ```
 
+### 6. Code-to-Design Sync Workflow (NEW - Bidirectional)
+
+**Step 1: Detect Code Changes**
+```markdown
+1. Monitor committed SCSS for token or mixin changes
+2. Identify changes to ontological mappings
+3. Extract improved spacing, color, or typography values
+4. Detect new component variants added in implementation
+```
+
+**Step 2: Analyze Implementation Intent**
+```markdown
+1. Determine semantic reason for change
+2. Validate that change improves design consistency
+3. Check if change aligns with ontological principles
+4. Identify if change should be propagated to design
+```
+
+**Step 3: Reverse-Map to Figma**
+```markdown
+1. Convert OKLCH tokens back to RGB/hex for Figma
+2. Map Genesis spacing tokens to Figma auto-layout values
+3. Translate cognition variants to Figma text styles
+4. Map ontological states to Figma component properties
+```
+
+**Step 4: Update Figma via MCP**
+```markdown
+1. Use Figma MCP write tools to update components
+2. Update Figma variable values from code tokens
+3. Add implementation notes to Figma component descriptions
+4. Tag components with ontological category metadata
+5. Create/update component variants based on implementation
+```
+
+**Step 5: Document Sync**
+```markdown
+1. Add sync metadata to Figma component
+2. Include change date, rationale, and commit hash
+3. Mark as "code-initiated" for designer review
+4. Enable designer feedback loop
+```
+
+### 7. Bidirectional Conflict Resolution (NEW)
+
+**When design and code changes conflict**:
+```markdown
+1. Detect conflicting changes (e.g., both modified same token)
+2. Analyze change provenance and timing
+3. Present both versions to stakeholders
+4. Facilitate resolution via:
+   - Designer review in Figma
+   - Developer review in PR
+   - Agent-suggested semantic merge
+5. Apply resolution and document decision
+```
+
 ## Design Token Translation Guide
 
 ### Colors: Figma → OKLCH → Genesis
@@ -167,6 +231,42 @@ Figma Component
 ```
 
 **Key Principle**: Never use raw hex values. Always convert to OKLCH and use semantic tokens.
+
+### Reverse Token Mapping: Genesis → Figma (NEW - Bidirectional)
+
+**Process (Code → Design)**:
+1. Extract OKLCH value from Genesis token
+2. Convert OKLCH to RGB/hex for Figma compatibility
+3. Update Figma variable via MCP
+4. Add metadata documenting code source
+
+**Example**:
+```scss
+// Code change in _sass/ontology/_tokens.scss
+:root {
+  --accent-neural: oklch(58% 0.27 295);  // Refined from 55% 0.25 290
+}
+
+// Agent detects change and syncs to Figma
+figmaMCP.updateVariable({
+  variableName: "accent/neural",
+  value: "#9061f9",  // Converted from OKLCH
+  description: "Updated from implementation: 2026-01-19\nOKLCH: oklch(58% 0.27 295)\nRationale: Improved contrast and vibrancy based on accessibility testing"
+});
+```
+
+**Bidirectional Tracking**:
+```javascript
+// Metadata added to both sides
+{
+  tokenName: "accent-neural",
+  figmaValue: "#9061f9",
+  codeValue: "oklch(58% 0.27 295)",
+  lastSyncDate: "2026-01-19",
+  syncDirection: "code-to-design",
+  changeReason: "Accessibility improvement"
+}
+```
 
 ### Typography: Figma Styles → Cognition Variants
 
@@ -408,7 +508,9 @@ PROPOSAL: state('calculating')
 
 ## Validation Checklist
 
-Before completing implementation:
+### Design → Code Implementation
+
+Before completing design-to-code translation:
 
 - [ ] Figma source referenced and accessible
 - [ ] Design intent clearly understood and documented
@@ -425,6 +527,22 @@ Before completing implementation:
 - [ ] Mapping decisions documented in code comments
 - [ ] Semantic gaps identified and propositions created
 
+### Code → Design Sync (NEW - Bidirectional)
+
+Before pushing code changes to Figma:
+
+- [ ] Code change improves design consistency or semantics
+- [ ] Change aligns with ontological principles
+- [ ] OKLCH values correctly converted to RGB/hex
+- [ ] Spacing tokens properly mapped to auto-layout
+- [ ] Implementation notes added to Figma component descriptions
+- [ ] Ontological category metadata tagged in Figma
+- [ ] Change provenance documented (commit hash, date, rationale)
+- [ ] Designer review workflow enabled
+- [ ] Conflict detection performed
+- [ ] Sync history maintained
+- [ ] Bidirectional traceability preserved
+
 ## Integration with Other Agents
 
 **Collaborates With**:
@@ -434,17 +552,29 @@ Before completing implementation:
 - **HTML Template Agent**: Generate semantic HTML structures
 - **Responsive Design Agent**: Implement mobile-first responsive patterns
 
-**Workflow**:
+**Bidirectional Workflow** (UPDATED):
 ```
+Design → Code Flow:
 Figma Design
     ↓
-[Figma Design Bridge Agent] ← Access via Figma MCP
+[Figma Design Bridge Agent] ← Access via Figma MCP (read)
     ↓ (extracts & maps)
 Ontological Code
     ↓ (validates with)
 [SCSS Refactor Agent] + [HTML Template Agent]
     ↓ (identifies gaps)
 [Subdomain Evolution Agent] → [Theme Genome Agent]
+
+Code → Design Flow (NEW):
+Ontological Code Changes
+    ↓
+[Figma Design Bridge Agent] ← Detects improvements
+    ↓ (reverse-maps)
+Design Token Updates
+    ↓ (syncs via Figma MCP write)
+Updated Figma Components
+    ↓ (designer reviews)
+[Designer Feedback] → [Next Iteration]
 ```
 
 ## Resources
@@ -467,6 +597,7 @@ Ontological Code
 
 ---
 
-**Status**: ✅ Active Integration (v1.0)  
+**Status**: ✅ Active Integration (v2.0 - Bidirectional)  
 **Figma MCP**: https://mcp.figma.com/mcp  
+**Capabilities**: Read & Write (Design ↔ Code)  
 **Maintainer**: ASI Saga Agent Ecosystem
