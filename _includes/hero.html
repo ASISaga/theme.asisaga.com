@@ -1,74 +1,53 @@
 {% comment %}
 Hero Component
+Creates a semantic hero section with optional background media
+
 Parameters:
-- title: The main title text for the hero section
-- description: The description text for the hero section
-- button_text: Optional text for the CTA button
-- button_url: Optional URL for the CTA button
-- size: Optional size modifier (default, sm, or full)
-- style: Optional style modifier (default, alt, or video)
-- background_image: Optional URL for background image
-- video_url: Optional URL for background video (only used if style=video)
+- title: Main hero heading (required)
+- description: Subtitle/description text
+- button_text: Primary CTA button text
+- button_url: Primary CTA button URL
+- size: Size variant (sm, full)
+- background_image: Background image URL
+- video_url: Background video URL
 {% endcomment %}
 
-{% assign hero_class = "hero-section" %}
-{% if include.size == "sm" %}
-  {% assign hero_class = hero_class | append: " hero-section-sm" %}
-{% elsif include.size == "full" %}
-  {% assign hero_class = hero_class | append: " hero-section-full" %}
-{% endif %}
-
-{% if include.style == "alt" %}
-  {% assign hero_class = hero_class | append: " hero-section-alt" %}
-{% elsif include.style == "video" %}
-  {% assign hero_class = hero_class | append: " hero-section-video" %}
-{% endif %}
-
-<section class="{{ hero_class }} parallax" data-speed="0.2" aria-labelledby="hero-heading">
-  <!-- Background element with gradient or image -->
-  <div class="hero-background" aria-hidden="true">
-    {% if include.style == "video" and include.video_url %}
-      <video class="hero-background-video" autoplay loop muted playsinline>
-        <source src="{{ include.video_url }}" type="video/mp4">
-        <!-- Note: Video is decorative only and contains no important content -->
-      </video>
+<section class="hero-section{% if include.size == 'sm' %} hero-section--sm{% elsif include.size == 'full' %} hero-section--full{% endif %}" aria-labelledby="hero-heading">
+  {% if include.video_url or include.background_image %}
+  <div class="hero-section__background" aria-hidden="true">
+    {% if include.video_url %}
+    <video class="hero-section__video" autoplay loop muted playsinline>
+      <source src="{{ include.video_url }}" type="video/mp4">
+    </video>
     {% elsif include.background_image %}
-      <!-- Inline style required: Dynamic background image URL passed as parameter -->
-      <div class="hero-background-image-dynamic" style="background-image: url('{{ include.background_image }}')"></div>
-    {% else %}
-      <div class="hero-background-gradient"></div>
+    <div class="hero-section__image" style="background-image: url('{{ include.background_image }}')"></div>
     {% endif %}
   </div>
+  {% endif %}
   
-  <!-- Content overlay -->
-  <div class="hero-content fadeIn">
+  <div class="hero-section__content">
     {% if include.title %}
-  <h1 class="hero-title fadeIn-sacred" id="hero-heading">{{ include.title }}</h1>
+    <h1 class="hero-section__title" id="hero-heading">{{ include.title }}</h1>
     {% endif %}
     
     {% if include.description %}
-  <p class="hero-description fadeIn">{{ include.description }}</p>
+    <p class="hero-section__description">{{ include.description }}</p>
     {% endif %}
     
     {% if include.button_text and include.button_url %}
-  <div class="hero-cta fadeIn" >
-        <a href="{{ include.button_url }}" class="hero-button" aria-label="{{ include.button_text }}">
-          {{ include.button_text }}
-        </a>
-      </div>
+    <div class="hero-section__actions">
+      <a href="{{ include.button_url }}" class="hero-section__button">{{ include.button_text }}</a>
+    </div>
     {% endif %}
     
-    {% if include.size == "full" %}
-  <div class="hero-scroll-indicator fadeIn">
-        <a href="#content" class="hero-scroll-icon" aria-label="Scroll down to content">
-          <i class="fas fa-chevron-down" aria-hidden="true"></i>
-        </a>
-      </div>
+    {% if include.size == 'full' %}
+    <a href="#content" class="hero-section__scroll" aria-label="Scroll to content">
+      <i class="fas fa-chevron-down" aria-hidden="true"></i>
+    </a>
     {% endif %}
   </div>
 </section>
 
-{% if include.size == "full" %}
-<!-- Add anchor for scroll-to-content functionality -->
+{% if include.size == 'full' %}
 <div id="content"></div>
 {% endif %}

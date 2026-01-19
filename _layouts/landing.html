@@ -1,47 +1,33 @@
 ---
-layout: scrollable
+layout: default
 ---
-<!-- 
-Landing Layout
-Purpose: Campaign or marketing landing pages with conversion focus
-Features: Hero section, features, testimonials, CTA sections
--->
-<div class="landing-layout">
-  <!-- Hero Section -->
+<div class="landing-page">
   {% if page.hero %}
-  <section class="landing-hero">
-    <div class="landing-wrapper">
-      <div class="landing-hero-grid">
-        <div class="landing-hero-col">
-          <h1 class="landing-hero-title">{{ page.hero.title }}</h1>
-          <p class="landing-hero-subtitle">{{ page.hero.subtitle }}</p>
-          {% if page.hero.cta %}
-          <a href="{{ page.hero.cta.url }}" class="landing-hero-cta">{{ page.hero.cta.text }}</a>
-          {% endif %}
-        </div>
-        {% if page.hero.image %}
-        <div class="landing-hero-col">
-          <img src="{{ page.hero.image }}" alt="{{ page.hero.title }}" class="landing-hero-image">
-        </div>
-        {% endif %}
-      </div>
-    </div>
+  <section class="landing-page__hero">
+    <h1 class="landing-page__hero-title">{{ page.hero.title }}</h1>
+    {% if page.hero.subtitle %}
+    <p class="landing-page__hero-subtitle">{{ page.hero.subtitle }}</p>
+    {% endif %}
+    {% if page.hero.cta %}
+    <a href="{{ page.hero.cta.url }}" class="landing-page__hero-button">{{ page.hero.cta.text }}</a>
+    {% endif %}
+    {% if page.hero.image %}
+    <img src="{{ page.hero.image }}" alt="{{ page.hero.title }}" class="landing-page__hero-image">
+    {% endif %}
   </section>
   {% endif %}
   
-  <!-- Main Content -->
-  <div class="landing-content">
+  <div class="landing-page__content">
     {{ content }}
   </div>
   
-  <!-- CTA Section -->
   {% if page.final_cta %}
-  <section class="landing-cta">
-    <div class="landing-cta-container">
-      <h2 class="landing-cta-title">{{ page.final_cta.title }}</h2>
-      <p class="landing-cta-description">{{ page.final_cta.description }}</p>
-      <a href="{{ page.final_cta.url }}" class="landing-cta-button">{{ page.final_cta.text }}</a>
-    </div>
+  <section class="landing-page__cta">
+    <h2 class="landing-page__cta-title">{{ page.final_cta.title }}</h2>
+    {% if page.final_cta.description %}
+    <p class="landing-page__cta-description">{{ page.final_cta.description }}</p>
+    {% endif %}
+    <a href="{{ page.final_cta.url }}" class="landing-page__cta-button">{{ page.final_cta.text }}</a>
   </section>
   {% endif %}
 </div>

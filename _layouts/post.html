@@ -1,67 +1,53 @@
 ---
-layout: scrollable
+layout: default
 ---
-<!-- 
-Post Layout
-Purpose: Blog posts and news entries with article-style formatting
-Features: Post metadata, author info, sharing options, comments section
--->
-<article class="post-layout">
-  <div class="post-wrapper">
-    <div class="post-grid">
-      <div class="post-main-col">
-        <!-- Post Header -->
-        <header class="post-header">
-          {% if page.title %}
-          <h1 class="post-title">{{ page.title }}</h1>
-          {% endif %}
-          
-          {% if page.date or page.author %}
-          <div class="post-meta">
-            {% if page.date %}
-            <time datetime="{{ page.date | date_to_xmlschema }}" class="post-meta-date">
-              <i class="far fa-calendar" aria-hidden="true"></i>
-              {{ page.date | date: "%B %d, %Y" }}
-            </time>
-            {% endif %}
-            {% if page.author %}
-            <span class="post-author">
-              <i class="far fa-user" aria-hidden="true"></i>
-              {{ page.author }}
-            </span>
-            {% endif %}
-          </div>
-          {% endif %}
-          
-          {% if page.tags or page.categories %}
-          <div class="post-tags">
-            {% for tag in page.tags %}
-            <span class="post-tag">{{ tag }}</span>
-            {% endfor %}
-            {% for category in page.categories %}
-            <span class="post-category">{{ category }}</span>
-            {% endfor %}
-          </div>
-          {% endif %}
-        </header>
-        
-        <!-- Post Content -->
-        <div class="post-content">
-          {{ content }}
-        </div>
-        
-        <!-- Post Footer -->
-        <footer class="post-footer">
-          {% if page.share %}
-          <div class="post-share">
-            <h5 class="post-share-title">Share this post</h5>
-            <div class="share-buttons">
-              <!-- Social sharing buttons can be added here -->
-            </div>
-          </div>
-          {% endif %}
-        </footer>
+<article class="blog-post">
+  <header class="blog-post__header">
+    {% if page.title %}
+    <h1 class="blog-post__title">{{ page.title }}</h1>
+    {% endif %}
+    
+    {% if page.date or page.author %}
+    <div class="blog-post__meta">
+      {% if page.date %}
+      <time datetime="{{ page.date | date_to_xmlschema }}" class="blog-post__date">
+        <i class="far fa-calendar" aria-hidden="true"></i>
+        {{ page.date | date: "%B %d, %Y" }}
+      </time>
+      {% endif %}
+      {% if page.author %}
+      <span class="blog-post__author">
+        <i class="far fa-user" aria-hidden="true"></i>
+        {{ page.author }}
+      </span>
+      {% endif %}
+    </div>
+    {% endif %}
+    
+    {% if page.tags or page.categories %}
+    <div class="blog-post__tags">
+      {% for tag in page.tags %}
+      <span class="blog-post__tag">{{ tag }}</span>
+      {% endfor %}
+      {% for category in page.categories %}
+      <span class="blog-post__category">{{ category }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </header>
+  
+  <div class="blog-post__content">
+    {{ content }}
+  </div>
+  
+  {% if page.share %}
+  <footer class="blog-post__footer">
+    <div class="blog-post__share">
+      <h2 class="blog-post__share-title">Share this post</h2>
+      <div class="blog-post__share-buttons">
+        <!-- Social sharing buttons -->
       </div>
     </div>
-  </div>
+  </footer>
+  {% endif %}
 </article>

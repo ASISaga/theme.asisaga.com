@@ -1,39 +1,31 @@
 {% comment %}
 Testimonial Component
+Creates a grid of customer testimonials with semantic markup
+
 Parameters:
-- title: Optional title for the testimonials section
-- testimonials: Array of testimonial items (from _data or passed directly)
-- style: Optional style variation (default, alt)
+- title: Section heading
+- testimonials: Array of testimonial objects with text, name, company
+- style: Style variant (alt)
 {% endcomment %}
 
-{% assign section_class = "testimonial-section" %}
-{% if include.style == "alt" %}
-  {% assign section_class = section_class | append: " testimonial-section-alt" %}
-{% endif %}
-
-{% assign testimonials = include.testimonials | default: [] %}
-
-<section class="{{ section_class }}">
-  <div class="testimonial-container">
-    {% if include.title %}
-      {% include section-header.html title=include.title %}
-    {% endif %}
-    
-    <div class="testimonial-grid">
-      {% for item in testimonials %}
-        <div class="testimonial-item">
-          <div class="testimonial-card">
-            <p class="testimonial-text">{{ item.text }}</p>
-            
-            <div class="testimonial-author">
-              <p class="testimonial-name">{{ item.name }}</p>
-              {% if item.company %}
-                <p class="testimonial-company">{{ item.company }}</p>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      {% endfor %}
-    </div>
+<section class="testimonial-section{% if include.style == 'alt' %} testimonial-section--alt{% endif %}">
+  {% if include.title %}
+  <h2 class="testimonial-section__title">{{ include.title }}</h2>
+  {% endif %}
+  
+  <div class="testimonial-section__grid">
+    {% for item in include.testimonials %}
+    <article class="testimonial-card">
+      <blockquote class="testimonial-card__quote">
+        <p class="testimonial-card__text">{{ item.text }}</p>
+        <footer class="testimonial-card__author">
+          <cite class="testimonial-card__name">{{ item.name }}</cite>
+          {% if item.company %}
+          <span class="testimonial-card__company">{{ item.company }}</span>
+          {% endif %}
+        </footer>
+      </blockquote>
+    </article>
+    {% endfor %}
   </div>
 </section>

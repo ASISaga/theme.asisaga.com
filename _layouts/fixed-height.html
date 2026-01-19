@@ -1,17 +1,6 @@
 ---
 layout: default
 ---
-<!-- 
-Fixed-Height Base Template
-Purpose: Application-style layouts where the viewport height is constrained
-Container: Uses .container-fluid with flexbox or grid
-Behavior: Header/footer pinned, central panel scrollable (overflow-y: auto)
-Used by: dashboard, chatroom, search, settings
--->
-<div class="fixed-height-layout">
-  <div class="fixed-height-wrapper">
-    <div class="fixed-height-content">
-      {{ content }}
-    </div>
-  </div>
+<div class="fixed-height-page">
+  {{ content }}
 </div>

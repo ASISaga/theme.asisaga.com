@@ -1,83 +1,60 @@
 ---
 layout: minimal-base
 ---
-<!-- 
-Splash Layout
-Purpose: Intro, coming soon, or lightweight splash pages
-Features: Full-screen design, countdown timers, email capture
--->
-<div class="splash-layout-content">
-  <div class="splash-container">
-    <div class="splash-content">
-      {% if page.logo %}
-      <img src="{{ page.logo }}" alt="{{ page.title }}" class="splash-logo">
-      {% endif %}
-      
-      {% if page.title %}
-      <h1 class="splash-title">{{ page.title }}</h1>
-      {% endif %}
-      
-      {% if page.subtitle %}
-      <p class="splash-subtitle">{{ page.subtitle }}</p>
-      {% endif %}
-      
-      {{ content }}
-      
-      {% if page.countdown %}
-      <!-- Countdown Timer -->
-      <div class="splash-countdown">
-        <div class="splash-countdown-row">
-          <div class="countdown-item">
-            <div class="splash-countdown-unit">
-              <div class="splash-countdown-value" id="days">00</div>
-              <small class="splash-countdown-label">Days</small>
-            </div>
-          </div>
-          <div class="countdown-item">
-            <div class="splash-countdown-unit">
-              <div class="splash-countdown-value" id="hours">00</div>
-              <small class="splash-countdown-label">Hours</small>
-            </div>
-          </div>
-          <div class="countdown-item">
-            <div class="splash-countdown-unit">
-              <div class="splash-countdown-value" id="minutes">00</div>
-              <small class="splash-countdown-label">Minutes</small>
-            </div>
-          </div>
-          <div class="countdown-item">
-            <div class="splash-countdown-unit">
-              <div class="splash-countdown-value" id="seconds">00</div>
-              <small class="splash-countdown-label">Seconds</small>
-            </div>
-          </div>
-        </div>
+<div class="splash-page">
+  <div class="splash-page__content">
+    {% if page.logo %}
+    <img src="{{ page.logo }}" alt="{{ page.title }}" class="splash-page__logo">
+    {% endif %}
+    
+    {% if page.title %}
+    <h1 class="splash-page__title">{{ page.title }}</h1>
+    {% endif %}
+    
+    {% if page.subtitle %}
+    <p class="splash-page__subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+    
+    {{ content }}
+    
+    {% if page.countdown %}
+    <div class="splash-countdown" aria-label="Countdown timer">
+      <div class="splash-countdown__item">
+        <span class="splash-countdown__value" id="days" aria-label="Days">00</span>
+        <span class="splash-countdown__label">Days</span>
       </div>
-      {% endif %}
-      
-      {% if page.email_capture %}
-      <!-- Email Capture Form -->
-      <div class="splash-email-capture">
-        <form class="splash-email-form">
-          <div class="splash-email-input-col">
-            <input type="email" class="splash-email-input" placeholder="Enter your email" aria-label="Email address">
-          </div>
-          <div class="countdown-item">
-            <button type="submit" class="splash-email-btn">{{ page.email_capture.button_text | default: "Notify Me" }}</button>
-          </div>
-        </form>
+      <div class="splash-countdown__item">
+        <span class="splash-countdown__value" id="hours" aria-label="Hours">00</span>
+        <span class="splash-countdown__label">Hours</span>
       </div>
-      {% endif %}
-      
-      {% if page.social_links %}
-      <div class="splash-social">
-        {% for link in page.social_links %}
-        <a href="{{ link.url }}" class="splash-social-link" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-{{ link.platform }}" aria-hidden="true"></i>
-        </a>
-        {% endfor %}
+      <div class="splash-countdown__item">
+        <span class="splash-countdown__value" id="minutes" aria-label="Minutes">00</span>
+        <span class="splash-countdown__label">Minutes</span>
       </div>
-      {% endif %}
+      <div class="splash-countdown__item">
+        <span class="splash-countdown__value" id="seconds" aria-label="Seconds">00</span>
+        <span class="splash-countdown__label">Seconds</span>
+      </div>
     </div>
+    {% endif %}
+    
+    {% if page.email_capture %}
+    <form class="splash-page__email-form">
+      <label for="splash-email" class="sr-only">Email address</label>
+      <input type="email" id="splash-email" class="splash-page__email-input" placeholder="Enter your email" required>
+      <button type="submit" class="splash-page__email-button">{{ page.email_capture.button_text | default: "Notify Me" }}</button>
+    </form>
+    {% endif %}
+    
+    {% if page.social_links %}
+    <nav class="splash-page__social" aria-label="Social media links">
+      {% for link in page.social_links %}
+      <a href="{{ link.url }}" class="splash-page__social-link" target="_blank" rel="noopener noreferrer" aria-label="{{ link.platform | capitalize }}">
+        <i class="fab fa-{{ link.platform }}" aria-hidden="true"></i>
+        <span class="sr-only">{{ link.platform | capitalize }}</span>
+      </a>
+      {% endfor %}
+    </nav>
+    {% endif %}
   </div>
 </div>

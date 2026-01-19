@@ -1,31 +1,16 @@
 <!DOCTYPE html>
-<!-- 
-Default layout template for all pages in the site
-This template defines the basic structure of all pages, including:
-- Document type and language
-- Head section with meta tags, title, stylesheets and scripts
-- Body structure with header, main content, and footer
--->
 <html lang="{{ site.lang | default: 'en-US' }}">
-  
-  <!-- Include the head component with all meta tags, CSS, and JS dependencies -->
   {% include head.html %}
   
-  <body>
-    <!-- Skip navigation for accessibility -->
-    <a href="#skip-target" class="skip-link">Skip to main content</a>
+  <body class="app-layout">
+    <a href="#skip-target" class="sr-only focus-visible">Skip to main content</a>
     
-    <!-- Site header with navigation -->
-    {% include header.html %}    
+    {% include header.html %}
     
-    <!-- Main content container with skip target for accessibility -->
-    <main class="site-main" id="skip-target" tabindex="-1">
-      <!-- Page content inserted here by Jekyll -->
+    <main id="skip-target" tabindex="-1" class="app-content">
       {{ content }}
     </main>
-
-    <!-- Site footer -->
-    {% include footer.html class="site-footer-fixed" %}
-  
+    
+    {% include footer.html %}
   </body>
 </html>

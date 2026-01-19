@@ -1,111 +1,93 @@
 ---
-layout: scrollable
+layout: default
 ---
-<!-- 
-Docs Layout
-Purpose: Documentation or knowledge base pages with navigation
-Features: Sidebar navigation, breadcrumbs, previous/next links, search
--->
-<div class="docs-layout">
-  <div class="docs-wrapper">
-    <div class="docs-grid">
-      <!-- Docs Sidebar -->
-      <aside class="docs-sidebar">
-        <div class="docs-sidebar-sticky">
-          {% if page.search %}
-          <div class="docs-search">
-            <input type="search" class="form-control" placeholder="Search docs..." aria-label="Search documentation">
-          </div>
-          {% endif %}
-          
-          <nav class="docs-nav" aria-label="Documentation navigation">
-            {% if page.nav_items %}
-            <ul class="nav flex-column">
-              {% for item in page.nav_items %}
-              <li class="nav-item">
-                <a class="nav-link {% if page.url == item.url %}active{% endif %}" href="{{ item.url }}">
-                  {{ item.title }}
-                </a>
-                {% if item.children %}
-                <ul class="docs-nav-children">
-                  {% for child in item.children %}
-                  <li class="nav-item">
-                    <a class="nav-link {% if page.url == child.url %}active{% endif %}" href="{{ child.url }}">
-                      {{ child.title }}
-                    </a>
-                  </li>
-                  {% endfor %}
-                </ul>
-                {% endif %}
-              </li>
-              {% endfor %}
-            </ul>
-            {% endif %}
-          </nav>
-        </div>
-      </aside>
-      
-      <!-- Docs Main Content -->
-      <main class="docs-content">
-        <!-- Breadcrumbs -->
-        {% if page.breadcrumbs %}
-        <nav aria-label="breadcrumb" class="docs-breadcrumb">
-          <ol class="breadcrumb">
-            {% for crumb in page.breadcrumbs %}
-            <li class="breadcrumb-item {% if forloop.last %}active{% endif %}">
-              {% if forloop.last %}
-                {{ crumb.title }}
-              {% else %}
-                <a href="{{ crumb.url }}">{{ crumb.title }}</a>
-              {% endif %}
+<div class="docs-page">
+  <aside class="docs-page__sidebar" aria-label="Documentation navigation">
+    {% if page.search %}
+    <div class="docs-page__search">
+      <label for="docs-search" class="sr-only">Search documentation</label>
+      <input type="search" id="docs-search" class="docs-page__search-input" placeholder="Search docs...">
+    </div>
+    {% endif %}
+    
+    {% if page.nav_items %}
+    <nav class="docs-page__nav">
+      <ul class="docs-page__nav-list">
+        {% for item in page.nav_items %}
+        <li class="docs-page__nav-item">
+          <a class="docs-page__nav-link{% if page.url == item.url %} docs-page__nav-link--active{% endif %}" href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>
+            {{ item.title }}
+          </a>
+          {% if item.children %}
+          <ul class="docs-page__nav-list docs-page__nav-list--nested">
+            {% for child in item.children %}
+            <li class="docs-page__nav-item">
+              <a class="docs-page__nav-link{% if page.url == child.url %} docs-page__nav-link--active{% endif %}" href="{{ child.url }}"{% if page.url == child.url %} aria-current="page"{% endif %}>
+                {{ child.title }}
+              </a>
             </li>
             {% endfor %}
-          </ol>
-        </nav>
-        {% endif %}
-        
-        <article class="docs-article">
-          {% if page.title %}
-          <h1 class="docs-title">{{ page.title }}</h1>
+          </ul>
           {% endif %}
-          
-          {{ content }}
-        </article>
-        
-        <!-- Previous/Next Navigation -->
-        {% if page.prev or page.next %}
-        <nav class="docs-pagination" aria-label="Page navigation">
-          <div class="docs-nav-grid">
-            <div class="docs-nav-item">
-              {% if page.prev %}
-              <a href="{{ page.prev.url }}" class="docs-pagination-link">
-                <small class="docs-pagination-label">← Previous</small>
-                <strong>{{ page.prev.title }}</strong>
-              </a>
-              {% endif %}
-            </div>
-            <div class="docs-pagination-next">
-              {% if page.next %}
-              <a href="{{ page.next.url }}" class="docs-pagination-link">
-                <small class="docs-pagination-label">Next →</small>
-                <strong>{{ page.next.title }}</strong>
-              </a>
-              {% endif %}
-            </div>
-          </div>
-        </nav>
-        {% endif %}
-      </main>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    {% endif %}
+  </aside>
+  
+  <div class="docs-page__main">
+    {% if page.breadcrumbs %}
+    <nav class="docs-page__breadcrumbs" aria-label="Breadcrumb">
+      <ol class="docs-page__breadcrumb-list">
+        {% for crumb in page.breadcrumbs %}
+        <li class="docs-page__breadcrumb-item{% if forloop.last %} docs-page__breadcrumb-item--current{% endif %}">
+          {% if forloop.last %}
+          {{ crumb.title }}
+          {% else %}
+          <a href="{{ crumb.url }}">{{ crumb.title }}</a>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ol>
+    </nav>
+    {% endif %}
+    
+    <article class="docs-page__article">
+      {% if page.title %}
+      <h1 class="docs-page__title">{{ page.title }}</h1>
+      {% endif %}
       
-      <!-- Optional Right Sidebar (Table of Contents) -->
-      <aside class="docs-toc">
-        <div class="docs-toc-sticky">
-          <h6 class="docs-toc-title">On this page</h6>
-          <nav class="nav flex-column">
-            <!-- Auto-generated TOC can go here -->
-          </nav>
-        </div>
-      </aside>
-    </div>
+      <div class="docs-page__content">
+        {{ content }}
+      </div>
+    </article>
+    
+    {% if page.prev or page.next %}
+    <nav class="docs-page__pagination" aria-label="Page navigation">
+      {% if page.prev %}
+      <a href="{{ page.prev.url }}" class="docs-page__pagination-link docs-page__pagination-link--prev">
+        <span class="docs-page__pagination-label">← Previous</span>
+        <span class="docs-page__pagination-title">{{ page.prev.title }}</span>
+      </a>
+      {% endif %}
+      
+      {% if page.next %}
+      <a href="{{ page.next.url }}" class="docs-page__pagination-link docs-page__pagination-link--next">
+        <span class="docs-page__pagination-label">Next →</span>
+        <span class="docs-page__pagination-title">{{ page.next.title }}</span>
+      </a>
+      {% endif %}
+    </nav>
+    {% endif %}
   </div>
+  
+  {% if page.toc %}
+  <aside class="docs-page__toc" aria-label="Table of contents">
+    <h2 class="docs-page__toc-title">On this page</h2>
+    <nav class="docs-page__toc-nav">
+      {{ page.toc }}
+    </nav>
+  </aside>
+  {% endif %}
 </div>

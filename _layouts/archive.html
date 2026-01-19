@@ -1,69 +1,61 @@
 ---
-layout: scrollable
+layout: default
 ---
-<!-- 
-Archive Layout
-Purpose: Index pages listing posts, projects, or resources
-Features: Filtering, sorting, pagination, grid/list view toggle
--->
-<div class="archive-layout">
-  <div class="archive-wrapper">
-    <!-- Archive Header -->
-    <header class="archive-header">
-      {% if page.title %}
-      <h1 class="archive-title">{{ page.title }}</h1>
-      {% endif %}
-      
-      {% if page.description %}
-      <p class="archive-description">{{ page.description }}</p>
-      {% endif %}
-      
-      <!-- Archive Controls -->
-      <div class="archive-controls">
-        {% if page.show_filters %}
-        <div class="archive-filters">
-          <select class="form-select" aria-label="Filter items">
-            <option selected>All Categories</option>
-            <!-- Dynamic filter options -->
-          </select>
-        </div>
-        {% endif %}
-        
-        {% if page.show_sort %}
-        <div class="archive-sort">
-          <select class="form-select" aria-label="Sort items">
-            <option selected>Latest First</option>
-            <option>Oldest First</option>
-            <option>Title A-Z</option>
-          </select>
-        </div>
-        {% endif %}
-        
-        {% if page.show_view_toggle %}
-        <div class="archive-view-toggle" role="group">
-          <button type="button" class="archive-view-btn active" aria-label="Grid view">
-            <i class="fas fa-th" aria-hidden="true"></i>
-          </button>
-          <button type="button" class="archive-view-btn" aria-label="List view">
-            <i class="fas fa-list" aria-hidden="true"></i>
-          </button>
-        </div>
-        {% endif %}
-      </div>
-    </header>
-    
-    <!-- Archive Content -->
-    <div class="archive-content">
-      {{ content }}
-    </div>
-    
-    <!-- Pagination -->
-    {% if page.show_pagination %}
-    <nav class="archive-pagination" aria-label="Archive pagination">
-      <ul class="pagination-list">
-        <!-- Pagination items will be generated here -->
-      </ul>
-    </nav>
+<div class="archive-page">
+  <header class="archive-page__header">
+    {% if page.title %}
+    <h1 class="archive-page__title">{{ page.title }}</h1>
     {% endif %}
+    
+    {% if page.description %}
+    <p class="archive-page__description">{{ page.description }}</p>
+    {% endif %}
+    
+    {% if page.show_filters or page.show_sort or page.show_view_toggle %}
+    <div class="archive-page__controls">
+      {% if page.show_filters %}
+      <div class="archive-page__filters">
+        <label for="archive-filter" class="sr-only">Filter items</label>
+        <select id="archive-filter" class="archive-page__select">
+          <option selected>All Categories</option>
+        </select>
+      </div>
+      {% endif %}
+      
+      {% if page.show_sort %}
+      <div class="archive-page__sort">
+        <label for="archive-sort" class="sr-only">Sort items</label>
+        <select id="archive-sort" class="archive-page__select">
+          <option selected>Latest First</option>
+          <option>Oldest First</option>
+          <option>Title A-Z</option>
+        </select>
+      </div>
+      {% endif %}
+      
+      {% if page.show_view_toggle %}
+      <div class="archive-page__view-toggle" role="group" aria-label="View mode">
+        <button type="button" class="archive-page__view-button archive-page__view-button--active" aria-label="Grid view" aria-pressed="true">
+          <i class="fas fa-th" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="archive-page__view-button" aria-label="List view" aria-pressed="false">
+          <i class="fas fa-list" aria-hidden="true"></i>
+        </button>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+  </header>
+  
+  <div class="archive-page__content">
+    {{ content }}
   </div>
+  
+  {% if page.show_pagination %}
+  <nav class="archive-page__pagination" aria-label="Archive pagination">
+    <ul class="archive-page__pagination-list">
+      <!-- Pagination items -->
+    </ul>
+  </nav>
+  {% endif %}
 </div>
