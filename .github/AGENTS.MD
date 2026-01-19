@@ -1,11 +1,19 @@
-# 🤖 ASI Saga - Agent Ecosystem Architecture v2.0
+# 🤖 ASI Saga - Agent Ecosystem Architecture v2.2
 
 **Last Updated**: 2026-01-19  
-**Version**: 2.0 - Responsive & Futuristic Enhancement
+**Version**: 2.2 - Figma MCP Integration
 
 This document describes the AI agent ecosystem that governs the ASI Saga theme repository, implementing the evolutionary mechanism for the Genesis Semantic Design System.
 
 ---
+
+## 🚀 Version 2.2 Enhancements (NEW)
+
+- **Figma MCP Integration**: Design-to-code translation via Figma Model Context Protocol
+- **Design Token Extraction**: Automated Figma token extraction and OKLCH conversion
+- **Design-Code Traceability**: Maintain bidirectional links between Figma designs and code
+- **Semantic Gap Detection**: Identify missing ontological variants from design patterns
+- **Comprehensive Guides**: Complete design token translation and workflow documentation
 
 ## 🚀 Version 2.0 Enhancements
 
@@ -94,7 +102,65 @@ PR Received
 
 ---
 
-### 3. SCSS Refactor Agent (Migration Specialist)
+### 3. Figma Design Bridge Agent (Design Translator) NEW v2.2
+
+**Role**: Design-to-Code Translation Specialist  
+**Location**: `.github/prompts/figma-design-bridge-agent.prompt.md`  
+**Skill**: `.github/skills/figma-design-bridge-agent/`  
+**Scope**: Figma designs → Genesis Semantic Design System  
+**MCP Integration**: `https://mcp.figma.com/mcp`
+
+**Responsibilities**:
+- Extract design tokens from Figma via MCP
+- Convert colors to OKLCH for perceptual uniformity
+- Map Figma components to ontological variants
+- Translate typography styles to cognition variants
+- Map spacing systems to environment tokens
+- Identify semantic gaps revealed by design patterns
+- Maintain design-code bidirectional traceability
+- Generate semantic HTML and ontological SCSS from designs
+- Document Figma source references in code
+
+**Translation Process**:
+1. Access Figma design file via Figma MCP
+2. Extract design tokens (colors, typography, spacing, effects)
+3. Analyze component structure and semantic intent
+4. Map to appropriate ontological categories:
+   - Layout → `genesis-environment($logic)`
+   - Visual presence → `genesis-entity($nature)`
+   - Typography → `genesis-cognition($intent)`
+   - Interactions → `genesis-synapse($vector)`
+   - States → `genesis-state($condition)`
+   - Effects → `genesis-atmosphere($vibe)`
+5. Generate semantic HTML with BEM naming
+6. Create ontological SCSS (zero raw CSS)
+7. Document mapping decisions and Figma source
+8. Validate accessibility and responsiveness
+9. Submit ontological propositions for semantic gaps
+
+**Key Principles**:
+- Extract semantic INTENT from design, not just visual properties
+- Convert all colors to OKLCH (never use raw hex)
+- Map typography by information type, not size
+- Let ontology handle spacing (no manual padding/margin)
+- Document the "why" behind mapping decisions
+- Identify and propose new variants when design reveals gaps
+
+**Integration Points**:
+- **Figma MCP**: Direct access to design files and tokens
+- **Theme Genome Agent**: Submit propositions for semantic gaps
+- **SCSS Refactor Agent**: Validate zero-CSS compliance
+- **HTML Template Agent**: Ensure semantic structure
+- **Subdomain Evolution Agent**: Co-create ontological proposals
+
+**Resources**:
+- [Figma MCP Integration Guide](../figma-mcp.md)
+- [Design Tokens Translation Guide](.github/skills/figma-design-bridge-agent/references/DESIGN-TOKENS-GUIDE.md)
+- [Complete Skill Documentation](.github/skills/figma-design-bridge-agent/SKILL.md)
+
+---
+
+### 4. SCSS Refactor Agent (Migration Specialist)
 
 **Role**: Ontology Migration Expert  
 **Location**: `_sass/ontology/refactor-agent.md`  
