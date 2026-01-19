@@ -18,7 +18,7 @@ All `genesis-synapse` variants now have WCAG-compliant touch targets:
 - Links have expanded tap zones
 - **No code changes needed** - your existing synapse mixins are enhanced
 
-**Before v2.1.0**: Touch targets may have been too small on mobile  
+**Before v2.1.0**: Touch targets may have been too small on mobile
 **After v2.1.0**: All interactive elements WCAG 2.1 compliant
 
 ### 2. Responsive Typography (v2.1.0)
@@ -27,7 +27,7 @@ All `genesis-cognition` variants scale responsively:
 - Fluid scaling from mobile → tablet → desktop
 - **No code changes needed** - your existing cognition mixins are enhanced
 
-**Before v2.1.0**: Typography may have been too small or too large on mobile  
+**Before v2.1.0**: Typography may have been too small or too large on mobile
 **After v2.1.0**: Optimal readability across all devices
 
 ### 3. Responsive Grids (v2.1.0)
@@ -38,7 +38,7 @@ All `genesis-cognition` variants scale responsively:
 - Ultrawide: Max 4 columns, centered 1600px
 - **No code changes needed** - your existing grids adapt automatically
 
-**Before v2.1.0**: Grids may have been too dense on mobile  
+**Before v2.1.0**: Grids may have been too dense on mobile
 **After v2.1.0**: Optimal layout at every viewport
 
 ---
