@@ -15,17 +15,17 @@ Parameters:
   
   <div class="testimonial-section__grid">
     {% for item in include.testimonials %}
-    <article class="testimonial-card">
+    <figure class="testimonial-card">
       <blockquote class="testimonial-card__quote">
         <p class="testimonial-card__text">{{ item.text }}</p>
-        <footer class="testimonial-card__author">
-          <cite class="testimonial-card__name">{{ item.name }}</cite>
-          {% if item.company %}
-          <span class="testimonial-card__company">{{ item.company }}</span>
-          {% endif %}
-        </footer>
       </blockquote>
-    </article>
+      <figcaption class="testimonial-card__author">
+        <cite class="testimonial-card__name">{{ item.name }}</cite>
+        {% if item.company %}
+        <span class="testimonial-card__company">{{ item.company }}</span>
+        {% endif %}
+      </figcaption>
+    </figure>
     {% endfor %}
   </div>
 </section>
