@@ -1,29 +1,31 @@
-<!-- 
+{% comment %}
 Dashboard Widget Component
-Displays a dashboard metric card/widget
--->
-<div class="dashboard-widget-component" data-columns="{{ include.columns | default: '3' }}">
-  <div class="card">
-    <div class="card-body">
-      <div class="widget-header">
-        <h5 class="widget-title">{{ include.title }}</h5>
-        {% if include.icon %}
-        <i class="widget-icon {{ include.icon }}" aria-hidden="true"></i>
-        {% endif %}
-      </div>
-      
-      <div class="widget-value">
-        <h2>{{ include.value }}</h2>
-      </div>
-      
-      {% if include.change %}
-      <div class="widget-change">
-        <span class="{% if include.change > 0 %}badge-success{% else %}badge-danger{% endif %}">
-          {% if include.change > 0 %}+{% endif %}{{ include.change }}%
-        </span>
-        <small class="change-label">vs last period</small>
-      </div>
-      {% endif %}
-    </div>
+Displays a dashboard metric card
+
+Parameters:
+- title: Widget title (required)
+- value: Main metric value (required)
+- icon: Optional icon class
+- change: Optional percentage change
+- columns: Grid columns to span (default: 3)
+{% endcomment %}
+
+<article class="dashboard-widget" data-columns="{{ include.columns | default: '3' }}">
+  <header class="dashboard-widget__header">
+    <h3 class="dashboard-widget__title">{{ include.title }}</h3>
+    {% if include.icon %}
+    <i class="dashboard-widget__icon {{ include.icon }}" aria-hidden="true"></i>
+    {% endif %}
+  </header>
+  
+  <div class="dashboard-widget__value">{{ include.value }}</div>
+  
+  {% if include.change %}
+  <div class="dashboard-widget__change dashboard-widget__change--{% if include.change > 0 %}positive{% else %}negative{% endif %}">
+    <span class="dashboard-widget__change-value">
+      {% if include.change > 0 %}+{% endif %}{{ include.change }}%
+    </span>
+    <span class="dashboard-widget__change-label">vs last period</span>
   </div>
-</div>
+  {% endif %}
+</article>

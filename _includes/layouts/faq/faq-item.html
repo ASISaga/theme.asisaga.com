@@ -1,27 +1,34 @@
-<!-- 
+{% comment %}
 FAQ Item Component
 Displays a single FAQ item with accordion behavior
--->
-<div class="faq-item-component">
-  <h3 class="accordion-header" id="faq-{{ include.id }}">
+
+Parameters:
+- id: Unique identifier (required)
+- question: Question text (required)
+- answer: Answer content (required)
+- expanded: Whether to show expanded by default
+- parent: Parent accordion ID for grouping
+{% endcomment %}
+
+<div class="faq-item">
+  <h3 class="faq-item__header" id="faq-{{ include.id }}">
     <button 
-      class="faq-item-button {% unless include.expanded %}collapsed{% endunless %}" 
+      class="faq-item__button{% unless include.expanded %} faq-item__button--collapsed{% endunless %}" 
       type="button" 
       data-bs-toggle="collapse" 
       data-bs-target="#collapse-{{ include.id }}" 
       aria-expanded="{% if include.expanded %}true{% else %}false{% endif %}" 
-      aria-controls="collapse-{{ include.id }}"
-    >
+      aria-controls="collapse-{{ include.id }}">
       {{ include.question }}
     </button>
   </h3>
+  
   <div 
     id="collapse-{{ include.id }}" 
-    class="faq-item-collapse {% if include.expanded %}show{% endif %}" 
+    class="faq-item__content{% if include.expanded %} faq-item__content--show{% endif %}" 
     aria-labelledby="faq-{{ include.id }}"
-    {% if include.parent %}data-bs-parent="#{{ include.parent }}"{% endif %}
-  >
-    <div class="accordion-body">
+    {% if include.parent %}data-bs-parent="#{{ include.parent }}"{% endif %}>
+    <div class="faq-item__answer">
       {{ include.answer }}
     </div>
   </div>

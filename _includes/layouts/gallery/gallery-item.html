@@ -1,21 +1,28 @@
-<!-- 
+{% comment %}
 Gallery Item Component
-Displays a single gallery item with lightbox support
--->
-<div class="gallery-item-component" data-category="{{ include.category }}">
-  <div class="gallery-item-card">
-    <a href="{{ include.full_image }}" data-lightbox="gallery" data-title="{{ include.title }}">
-      <img src="{{ include.thumbnail }}" alt="{{ include.title }}" class="gallery-item-image">
-    </a>
-    {% if include.title or include.description %}
-    <div class="gallery-item-body">
-      {% if include.title %}
-      <h5 class="gallery-item-title">{{ include.title }}</h5>
-      {% endif %}
-      {% if include.description %}
-      <p class="gallery-item-description">{{ include.description }}</p>
-      {% endif %}
-    </div>
+Displays a gallery item with lightbox support
+
+Parameters:
+- title: Image title (required for alt text)
+- thumbnail: Thumbnail image URL (required)
+- full_image: Full-size image URL (required)
+- description: Optional image description
+- category: Optional category for filtering
+{% endcomment %}
+
+<figure class="gallery-item" data-category="{{ include.category }}">
+  <a href="{{ include.full_image }}" class="gallery-item__link" data-lightbox="gallery" data-title="{{ include.title }}">
+    <img src="{{ include.thumbnail }}" alt="{{ include.title }}" class="gallery-item__image">
+  </a>
+  
+  {% if include.title or include.description %}
+  <figcaption class="gallery-item__caption">
+    {% if include.title %}
+    <span class="gallery-item__title">{{ include.title }}</span>
     {% endif %}
-  </div>
-</div>
+    {% if include.description %}
+    <span class="gallery-item__description">{{ include.description }}</span>
+    {% endif %}
+  </figcaption>
+  {% endif %}
+</figure>

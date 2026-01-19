@@ -1,22 +1,24 @@
 {% comment %}
 Content Modal Component
-This is a reusable modal  dialog that can be populated with content from interactive modules
-No parameters are needed as content is dynamically injected via JavaScript
+Reusable modal dialog populated dynamically via JavaScript
+No parameters needed - content injected via JavaScript
 {% endcomment %}
 
-<div class="modal fade" id="contentModal" tabindex="-1" aria-labelledby="contentModalLabel" aria-hidden="true">
-  <div class="modal-dialog-centered-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="contentModalLabel">Future Possibility</h5>
-        <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="modal" id="contentModal" tabindex="-1" role="dialog" aria-labelledby="contentModalLabel" aria-hidden="true">
+  <div class="modal__dialog" role="document">
+    <div class="modal__content">
+      <header class="modal__header">
+        <h2 class="modal__title" id="contentModalLabel">Future Possibility</h2>
+        <button type="button" class="modal__close" data-bs-dismiss="modal" aria-label="Close modal"></button>
+      </header>
+      
+      <div class="modal__body">
+        <!-- Content injected via JavaScript -->
       </div>
-      <div class="modal-body">
-        <!-- Content will be injected here via JavaScript -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="modal-action-btn" data-bs-dismiss="modal">Close</button>
-      </div>
+      
+      <footer class="modal__footer">
+        <button type="button" class="modal__button" data-bs-dismiss="modal">Close</button>
+      </footer>
     </div>
   </div>
 </div>

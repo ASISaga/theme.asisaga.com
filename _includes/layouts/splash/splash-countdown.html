@@ -1,64 +1,57 @@
-<!-- 
+{% comment %}
 Splash Countdown Component
 Displays a countdown timer for splash pages
--->
-<div class="splash-countdown-component">
-  <div class="countdown-container">
-    <div class="countdown-item">
-      <div class="countdown-unit">
-        <div class="countdown-value" data-unit="days">00</div>
-        <div class="countdown-label">Days</div>
-      </div>
-    </div>
-    <div class="countdown-item">
-      <div class="countdown-unit">
-        <div class="countdown-value" data-unit="hours">00</div>
-        <div class="countdown-label">Hours</div>
-      </div>
-    </div>
-    <div class="countdown-item">
-      <div class="countdown-unit">
-        <div class="countdown-value" data-unit="minutes">00</div>
-        <div class="countdown-label">Minutes</div>
-      </div>
-    </div>
-    <div class="countdown-item">
-      <div class="countdown-unit">
-        <div class="countdown-value" data-unit="seconds">00</div>
-        <div class="countdown-label">Seconds</div>
-      </div>
-    </div>
+
+Parameters:
+- target_date: Target date/time for countdown
+{% endcomment %}
+
+<div class="splash-countdown" aria-label="Countdown timer">
+  <div class="splash-countdown__item">
+    <span class="splash-countdown__value" data-unit="days" aria-label="Days">00</span>
+    <span class="splash-countdown__label">Days</span>
   </div>
-  
-  {% if include.target_date %}
-  <script>
-    // Countdown timer script
-    (function() {
-      const targetDate = new Date('{{ include.target_date }}').getTime();
-      
-      function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-        
-        if (distance < 0) {
-          document.querySelectorAll('[data-unit]').forEach(el => el.textContent = '00');
-          return;
-        }
-        
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-        document.querySelector('[data-unit="days"]').textContent = String(days).padStart(2, '0');
-        document.querySelector('[data-unit="hours"]').textContent = String(hours).padStart(2, '0');
-        document.querySelector('[data-unit="minutes"]').textContent = String(minutes).padStart(2, '0');
-        document.querySelector('[data-unit="seconds"]').textContent = String(seconds).padStart(2, '0');
-      }
-      
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
-    })();
-  </script>
-  {% endif %}
+  <div class="splash-countdown__item">
+    <span class="splash-countdown__value" data-unit="hours" aria-label="Hours">00</span>
+    <span class="splash-countdown__label">Hours</span>
+  </div>
+  <div class="splash-countdown__item">
+    <span class="splash-countdown__value" data-unit="minutes" aria-label="Minutes">00</span>
+    <span class="splash-countdown__label">Minutes</span>
+  </div>
+  <div class="splash-countdown__item">
+    <span class="splash-countdown__value" data-unit="seconds" aria-label="Seconds">00</span>
+    <span class="splash-countdown__label">Seconds</span>
+  </div>
 </div>
+
+{% if include.target_date %}
+<script>
+(function() {
+  const targetDate = new Date('{{ include.target_date }}').getTime();
+  
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+    
+    if (distance < 0) {
+      document.querySelectorAll('[data-unit]').forEach(el => el.textContent = '00');
+      return;
+    }
+    
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    document.querySelector('[data-unit="days"]').textContent = String(days).padStart(2, '0');
+    document.querySelector('[data-unit="hours"]').textContent = String(hours).padStart(2, '0');
+    document.querySelector('[data-unit="minutes"]').textContent = String(minutes).padStart(2, '0');
+    document.querySelector('[data-unit="seconds"]').textContent = String(seconds).padStart(2, '0');
+  }
+  
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+})();
+</script>
+{% endif %}
