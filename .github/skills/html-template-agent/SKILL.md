@@ -4,23 +4,33 @@ description: Create semantic HTML5 templates with accessibility-first principles
 license: MIT
 metadata:
   author: ASISaga
-  version: "2.0"
+  version: "2.1"
   category: design-system
   role: semantic-structure
+allowed-tools: Bash Read
 ---
 
 # HTML Template Agent
 
 **Role**: Semantic Structure and Accessibility Expert  
-**Scope**: Jekyll templates, includes, and HTML structure
+**Scope**: Jekyll templates, includes, and HTML structure  
+**Version**: 2.1 - Integrated Validation & Automation
 
 ## Purpose
 
 The HTML Template Agent ensures all HTML follows semantic best practices, uses meaningful content-first class names, and meets WCAG AA accessibility standards. This agent creates the "Content" tier of the three-tier architecture (Content → Interface → Engine).
 
+**New in v2.1**: Automated validation scripts, comprehensive template guide, accessibility checklist.
+
 ## When to Use This Skill
 
-Activate when creating new Jekyll layouts, building reusable includes, auditing HTML for accessibility, implementing semantic class naming, or ensuring landmark element integrity.
+Activate when:
+- Creating new Jekyll layouts or includes
+- Building reusable HTML components
+- Auditing HTML for accessibility
+- Implementing semantic class naming
+- Ensuring landmark element integrity
+- **NEW**: Running automated HTML validation
 
 ## Core Principles
 
@@ -40,6 +50,8 @@ Activate when creating new Jekyll layouts, building reusable includes, auditing 
 - Visible focus indicators on interactive elements
 - Support `prefers-reduced-motion` and `prefers-contrast`
 
+## Quick Example
+
 ### Semantic HTML5 Structure
 
 ```html
@@ -49,177 +61,75 @@ Activate when creating new Jekyll layouts, building reusable includes, auditing 
 <!-- Main landmark (REQUIRED, exactly one) -->
 <main id="skip-target" tabindex="-1">
   <article class="blog-post">
-    <header class="post-header">
-      <h1 class="post-title">Title</h1>
-      <time class="post-date" datetime="2026-01-19">January 19, 2026</time>
+    <header class="blog-post__header">
+      <h1 class="blog-post__title">Title</h1>
+      <time class="blog-post__date" datetime="2026-01-19">January 19, 2026</time>
     </header>
     
-    <div class="post-content">
+    <div class="blog-post__content">
       <p>Content...</p>
     </div>
   </article>
 </main>
 ```
 
-## BEM-Style Class Naming
+## Automation & Validation
 
-Use Block-Element-Modifier pattern:
+### Validation Script
 
-```html
-<!-- Block: main component -->
-<article class="research-paper">
-  <!-- Elements: parts of block -->
-  <header class="research-paper__header">
-    <h1 class="research-paper__title">Title</h1>
-    <time class="research-paper__date">Date</time>
-  </header>
-  
-  <!-- Modifiers: variations -->
-  <div class="research-paper__content research-paper__content--draft">
-    Content...
-  </div>
-</article>
+Run the automated validation script to check semantic structure and accessibility:
+
+```bash
+# Validate HTML template
+./.github/skills/html-template-agent/scripts/validate-html.sh path/to/template.html
+
+# The script checks:
+# 1. Skip link presence
+# 2. Main landmark with skip-target
+# 3. No inline styles
+# 4. Semantic class names
+# 5. Images with alt attributes
+# 6. Form labels
 ```
 
-## Jekyll Template Best Practices
+### Pre-Commit Workflow
 
-### Parameterized Includes
+Before committing HTML changes:
 
-```liquid
-{% comment %}
-Alert Component
-Parameters:
-- type: 'urgent' | 'info' | 'warning'
-- title: Alert heading
-- message: Alert body
-- dismissible: true | false
-{% endcomment %}
+```bash
+# 1. Validate your template
+./.github/skills/html-template-agent/scripts/validate-html.sh _layouts/page.html
 
-<div class="alert alert--{{ include.type | default: 'info' }}">
-  {% if include.title %}
-  <h3 class="alert__title">{{ include.title }}</h3>
-  {% endif %}
-  
-  {% if include.message %}
-  <p class="alert__message">{{ include.message }}</p>
-  {% endif %}
-</div>
+# 2. Check all templates if needed
+for file in _layouts/*.html; do
+  ./.github/skills/html-template-agent/scripts/validate-html.sh "$file"
+done
 ```
 
-### Resilient to Missing Data
+## Detailed Guide
 
-Always provide defaults and check for existence:
-
-```liquid
-{% assign author = page.author | default: site.author %}
-{% if author %}
-  <span class="post-author">{{ author }}</span>
-{% endif %}
-```
-
-## Common Patterns
-
-### Blog Post Template
-
-```html
-<article class="blog-post">
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <div class="post-meta">
-      <time class="post-date" datetime="{{ page.date }}">
-        {{ page.date | date: "%B %d, %Y" }}
-      </time>
-      {% if page.tags %}
-      <div class="post-tags">
-        {% for tag in page.tags %}
-        <span class="post-tag">{{ tag }}</span>
-        {% endfor %}
-      </div>
-      {% endif %}
-    </div>
-  </header>
-  
-  <div class="post-content">
-    {{ content }}
-  </div>
-  
-  <footer class="post-footer">
-    <a href="/blog" class="back-link">← Back to Blog</a>
-  </footer>
-</article>
-```
-
-### Card Grid
-
-```html
-<div class="project-grid">
-  {% for project in site.projects %}
-  <article class="project-card">
-    <h2 class="project-card__title">{{ project.title }}</h2>
-    <p class="project-card__description">{{ project.description }}</p>
-    <a href="{{ project.url }}" class="project-card__link">View Project</a>
-  </article>
-  {% endfor %}
-</div>
-```
-
-## Landmark Elements Rules
-
-**Never nest landmarks**:
-- ❌ Don't put `<nav>` inside `<main>`
-- ❌ Don't put `<header>` inside `<article>` if it's the page header
-- ✅ Use `aria-label` to disambiguate duplicate landmarks
-
-**Example**:
-```html
-<nav aria-label="Main navigation">...</nav>
-<main id="skip-target">
-  <nav aria-label="Section navigation">...</nav>
-</main>
-```
-
-## Accessibility Checklist
-
-Before committing HTML:
-
-- [ ] Skip link present and functional
-- [ ] Exactly one `<main>` with id="skip-target"
-- [ ] All interactive elements keyboard accessible
-- [ ] All images have appropriate `alt` text
-- [ ] Form labels associated with inputs
-- [ ] Semantic heading hierarchy (h1 → h2 → h3)
-- [ ] No inline styles or JavaScript
-- [ ] Meaningful class names (WHAT, not HOW)
-- [ ] ARIA used only when native semantics insufficient
-
-## Mapping to Ontology
-
-HTML provides semantic structure; SCSS maps to ontological roles:
-
-**HTML**:
-```html
-<div class="feature-card">
-  <h2 class="feature-title">Title</h2>
-  <p class="feature-description">Description</p>
-  <button class="feature-action">Action</button>
-</div>
-```
-
-**SCSS (separate file)**:
-```scss
-.feature-card {
-  @include genesis-entity('primary');
-  
-  .feature-title { @include genesis-cognition('axiom'); }
-  .feature-description { @include genesis-cognition('discourse'); }
-  .feature-action { @include genesis-synapse('execute'); }
-}
-```
+See [references/TEMPLATE-GUIDE.md](references/TEMPLATE-GUIDE.md) for:
+- Complete accessibility checklist
+- BEM naming convention guide
+- Jekyll template patterns
+- Common HTML patterns
+- Validation procedures
 
 ## Resources
 
+### In This Skill
+- `scripts/validate-html.sh` - **NEW** Automated validation
+- `references/TEMPLATE-GUIDE.md` - **NEW** Comprehensive template guide
+
+### In Repository
 - `.github/instructions/html.instructions.md` - Complete HTML guidelines
 - `_sass/ontology/INTEGRATION-GUIDE.md` - Ontology reference for class mapping
-- Jekyll documentation for Liquid syntax
+- `.github/AGENT-INDEX.md` - **NEW** Quick navigation guide
 
-**Related Skills**: scss-refactor-agent, theme-genome-agent
+### Related Agents
+- `scss-refactor-agent` - Maps HTML to ontological SCSS
+- `responsive-design-agent` - Ensures mobile-first patterns
+- `theme-genome-agent` - Maintains design system
+
+**Version**: 2.1.0 - Integrated Validation  
+**Last Updated**: 2026-01-19

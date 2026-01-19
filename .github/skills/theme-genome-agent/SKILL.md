@@ -4,19 +4,23 @@ description: Review and manage ontological propositions for the Genesis Semantic
 license: MIT
 metadata:
   author: ASISaga
-  version: "2.0"
+  version: "2.1"
   category: design-system
   role: lead-architect
+allowed-tools: Bash(npm:*) Bash(sass:*) Bash(stylelint:*) Read
 ---
 
 # Theme Genome Agent
 
 **Role**: Ontological Gatekeeper and Evolution Manager  
-**Scope**: Theme repository governance and semantic design system evolution
+**Scope**: Theme repository governance and semantic design system evolution  
+**Version**: 2.1 - Integrated Validation & Automation
 
 ## Purpose
 
 The Theme Genome Agent is the lead architect responsible for maintaining the semantic purity of the Genesis Ontological Design System. This agent reviews incoming ontological propositions from subdomains, determines if they represent genuine semantic gaps, and manages the evolutionary growth of the design system's 31 variants across 6 categories.
+
+**New in v2.1**: Automated ontology validation, comprehensive decision guide, integrated testing.
 
 ## When to Use This Skill
 
@@ -28,6 +32,7 @@ Activate this skill when:
 - Refactoring or restructuring ontological categories
 - Updating the GENOME.md evolutionary history
 - Maintaining the three-tier architecture (Content → Interface → Engine)
+- **NEW**: Running automated ontology validation
 
 ## Core Responsibilities
 
@@ -67,6 +72,96 @@ PR Received
 └─ Refactoring Check: Should categories be restructured?
    └─ Update engine structure if needed, maintain compatibility
 ```
+
+See [references/DECISION-GUIDE.md](references/DECISION-GUIDE.md) for complete decision framework.
+
+## Automation & Validation
+
+### Validation Script
+
+Run the automated validation script to check ontology health:
+
+```bash
+# Validate ontology system
+./.github/skills/theme-genome-agent/scripts/validate-ontology.sh
+
+# The script checks:
+# 1. Engine layer compilation
+# 2. GENOME.md is current
+# 3. Ontological purity (zero CSS in interface)
+```
+
+### Pre-Commit Workflow
+
+Before approving/implementing ontological changes:
+
+```bash
+# 1. Validate ontology
+./.github/skills/theme-genome-agent/scripts/validate-ontology.sh
+
+# 2. Test SCSS compilation
+npm run test:scss
+
+# 3. Run linter
+npm run lint:scss
+
+# 4. Run all tests
+npm test
+```
+
+## Key Principles
+
+### Semantic Purity
+
+**ALWAYS**:
+- Accept only semantic propositions (WHAT it is)
+- Document the "Why" for every merge
+- Maintain backward compatibility
+- Keep interface layer pure (zero CSS properties)
+
+**NEVER**:
+- Accept visual-only requests ("make it red", "bigger font")
+- Add CSS properties to interface layer
+- Break existing subdomain implementations
+- Approve without universal applicability check
+
+### Quality Standards
+
+- All new variants must have clear semantic intent
+- Documentation must explain WHAT, not HOW
+- Code comments must reference origin PR
+- GENOME.md must track all evolution
+
+## Detailed Guides
+
+See [references/DECISION-GUIDE.md](references/DECISION-GUIDE.md) for:
+- Complete decision tree
+- Evaluation criteria
+- Response templates (approval, rejection types)
+- Implementation guidelines
+- Common scenarios with analysis
+
+## Resources
+
+### In This Skill
+- `scripts/validate-ontology.sh` - **NEW** Automated validation
+- `references/DECISION-GUIDE.md` - **NEW** Complete decision framework
+
+### In Repository
+- `.github/AGENTS.MD` - Complete agent ecosystem architecture
+- `.github/prompts/theme-genome-agent.prompt.md` - Detailed prompt
+- `_sass/ontology/INTEGRATION-GUIDE.md` - Complete API reference
+- `GENOME.md` - Evolutionary history and variant registry
+- `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md` - PR template
+- `.github/AGENT-INDEX.md` - **NEW** Quick navigation guide
+
+### Related Agents
+- `subdomain-evolution-agent` - Creates propositions
+- `scss-refactor-agent` - Migrates to ontological mixins
+- `responsive-design-agent` - Implements responsive patterns
+
+**Version**: 2.1.0 - Integrated Validation  
+**Last Updated**: 2026-01-19
 
 ### 3. Response Templates
 
