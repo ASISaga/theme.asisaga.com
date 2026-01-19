@@ -7,6 +7,8 @@
 // Base Consciousness Card
 // ----------------------------------------
 .consciousness-card {
+  @include genesis-entity('primary');
+  @include genesis-atmosphere('ethereal');
   @include bg-transcendent-white-subtle;
   @include border-luminous-gold;
   border-radius: 1rem;
@@ -37,6 +39,8 @@
 .wisdom-card {
   // TODO: Replace @extend .consciousness-card with proper mixin or direct styles for Jekyll compatibility
     // @extend .consciousness-card;
+  @include genesis-entity('primary');
+  @include genesis-atmosphere('vibrant');
   @include bg-luminous-gold-light;
   @include border-luminous-gold-medium;
 }
@@ -45,5 +49,7 @@
 .genesis-card {
   // TODO: Replace @extend .consciousness-card with proper mixin or direct styles for Jekyll compatibility
     // @extend .consciousness-card;
+  @include genesis-entity('imperative');
+  @include genesis-state('evolving');
   @include bg-gradient-genesis-subtle;
 }

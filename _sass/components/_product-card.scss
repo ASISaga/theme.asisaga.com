@@ -3,6 +3,13 @@
 // Product Card - Genesis Ontological System
 .product-card {
   @include genesis-entity('primary');
+  @include genesis-state('stable');
+
+  // Enhanced hover interaction with scroll-triggered reveal
+  &.aos-animate,
+  &.scroll-reveal {
+    @include genesis-state('scroll-triggered');
+  }
 
   .product-card__image-container {
     @include genesis-entity('secondary');
@@ -39,5 +46,10 @@
     &.product-card__btn--outline {
       @include genesis-synapse('inquiry');
     }
+  }
+
+  // Featured variant with vibrant atmosphere
+  &.product-card--featured {
+    @include genesis-atmosphere('vibrant');
   }
 }

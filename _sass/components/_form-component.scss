@@ -7,6 +7,8 @@
 @mixin form-component($prefix: 'form') {
   .#{$prefix} {
     @include genesis-environment('interaction-form');
+    @include genesis-entity('primary');
+    @include genesis-atmosphere('ethereal');
     
     &-row {
       @include genesis-environment('focused');
@@ -35,6 +37,11 @@
     &-submit {
       @include genesis-synapse('execute');
     }
+    
+    // Loading state for form submission
+    &.form--loading {
+      @include genesis-state('evolving');
+    }
   }
 }
 
@@ -45,6 +52,7 @@
   .#{$prefix} {
     &-container {
       @include genesis-environment('focused');
+      @include genesis-atmosphere('spacious-mobile');
     }
   }
 }
