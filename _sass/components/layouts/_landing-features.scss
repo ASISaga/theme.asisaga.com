@@ -3,47 +3,34 @@
 // Landing Features Component Styles
 
 .landing-features-component {
-  padding: $spacing-sacred-xxl 0;
+  @include genesis-environment('focused');
+  @include genesis-atmosphere('spacious-mobile');
   
   .landing-features-title {
-    text-align: center;
-    font-size: $font-size-4xl;
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sacred-xxl;
+    @include genesis-cognition('axiom');
   }
   
   .landing-features-row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -0.75rem;
-    margin-left: -0.75rem;
-    gap: 1rem;
+    @include genesis-environment('distributed');
   }
   
   .landing-feature-col {
-    @include media-breakpoint-up(md) {
-      flex: 0 0 auto;
-      width: 33.33333333%;
-    }
+    @include genesis-entity('aggregate');
   }
   
   .feature-card {
-    text-align: center;
-    padding: 1.5rem;
+    @include genesis-entity('primary');
   }
   
   .feature-icon {
-    margin-bottom: $spacing-sacred-md;
+    @include genesis-cognition('axiom');
   }
   
   .feature-title {
-    font-size: $font-size-lg;
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sacred-md;
+    @include genesis-cognition('motive');
   }
   
   .feature-description {
-    color: $text-muted;
-    margin-bottom: 0;
+    @include genesis-cognition('discourse');
   }
 }

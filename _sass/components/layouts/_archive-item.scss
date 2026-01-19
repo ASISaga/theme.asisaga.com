@@ -3,65 +3,42 @@
 // Archive Item Component Styles
 
 .archive-item-component {
-  margin-bottom: $spacing-sacred-lg;
-  padding-bottom: $spacing-sacred-lg;
-  border-bottom: 1px solid $border-color;
+  @include genesis-entity('secondary');
+  @include genesis-environment('associative');
   
   .archive-item-image-col {
-    margin-bottom: $spacing-sacred-md;
-    
-    @include media-breakpoint-up(md) {
-      margin-bottom: 0;
-      flex: 0 0 auto;
-      width: 33.33333333%;
-    }
+    @include genesis-entity('aggregate');
   }
   
   .archive-item-content-col {
-    @include media-breakpoint-up(md) {
-      flex: 0 0 auto;
-      width: 66.66666667%;
-    }
+    @include genesis-entity('aggregate');
   }
   
   .archive-item-content-full {
-    width: 100%;
+    @include genesis-entity('aggregate');
   }
   
   .archive-item-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: var(--radius-bento, 0.75rem);
+    @include genesis-entity('image-adaptive');
   }
   
   .archive-item-title {
-    font-size: $font-size-xl;
-    margin-bottom: 0.5rem;
+    @include genesis-cognition('axiom');
   }
   
   .archive-item-link {
-    text-decoration: none;
+    @include genesis-synapse('navigate');
   }
   
   .archive-item-date {
-    color: $text-muted;
-    font-size: $font-size-sm;
-    margin-bottom: 0.5rem;
+    @include genesis-cognition('gloss');
   }
   
   .archive-item-excerpt {
-    margin-bottom: 0.5rem;
+    @include genesis-cognition('discourse');
   }
   
   .archive-item-tag {
-    display: inline-block;
-    padding: 0.25em 0.5em;
-    font-size: 0.875em;
-    font-weight: 500;
-    line-height: 1;
-    color: $text-inverse;
-    background-color: $bg-light;
-    border-radius: 0.25rem;
-    margin-right: 0.25rem;
+    @include genesis-cognition('quantum');
   }
 }
