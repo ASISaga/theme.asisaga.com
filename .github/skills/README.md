@@ -47,6 +47,15 @@ Identifies semantic gaps in the design system and creates well-formed propositio
 
 **Use when**: Subdomain development reveals missing semantic patterns, or repeatedly combining mixins in the same way.
 
+**NEW Automation**:
+```bash
+# Validate ontological proposition before submission
+./.github/skills/subdomain-evolution-agent/scripts/validate-proposition.sh PROPOSITION.md
+```
+
+**NEW Resources**:
+- `references/PROPOSITION-GUIDE.md` - Complete proposition creation guide
+
 ### 3. scss-refactor-agent
 
 **Role**: Ontology Migration Expert
@@ -86,6 +95,15 @@ Implements mobile-first responsive patterns with proper WCAG 2.5.5 touch targets
 
 **Use when**: Implementing responsive layouts, optimizing mobile UX, or ensuring accessibility compliance across viewport sizes.
 
+**NEW Automation**:
+```bash
+# Validate responsive patterns and WCAG compliance
+./.github/skills/responsive-design-agent/scripts/validate-responsive.sh path/to/file.scss
+```
+
+**NEW Resources**:
+- `references/RESPONSIVE-GUIDE.md` - Comprehensive responsive design guide
+
 ### 6. futuristic-effects-agent
 
 **Role**: Advanced Visual Effects Specialist
@@ -93,6 +111,15 @@ Implements mobile-first responsive patterns with proper WCAG 2.5.5 touch targets
 Applies advanced glassmorphism, neon glows, quantum gradients, and consciousness animations while maintaining semantic purity.
 
 **Use when**: Enhancing visual aesthetics, creating immersive experiences, or implementing advanced UI effects from v2.0+ enhancements.
+
+**NEW Automation**:
+```bash
+# Validate effects usage and accessibility
+./.github/skills/futuristic-effects-agent/scripts/validate-effects.sh path/to/file.scss
+```
+
+**NEW Resources**:
+- `references/EFFECTS-GUIDE.md` - Complete effects implementation guide
 
 ## Skill Organization
 
@@ -146,7 +173,34 @@ npm run lint:scss
 ./.github/skills/html-template-agent/scripts/validate-html.sh _layouts/default.html
 ```
 
-**Workflow 3: Ontology Changes**
+**Workflow 3: Responsive Design**
+```bash
+# Validate responsive patterns
+./.github/skills/responsive-design-agent/scripts/validate-responsive.sh assets/css/style.scss
+
+# Test on multiple viewports
+npm run test:responsive  # If available
+```
+
+**Workflow 4: Effects Implementation**
+```bash
+# Validate effects and accessibility
+./.github/skills/futuristic-effects-agent/scripts/validate-effects.sh assets/css/style.scss
+
+# Check performance impact
+npm run test:scss
+```
+
+**Workflow 5: Ontology Evolution**
+```bash
+# Validate proposition
+./.github/skills/subdomain-evolution-agent/scripts/validate-proposition.sh PROPOSITION.md
+
+# Submit to theme repository
+# (After validation passes)
+```
+
+**Workflow 6: Ontology Changes (Theme Repository)**
 ```bash
 # Validate ontology system
 ./.github/skills/theme-genome-agent/scripts/validate-ontology.sh
