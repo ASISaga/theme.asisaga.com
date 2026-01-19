@@ -1,4 +1,4 @@
-@use 'sass:color';
+@import "ontology/index";
 
 // Component for reusable card patterns
 // Used across multiple pages with consistent styling
@@ -6,73 +6,31 @@
 // Base card component that can be customized for different pages
 @mixin card-component($prefix: 'card') {
   .#{$prefix} {
-    // Base card styles (replaced @extend)
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: var(--bs-card-bg, #fff);
-    background-clip: border-box;
-    border: var(--bs-card-border-width, 1px) solid var(--bs-card-border-color, rgba(0,0,0,.125));
-    border-radius: var(--bs-card-border-radius, 0.375rem);
-    // TODO: Replace @extend .h-100 with proper mixin or direct styles for Jekyll compatibility
-    @include height-full;
-    // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
-    // @extend .shadow-sm;
-    @include transition;
-    
-    &:hover {
-      @include animate-card-hover;
-    }
+    @include genesis-entity('primary');
     
     &-body {
-      // TODO: Replace @extend .card-body with proper mixin or direct styles for Jekyll compatibility
-    // @extend .card-body;
-      // TODO: Replace @extend .d-flex with proper mixin or direct styles for Jekyll compatibility
-    // @extend .d-flex;
-      // TODO: Replace @extend .flex-column with proper mixin or direct styles for Jekyll compatibility
-    // @extend .flex-column;
+      @include genesis-entity('secondary');
     }
     
     &-title {
-      // TODO: Replace @extend .card-title with proper mixin or direct styles for Jekyll compatibility
-    // @extend .card-title;
-      // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
-    // @extend .fw-bold;
-      @include text-primary;
+      @include genesis-cognition('axiom');
     }
     
     &-text {
-      // TODO: Replace @extend .card-text with proper mixin or direct styles for Jekyll compatibility
-    // @extend .card-text;
-      // TODO: Replace @extend .flex-grow-1 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .flex-grow-1;
+      @include genesis-cognition('discourse');
     }
     
     &-footer {
-      // TODO: Replace @extend .card-footer with proper mixin or direct styles for Jekyll compatibility
-    // @extend .card-footer;
-      // TODO: Replace @extend .bg-transparent with proper mixin or direct styles for Jekyll compatibility
-    // @extend .bg-transparent;
-      // TODO: Replace @extend .border-top-0 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .border-top-0;
+      @include genesis-entity('latent');
     }
   }
   
   .#{$prefix}-container {
-    // TODO: Replace @extend .col-md-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .col-md-4;
-    // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-4;
+    @include genesis-entity('aggregate');
   }
   
   .#{$prefix}-grid {
-    // Replaced // TODO: Replace @extend with direct styles
-    display: flex;
-    flex-wrap: wrap;
-    // TODO: Replace @extend .g-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .g-4;
+    @include genesis-environment('distributed');
   }
 }
 
@@ -81,7 +39,7 @@
   @include card-component($prefix);
   
   .#{$prefix} {
-    @include border-left-primary($border-width);
+    @include genesis-entity('imperative');
   }
 }
 
@@ -90,8 +48,6 @@
   @include card-component($prefix);
   
   .#{$prefix} {
-  @include background-color($primary-light);
-    // TODO: Replace @extend .border-primary with proper mixin or direct styles for Jekyll compatibility
-    // @extend .border-primary;
+    @include genesis-atmosphere('vibrant');
   }
 }

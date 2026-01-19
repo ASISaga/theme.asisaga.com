@@ -1,141 +1,43 @@
-@use 'sass:color';
+@import "ontology/index";
 
-// Product Card - Using Bootstrap native classes
+// Product Card - Genesis Ontological System
 .product-card {
-  // Base card styles (replaced @extend)
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: var(--bs-card-bg, #fff);
-    background-clip: border-box;
-    border: var(--bs-card-border-width, 1px) solid var(--bs-card-border-color, rgba(0,0,0,.125));
-    border-radius: var(--bs-card-border-radius, 0.375rem); // Bootstrap card component
-  // TODO: Replace @extend .h-100 with proper mixin or direct styles for Jekyll compatibility
-    @include height-full; // Bootstrap height utility for equal height cards
-  // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-4; // Bootstrap margin utility
-  // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
-    // @extend .shadow-sm; // Bootstrap shadow utility for subtle depth
-  // TODO: Replace @extend .border-0 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .border-0; // Bootstrap border utility to remove default border
+  @include genesis-entity('primary');
 
   .product-card__image-container {
-    // TODO: Replace @extend .position-relative with proper mixin or direct styles for Jekyll compatibility
-    // @extend .position-relative; // Bootstrap position utility for potential overlays
-    // TODO: Replace @extend .overflow-hidden with proper mixin or direct styles for Jekyll compatibility
-    // @extend .overflow-hidden; // Bootstrap overflow utility for image containment
-    // TODO: Replace @extend .bg-light with proper mixin or direct styles for Jekyll compatibility
-    // @extend .bg-light; // Bootstrap background utility for placeholder background
+    @include genesis-entity('secondary');
   }
 
   .product-card__image {
-    // TODO: Replace @extend .card-img-top with proper mixin or direct styles for Jekyll compatibility
-    // @extend .card-img-top; // Bootstrap image utility
-    // TODO: Replace @extend .img-fluid with proper mixin or direct styles for Jekyll compatibility
-    // @extend .img-fluid; // Bootstrap responsive image utility
+    @include genesis-entity('image-adaptive');
   }
 
   .product-card__image-placeholder {
-    // TODO: Replace @extend .d-flex with proper mixin or direct styles for Jekyll compatibility
-    // @extend .d-flex; // Bootstrap display utility
-    // TODO: Replace @extend .align-items-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .align-items-center; // Bootstrap flex utility
-    // TODO: Replace @extend .justify-content-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .justify-content-center; // Bootstrap flex utility
-    // TODO: Replace @extend .bg-light with proper mixin or direct styles for Jekyll compatibility
-    // @extend .bg-light; // Bootstrap background utility
-    // TODO: Replace @extend .text-muted with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-muted; // Bootstrap text color utility
-    // TODO: Replace @extend .ratio with proper mixin or direct styles for Jekyll compatibility
-    // @extend .ratio; // Bootstrap ratio utility for placeholder
-    // TODO: Replace @extend .ratio-16x9 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .ratio-16x9; // Bootstrap aspect ratio utility
-
-    span {
-      // TODO: Replace @extend .fs-1 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .fs-1; // Bootstrap font size utility
-      // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
-    // @extend .fw-bold; // Bootstrap font weight utility
-    }
+    @include genesis-entity('latent');
+    @include genesis-cognition('gloss');
   }
 
   .product-card__content {
-    // TODO: Replace @extend .card-body with proper mixin or direct styles for Jekyll compatibility
-    // @extend .card-body; // Bootstrap card component part
-    // TODO: Replace @extend .d-flex with proper mixin or direct styles for Jekyll compatibility
-    // @extend .d-flex; // Bootstrap display utility
-    // TODO: Replace @extend .flex-column with proper mixin or direct styles for Jekyll compatibility
-    // @extend .flex-column; // Bootstrap flex utility
-    // TODO: Replace @extend .p-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .p-4; // Bootstrap padding utility - slightly more padding than default
+    @include genesis-entity('secondary');
   }
 
   .product-card__title {
-    // TODO: Replace @extend .card-title with proper mixin or direct styles for Jekyll compatibility
-    // @extend .card-title; // Bootstrap card component part
-    // TODO: Replace @extend .text-primary with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-primary; // Bootstrap text color utility
-    // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
-    // @extend .fw-bold; // Bootstrap font weight utility
-    // TODO: Replace @extend .mb-2 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-2; // Bootstrap margin utility
+    @include genesis-cognition('axiom');
   }
 
   .product-card__description {
-    // TODO: Replace @extend .card-text with proper mixin or direct styles for Jekyll compatibility
-    // @extend .card-text; // Bootstrap card component part
-    // TODO: Replace @extend .flex-grow-1 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .flex-grow-1; // Bootstrap flex utility
-    // TODO: Replace @extend .text-body-secondary with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-body-secondary; // Bootstrap text color utility for secondary text
+    @include genesis-cognition('discourse');
   }
 
   .product-card__actions {
-    // TODO: Replace @extend .mt-auto with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mt-auto; // Bootstrap margin utility
-    // TODO: Replace @extend .pt-3 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .pt-3; // Bootstrap padding utility
-    // TODO: Replace @extend .d-flex with proper mixin or direct styles for Jekyll compatibility
-    // @extend .d-flex; // Bootstrap display utility
-    // TODO: Replace @extend .flex-wrap with proper mixin or direct styles for Jekyll compatibility
-    // @extend .flex-wrap; // Bootstrap flex utility
-    // TODO: Replace @extend .gap-2 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .gap-2; // Bootstrap gap utility for spacing between buttons
+    @include genesis-environment('associative');
   }
 
   .product-card__btn {
-    // Base button styles (replaced @extend)
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    cursor: pointer;
-    user-select: none;
-    border: 1px solid transparent;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    border-radius: 0.375rem; // Bootstrap button component
-    // TODO: Replace @extend .btn-primary with proper mixin or direct styles for Jekyll compatibility
-    // @extend .btn-primary; // Bootstrap button style
-    // TODO: Replace @extend .rounded-pill with proper mixin or direct styles for Jekyll compatibility
-    // @extend .rounded-pill; // Bootstrap border radius utility
-    // TODO: Replace @extend .px-3 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .px-3; // Bootstrap padding utility
-    // TODO: Replace @extend .py-2 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .py-2; // Bootstrap padding utility
+    @include genesis-synapse('execute');
 
     &.product-card__btn--outline {
-      // TODO: Replace @extend .btn-outline-primary with proper mixin or direct styles for Jekyll compatibility
-    // @extend .btn-outline-primary; // Bootstrap button style
-
-      &:hover {
-        // TODO: Replace @extend .text-white with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-white; // Bootstrap text color utility
-      }
+      @include genesis-synapse('inquiry');
     }
   }
 }

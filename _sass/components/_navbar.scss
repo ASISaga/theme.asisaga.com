@@ -1,175 +1,48 @@
-@use 'sass:color';
+@import "ontology/index";
 
-// Futuristic Responsive Navbar - Enhanced for Bootstrap 5.3+
+// Futuristic Responsive Navbar - Genesis Ontological System
 
 // The main navigation container
 .site-navbar {
-  display: flex;
-  flex-direction: column;
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
-  
-  @media (min-width: 992px) {
-    flex-direction: row;
-    align-items: center;
-  }
+  @include genesis-environment('navigation-primary');
 
   // Styling for individual list items within the navbar
   .navbar-item {
-    margin: 0.25rem 0;
-    
-    @media (min-width: 992px) {
-      margin: 0 0.5rem;
-    }
+    // Spacing handled by environment mixin
   }
 
   // Styling for active navigation items
   .navbar-item-active {
-    margin: 0.25rem 0;
-    
-    @media (min-width: 992px) {
-      margin: 0 0.5rem;
-    }
-
     .navbar-link {
-      font-weight: 700;
-      background: rgba(255, 255, 255, 0.15);
-      border-left: 3px solid $luminous-gold;
-      
-      @media (min-width: 992px) {
-        border-left: none;
-        border-bottom: 2px solid $luminous-gold;
-      }
+      @include genesis-synapse('navigate');
+      @include genesis-state('stable');
     }
   }
   
   // Styling for navigation links - Enhanced futuristic design
   .navbar-link {
-    display: block;
-    padding: 0.75rem 1rem;
-    color: $navbar-link-color;
-    text-decoration: none;
-    border-radius: 0.5rem;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    
-    // Futuristic hover effect with gradient
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
-      transition: left 0.5s ease;
-    }
-
-    &:hover {
-      color: $navbar-link-hover-color;
-      background: $navbar-link-hover-bg;
-      transform: translateY(-2px);
-      
-      &::before {
-        left: 100%;
-      }
-    }
-    
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.3);
-    }
-
-    // Styling for dropdown toggle links
-    &.dropdown-toggle {
-      &::after {
-        display: inline-block;
-        margin-left: 0.5rem;
-        vertical-align: 0.15em;
-        content: "";
-        border-top: 0.3em solid;
-        border-right: 0.3em solid transparent;
-        border-bottom: 0;
-        border-left: 0.3em solid transparent;
-        transition: transform 0.3s ease;
-      }
-      
-      &[aria-expanded="true"]::after {
-        transform: rotate(180deg);
-      }
-    }
+    @include genesis-synapse('navigate');
   }
 
   // Extend Bootstrap dropdown to be relative positioned when inside navbar-item
   .dropdown {
-    position: relative;
+    @include genesis-entity('secondary');
   }
 
   // Styling for the dropdown menu - Enhanced with modern design
   .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    min-width: 12rem;
-    padding: 0.5rem 0;
-    margin: 0.5rem 0 0;
-    font-size: 1rem;
-    color: $navbar-dropdown-item-color;
-    text-align: left;
-    list-style: none;
-    background: rgba(11, 20, 38, 0.98);
-    backdrop-filter: blur(10px);
-    background-clip: padding-box;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    
-    // Mobile full-width dropdown
-    @media (max-width: 991px) {
-      position: static;
-      width: 100%;
-      margin-top: 0.5rem;
-      border-radius: 0.5rem;
-    }
+    @include genesis-entity('primary');
+    @include genesis-atmosphere('void');
   }
 
   // Styling for individual items within a dropdown menu
   .dropdown-item {
-    display: block;
-    width: 100%;
-    padding: 0.5rem 1.5rem;
-    clear: both;
-    font-weight: 400;
-    color: $navbar-dropdown-item-color;
-    text-align: inherit;
-    text-decoration: none;
-    white-space: nowrap;
-    background: transparent;
-    border: 0;
-    transition: all 0.2s ease;
-
-    &:hover,
-    &:focus {
-      color: $navbar-dropdown-item-color;
-      background: $navbar-dropdown-item-hover-bg;
-      transform: translateX(5px);
-    }
-    
-    &:focus {
-      outline: none;
-      box-shadow: inset 0 0 0 2px rgba(255, 215, 0, 0.3);
-    }
+    @include genesis-synapse('navigate');
+    @include genesis-cognition('discourse');
   }
   
   // Styling for dividers within a dropdown menu
   .dropdown-divider {
-    height: 0;
-    margin: 0.5rem 0;
-    overflow: hidden;
-    border-top: 1px solid $navbar-divider-color;
-    opacity: 0.3;
+    @include genesis-entity('latent');
   }
 }
