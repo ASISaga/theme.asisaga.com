@@ -1,31 +1,39 @@
-<!-- 
+{% comment %}
 Profile Stats Component
 Displays user profile statistics
--->
-<div class="profile-stats-component">
-  <div class="card-body">
-    <h5 class="profile-stats-title">{{ include.title | default: "Statistics" }}</h5>
-    <div class="profile-stats-grid">
-      {% if include.posts %}
-      <div class="profile-stat-item">
-        <div class="stat-value">{{ include.posts }}</div>
-        <div class="stat-label">Posts</div>
-      </div>
-      {% endif %}
-      
-      {% if include.followers %}
-      <div class="profile-stat-item">
-        <div class="stat-value">{{ include.followers }}</div>
-        <div class="stat-label">Followers</div>
-      </div>
-      {% endif %}
-      
-      {% if include.following %}
-      <div class="profile-stat-item">
-        <div class="stat-value">{{ include.following }}</div>
-        <div class="stat-label">Following</div>
-      </div>
-      {% endif %}
+
+Parameters:
+- title: Section title (default: "Statistics")
+- posts: Number of posts
+- followers: Number of followers
+- following: Number following
+{% endcomment %}
+
+<section class="profile-stats">
+  <h2 class="profile-stats__title">{{ include.title | default: "Statistics" }}</h2>
+  <dl class="profile-stats__grid">
+    {% if include.posts %}
+    <div class="profile-stats__item">
+      <dt class="sr-only">Posts</dt>
+      <dd class="profile-stats__value">{{ include.posts }}</dd>
+      <dd class="profile-stats__label">Posts</dd>
     </div>
-  </div>
-</div>
+    {% endif %}
+    
+    {% if include.followers %}
+    <div class="profile-stats__item">
+      <dt class="sr-only">Followers</dt>
+      <dd class="profile-stats__value">{{ include.followers }}</dd>
+      <dd class="profile-stats__label">Followers</dd>
+    </div>
+    {% endif %}
+    
+    {% if include.following %}
+    <div class="profile-stats__item">
+      <dt class="sr-only">Following</dt>
+      <dd class="profile-stats__value">{{ include.following }}</dd>
+      <dd class="profile-stats__label">Following</dd>
+    </div>
+    {% endif %}
+  </dl>
+</section>

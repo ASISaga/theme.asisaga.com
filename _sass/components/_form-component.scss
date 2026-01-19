@@ -1,102 +1,46 @@
-@use 'sass:color';
+@import "ontology/index";
 
-// Form component mixins
+// Form component - Genesis Ontological System
 // Used for consistent form styling across the site
 
 // Base form component
 @mixin form-component($prefix: 'form') {
   .#{$prefix} {
-    width: 100%;
+    @include genesis-environment('interaction-form');
+    @include genesis-entity('primary');
+    @include genesis-atmosphere('ethereal');
     
     &-row {
-      // Replaced // TODO: Replace @extend with direct styles
-    display: flex;
-    flex-wrap: wrap;
-      // TODO: Replace @extend .justify-content-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .justify-content-center;
-      // TODO: Replace @extend .mt-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mt-4;
+      @include genesis-environment('focused');
     }
     
     &-col {
-      // TODO: Replace @extend .col-md-8 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .col-md-8;
-      // TODO: Replace @extend .p-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .p-4;
-      // TODO: Replace @extend .bg-light with proper mixin or direct styles for Jekyll compatibility
-    // @extend .bg-light;
-      // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
-    // @extend .rounded;
-      // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
-    // @extend .shadow-sm;
+      @include genesis-entity('primary');
     }
     
     &-group {
-      // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-4;
+      @include genesis-entity('secondary');
     }
     
     &-label {
-      // TODO: Replace @extend .form-label with proper mixin or direct styles for Jekyll compatibility
-    // @extend .form-label;
-      // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
-    // @extend .fw-bold;
-      color: $dark;
+      @include genesis-cognition('motive');
     }
     
     &-input {
-      // TODO: Replace @extend .form-control with proper mixin or direct styles for Jekyll compatibility
-    // @extend .form-control;
-      // TODO: Replace @extend .border-0 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .border-0;
-      // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
-    // @extend .shadow-sm;
-      
-      &:focus {
-        // TODO: Replace @extend .shadow with proper mixin or direct styles for Jekyll compatibility
-    // @extend .shadow;
-        border-color: $primary;
-      }
+      @include genesis-synapse('input-primary');
     }
     
     &-textarea {
-      // TODO: Replace @extend .form-control with proper mixin or direct styles for Jekyll compatibility
-    // @extend .form-control;
-      // TODO: Replace @extend .border-0 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .border-0;
-      // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
-    // @extend .shadow-sm;
-      min-height: 150px;
-      
-      &:focus {
-        // TODO: Replace @extend .shadow with proper mixin or direct styles for Jekyll compatibility
-    // @extend .shadow;
-        border-color: $primary;
-      }
+      @include genesis-synapse('input-primary');
     }
     
     &-submit {
-      // Base button styles (replaced @extend)
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    cursor: pointer;
-    user-select: none;
-    border: 1px solid transparent;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    border-radius: 0.375rem;
-      // TODO: Replace @extend .btn-primary with proper mixin or direct styles for Jekyll compatibility
-    // @extend .btn-primary;
-      // TODO: Replace @extend .px-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .px-4;
-      // TODO: Replace @extend .py-2 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .py-2;
-      // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
-    // @extend .fw-bold;
+      @include genesis-synapse('execute');
+    }
+    
+    // Loading state for form submission
+    &.form--loading {
+      @include genesis-state('evolving');
     }
   }
 }
@@ -105,11 +49,10 @@
 @mixin contact-form-component($prefix: 'contact-form') {
   @include form-component($prefix);
   
-  // Any contact-specific form overrides can go here
   .#{$prefix} {
     &-container {
-      // TODO: Replace @extend .mb-5 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-5;
+      @include genesis-environment('focused');
+      @include genesis-atmosphere('spacious-mobile');
     }
   }
 }

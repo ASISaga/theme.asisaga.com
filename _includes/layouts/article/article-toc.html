@@ -1,29 +1,31 @@
-<!-- 
+{% comment %}
 Article TOC Component
-Displays table of contents for article layout
--->
-<aside class="article-toc-component">
-  <nav class="article-toc-nav" aria-label="Table of contents">
-    <div class="card-body">
-      <h6 class="article-toc-title">Table of Contents</h6>
-      {% if include.items %}
-      <ul class="article-toc-list">
-        {% for item in include.items %}
-        <li class="nav-item">
-          <a class="article-toc-link" href="{{ item.url }}">{{ item.title }}</a>
-          {% if item.children %}
-          <ul class="article-toc-sublist">
-            {% for child in item.children %}
-            <li class="nav-item">
-              <a class="article-toc-link" href="{{ child.url }}">{{ child.title }}</a>
-            </li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-    </div>
+Displays table of contents for article navigation
+
+Parameters:
+- items: Array of TOC items with url, title, and optional children
+{% endcomment %}
+
+<aside class="article-toc" aria-label="Table of contents">
+  <nav class="article-toc__nav">
+    <h2 class="article-toc__title">Table of Contents</h2>
+    {% if include.items %}
+    <ol class="article-toc__list">
+      {% for item in include.items %}
+      <li class="article-toc__item">
+        <a class="article-toc__link" href="{{ item.url }}">{{ item.title }}</a>
+        {% if item.children %}
+        <ol class="article-toc__list article-toc__list--nested">
+          {% for child in item.children %}
+          <li class="article-toc__item">
+            <a class="article-toc__link" href="{{ child.url }}">{{ child.title }}</a>
+          </li>
+          {% endfor %}
+        </ol>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+    {% endif %}
   </nav>
 </aside>

@@ -1,9 +1,11 @@
-@use 'sass:color';
+@import "ontology/index";
 
 // Interactive module component styles
 
 // Interactive Module Component
 .interactive-module {
+  @include genesis-entity('primary');
+  @include genesis-state('scroll-triggered');
   position: relative;
   cursor: pointer;
   border-radius: $border-radius;
@@ -47,6 +49,7 @@
   }
   
   .interactive-module-overlay {
+    @include genesis-atmosphere('void');
     position: absolute;
     top: 0;
     left: 0;
@@ -62,12 +65,14 @@
     transition: opacity 0.3s ease;
     
     .interactive-module-title {
+      @include genesis-cognition('axiom');
       font-size: 1.5rem;
       margin-bottom: $spacing-md;
       /* text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); */ /* Removed for accessibility - can interfere with text readability */
     }
     
     .interactive-module-quote {
+      @include genesis-cognition('discourse');
       transform: translateY(20px);
       opacity: 0;
       transition: transform 0.5s ease, opacity 0.5s ease;
@@ -89,6 +94,7 @@
       transition-delay: 0.1s;
       
       span {
+        @include genesis-cognition('gloss');
         display: block;
         margin-bottom: $spacing-xs;
         font-size: 0.8rem;
@@ -104,6 +110,8 @@
 
 // Content Modal styling enhancements
 .modal-content {
+  @include genesis-entity('primary');
+  @include genesis-atmosphere('ethereal');
   background-color: $light;
   border: none;
   border-radius: $border-radius;
@@ -113,12 +121,14 @@
     border-bottom: 1px solid $border-color;
     
     .modal-title {
+      @include genesis-cognition('axiom');
       color: $primary;
       font-weight: $font-weight-semibold;
     }
   }
   
   .modal-body {
+    @include genesis-cognition('discourse');
     padding: $spacing-lg;
   }
   

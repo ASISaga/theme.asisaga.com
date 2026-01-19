@@ -1,28 +1,32 @@
-<!-- 
+{% comment %}
 Landing Features Component
 Displays feature grid for landing pages
--->
-<section class="landing-features-component">
-  <div class="landing-features-wrapper">
-    {% if include.title %}
-    <h2 class="landing-features-title">{{ include.title }}</h2>
-    {% endif %}
-    
-    <div class="landing-features-grid">
-      {% for feature in include.features %}
-      <div class="landing-feature-item">
-        <div class="feature-card">
-          {% if feature.icon %}
-          <div class="feature-icon">
-            <i class="{{ feature.icon }} fa-3x text-primary" aria-hidden="true"></i>
-          </div>
-          {% endif %}
-          
-          <h3 class="feature-title">{{ feature.title }}</h3>
-          <p class="feature-description">{{ feature.description }}</p>
-        </div>
+
+Parameters:
+- title: Section heading
+- features: Array of features with icon, title, description
+{% endcomment %}
+
+<section class="landing-features">
+  {% if include.title %}
+  <h2 class="landing-features__title">{{ include.title }}</h2>
+  {% endif %}
+  
+  <div class="landing-features__grid">
+    {% for feature in include.features %}
+    <article class="landing-feature">
+      {% if feature.icon %}
+      <div class="landing-feature__icon" aria-hidden="true">
+        <i class="{{ feature.icon }}"></i>
       </div>
-      {% endfor %}
-    </div>
+      {% endif %}
+      
+      <h3 class="landing-feature__title">{{ feature.title }}</h3>
+      
+      {% if feature.description %}
+      <p class="landing-feature__description">{{ feature.description }}</p>
+      {% endif %}
+    </article>
+    {% endfor %}
   </div>
 </section>

@@ -1,35 +1,24 @@
 ---
 layout: minimal-base
 ---
-<!-- 
-Minimal Layout
-Purpose: Error, maintenance, or legal pages with minimal chrome
-Features: Centered content, minimal navigation, simple design
--->
-<div class="minimal-layout-content">
-  <div class="minimal-layout-grid">
-    <div class="minimal-layout-main">
-      <div class="minimal-layout-centered">
-        {% if page.error_code %}
-        <h1 class="minimal-error-code">{{ page.error_code }}</h1>
-        {% endif %}
-        
-        {% if page.title %}
-        <h2 class="minimal-title">{{ page.title }}</h2>
-        {% endif %}
-        
-        {% if page.description %}
-        <p class="minimal-description">{{ page.description }}</p>
-        {% endif %}
-        
-        {{ content }}
-        
-        {% if page.show_home_link %}
-        <div class="minimal-home-link">
-          <a href="/" class="minimal-home-btn">Go to Homepage</a>
-        </div>
-        {% endif %}
-      </div>
-    </div>
+<div class="error-page">
+  {% if page.error_code %}
+  <h1 class="error-page__code">{{ page.error_code }}</h1>
+  {% endif %}
+  
+  {% if page.title %}
+  <h2 class="error-page__title">{{ page.title }}</h2>
+  {% endif %}
+  
+  {% if page.description %}
+  <p class="error-page__description">{{ page.description }}</p>
+  {% endif %}
+  
+  <div class="error-page__content">
+    {{ content }}
   </div>
+  
+  {% if page.show_home_link %}
+  <a href="/" class="error-page__home-link">Go to Homepage</a>
+  {% endif %}
 </div>

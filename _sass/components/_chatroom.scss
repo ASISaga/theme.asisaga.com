@@ -1,9 +1,13 @@
+@import "ontology/index";
+
 /**
- * Chatroom Component Styles
+ * Chatroom Component Styles - Genesis Ontological System
  * Generic chat interface styling that can be extended
  */
 
 .chatroom-layout {
+  @include genesis-environment('focused');
+  @include genesis-atmosphere('void');
   display: flex;
   flex-direction: column;
   height: 100%;

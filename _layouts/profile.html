@@ -1,84 +1,67 @@
 ---
-layout: scrollable
+layout: default
 ---
-<!-- 
-Profile Layout
-Purpose: Author or team member profile pages
-Features: Profile header with photo, bio, social links, activity feed
--->
-<div class="profile-layout">
-  <div class="profile-wrapper">
-    <!-- Profile Header -->
-    <header class="profile-header">
-      <div class="profile-header-row">
-        <div class="profile-image-col">
-          {% if page.profile_image %}
-          <img src="{{ page.profile_image }}" alt="{{ page.name }}" class="profile-image">
-          {% else %}
-          <div class="profile-image-placeholder">
-            <i class="profile-placeholder-icon" aria-hidden="true"></i>
-          </div>
-          {% endif %}
-        </div>
-        
-        <div class="profile-info-col">
-          {% if page.name %}
-          <h1 class="profile-name">{{ page.name }}</h1>
-          {% endif %}
-          
-          {% if page.role %}
-          <p class="profile-role">{{ page.role }}</p>
-          {% endif %}
-          
-          {% if page.bio %}
-          <p class="profile-bio">{{ page.bio }}</p>
-          {% endif %}
-          
-          {% if page.social_links %}
-          <div class="profile-social-links">
-            {% for link in page.social_links %}
-            <a href="{{ link.url }}" class="profile-social-link" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-{{ link.platform }}" aria-hidden="true"></i>
-              {{ link.platform | capitalize }}
-            </a>
-            {% endfor %}
-          </div>
-          {% endif %}
-        </div>
-      </div>
-    </header>
-    
-    <!-- Profile Content -->
-    <div class="profile-content">
-      <div class="profile-content-grid">
-        <div class="profile-content-main">
-          {{ content }}
-        </div>
-        
-        <aside class="profile-sidebar">
-          {% if page.stats %}
-          <div class="profile-stats">
-            <div class="card-body">
-              <h5 class="profile-stats-title">Statistics</h5>
-              <!-- Stats can be displayed here -->
-            </div>
-          </div>
-          {% endif %}
-          
-          {% if page.skills %}
-          <div class="profile-skills">
-            <div class="card-body">
-              <h5 class="profile-skills-title">Skills</h5>
-              <div class="profile-skills-list">
-                {% for skill in page.skills %}
-                <span class="profile-skill-badge">{{ skill }}</span>
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-          {% endif %}
-        </aside>
-      </div>
+<div class="profile-page">
+  <header class="profile-page__header">
+    {% if page.profile_image %}
+    <img src="{{ page.profile_image }}" alt="{{ page.name }}" class="profile-page__avatar">
+    {% else %}
+    <div class="profile-page__avatar profile-page__avatar--placeholder" aria-hidden="true">
+      <i class="fas fa-user"></i>
     </div>
+    {% endif %}
+    
+    <div class="profile-page__info">
+      {% if page.name %}
+      <h1 class="profile-page__name">{{ page.name }}</h1>
+      {% endif %}
+      
+      {% if page.role %}
+      <p class="profile-page__role">{{ page.role }}</p>
+      {% endif %}
+      
+      {% if page.bio %}
+      <p class="profile-page__bio">{{ page.bio }}</p>
+      {% endif %}
+      
+      {% if page.social_links %}
+      <nav class="profile-page__social" aria-label="Social media links">
+        {% for link in page.social_links %}
+        <a href="{{ link.url }}" class="profile-page__social-link" target="_blank" rel="noopener noreferrer" aria-label="{{ link.platform | capitalize }}">
+          <i class="fab fa-{{ link.platform }}" aria-hidden="true"></i>
+          <span class="sr-only">{{ link.platform | capitalize }}</span>
+        </a>
+        {% endfor %}
+      </nav>
+      {% endif %}
+    </div>
+  </header>
+  
+  <div class="profile-page__main">
+    <div class="profile-page__content">
+      {{ content }}
+    </div>
+    
+    {% if page.stats or page.skills %}
+    <aside class="profile-page__sidebar" aria-label="Additional information">
+      {% if page.stats %}
+      <section class="profile-stats">
+        <h2 class="profile-stats__title">Statistics</h2>
+        <!-- Stats content -->
+      </section>
+      {% endif %}
+      
+      {% if page.skills %}
+      <section class="profile-skills">
+        <h2 class="profile-skills__title">Skills</h2>
+        <div class="profile-skills__list">
+          {% for skill in page.skills %}
+          <span class="profile-skills__badge">{{ skill }}</span>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+    </aside>
+    {% endif %}
   </div>
 </div>

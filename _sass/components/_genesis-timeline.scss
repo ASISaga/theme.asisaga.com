@@ -1,4 +1,4 @@
-@use 'sass:color';
+@import "ontology/index";
 
 // Genesis Timeline Component - Sacred Journey Visualization
 // Timeline elements showing consciousness evolution progress
@@ -7,6 +7,8 @@
 // Genesis Timeline Container
 // ----------------------------------------
 .genesis-timeline {
+  @include genesis-environment('chronological');
+  @include genesis-atmosphere('spacious-mobile');
   position: relative;
   padding: 2rem 0;
   
@@ -25,8 +27,9 @@
   }
 }
 
-// Timeline item
+// Timeline item with scroll-triggered animations
 .timeline-item {
+  @include genesis-state('scroll-triggered');
   position: relative;
   margin-bottom: 3rem;
   
@@ -42,11 +45,10 @@
   }
   
   .timeline-content {
+    @include genesis-entity('primary');
     width: 45%;
     padding: 1.5rem;
-    background: rgba($transcendent-white, 0.95);
     border-radius: 1rem;
-    box-shadow: $consciousness-depth;
     
     &.left {
       margin-right: 55%;
@@ -54,6 +56,15 @@
     
     &.right {
       margin-left: 55%;
+    }
+  }
+  
+  // Active/past timeline items
+  &.timeline-item--active {
+    @include genesis-state('evolving');
+    
+    .timeline-marker {
+      @include genesis-atmosphere('vibrant');
     }
   }
 }

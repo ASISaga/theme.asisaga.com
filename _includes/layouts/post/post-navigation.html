@@ -1,24 +1,24 @@
-<!-- 
+{% comment %}
 Post Navigation Component
 Displays previous and next post links
--->
+
+Parameters:
+- prev: Previous post object with url and title
+- next: Next post object with url and title
+{% endcomment %}
+
 <nav class="post-navigation" aria-label="Post navigation">
-  <div class="post-navigation-grid">
-    <div class="post-navigation-prev">
-      {% if include.prev %}
-      <a href="{{ include.prev.url }}" class="post-navigation-link">
-        <small class="post-navigation-label">← Previous Post</small>
-        <strong class="post-navigation-title">{{ include.prev.title }}</strong>
-      </a>
-      {% endif %}
-    </div>
-    <div class="post-navigation-next">
-      {% if include.next %}
-      <a href="{{ include.next.url }}" class="post-navigation-link">
-        <small class="post-navigation-label">Next Post →</small>
-        <strong class="post-navigation-title">{{ include.next.title }}</strong>
-      </a>
-      {% endif %}
-    </div>
-  </div>
+  {% if include.prev %}
+  <a href="{{ include.prev.url }}" class="post-navigation__link post-navigation__link--prev">
+    <span class="post-navigation__label">← Previous Post</span>
+    <span class="post-navigation__title">{{ include.prev.title }}</span>
+  </a>
+  {% endif %}
+  
+  {% if include.next %}
+  <a href="{{ include.next.url }}" class="post-navigation__link post-navigation__link--next">
+    <span class="post-navigation__label">Next Post →</span>
+    <span class="post-navigation__title">{{ include.next.title }}</span>
+  </a>
+  {% endif %}
 </nav>

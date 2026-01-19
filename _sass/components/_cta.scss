@@ -1,127 +1,45 @@
-@use 'sass:color';
+@import "ontology/index";
 
-// Call to Action component - Using Bootstrap native classes
+// Call to Action component - Genesis Ontological System
 // A reusable CTA section with consistent styling across pages
 
 .cta-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  background: linear-gradient(135deg, rgba($cosmic-deep-blue, 0.95) 0%, rgba($royal-purple, 0.85) 100%);
-  border-radius: 0.375rem;
-  text-align: center;
-  margin-bottom: 3rem;
-  padding: 3rem 1rem;
-  color: $transcendent-white;
+  @include genesis-entity('imperative');
+  @include genesis-environment('focused');
+  @include genesis-atmosphere('vibrant');
+  @include genesis-atmosphere('spacious-mobile');
   
   .cta-content {
-    // TODO: Replace @extend .mx-auto with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mx-auto; // Bootstrap margin utility
-    // TODO: Replace @extend .container-md with proper mixin or direct styles for Jekyll compatibility
-    // @extend .container-md; // Bootstrap container - replaces custom max-width
+    @include genesis-environment('focused');
   }
   
   .cta-title {
-    font-weight: 700;
-    color: $luminous-gold;
-    margin-bottom: 1rem;
-    font-size: 2rem;
+    @include genesis-cognition('axiom');
   }
   
   .cta-description {
-    color: $transcendent-white;
-    margin-bottom: 1.5rem;
-    font-size: 1.125rem;
+    @include genesis-cognition('discourse');
   }
   
   .cta-buttons {
-    // TODO: Replace @extend .d-flex with proper mixin or direct styles for Jekyll compatibility
-    // @extend .d-flex; // Bootstrap display utility
-    // TODO: Replace @extend .flex-wrap with proper mixin or direct styles for Jekyll compatibility
-    // @extend .flex-wrap; // Bootstrap flex utility
-    // TODO: Replace @extend .justify-content-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .justify-content-center; // Bootstrap flex utility
-    // TODO: Replace @extend .gap-3 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .gap-3; // Bootstrap gap utility
+    @include genesis-environment('associative');
   }
   
   .cta-button {
-    // Base button styles (replaced @extend)
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    cursor: pointer;
-    user-select: none;
-    border: 1px solid transparent;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    border-radius: 0.375rem; // Bootstrap button component
-    // TODO: Replace @extend .btn-primary with proper mixin or direct styles for Jekyll compatibility
-    // @extend .btn-primary; // Bootstrap button style
-    // TODO: Replace @extend .rounded-pill with proper mixin or direct styles for Jekyll compatibility
-    // @extend .rounded-pill; // Bootstrap border-radius utility
-    // TODO: Replace @extend .px-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .px-4; // Bootstrap padding utility
-    // TODO: Replace @extend .py-2 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .py-2; // Bootstrap padding utility
-    
-    &:hover {
-      // TODO: Replace @extend .shadow with proper mixin or direct styles for Jekyll compatibility
-    // @extend .shadow; // Bootstrap shadow utility for hover effect
-    }
+    @include genesis-synapse('execute');
     
     &.cta-button-outline {
-      // TODO: Replace @extend .btn-outline-primary with proper mixin or direct styles for Jekyll compatibility
-    // @extend .btn-outline-primary; // Bootstrap outline button style
+      @include genesis-synapse('inquiry');
     }
   }
   
   // Variant modifiers
   &.cta-section-secondary {
-    // TODO: Replace @extend .bg-secondary with proper mixin or direct styles for Jekyll compatibility
-    // @extend .bg-secondary; // Bootstrap background utility
-    // TODO: Replace @extend .bg-opacity-10 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .bg-opacity-10; // Bootstrap opacity utility
-    
-    .cta-title {
-      // TODO: Replace @extend .text-secondary with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-secondary; // Bootstrap text color utility
-    }
-    
-    .cta-button {
-      // TODO: Replace @extend .btn-secondary with proper mixin or direct styles for Jekyll compatibility
-    // @extend .btn-secondary; // Bootstrap button style
-      
-      &.cta-button-outline {
-        // TODO: Replace @extend .btn-outline-secondary with proper mixin or direct styles for Jekyll compatibility
-    // @extend .btn-outline-secondary; // Bootstrap outline button style
-      }
-    }
+    @include genesis-entity('secondary');
+    @include genesis-atmosphere('ethereal');
   }
+  
   &.cta-section-accent {
-    // TODO: Replace @extend .bg-info with proper mixin or direct styles for Jekyll compatibility
-    // @extend .bg-info; // Using restored info color
-    // TODO: Replace @extend .bg-opacity-10 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .bg-opacity-10; // Bootstrap opacity utility
-    
-    .cta-title {
-      // TODO: Replace @extend .text-info with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-info; // Using restored info text color
-    }
-    
-    .cta-button {
-      // TODO: Replace @extend .btn-info with proper mixin or direct styles for Jekyll compatibility
-    // @extend .btn-info; // Using restored info button style
-      
-      &.cta-button-outline {
-        // TODO: Replace @extend .btn-outline-info with proper mixin or direct styles for Jekyll compatibility
-    // @extend .btn-outline-info; // Bootstrap outline button style
-      }
-    }
+    @include genesis-atmosphere('vibrant');
   }
 }

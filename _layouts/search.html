@@ -1,59 +1,38 @@
 ---
-layout: fixed-height
+layout: default
 ---
-<!-- 
-Search Layout
-Purpose: Search results with filters and faceted navigation
-Features: Search bar, filters, results list, pagination
--->
-<div class="search-layout">
-  <!-- Search Header -->
-  <header class="search-header">
-    <div class="search-header-grid">
-      <div class="search-header-col">
-        <form class="search-form">
-          <div class="search-input-group">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" value="{{ page.query }}">
-            <button class="search-submit-btn" type="submit" aria-label="Search">
-              <i class="fas fa-search" aria-hidden="true"></i>
-            </button>
-          </div>
-        </form>
+<div class="search-page">
+  <header class="search-page__header">
+    <form class="search-page__form" role="search">
+      <label for="search-input" class="sr-only">Search</label>
+      <div class="search-page__input-group">
+        <input type="search" id="search-input" class="search-page__input" placeholder="Search..." value="{{ page.query }}">
+        <button type="submit" class="search-page__submit" aria-label="Submit search">
+          <i class="fas fa-search" aria-hidden="true"></i>
+        </button>
       </div>
-      <div class="search-results-count-col">
-        {% if page.results_count %}
-        <p class="search-results-count">{{ page.results_count }} results found</p>
-        {% endif %}
-      </div>
-    </div>
+    </form>
+    
+    {% if page.results_count %}
+    <p class="search-page__count" aria-live="polite">{{ page.results_count }} results found</p>
+    {% endif %}
   </header>
   
-  <!-- Search Content -->
-  <div class="search-content">
-    <div class="search-content-container">
-      <div class="search-content-grid">
-        <!-- Search Filters Sidebar -->
-        <aside class="search-filters-sidebar">
-          <div class="search-filters">
-            <h5 class="search-filters-title">Filters</h5>
-            {% if page.filters %}
-            {% for filter in page.filters %}
-            <div class="search-filter-group">
-              <h6 class="search-filter-group-title">{{ filter.name }}</h6>
-              <!-- Filter options -->
-            </div>
-            {% endfor %}
-            {% endif %}
-          </div>
-        </aside>
-        
-        <!-- Search Results -->
-        <main class="search-results-main">
-          <div class="search-results">
-            {{ content }}
-          </div>
-        </main>
-      </div>
+  <div class="search-page__main">
+    {% if page.filters %}
+    <aside class="search-page__sidebar" aria-label="Search filters">
+      <h2 class="search-page__filters-title">Filters</h2>
+      {% for filter in page.filters %}
+      <section class="search-page__filter-group">
+        <h3 class="search-page__filter-title">{{ filter.name }}</h3>
+        <!-- Filter options -->
+      </section>
+      {% endfor %}
+    </aside>
+    {% endif %}
+    
+    <div class="search-page__results">
+      {{ content }}
     </div>
   </div>
 </div>

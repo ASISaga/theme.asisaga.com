@@ -1,45 +1,35 @@
-<!-- 
-Site footer component that appears at the bottom of each page
-Contains copyright information, social media links, and secondary navigation
--->
-<footer class="{{include.class}}" role="contentinfo" aria-label="Site footer">
-  <div class="site-footer__container site-footer__row">
-    <!-- Copyright section with dynamic year and site title from config -->
+<footer class="site-footer">
+  <div class="site-footer__container">
     <div class="site-footer__copyright">
-      <p class="site-footer__copyright-text">&copy; {{ 'now' | date: "%Y" }} {{ site.title | default: site.github.repository_name }}. All rights reserved.</p>
+      <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title | default: site.github.repository_name }}. All rights reserved.</p>
     </div>
-    <!-- Social media links section -->
+    
+    {% if site.data.nav.social_links %}
     <div class="site-footer__social" aria-labelledby="social-heading">
       <h2 id="social-heading" class="sr-only">Connect with us</h2>
-      {% assign social_links = site.data.nav.social_links %}
-      {% for link in social_links %}
-        <div class="site-footer__social-item">
-          <a href="{{ link.url }}" class="site-footer__social-link" aria-label="{{ link.aria_label }}">
-            <i class="{{ link.icon }}" aria-hidden="true"></i>
-            <span class="sr-only">{{ link.name }}</span>
-          </a>
-        </div>
+      {% for link in site.data.nav.social_links %}
+      <a href="{{ link.url }}" class="site-footer__social-link" aria-label="{{ link.aria_label | default: link.name }}">
+        <i class="{{ link.icon }}" aria-hidden="true"></i>
+        <span class="sr-only">{{ link.name }}</span>
+      </a>
       {% endfor %}
     </div>
-    <!-- Secondary footer navigation -->
-    <div class="site-footer__links" aria-labelledby="footer-nav-heading">
-      <h2 id="footer-nav-heading" class="sr-only">Footer Navigation</h2>
-      <nav aria-label="Footer navigation">
-        <ul class="site-footer__nav-list">
-          {% assign footer_nav = site.data.nav.footer_nav %}
-          {% for item in footer_nav %}
-            <li class="site-footer__nav-item">
-              <a href="{{ item.url }}" class="site-footer__nav-link">{{ item.title }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      </nav>
-    </div>
+    {% endif %}
+    
+    {% if site.data.nav.footer_nav %}
+    <nav class="site-footer__nav" aria-label="Footer navigation">
+      <ul class="site-footer__nav-list">
+        {% for item in site.data.nav.footer_nav %}
+        <li class="site-footer__nav-item">
+          <a href="{{ item.url }}" class="site-footer__nav-link">{{ item.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    {% endif %}
   </div>
   
-  <!-- Back to top button -->
-  <button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
     <i class="fas fa-arrow-up" aria-hidden="true"></i>
   </button>
-  {%- comment -%} SCSS partial imported in main stylesheet, no direct CSS link needed {%- endcomment -%}
 </footer>

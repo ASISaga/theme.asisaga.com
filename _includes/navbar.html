@@ -1,59 +1,28 @@
-<!-- 
-Navigation bar component that dynamically generates menu items based on site.data.nav
-This component handles three types of navigation items:
-1. Dropdown menus with subcategories
-2. Active page highlighting
-3. Regular navigation links
--->
-<nav role="navigation" aria-label="Main navigation">
-  <ul class="site-navbar">
-      {% for nav in site.data.nav.navigation %}
-        {% if nav.subcategories != null %}
-              <!-- Dropdown menu item with subcategories -->
-              <li class="navbar-item dropdown">
-                  <!-- Parent dropdown link that toggles dropdown visibility -->
-                  <a class="navbar-link dropdown-toggle" href="#" 
-                     id="navbarDropdown{{ forloop.index }}" 
-                     role="button" 
-                     data-bs-toggle="dropdown" 
-                     aria-expanded="false"
-                     aria-haspopup="true">
-                      {{ nav.title }}
-                  </a>
-                  <!-- Dropdown menu container -->
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown{{ forloop.index }}">
-                      {% for subcategory in nav.subcategories %}
-                          <!-- Individual dropdown menu item -->
-                          <li>
-                              <a class="dropdown-item" href="{{ subcategory.url }}"
-                                 {% if page.url == subcategory.url %}aria-current="page"{% endif %}>
-                                  {{ subcategory.title }}
-                              </a>
-                          </li>
-                          {% if forloop.last == false %}
-                              <!-- Divider between dropdown items (except after the last item) -->
-                              <li><hr class="dropdown-divider"></li>
-                          {% endif %}
-                      {% endfor %}
-                  </ul>
-              </li>
-          {% elsif nav.title == page.title %}
-              <!-- Active menu item (current page) -->
-              <li class="navbar-item-active">
-                  <a class="navbar-link" href="{{ nav.url }}" aria-current="page">
-                      {{ nav.title }}
-                  </a>
-              </li>
-          {% else %}
-              <!-- Standard menu item -->
-              <li class="navbar-item">
-                  <a class="navbar-link" href="{{ site.url }}{{ nav.url }}">
-                      {{ nav.title }}
-                  </a>
-              </li>
-          {% endif %}
-      {% endfor %}
+<nav class="navbar" aria-label="Main navigation">
+  <ul class="navbar__list">
+    {% for nav in site.data.nav.navigation %}
+      {% if nav.subcategories %}
+      <li class="navbar__item navbar__item--dropdown">
+        <button class="navbar__link navbar__link--dropdown" id="nav-dropdown-{{ forloop.index }}" aria-expanded="false" aria-haspopup="true" data-bs-toggle="dropdown">
+          {{ nav.title }}
+        </button>
+        <ul class="navbar__dropdown" aria-labelledby="nav-dropdown-{{ forloop.index }}">
+          {% for subcategory in nav.subcategories %}
+          <li class="navbar__dropdown-item">
+            <a class="navbar__dropdown-link" href="{{ subcategory.url }}"{% if page.url == subcategory.url %} aria-current="page"{% endif %}>
+              {{ subcategory.title }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% else %}
+      <li class="navbar__item{% if nav.title == page.title %} navbar__item--active{% endif %}">
+        <a class="navbar__link" href="{{ site.url }}{{ nav.url }}"{% if nav.title == page.title %} aria-current="page"{% endif %}>
+          {{ nav.title }}
+        </a>
+      </li>
+      {% endif %}
+    {% endfor %}
   </ul>
-  
 </nav>
-<!-- Note: mobile toggling is handled by the header's toggler button (#site-header-nav) -->

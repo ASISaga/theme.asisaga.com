@@ -1,26 +1,19 @@
-<!-- 
-Main header component that appears at the top of each page
-Contains the site's logo, navigation menu, and optional mobile navigation toggler
--->
-<header class="site-header" role="banner" aria-label="Site header">
-  <a class="site-header__brand" href="/">
-    <div class="header-brand-row">
-      <!-- Site logo section with link to homepage -->
-      <div class="header-logo">
-        <img src="{{ '/assets/images/favicon.ico' | relative_url }}" class="site-header__logo-img" alt="ASI Saga">
-      </div>
-      <div class="header-title">
-        <!-- Site title display - can be replaced with an actual logo image if needed -->
-        <h1 id="title" class="site-header__title">{{ site.title | default: site.github.repository_name }}</h1>
-        <p id="tagline" class="site-header__tagline">{{ site.description | default: site.github.project_tagline }}</p>
-      </div>
+<header class="site-header">
+  <a class="site-header__brand" href="/" aria-label="{{ site.title | default: site.github.repository_name }} - Home">
+    <img src="{{ '/assets/images/favicon.ico' | relative_url }}" class="site-header__logo" alt="{{ site.title | default: site.github.repository_name }}">
+    <div class="site-header__text">
+      <span class="site-header__title">{{ site.title | default: site.github.repository_name }}</span>
+      {% if site.description or site.github.project_tagline %}
+      <span class="site-header__tagline">{{ site.description | default: site.github.project_tagline }}</span>
+      {% endif %}
     </div>
-  </a>    <!-- Mobile navigation menu toggle button (only visible on small screens) -->
-  <button class="site-header-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#site-header-nav" aria-controls="site-header-nav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="site-header-toggler-icon"></span>
+  </a>
+  
+  <button class="site-header__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation menu">
+    <span class="site-header__toggle-icon"></span>
   </button>
-  <!-- Navigation menu container that collapses on mobile -->
-  <div id="site-header-nav" class="collapse site-header-nav">
+  
+  <div id="site-nav" class="site-header__nav collapse">
     {% include navbar.html %}
   </div>
 </header>

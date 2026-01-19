@@ -1,15 +1,18 @@
-@use 'sass:color';
+@import "ontology/index";
 
-// Section Header component - Using Bootstrap native classes
+// Section Header component - Using Genesis Ontological System
 // Reusable section title and description styling
 
 .section-header {
+  @include genesis-environment('focused');
+  @include genesis-atmosphere('spacious-mobile');
   // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
     // @extend .text-center; // Bootstrap text alignment utility
   // TODO: Replace @extend .mb-5 with proper mixin or direct styles for Jekyll compatibility
     // @extend .mb-5; // Bootstrap margin utility
   
   .section-title {
+    @include genesis-cognition('axiom');
     // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
     // @extend .fw-bold; // Bootstrap font-weight utility
     // TODO: Replace @extend .text-primary with proper mixin or direct styles for Jekyll compatibility
@@ -21,6 +24,7 @@
   }
   
   .section-subtitle {
+    @include genesis-cognition('motive');
     // TODO: Replace @extend .text-secondary with proper mixin or direct styles for Jekyll compatibility
     // @extend .text-secondary; // Bootstrap text color utility
     // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
@@ -30,6 +34,7 @@
   }
   
   .section-description {
+    @include genesis-cognition('discourse');
     // TODO: Replace @extend .text-body-secondary with proper mixin or direct styles for Jekyll compatibility
     // @extend .text-body-secondary; // Bootstrap text color utility
     // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
@@ -59,5 +64,10 @@
       // TODO: Replace @extend .text-secondary with proper mixin or direct styles for Jekyll compatibility
     // @extend .text-secondary; // Bootstrap text color utility
     }
+  }
+  
+  // Featured/highlighted section headers
+  &.section-header--featured {
+    @include genesis-atmosphere('vibrant');
   }
 }

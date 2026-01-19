@@ -1,39 +1,37 @@
 {% comment %}
 Feature Grid Component
+Creates a responsive grid of feature items with icons and descriptions
+
 Parameters:
-- title: Optional title for the feature section
-- items: Array of feature items (from _data or passed directly)
-- style: Optional style variation (default, alt)
+- title: Section heading
+- items: Array of feature objects with icon, title, description, link_url, link_text
+- style: Style variant (alt)
 {% endcomment %}
 
-{% assign section_class = "feature-section" %}
-{% if include.style == "alt" %}
-  {% assign section_class = section_class | append: " feature-section-alt" %}
-{% endif %}
-
-<section class="{{ section_class }}">
+<section class="feature-section{% if include.style == 'alt' %} feature-section--alt{% endif %}">
   {% if include.title %}
-    <h2 class="feature-title">{{ include.title }}</h2>
+  <h2 class="feature-section__title">{{ include.title }}</h2>
   {% endif %}
   
-  <div class="feature-grid">
+  <div class="feature-section__grid">
     {% for item in include.items %}
-      <div class="feature-item">
-        <div class="feature-card">
-          {% if item.icon %}
-            <div class="feature-icon">
-              <i class="{{ item.icon }}"></i>
-            </div>
-          {% endif %}
-          
-          <h3 class="feature-card-title">{{ item.title }}</h3>
-          <p class="feature-description">{{ item.description }}</p>
-          
-          {% if item.link_url and item.link_text %}
-            <a href="{{ item.link_url }}" class="feature-link">{{ item.link_text }}</a>
-          {% endif %}
-        </div>
+    <article class="feature-card">
+      {% if item.icon %}
+      <div class="feature-card__icon" aria-hidden="true">
+        <i class="{{ item.icon }}"></i>
       </div>
+      {% endif %}
+      
+      <h3 class="feature-card__title">{{ item.title }}</h3>
+      
+      {% if item.description %}
+      <p class="feature-card__description">{{ item.description }}</p>
+      {% endif %}
+      
+      {% if item.link_url and item.link_text %}
+      <a href="{{ item.link_url }}" class="feature-card__link">{{ item.link_text }}</a>
+      {% endif %}
+    </article>
     {% endfor %}
   </div>
 </section>

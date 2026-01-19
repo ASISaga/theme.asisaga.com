@@ -1,31 +1,41 @@
-<!-- 
+{% comment %}
 Form Field Component
-Reusable form field with validation
--->
-<div class="form-field-component mb-3">
-  <label for="{{ include.id }}" class="form-label {% if include.required %}required{% endif %}">
+Reusable form field with validation and accessibility
+
+Parameters:
+- id: Unique field ID (required)
+- label: Field label (required)
+- type: Input type (text, email, textarea, select, etc.)
+- name: Form field name (defaults to id)
+- placeholder: Placeholder text
+- required: Whether field is required
+- help_text: Helper text below field
+- rows: Rows for textarea (default: 4)
+- options: Array for select field
+{% endcomment %}
+
+<div class="form-field">
+  <label for="{{ include.id }}" class="form-field__label{% if include.required %} form-field__label--required{% endif %}">
     {{ include.label }}
-    {% if include.required %}<span class="text-danger">*</span>{% endif %}
+    {% if include.required %}<span class="form-field__required" aria-label="required">*</span>{% endif %}
   </label>
   
   {% if include.type == 'textarea' %}
   <textarea 
-    class="form-control" 
+    class="form-field__input form-field__textarea" 
     id="{{ include.id }}" 
     name="{{ include.name | default: include.id }}"
     rows="{{ include.rows | default: 4 }}"
-    placeholder="{{ include.placeholder }}"
-    {% if include.required %}required{% endif %}
-    aria-describedby="{{ include.id }}-help"
-  ></textarea>
+    {% if include.placeholder %}placeholder="{{ include.placeholder }}"{% endif %}
+    {% if include.required %}required aria-required="true"{% endif %}
+    {% if include.help_text %}aria-describedby="{{ include.id }}-help"{% endif %}></textarea>
   {% elsif include.type == 'select' %}
   <select 
-    class="form-select" 
+    class="form-field__input form-field__select" 
     id="{{ include.id }}" 
     name="{{ include.name | default: include.id }}"
-    {% if include.required %}required{% endif %}
-    aria-describedby="{{ include.id }}-help"
-  >
+    {% if include.required %}required aria-required="true"{% endif %}
+    {% if include.help_text %}aria-describedby="{{ include.id }}-help"{% endif %}>
     <option value="">Choose...</option>
     {% for option in include.options %}
     <option value="{{ option.value }}">{{ option.label }}</option>
@@ -34,16 +44,15 @@ Reusable form field with validation
   {% else %}
   <input 
     type="{{ include.type | default: 'text' }}" 
-    class="form-control" 
+    class="form-field__input" 
     id="{{ include.id }}" 
     name="{{ include.name | default: include.id }}"
-    placeholder="{{ include.placeholder }}"
-    {% if include.required %}required{% endif %}
-    aria-describedby="{{ include.id }}-help"
-  >
+    {% if include.placeholder %}placeholder="{{ include.placeholder }}"{% endif %}
+    {% if include.required %}required aria-required="true"{% endif %}
+    {% if include.help_text %}aria-describedby="{{ include.id }}-help"{% endif %}>
   {% endif %}
   
   {% if include.help_text %}
-  <div id="{{ include.id }}-help" class="form-text">{{ include.help_text }}</div>
+  <p id="{{ include.id }}-help" class="form-field__help">{{ include.help_text }}</p>
   {% endif %}
 </div>

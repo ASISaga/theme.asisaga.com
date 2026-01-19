@@ -1,171 +1,70 @@
-@use 'sass:color';
+@import "ontology/index";
 
-// Timeline component styles
+// Timeline component - Genesis Ontological System
 
-// Timeline component
 .timeline-section {
-  // Bootstrap vertical padding
-  @include padding-vertical(3rem); // Equivalent to .py-5
-  position: relative;
+  @include genesis-environment('chronological');
+  @include genesis-atmosphere('spacious-mobile');
   
   .timeline-title {
-  // Section title utility
-  @include font-xl;
-  @include font-bold;
-  @include text-primary;
-    text-align: center;
+    @include genesis-cognition('axiom');
   }
   
   .timeline-container {
-    position: relative;
-    @include padding-vertical($spacing-lg);
+    @include genesis-entity('aggregate');
   }
   
-  // The horizontal track line
   .timeline-track {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    @include height(4px);
-  @include background-color($primary-light);
-    z-index: 1;
+    @include genesis-entity('latent');
   }
-    // Timeline markers (clickable dots)
+  
   .timeline-markers {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    z-index: 2;
+    @include genesis-environment('associative');
     
     .timeline-marker {
-      // Improved focus styles for accessibility
-      // Improved focus styles for accessibility
-      &:focus {
-        outline: 2px solid $primary;
-        outline-offset: 3px;
-      }
-      // Enhanced keyboard focus indicator
-      &:focus-visible {
-        .timeline-marker-dot {
-          box-shadow: 0 0 0 3px rgba($primary, 0.5);
-          outline: 2px solid $primary;
-          outline-offset: 3px;
-        }
-      }
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      
-      &:hover {
-        transform: translateY(-5px);
-      }
+      @include genesis-synapse('navigate');
       
       &.active {
-        .timeline-marker-dot {
-          @include background-color($accent);
-          transform: scale(1.2);
-        }
-        
-        .timeline-marker-label {
-          @include text-primary;
-          @include font-semibold;
-        }
+        @include genesis-state('stable');
       }
-      
-// Base marker dot and label styles (moved outside .timeline-marker for specificity)
-.timeline-section .timeline-markers .timeline-marker-dot {
-  @include size(20px);
-  border-radius: 50%;
-  @include bg-primary;
-  @include transition(all, $animation-duration-normal, $ease-out);
-}
-.timeline-section .timeline-markers .timeline-marker-label {
-  font-size: 0.9rem;
-  color: $text-muted;
-  transition: color 0.3s ease;
-}
+    }
+    
+    .timeline-marker-dot {
+      @include genesis-entity('primary');
+    }
+    
+    .timeline-marker-label {
+      @include genesis-cognition('gloss');
     }
   }
   
-  // Timeline content panels
   .timeline-content-container {
-
-    position: relative;
-    @include min-height(400px);
+    @include genesis-environment('focused');
     
     .timeline-content {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
+      @include genesis-state('evolving');
       
       &.active {
-        opacity: 1;
-        visibility: visible;
-        position: relative;
+        @include genesis-state('stable');
       }
       
       .timeline-content-inner {
-        display: flex;
-        flex-wrap: wrap;
-        background-color: $white;
-        border-radius: $border-radius;
-        overflow: hidden;
-        box-shadow: $box-shadow;
+        @include genesis-entity('primary');
         
         .timeline-content-image {
-          flex: 0 0 40%;
-          
-          img {
-            @include width-full;
-            @include height-full;
-            object-fit: cover;
-          }
-          
-          @include media-breakpoint-down(md) {
-            flex: 0 0 100%;
-          }
+          @include genesis-entity('image-adaptive');
         }
         
         .timeline-content-text {
-          flex: 0 0 60%;
-          @include padding($spacing-md);
+          @include genesis-entity('secondary');
           
           .timeline-content-title {
-
-            color: $primary;
+            @include genesis-cognition('axiom');
           }
           
           .timeline-content-body {
-            color: $text-color;
+            @include genesis-cognition('discourse');
           }
-          
-          @include media-breakpoint-down(md) {
-            flex: 0 0 100%;
-          }
-        }
-      }
-    }
-  }
-}
-
-// Responsive adjustments
-@include media-breakpoint-down(md) {
-  .timeline-section {
-    .timeline-track {
-      top: 50px;
-    }
-    
-    .timeline-markers {
-      .timeline-marker {
-        .timeline-marker-label {
-          font-size: 0.8rem;
         }
       }
     }

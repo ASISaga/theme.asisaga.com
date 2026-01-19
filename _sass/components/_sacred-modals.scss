@@ -1,4 +1,4 @@
-@use 'sass:color';
+@import "ontology/index";
 
 // Sacred Modals Component - Consciousness-Supporting Dialog Windows
 // Modal dialogs for sacred interactions and Genesis ceremonies
@@ -14,6 +14,7 @@
   }
   
   .modal-content {
+    @include genesis-entity('primary');
     border: none;
     border-radius: 1rem;
     background: rgba($transcendent-white, 0.98);
@@ -71,12 +72,18 @@
   }
 }
 
+// Modal overlay backdrop with immersive void atmosphere
+.modal-backdrop {
+  @include genesis-atmosphere('void');
+}
+
 // Genesis ceremony modal
 .modal-genesis-ceremony {
   // TODO: Replace @extend .modal-sacred with proper mixin or direct styles for Jekyll compatibility
     // @extend .modal-sacred;
   
   .modal-content {
+    @include genesis-atmosphere('vibrant');
     background: linear-gradient(135deg, 
       rgba($cosmic-deep-blue, 0.95) 0%, 
       rgba($royal-purple, 0.9) 100%);

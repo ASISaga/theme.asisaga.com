@@ -1,53 +1,39 @@
 ---
-layout: fixed-height
+layout: default
 ---
-<!-- 
-Settings Layout
-Purpose: User or admin settings pages with tabbed interface
-Features: Tabbed navigation, form sections, save actions
--->
-<div class="settings-layout">
-  <div class="settings-wrapper">
-    <div class="settings-grid">
-      <!-- Settings Sidebar -->
-      <aside class="settings-sidebar">
-        <h4 class="settings-sidebar-heading">Settings</h4>
-        <nav class="settings-nav" aria-label="Settings navigation">
-          <ul class="nav">
-            {% if page.tabs %}
-            {% for tab in page.tabs %}
-            <li class="nav-item">
-              <a class="nav-link {% if forloop.first %}active{% endif %}" href="#{{ tab.id }}" data-bs-toggle="tab">
-                {% if tab.icon %}
-                <i class="{{ tab.icon }} me-2" aria-hidden="true"></i>
-                {% endif %}
-                {{ tab.title }}
-              </a>
-            </li>
-            {% endfor %}
+<div class="settings-page">
+  <aside class="settings-page__sidebar" aria-label="Settings navigation">
+    <h2 class="settings-page__sidebar-title">Settings</h2>
+    {% if page.tabs %}
+    <nav class="settings-page__nav">
+      <ul class="settings-page__nav-list">
+        {% for tab in page.tabs %}
+        <li class="settings-page__nav-item">
+          <a class="settings-page__nav-link{% if forloop.first %} settings-page__nav-link--active{% endif %}" href="#{{ tab.id }}" data-bs-toggle="tab"{% if forloop.first %} aria-current="page"{% endif %}>
+            {% if tab.icon %}
+            <i class="{{ tab.icon }}" aria-hidden="true"></i>
             {% endif %}
-          </ul>
-        </nav>
-      </aside>
-      
-      <!-- Settings Content -->
-      <main class="settings-main">
-        <div class="settings-content">
-          {% if page.title %}
-          <h2 class="settings-title">{{ page.title }}</h2>
-          {% endif %}
-          
-          <div class="tab-content">
-            {{ content }}
-          </div>
-          
-          <!-- Settings Actions -->
-          <div class="settings-actions">
-            <button type="button" class="settings-save-btn">Save Changes</button>
-            <button type="button" class="settings-cancel-btn">Cancel</button>
-          </div>
-        </div>
-      </main>
+            {{ tab.title }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    {% endif %}
+  </aside>
+  
+  <div class="settings-page__main">
+    {% if page.title %}
+    <h1 class="settings-page__title">{{ page.title }}</h1>
+    {% endif %}
+    
+    <div class="settings-page__content">
+      {{ content }}
+    </div>
+    
+    <div class="settings-page__actions">
+      <button type="button" class="settings-page__button settings-page__button--primary">Save Changes</button>
+      <button type="button" class="settings-page__button settings-page__button--secondary">Cancel</button>
     </div>
   </div>
 </div>

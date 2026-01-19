@@ -1,4 +1,4 @@
-@use 'sass:color';
+@import "ontology/index";
 
 // Team/profile component mixins
 // Used for team member profiles or similar content blocks
@@ -7,111 +7,44 @@
 @mixin team-component($prefix: 'team') {
   .#{$prefix} {
     &-section {
-      // Bootstrap padding utility
-  @include padding-vertical(3rem); // .py-5
-      // Bootstrap background utility
-      background-color: $gray-100; // .bg-light
-      // Bootstrap border-radius utility
-      border-radius: 0.25rem; // .rounded
-      // Bootstrap text alignment utility
-      text-align: center; // .text-center
-      // Bootstrap margin utility
+      @include genesis-environment('focused');
+      @include genesis-atmosphere('ethereal');
+      @include genesis-atmosphere('spacious-mobile');
     }
     
     &-title {
-      // Bootstrap display utility
-      @include font-size-2xl; // .display-5
-  @include font-light;
-      // Bootstrap margin utility
-      // Bootstrap text color utility
-      @include text-primary; // .text-primary
+      @include genesis-cognition('axiom');
     }
     
     &-subtitle {
-      // Bootstrap heading utility
-      @include font-size-lg; // .h5
-  @include font-medium;
-      // Bootstrap text color utility
-      @include text-muted; // .text-muted
-      // Bootstrap margin utility
+      @include genesis-cognition('motive');
     }
     
     &-grid {
-      // Replaced // TODO: Replace @extend with direct styles
-    display: flex;
-    flex-wrap: wrap;
-      // Bootstrap justify-content utility
-      justify-content: center; // .justify-content-center
-      // Bootstrap gap utility
-      gap: 1.5rem; // .g-4
-      // Bootstrap margin utility
+      @include genesis-environment('distributed');
     }
     
     &-member {
-      // Bootstrap column utility
-      @media (min-width: 768px) {
-        flex: 0 0 50%;
-        max-width: 50%;
-      }
-      // Bootstrap column utility
-      @media (min-width: 992px) {
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
-      }
+      @include genesis-entity('aggregate');
       
       &-card {
-        // Base card styles (replaced @extend)
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-clip: border-box;
-    border: var(--bs-card-border-width, 1px) solid var(--bs-card-border-color, rgba(0,0,0,.125));
-    // Bootstrap background utility
-    background-color: #fff; // .bg-white
-    // Bootstrap shadow utility
-    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075); // .shadow-sm
-    // Bootstrap height utility
-    @include height-full; // .h-100
-    // Bootstrap padding utility
-    @include padding(1.5rem); // .p-4
-    // Bootstrap border-radius utility
-    border-radius: 0.25rem; // .rounded
+        @include genesis-entity('primary');
       }
       
       &-name {
-    // Bootstrap font-weight utility
-  @include font-bold; // .fw-bold
-    // Bootstrap text color utility
-    @include text-primary; // .text-primary
-    // Bootstrap margin utility
-    // Bootstrap margin utility
+        @include genesis-cognition('motive');
       }
       
       &-role {
-    // Bootstrap text color utility
-    color: #6c757d; // .text-secondary
-    // Bootstrap font-weight utility
-    font-weight: 500; // .fw-medium
-    // Bootstrap margin utility
+        @include genesis-cognition('gloss');
       }
       
       &-bio {
-    // Bootstrap margin utility
+        @include genesis-cognition('discourse');
       }
       
       &-image {
-    // Bootstrap image utility
-    height: auto; // .img-fluid
-    // Bootstrap border-radius utility
-    border-radius: 50%; // .rounded-circle
-    // Bootstrap margin utility
-    margin-left: auto;
-    margin-right: auto; // .mx-auto
-    // Bootstrap display utility
-    display: block; // .d-block
-        max-width: 150px;
+        @include genesis-entity('image-adaptive');
       }
     }
   }
@@ -123,13 +56,12 @@
   
   .#{$prefix} {
     &-section {
-      background: linear-gradient(135deg, rgba($primary, 0.1) 0%, rgba($white, 1) 100%);
-      border: none;
+      @include genesis-atmosphere('vibrant');
     }
     
     &-member {
       &-card {
-        border-top: 3px solid $primary;
+        @include genesis-entity('imperative');
       }
     }
   }

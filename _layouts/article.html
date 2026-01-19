@@ -1,68 +1,56 @@
 ---
-layout: scrollable
+layout: default
 ---
-<!-- 
-Article Layout
-Purpose: Long-form editorial or knowledge articles with enhanced readability
-Features: Table of contents, reading progress, enhanced typography
--->
 <article class="article-layout">
-  <div class="article-wrapper">
-    <div class="article-grid">
-      <!-- Article Sidebar (Table of Contents) -->
-      <aside class="article-toc-sidebar">
-        <div class="article-toc-sticky">
-          {% if page.toc %}
-          <nav class="article-toc-nav">
-            <h6 class="article-toc-title">Table of Contents</h6>
-            <!-- TOC will be auto-generated or manually specified -->
-            {{ page.toc }}
-          </nav>
-          {% endif %}
-        </div>
-      </aside>
+  {% if page.toc %}
+  <aside class="article-layout__sidebar" aria-label="Table of contents">
+    <nav class="article-toc">
+      <h2 class="article-toc__title">Table of Contents</h2>
+      <div class="article-toc__content">
+        {{ page.toc }}
+      </div>
+    </nav>
+  </aside>
+  {% endif %}
+  
+  <div class="article-layout__main">
+    <header class="article-layout__header">
+      {% if page.title %}
+      <h1 class="article-layout__title">{{ page.title }}</h1>
+      {% endif %}
       
-      <!-- Article Main Content -->
-      <div class="article-main-col">
-        <header class="article-header">
-          {% if page.title %}
-          <h1 class="article-title">{{ page.title }}</h1>
-          {% endif %}
-          
-          {% if page.subtitle %}
-          <p class="article-subtitle">{{ page.subtitle }}</p>
-          {% endif %}
-          
-          {% if page.date or page.author or page.reading_time %}
-          <div class="article-meta">
-            {% if page.date %}
-            <time datetime="{{ page.date | date_to_xmlschema }}" class="article-meta-date">
-              {{ page.date | date: "%B %d, %Y" }}
-            </time>
-            {% endif %}
-            {% if page.author %}
-            <span class="article-author">By {{ page.author }}</span>
-            {% endif %}
-            {% if page.reading_time %}
-            <span class="article-reading-time">{{ page.reading_time }} min read</span>
-            {% endif %}
-          </div>
-          {% endif %}
-        </header>
-        
-        <div class="article-content">
-          {{ content }}
-        </div>
-        
-        {% if page.related_articles %}
-        <footer class="article-footer">
-          <h4 class="article-footer-title">Related Articles</h4>
-          <div class="article-nav-grid">
-            <!-- Related articles can be listed here -->
-          </div>
-        </footer>
+      {% if page.subtitle %}
+      <p class="article-layout__subtitle">{{ page.subtitle }}</p>
+      {% endif %}
+      
+      {% if page.date or page.author or page.reading_time %}
+      <div class="article-layout__meta">
+        {% if page.date %}
+        <time datetime="{{ page.date | date_to_xmlschema }}" class="article-layout__date">
+          {{ page.date | date: "%B %d, %Y" }}
+        </time>
+        {% endif %}
+        {% if page.author %}
+        <span class="article-layout__author">By {{ page.author }}</span>
+        {% endif %}
+        {% if page.reading_time %}
+        <span class="article-layout__reading-time">{{ page.reading_time }} min read</span>
         {% endif %}
       </div>
+      {% endif %}
+    </header>
+    
+    <div class="article-layout__content">
+      {{ content }}
     </div>
+    
+    {% if page.related_articles %}
+    <footer class="article-layout__footer">
+      <h2 class="article-layout__footer-title">Related Articles</h2>
+      <div class="article-layout__related">
+        <!-- Related articles list -->
+      </div>
+    </footer>
+    {% endif %}
   </div>
 </article>

@@ -1,20 +1,19 @@
 ---
-layout: fixed-height
+layout: default
 ---
-<!-- 
-Chatroom Layout
-Purpose: Real-time or threaded conversation pages
-Features: Message list, input area, user list, real-time updates
-Supports: Web component integration via <chatroom-app>
--->
-<chatroom-app {% if page.title %}title="{{ page.title }}" {% endif %} {% if page.participants
-  %}participants="{{ page.participants }}" {% endif %} {% if page.show_avatar %}show-avatar{% endif %} {% if
-  page.avatar_url %}avatar-url="{{ page.avatar_url }}" {% endif %} {% if page.placeholder
-  %}placeholder="{{ page.placeholder }}" {% endif %} {% if page.max_length %}max-length="{{ page.max_length }}" {% endif
-  %} {% if page.show_toolbar %}show-toolbar{% endif %} {% if page.show_typing_indicator %}show-typing-indicator{% endif
-  %} {% if page.show_connection_status %}show-connection-status{% endif %} {% if page.api_endpoint
-  %}api-endpoint="{{ page.api_endpoint }}" {% endif %} {% if page.auto_refresh %}auto-refresh{% endif %} {% if
-  page.refresh_interval %}refresh-interval="{{ page.refresh_interval }}" {% endif %}>
+<chatroom-app 
+  {% if page.title %}title="{{ page.title }}"{% endif %}
+  {% if page.participants %}participants="{{ page.participants }}"{% endif %}
+  {% if page.show_avatar %}show-avatar{% endif %}
+  {% if page.avatar_url %}avatar-url="{{ page.avatar_url }}"{% endif %}
+  {% if page.placeholder %}placeholder="{{ page.placeholder }}"{% endif %}
+  {% if page.max_length %}max-length="{{ page.max_length }}"{% endif %}
+  {% if page.show_toolbar %}show-toolbar{% endif %}
+  {% if page.show_typing_indicator %}show-typing-indicator{% endif %}
+  {% if page.show_connection_status %}show-connection-status{% endif %}
+  {% if page.api_endpoint %}api-endpoint="{{ page.api_endpoint }}"{% endif %}
+  {% if page.auto_refresh %}auto-refresh{% endif %}
+  {% if page.refresh_interval %}refresh-interval="{{ page.refresh_interval }}"{% endif %}>
   {% include chatroom/template.html %}
 </chatroom-app>
 

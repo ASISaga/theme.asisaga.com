@@ -1,40 +1,28 @@
+@import "ontology/index";
+
 // Post Navigation Component Styles
 
 .post-navigation {
-  border-top: 1px solid $border-color;
-  padding-top: $spacing-sacred-lg;
-  margin-top: $spacing-sacred-xxl;
+  @include genesis-entity('secondary');
+  @include genesis-environment('associative');
   
   .post-navigation-prev {
-    margin-bottom: $spacing-sacred-md;
-    
-    @include media-breakpoint-up(md) {
-      flex: 0 0 auto;
-      width: 50%;
-      margin-bottom: 0;
-    }
+    @include genesis-entity('aggregate');
   }
   
   .post-navigation-next {
-    @include media-breakpoint-up(md) {
-      flex: 0 0 auto;
-      width: 50%;
-      text-align: end;
-    }
+    @include genesis-entity('aggregate');
   }
   
   .post-navigation-link {
-    text-decoration: none;
-    display: block;
+    @include genesis-synapse('navigate');
   }
   
   .post-navigation-label {
-    color: $text-muted;
-    display: block;
-    margin-bottom: 0.25rem;
+    @include genesis-cognition('gloss');
   }
   
   .post-navigation-title {
-    display: block;
+    @include genesis-cognition('motive');
   }
 }

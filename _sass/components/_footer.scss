@@ -1,117 +1,50 @@
-@use 'sass:color';
+@import "ontology/index";
 
-// Footer single row layout for desktop
+// Footer styling - Genesis Ontological System
+
 .site-footer__row {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-
-  @media (min-width: 900px) {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0;
-
-    .site-footer__copyright,
-    .site-footer__social,
-    .site-footer__links {
-      margin: 0 1.5rem;
-    }
-  }
+  @include genesis-environment('associative');
 }
-
 
 .site-footer__container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.5rem 2rem;
-  box-sizing: border-box;
+  @include genesis-environment('focused');
 }
-// Footer styling - Using Bootstrap native classes where possible
 
-// Footer styling - Using Bootstrap native classes where possible
 .site-footer {
-  width: 100vw;
-  left: 0;
-  right: 0;
-  @include bg-transparent;
-  @include text-footer-color;
-  min-height: 50px;
-  height: 50%;
-  margin: 0;
-  padding: 1rem 0;
-
-  .site-footer__container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
+  @include genesis-entity('primary');
+  @include genesis-atmosphere('void');
+  
   .site-footer__copyright {
-    text-align: center;
-    margin-bottom: 0;
-    padding: 0;
+    @include genesis-entity('secondary');
+    
     .site-footer__copyright-text {
-      font-size: 0.875rem;
-      @include text-footer-muted;
-      margin: 0;
-      padding: 0;
+      @include genesis-cognition('gloss');
     }
   }
+  
   .site-footer__social {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0;
-    padding: 0;
-    .site-footer__social-item {
-      margin: 0 0.25rem;
-      padding: 0;
-    }
+    @include genesis-environment('associative');
   }
+  
   .site-footer__links {
-    text-align: center;
-    margin: 0;
-    padding: 0;
+    @include genesis-entity('secondary');
   }
+  
   .site-footer__nav-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    @include media-breakpoint-down(sm) {
-      flex-direction: column;
-    }
+    @include genesis-environment('associative');
   }
-.site-footer__nav-item {
-  padding: 0 0.75rem;
-  margin-bottom: 0;
-  // Remove only vertical padding on mobile, keep horizontal for spacing
-  @include media-breakpoint-down(sm) {
-    padding-top: 0;
-    padding-bottom: 0;
+  
+  .site-footer__nav-item {
+    @include genesis-entity('secondary');
   }
-}
+  
   .site-footer__nav-link {
-    text-decoration: none;
-    transition: all 0.3s ease;
-    @include text-footer-muted;
-    padding: 0;
-    margin: 0;
-    &:hover {
-      @include text-footer-color;
-      text-decoration: underline;
-    }
+    @include genesis-synapse('navigate');
+    @include genesis-cognition('discourse');
   }
 }
 
 // Fixed footer variant - use both classes in HTML: class="site-footer site-footer-fixed"
 .site-footer-fixed {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  z-index: 1000;
+  @include genesis-state('stable');
 }
