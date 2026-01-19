@@ -1,13 +1,27 @@
-# Agent Skills for Genesis Semantic Design System
+# Agent Skills for Genesis Semantic Design System v2.1
+
+**Version**: 2.1.0 - Integrated Validation & Automation  
+**Last Updated**: 2026-01-19  
+**Status**: Production Ready with Automated Testing
 
 This directory contains Agent Skills for the Genesis Semantic Design System - a living genome architecture that manages the ontological evolution of the ASI Saga theme repository.
+
+## 🚀 What's New in v2.1
+
+- ✅ **Automated validation scripts** in each skill
+- ✅ **Integrated lint/sass testing** workflows
+- ✅ **Comprehensive reference guides** in references/
+- ✅ **Ready for CI/CD** with pre-built automation
+- ✅ **Enhanced cross-references** between all documentation
 
 ## What are Agent Skills?
 
 Agent Skills are structured, reusable capabilities that AI agents can use to perform specific tasks. Each skill follows the [Agent Skills specification](https://agentskills.io) format with:
 
 - **SKILL.md** - Required file with YAML frontmatter and instructions
-- **Optional directories** - scripts/, references/, assets/ for supporting resources
+- **scripts/** - **NEW** Automation and validation scripts
+- **references/** - **NEW** Detailed specifications and guides
+- **assets/** - **NEW** Visual examples and templates (ready for future use)
 
 ## Available Skills
 
@@ -18,6 +32,12 @@ Agent Skills are structured, reusable capabilities that AI agents can use to per
 Manages the evolutionary growth of the Genesis Semantic Design System by reviewing ontological propositions from subdomains, ensuring semantic purity, and maintaining the three-tier architecture.
 
 **Use when**: Reviewing PRs with `ontological-proposition` label, evaluating new variant requests, or managing design system evolution.
+
+**NEW Automation**:
+```bash
+# Validate ontology changes
+./.github/skills/theme-genome-agent/scripts/validate-ontology.sh
+```
 
 ### 2. subdomain-evolution-agent
 
@@ -35,6 +55,15 @@ Converts legacy CSS/SCSS into ontological mixin-based code, ensuring "zero-CSS c
 
 **Use when**: Migrating subdomain from legacy CSS, auditing SCSS for raw CSS violations, or refactoring theme components.
 
+**NEW Automation**:
+```bash
+# Validate SCSS file for zero-CSS compliance
+./.github/skills/scss-refactor-agent/scripts/validate-scss.sh path/to/file.scss
+```
+
+**NEW Resources**:
+- `references/REFACTORING-GUIDE.md` - Comprehensive refactoring guide
+
 ### 4. html-template-agent
 
 **Role**: Semantic Structure and Accessibility Expert
@@ -42,6 +71,12 @@ Converts legacy CSS/SCSS into ontological mixin-based code, ensuring "zero-CSS c
 Ensures all HTML follows semantic best practices, uses meaningful content-first class names, and meets WCAG AA accessibility standards.
 
 **Use when**: Creating Jekyll layouts/includes, auditing HTML for accessibility, or implementing semantic class naming.
+
+**NEW Automation**:
+```bash
+# Validate HTML template
+./.github/skills/html-template-agent/scripts/validate-html.sh path/to/template.html
+```
 
 ### 5. responsive-design-agent
 
@@ -61,17 +96,64 @@ Applies advanced glassmorphism, neon glows, quantum gradients, and consciousness
 
 ## Skill Organization
 
-Each skill directory contains:
+Each skill directory now contains:
 
 ```
 skill-name/
-└── SKILL.md          # Required: Frontmatter + instructions
+├── SKILL.md                 # Required: Skill definition with frontmatter
+├── scripts/                 # NEW: Automation & validation scripts
+│   └── validate-*.sh       # Automated testing and validation
+├── references/              # NEW: Detailed specifications & guides
+│   └── *.md                # Comprehensive reference documentation
+└── assets/                  # NEW: Visual examples & templates (ready for use)
 ```
 
-Future additions may include:
-- `scripts/` - Executable automation scripts
-- `references/` - Detailed documentation (e.g., REFERENCE.md)
-- `assets/` - Templates, diagrams, or data files
+## Quick Start & Workflows
+
+### For Human Developers
+
+```bash
+# 1. Navigate to skills directory
+cd .github/skills
+
+# 2. Choose a skill and read SKILL.md
+cat scss-refactor-agent/SKILL.md
+
+# 3. Run validation script
+./scss-refactor-agent/scripts/validate-scss.sh path/to/file.scss
+
+# 4. Check references for detailed guides
+cat scss-refactor-agent/references/REFACTORING-GUIDE.md
+```
+
+### Integrated Workflows
+
+**Workflow 1: SCSS Refactoring**
+```bash
+# Validate SCSS file
+./.github/skills/scss-refactor-agent/scripts/validate-scss.sh assets/css/style.scss
+
+# Test compilation
+npm run test:scss
+
+# Run linter
+npm run lint:scss
+```
+
+**Workflow 2: HTML Validation**
+```bash
+# Validate HTML template
+./.github/skills/html-template-agent/scripts/validate-html.sh _layouts/default.html
+```
+
+**Workflow 3: Ontology Changes**
+```bash
+# Validate ontology system
+./.github/skills/theme-genome-agent/scripts/validate-ontology.sh
+
+# Test all changes
+npm test
+```
 
 ## Using Skills
 
