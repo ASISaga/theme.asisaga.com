@@ -1,92 +1,51 @@
 @import "ontology/index";
 
-// Testimonial component - Using Bootstrap native classes
+// Testimonial component - Genesis Ontological System
 // Reusable testimonial styling for customer quotes and feedback
 
 .testimonial-section {
-  // Bootstrap padding utility
-  @include padding-vertical(3rem); // Equivalent to .py-5
-  // Bootstrap background utility
-  background-color: $gray-100; // Equivalent to .bg-light
+  @include genesis-environment('focused');
+  @include genesis-atmosphere('ethereal');
+  @include genesis-atmosphere('spacious-mobile');
   
   .testimonial-container {
-  // Use Bootstrap's make-container mixin for container-like behavior
-  @include make-container();
+    @include genesis-environment('focused');
   }
   
   .testimonial-grid {
-    // Replaced // TODO: Replace @extend with direct styles
-    display: flex;
-    flex-wrap: wrap; // Bootstrap row
-  // Bootstrap gap utility
-  gap: 1.5rem; // Equivalent to .g-4
+    @include genesis-environment('distributed');
   }
   
   .testimonial-item {
-    // Bootstrap column utilities
-    flex: 0 0 100%; // .col-12
-    max-width: 100%;
-    @media (min-width: 768px) {
-      flex: 0 0 50%; // .col-md-6
-      max-width: 50%;
-    }
-    @media (min-width: 992px) {
-      flex: 0 0 33.333333%; // .col-lg-4
-      max-width: 33.333333%;
-    }
+    @include genesis-entity('aggregate');
   }
   
   .testimonial-card {
-  // Bootstrap background utility
-  background-color: #fff; // .bg-white
-  // Bootstrap border-radius utility
-  border-radius: 0.25rem; // .rounded
-  // Bootstrap padding utility
-  @include padding(1.5rem); // .p-4
-  // Bootstrap shadow utility
-  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075); // .shadow-sm
-  // Bootstrap height utility
-  @include height-full; // .h-100
-  // Bootstrap border utility
-  border-left: 4px solid $primary; // .border-start .border-4 .border-primary
+    @include genesis-entity('primary');
     
     .testimonial-text {
-      // Bootstrap font-style utility
-      font-style: italic; // .fst-italic
-      // Bootstrap margin utility
-      // Bootstrap padding utility
-      padding-bottom: 1rem; // .pb-3
-      // Bootstrap border utility
-      border-bottom: 1px solid #dee2e6; // .border-bottom
+      @include genesis-cognition('discourse');
     }
     
     .testimonial-author {
-      // Bootstrap text alignment utility
-      text-align: right; // .text-end
+      @include genesis-entity('secondary');
     }
     
     .testimonial-name {
-      // Bootstrap font-weight utility
-      font-weight: 700; // .fw-bold
-      // Bootstrap margin utility
+      @include genesis-cognition('motive');
     }
     
     .testimonial-company {
-      // Bootstrap text color utility
-      color: #6c757d; // .text-muted
-      // Bootstrap text size utility
-      font-size: 0.875em; // .small
+      @include genesis-cognition('gloss');
     }
   }
   
   // Variants
   &.testimonial-section-alt {
-  // Bootstrap background utility
-  background-color: #fff; // .bg-white
+    @include genesis-atmosphere('neutral');
     
     .testimonial-card {
-      // Bootstrap background utility
-      background-color: $gray-100; // .bg-light
+      @include genesis-entity('secondary');
     }
   }
 }

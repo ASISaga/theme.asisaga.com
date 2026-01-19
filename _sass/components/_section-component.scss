@@ -6,64 +6,38 @@
 // Base section component for content sections
 @mixin section-component($prefix: 'section') {
   .#{$prefix} {
-    // TODO: Replace @extend .py-5 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .py-5;
+    @include genesis-environment('focused');
+    @include genesis-atmosphere('spacious-mobile');
     
     &-container {
-      // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
-  @include make-container(); // with proper mixin or direct styles for Jekyll compatibility
-    // @extend with direct styles for Jekyll compatibility
-    @include make-container();
+      @include genesis-environment('focused');
     }
     
     &-title {
-      // TODO: Replace @extend .display-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .display-4;
-      // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-center;
-      // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-4;
+      @include genesis-cognition('axiom');
     }
     
     &-subtitle {
-      // TODO: Replace @extend .h4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .h4;
-      // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-center;
-      // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-3;
-      // TODO: Replace @extend .text-muted with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-muted;
+      @include genesis-cognition('motive');
     }
     
     &-intro {
-      // TODO: Replace @extend .lead with proper mixin or direct styles for Jekyll compatibility
-    // @extend .lead;
-      // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-center;
-      // TODO: Replace @extend .mb-5 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-5;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
+      @include genesis-cognition('discourse');
     }
     
     &-content {
-      // Replaced // TODO: Replace @extend with direct styles
-    display: flex;
-    flex-wrap: wrap;
-      // TODO: Replace @extend .justify-content-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .justify-content-center;
+      @include genesis-environment('distributed');
     }
   }
 }
 
 // Alternate background section
-@mixin alt-section-component($prefix: 'section', $bg-color: rgba($light, 0.5)) {
+@mixin alt-section-component($prefix: 'section') {
   @include section-component($prefix);
   
   .#{$prefix} {
-    background-color: $bg-color;
+    @include genesis-entity('secondary');
+    @include genesis-atmosphere('ethereal');
   }
 }
 
@@ -73,19 +47,7 @@
   
   .#{$prefix} {
     &-title {
-      position: relative;
-      padding-bottom: $spacing-md;
-      
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 3px;
-        background-color: $primary;
-      }
+      @include genesis-cognition('axiom');
     }
   }
 }

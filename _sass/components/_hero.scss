@@ -7,6 +7,8 @@
   @include genesis-entity('primary');
   @include genesis-environment('focused');
   @include genesis-atmosphere('vibrant');
+  @include genesis-atmosphere('viewport-aware');
+  @include genesis-atmosphere('spacious-mobile');
   
   .hero-content {
     @include genesis-environment('focused');
@@ -26,8 +28,6 @@
   
   // Variant modifiers
   &.hero-section-sm {
-    @include genesis-atmosphere('spacious-mobile');
-    
     .hero-title {
       @include genesis-cognition('motive');
     }

@@ -10,6 +10,8 @@
       @include genesis-entity('primary');
       @include genesis-environment('focused');
       @include genesis-atmosphere('vibrant');
+      @include genesis-atmosphere('viewport-aware');
+      @include genesis-atmosphere('spacious-mobile');
     }
     
     &-content {
