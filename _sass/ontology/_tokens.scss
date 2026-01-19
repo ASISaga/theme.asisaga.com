@@ -151,6 +151,69 @@
   --glow-ethereal: oklch(0.98 0.01 90 / 0.1);
   --atmosphere-void: oklch(0.08 0.02 255);
   --atmosphere-vibrant: oklch(0.20 0.06 245 / 0.9);
+  
+  /* ============================================================================
+     RESPONSIVE TOKENS (Dynamic Viewport Units)
+     ============================================================================ */
+  --viewport-height: 100dvh;
+  --viewport-height-large: 100lvh;
+  --viewport-height-small: 100svh;
+  
+  /* Safe area insets for notched devices */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  
+  /* Touch-friendly sizing */
+  --touch-min: 44px;
+  --touch-comfortable: 48px;
+  
+  /* Container widths */
+  --container-narrow: min(65ch, 90vw);
+  --container-content: min(85ch, 90vw);
+  --container-wide: min(1400px, 95vw);
+  --container-full: min(1800px, 98vw);
+  
+  /* Responsive gutter */
+  --gutter: clamp(1rem, 4vw, 2rem);
+  
+  /* ============================================================================
+     FUTURISTIC EFFECT TOKENS
+     ============================================================================ */
+  /* Glow intensities */
+  --glow-subtle: 0.15;
+  --glow-medium: 0.35;
+  --glow-strong: 0.6;
+  --glow-intense: 0.85;
+  
+  /* Neural network colors */
+  --neural-primary: oklch(0.55 0.25 290);
+  --neural-secondary: oklch(0.65 0.20 280);
+  --neural-tertiary: oklch(0.75 0.15 210);
+  
+  /* Quantum field colors */
+  --quantum-cyan: oklch(0.75 0.18 195);
+  --quantum-magenta: oklch(0.65 0.25 320);
+  --quantum-gold: oklch(0.85 0.18 85);
+  
+  /* Consciousness depth */
+  --void-deep: oklch(0.08 0.02 260);
+  --void-medium: oklch(0.12 0.03 255);
+  --void-surface: oklch(0.18 0.04 250);
+  
+  /* Enhanced motion timing */
+  --motion-quantum: 0.15s;
+  --motion-neural: 0.3s;
+  --motion-conscious: 0.6s;
+  --motion-transcendent: 1.2s;
+  --motion-cosmic: 3s;
+  
+  /* Easing curves */
+  --ease-consciousness: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-transcendent: cubic-bezier(0.33, 0, 0.67, 1);
+  --ease-quantum: cubic-bezier(0.5, 0, 0, 1);
+  --ease-neural: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ============================================================================

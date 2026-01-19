@@ -1,0 +1,356 @@
+// ============================================================================
+// GENESIS RESPONSIVE SYSTEM v2.0
+// ============================================================================
+// A modern, mobile-first responsive framework built on CSS container queries,
+// dynamic viewport units, and fluid typography. Eliminates legacy Bootstrap
+// dependencies while providing superior responsive behavior.
+// ============================================================================
+
+// ============================================================================
+// BREAKPOINT TOKENS (Modern Foundation)
+// ============================================================================
+// Mobile-first breakpoints using modern CSS practices
+$breakpoint-xs: 0;
+$breakpoint-sm: 480px;        // Small phones → large phones
+$breakpoint-md: 768px;        // Phones → tablets
+$breakpoint-lg: 1024px;       // Tablets → laptops
+$breakpoint-xl: 1440px;       // Laptops → desktops
+$breakpoint-2xl: 1920px;      // Desktops → ultrawides
+
+// Semantic breakpoint aliases for clarity
+$mobile-max: #{$breakpoint-md - 1px};
+$tablet-min: $breakpoint-md;
+$tablet-max: #{$breakpoint-lg - 1px};
+$desktop-min: $breakpoint-lg;
+
+// ============================================================================
+// FLUID SPACING SCALE
+// ============================================================================
+// Space scale that adapts fluidly between breakpoints
+$space-3xs: clamp(0.25rem, 0.5vw, 0.375rem);
+$space-2xs: clamp(0.375rem, 0.75vw, 0.5rem);
+$space-xs: clamp(0.5rem, 1vw, 0.75rem);
+$space-sm: clamp(0.75rem, 1.5vw, 1rem);
+$space-md: clamp(1rem, 2vw, 1.5rem);
+$space-lg: clamp(1.5rem, 3vw, 2rem);
+$space-xl: clamp(2rem, 4vw, 3rem);
+$space-2xl: clamp(3rem, 6vw, 4rem);
+$space-3xl: clamp(4rem, 8vw, 6rem);
+
+// ============================================================================
+// RESPONSIVE MIXINS (Modern Mobile-First)
+// ============================================================================
+
+/// Mobile-first breakpoint: styles apply at this width and above
+@mixin from($breakpoint) {
+  @media (min-width: #{$breakpoint}) {
+    @content;
+  }
+}
+
+/// Styles apply up to and including this width
+@mixin until($breakpoint) {
+  @media (max-width: #{$breakpoint - 1px}) {
+    @content;
+  }
+}
+
+/// Styles apply within a specific range
+@mixin between($min, $max) {
+  @media (min-width: #{$min}) and (max-width: #{$max - 1px}) {
+    @content;
+  }
+}
+
+// Semantic aliases for common breakpoints
+@mixin mobile-only {
+  @include until($breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @include between($breakpoint-md, $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @include from($breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @include from($breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin ultrawide {
+  @include from($breakpoint-2xl) {
+    @content;
+  }
+}
+
+// ============================================================================
+// CONTAINER QUERY SUPPORT
+// ============================================================================
+
+/// Make an element a container query container
+@mixin container-context($name: null) {
+  container-type: inline-size;
+  @if $name {
+    container-name: #{$name};
+  }
+}
+
+/// Container query - styles apply at this container width and above
+@mixin container-from($width, $name: null) {
+  @if $name {
+    @container #{$name} (min-width: #{$width}) {
+      @content;
+    }
+  } @else {
+    @container (min-width: #{$width}) {
+      @content;
+    }
+  }
+}
+
+// ============================================================================
+// DYNAMIC VIEWPORT UNITS
+// ============================================================================
+// CSS custom properties for viewport units that account for mobile browser chrome
+
+:root {
+  // Dynamic viewport height (accounts for mobile browser chrome)
+  --vh-full: 100dvh;
+  --vh-large: 100lvh;
+  --vh-small: 100svh;
+  
+  // Safe area insets for notched devices
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-right: env(safe-area-inset-right, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-left: env(safe-area-inset-left, 0px);
+  
+  // Responsive base spacing
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --container-padding: clamp(1rem, 5vw, 3rem);
+  
+  // Touch-friendly sizing
+  --touch-target-min: 44px;
+  --touch-target-comfortable: 48px;
+}
+
+// ============================================================================
+// RESPONSIVE TYPOGRAPHY SCALE
+// ============================================================================
+
+:root {
+  // Fluid type scale using clamp()
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.8rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 0.95rem);
+  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+  --text-3xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem);
+  --text-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem);
+  --text-5xl: clamp(3rem, 2rem + 5vw, 5rem);
+  --text-display: clamp(3.5rem, 2rem + 7.5vw, 7rem);
+  
+  // Responsive line heights
+  --leading-tight: 1.15;
+  --leading-snug: 1.3;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+  --leading-loose: 1.8;
+}
+
+// ============================================================================
+// RESPONSIVE LAYOUT UTILITIES
+// ============================================================================
+
+/// Full-bleed element that breaks out of container
+@mixin full-bleed {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+/// Content that respects safe areas on notched devices
+@mixin safe-area-padding {
+  padding-top: var(--safe-area-top);
+  padding-right: var(--safe-area-right);
+  padding-bottom: var(--safe-area-bottom);
+  padding-left: var(--safe-area-left);
+}
+
+/// Flexible grid that adapts to container size
+@mixin responsive-grid($min-column-width: 300px, $gap: var(--gutter)) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(#{$min-column-width}, 100%), 1fr));
+  gap: $gap;
+}
+
+/// Stack layout with responsive gap
+@mixin responsive-stack($gap: $space-md) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+/// Cluster layout for inline elements with wrapping
+@mixin responsive-cluster($gap: $space-sm) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gap;
+}
+
+// ============================================================================
+// ACCESSIBILITY-FIRST RESPONSIVE BEHAVIOR
+// ============================================================================
+
+/// Respect user's motion preferences
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+/// Apply styles only when user allows motion
+@mixin motion-allowed {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+/// High contrast mode support
+@mixin high-contrast {
+  @media (prefers-contrast: more) {
+    @content;
+  }
+}
+
+/// Dark mode detection (for future light mode support)
+@mixin prefers-dark {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+/// Ensure touch targets meet WCAG 2.5.5 (Enhanced)
+@mixin touch-target {
+  min-width: var(--touch-target-min);
+  min-height: var(--touch-target-min);
+  
+  // Expand touch target without visual change on mobile
+  @include mobile-only {
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -8px; // Expands touch area by 8px on all sides
+      z-index: -1;
+    }
+  }
+}
+
+// ============================================================================
+// RESPONSIVE VISIBILITY UTILITIES
+// ============================================================================
+
+// Hide on mobile, show on tablet and up
+.show-tablet-up {
+  @include mobile-only {
+    display: none !important;
+  }
+}
+
+// Show on mobile only
+.show-mobile-only {
+  @include tablet-up {
+    display: none !important;
+  }
+}
+
+// Hide on desktop
+.hide-desktop {
+  @include desktop-up {
+    display: none !important;
+  }
+}
+
+// Show on desktop only
+.show-desktop-only {
+  @include until($breakpoint-lg) {
+    display: none !important;
+  }
+}
+
+// Screen-reader only (visually hidden but accessible)
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  
+  // Make focusable elements visible when focused
+  &:focus-within,
+  &.focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}
+
+// ============================================================================
+// PRINT STYLES
+// ============================================================================
+
+@media print {
+  // Hide non-essential elements
+  nav,
+  footer,
+  .no-print,
+  button,
+  .back-to-top {
+    display: none !important;
+  }
+  
+  // Ensure readable text
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+  
+  // Expand links to show URLs
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    font-weight: normal;
+  }
+  
+  // Prevent page breaks inside important elements
+  h1, h2, h3, h4, h5, h6,
+  img, figure, table, pre {
+    page-break-inside: avoid;
+  }
+}

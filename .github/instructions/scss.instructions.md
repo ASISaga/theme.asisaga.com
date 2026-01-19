@@ -1,11 +1,20 @@
 ---
 applyTo: "**/*.{scss,sass,css},_sass/**,assets/css/**"
-description: "SCSS guidance for the ASI Saga semantic design system. Applies to theme `_sass` partials and subdomain SCSS files."
+description: "SCSS guidance for the ASI Saga semantic design system v2.0. Mobile-first responsive with container queries and futuristic effects."
+version: "2.0.0"
+last-updated: "2026-01-19"
 ---
 
-# Semantic Design System - SCSS Instructions
+# Semantic Design System - SCSS Instructions v2.0
 
-This file contains rules for the OKLCH-based semantic design system with native CSS Grid and Glassmorphism.
+This file contains rules for the OKLCH-based semantic design system with native CSS Grid, Glassmorphism, and modern responsive features.
+
+## 🚀 What's New in v2.0
+
+- **Modern Responsive System**: Mobile-first with container queries, dynamic viewport units, and fluid spacing
+- **Futuristic Effects**: Advanced glassmorphism, neon glows, quantum gradients, consciousness animations
+- **Enhanced Ontology Tokens**: New tokens for responsive behavior, touch targets, safe areas
+- **Accessibility-First**: WCAG 2.5.5 touch targets (44px), reduced motion, high contrast support
 
 ## 🌟 PRIMARY METHOD: Genesis Semantic Engine (Ontology System)
 

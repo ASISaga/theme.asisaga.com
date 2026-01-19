@@ -1,7 +1,23 @@
-// Custom responsive adjustments that aren't available in Bootstrap
-// Most responsive utilities have been removed as Bootstrap provides them through its utility classes
+// ============================================================================
+// LEGACY RESPONSIVE UTILITIES - DEPRECATED
+// ============================================================================
+// This file is maintained for backward compatibility only.
+// 
+// MIGRATION: Use the new responsive system instead:
+//   @import "base/responsive-system";
+// 
+// New features available in responsive-system.scss:
+//   - Mobile-first breakpoint mixins: from(), until(), between()
+//   - Container queries: container-context(), container-from()
+//   - Dynamic viewport units (100dvh, safe-area-inset-*)
+//   - Fluid spacing scale ($space-xs through $space-3xl)
+//   - Accessibility mixins (reduced-motion, high-contrast)
+//   - Print styles
+//
+// This file will be removed in v3.0
+// ============================================================================
 
-// Component-specific responsive adjustments
+// Component-specific responsive adjustments (legacy)
 @media (max-width: $breakpoint-sm) {
   .navbar-main { border-radius: 0 0 $border-radius-sm $border-radius-sm; }
   .product-card { border-radius: $border-radius-sm; }
@@ -9,32 +25,32 @@
   .section-title { font-size: $font-size-lg; }
 }
 
-// Custom responsive font sizes not covered by Bootstrap
+// Legacy responsive font classes - use fluid typography from responsive-system.scss instead
 .fs-responsive-xl {
-  font-size: $font-size-xl;
+  font-size: var(--text-xl, $font-size-xl);
   
   @media (max-width: $breakpoint-lg-max) {
-    font-size: $font-size-lg;
+    font-size: var(--text-lg, $font-size-lg);
   }
   
   @media (max-width: $breakpoint-sm-max) {
-    font-size: $font-size-base * 1.5;
+    font-size: var(--text-base, $font-size-base * 1.5);
   }
 }
 
 .fs-responsive-lg {
-  font-size: $font-size-lg;
+  font-size: var(--text-lg, $font-size-lg);
   
   @media (max-width: $breakpoint-lg-max) {
-    font-size: $font-size-base * 1.1;
+    font-size: var(--text-base, $font-size-base * 1.1);
   }
   
   @media (max-width: $breakpoint-sm-max) {
-    font-size: $font-size-base;
+    font-size: var(--text-base, $font-size-base);
   }
 }
 
-// Custom responsive spacing for sections
+// Legacy section spacing - use $space-* tokens from responsive-system.scss instead
 @include media-breakpoint-down(md) {
   .section {
     padding: ($section-padding-y * 0.75) ($section-padding-x * 0.75);
@@ -47,36 +63,12 @@
   }
 }
 
-// Fix for navbar on mobile devices
+// Legacy mobile navbar fix
 @include media-breakpoint-down(md) {
   .site-header .navbar-collapse {
-    background-color: $dark; // Using consolidated dark color for better contrast
+    background-color: var(--void-surface, $dark);
     padding: 0.5rem;
     border-radius: $border-radius;
     box-shadow: $box-shadow;
   }
 }
-
-/*
-  Note: The following Bootstrap responsive utilities should be used instead of custom classes:
-  
-  - Responsive display utilities: 
-    .d-none, .d-sm-block, .d-md-none, etc.
-  
-  - Responsive text alignment: 
-    .text-center, .text-sm-start, .text-md-end, etc.
-  
-  - Responsive margin/padding: 
-    .mt-3, .mt-sm-5, .mb-md-4, etc.
-  
-  - Responsive flex utilities: 
-    .flex-column, .flex-sm-row, .align-items-md-center, etc.
-  
-  - Responsive image utilities:
-    .img-fluid (no custom classes needed)
-  
-  - Responsive tables:
-    .table-responsive, .table-responsive-md, etc.
-  
-  Bootstrap documentation: https://getbootstrap.com/docs/5.3/utilities/
-*/

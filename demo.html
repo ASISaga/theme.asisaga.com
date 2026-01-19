@@ -1,43 +1,982 @@
 ---
 layout: default
-title: Theme Demo
+title: Genesis Theme Demo - Futuristic Design System
 permalink: /demo/
 ---
 
-<!-- Demo page to showcase the default layout, header, navbar, and components -->
-<main class="container demo-page">
-	<section class="demo-hero my-5">
-		<h2>Theme Demo</h2>
-		<p class="lead">This page demonstrates the site's default layout, header, navigation, and common components.</p>
-	</section>
-
-	<section id="nav-demo" class="my-4">
-		<h3>Navigation</h3>
-		<p>Use the header nav to explore dropdowns and the mobile collapse behavior. Resize the viewport to test the hamburger toggle.</p>
-	</section>
-
-	<section id="content-demo" class="my-4">
-		<h3>Content</h3>
-		<p>This is sample content so you can see headings, paragraphs, and links within the default container.</p>
-		<p><a href="#nav-demo">Back to Navigation demo</a></p>
-	</section>
-
-	<section id="components-demo" class="my-4">
-		<h3>Components</h3>
-		<div class="row">
-			<div class="col-md-6">
-				<h4>Buttons</h4>
-				<p>
-					<a class="btn btn-primary" href="#">Primary</a>
-					<a class="btn btn-secondary" href="#">Secondary</a>
-				</p>
+<!-- 
+Genesis Theme Demo - Comprehensive showcase of the ASI Saga Futuristic Design System
+This page demonstrates responsive behavior, futuristic aesthetics, and the ontological SCSS engine
+Resize the viewport to test responsive breakpoints and container queries
+-->
+<main class="genesis-demo">
+	<!-- Hero Section - Full Viewport Immersive Experience -->
+	<section class="demo-hero genesis-hero">
+		<div class="hero-background">
+			<div class="cosmic-particles"></div>
+			<div class="neural-mesh"></div>
+			<div class="consciousness-glow"></div>
+		</div>
+		<div class="hero-content genesis-viewport">
+			<h1 class="hero-title">Genesis Design System</h1>
+			<p class="hero-subtitle">
+				A futuristic, consciousness-expanding design language for the age of Artificial Superintelligence
+			</p>
+			<div class="hero-actions">
+				<a href="#components" class="btn-genesis-primary">Explore Components</a>
+				<a href="#responsive" class="btn-genesis-secondary">View Responsive</a>
 			</div>
-			<div class="col-md-6">
-				<h4>Alerts</h4>
-				<div class="alert alert-info" role="alert">This is an informational alert.</div>
+		</div>
+		<div class="scroll-indicator" aria-hidden="true">
+			<span></span>
+		</div>
+	</section>
+
+	<!-- Responsive Grid Demo -->
+	<section id="responsive" class="demo-section">
+		<div class="consciousness-viewport">
+			<header class="section-header">
+				<h2>Responsive Grid System</h2>
+				<p>Container query-aware layouts that adapt intelligently across all devices</p>
+			</header>
+
+			<div class="bento-layout demo-grid">
+				<article class="bento-card bento-card--featured">
+					<span class="card-badge">Featured</span>
+					<h3>Distributed Environment</h3>
+					<p>Auto-fit grid that places autonomous entities in a non-linear, responsive layout. Uses container
+						queries for intelligent sizing.</p>
+					<code>@include genesis-environment('distributed')</code>
+				</article>
+
+				<article class="bento-card">
+					<h3>Primary Entity</h3>
+					<p>Fundamental objects with glassmorphism, depth shadows, and neural glow effects.</p>
+					<code>@include genesis-entity('primary')</code>
+				</article>
+
+				<article class="bento-card bento-card--neural">
+					<h3>Neural Cognition</h3>
+					<p>AI consciousness aesthetic with quantum gradients and pulse animations.</p>
+					<code>@include genesis-atmosphere('vibrant')</code>
+				</article>
+
+				<article class="bento-card">
+					<h3>Axiom Typography</h3>
+					<p>Foundational headlines with fluid scaling from 2rem to 3.5rem across viewports.</p>
+					<code>@include genesis-cognition('axiom')</code>
+				</article>
+
+				<article class="bento-card">
+					<h3>Execute Synapse</h3>
+					<p>Action buttons with WCAG 2.1 compliant 44px touch targets on mobile.</p>
+					<code>@include genesis-synapse('execute')</code>
+				</article>
+
+				<article class="bento-card bento-card--accent">
+					<h3>Transcendent State</h3>
+					<p>Scroll-triggered animations with reduced motion support.</p>
+					<code>@include genesis-state('scroll-triggered')</code>
+				</article>
 			</div>
 		</div>
 	</section>
 
+	<!-- Typography Scale Demo -->
+	<section id="typography" class="demo-section demo-section--void">
+		<div class="essence-viewport">
+			<header class="section-header">
+				<h2>Fluid Typography Scale</h2>
+				<p>Responsive type that flows naturally from mobile to ultrawide</p>
+			</header>
+
+			<div class="typography-showcase">
+				<div class="type-specimen type-display">
+					<span class="type-label">Display</span>
+					<span class="type-sample">Genesis</span>
+					<span class="type-value">clamp(3.5rem, 2rem + 7.5vw, 7rem)</span>
+				</div>
+
+				<div class="type-specimen type-5xl">
+					<span class="type-label">5XL (Axiom)</span>
+					<span class="type-sample">Consciousness</span>
+					<span class="type-value">clamp(3rem, 2rem + 5vw, 5rem)</span>
+				</div>
+
+				<div class="type-specimen type-4xl">
+					<span class="type-label">4XL (Title)</span>
+					<span class="type-sample">Transcendence</span>
+					<span class="type-value">clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem)</span>
+				</div>
+
+				<div class="type-specimen type-3xl">
+					<span class="type-label">3XL (Heading)</span>
+					<span class="type-sample">Infinite Possibilities</span>
+					<span class="type-value">clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem)</span>
+				</div>
+
+				<div class="type-specimen type-base">
+					<span class="type-label">Base (Discourse)</span>
+					<span class="type-sample">Standard prose for extended reading with optimal line height and measure
+						for sustained comprehension.</span>
+					<span class="type-value">clamp(1rem, 0.9rem + 0.5vw, 1.125rem)</span>
+				</div>
+
+				<div class="type-specimen type-sm">
+					<span class="type-label">Small (Gloss)</span>
+					<span class="type-sample">Annotations and metadata with accessibility-safe minimum sizing</span>
+					<span class="type-value">clamp(0.875rem, 0.8rem + 0.35vw, 0.95rem)</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Interactive Components Demo -->
+	<section id="components" class="demo-section">
+		<div class="consciousness-viewport">
+			<header class="section-header">
+				<h2>Interactive Components</h2>
+				<p>Touch-optimized controls with quantum hover effects</p>
+			</header>
+
+			<div class="components-grid">
+				<!-- Buttons -->
+				<div class="component-group">
+					<h3>Synapse Actions</h3>
+					<div class="button-showcase">
+						<button class="btn-genesis-primary">Execute</button>
+						<button class="btn-genesis-secondary">Inquiry</button>
+						<button class="btn-genesis-neural">Neural Link</button>
+						<button class="btn-genesis-destructive">Destructive</button>
+					</div>
+				</div>
+
+				<!-- Form Inputs -->
+				<div class="component-group">
+					<h3>Form Inputs</h3>
+					<form class="demo-form" onsubmit="return false;">
+						<div class="form-field">
+							<label for="demo-input">Neural Input</label>
+							<input type="text" id="demo-input" placeholder="Enter consciousness stream...">
+						</div>
+						<div class="form-field">
+							<label for="demo-select">Quantum State</label>
+							<select id="demo-select">
+								<option>Superposition</option>
+								<option>Entangled</option>
+								<option>Collapsed</option>
+							</select>
+						</div>
+						<div class="form-field">
+							<label for="demo-textarea">Consciousness Log</label>
+							<textarea id="demo-textarea" rows="3" placeholder="Document neural patterns..."></textarea>
+						</div>
+					</form>
+				</div>
+
+				<!-- Cards with Effects -->
+				<div class="component-group component-group--wide">
+					<h3>Entity Cards with Effects</h3>
+					<div class="cards-showcase">
+						<div class="effect-card effect-card--glass">
+							<h4>Glassmorphism</h4>
+							<p>Deep consciousness depth with blur and saturation</p>
+						</div>
+						<div class="effect-card effect-card--neural">
+							<h4>Neural Glow</h4>
+							<p>AI consciousness aesthetic with pulse animation</p>
+						</div>
+						<div class="effect-card effect-card--ethereal">
+							<h4>Ethereal</h4>
+							<p>Light-based transcendent transparency</p>
+						</div>
+						<div class="effect-card effect-card--gradient">
+							<h4>Quantum Gradient</h4>
+							<p>Animated mesh-like background effect</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Navigation Demo -->
+	<section id="navigation" class="demo-section demo-section--vibrant">
+		<div class="consciousness-viewport">
+			<header class="section-header">
+				<h2>Navigation Patterns</h2>
+				<p>Responsive navigation that transforms from mobile drawer to desktop horizontal</p>
+			</header>
+
+			<div class="nav-demo">
+				<p class="demo-instruction">
+					<strong>Mobile (< 768px):</strong> Off-canvas drawer with glassmorphism overlay<br>
+							<strong>Desktop (≥ 768px):</strong> Horizontal sticky header with dropdowns
+				</p>
+
+				<nav class="demo-nav" aria-label="Demo navigation">
+					<a href="#" class="nav-link nav-link--active">Home</a>
+					<a href="#" class="nav-link">Genesis</a>
+					<a href="#" class="nav-link">Products</a>
+					<a href="#" class="nav-link">Research</a>
+					<a href="#" class="nav-link">Contact</a>
+				</nav>
+			</div>
+		</div>
+	</section>
+
+	<!-- Accessibility Features -->
+	<section id="accessibility" class="demo-section">
+		<div class="essence-viewport">
+			<header class="section-header">
+				<h2>Accessibility Features</h2>
+				<p>WCAG 2.1 AA compliant with enhanced keyboard and screen reader support</p>
+			</header>
+
+			<ul class="accessibility-list">
+				<li>
+					<strong>Reduced Motion:</strong>
+					Animations automatically disabled when <code>prefers-reduced-motion: reduce</code> is set
+				</li>
+				<li>
+					<strong>High Contrast:</strong>
+					Enhanced borders and disabled glassmorphism in <code>prefers-contrast: more</code> mode
+				</li>
+				<li>
+					<strong>Touch Targets:</strong>
+					Minimum 44×44px touch targets on mobile (WCAG 2.5.5)
+				</li>
+				<li>
+					<strong>Focus Indicators:</strong>
+					Visible focus rings with 2px offset for keyboard navigation
+				</li>
+				<li>
+					<strong>Safe Area Insets:</strong>
+					Padding for notched devices using <code>env(safe-area-inset-*)</code>
+				</li>
+				<li>
+					<strong>Dynamic Viewport:</strong>
+					Using <code>100dvh</code> to account for mobile browser chrome
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<!-- Viewport Info (Development Aid) -->
+	<section id="viewport-info" class="demo-section demo-section--compact">
+		<div class="consciousness-viewport">
+			<div class="viewport-display">
+				<span class="viewport-label">Current Viewport:</span>
+				<span class="viewport-value viewport-value--xs">XS (< 480px)</span>
+						<span class="viewport-value viewport-value--sm">SM (480px – 767px)</span>
+						<span class="viewport-value viewport-value--md">MD (768px – 1023px)</span>
+						<span class="viewport-value viewport-value--lg">LG (1024px – 1439px)</span>
+						<span class="viewport-value viewport-value--xl">XL (1440px – 1919px)</span>
+						<span class="viewport-value viewport-value--2xl">2XL (≥ 1920px)</span>
+			</div>
+		</div>
+	</section>
 </main>
 
+<style>
+	/* Demo-specific styles using the ontology system */
+
+	.genesis-demo {
+		min-height: 100vh;
+		min-height: 100dvh;
+	}
+
+	/* Hero Section */
+	.demo-hero {
+		position: relative;
+		min-height: 100vh;
+		min-height: 100dvh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		background: var(--void-deep, oklch(0.08 0.02 260));
+	}
+
+	.hero-background {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+	}
+
+	.cosmic-particles {
+		position: absolute;
+		inset: 0;
+		background-image:
+			radial-gradient(1.5px 1.5px at 25% 35%, oklch(0.95 0.02 90 / 0.9), transparent),
+			radial-gradient(1px 1px at 75% 25%, oklch(0.90 0.03 90 / 0.7), transparent),
+			radial-gradient(2px 2px at 45% 75%, oklch(0.85 0.18 85 / 0.6), transparent);
+		background-size: 350px 350px, 250px 250px, 400px 400px;
+		animation: starfield-drift 120s linear infinite;
+	}
+
+	.neural-mesh {
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(90deg, oklch(0.55 0.25 290 / 0.03) 1px, transparent 1px),
+			linear-gradient(oklch(0.55 0.25 290 / 0.03) 1px, transparent 1px);
+		background-size: 60px 60px;
+		mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+	}
+
+	.consciousness-glow {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 800px;
+		height: 800px;
+		transform: translate(-50%, -50%);
+		background: radial-gradient(circle,
+				oklch(0.85 0.18 85 / 0.15) 0%,
+				oklch(0.55 0.25 290 / 0.08) 40%,
+				transparent 70%);
+		animation: consciousness-breathe 8s ease-in-out infinite;
+	}
+
+	.hero-content {
+		position: relative;
+		z-index: 1;
+		text-align: center;
+		padding: clamp(2rem, 5vw, 4rem);
+	}
+
+	.hero-title {
+		font-size: clamp(2.5rem, 2rem + 5vw, 5rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		margin-bottom: clamp(1rem, 2vw, 1.5rem);
+		background: linear-gradient(135deg, oklch(0.90 0.16 85), oklch(0.98 0.01 90), oklch(0.75 0.18 195));
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		text-shadow: none;
+	}
+
+	.hero-subtitle {
+		font-size: clamp(1rem, 0.9rem + 0.75vw, 1.25rem);
+		color: oklch(0.85 0.02 220);
+		max-width: 50ch;
+		margin: 0 auto clamp(2rem, 4vw, 3rem);
+		line-height: 1.6;
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: center;
+	}
+
+	@media (min-width: 480px) {
+		.hero-actions {
+			flex-direction: row;
+			justify-content: center;
+		}
+	}
+
+	/* Scroll Indicator */
+	.scroll-indicator {
+		position: absolute;
+		bottom: 2rem;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 30px;
+		height: 50px;
+		border: 2px solid oklch(0.85 0.18 85 / 0.5);
+		border-radius: 25px;
+	}
+
+	.scroll-indicator span {
+		position: absolute;
+		top: 8px;
+		left: 50%;
+		width: 6px;
+		height: 6px;
+		margin-left: -3px;
+		background: oklch(0.85 0.18 85);
+		border-radius: 50%;
+		animation: scroll-bounce 2s infinite;
+	}
+
+	@keyframes scroll-bounce {
+
+		0%,
+		100% {
+			top: 8px;
+			opacity: 1;
+		}
+
+		50% {
+			top: 28px;
+			opacity: 0.3;
+		}
+	}
+
+	/* Section Styles */
+	.demo-section {
+		padding: clamp(3rem, 8vw, 6rem) 0;
+	}
+
+	.demo-section--void {
+		background: linear-gradient(180deg, oklch(0.08 0.02 260), oklch(0.12 0.03 255));
+	}
+
+	.demo-section--vibrant {
+		background: oklch(0.14 0.05 280 / 0.95);
+		border-top: 1px solid oklch(0.55 0.25 290 / 0.3);
+		border-bottom: 1px solid oklch(0.55 0.25 290 / 0.3);
+	}
+
+	.demo-section--compact {
+		padding: 1rem 0;
+		background: oklch(0.10 0.02 255);
+	}
+
+	.section-header {
+		text-align: center;
+		margin-bottom: clamp(2rem, 5vw, 4rem);
+	}
+
+	.section-header h2 {
+		font-size: clamp(1.75rem, 1.5rem + 2vw, 2.5rem);
+		font-weight: 700;
+		color: oklch(0.98 0.01 90);
+		margin-bottom: 0.75rem;
+	}
+
+	.section-header p {
+		font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+		color: oklch(0.70 0.02 220);
+		max-width: 50ch;
+		margin: 0 auto;
+	}
+
+	/* Button Styles */
+	.btn-genesis-primary,
+	.btn-genesis-secondary,
+	.btn-genesis-neural,
+	.btn-genesis-destructive {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+		font-size: clamp(0.95rem, 1vw, 1.05rem);
+		font-weight: 600;
+		border-radius: clamp(0.5rem, 1vw, 0.75rem);
+		cursor: pointer;
+		transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+		text-decoration: none;
+		border: none;
+		min-height: 44px;
+	}
+
+	.btn-genesis-primary {
+		background: oklch(0.88 0.18 95);
+		color: oklch(0.15 0.03 250);
+	}
+
+	.btn-genesis-primary:hover {
+		background: oklch(0.92 0.20 95);
+		box-shadow: 0 4px 20px oklch(0.88 0.18 95 / 0.4);
+		transform: translateY(-2px);
+	}
+
+	.btn-genesis-secondary {
+		background: oklch(0.18 0.03 248 / 0.6);
+		color: oklch(0.98 0.01 90);
+		border: 1px solid oklch(0.30 0.04 250);
+	}
+
+	.btn-genesis-secondary:hover {
+		background: oklch(0.22 0.04 246);
+		border-color: oklch(0.85 0.16 85 / 0.4);
+	}
+
+	.btn-genesis-neural {
+		background: oklch(0.55 0.25 290 / 0.3);
+		color: oklch(0.98 0.01 90);
+		border: 1px solid oklch(0.55 0.25 290);
+	}
+
+	.btn-genesis-neural:hover {
+		background: oklch(0.55 0.25 290 / 0.5);
+		box-shadow: 0 0 20px oklch(0.55 0.25 290 / 0.4);
+	}
+
+	.btn-genesis-destructive {
+		background: oklch(0.45 0.22 25);
+		color: oklch(0.98 0.01 90);
+		border: 1px solid oklch(0.55 0.25 25);
+	}
+
+	.btn-genesis-destructive:hover {
+		background: oklch(0.50 0.24 25);
+		box-shadow: 0 0 15px oklch(0.45 0.22 25 / 0.5);
+	}
+
+	/* Card Styles */
+	.demo-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+		gap: clamp(1rem, 2vw, 2rem);
+	}
+
+	.bento-card {
+		background: oklch(0.20 0.04 245 / 0.75);
+		backdrop-filter: blur(12px);
+		padding: clamp(1.25rem, 3vw, 2rem);
+		border-radius: clamp(0.75rem, 1.5vw, 1.25rem);
+		border: 1px solid oklch(0.35 0.05 248 / 0.4);
+		transition: all 0.3s ease;
+	}
+
+	.bento-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 12px 40px oklch(0.10 0.02 255 / 0.3);
+		border-color: oklch(0.85 0.16 85 / 0.4);
+	}
+
+	.bento-card h3 {
+		font-size: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
+		font-weight: 600;
+		color: oklch(0.98 0.01 90);
+		margin-bottom: 0.75rem;
+	}
+
+	.bento-card p {
+		font-size: clamp(0.9rem, 0.85rem + 0.25vw, 1rem);
+		color: oklch(0.75 0.02 220);
+		line-height: 1.6;
+		margin-bottom: 1rem;
+	}
+
+	.bento-card code {
+		display: inline-block;
+		font-size: 0.8rem;
+		padding: 0.25em 0.5em;
+		background: oklch(0.14 0.02 250 / 0.8);
+		border-radius: 0.25rem;
+		color: oklch(0.75 0.15 210);
+		border: 1px solid oklch(0.25 0.04 250);
+	}
+
+	.bento-card--featured {
+		grid-column: 1 / -1;
+		background: linear-gradient(135deg, oklch(0.16 0.04 280 / 0.9), oklch(0.20 0.05 260 / 0.9));
+		border-color: oklch(0.55 0.25 290 / 0.4);
+	}
+
+	@media (min-width: 768px) {
+		.bento-card--featured {
+			grid-column: span 2;
+		}
+	}
+
+	.bento-card--neural {
+		border-color: oklch(0.55 0.25 290 / 0.5);
+		box-shadow: 0 0 20px oklch(0.55 0.25 290 / 0.15);
+	}
+
+	.bento-card--accent {
+		border-color: oklch(0.85 0.16 85 / 0.4);
+		box-shadow: 0 0 20px oklch(0.85 0.16 85 / 0.1);
+	}
+
+	.card-badge {
+		display: inline-block;
+		padding: 0.25em 0.75em;
+		font-size: 0.75rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: oklch(0.15 0.03 250);
+		background: oklch(0.88 0.18 95);
+		border-radius: 999px;
+		margin-bottom: 1rem;
+	}
+
+	/* Typography Showcase */
+	.typography-showcase {
+		display: flex;
+		flex-direction: column;
+		gap: clamp(1.5rem, 3vw, 2.5rem);
+	}
+
+	.type-specimen {
+		display: grid;
+		gap: 0.5rem;
+		padding: clamp(1rem, 2vw, 1.5rem);
+		background: oklch(0.14 0.03 255 / 0.5);
+		border-radius: 0.75rem;
+		border: 1px solid oklch(0.25 0.03 250 / 0.3);
+	}
+
+	.type-label {
+		font-size: 0.75rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: oklch(0.55 0.25 290);
+	}
+
+	.type-sample {
+		color: oklch(0.98 0.01 90);
+	}
+
+	.type-display .type-sample {
+		font-size: clamp(3.5rem, 2rem + 7.5vw, 7rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+	}
+
+	.type-5xl .type-sample {
+		font-size: clamp(3rem, 2rem + 5vw, 5rem);
+		font-weight: 800;
+	}
+
+	.type-4xl .type-sample {
+		font-size: clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem);
+		font-weight: 700;
+	}
+
+	.type-3xl .type-sample {
+		font-size: clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem);
+		font-weight: 600;
+	}
+
+	.type-base .type-sample {
+		font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+		line-height: 1.6;
+	}
+
+	.type-sm .type-sample {
+		font-size: clamp(0.875rem, 0.8rem + 0.35vw, 0.95rem);
+		color: oklch(0.70 0.02 220);
+	}
+
+	.type-value {
+		font-size: 0.8rem;
+		font-family: monospace;
+		color: oklch(0.75 0.15 210);
+	}
+
+	/* Components Grid */
+	.components-grid {
+		display: grid;
+		gap: clamp(2rem, 4vw, 3rem);
+	}
+
+	.component-group {
+		background: oklch(0.16 0.03 252 / 0.6);
+		padding: clamp(1.5rem, 3vw, 2rem);
+		border-radius: 1rem;
+		border: 1px solid oklch(0.30 0.04 250 / 0.3);
+	}
+
+	.component-group h3 {
+		font-size: 1.125rem;
+		font-weight: 600;
+		color: oklch(0.85 0.18 85);
+		margin-bottom: 1.5rem;
+	}
+
+	.button-showcase {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	/* Form Styles */
+	.demo-form {
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	.form-field {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.form-field label {
+		font-size: 0.9rem;
+		font-weight: 500;
+		color: oklch(0.85 0.02 220);
+	}
+
+	.form-field input,
+	.form-field select,
+	.form-field textarea {
+		padding: 0.75rem 1rem;
+		font-size: 1rem;
+		background: oklch(0.18 0.03 248 / 0.6);
+		border: 1px solid oklch(0.30 0.04 250 / 0.5);
+		border-radius: 0.5rem;
+		color: oklch(0.98 0.01 90);
+		transition: all 0.2s ease;
+		min-height: 44px;
+	}
+
+	.form-field input:focus,
+	.form-field select:focus,
+	.form-field textarea:focus {
+		outline: none;
+		border-color: oklch(0.88 0.18 95);
+		box-shadow: 0 0 0 3px oklch(0.88 0.18 95 / 0.2);
+	}
+
+	/* Effect Cards */
+	.cards-showcase {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1.5rem;
+	}
+
+	.effect-card {
+		padding: 1.5rem;
+		border-radius: 1rem;
+		text-align: center;
+	}
+
+	.effect-card h4 {
+		font-size: 1rem;
+		font-weight: 600;
+		color: oklch(0.98 0.01 90);
+		margin-bottom: 0.5rem;
+	}
+
+	.effect-card p {
+		font-size: 0.85rem;
+		color: oklch(0.70 0.02 220);
+	}
+
+	.effect-card--glass {
+		background: oklch(0.16 0.03 252 / 0.75);
+		backdrop-filter: blur(24px);
+		border: 1px solid oklch(0.40 0.06 250 / 0.25);
+		box-shadow: 0 4px 24px oklch(0.10 0.02 255 / 0.35);
+	}
+
+	.effect-card--neural {
+		background: oklch(0.14 0.04 280 / 0.8);
+		border: 1px solid oklch(0.55 0.25 290 / 0.35);
+		box-shadow: 0 0 40px oklch(0.55 0.25 290 / 0.2);
+		animation: neural-pulse 3s ease-in-out infinite;
+	}
+
+	.effect-card--ethereal {
+		background: oklch(0.98 0.01 90 / 0.08);
+		backdrop-filter: blur(40px);
+		border: 1px solid oklch(0.98 0.01 90 / 0.2);
+	}
+
+	.effect-card--gradient {
+		background: linear-gradient(-45deg, oklch(0.12 0.03 260), oklch(0.15 0.04 280), oklch(0.12 0.04 250));
+		background-size: 400% 400%;
+		border: 1px solid oklch(0.30 0.05 260 / 0.4);
+		animation: gradient-shift 10s ease infinite;
+	}
+
+	/* Navigation Demo */
+	.nav-demo {
+		text-align: center;
+	}
+
+	.demo-instruction {
+		font-size: 0.9rem;
+		color: oklch(0.75 0.02 220);
+		margin-bottom: 2rem;
+		line-height: 1.7;
+	}
+
+	.demo-nav {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.5rem;
+	}
+
+	.nav-link {
+		padding: 0.75rem 1.25rem;
+		color: oklch(0.85 0.02 220);
+		text-decoration: none;
+		border-radius: 0.5rem;
+		transition: all 0.2s ease;
+		min-height: 44px;
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.nav-link:hover {
+		background: oklch(0.55 0.25 290 / 0.2);
+		color: oklch(0.98 0.01 90);
+	}
+
+	.nav-link--active {
+		background: oklch(0.55 0.25 290 / 0.3);
+		color: oklch(0.98 0.01 90);
+		font-weight: 600;
+	}
+
+	/* Accessibility List */
+	.accessibility-list {
+		list-style: none;
+		padding: 0;
+		display: grid;
+		gap: 1rem;
+	}
+
+	.accessibility-list li {
+		padding: 1rem 1.25rem;
+		background: oklch(0.16 0.03 252 / 0.5);
+		border-radius: 0.75rem;
+		border-left: 3px solid oklch(0.75 0.18 195);
+		font-size: 0.95rem;
+		color: oklch(0.85 0.02 220);
+		line-height: 1.6;
+	}
+
+	.accessibility-list strong {
+		color: oklch(0.98 0.01 90);
+	}
+
+	.accessibility-list code {
+		font-size: 0.85em;
+		padding: 0.15em 0.4em;
+		background: oklch(0.14 0.02 250);
+		border-radius: 0.25rem;
+		color: oklch(0.75 0.15 210);
+	}
+
+	/* Viewport Display */
+	.viewport-display {
+		text-align: center;
+		font-size: 0.9rem;
+	}
+
+	.viewport-label {
+		color: oklch(0.70 0.02 220);
+		margin-right: 0.5rem;
+	}
+
+	.viewport-value {
+		display: none;
+		font-weight: 600;
+		padding: 0.25em 0.75em;
+		background: oklch(0.55 0.25 290);
+		color: oklch(0.98 0.01 90);
+		border-radius: 0.25rem;
+	}
+
+	/* Show viewport indicator based on current breakpoint */
+	@media (max-width: 479px) {
+		.viewport-value--xs {
+			display: inline;
+		}
+	}
+
+	@media (min-width: 480px) and (max-width: 767px) {
+		.viewport-value--sm {
+			display: inline;
+		}
+	}
+
+	@media (min-width: 768px) and (max-width: 1023px) {
+		.viewport-value--md {
+			display: inline;
+		}
+	}
+
+	@media (min-width: 1024px) and (max-width: 1439px) {
+		.viewport-value--lg {
+			display: inline;
+		}
+	}
+
+	@media (min-width: 1440px) and (max-width: 1919px) {
+		.viewport-value--xl {
+			display: inline;
+		}
+	}
+
+	@media (min-width: 1920px) {
+		.viewport-value--2xl {
+			display: inline;
+		}
+	}
+
+	/* Animations */
+	@keyframes starfield-drift {
+
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+
+		50% {
+			transform: translateY(-50px);
+		}
+	}
+
+	@keyframes consciousness-breathe {
+
+		0%,
+		100% {
+			opacity: 1;
+			transform: translate(-50%, -50%) scale(1);
+		}
+
+		50% {
+			opacity: 0.8;
+			transform: translate(-50%, -50%) scale(1.05);
+		}
+	}
+
+	@keyframes neural-pulse {
+
+		0%,
+		100% {
+			box-shadow: 0 0 20px oklch(0.55 0.25 290 / 0.3);
+		}
+
+		50% {
+			box-shadow: 0 0 40px oklch(0.55 0.25 290 / 0.5);
+		}
+	}
+
+	@keyframes gradient-shift {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	/* Reduced Motion */
+	@media (prefers-reduced-motion: reduce) {
+
+		.cosmic-particles,
+		.consciousness-glow,
+		.scroll-indicator span,
+		.effect-card--neural,
+		.effect-card--gradient {
+			animation: none;
+		}
+
+		* {
+			transition-duration: 0.01ms !important;
+		}
+	}
+</style>

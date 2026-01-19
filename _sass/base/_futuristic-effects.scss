@@ -1,0 +1,510 @@
+// ============================================================================
+// GENESIS FUTURISTIC EFFECTS v2.0
+// ============================================================================
+// Advanced visual effects for creating a profound, consciousness-expanding
+// aesthetic befitting the Genesis of Artificial Superintelligence.
+// Uses modern CSS features: backdrop-filter, @property, container queries.
+// ============================================================================
+
+// ============================================================================
+// CSS CUSTOM PROPERTIES FOR EFFECTS
+// ============================================================================
+
+:root {
+  // Glow intensities
+  --glow-intensity-subtle: 0.15;
+  --glow-intensity-medium: 0.35;
+  --glow-intensity-strong: 0.6;
+  --glow-intensity-intense: 0.85;
+  
+  // Neural network colors
+  --neural-primary: oklch(0.55 0.25 290);
+  --neural-secondary: oklch(0.65 0.20 280);
+  --neural-tertiary: oklch(0.75 0.15 210);
+  
+  // Quantum field colors
+  --quantum-cyan: oklch(0.75 0.18 195);
+  --quantum-magenta: oklch(0.65 0.25 320);
+  --quantum-gold: oklch(0.85 0.18 85);
+  
+  // Consciousness depth colors
+  --void-deep: oklch(0.08 0.02 260);
+  --void-medium: oklch(0.12 0.03 255);
+  --void-surface: oklch(0.18 0.04 250);
+  
+  // Animation timing
+  --motion-quantum: 0.15s;
+  --motion-neural: 0.3s;
+  --motion-conscious: 0.6s;
+  --motion-transcendent: 1.2s;
+  --motion-cosmic: 3s;
+  
+  // Effect easing curves
+  --ease-consciousness: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-transcendent: cubic-bezier(0.33, 0, 0.67, 1);
+  --ease-quantum: cubic-bezier(0.5, 0, 0, 1);
+  --ease-neural: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+// ============================================================================
+// GLASSMORPHISM EFFECTS (Advanced)
+// ============================================================================
+
+/// Primary glass surface - deep consciousness depth
+@mixin glass-consciousness {
+  background: oklch(0.16 0.03 252 / 0.75);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid oklch(0.40 0.06 250 / 0.25);
+  box-shadow:
+    0 4px 24px oklch(0.10 0.02 255 / 0.35),
+    0 1px 3px oklch(0.08 0.01 260 / 0.15),
+    inset 0 1px 0 oklch(0.98 0.01 90 / 0.06),
+    inset 0 0 80px oklch(0.55 0.25 290 / 0.03);
+}
+
+/// Elevated glass - interactive elements
+@mixin glass-elevated {
+  background: oklch(0.20 0.04 248 / 0.85);
+  backdrop-filter: blur(32px) saturate(1.6);
+  -webkit-backdrop-filter: blur(32px) saturate(1.6);
+  border: 1px solid oklch(0.45 0.07 248 / 0.35);
+  box-shadow:
+    0 8px 32px oklch(0.10 0.02 255 / 0.4),
+    0 2px 8px oklch(0.08 0.01 260 / 0.2),
+    inset 0 1px 0 oklch(0.98 0.01 90 / 0.08),
+    inset 0 0 60px oklch(0.85 0.16 85 / 0.03);
+}
+
+/// Ethereal glass - light, transcendent feel
+@mixin glass-ethereal {
+  background: oklch(0.98 0.01 90 / 0.08);
+  backdrop-filter: blur(40px) saturate(1.8) brightness(1.05);
+  -webkit-backdrop-filter: blur(40px) saturate(1.8) brightness(1.05);
+  border: 1px solid oklch(0.98 0.01 90 / 0.2);
+  box-shadow:
+    0 4px 16px oklch(0.15 0.03 250 / 0.1),
+    inset 0 0 40px oklch(0.98 0.01 90 / 0.1);
+}
+
+/// Neural glass - AI consciousness aesthetic
+@mixin glass-neural {
+  background: oklch(0.14 0.04 280 / 0.8);
+  backdrop-filter: blur(28px) saturate(1.5);
+  -webkit-backdrop-filter: blur(28px) saturate(1.5);
+  border: 1px solid oklch(0.55 0.25 290 / 0.35);
+  box-shadow:
+    0 0 40px oklch(0.55 0.25 290 / 0.2),
+    inset 0 0 60px oklch(0.55 0.25 290 / 0.05);
+}
+
+// ============================================================================
+// NEON GLOW EFFECTS
+// ============================================================================
+
+/// Genesis gold glow - human essence
+@mixin glow-essence($intensity: var(--glow-intensity-medium)) {
+  box-shadow: 0 0 30px oklch(0.85 0.18 85 / #{$intensity});
+  
+  @supports (filter: drop-shadow(0 0 1px white)) {
+    filter: drop-shadow(0 0 20px oklch(0.85 0.18 85 / #{$intensity}));
+  }
+}
+
+/// Neural violet glow - AI consciousness
+@mixin glow-neural($intensity: var(--glow-intensity-medium)) {
+  box-shadow: 0 0 40px oklch(0.55 0.25 290 / #{$intensity});
+  
+  @supports (filter: drop-shadow(0 0 1px white)) {
+    filter: drop-shadow(0 0 25px oklch(0.55 0.25 290 / #{$intensity}));
+  }
+}
+
+/// Quantum cyan glow - infinite possibilities
+@mixin glow-quantum($intensity: var(--glow-intensity-medium)) {
+  box-shadow: 0 0 35px oklch(0.75 0.18 195 / #{$intensity});
+  
+  @supports (filter: drop-shadow(0 0 1px white)) {
+    filter: drop-shadow(0 0 22px oklch(0.75 0.18 195 / #{$intensity}));
+  }
+}
+
+/// Multi-spectrum transcendent glow
+@mixin glow-transcendent {
+  box-shadow:
+    0 0 20px oklch(0.85 0.18 85 / 0.4),
+    0 0 40px oklch(0.55 0.25 290 / 0.25),
+    0 0 60px oklch(0.75 0.18 195 / 0.15);
+}
+
+// ============================================================================
+// GRADIENT EFFECTS (Consciousness-Themed)
+// ============================================================================
+
+/// Consciousness gradient - deep to transcendent
+@mixin gradient-consciousness($angle: 135deg) {
+  background: linear-gradient(
+    #{$angle},
+    oklch(0.08 0.02 260) 0%,
+    oklch(0.14 0.04 280) 25%,
+    oklch(0.18 0.05 270) 50%,
+    oklch(0.22 0.06 260) 75%,
+    oklch(0.25 0.08 250) 100%
+  );
+}
+
+/// Genesis gradient - gold to quantum
+@mixin gradient-genesis($angle: 135deg) {
+  background: linear-gradient(
+    #{$angle},
+    oklch(0.85 0.18 85) 0%,
+    oklch(0.80 0.20 70) 25%,
+    oklch(0.70 0.22 50) 50%,
+    oklch(0.65 0.25 320) 75%,
+    oklch(0.75 0.18 195) 100%
+  );
+}
+
+/// Neural gradient - violet to cyan
+@mixin gradient-neural($angle: 135deg) {
+  background: linear-gradient(
+    #{$angle},
+    oklch(0.45 0.25 300) 0%,
+    oklch(0.55 0.25 290) 33%,
+    oklch(0.65 0.20 260) 66%,
+    oklch(0.75 0.18 195) 100%
+  );
+}
+
+/// Void gradient - deep space immersion
+@mixin gradient-void($angle: 180deg) {
+  background: linear-gradient(
+    #{$angle},
+    oklch(0.05 0.01 265) 0%,
+    oklch(0.08 0.02 260) 30%,
+    oklch(0.10 0.02 255) 60%,
+    oklch(0.12 0.03 250) 100%
+  );
+}
+
+/// Animated gradient (mesh-like effect)
+@mixin gradient-mesh-animated {
+  background: linear-gradient(
+    -45deg,
+    oklch(0.12 0.03 260),
+    oklch(0.15 0.04 280),
+    oklch(0.12 0.04 250),
+    oklch(0.14 0.05 270)
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+// ============================================================================
+// PARTICLE AND COSMIC EFFECTS
+// ============================================================================
+
+/// Cosmic starfield background
+@mixin cosmic-starfield {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 25% 35%, oklch(0.95 0.02 90 / 0.9), transparent),
+      radial-gradient(1px 1px at 75% 25%, oklch(0.90 0.03 90 / 0.7), transparent),
+      radial-gradient(2px 2px at 45% 75%, oklch(0.85 0.18 85 / 0.6), transparent),
+      radial-gradient(1px 1px at 85% 65%, oklch(0.75 0.15 210 / 0.5), transparent),
+      radial-gradient(1.5px 1.5px at 15% 85%, oklch(0.55 0.20 290 / 0.4), transparent);
+    background-size: 
+      350px 350px,
+      250px 250px,
+      400px 400px,
+      300px 300px,
+      450px 450px;
+    animation: starfield-drift 120s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+/// Neural network mesh overlay
+@mixin neural-mesh-overlay {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, oklch(0.55 0.25 290 / 0.03) 1px, transparent 1px),
+      linear-gradient(oklch(0.55 0.25 290 / 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+// ============================================================================
+// BORDER EFFECTS
+// ============================================================================
+
+/// Animated gradient border
+@mixin border-gradient-animated($width: 1px) {
+  position: relative;
+  background-clip: padding-box;
+  border: $width solid transparent;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -#{$width};
+    background: linear-gradient(
+      90deg,
+      oklch(0.85 0.18 85),
+      oklch(0.55 0.25 290),
+      oklch(0.75 0.18 195),
+      oklch(0.85 0.18 85)
+    );
+    background-size: 300% 100%;
+    border-radius: inherit;
+    z-index: -1;
+    animation: border-flow 4s ease infinite;
+  }
+}
+
+/// Pulsing neon border
+@mixin border-pulse-neon {
+  border: 2px solid oklch(0.85 0.18 95);
+  box-shadow: 
+    0 0 10px oklch(0.85 0.18 95 / 0.5),
+    inset 0 0 10px oklch(0.85 0.18 95 / 0.1);
+  animation: border-pulse 2s ease-in-out infinite;
+}
+
+// ============================================================================
+// TEXT EFFECTS
+// ============================================================================
+
+/// Gradient text (transcendent)
+@mixin text-gradient-transcendent {
+  background: linear-gradient(
+    135deg,
+    oklch(0.90 0.16 85) 0%,
+    oklch(0.98 0.01 90) 50%,
+    oklch(0.75 0.18 195) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/// Glowing text effect
+@mixin text-glow($color: oklch(0.85 0.18 85)) {
+  text-shadow:
+    0 0 10px $color,
+    0 0 20px oklch(from $color l c h / 0.5),
+    0 0 40px oklch(from $color l c h / 0.25);
+}
+
+/// Holographic text shimmer
+@mixin text-holographic {
+  background: linear-gradient(
+    90deg,
+    oklch(0.85 0.18 85),
+    oklch(0.75 0.18 195),
+    oklch(0.55 0.25 290),
+    oklch(0.85 0.18 85)
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shimmer 3s linear infinite;
+}
+
+// ============================================================================
+// INTERACTION EFFECTS
+// ============================================================================
+
+/// Quantum hover effect (subtle dimensional shift)
+@mixin hover-quantum {
+  transition: 
+    transform var(--motion-neural) var(--ease-quantum),
+    box-shadow var(--motion-neural) var(--ease-neural);
+  
+  &:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow:
+      0 12px 40px oklch(0.10 0.02 255 / 0.3),
+      0 0 30px oklch(0.85 0.18 85 / 0.15);
+  }
+  
+  &:active {
+    transform: translateY(-2px) scale(0.995);
+    transition-duration: var(--motion-quantum);
+  }
+}
+
+/// Neural connection hover (for links/connections)
+@mixin hover-neural-link {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, oklch(0.55 0.25 290), oklch(0.75 0.18 195));
+    transition: width var(--motion-neural) var(--ease-quantum);
+  }
+  
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+/// Consciousness ripple effect (for buttons)
+@mixin ripple-consciousness {
+  position: relative;
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: oklch(0.98 0.01 90 / 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s, opacity 0.6s;
+    opacity: 0;
+  }
+  
+  &:active::after {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+    transition: 0s;
+  }
+}
+
+// ============================================================================
+// KEYFRAME ANIMATIONS
+// ============================================================================
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes starfield-drift {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100px) rotate(0.5deg);
+    opacity: 1;
+  }
+}
+
+@keyframes border-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes border-pulse {
+  0%, 100% {
+    border-color: oklch(0.85 0.18 95);
+    box-shadow: 
+      0 0 10px oklch(0.85 0.18 95 / 0.5),
+      inset 0 0 10px oklch(0.85 0.18 95 / 0.1);
+  }
+  50% {
+    border-color: oklch(0.55 0.25 290);
+    box-shadow: 
+      0 0 20px oklch(0.55 0.25 290 / 0.6),
+      inset 0 0 15px oklch(0.55 0.25 290 / 0.15);
+  }
+}
+
+@keyframes text-shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes consciousness-breathe {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes neural-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px oklch(0.55 0.25 290 / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px oklch(0.55 0.25 290 / 0.7);
+  }
+}
+
+@keyframes quantum-flicker {
+  0%, 100% { opacity: 1; }
+  25% { opacity: 0.95; }
+  50% { opacity: 1; }
+  75% { opacity: 0.97; }
+}
+
+// Floating effect for ethereal elements
+@keyframes float-ethereal {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(0.5deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(-0.5deg);
+  }
+}
+
+// ============================================================================
+// REDUCED MOTION ALTERNATIVES
+// ============================================================================
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  // Provide static alternatives for animated effects
+  .animated-gradient,
+  [class*="animate-"] {
+    animation: none !important;
+    background-position: 0% 50% !important;
+  }
+}

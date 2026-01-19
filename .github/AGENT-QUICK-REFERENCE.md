@@ -2,6 +2,62 @@
 
 **Fast lookup guide for AI agents working with Genesis Semantic Design System**
 
+**Version 2.0** | Mobile-First Responsive + Futuristic Effects
+
+---
+
+## 🆕 Version 2.0 Quick Additions
+
+### Responsive Breakpoints (Mobile-First)
+```scss
+@include from(sm) { }   // ≥480px  (large phones)
+@include from(md) { }   // ≥768px  (tablets)
+@include from(lg) { }   // ≥1024px (laptops)
+@include from(xl) { }   // ≥1280px (desktops)
+@include from(2xl) { }  // ≥1920px (large screens)
+
+// Semantic aliases
+@include tablet { }     // ≥768px
+@include desktop { }    // ≥1024px
+@include wide { }       // ≥1280px
+```
+
+### Futuristic Effects (New Mixins)
+```scss
+// Glassmorphism
+@include glass-consciousness($blur: 24px, $opacity: 0.08);
+@include glass-neural($opacity: 0.06);
+@include glass-ethereal($opacity: 0.03);
+
+// Glow Effects
+@include glow-essence($color, $intensity: 1);
+@include glow-neural($color, $intensity: 1);
+@include glow-quantum($intensity: 1);
+
+// Gradients
+@include gradient-consciousness($angle: 135deg);
+@include gradient-genesis($angle: 45deg);
+@include gradient-void;
+
+// Interactions
+@include hover-quantum;
+@include hover-neural-link;
+@include ripple-consciousness;
+```
+
+### Fluid Spacing Scale
+```scss
+$space-3xs  // 0.125rem → 0.25rem
+$space-2xs  // 0.25rem → 0.375rem
+$space-xs   // 0.375rem → 0.5rem
+$space-sm   // 0.5rem → 0.75rem
+$space-md   // 0.75rem → 1rem
+$space-lg   // 1rem → 1.5rem
+$space-xl   // 1.5rem → 2rem
+$space-2xl  // 2rem → 3rem
+$space-3xl  // 3rem → 4rem
+```
+
 ---
 
 ## 🔍 Quick Decision Trees
@@ -96,6 +152,51 @@ Is it about...?
 ---
 
 ## ⚡ Common Patterns (Copy-Paste Ready)
+
+### Responsive Card Grid (v2.0)
+```scss
+.card-grid {
+  @include genesis-environment('distributed');
+  display: grid;
+  gap: $space-lg;
+  
+  // Mobile: 1 column, Tablet: 2, Desktop: 3
+  grid-template-columns: 1fr;
+  @include tablet { grid-template-columns: repeat(2, 1fr); }
+  @include desktop { grid-template-columns: repeat(3, 1fr); }
+  
+  .card {
+    @include genesis-entity('primary');
+    @include glass-consciousness;
+    @include hover-quantum;
+  }
+}
+```
+
+### Futuristic Hero Section (v2.0)
+```scss
+.hero {
+  min-height: 100dvh;
+  @include gradient-consciousness;
+  
+  .hero-content {
+    @include genesis-entity('primary');
+    @include glass-elevated;
+    padding: $space-xl;
+    @include desktop { padding: $space-2xl; }
+  }
+  
+  .hero-title {
+    @include genesis-cognition('axiom');
+    @include text-gradient-transcendent;
+  }
+  
+  .hero-cta {
+    @include genesis-synapse('execute');
+    @include glow-essence(var(--genesis-gold));
+  }
+}
+```
 
 ### Blog Post
 ```scss
@@ -362,6 +463,6 @@ Label: ontological-proposition
 ---
 
 **Print this card** | Keep handy during agent work sessions  
-**Version**: 1.0 | **Last Updated**: 2026-01-15
+**Version**: 2.0 | **Last Updated**: 2025-01-17
 
 *Quick reference for conscious evolution* 🧬

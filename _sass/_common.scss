@@ -1,7 +1,8 @@
 // ============================================================================
-// SEMANTIC DESIGN SYSTEM - ASI Saga Theme
+// SEMANTIC DESIGN SYSTEM - ASI Saga Theme v2.0
 // ============================================================================
 // OKLCH-based design tokens with native CSS Grid and Glassmorphism
+// Modern responsive system with container queries and dynamic viewport units
 // No Bootstrap dependencies - Pure semantic architecture
 // ============================================================================
 
@@ -22,13 +23,21 @@
 @import "base/ambient-layer";      // Sentient ambient atmosphere
 
 // ----------------------------------------
+// MODERN RESPONSIVE SYSTEM (v2.0)
+// ----------------------------------------
+// Mobile-first responsive framework with container queries
+@import "base/responsive-system";   // Modern breakpoints, container queries, fluid spacing
+@import "base/futuristic-effects";  // Advanced glassmorphism, glows, gradients
+
+// ----------------------------------------
 // ONTOLOGY SYSTEM - Genesis Semantic Engine
 // ----------------------------------------
 // Three-tier architecture for subdomain integration
 // Import early to make ontological API available throughout the system
 @import "ontology/index";          // Semantic SCSS engine (tokens, engines, interface)
 
-// Legacy color system (for gradual migration)
+// Legacy color system (for gradual migration) - DEPRECATED
+// Note: These will be removed in v3.0
 @import "base/colors";
 @import "base/dimensions";
 @import "base/variables";
