@@ -246,57 +246,47 @@
 }
 
 // ----------------------------------------
-// RESPONSIVE MIXINS
+// RESPONSIVE MIXINS (Deprecated - Use responsive-system.scss)
 // ----------------------------------------
+// These Bootstrap-style breakpoint mixins are deprecated.
+// Use the modern container query mixins from _responsive-system.scss instead:
+// @include from($breakpoint), @include compact, @include medium, @include large, etc.
+//
+// For backward compatibility, these mixins now use container queries:
 
 @mixin breakpoint-sm {
-  @media (min-width: 576px) {
+  @include from($breakpoint-sm) {
     @content;
   }
 }
 
 @mixin breakpoint-md {
-  @media (min-width: 768px) {
+  @include from($breakpoint-md) {
     @content;
   }
 }
 
 @mixin breakpoint-lg {
-  @media (min-width: 992px) {
+  @include from($breakpoint-lg) {
     @content;
   }
 }
 
 @mixin breakpoint-xl {
-  @media (min-width: 1200px) {
+  @include from($breakpoint-xl) {
     @content;
   }
 }
 
 @mixin breakpoint-xxl {
-  @media (min-width: 1400px) {
+  @include from($breakpoint-2xl) {
     @content;
   }
 }
 
-// Mobile-first breakpoints
-@mixin mobile-only {
-  @media (max-width: 767px) {
-    @content;
-  }
-}
-
-@mixin tablet-and-up {
-  @media (min-width: 768px) {
-    @content;
-  }
-}
-
-@mixin desktop-and-up {
-  @media (min-width: 992px) {
-    @content;
-  }
-}
+// Mobile-first breakpoints (now using container queries)
+// Note: mobile-only, tablet-and-up, desktop-and-up are already defined
+// in _responsive-system.scss with modern container query implementations
 
 // ----------------------------------------
 // ACCESSIBILITY MIXINS

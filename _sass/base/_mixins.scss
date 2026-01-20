@@ -6,28 +6,29 @@
  */
 // Cache refresh: 2025-10-18
 
-// Responsive Design Mixins
+// Responsive Design Mixins (Converted to Container Queries)
+// These are deprecated - use modern container query mixins from _responsive-system.scss
 @mixin media-breakpoint-down($size) {
   @if $size == sm {
-    @media (max-width: #{$breakpoint-sm - 1}) { @content; }
+    @include until($breakpoint-sm) { @content; }
   } @else if $size == md {
-    @media (max-width: #{$breakpoint-md - 1}) { @content; }
+    @include until($breakpoint-md) { @content; }
   } @else if $size == lg {
-    @media (max-width: #{$breakpoint-lg - 1}) { @content; }
+    @include until($breakpoint-lg) { @content; }
   } @else if $size == xl {
-    @media (max-width: #{$breakpoint-xl - 1}) { @content; }
+    @include until($breakpoint-xl) { @content; }
   }
 }
 
 @mixin media-breakpoint-up($size) {
   @if $size == sm {
-    @media (min-width: #{$breakpoint-sm}) { @content; }
+    @include from($breakpoint-sm) { @content; }
   } @else if $size == md {
-    @media (min-width: #{$breakpoint-md}) { @content; }
+    @include from($breakpoint-md) { @content; }
   } @else if $size == lg {
-    @media (min-width: #{$breakpoint-lg}) { @content; }
+    @include from($breakpoint-lg) { @content; }
   } @else if $size == xl {
-    @media (min-width: #{$breakpoint-xl}) { @content; }
+    @include from($breakpoint-xl) { @content; }
   }
 }
 
