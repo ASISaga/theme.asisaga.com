@@ -5,10 +5,6 @@
 .site-footer {
   @include genesis-entity('primary');
   @include genesis-atmosphere('void');
-  
-  &__row {
-    @include genesis-environment('associative');
-  }
 
   &__container {
     @include genesis-environment('focused');
