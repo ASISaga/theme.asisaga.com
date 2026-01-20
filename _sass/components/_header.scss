@@ -13,33 +13,43 @@
   }
 
   // Brand container with enhanced styling
-  .site-header__brand {
+  &__brand {
     @include genesis-synapse('navigate');
     @include genesis-entity('secondary');
   }
 
+  // Logo image - responsive sizing
+  &__logo {
+    @include genesis-entity('image-adaptive');
+  }
+
+  // Text container for title and tagline
+  &__text {
+    @include genesis-entity('secondary');
+  }
+
   // Header title - Enhanced for accessibility and responsiveness
-  .site-header__title {
+  &__title {
     @include genesis-cognition('axiom');
   }
   
   // Header tagline - Enhanced for accessibility and responsiveness
-  .site-header__tagline {
+  &__tagline {
     @include genesis-cognition('gloss');
   }
   
-  // Logo image - responsive sizing
-  .site-header__logo-img {
-    @include genesis-entity('image-adaptive');
-  }
-  
   // Mobile menu toggle button - Enhanced futuristic design
-  .site-header-toggler {
+  &__toggle {
     @include genesis-synapse('execute');
+  }
+
+  // Toggle icon styling
+  &__toggle-icon {
+    @include genesis-entity('secondary');
   }
   
   // Navigation container - Enhanced responsive design
-  .site-header-nav {
+  &__nav {
     @include genesis-environment('navigation-secondary');
   }
 }
