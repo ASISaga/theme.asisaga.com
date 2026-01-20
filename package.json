@@ -9,6 +9,10 @@
     "lint:scss:report": "stylelint \"_sass/**/*.scss\" \"assets/css/**/*.scss\" --formatter verbose",
     "test:scss": "sass --no-source-map --load-path=_sass _sass/_test-compile.scss /tmp/test-compile.css",
     "test:scss:verbose": "sass --no-source-map --load-path=_sass --verbose _sass/_test-compile.scss /tmp/test-compile.css",
+    "generate:layouts": "node generate-static-layouts.js",
+    "test:layouts": "npm run generate:layouts && playwright test",
+    "test:layouts:headed": "npm run generate:layouts && playwright test --headed",
+    "test:layouts:ui": "npm run generate:layouts && playwright test --ui",
     "test": "npm run test:scss && npm run lint:scss"
   },
   "keywords": [
@@ -21,6 +25,9 @@
   "author": "ASI Saga",
   "license": "MIT",
   "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "http-server": "^14.1.1",
+    "playwright": "^1.57.0",
     "sass": "^1.97.2",
     "stylelint": "^16.12.0",
     "stylelint-config-standard-scss": "^13.1.0",

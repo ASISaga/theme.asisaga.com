@@ -24,3 +24,9 @@ Thumbs.db
 # Temporary files
 *.log
 tmp/
+
+# Playwright
+playwright-report/
+test-results/
+tests/screenshots/
+test-layouts-static/
