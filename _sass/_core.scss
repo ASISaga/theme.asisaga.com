@@ -1,84 +1,76 @@
 // ============================================================================
-// CORE STYLES - Essential styles loaded on every page
+// CORE STYLES - Minimal foundation required by ALL pages
 // ============================================================================
-// This file contains ONLY the essential styles needed for basic page rendering.
-// Component-specific styles are loaded on demand per layout.
-// 
-// Total size: ~2-3MB (vs 14MB with all components)
+// This file contains ONLY the essentials needed for basic page rendering
+// Layout-specific components are loaded separately per layout type
+//
+// Size target: <100KB (vs 2-4MB current)
 // ============================================================================
 
 // ----------------------------------------
-// FONTS & ICONS
+// THIRD PARTY (CDN-loaded, minimal imports)
 // ----------------------------------------
 @import "base/fonts";
 @import "base/icons";
 
 // ----------------------------------------
-// DESIGN TOKENS & VARIABLES
+// DESIGN FOUNDATION
 // ----------------------------------------
-@import "base/design-tokens";    // OKLCH colors, spacing, typography scales
-@import "base/variables";        // Legacy Sass variables
-@import "base/dimensions";       // Spacing and sizing constants
-@import "base/colors";            // Color definitions
+@import "base/design-tokens";      // OKLCH primitives and semantic tokens
+@import "base/variables";          // Core variables
+@import "base/dimensions";         // Spacing constants
+@import "base/semantic-typography"; // Fluid typography
+@import "base/ambient-layer";      // Ambient atmosphere
 
 // ----------------------------------------
-// MODERN RESPONSIVE SYSTEM (v3.0)
+// MODERN RESPONSIVE SYSTEM
 // ----------------------------------------
 @import "base/responsive-system";   // Container queries, fluid spacing
-@import "base/futuristic-effects";  // Glassmorphism, glows, gradients
+@import "base/futuristic-effects";  // Glassmorphism, glows
 
 // ----------------------------------------
-// ONTOLOGY SYSTEM - Genesis Semantic Engine (ESSENTIAL)
+// ONTOLOGY SYSTEM - Genesis Semantic Engine
 // ----------------------------------------
-// Three-tier architecture for subdomain integration
-@import "ontology/index";          // Semantic SCSS engine (tokens, engines, interface)
+@import "ontology/index";          // Semantic SCSS engine
 
 // ----------------------------------------
-// BASE STYLES (ESSENTIAL)
+// ATOMIC & MOLECULAR LAYERS
 // ----------------------------------------
-@import "base/reset";             // CSS reset/normalize
-@import "base/accessibility";     // WCAG compliance
-@import "base/typography";        // Base typography
-@import "base/semantic-typography"; // Semantic typography classes
-@import "base/animations";        // Core animations
-@import "base/theme";             // Theme variables
-@import "base/ambient-layer";     // Ambient atmosphere
+// Use @use for atoms/molecules to enable modular composition
+@use "atoms" as atoms;
+@use "molecules" as molecules;
 
 // ----------------------------------------
-// LAYOUT FOUNDATION
+// BASE STYLES & ACCESSIBILITY
 // ----------------------------------------
-@import "base/layout";            // Base layout styles
-@import "base/layout-wrappers";   // Modern grid containers
-@import "base/common";            // Common utilities
+@import "base/accessibility";
+@import "base/animations";
+@import "base/common";
+@import "base/layout";
+@import "base/theme";
 
 // ----------------------------------------
-// MIXINS (For component development)
+// CORE LAYOUT SYSTEM
 // ----------------------------------------
-@import "base/mixins";            // Transcendent design mixins
-@import "base/semantic-mixins";   // Semantic helper mixins
+@import "layouts/bento-engine";     // Native CSS Grid system
+@import "base/layout-wrappers";     // Modern layout containers
 
 // ----------------------------------------
-// ESSENTIAL COMPONENTS ONLY
+// ESSENTIAL COMPONENTS (header/footer only)
 // ----------------------------------------
-// Only components needed on EVERY page
-
-// Layout structure (header, footer, navigation)
-@import "components/header-component";
 @import "components/header";
 @import "components/footer";
 @import "components/navbar";
 
-// Basic layout components
+// ----------------------------------------
+// BASE LAYOUT (required by all pages)
+// ----------------------------------------
 @import "layouts/default";
+@import "layouts/minimal-base";
 
 // ============================================================================
-// NOTE: Additional components are loaded per-layout in assets/css/style.scss
+// END OF CORE
 // ============================================================================
-// Examples of component groups (NOT loaded in core):
-// - Product components: Load only on product pages
-// - Form components: Load only on pages with forms
-// - Sacred components: Load only on landing pages
-// - Chatroom: Load only on chat pages
-//
-// This reduces CSS from 14MB to 2-3MB for basic pages.
+// Total imports: ~25 (vs 95+ in _common.scss)
+// Additional layout-specific components loaded per-page type
 // ============================================================================

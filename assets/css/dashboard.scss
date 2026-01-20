@@ -1,0 +1,11 @@
+---
+---
+// ============================================================================
+// DASHBOARD PAGES CSS
+// ============================================================================
+// Optimized CSS bundle for dashboard and admin pages
+// Loads only core + dashboard-specific components
+// ============================================================================
+
+@import "core";                // Minimal core styles (~100KB)
+@import "layouts/dashboard";   // Dashboard-specific components

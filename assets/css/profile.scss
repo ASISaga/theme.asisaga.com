@@ -1,0 +1,11 @@
+---
+---
+// ============================================================================
+// PROFILE PAGES CSS
+// ============================================================================
+// Optimized CSS bundle for profile and user pages
+// Loads only core + profile-specific components
+// ============================================================================
+
+@import "core";                // Minimal core styles (~100KB)
+@import "layouts/profile";     // Profile-specific components

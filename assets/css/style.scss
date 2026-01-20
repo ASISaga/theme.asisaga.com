@@ -1,3 +1,16 @@
 ---
 ---
-@import "common";
+// ============================================================================
+// DEFAULT STYLE - Fallback for pages without specific layout CSS
+// ============================================================================
+// This loads core + common components for backward compatibility
+// For optimal performance, use layout-specific CSS:
+//   - blog.scss for blog pages
+//   - products.scss for product pages
+//   - landing.scss for landing pages
+//   - dashboard.scss for dashboard pages
+//   - docs.scss for documentation
+//   - profile.scss for profile pages
+// ============================================================================
+
+@import "core";

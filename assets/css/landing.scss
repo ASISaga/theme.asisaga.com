@@ -1,0 +1,11 @@
+---
+---
+// ============================================================================
+// LANDING PAGES CSS
+// ============================================================================
+// Optimized CSS bundle for landing and splash pages
+// Loads only core + landing-specific components
+// ============================================================================
+
+@import "core";                // Minimal core styles (~100KB)
+@import "layouts/landing";     // Landing-specific components
