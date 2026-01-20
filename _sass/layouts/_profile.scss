@@ -108,7 +108,12 @@
 
 
 .profile-placeholder-icon {
-  @include fa-icon();
+  // Font Awesome base icon styling (replacing @include fa-icon mixin)
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   // emulate `.fa-5x`
   font-size: 5em;
   color: $white;
