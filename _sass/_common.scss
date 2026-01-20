@@ -56,7 +56,7 @@
 // Remaining base styles
 @import "base/layout";
 @import "base/common";
-@import "base/responsive";
+// Removed: base/responsive (deprecated - use responsive-system.scss instead)
 @import "base/theme";
 
 // Reusable component mixins (must be loaded before other components)
