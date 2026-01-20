@@ -79,7 +79,7 @@
   isolation: isolate;
   
   // Responsive breakdown
-  @media (max-width: 768px) {
+  @include compact {
     grid-template-areas:
       "header"
       "main"
@@ -281,25 +281,25 @@
 // RESPONSIVE UTILITIES
 // ----------------------------------------
 
-// Stack items vertically on mobile
+// Stack items vertically on compact containers
 .bento-stack-mobile {
-  @media (max-width: 768px) {
+  @include compact {
     grid-template-columns: 1fr;
   }
 }
 
-// Hide on mobile
+// Hide on compact containers
 .bento-hide-mobile {
-  @media (max-width: 768px) {
+  @include compact {
     display: none;
   }
 }
 
-// Show only on mobile
+// Show only on compact containers
 .bento-show-mobile {
   display: none;
   
-  @media (max-width: 768px) {
+  @include compact {
     display: block;
   }
 }

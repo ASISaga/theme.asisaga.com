@@ -444,34 +444,36 @@
   }
 }
 
-// Responsive
-@media (max-width: 768px) {
-  .chatroom-header {
-    padding: 0.75rem 1rem;
+// Responsive - using container queries
+.chatroom-layout {
+  @include compact {
+    .chatroom-header {
+      padding: 0.75rem 1rem;
 
-    &-right {
-      gap: 0.5rem;
+      &-right {
+        gap: 0.5rem;
+      }
     }
-  }
 
-  .chatroom-title {
-    font-size: 1rem;
-  }
+    .chatroom-title {
+      font-size: 1rem;
+    }
 
-  .chatroom-messages {
-    padding: 1rem;
-  }
+    .chatroom-messages {
+      padding: 1rem;
+    }
 
-  .chatroom-message {
-    max-width: 85%;
-  }
+    .chatroom-message {
+      max-width: 85%;
+    }
 
-  .chatroom-input {
-    padding: 0.75rem 1rem;
+    .chatroom-input {
+      padding: 0.75rem 1rem;
 
-    &-avatar {
-      width: 32px;
-      height: 32px;
+      &-avatar {
+        width: 32px;
+        height: 32px;
+      }
     }
   }
 }

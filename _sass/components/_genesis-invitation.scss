@@ -617,11 +617,11 @@
   flex: 0 0 auto;
   width: 100%;
   
-  @media (min-width: 992px) {
+  @include large {
     width: 83.33333333%; // col-lg-10
   }
   
-  @media (min-width: 1200px) {
+  @include xlarge {
     width: 66.66666667%; // col-xl-8
   }
   
