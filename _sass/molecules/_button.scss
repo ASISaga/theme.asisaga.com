@@ -1,0 +1,38 @@
+// ============================================================================
+// MOLECULAR COMPONENT: Button
+// ============================================================================
+// Composed from atomic primitives
+// Reusable button patterns
+// ============================================================================
+
+@use "../atoms/spacing";
+@use "../atoms/borders";
+@use "../atoms/typography";
+
+@mixin base-button() {
+  padding: var(--space-narrative, 1rem) var(--space-bento, 2rem);
+  @include borders.rounded();
+  @include typography.body-text();
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    @include borders.shadow('elevated');
+  }
+}
+
+@mixin primary-button() {
+  @include base-button();
+  background: var(--accent-glow, oklch(85% 0.15 90deg));
+  color: var(--text-on-accent, oklch(20% 0.01 90deg));
+  border: none;
+}
+
+@mixin secondary-button() {
+  @include base-button();
+  background: transparent;
+  @include borders.border();
+  color: var(--text-primary);
+}

@@ -6,10 +6,7 @@
 // No Bootstrap dependencies - Pure semantic architecture
 // ============================================================================
 
-// Font Awesome v4 - Load this first to make variables available globally
-@import "fontawesome/font-awesome";
-
-// Third party libraries
+// Third party libraries (fonts and icons loaded via CDN)
 @import "base/fonts";
 @import "base/icons";
 
@@ -59,7 +56,7 @@
 // Remaining base styles
 @import "base/layout";
 @import "base/common";
-@import "base/responsive";
+// Removed: base/responsive (deprecated - use responsive-system.scss instead)
 @import "base/theme";
 
 // Reusable component mixins (must be loaded before other components)

@@ -12,34 +12,35 @@
 // SPATIAL ENGINE - Environment Layout Logic
 // ============================================================================
 @mixin _theme-engine-environment($logic) {
+  // All environments are container contexts by default
+  container-type: inline-size;
   display: grid;
   contain: layout style;
   isolation: isolate;
   
   @if $logic == 'distributed' {
-    // Autonomous entities in non-linear grid (Bento) - responsive by default
-    container-type: inline-size;
+    // Autonomous entities in non-linear grid (Bento) - responsive via container
     
-    // Mobile: single column for clarity
-    @media (max-width: 767px) {
+    // Compact containers: single column for clarity
+    @include compact {
       grid-template-columns: 1fr;
       gap: 1.5rem;
     }
     
-    // Tablet: 2 columns
-    @media (min-width: 768px) and (max-width: 1023px) {
+    // Medium containers: 2 columns
+    @include medium {
       grid-template-columns: repeat(2, 1fr);
       gap: 1.75rem;
     }
     
-    // Desktop: auto-fit with min/max
-    @media (min-width: 1024px) {
+    // Large containers: auto-fit with min/max
+    @include large {
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
     
-    // Ultrawide: cap at 4 columns for readability
-    @media (min-width: 1920px) {
+    // Extra large containers: cap at 4 columns for readability
+    @include ultrawide {
       grid-template-columns: repeat(4, 1fr);
       max-width: 1600px;
       margin: 0 auto;
@@ -68,29 +69,28 @@
     position: relative;
   }
   @else if $logic == 'manifest' {
-    // High-density dashboard for system oversight - responsive grid
+    // High-density dashboard for system oversight - responsive via container
     gap: var(--space-tight, clamp(0.75rem, 1.5vw, 1rem));
-    container-type: inline-size;
     
-    // Mobile: simplified 2-column layout
-    @media (max-width: 767px) {
+    // Compact containers: simplified 2-column layout
+    @include compact {
       grid-template-columns: repeat(2, 1fr);
     }
     
-    // Tablet: 6-column grid
-    @media (min-width: 768px) and (max-width: 1023px) {
+    // Medium containers: 6-column grid
+    @include medium {
       grid-template-columns: repeat(6, 1fr);
     }
     
-    // Desktop: full 12-column grid
-    @media (min-width: 1024px) {
+    // Large containers: full 12-column grid
+    @include large {
       grid-template-columns: repeat(12, 1fr);
     }
   }
   @else if $logic == 'navigation-primary' {
-    // Main site navigation - horizontal desktop → mobile drawer
-    // Desktop: horizontal header
-    @media (min-width: 768px) {
+    // Main site navigation - horizontal large → compact drawer
+    // Large containers: horizontal header
+    @include large {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -102,8 +102,8 @@
       padding: var(--padding-nav, clamp(1rem, 2vw, 1.5rem));
     }
     
-    // Mobile: off-canvas drawer pattern
-    @media (max-width: 767px) {
+    // Compact containers: off-canvas drawer pattern
+    @include compact {
       position: fixed;
       top: 0;
       left: -100%;
@@ -115,7 +115,7 @@
       z-index: 1001;
       overflow-y: auto;
       
-      // Apply glassmorphism to mobile nav
+      // Apply glassmorphism to compact nav
       background: var(--glass-heavy, oklch(0.20 0.04 245 / 0.95));
       backdrop-filter: blur(20px);
       box-shadow: 2px 0 20px oklch(0.10 0.03 250 / 0.3);
@@ -125,7 +125,7 @@
         left: 0;
       }
       
-      // Navigation items stack vertically on mobile
+      // Navigation items stack vertically on compact
       > * {
         display: block;
         margin-bottom: 1rem;
@@ -139,8 +139,8 @@
     gap: var(--space-nav-secondary, clamp(0.5rem, 1vw, 1rem));
     align-items: center;
     
-    // Desktop: full visibility
-    @media (min-width: 768px) {
+    // Large containers: full visibility
+    @include medium-up {
       justify-content: flex-start;
       
       > * {
@@ -148,13 +148,13 @@
       }
     }
     
-    // Tablet: condensed with potential overflow
-    @media (min-width: 768px) and (max-width: 1023px) {
+    // Medium containers: condensed with potential overflow
+    @include medium {
       font-size: 0.9rem;
     }
     
-    // Mobile: minimal or hidden (controlled by subdomain)
-    @media (max-width: 767px) {
+    // Compact containers: minimal or hidden (controlled by subdomain)
+    @include compact {
       font-size: 0.85rem;
       justify-content: center;
       
@@ -169,20 +169,20 @@
     display: grid;
     gap: 1.5rem;
     
-    // Mobile: force single column for clarity
-    @media (max-width: 767px) {
+    // Compact containers: force single column for clarity
+    @include compact {
       grid-template-columns: 1fr;
       gap: 1.25rem;
     }
     
-    // Tablet: 2-column where appropriate
-    @media (min-width: 768px) and (max-width: 1023px) {
+    // Medium containers: 2-column where appropriate
+    @include medium {
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem 1.25rem;
     }
     
-    // Desktop: allow multi-column with intelligent fitting
-    @media (min-width: 1024px) {
+    // Large containers: allow multi-column with intelligent fitting
+    @include large {
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem 1.5rem;
     }
@@ -353,19 +353,19 @@
     color: var(--text-vibrant, oklch(0.98 0.01 90));
     font-family: var(--font-consciousness, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
     
-    // Enhanced mobile readability
-    @media (max-width: 767px) {
-      font-size: 2rem; // 32px minimum on mobile
+    // Enhanced compact container readability
+    @include compact {
+      font-size: 2rem; // 32px minimum in compact
       line-height: 1.25;
     }
     
-    @media (min-width: 768px) and (max-width: 1023px) {
-      font-size: 2.5rem; // 40px on tablet
+    @include medium {
+      font-size: 2.5rem; // 40px in medium
       line-height: 1.2;
     }
     
-    @media (min-width: 1024px) {
-      font-size: 3.5rem; // 56px on desktop
+    @include large {
+      font-size: 3.5rem; // 56px in large
       line-height: 1.15;
     }
   }
@@ -377,10 +377,10 @@
     color: var(--text-primary, oklch(0.98 0.01 90));
     font-family: var(--font-wisdom, Georgia, "Times New Roman", serif);
     
-    // Ensure mobile readability (16px minimum to prevent iOS zoom)
-    @media (max-width: 767px) {
+    // Ensure compact container readability (16px minimum to prevent iOS zoom)
+    @include compact {
       font-size: 1rem; // Never smaller than 16px
-      line-height: 1.65; // Slightly more leading for mobile
+      line-height: 1.65; // Slightly more leading for compact
     }
   }
   @else if $intent == 'protocol' {
@@ -394,8 +394,8 @@
     border-radius: 0.25em;
     border: 1px solid var(--border-code, oklch(0.25 0.04 250));
     
-    // Mobile: ensure readable code size
-    @media (max-width: 767px) {
+    // Compact containers: ensure readable code size
+    @include compact {
       font-size: 0.875rem; // 14px minimum for code
       line-height: 1.6;
     }
@@ -408,8 +408,8 @@
     color: var(--text-secondary, oklch(0.70 0.02 220));
     opacity: 0.85;
     
-    // Mobile: minimum 14px for accessibility
-    @media (max-width: 767px) {
+    // Compact containers: minimum 14px for accessibility
+    @include compact {
       font-size: 0.875rem; // 14px minimum
       line-height: 1.5;
     }
@@ -422,8 +422,8 @@
     color: var(--text-accent, oklch(0.85 0.16 85));
     font-family: var(--font-sacred, Montserrat, sans-serif);
     
-    // Mobile readability
-    @media (max-width: 767px) {
+    // Compact container readability
+    @include compact {
       font-size: 1rem; // 16px minimum
     }
   }
@@ -439,10 +439,10 @@
     border-radius: 999px;
     display: inline-block;
     
-    // Mobile: ensure tag readability
-    @media (max-width: 767px) {
+    // Compact containers: ensure tag readability
+    @include compact {
       font-size: 0.75rem; // 12px for tags (acceptable for non-primary content)
-      letter-spacing: 0.08em; // More spacing on mobile for clarity
+      letter-spacing: 0.08em; // More spacing in compact for clarity
     }
   }
 }
@@ -462,7 +462,7 @@
     display: inline-block;
     
     // WCAG 2.1: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
+    @include compact {
       min-height: 44px;
       padding-block: 0.5rem;
       
@@ -502,14 +502,14 @@
     font-size: var(--size-button, clamp(0.95rem, 1.2vw, 1.05rem));
     
     // WCAG 2.1: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
+    @include compact {
       min-height: 44px;
       min-width: 44px;
       padding: 0.75rem 1.75rem;
     }
     
     // Tablet: moderate sizing
-    @media (min-width: 768px) and (max-width: 1023px) {
+    @include medium {
       min-height: 42px;
       padding: 0.688rem 1.625rem;
     }
@@ -541,13 +541,13 @@
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     
     // WCAG 2.1: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
+    @include compact {
       min-height: 44px;
       min-width: 44px;
       padding: 0.75rem 1.5rem;
     }
     
-    @media (min-width: 768px) and (max-width: 1023px) {
+    @include medium {
       min-height: 42px;
     }
     
@@ -573,13 +573,13 @@
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     
     // WCAG 2.1: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
+    @include compact {
       min-height: 44px;
       min-width: 44px;
       padding: 0.75rem 1.75rem;
     }
     
-    @media (min-width: 768px) and (max-width: 1023px) {
+    @include medium {
       min-height: 42px;
     }
     
@@ -605,14 +605,14 @@
     border-radius: 999px;
     
     // WCAG 2.1: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
+    @include compact {
       min-width: 44px;
       min-height: 44px;
       padding: 0.75rem;
     }
     
     // Desktop: can be more compact
-    @media (min-width: 768px) {
+    @include medium-up {
       min-width: 36px;
       min-height: 36px;
     }
@@ -640,20 +640,20 @@
     transition: all var(--motion-snap, 0.2s ease);
     
     // Mobile: larger touch target
-    @media (max-width: 767px) {
+    @include compact {
       min-height: 44px;
       padding: 0.875rem 1rem;
       font-size: 1rem; // Ensure 16px to prevent zoom
     }
     
     // Tablet: balanced sizing
-    @media (min-width: 768px) and (max-width: 1023px) {
+    @include medium {
       min-height: 42px;
       padding: 0.75rem 1rem;
     }
     
     // Desktop: standard sizing
-    @media (min-width: 1024px) {
+    @include large {
       min-height: 40px;
       padding: 0.625rem 1rem;
     }
@@ -787,13 +787,13 @@
     }
     
     // Mobile: simpler, faster animations for performance
-    @media (max-width: 767px) {
+    @include compact {
       transition-duration: 0.4s;
       transform: translateY(20px); // Shorter distance
     }
     
     // Desktop: allow richer animations
-    @media (min-width: 1024px) {
+    @include large {
       transition-duration: 0.7s;
     }
   }
@@ -831,7 +831,7 @@
   @else if $vibe == 'spacious-mobile' {
     // Content that needs generous spacing on mobile for touch-friendliness
     // Mobile: generous spacing
-    @media (max-width: 767px) {
+    @include compact {
       padding: 3rem 1.5rem;
       margin-bottom: 2.5rem;
       
@@ -841,7 +841,7 @@
     }
     
     // Tablet: moderate spacing
-    @media (min-width: 768px) and (max-width: 1023px) {
+    @include medium {
       padding: 2.5rem 2rem;
       margin-bottom: 2rem;
       
@@ -851,7 +851,7 @@
     }
     
     // Desktop: compact
-    @media (min-width: 1024px) {
+    @include large {
       padding: 2rem 3rem;
       margin-bottom: 1.5rem;
       
@@ -863,7 +863,7 @@
   @else if $vibe == 'dense-desktop' {
     // Content that benefits from high information density on large screens
     // Mobile: minimal density (single column, simple)
-    @media (max-width: 767px) {
+    @include compact {
       > * {
         width: 100%;
         margin-bottom: 1rem;
@@ -871,21 +871,21 @@
     }
     
     // Tablet: moderate density (2 columns)
-    @media (min-width: 768px) and (max-width: 1023px) {
+    @include medium {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
     }
     
     // Desktop: high density (auto-fit grid)
-    @media (min-width: 1024px) {
+    @include large {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
     }
     
     // Ultrawide: cap at 4 columns
-    @media (min-width: 1920px) {
+    @include ultrawide {
       grid-template-columns: repeat(4, 1fr);
     }
   }
@@ -902,28 +902,28 @@
     min-height: 100dvh; // Dynamic viewport height for mobile
     
     // Mobile: reduce height to account for browser chrome
-    @media (max-width: 767px) {
+    @include compact {
       min-height: 70vh;
       min-height: 70dvh;
       padding: 2rem 1rem;
     }
     
     // Tablet: moderate viewport usage
-    @media (min-width: 768px) and (max-width: 1023px) {
+    @include medium {
       min-height: 85vh;
       min-height: 85dvh;
       padding: 3rem 2rem;
     }
     
     // Desktop: full viewport
-    @media (min-width: 1024px) {
+    @include large {
       min-height: 100vh;
       min-height: 100dvh;
       padding: 4rem 3rem;
     }
     
     // Prevent content overflow on short viewports
-    @media (max-height: 600px) {
+    @include viewport-until(600px) {
       min-height: auto;
       padding: 3rem 1rem;
     }

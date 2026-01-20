@@ -1,0 +1,31 @@
+// ============================================================================
+// ATOMIC PRIMITIVE: Spacing
+// ============================================================================
+// Single-responsibility mixins for consistent spacing
+// ============================================================================
+
+@mixin component-padding($size: 'default') {
+  @if $size == 'compact' {
+    padding: var(--space-narrative, 1rem);
+  } @else if $size == 'comfortable' {
+    padding: var(--space-bento, 2rem);
+  } @else {
+    padding: var(--space-network, 1.5rem);
+  }
+}
+
+@mixin section-spacing($size: 'default') {
+  @if $size == 'compact' {
+    margin-block: var(--space-bento, 2rem);
+  } @else if $size == 'spacious' {
+    margin-block: var(--space-sanctuary, 4rem);
+  } @else {
+    margin-block: var(--space-network, 3rem);
+  }
+}
+
+@mixin stack-spacing($gap: var(--space-narrative, 1rem)) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}

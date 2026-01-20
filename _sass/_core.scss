@@ -1,0 +1,84 @@
+// ============================================================================
+// CORE STYLES - Essential styles loaded on every page
+// ============================================================================
+// This file contains ONLY the essential styles needed for basic page rendering.
+// Component-specific styles are loaded on demand per layout.
+// 
+// Total size: ~2-3MB (vs 14MB with all components)
+// ============================================================================
+
+// ----------------------------------------
+// FONTS & ICONS
+// ----------------------------------------
+@import "base/fonts";
+@import "base/icons";
+
+// ----------------------------------------
+// DESIGN TOKENS & VARIABLES
+// ----------------------------------------
+@import "base/design-tokens";    // OKLCH colors, spacing, typography scales
+@import "base/variables";        // Legacy Sass variables
+@import "base/dimensions";       // Spacing and sizing constants
+@import "base/colors";            // Color definitions
+
+// ----------------------------------------
+// MODERN RESPONSIVE SYSTEM (v3.0)
+// ----------------------------------------
+@import "base/responsive-system";   // Container queries, fluid spacing
+@import "base/futuristic-effects";  // Glassmorphism, glows, gradients
+
+// ----------------------------------------
+// ONTOLOGY SYSTEM - Genesis Semantic Engine (ESSENTIAL)
+// ----------------------------------------
+// Three-tier architecture for subdomain integration
+@import "ontology/index";          // Semantic SCSS engine (tokens, engines, interface)
+
+// ----------------------------------------
+// BASE STYLES (ESSENTIAL)
+// ----------------------------------------
+@import "base/reset";             // CSS reset/normalize
+@import "base/accessibility";     // WCAG compliance
+@import "base/typography";        // Base typography
+@import "base/semantic-typography"; // Semantic typography classes
+@import "base/animations";        // Core animations
+@import "base/theme";             // Theme variables
+@import "base/ambient-layer";     // Ambient atmosphere
+
+// ----------------------------------------
+// LAYOUT FOUNDATION
+// ----------------------------------------
+@import "base/layout";            // Base layout styles
+@import "base/layout-wrappers";   // Modern grid containers
+@import "base/common";            // Common utilities
+
+// ----------------------------------------
+// MIXINS (For component development)
+// ----------------------------------------
+@import "base/mixins";            // Transcendent design mixins
+@import "base/semantic-mixins";   // Semantic helper mixins
+
+// ----------------------------------------
+// ESSENTIAL COMPONENTS ONLY
+// ----------------------------------------
+// Only components needed on EVERY page
+
+// Layout structure (header, footer, navigation)
+@import "components/header-component";
+@import "components/header";
+@import "components/footer";
+@import "components/navbar";
+
+// Basic layout components
+@import "layouts/default";
+
+// ============================================================================
+// NOTE: Additional components are loaded per-layout in assets/css/style.scss
+// ============================================================================
+// Examples of component groups (NOT loaded in core):
+// - Product components: Load only on product pages
+// - Form components: Load only on pages with forms
+// - Sacred components: Load only on landing pages
+// - Chatroom: Load only on chat pages
+//
+// This reduces CSS from 14MB to 2-3MB for basic pages.
+// ============================================================================

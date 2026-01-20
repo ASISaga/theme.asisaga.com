@@ -38,51 +38,87 @@ $space-2xl: clamp(3rem, 6vw, 4rem);
 $space-3xl: clamp(4rem, 8vw, 6rem);
 
 // ============================================================================
-// RESPONSIVE MIXINS (Modern Mobile-First)
+// CONTAINER QUERY SYSTEM (Primary Responsive Method)
+// ============================================================================
+// Modern responsive design using container queries instead of media queries.
+// Components respond to their container size, not viewport size.
+// This dramatically reduces CSS duplication and improves component isolation.
 // ============================================================================
 
-/// Mobile-first breakpoint: styles apply at this width and above
-@mixin from($breakpoint) {
-  @media (min-width: #{$breakpoint}) {
-    @content;
+/// Make an element a container query container
+@mixin container-context($name: null) {
+  container-type: inline-size;
+  @if $name {
+    container-name: #{$name};
   }
 }
 
-/// Styles apply up to and including this width
-@mixin until($breakpoint) {
-  @media (max-width: #{$breakpoint - 1px}) {
-    @content;
+/// Container query: styles apply at this container width and above
+@mixin from($width, $name: null) {
+  @if $name {
+    @container #{$name} (min-width: #{$width}) {
+      @content;
+    }
+  } @else {
+    @container (min-width: #{$width}) {
+      @content;
+    }
   }
 }
 
-/// Styles apply within a specific range
-@mixin between($min, $max) {
-  @media (min-width: #{$min}) and (max-width: #{$max - 1px}) {
-    @content;
+/// Container query: styles apply up to this container width
+@mixin until($width, $name: null) {
+  @if $name {
+    @container #{$name} (max-width: #{$width - 1px}) {
+      @content;
+    }
+  } @else {
+    @container (max-width: #{$width - 1px}) {
+      @content;
+    }
   }
 }
 
-// Semantic aliases for common breakpoints
-@mixin mobile-only {
+/// Container query: styles apply within a specific container width range
+@mixin between($min, $max, $name: null) {
+  @if $name {
+    @container #{$name} (min-width: #{$min}) and (max-width: #{$max - 1px}) {
+      @content;
+    }
+  } @else {
+    @container (min-width: #{$min}) and (max-width: #{$max - 1px}) {
+      @content;
+    }
+  }
+}
+
+// Semantic aliases for common container sizes
+@mixin compact {
   @include until($breakpoint-md) {
     @content;
   }
 }
 
-@mixin tablet-only {
+@mixin medium {
   @include between($breakpoint-md, $breakpoint-lg) {
     @content;
   }
 }
 
-@mixin tablet-up {
+@mixin medium-up {
   @include from($breakpoint-md) {
     @content;
   }
 }
 
-@mixin desktop-up {
+@mixin large {
   @include from($breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin xlarge {
+  @include from($breakpoint-xl) {
     @content;
   }
 }
@@ -94,27 +130,56 @@ $space-3xl: clamp(4rem, 8vw, 6rem);
 }
 
 // ============================================================================
-// CONTAINER QUERY SUPPORT
+// BACKWARD COMPATIBILITY ALIASES
 // ============================================================================
+// For existing code that uses old mixin names
+// These now use container queries instead of media queries
 
-/// Make an element a container query container
-@mixin container-context($name: null) {
-  container-type: inline-size;
-  @if $name {
-    container-name: #{$name};
+@mixin mobile-only {
+  @include compact {
+    @content;
   }
 }
 
-/// Container query - styles apply at this container width and above
-@mixin container-from($width, $name: null) {
-  @if $name {
-    @container #{$name} (min-width: #{$width}) {
-      @content;
-    }
-  } @else {
-    @container (min-width: #{$width}) {
-      @content;
-    }
+@mixin tablet-only {
+  @include medium {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @include medium-up {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @include large {
+    @content;
+  }
+}
+
+// ============================================================================
+// VIEWPORT-BASED QUERIES (Only for root-level layout)
+// ============================================================================
+// Use sparingly - only for page-level layout that truly needs viewport info.
+// Most components should use container queries above.
+
+@mixin viewport-from($breakpoint) {
+  @media (min-width: #{$breakpoint}) {
+    @content;
+  }
+}
+
+@mixin viewport-until($breakpoint) {
+  @media (max-width: #{$breakpoint - 1px}) {
+    @content;
+  }
+}
+
+@mixin viewport-between($min, $max) {
+  @media (min-width: #{$min}) and (max-width: #{$max - 1px}) {
+    @content;
   }
 }
 

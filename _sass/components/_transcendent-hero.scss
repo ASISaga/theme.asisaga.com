@@ -416,10 +416,8 @@
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
-}
-
-@media (min-width: 1200px) {
-  .transcendent-hero-col {
+  
+  @include xlarge {
     max-width: 66.66667%;
   }
 }
@@ -442,8 +440,13 @@
 }
 
 .transcendent-icon {
-  @include fa-icon; // base icon styling
-  font-family: "Font Awesome 5 Free";
+  // Font Awesome base icon styling (replacing @include fa-icon mixin)
+  display: inline-block;
+  font: normal normal normal 14px/1 "Font Awesome 5 Free";
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-weight: 900;
   &:before {
     content: "\f621"; // star-of-life glyph

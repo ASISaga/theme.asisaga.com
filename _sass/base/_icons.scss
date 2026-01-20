@@ -1,10 +1,6 @@
 // _icons.scss
 // Third-party icon library imports for the site
-// Only import icon font-face or @import rules here
-
-// Font Awesome
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
-// Font Awesome CDN: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
+// Note: Font Awesome is imported in base/fonts.scss to avoid duplication
 
 // --------------------------------------------
 // Icon Size Variables (from dimensions)

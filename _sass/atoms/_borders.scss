@@ -1,0 +1,33 @@
+// ============================================================================
+// ATOMIC PRIMITIVE: Borders and Shadows
+// ============================================================================
+// Single-responsibility mixins for borders and shadows
+// ============================================================================
+
+@mixin rounded($size: 'default') {
+  @if $size == 'sm' {
+    border-radius: var(--radius-sm, 0.5rem);
+  } @else if $size == 'lg' {
+    border-radius: var(--radius-lg, 1.5rem);
+  } @else if $size == 'full' {
+    border-radius: 9999px;
+  } @else {
+    border-radius: var(--radius-bento, 1rem);
+  }
+}
+
+@mixin border($width: 1px, $color: var(--border-primary)) {
+  border: $width solid $color;
+}
+
+@mixin shadow($level: 'base') {
+  @if $level == 'sm' {
+    box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.1));
+  } @else if $level == 'elevated' {
+    box-shadow: var(--shadow-elevated, 0 8px 32px rgba(0, 0, 0, 0.2));
+  } @else if $level == 'glow' {
+    box-shadow: var(--shadow-glow, 0 0 32px rgba(255, 215, 0, 0.3));
+  } @else {
+    box-shadow: var(--shadow-ambient, 0 4px 16px rgba(0, 0, 0, 0.15));
+  }
+}

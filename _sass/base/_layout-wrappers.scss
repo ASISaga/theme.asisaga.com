@@ -45,7 +45,7 @@
 }
 
 // ----------------------------------------
-// GRID LAYOUTS - Replace .row with modern grid
+// GRID LAYOUTS - Replace .row with modern grid (Container Query Based)
 // ----------------------------------------
 
 // Two-column grids (50/50 split responsive)
@@ -57,8 +57,9 @@
   grid-template-columns: 1fr;
   gap: clamp(1.5rem, 3vw, 3rem);
   align-items: center;
+  container-type: inline-size;
   
-  @media (min-width: 768px) {
+  @include medium-up {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -73,6 +74,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: clamp(1rem, 2vw, 2rem);
+  container-type: inline-size;
 }
 
 // Three-column grids
@@ -83,15 +85,16 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: clamp(1.5rem, 3vw, 3rem);
+  container-type: inline-size;
   
-  @media (min-width: 992px) {
+  @include large {
     grid-template-columns: 250px 1fr;
   }
 }
 
 // Sidebar layouts (25% / 75%)
 .settings-grid {
-  @media (min-width: 992px) {
+  @include large {
     grid-template-columns: 1fr 3fr;
   }
 }
@@ -100,8 +103,9 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: clamp(1.5rem, 3vw, 3rem);
+  container-type: inline-size;
   
-  @media (min-width: 992px) {
+  @include large {
     grid-template-columns: 2fr 1fr;
   }
 }
@@ -158,11 +162,12 @@
 // Dashboard widgets - Use data attribute for columns
 .dashboard-widget-component {
   min-width: 250px;
+  container-type: inline-size;
   
   &[data-columns="3"] {
     grid-column: span 1;
     
-    @media (min-width: 992px) {
+    @include large {
       min-width: 300px;
     }
   }
@@ -170,7 +175,7 @@
   &[data-columns="4"] {
     grid-column: span 1;
     
-    @media (min-width: 768px) {
+    @include medium-up {
       grid-column: span 2;
     }
   }
