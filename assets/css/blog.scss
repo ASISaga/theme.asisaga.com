@@ -1,0 +1,11 @@
+---
+---
+// ============================================================================
+// BLOG PAGES CSS
+// ============================================================================
+// Optimized CSS bundle for blog, article, post, and archive pages
+// Loads only core + blog-specific components
+// ============================================================================
+
+@import "core";                // Minimal core styles (~100KB)
+@import "layouts/blog";        // Blog-specific components

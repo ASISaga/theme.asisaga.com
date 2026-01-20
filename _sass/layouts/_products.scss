@@ -1,0 +1,29 @@
+// ============================================================================
+// PRODUCT LAYOUT STYLES
+// ============================================================================
+// Components needed for product pages
+// ============================================================================
+
+// Product-specific component mixins (loaded first)
+@import "components/products-grid-component";
+@import "components/layout-component";
+@import "components/card-component";
+
+// Product-specific components
+@import "components/product-card";
+@import "components/product-layout";
+@import "components/product-page";
+@import "components/product-applications";
+@import "components/product-benefits-list";
+@import "components/product-code-example";
+@import "components/product-feature-grid";
+@import "components/product-section-container";
+@import "components/product-visual";
+
+// Supporting components
+@import "components/testimonial";
+@import "components/feature-grid";
+@import "components/cta";
+@import "components/cta-component";
+@import "components/hero";
+@import "components/hero-component";

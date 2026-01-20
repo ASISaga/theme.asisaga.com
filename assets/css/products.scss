@@ -1,0 +1,11 @@
+---
+---
+// ============================================================================
+// PRODUCT PAGES CSS
+// ============================================================================
+// Optimized CSS bundle for product pages
+// Loads only core + product-specific components
+// ============================================================================
+
+@import "core";                // Minimal core styles (~100KB)
+@import "layouts/products";    // Product-specific components

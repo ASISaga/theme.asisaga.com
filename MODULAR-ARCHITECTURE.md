@@ -283,9 +283,14 @@ Track metrics:
 - ✅ Agent skill created
 - ✅ Atomic layer implemented (5 atoms)
 - ✅ Molecular layer started (2 molecules)
+- ✅ **Layout-specific bundles implemented** (6 bundles)
+- ✅ **Conditional stylesheet loading enabled**
+- ✅ **Layout front matter updated** (15 layouts)
 - ⏳ Organism refactoring (pending)
-- ⏳ Per-layout bundles (pending)
+- ⏳ Size measurement and verification (pending)
 
 ---
 
-**This represents the foundation of an intrinsically modular SCSS architecture with proper code reuse, replacing the monolithic build-time-only PostCSS approach.**
+**Update January 20, 2026:** Layout-specific CSS bundles implemented to resolve 2-4MB bloat issue. See `SCSS-VS-CSS-SIZE-ANALYSIS.md` for complete resolution details.
+
+**This represents the foundation of an intrinsically modular SCSS architecture with proper code reuse and layout-specific bundling, replacing the monolithic build-time-only PostCSS approach.**

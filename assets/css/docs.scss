@@ -1,0 +1,11 @@
+---
+---
+// ============================================================================
+// DOCUMENTATION PAGES CSS
+// ============================================================================
+// Optimized CSS bundle for documentation pages
+// Loads only core + docs-specific components
+// ============================================================================
+
+@import "core";                // Minimal core styles (~100KB)
+@import "layouts/docs";        // Docs-specific components
