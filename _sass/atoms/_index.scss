@@ -1,0 +1,12 @@
+// ============================================================================
+// ATOMS INDEX - Forward all atomic primitives
+// ============================================================================
+// This file forwards all atomic mixins for easy import
+// Usage: @use "atoms" as *; or @use "atoms";
+// ============================================================================
+
+@forward "glass";
+@forward "grid";
+@forward "typography";
+@forward "spacing";
+@forward "borders";

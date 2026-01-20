@@ -1,0 +1,26 @@
+// ============================================================================
+// ATOMIC PRIMITIVE: Glass Surface Effect
+// ============================================================================
+// Single-responsibility mixin for glassmorphism effect
+// Used 40+ times across components - extracted for reuse
+//
+// @param $opacity - Background opacity (0-1)
+// @param $blur - Backdrop blur amount  
+// @param $surface-var - CSS custom property for surface color
+// ============================================================================
+
+@mixin surface($opacity: 0.85, $blur: 20px, $surface-var: --surface-glass) {
+  background: oklch(from var(#{$surface-var}) l c h / #{$opacity});
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur); // Safari support
+}
+
+@mixin surface-elevated($opacity: 0.9, $blur: 24px) {
+  @include surface($opacity, $blur);
+  box-shadow: var(--shadow-elevated, 0 8px 32px rgba(0, 0, 0, 0.2));
+}
+
+@mixin surface-subtle($opacity: 0.6, $blur: 16px) {
+  @include surface($opacity, $blur);
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.1));
+}

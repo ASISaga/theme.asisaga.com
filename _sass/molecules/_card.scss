@@ -1,0 +1,31 @@
+// ============================================================================
+// MOLECULAR COMPONENT: Card
+// ============================================================================
+// Composed from atomic primitives
+// Highly reusable card pattern used across blog, products, profiles, etc.
+// ============================================================================
+
+@use "../atoms/glass";
+@use "../atoms/spacing";
+@use "../atoms/borders";
+
+@mixin base-card() {
+  @include glass.surface();
+  @include spacing.component-padding();
+  @include borders.rounded();
+  @include borders.shadow();
+}
+
+@mixin elevated-card() {
+  @include glass.surface-elevated();
+  @include spacing.component-padding('comfortable');
+  @include borders.rounded('lg');
+  @include borders.shadow('elevated');
+}
+
+@mixin subtle-card() {
+  @include glass.surface-subtle();
+  @include spacing.component-padding('compact');
+  @include borders.rounded('sm');
+  @include borders.shadow('sm');
+}

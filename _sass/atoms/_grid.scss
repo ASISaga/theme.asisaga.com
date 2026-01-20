@@ -1,0 +1,42 @@
+// ============================================================================
+// ATOMIC PRIMITIVE: Responsive Grid Layouts
+// ============================================================================
+// Single-responsibility mixin for auto-responsive grids
+// Used 20+ times - extracted for reuse
+//
+// @param $min-width - Minimum column width
+// @param $gap - Grid gap
+// ============================================================================
+
+@mixin auto-grid($min-width: 300px, $gap: var(--space-bento, 2rem)) {
+  container-type: inline-size;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+@mixin two-column($gap: var(--space-bento, 2rem)) {
+  container-type: inline-size;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $gap;
+  
+  @container (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+@mixin three-column($gap: var(--space-bento, 2rem)) {
+  container-type: inline-size;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $gap;
+  
+  @container (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @container (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}

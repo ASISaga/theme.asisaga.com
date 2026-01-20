@@ -1,0 +1,58 @@
+// ============================================================================
+// MODULAR CORE - Minimal foundation for any page
+// ============================================================================
+// This file contains ONLY the essentials needed for basic page rendering
+// Components are loaded on-demand per layout using @use imports
+//
+// Size: ~200KB (vs 14MB monolithic)
+// ============================================================================
+
+// ----------------------------------------
+// ATOMIC LAYER (REUSABLE PRIMITIVES)
+// ----------------------------------------
+// These are lightweight, single-responsibility mixins
+// NOT full component implementations
+// NOTE: @use must come BEFORE @import
+@use "atoms" as atoms;
+
+// ----------------------------------------
+// MOLECULAR LAYER (COMPOSABLE PATTERNS)
+// ----------------------------------------
+// Composed from atoms, domain-agnostic
+@use "molecules" as molecules;
+
+// ----------------------------------------
+// DESIGN TOKENS & VARIABLES (REQUIRED)
+// ----------------------------------------
+@import "base/design-tokens";    // OKLCH colors, spacing
+@import "base/variables";        // Legacy variables
+@import "base/dimensions";       // Spacing constants
+
+// ----------------------------------------
+// BASE STYLES (ESSENTIAL ONLY)
+// ----------------------------------------
+@import "base/reset";             // CSS reset/normalize
+@import "base/accessibility";     // WCAG compliance
+@import "base/theme";             // Theme variables
+
+// ----------------------------------------
+// ONTOLOGY SYSTEM (SEMANTIC ENGINE)
+// ----------------------------------------
+@import "ontology/index";          // Semantic SCSS engine
+
+// ----------------------------------------
+// LAYOUT ESSENTIALS (MINIMAL)
+// ----------------------------------------
+@import "components/header";      // Site header
+@import "components/footer";      // Site footer
+@import "layouts/default";        // Default layout
+
+// ============================================================================
+// END OF CORE
+// ============================================================================
+// Additional components loaded per-page:
+//   @use "molecules/card" as card;
+//   @use "organisms/product-card" as product;
+//
+// This keeps core minimal while allowing on-demand component loading
+// ============================================================================
