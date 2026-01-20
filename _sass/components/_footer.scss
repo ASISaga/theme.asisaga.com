@@ -2,43 +2,51 @@
 
 // Footer styling - Genesis Ontological System
 
-.site-footer__row {
-  @include genesis-environment('associative');
-}
-
-.site-footer__container {
-  @include genesis-environment('focused');
-}
-
 .site-footer {
   @include genesis-entity('primary');
   @include genesis-atmosphere('void');
   
-  .site-footer__copyright {
+  &__row {
+    @include genesis-environment('associative');
+  }
+
+  &__container {
+    @include genesis-environment('focused');
+  }
+  
+  &__copyright {
     @include genesis-entity('secondary');
     
-    .site-footer__copyright-text {
+    p {
       @include genesis-cognition('gloss');
     }
   }
   
-  .site-footer__social {
+  &__social {
     @include genesis-environment('associative');
+
+    &-link {
+      @include genesis-synapse('social');
+    }
   }
   
-  .site-footer__links {
+  &__links {
+    @include genesis-entity('secondary');
+  }
+
+  &__nav {
     @include genesis-entity('secondary');
   }
   
-  .site-footer__nav-list {
+  &__nav-list {
     @include genesis-environment('associative');
   }
   
-  .site-footer__nav-item {
+  &__nav-item {
     @include genesis-entity('secondary');
   }
   
-  .site-footer__nav-link {
+  &__nav-link {
     @include genesis-synapse('navigate');
     @include genesis-cognition('discourse');
   }

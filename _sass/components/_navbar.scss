@@ -3,46 +3,53 @@
 // Futuristic Responsive Navbar - Genesis Ontological System
 
 // The main navigation container
-.site-navbar {
+.navbar {
   @include genesis-environment('navigation-primary');
 
-  // Styling for individual list items within the navbar
-  .navbar-item {
-    // Spacing handled by environment mixin
+  // Navigation list container
+  &__list {
+    @include genesis-environment('associative');
   }
 
-  // Styling for active navigation items
-  .navbar-item-active {
-    .navbar-link {
-      @include genesis-synapse('navigate');
+  // Styling for individual list items within the navbar
+  &__item {
+    @include genesis-entity('secondary');
+
+    // Styling for active navigation items
+    &--active {
       @include genesis-state('stable');
+    }
+
+    // Dropdown variant
+    &--dropdown {
+      @include genesis-entity('secondary');
     }
   }
   
   // Styling for navigation links - Enhanced futuristic design
-  .navbar-link {
+  &__link {
     @include genesis-synapse('navigate');
-  }
 
-  // Extend Bootstrap dropdown to be relative positioned when inside navbar-item
-  .dropdown {
-    @include genesis-entity('secondary');
+    // Dropdown toggle variant
+    &--dropdown {
+      @include genesis-synapse('inquiry');
+    }
   }
 
   // Styling for the dropdown menu - Enhanced with modern design
-  .dropdown-menu {
+  &__dropdown {
     @include genesis-entity('primary');
     @include genesis-atmosphere('void');
   }
 
   // Styling for individual items within a dropdown menu
-  .dropdown-item {
+  &__dropdown-item {
+    @include genesis-entity('secondary');
+  }
+
+  // Styling for dropdown links
+  &__dropdown-link {
     @include genesis-synapse('navigate');
     @include genesis-cognition('discourse');
-  }
-  
-  // Styling for dividers within a dropdown menu
-  .dropdown-divider {
-    @include genesis-entity('latent');
   }
 }
