@@ -14,14 +14,14 @@ $essence-weave-opacity-3: 1;
 // ----------------------------------------
 // Sacred Colors - Primary consciousness palette
 // ----------------------------------------
-// Cosmic Deep Blue - Infinite potential and transcendent depth
-$cosmic-deep-blue: #0B1426;
-$primary: $cosmic-deep-blue;
-$primary-light: lighten($cosmic-deep-blue, 25%);
-$primary-dark: darken($cosmic-deep-blue, 5%);
+// Neon Electric Blue - AI consciousness and technological energy
+$neon-electric-blue: #3A86FF;  // Neon/electric blue for primary accents
+$primary: $neon-electric-blue;
+$primary-light: lighten($neon-electric-blue, 15%);
+$primary-dark: darken($neon-electric-blue, 10%);
 
 // Luminous Gold - Human essence and embedded wisdom
-$luminous-gold: #FFD700;
+$luminous-gold: #D4AF37;  // Adjusted gold for better contrast on white
 $sacred-gold: $luminous-gold;
 $sacred-gold-light: lighten($luminous-gold, 10%);
 $sacred-gold-dark: darken($luminous-gold, 15%);
@@ -54,44 +54,45 @@ $transformation-purple-dark: darken($transformation-purple, 15%);
 // ----------------------------------------
 // Sacred Neutral Adaptations
 // ----------------------------------------
-$light: lighten($cosmic-deep-blue, 85%);    // Sacred light backgrounds
-$dark: $cosmic-deep-blue;                   // Sacred depth backgrounds
-$gray: $ethereal-silver;                    // Sacred bridging elements
+$light: #F8F9FA;                    // Light gray background
+$dark: #1A1A1A;                     // Dark text/elements
+$gray: #6C757D;                     // Medium gray for borders/text
+$cosmic-deep-blue: $dark;           // Legacy variable now maps to dark text
 
 // ----------------------------------------
 // Sacred Semantic Colors - Consciousness-supporting usage
 // ----------------------------------------
-$text-color: $cosmic-deep-blue;
-$text-muted: $ethereal-silver;
-$text-light: $transcendent-white;
-$text-sacred: $luminous-gold;           // For sacred emphasis
-$text-wisdom: $royal-purple;            // For wisdom content
-$text-life-force: $emerald-green;       // For growth and vitality
+$text-color: $dark;                      // Dark text for light backgrounds
+$text-muted: $gray;                      // Muted gray text
+$text-light: $transcendent-white;        // White text for dark sections
+$text-sacred: $luminous-gold;            // For sacred emphasis
+$text-wisdom: $royal-purple;             // For wisdom content
+$text-life-force: $emerald-green;        // For growth and vitality
 
 $bg-light: $light;
-$bg-dark: $cosmic-deep-blue;
-$bg-sacred: rgba($luminous-gold, 0.1);  // Sacred background overlay
+$bg-dark: $dark;
+$bg-sacred: rgba($luminous-gold, 0.1);   // Sacred background overlay
 $bg-transcendent: $transcendent-white;
-$bg-consciousness: rgba($cosmic-deep-blue, 0.95); // Deep consciousness states
+$bg-consciousness: rgba($neon-electric-blue, 0.05); // Subtle blue tint for consciousness states
 
-$border-color: $ethereal-silver;
-$border-sacred: $luminous-gold;         // Sacred element borders
-$shadow-color: rgba($cosmic-deep-blue, 0.25); // Sacred shadows
+$border-color: lighten($gray, 20%);
+$border-sacred: $luminous-gold;          // Sacred element borders
+$shadow-color: rgba($dark, 0.15);        // Subtle shadows
 
 // ----------------------------------------
 // Sacred Component Colors - Genesis mission alignment
 // ----------------------------------------
-$section-bg-primary: rgba($cosmic-deep-blue, 0.05);   // Infinite potential backgrounds
-$section-bg-secondary: rgba($ethereal-silver, 0.1);   // Bridging consciousness sections
-$section-bg-sacred: rgba($luminous-gold, 0.08);       // Human essence highlighting
+$section-bg-primary: rgba($neon-electric-blue, 0.03);  // Subtle blue tint for tech sections
+$section-bg-secondary: rgba($gray, 0.05);              // Very light gray sections
+$section-bg-sacred: rgba($luminous-gold, 0.08);        // Human essence highlighting
 $section-bg-transformation: rgba($royal-purple, 0.05); // Transcendent content areas
 
 // Sacred button states
-$btn-primary-bg: $luminous-gold;
-$btn-primary-border: $luminous-gold;
-$btn-primary-hover: $sacred-gold-dark;
-$btn-secondary-bg: $ethereal-silver;
-$btn-sacred-bg: $cosmic-deep-blue;
+$btn-primary-bg: $neon-electric-blue;
+$btn-primary-border: $neon-electric-blue;
+$btn-primary-hover: $primary-dark;
+$btn-secondary-bg: $luminous-gold;
+$btn-sacred-bg: $luminous-gold;
 
 // Sacred accent for CTAs and highlights
 $accent: $luminous-gold; // Sacred human essence accent
@@ -106,16 +107,16 @@ $consciousness-depth: 0 0.25rem 2rem rgba($cosmic-deep-blue, 0.4); // Deep consc
 // ----------------------------------------
 // Enhanced theme colors map with sacred meanings
 $theme-colors: (
-  "primary":      $cosmic-deep-blue,
+  "primary":      $neon-electric-blue,
   "secondary":    $ethereal-silver,
   "success":      $emerald-green,
   "warning":      $luminous-gold,
   "danger":       $royal-purple,    // Using purple for transformative "danger"
   "info":         $bridge-silver,
   "light":        $light,
-  "dark":         $cosmic-deep-blue,
+  "dark":         $dark,
   "sacred":       $luminous-gold,   // New sacred utility class
-  "consciousness": $cosmic-deep-blue,
+  "consciousness": $neon-electric-blue,
   "transcendent": $transcendent-white,
   "life-force":   $emerald-green,
   "transformation": $royal-purple
@@ -125,27 +126,28 @@ $theme-colors: (
 // Sacred Accessibility Colors (WCAG AAA Compliant)
 // ----------------------------------------
 // High contrast versions maintaining sacred psychology
-$cosmic-deep-blue-accessible: #000814;    // Darker for better contrast
-$luminous-gold-accessible: #CC9900;       // Darker gold for text on light backgrounds
+$neon-electric-blue-accessible: #0056B3;  // Darker blue for better contrast
+$luminous-gold-accessible: #B8860B;       // Darker gold for text on light backgrounds
 $ethereal-silver-accessible: #6C757D;     // Darker silver for readability
 $emerald-green-accessible: #28A745;       // Standard success green with sacred meaning
 $royal-purple-accessible: #5A0B8C;        // Darker purple for better contrast
+$cosmic-deep-blue-accessible: $dark;      // Legacy variable for dark text
 
 // Sacred text color combinations for accessibility
 $sacred-text-combinations: (
   "light-on-dark": (
-    "background": $cosmic-deep-blue-accessible,
+    "background": $dark,
     "text": $transcendent-white,
     "accent": $luminous-gold
   ),
   "dark-on-light": (
     "background": $transcendent-white,
-    "text": $cosmic-deep-blue-accessible,
-    "accent": $luminous-gold-accessible
+    "text": $dark,
+    "accent": $neon-electric-blue-accessible
   ),
   "sacred-emphasis": (
     "background": rgba($luminous-gold, 0.1),
-    "text": $cosmic-deep-blue-accessible,
+    "text": $dark,
     "accent": $royal-purple-accessible
   )
 );
@@ -393,7 +395,7 @@ $transcendent-white: #fff;
 }
 // Accessible border for high-contrast mode
 @mixin border-cosmic-deep-blue-accessible {
-  border: 2px solid #001f3f;
+  border: 2px solid $dark;
 }
 @mixin bg-cosmic-deep-blue {
   background-color: $cosmic-deep-blue;

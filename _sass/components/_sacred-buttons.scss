@@ -361,10 +361,13 @@
 }
 @media (prefers-contrast: high) {
 @mixin bg-cosmic-deep-blue-accessible {
-  background: #001f3f;
+  background: $dark;
+}
+@mixin bg-neon-blue-accessible {
+  background: $neon-electric-blue-accessible;
 }
 @mixin border-luminous-gold-accessible {
-  border: 2px solid #FFD700;
+  border: 2px solid $luminous-gold-accessible;
 }
   .btn-sacred {
     border-width: 3px;
@@ -376,7 +379,7 @@
   }
   
   .btn-consciousness {
-    @include bg-cosmic-deep-blue-accessible;
+    @include bg-neon-blue-accessible;
     @include border-cosmic-deep-blue-accessible;
   }
 }
