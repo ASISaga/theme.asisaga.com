@@ -7,43 +7,60 @@
 // ============================================================================
 
 // ----------------------------------------
+// ANIMATION OPACITY TOKENS
+// ----------------------------------------
+$essence-particle-shadow-opacity: 0.7;
+$essence-float-opacity: 0.85;
+$essence-flow-opacity: 0.85;
+$consciousness-expansion-opacity: 0.7;
+$essence-weave-opacity-1: 0.7;
+$essence-weave-opacity-2: 0.85;
+$essence-weave-opacity-3: 1;
+
+// ----------------------------------------
 // GENESIS PALETTE - Raw OKLCH Primitives
 // ----------------------------------------
 // These are the atomic color values - never use directly in components
 // Always map through semantic tokens below
 
-// Void & Depth Colors
-$color-void: oklch(0.15 0.03 250);              // Deep cosmic void
-$color-neural-depth: oklch(0.20 0.04 245);      // Neural network depth
-$color-quantum-dark: oklch(0.12 0.02 255);      // Quantum darkness
+// Light & White Colors (Primary backgrounds)
+$color-transcendent-white: oklch(0.99 0.005 90);  // Pure white background
+$color-light-surface: oklch(0.96 0.01 90);        // Light surface background
+$color-subtle-gray: oklch(0.93 0.01 220);         // Subtle gray for depth
 
-// Luminance & Energy Colors  
-$color-neon-pulse: oklch(0.88 0.18 95);         // Radiant neon energy
-$color-neural-violet: oklch(0.55 0.25 290);     // Neural violet consciousness
-$color-quantum-cyan: oklch(0.75 0.15 210);      // Quantum cyan glow
+// Text & Depth Colors (Profound Black shades)
+$color-profound-black: oklch(0.08 0.01 250);      // Deep profound black
+$color-text-primary: oklch(0.12 0.01 250);        // Primary profound black text
+$color-text-secondary: oklch(0.25 0.01 230);      // Secondary deep gray text
+$color-text-muted: oklch(0.45 0.01 220);          // Muted gray text
 
-// Essence Colors
-$color-essence-gold: oklch(0.85 0.16 85);       // Human essence gold
-$color-transcendent-white: oklch(0.98 0.01 90); // Pure transcendent white
-$color-bridge-silver: oklch(0.70 0.02 220);     // Bridging consciousness silver
+// Luminance & Energy Colors (Neon/Electric Blue accents)
+$color-neon-blue: oklch(0.65 0.25 230);           // Electric neon blue (primary accent)
+$color-neon-blue-bright: oklch(0.75 0.28 225);    // Bright electric blue (hover/active)
+$color-neon-blue-glow: oklch(0.70 0.30 228);      // Glowing neon blue effect
 
-// Life & Growth Colors
-$color-life-emerald: oklch(0.65 0.18 155);      // Life force emerald
-$color-growth-jade: oklch(0.60 0.15 165);       // Sustainable growth jade
+// Essence Colors (Subtle Gold accents only)
+$color-essence-gold: oklch(0.70 0.15 85);         // Subtle gold (reduced prominence)
+$color-gold-bright: oklch(0.75 0.18 82);          // Bright gold (hover)
+$color-gold-muted: oklch(0.60 0.10 88);           // Very muted gold
 
-// Transformation Colors
-$color-royal-amethyst: oklch(0.45 0.22 300);    // Royal transformation purple
-$color-sovereign-indigo: oklch(0.40 0.20 285);  // Sovereign consciousness indigo
+// Supporting Colors
+$color-bridge-silver: oklch(0.65 0.02 220);       // Neutral gray for borders
+$color-border-light: oklch(0.85 0.01 220);        // Light borders on white
+$color-border-dark: oklch(0.15 0.01 220);         // Dark borders for contrast
+
+// REMOVED: Purple and Green colors per requirements
+// No longer using purple (transformation) or green (life force) colors
 
 // ----------------------------------------
 // SEMANTIC SURFACE TOKENS
 // ----------------------------------------
 // Map raw primitives to functional surface purposes
 
-$surface-primary: $color-void;                           // Primary backgrounds
-$surface-elevated: oklch(0.18 0.03 248);                 // Elevated cards/sections
-$surface-overlay: oklch(0.16 0.03 252 / 0.95);          // Modal/overlay backgrounds
-$surface-glass: oklch(0.20 0.04 245 / 0.75);            // Glassmorphism surfaces
+$surface-primary: $color-transcendent-white;             // Primary white backgrounds
+$surface-elevated: $color-light-surface;                 // Elevated cards/sections (slight tint)
+$surface-overlay: oklch(0.98 0.005 90 / 0.95);          // Modal/overlay backgrounds
+$surface-glass: oklch(0.96 0.01 220 / 0.85);            // Glassmorphism surfaces (subtle)
 $surface-transcendent: $color-transcendent-white;        // Light mode surfaces
 
 // ----------------------------------------
@@ -51,112 +68,140 @@ $surface-transcendent: $color-transcendent-white;        // Light mode surfaces
 // ----------------------------------------
 // Map raw primitives to functional text purposes
 
-$text-primary: $color-transcendent-white;                // Primary text on dark
-$text-secondary: $color-bridge-silver;                   // Secondary/muted text
-$text-accent: $color-essence-gold;                       // Accent/emphasis text
-$text-consciousness: $color-neural-violet;               // Consciousness-related text
-$text-life-force: $color-life-emerald;                   // Growth/vitality text
-$text-transformation: $color-royal-amethyst;             // Transformation text
-$text-inverse: $color-void;                              // Text on light backgrounds
+$text-primary: $color-text-primary;                       // Profound black text on light
+$text-secondary: $color-text-secondary;                   // Deep gray text
+$text-accent: $color-neon-blue;                           // Neon blue accent text
+$text-consciousness: $color-text-primary;                 // Consciousness-related text
+$text-inverse: $color-transcendent-white;                 // White text on dark backgrounds
+$text-gold: $color-essence-gold;                          // Subtle gold text for highlights
+
+// REMOVED: Purple and Green text tokens
+// $text-life-force and $text-transformation removed per requirements
 
 // ----------------------------------------
 // SEMANTIC ACCENT TOKENS
 // ----------------------------------------
 // Map raw primitives to functional accent purposes
 
-$accent-glow: $color-neon-pulse;                         // Primary glow/highlights
-$accent-neural: $color-neural-violet;                    // Neural/AI accents
-$accent-quantum: $color-quantum-cyan;                    // Quantum/tech accents
-$accent-essence: $color-essence-gold;                    // Human essence accents
-$accent-life: $color-life-emerald;                       // Life force accents
-$accent-sovereign: $color-royal-amethyst;                // Sovereign/transform accents
+$accent-glow: $color-neon-blue;                          // Primary neon blue glow/highlights
+$accent-neural: $color-neon-blue-bright;                 // Neural/AI accents (bright blue)
+$accent-quantum: $color-neon-blue-glow;                  // Quantum/tech accents (glowing blue)
+$accent-essence: $color-essence-gold;                    // Subtle gold accents (reduced)
+
+// REMOVED: Purple and Green accents
+// $accent-life and $accent-sovereign removed per requirements
 
 // ----------------------------------------
 // SEMANTIC BORDER TOKENS
 // ----------------------------------------
-$border-primary: oklch(0.30 0.04 250);                   // Primary borders
-$border-elevated: oklch(0.35 0.05 248);                  // Elevated borders
-$border-accent: $color-essence-gold;                     // Accent borders
-$border-glow: oklch(0.85 0.16 85 / 0.3);                // Glowing borders
-$border-neural: oklch(0.55 0.25 290 / 0.4);             // Neural borders
+$border-primary: $color-border-light;                     // Primary borders (light gray)
+$border-elevated: oklch(0.75 0.02 220);                   // Elevated borders (medium gray)
+$border-accent: $color-neon-blue;                         // Neon blue accent borders
+$border-glow: oklch(0.65 0.25 230 / 0.4);                // Glowing neon blue borders
+$border-neural: oklch(0.65 0.25 230 / 0.5);              // Neural borders (blue)
+$border-gold: $color-essence-gold;                        // Subtle gold borders
+$border-dark: $color-border-dark;                         // Profound dark borders for headers/footers
 
 // ----------------------------------------
 // SEMANTIC STATE TOKENS
 // ----------------------------------------
-$state-hover-surface: oklch(0.22 0.04 246);              // Hover state surface
-$state-active-surface: oklch(0.25 0.05 244);             // Active state surface
-$state-focus-ring: oklch(0.85 0.16 85 / 0.5);           // Focus ring color
-$state-disabled-surface: oklch(0.18 0.02 250);           // Disabled surface
-$state-disabled-text: oklch(0.50 0.02 220);              // Disabled text
+$state-hover-surface: oklch(0.94 0.01 230);               // Hover state surface (light blue tint)
+$state-active-surface: oklch(0.92 0.02 230);              // Active state surface (darker blue tint)
+$state-focus-ring: oklch(0.65 0.25 230 / 0.5);           // Focus ring color (neon blue)
+$state-disabled-surface: oklch(0.96 0.005 220);           // Disabled surface (very light gray)
+$state-disabled-text: oklch(0.60 0.01 220);               // Disabled text (muted gray)
 
 // ----------------------------------------
 // SEMANTIC GRADIENT TOKENS
 // ----------------------------------------
-$gradient-consciousness: linear-gradient(135deg, $color-void 0%, $color-neural-violet 100%);
-$gradient-transcendent: linear-gradient(135deg, $color-transcendent-white 0%, $color-bridge-silver 100%);
-$gradient-essence: linear-gradient(135deg, $color-essence-gold 0%, $color-neon-pulse 100%);
-$gradient-transformation: linear-gradient(135deg, $color-royal-amethyst 0%, $color-life-emerald 100%);
-$gradient-quantum: linear-gradient(135deg, $color-quantum-cyan 0%, $color-neural-violet 100%);
+$gradient-consciousness: linear-gradient(135deg, $color-neon-blue 0%, $color-neon-blue-bright 100%);
+$gradient-transcendent: linear-gradient(135deg, $color-transcendent-white 0%, $color-light-surface 100%);
+$gradient-essence: linear-gradient(135deg, $color-neon-blue 0%, $color-neon-blue-glow 100%);
+$gradient-quantum: linear-gradient(135deg, $color-neon-blue 0%, $color-neon-blue-glow 100%);
+$gradient-profound: linear-gradient(135deg, $color-profound-black 0%, $color-text-primary 100%);
 
 // ----------------------------------------
 // SEMANTIC SHADOW TOKENS
 // ----------------------------------------
-$shadow-sm: 0 1px 3px oklch(0.15 0.03 250 / 0.12);
-$shadow-md: 0 4px 6px oklch(0.15 0.03 250 / 0.16);
-$shadow-lg: 0 10px 25px oklch(0.15 0.03 250 / 0.25);
-$shadow-xl: 0 20px 50px oklch(0.15 0.03 250 / 0.35);
-$shadow-glow-essence: 0 0 20px oklch(0.85 0.16 85 / 0.5);
-$shadow-glow-neural: 0 0 30px oklch(0.55 0.25 290 / 0.4);
-$shadow-glow-quantum: 0 0 25px oklch(0.75 0.15 210 / 0.6);
+$shadow-sm: 0 1px 3px oklch(0.08 0.01 250 / 0.20);
+$shadow-md: 0 4px 6px oklch(0.08 0.01 250 / 0.30);
+$shadow-lg: 0 10px 25px oklch(0.08 0.01 250 / 0.35);
+$shadow-xl: 0 20px 50px oklch(0.08 0.01 250 / 0.40);
+$shadow-glow-essence: 0 0 20px oklch(0.70 0.15 85 / 0.4);
+$shadow-glow-neural: 0 0 30px oklch(0.65 0.25 230 / 0.6);
+$shadow-glow-quantum: 0 0 25px oklch(0.70 0.30 228 / 0.7);
+$shadow-profound: 0 8px 32px oklch(0.05 0.01 250 / 0.5);
 
 // ----------------------------------------
 // LEGACY COMPATIBILITY LAYER
 // ----------------------------------------
 // Map new tokens to old variable names for gradual migration
-// These will be deprecated in future versions
+// Purple and Green colors REMOVED per requirements
 
-$cosmic-deep-blue: $color-void;
+$cosmic-deep-blue: $color-profound-black;          // Now maps to profound black
 $luminous-gold: $color-essence-gold;
 $transcendent-white: $color-transcendent-white;
 $ethereal-silver: $color-bridge-silver;
-$emerald-green: $color-life-emerald;
-$royal-purple: $color-royal-amethyst;
 
-$primary: $surface-primary;
+// REMOVED: $emerald-green and $royal-purple per requirements
+// Legacy purple/green variables now map to neon blue for backward compatibility
+$emerald-green: $color-neon-blue;                   // Maps to neon blue
+$life-force-green: $color-neon-blue;
+$life-force-green-dark: oklch(0.55 0.22 228);      // Darker neon blue
+$royal-purple: $color-neon-blue;                    // Maps to neon blue
+$transformation-purple: $color-neon-blue;
+$transformation-purple-dark: oklch(0.55 0.22 228);  // Darker neon blue
+
+$primary: $color-neon-blue;                         // Neon blue primary
 $secondary: $text-secondary;
 $accent: $accent-essence;
 
 // Text colors
-$text-color: $text-inverse;                              // For light backgrounds
-$text-light: $text-primary;                              // For dark backgrounds
+$text-color: $text-primary;                         // Profound black text
+$text-light: $text-inverse;                         // White text for dark backgrounds
 $text-muted: $text-secondary;
 $text-sacred: $accent-essence;
 
 // Background colors
-$bg-dark: $surface-primary;
+$bg-dark: $color-profound-black;                    // Profound black for headers/footers
 $bg-light: $surface-transcendent;
 $bg-consciousness: $surface-overlay;
 $bg-transcendent: $surface-transcendent;
 
+// Section background colors  
+$section-bg-primary: oklch(0.65 0.25 230 / 0.03);   // Subtle neon blue tint
+$section-bg-secondary: oklch(0.95 0.01 220 / 0.5);  // Light gray sections
+$section-bg-sacred: oklch(0.70 0.15 85 / 0.05);     // Subtle gold (very muted)
+
+// Dark mode variables (if needed)
+$dark-mode-bg: $color-profound-black;
+$dark-mode-text: $color-transcendent-white;
+$dark-mode-border: oklch(0.35 0.01 220);
+
 // Border colors
 $border-color: $border-primary;
-$border-sacred: $border-accent;
+$border-sacred: $border-gold;
 
 // Shadow colors
 $box-shadow: $shadow-md;
 $sacred-glow: $shadow-glow-essence;
-$consciousness-depth: $shadow-lg;
+$consciousness-depth: $shadow-profound;
 
 // Component-specific legacy mappings
 $white: $color-transcendent-white;
-$light: oklch(0.92 0.02 220);
-$dark: $color-void;
+$light: oklch(0.95 0.01 220);
+$dark: $color-profound-black;
 
 // State colors for legacy compatibility
-$primary-light: oklch(0.35 0.06 248);
-$primary-dark: oklch(0.10 0.02 252);
-$sacred-gold-light: oklch(0.90 0.14 88);
-$sacred-gold-dark: oklch(0.75 0.18 82);
+$primary-light: oklch(0.93 0.01 230);
+$primary-dark: oklch(0.05 0.01 250);
+$sacred-gold-light: oklch(0.75 0.18 82);
+$sacred-gold-dark: oklch(0.60 0.12 88);
+
+// Accessible color variants
+$cosmic-deep-blue-accessible: $color-profound-black;
+$luminous-gold-accessible: oklch(0.60 0.12 85);
+$ethereal-silver-accessible: oklch(0.55 0.01 220);
 
 // ----------------------------------------
 // BOOTSTRAP COMPATIBILITY LAYER
@@ -203,8 +248,8 @@ $container-max-widths: (
 );
 
 // Color variables needed by some components
-$gray-100: oklch(0.95 0.005 220);
-$gray-200: oklch(0.85 0.01 220);
-$gray-300: oklch(0.75 0.01 220);
-$gray-400: oklch(0.65 0.01 220);
-$gray-600: oklch(0.50 0.01 220);
+$gray-100: oklch(0.97 0.005 220);
+$gray-200: oklch(0.92 0.01 220);
+$gray-300: oklch(0.85 0.01 220);
+$gray-400: oklch(0.70 0.01 220);
+$gray-600: oklch(0.45 0.01 220);

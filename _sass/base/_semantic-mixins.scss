@@ -242,7 +242,7 @@
 }
 
 @mixin glass-glow($color: $accent-glow, $intensity: 0.15) {
-  box-shadow: 0 0 20px rgba(255, 215, 0, $intensity);
+  box-shadow: 0 0 20px oklch(0.70 0.15 85 / $intensity);
 }
 
 // ----------------------------------------
@@ -409,3 +409,267 @@
 @mixin z-index-consciousness { z-index: 100; }
 @mixin z-index-transcendent { z-index: 1000; }
 @mixin z-index-genesis { z-index: 9999; }
+
+// ----------------------------------------
+// COLOR MIXINS (from deleted _colors.scss)
+// ----------------------------------------
+
+@mixin color($color) {
+  color: $color;
+}
+
+@mixin background-color($color) {
+  background-color: $color;
+}
+
+@mixin border-color($color) {
+  border-color: $color;
+}
+
+// ----------------------------------------
+// GRADIENT MIXINS (from deleted _colors.scss)
+// ----------------------------------------
+
+@mixin bg-gradient-sacred-shimmer {
+  background: linear-gradient(90deg, oklch(0.75 0.18 82) 0%, oklch(0.70 0.15 85) 50%, oklch(0.60 0.12 88) 100%);
+}
+
+@mixin bg-gradient-consciousness-accent {
+  background: linear-gradient(135deg, oklch(0.08 0.01 250) 0%, oklch(0.70 0.15 85) 100%);
+}
+
+@mixin bg-gradient-genesis-subtle {
+  background: linear-gradient(135deg, oklch(0.70 0.15 85) 0%, oklch(0.75 0.18 82) 100%);
+}
+
+@mixin gradient-consciousness {
+  background: linear-gradient(135deg, oklch(0.08 0.01 250) 0%, oklch(0.70 0.15 85) 100%);
+}
+
+@mixin bg-gradient-primary-light {
+  background: linear-gradient(135deg, oklch(0.65 0.25 230) 0%, oklch(0.75 0.28 225) 100%);
+}
+
+// ----------------------------------------
+// TEXT COLOR MIXINS (from deleted _colors.scss)
+// ----------------------------------------
+
+@mixin text-cosmic-deep-blue {
+  color: oklch(0.08 0.01 250);
+}
+
+@mixin text-sacred {
+  color: oklch(0.70 0.15 85);
+}
+
+@mixin text-consciousness {
+  color: oklch(0.65 0.25 230);
+}
+
+@mixin text-transcendent {
+  color: oklch(0.99 0.005 90);
+}
+
+@mixin text-transcendent-white {
+  color: oklch(0.99 0.005 90);
+}
+
+@mixin text-bridge {
+  color: oklch(0.65 0.02 220);
+}
+
+@mixin text-life-force {
+  color: oklch(0.65 0.25 230);
+}
+
+@mixin text-transformation {
+  color: oklch(0.65 0.25 230);
+}
+
+@mixin text-primary {
+  color: oklch(0.12 0.01 250);
+}
+
+@mixin text-secondary {
+  color: oklch(0.25 0.01 230);
+}
+
+@mixin text-muted {
+  color: oklch(0.45 0.01 220);
+}
+
+// ----------------------------------------
+// BACKGROUND COLOR MIXINS
+// ----------------------------------------
+
+@mixin bg-sacred-gold-dark {
+  background-color: oklch(0.60 0.12 88);
+}
+
+@mixin bg-luminous-gold {
+  background-color: oklch(0.70 0.15 85);
+}
+
+@mixin bg-sacred {
+  background-color: oklch(0.70 0.15 85 / 0.1);
+}
+
+@mixin bg-consciousness {
+  background-color: oklch(0.65 0.25 230 / 0.05);
+}
+
+@mixin bg-transcendent {
+  background-color: oklch(0.99 0.005 90);
+}
+
+@mixin bg-transcendent-white {
+  background-color: oklch(0.99 0.005 90);
+}
+
+@mixin bg-transcendent-white-subtle {
+  background-color: oklch(0.96 0.01 90);
+}
+
+@mixin bg-primary {
+  background-color: oklch(0.65 0.25 230);
+}
+
+@mixin bg-secondary {
+  background-color: oklch(0.25 0.01 230);
+}
+
+@mixin bg-light {
+  background-color: oklch(0.95 0.01 220);
+}
+
+@mixin bg-dark {
+  background-color: oklch(0.08 0.01 250);
+}
+
+// ----------------------------------------
+// BORDER COLOR MIXINS
+// ----------------------------------------
+
+@mixin border-sacred-gold-dark {
+  border-color: oklch(0.60 0.12 88);
+}
+
+@mixin border-luminous-gold {
+  border-color: oklch(0.70 0.15 85);
+}
+
+@mixin border-sacred {
+  border-color: oklch(0.70 0.15 85);
+}
+
+@mixin border-primary {
+  border-color: oklch(0.65 0.25 230);
+}
+
+@mixin border-primary-dark {
+  border-color: oklch(0.55 0.22 228);
+}
+
+@mixin border-secondary {
+  border-color: oklch(0.25 0.01 230);
+}
+
+@mixin border-luminous-gold-medium {
+  border-color: oklch(0.70 0.15 85);
+}
+
+@mixin border-left-primary($width: 2px) {
+  border-left: $width solid oklch(0.65 0.25 230);
+}
+
+@mixin border-bottom-transcendent-white($width: 2px) {
+  border-bottom: $width solid oklch(0.99 0.005 90);
+}
+
+// ----------------------------------------
+// ADDITIONAL GRADIENT MIXINS
+// ----------------------------------------
+
+@mixin gradient-transcendent {
+  background: linear-gradient(135deg, oklch(0.99 0.005 90) 0%, oklch(0.96 0.01 90) 100%);
+}
+
+@mixin gradient-sacred {
+  background: linear-gradient(135deg, oklch(0.70 0.15 85) 0%, oklch(0.75 0.18 82) 100%);
+}
+
+@mixin bg-gradient-primary-dark {
+  background: linear-gradient(135deg, oklch(0.55 0.22 228) 0%, oklch(0.65 0.25 230) 100%);
+}
+
+// ----------------------------------------
+// SHADOW MIXINS (from deleted _colors.scss)
+// ----------------------------------------
+
+@mixin shadow-sacred-glow {
+  box-shadow: 0 0 0.5rem oklch(0.70 0.15 85 / 0.3);
+}
+
+@mixin shadow-sacred {
+  box-shadow: 0 0 0.5rem oklch(0.70 0.15 85 / 0.3);
+}
+
+@mixin shadow-consciousness {
+  box-shadow: 0 0.25rem 2rem oklch(0.08 0.01 250 / 0.4);
+}
+
+@mixin shadow-focus-luminous-gold {
+  box-shadow: 0 0 0 0.2rem oklch(0.70 0.15 85 / 0.5);
+}
+
+@mixin bg-cosmic-deep-blue {
+  background-color: oklch(0.08 0.01 250);
+}
+
+// ----------------------------------------
+// ADDITIONAL MIXINS (from deleted _colors.scss)
+// ----------------------------------------
+
+@mixin border-cosmic-deep-blue($width) {
+  border: $width solid oklch(0.08 0.01 250);
+}
+
+@mixin border-cosmic-deep-blue-accessible {
+  border: 2px solid oklch(0.08 0.01 250);
+}
+
+@mixin shadow-focus-cosmic-deep-blue {
+  box-shadow: 0 0 0 0.2rem oklch(0.08 0.01 250 / 0.5);
+}
+
+@mixin shadow-soft-luminous-gold {
+  box-shadow: 0 2px 8px 0 oklch(0.70 0.15 85 / 0.15);
+}
+
+@mixin bg-luminous-gold-light {
+  background-color: oklch(0.75 0.18 82);
+}
+
+@mixin shadow-glow-life-force-green {
+  box-shadow: 0 0 8px 2px oklch(0.65 0.25 230 / 0.4);
+}
+
+@mixin shadow-focus-life-force-green {
+  box-shadow: 0 0 0 0.2rem oklch(0.65 0.25 230 / 0.5);
+}
+
+@mixin bg-life-force-green-dark {
+  background-color: oklch(0.55 0.22 228);
+}
+
+@mixin gradient-transformation {
+  background: linear-gradient(135deg, oklch(0.65 0.25 230) 0%, oklch(0.65 0.25 230) 100%);
+}
+
+@mixin bg-primary-dark {
+  background-color: oklch(0.55 0.22 228);
+}
+
+@mixin shadow-consciousness-depth {
+  box-shadow: 0 0.25rem 2rem oklch(0.08 0.01 250 / 0.4);
+}

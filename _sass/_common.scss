@@ -36,9 +36,9 @@
 // Import early to make ontological API available throughout the system
 @import "ontology/index";          // Semantic SCSS engine (tokens, engines, interface)
 
-// Legacy color system (for gradual migration) - DEPRECATED
+// Legacy system (for gradual migration) - DEPRECATED
 // Note: These will be removed in v3.0
-@import "base/colors";
+// REMOVED: @import "base/colors"; - Purged legacy hex colors per requirements
 @import "base/dimensions";
 @import "base/variables";
 @import "base/mixins";

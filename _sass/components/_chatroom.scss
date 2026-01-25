@@ -206,7 +206,7 @@
     border-radius: 1rem;
     background-color: var(--bs-white, #fff);
     word-wrap: break-word;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 2px oklch(0.08 0.01 250 / 0.05);
   }
 
   &-sent &-text {
@@ -266,7 +266,7 @@
 
     &:focus-within {
       border-color: var(--bs-primary, #0d6efd);
-      box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+      box-shadow: 0 0 0 0.25rem oklch(0.65 0.25 230 / 0.25);
     }
   }
 
@@ -412,7 +412,7 @@
 .chatroom-loading-overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: oklch(0.99 0.005 90 / 0.9);
   display: flex;
   align-items: center;
   justify-content: center;

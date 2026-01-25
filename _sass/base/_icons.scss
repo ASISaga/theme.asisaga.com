@@ -151,7 +151,7 @@ $icon-size-small: 2rem;
   
   &:hover {
     color: $sacred-gold-dark;
-    filter: drop-shadow(0 0 8px rgba($luminous-gold, 0.5));
+    filter: drop-shadow(0 0 8px oklch(0.70 0.15 85 / 0.5));
   }
 }
 
@@ -160,7 +160,7 @@ $icon-size-small: 2rem;
   
   &:hover {
     color: $primary-light;
-    filter: drop-shadow(0 0 8px rgba($cosmic-deep-blue, 0.3));
+    filter: drop-shadow(0 0 8px oklch(0.08 0.01 250 / 0.3));
   }
 }
 

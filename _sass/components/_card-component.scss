@@ -44,7 +44,7 @@
 }
 
 // Card with featured/highlighted style
-@mixin featured-card-component($prefix: 'card', $bg-color: rgba($primary, 0.05)) {
+@mixin featured-card-component($prefix: 'card', $bg-color: oklch(0.65 0.25 230 / 0.05)) {
   @include card-component($prefix);
   
   .#{$prefix} {
