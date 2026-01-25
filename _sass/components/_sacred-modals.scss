@@ -17,7 +17,7 @@
     @include genesis-entity('primary');
     border: none;
     border-radius: 1rem;
-    background: rgba($transcendent-white, 0.98);
+    background: oklch(0.99 0.005 90 / 0.98);
     position: relative;
     
     &::before {
@@ -36,7 +36,7 @@
   }
   
   .modal-header {
-    border-bottom: 1px solid rgba($luminous-gold, 0.2);
+    border-bottom: 1px solid oklch(0.70 0.15 85 / 0.2);
     padding: 1.5rem;
     
     .modal-title {
@@ -64,7 +64,7 @@
   }
   
   .modal-footer {
-    border-top: 1px solid rgba($luminous-gold, 0.2);
+    border-top: 1px solid oklch(0.70 0.15 85 / 0.2);
     padding: 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -85,8 +85,8 @@
   .modal-content {
     @include genesis-atmosphere('vibrant');
     background: linear-gradient(135deg, 
-      rgba($cosmic-deep-blue, 0.95) 0%, 
-      rgba($royal-purple, 0.9) 100%);
+      oklch(0.08 0.01 250 / 0.95) 0%, 
+      oklch(0.65 0.25 230 / 0.9) 100%);
     color: $transcendent-white;
   }
 }

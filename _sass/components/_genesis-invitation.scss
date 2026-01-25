@@ -36,11 +36,11 @@
       width: 100%;
       height: 100%;
       background-image: 
-        radial-gradient(2px 2px at 20px 30px, rgba($luminous-gold, 0.4), transparent),
-        radial-gradient(2px 2px at 40px 70px, rgba($ethereal-silver, 0.3), transparent),
-        radial-gradient(1px 1px at 90px 40px, rgba($transformation-purple, 0.5), transparent),
-        radial-gradient(1px 1px at 130px 80px, rgba($border-color, 0.3), transparent),
-        radial-gradient(2px 2px at 160px 30px, rgba($luminous-gold, 0.2), transparent);
+        radial-gradient(2px 2px at 20px 30px, oklch(0.70 0.15 85 / 0.4), transparent),
+        radial-gradient(2px 2px at 40px 70px, oklch(0.65 0.02 220 / 0.3), transparent),
+        radial-gradient(1px 1px at 90px 40px, oklch(0.65 0.25 230 / 0.5), transparent),
+        radial-gradient(1px 1px at 130px 80px, oklch(0.85 0.01 220 / 0.3), transparent),
+        radial-gradient(2px 2px at 160px 30px, oklch(0.70 0.15 85 / 0.2), transparent);
       background-repeat: repeat;
       background-size: 200px 200px, 250px 250px, 150px 150px, 300px 300px, 180px 180px;
       animation: starfieldDrift 80s linear infinite;
@@ -68,9 +68,9 @@
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(circle at 25% 25%, rgba($luminous-gold, 0.3) 1px, transparent 1px),
-      radial-gradient(circle at 75% 75%, rgba($ethereal-silver, 0.2) 1px, transparent 1px),
-      radial-gradient(circle at 50% 10%, rgba($transformation-purple, 0.25) 1px, transparent 1px);
+      radial-gradient(circle at 25% 25%, oklch(0.70 0.15 85 / 0.3) 1px, transparent 1px),
+      radial-gradient(circle at 75% 75%, oklch(0.65 0.02 220 / 0.2) 1px, transparent 1px),
+      radial-gradient(circle at 50% 10%, oklch(0.65 0.25 230 / 0.25) 1px, transparent 1px);
     background-size: 100px 100px, 150px 150px, 200px 200px;
     animation: cosmicRotation 120s linear infinite;
   }
@@ -84,7 +84,7 @@
     background: linear-gradient(
       45deg,
       transparent 40%,
-      rgba($border-color, 0.1) 50%,
+      oklch(0.85 0.01 220 / 0.1) 50%,
       transparent 60%
     );
     animation: consciousnessWaveFlow 25s ease-in-out infinite alternate;
@@ -99,9 +99,9 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba($luminous-gold, 0.1) 25%,
-      rgba($transformation-purple, 0.15) 50%,
-      rgba($border-color, 0.1) 75%,
+      oklch(0.70 0.15 85 / 0.1) 25%,
+      oklch(0.65 0.25 230 / 0.15) 50%,
+      oklch(0.85 0.01 220 / 0.1) 75%,
       transparent 100%
     );
     border-radius: 50%;
@@ -124,11 +124,11 @@
     color: $luminous-gold;
     background: radial-gradient(
       circle,
-      rgba($luminous-gold, 0.2) 0%,
-      rgba($transformation-purple, 0.1) 50%,
+      oklch(0.70 0.15 85 / 0.2) 0%,
+      oklch(0.65 0.25 230 / 0.1) 50%,
       transparent 100%
     );
-    border: 2px solid rgba($luminous-gold, 0.4);
+    border: 2px solid oklch(0.70 0.15 85 / 0.4);
     position: relative;
     z-index: 3;
     animation: coreRotation 20s linear infinite;
@@ -143,7 +143,7 @@
     .ring {
       position: absolute;
       border-radius: 50%;
-      border: 1px solid rgba($luminous-gold, 0.3);
+      border: 1px solid oklch(0.70 0.15 85 / 0.3);
       animation-timing-function: ease-in-out;
       animation-iteration-count: infinite;
       
@@ -161,7 +161,7 @@
         top: -2rem;
         left: -2rem;
         animation: ringPulse2 6s infinite;
-        border-color: rgba($transformation-purple, 0.2);
+        border-color: oklch(0.65 0.25 230 / 0.2);
       }
       
       &.ring-3 {
@@ -170,7 +170,7 @@
         top: -3rem;
         left: -3rem;
         animation: ringPulse3 8s infinite;
-        border-color: rgba($border-color, 0.15);
+        border-color: oklch(0.85 0.01 220 / 0.15);
       }
     }
   }
@@ -204,14 +204,14 @@
 
 .genesis-invitation-description {
   @include body-text-large;
-  color: rgba($ethereal-silver, 0.95);
+  color: oklch(0.65 0.02 220 / 0.95);
   margin-bottom: $spacing-4xl;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
   line-height: $line-height-transcendent;
   font-weight: $font-weight-normal;
-  /* text-shadow: 0 1px 3px rgba($cosmic-deep-blue, 0.5); */ /* Removed for accessibility - can interfere with text readability */
+  /* text-shadow: 0 1px 3px oklch(0.08 0.01 250 / 0.5); */ /* Removed for accessibility - can interfere with text readability */
 }
 
 // Genesis Actions
@@ -241,13 +241,13 @@
     
     &.transcendent-glow-btn {
       box-shadow: 
-        0 8px 32px rgba($luminous-gold, 0.3),
-        0 0 20px rgba($luminous-gold, 0.2);
+        0 8px 32px oklch(0.70 0.15 85 / 0.3),
+        0 0 20px oklch(0.70 0.15 85 / 0.2);
       
       &:hover {
         box-shadow: 
-          0 12px 40px rgba($luminous-gold, 0.4),
-          0 0 30px rgba($luminous-gold, 0.3);
+          0 12px 40px oklch(0.70 0.15 85 / 0.4),
+          0 0 30px oklch(0.70 0.15 85 / 0.3);
         transform: translateY(-3px) scale(1.02);
       }
       
@@ -267,7 +267,7 @@
           background: linear-gradient(
             90deg,
             transparent,
-            rgba($transcendent-white, 0.4),
+            oklch(0.99 0.005 90 / 0.4),
             transparent
           );
           animation: energyFlow 3s ease-in-out infinite;
@@ -322,7 +322,7 @@
       flex: 1;
       height: 2px;
       position: relative;
-      background: rgba($ethereal-silver, 0.2);
+      background: oklch(0.65 0.02 220 / 0.2);
       border-radius: 1px;
       
       &::before {
@@ -403,12 +403,12 @@
   .consciousness-field {
     width: 100%;
     height: 100%;
-    border: 2px solid rgba($luminous-gold, 0.4);
+    border: 2px solid oklch(0.70 0.15 85 / 0.4);
     border-radius: 50%;
     background: radial-gradient(
       circle,
-      rgba($luminous-gold, 0.1),
-      rgba($transformation-purple, 0.05),
+      oklch(0.70 0.15 85 / 0.1),
+      oklch(0.65 0.25 230 / 0.05),
       transparent
     );
     animation: consciousnessFieldPulse 3s ease-in-out infinite;
@@ -419,7 +419,7 @@
 .transcendent-community {
   .community-text {
     @include body-text;
-    color: rgba($ethereal-silver, 0.8);
+    color: oklch(0.65 0.02 220 / 0.8);
     margin-bottom: $spacing-lg;
     
     .community-count {
@@ -427,7 +427,7 @@
         color: $luminous-gold;
         font-weight: $font-weight-bold;
         font-size: $font-size-lg;
-        /* text-shadow: 0 0 10px rgba($luminous-gold, 0.5); */ /* Removed for accessibility - can interfere with text readability */
+        /* text-shadow: 0 0 10px oklch(0.70 0.15 85 / 0.5); */ /* Removed for accessibility - can interfere with text readability */
       }
     }
   }
@@ -509,11 +509,11 @@
 @keyframes consciousnessFieldPulse {
   0%, 100% { 
     transform: scale(1); 
-    border-color: rgba($luminous-gold, 0.4); 
+    border-color: oklch(0.70 0.15 85 / 0.4); 
   }
   50% { 
     transform: scale(1.1); 
-    border-color: rgba($luminous-gold, 0.7); 
+    border-color: oklch(0.70 0.15 85 / 0.7); 
   }
 }
 
@@ -639,13 +639,13 @@
   padding: $spacing-lg $spacing-3xl;
   min-width: 220px;
   box-shadow: 
-    0 8px 32px rgba($luminous-gold, 0.3),
-    0 0 20px rgba($luminous-gold, 0.2);
+    0 8px 32px oklch(0.70 0.15 85 / 0.3),
+    0 0 20px oklch(0.70 0.15 85 / 0.2);
   
   &:hover {
     box-shadow: 
-      0 12px 40px rgba($luminous-gold, 0.4),
-      0 0 30px rgba($luminous-gold, 0.3);
+      0 12px 40px oklch(0.70 0.15 85 / 0.4),
+      0 0 30px oklch(0.70 0.15 85 / 0.3);
     transform: translateY(-3px) scale(1.02);
   }
 }

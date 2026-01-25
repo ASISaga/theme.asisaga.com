@@ -12,11 +12,11 @@
   position: relative;
   background: linear-gradient(
     135deg,
-    rgba($cosmic-deep-blue, 0.95) 0%,
-  rgba(darken($transformation-purple, 10%), 0.9) 30%,
-    rgba($transformation-purple, 0.9) 50%,
-  rgba(darken($transformation-purple, 10%), 0.9) 70%,
-    rgba($cosmic-deep-blue, 0.95) 100%
+    oklch(0.08 0.01 250 / 0.95) 0%,
+  oklch(0.55 0.22 228 / 0.9) 30%,
+    oklch(0.65 0.25 230 / 0.9) 50%,
+  oklch(0.55 0.22 228 / 0.9) 70%,
+    oklch(0.08 0.01 250 / 0.95) 100%
   );
   overflow: hidden;
   
@@ -29,9 +29,9 @@
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(circle at 20% 20%, rgba($luminous-gold, 0.1) 1px, transparent 1px),
-      radial-gradient(circle at 80% 80%, rgba($border-color, 0.08) 1px, transparent 1px),
-      radial-gradient(circle at 40% 60%, rgba($transformation-purple, 0.06) 1px, transparent 1px);
+      radial-gradient(circle at 20% 20%, oklch(0.70 0.15 85 / 0.1) 1px, transparent 1px),
+      radial-gradient(circle at 80% 80%, oklch(0.85 0.01 220 / 0.08) 1px, transparent 1px),
+      radial-gradient(circle at 40% 60%, oklch(0.65 0.25 230 / 0.06) 1px, transparent 1px);
     background-size: 50px 50px, 80px 80px, 120px 120px;
     animation: thresholdPattern 40s linear infinite;
     opacity: 0.9 /* Increased for accessibility */;
@@ -92,7 +92,7 @@
     background: linear-gradient(
       to right,
       $luminous-gold,
-      rgba($luminous-gold, 0.5),
+      oklch(0.70 0.15 85 / 0.5),
       transparent
     );
     
@@ -104,18 +104,18 @@
   
   // Consciousness pulse on hover
   &:hover {
-    /* text-shadow: 0 0 20px rgba($luminous-gold, 0.6); */ /* Removed for accessibility - can interfere with text readability */
+    /* text-shadow: 0 0 20px oklch(0.70 0.15 85 / 0.6); */ /* Removed for accessibility - can interfere with text readability */
   }
 }
 
 .threshold-description {
   @include body-text-large;
-  color: rgba($transcendent-white, 0.95);
+  color: oklch(0.99 0.005 90 / 0.95);
   line-height: $line-height-transcendent;
   font-weight: $font-weight-normal;
   
   // Enhanced readability with subtle glow
-  /* text-shadow: 0 1px 2px rgba($cosmic-deep-blue, 0.5); */ /* Removed for accessibility - can interfere with text readability */
+  /* text-shadow: 0 1px 2px oklch(0.08 0.01 250 / 0.5); */ /* Removed for accessibility - can interfere with text readability */
 }
 
 .threshold-cta {
@@ -185,9 +185,9 @@
     @include size(140px);
     background: radial-gradient(
       circle,
-      rgba($border-color, 0.8) 0%,
-      rgba($border-color, 0.4) 50%,
-      rgba($border-color, 0.1) 100%
+      oklch(0.85 0.01 220 / 0.8) 0%,
+      oklch(0.85 0.01 220 / 0.4) 50%,
+      oklch(0.85 0.01 220 / 0.1) 100%
     );
     top: 15%;
     left: 5%;
@@ -203,9 +203,9 @@
       background: $border-color;
       border-radius: 50%;
       box-shadow: 
-        20px 30px 0 -2px rgba($border-color, 0.6),
-        40px 10px 0 -3px rgba($border-color, 0.4),
-        60px 40px 0 -1px rgba($border-color, 0.5);
+        20px 30px 0 -2px oklch(0.85 0.01 220 / 0.6),
+        40px 10px 0 -3px oklch(0.85 0.01 220 / 0.4),
+        60px 40px 0 -1px oklch(0.85 0.01 220 / 0.5);
       animation: essenceParticles 4s ease-in-out infinite;
     }
   }
@@ -215,9 +215,9 @@
     @include size(220px);
     background: radial-gradient(
       circle,
-      rgba($transformation-purple, 0.6) 0%,
-      rgba($transformation-purple, 0.3) 40%,
-      rgba($transformation-purple, 0.08) 80%,
+      oklch(0.65 0.25 230 / 0.6) 0%,
+      oklch(0.65 0.25 230 / 0.3) 40%,
+      oklch(0.65 0.25 230 / 0.08) 80%,
       transparent 100%
     );
     top: 25%;
@@ -232,7 +232,7 @@
       left: 30%;
       @include width(40%);
       @include height(40%);
-      border: 2px solid rgba($transformation-purple, 0.4);
+      border: 2px solid oklch(0.65 0.25 230 / 0.4);
       border-radius: 50%;
       animation: consciousnessRings 8s linear infinite;
     }
@@ -244,7 +244,7 @@
       left: 20%;
       @include width(60%);
       @include height(60%);
-      border: 1px solid rgba($transformation-purple, 0.2);
+      border: 1px solid oklch(0.65 0.25 230 / 0.2);
       border-radius: 50%;
       animation: consciousnessRings 12s linear infinite reverse;
     }
@@ -255,9 +255,9 @@
     @include size(100px);
     background: radial-gradient(
       circle,
-      rgba($luminous-gold, 0.9) 0%,
-      rgba($luminous-gold, 0.6) 30%,
-      rgba($luminous-gold, 0.2) 70%,
+      oklch(0.70 0.15 85 / 0.9) 0%,
+      oklch(0.70 0.15 85 / 0.6) 30%,
+      oklch(0.70 0.15 85 / 0.2) 70%,
       transparent 100%
     );
     top: 50%;
@@ -276,7 +276,7 @@
       font-size: $font-size-3xl;
       color: $cosmic-deep-blue;
       font-weight: $font-weight-bold;
-      /* text-shadow: 0 0 10px rgba($luminous-gold, 0.8); */ /* Removed for accessibility - can interfere with text readability */
+      /* text-shadow: 0 0 10px oklch(0.70 0.15 85 / 0.8); */ /* Removed for accessibility - can interfere with text readability */
       animation: infinitySymbol 10s ease-in-out infinite;
     }
     
@@ -289,7 +289,7 @@
       @include width(200%);
       @include height(200%);
       transform: translate(-50%, -50%);
-      border: 1px solid rgba($luminous-gold, 0.3);
+      border: 1px solid oklch(0.70 0.15 85 / 0.3);
       border-radius: 50%;
       animation: energyWaves 3s ease-out infinite;
     }
@@ -321,7 +321,7 @@
   
   .section-subtitle {
     @include body-text-large;
-    color: rgba($ethereal-silver, 0.9);
+    color: oklch(0.65 0.02 220 / 0.9);
     @include max-width(700px);
     margin: 0 auto;
     font-style: italic;
@@ -422,11 +422,11 @@
 @keyframes diamondGlow {
   0%, 100% { 
     opacity: 0.9 /* Increased for accessibility */; 
-    filter: drop-shadow(0 0 5px rgba($luminous-gold, 0.5)); 
+    filter: drop-shadow(0 0 5px oklch(0.70 0.15 85 / 0.5)); 
   }
   50% { 
     opacity: 1; 
-    filter: drop-shadow(0 0 15px rgba($luminous-gold, 0.8)); 
+    filter: drop-shadow(0 0 15px oklch(0.70 0.15 85 / 0.8)); 
   }
 }
 

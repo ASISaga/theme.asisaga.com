@@ -16,7 +16,7 @@
   
   &:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px oklch(0.08 0.01 250 / 0.2);
     
     .interactive-module-overlay {
       opacity: 1;
@@ -55,7 +55,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+    background: linear-gradient(to bottom, oklch(0.08 0.01 250 / 0.3) 0%, oklch(0.08 0.01 250 / 0.8) 100%);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -68,7 +68,7 @@
       @include genesis-cognition('axiom');
       font-size: 1.5rem;
       margin-bottom: $spacing-md;
-      /* text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); */ /* Removed for accessibility - can interfere with text readability */
+      /* text-shadow: 0 2px 4px oklch(0.08 0.01 250 / 0.5); */ /* Removed for accessibility - can interfere with text readability */
     }
     
     .interactive-module-quote {
@@ -115,7 +115,7 @@
   background-color: $light;
   border: none;
   border-radius: $border-radius;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 35px oklch(0.08 0.01 250 / 0.2);
   
   .modal-header {
     border-bottom: 1px solid $border-color;

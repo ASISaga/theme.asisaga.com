@@ -7,13 +7,13 @@
 // Sacred Primary Navigation
 // ----------------------------------------
 .sacred-navbar {
-  background: rgba($transcendent-white, 0.95);
+  background: oklch(0.99 0.005 90 / 0.95);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba($luminous-gold, 0.2);
+  border-bottom: 1px solid oklch(0.70 0.15 85 / 0.2);
   transition: all 0.3s ease;
   
   &.scrolled {
-    background: rgba($cosmic-deep-blue, 0.95);
+    background: oklch(0.08 0.01 250 / 0.95);
     
     .navbar-brand,
     .nav-link {
@@ -74,7 +74,7 @@
   
   &:hover {
     color: $luminous-gold;
-    background: rgba($luminous-gold, 0.1);
+    background: oklch(0.70 0.15 85 / 0.1);
     transform: translateY(-2px);
     
     &::after {
@@ -100,8 +100,8 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background: rgba($transcendent-white, 0.98);
-    border: 1px solid rgba($luminous-gold, 0.2);
+    background: oklch(0.99 0.005 90 / 0.98);
+    border: 1px solid oklch(0.70 0.15 85 / 0.2);
     border-radius: 0.75rem;
     box-shadow: $consciousness-depth;
     padding: 1rem 0;
@@ -129,7 +129,7 @@
   transition: all 0.3s ease;
   
   &:hover {
-    background: rgba($luminous-gold, 0.1);
+    background: oklch(0.70 0.15 85 / 0.1);
     color: $luminous-gold;
     transform: translateX(5px);
   }
@@ -177,8 +177,8 @@
 // ----------------------------------------
 .sacred-sidenav {
   width: 280px;
-  background: rgba($transcendent-white, 0.98);
-  border-right: 1px solid rgba($luminous-gold, 0.2);
+  background: oklch(0.99 0.005 90 / 0.98);
+  border-right: 1px solid oklch(0.70 0.15 85 / 0.2);
   padding: 2rem 0;
   height: 100vh;
   position: fixed;
@@ -194,7 +194,7 @@
   
   .sidenav-header {
     padding: 0 1.5rem 1.5rem;
-    border-bottom: 1px solid rgba($luminous-gold, 0.1);
+    border-bottom: 1px solid oklch(0.70 0.15 85 / 0.1);
     margin-bottom: 1rem;
     
     h3 {
@@ -238,7 +238,7 @@
     }
     
     &:hover {
-      background: rgba($luminous-gold, 0.1);
+      background: oklch(0.70 0.15 85 / 0.1);
       color: $luminous-gold;
       transform: translateX(5px);
       
@@ -248,7 +248,7 @@
     }
     
     &.active {
-      background: rgba($luminous-gold, 0.15);
+      background: oklch(0.70 0.15 85 / 0.15);
       color: $luminous-gold;
       font-weight: $font-weight-semibold;
       
@@ -398,7 +398,7 @@
     visibility: visible;
     box-shadow: none;
     border: none;
-    background: rgba($luminous-gold, 0.05);
+    background: oklch(0.70 0.15 85 / 0.05);
     margin-top: 0.5rem;
   }
 }

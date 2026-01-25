@@ -33,7 +33,7 @@
 }
 
 // Gradient hero component
-@mixin gradient-hero-component($prefix: 'hero', $start-color: rgba($primary, 0.1), $end-color: rgba($white, 1)) {
+@mixin gradient-hero-component($prefix: 'hero', $start-color: oklch(0.65 0.25 230 / 0.1), $end-color: oklch(0.99 0.005 90 / 1)) {
   @include hero-component($prefix);
   
   .#{$prefix} {

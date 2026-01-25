@@ -201,7 +201,7 @@
   display: inline-flex;
   border-radius: 0.75rem;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba($cosmic-deep-blue, 0.15);
+  box-shadow: 0 4px 12px oklch(0.08 0.01 250 / 0.15);
   
   .btn-sacred {
     border-radius: 0;
@@ -218,7 +218,7 @@
     }
     
     &:not(:last-child) {
-      border-right: 1px solid rgba($transcendent-white, 0.2);
+      border-right: 1px solid oklch(0.99 0.005 90 / 0.2);
     }
   }
 }
@@ -315,7 +315,7 @@
     height: 200%;
     background: linear-gradient(45deg, 
       transparent 30%, 
-      rgba($transcendent-white, 0.3) 50%, 
+      oklch(0.99 0.005 90 / 0.3) 50%, 
       transparent 70%);
     transform: rotate(45deg);
     transition: all 0.6s ease;
@@ -324,7 +324,7 @@
   
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba($luminous-gold, 0.4);
+    box-shadow: 0 10px 30px oklch(0.70 0.15 85 / 0.4);
     
     &::before {
       opacity: 1;
