@@ -196,7 +196,7 @@
   overflow: hidden;
   
   &:focus {
-    outline: 2px solid rgba($luminous-gold, 0.5);
+    outline: 2px solid oklch(0.70 0.15 85 / 0.5);
     outline-offset: 2px;
   }
 }
@@ -214,7 +214,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba($transcendent-white, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, oklch(0.99 0.005 90 / 0.2), transparent);
     transition: left 0.6s ease;
   }
   
@@ -240,7 +240,7 @@
   border: 2px solid $luminous-gold;
   
   &:hover {
-    background: rgba($luminous-gold, 0.1);
+    background: oklch(0.70 0.15 85 / 0.1);
     transform: translateY(-1px);
   }
 }
@@ -254,10 +254,10 @@
   
   @keyframes consciousnessPulse {
     0%, 100% {
-      box-shadow: 0 0 20px rgba($luminous-gold, 0.3);
+      box-shadow: 0 0 20px oklch(0.70 0.15 85 / 0.3);
     }
     50% {
-      box-shadow: 0 0 40px rgba($luminous-gold, 0.6);
+      box-shadow: 0 0 40px oklch(0.70 0.15 85 / 0.6);
     }
   }
 }
@@ -265,9 +265,9 @@
 // Card & Component Mixins - Consciousness Containers
 
 @mixin transcendent-card() {
-  background: rgba($cosmic-deep-blue, 0.8);
+  background: oklch(0.08 0.01 250 / 0.8);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba($luminous-gold, 0.2);
+  border: 1px solid oklch(0.70 0.15 85 / 0.2);
   border-radius: $card-border-radius;
   box-shadow: $card-shadow;
   transition: $transition-consciousness;
@@ -296,9 +296,9 @@
   position: relative;
   background: linear-gradient(
     135deg,
-    rgba($cosmic-deep-blue, 0.95),
-    rgba($transformation-purple, 0.9),
-    rgba($cosmic-deep-blue, 0.95)
+    oklch(0.08 0.01 250 / 0.95),
+    oklch(0.65 0.25 230 / 0.9),
+    oklch(0.08 0.01 250 / 0.95)
   );
   
   &::before {
@@ -381,7 +381,7 @@
 
 @mixin icon-transcendent() {
   @include icon-large;
-  background: radial-gradient(circle, rgba($luminous-gold, 0.2), transparent);
+  background: radial-gradient(circle, oklch(0.70 0.15 85 / 0.2), transparent);
   border-radius: $border-radius-infinite;
   color: $luminous-gold;
 }
@@ -504,9 +504,9 @@
 
 @mixin consciousness-network-bg() {
   background-image: 
-    radial-gradient(circle at 20% 30%, rgba($luminous-gold, 0.1) 1px, transparent 1px),
-    radial-gradient(circle at 80% 70%, rgba($transformation-purple, 0.1) 1px, transparent 1px),
-    radial-gradient(circle at 40% 80%, rgba($border-color, 0.1) 1px, transparent 1px);
+    radial-gradient(circle at 20% 30%, oklch(0.70 0.15 85 / 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, oklch(0.65 0.25 230 / 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 40% 80%, oklch(0.85 0.01 220 / 0.1) 1px, transparent 1px);
   background-size: 100px 100px, 150px 150px, 200px 200px;
   animation: networkFlow 30s linear infinite;
   
@@ -588,9 +588,9 @@
 }
 
 @mixin consciousness-card {
-  background: rgba($cosmic-deep-blue, 0.8);
+  background: oklch(0.08 0.01 250 / 0.8);
   backdrop-filter: blur(15px);
-  border: 1px solid rgba($luminous-gold, 0.2);
+  border: 1px solid oklch(0.70 0.15 85 / 0.2);
   border-radius: $border-radius-consciousness;
   box-shadow: $shadow-consciousness;
   padding: $spacing-xl;
@@ -620,7 +620,7 @@
   width: 3rem;
   height: 3rem;
   border-radius: $border-radius-infinite;
-  background: radial-gradient(circle, rgba($luminous-gold, 0.2), transparent);
+  background: radial-gradient(circle, oklch(0.70 0.15 85 / 0.2), transparent);
   color: $luminous-gold;
   font-size: 1.5rem;
   transition: all 0.3s $ease-consciousness;
@@ -649,11 +649,11 @@
 @keyframes consciousnessPulse {
   0%, 100% {
     transform: scale(1);
-    box-shadow: 0 0 15px rgba($luminous-gold, 0.3);
+    box-shadow: 0 0 15px oklch(0.70 0.15 85 / 0.3);
   }
   50% {
     transform: scale(1.05);
-    box-shadow: 0 0 30px rgba($luminous-gold, 0.6);
+    box-shadow: 0 0 30px oklch(0.70 0.15 85 / 0.6);
   }
 }
 
@@ -746,7 +746,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba($luminous-gold, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, oklch(0.70 0.15 85 / 0.3), transparent);
     transition: left 0.6s ease;
   }
   

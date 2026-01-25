@@ -7,6 +7,17 @@
 // ============================================================================
 
 // ----------------------------------------
+// ANIMATION OPACITY TOKENS
+// ----------------------------------------
+$essence-particle-shadow-opacity: 0.7;
+$essence-float-opacity: 0.85;
+$essence-flow-opacity: 0.85;
+$consciousness-expansion-opacity: 0.7;
+$essence-weave-opacity-1: 0.7;
+$essence-weave-opacity-2: 0.85;
+$essence-weave-opacity-3: 1;
+
+// ----------------------------------------
 // GENESIS PALETTE - Raw OKLCH Primitives
 // ----------------------------------------
 // These are the atomic color values - never use directly in components
@@ -176,6 +187,11 @@ $primary-light: oklch(0.93 0.01 230);
 $primary-dark: oklch(0.05 0.01 250);
 $sacred-gold-light: oklch(0.75 0.18 82);
 $sacred-gold-dark: oklch(0.60 0.12 88);
+
+// Accessible color variants
+$cosmic-deep-blue-accessible: $color-profound-black;
+$luminous-gold-accessible: oklch(0.60 0.12 85);
+$ethereal-silver-accessible: oklch(0.55 0.01 220);
 
 // ----------------------------------------
 // BOOTSTRAP COMPATIBILITY LAYER

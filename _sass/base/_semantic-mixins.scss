@@ -409,3 +409,19 @@
 @mixin z-index-consciousness { z-index: 100; }
 @mixin z-index-transcendent { z-index: 1000; }
 @mixin z-index-genesis { z-index: 9999; }
+
+// ----------------------------------------
+// COLOR MIXINS (from deleted _colors.scss)
+// ----------------------------------------
+
+@mixin color($color) {
+  color: $color;
+}
+
+@mixin background-color($color) {
+  background-color: $color;
+}
+
+@mixin border-color($color) {
+  border-color: $color;
+}
