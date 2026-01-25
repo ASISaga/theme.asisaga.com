@@ -19,9 +19,9 @@
     background: linear-gradient(
       45deg,
       $cosmic-deep-blue 0%,
-  darken($cosmic-deep-blue, 8%) 25%,
+      oklch(0.03 0.01 250) 25%,  // Slightly darker profound black
       $transformation-purple 50%,
-  darken($transformation-purple, 5%) 75%,
+      oklch(0.60 0.23 228) 75%,  // Slightly darker neon blue
       $cosmic-deep-blue 100%
     );
   }
@@ -354,7 +354,7 @@
       width: 75%;
       
       .stream-flow::before {
-        background: linear-gradient(to right, $sacred-gold, transparent);
+        background: linear-gradient(to right, $sacred-gold-dark, transparent);
         animation-delay: 1s;
       }
     }

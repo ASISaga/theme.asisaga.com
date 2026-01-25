@@ -29,9 +29,9 @@
     background: linear-gradient(
       135deg,
       $cosmic-deep-blue 0%,
-  darken($cosmic-deep-blue, 5%) 25%,
+      oklch(0.03 0.01 250) 25%,  // Slightly darker profound black
       $royal-purple 50%,
-  lighten($royal-purple, 10%) 75%,
+      oklch(0.70 0.27 228) 75%,  // Slightly lighter neon blue
       $luminous-gold 100%
     );
   }
