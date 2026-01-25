@@ -154,9 +154,8 @@ p, .body-text {
 .text-secondary { color: $text-secondary; }
 .text-accent { color: $text-accent; }
 .text-consciousness { color: $text-consciousness; }
-.text-life-force { color: $text-life-force; }
-.text-transformation { color: $text-transformation; }
 .text-inverse { color: $text-inverse; }
+// REMOVED: .text-life-force and .text-transformation per requirements (no purple/green)
 
 // ----------------------------------------
 // MATERIAL PRIMITIVES - Digital Glass Effects

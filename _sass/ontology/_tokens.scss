@@ -86,15 +86,15 @@
   /* ============================================================================
      TEXT TOKENS
      ============================================================================ */
-  --text-vibrant: oklch(0.20 0.02 250);
-  --text-primary: oklch(0.20 0.02 250);
-  --text-secondary: oklch(0.40 0.02 230);
+  --text-vibrant: oklch(0.12 0.01 250);
+  --text-primary: oklch(0.12 0.01 250);
+  --text-secondary: oklch(0.25 0.01 230);
   --text-accent: oklch(0.65 0.25 230);
   --text-inverse: oklch(0.99 0.005 90);
   --text-link: oklch(0.65 0.25 230);
   --text-code: oklch(0.65 0.25 230);
   --text-chip: oklch(0.65 0.25 230);
-  --text-void: oklch(0.20 0.02 250);
+  --text-void: oklch(0.12 0.01 250);
   
   /* ============================================================================
      BORDER TOKENS
@@ -109,8 +109,9 @@
   /* ============================================================================
      SHADOW TOKENS
      ============================================================================ */
-  --shadow-ambient: 0 4px 12px oklch(0.25 0.02 230 / 0.15);
-  --shadow-void-inset: oklch(0.90 0.01 220);
+  --shadow-ambient: 0 4px 12px oklch(0.08 0.01 250 / 0.30);
+  --shadow-void-inset: oklch(0.05 0.01 260);
+  --shadow-profound: 0 8px 32px oklch(0.05 0.01 250 / 0.5);
   
   /* ============================================================================
      BACKGROUND TOKENS
@@ -198,9 +199,9 @@
   --quantum-gold: oklch(0.75 0.18 85);
 
   /* Consciousness depth */
-  --void-deep: oklch(0.96 0.01 220);
-  --void-medium: oklch(0.94 0.01 220);
-  --void-surface: oklch(0.98 0.005 90);
+  --void-deep: oklch(0.05 0.01 260);
+  --void-medium: oklch(0.08 0.01 255);
+  --void-surface: oklch(0.12 0.01 250);
   
   /* Enhanced motion timing */
   --motion-quantum: 0.15s;
