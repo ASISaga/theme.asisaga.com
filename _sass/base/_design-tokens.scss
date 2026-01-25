@@ -168,6 +168,16 @@ $bg-light: $surface-transcendent;
 $bg-consciousness: $surface-overlay;
 $bg-transcendent: $surface-transcendent;
 
+// Section background colors  
+$section-bg-primary: oklch(0.65 0.25 230 / 0.03);   // Subtle neon blue tint
+$section-bg-secondary: oklch(0.95 0.01 220 / 0.5);  // Light gray sections
+$section-bg-sacred: oklch(0.70 0.15 85 / 0.05);     // Subtle gold (very muted)
+
+// Dark mode variables (if needed)
+$dark-mode-bg: $color-profound-black;
+$dark-mode-text: $color-transcendent-white;
+$dark-mode-border: oklch(0.35 0.01 220);
+
 // Border colors
 $border-color: $border-primary;
 $border-sacred: $border-gold;

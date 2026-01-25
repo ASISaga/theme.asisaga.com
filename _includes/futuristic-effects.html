@@ -1,0 +1,23 @@
+<!-- Futuristic Effects Enhancement Layer -->
+<!-- Loads Three.js and custom particle/neural network effects -->
+<!-- Only loads if JavaScript is enabled and reduced motion is not preferred -->
+
+<script>
+  // Check if reduced motion is preferred before loading heavy libraries
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Load Three.js from CDN
+    var threeScript = document.createElement('script');
+    threeScript.src = 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js';
+    threeScript.integrity = 'sha384-j8g7VyBrN2Xpz/XFOxfGMqFfpmXZV3lGqN5bxXVxDnwv6+5pBl8+5VpJzCKZqS1a';
+    threeScript.crossOrigin = 'anonymous';
+    
+    threeScript.onload = function() {
+      // Load custom futuristic effects after Three.js is ready
+      var effectsScript = document.createElement('script');
+      effectsScript.src = '{{ "/assets/js/futuristic-effects.js" | relative_url }}';
+      effectsScript.defer = true;
+      document.head.appendChild(effectsScript);
+    };
+    
+    document.head.appendChild(threeScript);
+  }

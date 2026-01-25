@@ -150,7 +150,7 @@
      ============================================================================ */
   --atmosphere-ethereal: oklch(0.96 0.01 220 / 0.5);
   --glow-ethereal: oklch(0.65 0.25 230 / 0.15);
-  --atmosphere-void: oklch(0.98 0.005 90);
+  --atmosphere-void: oklch(0.05 0.01 250);  /* Profound black for headers/footers */
   --atmosphere-vibrant: oklch(0.94 0.03 230 / 0.8);
   
   /* ============================================================================
@@ -199,9 +199,9 @@
   --quantum-gold: oklch(0.75 0.18 85);
 
   /* Consciousness depth */
-  --void-deep: oklch(0.05 0.01 260);
-  --void-medium: oklch(0.08 0.01 255);
-  --void-surface: oklch(0.12 0.01 250);
+  --void-deep: oklch(0.03 0.01 260);      /* Deepest profound black */
+  --void-medium: oklch(0.05 0.01 255);    /* Medium profound black */
+  --void-surface: oklch(0.08 0.01 250);   /* Surface profound black */
   
   /* Enhanced motion timing */
   --motion-quantum: 0.15s;
