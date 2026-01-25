@@ -716,10 +716,6 @@
   border: 2px solid $luminous-gold;
 }
 
-@mixin border-cosmic-deep-blue-accessible {
-  border: 2px solid $cosmic-deep-blue;
-}
-
 // Shadow mixins
 @mixin shadow-glow-transformation-purple {
   box-shadow: 0 0 1rem oklch(0.65 0.25 230 / 0.4);
