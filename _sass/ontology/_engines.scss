@@ -402,16 +402,17 @@
   }
   @else if $intent == 'gloss' {
     // Minor annotations or citations - ensure minimum readability
-    font-size: var(--size-small, clamp(0.8rem, 1vw, 0.875rem));
+    font-size: var(--size-small, clamp(0.875rem, 1.2vw, 0.95rem));
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.5;
     color: var(--text-secondary, oklch(0.70 0.02 220));
     opacity: 0.85;
     
-    // Mobile: minimum 14px for accessibility
+    // Mobile: minimum 14px for accessibility (improved from 12px)
     @media (max-width: 767px) {
-      font-size: 0.875rem; // 14px minimum
-      line-height: 1.5;
+      font-size: 0.875rem; // 14px minimum - WCAG recommendation
+      line-height: 1.55;
+      opacity: 0.9; // Slightly more visible on mobile
     }
   }
   @else if $intent == 'motive' {
@@ -461,20 +462,30 @@
     border-bottom: 1px solid transparent;
     display: inline-block;
     
-    // WCAG 2.1: Minimum 44x44px touch target on mobile
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
     @media (max-width: 767px) {
       min-height: 44px;
-      padding-block: 0.5rem;
+      min-width: 44px;
+      padding: 0.75rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       
-      // Expand tap zone without visual change
+      // Expand tap zone without visual change for text-only links
       position: relative;
       
       &::after {
         content: '';
         position: absolute;
-        inset: -4px;
+        inset: -6px;
         z-index: -1;
       }
+    }
+    
+    // Tablet: moderate sizing
+    @media (min-width: 768px) and (max-width: 1023px) {
+      min-height: 36px;
+      padding-block: 0.5rem;
     }
     
     &:hover {
@@ -501,7 +512,7 @@
     font-weight: 600;
     font-size: var(--size-button, clamp(0.95rem, 1.2vw, 1.05rem));
     
-    // WCAG 2.1: Minimum 44x44px touch target on mobile
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
     @media (max-width: 767px) {
       min-height: 44px;
       min-width: 44px;
@@ -540,7 +551,7 @@
     border: 1px solid var(--border-subtle, oklch(0.30 0.04 250));
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     
-    // WCAG 2.1: Minimum 44x44px touch target on mobile
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
     @media (max-width: 767px) {
       min-height: 44px;
       min-width: 44px;
@@ -572,7 +583,7 @@
     border: 1px solid var(--danger-border, oklch(0.55 0.25 25));
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     
-    // WCAG 2.1: Minimum 44x44px touch target on mobile
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
     @media (max-width: 767px) {
       min-height: 44px;
       min-width: 44px;
@@ -597,22 +608,31 @@
     // Neural link to other observers
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5em;
     padding: var(--padding-button-sm, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
     background: var(--social-bg, oklch(0.55 0.25 290 / 0.3));
     color: var(--text-primary, oklch(0.98 0.01 90));
     border: 1px solid var(--social-border, oklch(0.55 0.25 290));
     border-radius: 999px;
+    text-decoration: none;
     
-    // WCAG 2.1: Minimum 44x44px touch target on mobile
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
     @media (max-width: 767px) {
       min-width: 44px;
       min-height: 44px;
+      padding: 0.875rem 1rem;
+    }
+    
+    // Tablet: balanced sizing
+    @media (min-width: 768px) and (max-width: 1023px) {
+      min-width: 40px;
+      min-height: 40px;
       padding: 0.75rem;
     }
     
     // Desktop: can be more compact
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
       min-width: 36px;
       min-height: 36px;
     }

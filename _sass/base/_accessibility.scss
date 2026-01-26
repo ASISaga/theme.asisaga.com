@@ -1,23 +1,51 @@
 // Accessibility styles for the ASI Saga website
 
-// Skip link for keyboard navigation
+// Skip link for keyboard navigation - WCAG 2.5.5 compliant
 .skip-link {
   position: absolute;
-  top: -50px;
-  left: 10px;
-  padding: 8px 15px;
-  background-color: $primary;
-  color: $white;
-  z-index: 9999;
-  transition: top 0.3s ease;
-  border-radius: 0 0 5px 5px;
-  text-decoration: none;
-  font-weight: $font-weight-medium;
+  top: -100vh;
+  left: 0;
+  z-index: 10000;
   
-  &:focus {
-    top: 0;
+  // Hidden by default - visually hidden but screen reader accessible
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+  
+  // Visible on focus with proper touch target
+  &:focus,
+  &:active {
+    // Reset visual hiding
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    
+    // Touch target and visual styling
+    padding: 1rem 1.5rem;
+    min-width: 44px;
+    min-height: 44px;
+    background-color: $primary;
+    color: $white;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    font-weight: $font-weight-semibold;
+    font-size: 1rem;
+    
+    // Strong focus indicator
     outline: 3px solid $warning;
-    text-decoration: underline;
+    outline-offset: 2px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 }
 
