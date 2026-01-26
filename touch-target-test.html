@@ -1,0 +1,150 @@
+---
+layout: default
+title: Touch Target Test - Responsive Design Verification
+permalink: /touch-target-test/
+---
+
+<style>
+/* Overlay to show touch target zones */
+.touch-debug a::before,
+.touch-debug button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px dashed red;
+  background: rgba(255, 0, 0, 0.1);
+  pointer-events: none;
+}
+
+.touch-debug {
+  padding: 2rem;
+  background: rgba(0, 255, 0, 0.05);
+}
+
+.test-section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+}
+
+.test-label {
+  font-size: 0.875rem;
+  color: oklch(0.70 0.02 220);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.size-indicator {
+  font-size: 0.75rem;
+  color: oklch(0.85 0.16 85);
+  margin-top: 0.25rem;
+}
+</style>
+
+<main class="consciousness-viewport">
+  <header style="margin-bottom: 2rem; text-align: center;">
+    <h1>Touch Target & Responsive Test</h1>
+    <p style="font-size: 1.125rem; color: oklch(0.70 0.02 220);">
+      Test page to verify WCAG 2.5.5 compliant touch targets (44x44px minimum on mobile)
+    </p>
+    <p style="font-size: 0.875rem; margin-top: 1rem;">
+      <strong>Instructions:</strong> Resize browser to 375px width (iPhone SE) to test mobile touch targets
+    </p>
+  </header>
+
+  <!-- Skip Link Test -->
+  <section class="test-section">
+    <div class="test-label">Skip Link (Tab to test - should appear at top-left)</div>
+    <p>Press Tab key to focus the skip link. It should appear with minimum 44x44px touch target.</p>
+    <div class="size-indicator">Expected: Hidden until focused, then visible with 44x44px minimum</div>
+  </section>
+
+  <!-- Navigation Links Test -->
+  <section class="test-section touch-debug">
+    <div class="test-label">Navigation Links (genesis-synapse('navigate'))</div>
+    <nav style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href="#test1" class="site-footer__nav-link">Home</a>
+      <a href="#test2" class="site-footer__nav-link">About</a>
+      <a href="#test3" class="site-footer__nav-link">Contact</a>
+      <a href="#test4" class="site-footer__nav-link">Blog</a>
+    </nav>
+    <div class="size-indicator">Expected: 44x44px minimum on mobile (375px)</div>
+  </section>
+
+  <!-- Social Links Test -->
+  <section class="test-section touch-debug">
+    <div class="test-label">Social Links (genesis-synapse('social'))</div>
+    <div style="display: flex; gap: 1rem;">
+      <a href="#twitter" class="site-footer__social-link">Twitter</a>
+      <a href="#linkedin" class="site-footer__social-link">LinkedIn</a>
+      <a href="#github" class="site-footer__social-link">GitHub</a>
+    </div>
+    <div class="size-indicator">Expected: 44x44px minimum on mobile (375px)</div>
+  </section>
+
+  <!-- Execute Button Test -->
+  <section class="test-section touch-debug">
+    <div class="test-label">Execute Buttons (genesis-synapse('execute'))</div>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <button class="site-header__toggle" type="button">Mobile Menu Toggle</button>
+    </div>
+    <div class="size-indicator">Expected: 44x44px minimum on mobile (375px)</div>
+  </section>
+
+  <!-- Typography Test -->
+  <section class="test-section">
+    <div class="test-label">Typography Sizes</div>
+    
+    <div style="margin-bottom: 1.5rem;">
+      <div style="font-size: 0.875rem; color: oklch(0.70 0.02 220); margin-bottom: 0.25rem;">Axiom (Headline)</div>
+      <h2 style="margin: 0; @include genesis-cognition('axiom');">The Future of AI</h2>
+      <div class="size-indicator">Expected: 32px minimum on mobile</div>
+    </div>
+    
+    <div style="margin-bottom: 1.5rem;">
+      <div style="font-size: 0.875rem; color: oklch(0.70 0.02 220); margin-bottom: 0.25rem;">Discourse (Body)</div>
+      <p style="margin: 0; @include genesis-cognition('discourse');">This is standard body text that should be comfortable to read on all devices.</p>
+      <div class="size-indicator">Expected: 16px minimum on mobile</div>
+    </div>
+    
+    <div style="margin-bottom: 1.5rem;">
+      <div style="font-size: 0.875rem; color: oklch(0.70 0.02 220); margin-bottom: 0.25rem;">Gloss (Small Text)</div>
+      <p style="margin: 0; @include genesis-cognition('gloss');">Small annotation or citation text for additional context</p>
+      <div class="size-indicator">Expected: 14px minimum on mobile</div>
+    </div>
+    
+    <div style="margin-bottom: 1.5rem;">
+      <div style="font-size: 0.875rem; color: oklch(0.70 0.02 220); margin-bottom: 0.25rem;">Quantum (Tags)</div>
+      <span style="@include genesis-cognition('quantum');">TAG</span>
+      <span style="@include genesis-cognition('quantum');">LABEL</span>
+      <div class="size-indicator">Expected: 12px on mobile (acceptable for tags)</div>
+    </div>
+  </section>
+
+  <!-- Mobile Toggle Button Test -->
+  <section class="test-section touch-debug">
+    <div class="test-label">Mobile Menu Toggle (from header)</div>
+    <div style="position: relative; display: inline-block;">
+      <button class="site-header__toggle" type="button" aria-label="Toggle navigation menu">
+        <span class="site-header__toggle-icon">☰</span>
+      </button>
+    </div>
+    <div class="size-indicator">Expected: 44x44px minimum on mobile</div>
+  </section>
+
+  <!-- Viewport Size Indicator -->
+  <section class="test-section" style="position: fixed; bottom: 1rem; right: 1rem; background: oklch(0.15 0.03 250); padding: 0.5rem 1rem; border-radius: 0.25rem; font-size: 0.875rem; z-index: 9999;">
+    <div style="color: oklch(0.85 0.16 85); font-weight: 600;">Viewport Width:</div>
+    <div id="viewport-width" style="color: oklch(0.98 0.01 90); font-size: 1.5rem; font-weight: 700;">--px</div>
+  </section>
+</main>
+
+<script>
+// Update viewport width indicator
+function updateViewportWidth() {
+  document.getElementById('viewport-width').textContent = window.innerWidth + 'px';
+}
+updateViewportWidth();
+window.addEventListener('resize', updateViewportWidth);
+</script>

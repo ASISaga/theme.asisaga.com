@@ -402,16 +402,17 @@
   }
   @else if $intent == 'gloss' {
     // Minor annotations or citations - ensure minimum readability
-    font-size: var(--size-small, clamp(0.8rem, 1vw, 0.875rem));
+    font-size: var(--size-small, clamp(0.875rem, 1.2vw, 0.95rem));
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.5;
     color: var(--text-secondary, oklch(0.70 0.02 220));
     opacity: 0.85;
     
-    // Mobile: minimum 14px for accessibility
+    // Mobile: minimum 14px for accessibility (improved from 12px)
     @media (max-width: 767px) {
-      font-size: 0.875rem; // 14px minimum
-      line-height: 1.5;
+      font-size: 0.875rem; // 14px minimum - WCAG recommendation
+      line-height: 1.55;
+      opacity: 0.9; // Slightly more visible on mobile
     }
   }
   @else if $intent == 'motive' {
