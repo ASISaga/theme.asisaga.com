@@ -461,20 +461,30 @@
     border-bottom: 1px solid transparent;
     display: inline-block;
     
-    // WCAG 2.1: Minimum 44x44px touch target on mobile
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
     @media (max-width: 767px) {
       min-height: 44px;
-      padding-block: 0.5rem;
+      min-width: 44px;
+      padding: 0.75rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       
-      // Expand tap zone without visual change
+      // Expand tap zone without visual change for text-only links
       position: relative;
       
       &::after {
         content: '';
         position: absolute;
-        inset: -4px;
+        inset: -6px;
         z-index: -1;
       }
+    }
+    
+    // Tablet: moderate sizing
+    @media (min-width: 768px) and (max-width: 1023px) {
+      min-height: 36px;
+      padding-block: 0.5rem;
     }
     
     &:hover {
@@ -597,22 +607,31 @@
     // Neural link to other observers
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5em;
     padding: var(--padding-button-sm, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
     background: var(--social-bg, oklch(0.55 0.25 290 / 0.3));
     color: var(--text-primary, oklch(0.98 0.01 90));
     border: 1px solid var(--social-border, oklch(0.55 0.25 290));
     border-radius: 999px;
+    text-decoration: none;
     
-    // WCAG 2.1: Minimum 44x44px touch target on mobile
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
     @media (max-width: 767px) {
       min-width: 44px;
       min-height: 44px;
+      padding: 0.875rem 1rem;
+    }
+    
+    // Tablet: balanced sizing
+    @media (min-width: 768px) and (max-width: 1023px) {
+      min-width: 40px;
+      min-height: 40px;
       padding: 0.75rem;
     }
     
     // Desktop: can be more compact
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
       min-width: 36px;
       min-height: 36px;
     }
