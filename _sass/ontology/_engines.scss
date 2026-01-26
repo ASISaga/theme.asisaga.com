@@ -512,7 +512,7 @@
     font-weight: 600;
     font-size: var(--size-button, clamp(0.95rem, 1.2vw, 1.05rem));
     
-    // WCAG 2.1: Minimum 44x44px touch target on mobile
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
     @media (max-width: 767px) {
       min-height: 44px;
       min-width: 44px;
@@ -551,7 +551,7 @@
     border: 1px solid var(--border-subtle, oklch(0.30 0.04 250));
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     
-    // WCAG 2.1: Minimum 44x44px touch target on mobile
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
     @media (max-width: 767px) {
       min-height: 44px;
       min-width: 44px;
@@ -583,7 +583,7 @@
     border: 1px solid var(--danger-border, oklch(0.55 0.25 25));
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     
-    // WCAG 2.1: Minimum 44x44px touch target on mobile
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
     @media (max-width: 767px) {
       min-height: 44px;
       min-width: 44px;
