@@ -97,14 +97,14 @@ $icon-size-small: 2rem;
   color: $transcendent-white;
 }
 
-@mixin icon-transformation {
+@mixin icon-consciousness {
   @include icon-base;
-  color: $transformation-purple;
+  color: $color-neon-blue;
 }
 
-@mixin icon-life-force {
+@mixin icon-intelligence {
   @include icon-base;
-  color: $emerald-green;
+  color: $color-neon-blue;
 }
 
 // Icon container mixins

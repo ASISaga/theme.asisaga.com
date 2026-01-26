@@ -68,7 +68,7 @@
   }
   
   &:hover {
-    color: $life-force-green;
+    color: $color-neon-blue;
   }
 }
 
@@ -227,7 +227,7 @@
   
   &.stage-awakening {
     background: oklch(0.65 0.25 230 / 0.1);
-    color: $life-force-green;
+    color: $color-neon-blue;
     border: 1px solid oklch(0.65 0.25 230 / 0.3);
   }
   
@@ -239,7 +239,7 @@
   
   &.stage-mastery {
     background: oklch(0.65 0.25 230 / 0.1);
-    color: $transformation-purple;
+    color: $color-neon-blue;
     border: 1px solid oklch(0.65 0.25 230 / 0.3);
   }
 }

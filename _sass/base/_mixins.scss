@@ -91,7 +91,7 @@
   line-height: $line-height-tight;
   color: $transcendent-white;
   text-align: center;
-  background: linear-gradient(45deg, $luminous-gold, $transcendent-white, $transformation-purple);
+  background: linear-gradient(45deg, $luminous-gold, $transcendent-white, $color-neon-blue);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -104,20 +104,7 @@
     font-size: $font-size-3xl;
   }
 }
-// Background Color Mixins
-@mixin bg-life-force-green {
-  background-color: $life-force-green;
-}
-@mixin bg-transformation-purple {
-  background-color: $transformation-purple;
-}
-// Border Color Mixins
-@mixin border-life-force-green($args...) {
-  border: $args $life-force-green;
-}
-@mixin border-transformation-purple($args...) {
-  border: $args $transformation-purple;
-}
+// REMOVED: Legacy green/purple mixins - use neon blue directly
 
 @mixin heading-h1() {
   font-family: $font-family-consciousness;
@@ -765,7 +752,7 @@
 }
 
 .cosmic-consciousness-gradient {
-  background: linear-gradient(135deg, $cosmic-deep-blue 0%, $transformation-purple 50%, $luminous-gold 100%);
+  background: linear-gradient(135deg, $cosmic-deep-blue 0%, $color-neon-blue 50%, $luminous-gold 100%);
   position: relative;
 }
 
@@ -790,57 +777,15 @@
  //   - shadow-glow-life-force-green 
  //   - shadow-glow-transformation-purple 
  // 
- // Variables Available (from theme's _sass/base/_design-tokens.scss): 
- //   $life-force-green: $color-neon-blue 
- //   $life-force-green-dark: oklch(0.55 0.22 228)  // Darker neon blue 
- //   $transformation-purple: $color-neon-blue 
- //   $transformation-purple-dark: oklch(0.55 0.22 228)  // Darker neon blue 
- // 
- // Status: TEMPORARY FIX - Remove when theme is updated 
- // Tracking: https://github.com/ASISaga/www.asisaga.com/issues/XXX 
- // 
  // ============================================================================ 
-  
- // Color variables (using neon blue from futuristic theme) 
- $life-force-green: oklch(0.65 0.22 228);           // Neon blue (replaces green) 
- $life-force-green-dark: oklch(0.55 0.22 228);      // Darker neon blue 
- $transformation-purple: oklch(0.65 0.22 228);      // Neon blue (replaces purple) 
- $transformation-purple-dark: oklch(0.55 0.22 228); // Darker neon blue 
-  
- // Background Color Mixins - Dark Variants 
- @mixin bg-life-force-green-dark { 
-   background-color: $life-force-green-dark; 
- } 
-  
- @mixin bg-transformation-purple-dark { 
-   background-color: $transformation-purple-dark; 
- } 
-  
- // Border Color Mixins - Dark Variants 
- @mixin border-life-force-green-dark($width: 1px) { 
-   border: $width solid $life-force-green-dark; 
- } 
-  
- @mixin border-transformation-purple-dark($width: 1px) { 
-   border: $width solid $transformation-purple-dark; 
- } 
-  
- // Shadow Mixins - Focus States 
- @mixin shadow-focus-life-force-green { 
-   box-shadow: 0 0 0 3px oklch(0.65 0.22 228 / 0.5); 
- } 
-  
- @mixin shadow-focus-transformation-purple { 
-   box-shadow: 0 0 0 3px oklch(0.65 0.22 228 / 0.5); 
- } 
-  
- // Shadow Mixins - Glow Effects 
- @mixin shadow-glow-life-force-green { 
-   box-shadow: 0 0 20px oklch(0.65 0.22 228 / 0.6), 
-               0 0 40px oklch(0.65 0.22 228 / 0.3); 
- } 
-  
- @mixin shadow-glow-transformation-purple { 
-   box-shadow: 0 0 20px oklch(0.65 0.22 228 / 0.6), 
-               0 0 40px oklch(0.65 0.22 228 / 0.3); 
- }
+ // REMOVED: Legacy Purple/Green Color Mixins and Variables
+ // ============================================================================ 
+ // All green/purple color references have been purged per requirements.
+ // These legacy mixins and variables have been removed.
+ // 
+ // Use neon blue directly instead:
+ // - background-color: $color-neon-blue (or oklch(0.65 0.25 230))
+ // - border-color: $color-neon-blue
+ // - For darker variant: oklch(0.55 0.22 228)
+ // - For glows: box-shadow: 0 0 20px oklch(0.65 0.25 230 / 0.6)
+ // ============================================================================

@@ -121,13 +121,13 @@ body {
   // ...existing code...
 }
 
-.text-life-force {
-  @include color($life-force-green);
+.text-consciousness {
+  @include color($color-neon-blue);
   font-weight: $font-weight-medium;
 }
 
-.text-transformation {
-  @include color($transformation-purple);
+.text-intelligence {
+  @include color($color-neon-blue);
   font-weight: $font-weight-semibold;
 }
 
@@ -139,7 +139,7 @@ body {
 }
 
 .consciousness-emphasis {
-  background: linear-gradient(135deg, $cosmic-deep-blue, $royal-purple);
+  background: linear-gradient(135deg, $cosmic-deep-blue, $color-neon-blue);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

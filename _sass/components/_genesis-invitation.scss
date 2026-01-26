@@ -20,7 +20,7 @@
       45deg,
       $cosmic-deep-blue 0%,
       oklch(0.03 0.01 250) 25%,  // Slightly darker profound black
-      $transformation-purple 50%,
+      $color-neon-blue 50%,
       oklch(0.60 0.23 228) 75%,  // Slightly darker neon blue
       $cosmic-deep-blue 100%
     );
@@ -191,7 +191,7 @@
     45deg,
     $luminous-gold 0%,
     $transcendent-white 25%,
-    $transformation-purple 50%,
+    $color-neon-blue 50%,
     $transcendent-white 75%,
     $luminous-gold 100%
   );
@@ -365,7 +365,7 @@
       width: 80%;
       
       .stream-flow::before {
-        background: linear-gradient(to right, $emerald-green, transparent);
+        background: linear-gradient(to right, $color-neon-blue, transparent);
         animation-delay: 2s;
       }
     }
@@ -376,7 +376,7 @@
       width: 65%;
       
       .stream-flow::before {
-        background: linear-gradient(to right, $transformation-purple, transparent);
+        background: linear-gradient(to right, $color-neon-blue, transparent);
         animation-delay: 3s;
       }
     }
@@ -435,7 +435,7 @@
   .consciousness-pulse {
     width: 40px;
     height: 4px;
-    background: linear-gradient(to right, $luminous-gold, $transformation-purple);
+    background: linear-gradient(to right, $luminous-gold, $color-neon-blue);
     margin: 0 auto;
     border-radius: 2px;
     animation: consciousnessPulseBar 2s ease-in-out infinite;

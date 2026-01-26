@@ -90,7 +90,7 @@
   
   &.required::after {
     content: " *";
-    color: $transformation-purple;
+    color: $color-neon-blue;
   }
 }
 
@@ -252,7 +252,7 @@
   }
   
   &.has-file .form-file-label {
-    border-color: $life-force-green;
+    border-color: $color-neon-blue;
     background: oklch(0.65 0.25 230 / 0.1);
     
     &::before {
@@ -266,26 +266,26 @@
 // ----------------------------------------
 .form-control-sacred {
   &.is-valid {
-    border-color: $life-force-green;
+    border-color: $color-neon-blue;
     
     &:focus {
-      border-color: $life-force-green;
+      border-color: $color-neon-blue;
       box-shadow: 0 0 0 0.2rem oklch(0.65 0.25 230 / 0.25);
     }
   }
   
   &.is-invalid {
-    border-color: $transformation-purple;
+    border-color: $color-neon-blue;
     
     &:focus {
-      border-color: $transformation-purple;
+      border-color: $color-neon-blue;
       box-shadow: 0 0 0 0.2rem oklch(0.65 0.25 230 / 0.25);
     }
   }
 }
 
 .valid-feedback-sacred {
-  color: $life-force-green;
+  color: $color-neon-blue;
   font-size: 0.875rem;
   margin-top: 0.25rem;
   
@@ -296,7 +296,7 @@
 }
 
 .invalid-feedback-sacred {
-  color: $transformation-purple;
+  color: $color-neon-blue;
   font-size: 0.875rem;
   margin-top: 0.25rem;
   

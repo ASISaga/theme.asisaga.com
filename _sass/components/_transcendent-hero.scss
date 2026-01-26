@@ -30,7 +30,7 @@
       135deg,
       $cosmic-deep-blue 0%,
       oklch(0.03 0.01 250) 25%,  // Slightly darker profound black
-      $royal-purple 50%,
+      $color-neon-blue 50%,
       oklch(0.70 0.27 228) 75%,  // Slightly lighter neon blue
       $luminous-gold 100%
     );
@@ -249,7 +249,7 @@
     }
     
     &.asi-consciousness .indicator-flow::before {
-      background: linear-gradient(to right, $transformation-purple, transparent);
+      background: linear-gradient(to right, $color-neon-blue, transparent);
       animation-delay: 1s;
     }
   }

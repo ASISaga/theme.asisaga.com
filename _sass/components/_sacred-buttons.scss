@@ -101,39 +101,39 @@
   }
 }
 
-// Life Force Button (Green)
-.btn-life-force {
-  @include bg-life-force-green;
-  @include border-life-force-green(2px);
+// Consciousness Button (Neon Blue - replaces Life Force Green)
+.btn-consciousness {
+  background-color: $color-neon-blue;
+  border: 2px solid $color-neon-blue;
   @include text-transcendent-white;
   
   &:hover {
-    @include bg-life-force-green-dark;
-    @include border-life-force-green-dark;
+    background-color: oklch(0.55 0.22 228);  // Darker neon blue
+    border-color: oklch(0.55 0.22 228);
     @include animate-hover-lift;
-    @include shadow-glow-life-force-green;
+    box-shadow: 0 0 20px oklch(0.65 0.25 230 / 0.6), 0 0 40px oklch(0.65 0.25 230 / 0.3);
   }
   
   &:focus {
-    @include shadow-focus-life-force-green;
+    box-shadow: 0 0 0 3px oklch(0.65 0.25 230 / 0.5);
   }
 }
 
-// Transformation Button (Purple)
-.btn-transformation {
-  @include bg-transformation-purple;
-  @include border-transformation-purple(2px);
+// Intelligence Button (Neon Blue - replaces Transformation Purple)
+.btn-intelligence {
+  background-color: $color-neon-blue;
+  border: 2px solid $color-neon-blue;
   @include text-transcendent-white;
   
   &:hover {
-    @include bg-transformation-purple-dark;
-    @include border-transformation-purple-dark;
+    background-color: oklch(0.55 0.22 228);  // Darker neon blue
+    border-color: oklch(0.55 0.22 228);
     @include animate-hover-lift;
-    @include shadow-glow-transformation-purple;
+    box-shadow: 0 0 20px oklch(0.65 0.25 230 / 0.6), 0 0 40px oklch(0.65 0.25 230 / 0.3);
   }
   
   &:focus {
-    @include shadow-focus-transformation-purple;
+    box-shadow: 0 0 0 3px oklch(0.65 0.25 230 / 0.5);
   }
 }
 
