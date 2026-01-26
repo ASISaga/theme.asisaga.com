@@ -478,12 +478,8 @@
   color: oklch(0.65 0.02 220);
 }
 
-@mixin text-life-force {
-  color: oklch(0.65 0.25 230);
-}
-
-@mixin text-transformation {
-  color: oklch(0.65 0.25 230);
+@mixin text-consciousness {
+  color: $color-neon-blue;
 }
 
 @mixin text-primary {
@@ -650,17 +646,8 @@
   background-color: oklch(0.75 0.18 82);
 }
 
-@mixin shadow-glow-life-force-green {
-  box-shadow: 0 0 8px 2px oklch(0.65 0.25 230 / 0.4);
-}
-
-@mixin shadow-focus-life-force-green {
-  box-shadow: 0 0 0 0.2rem oklch(0.65 0.25 230 / 0.5);
-}
-
-@mixin bg-life-force-green-dark {
-  background-color: oklch(0.55 0.22 228);
-}
+// REMOVED: Legacy green/purple shadow mixins - use neon blue directly
+// Use: box-shadow: 0 0 8px 2px oklch(0.65 0.25 230 / 0.4);
 
 @mixin gradient-transformation {
   background: linear-gradient(135deg, oklch(0.65 0.25 230) 0%, oklch(0.65 0.25 230) 100%);
@@ -683,9 +670,8 @@
   background-color: transparent;
 }
 
-@mixin bg-transformation-purple-dark {
-  background-color: $transformation-purple-dark;
-}
+// REMOVED: Legacy purple/green background mixins - use neon blue directly
+// Use: background-color: oklch(0.55 0.22 228);
 
 @mixin bg-luminous-gold-accessible {
   background-color: $luminous-gold;
@@ -704,13 +690,8 @@
 }
 
 // Border mixins
-@mixin border-life-force-green-dark {
-  border-color: $life-force-green-dark;
-}
-
-@mixin border-transformation-purple-dark {
-  border-color: $transformation-purple-dark;
-}
+// REMOVED: Legacy purple/green border mixins - use neon blue directly
+// Use: border-color: oklch(0.55 0.22 228);
 
 @mixin border-luminous-gold-accessible {
   border: 2px solid $luminous-gold;

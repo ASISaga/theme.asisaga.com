@@ -18,7 +18,7 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: linear-gradient(135deg, $life-force-green 0%, $luminous-gold 100%);
+    background: linear-gradient(135deg, $color-neon-blue 0%, $luminous-gold 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,7 +30,7 @@
     width: 80px;
     height: 80px;
     border-radius: 10px;
-    background: linear-gradient(135deg, $cosmic-deep-blue 0%, $royal-purple 100%);
+    background: linear-gradient(135deg, $cosmic-deep-blue 0%, $color-neon-blue 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,11 +42,11 @@
     flex: 1;
     height: 3px;
     background: linear-gradient(90deg, 
-      $life-force-green 0%, 
+      $color-neon-blue 0%, 
       $luminous-gold 25%, 
       $ethereal-silver 50%, 
       $cosmic-deep-blue 75%, 
-      $royal-purple 100%);
+      $color-neon-blue 100%);
     margin: 0 1rem;
     position: relative;
     

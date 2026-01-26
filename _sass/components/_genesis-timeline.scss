@@ -22,7 +22,7 @@
     background: linear-gradient(180deg, 
       $cosmic-deep-blue 0%, 
       $luminous-gold 50%, 
-      $royal-purple 100%);
+      $color-neon-blue 100%);
     transform: translateX(-50%);
   }
 }
@@ -48,7 +48,7 @@
     @include genesis-entity('primary');
     width: 45%;
     padding: 1.5rem;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     
     &.left {
       margin-right: 55%;

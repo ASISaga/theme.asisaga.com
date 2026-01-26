@@ -8,7 +8,7 @@
 // ----------------------------------------
 .modal-sacred {
   .modal-dialog {
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     border: none;
     box-shadow: $consciousness-depth;
   }
@@ -16,7 +16,7 @@
   .modal-content {
     @include genesis-entity('primary');
     border: none;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     background: oklch(0.99 0.005 90 / 0.98);
     position: relative;
     
@@ -31,7 +31,7 @@
         $cosmic-deep-blue 0%, 
         $luminous-gold 50%, 
         $cosmic-deep-blue 100%);
-      border-radius: 1rem 1rem 0 0;
+      border-radius: 0.5rem 0.5rem 0 0;
     }
   }
   

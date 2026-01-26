@@ -146,7 +146,7 @@
   }
   
   &.infinite-potential {
-    border-top: 4px solid $transformation-purple;
+    border-top: 4px solid $color-neon-blue;
     
     &:hover {
       box-shadow: 
@@ -155,7 +155,7 @@
     }
     
     .genesis-block-icon {
-      color: $transformation-purple;
+      color: $color-neon-blue;
       background: radial-gradient(circle, oklch(0.65 0.25 230 / 0.1), transparent);
     }
   }

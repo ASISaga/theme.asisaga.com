@@ -80,7 +80,7 @@
   gap: 0.5rem;
   font-size: 0.875rem;
   padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   background-color: var(--bs-light, #f8f9fa);
 
   &::before {
@@ -203,7 +203,7 @@
 
   &-text {
     padding: 0.75rem 1rem;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     background-color: var(--bs-white, #fff);
     word-wrap: break-word;
     box-shadow: 0 1px 2px oklch(0.08 0.01 250 / 0.05);

@@ -9,7 +9,7 @@
 .form-sacred {
   background: oklch(0.99 0.005 90 / 0.98);
   border: 1px solid oklch(0.70 0.15 85 / 0.2);
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   padding: 2rem;
   box-shadow: $consciousness-depth;
   position: relative;
@@ -25,7 +25,7 @@
       $cosmic-deep-blue 0%, 
       $luminous-gold 50%, 
       $cosmic-deep-blue 100%);
-    border-radius: 1rem 1rem 0 0;
+    border-radius: 0.5rem 0.5rem 0 0;
   }
 }
 
@@ -34,7 +34,7 @@
 // ----------------------------------------
 .form-control-sacred {
   border: 2px solid $ethereal-silver;
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   padding: 0.75rem 1rem;
   font-family: $font-family-interface;
   font-size: 1rem;
@@ -90,7 +90,7 @@
   
   &.required::after {
     content: " *";
-    color: $transformation-purple;
+    color: $color-neon-blue;
   }
 }
 
@@ -232,7 +232,7 @@
     justify-content: center;
     min-height: 100px;
     border: 2px dashed $ethereal-silver;
-    border-radius: 0.75rem;
+    border-radius: 0.5rem;
     background: oklch(0.70 0.15 85 / 0.05);
     color: $cosmic-deep-blue;
     font-family: $font-family-consciousness;
@@ -252,7 +252,7 @@
   }
   
   &.has-file .form-file-label {
-    border-color: $life-force-green;
+    border-color: $color-neon-blue;
     background: oklch(0.65 0.25 230 / 0.1);
     
     &::before {
@@ -266,26 +266,26 @@
 // ----------------------------------------
 .form-control-sacred {
   &.is-valid {
-    border-color: $life-force-green;
+    border-color: $color-neon-blue;
     
     &:focus {
-      border-color: $life-force-green;
+      border-color: $color-neon-blue;
       box-shadow: 0 0 0 0.2rem oklch(0.65 0.25 230 / 0.25);
     }
   }
   
   &.is-invalid {
-    border-color: $transformation-purple;
+    border-color: $color-neon-blue;
     
     &:focus {
-      border-color: $transformation-purple;
+      border-color: $color-neon-blue;
       box-shadow: 0 0 0 0.2rem oklch(0.65 0.25 230 / 0.25);
     }
   }
 }
 
 .valid-feedback-sacred {
-  color: $life-force-green;
+  color: $color-neon-blue;
   font-size: 0.875rem;
   margin-top: 0.25rem;
   
@@ -296,7 +296,7 @@
 }
 
 .invalid-feedback-sacred {
-  color: $transformation-purple;
+  color: $color-neon-blue;
   font-size: 0.875rem;
   margin-top: 0.25rem;
   
@@ -311,7 +311,7 @@
 // ----------------------------------------
 .form-section-sacred {
   border: 1px solid oklch(0.65 0.02 220 / 0.3);
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   padding: 1.5rem;
   margin-bottom: 2rem;
   background: oklch(0.08 0.01 250 / 0.02);

@@ -143,14 +143,9 @@ $luminous-gold: $color-essence-gold;
 $transcendent-white: $color-transcendent-white;
 $ethereal-silver: $color-bridge-silver;
 
-// REMOVED: $emerald-green and $royal-purple per requirements
-// Legacy purple/green variables now map to neon blue for backward compatibility
-$emerald-green: $color-neon-blue;                   // Maps to neon blue
-$life-force-green: $color-neon-blue;
-$life-force-green-dark: oklch(0.55 0.22 228);      // Darker neon blue
-$royal-purple: $color-neon-blue;                    // Maps to neon blue
-$transformation-purple: $color-neon-blue;
-$transformation-purple-dark: oklch(0.55 0.22 228);  // Darker neon blue
+// REMOVED: Purple and Green colors per requirements
+// All legacy green/purple usages have been replaced with neon blue directly
+// No longer maintaining compatibility variables - use $color-neon-blue instead
 
 $primary: $color-neon-blue;                         // Neon blue primary
 $secondary: $text-secondary;
