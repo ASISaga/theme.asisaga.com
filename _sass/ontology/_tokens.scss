@@ -17,6 +17,7 @@
   --space-network: clamp(1rem, 2vw, 1.5rem);
   --space-timeline: clamp(1rem, 2vw, 1.5rem);
   --space-tight: clamp(0.75rem, 1.5vw, 1rem);
+  --space-nav: clamp(1rem, 2vw, 2rem);
   
   /* ============================================================================
      SIZING TOKENS
@@ -63,6 +64,7 @@
   --padding-entity-aggregate: clamp(2rem, 4vw, 3rem);
   --padding-button: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
   --padding-button-sm: clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem);
+  --padding-nav: clamp(1rem, 2vw, 1.5rem);
   
   /* ============================================================================
      SURFACE TOKENS (Glassmorphism)
