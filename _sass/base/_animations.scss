@@ -9,11 +9,11 @@
 @keyframes sacred-rhythm {
   0%, 100% { 
     opacity: $essence-flow-opacity; 
-    transform: scale(1); 
+    transform: translate3d(0, 0, 0) scale(1); 
   }
   50% { 
     opacity: 1; 
-    transform: scale(1.02); 
+    transform: translate3d(0, 0, 0) scale(1.02); 
   }
 }
 
@@ -33,14 +33,14 @@
 // Evolutionary ascent and consciousness expansion
 @keyframes transcendence-spiral {
   0% { 
-    transform: rotate(0deg) scale(0.8); 
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.8); 
     opacity: $consciousness-expansion-opacity; 
   }
   50% {
     opacity: $essence-flow-opacity;
   }
   100% { 
-    transform: rotate(360deg) scale(1.2); 
+    transform: translate3d(0, 0, 0) rotate(360deg) scale(1.2); 
     opacity: 1; 
   }
 }
@@ -48,10 +48,10 @@
 // Gentle spiral for background elements
 @keyframes gentle-spiral {
   0% { 
-    transform: rotate(0deg); 
+    transform: translate3d(0, 0, 0) rotate(0deg); 
   }
   100% { 
-    transform: rotate(360deg); 
+    transform: translate3d(0, 0, 0) rotate(360deg); 
   }
 }
 
@@ -110,14 +110,14 @@
 // Sacred threshold crossing animation
 @keyframes threshold-passage {
   0% {
-    transform: translateX(-100%);
+    transform: translate3d(-100%, 0, 0);
     opacity: 0;
   }
   50% {
     opacity: 1;
   }
   100% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
     opacity: 1;
   }
 }
@@ -154,17 +154,21 @@
 // Enhanced pulse animation with sacred meaning
 @keyframes pulse {
   0% {
-    transform: scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
   }
   50% {
-    transform: scale(1.05);
+    transform: translate3d(0, 0, 0) scale(1.05);
   }
   100% {
-    transform: scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 }
 
 .pulse {
+  // GPU acceleration hints
+  will-change: transform;
+  backface-visibility: hidden;
+  
   &:hover {
     animation: pulse 1.5s infinite;
   }
@@ -174,11 +178,11 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translate3d(0, 10px, 0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -190,19 +194,27 @@
 // Sacred Rhythm Classes
 .sacred-rhythm {
   animation: sacred-rhythm 2s ease-in-out infinite;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .consciousness-pulse {
   animation: consciousness-pulse 2s infinite;
+  will-change: box-shadow;
+  backface-visibility: hidden;
 }
 
 // Transcendence Animation Classes
 .transcendence-spiral {
   animation: transcendence-spiral 8s linear infinite;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .gentle-spiral {
   animation: gentle-spiral 20s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 // Consciousness Flow Classes
@@ -214,6 +226,8 @@
     oklch(0.65 0.25 230 / 0.1));
   background-size: 400% 400%;
   animation: consciousness-flow 15s ease infinite;
+  will-change: background-position;
+  backface-visibility: hidden;
 }
 
 .essence-weave {
@@ -225,6 +239,8 @@
     oklch(0.70 0.15 85 / 0.1) 100%);
   background-size: 200% 200%;
   animation: essence-weave 12s ease infinite;
+  will-change: background-position, opacity;
+  backface-visibility: hidden;
 }
 
 // Bridge Connection Classes
@@ -248,29 +264,39 @@
 
 .threshold-passage {
   animation: threshold-passage 1s ease-out;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 // Sacred Glow Classes
 .sacred-glow {
   animation: sacred-glow 3s ease-in-out infinite;
+  will-change: box-shadow;
+  backface-visibility: hidden;
 }
 
 .consciousness-awaken {
   animation: consciousness-awaken 4s ease-in-out infinite;
+  will-change: box-shadow;
+  backface-visibility: hidden;
 }
 
 // Interactive Sacred States
 .sacred-interactive {
   transition: all 0.3s ease;
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
   
   &:hover {
-    transform: translateY(-2px);
+    transform: translate3d(0, -2px, 0);
     box-shadow: $sacred-glow;
   }
 }
 
 .consciousness-interactive {
   transition: all 0.5s ease;
+  will-change: background-color, border-color;
+  backface-visibility: hidden;
   
   &:hover {
     background-color: oklch(0.08 0.01 250 / 0.05);
@@ -301,23 +327,31 @@
 // Fade animations with sacred timing
 .fadeIn {
   animation: fadeIn 0.8s ease-out;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .fadeIn-delayed {
   opacity: 0;
   animation: fadeIn 0.8s ease-out 0.5s forwards;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .fadeIn-sacred {
   opacity: 0;
   animation: fadeIn 1.2s ease-out forwards, sacred-glow 3s ease-in-out 1.2s infinite;
+  will-change: transform, opacity, box-shadow;
+  backface-visibility: hidden;
 }
 
 // Sacred text animations
 .sacred-text-emergence {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translate3d(0, 20px, 0);
   animation: fadeIn 1s ease-out forwards;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 // Consciousness development progress animations
@@ -339,26 +373,32 @@
 
 .fade-in {
   animation: fadeIn 1s ease-in-out;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 // Reveal on scroll animation
 .reveal-on-scroll {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translate3d(0, 30px, 0);
   transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
   
   &.revealed {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 // Card hover effect
 .card-hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
   
   &:hover {
-    transform: translateY(-10px);
+    transform: translate3d(0, -10px, 0);
     box-shadow: 0 10px 30px oklch(0.08 0.01 250 / 0.15);
   }
 }
@@ -366,18 +406,20 @@
 // Scroll indicator bounce
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
   40% {
-    transform: translateY(-10px);
+    transform: translate3d(0, -10px, 0);
   }
   60% {
-    transform: translateY(-5px);
+    transform: translate3d(0, -5px, 0);
   }
 }
 
 .hero-scroll-icon {
   animation: bounce 2s infinite;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 // Story cube flip effect
@@ -425,6 +467,8 @@
 // Navbar scroll effect
 .site-header {
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: background-color, box-shadow;
+  backface-visibility: hidden;
   
   &.navbar-scrolled {
     background-color: oklch(0.08 0.01 250 / 0.95);
@@ -440,7 +484,7 @@
 @keyframes consciousnessEmergence {
   0% {
     opacity: 0;
-    transform: scale(0.85) rotate(-2deg);
+    transform: translate3d(0, 0, 0) scale(0.85) rotate(-2deg);
     filter: blur(8px) brightness(1.2);
     box-shadow: 0 0 0 0 oklch(0.65 0.25 230 / 0);
   }
@@ -456,7 +500,7 @@
   }
   100% {
     opacity: 1;
-    transform: scale(1) rotate(0deg);
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
     filter: none;
     box-shadow: 0 0 0 0 oklch(0.65 0.25 230 / 0);
   }
@@ -577,49 +621,61 @@ $ease-sacred: cubic-bezier(0.23, 1, 0.32, 1);
 
 @mixin animate-sacred-text-emergence {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translate3d(0, 20px, 0);
   @include animate(fadeIn, 1s, $ease-out, 0s, 1, normal, forwards);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 @mixin animate-reveal-on-scroll {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translate3d(0, 30px, 0);
   @include transition(opacity 0.8s ease, transform 0.8s ease);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
   
   &.revealed {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 // Interactive animation mixins
 @mixin animate-hover-lift {
   @include transition(transform, $animation-duration-normal, $ease-out);
+  will-change: transform;
+  backface-visibility: hidden;
   
   &:hover {
-    transform: translateY(-2px);
+    transform: translate3d(0, -2px, 0);
   }
 }
 
 @mixin animate-hover-scale {
   @include transition(transform, $animation-duration-normal, $ease-out);
+  will-change: transform;
+  backface-visibility: hidden;
   
   &:hover {
-    transform: scale(1.05);
+    transform: translate3d(0, 0, 0) scale(1.05);
   }
 }
 
 @mixin animate-sacred-interactive {
   @include transition(all, $animation-duration-normal, $ease-out);
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
   
   &:hover {
-    transform: translateY(-2px);
+    transform: translate3d(0, -2px, 0);
     box-shadow: $sacred-glow;
   }
 }
 
 @mixin animate-consciousness-interactive {
   @include transition(all, $animation-duration-slow, $ease-out);
+  will-change: background-color, border-color;
+  backface-visibility: hidden;
   
   &:hover {
     background-color: oklch(0.08 0.01 250 / 0.05);
@@ -629,9 +685,11 @@ $ease-sacred: cubic-bezier(0.23, 1, 0.32, 1);
 
 @mixin animate-card-hover {
   @include transition(transform 0.3s ease, box-shadow 0.3s ease);
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
   
   &:hover {
-    transform: translateY(-10px);
+    transform: translate3d(0, -10px, 0);
     box-shadow: 0 10px 30px oklch(0.08 0.01 250 / 0.15);
   }
 }
