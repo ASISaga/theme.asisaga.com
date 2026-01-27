@@ -1,0 +1,133 @@
+---
+layout: default
+title: Scroll Test - Header Performance
+---
+
+<style>
+  .test-section {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .test-section:nth-child(odd) {
+    background: rgba(100, 100, 255, 0.05);
+  }
+  
+  .test-content {
+    max-width: 800px;
+    padding: 2rem;
+    background: var(--glass-heavy, rgba(255, 255, 255, 0.1));
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+  }
+  
+  .scroll-indicator {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 1rem;
+    background: var(--glass-heavy, rgba(0, 0, 0, 0.8));
+    border-radius: 0.5rem;
+    font-family: monospace;
+    font-size: 0.9rem;
+    z-index: 999;
+  }
+</style>
+
+<div class="test-section">
+  <div class="test-content">
+    <h1>Header Scroll Test</h1>
+    <p>This page tests the fixed header scroll behavior. The header should:</p>
+    <ul>
+      <li>Maintain a consistent height (min 70px)</li>
+      <li>Hide smoothly when scrolling down</li>
+      <li>Show smoothly when scrolling up</li>
+      <li>Not cause jitter or layout shifts</li>
+      <li>Use hardware acceleration for smooth animations</li>
+    </ul>
+    <p><strong>Scroll down to test →</strong></p>
+  </div>
+</div>
+
+<div class="test-section">
+  <div class="test-content">
+    <h2>Section 2: Scroll Down Test</h2>
+    <p>Keep scrolling down. The header should smoothly hide as you scroll.</p>
+    <p>Notice the header's background becomes more opaque after scrolling past 50px.</p>
+  </div>
+</div>
+
+<div class="test-section">
+  <div class="test-content">
+    <h2>Section 3: Scroll Up Test</h2>
+    <p>Now scroll back up. The header should immediately show again.</p>
+    <p>The animation should be smooth without jitter.</p>
+  </div>
+</div>
+
+<div class="test-section">
+  <div class="test-content">
+    <h2>Section 4: Rapid Scroll Test</h2>
+    <p>Try scrolling rapidly up and down.</p>
+    <p>The header should respond smoothly to your scroll direction changes.</p>
+  </div>
+</div>
+
+<div class="test-section">
+  <div class="test-content">
+    <h2>Section 5: Mobile Test</h2>
+    <p>Resize your browser to mobile width (375px) or test on a mobile device.</p>
+    <p>The header should maintain its height and scroll smoothly on all screen sizes.</p>
+  </div>
+</div>
+
+<div class="test-section">
+  <div class="test-content">
+    <h2>Section 6: Final Verification</h2>
+    <p>Scroll all the way to the top to verify the header appears correctly at the top of the page.</p>
+    <ul>
+      <li>✓ Min height maintained (70px)</li>
+      <li>✓ No layout shifts</li>
+      <li>✓ Smooth transitions</li>
+      <li>✓ Hardware accelerated</li>
+      <li>✓ Passive scroll listeners</li>
+    </ul>
+  </div>
+</div>
+
+<div class="scroll-indicator">
+  <div>Scroll Y: <span id="scroll-y">0</span>px</div>
+  <div>Header State: <span id="header-state">visible</span></div>
+  <div>Scrolled Class: <span id="scrolled-class">false</span></div>
+</div>
+
+<script>
+  (function() {
+    const scrollYEl = document.getElementById('scroll-y');
+    const headerStateEl = document.getElementById('header-state');
+    const scrolledClassEl = document.getElementById('scrolled-class');
+    const header = document.querySelector('.site-header');
+    
+    function updateIndicator() {
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      scrollYEl.textContent = Math.round(scrollY);
+      
+      const isHidden = header && header.classList.contains('header-hidden');
+      headerStateEl.textContent = isHidden ? 'hidden' : 'visible';
+      headerStateEl.style.color = isHidden ? '#ff6b6b' : '#51cf66';
+      
+      const hasScrolled = header && header.classList.contains('scrolled');
+      scrolledClassEl.textContent = hasScrolled ? 'true' : 'false';
+      scrolledClassEl.style.color = hasScrolled ? '#51cf66' : '#aaa';
+      
+      requestAnimationFrame(updateIndicator);
+    }
+    
+    updateIndicator();
+  })();
+</script>
