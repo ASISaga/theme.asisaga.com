@@ -4,11 +4,43 @@
 
 // The main navigation container
 .navbar {
-  @include genesis-environment('navigation-primary');
+  // Simple flex container for navigation items
+  display: flex;
+  width: 100%;
+  
+  // Stack vertically on mobile
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
+  
+  // Horizontal on desktop
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
 
   // Navigation list container
   &__list {
-    @include genesis-environment('associative');
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-nav, clamp(0.5rem, 2vw, 1.5rem));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    
+    // Stack vertically on mobile
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
+    
+    // Horizontal on desktop
+    @media (min-width: 768px) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+    }
   }
 
   // Styling for individual list items within the navbar

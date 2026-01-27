@@ -3,9 +3,22 @@
 // Site Header - Enhanced transparent and responsive design
 // Core navbar structure with Genesis Ontological System
 .site-header {
-  @include genesis-environment('navigation-primary');
+  // Header container - sticky positioning with glassmorphism
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  
   @include genesis-entity('primary');
   @include genesis-atmosphere('void');
+  
+  // Use flexbox for responsive layout
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-nav, clamp(1rem, 2vw, 2rem));
+  padding: var(--padding-nav, clamp(1rem, 2vw, 1.5rem));
   
   // Smooth transition for hide/show animation
   transition: transform 0.3s ease-in-out;
@@ -58,6 +71,27 @@
   
   // Navigation container - Enhanced responsive design
   &__nav {
-    @include genesis-environment('navigation-secondary');
+    // Full width on mobile when collapsed
+    @media (max-width: 767px) {
+      width: 100%;
+      flex-basis: 100%;
+      
+      // Hidden by default on mobile (Bootstrap collapse pattern)
+      &.collapse:not(.show) {
+        display: none;
+      }
+      
+      // Shown when toggled
+      &.collapse.show {
+        display: block;
+      }
+    }
+    
+    // Visible flex layout on desktop
+    @media (min-width: 768px) {
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
+    }
   }
 }
