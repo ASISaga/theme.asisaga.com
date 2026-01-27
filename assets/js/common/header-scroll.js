@@ -28,14 +28,14 @@
     }
     
     // Auto-hide logic: hide on scroll down, show on scroll up
-    if (Math.abs(currentScroll - lastScroll) > hideThreshold) {
-      if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
-        // Scrolling down & past threshold - hide header
-        header.classList.add('header-hidden');
-      } else {
-        // Scrolling up or at top - show header
-        header.classList.remove('header-hidden');
-      }
+    const scrollDiff = currentScroll - lastScroll;
+    
+    if (scrollDiff > hideThreshold && currentScroll > scrollThreshold) {
+      // Scrolling down & past threshold - hide header
+      header.classList.add('header-hidden');
+    } else if (scrollDiff < -hideThreshold) {
+      // Scrolling up - show header
+      header.classList.remove('header-hidden');
     }
     
     lastScroll = currentScroll;
