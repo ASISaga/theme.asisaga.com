@@ -7,9 +7,17 @@
   @include genesis-entity('primary');
   @include genesis-atmosphere('void');
   
+  // Smooth transition for hide/show animation
+  transition: transform 0.3s ease-in-out;
+  
   // Scrolled state - more opaque background
   &.scrolled {
     @include genesis-entity('imperative');
+  }
+  
+  // Hidden state - slide up out of view
+  &.header-hidden {
+    transform: translateY(-100%);
   }
 
   // Brand container with enhanced styling
