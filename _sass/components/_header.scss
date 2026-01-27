@@ -9,6 +9,9 @@
   z-index: 1000;
   width: 100%;
   
+  // Fixed minimum height to prevent layout shifts
+  min-height: 70px;
+  
   @include genesis-entity('primary');
   @include genesis-atmosphere('void');
   
@@ -20,8 +23,13 @@
   gap: var(--space-nav, clamp(1rem, 2vw, 2rem));
   padding: var(--padding-nav, clamp(1rem, 2vw, 1.5rem));
   
+  // Hardware acceleration for smoother transitions
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  
   // Smooth transition for hide/show animation
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
   
   // Scrolled state - more opaque background
   &.scrolled {
@@ -30,7 +38,7 @@
   
   // Hidden state - slide up out of view
   &.header-hidden {
-    transform: translateY(-100%);
+    transform: translate3d(0, -100%, 0);
   }
 
   // Brand container with enhanced styling

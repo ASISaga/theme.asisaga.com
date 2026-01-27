@@ -13,12 +13,16 @@
   let lastScroll = 0;
   const scrollThreshold = 50;
   const hideThreshold = 10; // Minimum scroll distance to trigger hide/show
+  let ticking = false;
   
   function handleScroll() {
     const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
     
     // Prevent negative scroll values (on some browsers/devices)
-    if (currentScroll < 0) return;
+    if (currentScroll < 0) {
+      ticking = false;
+      return;
+    }
     
     // Add/remove scrolled class based on scroll position
     if (currentScroll > scrollThreshold) {
@@ -30,29 +34,30 @@
     // Auto-hide logic: hide on scroll down, show on scroll up
     const scrollDiff = currentScroll - lastScroll;
     
-    if (scrollDiff > hideThreshold && currentScroll > scrollThreshold) {
-      // Scrolling down & past threshold - hide header
-      header.classList.add('header-hidden');
-    } else if (scrollDiff < -hideThreshold) {
-      // Scrolling up - show header
-      header.classList.remove('header-hidden');
+    // Only apply hide/show if scroll difference exceeds threshold
+    if (Math.abs(scrollDiff) > hideThreshold) {
+      if (scrollDiff > 0 && currentScroll > scrollThreshold) {
+        // Scrolling down & past threshold - hide header
+        header.classList.add('header-hidden');
+      } else if (scrollDiff < 0) {
+        // Scrolling up - show header
+        header.classList.remove('header-hidden');
+      }
+      
+      lastScroll = currentScroll;
     }
     
-    lastScroll = currentScroll;
+    ticking = false;
   }
   
   // Initial check
   handleScroll();
   
-  // Listen for scroll events with throttling
-  let ticking = false;
+  // Listen for scroll events with requestAnimationFrame throttling
   window.addEventListener('scroll', function() {
     if (!ticking) {
-      window.requestAnimationFrame(function() {
-        handleScroll();
-        ticking = false;
-      });
+      window.requestAnimationFrame(handleScroll);
       ticking = true;
     }
-  });
+  }, { passive: true });
 })();

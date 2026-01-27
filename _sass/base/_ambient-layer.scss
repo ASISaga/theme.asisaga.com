@@ -11,7 +11,14 @@
 html {
   // Ensure consistent baseline across all pages
   min-height: 100vh;
-  scroll-behavior: smooth;
+  // Smooth scroll only for anchor links, not general page scroll
+  // This prevents conflicts with header scroll animations
+  scroll-behavior: auto;
+  
+  // Apply smooth scroll only when specifically requested
+  &.smooth-scroll {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
