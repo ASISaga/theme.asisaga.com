@@ -111,13 +111,14 @@
       .product-card-list {
         // TODO: Replace @extend .list-unstyled with proper mixin or direct styles for Jekyll compatibility
     // @extend .list-unstyled;
-        
-        .product-card-list-item {
-          // TODO: Replace @extend .mb-2 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-2;
-        }
       }
     }
+  }
+  
+  // Extracted to reduce nesting depth
+  .product-card-list-item {
+    // TODO: Replace @extend .mb-2 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-2;
   }
   // Visual content container (now in _product-visual.scss)
   .product-visual-container {
@@ -187,14 +188,15 @@
     // @extend .bg-light;
         // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
     // @extend .rounded;
-        
-        .product-list-highlight {
-          // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
-    // @extend .fw-bold;
-          // TODO: Replace @extend .text-primary with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-primary;
-        }
       }
     }
+  }
+  
+  // Extracted to reduce nesting depth
+  .product-list-container .product-list-highlight {
+    // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fw-bold;
+    // TODO: Replace @extend .text-primary with proper mixin or direct styles for Jekyll compatibility
+    // @extend .text-primary;
   }
 }

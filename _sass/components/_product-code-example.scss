@@ -40,13 +40,14 @@
     // @extend .m-0;
         max-height: $product-code-max-height; // Using centralized dimension variable
         overflow-y: auto;
-        
-        code {
-          font-family: 'Courier New', Courier, monospace;
-          font-size: $product-code-font-size; // Using centralized dimension variable
-          line-height: 1.5;
-        }
       }
     }
+  }
+  
+  // Extracted to reduce nesting depth
+  .product-code-block code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: $product-code-font-size; // Using centralized dimension variable
+    line-height: 1.5;
   }
 }

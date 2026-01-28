@@ -31,13 +31,14 @@
         // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
     // @extend .rounded;        background-color: rgba(var(--color-light-rgb), 0.5);
         border-left: $product-border-accent-width solid var(--color-primary); // Using centralized dimension variable
-        
-        .product-list-highlight {
-          // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
-    // @extend .fw-bold;
-          color: var(--color-primary);
-        }
       }
     }
+  }
+  
+  // Extracted to reduce nesting depth
+  .product-list-highlight {
+    // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
+    // @extend .fw-bold;
+    color: var(--color-primary);
   }
 }
