@@ -24,10 +24,12 @@ The Genesis Semantic Engine is the **primary and recommended interface** for sty
 
 ### Quick Start (Primary Method)
 
+**For subdomain/standalone SCSS files** (compilation entry points):
+
 ```scss
 ---
 ---
-@import "ontology/index";  // MUST be first import
+@import "ontology/index";  // MUST be first import for standalone files
 
 .my-component {
   @include genesis-environment('distributed');  // Layout logic
@@ -39,6 +41,21 @@ The Genesis Semantic Engine is the **primary and recommended interface** for sty
   
   .action-button {
     @include genesis-synapse('execute');        // Interaction
+  }
+}
+```
+
+**For theme component/layout files** in `_sass/components/` or `_sass/layouts/`:
+
+```scss
+// NO @import needed - ontology already available via _common.scss
+
+.my-component {
+  @include genesis-environment('distributed');  // Already available
+  @include genesis-entity('primary');
+  
+  .title {
+    @include genesis-cognition('axiom');
   }
 }
 ```
@@ -96,6 +113,25 @@ See [Ontology System - Genesis Semantic Engine (PRIMARY METHOD)](#ontology-syste
 - Subdomain entry: `assets/css/style.scss` → imports `ontology/index`
 - Component partials: `/_sass/components/` (migrating to ontology)
 - Layout partials: `/_sass/layouts/` (legacy patterns)
+
+### ⚠️ IMPORTANT: When to Import `ontology/index`
+
+**DO import in standalone SCSS files:**
+- ✅ Subdomain SCSS files (e.g., `assets/css/custom-styles.scss`)
+- ✅ Standalone example/demo files (e.g., `assets/css/ontology-examples.scss`)
+- ✅ Any SCSS file that is a **compilation entry point** (has Jekyll front matter `---`)
+
+**DO NOT import in theme internal files:**
+- ❌ Component partials in `_sass/components/` (already available via `_common.scss`)
+- ❌ Layout partials in `_sass/layouts/` (already available via `_common.scss`)
+- ❌ Any file imported by `_common.scss` (creates duplication and CSS bloat)
+
+**Why this matters:**
+- `_common.scss` imports `ontology/index` at line 37
+- `_common.scss` then imports all component and layout partials
+- If components/layouts also import ontology, the entire system gets duplicated
+- This causes **massive CSS bloat** (22MB instead of 1.1MB output)
+- Compilation becomes much slower
 
 ## Design Tokens
 
