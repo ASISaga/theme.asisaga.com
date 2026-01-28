@@ -1,81 +1,54 @@
-// FAQ Layout Styles
+/**
+ * FAQ Layout Styles - Ontology-Based
+ * ============================================================================
+ * Frequently Asked Questions with searchable categories.
+ * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ */
+
+@import "ontology/index";
 
 .faq-layout {
+  @include genesis-environment('focused');    // Centered content
+  @include genesis-atmosphere('neutral');      // Standard vibe
+  
   .faq-header {
+    @include genesis-entity('secondary');     // Header section
     text-align: center;
-    margin-bottom: $spacing-sacred-xxl;
   }
   
   .faq-title {
-    font-size: $font-size-4xl;
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sacred-md;
-    
-    @include media-breakpoint-down(md) {
-      font-size: $font-size-3xl;
-    }
+    @include genesis-cognition('axiom');      // Headline
   }
   
   .faq-description {
-    font-size: $font-size-lg;
-    color: $text-muted;
-    margin-bottom: $spacing-sacred-lg;
+    @include genesis-cognition('discourse');  // Body text
   }
   
   .faq-search {
+    @include genesis-synapse('inquiry');      // Search input
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .faq-search-input {
-    // Prefer applying `form-control form-control-lg` in markup rather than `@extend`.
+    margin-inline: auto;
   }
   
   .faq-categories {
-    margin-bottom: $spacing-sacred-xxl;
+    @include genesis-environment('associative'); // Horizontal flex
     text-align: center;
   }
   
-  .faq-categories-group {
-    // Prefer composing `btn-group` in markup; keep layout helpers here.
-    flex-wrap: wrap;
+  .faq-category {
+    @include genesis-synapse('toggle');       // Category filter
   }
   
-  .faq-category-btn {
-    @include button-outline-variant($primary);
-  }
-  
-  .faq-content-row {
-    @include make-row();
-    justify-content: center;
-  }
-  
-  .faq-content-col {
-    @include make-col-ready();
-    @include media-breakpoint-up(lg) {
-      @include make-col(10);
-    }
+  .faq-content {
+    @include genesis-entity('primary');       // Main content
   }
   
   .faq-footer {
-    margin-top: $spacing-sacred-xxl;
-    padding-top: $spacing-sacred-xxl;
-    border-top: 1px solid $border-color;
+    @include genesis-entity('secondary');     // Footer section
     text-align: center;
   }
   
   .faq-footer-title {
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sacred-md;
-  }
-  
-  .faq-footer-description {
-    color: $text-muted;
-    margin-bottom: $spacing-sacred-lg;
-  }
-  
-  .faq-footer-btn {
-    @include button-variant($primary, $primary, $text-light);
+    @include genesis-cognition('motive');     // Instructional heading
   }
 }

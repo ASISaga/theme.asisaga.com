@@ -1,56 +1,60 @@
-// Chatroom Layout Styles
+/**
+ * Chatroom Layout Styles - Ontology-Based
+ * ============================================================================
+ * Real-time chat interface layout.
+ * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * 
+ * Note: This layout uses a custom <chatroom-app> web component.
+ * SCSS targets the internal structure within the component.
+ */
 
+@import "ontology/index";
+
+// Chatroom layout container - full height flex column
 .chatroom-layout {
+  @include genesis-environment('chronological');  // Vertical flow
+  @include genesis-atmosphere('neutral');          // Standard vibe
+  
   height: 100%;
   display: flex;
   flex-direction: column;
   
   .chatroom-header {
-    border-bottom: 1px solid $border-color;
-    background-color: $transcendent-white;
-    padding: $spacing-md $spacing-sacred-lg;
+    @include genesis-entity('secondary');     // Header section
+    
     flex-shrink: 0;
   }
   
-  .chatroom-header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
   .chatroom-title {
-    font-size: $font-size-xl;
-    margin-bottom: 0;
+    @include genesis-cognition('axiom');      // Headline
   }
   
   .chatroom-participants {
-    color: $text-muted;
-  }
-  
-  .chatroom-settings-btn {
-    @include button-outline-variant($secondary);
-    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius);
+    @include genesis-cognition('gloss');      // Small metadata
   }
   
   .chatroom-messages {
-    flex-grow: 1;
+    @include genesis-entity('primary');       // Main content area
+    @include genesis-environment('chronological'); // Message stream
+    
+    flex: 1;
     overflow: auto;
-    padding: $spacing-md $spacing-sacred-lg;
   }
   
   .chatroom-input {
-    border-top: 1px solid $border-color;
-    background-color: $transcendent-white;
-    padding: $spacing-md $spacing-sacred-lg;
+    @include genesis-entity('secondary');     // Input section
+    
     flex-shrink: 0;
   }
   
   .chatroom-input-form {
+    @include genesis-environment('associative'); // Horizontal flex
+    
     display: flex;
     gap: 0.5rem;
   }
   
   .chatroom-send-btn {
-    @include button-variant($primary, $primary, $text-light);
+    @include genesis-synapse('execute');      // Action button
   }
 }

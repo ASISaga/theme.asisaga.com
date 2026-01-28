@@ -1,38 +1,52 @@
-// Dashboard Layout Styles
+/**
+ * Dashboard Layout Styles - Ontology-Based
+ * ============================================================================
+ * Dashboard interface with header and content area.
+ * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * 
+ * This file matches the classes in _layouts/dashboard.html:
+ * - <div class="dashboard-layout">
+ * - <header class="dashboard-header">
+ * - <h1 class="dashboard-title">
+ * - <div class="dashboard-actions">
+ * - <button class="dashboard-action-btn">
+ * - <div class="dashboard-content">
+ */
 
+@import "ontology/index";
+
+// Dashboard layout container
+// Applied to wrapper div in dashboard.html
 .dashboard-layout {
+  @include genesis-environment('manifest');   // High-density dashboard
+  @include genesis-atmosphere('neutral');      // Standard vibe
+  
   height: 100%;
   
   .dashboard-header {
-    border-bottom: 1px solid $border-color;
-    background-color: $transcendent-white;
-    padding: $spacing-md $spacing-sacred-lg;
-    margin-bottom: $spacing-md;
-  }
-  
-  .dashboard-header-content {
+    @include genesis-entity('secondary');     // Header section
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   
   .dashboard-title {
-    font-size: $font-size-xxl;
-    margin-bottom: 0;
+    @include genesis-cognition('axiom');      // Headline
   }
   
   .dashboard-actions {
+    @include genesis-environment('associative'); // Horizontal flex
+    
     display: flex;
-    gap: $spacing-sm;
+    gap: 0.5rem;
   }
   
   .dashboard-action-btn {
-    @include button-outline-variant($primary);
-    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius);
-    margin-right: 0.5rem;
+    @include genesis-synapse('execute');      // Action button
   }
   
   .dashboard-content {
-    padding: 0 $spacing-sacred-lg;
+    @include genesis-entity('primary');       // Main content
   }
 }

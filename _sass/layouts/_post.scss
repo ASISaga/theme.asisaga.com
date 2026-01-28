@@ -1,71 +1,83 @@
-// Post Layout Styles
+/**
+ * Post Layout Styles - Ontology-Based
+ * ============================================================================
+ * Blog post article layout with metadata and sharing.
+ * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * 
+ * This file matches the classes in _layouts/post.html:
+ * - <article class="post-layout">
+ * - <header class="post-header">
+ * - <h1 class="post-title">
+ * - <div class="post-meta">
+ * - <time class="post-meta-date">
+ * - <span class="post-meta-author">
+ * - <div class="post-tags">
+ * - <span class="post-tag">
+ * - <span class="post-category">
+ * - <div class="post-content">
+ * - <footer class="post-footer">
+ * - <div class="post-share">
+ * - <h2 class="post-share-title">
+ */
 
+@import "ontology/index";
+
+// Post layout container - article wrapper
+// Applied to <article> in post.html
 .post-layout {
-  .post-main-col {
-    @include make-col-ready();
-    @include media-breakpoint-up(lg) {
-      @include make-col(8);
-    }
-    margin-left: auto;
-    margin-right: auto;
-  }
+  @include genesis-environment('focused');    // Single column reading
+  @include genesis-atmosphere('neutral');      // Standard vibe
   
   .post-header {
-    margin-bottom: $spacing-sacred-lg;
+    @include genesis-entity('secondary');     // Header section
   }
   
   .post-title {
-    font-size: $font-size-4xl;
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sacred-md;
-    
-    @include media-breakpoint-down(md) {
-      font-size: $font-size-3xl;
-    }
+    @include genesis-cognition('axiom');      // Large headline
   }
   
   .post-meta {
-    color: $text-muted;
-    margin-bottom: $spacing-sacred-md;
+    @include genesis-cognition('gloss');      // Small metadata
+    @include genesis-state('stable');          // Normal state
+    
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
   
-  .post-meta-date {
-    margin-right: 1rem;
+  .post-meta-date,
+  .post-meta-author {
+    @include genesis-cognition('gloss');      // Small metadata
   }
   
   .post-tags {
-    margin-bottom: $spacing-sacred-md;
+    @include genesis-environment('associative'); // Horizontal flex
+    
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
   
   .post-tag {
-    @include background-color($secondary);
-    color: $white;
-    margin-right: 0.25rem;
+    @include genesis-cognition('quantum');    // Tiny chip
+    @include genesis-entity('secondary');     // Supporting visual
   }
   
   .post-category {
-    @include background-color($primary);
-    color: $white;
-    margin-right: 0.25rem;
+    @include genesis-cognition('quantum');    // Tiny chip
+    @include genesis-entity('imperative');    // Primary accent
   }
   
   .post-content {
-    font-size: $font-size-lg;
-    line-height: $line-height-relaxed;
+    @include genesis-cognition('discourse');  // Body prose
+    @include genesis-entity('primary');       // Main content
   }
   
   .post-footer {
-    margin-top: $spacing-sacred-xxl;
-    padding-top: $spacing-sacred-lg;
-    border-top: 1px solid $border-color;
-  }
-  
-  .post-share {
-    margin-bottom: $spacing-sacred-md;
+    @include genesis-entity('secondary');     // Footer section
   }
   
   .post-share-title {
-    font-weight: $font-weight-bold;
-    margin-bottom: 0.5rem;
+    @include genesis-cognition('motive');     // Instructional text
   }
 }

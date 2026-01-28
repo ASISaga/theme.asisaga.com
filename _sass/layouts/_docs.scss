@@ -1,91 +1,61 @@
-// Docs Layout Styles
+/**
+ * Docs Layout Styles - Ontology-Based
+ * ============================================================================
+ * Documentation layout with sidebar navigation.
+ * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ */
+
+@import "ontology/index";
 
 .docs-layout {
+  @include genesis-environment('navigation-sidebar'); // Sidebar navigation
+  @include genesis-atmosphere('neutral');              // Standard vibe
+  
   .docs-sidebar {
-    @include make-col-ready();
-    @include media-breakpoint-up(lg) { @include make-col(3); }
-    @include media-breakpoint-up(xl) { @include make-col(2); }
-    background-color: $bg-light;
-    border-right: 1px solid $border-color;
+    @include genesis-entity('secondary');     // Sidebar section
+    @include genesis-environment('navigation-sidebar'); // Vertical nav
+  }
+  
+  .docs-nav {
+    @include genesis-environment('chronological'); // Vertical list
+  }
+  
+  .docs-nav-link {
+    @include genesis-synapse('navigate');     // Navigation link
     
-    .docs-sidebar-sticky {
-      // Prefer applying `sticky-top` in markup; replicate minimal sticky behavior here
-      position: sticky;
-      top: 0;
-      padding-top: $spacing-sacred-lg;
+    &--active {
+      @include genesis-state('active');       // Current page
     }
-  }
-  
-  .docs-search {
-    margin-bottom: $spacing-sacred-lg;
-  }
-  
-  .docs-nav-children {
-    display: flex;
-    flex-direction: column;
-    margin-left: 1rem;
   }
   
   .docs-content {
-    @include make-col-ready();
-    @include media-breakpoint-up(lg) { @include make-col(9); }
-    @include media-breakpoint-up(xl) { @include make-col(8); }
-    padding: $spacing-sacred-lg;
+    @include genesis-entity('primary');       // Main content
+    @include genesis-environment('focused');  // Reading layout
   }
   
   .docs-breadcrumb {
-    margin-bottom: $spacing-sacred-lg;
+    @include genesis-environment('navigation-breadcrumb'); // Breadcrumb trail
   }
   
   .docs-title {
-    font-size: $font-size-4xl;
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sacred-lg;
-    
-    @include media-breakpoint-down(md) {
-      font-size: $font-size-3xl;
-    }
+    @include genesis-cognition('axiom');      // Headline
+  }
+  
+  .docs-body {
+    @include genesis-cognition('discourse');  // Body prose
   }
   
   .docs-pagination {
-    margin-top: $spacing-sacred-xxl;
-    padding-top: $spacing-sacred-lg;
-    border-top: 1px solid $border-color;
-  }
-  
-  .docs-pagination-next {
-    @include make-col-ready();
-    @include media-breakpoint-up(md) { @include make-col(6); }
-    text-align: end;
-  }
-  
-  .docs-pagination-link {
-    text-decoration: none;
-  }
-  
-  .docs-pagination-label {
-    color: $text-muted;
-    display: block;
-    margin-bottom: 0.25rem;
+    @include genesis-synapse('paginate');     // Page navigation
+    @include genesis-environment('associative'); // Horizontal layout
   }
   
   .docs-toc {
-    @include media-breakpoint-up(xl) { @include make-col(2); }
-    display: none;
-    
-    @include media-breakpoint-up(xl) {
-      display: block;
-    }
-    
-    .docs-toc-sticky {
-      position: sticky;
-      top: 0;
-    }
+    @include genesis-entity('secondary');     // TOC sidebar
+    @include genesis-environment('navigation-sidebar'); // Vertical nav
   }
   
   .docs-toc-title {
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sacred-md;
+    @include genesis-cognition('motive');     // Section heading
   }
 }
-

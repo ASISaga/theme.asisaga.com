@@ -1,87 +1,88 @@
-// Article Layout Styles
+/**
+ * Article Layout Styles - Ontology-Based
+ * ============================================================================
+ * Long-form article with optional table of contents sidebar.
+ * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * 
+ * This file matches the classes in _layouts/article.html:
+ * - <article class="article-layout">
+ * - <aside class="article-toc-sidebar">
+ * - <nav class="article-toc">
+ * - <h2 class="article-toc-title">
+ * - <div class="article-main-col">
+ * - <header class="article-header">
+ * - <h1 class="article-title">
+ * - <p class="article-subtitle">
+ * - <div class="article-meta">
+ * - <time class="article-meta-date">
+ * - <span class="article-author">
+ * - <div class="article-content">
+ * - <footer class="article-footer">
+ */
 
+@import "ontology/index";
+
+// Article layout container - two-column with sidebar
+// Applied to <article> in article.html
 .article-layout {
+  @include genesis-environment('associative'); // Sidebar + main layout
+  @include genesis-atmosphere('neutral');       // Standard vibe
+  
   .article-toc-sidebar {
+    @include genesis-entity('secondary');     // Sidebar section
+    @include genesis-environment('chronological'); // Vertical navigation
+    
+    // Desktop: 25% width sidebar
     display: none;
     
-    @include media-breakpoint-up(lg) {
+    @media (min-width: 1024px) {
       display: block;
-      flex: 0 0 auto;
-      width: 25%;
+      flex: 0 0 25%;
     }
   }
   
-  .article-toc-sticky {
-    position: sticky;
-    top: 0;
-  }
-  
-  .article-toc-nav {
-    display: flex;
-    flex-direction: column;
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
-  }
-  
   .article-toc-title {
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sacred-md;
+    @include genesis-cognition('motive');     // Instructional heading
   }
   
   .article-main-col {
-    @include media-breakpoint-up(lg) {
-      flex: 0 0 auto;
-      width: 75%;
+    @include genesis-environment('focused');  // Reading column
+    
+    @media (min-width: 1024px) {
+      flex: 0 0 75%;
     }
   }
   
   .article-header {
-    margin-bottom: $spacing-sacred-xxl;
+    @include genesis-entity('secondary');     // Header section
   }
   
   .article-title {
-    font-size: $font-size-5xl;
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sacred-md;
-    
-    @include media-breakpoint-down(md) {
-      font-size: $font-size-4xl;
-    }
+    @include genesis-cognition('axiom');      // Large headline
   }
   
   .article-subtitle {
-    font-size: $font-size-lg;
-    color: $text-muted;
-    margin-bottom: $spacing-sacred-lg;
+    @include genesis-cognition('discourse');  // Subheading text
   }
   
   .article-meta {
-    color: $text-muted;
-    margin-bottom: $spacing-sacred-lg;
-  }
-  
-  .article-meta-date {
-    margin-right: 1rem;
-  }
-  
-  .article-author {
-    margin-right: 1rem;
+    @include genesis-cognition('gloss');      // Small metadata
+    
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
   
   .article-content {
-    font-size: $font-size-lg;
-    line-height: $line-height-relaxed;
+    @include genesis-cognition('discourse');  // Body prose
+    @include genesis-entity('primary');       // Main content
   }
   
   .article-footer {
-    margin-top: $spacing-sacred-xxl;
-    padding-top: $spacing-sacred-xxl;
-    border-top: 1px solid $border-color;
+    @include genesis-entity('secondary');     // Footer section
   }
   
   .article-footer-title {
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sacred-md;
+    @include genesis-cognition('motive');     // Instructional heading
   }
 }

@@ -1,115 +1,71 @@
-// Profile Layout Styles
+/**
+ * Profile Layout Styles - Ontology-Based
+ * ============================================================================
+ * User profile page with avatar, stats, and content.
+ * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ */
+
+@import "ontology/index";
 
 .profile-layout {
+  @include genesis-environment('chronological'); // Vertical flow
+  @include genesis-atmosphere('neutral');         // Standard vibe
+  
   .profile-header {
-    margin-bottom: $spacing-sacred-xxl;
-  }
-  
-  .profile-header-row {
-    @include make-row();
-    align-items: center;
-  }
-  
-  .profile-image-col {
-    @include make-col-ready();
-    @include media-breakpoint-up(lg) {
-      @include make-col(3);
-    }
-    text-align: center;
-    margin-bottom: $spacing-sacred-lg;
+    @include genesis-entity('primary');       // Main profile section
     
-    @include media-breakpoint-up(lg) {
-      margin-bottom: 0;
-    }
+    text-align: center;
   }
   
-  .profile-info-col {
-    @include make-col-ready();
-    @include media-breakpoint-up(lg) {
-      @include make-col(9);
-    }
-  }
-  
-  .profile-image {
-    max-width: 200px;
-    border-radius: 50%;
-    width: 100%;
-    margin-bottom: $spacing-sacred-md;
-  }
-  
-  .profile-image-placeholder {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background-color: $secondary;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  .profile-avatar {
+    @include genesis-entity('avatar');        // User avatar
   }
   
   .profile-name {
-    font-size: $font-size-4xl;
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sacred-sm;
-    
-    @include media-breakpoint-down(md) {
-      font-size: $font-size-3xl;
-    }
+    @include genesis-cognition('axiom');      // Headline
   }
   
   .profile-role {
-    font-size: $font-size-lg;
-    color: $text-muted;
-    margin-bottom: $spacing-sacred-md;
+    @include genesis-cognition('discourse');  // Subheading
   }
   
   .profile-bio {
-    margin-bottom: $spacing-sacred-md;
+    @include genesis-cognition('discourse');  // Body text
+  }
+  
+  .profile-social {
+    @include genesis-environment('associative'); // Horizontal flex
   }
   
   .profile-social-link {
-    @include button-outline-variant($primary);
-    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius);
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
+    @include genesis-synapse('social');       // Social link
+  }
+  
+  .profile-main {
+    @include genesis-environment('associative'); // Two-column layout
+  }
+  
+  .profile-content {
+    @include genesis-entity('primary');       // Main content
+  }
+  
+  .profile-sidebar {
+    @include genesis-entity('secondary');     // Sidebar section
   }
   
   .profile-stats {
-    // Card styles are provided by the card component. Prefer applying
-    // the `card` class in markup or using the `card-component` mixin
-    // if you want a reusable component rather than `@extend`.
-    margin-bottom: $spacing-sacred-lg;
+    @include genesis-entity('aggregate');     // Stats container
   }
   
-  .profile-stats-title,
-  .profile-skills-title {
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sacred-md;
+  .profile-stats-title {
+    @include genesis-cognition('motive');     // Section heading
   }
   
   .profile-skills {
-    // Prefer `card` class in markup or `@include card-component()` usage
-    margin-bottom: $spacing-sacred-lg;
+    @include genesis-environment('associative'); // Skills layout
   }
   
-  .profile-skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  .profile-skills-badge {
+    @include genesis-cognition('quantum');    // Skill tag
   }
-  
-  .profile-skill-badge {
-    @include background-color($primary);
-    color: $white;
-    padding: 0.25rem 0.5rem;
-    border-radius: $border-radius-sm;
-  }
-}
-
-
-.profile-placeholder-icon {
-  @include fa-icon();
-  // emulate `.fa-5x`
-  font-size: 5em;
-  color: $white;
 }

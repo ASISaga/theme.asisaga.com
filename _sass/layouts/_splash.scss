@@ -1,102 +1,72 @@
-// Splash Layout Styles
+/**
+ * Splash Layout Styles - Ontology-Based
+ * ============================================================================
+ * Coming soon/launch page with countdown and email capture.
+ * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ */
+
+@import "ontology/index";
 
 .splash-layout-content {
+  @include genesis-environment('focused');    // Centered content
+  @include genesis-atmosphere('vibrant');      // High-energy vibe
+  
   min-height: 75vh;
-  
-  .splash-container {
-    @include make-row();
-    min-height: 75vh;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .splash-content {
-    @include make-col-ready();
-    @include media-breakpoint-up(lg) {
-      @include make-col(8);
-    }
-    text-align: center;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   
   .splash-logo {
+    @include genesis-entity('primary');       // Logo display
     max-width: 200px;
-    margin-bottom: $spacing-sacred-lg;
+    margin-inline: auto;
   }
   
   .splash-title {
-    font-size: $font-size-5xl;
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sacred-lg;
-    
-    @include media-breakpoint-down(md) {
-      font-size: $font-size-4xl;
-    }
+    @include genesis-cognition('axiom');      // Large headline
   }
   
   .splash-subtitle {
-    font-size: $font-size-lg;
-    color: $text-muted;
-    margin-bottom: $spacing-sacred-xxl;
+    @include genesis-cognition('discourse');  // Subheading
   }
   
   .splash-countdown {
-    margin: $spacing-sacred-xxl 0;
+    @include genesis-entity('imperative');    // Urgent countdown
+    @include genesis-state('evolving');        // Active/changing state
   }
   
-  .splash-countdown-row {
-    @include make-row();
-    justify-content: center;
-  }
-  
-  .splash-countdown-unit {
-    text-align: center;
+  .splash-countdown-item {
+    @include genesis-entity('secondary');     // Individual counter
   }
   
   .splash-countdown-value {
-    font-size: $font-size-4xl;
-    font-weight: $font-weight-bold;
+    @include genesis-cognition('axiom');      // Large numbers
   }
   
   .splash-countdown-label {
-    color: $text-muted;
-  }
-  
-  .splash-email-capture {
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+    @include genesis-cognition('gloss');      // Small labels
   }
   
   .splash-email-form {
-    @include make-row();
+    @include genesis-environment('associative'); // Horizontal layout
+    @include genesis-synapse('input-primary'); // Primary input form
+    
+    max-width: 500px;
+    margin-inline: auto;
+    display: flex;
     gap: 0.5rem;
   }
   
-  .splash-email-input-col {
-    @include make-col-auto();
-    flex-grow: 1;
-  }
-  
-  .splash-email-input {
-    // `.form-control` styles come from Bootstrap forms; prefer applying
-    // the `form-control form-control-lg` classes in the markup instead
-    // of using `@extend` here so the linter and Sass remain happy.
-  }
-  
-  .splash-email-btn {
-    // Use Bootstrap button mixins to apply variant and size token values
-    @include button-variant($primary, $primary, $text-light);
-    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius);
-    // Ensure base button variables are in scope (Bootstrap base `.btn` styles read these vars)
+  .splash-email-button {
+    @include genesis-synapse('execute');      // Submit action
   }
   
   .splash-social {
-    margin-top: $spacing-sacred-xxl;
+    @include genesis-environment('associative'); // Horizontal flex
   }
   
   .splash-social-link {
-    @include button-outline-variant($secondary);
-    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius);
-    margin-right: 0.5rem;
+    @include genesis-synapse('social');       // Social link
   }
 }
