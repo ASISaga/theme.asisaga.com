@@ -1,74 +1,77 @@
-// Form Layout Styles
+/**
+ * Form Layout Styles - Ontology-Based
+ * ============================================================================
+ * Multi-step form layout with progress indicator.
+ * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * 
+ * This file matches the classes in _layouts/form.html:
+ * - <div class="form-layout">
+ * - <header class="form-header">
+ * - <h1 class="form-title">
+ * - <p class="form-description">
+ * - <div class="form-content">
+ * - <div class="form-progress">
+ * - <ol class="form-steps">
+ * - <footer class="form-footer">
+ * - <p class="form-help">
+ */
 
+@import "ontology/index";
+
+// Form layout container - centered form flow
+// Applied to wrapper div in form.html
 .form-layout {
-  .form-layout-row {
-    @include make-row();
-    justify-content: center;
-  }
-  
-  .form-layout-col {
-    @include make-col-ready();
-    @include media-breakpoint-up(lg) {
-      @include make-col(8);
-    }
-  }
+  @include genesis-environment('interaction-form'); // Form layout
+  @include genesis-atmosphere('neutral');            // Standard vibe
   
   .form-header {
+    @include genesis-entity('secondary');     // Header section
+    
     text-align: center;
-    margin-bottom: $spacing-sacred-xxl;
   }
   
   .form-title {
-    font-size: $font-size-4xl;
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sacred-md;
-    
-    @include media-breakpoint-down(md) {
-      font-size: $font-size-3xl;
-    }
+    @include genesis-cognition('axiom');      // Headline
   }
   
   .form-description {
-    font-size: $font-size-lg;
-    color: $text-muted;
-    margin-bottom: $spacing-sacred-lg;
+    @include genesis-cognition('discourse');  // Body text
+  }
+  
+  .form-content {
+    @include genesis-entity('primary');       // Main form area
   }
   
   .form-progress {
-    margin-bottom: $spacing-sacred-lg;
-    
-    .progress {
-      height: 4px;
-    }
-    
-    .progress-bar {
-      width: 0%;
-    }
+    @include genesis-entity('secondary');     // Progress section
+    @include genesis-state('evolving');        // In-progress state
   }
   
-  .form-progress-steps {
+  .form-steps {
+    @include genesis-environment('associative'); // Horizontal steps
+    
     display: flex;
     justify-content: space-between;
-    margin-top: 0.5rem;
+    list-style: none;
+    padding-left: 0;
   }
   
-  .form-progress-step {
-    color: $text-muted;
+  .form-step {
+    @include genesis-cognition('gloss');      // Small step text
   }
   
   .form-footer {
-    margin-top: $spacing-sacred-lg;
+    @include genesis-entity('secondary');     // Footer section
+    
     text-align: center;
   }
   
-  .form-help-text {
-    color: $text-muted;
-    font-size: $font-size-sm;
-    margin-bottom: 0.5rem;
+  .form-help {
+    @include genesis-cognition('gloss');      // Help text
   }
   
-  .form-privacy-link {
-    color: $text-muted;
-    font-size: $font-size-sm;
+  .form-privacy {
+    @include genesis-synapse('navigate');     // Privacy link
+    @include genesis-cognition('gloss');      // Small text
   }
 }

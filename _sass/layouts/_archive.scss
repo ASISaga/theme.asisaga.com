@@ -1,63 +1,78 @@
-// Archive Layout Styles
+/**
+ * Archive Layout Styles - Ontology-Based
+ * ============================================================================
+ * Collection listing with filtering, sorting, and view options.
+ * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * 
+ * This file matches the classes in _layouts/archive.html:
+ * - <div class="archive-layout">
+ * - <header class="archive-header">
+ * - <h1 class="archive-title">
+ * - <p class="archive-description">
+ * - <div class="archive-controls">
+ * - <select class="archive-select">
+ * - <button class="archive-view-btn">
+ * - <div class="archive-content">
+ * - <nav class="archive-pagination">
+ */
 
+@import "ontology/index";
+
+// Archive layout container
+// Applied to wrapper div in archive.html
 .archive-layout {
+  @include genesis-environment('chronological');  // Vertical flow
+  @include genesis-atmosphere('neutral');          // Standard vibe
+  
   .archive-header {
-    margin-bottom: $spacing-sacred-xxl;
+    @include genesis-entity('secondary');     // Header section
   }
   
   .archive-title {
-    font-size: $font-size-4xl;
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sacred-md;
-    
-    @include media-breakpoint-down(md) {
-      font-size: $font-size-3xl;
-    }
+    @include genesis-cognition('axiom');      // Large headline
   }
   
   .archive-description {
-    font-size: $font-size-lg;
-    color: $text-muted;
-    margin-bottom: $spacing-sacred-lg;
+    @include genesis-cognition('discourse');  // Body text
   }
   
   .archive-controls {
+    @include genesis-environment('associative'); // Horizontal flex
+    
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    margin-bottom: $spacing-sacred-lg;
   }
   
   .archive-view-toggle {
+    @include genesis-environment('associative'); // Horizontal group
+    
     display: inline-flex;
-    vertical-align: middle;
-    border-radius: 0.25rem;
   }
   
   .archive-view-btn {
-    display: inline-block;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: $text-secondary;
-    background-color: transparent;
-    border: 1px solid $border-color;
-    transition: all 0.15s ease-in-out;
+    @include genesis-synapse('toggle');       // View toggle button
+    @include genesis-state('stable');          // Normal state
     
-    &:hover {
-      background-color: $bg-light;
+    &--active {
+      @include genesis-state('active');       // Active view state
     }
   }
   
+  .archive-content {
+    @include genesis-entity('primary');       // Main content
+  }
+  
   .archive-pagination {
-    margin-top: $spacing-sacred-xxl;
+    @include genesis-environment('associative'); // Horizontal pagination
   }
   
   .pagination-list {
+    @include genesis-environment('associative'); // Horizontal flex
+    
     display: flex;
-    padding-left: 0;
     list-style: none;
+    padding-left: 0;
     justify-content: center;
   }
 }
