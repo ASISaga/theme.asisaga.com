@@ -145,14 +145,6 @@
 @import "layouts/minimal";
 @import "layouts/splash";
 
-// Layout-specific components
-@import "components/layouts/article-toc";
-@import "components/layouts/dashboard-sample";
-@import "components/layouts/post-meta";
-@import "components/layouts/splash-countdown";
-@import "components/layouts/profile-stats";
-@import "components/layouts/landing-features";
-@import "components/layouts/post-navigation";
-@import "components/layouts/archive-item";
-@import "components/layouts/faq-item";
-@import "components/layouts/gallery-item";
+// Layout-specific components removed - styles consolidated into layout files
+// Previously: components/layouts/* (10 unused files with -component suffix)
+// Now: All layout styling is in _sass/layouts/*.scss matching HTML class names
