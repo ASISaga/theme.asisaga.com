@@ -1,0 +1,885 @@
+---
+layout: default
+title: "Navigation Mechanisms Demo - Genesis Ontology v2.3.0"
+description: "Comprehensive demonstration of all navigation mechanisms in the Genesis Ontological Design System"
+---
+
+<article class="demo-page">
+  <header class="demo-header">
+    <h1>Navigation Mechanisms Demo</h1>
+    <p class="subtitle">Genesis Ontology v2.3.0 - Contemporary Website Navigation Patterns</p>
+  </header>
+
+  <!-- Table of Contents for this page -->
+  <aside class="demo-toc">
+    <nav aria-label="Page contents">
+      <h2>On This Page</h2>
+      <ol>
+        <li><a href="#pagination">Pagination Controls</a></li>
+        <li><a href="#breadcrumbs">Breadcrumb Navigation</a></li>
+        <li><a href="#tabs">Tab Navigation</a></li>
+        <li><a href="#accordion">Accordion Navigation</a></li>
+        <li><a href="#sidebar">Sidebar Navigation</a></li>
+        <li><a href="#footer">Footer Navigation</a></li>
+        <li><a href="#stepper">Multi-Step Wizard</a></li>
+        <li><a href="#toc">Table of Contents</a></li>
+      </ol>
+    </nav>
+  </aside>
+
+  <div class="demo-content">
+    
+    <!-- Section 1: Pagination -->
+    <section id="pagination" class="demo-section">
+      <h2>1. Pagination Controls</h2>
+      <p>Numbered page navigation with prev/next controls using <code>genesis-synapse('paginate')</code></p>
+      
+      <div class="example-container">
+        <nav class="pagination-demo" aria-label="Pagination example">
+          <a href="#" class="page-link prev-link" aria-label="Previous page">
+            ← Previous
+          </a>
+          <a href="#" class="page-link">1</a>
+          <a href="#" class="page-link" aria-current="page">2</a>
+          <a href="#" class="page-link">3</a>
+          <a href="#" class="page-link">4</a>
+          <a href="#" class="page-link">5</a>
+          <a href="#" class="page-link next-link" aria-label="Next page">
+            Next →
+          </a>
+        </nav>
+      </div>
+
+      <details class="code-example">
+        <summary>View SCSS Implementation</summary>
+        <pre><code>.pagination-demo {
+  @include genesis-environment('navigation-pagination');
+
+  .page-link {
+    @include genesis-synapse('paginate');
+  }
+}</code></pre>
+      </details>
+    </section>
+
+    <!-- Section 2: Breadcrumbs -->
+    <section id="breadcrumbs" class="demo-section">
+      <h2>2. Breadcrumb Navigation</h2>
+      <p>Hierarchical path navigation using <code>genesis-environment('navigation-breadcrumb')</code></p>
+      
+      <div class="example-container">
+        <nav class="breadcrumb-demo" aria-label="Breadcrumb">
+          <a href="#" class="breadcrumb-item">Home</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="#" class="breadcrumb-item">Docs</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="#" class="breadcrumb-item">Components</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="current-page">Navigation</span>
+        </nav>
+      </div>
+
+      <details class="code-example">
+        <summary>View SCSS Implementation</summary>
+        <pre><code>.breadcrumb-demo {
+  @include genesis-environment('navigation-breadcrumb');
+
+  .breadcrumb-item {
+    @include genesis-synapse('navigate');
+  }
+  
+  .current-page {
+    @include genesis-cognition('motive');
+    @include genesis-state('active');
+  }
+}</code></pre>
+      </details>
+    </section>
+
+    <!-- Section 3: Tabs -->
+    <section id="tabs" class="demo-section">
+      <h2>3. Tab Navigation</h2>
+      <p>Horizontal content switching using <code>genesis-synapse('tab')</code></p>
+      
+      <div class="example-container">
+        <div class="tabs-demo">
+          <div class="tab-list" role="tablist" aria-label="Product information">
+            <button class="tab-button" role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1">
+              Overview
+            </button>
+            <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2">
+              Features
+            </button>
+            <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3">
+              Pricing
+            </button>
+            <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-4" id="tab-4">
+              Reviews
+            </button>
+          </div>
+          
+          <div class="tab-panels">
+            <div class="tab-panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+              <h3>Product Overview</h3>
+              <p>This is the overview content panel. It contains general information about the product.</p>
+            </div>
+            <div class="tab-panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+              <h3>Features</h3>
+              <p>This panel would list all the key features and capabilities.</p>
+            </div>
+            <div class="tab-panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+              <h3>Pricing</h3>
+              <p>Pricing information and plan comparison would go here.</p>
+            </div>
+            <div class="tab-panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4" hidden>
+              <h3>Customer Reviews</h3>
+              <p>User testimonials and ratings would be displayed here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <details class="code-example">
+        <summary>View SCSS Implementation</summary>
+        <pre><code>.tabs-demo {
+  .tab-list {
+    @include genesis-environment('navigation-tabs');
+  }
+
+  .tab-button {
+    @include genesis-synapse('tab');
+  }
+  
+  .tab-panel {
+    @include genesis-entity('primary');
+  }
+}</code></pre>
+      </details>
+    </section>
+
+    <!-- Section 4: Accordion -->
+    <section id="accordion" class="demo-section">
+      <h2>4. Accordion Navigation (FAQ)</h2>
+      <p>Collapsible content sections using <code>genesis-synapse('toggle')</code></p>
+      
+      <div class="example-container">
+        <div class="accordion-demo">
+          <div class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="true" aria-controls="accordion-1">
+              What is the Genesis Ontology System?
+              <span class="toggle-icon">▼</span>
+            </button>
+            <div class="accordion-content" id="accordion-1">
+              <p>The Genesis Ontology System is a three-tier semantic design architecture that separates content from presentation, enabling consistent styling across all ASISaga subdomains.</p>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="false" aria-controls="accordion-2">
+              How do navigation mixins work?
+              <span class="toggle-icon">▼</span>
+            </button>
+            <div class="accordion-content collapsed" id="accordion-2">
+              <p>Navigation mixins provide semantic roles for different interaction patterns, automatically applying responsive styling, accessibility attributes, and touch target optimization.</p>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="false" aria-controls="accordion-3">
+              Are these patterns mobile-friendly?
+              <span class="toggle-icon">▼</span>
+            </button>
+            <div class="accordion-content collapsed" id="accordion-3">
+              <p>Yes! All navigation patterns follow WCAG 2.5.5 guidelines with minimum 44px touch targets on mobile and responsive layouts that adapt to viewport size.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <details class="code-example">
+        <summary>View SCSS Implementation</summary>
+        <pre><code>.accordion-demo {
+  @include genesis-environment('navigation-accordion');
+
+  .accordion-toggle {
+    @include genesis-synapse('toggle');
+    @include genesis-cognition('motive');
+  }
+  
+  .accordion-content {
+    @include genesis-cognition('discourse');
+    @include genesis-state('expanded');
+    
+    &.collapsed {
+      @include genesis-state('collapsed');
+    }
+  }
+}</code></pre>
+      </details>
+    </section>
+
+    <!-- Section 5: Sidebar -->
+    <section id="sidebar" class="demo-section">
+      <h2>5. Sidebar Navigation</h2>
+      <p>Vertical navigation menu using <code>genesis-environment('navigation-sidebar')</code></p>
+      
+      <div class="example-container">
+        <div class="sidebar-demo-wrapper">
+          <nav class="sidebar-demo" aria-label="Documentation navigation">
+            <div class="nav-section">
+              <h3 class="section-title">Getting Started</h3>
+              <a href="#" class="nav-link" aria-current="page">Introduction</a>
+              <a href="#" class="nav-link">Installation</a>
+              <a href="#" class="nav-link">Quick Start</a>
+            </div>
+            
+            <div class="nav-section">
+              <h3 class="section-title">Core Concepts</h3>
+              <a href="#" class="nav-link">Environment</a>
+              <a href="#" class="nav-link">Entity</a>
+              <a href="#" class="nav-link">Cognition</a>
+              <a href="#" class="nav-link">Synapse</a>
+            </div>
+            
+            <div class="nav-section">
+              <h3 class="section-title">Components</h3>
+              <a href="#" class="nav-link">Navigation</a>
+              <a href="#" class="nav-link">Forms</a>
+              <a href="#" class="nav-link">Cards</a>
+            </div>
+          </nav>
+          
+          <div class="main-content-demo">
+            <p>Main content area appears here alongside the sidebar navigation.</p>
+          </div>
+        </div>
+      </div>
+
+      <details class="code-example">
+        <summary>View SCSS Implementation</summary>
+        <pre><code>.sidebar-demo {
+  @include genesis-environment('navigation-sidebar');
+
+  .nav-link {
+    @include genesis-synapse('navigate');
+    
+    &[aria-current="page"] {
+      @include genesis-state('active');
+    }
+  }
+  
+  .section-title {
+    @include genesis-cognition('motive');
+  }
+}</code></pre>
+      </details>
+    </section>
+
+    <!-- Section 6: Footer -->
+    <section id="footer" class="demo-section">
+      <h2>6. Footer Navigation</h2>
+      <p>Multi-column footer links using <code>genesis-environment('navigation-footer')</code></p>
+      
+      <div class="example-container">
+        <footer class="footer-demo">
+          <div class="footer-column">
+            <h4 class="column-title">Product</h4>
+            <a href="#" class="footer-link">Features</a>
+            <a href="#" class="footer-link">Pricing</a>
+            <a href="#" class="footer-link">Demo</a>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="column-title">Resources</h4>
+            <a href="#" class="footer-link">Documentation</a>
+            <a href="#" class="footer-link">Blog</a>
+            <a href="#" class="footer-link">Tutorials</a>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="column-title">Company</h4>
+            <a href="#" class="footer-link">About</a>
+            <a href="#" class="footer-link">Contact</a>
+            <a href="#" class="footer-link">Careers</a>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="column-title">Social</h4>
+            <a href="#" class="footer-link social-link">Twitter</a>
+            <a href="#" class="footer-link social-link">GitHub</a>
+            <a href="#" class="footer-link social-link">LinkedIn</a>
+          </div>
+        </footer>
+      </div>
+
+      <details class="code-example">
+        <summary>View SCSS Implementation</summary>
+        <pre><code>.footer-demo {
+  @include genesis-environment('navigation-footer');
+
+  .column-title {
+    @include genesis-cognition('motive');
+  }
+  
+  .footer-link {
+    @include genesis-synapse('navigate');
+  }
+  
+  .social-link {
+    @include genesis-synapse('social');
+  }
+}</code></pre>
+      </details>
+    </section>
+
+    <!-- Section 7: Stepper -->
+    <section id="stepper" class="demo-section">
+      <h2>7. Multi-Step Wizard/Stepper</h2>
+      <p>Process navigation using <code>genesis-synapse('step')</code></p>
+      
+      <div class="example-container">
+        <nav class="stepper-demo" aria-label="Checkout process">
+          <a href="#" class="wizard-step completed" data-status="complete">
+            <span class="step-number">1</span>
+            <span class="step-label">Cart</span>
+          </a>
+          
+          <a href="#" class="wizard-step active" aria-current="step">
+            <span class="step-number">2</span>
+            <span class="step-label">Shipping</span>
+          </a>
+          
+          <a href="#" class="wizard-step disabled" aria-disabled="true">
+            <span class="step-number">3</span>
+            <span class="step-label">Payment</span>
+          </a>
+          
+          <a href="#" class="wizard-step disabled" aria-disabled="true">
+            <span class="step-number">4</span>
+            <span class="step-label">Confirm</span>
+          </a>
+        </nav>
+      </div>
+
+      <details class="code-example">
+        <summary>View SCSS Implementation</summary>
+        <pre><code>.stepper-demo {
+  @include genesis-environment('navigation-breadcrumb');
+
+  .wizard-step {
+    @include genesis-synapse('step');
+  }
+}</code></pre>
+      </details>
+    </section>
+
+    <!-- Section 8: Table of Contents -->
+    <section id="toc" class="demo-section">
+      <h2>8. Table of Contents (Anchor Navigation)</h2>
+      <p>In-page anchor links using <code>genesis-synapse('anchor')</code></p>
+      
+      <div class="example-container">
+        <nav class="toc-demo" aria-label="Table of contents">
+          <h3 class="toc-title">Table of Contents</h3>
+          <a href="#pagination" class="toc-link active" aria-current="location">Pagination Controls</a>
+          <a href="#breadcrumbs" class="toc-link">Breadcrumb Navigation</a>
+          <a href="#tabs" class="toc-link">Tab Navigation</a>
+          <a href="#accordion" class="toc-link">Accordion Navigation</a>
+          <a href="#sidebar" class="toc-link">Sidebar Navigation</a>
+          <a href="#footer" class="toc-link">Footer Navigation</a>
+          <a href="#stepper" class="toc-link">Multi-Step Wizard</a>
+          <a href="#toc" class="toc-link">Table of Contents</a>
+          
+          <a href="#top" class="back-to-top">↑ Back to Top</a>
+        </nav>
+      </div>
+
+      <details class="code-example">
+        <summary>View SCSS Implementation</summary>
+        <pre><code>.toc-demo {
+  @include genesis-environment('navigation-sidebar');
+
+  .toc-title {
+    @include genesis-cognition('motive');
+  }
+  
+  .toc-link {
+    @include genesis-synapse('anchor');
+  }
+  
+  .back-to-top {
+    @include genesis-synapse('anchor');
+  }
+}</code></pre>
+      </details>
+    </section>
+
+  </div>
+
+  <footer class="demo-footer">
+    <p>All navigation patterns implement WCAG 2.5.5 guidelines with minimum 44px touch targets on mobile.</p>
+    <p>View the complete documentation in <code>_sass/ontology/INTEGRATION-GUIDE.md</code></p>
+  </footer>
+</article>
+
+<style>
+  /* Demo page styling using ontology mixins */
+  
+  .demo-page {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+  }
+  
+  .demo-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .demo-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .subtitle {
+    color: oklch(0.70 0.02 220);
+    font-size: 1.125rem;
+  }
+  
+  .demo-toc {
+    background: oklch(0.18 0.03 248 / 0.6);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .demo-toc h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .demo-toc ol {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .demo-toc li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .demo-toc a {
+    color: oklch(0.75 0.15 210);
+    text-decoration: none;
+  }
+  
+  .demo-toc a:hover {
+    color: oklch(0.88 0.18 95);
+  }
+  
+  .demo-section {
+    margin-bottom: 4rem;
+    scroll-margin-top: 2rem;
+  }
+  
+  .demo-section h2 {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid oklch(0.30 0.04 250 / 0.3);
+  }
+  
+  .example-container {
+    background: oklch(0.16 0.02 248 / 0.4);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    margin: 1.5rem 0;
+  }
+  
+  .code-example {
+    margin-top: 1rem;
+  }
+  
+  .code-example summary {
+    cursor: pointer;
+    color: oklch(0.75 0.15 210);
+    font-weight: 600;
+  }
+  
+  .code-example pre {
+    background: oklch(0.14 0.02 250 / 0.8);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin-top: 0.5rem;
+  }
+  
+  .code-example code {
+    font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  
+  .demo-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 2px solid oklch(0.30 0.04 250 / 0.3);
+    text-align: center;
+    color: oklch(0.70 0.02 220);
+  }
+  
+  /* Example-specific styles */
+  .pagination-demo {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .page-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.75rem;
+    background: oklch(0.18 0.03 248 / 0.6);
+    color: oklch(0.98 0.01 90);
+    border: 1px solid oklch(0.30 0.04 250 / 0.3);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .page-link:hover {
+    background: oklch(0.22 0.04 246);
+    border-color: oklch(0.85 0.16 85 / 0.4);
+  }
+  
+  .page-link[aria-current="page"] {
+    background: oklch(0.88 0.18 95);
+    color: oklch(0.15 0.03 250);
+    border-color: oklch(0.88 0.18 95);
+    font-weight: 700;
+  }
+  
+  .breadcrumb-demo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .breadcrumb-item {
+    color: oklch(0.75 0.15 210);
+    text-decoration: none;
+  }
+  
+  .breadcrumb-item:hover {
+    color: oklch(0.88 0.18 95);
+  }
+  
+  .breadcrumb-separator {
+    color: oklch(0.50 0.02 220);
+  }
+  
+  .current-page {
+    color: oklch(0.85 0.16 85);
+    font-weight: 600;
+  }
+  
+  .tab-list {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 2px solid oklch(0.30 0.04 250 / 0.3);
+  }
+  
+  .tab-button {
+    padding: 0.875rem 1.25rem;
+    color: oklch(0.70 0.02 220);
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .tab-button:hover {
+    color: oklch(0.98 0.01 90);
+    border-bottom-color: oklch(0.30 0.04 250 / 0.5);
+  }
+  
+  .tab-button[aria-selected="true"] {
+    color: oklch(0.88 0.18 95);
+    border-bottom-color: oklch(0.88 0.18 95);
+    font-weight: 700;
+  }
+  
+  .tab-panel {
+    padding: 1.5rem;
+    background: oklch(0.18 0.03 248 / 0.6);
+    border-radius: 0.75rem;
+    margin-top: 1rem;
+  }
+  
+  .accordion-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .accordion-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: oklch(0.18 0.03 248 / 0.6);
+    color: oklch(0.98 0.01 90);
+    border: 1px solid oklch(0.30 0.04 250 / 0.3);
+    border-radius: 0.5rem;
+    text-align: left;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .accordion-toggle:hover {
+    background: oklch(0.22 0.04 246);
+    border-color: oklch(0.85 0.16 85 / 0.4);
+  }
+  
+  .toggle-icon {
+    transition: transform 0.2s ease;
+  }
+  
+  .accordion-toggle[aria-expanded="true"] .toggle-icon {
+    transform: rotate(180deg);
+  }
+  
+  .accordion-content {
+    padding: 1rem 1.5rem;
+    background: oklch(0.16 0.02 248 / 0.4);
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+  
+  .accordion-content.collapsed {
+    display: none;
+  }
+  
+  .sidebar-demo-wrapper {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+  }
+  
+  @media (max-width: 767px) {
+    .sidebar-demo-wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .sidebar-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .nav-section {
+    margin-bottom: 1rem;
+  }
+  
+  .section-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: oklch(0.75 0.15 210);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+  }
+  
+  .nav-link:hover {
+    color: oklch(0.88 0.18 95);
+    border-left-color: oklch(0.88 0.18 95);
+    padding-left: 1.25rem;
+  }
+  
+  .nav-link[aria-current="page"] {
+    color: oklch(0.88 0.18 95);
+    border-left-color: oklch(0.88 0.18 95);
+    font-weight: 600;
+  }
+  
+  .main-content-demo {
+    padding: 2rem;
+    background: oklch(0.16 0.02 248 / 0.4);
+    border-radius: 0.75rem;
+    min-height: 300px;
+  }
+  
+  .footer-demo {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .column-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-link {
+    color: oklch(0.75 0.15 210);
+    text-decoration: none;
+  }
+  
+  .footer-link:hover {
+    color: oklch(0.88 0.18 95);
+  }
+  
+  .stepper-demo {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .wizard-step {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: oklch(0.70 0.02 220);
+    background: oklch(0.16 0.02 248 / 0.4);
+    border: 2px solid oklch(0.30 0.04 250 / 0.3);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background: oklch(0.30 0.04 250 / 0.3);
+    font-weight: 700;
+    font-size: 0.875em;
+  }
+  
+  .wizard-step.completed {
+    color: oklch(0.98 0.01 90);
+    border-color: oklch(0.85 0.16 85 / 0.4);
+  }
+  
+  .wizard-step.completed .step-number {
+    background: oklch(0.85 0.16 85 / 0.4);
+  }
+  
+  .wizard-step.active {
+    color: oklch(0.88 0.18 95);
+    border-color: oklch(0.88 0.18 95);
+    background: oklch(0.18 0.03 248 / 0.6);
+    font-weight: 600;
+  }
+  
+  .wizard-step.active .step-number {
+    background: oklch(0.88 0.18 95);
+    color: oklch(0.15 0.03 250);
+  }
+  
+  .wizard-step.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  .toc-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 300px;
+  }
+  
+  .toc-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .toc-link {
+    padding: 0.5rem 1rem;
+    color: oklch(0.75 0.15 210);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+  }
+  
+  .toc-link:hover {
+    color: oklch(0.88 0.18 95);
+    border-left-color: oklch(0.88 0.18 95);
+    padding-left: 1.25rem;
+  }
+  
+  .toc-link.active {
+    color: oklch(0.88 0.18 95);
+    border-left-color: oklch(0.88 0.18 95);
+    font-weight: 600;
+  }
+  
+  .back-to-top {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    color: oklch(0.75 0.15 210);
+    text-decoration: none;
+    border: 1px solid oklch(0.30 0.04 250 / 0.3);
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+  
+  .back-to-top:hover {
+    color: oklch(0.88 0.18 95);
+    border-color: oklch(0.85 0.16 85 / 0.4);
+  }
+</style>
+
+<script>
+  // Simple tab functionality
+  document.querySelectorAll('.tab-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const tabList = button.parentElement;
+      const tabPanels = tabList.nextElementSibling;
+      const targetPanel = document.getElementById(button.getAttribute('aria-controls'));
+      
+      // Deactivate all tabs and panels
+      tabList.querySelectorAll('.tab-button').forEach(tab => {
+        tab.setAttribute('aria-selected', 'false');
+      });
+      tabPanels.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.hidden = true;
+      });
+      
+      // Activate clicked tab and its panel
+      button.setAttribute('aria-selected', 'true');
+      targetPanel.hidden = false;
+    });
+  });
+  
+  // Simple accordion functionality
+  document.querySelectorAll('.accordion-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const content = document.getElementById(toggle.getAttribute('aria-controls'));
+      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+      
+      toggle.setAttribute('aria-expanded', !isExpanded);
+      content.classList.toggle('collapsed');
+    });
+  });
+</script>
