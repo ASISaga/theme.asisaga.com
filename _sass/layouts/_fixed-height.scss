@@ -1,24 +1,26 @@
-// Fixed-Height Layout Styles
-// Purpose: Application-style layouts with constrained viewport height
+/**
+ * Fixed-Height Layout Styles - Ontology-Based
+ * ============================================================================
+ * Application-style layouts with constrained viewport height.
+ * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * 
+ * This file matches the classes in _layouts/fixed-height.html:
+ * - <div class="fixed-height-layout">
+ */
 
+@import "ontology/index";
+
+// Fixed-height layout container - constrained viewport
+// Applied to wrapper div in fixed-height.html
 .fixed-height-layout {
+  @include genesis-environment('chronological');  // Vertical flow
+  @include genesis-atmosphere('neutral');          // Standard vibe
+  
+  // Fundamental flex properties for fixed height structure
   display: flex;
   flex-direction: column;
   height: calc(100vh - 200px);
   overflow: hidden;
   contain: layout style;
   isolation: isolate;
-  
-  .container-fluid {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    height: 100%;
-  }
-  
-  .fixed-height-content {
-    flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
 }
