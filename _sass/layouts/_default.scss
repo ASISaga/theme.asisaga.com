@@ -1,15 +1,28 @@
-// Default Layout Styles
-// Purpose: Base layout structure for all pages using default.html template
-// Using Bootstrap mixins and variables for all styling
-// NOTE: This file provides legacy support. Primary styling is in ontology/_theme-layouts.scss
+/**
+ * Default Layout Styles - Ontology-Based
+ * ============================================================================
+ * Base layout structure for all pages using default.html template.
+ * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * 
+ * This file matches the classes in _layouts/default.html:
+ * - <body class="layout-container">
+ * - <a class="skip-link">
+ * - <main class="page-content">
+ */
 
-// Page layout container - full viewport height with flex column layout
+@import "ontology/index";
+
+// Main page container - full viewport height with flex column layout
 // Applied to <body class="layout-container"> in default.html
 .layout-container {
-  @include position-relative; // Using custom position mixin
-  @include min-height-screen; // Using custom min-height mixin
-  @include d-flex; // Using custom display flex mixin
-  @include flex-direction(column); // Using custom flex-direction mixin
+  @include genesis-atmosphere('neutral');   // Standard system vibe
+  
+  // Fundamental flex layout properties - required for base structure
+  // The ontology system sits on top of this foundational flex column layout
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
   
   &.high-contrast {
     // High contrast mode styles if needed
@@ -17,38 +30,18 @@
 }
 
 // Skip link for accessibility
+// Applied to <a class="skip-link"> in default.html
 .skip-link {
-  // Replaced @extend with direct properties for Jekyll compatibility
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-  
-  &:focus {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: $primary;
-    color: $white;
-    padding: 1rem;
-    z-index: 9999;
-    width: auto;
-    height: auto;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-  }
+  @include genesis-synapse('anchor');  // Anchor navigation behavior
+  @include genesis-state('stable');     // Normal state
 }
 
 // Main content area - flexible growth
 // Applied to <main class="page-content"> in default.html
 .page-content {
-  @include flex-grow(1); // Using custom flex-grow mixin
-  @include padding-vertical(2rem); // Using custom padding mixin
-  @include contain(layout style); // Using custom contain mixin
+  // Fundamental flex properties for layout structure
+  flex: 1 0 auto;
+  width: 100%;
+  
+  @include genesis-entity('primary');   // Main content styling
 }
