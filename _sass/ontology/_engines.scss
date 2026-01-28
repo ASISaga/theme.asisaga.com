@@ -199,6 +199,139 @@
       grid-column: 1 / -1;
     }
   }
+  @else if $logic == 'navigation-tabs' {
+    // Horizontal tab navigation for content switching
+    display: flex;
+    gap: var(--space-tabs, clamp(0.5rem, 1vw, 1rem));
+    border-bottom: 2px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    
+    // Mobile: scrollable tabs if overflow
+    @media (max-width: 767px) {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      
+      // Prevent wrapping on mobile
+      flex-wrap: nowrap;
+    }
+    
+    // Tablet and desktop: wrap if needed
+    @media (min-width: 768px) {
+      flex-wrap: wrap;
+    }
+  }
+  @else if $logic == 'navigation-sidebar' {
+    // Vertical sidebar navigation layout
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sidebar, clamp(0.5rem, 1vw, 0.75rem));
+    
+    // Mobile: can be hidden or converted to horizontal
+    @media (max-width: 767px) {
+      // Allow subdomains to convert to horizontal or hide
+      &.mobile-horizontal {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      
+      &.mobile-hidden {
+        display: none;
+      }
+    }
+    
+    // Tablet and desktop: consistent vertical layout
+    @media (min-width: 768px) {
+      width: var(--sidebar-width, clamp(200px, 25vw, 280px));
+      position: sticky;
+      top: var(--sidebar-offset, 80px);
+      align-self: flex-start;
+      max-height: calc(100vh - var(--sidebar-offset, 80px) - 2rem);
+      overflow-y: auto;
+    }
+  }
+  @else if $logic == 'navigation-footer' {
+    // Multi-column footer navigation layout
+    display: grid;
+    gap: var(--space-footer, clamp(2rem, 3vw, 3rem));
+    
+    // Mobile: single column for clarity
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    // Tablet: 2 columns
+    @media (min-width: 768px) and (max-width: 1023px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem 2rem;
+    }
+    
+    // Desktop: 3-4 columns based on content
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem 2rem;
+    }
+  }
+  @else if $logic == 'navigation-breadcrumb' {
+    // Breadcrumb trail navigation layout
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-breadcrumb, 0.5rem);
+    
+    // Mobile: allow truncation or scrolling
+    @media (max-width: 767px) {
+      font-size: 0.875rem;
+      
+      // Option to make scrollable on mobile
+      &.mobile-scroll {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+  }
+  @else if $logic == 'navigation-pagination' {
+    // Pagination controls layout
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-pagination, clamp(0.5rem, 1vw, 0.75rem));
+    flex-wrap: wrap;
+    
+    // Mobile: show fewer page numbers, prioritize prev/next
+    @media (max-width: 767px) {
+      gap: 0.5rem;
+      
+      // Allow hiding non-essential page numbers
+      .page-number-optional {
+        display: none;
+      }
+    }
+    
+    // Tablet and desktop: show more page numbers
+    @media (min-width: 768px) {
+      gap: 0.75rem;
+    }
+  }
+  @else if $logic == 'navigation-accordion' {
+    // Accordion/collapsible navigation layout
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-accordion, clamp(0.5rem, 1vw, 1rem));
+    
+    // Consistent across all viewport sizes
+    width: 100%;
+  }
 }
 
 // ============================================================================
@@ -706,6 +839,280 @@
       }
     }
   }
+  @else if $vector == 'paginate' {
+    // Pagination navigation controls (numbered pages, prev/next)
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-pagination, clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1.5vw, 1rem));
+    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    text-decoration: none;
+    font-weight: 500;
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0.75rem;
+    }
+    
+    @media (min-width: 768px) and (max-width: 1023px) {
+      min-width: 40px;
+      min-height: 40px;
+    }
+    
+    @media (min-width: 1024px) {
+      min-width: 36px;
+      min-height: 36px;
+    }
+    
+    &:hover:not(.disabled) {
+      background: var(--glass-hover, oklch(0.22 0.04 246));
+      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+    }
+    
+    // Active/current page state
+    &.active,
+    &[aria-current="page"] {
+      background: var(--accent-neon, oklch(0.88 0.18 95));
+      color: var(--text-inverse, oklch(0.15 0.03 250));
+      border-color: var(--accent-neon, oklch(0.88 0.18 95));
+      font-weight: 700;
+    }
+    
+    // Disabled state
+    &.disabled,
+    &[aria-disabled="true"] {
+      opacity: 0.4;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'toggle' {
+    // Toggle/expand/collapse interaction (accordion, mobile menu)
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--padding-toggle, clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem));
+    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    text-align: left;
+    cursor: pointer;
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-height: 44px;
+      padding: 0.875rem 1rem;
+    }
+    
+    &:hover {
+      background: var(--glass-hover, oklch(0.22 0.04 246));
+      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+    }
+    
+    // Expanded state indicator
+    &[aria-expanded="true"] {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-color: transparent;
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+    
+    // Optional icon/chevron rotation
+    .toggle-icon {
+      transition: transform 0.2s ease;
+    }
+    
+    &[aria-expanded="true"] .toggle-icon {
+      transform: rotate(180deg);
+    }
+  }
+  @else if $vector == 'anchor' {
+    // In-page anchor navigation (TOC, skip links, back to top)
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: var(--padding-anchor, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
+    color: var(--text-link, oklch(0.75 0.15 210));
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: all var(--motion-snap, 0.2s ease);
+    
+    // Mobile: ensure adequate touch target
+    @media (max-width: 767px) {
+      min-height: 44px;
+      padding: 0.75rem 1rem;
+    }
+    
+    &:hover {
+      color: var(--accent-neon, oklch(0.88 0.18 95));
+      border-left-color: var(--accent-neon, oklch(0.88 0.18 95));
+      padding-left: calc(clamp(1rem, 2vw, 1.5rem) + 0.25rem);
+    }
+    
+    // Active anchor (current section in TOC)
+    &.active,
+    &[aria-current="location"] {
+      color: var(--accent-neon, oklch(0.88 0.18 95));
+      border-left-color: var(--accent-neon, oklch(0.88 0.18 95));
+      font-weight: 600;
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+    
+    // Skip link specific styling (screen reader and keyboard users)
+    &.skip-link {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      padding: 1rem 1.5rem;
+      background: var(--accent-neon, oklch(0.88 0.18 95));
+      color: var(--text-inverse, oklch(0.15 0.03 250));
+      font-weight: 600;
+      z-index: 9999;
+      
+      &:focus {
+        top: 0;
+      }
+    }
+  }
+  @else if $vector == 'tab' {
+    // Tab switching control for content panels
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-tab, clamp(0.75rem, 1.5vw, 1rem) clamp(1.25rem, 2.5vw, 1.75rem));
+    color: var(--text-secondary, oklch(0.70 0.02 220));
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all var(--motion-snap, 0.2s ease);
+    white-space: nowrap;
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-height: 44px;
+      padding: 0.875rem 1.25rem;
+    }
+    
+    &:hover:not([aria-selected="true"]) {
+      color: var(--text-primary, oklch(0.98 0.01 90));
+      border-bottom-color: var(--border-subtle, oklch(0.30 0.04 250 / 0.5));
+    }
+    
+    // Selected/active tab
+    &[aria-selected="true"] {
+      color: var(--accent-neon, oklch(0.88 0.18 95));
+      border-bottom-color: var(--accent-neon, oklch(0.88 0.18 95));
+      font-weight: 700;
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'step' {
+    // Multi-step process navigation (wizard, stepper)
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: var(--padding-step, clamp(0.75rem, 1.5vw, 1rem));
+    color: var(--text-secondary, oklch(0.70 0.02 220));
+    background: var(--glass-subtle, oklch(0.16 0.02 248 / 0.4));
+    border: 2px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    text-decoration: none;
+    font-weight: 500;
+    
+    // Mobile: compact layout
+    @media (max-width: 767px) {
+      min-height: 44px;
+      font-size: 0.875rem;
+    }
+    
+    // Step number/icon
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2em;
+      height: 2em;
+      border-radius: 50%;
+      background: var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+      font-weight: 700;
+      font-size: 0.875em;
+    }
+    
+    // Completed step
+    &.completed,
+    &[aria-current="step"][data-status="complete"] {
+      color: var(--text-primary, oklch(0.98 0.01 90));
+      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+      
+      .step-number {
+        background: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+      }
+    }
+    
+    // Current/active step
+    &.active,
+    &[aria-current="step"] {
+      color: var(--accent-neon, oklch(0.88 0.18 95));
+      border-color: var(--accent-neon, oklch(0.88 0.18 95));
+      background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
+      font-weight: 600;
+      
+      .step-number {
+        background: var(--accent-neon, oklch(0.88 0.18 95));
+        color: var(--text-inverse, oklch(0.15 0.03 250));
+      }
+    }
+    
+    // Future/incomplete step
+    &.disabled,
+    &[aria-disabled="true"] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    
+    &:hover {
+      background: var(--glass-hover, oklch(0.22 0.04 246));
+      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+    }
+    
+    &.active:hover,
+    &.disabled:hover {
+      background: var(--glass-subtle, oklch(0.16 0.02 248 / 0.4));
+      border-color: var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+  }
 }
 
 // ============================================================================
@@ -815,6 +1222,78 @@
     // Desktop: allow richer animations
     @media (min-width: 1024px) {
       transition-duration: 0.7s;
+    }
+  }
+  @else if $condition == 'active' {
+    // Current/active navigation item state
+    color: var(--accent-neon, oklch(0.88 0.18 95));
+    font-weight: 700;
+    position: relative;
+    
+    // Visual indicator (underline, border, or highlight)
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--accent-neon, oklch(0.88 0.18 95));
+      border-radius: 2px 2px 0 0;
+    }
+    
+    // Alternative: left border for vertical navigation
+    &.vertical-nav {
+      border-left: 3px solid var(--accent-neon, oklch(0.88 0.18 95));
+      padding-left: calc(1rem - 3px);
+      
+      &::after {
+        display: none;
+      }
+    }
+    
+    // Accessibility: ensure contrast
+    @media (prefers-contrast: high) {
+      &::after {
+        height: 4px;
+      }
+    }
+  }
+  @else if $condition == 'expanded' {
+    // Expanded state for toggleable navigation
+    max-height: 2000px; // Large enough for most content
+    opacity: 1;
+    visibility: visible;
+    overflow: visible;
+    transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out;
+    
+    // Mobile: faster animations for better performance
+    @media (max-width: 767px) {
+      transition-duration: 0.25s;
+    }
+    
+    // Respect reduced motion preference
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+  @else if $condition == 'collapsed' {
+    // Collapsed state for toggleable navigation
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out, visibility 0s 0.3s;
+    
+    // Mobile: faster animations for better performance
+    @media (max-width: 767px) {
+      transition-duration: 0.25s;
+    }
+    
+    // Respect reduced motion preference
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      display: none; // Hard hide when motion disabled
     }
   }
 }

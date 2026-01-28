@@ -263,3 +263,275 @@
     @include genesis-synapse('inquiry');      // Search/filter
   }
 }
+
+// ============================================================================
+// EXAMPLE 7: Pagination Navigation
+// ============================================================================
+// Numbered page navigation with prev/next controls
+.blog-pagination {
+  @include genesis-environment('navigation-pagination'); // Pagination layout
+
+  .page-link {
+    @include genesis-synapse('paginate');     // Page number button
+    
+    // Active page automatically styled via [aria-current="page"]
+  }
+  
+  .prev-link,
+  .next-link {
+    @include genesis-synapse('paginate');     // Prev/Next navigation
+    
+    &.disabled {
+      // Disabled state automatically styled
+    }
+  }
+}
+
+// ============================================================================
+// EXAMPLE 8: Breadcrumb Navigation
+// ============================================================================
+// Hierarchical path navigation
+.page-breadcrumb {
+  @include genesis-environment('navigation-breadcrumb'); // Breadcrumb layout
+
+  .breadcrumb-item {
+    @include genesis-synapse('navigate');     // Breadcrumb links
+  }
+  
+  .breadcrumb-separator {
+    @include genesis-cognition('gloss');      // "/" or ">" separator
+  }
+  
+  .current-page {
+    @include genesis-cognition('motive');     // Current page emphasis
+    @include genesis-state('active');         // Active state
+  }
+}
+
+// ============================================================================
+// EXAMPLE 9: Tab Navigation
+// ============================================================================
+// Horizontal content switching tabs
+.product-tabs {
+  @include genesis-environment('navigation-tabs'); // Tab layout
+
+  .tab-button {
+    @include genesis-synapse('tab');          // Tab control
+    
+    // Active tab via [aria-selected="true"]
+  }
+}
+
+.tab-panels {
+  .tab-panel {
+    @include genesis-entity('primary');
+    
+    // Show/hide controlled by JavaScript
+    &[aria-hidden="true"] {
+      display: none;
+    }
+  }
+}
+
+// ============================================================================
+// EXAMPLE 10: Accordion Navigation (FAQ)
+// ============================================================================
+// Collapsible content sections
+.faq-accordion {
+  @include genesis-environment('navigation-accordion'); // Accordion layout
+
+  .faq-item {
+    @include genesis-entity('secondary');
+    
+    .faq-question {
+      @include genesis-synapse('toggle');     // Expand/collapse button
+      @include genesis-cognition('motive');   // Emphasized text
+    }
+    
+    .faq-answer {
+      @include genesis-cognition('discourse'); // Body text
+      @include genesis-state('collapsed');    // Initially collapsed
+      
+      // Expanded state controlled by JavaScript
+      &.expanded {
+        @include genesis-state('expanded');
+      }
+    }
+  }
+}
+
+// ============================================================================
+// EXAMPLE 11: Sidebar Navigation
+// ============================================================================
+// Vertical navigation menu
+.docs-sidebar {
+  @include genesis-environment('navigation-sidebar'); // Sidebar layout
+
+  .nav-section {
+    @include genesis-entity('secondary');
+    
+    .section-title {
+      @include genesis-cognition('motive');   // Section header
+    }
+    
+    .nav-link {
+      @include genesis-synapse('navigate');   // Navigation link
+      
+      &[aria-current="page"] {
+        @include genesis-state('active');     // Current page
+      }
+    }
+    
+    .nav-toggle {
+      @include genesis-synapse('toggle');     // Expand subsection
+    }
+    
+    .nav-subsection {
+      @include genesis-state('collapsed');    // Initially hidden
+      
+      &.expanded {
+        @include genesis-state('expanded');
+      }
+    }
+  }
+}
+
+// ============================================================================
+// EXAMPLE 12: Table of Contents (Anchor Navigation)
+// ============================================================================
+// In-page anchor links with scroll spy
+.article-toc {
+  @include genesis-environment('navigation-sidebar'); // Vertical layout
+  @include genesis-entity('secondary');
+
+  .toc-title {
+    @include genesis-cognition('motive');     // TOC header
+  }
+
+  .toc-link {
+    @include genesis-synapse('anchor');       // Anchor link
+    
+    // Active section via [aria-current="location"] or .active
+  }
+  
+  .skip-to-content {
+    @include genesis-synapse('anchor');       // Skip link
+    // Add .skip-link class for accessibility positioning
+  }
+  
+  .back-to-top {
+    @include genesis-synapse('anchor');       // Back to top link
+  }
+}
+
+// ============================================================================
+// EXAMPLE 13: Multi-Step Wizard/Stepper
+// ============================================================================
+// Guided process navigation
+.checkout-wizard {
+  @include genesis-environment('navigation-breadcrumb'); // Horizontal stepper layout
+
+  .wizard-step {
+    @include genesis-synapse('step');         // Step indicator
+    
+    // States automatically styled via aria attributes:
+    // [aria-current="step"] - Current step
+    // .completed or [data-status="complete"] - Completed step
+    // [aria-disabled="true"] or .disabled - Future step
+  }
+}
+
+// ============================================================================
+// EXAMPLE 14: Footer Navigation
+// ============================================================================
+// Multi-column footer links
+.site-footer-nav {
+  @include genesis-environment('navigation-footer'); // Footer grid layout
+
+  .footer-column {
+    .column-title {
+      @include genesis-cognition('motive');   // Column header
+    }
+    
+    .footer-link {
+      @include genesis-synapse('navigate');   // Footer links
+    }
+  }
+  
+  .social-links {
+    .social-link {
+      @include genesis-synapse('social');     // Social media links
+    }
+  }
+}
+
+// ============================================================================
+// EXAMPLE 15: Main Site Navigation (Responsive)
+// ============================================================================
+// Primary navigation with mobile drawer
+.site-header-nav {
+  @include genesis-environment('navigation-primary'); // Responsive nav layout
+
+  .nav-link {
+    @include genesis-synapse('navigate');     // Primary nav links
+    
+    &[aria-current="page"] {
+      @include genesis-state('active');       // Active page
+    }
+  }
+  
+  .mobile-toggle {
+    @include genesis-synapse('toggle');       // Hamburger menu
+    
+    // Mobile only visibility
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+  
+  .nav-menu {
+    // Add .nav-open class via JavaScript for mobile drawer
+    &.nav-open {
+      left: 0; // Show mobile drawer
+    }
+  }
+}
+
+// ============================================================================
+// EXAMPLE 16: Dropdown/Mega Menu Navigation
+// ============================================================================
+// Hierarchical navigation with dropdowns
+.mega-menu {
+  @include genesis-environment('navigation-primary'); // Primary nav layout
+
+  .menu-item {
+    position: relative;
+    
+    .menu-link {
+      @include genesis-synapse('navigate');   // Top-level link
+    }
+    
+    .dropdown-toggle {
+      @include genesis-synapse('toggle');     // Dropdown trigger
+    }
+    
+    .dropdown-menu {
+      @include genesis-entity('primary');     // Dropdown container
+      @include genesis-state('collapsed');    // Initially hidden
+      
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      
+      &.expanded {
+        @include genesis-state('expanded');   // Show dropdown
+      }
+      
+      .submenu-link {
+        @include genesis-synapse('navigate'); // Submenu links
+      }
+    }
+  }
+}
+

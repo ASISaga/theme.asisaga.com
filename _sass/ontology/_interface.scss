@@ -18,6 +18,12 @@
    * @param $logic [manifest]: A high-density dashboard for total system oversight.
    * @param $logic [navigation-primary]: Main site navigation (horizontal desktop → mobile drawer).
    * @param $logic [navigation-secondary]: Contextual navigation (breadcrumbs, footer nav).
+   * @param $logic [navigation-tabs]: Horizontal tab navigation for content switching.
+   * @param $logic [navigation-sidebar]: Vertical sidebar navigation layout.
+   * @param $logic [navigation-footer]: Multi-column footer navigation layout.
+   * @param $logic [navigation-breadcrumb]: Breadcrumb trail navigation layout.
+   * @param $logic [navigation-pagination]: Pagination controls layout.
+   * @param $logic [navigation-accordion]: Accordion/collapsible navigation layout.
    * @param $logic [interaction-form]: Form layout optimized for data entry.
    */
   @include _theme-engine-environment($logic);
@@ -69,6 +75,11 @@
    * @param $vector [destructive]: Permanent removal or system reset.
    * @param $vector [social]: Neural link to other human/AI observers.
    * @param $vector [input-primary]: Primary form input with responsive touch optimization.
+   * @param $vector [paginate]: Pagination navigation controls (numbered pages, prev/next).
+   * @param $vector [toggle]: Toggle/expand/collapse interaction (accordion, mobile menu).
+   * @param $vector [anchor]: In-page anchor navigation (TOC, skip links, back to top).
+   * @param $vector [tab]: Tab switching control for content panels.
+   * @param $vector [step]: Multi-step process navigation (wizard, stepper).
    */
   @include _theme-engine-synapse($vector);
 }
@@ -85,6 +96,9 @@
    * @param $condition [locked]: Data is immutable and requires clearance.
    * @param $condition [simulated]: The data is a projection, not a live log.
    * @param $condition [scroll-triggered]: Content with scroll-based animations.
+   * @param $condition [active]: Current/active navigation item state.
+   * @param $condition [expanded]: Expanded state for toggleable navigation.
+   * @param $condition [collapsed]: Collapsed state for toggleable navigation.
    */
   @include _theme-engine-state($condition);
 }
