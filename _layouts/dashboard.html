@@ -1,22 +1,22 @@
 ---
 layout: default
 ---
-<div class="dashboard-page">
-  <header class="dashboard-page__header">
+<div class="dashboard-layout">
+  <header class="dashboard-header">
     {% if page.title %}
-    <h1 class="dashboard-page__title">{{ page.title }}</h1>
+    <h1 class="dashboard-title">{{ page.title }}</h1>
     {% endif %}
     
     {% if page.actions %}
-    <div class="dashboard-page__actions">
+    <div class="dashboard-actions">
       {% for action in page.actions %}
-      <button type="button" class="dashboard-page__action">{{ action }}</button>
+      <button type="button" class="dashboard-action-btn">{{ action }}</button>
       {% endfor %}
     </div>
     {% endif %}
   </header>
   
-  <div class="dashboard-page__content">
+  <div class="dashboard-content">
     {{ content }}
   </div>
 </div>

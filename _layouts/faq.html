@@ -1,44 +1,44 @@
 ---
 layout: default
 ---
-<div class="faq-page">
-  <header class="faq-page__header">
+<div class="faq-layout">
+  <header class="faq-header">
     {% if page.title %}
-    <h1 class="faq-page__title">{{ page.title }}</h1>
+    <h1 class="faq-title">{{ page.title }}</h1>
     {% endif %}
     
     {% if page.description %}
-    <p class="faq-page__description">{{ page.description }}</p>
+    <p class="faq-description">{{ page.description }}</p>
     {% endif %}
     
     {% if page.search %}
-    <div class="faq-page__search">
+    <div class="faq-search">
       <label for="faq-search" class="sr-only">Search frequently asked questions</label>
-      <input type="search" id="faq-search" class="faq-page__search-input" placeholder="Search FAQ...">
+      <input type="search" id="faq-search" class="faq-search-input" placeholder="Search FAQ...">
     </div>
     {% endif %}
   </header>
   
   {% if page.categories %}
-  <div class="faq-page__categories" role="group" aria-label="FAQ categories">
-    <button type="button" class="faq-page__category faq-page__category--active">All</button>
+  <div class="faq-categories" role="group" aria-label="FAQ categories">
+    <button type="button" class="faq-category faq-category--active">All</button>
     {% for category in page.categories %}
-    <button type="button" class="faq-page__category">{{ category }}</button>
+    <button type="button" class="faq-category">{{ category }}</button>
     {% endfor %}
   </div>
   {% endif %}
   
-  <div class="faq-page__content">
+  <div class="faq-content">
     {{ content }}
   </div>
   
   {% if page.contact_cta %}
-  <footer class="faq-page__footer">
-    <h2 class="faq-page__footer-title">Still have questions?</h2>
+  <footer class="faq-footer">
+    <h2 class="faq-footer-title">Still have questions?</h2>
     {% if page.contact_cta.description %}
-    <p class="faq-page__footer-description">{{ page.contact_cta.description }}</p>
+    <p class="faq-footer-description">{{ page.contact_cta.description }}</p>
     {% endif %}
-    <a href="{{ page.contact_cta.url }}" class="faq-page__footer-button">{{ page.contact_cta.text }}</a>
+    <a href="{{ page.contact_cta.url }}" class="faq-footer-button">{{ page.contact_cta.text }}</a>
   </footer>
   {% endif %}
 </div>

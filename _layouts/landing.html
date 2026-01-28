@@ -1,33 +1,33 @@
 ---
 layout: default
 ---
-<div class="landing-page">
+<div class="landing-layout">
   {% if page.hero %}
-  <section class="landing-page__hero">
-    <h1 class="landing-page__hero-title">{{ page.hero.title }}</h1>
+  <section class="landing-hero">
+    <h1 class="landing-hero-title">{{ page.hero.title }}</h1>
     {% if page.hero.subtitle %}
-    <p class="landing-page__hero-subtitle">{{ page.hero.subtitle }}</p>
+    <p class="landing-hero-subtitle">{{ page.hero.subtitle }}</p>
     {% endif %}
     {% if page.hero.cta %}
-    <a href="{{ page.hero.cta.url }}" class="landing-page__hero-button">{{ page.hero.cta.text }}</a>
+    <a href="{{ page.hero.cta.url }}" class="landing-hero-button">{{ page.hero.cta.text }}</a>
     {% endif %}
     {% if page.hero.image %}
-    <img src="{{ page.hero.image }}" alt="{{ page.hero.title }}" class="landing-page__hero-image">
+    <img src="{{ page.hero.image }}" alt="{{ page.hero.title }}" class="landing-hero-image">
     {% endif %}
   </section>
   {% endif %}
   
-  <div class="landing-page__content">
+  <div class="landing-content">
     {{ content }}
   </div>
   
   {% if page.final_cta %}
-  <section class="landing-page__cta">
-    <h2 class="landing-page__cta-title">{{ page.final_cta.title }}</h2>
+  <section class="landing-cta">
+    <h2 class="landing-cta-title">{{ page.final_cta.title }}</h2>
     {% if page.final_cta.description %}
-    <p class="landing-page__cta-description">{{ page.final_cta.description }}</p>
+    <p class="landing-cta-description">{{ page.final_cta.description }}</p>
     {% endif %}
-    <a href="{{ page.final_cta.url }}" class="landing-page__cta-button">{{ page.final_cta.text }}</a>
+    <a href="{{ page.final_cta.url }}" class="landing-cta-button">{{ page.final_cta.text }}</a>
   </section>
   {% endif %}
 </div>
