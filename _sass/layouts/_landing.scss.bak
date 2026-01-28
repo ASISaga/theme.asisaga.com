@@ -1,0 +1,119 @@
+// Landing Layout Styles
+
+.landing-layout {
+  // CSS containment for layout optimization and performance
+  // - contain: layout style - Prevents layout calculations from affecting parent/sibling elements
+  // - isolation: isolate - Creates new stacking context to prevent z-index conflicts
+  contain: layout style;
+  isolation: isolate;
+  
+  .landing-hero {
+    background-color: $primary;
+    color: $transcendent-white;
+    padding: $spacing-sacred-xxl 0;
+    
+    .landing-hero-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-right: calc(-0.5 * var(--bs-gutter-x, 1.5rem));
+      margin-left: calc(-0.5 * var(--bs-gutter-x, 1.5rem));
+      align-items: center;
+      min-height: 50vh;
+    }
+    
+    .landing-hero-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    
+    .landing-hero-subtitle {
+      font-size: 1.25rem;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+    
+    .landing-hero-cta {
+      display: inline-block;
+      font-weight: 400;
+      line-height: 1.5;
+      text-align: center;
+      text-decoration: none;
+      vertical-align: middle;
+      cursor: pointer;
+      user-select: none;
+      border: 1px solid transparent;
+      padding: 0.5rem 1rem;
+      font-size: 1.25rem;
+      border-radius: 0.5rem;
+      transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+      color: #212529;
+      background-color: #fff;
+      border-color: #fff;
+      
+      &:hover {
+        color: #212529;
+        background-color: #f8f9fa;
+        border-color: #f8f9fa;
+      }
+    }
+    
+    .landing-hero-image {
+      width: 100%;
+      height: auto;
+    }
+  }
+  
+  .landing-cta {
+    background-color: $bg-light;
+    padding: $spacing-sacred-xxl 0;
+    text-align: center;
+    
+    .landing-cta-container {
+      width: 100%;
+      padding-right: calc(var(--bs-gutter-x, 1.5rem) * .5);
+      padding-left: calc(var(--bs-gutter-x, 1.5rem) * .5);
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 1320px;
+      text-align: center;
+    }
+    
+    .landing-cta-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .landing-cta-description {
+      font-size: 1.25rem;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+    
+    .landing-cta-button {
+      display: inline-block;
+      font-weight: 400;
+      line-height: 1.5;
+      text-align: center;
+      text-decoration: none;
+      vertical-align: middle;
+      cursor: pointer;
+      user-select: none;
+      border: 1px solid transparent;
+      padding: 0.5rem 1rem;
+      font-size: 1.25rem;
+      border-radius: 0.5rem;
+      transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+      color: #fff;
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+      
+      &:hover {
+        color: #fff;
+        background-color: #0b5ed7;
+        border-color: #0a58ca;
+      }
+    }
+  }
+}
