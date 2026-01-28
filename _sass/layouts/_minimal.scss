@@ -1,46 +1,55 @@
-// Minimal Layout Styles
+/**
+ * Minimal Layout Styles - Ontology-Based
+ * ============================================================================
+ * Error pages and lightweight content with minimal chrome.
+ * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * 
+ * This file matches the classes in _layouts/minimal.html:
+ * - <div class="minimal-layout-content">
+ * - <h1 class="minimal-error-code">
+ * - <h2 class="minimal-title">
+ * - <p class="minimal-description">
+ * - <div class="minimal-content">
+ * - <a class="minimal-home-link">
+ */
 
+@import "ontology/index";
+
+// Minimal layout content wrapper - centered lightweight content
+// Applied to wrapper div in minimal.html
 .minimal-layout-content {
-  .minimal-layout-row {
-    @include make-row();
-    justify-content: center;
-  }
+  @include genesis-environment('focused');    // Single column centered
+  @include genesis-atmosphere('ethereal');    // Light minimal vibe
   
-  .minimal-layout-col {
-    @include make-col-ready();
-    @include media-breakpoint-up(lg) {
-      @include make-col(6);
-    }
-  }
-  
-  .minimal-layout-centered {
-    text-align: center;
-    padding: $spacing-sacred-xxl 0;
-  }
+  text-align: center;
+  padding: clamp(3rem, 8vw, 6rem) 0;
   
   .minimal-error-code {
-    font-size: $font-size-6xl;
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sacred-lg;
+    @include genesis-cognition('axiom');      // Large headline
+    
+    font-size: clamp(4rem, 10vw, 6rem);
+    font-weight: 700;
   }
   
   .minimal-title {
-    font-size: $font-size-4xl;
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sacred-md;
+    @include genesis-cognition('axiom');      // Headline
+    
+    font-size: clamp(2rem, 5vw, 2.5rem);
   }
   
   .minimal-description {
-    font-size: $font-size-lg;
-    color: $text-muted;
-    margin-bottom: $spacing-sacred-lg;
+    @include genesis-cognition('discourse');  // Body text
+    @include genesis-state('stable');          // Normal state
+  }
+  
+  .minimal-content {
+    @include genesis-entity('secondary');     // Supporting content
   }
   
   .minimal-home-link {
-    margin-top: $spacing-sacred-lg;
-  }
-  
-  .minimal-home-btn {
-    @include button-variant($primary, $primary, $text-light);
+    @include genesis-synapse('navigate');     // Navigation link
+    
+    display: inline-block;
+    margin-top: clamp(1.5rem, 3vw, 2rem);
   }
 }
