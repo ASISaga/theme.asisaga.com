@@ -5,7 +5,6 @@
  * Mirrors HTML structure and uses Genesis Semantic Design System internally.
  */
 
-@import "ontology/index";
 
 .settings-layout {
   @include genesis-environment('navigation-sidebar'); // Sidebar navigation
