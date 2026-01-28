@@ -227,6 +227,12 @@ For each class in your HTML, determine its ontological role and apply the approp
 - `'anchor'` ⭐ **NEW v2.3.0** - In-page anchor navigation (TOC, skip links, back to top)
 - `'tab'` ⭐ **NEW v2.3.0** - Tab switching controls for content panels
 - `'step'` ⭐ **NEW v2.3.0** - Multi-step process navigation (wizard, stepper)
+- `'react'` ⭐ **NEW v2.4.0** - Emoji reactions and quick responses (like, heart, emoji picker)
+- `'vote'` ⭐ **NEW v2.4.0** - Voting and rating interactions (upvote, downvote, star rating)
+- `'comment'` ⭐ **NEW v2.4.0** - Comment and reply interactions
+- `'share'` ⭐ **NEW v2.4.0** - Enhanced sharing with multiple platforms
+- `'notify'` ⭐ **NEW v2.4.0** - Notification and alert interactions
+- `'mention'` ⭐ **NEW v2.4.0** - @mention and tagging interactions
 
 **Example:**
 ```scss
@@ -274,6 +280,31 @@ For each class in your HTML, determine its ontological role and apply the approp
 
 .checkout-step {
   @include genesis-synapse('step');           // Wizard step indicator
+}
+
+// New in v2.4.0: Community engagement controls
+.like-button {
+  @include genesis-synapse('react');          // Reaction button
+}
+
+.upvote-button {
+  @include genesis-synapse('vote');           // Voting control
+}
+
+.comment-button {
+  @include genesis-synapse('comment');        // Comment interaction
+}
+
+.share-twitter {
+  @include genesis-synapse('share');          // Share to platform
+}
+
+.notification-bell {
+  @include genesis-synapse('notify');         // Notification icon
+}
+
+.user-mention {
+  @include genesis-synapse('mention');        // @mention tag
 }
 
 }

@@ -535,3 +535,411 @@
   }
 }
 
+// ============================================================================
+// EXAMPLE 17: Community Engagement - Reactions and Voting
+// ============================================================================
+// Social engagement with reactions, votes, and user interactions
+.content-with-engagement {
+  @include genesis-environment('focused');
+
+  .engagement-section {
+    @include genesis-entity('secondary');
+    
+    // Reaction buttons (like, love, celebrate, etc.)
+    .reactions {
+      @include genesis-environment('associative'); // Horizontal flex
+      
+      .reaction-button {
+        @include genesis-synapse('react');
+        
+        // Reacted state automatically styled via .reacted or [aria-pressed="true"]
+      }
+      
+      .reaction-picker-toggle {
+        @include genesis-synapse('react');
+      }
+    }
+    
+    // Reaction picker popup
+    .reaction-picker {
+      @include genesis-entity('reaction-picker');
+    }
+    
+    // Voting buttons (upvote/downvote, rating)
+    .voting-controls {
+      @include genesis-environment('associative');
+      
+      .upvote-button {
+        @include genesis-synapse('vote');
+        // State via .upvoted or [data-vote="up"]
+      }
+      
+      .downvote-button {
+        @include genesis-synapse('vote');
+        // State via .downvoted or [data-vote="down"]
+      }
+      
+      .vote-count {
+        @include genesis-cognition('gloss');
+      }
+    }
+    
+    // Star rating
+    .star-rating {
+      @include genesis-environment('associative');
+      
+      .star {
+        @include genesis-synapse('vote');
+        // Add .star-rating class for star-specific styling
+        // State via .rated or [aria-checked="true"]
+      }
+    }
+    
+    // Comment button
+    .comment-toggle {
+      @include genesis-synapse('comment');
+    }
+    
+    // Share button
+    .share-button {
+      @include genesis-synapse('share');
+      
+      &.copied {
+        // Automatically styled when .copied class added
+      }
+    }
+  }
+}
+
+// ============================================================================
+// EXAMPLE 18: Comment Thread with Nested Replies
+// ============================================================================
+// Discussion forum with nested comments
+.discussion-thread {
+  @include genesis-environment('comment-thread'); // Nested layout
+
+  .comment {
+    @include genesis-entity('primary');
+    
+    .comment-header {
+      @include genesis-environment('associative');
+      
+      .comment-avatar {
+        @include genesis-entity('avatar');
+        // Add status classes: .status-online, .status-away, etc.
+      }
+      
+      .comment-author {
+        @include genesis-cognition('motive');
+      }
+      
+      .comment-time {
+        @include genesis-cognition('gloss');
+      }
+      
+      .comment-badge {
+        @include genesis-entity('badge');
+        // Variants: .badge-success, .badge-warning, etc.
+      }
+    }
+    
+    .comment-body {
+      @include genesis-cognition('discourse');
+      
+      .mention {
+        @include genesis-synapse('mention');
+        // Current user: .mention-self or [data-mention-self="true"]
+      }
+    }
+    
+    .comment-actions {
+      @include genesis-environment('associative');
+      
+      .reply-button {
+        @include genesis-synapse('comment');
+      }
+      
+      .like-button {
+        @include genesis-synapse('react');
+      }
+    }
+  }
+  
+  // Nested replies automatically styled via .comment-reply or .comment-nested
+  // Indentation and border handled by comment-thread environment
+}
+
+// ============================================================================
+// EXAMPLE 19: Activity Feed / Social Timeline
+// ============================================================================
+// Community activity feed with various post types
+.community-feed {
+  @include genesis-environment('community-feed'); // Vertical timeline layout
+
+  .feed-item {
+    @include genesis-entity('primary');
+    @include genesis-state('stable');
+    
+    // Item where current user is mentioned
+    &.has-mention {
+      @include genesis-state('mentioned');
+    }
+    
+    // Item user has reacted to
+    &.user-reacted {
+      @include genesis-state('reacted');
+    }
+    
+    .feed-header {
+      @include genesis-environment('associative');
+      
+      .user-avatar {
+        @include genesis-entity('avatar');
+      }
+      
+      .user-name {
+        @include genesis-cognition('motive');
+      }
+      
+      .post-time {
+        @include genesis-cognition('gloss');
+      }
+    }
+    
+    .feed-content {
+      @include genesis-cognition('discourse');
+    }
+    
+    .feed-footer {
+      @include genesis-environment('associative');
+      
+      .reaction-summary {
+        @include genesis-synapse('react');
+      }
+      
+      .comment-count {
+        @include genesis-synapse('comment');
+      }
+      
+      .share-button {
+        @include genesis-synapse('share');
+      }
+    }
+  }
+}
+
+// ============================================================================
+// EXAMPLE 20: Notification Center
+// ============================================================================
+// User notification panel with grouped notifications
+.notifications-panel {
+  @include genesis-entity('primary');
+
+  .notification-header {
+    @include genesis-environment('associative');
+    
+    .notification-title {
+      @include genesis-cognition('motive');
+    }
+    
+    .notification-bell {
+      @include genesis-synapse('notify');
+      // Unread count via .notify-badge element
+    }
+  }
+
+  .notification-list {
+    @include genesis-environment('notification-center'); // Scrollable list
+
+    .notification-item {
+      @include genesis-entity('notification');
+      
+      // Unread state
+      &.unread {
+        @include genesis-state('unread');
+        // Automatically styled with indicator dot
+      }
+      
+      // Notification types automatically styled:
+      // .notification-mention, .notification-comment,
+      // .notification-reaction, .notification-system, .notification-urgent
+      
+      .notification-icon {
+        @include genesis-entity('avatar');
+      }
+      
+      .notification-text {
+        @include genesis-cognition('discourse');
+      }
+      
+      .notification-time {
+        @include genesis-cognition('gloss');
+      }
+    }
+  }
+}
+
+// ============================================================================
+// EXAMPLE 21: User Profile Grid / Member Directory
+// ============================================================================
+// Grid of user cards for team/community members
+.member-directory {
+  @include genesis-environment('user-grid'); // Responsive grid layout
+
+  .member-card {
+    @include genesis-entity('user-card');
+    
+    .user-card-header {
+      .member-avatar {
+        @include genesis-entity('avatar');
+        // Size variants: .avatar-xs, .avatar-sm, .avatar-md, .avatar-lg, .avatar-xl
+      }
+      
+      .member-name {
+        @include genesis-cognition('motive');
+      }
+      
+      .member-role {
+        @include genesis-cognition('gloss');
+      }
+      
+      .member-badge {
+        @include genesis-entity('badge');
+      }
+    }
+    
+    .user-card-body {
+      .member-bio {
+        @include genesis-cognition('discourse');
+      }
+    }
+    
+    .user-card-footer {
+      .follow-button {
+        @include genesis-synapse('execute');
+      }
+      
+      .message-button {
+        @include genesis-synapse('comment');
+      }
+    }
+  }
+}
+
+// ============================================================================
+// EXAMPLE 22: Real-time Chat / Messaging
+// ============================================================================
+// Live chat interface with presence indicators
+.chat-interface {
+  @include genesis-environment('focused');
+
+  .chat-header {
+    @include genesis-entity('secondary');
+    
+    .chat-avatar {
+      @include genesis-entity('avatar');
+      // Status indicators: .status-online, .status-away, .status-busy
+    }
+    
+    .chat-title {
+      @include genesis-cognition('motive');
+    }
+  }
+
+  .chat-messages {
+    @include genesis-environment('community-feed');
+    
+    .message {
+      @include genesis-entity('secondary');
+      
+      &.unread {
+        @include genesis-state('unread');
+      }
+      
+      .message-avatar {
+        @include genesis-entity('avatar');
+      }
+      
+      .message-text {
+        @include genesis-cognition('discourse');
+      }
+      
+      .message-time {
+        @include genesis-cognition('gloss');
+      }
+      
+      // Message reactions
+      .message-reactions {
+        @include genesis-environment('associative');
+        
+        .reaction {
+          @include genesis-synapse('react');
+        }
+      }
+    }
+  }
+  
+  .chat-input {
+    @include genesis-entity('secondary');
+    
+    .input-field {
+      @include genesis-synapse('input-primary');
+    }
+    
+    .send-button {
+      @include genesis-synapse('execute');
+    }
+    
+    .emoji-button {
+      @include genesis-synapse('react');
+    }
+    
+    .mention-button {
+      @include genesis-synapse('mention');
+    }
+  }
+}
+
+// ============================================================================
+// EXAMPLE 23: Gamification - Achievements and Progress
+// ============================================================================
+// Achievement badges and user progress tracking
+.achievements-section {
+  @include genesis-environment('user-grid');
+
+  .achievement-card {
+    @include genesis-entity('user-card');
+    
+    .achievement-icon {
+      @include genesis-entity('badge');
+      // Variants: .badge-success, .badge-warning, .badge-info
+    }
+    
+    .achievement-name {
+      @include genesis-cognition('motive');
+    }
+    
+    .achievement-description {
+      @include genesis-cognition('gloss');
+    }
+    
+    .achievement-progress {
+      @include genesis-entity('secondary');
+      
+      .progress-bar {
+        @include genesis-state('evolving'); // Shows updating/streaming state
+      }
+      
+      .progress-text {
+        @include genesis-cognition('quantum'); // Small, compact text
+      }
+    }
+    
+    // Locked achievement
+    &.locked {
+      @include genesis-state('locked'); // Blur effect, lock icon
+    }
+  }
+}
+
+
