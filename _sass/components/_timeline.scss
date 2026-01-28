@@ -46,26 +46,27 @@
       &.active {
         @include genesis-state('stable');
       }
-      
-      .timeline-content-inner {
-        @include genesis-entity('primary');
-        
-        .timeline-content-image {
-          @include genesis-entity('image-adaptive');
-        }
-        
-        .timeline-content-text {
-          @include genesis-entity('secondary');
-          
-          .timeline-content-title {
-            @include genesis-cognition('axiom');
-          }
-          
-          .timeline-content-body {
-            @include genesis-cognition('discourse');
-          }
-        }
-      }
     }
+  }
+  
+  // Extracted to reduce nesting depth
+  .timeline-content-inner {
+    @include genesis-entity('primary');
+  }
+  
+  .timeline-content-image {
+    @include genesis-entity('image-adaptive');
+  }
+  
+  .timeline-content-text {
+    @include genesis-entity('secondary');
+  }
+  
+  .timeline-content-title {
+    @include genesis-cognition('axiom');
+  }
+  
+  .timeline-content-body {
+    @include genesis-cognition('discourse');
   }
 }

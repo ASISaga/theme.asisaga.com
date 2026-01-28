@@ -871,12 +871,13 @@
       // Message reactions
       .message-reactions {
         @include genesis-environment('associative');
-        
-        .reaction {
-          @include genesis-synapse('react');
-        }
       }
     }
+  }
+  
+  // Extracted to reduce nesting depth
+  .message-reactions .reaction {
+    @include genesis-synapse('react');
   }
   
   .chat-input {

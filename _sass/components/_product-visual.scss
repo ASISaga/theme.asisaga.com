@@ -49,12 +49,13 @@
       ul {
         // TODO: Replace @extend .list-unstyled with proper mixin or direct styles for Jekyll compatibility
     // @extend .list-unstyled;
-        
-        li {
-          // TODO: Replace @extend .mb-2 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-2;
-        }
       }
     }
+  }
+  
+  // Extracted to reduce nesting depth
+  .additional-content-container ul li {
+    // TODO: Replace @extend .mb-2 with proper mixin or direct styles for Jekyll compatibility
+    // @extend .mb-2;
   }
 }

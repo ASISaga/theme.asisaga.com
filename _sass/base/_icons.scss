@@ -87,11 +87,6 @@ $icon-size-small: 2rem;
   color: $luminous-gold;
 }
 
-@mixin icon-consciousness {
-  @include icon-base;
-  color: $cosmic-deep-blue;
-}
-
 @mixin icon-transcendent {
   @include icon-base;
   color: $transcendent-white;
