@@ -1,27 +1,27 @@
 ---
 layout: default
 ---
-<div class="gallery-page">
-  <header class="gallery-page__header">
+<div class="gallery-layout">
+  <header class="gallery-header">
     {% if page.title %}
-    <h1 class="gallery-page__title">{{ page.title }}</h1>
+    <h1 class="gallery-title">{{ page.title }}</h1>
     {% endif %}
     
     {% if page.description %}
-    <p class="gallery-page__description">{{ page.description }}</p>
+    <p class="gallery-description">{{ page.description }}</p>
     {% endif %}
     
     {% if page.categories %}
-    <div class="gallery-page__filters" role="group" aria-label="Filter gallery items">
-      <button class="gallery-page__filter gallery-page__filter--active" data-filter="all">All</button>
+    <div class="gallery-filters" role="group" aria-label="Filter gallery items">
+      <button class="gallery-filter gallery-filter--active" data-filter="all">All</button>
       {% for category in page.categories %}
-      <button class="gallery-page__filter" data-filter="{{ category.slug }}">{{ category.name }}</button>
+      <button class="gallery-filter" data-filter="{{ category.slug }}">{{ category.name }}</button>
       {% endfor %}
     </div>
     {% endif %}
   </header>
   
-  <div class="gallery-page__grid">
+  <div class="gallery-grid">
     {{ content }}
   </div>
 </div>

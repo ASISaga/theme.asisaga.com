@@ -1,22 +1,22 @@
 ---
 layout: default
 ---
-<article class="blog-post">
-  <header class="blog-post__header">
+<article class="post-layout">
+  <header class="post-header">
     {% if page.title %}
-    <h1 class="blog-post__title">{{ page.title }}</h1>
+    <h1 class="post-title">{{ page.title }}</h1>
     {% endif %}
     
     {% if page.date or page.author %}
-    <div class="blog-post__meta">
+    <div class="post-meta">
       {% if page.date %}
-      <time datetime="{{ page.date | date_to_xmlschema }}" class="blog-post__date">
+      <time datetime="{{ page.date | date_to_xmlschema }}" class="post-meta-date">
         <i class="far fa-calendar" aria-hidden="true"></i>
         {{ page.date | date: "%B %d, %Y" }}
       </time>
       {% endif %}
       {% if page.author %}
-      <span class="blog-post__author">
+      <span class="post-meta-author">
         <i class="far fa-user" aria-hidden="true"></i>
         {{ page.author }}
       </span>
@@ -25,26 +25,26 @@ layout: default
     {% endif %}
     
     {% if page.tags or page.categories %}
-    <div class="blog-post__tags">
+    <div class="post-tags">
       {% for tag in page.tags %}
-      <span class="blog-post__tag">{{ tag }}</span>
+      <span class="post-tag">{{ tag }}</span>
       {% endfor %}
       {% for category in page.categories %}
-      <span class="blog-post__category">{{ category }}</span>
+      <span class="post-category">{{ category }}</span>
       {% endfor %}
     </div>
     {% endif %}
   </header>
   
-  <div class="blog-post__content">
+  <div class="post-content">
     {{ content }}
   </div>
   
   {% if page.share %}
-  <footer class="blog-post__footer">
-    <div class="blog-post__share">
-      <h2 class="blog-post__share-title">Share this post</h2>
-      <div class="blog-post__share-buttons">
+  <footer class="post-footer">
+    <div class="post-share">
+      <h2 class="post-share-title">Share this post</h2>
+      <div class="post-share-buttons">
         <!-- Social sharing buttons -->
       </div>
     </div>

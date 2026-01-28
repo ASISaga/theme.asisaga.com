@@ -1,37 +1,37 @@
 ---
 layout: default
 ---
-<div class="search-page">
-  <header class="search-page__header">
-    <form class="search-page__form" role="search">
+<div class="search-layout">
+  <header class="search-header">
+    <form class="search-form" role="search">
       <label for="search-input" class="sr-only">Search</label>
-      <div class="search-page__input-group">
-        <input type="search" id="search-input" class="search-page__input" placeholder="Search..." value="{{ page.query }}">
-        <button type="submit" class="search-page__submit" aria-label="Submit search">
+      <div class="search-input-group">
+        <input type="search" id="search-input" class="search-input" placeholder="Search..." value="{{ page.query }}">
+        <button type="submit" class="search-submit" aria-label="Submit search">
           <i class="fas fa-search" aria-hidden="true"></i>
         </button>
       </div>
     </form>
     
     {% if page.results_count %}
-    <p class="search-page__count" aria-live="polite">{{ page.results_count }} results found</p>
+    <p class="search-count" aria-live="polite">{{ page.results_count }} results found</p>
     {% endif %}
   </header>
   
-  <div class="search-page__main">
+  <div class="search-main">
     {% if page.filters %}
-    <aside class="search-page__sidebar" aria-label="Search filters">
-      <h2 class="search-page__filters-title">Filters</h2>
+    <aside class="search-sidebar" aria-label="Search filters">
+      <h2 class="search-filters-title">Filters</h2>
       {% for filter in page.filters %}
-      <section class="search-page__filter-group">
-        <h3 class="search-page__filter-title">{{ filter.name }}</h3>
+      <section class="search-filter-group">
+        <h3 class="search-filter-title">{{ filter.name }}</h3>
         <!-- Filter options -->
       </section>
       {% endfor %}
     </aside>
     {% endif %}
     
-    <div class="search-page__results">
+    <div class="search-results">
       {{ content }}
     </div>
   </div>
