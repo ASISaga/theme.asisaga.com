@@ -1,0 +1,27 @@
+// App Layout Styles
+// Purpose: Lightweight shell for app-like pages using app.html template
+// Provides minimal wrapper without additional page chrome
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+.app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  
+  // Ensure main content takes available space
+  width: 100%;
+  
+  // Add minimal padding for breathing room
+  padding: clamp(1rem, 3vw, 2rem);
+  
+  // CSS Containment for performance
+  contain: layout style;
+  isolation: isolate;
+}
