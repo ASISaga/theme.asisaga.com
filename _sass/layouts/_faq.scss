@@ -3,51 +3,81 @@
  * ============================================================================
  * Frequently Asked Questions with searchable categories.
  * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * Uses semantic includes from _includes/layouts/
+ * 
+ * This file matches the BEM structure from includes:
+ * - faq__header (from layout-header.html)
+ * - faq__title
+ * - faq__description
+ * - faq__search
+ * - faq__categories
+ * - faq__category
+ * - faq__content
+ * - faq__footer-cta (from layout-footer-cta.html)
+ * - faq__cta-title
+ * - faq__cta-description
+ * - faq__cta-button
  */
 
 
 .faq-layout {
-  @include genesis-environment('focused');    // Centered content
-  @include genesis-atmosphere('neutral');      // Standard vibe
+  @include genesis-environment('focused');      // Centered content
+  @include genesis-atmosphere('neutral');        // Standard vibe
+}
+
+// Header section from layout-header.html include
+.faq__header {
+  @include genesis-entity('secondary');         // Header section
+}
+
+.faq__title {
+  @include genesis-cognition('axiom');          // Headline
+}
+
+.faq__description {
+  @include genesis-cognition('discourse');      // Body text
+}
+
+// Search section (not from includes - kept as-is)
+.faq__search {
+  @include genesis-environment('focused');      // Centered search
+}
+
+.faq__search-input {
+  @include genesis-synapse('inquiry');          // Search input
+}
+
+// Category filters (not from includes - kept as-is)
+.faq__categories {
+  @include genesis-environment('associative');  // Horizontal flex
+}
+
+.faq__category {
+  @include genesis-synapse('inquiry');          // Category filter button
   
-  .faq-header {
-    @include genesis-entity('secondary');     // Header section
-    text-align: center;
+  &--active {
+    @include genesis-state('stable');           // Active state
   }
-  
-  .faq-title {
-    @include genesis-cognition('axiom');      // Headline
-  }
-  
-  .faq-description {
-    @include genesis-cognition('discourse');  // Body text
-  }
-  
-  .faq-search {
-    @include genesis-synapse('inquiry');      // Search input
-    max-width: 600px;
-    margin-inline: auto;
-  }
-  
-  .faq-categories {
-    @include genesis-environment('associative'); // Horizontal flex
-    text-align: center;
-  }
-  
-  .faq-category {
-    @include genesis-synapse('toggle');       // Category filter
-  }
-  
-  .faq-content {
-    @include genesis-entity('primary');       // Main content
-  }
-  
-  .faq-footer {
-    @include genesis-entity('secondary');     // Footer section
-    text-align: center;
-  }
-  
-  .faq-footer-title {
-    @include genesis-cognition('motive');     // Instructional heading
-  }
+}
+
+// Main content area
+.faq__content {
+  @include genesis-entity('primary');           // Main content
+}
+
+// Footer CTA section from layout-footer-cta.html include
+.faq__footer-cta {
+  @include genesis-entity('secondary');         // Footer section
+}
+
+.faq__cta-title {
+  @include genesis-cognition('motive');         // Instructional heading
+}
+
+.faq__cta-description {
+  @include genesis-cognition('discourse');      // Body text
+}
+
+.faq__cta-button {
+  @include genesis-synapse('execute');          // Primary action
 }

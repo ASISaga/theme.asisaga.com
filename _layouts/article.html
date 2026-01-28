@@ -14,40 +14,27 @@ layout: default
   {% endif %}
   
   <div class="article-main-col">
-    <header class="article-header">
-      {% if page.title %}
-      <h1 class="article-title">{{ page.title }}</h1>
-      {% endif %}
-      
-      {% if page.subtitle %}
-      <p class="article-subtitle">{{ page.subtitle }}</p>
-      {% endif %}
-      
-      {% if page.date or page.author or page.reading_time %}
-      <div class="article-meta">
-        {% if page.date %}
-        <time datetime="{{ page.date | date_to_xmlschema }}" class="article-meta-date">
-          {{ page.date | date: "%B %d, %Y" }}
-        </time>
-        {% endif %}
-        {% if page.author %}
-        <span class="article-author">By {{ page.author }}</span>
-        {% endif %}
-        {% if page.reading_time %}
-        <span class="article-reading-time">{{ page.reading_time }} min read</span>
-        {% endif %}
-      </div>
-      {% endif %}
-    </header>
+    {% include layouts/layout-header.html
+       class_prefix="article"
+       title=page.title
+       subtitle=page.subtitle
+    %}
     
-    <div class="article-content">
+    {% include layouts/content-meta.html
+       class_prefix="article"
+       date=page.date
+       author=page.author
+       reading_time=page.reading_time
+    %}
+    
+    <div class="article__content">
       {{ content }}
     </div>
     
     {% if page.related_articles %}
-    <footer class="article-footer">
-      <h2 class="article-footer-title">Related Articles</h2>
-      <div class="article-related">
+    <footer class="article__footer">
+      <h2 class="article__footer-title">Related Articles</h2>
+      <div class="article__related">
         <!-- Related articles list -->
       </div>
     </footer>

@@ -3,21 +3,24 @@
  * ============================================================================
  * Blog post article layout with metadata and sharing.
  * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * Uses semantic includes from _includes/layouts/
  * 
- * This file matches the classes in _layouts/post.html:
- * - <article class="post-layout">
- * - <header class="post-header">
- * - <h1 class="post-title">
- * - <div class="post-meta">
- * - <time class="post-meta-date">
- * - <span class="post-meta-author">
- * - <div class="post-tags">
- * - <span class="post-tag">
- * - <span class="post-category">
- * - <div class="post-content">
- * - <footer class="post-footer">
- * - <div class="post-share">
- * - <h2 class="post-share-title">
+ * This file matches the BEM structure from includes:
+ * - post__header (from layout-header.html)
+ * - post__title
+ * - post__subtitle
+ * - post__meta (from content-meta.html)
+ * - post__meta-date
+ * - post__meta-author
+ * - post__taxonomy (from tags-categories.html)
+ * - post__tags
+ * - post__tag
+ * - post__categories
+ * - post__category
+ * - post__content
+ * - post__footer-cta (from layout-footer-cta.html)
+ * - post__cta-title
+ * - post__cta-button
  */
 
 
@@ -26,57 +29,69 @@
 .post-layout {
   @include genesis-environment('focused');    // Single column reading
   @include genesis-atmosphere('neutral');      // Standard vibe
-  
-  .post-header {
-    @include genesis-entity('secondary');     // Header section
-  }
-  
-  .post-title {
-    @include genesis-cognition('axiom');      // Large headline
-  }
-  
-  .post-meta {
-    @include genesis-cognition('gloss');      // Small metadata
-    @include genesis-state('stable');          // Normal state
-    
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  
-  .post-meta-date,
-  .post-meta-author {
-    @include genesis-cognition('gloss');      // Small metadata
-  }
-  
-  .post-tags {
-    @include genesis-environment('associative'); // Horizontal flex
-    
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  
-  .post-tag {
-    @include genesis-cognition('quantum');    // Tiny chip
-    @include genesis-entity('secondary');     // Supporting visual
-  }
-  
-  .post-category {
-    @include genesis-cognition('quantum');    // Tiny chip
-    @include genesis-entity('imperative');    // Primary accent
-  }
-  
-  .post-content {
-    @include genesis-cognition('discourse');  // Body prose
-    @include genesis-entity('primary');       // Main content
-  }
-  
-  .post-footer {
-    @include genesis-entity('secondary');     // Footer section
-  }
-  
-  .post-share-title {
-    @include genesis-cognition('motive');     // Instructional text
-  }
+}
+
+// Header section from layout-header.html include
+.post__header {
+  @include genesis-entity('secondary');       // Header section
+}
+
+.post__title {
+  @include genesis-cognition('axiom');        // Large headline
+}
+
+.post__subtitle {
+  @include genesis-cognition('discourse');    // Subheading text
+}
+
+// Metadata section from content-meta.html include
+.post__meta {
+  @include genesis-environment('associative'); // Horizontal flex
+  @include genesis-cognition('gloss');         // Small metadata
+  @include genesis-state('stable');            // Normal state
+}
+
+.post__meta-date,
+.post__meta-author,
+.post__meta-reading-time {
+  @include genesis-cognition('gloss');        // Small metadata
+}
+
+// Taxonomy section from tags-categories.html include
+.post__taxonomy {
+  @include genesis-environment('associative'); // Horizontal flex
+}
+
+.post__tags,
+.post__categories {
+  @include genesis-environment('associative'); // Horizontal flex
+}
+
+.post__tag {
+  @include genesis-cognition('quantum');      // Tiny chip
+  @include genesis-entity('secondary');       // Supporting visual
+}
+
+.post__category {
+  @include genesis-cognition('quantum');      // Tiny chip
+  @include genesis-entity('imperative');      // Primary accent
+}
+
+// Main content area
+.post__content {
+  @include genesis-cognition('discourse');    // Body prose
+  @include genesis-entity('primary');         // Main content
+}
+
+// Footer CTA section from layout-footer-cta.html include
+.post__footer-cta {
+  @include genesis-entity('secondary');       // Footer section
+}
+
+.post__cta-title {
+  @include genesis-cognition('motive');       // Instructional text
+}
+
+.post__cta-button {
+  @include genesis-synapse('execute');        // Primary action
 }

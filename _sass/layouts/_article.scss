@@ -3,21 +3,18 @@
  * ============================================================================
  * Long-form article with optional table of contents sidebar.
  * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * Uses semantic includes from _includes/layouts/
  * 
- * This file matches the classes in _layouts/article.html:
- * - <article class="article-layout">
- * - <aside class="article-toc-sidebar">
- * - <nav class="article-toc">
- * - <h2 class="article-toc-title">
- * - <div class="article-main-col">
- * - <header class="article-header">
- * - <h1 class="article-title">
- * - <p class="article-subtitle">
- * - <div class="article-meta">
- * - <time class="article-meta-date">
- * - <span class="article-author">
- * - <div class="article-content">
- * - <footer class="article-footer">
+ * This file matches the BEM structure from includes:
+ * - article__header (from layout-header.html)
+ * - article__title
+ * - article__subtitle
+ * - article__meta (from content-meta.html)
+ * - article__meta-date
+ * - article__meta-author
+ * - article__meta-reading-time
+ * - article__content
+ * - article__footer
  */
 
 
@@ -26,62 +23,59 @@
 .article-layout {
   @include genesis-environment('associative'); // Sidebar + main layout
   @include genesis-atmosphere('neutral');       // Standard vibe
-  
-  .article-toc-sidebar {
-    @include genesis-entity('secondary');     // Sidebar section
-    @include genesis-environment('chronological'); // Vertical navigation
-    
-    // Desktop: 25% width sidebar
-    display: none;
-    
-    @media (min-width: 1024px) {
-      display: block;
-      flex: 0 0 25%;
-    }
-  }
-  
-  .article-toc-title {
-    @include genesis-cognition('motive');     // Instructional heading
-  }
-  
-  .article-main-col {
-    @include genesis-environment('focused');  // Reading column
-    
-    @media (min-width: 1024px) {
-      flex: 0 0 75%;
-    }
-  }
-  
-  .article-header {
-    @include genesis-entity('secondary');     // Header section
-  }
-  
-  .article-title {
-    @include genesis-cognition('axiom');      // Large headline
-  }
-  
-  .article-subtitle {
-    @include genesis-cognition('discourse');  // Subheading text
-  }
-  
-  .article-meta {
-    @include genesis-cognition('gloss');      // Small metadata
-    
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  
-  .article-content {
-    @include genesis-cognition('discourse');  // Body prose
-    @include genesis-entity('primary');       // Main content
-  }
-  
-  .article-footer {
-    @include genesis-entity('secondary');     // Footer section
-  }
-  
-  .article-footer-title {
-    @include genesis-cognition('motive');     // Instructional heading
-  }
+}
+
+// Table of contents sidebar (not from includes - kept as-is)
+.article-toc-sidebar {
+  @include genesis-entity('secondary');       // Sidebar section
+  @include genesis-environment('chronological'); // Vertical navigation
+}
+
+.article-toc-title {
+  @include genesis-cognition('motive');       // Instructional heading
+}
+
+// Main content column
+.article-main-col {
+  @include genesis-environment('focused');    // Reading column
+}
+
+// Header section from layout-header.html include
+.article__header {
+  @include genesis-entity('secondary');       // Header section
+}
+
+.article__title {
+  @include genesis-cognition('axiom');        // Large headline
+}
+
+.article__subtitle {
+  @include genesis-cognition('discourse');    // Subheading text
+}
+
+// Metadata section from content-meta.html include
+.article__meta {
+  @include genesis-environment('associative'); // Horizontal flex
+  @include genesis-cognition('gloss');         // Small metadata
+}
+
+.article__meta-date,
+.article__meta-author,
+.article__meta-reading-time {
+  @include genesis-cognition('gloss');        // Small metadata
+}
+
+// Main content area
+.article__content {
+  @include genesis-cognition('discourse');    // Body prose
+  @include genesis-entity('primary');         // Main content
+}
+
+// Footer section (not using CTA include)
+.article__footer {
+  @include genesis-entity('secondary');       // Footer section
+}
+
+.article__footer-title {
+  @include genesis-cognition('motive');       // Instructional heading
 }
