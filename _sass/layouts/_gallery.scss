@@ -3,15 +3,15 @@
  * ============================================================================
  * Image gallery with filtering capabilities.
  * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * Uses semantic includes from _includes/layouts/
  * 
- * This file matches the classes in _layouts/gallery.html:
- * - <div class="gallery-layout">
- * - <header class="gallery-header">
- * - <h1 class="gallery-title">
- * - <p class="gallery-description">
- * - <div class="gallery-filters">
- * - <button class="gallery-filter">
- * - <div class="gallery-grid">
+ * This file matches the BEM structure from includes:
+ * - gallery__header (from layout-header.html)
+ * - gallery__title
+ * - gallery__description
+ * - gallery__filters
+ * - gallery__filter
+ * - gallery__grid
  */
 
 
@@ -20,35 +20,38 @@
 .gallery-layout {
   @include genesis-environment('chronological');  // Vertical flow
   @include genesis-atmosphere('neutral');          // Standard vibe
+}
+
+// Header section from layout-header.html include
+.gallery__header {
+  @include genesis-entity('secondary');     // Supporting header
   
-  .gallery-header {
-    @include genesis-entity('secondary');     // Supporting header
-    
-    text-align: center;
-  }
+  text-align: center;
+}
+
+.gallery__title {
+  @include genesis-cognition('axiom');      // Headline
+}
+
+.gallery__description {
+  @include genesis-cognition('discourse');  // Body text
+}
+
+// Filter section (custom for gallery)
+.gallery__filters {
+  @include genesis-environment('associative'); // Horizontal flex
+}
+
+.gallery__filter {
+  @include genesis-synapse('toggle');       // Filter toggle button
+  @include genesis-state('stable');          // Normal state
   
-  .gallery-title {
-    @include genesis-cognition('axiom');      // Headline
+  &--active {
+    @include genesis-state('active');       // Active filter state
   }
-  
-  .gallery-description {
-    @include genesis-cognition('discourse');  // Body text
-  }
-  
-  .gallery-filters {
-    @include genesis-environment('associative'); // Horizontal flex
-  }
-  
-  .gallery-filter {
-    @include genesis-synapse('toggle');       // Filter toggle button
-    @include genesis-state('stable');          // Normal state
-    
-    &--active {
-      @include genesis-state('active');       // Active filter state
-    }
-  }
-  
-  .gallery-grid {
-    @include genesis-environment('distributed'); // Auto-fit grid
-  }
+}
+
+// Grid content area
+.gallery__grid {
+  @include genesis-environment('distributed'); // Auto-fit grid
 }
