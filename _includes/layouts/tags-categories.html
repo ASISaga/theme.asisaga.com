@@ -1,0 +1,35 @@
+{% comment %}
+Tags and Categories Component
+Displays tags and/or categories with semantic markup
+
+Parameters:
+- tags: Array of tag names (optional)
+- categories: Array of category names (optional)
+- class_prefix: BEM block name for styling (required, e.g., "post", "article")
+{% endcomment %}
+
+{% if include.tags or include.categories %}
+<div class="{{ include.class_prefix }}__taxonomy">
+  {% if include.categories %}
+  <div class="{{ include.class_prefix }}__categories">
+    <span class="{{ include.class_prefix }}__taxonomy-label" aria-label="Categories">
+      <i class="fas fa-folder" aria-hidden="true"></i>
+    </span>
+    {% for category in include.categories %}
+    <span class="{{ include.class_prefix }}__category">{{ category }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+  
+  {% if include.tags %}
+  <div class="{{ include.class_prefix }}__tags">
+    <span class="{{ include.class_prefix }}__taxonomy-label" aria-label="Tags">
+      <i class="fas fa-tags" aria-hidden="true"></i>
+    </span>
+    {% for tag in include.tags %}
+    <span class="{{ include.class_prefix }}__tag">{{ tag }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endif %}

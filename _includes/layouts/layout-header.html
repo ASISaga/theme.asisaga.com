@@ -1,0 +1,26 @@
+{% comment %}
+Layout Header Component
+Creates a semantic header section for layouts with title, subtitle, and description
+
+Parameters:
+- title: Main heading text (required)
+- subtitle: Subtitle/tagline text (optional)
+- description: Description or introduction text (optional)
+- class_prefix: BEM block name for styling (required, e.g., "post", "article", "landing")
+{% endcomment %}
+
+<header class="{{ include.class_prefix }}__header">
+  {% if include.title %}
+  <h1 class="{{ include.class_prefix }}__title">{{ include.title }}</h1>
+  {% endif %}
+  
+  {% if include.subtitle %}
+  <p class="{{ include.class_prefix }}__subtitle">{{ include.subtitle }}</p>
+  {% endif %}
+  
+  {% if include.description %}
+  <div class="{{ include.class_prefix }}__description">
+    {{ include.description }}
+  </div>
+  {% endif %}
+</header>

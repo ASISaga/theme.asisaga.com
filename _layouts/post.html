@@ -2,52 +2,33 @@
 layout: default
 ---
 <article class="post-layout">
-  <header class="post-header">
-    {% if page.title %}
-    <h1 class="post-title">{{ page.title }}</h1>
-    {% endif %}
-    
-    {% if page.date or page.author %}
-    <div class="post-meta">
-      {% if page.date %}
-      <time datetime="{{ page.date | date_to_xmlschema }}" class="post-meta-date">
-        <i class="far fa-calendar" aria-hidden="true"></i>
-        {{ page.date | date: "%B %d, %Y" }}
-      </time>
-      {% endif %}
-      {% if page.author %}
-      <span class="post-meta-author">
-        <i class="far fa-user" aria-hidden="true"></i>
-        {{ page.author }}
-      </span>
-      {% endif %}
-    </div>
-    {% endif %}
-    
-    {% if page.tags or page.categories %}
-    <div class="post-tags">
-      {% for tag in page.tags %}
-      <span class="post-tag">{{ tag }}</span>
-      {% endfor %}
-      {% for category in page.categories %}
-      <span class="post-category">{{ category }}</span>
-      {% endfor %}
-    </div>
-    {% endif %}
-  </header>
+  {% include layouts/layout-header.html
+     class_prefix="post"
+     title=page.title
+  %}
   
-  <div class="post-content">
+  {% include layouts/content-meta.html
+     class_prefix="post"
+     date=page.date
+     author=page.author
+  %}
+  
+  {% include layouts/tags-categories.html
+     class_prefix="post"
+     tags=page.tags
+     categories=page.categories
+  %}
+  
+  <div class="post__content">
     {{ content }}
   </div>
   
   {% if page.share %}
-  <footer class="post-footer">
-    <div class="post-share">
-      <h2 class="post-share-title">Share this post</h2>
-      <div class="post-share-buttons">
-        <!-- Social sharing buttons -->
-      </div>
-    </div>
-  </footer>
+  {% include layouts/layout-footer-cta.html
+     class_prefix="post"
+     title="Share this post"
+     button_text="Share"
+     button_url="#share"
+  %}
   {% endif %}
 </article>

@@ -2,32 +2,32 @@
 layout: default
 ---
 <div class="profile-layout">
-  <header class="profile-header">
+  <header class="profile__header">
     {% if page.profile_image %}
-    <img src="{{ page.profile_image }}" alt="{{ page.name }}" class="profile-avatar">
+    <img src="{{ page.profile_image }}" alt="{{ page.name }}" class="profile__avatar">
     {% else %}
-    <div class="profile-avatar profile-avatar--placeholder" aria-hidden="true">
-      <i class="fas fa-user profile-placeholder-icon"></i>
+    <div class="profile__avatar profile__avatar--placeholder" aria-hidden="true">
+      <i class="fas fa-user profile__placeholder-icon"></i>
     </div>
     {% endif %}
     
-    <div class="profile-info">
+    <div class="profile__info">
       {% if page.name %}
-      <h1 class="profile-name">{{ page.name }}</h1>
+      <h1 class="profile__name">{{ page.name }}</h1>
       {% endif %}
       
       {% if page.role %}
-      <p class="profile-role">{{ page.role }}</p>
+      <p class="profile__role">{{ page.role }}</p>
       {% endif %}
       
       {% if page.bio %}
-      <p class="profile-bio">{{ page.bio }}</p>
+      <p class="profile__bio">{{ page.bio }}</p>
       {% endif %}
       
       {% if page.social_links %}
-      <nav class="profile-social" aria-label="Social media links">
+      <nav class="profile__social" aria-label="Social media links">
         {% for link in page.social_links %}
-        <a href="{{ link.url }}" class="profile-social-link" target="_blank" rel="noopener noreferrer" aria-label="{{ link.platform | capitalize }}">
+        <a href="{{ link.url }}" class="profile__social-link" target="_blank" rel="noopener noreferrer" aria-label="{{ link.platform | capitalize }}">
           <i class="fab fa-{{ link.platform }}" aria-hidden="true"></i>
           <span class="sr-only">{{ link.platform | capitalize }}</span>
         </a>
@@ -37,26 +37,26 @@ layout: default
     </div>
   </header>
   
-  <div class="profile-main">
-    <div class="profile-content">
+  <div class="profile__main">
+    <div class="profile__content">
       {{ content }}
     </div>
     
     {% if page.stats or page.skills %}
-    <aside class="profile-sidebar" aria-label="Additional information">
+    <aside class="profile__sidebar" aria-label="Additional information">
       {% if page.stats %}
-      <section class="profile-stats">
-        <h2 class="profile-stats-title">Statistics</h2>
+      <section class="profile__stats">
+        <h2 class="profile__stats-title">Statistics</h2>
         <!-- Stats content -->
       </section>
       {% endif %}
       
       {% if page.skills %}
-      <section class="profile-skills">
-        <h2 class="profile-skills-title">Skills</h2>
-        <div class="profile-skills-list">
+      <section class="profile__skills">
+        <h2 class="profile__skills-title">Skills</h2>
+        <div class="profile__skills-list">
           {% for skill in page.skills %}
-          <span class="profile-skills-badge">{{ skill }}</span>
+          <span class="profile__skills-badge">{{ skill }}</span>
           {% endfor %}
         </div>
       </section>

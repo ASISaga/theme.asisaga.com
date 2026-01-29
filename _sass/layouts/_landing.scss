@@ -3,63 +3,76 @@
  * ============================================================================
  * Marketing landing page with hero and CTA sections.
  * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * Uses semantic includes from _includes/layouts/
+ * 
+ * This file matches the BEM structure from includes:
+ * - landing__hero (hero section)
+ * - landing__header (from layout-header.html)
+ * - landing__title
+ * - landing__subtitle
+ * - landing__content
+ * - landing__footer-cta (from layout-footer-cta.html)
+ * - landing__cta-title
+ * - landing__cta-description
+ * - landing__cta-button
  */
 
 
 .landing-layout {
   @include genesis-environment('chronological'); // Vertical flow
   @include genesis-atmosphere('vibrant');         // High-energy vibe
-  
-  contain: layout style;
-  isolation: isolate;
-  
-  .landing-hero {
-    @include genesis-entity('imperative');    // Hero section - urgent/important
-    @include genesis-atmosphere('vibrant');    // High-energy
-    
-    padding: clamp(3rem, 8vw, 6rem) 0;
-    min-height: 50vh;
-    display: flex;
-    align-items: center;
-  }
-  
-  .landing-hero-title {
-    @include genesis-cognition('axiom');      // Large headline
-  }
-  
-  .landing-hero-subtitle {
-    @include genesis-cognition('discourse');  // Subheading
-  }
-  
-  .landing-hero-button {
-    @include genesis-synapse('execute');      // Primary CTA
-  }
-  
-  .landing-hero-image {
-    @include genesis-entity('image-adaptive'); // Responsive image
-  }
-  
-  .landing-content {
-    @include genesis-entity('primary');       // Main content
-  }
-  
-  .landing-cta {
-    @include genesis-entity('imperative');    // CTA section
-    @include genesis-atmosphere('vibrant');    // High-energy
-    
-    text-align: center;
-    padding: clamp(3rem, 8vw, 6rem) 0;
-  }
-  
-  .landing-cta-title {
-    @include genesis-cognition('axiom');      // Headline
-  }
-  
-  .landing-cta-description {
-    @include genesis-cognition('discourse');  // Body text
-  }
-  
-  .landing-cta-button {
-    @include genesis-synapse('execute');      // Primary CTA
-  }
+}
+
+// Hero section containing layout-header.html include
+.landing__hero {
+  @include genesis-entity('imperative');        // Hero section - urgent/important
+  @include genesis-atmosphere('vibrant');        // High-energy
+}
+
+// Header within hero from layout-header.html include
+.landing__header {
+  @include genesis-entity('imperative');        // Urgent/important header
+}
+
+.landing__title {
+  @include genesis-cognition('axiom');          // Large headline
+}
+
+.landing__subtitle {
+  @include genesis-cognition('discourse');      // Subheading
+}
+
+.landing__hero-actions {
+  @include genesis-environment('associative');  // Button container
+}
+
+.landing__hero-button {
+  @include genesis-synapse('execute');          // Primary CTA
+}
+
+.landing__hero-image {
+  @include genesis-entity('primary');           // Hero image
+}
+
+// Main content area
+.landing__content {
+  @include genesis-entity('primary');           // Main content
+}
+
+// Footer CTA section from layout-footer-cta.html include
+.landing__footer-cta {
+  @include genesis-entity('imperative');        // CTA section
+  @include genesis-atmosphere('vibrant');        // High-energy
+}
+
+.landing__cta-title {
+  @include genesis-cognition('axiom');          // Headline
+}
+
+.landing__cta-description {
+  @include genesis-cognition('discourse');      // Body text
+}
+
+.landing__cta-button {
+  @include genesis-synapse('execute');          // Primary CTA
 }

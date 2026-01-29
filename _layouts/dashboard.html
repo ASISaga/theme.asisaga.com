@@ -2,21 +2,20 @@
 layout: default
 ---
 <div class="dashboard-layout">
-  <header class="dashboard-header">
-    {% if page.title %}
-    <h1 class="dashboard-title">{{ page.title }}</h1>
-    {% endif %}
-    
-    {% if page.actions %}
-    <div class="dashboard-actions">
-      {% for action in page.actions %}
-      <button type="button" class="dashboard-action-btn">{{ action }}</button>
-      {% endfor %}
-    </div>
-    {% endif %}
-  </header>
+  {% include layouts/layout-header.html
+     class_prefix="dashboard"
+     title=page.title
+  %}
   
-  <div class="dashboard-content">
+  {% if page.actions %}
+  <div class="dashboard__actions">
+    {% for action in page.actions %}
+    <button type="button" class="dashboard__action-btn">{{ action }}</button>
+    {% endfor %}
+  </div>
+  {% endif %}
+  
+  <div class="dashboard__content">
     {{ content }}
   </div>
 </div>

@@ -3,68 +3,103 @@
  * ============================================================================
  * User profile page with avatar, stats, and content.
  * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * 
+ * This file matches the BEM structure:
+ * - profile__header
+ * - profile__avatar
+ * - profile__info
+ * - profile__name
+ * - profile__role
+ * - profile__bio
+ * - profile__social
+ * - profile__social-link
+ * - profile__main
+ * - profile__content
+ * - profile__sidebar
+ * - profile__stats
+ * - profile__skills
  */
 
 
 .profile-layout {
   @include genesis-environment('chronological'); // Vertical flow
   @include genesis-atmosphere('neutral');         // Standard vibe
+}
+
+// Header section (custom structure, not using include)
+.profile__header {
+  @include genesis-entity('primary');       // Main profile section
   
-  .profile-header {
-    @include genesis-entity('primary');       // Main profile section
-    
-    text-align: center;
-  }
+  text-align: center;
+}
+
+.profile__avatar {
+  @include genesis-entity('avatar');        // User avatar
   
-  .profile-avatar {
-    @include genesis-entity('avatar');        // User avatar
+  &--placeholder {
+    @include genesis-state('latent');       // Placeholder state
   }
-  
-  .profile-name {
-    @include genesis-cognition('axiom');      // Headline
-  }
-  
-  .profile-role {
-    @include genesis-cognition('discourse');  // Subheading
-  }
-  
-  .profile-bio {
-    @include genesis-cognition('discourse');  // Body text
-  }
-  
-  .profile-social {
-    @include genesis-environment('associative'); // Horizontal flex
-  }
-  
-  .profile-social-link {
-    @include genesis-synapse('social');       // Social link
-  }
-  
-  .profile-main {
-    @include genesis-environment('associative'); // Two-column layout
-  }
-  
-  .profile-content {
-    @include genesis-entity('primary');       // Main content
-  }
-  
-  .profile-sidebar {
-    @include genesis-entity('secondary');     // Sidebar section
-  }
-  
-  .profile-stats {
-    @include genesis-entity('aggregate');     // Stats container
-  }
-  
-  .profile-stats-title {
-    @include genesis-cognition('motive');     // Section heading
-  }
-  
-  .profile-skills {
-    @include genesis-environment('associative'); // Skills layout
-  }
-  
-  .profile-skills-badge {
-    @include genesis-cognition('quantum');    // Skill tag
-  }
+}
+
+.profile__info {
+  @include genesis-environment('chronological'); // Vertical info stack
+}
+
+.profile__name {
+  @include genesis-cognition('axiom');      // Headline
+}
+
+.profile__role {
+  @include genesis-cognition('discourse');  // Subheading
+}
+
+.profile__bio {
+  @include genesis-cognition('discourse');  // Body text
+}
+
+.profile__social {
+  @include genesis-environment('associative'); // Horizontal flex
+}
+
+.profile__social-link {
+  @include genesis-synapse('social');       // Social link
+}
+
+// Main content area
+.profile__main {
+  @include genesis-environment('associative'); // Two-column layout
+}
+
+.profile__content {
+  @include genesis-entity('primary');       // Main content
+}
+
+.profile__sidebar {
+  @include genesis-entity('secondary');     // Sidebar section
+}
+
+// Stats section
+.profile__stats {
+  @include genesis-entity('aggregate');     // Stats container
+}
+
+.profile__stats-title {
+  @include genesis-cognition('motive');     // Section heading
+}
+
+// Skills section
+.profile__skills {
+  @include genesis-environment('associative'); // Skills layout
+}
+
+.profile__skills-title {
+  @include genesis-cognition('motive');     // Section heading
+}
+
+.profile__skills-list {
+  @include genesis-environment('associative'); // Horizontal flex
+}
+
+.profile__skills-badge {
+  @include genesis-cognition('quantum');    // Skill tag
 }

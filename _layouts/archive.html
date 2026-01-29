@@ -2,57 +2,53 @@
 layout: default
 ---
 <div class="archive-layout">
-  <header class="archive-header">
-    {% if page.title %}
-    <h1 class="archive-title">{{ page.title }}</h1>
-    {% endif %}
-    
-    {% if page.description %}
-    <p class="archive-description">{{ page.description }}</p>
-    {% endif %}
-    
-    {% if page.show_filters or page.show_sort or page.show_view_toggle %}
-    <div class="archive-controls">
-      {% if page.show_filters %}
-      <div class="archive-filters">
-        <label for="archive-filter" class="sr-only">Filter items</label>
-        <select id="archive-filter" class="archive-select">
-          <option selected>All Categories</option>
-        </select>
-      </div>
-      {% endif %}
-      
-      {% if page.show_sort %}
-      <div class="archive-sort">
-        <label for="archive-sort" class="sr-only">Sort items</label>
-        <select id="archive-sort" class="archive-select">
-          <option selected>Latest First</option>
-          <option>Oldest First</option>
-          <option>Title A-Z</option>
-        </select>
-      </div>
-      {% endif %}
-      
-      {% if page.show_view_toggle %}
-      <div class="archive-view-toggle" role="group" aria-label="View mode">
-        <button type="button" class="archive-view-btn archive-view-btn--active" aria-label="Grid view" aria-pressed="true">
-          <i class="fas fa-th" aria-hidden="true"></i>
-        </button>
-        <button type="button" class="archive-view-btn" aria-label="List view" aria-pressed="false">
-          <i class="fas fa-list" aria-hidden="true"></i>
-        </button>
-      </div>
-      {% endif %}
+  {% include layouts/layout-header.html
+     class_prefix="archive"
+     title=page.title
+     description=page.description
+  %}
+  
+  {% if page.show_filters or page.show_sort or page.show_view_toggle %}
+  <div class="archive__controls">
+    {% if page.show_filters %}
+    <div class="archive__filters">
+      <label for="archive-filter" class="sr-only">Filter items</label>
+      <select id="archive-filter" class="archive__select">
+        <option selected>All Categories</option>
+      </select>
     </div>
     {% endif %}
-  </header>
+    
+    {% if page.show_sort %}
+    <div class="archive__sort">
+      <label for="archive-sort" class="sr-only">Sort items</label>
+      <select id="archive-sort" class="archive__select">
+        <option selected>Latest First</option>
+        <option>Oldest First</option>
+        <option>Title A-Z</option>
+      </select>
+    </div>
+    {% endif %}
+    
+    {% if page.show_view_toggle %}
+    <div class="archive__view-toggle" role="group" aria-label="View mode">
+      <button type="button" class="archive__view-btn archive__view-btn--active" aria-label="Grid view" aria-pressed="true">
+        <i class="fas fa-th" aria-hidden="true"></i>
+      </button>
+      <button type="button" class="archive__view-btn" aria-label="List view" aria-pressed="false">
+        <i class="fas fa-list" aria-hidden="true"></i>
+      </button>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
   
-  <div class="archive-content">
+  <div class="archive__content">
     {{ content }}
   </div>
   
   {% if page.show_pagination %}
-  <nav class="archive-pagination" aria-label="Archive pagination">
+  <nav class="archive__pagination" aria-label="Archive pagination">
     <ul class="pagination-list">
       <!-- Pagination items -->
     </ul>

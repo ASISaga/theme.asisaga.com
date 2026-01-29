@@ -3,14 +3,14 @@
  * ============================================================================
  * Dashboard interface with header and content area.
  * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * Uses semantic includes from _includes/layouts/
  * 
- * This file matches the classes in _layouts/dashboard.html:
- * - <div class="dashboard-layout">
- * - <header class="dashboard-header">
- * - <h1 class="dashboard-title">
- * - <div class="dashboard-actions">
- * - <button class="dashboard-action-btn">
- * - <div class="dashboard-content">
+ * This file matches the BEM structure from includes:
+ * - dashboard__header (from layout-header.html)
+ * - dashboard__title
+ * - dashboard__actions
+ * - dashboard__action-btn
+ * - dashboard__content
  */
 
 
@@ -21,31 +21,34 @@
   @include genesis-atmosphere('neutral');      // Standard vibe
   
   height: 100%;
+}
+
+// Header section from layout-header.html include
+.dashboard__header {
+  @include genesis-entity('secondary');     // Header section
   
-  .dashboard-header {
-    @include genesis-entity('secondary');     // Header section
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard__title {
+  @include genesis-cognition('axiom');      // Headline
+}
+
+// Actions section (custom for dashboard)
+.dashboard__actions {
+  @include genesis-environment('associative'); // Horizontal flex
   
-  .dashboard-title {
-    @include genesis-cognition('axiom');      // Headline
-  }
-  
-  .dashboard-actions {
-    @include genesis-environment('associative'); // Horizontal flex
-    
-    display: flex;
-    gap: 0.5rem;
-  }
-  
-  .dashboard-action-btn {
-    @include genesis-synapse('execute');      // Action button
-  }
-  
-  .dashboard-content {
-    @include genesis-entity('primary');       // Main content
-  }
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dashboard__action-btn {
+  @include genesis-synapse('execute');      // Action button
+}
+
+// Main content area
+.dashboard__content {
+  @include genesis-entity('primary');       // Main content
 }

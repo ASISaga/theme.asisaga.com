@@ -3,6 +3,20 @@
  * ============================================================================
  * Search interface with filters and results.
  * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * 
+ * This file matches the BEM structure:
+ * - search__header
+ * - search__form
+ * - search__input-group
+ * - search__input
+ * - search__submit
+ * - search__count
+ * - search__main
+ * - search__sidebar
+ * - search__filters-title
+ * - search__filter-group
+ * - search__filter-title
+ * - search__results
  */
 
 
@@ -13,44 +27,60 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  
-  .search-header {
-    @include genesis-entity('secondary');     // Header section
-  }
-  
-  .search-form {
-    @include genesis-synapse('inquiry');      // Search interaction
-    @include genesis-environment('associative'); // Horizontal layout
-  }
-  
-  .search-input {
-    @include genesis-synapse('input-primary'); // Primary input
-  }
-  
-  .search-submit {
-    @include genesis-synapse('execute');      // Submit button
-  }
-  
-  .search-count {
-    @include genesis-cognition('gloss');      // Small metadata
-  }
-  
-  .search-main {
-    @include genesis-environment('associative'); // Sidebar layout
-    flex: 1;
-  }
-  
-  .search-sidebar {
-    @include genesis-entity('secondary');     // Filters sidebar
-    @include genesis-environment('chronological'); // Vertical filters
-  }
-  
-  .search-filters-title {
-    @include genesis-cognition('motive');     // Section heading
-  }
-  
-  .search-results {
-    @include genesis-entity('primary');       // Main results
-    @include genesis-environment('chronological'); // Vertical list
-  }
+}
+
+// Header section
+.search__header {
+  @include genesis-entity('secondary');     // Header section
+}
+
+.search__form {
+  @include genesis-synapse('inquiry');      // Search interaction
+  @include genesis-environment('associative'); // Horizontal layout
+}
+
+.search__input-group {
+  @include genesis-environment('associative'); // Input group flex
+}
+
+.search__input {
+  @include genesis-synapse('input-primary'); // Primary input
+}
+
+.search__submit {
+  @include genesis-synapse('execute');      // Submit button
+}
+
+.search__count {
+  @include genesis-cognition('gloss');      // Small metadata
+}
+
+// Main content area
+.search__main {
+  @include genesis-environment('associative'); // Sidebar layout
+  flex: 1;
+}
+
+// Filter sidebar
+.search__sidebar {
+  @include genesis-entity('secondary');     // Filters sidebar
+  @include genesis-environment('chronological'); // Vertical filters
+}
+
+.search__filters-title {
+  @include genesis-cognition('motive');     // Section heading
+}
+
+.search__filter-group {
+  @include genesis-environment('chronological'); // Vertical group
+}
+
+.search__filter-title {
+  @include genesis-cognition('motive');     // Filter heading
+}
+
+// Results section
+.search__results {
+  @include genesis-entity('primary');       // Main results
+  @include genesis-environment('chronological'); // Vertical list
 }

@@ -1,0 +1,27 @@
+{% comment %}
+Layout Footer CTA Component
+Creates a semantic footer section with call-to-action
+
+Parameters:
+- title: CTA heading text (required)
+- description: CTA description or supporting text (optional)
+- button_text: Button/link text (required)
+- button_url: Button/link destination URL (required)
+- class_prefix: BEM block name for styling (required, e.g., "post", "article", "landing")
+{% endcomment %}
+
+<footer class="{{ include.class_prefix }}__footer-cta">
+  {% if include.title %}
+  <h2 class="{{ include.class_prefix }}__cta-title">{{ include.title }}</h2>
+  {% endif %}
+  
+  {% if include.description %}
+  <p class="{{ include.class_prefix }}__cta-description">{{ include.description }}</p>
+  {% endif %}
+  
+  {% if include.button_text and include.button_url %}
+  <div class="{{ include.class_prefix }}__cta-actions">
+    <a href="{{ include.button_url }}" class="{{ include.class_prefix }}__cta-button">{{ include.button_text }}</a>
+  </div>
+  {% endif %}
+</footer>

@@ -3,17 +3,17 @@
  * ============================================================================
  * Multi-step form layout with progress indicator.
  * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * Uses semantic includes from _includes/layouts/
  * 
- * This file matches the classes in _layouts/form.html:
- * - <div class="form-layout">
- * - <header class="form-header">
- * - <h1 class="form-title">
- * - <p class="form-description">
- * - <div class="form-content">
- * - <div class="form-progress">
- * - <ol class="form-steps">
- * - <footer class="form-footer">
- * - <p class="form-help">
+ * This file matches the BEM structure from includes:
+ * - form__header (from layout-header.html)
+ * - form__title
+ * - form__description
+ * - form__content
+ * - form__progress
+ * - form__steps
+ * - form__footer
+ * - form__help
  */
 
 
@@ -22,55 +22,62 @@
 .form-layout {
   @include genesis-environment('interaction-form'); // Form layout
   @include genesis-atmosphere('neutral');            // Standard vibe
+}
+
+// Header section from layout-header.html include
+.form__header {
+  @include genesis-entity('secondary');     // Header section
   
-  .form-header {
-    @include genesis-entity('secondary');     // Header section
-    
-    text-align: center;
-  }
+  text-align: center;
+}
+
+.form__title {
+  @include genesis-cognition('axiom');      // Headline
+}
+
+.form__description {
+  @include genesis-cognition('discourse');  // Body text
+}
+
+// Main form content area
+.form__content {
+  @include genesis-entity('primary');       // Main form area
+}
+
+// Progress indicator (custom for form)
+.form__progress {
+  @include genesis-entity('secondary');     // Progress section
+  @include genesis-state('evolving');        // In-progress state
+}
+
+.form__progress-bar {
+  @include genesis-entity('imperative');    // Progress visual
+}
+
+.form__steps {
+  @include genesis-environment('associative'); // Horizontal steps
   
-  .form-title {
-    @include genesis-cognition('axiom');      // Headline
-  }
-  
-  .form-description {
-    @include genesis-cognition('discourse');  // Body text
-  }
-  
-  .form-content {
-    @include genesis-entity('primary');       // Main form area
-  }
-  
-  .form-progress {
-    @include genesis-entity('secondary');     // Progress section
-    @include genesis-state('evolving');        // In-progress state
-  }
-  
-  .form-steps {
-    @include genesis-environment('associative'); // Horizontal steps
-    
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  .form-step {
-    @include genesis-cognition('gloss');      // Small step text
-  }
-  
-  .form-footer {
-    @include genesis-entity('secondary');     // Footer section
-    
-    text-align: center;
-  }
-  
-  .form-help {
-    @include genesis-cognition('gloss');      // Help text
-  }
-  
-  .form-privacy {
-    @include genesis-synapse('navigate');     // Privacy link
-    @include genesis-cognition('gloss');      // Small text
-  }
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding-left: 0;
+}
+
+.form__step {
+  @include genesis-cognition('gloss');      // Small step text
+}
+
+// Footer section
+.form__footer {
+  @include genesis-entity('secondary');     // Footer section
+  text-align: center;
+}
+
+.form__help {
+  @include genesis-cognition('gloss');      // Help text
+}
+
+.form__privacy {
+  @include genesis-synapse('navigate');     // Privacy link
+  @include genesis-cognition('gloss');      // Small text
 }
