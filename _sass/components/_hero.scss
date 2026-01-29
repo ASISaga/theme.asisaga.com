@@ -1,32 +1,24 @@
+/**
+ * HERO COMPONENT
+ * ============================================================================
+ * Hero section styles for landing pages.
+ * Merged from theme-layouts and components - combining best features.
+ */
 
-// Hero component - Genesis Ontological System
-// A reusable hero/header section for page headers with consistent styling
+// ============================================================================
+// HERO SECTION
+// ============================================================================
 
 .hero-section {
-  @include genesis-entity('primary');
-  @include genesis-environment('focused');
-  @include genesis-atmosphere('vibrant');
+  @include genesis-entity('primary');       // Elevated hero
+  @include genesis-environment('focused');  // Centered layout
+  @include genesis-atmosphere('vibrant');   // High-energy
   @include genesis-atmosphere('viewport-aware');
   @include genesis-atmosphere('spacious-mobile');
   
-  .hero-content {
-    @include genesis-environment('focused');
-  }
-  
-  .hero-title {
-    @include genesis-cognition('axiom');
-  }
-  
-  .hero-description {
-    @include genesis-cognition('discourse');
-  }
-
-  .hero-button {
-    @include genesis-synapse('execute');
-  }
-  
-  // Variant modifiers
-  &.hero-section-sm {
+  &-sm {
+    @include genesis-entity('secondary');  // Smaller hero
+    
     .hero-title {
       @include genesis-cognition('motive');
     }
@@ -36,13 +28,54 @@
     }
   }
   
-  &.hero-section-alt {
+  &-full {
+    @include genesis-entity('imperative');  // Full-screen hero
+  }
+  
+  &-alt {
     @include genesis-entity('secondary');
-    @include genesis-atmosphere('ethereal');
+    @include genesis-atmosphere('ethereal');  // Light alternative
   }
+  
+  &-video {
+    @include genesis-atmosphere('void');  // Dark video hero
+  }
+}
 
-  // Hero background image - dynamic background set via data attribute or CSS variable
-  .hero-background-image-dynamic {
-    @include genesis-entity('image-adaptive');
-  }
+.hero-background {
+  @include genesis-entity('latent');  // Background layer
+}
+
+// Hero background image - dynamic background set via data attribute or CSS variable
+.hero-background-image-dynamic {
+  @include genesis-entity('image-adaptive');
+}
+
+.hero-content {
+  @include genesis-entity('primary');       // Content overlay
+  @include genesis-environment('focused');  // Centered content
+}
+
+.hero-title {
+  @include genesis-cognition('axiom');  // Large headline
+}
+
+.hero-description {
+  @include genesis-cognition('discourse');  // Body text
+}
+
+.hero-cta {
+  @include genesis-environment('associative');  // Horizontal CTA
+}
+
+.hero-button {
+  @include genesis-synapse('execute');  // Primary action
+}
+
+.hero-scroll-indicator {
+  @include genesis-synapse('inquiry');  // Scroll hint
+}
+
+.hero-scroll-icon {
+  @include genesis-synapse('inquiry');  // Scroll icon
 }

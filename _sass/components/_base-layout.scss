@@ -2,6 +2,7 @@
  * BASE LAYOUT STRUCTURE
  * ============================================================================
  * Fundamental page layout containers and skip links.
+ * Moved from ontology/theme-layouts to components.
  */
 
 // ============================================================================
@@ -36,4 +37,3 @@
   @include genesis-synapse('navigate');  // Link behavior
   @include genesis-state('stable');      // Normal state
 }
-

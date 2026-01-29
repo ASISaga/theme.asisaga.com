@@ -1,16 +1,45 @@
+/**
+ * FOOTER COMPONENT
+ * ============================================================================
+ * Site footer and back-to-top button styles.
+ * Merged from theme-layouts and components - combining best features.
+ */
 
-// Footer styling - Genesis Ontological System
+// ============================================================================
+// FOOTER WRAPPER
+// ============================================================================
+
+// Note: flex-shrink properties are fundamental layout structure
+
+.footer-wrapper {
+  @include genesis-entity('secondary');  // Footer container
+  flex-shrink: 0;  // Prevent shrinking in parent flex column
+}
+
+// ============================================================================
+// SITE FOOTER
+// ============================================================================
 
 .site-footer {
-  @include genesis-entity('primary');
+  @include genesis-entity('primary');        // Footer card
+  @include genesis-environment('associative'); // Horizontal layout
   @include genesis-atmosphere('void');
-
+  flex-shrink: 0;  // Prevent shrinking in parent flex column
+  
   &__container {
-    @include genesis-environment('focused');
+    @include genesis-environment('focused');  // Centered content
+  }
+  
+  &__row {
+    @include genesis-environment('associative');  // Horizontal layout
   }
   
   &__copyright {
     @include genesis-entity('secondary');
+    
+    &-text {
+      @include genesis-cognition('gloss');  // Small copyright text
+    }
     
     p {
       @include genesis-cognition('gloss');
@@ -18,10 +47,14 @@
   }
   
   &__social {
-    @include genesis-environment('associative');
-
+    @include genesis-environment('associative');  // Horizontal social links
+    
+    &-item {
+      @include genesis-entity('secondary');
+    }
+    
     &-link {
-      @include genesis-synapse('social');
+      @include genesis-synapse('social');  // Social media link
     }
   }
   
@@ -34,7 +67,7 @@
   }
   
   &__nav-list {
-    @include genesis-environment('associative');
+    @include genesis-environment('associative');  // Horizontal nav
   }
   
   &__nav-item {
@@ -42,7 +75,7 @@
   }
   
   &__nav-link {
-    @include genesis-synapse('navigate');
+    @include genesis-synapse('navigate');  // Navigation link
     @include genesis-cognition('discourse');
   }
 }
@@ -50,4 +83,10 @@
 // Fixed footer variant - use both classes in HTML: class="site-footer site-footer-fixed"
 .site-footer-fixed {
   @include genesis-state('stable');
+}
+
+// Back to top button
+.back-to-top {
+  @include genesis-synapse('execute');  // Action button
+  @include genesis-state('stable');     // Normal state
 }

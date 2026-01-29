@@ -2,6 +2,7 @@
  * SECTION COMPONENTS
  * ============================================================================
  * Section headers, content sections, feature grids, timeline, CTA, and testimonials.
+ * Moved from ontology/theme-layouts to components.
  */
 
 // ============================================================================
@@ -131,4 +132,3 @@
     @include genesis-entity('secondary');
   }
 }
-

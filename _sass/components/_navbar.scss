@@ -1,8 +1,18 @@
+/**
+ * NAVBAR/NAVIGATION COMPONENT
+ * ============================================================================
+ * Navigation bar styles.
+ * Merged from theme-layouts/_navigation.scss and components/_navbar.scss.
+ */
 
-// Futuristic Responsive Navbar - Genesis Ontological System
+// ============================================================================
+// NAVBAR COMPONENT
+// ============================================================================
 
 // The main navigation container
 .navbar {
+  @include genesis-environment('associative');  // Horizontal layout
+  
   // Simple flex container for navigation items
   display: flex;
   width: 100%;
@@ -21,6 +31,8 @@
 
   // Navigation list container
   &__list {
+    @include genesis-environment('associative');  // Horizontal menu
+    
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-nav, clamp(0.5rem, 2vw, 1.5rem));
@@ -59,7 +71,7 @@
   
   // Styling for navigation links - Enhanced futuristic design
   &__link {
-    @include genesis-synapse('navigate');
+    @include genesis-synapse('navigate');  // Navigation link
 
     // Dropdown toggle variant
     &--dropdown {
