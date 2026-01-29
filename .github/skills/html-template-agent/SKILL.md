@@ -1,10 +1,10 @@
 ---
 name: html-template-agent
-description: Create semantic HTML5 templates with accessibility-first principles for Genesis Ontological Design System. Ensure proper landmark elements, meaningful class names, WCAG compliance, and BEM-style naming. Use when building Jekyll templates, includes, or auditing HTML structure for semantic correctness.
+description: Create semantic HTML5 templates with accessibility-first principles for Genesis Ontological Design System. Ensure proper landmark elements, meaningful class names, WCAG compliance, and BEM-style naming. Includes ready-to-use component patterns for navigation, forms, cards, modals, and more. Use when building Jekyll templates, includes, or auditing HTML structure for semantic correctness.
 license: MIT
 metadata:
   author: ASISaga
-  version: "2.1"
+  version: "2.1.1"
   category: design-system
   role: semantic-structure
 allowed-tools: Bash Read
@@ -14,11 +14,13 @@ allowed-tools: Bash Read
 
 **Role**: Semantic Structure and Accessibility Expert  
 **Scope**: Jekyll templates, includes, and HTML structure  
-**Version**: 2.1 - Integrated Validation & Automation
+**Version**: 2.1.1 - Component Patterns Catalog Added
 
 ## Purpose
 
 The HTML Template Agent ensures all HTML follows semantic best practices, uses meaningful content-first class names, and meets WCAG AA accessibility standards. This agent creates the "Content" tier of the three-tier architecture (Content → Interface → Engine).
+
+**New in v2.1.1**: Comprehensive component patterns catalog with ready-to-use semantic HTML for navigation, forms, cards, modals, and more.
 
 **New in v2.1**: Automated validation scripts, comprehensive template guide, accessibility checklist.
 
@@ -106,30 +108,43 @@ for file in _layouts/*.html; do
 done
 ```
 
-## Detailed Guide
+## Detailed Guides
 
-See [references/TEMPLATE-GUIDE.md](references/TEMPLATE-GUIDE.md) for:
+### [TEMPLATE-GUIDE.md](references/TEMPLATE-GUIDE.md)
+Complete template best practices:
 - Complete accessibility checklist
 - BEM naming convention guide
 - Jekyll template patterns
 - Common HTML patterns
 - Validation procedures
 
+### [COMPONENT-PATTERNS.md](references/COMPONENT-PATTERNS.md) **NEW**
+Ready-to-use semantic HTML patterns:
+- Navigation patterns (primary nav, breadcrumbs, tabs)
+- Hero sections (full-width, split layouts)
+- Card components (blog posts, features, products)
+- Form patterns (contact forms, search, accessible inputs)
+- Modal dialogs with ARIA
+- Data display (tables, definition lists, metadata)
+- Interactive elements (accordions, alerts, notifications)
+- Content sections (testimonials, FAQs, CTAs)
+
 ## Resources
 
 ### In This Skill
-- `scripts/validate-html.sh` - **NEW** Automated validation
-- `references/TEMPLATE-GUIDE.md` - **NEW** Comprehensive template guide
+- `scripts/validate-html.sh` - Automated validation
+- `references/TEMPLATE-GUIDE.md` - Comprehensive template guide
+- `references/COMPONENT-PATTERNS.md` - **NEW** Ready-to-use HTML patterns catalog
 
 ### In Repository
 - `.github/instructions/html.instructions.md` - Complete HTML guidelines
 - `_sass/ontology/INTEGRATION-GUIDE.md` - Ontology reference for class mapping
-- `.github/AGENT-INDEX.md` - **NEW** Quick navigation guide
+- `.github/AGENT-INDEX.md` - Quick navigation guide
 
 ### Related Agents
 - `scss-refactor-agent` - Maps HTML to ontological SCSS
 - `responsive-design-agent` - Ensures mobile-first patterns
 - `theme-genome-agent` - Maintains design system
 
-**Version**: 2.1.0 - Integrated Validation  
-**Last Updated**: 2026-01-19
+**Version**: 2.1.1 - Added Component Patterns Catalog  
+**Last Updated**: 2026-01-29

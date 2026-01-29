@@ -1,10 +1,10 @@
 ---
 name: responsive-design-agent
-description: Implement mobile-first responsive patterns using Genesis Ontological mixins. Apply WCAG 2.5.5 touch targets, fluid typography, responsive grids, and container queries. Use when implementing responsive layouts, optimizing mobile UX, or ensuring accessibility compliance across viewport sizes.
+description: Implement mobile-first responsive patterns using Genesis Ontological mixins. Apply WCAG 2.5.5 touch targets, fluid typography, responsive grids, and container queries. Includes production-ready layout patterns for grids, dashboards, navigation, forms, and media. Use when implementing responsive layouts, optimizing mobile UX, or ensuring accessibility compliance across viewport sizes.
 license: MIT
 metadata:
   author: ASISaga
-  version: "2.0"
+  version: "2.1.0"
   category: design-system
   role: responsive-specialist
 ---
@@ -346,9 +346,21 @@ npm test
 
 ## Resources
 
+### In This Skill
+- `scripts/validate-responsive.sh` - Responsive pattern validation
+- `references/RESPONSIVE-GUIDE.md` - Comprehensive responsive design guide
+- `references/LAYOUT-PATTERNS.md` - **NEW** Production-ready responsive layout patterns
+
+### In Repository
 - `_sass/ontology/INTEGRATION-GUIDE.md` - All responsive variants
 - `.github/instructions/scss.instructions.md` - SCSS best practices
 - `.github/prompts/responsive-design-agent.prompt.md` - Detailed prompt
 - `GENOME.md` - v2.1.0 responsive enhancements documentation
 
-**Related Skills**: scss-refactor-agent, html-template-agent
+### Related Skills
+- `scss-refactor-agent` - Ontology migration and zero-CSS compliance
+- `html-template-agent` - Semantic HTML structure and component patterns
+- `futuristic-effects-agent` - Advanced visual effects
+
+**Version**: 2.1.0 - Layout Patterns Catalog Added  
+**Last Updated**: 2026-01-29
