@@ -1,0 +1,116 @@
+/**
+ * COGNITIVE ENGINE - Information Intent & Typography
+ * --------------------------------------------------------------------------
+ * Defines the nature and frequency of the information being transmitted.
+ * 
+ * This is part of the Engine Layer where raw CSS properties are allowed.
+ * All values MUST use CSS custom properties defined in the design token system.
+ */
+
+// ============================================================================
+// COGNITIVE ENGINE - Information Intent & Typography
+// ============================================================================
+@mixin _theme-engine-cognition($intent) {
+  @if $intent == 'axiom' {
+    // Foundational thesis or headline - responsive scaling
+    font-size: var(--size-hero, clamp(2rem, 5vw, 3.5rem));
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--text-vibrant, oklch(0.98 0.01 90));
+    font-family: var(--font-consciousness, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+    
+    // Enhanced mobile readability
+    @media (max-width: 767px) {
+      font-size: 2rem; // 32px minimum on mobile
+      line-height: 1.25;
+    }
+    
+    @media (min-width: 768px) and (max-width: 1023px) {
+      font-size: 2.5rem; // 40px on tablet
+      line-height: 1.2;
+    }
+    
+    @media (min-width: 1024px) {
+      font-size: 3.5rem; // 56px on desktop
+      line-height: 1.15;
+    }
+  }
+  @else if $intent == 'discourse' {
+    // Standard information exchange (prose) - responsive scaling
+    font-size: var(--size-body, clamp(1rem, 1.5vw, 1.125rem));
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    font-family: var(--font-wisdom, Georgia, "Times New Roman", serif);
+    
+    // Ensure mobile readability (16px minimum to prevent iOS zoom)
+    @media (max-width: 767px) {
+      font-size: 1rem; // Never smaller than 16px
+      line-height: 1.65; // Slightly more leading for mobile
+    }
+  }
+  @else if $intent == 'protocol' {
+    // Technical/mathematical proof (code/logs)
+    font-family: var(--font-mono, "SF Mono", Monaco, "Cascadia Code", monospace);
+    font-size: var(--size-data, clamp(0.875rem, 1vw, 0.95rem));
+    line-height: 1.5;
+    background: var(--bg-code-shield, oklch(0.14 0.02 250 / 0.8));
+    color: var(--text-code, oklch(0.75 0.15 210));
+    padding: 0.2em 0.5em;
+    border-radius: 0.25em;
+    border: 1px solid var(--border-code, oklch(0.25 0.04 250));
+    
+    // Mobile: ensure readable code size
+    @media (max-width: 767px) {
+      font-size: 0.875rem; // 14px minimum for code
+      line-height: 1.6;
+    }
+  }
+  @else if $intent == 'gloss' {
+    // Minor annotations or citations - ensure minimum readability
+    font-size: var(--size-small, clamp(0.875rem, 1.2vw, 0.95rem));
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-secondary, oklch(0.70 0.02 220));
+    opacity: 0.85;
+    
+    // Mobile: minimum 14px for accessibility (improved from 12px)
+    @media (max-width: 767px) {
+      font-size: 0.875rem; // 14px minimum - WCAG recommendation
+      line-height: 1.55;
+      opacity: 0.9; // Slightly more visible on mobile
+    }
+  }
+  @else if $intent == 'motive' {
+    // Persuasive or instructional guidance
+    font-size: var(--size-body, clamp(1rem, 1.5vw, 1.125rem));
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--text-accent, oklch(0.85 0.16 85));
+    font-family: var(--font-sacred, Montserrat, sans-serif);
+    
+    // Mobile readability
+    @media (max-width: 767px) {
+      font-size: 1rem; // 16px minimum
+    }
+  }
+  @else if $intent == 'quantum' {
+    // Small, high-density fragments (tags/chips)
+    font-size: var(--size-tiny, clamp(0.75rem, 0.9vw, 0.8rem));
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-chip, oklch(0.88 0.18 95));
+    padding: 0.25em 0.75em;
+    background: var(--bg-chip, oklch(0.20 0.04 245 / 0.6));
+    border-radius: 999px;
+    display: inline-block;
+    
+    // Mobile: ensure tag readability
+    @media (max-width: 767px) {
+      font-size: 0.75rem; // 12px for tags (acceptable for non-primary content)
+      letter-spacing: 0.08em; // More spacing on mobile for clarity
+    }
+  }
+}

@@ -1,0 +1,857 @@
+/**
+ * INTERACTION ENGINE - Synapse Vectors
+ * --------------------------------------------------------------------------
+ * Defines how an observer navigates or modifies the system.
+ * 
+ * This is part of the Engine Layer where raw CSS properties are allowed.
+ * All values MUST use CSS custom properties defined in the design token system.
+ */
+
+// ============================================================================
+// INTERACTION ENGINE - Synapse Vectors
+// ============================================================================
+@mixin _theme-engine-synapse($vector) {
+  transition: all var(--motion-snap, 0.2s ease);
+  cursor: pointer;
+  
+  @if $vector == 'navigate' {
+    // Portal to different semantic coordinate
+    color: var(--text-link, oklch(0.75 0.15 210));
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    display: inline-block;
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.75rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      
+      // Expand tap zone without visual change for text-only links
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        inset: -6px;
+        z-index: -1;
+      }
+    }
+    
+    // Tablet: moderate sizing
+    @media (min-width: 768px) and (max-width: 1023px) {
+      min-height: 36px;
+      padding-block: 0.5rem;
+    }
+    
+    &:hover {
+      color: var(--accent-neon, oklch(0.88 0.18 95));
+      border-bottom-color: var(--accent-neon, oklch(0.88 0.18 95));
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+  @else if $vector == 'execute' {
+    // Local function or state modification
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
+    background: var(--accent-neon, oklch(0.88 0.18 95));
+    color: var(--text-inverse, oklch(0.15 0.03 250));
+    border: none;
+    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    font-weight: 600;
+    font-size: var(--size-button, clamp(0.95rem, 1.2vw, 1.05rem));
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.75rem 1.75rem;
+    }
+    
+    // Tablet: moderate sizing
+    @media (min-width: 768px) and (max-width: 1023px) {
+      min-height: 42px;
+      padding: 0.688rem 1.625rem;
+    }
+    
+    &:hover {
+      background: var(--accent-neon-hover, oklch(0.92 0.20 95));
+      box-shadow: 0 4px 12px var(--accent-neon, oklch(0.88 0.18 95 / 0.4));
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      transform: scale(0.98) translateY(0);
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'inquiry' {
+    // Request for more data (expand/search)
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: var(--padding-button-sm, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
+    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250));
+    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.75rem 1.5rem;
+    }
+    
+    @media (min-width: 768px) and (max-width: 1023px) {
+      min-height: 42px;
+    }
+    
+    &:hover {
+      background: var(--glass-hover, oklch(0.22 0.04 246));
+      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'destructive' {
+    // Permanent removal or system reset
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
+    background: var(--danger-bg, oklch(0.45 0.22 25));
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    border: 1px solid var(--danger-border, oklch(0.55 0.25 25));
+    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.75rem 1.75rem;
+    }
+    
+    @media (min-width: 768px) and (max-width: 1023px) {
+      min-height: 42px;
+    }
+    
+    &:hover {
+      background: var(--danger-hover, oklch(0.50 0.24 25));
+      box-shadow: 0 0 15px var(--danger-glow, oklch(0.45 0.22 25 / 0.5));
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--danger-border, oklch(0.55 0.25 25));
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'social' {
+    // Neural link to other observers
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding: var(--padding-button-sm, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
+    background: var(--social-bg, oklch(0.55 0.25 290 / 0.3));
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    border: 1px solid var(--social-border, oklch(0.55 0.25 290));
+    border-radius: 999px;
+    text-decoration: none;
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0.875rem 1rem;
+    }
+    
+    // Tablet: balanced sizing
+    @media (min-width: 768px) and (max-width: 1023px) {
+      min-width: 40px;
+      min-height: 40px;
+      padding: 0.75rem;
+    }
+    
+    // Desktop: can be more compact
+    @media (min-width: 1024px) {
+      min-width: 36px;
+      min-height: 36px;
+    }
+    
+    &:hover {
+      background: var(--social-hover, oklch(0.55 0.25 290 / 0.5));
+      box-shadow: 0 0 15px var(--social-glow, oklch(0.55 0.25 290 / 0.4));
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--social-border, oklch(0.55 0.25 290));
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'input-primary' {
+    // Primary form input with responsive touch optimization
+    display: block;
+    width: 100%;
+    font-size: 1rem; // 16px minimum prevents iOS zoom
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-input, clamp(0.375rem, 0.75vw, 0.5rem));
+    background: var(--input-bg, oklch(0.18 0.03 248 / 0.6));
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    border: 1px solid var(--border-input, oklch(0.30 0.04 250 / 0.5));
+    transition: all var(--motion-snap, 0.2s ease);
+    
+    // Mobile: larger touch target
+    @media (max-width: 767px) {
+      min-height: 44px;
+      padding: 0.875rem 1rem;
+      font-size: 1rem; // Ensure 16px to prevent zoom
+    }
+    
+    // Tablet: balanced sizing
+    @media (min-width: 768px) and (max-width: 1023px) {
+      min-height: 42px;
+      padding: 0.75rem 1rem;
+    }
+    
+    // Desktop: standard sizing
+    @media (min-width: 1024px) {
+      min-height: 40px;
+      padding: 0.625rem 1rem;
+    }
+    
+    &:hover {
+      background: var(--input-hover, oklch(0.22 0.04 246 / 0.7));
+      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.6));
+    }
+    
+    &:focus {
+      outline: none;
+      background: var(--input-focus, oklch(0.20 0.04 245 / 0.8));
+      border-color: var(--accent-neon, oklch(0.88 0.18 95));
+      box-shadow: 0 0 0 3px var(--accent-neon, oklch(0.88 0.18 95 / 0.2));
+    }
+    
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: var(--input-disabled, oklch(0.16 0.02 250 / 0.4));
+    }
+    
+    // Invalid state
+    &:invalid,
+    &.error {
+      border-color: var(--danger-border, oklch(0.55 0.25 25));
+      
+      &:focus {
+        box-shadow: 0 0 0 3px var(--danger-border, oklch(0.55 0.25 25 / 0.2));
+      }
+    }
+  }
+  @else if $vector == 'paginate' {
+    // Pagination navigation controls (numbered pages, prev/next)
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-pagination, clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1.5vw, 1rem));
+    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    text-decoration: none;
+    font-weight: 500;
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0.75rem;
+    }
+    
+    @media (min-width: 768px) and (max-width: 1023px) {
+      min-width: 40px;
+      min-height: 40px;
+    }
+    
+    @media (min-width: 1024px) {
+      min-width: 36px;
+      min-height: 36px;
+    }
+    
+    &:hover:not(.disabled) {
+      background: var(--glass-hover, oklch(0.22 0.04 246));
+      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+    }
+    
+    // Active/current page state
+    &.active,
+    &[aria-current="page"] {
+      background: var(--accent-neon, oklch(0.88 0.18 95));
+      color: var(--text-inverse, oklch(0.15 0.03 250));
+      border-color: var(--accent-neon, oklch(0.88 0.18 95));
+      font-weight: 700;
+    }
+    
+    // Disabled state
+    &.disabled,
+    &[aria-disabled="true"] {
+      opacity: 0.4;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'toggle' {
+    // Toggle/expand/collapse interaction (accordion, mobile menu)
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--padding-toggle, clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem));
+    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    text-align: left;
+    cursor: pointer;
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-height: 44px;
+      padding: 0.875rem 1rem;
+    }
+    
+    &:hover {
+      background: var(--glass-hover, oklch(0.22 0.04 246));
+      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+    }
+    
+    // Expanded state indicator
+    &[aria-expanded="true"] {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-color: transparent;
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+    
+    // Optional icon/chevron rotation
+    .toggle-icon {
+      transition: transform 0.2s ease;
+    }
+    
+    &[aria-expanded="true"] .toggle-icon {
+      transform: rotate(180deg);
+    }
+  }
+  @else if $vector == 'anchor' {
+    // In-page anchor navigation (TOC, skip links, back to top)
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: var(--padding-anchor, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
+    color: var(--text-link, oklch(0.75 0.15 210));
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: all var(--motion-snap, 0.2s ease);
+    
+    // Mobile: ensure adequate touch target
+    @media (max-width: 767px) {
+      min-height: 44px;
+      padding: 0.75rem 1rem;
+    }
+    
+    &:hover {
+      color: var(--accent-neon, oklch(0.88 0.18 95));
+      border-left-color: var(--accent-neon, oklch(0.88 0.18 95));
+      padding-left: calc(clamp(1rem, 2vw, 1.5rem) + 0.25rem);
+    }
+    
+    // Active anchor (current section in TOC)
+    &.active,
+    &[aria-current="location"] {
+      color: var(--accent-neon, oklch(0.88 0.18 95));
+      border-left-color: var(--accent-neon, oklch(0.88 0.18 95));
+      font-weight: 600;
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+    
+    // Skip link specific styling (screen reader and keyboard users)
+    &.skip-link {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      padding: 1rem 1.5rem;
+      background: var(--accent-neon, oklch(0.88 0.18 95));
+      color: var(--text-inverse, oklch(0.15 0.03 250));
+      font-weight: 600;
+      z-index: 9999;
+      
+      &:focus {
+        top: 0;
+      }
+    }
+  }
+  @else if $vector == 'tab' {
+    // Tab switching control for content panels
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-tab, clamp(0.75rem, 1.5vw, 1rem) clamp(1.25rem, 2.5vw, 1.75rem));
+    color: var(--text-secondary, oklch(0.70 0.02 220));
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all var(--motion-snap, 0.2s ease);
+    white-space: nowrap;
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-height: 44px;
+      padding: 0.875rem 1.25rem;
+    }
+    
+    &:hover:not([aria-selected="true"]) {
+      color: var(--text-primary, oklch(0.98 0.01 90));
+      border-bottom-color: var(--border-subtle, oklch(0.30 0.04 250 / 0.5));
+    }
+    
+    // Selected/active tab
+    &[aria-selected="true"] {
+      color: var(--accent-neon, oklch(0.88 0.18 95));
+      border-bottom-color: var(--accent-neon, oklch(0.88 0.18 95));
+      font-weight: 700;
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'step' {
+    // Multi-step process navigation (wizard, stepper)
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: var(--padding-step, clamp(0.75rem, 1.5vw, 1rem));
+    color: var(--text-secondary, oklch(0.70 0.02 220));
+    background: var(--glass-subtle, oklch(0.16 0.02 248 / 0.4));
+    border: 2px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    text-decoration: none;
+    font-weight: 500;
+    
+    // Mobile: compact layout
+    @media (max-width: 767px) {
+      min-height: 44px;
+      font-size: 0.875rem;
+    }
+    
+    // Step number/icon
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2em;
+      height: 2em;
+      border-radius: 50%;
+      background: var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+      font-weight: 700;
+      font-size: 0.875em;
+    }
+    
+    // Completed step
+    &.completed,
+    &[aria-current="step"][data-status="complete"] {
+      color: var(--text-primary, oklch(0.98 0.01 90));
+      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+      
+      .step-number {
+        background: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+      }
+    }
+    
+    // Current/active step
+    &.active,
+    &[aria-current="step"] {
+      color: var(--accent-neon, oklch(0.88 0.18 95));
+      border-color: var(--accent-neon, oklch(0.88 0.18 95));
+      background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
+      font-weight: 600;
+      
+      .step-number {
+        background: var(--accent-neon, oklch(0.88 0.18 95));
+        color: var(--text-inverse, oklch(0.15 0.03 250));
+      }
+    }
+    
+    // Future/incomplete step
+    &.disabled,
+    &[aria-disabled="true"] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    
+    &:hover {
+      background: var(--glass-hover, oklch(0.22 0.04 246));
+      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+    }
+    
+    &.active:hover,
+    &.disabled:hover {
+      background: var(--glass-subtle, oklch(0.16 0.02 248 / 0.4));
+      border-color: var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'react' {
+    // Emoji reactions and quick responses (like, heart, emoji picker)
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5em;
+    padding: var(--padding-react, clamp(0.375rem, 0.75vw, 0.5rem) clamp(0.625rem, 1.25vw, 0.875rem));
+    background: var(--glass-subtle, oklch(0.16 0.02 248 / 0.4));
+    color: var(--text-secondary, oklch(0.70 0.02 220));
+    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    border-radius: 999px; // Pill shape for reactions
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all var(--motion-snap, 0.2s ease);
+    gap: 0.375em;
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.5rem 0.875rem;
+    }
+    
+    &:hover {
+      background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
+      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+      transform: scale(1.05);
+    }
+    
+    // Reacted state (user has reacted)
+    &.reacted,
+    &[aria-pressed="true"] {
+      background: var(--accent-subtle, oklch(0.88 0.18 95 / 0.15));
+      border-color: var(--accent-neon, oklch(0.88 0.18 95));
+      color: var(--accent-neon, oklch(0.88 0.18 95));
+      font-weight: 600;
+    }
+    
+    // Reaction count
+    .reaction-count {
+      font-weight: 600;
+      font-size: 0.75em;
+    }
+    
+    // Emoji
+    .reaction-emoji {
+      font-size: 1.125em;
+      line-height: 1;
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'vote' {
+    // Voting and rating interactions (upvote, downvote, star rating)
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-vote, clamp(0.5rem, 1vw, 0.625rem));
+    background: transparent;
+    color: var(--text-secondary, oklch(0.70 0.02 220));
+    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    border-radius: var(--radius-button, clamp(0.375rem, 0.75vw, 0.5rem));
+    cursor: pointer;
+    transition: all var(--motion-snap, 0.2s ease);
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-width: 44px;
+      min-height: 44px;
+    }
+    
+    @media (min-width: 768px) {
+      min-width: 36px;
+      min-height: 36px;
+    }
+    
+    &:hover {
+      background: var(--glass-subtle, oklch(0.16 0.02 248 / 0.4));
+      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+    }
+    
+    // Upvoted state
+    &.upvoted,
+    &[data-vote="up"] {
+      background: var(--vote-up-bg, oklch(0.85 0.16 85 / 0.15));
+      border-color: var(--vote-up, oklch(0.88 0.18 95));
+      color: var(--vote-up, oklch(0.88 0.18 95));
+    }
+    
+    // Downvoted state
+    &.downvoted,
+    &[data-vote="down"] {
+      background: var(--vote-down-bg, oklch(0.45 0.22 25 / 0.15));
+      border-color: var(--vote-down, oklch(0.55 0.25 25));
+      color: var(--vote-down, oklch(0.55 0.25 25));
+    }
+    
+    // Star rating variant
+    &.star-rating {
+      border: none;
+      padding: 0.25rem;
+      color: var(--star-inactive, oklch(0.50 0.02 220));
+      
+      &.rated,
+      &[aria-checked="true"] {
+        color: var(--star-active, oklch(0.88 0.18 50)); // Gold/yellow
+      }
+      
+      &:hover {
+        background: transparent;
+        color: var(--star-hover, oklch(0.85 0.16 50));
+      }
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'comment' {
+    // Comment and reply interactions
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: var(--padding-comment, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.25rem));
+    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--motion-snap, 0.2s ease);
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-height: 44px;
+      padding: 0.75rem 1rem;
+    }
+    
+    &:hover {
+      background: var(--glass-hover, oklch(0.22 0.04 246));
+      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+    }
+    
+    // Comment count badge
+    .comment-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.5em;
+      padding: 0.125em 0.5em;
+      background: var(--accent-subtle, oklch(0.88 0.18 95 / 0.15));
+      color: var(--accent-neon, oklch(0.88 0.18 95));
+      border-radius: 999px;
+      font-size: 0.75em;
+      font-weight: 700;
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'share' {
+    // Enhanced sharing with multiple platforms
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding: var(--padding-share, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.25rem));
+    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    cursor: pointer;
+    transition: all var(--motion-snap, 0.2s ease);
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.75rem 1rem;
+    }
+    
+    &:hover {
+      background: var(--glass-hover, oklch(0.22 0.04 246));
+      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+      box-shadow: 0 4px 12px oklch(0.10 0.03 250 / 0.2);
+    }
+    
+    // Platform-specific variants
+    &.share-twitter {
+      &:hover {
+        border-color: oklch(0.65 0.20 220);
+        color: oklch(0.75 0.20 220);
+      }
+    }
+    
+    &.share-facebook {
+      &:hover {
+        border-color: oklch(0.55 0.25 240);
+        color: oklch(0.65 0.25 240);
+      }
+    }
+    
+    &.share-linkedin {
+      &:hover {
+        border-color: oklch(0.55 0.25 220);
+        color: oklch(0.65 0.25 220);
+      }
+    }
+    
+    &.share-copy {
+      &.copied {
+        background: var(--accent-subtle, oklch(0.88 0.18 95 / 0.15));
+        border-color: var(--accent-neon, oklch(0.88 0.18 95));
+        color: var(--accent-neon, oklch(0.88 0.18 95));
+      }
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'notify' {
+    // Notification and alert interactions
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: var(--padding-notify, clamp(0.5rem, 1vw, 0.75rem));
+    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
+    color: var(--text-primary, oklch(0.98 0.01 90));
+    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    cursor: pointer;
+    transition: all var(--motion-snap, 0.2s ease);
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-width: 44px;
+      min-height: 44px;
+    }
+    
+    &:hover {
+      background: var(--glass-hover, oklch(0.22 0.04 246));
+      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+    }
+    
+    // Notification badge (unread count)
+    .notify-badge {
+      position: absolute;
+      top: -0.375rem;
+      right: -0.375rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.25rem;
+      height: 1.25rem;
+      padding: 0 0.375rem;
+      background: var(--badge-urgent, oklch(0.55 0.25 25));
+      color: var(--text-inverse, oklch(0.98 0.01 90));
+      border-radius: 999px;
+      font-size: 0.625rem;
+      font-weight: 700;
+      border: 2px solid var(--bg-primary, oklch(0.15 0.03 250));
+    }
+    
+    // Active/open state
+    &[aria-expanded="true"] {
+      background: var(--glass-hover, oklch(0.22 0.04 246));
+      border-color: var(--accent-neon, oklch(0.88 0.18 95));
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'mention' {
+    // @mention and tagging interactions
+    display: inline;
+    padding: 0.125em 0.375em;
+    background: var(--mention-bg, oklch(0.88 0.18 95 / 0.15));
+    color: var(--mention-text, oklch(0.88 0.18 95));
+    border-radius: 0.25em;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--motion-snap, 0.2s ease);
+    
+    &:hover {
+      background: var(--mention-hover, oklch(0.88 0.18 95 / 0.25));
+      color: var(--accent-neon, oklch(0.88 0.18 95));
+    }
+    
+    // Current user mention (highlight)
+    &.mention-self,
+    &[data-mention-self="true"] {
+      background: var(--mention-self-bg, oklch(0.85 0.16 85 / 0.3));
+      color: var(--mention-self-text, oklch(0.98 0.01 90));
+      font-weight: 700;
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline-offset: 2px;
+      border-radius: 0.25em;
+    }
+  }
+}
+

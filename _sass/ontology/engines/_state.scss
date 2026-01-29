@@ -1,0 +1,269 @@
+/**
+ * SYSTEM TEMPORALITY - State Conditions
+ * --------------------------------------------------------------------------
+ * Defines the "Time-Sense" of the content.
+ * 
+ * This is part of the Engine Layer where raw CSS properties are allowed.
+ * All values MUST use CSS custom properties defined in the design token system.
+ */
+
+// ============================================================================
+// STATE ENGINE - System Temporality
+// ============================================================================
+@mixin _theme-engine-state($condition) {
+  @if $condition == 'stable' {
+    // System is in equilibrium
+    opacity: 1;
+    filter: none;
+  }
+  @else if $condition == 'evolving' {
+    // Content is currently being updated/streamed
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--accent-neon, oklch(0.88 0.18 95)),
+        transparent
+      );
+      animation: evolving-sweep 2s infinite;
+    }
+  }
+  @else if $condition == 'deprecated' {
+    // Information is no longer verified
+    opacity: 0.5;
+    filter: grayscale(0.7);
+    text-decoration: line-through;
+    position: relative;
+    
+    &::before {
+      content: '⚠';
+      position: absolute;
+      top: -0.5em;
+      right: -0.5em;
+      font-size: 0.75em;
+      color: var(--warning-color, oklch(0.75 0.18 65));
+    }
+  }
+  @else if $condition == 'locked' {
+    // Data is immutable and requires clearance
+    position: relative;
+    pointer-events: none;
+    user-select: none;
+    
+    &::before {
+      content: '🔒';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2em;
+      opacity: 0.3;
+    }
+    
+    filter: blur(2px);
+  }
+  @else if $condition == 'simulated' {
+    // Data is a projection, not a live log
+    border: 2px dashed var(--border-simulation, oklch(0.75 0.15 210 / 0.5));
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      oklch(0.75 0.15 210 / 0.05) 10px,
+      oklch(0.75 0.15 210 / 0.05) 20px
+    );
+  }
+  @else if $condition == 'scroll-triggered' {
+    // Content with scroll-based animations
+    // Initial state (before scroll trigger)
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+    
+    // Triggered state (added by JavaScript)
+    &.aos-animate,
+    &.scroll-triggered,
+    &.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    // Respect reduced motion preference (accessibility)
+    @media (prefers-reduced-motion: reduce) {
+      opacity: 1;
+      transform: none;
+      transition: none;
+      will-change: auto;
+    }
+    
+    // Mobile: simpler, faster animations for performance
+    @media (max-width: 767px) {
+      transition-duration: 0.4s;
+      transform: translateY(20px); // Shorter distance
+    }
+    
+    // Desktop: allow richer animations
+    @media (min-width: 1024px) {
+      transition-duration: 0.7s;
+    }
+  }
+  @else if $condition == 'active' {
+    // Current/active navigation item state
+    color: var(--accent-neon, oklch(0.88 0.18 95));
+    font-weight: 700;
+    position: relative;
+    
+    // Visual indicator (underline, border, or highlight)
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--accent-neon, oklch(0.88 0.18 95));
+      border-radius: 2px 2px 0 0;
+    }
+    
+    // Alternative: left border for vertical navigation
+    &.vertical-nav {
+      border-left: 3px solid var(--accent-neon, oklch(0.88 0.18 95));
+      padding-left: calc(1rem - 3px);
+      
+      &::after {
+        display: none;
+      }
+    }
+    
+    // Accessibility: ensure contrast
+    @media (prefers-contrast: high) {
+      &::after {
+        height: 4px;
+      }
+    }
+  }
+  @else if $condition == 'expanded' {
+    // Expanded state for toggleable navigation
+    max-height: 2000px; // Large enough for most content
+    opacity: 1;
+    visibility: visible;
+    overflow: visible;
+    transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out;
+    
+    // Mobile: faster animations for better performance
+    @media (max-width: 767px) {
+      transition-duration: 0.25s;
+    }
+    
+    // Respect reduced motion preference
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+  @else if $condition == 'collapsed' {
+    // Collapsed state for toggleable navigation
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out, visibility 0s 0.3s;
+    
+    // Mobile: faster animations for better performance
+    @media (max-width: 767px) {
+      transition-duration: 0.25s;
+    }
+    
+    // Respect reduced motion preference
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      display: none; // Hard hide when motion disabled
+    }
+  }
+  @else if $condition == 'mentioned' {
+    // Content where user is mentioned/tagged
+    background: var(--mention-highlight, oklch(0.88 0.18 95 / 0.1));
+    border-left: 3px solid var(--mention-accent, oklch(0.88 0.18 95));
+    padding-left: calc(var(--padding-inline, 1rem) - 3px); // Adjust for border
+    
+    // Subtle animation on load
+    animation: mention-pulse 0.6s ease-out;
+    
+    @keyframes mention-pulse {
+      0% {
+        background: var(--mention-highlight, oklch(0.88 0.18 95 / 0.2));
+      }
+      100% {
+        background: var(--mention-highlight, oklch(0.88 0.18 95 / 0.1));
+      }
+    }
+    
+    // Respect reduced motion
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+  @else if $condition == 'unread' {
+    // Unread notifications/messages/content
+    position: relative;
+    background: var(--unread-bg, oklch(0.88 0.18 95 / 0.08));
+    
+    // Unread indicator dot
+    &::before {
+      content: '';
+      position: absolute;
+      left: -0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: var(--unread-indicator, oklch(0.65 0.25 230));
+      box-shadow: 0 0 8px var(--unread-indicator, oklch(0.65 0.25 230 / 0.6));
+    }
+    
+    // Alternative: subtle glow effect
+    &.unread-glow {
+      box-shadow: inset 0 0 0 1px var(--unread-indicator, oklch(0.65 0.25 230 / 0.3));
+    }
+    
+    // Font weight for emphasis
+    font-weight: 600;
+  }
+  @else if $condition == 'reacted' {
+    // Content user has reacted to or engaged with
+    position: relative;
+    
+    // Subtle indicator
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: var(--reacted-indicator, oklch(0.75 0.25 150 / 0.2));
+      border-radius: 50%;
+      border: 2px solid var(--reacted-border, oklch(0.75 0.25 150));
+      opacity: 0.8;
+    }
+    
+    // Alternative: subtle background tint
+    &.reacted-subtle {
+      background: linear-gradient(
+        135deg,
+        transparent 0%,
+        var(--reacted-tint, oklch(0.75 0.25 150 / 0.05)) 100%
+      );
+    }
+  }
+}
+
