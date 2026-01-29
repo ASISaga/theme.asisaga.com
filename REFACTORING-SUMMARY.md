@@ -6,7 +6,7 @@
 
 ## Overview
 
-Successfully refactored the `/_sass` directory by removing 393 lines of outdated TODO comments and commented-out `@extend` directives that were left as documentation after previous refactoring work.
+Successfully refactored the `/_sass` directory by removing 401 lines of outdated TODO comments, commented-out `@extend` directives, and duplicate mixin calls from 15 component files.
 
 ## Changes Made
 
@@ -35,13 +35,14 @@ All changes were in `_sass/components/`:
 **Before refactoring:**
 - 195 TODO comments about @extend removal
 - 198 commented-out `@extend` directives
-- Several files had duplicate `@include make-container()` calls
-- Total: 393 lines of documentation debt
+- 6 duplicate `@include make-container()` calls
+- 2 duplicate `@include make-container()` calls with inline comments
+- Total: 401 lines of code cleaned up
 
 **After refactoring:**
 - ✅ 0 TODO comments about @extend
 - ✅ 0 active @extend directives  
-- ✅ No duplicate import calls
+- ✅ 0 duplicate import calls
 - ✅ Clean, readable code
 
 ### What Was NOT Changed
@@ -95,11 +96,11 @@ Used `scss-refactor-agent` skill guidance:
 
 ## Benefits
 
-1. **Code Quality**: Removed 393 lines of technical debt
+1. **Code Quality**: Removed 401 lines of technical debt
 2. **Readability**: Cleaner codebase without clutter
 3. **Maintainability**: Easier to understand actual implementation
 4. **No Breaking Changes**: All functional code preserved
-5. **Build Performance**: Slightly faster compilation without commented code
+5. **Build Performance**: Slightly faster compilation without redundant code
 
 ## Historical Context
 
@@ -125,7 +126,9 @@ This refactoring completes the cleanup by removing those documentation comments 
 ---
 
 **Status**: ✅ COMPLETE  
-**Lines Removed**: 393  
-**Files Changed**: 15  
+**Lines Removed**: 401  
+**Lines Added**: 137 (documentation)
+**Net Change**: -264 lines
+**Files Changed**: 16 (15 SCSS + 1 doc)
 **Breaking Changes**: None  
 **Tests Passing**: All ✅
