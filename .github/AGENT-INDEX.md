@@ -1,8 +1,8 @@
-# 🚀 Agent Ecosystem - Supercharged v2.1
+# 🚀 Agent Ecosystem - Supercharged v2.1.1
 
-**Version**: 2.1.0 - Integrated Validation & Automation  
-**Last Updated**: 2026-01-19  
-**Status**: Production Ready with Automated Validation
+**Version**: 2.1.1 - Enhanced Pattern Catalogs  
+**Last Updated**: 2026-01-29  
+**Status**: Production Ready with Comprehensive Pattern Libraries
 
 ---
 
@@ -15,6 +15,7 @@
 | **Instructions** | Coding standards & guidelines | `.github/instructions/` |
 | **Validation** | Automated testing scripts | `.github/skills/*/scripts/` |
 | **References** | Detailed specifications | `.github/skills/*/references/` |
+| **Patterns** | **NEW** Ready-to-use component & layout patterns | `.github/skills/*/references/` |
 
 ---
 
@@ -85,11 +86,21 @@ npm run lint:scss
 - ✅ Checks WCAG accessibility
 - ✅ Verifies landmark elements
 - ✅ Ensures BEM naming
+- ✅ **NEW** 850+ lines of ready-to-use component patterns
+
+**Pattern Catalog** (v2.1.1):
+- Navigation (primary nav, breadcrumbs, tabs)
+- Hero sections, cards, forms, modals
+- Data display, interactive elements
+- Complete HTML + ontological SCSS examples
 
 **Quick Start**:
 ```bash
 # Validate HTML template
 ./.github/skills/html-template-agent/scripts/validate-html.sh path/to/template.html
+
+# Browse patterns
+cat ./.github/skills/html-template-agent/references/COMPONENT-PATTERNS.md
 ```
 
 #### Responsive Design Agent
@@ -101,6 +112,20 @@ npm run lint:scss
 - ✅ Validates touch targets (44px)
 - ✅ Ensures fluid typography
 - ✅ Tests responsive breakpoints
+- ✅ **NEW** 750+ lines of production-ready layout patterns
+
+**Layout Catalog** (v2.1.0):
+- Grid layouts (auto-responsive, masonry, hybrid)
+- Content layouts (article, split, sidebar)
+- Navigation layouts (responsive, sticky)
+- Dashboard, media, and form layouts
+- Performance optimization patterns
+
+**Quick Start**:
+```bash
+# Browse layout patterns
+cat ./.github/skills/responsive-design-agent/references/LAYOUT-PATTERNS.md
+```
 
 #### Futuristic Effects Agent
 **Skill**: `.github/skills/futuristic-effects-agent/`  
@@ -247,7 +272,39 @@ npm run lint:scss:fix
 
 ---
 
-## 🚀 What's New in v2.1
+## 🚀 What's New in v2.1.1
+
+### Enhanced Pattern Catalogs
+
+- ✅ **Component Patterns Catalog** (850+ lines) - html-template-agent
+  - 8 comprehensive categories with ready-to-use semantic HTML
+  - Navigation, hero sections, cards, forms, modals, data display
+  - Each pattern includes HTML structure + ontological SCSS
+  - ARIA attributes and accessibility built-in
+
+- ✅ **Layout Patterns Catalog** (750+ lines) - responsive-design-agent
+  - 7 layout categories for production-ready responsive designs
+  - Grids, content layouts, navigation, dashboards, media, forms
+  - Mobile-first patterns with container queries
+  - Performance optimization techniques included
+
+- ✅ **Enhanced Skill Descriptions**
+  - Pattern-specific keywords for better agent discovery
+  - More detailed use cases and examples
+  - Cross-references between related patterns
+
+### Quick Access
+```bash
+# Component patterns (HTML)
+cat ./.github/skills/html-template-agent/references/COMPONENT-PATTERNS.md
+
+# Layout patterns (Responsive)
+cat ./.github/skills/responsive-design-agent/references/LAYOUT-PATTERNS.md
+```
+
+---
+
+## What's New in v2.1.0
 
 ### Integrated Validation System
 
@@ -350,8 +407,10 @@ npm run test:scss && npm run lint:scss
 
 ---
 
-**Version**: 2.1.0  
+**Version**: 2.1.1 - Enhanced Pattern Catalogs  
 **Maintained by**: Theme Genome Agent + Human Developers  
-**Last Review**: 2026-01-19
+**Last Review**: 2026-01-29
 
-**Status**: 🟢 Production Ready with Integrated Validation
+**Status**: 🟢 Production Ready with Comprehensive Pattern Libraries
+
+**New in v2.1.1**: 1,600+ lines of production-ready component and layout patterns
