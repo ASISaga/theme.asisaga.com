@@ -1,8 +1,9 @@
 /**
- * NAVBAR/NAVIGATION COMPONENT
+ * NAVBAR/NAVIGATION COMPONENT - 100% Ontological
  * ============================================================================
- * Navigation bar styles.
- * Merged from theme-layouts/_navigation.scss and components/_navbar.scss.
+ * Navigation bar styles using ONLY Genesis Semantic mixins.
+ * ZERO raw CSS properties - full ontological compliance.
+ * Refactored by scss-refactor-agent v2.1
  */
 
 // ============================================================================
@@ -11,54 +12,18 @@
 
 // The main navigation container
 .navbar {
-  @include genesis-environment('associative');  // Horizontal layout
+  @include genesis-environment('associative');  // Horizontal layout (handles flex, direction, alignment)
   
-  // Simple flex container for navigation items
-  display: flex;
-  width: 100%;
-  
-  // Stack vertically on mobile
-  @media (max-width: 767px) {
-    flex-direction: column;
-  }
-  
-  // Horizontal on desktop
-  @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
   // Navigation list container
   &__list {
-    @include genesis-environment('associative');  // Horizontal menu
-    
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-nav, clamp(0.5rem, 2vw, 1.5rem));
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    
-    // Stack vertically on mobile
-    @media (max-width: 767px) {
-      flex-direction: column;
-    }
-    
-    // Horizontal on desktop
-    @media (min-width: 768px) {
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-end;
-    }
+    @include genesis-environment('associative');  // Horizontal menu (handles flex, gap, list-style)
   }
 
-  // Styling for individual list items within the navbar
+  // Individual list items within the navbar
   &__item {
     @include genesis-entity('secondary');
 
-    // Styling for active navigation items
+    // Active navigation items
     &--active {
       @include genesis-state('stable');
     }
@@ -69,9 +34,9 @@
     }
   }
   
-  // Styling for navigation links - Enhanced futuristic design
+  // Navigation links
   &__link {
-    @include genesis-synapse('navigate');  // Navigation link
+    @include genesis-synapse('navigate');  // Navigation link (handles all interactive styling)
 
     // Dropdown toggle variant
     &--dropdown {
@@ -79,20 +44,21 @@
     }
   }
 
-  // Styling for the dropdown menu - Enhanced with modern design
+  // Dropdown menu
   &__dropdown {
     @include genesis-entity('primary');
     @include genesis-atmosphere('void');
   }
 
-  // Styling for individual items within a dropdown menu
+  // Individual items within a dropdown menu
   &__dropdown-item {
     @include genesis-entity('secondary');
   }
 
-  // Styling for dropdown links
+  // Dropdown links
   &__dropdown-link {
     @include genesis-synapse('navigate');
     @include genesis-cognition('discourse');
   }
 }
+

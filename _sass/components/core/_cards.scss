@@ -1,8 +1,9 @@
 /**
- * CARD COMPONENTS
+ * CARD COMPONENTS - 100% Ontological
  * ============================================================================
- * Card and product card styles.
- * Moved from ontology/theme-layouts to components.
+ * Card and product card styles using ONLY Genesis Semantic mixins.
+ * ZERO raw CSS properties - full ontological compliance.
+ * Refactored by scss-refactor-agent v2.1
  */
 
 // ============================================================================
@@ -10,14 +11,14 @@
 // ============================================================================
 
 .card {
-  @include genesis-entity('primary');  // Standard card
+  @include genesis-entity('primary');  // Standard glassmorphism card (handles all visual styling)
   
   &--elevated {
-    @include genesis-atmosphere('ethereal');  // Enhanced elevation only
+    @include genesis-atmosphere('ethereal');  // Enhanced elevation with lighter aesthetic
   }
   
   &--accent {
-    @include genesis-atmosphere('vibrant');  // Accent styling only
+    @include genesis-atmosphere('vibrant');  // Accent styling with vibrant aesthetic
   }
   
   &__header {
@@ -25,11 +26,11 @@
   }
   
   &__title {
-    @include genesis-cognition('motive');  // Card heading
+    @include genesis-cognition('motive');  // Card heading (medium weight, accent color)
   }
   
   &__body {
-    @include genesis-cognition('discourse');  // Card content
+    @include genesis-cognition('discourse');  // Card content (body text)
   }
   
   &__footer {
@@ -39,25 +40,26 @@
 
 // Product card
 .product-card {
-  @include genesis-entity('primary');
+  @include genesis-entity('primary');  // Primary glassmorphism card
   
   &__image {
-    @include genesis-entity('secondary');
+    @include genesis-entity('image-adaptive');  // Responsive image with aspect ratio
   }
   
   &__title {
-    @include genesis-cognition('motive');
+    @include genesis-cognition('motive');  // Product name
   }
   
   &__description {
-    @include genesis-cognition('discourse');
+    @include genesis-cognition('discourse');  // Product description
   }
   
   &__price {
-    @include genesis-cognition('axiom');  // Prominent price
+    @include genesis-cognition('axiom');  // Prominent price (large, bold)
   }
   
   &__button {
-    @include genesis-synapse('execute');
+    @include genesis-synapse('execute');  // Action button
   }
 }
+
