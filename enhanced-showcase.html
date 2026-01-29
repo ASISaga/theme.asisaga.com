@@ -1,0 +1,518 @@
+---
+layout: default
+title: Enhanced Component Showcase - Genesis Design System
+description: Comprehensive showcase of semantic HTML patterns with accessibility-first design
+permalink: /enhanced-showcase/
+---
+
+<!-- Skip link (REQUIRED first element) -->
+<a href="#skip-target" class="sr-only focus-visible">Skip to main content</a>
+
+<!-- Main landmark (REQUIRED, exactly one per page) -->
+<main id="skip-target" tabindex="-1" class="enhanced-showcase">
+  
+  <!-- Hero Section - Full-Width with Accessibility -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__content">
+      <h1 id="hero-title" class="hero__title">
+        Genesis Design System
+      </h1>
+      <p class="hero__subtitle">
+        Semantic HTML5 Components with Accessibility-First Design and Ontological SCSS
+      </p>
+      <div class="hero__actions">
+        <a href="#components" class="hero__cta-primary">
+          Explore Components
+        </a>
+        <a href="#accessibility" class="hero__cta-secondary">
+          Accessibility Guide
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation Showcase -->
+  <section id="navigation" class="showcase-section" aria-labelledby="nav-heading">
+    <div class="showcase-section__container">
+      <header class="showcase-section__header">
+        <h2 id="nav-heading" class="showcase-section__title">Navigation Patterns</h2>
+        <p class="showcase-section__description">
+          Accessible navigation with proper ARIA labels and semantic structure
+        </p>
+      </header>
+
+      <!-- Breadcrumb Example -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb__list">
+          <li class="breadcrumb__item">
+            <a href="/" class="breadcrumb__link">Home</a>
+          </li>
+          <li class="breadcrumb__item">
+            <a href="/showcase" class="breadcrumb__link">Showcase</a>
+          </li>
+          <li class="breadcrumb__item" aria-current="page">
+            <span class="breadcrumb__current">Enhanced Components</span>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Tab Navigation Example -->
+      <div class="tabs" role="tablist" aria-label="Component examples">
+        <button 
+          class="tabs__tab" 
+          role="tab" 
+          aria-selected="true" 
+          aria-controls="panel-cards"
+          id="tab-cards"
+        >
+          Cards
+        </button>
+        <button 
+          class="tabs__tab" 
+          role="tab" 
+          aria-selected="false" 
+          aria-controls="panel-forms"
+          id="tab-forms"
+        >
+          Forms
+        </button>
+        <button 
+          class="tabs__tab" 
+          role="tab" 
+          aria-selected="false" 
+          aria-controls="panel-modals"
+          id="tab-modals"
+        >
+          Modals
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Card Components Showcase -->
+  <section id="components" class="showcase-section showcase-section--cards" aria-labelledby="cards-heading">
+    <div class="showcase-section__container">
+      <header class="showcase-section__header">
+        <h2 id="cards-heading" class="showcase-section__title">Card Components</h2>
+        <p class="showcase-section__description">
+          Responsive card layouts with semantic HTML and ontological styling
+        </p>
+      </header>
+
+      <div class="card-grid">
+        <!-- Blog Post Card -->
+        <article class="blog-card">
+          <a href="/blog/semantic-html" class="blog-card__link">
+            <img 
+              src="/assets/images/blog-thumb.jpg" 
+              alt="Semantic HTML Best Practices" 
+              class="blog-card__image"
+            >
+            <div class="blog-card__content">
+              <h3 class="blog-card__title">Semantic HTML Best Practices</h3>
+              <p class="blog-card__excerpt">
+                Learn how to write meaningful, accessible HTML that follows web standards
+              </p>
+              <time class="blog-card__date" datetime="2026-01-29">
+                January 29, 2026
+              </time>
+            </div>
+          </a>
+        </article>
+
+        <!-- Feature Card -->
+        <article class="feature-card">
+          <div class="feature-card__icon" aria-hidden="true">
+            <svg class="feature-card__icon-svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+            </svg>
+          </div>
+          <h3 class="feature-card__title">Accessibility First</h3>
+          <p class="feature-card__description">
+            WCAG AA compliant with proper landmarks, skip links, and screen reader support
+          </p>
+          <a href="/features/accessibility" class="feature-card__link">
+            Learn more <span aria-hidden="true">→</span>
+          </a>
+        </article>
+
+        <!-- Product Card -->
+        <article class="product-card">
+          <img 
+            src="/assets/images/product.jpg" 
+            alt="Genesis Theme Package" 
+            class="product-card__image"
+          >
+          <div class="product-card__content">
+            <h3 class="product-card__title">Genesis Theme</h3>
+            <p class="product-card__price">
+              <span class="product-card__price-label">Starting at</span>
+              <span class="product-card__price-value">$99</span>
+            </p>
+            <p class="product-card__description">
+              Complete design system with ontological SCSS engine
+            </p>
+            <button class="product-card__cta">
+              Add to Cart
+            </button>
+          </div>
+        </article>
+
+        <!-- Stat Card -->
+        <article class="stat-card">
+          <div class="stat-card__content">
+            <span class="stat-card__value">150+</span>
+            <span class="stat-card__label">CSS Custom Properties</span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-card__content">
+            <span class="stat-card__value">31</span>
+            <span class="stat-card__label">Ontological Variants</span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-card__content">
+            <span class="stat-card__value">100%</span>
+            <span class="stat-card__label">WCAG AA Compliant</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form Components Showcase -->
+  <section id="forms" class="showcase-section" aria-labelledby="forms-heading">
+    <div class="showcase-section__container">
+      <header class="showcase-section__header">
+        <h2 id="forms-heading" class="showcase-section__title">Form Components</h2>
+        <p class="showcase-section__description">
+          Accessible forms with proper labels, ARIA attributes, and validation
+        </p>
+      </header>
+
+      <!-- Contact Form -->
+      <form class="contact-form" method="post" action="/contact">
+        <div class="form-field">
+          <label for="contact-name" class="form-label">
+            Name <span class="form-required" aria-label="required">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="contact-name" 
+            name="name"
+            class="form-input" 
+            required
+            aria-required="true"
+          >
+        </div>
+
+        <div class="form-field">
+          <label for="contact-email" class="form-label">
+            Email <span class="form-required" aria-label="required">*</span>
+          </label>
+          <input 
+            type="email" 
+            id="contact-email" 
+            name="email"
+            class="form-input" 
+            required
+            aria-required="true"
+          >
+        </div>
+
+        <div class="form-field">
+          <label for="contact-subject" class="form-label">
+            Subject
+          </label>
+          <select id="contact-subject" name="subject" class="form-select">
+            <option value="">Choose a topic...</option>
+            <option value="general">General Inquiry</option>
+            <option value="support">Technical Support</option>
+            <option value="sales">Sales Question</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="contact-message" class="form-label">
+            Message <span class="form-required" aria-label="required">*</span>
+          </label>
+          <textarea 
+            id="contact-message" 
+            name="message"
+            class="form-textarea" 
+            rows="5"
+            required
+            aria-required="true"
+          ></textarea>
+        </div>
+
+        <div class="form-field">
+          <label class="form-checkbox">
+            <input type="checkbox" name="newsletter" value="yes">
+            <span class="form-checkbox__label">Subscribe to newsletter</span>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="form-submit">
+            Send Message
+          </button>
+          <button type="reset" class="form-reset">
+            Clear Form
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Interactive Elements Showcase -->
+  <section id="interactive" class="showcase-section" aria-labelledby="interactive-heading">
+    <div class="showcase-section__container">
+      <header class="showcase-section__header">
+        <h2 id="interactive-heading" class="showcase-section__title">Interactive Elements</h2>
+        <p class="showcase-section__description">
+          Accordion, alerts, and other interactive components
+        </p>
+      </header>
+
+      <!-- Accordion -->
+      <div class="accordion">
+        <div class="accordion__item">
+          <h3 class="accordion__header">
+            <button 
+              class="accordion__trigger" 
+              aria-expanded="false" 
+              aria-controls="accordion-panel-1"
+              id="accordion-button-1"
+            >
+              <span class="accordion__title">What is the Genesis Design System?</span>
+              <span class="accordion__icon" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div 
+            class="accordion__panel" 
+            id="accordion-panel-1"
+            aria-labelledby="accordion-button-1"
+            hidden
+          >
+            <div class="accordion__content">
+              <p>
+                Genesis is a semantic design system built on a three-tier ontological architecture 
+                that separates content semantics from visual presentation.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <h3 class="accordion__header">
+            <button 
+              class="accordion__trigger" 
+              aria-expanded="false" 
+              aria-controls="accordion-panel-2"
+              id="accordion-button-2"
+            >
+              <span class="accordion__title">How do I use the ontological mixins?</span>
+              <span class="accordion__icon" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div 
+            class="accordion__panel" 
+            id="accordion-panel-2"
+            aria-labelledby="accordion-button-2"
+            hidden
+          >
+            <div class="accordion__content">
+              <p>
+                Import the ontology system and use semantic mixins like 
+                <code>@include genesis-entity('primary')</code> in your SCSS files.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alerts -->
+      <div class="alerts-showcase">
+        <div class="alert alert--success" role="alert">
+          <h4 class="alert__title">Success!</h4>
+          <p class="alert__message">Your changes have been saved successfully.</p>
+          <button class="alert__dismiss" aria-label="Dismiss success message">×</button>
+        </div>
+
+        <div class="alert alert--info" role="alert">
+          <h4 class="alert__title">Information</h4>
+          <p class="alert__message">This page demonstrates semantic HTML patterns.</p>
+        </div>
+
+        <div class="alert alert--warning" role="alert">
+          <h4 class="alert__title">Warning</h4>
+          <p class="alert__message">Please ensure all required fields are filled.</p>
+        </div>
+
+        <div class="alert alert--error" role="alert">
+          <h4 class="alert__title">Error</h4>
+          <p class="alert__message">An error occurred while processing your request.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accessibility Features -->
+  <section id="accessibility" class="showcase-section" aria-labelledby="accessibility-heading">
+    <div class="showcase-section__container">
+      <header class="showcase-section__header">
+        <h2 id="accessibility-heading" class="showcase-section__title">Accessibility Features</h2>
+        <p class="showcase-section__description">
+          This page demonstrates WCAG AA compliance and best practices
+        </p>
+      </header>
+
+      <div class="accessibility-features">
+        <article class="feature-item">
+          <h3 class="feature-item__title">Skip Navigation</h3>
+          <p class="feature-item__description">
+            Skip link at the top allows keyboard users to jump directly to main content
+          </p>
+        </article>
+
+        <article class="feature-item">
+          <h3 class="feature-item__title">Proper Landmarks</h3>
+          <p class="feature-item__description">
+            Semantic HTML5 landmarks (header, main, nav, footer) for screen reader navigation
+          </p>
+        </article>
+
+        <article class="feature-item">
+          <h3 class="feature-item__title">ARIA Labels</h3>
+          <p class="feature-item__description">
+            All interactive elements have proper ARIA attributes for assistive technology
+          </p>
+        </article>
+
+        <article class="feature-item">
+          <h3 class="feature-item__title">Keyboard Navigation</h3>
+          <p class="feature-item__description">
+            All functionality accessible via keyboard with visible focus indicators
+          </p>
+        </article>
+
+        <article class="feature-item">
+          <h3 class="feature-item__title">Color Contrast</h3>
+          <p class="feature-item__description">
+            WCAG AA compliant color contrast ratios (4.5:1 for text, 3:1 for UI)
+          </p>
+        </article>
+
+        <article class="feature-item">
+          <h3 class="feature-item__title">Touch Targets</h3>
+          <p class="feature-item__description">
+            Interactive elements are ≥ 44x44px on mobile devices (WCAG 2.5.5)
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Data Display Examples -->
+  <section id="data" class="showcase-section" aria-labelledby="data-heading">
+    <div class="showcase-section__container">
+      <header class="showcase-section__header">
+        <h2 id="data-heading" class="showcase-section__title">Data Display</h2>
+        <p class="showcase-section__description">
+          Tables, definition lists, and structured data
+        </p>
+      </header>
+
+      <!-- Responsive Table -->
+      <div class="table-wrapper">
+        <table class="data-table">
+          <caption class="data-table__caption">
+            Ontological Categories and Variants
+          </caption>
+          <thead class="data-table__head">
+            <tr>
+              <th scope="col">Category</th>
+              <th scope="col">Purpose</th>
+              <th scope="col">Variants</th>
+            </tr>
+          </thead>
+          <tbody class="data-table__body">
+            <tr>
+              <th scope="row">Environment</th>
+              <td>Layout organization</td>
+              <td>5 variants</td>
+            </tr>
+            <tr>
+              <th scope="row">Entity</th>
+              <td>Visual presence</td>
+              <td>6 variants</td>
+            </tr>
+            <tr>
+              <th scope="row">Cognition</th>
+              <td>Typography intent</td>
+              <td>6 variants</td>
+            </tr>
+            <tr>
+              <th scope="row">Synapse</th>
+              <td>Interaction type</td>
+              <td>5 variants</td>
+            </tr>
+            <tr>
+              <th scope="row">State</th>
+              <td>Temporal condition</td>
+              <td>5 variants</td>
+            </tr>
+            <tr>
+              <th scope="row">Atmosphere</th>
+              <td>Sensory texture</td>
+              <td>4 variants</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Definition List -->
+      <dl class="definition-list">
+        <dt class="definition-list__term">Semantic HTML</dt>
+        <dd class="definition-list__description">
+          HTML that uses meaningful element names to describe content structure
+        </dd>
+
+        <dt class="definition-list__term">Ontological Design</dt>
+        <dd class="definition-list__description">
+          A design system based on semantic categories that describe WHAT content is, not HOW it looks
+        </dd>
+
+        <dt class="definition-list__term">WCAG</dt>
+        <dd class="definition-list__description">
+          Web Content Accessibility Guidelines - standards for making web content accessible to all users
+        </dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section" aria-labelledby="cta-heading">
+    <div class="cta-section__container">
+      <h2 id="cta-heading" class="cta-section__title">
+        Ready to Build with Genesis?
+      </h2>
+      <p class="cta-section__description">
+        Start creating accessible, semantic web experiences today
+      </p>
+      <div class="cta-section__actions">
+        <a href="/get-started" class="cta-section__primary">
+          Get Started
+        </a>
+        <a href="/documentation" class="cta-section__secondary">
+          View Documentation
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>

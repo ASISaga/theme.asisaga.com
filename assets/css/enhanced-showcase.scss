@@ -1,0 +1,437 @@
+---
+---
+@import "ontology/index";
+
+// Enhanced Showcase Styles - Demonstrating Ontological SCSS with Mobile-First Responsive Design
+
+.enhanced-showcase {
+  @include genesis-environment('focused');
+  @include genesis-atmosphere('neutral');
+  @include genesis-atmosphere('spacious-mobile');  // Touch-friendly spacing on mobile
+}
+
+// Hero Section - Immersive with Futuristic Effects
+.hero {
+  @include genesis-environment('focused');
+  @include genesis-atmosphere('viewport-aware');
+  @include genesis-atmosphere('void');  // Deep space immersive aesthetic
+  
+  // Quantum gradient background for depth
+  background: linear-gradient(180deg,
+    oklch(0.10 0.03 280) 0%,
+    oklch(0.05 0.02 270) 100%
+  );
+  
+  .hero__content {
+    @include genesis-entity('primary');  // Glassmorphism with consciousness glass
+  }
+  
+  .hero__title {
+    @include genesis-cognition('axiom');  // Includes subtle consciousness glow
+  }
+  
+  .hero__subtitle {
+    @include genesis-cognition('discourse');
+  }
+  
+  .hero__actions {
+    @include genesis-environment('associative');
+  }
+  
+  .hero__cta-primary {
+    @include genesis-synapse('execute');  // Genesis gradient + quantum hover
+  }
+  
+  .hero__cta-secondary {
+    @include genesis-synapse('inquiry');  // Neural link hover effect
+  }
+}
+
+// Showcase Sections
+.showcase-section {
+  @include genesis-environment('focused');
+  
+  &--cards {
+    @include genesis-atmosphere('ethereal');
+  }
+  
+  .showcase-section__container {
+    @include genesis-entity('aggregate');
+  }
+  
+  .showcase-section__header {
+    @include genesis-entity('secondary');
+  }
+  
+  .showcase-section__title {
+    @include genesis-cognition('axiom');
+  }
+  
+  .showcase-section__description {
+    @include genesis-cognition('discourse');
+  }
+}
+
+// Navigation Components
+.breadcrumb {
+  @include genesis-environment('associative');
+  
+  .breadcrumb__list {
+    @include genesis-environment('associative');
+  }
+  
+  .breadcrumb__link {
+    @include genesis-synapse('navigate');
+  }
+  
+  .breadcrumb__current {
+    @include genesis-cognition('gloss');
+    @include genesis-state('stable');
+  }
+}
+
+.tabs {
+  @include genesis-environment('associative');
+  
+  .tabs__tab {
+    @include genesis-synapse('execute');
+    
+    &[aria-selected="true"] {
+      @include genesis-state('stable');
+    }
+  }
+}
+
+// Card Components - Responsive Grid
+.card-grid {
+  @include genesis-environment('distributed');  // Auto-responsive: 1 col mobile → auto-fit desktop
+  @include genesis-atmosphere('dense-desktop');  // High-density on desktop, comfortable on mobile
+}
+
+.blog-card {
+  @include genesis-entity('primary');  // Consciousness glassmorphism
+  @include genesis-state('scroll-triggered');  // Fade-in on scroll
+  
+  // Quantum hover effect - lift and glow on hover
+  &:hover {
+    transform: translateY(-4px);
+    transition: transform 0.3s ease;
+  }
+  
+  .blog-card__link {
+    @include genesis-synapse('navigate');  // Neural link with glow hover
+  }
+  
+  .blog-card__image {
+    @include genesis-entity('image-adaptive');
+  }
+  
+  .blog-card__title {
+    @include genesis-cognition('axiom');
+  }
+  
+  .blog-card__excerpt {
+    @include genesis-cognition('discourse');
+  }
+  
+  .blog-card__date {
+    @include genesis-cognition('gloss');
+  }
+}
+
+.feature-card {
+  @include genesis-entity('secondary');
+  @include genesis-state('scroll-triggered');  // Fade-in animation on scroll (respects prefers-reduced-motion)
+  
+  .feature-card__title {
+    @include genesis-cognition('axiom');  // Fluid typography: scales with viewport
+  }
+  
+  .feature-card__description {
+    @include genesis-cognition('discourse');  // Min 16px to prevent iOS zoom
+  }
+  
+  .feature-card__link {
+    @include genesis-synapse('navigate');  // Touch target ≥44px on mobile (WCAG 2.5.5)
+  }
+}
+
+.product-card {
+  @include genesis-entity('primary');
+  @include genesis-state('scroll-triggered');  // Scroll reveal animation
+  
+  .product-card__image {
+    @include genesis-entity('image-adaptive');  // Responsive 16:9 aspect ratio
+  }
+  
+  .product-card__title {
+    @include genesis-cognition('axiom');  // Fluid typography
+  }
+  
+  .product-card__price-label {
+    @include genesis-cognition('gloss');
+  }
+  
+  .product-card__price-value {
+    @include genesis-cognition('axiom');
+  }
+  
+  .product-card__description {
+    @include genesis-cognition('discourse');  // 16px minimum
+  }
+  
+  .product-card__cta {
+    @include genesis-synapse('execute');  // 44x44px touch target on mobile
+  }
+}
+
+.stat-card {
+  @include genesis-entity('primary');
+  @include genesis-atmosphere('vibrant');  // High-energy colorful aesthetic
+  @include genesis-state('evolving');  // Animated shimmer effect
+  
+  // Essence glow for emphasis
+  box-shadow: 
+    0 8px 32px oklch(0.15 0.08 280 / 0.4),
+    0 0 24px oklch(0.6 0.25 280 / 0.3);
+  
+  .stat-card__value {
+    @include genesis-cognition('axiom');
+    // Consciousness gradient text (if supported)
+    background: linear-gradient(135deg, 
+      oklch(0.85 0.15 280),
+      oklch(0.75 0.20 45)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .stat-card__label {
+    @include genesis-cognition('gloss');
+  }
+}
+
+// Form Components - Mobile-First Responsive Form
+.contact-form {
+  @include genesis-environment('interaction-form');  // Single col mobile → multi-col desktop
+  @include genesis-entity('primary');
+  
+  .form-field {
+    @include genesis-environment('focused');
+  }
+  
+  .form-label {
+    @include genesis-cognition('motive');  // Readable labels
+  }
+  
+  .form-input,
+  .form-select,
+  .form-textarea {
+    @include genesis-synapse('input-primary');  // 44px height, 16px font (prevents iOS zoom)
+  }
+  
+  .form-required {
+    @include genesis-entity('imperative');
+  }
+  
+  .form-checkbox {
+    @include genesis-synapse('input-primary');  // Touch-friendly checkbox (44x44px target)
+  }
+  
+  .form-actions {
+    @include genesis-environment('associative');  // Stack mobile, inline desktop
+  }
+  
+  .form-submit {
+    @include genesis-synapse('execute');  // 44x44px touch target
+  }
+  
+  .form-reset {
+    @include genesis-synapse('inquiry');  // 44x44px touch target
+  }
+}
+
+// Interactive Elements
+.accordion {
+  @include genesis-entity('primary');
+  
+  .accordion__item {
+    @include genesis-entity('secondary');
+  }
+  
+  .accordion__trigger {
+    @include genesis-synapse('execute');
+    
+    &[aria-expanded="true"] {
+      @include genesis-state('stable');
+    }
+  }
+  
+  .accordion__title {
+    @include genesis-cognition('motive');
+  }
+  
+  .accordion__content {
+    @include genesis-cognition('discourse');
+  }
+}
+
+.alerts-showcase {
+  @include genesis-environment('focused');
+}
+
+.alert {
+  @include genesis-entity('primary');
+  
+  &--success {
+    @include genesis-state('stable');
+    // Success glow (green-tinted)
+    box-shadow: 
+      0 4px 16px oklch(0.15 0.08 145 / 0.3),
+      0 0 12px oklch(0.6 0.20 145 / 0.2);
+  }
+  
+  &--info {
+    @include genesis-atmosphere('ethereal');
+    // Soft blue glow
+    box-shadow: 
+      0 4px 16px oklch(0.15 0.08 240 / 0.3);
+  }
+  
+  &--warning {
+    @include genesis-entity('imperative');  // Neon border glow
+    // Warning glow (yellow-tinted)
+    box-shadow: 
+      0 4px 16px oklch(0.15 0.08 80 / 0.4),
+      0 0 16px oklch(0.7 0.20 80 / 0.3);
+  }
+  
+  &--error {
+    @include genesis-entity('imperative');  // Pulsing neon border
+    @include genesis-atmosphere('vibrant');
+    @include genesis-state('evolving');  // Pulsing animation for urgency
+    // Error glow (red-tinted) with quantum pulse
+    box-shadow: 
+      0 4px 16px oklch(0.15 0.08 25 / 0.5),
+      0 0 24px oklch(0.7 0.25 25 / 0.4);
+  }
+  
+  .alert__title {
+    @include genesis-cognition('motive');
+  }
+  
+  .alert__message {
+    @include genesis-cognition('discourse');
+  }
+  
+  .alert__dismiss {
+    @include genesis-synapse('destructive');
+  }
+}
+
+// Accessibility Features - Responsive Grid
+.accessibility-features {
+  @include genesis-environment('distributed');  // 1 col mobile → auto-fit desktop
+  @include genesis-atmosphere('spacious-mobile');  // Extra spacing for readability on mobile
+}
+
+.feature-item {
+  @include genesis-entity('secondary');
+  
+  .feature-item__title {
+    @include genesis-cognition('axiom');
+  }
+  
+  .feature-item__description {
+    @include genesis-cognition('discourse');
+  }
+}
+
+// Data Display - Responsive Table
+.table-wrapper {
+  @include genesis-entity('primary');
+  
+  // Enable horizontal scrolling on mobile for wide tables
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;  // Smooth scrolling on iOS
+  
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+.data-table {
+  @include genesis-cognition('protocol');
+  
+  .data-table__caption {
+    @include genesis-cognition('motive');
+  }
+  
+  .data-table__head {
+    @include genesis-entity('secondary');
+  }
+}
+
+.definition-list {
+  @include genesis-entity('primary');
+  
+  .definition-list__term {
+    @include genesis-cognition('motive');
+  }
+  
+  .definition-list__description {
+    @include genesis-cognition('discourse');
+  }
+}
+
+// Call to Action Section - Maximum Visual Impact
+.cta-section {
+  @include genesis-environment('focused');
+  @include genesis-entity('imperative');  // Neon border with pulsing
+  @include genesis-atmosphere('vibrant');  // High-energy aesthetic
+  
+  // Consciousness gradient background for immersive CTA
+  background: linear-gradient(135deg,
+    oklch(0.20 0.08 280) 0%,
+    oklch(0.15 0.06 45) 100%
+  );
+  
+  // Enhanced essence glow for maximum attention
+  box-shadow: 
+    0 16px 64px oklch(0.10 0.10 280 / 0.6),
+    0 0 48px oklch(0.6 0.25 280 / 0.4),
+    inset 0 1px 0 oklch(1 0 0 / 0.1);
+  
+  .cta-section__container {
+    @include genesis-entity('aggregate');
+  }
+  
+  .cta-section__title {
+    @include genesis-cognition('axiom');
+    // Gradient text effect for emphasis
+    background: linear-gradient(135deg, 
+      oklch(0.95 0.10 280),
+      oklch(0.85 0.15 45)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .cta-section__description {
+    @include genesis-cognition('discourse');
+  }
+  
+  .cta-section__actions {
+    @include genesis-environment('associative');
+  }
+  
+  .cta-section__primary {
+    @include genesis-synapse('execute');  // Genesis gradient + quantum hover
+  }
+  
+  .cta-section__secondary {
+    @include genesis-synapse('navigate');  // Neural link hover
+  }
+}
