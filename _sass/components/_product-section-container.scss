@@ -23,6 +23,5 @@
   // Container for section content
   .product-section-content {
   @include make-container(); // with proper mixin or direct styles for Jekyll compatibility
-    @include make-container();
   }
 }

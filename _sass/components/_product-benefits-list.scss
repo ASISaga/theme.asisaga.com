@@ -9,7 +9,6 @@
   
   .product-list-container {
   @include make-container(); // with proper mixin or direct styles for Jekyll compatibility
-    @include make-container();
     
     .product-list {
       

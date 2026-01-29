@@ -38,7 +38,6 @@
   // Features/Concepts grid (now in _product-feature-grid.scss)
   .product-grid {
   @include make-container();
-  @include make-container();
     display: flex;
     flex-wrap: wrap;
     
@@ -79,7 +78,6 @@
   // Visual content container (now in _product-visual.scss)
   .product-visual-container {
   @include make-container();
-  @include make-container();
     
     .product-image {
     }
@@ -87,7 +85,6 @@
   
   // Implementation/code example container (now in _product-code-example.scss)
   .product-code-container {
-  @include make-container();
   @include make-container();
     
     .product-code-example {
@@ -100,7 +97,6 @@
   
   // Benefits/List container (now in _product-benefits-list.scss)
   .product-list-container {
-  @include make-container();
   @include make-container();
     
     .product-list {

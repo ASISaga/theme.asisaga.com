@@ -6,7 +6,6 @@
   
   .product-grid {
   @include make-container(); // with proper mixin or direct styles for Jekyll compatibility
-    @include make-container();
     display: flex;
     flex-wrap: wrap;
     
