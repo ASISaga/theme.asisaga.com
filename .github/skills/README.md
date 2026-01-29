@@ -70,8 +70,12 @@ Converts legacy CSS/SCSS into ontological mixin-based code, ensuring "zero-CSS c
 ./.github/skills/scss-refactor-agent/scripts/validate-scss.sh path/to/file.scss
 ```
 
-**NEW Resources**:
+**NEW Resources** (State-of-the-Art Web Design Guidelines):
 - `references/REFACTORING-GUIDE.md` - Comprehensive refactoring guide
+- `references/WEB-DESIGN-GUIDELINES.md` - Modern web design best practices (Progressive Enhancement, Container Queries, OKLCH)
+- `references/CSS-ARCHITECTURE-PATTERNS.md` - Scalable CSS architecture (Three-Tier, BEM, SMACSS, ITCSS)
+- `references/PERFORMANCE-OPTIMIZATION.md` - Performance optimization (Core Web Vitals, GPU acceleration, Critical CSS)
+- `references/ACCESSIBILITY-STANDARDS.md` - WCAG 2.2 AA compliance (Contrast, Touch targets, Keyboard navigation)
 
 ### 4. html-template-agent
 
