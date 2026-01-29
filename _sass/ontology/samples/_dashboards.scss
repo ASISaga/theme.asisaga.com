@@ -1,0 +1,117 @@
+/**
+ * DASHBOARD EXAMPLES
+ * ============================================================================
+ * Examples for dashboards, monitoring interfaces, and system oversight.
+ */
+
+// ============================================================================
+// EXAMPLE 2: Dashboard / Monitoring Interface
+// ============================================================================
+// High-density system oversight with live data
+.system-dashboard {
+  @include genesis-environment('manifest'); // 12-column grid
+  @include genesis-atmosphere('vibrant');   // High-energy, data-rich
+
+  .status-card {
+    @include genesis-entity('primary');
+    @include genesis-state('evolving');     // Live updating content
+    
+    .metric-value {
+      @include genesis-cognition('axiom');  // Large numbers
+    }
+    
+    .metric-label {
+      @include genesis-cognition('gloss');  // Small labels
+    }
+  }
+
+  .alert-card {
+    @include genesis-entity('imperative');  // Urgent system alert
+    
+    .alert-message {
+      @include genesis-cognition('motive'); // Important instruction
+    }
+    
+    .dismiss-btn {
+      @include genesis-synapse('execute');
+    }
+  }
+
+  .historical-data {
+    @include genesis-entity('ancestral');   // Archived information
+    @include genesis-state('deprecated');   // No longer current
+  }
+
+  .simulation-panel {
+    @include genesis-entity('aggregate');
+    @include genesis-state('simulated');    // Projected data, not live
+  }
+}
+
+// ============================================================================
+// EXAMPLE 3: Project Timeline / History
+// ============================================================================
+// Chronological event stream
+.project-timeline {
+  @include genesis-environment('chronological'); // Time-linear layout
+  @include genesis-atmosphere('neutral');        // Standard appearance
+
+  .timeline-event {
+    @include genesis-entity('primary');
+    
+    .event-date {
+      @include genesis-cognition('quantum');     // Small date badge
+    }
+    
+    .event-title {
+      @include genesis-cognition('motive');      // Emphasis text
+    }
+    
+    .event-description {
+      @include genesis-cognition('discourse');   // Body text
+    }
+    
+    .event-link {
+      @include genesis-synapse('navigate');      // Link to details
+    }
+  }
+
+  .future-event {
+    @include genesis-entity('latent');           // Upcoming, not active
+  }
+
+  .milestone {
+    @include genesis-entity('imperative');       // Critical milestone
+  }
+}
+
+// ============================================================================
+// EXAMPLE 4: Knowledge Network / Graph View
+// ============================================================================
+// Connections-focused layout
+.knowledge-network {
+  @include genesis-environment('associative');  // Network layout
+  @include genesis-atmosphere('void');          // Deep-space, minimal
+
+  .concept-node {
+    @include genesis-entity('primary');
+    
+    .concept-name {
+      @include genesis-cognition('motive');     // Clear labels
+    }
+    
+    .expand-btn {
+      @include genesis-synapse('inquiry');      // Request more data
+    }
+  }
+
+  .connection-link {
+    @include genesis-synapse('navigate');       // Link between nodes
+  }
+
+  .locked-concept {
+    @include genesis-entity('primary');
+    @include genesis-state('locked');           // Requires permission
+  }
+}
+

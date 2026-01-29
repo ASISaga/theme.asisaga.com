@@ -1,0 +1,25 @@
+/**
+ * ENGINE LAYER INDEX
+ * --------------------------------------------------------------------------
+ * This file imports all engine implementation mixins.
+ * 
+ * The engine layer contains the actual CSS implementation for each
+ * ontological category. This is the ONLY layer where raw CSS properties
+ * are allowed. All values MUST use CSS custom properties from the token system.
+ * 
+ * Each mixin corresponds to one of the six ontological categories:
+ * - Environment: Spatial organization and layout
+ * - Entity: Visual presence and material properties
+ * - Cognition: Typography and information intent
+ * - Synapse: Interactions and navigation
+ * - State: Temporal conditions and system status
+ * - Atmosphere: Sensory texture and emotional tone
+ */
+
+// Import all engine implementations
+@import "environment";
+@import "entity";
+@import "cognition";
+@import "synapse";
+@import "state";
+@import "atmosphere";
