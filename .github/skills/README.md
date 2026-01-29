@@ -6,8 +6,18 @@
 
 This directory contains Agent Skills for the Genesis Semantic Design System - a living genome architecture that manages the ontological evolution of the ASI Saga theme repository.
 
+## 🎯 Quick Start
+
+**New to the system?** Start here: [WEB-DESIGN-QUICK-REFERENCE.md](WEB-DESIGN-QUICK-REFERENCE.md)
+- Fast lookup for common HTML + SCSS patterns
+- Ontological mixin quick reference
+- Copy-paste ready code snippets
+- Accessibility checklist
+- Responsive breakpoints guide
+
 ## 🚀 What's New in v2.1.1
 
+- ✅ **Web Design Quick Reference** - One-page cheat sheet for fast pattern lookup
 - ✅ **Component Patterns Catalog** (850+ lines) - Ready-to-use semantic HTML patterns for navigation, forms, cards, modals, and more
 - ✅ **Layout Patterns Catalog** (750+ lines) - Production-ready responsive layouts for grids, dashboards, content, and media
 - ✅ **Enhanced skill descriptions** with pattern-specific keywords for better discovery
@@ -26,8 +36,8 @@ This directory contains Agent Skills for the Genesis Semantic Design System - a 
 Agent Skills are structured, reusable capabilities that AI agents can use to perform specific tasks. Each skill follows the [Agent Skills specification](https://agentskills.io) format with:
 
 - **SKILL.md** - Required file with YAML frontmatter and instructions
-- **scripts/** - **NEW** Automation and validation scripts
-- **references/** - **NEW** Detailed specifications and guides
+- **scripts/** - Automation and validation scripts
+- **references/** - Detailed specifications and guides
 - **assets/** - **NEW** Visual examples and templates (ready for future use)
 
 ## Available Skills
@@ -307,12 +317,20 @@ This creates a **living genome** where the design system evolves based on real u
 
 ## Key Resources
 
+### Quick References
+- **[WEB-DESIGN-QUICK-REFERENCE.md](WEB-DESIGN-QUICK-REFERENCE.md)** - **NEW** One-page cheat sheet for fast pattern lookup
+
+### Documentation
 - **AGENTS.MD** - Complete agent ecosystem architecture
 - **GENOME.md** - Evolutionary history and variant registry
 - **agent-skill-spec.md** - Agent Skills format specification
 - **_sass/ontology/INTEGRATION-GUIDE.md** - Complete ontological API reference
 - **.github/instructions/** - SCSS, HTML, and JS coding standards
 - **.github/prompts/** - Detailed agent prompts
+
+### Pattern Catalogs
+- **html-template-agent/references/COMPONENT-PATTERNS.md** - 850+ lines of HTML component patterns
+- **responsive-design-agent/references/LAYOUT-PATTERNS.md** - 750+ lines of responsive layout patterns
 
 ## Validation
 
