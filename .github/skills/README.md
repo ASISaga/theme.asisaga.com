@@ -1,12 +1,19 @@
 # Agent Skills for Genesis Semantic Design System v2.1
 
-**Version**: 2.1.0 - Integrated Validation & Automation  
-**Last Updated**: 2026-01-19  
-**Status**: Production Ready with Automated Testing
+**Version**: 2.1.1 - Enhanced Pattern Catalogs  
+**Last Updated**: 2026-01-29  
+**Status**: Production Ready with Comprehensive Pattern Libraries
 
 This directory contains Agent Skills for the Genesis Semantic Design System - a living genome architecture that manages the ontological evolution of the ASI Saga theme repository.
 
-## 🚀 What's New in v2.1
+## 🚀 What's New in v2.1.1
+
+- ✅ **Component Patterns Catalog** (850+ lines) - Ready-to-use semantic HTML patterns for navigation, forms, cards, modals, and more
+- ✅ **Layout Patterns Catalog** (750+ lines) - Production-ready responsive layouts for grids, dashboards, content, and media
+- ✅ **Enhanced skill descriptions** with pattern-specific keywords for better discovery
+- ✅ **Comprehensive examples** with both HTML structure and ontological SCSS mapping
+
+## What's New in v2.1.0
 
 - ✅ **Automated validation scripts** in each skill
 - ✅ **Integrated lint/sass testing** workflows
@@ -91,6 +98,18 @@ Ensures all HTML follows semantic best practices, uses meaningful content-first 
 ./.github/skills/html-template-agent/scripts/validate-html.sh path/to/template.html
 ```
 
+**NEW Resources**:
+- `references/TEMPLATE-GUIDE.md` - Comprehensive template best practices
+- `references/COMPONENT-PATTERNS.md` - **v2.1.1** Ready-to-use semantic HTML patterns catalog (850+ lines)
+  - Navigation patterns (primary nav, breadcrumbs, tabs)
+  - Hero sections (full-width, split layouts)
+  - Card components (blog posts, features, products)
+  - Form patterns (contact forms, search, accessible inputs)
+  - Modal dialogs with ARIA
+  - Data display (tables, definition lists, metadata)
+  - Interactive elements (accordions, alerts, notifications)
+  - Content sections (testimonials, FAQs, CTAs)
+
 ### 5. responsive-design-agent
 
 **Role**: Mobile-First Responsive Specialist
@@ -107,6 +126,14 @@ Implements mobile-first responsive patterns with proper WCAG 2.5.5 touch targets
 
 **NEW Resources**:
 - `references/RESPONSIVE-GUIDE.md` - Comprehensive responsive design guide
+- `references/LAYOUT-PATTERNS.md` - **v2.1.0** Production-ready responsive layout patterns (750+ lines)
+  - Grid layouts (auto-responsive, masonry, featured+grid)
+  - Content layouts (article reading, split, sidebar)
+  - Navigation layouts (horizontal responsive, sticky)
+  - Dashboard layouts (admin grid, stats)
+  - Media layouts (image gallery, video embeds)
+  - Form layouts (multi-column responsive)
+  - Performance considerations (container queries, lazy loading)
 
 ### 6. futuristic-effects-agent
 
@@ -310,9 +337,14 @@ When adding new skills:
 
 ## Version
 
-**Skills Version**: 2.0  
+**Skills Version**: 2.1.1 - Enhanced Pattern Catalogs  
 **Aligned with**: Genesis Semantic Design System v2.0+  
-**Last Updated**: 2026-01-19
+**Last Updated**: 2026-01-29
+
+### Version History
+- **2.1.1** (2026-01-29): Added comprehensive component and layout pattern catalogs
+- **2.1.0** (2026-01-19): Integrated validation and automation
+- **2.0.0**: Initial release with ontological system
 
 ---
 
