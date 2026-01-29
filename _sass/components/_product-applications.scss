@@ -3,40 +3,18 @@
 // Corresponds to product-applications.html include
 
 .product-applications-section {
-  // TODO: Replace @extend .py-5 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .py-5;
   
   .product-grid {
-    // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
   @include make-container(); // with proper mixin or direct styles for Jekyll compatibility
-    // @extend with direct styles for Jekyll compatibility
     @include make-container();
-    // Replaced // TODO: Replace @extend with direct styles
     display: flex;
     flex-wrap: wrap;
-    // TODO: Replace @extend .justify-content-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .justify-content-center;
     
     .product-card {
-      // TODO: Replace @extend .col-md-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .col-md-4;
-      // TODO: Replace @extend .p-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .p-4;
-      // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-4;
-      // TODO: Replace @extend .h-100 with proper mixin or direct styles for Jekyll compatibility
     @include height-full;
-      // TODO: Replace @extend .bg-white with proper mixin or direct styles for Jekyll compatibility
-    // @extend .bg-white;
-      // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
-    // @extend .rounded;
-      // TODO: Replace @extend .border with proper mixin or direct styles for Jekyll compatibility
-    // @extend .border;
       @include transition(all, 0.3s, ease);
         &:hover {
         transform: translateY($product-item-hover-translate); // Using centralized dimension variable
-        // TODO: Replace @extend .shadow with proper mixin or direct styles for Jekyll compatibility
-    // @extend .shadow;
       }
       
       // Card style variations
@@ -49,16 +27,10 @@
       }
       
       .product-card-title {
-        // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
-    // @extend .fw-bold;
-        // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-3;
         color: var(--color-primary);
       }
       
       .product-card-description {
-        // TODO: Replace @extend .mb-0 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-0;
       }
     }
   }

@@ -36,8 +36,6 @@
 
 // Sacred wisdom card variant
 .wisdom-card {
-  // TODO: Replace @extend .consciousness-card with proper mixin or direct styles for Jekyll compatibility
-    // @extend .consciousness-card;
   @include genesis-entity('primary');
   @include genesis-atmosphere('vibrant');
   @include bg-luminous-gold-light;
@@ -46,8 +44,6 @@
 
 // Genesis progress card
 .genesis-card {
-  // TODO: Replace @extend .consciousness-card with proper mixin or direct styles for Jekyll compatibility
-    // @extend .consciousness-card;
   @include genesis-entity('imperative');
   @include genesis-state('evolving');
   @include bg-gradient-genesis-subtle;

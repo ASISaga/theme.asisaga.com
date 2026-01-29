@@ -15,72 +15,38 @@
     background-clip: border-box;
     border: var(--bs-card-border-width, 1px) solid var(--bs-card-border-color, oklch(0.08 0.01 250 / 0.125));
     border-radius: var(--bs-card-border-radius, 0.375rem);
-    // TODO: Replace @extend .h-100 with proper mixin or direct styles for Jekyll compatibility
     @include height-full;
-    // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
-    // @extend .shadow-sm;
     @include transition;
     
     &:hover {
       transform: translateY(-5px);
-      // TODO: Replace @extend .shadow with proper mixin or direct styles for Jekyll compatibility
-    // @extend .shadow;
     }
     
     &-img {
-      // TODO: Replace @extend .card-img-top with proper mixin or direct styles for Jekyll compatibility
-    // @extend .card-img-top;
       height: $img-height;
       object-fit: cover;
     }
     
     &-body {
-      // TODO: Replace @extend .card-body with proper mixin or direct styles for Jekyll compatibility
-    // @extend .card-body;
-      // TODO: Replace @extend .d-flex with proper mixin or direct styles for Jekyll compatibility
-    // @extend .d-flex;
-      // TODO: Replace @extend .flex-column with proper mixin or direct styles for Jekyll compatibility
-    // @extend .flex-column;
     }
     
     &-title {
-      // TODO: Replace @extend .card-title with proper mixin or direct styles for Jekyll compatibility
-    // @extend .card-title;
-      // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
-    // @extend .fw-bold;
       color: $primary;
     }
     
     &-text {
-      // TODO: Replace @extend .card-text with proper mixin or direct styles for Jekyll compatibility
-    // @extend .card-text;
-      // TODO: Replace @extend .flex-grow-1 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .flex-grow-1;
     }
     
     &-footer {
-      // TODO: Replace @extend .card-footer with proper mixin or direct styles for Jekyll compatibility
-    // @extend .card-footer;
-      // TODO: Replace @extend .bg-transparent with proper mixin or direct styles for Jekyll compatibility
-    // @extend .bg-transparent;
-      // TODO: Replace @extend .border-top-0 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .border-top-0;
     }
   }
   
   .#{$prefix}-container {
-    // TODO: Replace @extend .col-md-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .col-md-4;
-    // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-4;
   }
   
   .#{$prefix}-grid {
-    // Replaced // TODO: Replace @extend with direct styles
     display: flex;
     flex-wrap: wrap;
-    // TODO: Replace @extend .g-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .g-4;
   }
 }
 
@@ -89,7 +55,5 @@
   @include image-card-component($prefix, $img-height);
   
   .#{$prefix} {
-    // TODO: Replace @extend .border-#{$border-color} with proper mixin or direct styles for Jekyll compatibility
-    // @extend .border-#{$border-color};
   }
 }

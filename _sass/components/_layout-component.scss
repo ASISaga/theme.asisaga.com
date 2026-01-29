@@ -6,26 +6,18 @@
 @mixin page-layout($prefix: 'page') {
   .#{$prefix} {
     &-container {
-      // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
-  @include make-container(); // with proper mixin or direct styles for Jekyll compatibility
-    // @extend with direct styles for Jekyll compatibility
-    @include make-container();
+      @include make-container();
     }
     
     &-row {
-      // Replaced // TODO: Replace @extend with direct styles
-    display: flex;
-    flex-wrap: wrap;
+      display: flex;
+      flex-wrap: wrap;
     }
     
     &-col {
-      // TODO: Replace @extend .col-md-6 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .col-md-6;
     }
     
     &-content {
-      // TODO: Replace @extend .py-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .py-4;
     }
   }
 }
@@ -36,13 +28,9 @@
   
   .#{$prefix} {
     &-main {
-      // TODO: Replace @extend .col-md with proper mixin or direct styles for Jekyll compatibility
-    // @extend .col-md;
     }
     
     &-sidebar {
-      // TODO: Replace @extend .col-md-#{$sidebar-width} with proper mixin or direct styles for Jekyll compatibility
-    // @extend .col-md-#{$sidebar-width};
     }
   }
 }
@@ -50,17 +38,10 @@
 // Grid layout system
 @mixin grid-layout($prefix: 'grid', $cols: 3) {
   .#{$prefix} {
-    // Replaced // TODO: Replace @extend with direct styles
     display: flex;
     flex-wrap: wrap;
-    // TODO: Replace @extend .g-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .g-4;
     
     &-item {
-      // TODO: Replace @extend .col-md-#{12 / $cols} with proper mixin or direct styles for Jekyll compatibility
-    // @extend .col-md-#{12 / $cols};
-      // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-4;
     }
   }
 }

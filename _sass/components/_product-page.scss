@@ -15,71 +15,39 @@
 
 .product-container {
   // Common styling for all product containers
-  // TODO: Replace @extend .w-100 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .w-100;
   
   // Hero section is handled by _hero.scss
 
   // Generic section styling (now in _product-section-container.scss)
   .product-section {
-    // TODO: Replace @extend .py-5 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .py-5; // Bootstrap padding
     
     // Add margin to sections that aren't the first one
     &:not(:first-of-type) {
-      // TODO: Replace @extend .mt-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mt-4;
     }
 
     // Alternate section background colors for visual distinction
     &.product-section-light {
-      // TODO: Replace @extend .bg-light with proper mixin or direct styles for Jekyll compatibility
-    // @extend .bg-light;
     }
     
     &.product-section-primary {
-      // TODO: Replace @extend .bg-gradient-primary with proper mixin or direct styles for Jekyll compatibility
-    // @extend .bg-gradient-primary;
     }
 
     &.product-section-accent {
-      // TODO: Replace @extend .bg-gradient-accent with proper mixin or direct styles for Jekyll compatibility
-    // @extend .bg-gradient-accent;
     }
   }
   // Features/Concepts grid (now in _product-feature-grid.scss)
   .product-grid {
-    // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
   @include make-container();
-  // @extend with direct styles for Jekyll compatibility
   @include make-container();
-    // Replaced // TODO: Replace @extend with direct styles
     display: flex;
     flex-wrap: wrap;
-    // TODO: Replace @extend .justify-content-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .justify-content-center;
     
     // Feature card for features, concepts, components
     .product-card {
-      // TODO: Replace @extend .col-md-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .col-md-4;
-      // TODO: Replace @extend .p-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .p-4;
-      // TODO: Replace @extend .mb-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-4;
-      // TODO: Replace @extend .h-100 with proper mixin or direct styles for Jekyll compatibility
     @include height-full;
-      // TODO: Replace @extend .bg-white with proper mixin or direct styles for Jekyll compatibility
-    // @extend .bg-white;
-      // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
-    // @extend .rounded;
-      // TODO: Replace @extend .border with proper mixin or direct styles for Jekyll compatibility
-    // @extend .border;
       @include transition(all, 0.3s, ease);
         &:hover {
         transform: translateY($product-item-hover-translate); // Using centralized dimension variable
-        // TODO: Replace @extend .shadow with proper mixin or direct styles for Jekyll compatibility
-    // @extend .shadow;
       }
       
       &.product-card-accent {
@@ -92,76 +60,38 @@
       
       // Card components
       .product-card-icon {
-        // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-3;
       }
       
       .product-card-title {
-        // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-3;
-        // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
-    // @extend .fw-bold;
       }
       
       .product-card-description {
-        // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-3;
       }
       
       .product-card-list {
-        // TODO: Replace @extend .list-unstyled with proper mixin or direct styles for Jekyll compatibility
-    // @extend .list-unstyled;
       }
     }
   }
   
   // Extracted to reduce nesting depth
   .product-card-list-item {
-    // TODO: Replace @extend .mb-2 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-2;
   }
   // Visual content container (now in _product-visual.scss)
   .product-visual-container {
-    // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
   @include make-container();
-  // @extend with direct styles for Jekyll compatibility
   @include make-container();
-    // TODO: Replace @extend .text-center with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-center;
-    // TODO: Replace @extend .my-4 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .my-4;
     
     .product-image {
-      // TODO: Replace @extend .img-fluid with proper mixin or direct styles for Jekyll compatibility
-    // @extend .img-fluid;
-      // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
-    // @extend .rounded;
-      // TODO: Replace @extend .shadow-sm with proper mixin or direct styles for Jekyll compatibility
-    // @extend .shadow-sm;
     }
   }
   
   // Implementation/code example container (now in _product-code-example.scss)
   .product-code-container {
-    // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
   @include make-container();
-  // @extend with direct styles for Jekyll compatibility
   @include make-container();
-    // TODO: Replace @extend .py-3 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .py-3;
     
     .product-code-example {
-      // TODO: Replace @extend .bg-dark with proper mixin or direct styles for Jekyll compatibility
-    // @extend .bg-dark;
-      // TODO: Replace @extend .p-3 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .p-3;
-      // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
-    // @extend .rounded;
-      // TODO: Replace @extend .shadow with proper mixin or direct styles for Jekyll compatibility
-    // @extend .shadow;
         .product-code-block {
-        // TODO: Replace @extend .m-0 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .m-0;
         max-height: $product-code-max-height; // Using centralized dimension variable
         overflow-y: auto;
       }
@@ -170,33 +100,17 @@
   
   // Benefits/List container (now in _product-benefits-list.scss)
   .product-list-container {
-    // Replaced // TODO: Replace @extend with direct styles for Jekyll compatibility
   @include make-container();
-  // @extend with direct styles for Jekyll compatibility
   @include make-container();
     
     .product-list {
-      // TODO: Replace @extend .list-unstyled with proper mixin or direct styles for Jekyll compatibility
-    // @extend .list-unstyled;
       
       .product-list-item {
-        // TODO: Replace @extend .p-3 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .p-3;
-        // TODO: Replace @extend .mb-3 with proper mixin or direct styles for Jekyll compatibility
-    // @extend .mb-3;
-        // TODO: Replace @extend .bg-light with proper mixin or direct styles for Jekyll compatibility
-    // @extend .bg-light;
-        // TODO: Replace @extend .rounded with proper mixin or direct styles for Jekyll compatibility
-    // @extend .rounded;
       }
     }
   }
   
   // Extracted to reduce nesting depth
   .product-list-container .product-list-highlight {
-    // TODO: Replace @extend .fw-bold with proper mixin or direct styles for Jekyll compatibility
-    // @extend .fw-bold;
-    // TODO: Replace @extend .text-primary with proper mixin or direct styles for Jekyll compatibility
-    // @extend .text-primary;
   }
 }
