@@ -1,33 +1,31 @@
 <head>
-    <!-- 
-    Head component containing all meta tags, title, CSS, and JavaScript resources
-    Refactored to use subcomponents in _includes/head/
-    -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Genesis Theme v2.0 - Modern Semantic Design System -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#1a1a2e">
+  <meta name="color-scheme" content="dark light">
 
-    <!-- Main stylesheet -->
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+  <!-- Main stylesheet with cache busting -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
 
-    <!-- Google Analytics setup (externalized JS) -->
-    <!-- script src="{{ '/assets/js/analytics.js' | relative_url }}"
-            data-ga-id="{{ site.google_analytics | escape }}"
-            data-ga-mid="{{ site.google_analytics_measurement_id | escape }}"></script-->
+  <!-- Favicon and device icons -->
+  <link id="favicon" rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
 
-    <!-- Favicon and device icons -->
-    <link id="favicon" rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
-    <!--
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
-    <link rel="manifest" href="{{ '/assets/site.webmanifest' | relative_url }}">
-    -->
+  <!-- Page Title -->
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
 
-    <!-- Google Fonts, Font Awesome, and AOS CSS moved to SCSS partials (_fonts.scss, _icons.scss, _animations.scss) -->
-    <title>{{ page.title }} | {{ site.title }}</title>
-
-    <!-- Jekyll SEO tag plugin -->
-    {% seo %}
-    <script type="module" src="{{ '/assets/js/script.js' | relative_url }}"></script>
+  <!-- Jekyll SEO tag plugin -->
+  {% seo %}
+  
+  <!-- Genesis Theme JavaScript (modern, defer for performance) -->
+  <script src="{{ '/assets/js/genesis-theme.js' | relative_url }}" defer></script>
+  
+  <!-- Original script.js for compatibility -->
+  <script type="module" src="{{ '/assets/js/script.js' | relative_url }}"></script>
+  
+  <!-- Page-specific JavaScript -->
+  {% if page.custom_js %}
+  <script src="{{ '/assets/js/' | append: page.custom_js | relative_url }}" defer></script>
+  {% endif %}
 </head>

@@ -1,0 +1,169 @@
+// ============================================================================
+// GENESIS THEME - Modern Core Styles
+// ============================================================================
+// 100% Ontological SCSS - Zero Raw CSS Properties
+// State-of-the-art web design with WCAG AA compliance
+// ============================================================================
+
+// Body - Modern Layout Container
+.genesis-body {
+  @include genesis-environment('focused');
+  @include genesis-atmosphere('neutral');
+  
+  // Smooth scroll behavior (respects reduced motion)
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+  
+  // Full viewport height minimum
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// Main Content Area
+.genesis-main {
+  @include genesis-environment('focused');
+  @include genesis-atmosphere('spacious-mobile');
+  
+  // Flex grow to push footer down
+  flex: 1;
+  
+  // Focus management for skip link
+  &:focus {
+    outline: none;
+  }
+}
+
+// Skip Link (WCAG AA Required)
+.skip-link {
+  @include genesis-synapse('navigate');
+  
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  z-index: 9999;
+  
+  &:focus,
+  &.focus-visible:focus {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10000;
+    padding: 1rem 2rem;
+    
+    // Enhanced focus style
+    @include genesis-entity('imperative');
+    @include genesis-atmosphere('vibrant');
+    
+    // Ensure minimum touch target on mobile
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+// Screen Reader Only Utility
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  
+  &.focus-visible:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}
+
+// Ambient Background Effects
+.genesis-ambient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  pointer-events: none;
+  
+  // Deep space gradient background
+  background: linear-gradient(180deg,
+    oklch(0.10 0.03 280) 0%,
+    oklch(0.05 0.02 270) 50%,
+    oklch(0.08 0.03 260) 100%
+  );
+  
+  @media (prefers-contrast: high) {
+    // Disable gradient in high contrast mode
+    background: oklch(0.10 0 0);
+  }
+  
+  &__particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    
+    // Subtle animated particles (CSS-only)
+    background-image: 
+      radial-gradient(2px 2px at 20% 30%, oklch(0.8 0.1 280) 0%, transparent 100%),
+      radial-gradient(2px 2px at 60% 70%, oklch(0.8 0.1 45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 50%, oklch(0.9 0.1 280) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 10%, oklch(0.8 0.1 280) 0%, transparent 100%),
+      radial-gradient(2px 2px at 90% 60%, oklch(0.8 0.1 45) 0%, transparent 100%);
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+    
+    @media (prefers-reduced-motion: no-preference) {
+      animation: particlesDrift 60s ease-in-out infinite;
+    }
+    
+    @media (prefers-contrast: high) {
+      display: none;
+    }
+  }
+  
+  &__glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    
+    // Subtle radial glow
+    background: radial-gradient(circle at 50% 0%,
+      oklch(0.3 0.15 280 / 0.3) 0%,
+      transparent 50%
+    );
+    
+    @media (prefers-contrast: high) {
+      display: none;
+    }
+  }
+}
+
+// Particles drift animation
+@keyframes particlesDrift {
+  0%, 100% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+}
+
+// Responsive adjustments
+@include from(md) {
+  .genesis-main {
+    @include genesis-atmosphere('neutral');  // Less padding on desktop
+  }
+}

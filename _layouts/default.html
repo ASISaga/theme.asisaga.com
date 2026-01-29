@@ -2,15 +2,25 @@
 <html lang="{{ site.lang | default: 'en-US' }}">
   {% include head.html %}
   
-  <body class="layout-container">
-    <a href="#skip-target" class="skip-link">Skip to main content</a>
+  <body class="genesis-body">
+    <!-- Skip link (REQUIRED - WCAG AA) -->
+    <a href="#skip-target" class="skip-link sr-only focus-visible">Skip to main content</a>
     
+    <!-- Site Header -->
     {% include header.html %}
     
-    <main id="skip-target" tabindex="-1" role="main" class="page-content">
+    <!-- Main Content Area (REQUIRED landmark) -->
+    <main id="skip-target" tabindex="-1" class="genesis-main">
       {{ content }}
     </main>
     
+    <!-- Site Footer -->
     {% include footer.html %}
+    
+    <!-- Ambient Background Effects -->
+    <div class="genesis-ambient" aria-hidden="true">
+      <div class="genesis-ambient__particles"></div>
+      <div class="genesis-ambient__glow"></div>
+    </div>
   </body>
 </html>
