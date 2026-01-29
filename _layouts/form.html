@@ -2,23 +2,19 @@
 layout: default
 ---
 <div class="form-layout">
-  <header class="form-header">
-    {% if page.title %}
-    <h1 class="form-title">{{ page.title }}</h1>
-    {% endif %}
-    
-    {% if page.description %}
-    <p class="form-description">{{ page.description }}</p>
-    {% endif %}
-  </header>
+  {% include layouts/layout-header.html
+     class_prefix="form"
+     title=page.title
+     description=page.description
+  %}
   
-  <div class="form-content">
+  <div class="form__content">
     {% if page.show_progress and page.steps %}
-    <div class="form-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Form completion progress">
-      <div class="form-progress-bar"></div>
-      <ol class="form-steps">
+    <div class="form__progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Form completion progress">
+      <div class="form__progress-bar"></div>
+      <ol class="form__steps">
         {% for step in page.steps %}
-        <li class="form-step">{{ step }}</li>
+        <li class="form__step">{{ step }}</li>
         {% endfor %}
       </ol>
     </div>
@@ -28,12 +24,12 @@ layout: default
   </div>
   
   {% if page.help_text or page.privacy_link %}
-  <footer class="form-footer">
+  <footer class="form__footer">
     {% if page.help_text %}
-    <p class="form-help">{{ page.help_text }}</p>
+    <p class="form__help">{{ page.help_text }}</p>
     {% endif %}
     {% if page.privacy_link %}
-    <a href="{{ page.privacy_link }}" class="form-privacy">Privacy Policy</a>
+    <a href="{{ page.privacy_link }}" class="form__privacy">Privacy Policy</a>
     {% endif %}
   </footer>
   {% endif %}

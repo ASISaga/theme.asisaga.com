@@ -3,17 +3,17 @@
  * ============================================================================
  * Collection listing with filtering, sorting, and view options.
  * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * Uses semantic includes from _includes/layouts/
  * 
- * This file matches the classes in _layouts/archive.html:
- * - <div class="archive-layout">
- * - <header class="archive-header">
- * - <h1 class="archive-title">
- * - <p class="archive-description">
- * - <div class="archive-controls">
- * - <select class="archive-select">
- * - <button class="archive-view-btn">
- * - <div class="archive-content">
- * - <nav class="archive-pagination">
+ * This file matches the BEM structure from includes:
+ * - archive__header (from layout-header.html)
+ * - archive__title
+ * - archive__description
+ * - archive__controls
+ * - archive__select
+ * - archive__view-btn
+ * - archive__content
+ * - archive__pagination
  */
 
 
@@ -22,56 +22,69 @@
 .archive-layout {
   @include genesis-environment('chronological');  // Vertical flow
   @include genesis-atmosphere('neutral');          // Standard vibe
+}
+
+// Header section from layout-header.html include
+.archive__header {
+  @include genesis-entity('secondary');     // Header section
+}
+
+.archive__title {
+  @include genesis-cognition('axiom');      // Large headline
+}
+
+.archive__description {
+  @include genesis-cognition('discourse');  // Body text
+}
+
+// Controls section (custom for archive)
+.archive__controls {
+  @include genesis-environment('associative'); // Horizontal flex
   
-  .archive-header {
-    @include genesis-entity('secondary');     // Header section
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.archive__filters,
+.archive__sort {
+  @include genesis-environment('associative'); // Inline group
+}
+
+.archive__select {
+  @include genesis-synapse('input-primary'); // Select input
+}
+
+.archive__view-toggle {
+  @include genesis-environment('associative'); // Horizontal group
   
-  .archive-title {
-    @include genesis-cognition('axiom');      // Large headline
-  }
+  display: inline-flex;
+}
+
+.archive__view-btn {
+  @include genesis-synapse('toggle');       // View toggle button
+  @include genesis-state('stable');          // Normal state
   
-  .archive-description {
-    @include genesis-cognition('discourse');  // Body text
+  &--active {
+    @include genesis-state('active');       // Active view state
   }
+}
+
+// Content area
+.archive__content {
+  @include genesis-entity('primary');       // Main content
+}
+
+// Pagination
+.archive__pagination {
+  @include genesis-environment('associative'); // Horizontal pagination
+}
+
+.pagination-list {
+  @include genesis-environment('associative'); // Horizontal flex
   
-  .archive-controls {
-    @include genesis-environment('associative'); // Horizontal flex
-    
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  
-  .archive-view-toggle {
-    @include genesis-environment('associative'); // Horizontal group
-    
-    display: inline-flex;
-  }
-  
-  .archive-view-btn {
-    @include genesis-synapse('toggle');       // View toggle button
-    @include genesis-state('stable');          // Normal state
-    
-    &--active {
-      @include genesis-state('active');       // Active view state
-    }
-  }
-  
-  .archive-content {
-    @include genesis-entity('primary');       // Main content
-  }
-  
-  .archive-pagination {
-    @include genesis-environment('associative'); // Horizontal pagination
-  }
-  
-  .pagination-list {
-    @include genesis-environment('associative'); // Horizontal flex
-    
-    display: flex;
-    list-style: none;
-    padding-left: 0;
-    justify-content: center;
-  }
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+  justify-content: center;
 }

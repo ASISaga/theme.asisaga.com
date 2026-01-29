@@ -3,6 +3,20 @@
  * ============================================================================
  * Coming soon/launch page with countdown and email capture.
  * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * 
+ * This file matches the BEM structure:
+ * - splash__logo
+ * - splash__title
+ * - splash__subtitle
+ * - splash__countdown
+ * - splash__countdown-item
+ * - splash__countdown-value
+ * - splash__countdown-label
+ * - splash__email-form
+ * - splash__email-input
+ * - splash__email-button
+ * - splash__social
+ * - splash__social-link
  */
 
 
@@ -15,57 +29,65 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+// Branding
+.splash__logo {
+  @include genesis-entity('primary');       // Logo display
+  max-width: 200px;
+  margin-inline: auto;
+}
+
+.splash__title {
+  @include genesis-cognition('axiom');      // Large headline
+}
+
+.splash__subtitle {
+  @include genesis-cognition('discourse');  // Subheading
+}
+
+// Countdown timer
+.splash__countdown {
+  @include genesis-entity('imperative');    // Urgent countdown
+  @include genesis-state('evolving');        // Active/changing state
+}
+
+.splash__countdown-item {
+  @include genesis-entity('secondary');     // Individual counter
+}
+
+.splash__countdown-value {
+  @include genesis-cognition('axiom');      // Large numbers
+}
+
+.splash__countdown-label {
+  @include genesis-cognition('gloss');      // Small labels
+}
+
+// Email capture form
+.splash__email-form {
+  @include genesis-environment('associative'); // Horizontal layout
+  @include genesis-synapse('input-primary'); // Primary input form
   
-  .splash-logo {
-    @include genesis-entity('primary');       // Logo display
-    max-width: 200px;
-    margin-inline: auto;
-  }
-  
-  .splash-title {
-    @include genesis-cognition('axiom');      // Large headline
-  }
-  
-  .splash-subtitle {
-    @include genesis-cognition('discourse');  // Subheading
-  }
-  
-  .splash-countdown {
-    @include genesis-entity('imperative');    // Urgent countdown
-    @include genesis-state('evolving');        // Active/changing state
-  }
-  
-  .splash-countdown-item {
-    @include genesis-entity('secondary');     // Individual counter
-  }
-  
-  .splash-countdown-value {
-    @include genesis-cognition('axiom');      // Large numbers
-  }
-  
-  .splash-countdown-label {
-    @include genesis-cognition('gloss');      // Small labels
-  }
-  
-  .splash-email-form {
-    @include genesis-environment('associative'); // Horizontal layout
-    @include genesis-synapse('input-primary'); // Primary input form
-    
-    max-width: 500px;
-    margin-inline: auto;
-    display: flex;
-    gap: 0.5rem;
-  }
-  
-  .splash-email-button {
-    @include genesis-synapse('execute');      // Submit action
-  }
-  
-  .splash-social {
-    @include genesis-environment('associative'); // Horizontal flex
-  }
-  
-  .splash-social-link {
-    @include genesis-synapse('social');       // Social link
-  }
+  max-width: 500px;
+  margin-inline: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.splash__email-input {
+  @include genesis-synapse('input-primary'); // Email input
+}
+
+.splash__email-button {
+  @include genesis-synapse('execute');      // Submit action
+}
+
+// Social links
+.splash__social {
+  @include genesis-environment('associative'); // Horizontal flex
+}
+
+.splash__social-link {
+  @include genesis-synapse('social');       // Social link
 }

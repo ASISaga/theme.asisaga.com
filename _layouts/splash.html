@@ -3,52 +3,52 @@ layout: minimal-base
 ---
 <div class="splash-layout-content">
   {% if page.logo %}
-  <img src="{{ page.logo }}" alt="{{ page.title }}" class="splash-logo">
+  <img src="{{ page.logo }}" alt="{{ page.title }}" class="splash__logo">
   {% endif %}
   
   {% if page.title %}
-  <h1 class="splash-title">{{ page.title }}</h1>
+  <h1 class="splash__title">{{ page.title }}</h1>
   {% endif %}
   
   {% if page.subtitle %}
-  <p class="splash-subtitle">{{ page.subtitle }}</p>
+  <p class="splash__subtitle">{{ page.subtitle }}</p>
   {% endif %}
   
   {{ content }}
   
   {% if page.countdown %}
-  <div class="splash-countdown" aria-label="Countdown timer">
-    <div class="splash-countdown-item">
-      <span class="splash-countdown-value" id="days" aria-label="Days">00</span>
-      <span class="splash-countdown-label">Days</span>
+  <div class="splash__countdown" aria-label="Countdown timer">
+    <div class="splash__countdown-item">
+      <span class="splash__countdown-value" id="days" aria-label="Days">00</span>
+      <span class="splash__countdown-label">Days</span>
     </div>
-    <div class="splash-countdown-item">
-      <span class="splash-countdown-value" id="hours" aria-label="Hours">00</span>
-      <span class="splash-countdown-label">Hours</span>
+    <div class="splash__countdown-item">
+      <span class="splash__countdown-value" id="hours" aria-label="Hours">00</span>
+      <span class="splash__countdown-label">Hours</span>
     </div>
-    <div class="splash-countdown-item">
-      <span class="splash-countdown-value" id="minutes" aria-label="Minutes">00</span>
-      <span class="splash-countdown-label">Minutes</span>
+    <div class="splash__countdown-item">
+      <span class="splash__countdown-value" id="minutes" aria-label="Minutes">00</span>
+      <span class="splash__countdown-label">Minutes</span>
     </div>
-    <div class="splash-countdown-item">
-      <span class="splash-countdown-value" id="seconds" aria-label="Seconds">00</span>
-      <span class="splash-countdown-label">Seconds</span>
+    <div class="splash__countdown-item">
+      <span class="splash__countdown-value" id="seconds" aria-label="Seconds">00</span>
+      <span class="splash__countdown-label">Seconds</span>
     </div>
   </div>
   {% endif %}
   
   {% if page.email_capture %}
-  <form class="splash-email-form">
+  <form class="splash__email-form">
     <label for="splash-email" class="sr-only">Email address</label>
-    <input type="email" id="splash-email" class="splash-email-input" placeholder="Enter your email" required>
-    <button type="submit" class="splash-email-button">{{ page.email_capture.button_text | default: "Notify Me" }}</button>
+    <input type="email" id="splash-email" class="splash__email-input" placeholder="Enter your email" required>
+    <button type="submit" class="splash__email-button">{{ page.email_capture.button_text | default: "Notify Me" }}</button>
   </form>
   {% endif %}
   
   {% if page.social_links %}
-  <nav class="splash-social" aria-label="Social media links">
+  <nav class="splash__social" aria-label="Social media links">
     {% for link in page.social_links %}
-    <a href="{{ link.url }}" class="splash-social-link" target="_blank" rel="noopener noreferrer" aria-label="{{ link.platform | capitalize }}">
+    <a href="{{ link.url }}" class="splash__social-link" target="_blank" rel="noopener noreferrer" aria-label="{{ link.platform | capitalize }}">
       <i class="fab fa-{{ link.platform }}" aria-hidden="true"></i>
       <span class="sr-only">{{ link.platform | capitalize }}</span>
     </a>
