@@ -1,0 +1,67 @@
+/**
+ * CONTENT EXAMPLES
+ * ============================================================================
+ * Examples for content-focused layouts: blog posts, articles, reading layouts.
+ */
+
+// ============================================================================
+// EXAMPLE 1: Research Paper / Blog Post Layout
+// ============================================================================
+// A focused reading experience with clear information hierarchy
+.research-paper {
+  @include genesis-environment('focused');  // Linear reading layout
+  @include genesis-atmosphere('ethereal');  // Light, distraction-free vibe
+
+  .paper-header {
+    @include genesis-entity('primary');     // Main content block
+    
+    .title {
+      @include genesis-cognition('axiom'); // Large, bold headline
+    }
+    
+    .authors {
+      @include genesis-cognition('gloss'); // Small, secondary info
+    }
+    
+    .metadata {
+      @include genesis-cognition('quantum'); // Tags/chips for categories
+    }
+  }
+
+  .abstract {
+    @include genesis-entity('secondary');   // Supporting context
+    @include genesis-cognition('discourse'); // Standard reading text
+  }
+
+  .content {
+    @include genesis-cognition('discourse'); // Body prose
+    
+    .code-block {
+      @include genesis-entity('secondary');
+      @include genesis-cognition('protocol'); // Code/technical data
+    }
+    
+    .footnote {
+      @include genesis-cognition('gloss');   // Annotations
+    }
+  }
+
+  .actions {
+    .download-pdf {
+      @include genesis-synapse('execute');   // Action button
+    }
+    
+    .cite-link {
+      @include genesis-synapse('navigate');  // External link
+    }
+    
+    .share-social {
+      @include genesis-synapse('social');    // Social sharing
+    }
+  }
+
+  .last-updated {
+    @include genesis-state('stable');        // Content is verified
+  }
+}
+

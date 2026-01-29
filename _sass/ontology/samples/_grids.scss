@@ -1,0 +1,56 @@
+/**
+ * GRID & PORTFOLIO EXAMPLES
+ * ============================================================================
+ * Examples for product grids, portfolios, and distributed layouts.
+ */
+
+// ============================================================================
+// EXAMPLE 5: Product Grid / Portfolio
+// ============================================================================
+// Distributed autonomous entities
+.product-grid {
+  @include genesis-environment('distributed'); // Bento grid
+  @include genesis-atmosphere('neutral');
+
+  .product-card {
+    @include genesis-entity('primary');
+    
+    .product-image {
+      @include genesis-entity('aggregate');    // Container for media
+    }
+    
+    .product-title {
+      @include genesis-cognition('axiom');     // Product name
+    }
+    
+    .product-description {
+      @include genesis-cognition('discourse'); // Details
+    }
+    
+    .product-price {
+      @include genesis-cognition('motive');    // Emphasis on price
+    }
+    
+    .product-tags {
+      @include genesis-cognition('quantum');   // Category chips
+    }
+    
+    .view-details {
+      @include genesis-synapse('navigate');    // Link to product page
+    }
+    
+    .add-to-cart {
+      @include genesis-synapse('execute');     // Action button
+    }
+  }
+
+  .featured-product {
+    @include genesis-entity('imperative');     // Highlighted product
+  }
+
+  .out-of-stock {
+    @include genesis-entity('latent');         // Unavailable
+    @include genesis-state('deprecated');      // Not currently available
+  }
+}
+

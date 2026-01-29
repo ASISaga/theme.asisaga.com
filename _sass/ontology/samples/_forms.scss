@@ -1,0 +1,43 @@
+/**
+ * FORMS & INTERACTION EXAMPLES
+ * ============================================================================
+ * Examples for forms, settings panels, and configuration interfaces.
+ */
+
+// ============================================================================
+// EXAMPLE 6: Settings Panel / Configuration
+// ============================================================================
+// Form-focused interface
+.settings-panel {
+  @include genesis-environment('focused');    // Narrow, focused layout
+  @include genesis-atmosphere('neutral');
+
+  .setting-group {
+    @include genesis-entity('secondary');
+    
+    .group-title {
+      @include genesis-cognition('motive');   // Section header
+    }
+    
+    .setting-description {
+      @include genesis-cognition('discourse'); // Explanatory text
+    }
+    
+    .setting-label {
+      @include genesis-cognition('gloss');    // Form labels
+    }
+  }
+
+  .save-button {
+    @include genesis-synapse('execute');      // Save changes
+  }
+
+  .reset-button {
+    @include genesis-synapse('destructive');  // Dangerous action
+  }
+
+  .search-settings {
+    @include genesis-synapse('inquiry');      // Search/filter
+  }
+}
+
