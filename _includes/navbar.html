@@ -1,15 +1,35 @@
 <nav class="navbar" aria-label="Main navigation">
-  <ul class="navbar__list">
+  <ul class="navbar__list" role="menubar">
     {% for nav in site.data.nav.navigation %}
       {% if nav.subcategories %}
-      <li class="navbar__item navbar__item--dropdown">
-        <button class="navbar__link navbar__link--dropdown" id="nav-dropdown-{{ forloop.index }}" aria-expanded="false" aria-haspopup="true" data-bs-toggle="dropdown">
+      <li class="navbar__item navbar__item--dropdown" role="none">
+        <button 
+          class="navbar__link navbar__link--dropdown" 
+          id="nav-dropdown-{{ forloop.index }}" 
+          aria-expanded="false" 
+          aria-haspopup="true"
+          aria-controls="dropdown-menu-{{ forloop.index }}"
+          data-dropdown-toggle
+          role="menuitem"
+        >
           {{ nav.title }}
         </button>
-        <ul class="navbar__dropdown" aria-labelledby="nav-dropdown-{{ forloop.index }}">
+        <ul 
+          class="navbar__dropdown" 
+          id="dropdown-menu-{{ forloop.index }}"
+          aria-labelledby="nav-dropdown-{{ forloop.index }}"
+          aria-hidden="true"
+          role="menu"
+        >
           {% for subcategory in nav.subcategories %}
-          <li class="navbar__dropdown-item">
-            <a class="navbar__dropdown-link" href="{{ subcategory.url }}"{% if page.url == subcategory.url %} aria-current="page"{% endif %}>
+          <li class="navbar__dropdown-item" role="none">
+            <a 
+              class="navbar__dropdown-link" 
+              href="{{ subcategory.url }}"
+              {% if page.url == subcategory.url %} aria-current="page"{% endif %}
+              role="menuitem"
+              tabindex="-1"
+            >
               {{ subcategory.title }}
             </a>
           </li>
@@ -17,8 +37,13 @@
         </ul>
       </li>
       {% else %}
-      <li class="navbar__item{% if nav.title == page.title %} navbar__item--active{% endif %}">
-        <a class="navbar__link" href="{{ site.url }}{{ nav.url }}"{% if nav.title == page.title %} aria-current="page"{% endif %}>
+      <li class="navbar__item{% if nav.title == page.title %} navbar__item--active{% endif %}" role="none">
+        <a 
+          class="navbar__link" 
+          href="{{ site.url }}{{ nav.url }}"
+          {% if nav.title == page.title %} aria-current="page"{% endif %}
+          role="menuitem"
+        >
           {{ nav.title }}
         </a>
       </li>

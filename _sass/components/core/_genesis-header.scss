@@ -193,25 +193,32 @@
     top: 0;
     right: -100%;
     bottom: 0;
-    width: 80%;
-    max-width: 320px;
+    width: 85%;
+    max-width: 360px;
     z-index: 1001;
     
     @include genesis-entity('primary');
     @include genesis-atmosphere('void');
     
-    padding: 5rem 2rem 2rem;
+    padding: 5.5rem 1.5rem 2rem;
     overflow-y: auto;
+    overflow-x: hidden;
     
-    transition: right 0.3s ease;
+    // Smooth scrolling for mobile menu
+    -webkit-overflow-scrolling: touch;
+    
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    // Enhanced shadow when open
+    box-shadow: -12px 0 48px oklch(0 0 0 / 0);
     
     &[data-nav-open="true"] {
       right: 0;
-      box-shadow: -8px 0 32px oklch(0 0 0 / 0.5);
+      box-shadow: -12px 0 48px oklch(0 0 0 / 0.6);
     }
     
     @media (prefers-reduced-motion: reduce) {
-      transition: none;
+      transition: right 0.1s linear;
     }
     
     // Desktop: Inline navigation
@@ -221,10 +228,12 @@
       max-width: none;
       padding: 0;
       overflow-y: visible;
+      overflow-x: visible;
       
       background: transparent;
       backdrop-filter: none;
       box-shadow: none;
+      transition: none;
     }
   }
 }
