@@ -2,16 +2,41 @@
  * THEME LAYOUTS & COMPONENTS - Ontology-Based
  * ============================================================================
  * This file provides ontology-based styling for all theme layouts and components.
- * It replaces legacy CSS with pure semantic ontological mixins.
  * 
- * ALL theme HTML (layouts & includes) should use semantic class names,
- * and this file maps those classes to ontological roles.
+ * NOTE: All theme layout and component styles have been consolidated into
+ * the /_sass/components directory for better organization and maintainability.
+ * This file now serves as a compatibility layer that imports from components.
  * 
- * ZERO raw CSS properties - everything through ontology mixins.
- * 
- * NOTE: This file has been refactored for maintainability. All layout
- * and component styles are now in the theme-layouts/ subdirectory.
+ * The theme-layouts subdirectory has been merged into components, combining
+ * best features from both locations.
  */
 
-// Import all theme layouts and components from subdirectory
-@import "theme-layouts/index";
+// Import all theme layouts and components from components directory
+// These files were previously in theme-layouts/ but have been merged into components/
+
+// Base layout structure
+@import "../components/base-layout";
+
+// Header, footer, and navigation
+@import "../components/header";
+@import "../components/footer";
+@import "../components/navbar";
+
+// Hero sections
+@import "../components/hero";
+
+// Cards
+@import "../components/cards";
+
+// Sections (headers, content, features, timeline, CTA, testimonials)
+@import "../components/sections";
+
+// Layout-specific styles
+@import "../components/layout-styles";
+
+// Specialized components
+@import "../components/specialized";
+
+// Utility classes
+@import "../components/utilities";
+

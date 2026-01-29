@@ -1,6 +1,26 @@
+/**
+ * HEADER COMPONENT
+ * ============================================================================
+ * Site header, branding, and header navigation styles.
+ * Merged from theme-layouts and components - combining best features.
+ */
 
-// Site Header - Enhanced transparent and responsive design
-// Core navbar structure with Genesis Ontological System
+// ============================================================================
+// HEADER WRAPPER
+// ============================================================================
+
+// Note: flex-shrink properties below are fundamental layout structure,
+// not ontological semantics, so they're applied directly rather than via mixin
+
+.header-wrapper {
+  @include genesis-entity('primary');  // Elevated header
+  flex-shrink: 0;  // Prevent shrinking in parent flex column
+}
+
+// ============================================================================
+// SITE HEADER - Enhanced with sticky positioning and responsive design
+// ============================================================================
+
 .site-header {
   // Header container - sticky positioning with glassmorphism
   position: sticky;
@@ -11,8 +31,10 @@
   // Fixed minimum height to prevent layout shifts
   min-height: 70px;
   
-  @include genesis-entity('primary');
+  @include genesis-entity('primary');        // Main header card
+  @include genesis-environment('associative'); // Horizontal flex
   @include genesis-atmosphere('void');
+  flex-shrink: 0;  // Prevent shrinking in parent flex column
   
   // Use flexbox for responsive layout
   display: flex;
@@ -42,7 +64,7 @@
 
   // Brand container with enhanced styling
   &__brand {
-    @include genesis-synapse('navigate');
+    @include genesis-synapse('navigate');  // Clickable logo
     @include genesis-entity('secondary');
   }
 
@@ -58,17 +80,17 @@
 
   // Header title - Enhanced for accessibility and responsiveness
   &__title {
-    @include genesis-cognition('axiom');
+    @include genesis-cognition('axiom');  // Site title (large)
   }
   
   // Header tagline - Enhanced for accessibility and responsiveness
   &__tagline {
-    @include genesis-cognition('gloss');
+    @include genesis-cognition('gloss');  // Subtitle (small)
   }
   
   // Mobile menu toggle button - Enhanced futuristic design
   &__toggle {
-    @include genesis-synapse('execute');
+    @include genesis-synapse('execute');  // Action button
   }
 
   // Toggle icon styling
@@ -78,6 +100,8 @@
   
   // Navigation container - Enhanced responsive design
   &__nav {
+    @include genesis-environment('associative');  // Horizontal flex
+    
     // Full width on mobile when collapsed
     @media (max-width: 767px) {
       width: 100%;
@@ -102,3 +126,30 @@
     }
   }
 }
+
+// ============================================================================
+// ADDITIONAL HEADER ELEMENTS
+// ============================================================================
+
+.header-brand-row {
+  @include genesis-environment('associative');  // Horizontal layout
+}
+
+.header-logo {
+  @include genesis-entity('secondary');  // Logo container
+}
+
+.header-title {
+  @include genesis-entity('secondary');  // Title container
+}
+
+// Mobile navigation toggle
+.site-header-toggler {
+  @include genesis-synapse('execute');  // Action button
+}
+
+// Navigation container (alternative naming)
+.site-header-nav {
+  @include genesis-environment('associative');  // Horizontal flex
+}
+

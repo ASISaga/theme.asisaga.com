@@ -1,0 +1,39 @@
+/**
+ * BASE LAYOUT STRUCTURE
+ * ============================================================================
+ * Fundamental page layout containers and skip links.
+ * Moved from ontology/theme-layouts to components.
+ */
+
+// ============================================================================
+// BASE LAYOUT STRUCTURE
+// ============================================================================
+
+// Main page container - full width, flex column for header/main/footer stacking
+.layout-container {
+  @include genesis-atmosphere('neutral');   // Standard vibe
+  
+  // Fundamental flex layout properties - required for base structure
+  // The ontology system sits on top of this foundational flex column layout
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.page-layout {
+  @include genesis-environment('chronological');  // Vertical stack
+}
+
+// Content wrapper - full width by default, let page content control width
+.content-wrapper {
+  // No environment constraint - allow full width for subdomain layouts
+  // Individual page wrappers can apply their own constraints if needed
+  width: 100%;
+}
+
+// Skip link for accessibility
+.skip-link {
+  @include genesis-synapse('navigate');  // Link behavior
+  @include genesis-state('stable');      // Normal state
+}

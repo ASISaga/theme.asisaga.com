@@ -1,0 +1,407 @@
+/**
+ * LAYOUT SPECIFIC STYLES
+ * ============================================================================
+ * Styles for specific page layouts: content, archive, post, article, 
+ * dashboard, profile, gallery, form, FAQ, settings, search, minimal, 
+ * splash, landing, docs, chatroom.
+ * Moved from ontology/theme-layouts to components.
+ */
+
+// ============================================================================
+// LAYOUT SPECIFIC STYLES
+// ============================================================================
+
+// Default layout
+.page-content {
+  // Main content area - fundamental flex properties for layout structure
+  flex: 1 0 auto;
+  width: 100%;
+  @include genesis-entity('primary');       // Main content styling
+}
+
+.site-main {
+  @include genesis-environment('focused');  // Centered content
+  @include genesis-entity('primary');       // Main content area
+}
+
+// Archive layout
+.archive {
+  @include genesis-environment('focused');
+  
+  &__list {
+    @include genesis-environment('chronological');  // Vertical list
+  }
+  
+  &__item {
+    @include genesis-entity('primary');
+    
+    &-title {
+      @include genesis-cognition('motive');
+    }
+    
+    &-date {
+      @include genesis-cognition('gloss');
+    }
+    
+    &-excerpt {
+      @include genesis-cognition('discourse');
+    }
+  }
+}
+
+// Post layout
+.post {
+  @include genesis-environment('focused');  // Reading layout
+  @include genesis-atmosphere('ethereal');  // Light, peaceful
+  
+  &__header {
+    @include genesis-entity('primary');
+    
+    &-title {
+      @include genesis-cognition('axiom');
+    }
+    
+    &-meta {
+      @include genesis-cognition('gloss');
+    }
+  }
+  
+  &__content {
+    @include genesis-cognition('discourse');  // Body prose
+  }
+  
+  &__footer {
+    @include genesis-entity('secondary');
+  }
+}
+
+// Article layout
+.article {
+  @include genesis-environment('focused');
+  @include genesis-atmosphere('ethereal');
+  
+  &__toc {
+    @include genesis-entity('secondary');
+    
+    &-title {
+      @include genesis-cognition('motive');
+    }
+    
+    &-link {
+      @include genesis-synapse('navigate');
+    }
+  }
+  
+  &__content {
+    @include genesis-cognition('discourse');
+  }
+}
+
+// Dashboard layout
+.dashboard {
+  @include genesis-environment('manifest');  // 12-column grid
+  @include genesis-atmosphere('vibrant');    // High-energy
+  
+  &__header {
+    @include genesis-entity('primary');
+  }
+  
+  &__sidebar {
+    @include genesis-entity('secondary');
+  }
+  
+  &__main {
+    @include genesis-entity('primary');
+  }
+  
+  &__widget {
+    @include genesis-entity('primary');
+    @include genesis-state('evolving');  // Live data
+    
+    &-title {
+      @include genesis-cognition('motive');
+    }
+    
+    &-value {
+      @include genesis-cognition('axiom');  // Large number
+    }
+    
+    &-label {
+      @include genesis-cognition('gloss');
+    }
+  }
+}
+
+// Profile layout
+.profile {
+  @include genesis-environment('focused');
+  
+  &__header {
+    @include genesis-entity('primary');
+    
+    &-row {
+      @include genesis-environment('associative');
+    }
+  }
+  
+  &__avatar {
+    @include genesis-entity('secondary');
+  }
+  
+  &__name {
+    @include genesis-cognition('axiom');
+  }
+  
+  &__bio {
+    @include genesis-cognition('discourse');
+  }
+  
+  &__stats {
+    @include genesis-environment('associative');
+    
+    &-item {
+      @include genesis-entity('secondary');
+      
+      &-value {
+        @include genesis-cognition('axiom');
+      }
+      
+      &-label {
+        @include genesis-cognition('gloss');
+      }
+    }
+  }
+}
+
+// Gallery layout
+.gallery {
+  @include genesis-environment('distributed');  // Grid layout
+  
+  &__item {
+    @include genesis-entity('primary');
+    
+    &-image {
+      @include genesis-entity('secondary');
+    }
+    
+    &-caption {
+      @include genesis-cognition('gloss');
+    }
+  }
+}
+
+// Form layout
+.form {
+  @include genesis-environment('focused');
+  
+  &__group {
+    @include genesis-entity('secondary');
+  }
+  
+  &__label {
+    @include genesis-cognition('motive');  // Instructional
+  }
+  
+  &__input {
+    @include genesis-entity('secondary');
+  }
+  
+  &__help {
+    @include genesis-cognition('gloss');  // Help text
+  }
+  
+  &__button {
+    @include genesis-synapse('execute');  // Submit button
+    
+    &--secondary {
+      @include genesis-synapse('inquiry');  // Secondary action
+    }
+    
+    &--danger {
+      @include genesis-synapse('destructive');  // Delete/cancel
+    }
+  }
+}
+
+// FAQ layout
+.faq {
+  @include genesis-environment('focused');
+  
+  &__content-row {
+    @include genesis-environment('chronological');
+  }
+  
+  &__item {
+    @include genesis-entity('primary');
+    
+    &-question {
+      @include genesis-cognition('motive');
+    }
+    
+    &-answer {
+      @include genesis-cognition('discourse');
+    }
+  }
+}
+
+// Settings layout
+.settings {
+  @include genesis-environment('manifest');  // Multi-column
+  
+  &__sidebar {
+    @include genesis-entity('secondary');
+    
+    &-nav {
+      @include genesis-environment('chronological');
+      
+      &-link {
+        @include genesis-synapse('navigate');
+      }
+    }
+  }
+  
+  &__main {
+    @include genesis-entity('primary');
+  }
+  
+  &__section {
+    @include genesis-entity('secondary');
+    
+    &-title {
+      @include genesis-cognition('motive');
+    }
+  }
+}
+
+// Search layout
+.search {
+  @include genesis-environment('focused');
+  
+  &__input {
+    @include genesis-entity('primary');
+  }
+  
+  &__button {
+    @include genesis-synapse('inquiry');  // Search action
+  }
+  
+  &__results {
+    @include genesis-environment('chronological');
+  }
+  
+  &__result {
+    @include genesis-entity('primary');
+    
+    &-title {
+      @include genesis-cognition('motive');
+    }
+    
+    &-excerpt {
+      @include genesis-cognition('discourse');
+    }
+  }
+}
+
+// Minimal layout
+.minimal-layout {
+  @include genesis-environment('focused');
+  @include genesis-atmosphere('void');  // Clean, distraction-free
+  
+  &-row {
+    @include genesis-environment('chronological');
+  }
+}
+
+// Splash layout
+.splash {
+  @include genesis-entity('imperative');     // Full attention
+  @include genesis-atmosphere('vibrant');    // High-energy
+  @include genesis-environment('focused');   // Centered
+  
+  &__countdown {
+    @include genesis-entity('primary');
+    @include genesis-state('evolving');  // Live countdown
+    
+    &-number {
+      @include genesis-cognition('axiom');  // Large numbers
+    }
+    
+    &-label {
+      @include genesis-cognition('gloss');
+    }
+  }
+}
+
+// Landing page
+.landing {
+  @include genesis-environment('chronological');  // Vertical sections
+  
+  &__features {
+    @include genesis-environment('distributed');  // Feature grid
+  }
+}
+
+// Docs layout
+.docs {
+  @include genesis-environment('manifest');  // Multi-column
+  
+  &__sidebar {
+    @include genesis-entity('secondary');
+    
+    &-nav {
+      @include genesis-environment('chronological');
+      
+      &-link {
+        @include genesis-synapse('navigate');
+      }
+    }
+  }
+  
+  &__content {
+    @include genesis-cognition('discourse');
+  }
+  
+  &__code {
+    @include genesis-cognition('protocol');  // Code blocks
+  }
+}
+
+// Chatroom layout
+.chatroom {
+  @include genesis-environment('manifest');
+  @include genesis-atmosphere('void');  // Focused communication
+  
+  &__messages {
+    @include genesis-environment('chronological');
+    @include genesis-entity('secondary');
+  }
+  
+  &__message {
+    @include genesis-entity('primary');
+    
+    &-author {
+      @include genesis-cognition('motive');
+    }
+    
+    &-text {
+      @include genesis-cognition('discourse');
+    }
+    
+    &-timestamp {
+      @include genesis-cognition('gloss');
+    }
+  }
+  
+  &__input {
+    @include genesis-entity('primary');
+    
+    &-field {
+      @include genesis-entity('secondary');
+    }
+    
+    &-button {
+      @include genesis-synapse('execute');
+    }
+  }
+}
+

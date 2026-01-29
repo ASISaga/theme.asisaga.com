@@ -1,0 +1,141 @@
+/**
+ * SPECIALIZED COMPONENTS
+ * ============================================================================
+ * Product displays, interactive modules, and specialized layouts.
+ * Moved from ontology/theme-layouts to components.
+ */
+
+// ============================================================================
+// SPECIALIZED COMPONENTS
+// ============================================================================
+
+// Product components
+.product {
+  &-applications {
+    @include genesis-environment('distributed');
+  }
+  
+  &-benefits-list {
+    @include genesis-environment('chronological');
+    
+    &__item {
+      @include genesis-entity('primary');
+      
+      &-title {
+        @include genesis-cognition('motive');
+      }
+      
+      &-description {
+        @include genesis-cognition('discourse');
+      }
+    }
+  }
+  
+  &-code-example {
+    @include genesis-entity('primary');
+    
+    &__code {
+      @include genesis-cognition('protocol');
+    }
+    
+    &__description {
+      @include genesis-cognition('discourse');
+    }
+  }
+  
+  &-feature-grid {
+    @include genesis-environment('distributed');
+  }
+  
+  &-section-container {
+    @include genesis-entity('secondary');
+  }
+  
+  &-visual {
+    @include genesis-entity('primary');
+  }
+}
+
+// Interactive module
+.interactive-module {
+  @include genesis-entity('primary');
+  @include genesis-state('evolving');  // Interactive state
+  
+  &__controls {
+    @include genesis-environment('associative');
+  }
+  
+  &__display {
+    @include genesis-entity('secondary');
+  }
+}
+
+// Genesis invitation (sacred component)
+.genesis-invitation {
+  @include genesis-entity('imperative');
+  @include genesis-atmosphere('ethereal');
+  
+  &__title {
+    @include genesis-cognition('axiom');
+  }
+  
+  &__message {
+    @include genesis-cognition('motive');  // Persuasive
+  }
+  
+  &__action {
+    @include genesis-synapse('execute');
+  }
+}
+
+// Transcendent hero (sacred component)
+.transcendent-hero {
+  @include genesis-entity('imperative');
+  @include genesis-atmosphere('ethereal');
+  @include genesis-state('evolving');  // Animated/living
+  
+  &__title {
+    @include genesis-cognition('axiom');
+  }
+  
+  &__subtitle {
+    @include genesis-cognition('motive');
+  }
+}
+
+// LinkedIn component
+.linkedin {
+  &__button {
+    @include genesis-synapse('social');  // Social sharing
+  }
+}
+
+// Content modal
+.content-modal {
+  @include genesis-entity('imperative');
+  @include genesis-atmosphere('void');  // Focused overlay
+  
+  &__header {
+    @include genesis-entity('secondary');
+    
+    &-title {
+      @include genesis-cognition('axiom');
+    }
+  }
+  
+  &__body {
+    @include genesis-cognition('discourse');
+  }
+  
+  &__footer {
+    @include genesis-entity('secondary');
+    
+    &-actions {
+      @include genesis-environment('associative');
+    }
+  }
+  
+  &__close {
+    @include genesis-synapse('destructive');
+  }
+}
