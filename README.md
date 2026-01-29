@@ -485,3 +485,22 @@ This architecture enables the ecosystem to grow and evolve while maintaining coh
 **Primary Interface**: Ontology System (`_sass/ontology/`)  
 **Backward Compatibility**: Full (Bento, Material, Bootstrap compatibility)  
 **Documentation**: Comprehensive (6 guides, examples, demos)
+---
+
+## 📖 Documentation
+
+### Quick Access
+- **[Quick Start Guide](docs/guides/QUICK-START-NAVIGATION.md)** - Get started in 5 minutes
+- **[Complete Documentation Index](docs/README.md)** - All documentation organized by topic
+- **[GENOME.md](GENOME.md)** - Living history of ontological evolution
+- **[SASS Structure Guide](SASS-REORGANIZATION-GUIDE.md)** - SCSS directory organization
+
+### By Topic
+- **Ontology System**: See `_sass/ontology/INTEGRATION-GUIDE.md`
+- **Styling & Colors**: See `docs/guides/COLOR-SCHEME-DOCUMENTATION.md`
+- **Performance**: See `docs/guides/GPU-ACCELERATION-GUIDE.md`
+- **Code Quality**: See `docs/guides/STYLELINT.md`
+- **Layout System**: See `docs/layout-implementation-guide.md`
+
+### Historical Records
+Completed implementations, refactorings, and audits are archived in [`docs/archive/`](docs/archive/README.md) for reference.

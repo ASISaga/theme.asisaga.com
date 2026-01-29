@@ -78,9 +78,6 @@
 
 // Genesis ceremony modal
 .modal-genesis-ceremony {
-  // TODO: Replace @extend .modal-sacred with proper mixin or direct styles for Jekyll compatibility
-    // @extend .modal-sacred;
-  
   .modal-content {
     @include genesis-atmosphere('vibrant');
     background: linear-gradient(135deg, 

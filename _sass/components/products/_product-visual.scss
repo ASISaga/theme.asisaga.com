@@ -1,0 +1,32 @@
+
+// Product Visual Component Styles
+// Corresponds to product-visual.html include
+
+.product-visual-section {
+  
+  &.product-section-light {
+  }
+  
+  .product-visual-container {
+  @include make-container(); // with proper mixin or direct styles for Jekyll compatibility
+    
+    .product-image {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    .additional-content-container {
+      
+      h3 {
+        color: var(--color-primary);
+      }
+      
+      ul {
+      }
+    }
+  }
+  
+  // Extracted to reduce nesting depth
+  .additional-content-container ul li {
+  }
+}

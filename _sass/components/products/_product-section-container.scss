@@ -1,0 +1,27 @@
+
+// Product Section Container Component Styles
+// Corresponds to product-section-container.html include
+
+.product-section {
+  
+  // Add margin to sections that aren't the first one
+  &:not(:first-of-type) {
+  }
+
+  // Background variations
+  &.product-section-light {
+  }
+  
+  &.product-section-primary {
+  }
+
+  &.product-section-accent {
+  }
+  
+  // Section header is styled in _section-header.scss
+  
+  // Container for section content
+  .product-section-content {
+  @include make-container(); // with proper mixin or direct styles for Jekyll compatibility
+  }
+}

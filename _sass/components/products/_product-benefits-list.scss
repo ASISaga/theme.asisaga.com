@@ -1,0 +1,25 @@
+
+// Product Benefits List Component Styles
+// Corresponds to product-benefits-list.html include
+
+.product-benefits-section {
+  
+  &.product-section-light {
+  }
+  
+  .product-list-container {
+  @include make-container(); // with proper mixin or direct styles for Jekyll compatibility
+    
+    .product-list {
+      
+      .product-list-item {
+        border-left: $product-border-accent-width solid var(--color-primary); // Using centralized dimension variable
+      }
+    }
+  }
+  
+  // Extracted to reduce nesting depth
+  .product-list-highlight {
+    color: var(--color-primary);
+  }
+}

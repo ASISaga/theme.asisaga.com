@@ -1,0 +1,36 @@
+
+// LinkedIn component styling - Using Bootstrap native classes
+// Matches linkedin.html component in _includes
+
+.linkedin-badge {
+  
+  .linkedin-profile {
+    
+    &-header {
+    }
+      &-image {
+      width: $linkedin-avatar-size; // Using centralized dimension variable
+      height: $linkedin-avatar-size; // Using centralized dimension variable
+    }
+    
+    &-info {
+    }
+    
+    &-name {
+    }
+    
+    &-title {
+    }
+    
+    &-company {
+    }
+  }
+  
+  .linkedin-button {
+    background-color: #0077b5; // LinkedIn brand color - keep as is
+    
+    &:hover {
+  background-color: #00568a; // Keep this hover effect
+    }
+  }
+}

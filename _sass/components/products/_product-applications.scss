@@ -1,0 +1,36 @@
+
+// Product Applications Component Styles
+// Corresponds to product-applications.html include
+
+.product-applications-section {
+  
+  .product-grid {
+  @include make-container(); // with proper mixin or direct styles for Jekyll compatibility
+    display: flex;
+    flex-wrap: wrap;
+    
+    .product-card {
+    @include height-full;
+      @include transition(all, 0.3s, ease);
+        &:hover {
+        transform: translateY($product-item-hover-translate); // Using centralized dimension variable
+      }
+      
+      // Card style variations
+      &.product-card-accent {
+        border-left: $product-border-accent-width solid var(--color-accent); // Using centralized dimension variable
+      }
+      
+      &.product-card-primary {
+        border-left: $product-border-accent-width solid var(--color-primary); // Using centralized dimension variable
+      }
+      
+      .product-card-title {
+        color: var(--color-primary);
+      }
+      
+      .product-card-description {
+      }
+    }
+  }
+}

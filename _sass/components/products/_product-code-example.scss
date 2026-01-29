@@ -1,0 +1,29 @@
+
+// Product Code Example Component Styles
+// Corresponds to product-code-example.html include
+
+.product-code-example-section {
+  &.product-section-light {
+  }
+  
+  .product-code-container {
+    @include make-container();
+    
+    .product-code-example {
+      .product-code-title {
+      }
+      
+      .product-code-block {
+        max-height: $product-code-max-height; // Using centralized dimension variable
+        overflow-y: auto;
+      }
+    }
+  }
+  
+  // Extracted to reduce nesting depth
+  .product-code-block code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: $product-code-font-size; // Using centralized dimension variable
+    line-height: 1.5;
+  }
+}

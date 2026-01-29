@@ -1,0 +1,47 @@
+
+// Reusable layout component patterns
+// Used for consistent page layout structures
+
+// Base page layout component
+@mixin page-layout($prefix: 'page') {
+  .#{$prefix} {
+    &-container {
+      @include make-container();
+    }
+    
+    &-row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    &-col {
+    }
+    
+    &-content {
+    }
+  }
+}
+
+// Two-column layout with sidebar
+@mixin sidebar-layout($prefix: 'page', $sidebar-width: 4) {
+  @include page-layout($prefix);
+  
+  .#{$prefix} {
+    &-main {
+    }
+    
+    &-sidebar {
+    }
+  }
+}
+
+// Grid layout system
+@mixin grid-layout($prefix: 'grid', $cols: 3) {
+  .#{$prefix} {
+    display: flex;
+    flex-wrap: wrap;
+    
+    &-item {
+    }
+  }
+}

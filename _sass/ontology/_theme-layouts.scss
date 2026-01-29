@@ -15,28 +15,28 @@
 // These files were previously in theme-layouts/ but have been merged into components/
 
 // Base layout structure
-@import "../components/base-layout";
+@import "../components/specialized/base-layout";
 
 // Header, footer, and navigation
-@import "../components/header";
-@import "../components/footer";
-@import "../components/navbar";
+@import "../components/core/header";
+@import "../components/core/footer";
+@import "../components/core/navbar";
 
 // Hero sections
-@import "../components/hero";
+@import "../components/sections/hero";
 
 // Cards
-@import "../components/cards";
+@import "../components/core/cards";
 
 // Sections (headers, content, features, timeline, CTA, testimonials)
-@import "../components/sections";
+@import "../components/sections/sections";
 
 // Layout-specific styles
-@import "../components/layout-styles";
+@import "../components/specialized/layout-styles";
 
 // Specialized components
-@import "../components/specialized";
+@import "../components/specialized/specialized";
 
 // Utility classes
-@import "../components/utilities";
+@import "../components/specialized/utilities";
 
