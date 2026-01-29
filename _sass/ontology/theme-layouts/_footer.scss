@@ -1,0 +1,73 @@
+/**
+ * FOOTER COMPONENT
+ * ============================================================================
+ * Site footer and back-to-top button styles.
+ */
+
+// ============================================================================
+// FOOTER COMPONENT
+// ============================================================================
+
+// Note: flex-shrink properties are fundamental layout structure (see header note above)
+
+.footer-wrapper {
+  @include genesis-entity('secondary');  // Footer container
+  flex-shrink: 0;  // Prevent shrinking in parent flex column
+}
+
+.site-footer {
+  @include genesis-entity('secondary');        // Footer card
+  @include genesis-environment('associative'); // Horizontal layout
+  flex-shrink: 0;  // Prevent shrinking in parent flex column
+  
+  &__container {
+    @include genesis-environment('associative');  // Flex container
+  }
+  
+  &__row {
+    @include genesis-environment('associative');  // Horizontal layout
+  }
+  
+  &__copyright {
+    @include genesis-entity('secondary');
+    
+    &-text {
+      @include genesis-cognition('gloss');  // Small copyright text
+    }
+  }
+  
+  &__social {
+    @include genesis-environment('associative');  // Horizontal social links
+    
+    &-item {
+      @include genesis-entity('secondary');
+    }
+    
+    &-link {
+      @include genesis-synapse('social');  // Social media link
+    }
+  }
+  
+  &__links {
+    @include genesis-entity('secondary');
+  }
+  
+  &__nav-list {
+    @include genesis-environment('associative');  // Horizontal nav
+  }
+  
+  &__nav-item {
+    @include genesis-entity('secondary');
+  }
+  
+  &__nav-link {
+    @include genesis-synapse('navigate');  // Navigation link
+  }
+}
+
+// Back to top button
+.back-to-top {
+  @include genesis-synapse('execute');  // Action button
+  @include genesis-state('stable');     // Normal state
+}
+

@@ -1,0 +1,63 @@
+/**
+ * CARD COMPONENTS
+ * ============================================================================
+ * Card and product card styles.
+ */
+
+// ============================================================================
+// CARD COMPONENTS
+// ============================================================================
+
+.card {
+  @include genesis-entity('primary');  // Standard card
+  
+  &--elevated {
+    @include genesis-atmosphere('ethereal');  // Enhanced elevation only
+  }
+  
+  &--accent {
+    @include genesis-atmosphere('vibrant');  // Accent styling only
+  }
+  
+  &__header {
+    @include genesis-entity('secondary');
+  }
+  
+  &__title {
+    @include genesis-cognition('motive');  // Card heading
+  }
+  
+  &__body {
+    @include genesis-cognition('discourse');  // Card content
+  }
+  
+  &__footer {
+    @include genesis-entity('secondary');
+  }
+}
+
+// Product card
+.product-card {
+  @include genesis-entity('primary');
+  
+  &__image {
+    @include genesis-entity('secondary');
+  }
+  
+  &__title {
+    @include genesis-cognition('motive');
+  }
+  
+  &__description {
+    @include genesis-cognition('discourse');
+  }
+  
+  &__price {
+    @include genesis-cognition('axiom');  // Prominent price
+  }
+  
+  &__button {
+    @include genesis-synapse('execute');
+  }
+}
+
