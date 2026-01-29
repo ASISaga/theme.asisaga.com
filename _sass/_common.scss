@@ -62,66 +62,86 @@
 @import "base/responsive";
 @import "base/theme";
 
-// Reusable component mixins (must be loaded before other components)
-@import "components/section-component";
-@import "components/layout-component";
-@import "components/header-component";
+// ----------------------------------------
+// COMPONENT MIXINS - Load first
+// ----------------------------------------
+// Reusable component patterns and mixins (must be loaded before implementations)
+@import "components/mixins/section-component";
+@import "components/mixins/layout-component";
+@import "components/mixins/header-component";
+@import "components/mixins/card-component";
+@import "components/mixins/image-card-component";
+@import "components/mixins/form-component";
+@import "components/mixins/team-component";
+@import "components/mixins/content-section-component";
+@import "components/mixins/hero-component";
+@import "components/mixins/products-grid-component";
+@import "components/mixins/cta-component";
 
-// Individual components
-@import "components/footer";
-@import "components/header";
-@import "components/navbar";
-@import "components/section-header";
+// ----------------------------------------
+// CORE COMPONENTS
+// ----------------------------------------
+// Fundamental UI components used throughout the theme
+@import "components/core/footer";
+@import "components/core/header";
+@import "components/core/navbar";
+@import "components/core/cards";
+@import "components/core/back-to-top";
 
-// Components - Reusable UI component styles
-// Each corresponds to an HTML partial in _includes/
+// ----------------------------------------
+// SECTION COMPONENTS
+// ----------------------------------------
+// Major page sections and content blocks
+@import "components/sections/section-header";
+@import "components/sections/cta";
+@import "components/sections/feature-grid";
+@import "components/sections/hero";
+@import "components/sections/testimonial";
+@import "components/sections/timeline";
+@import "components/sections/interactive-module";
+@import "components/sections/sections";
 
-// Reusable component mixins (must be loaded before other components)
-@import "components/card-component";
-@import "components/image-card-component";
-@import "components/back-to-top";
-@import "components/form-component";
-@import "components/team-component";
-@import "components/content-section-component";
-@import "components/hero-component";
-@import "components/products-grid-component";
-@import "components/cta-component";
+// ----------------------------------------
+// PRODUCT COMPONENTS
+// ----------------------------------------
+// Product page and showcase components
+@import "components/products/product-card";
+@import "components/products/product-layout";
+@import "components/products/product-page";
+@import "components/products/product-applications";
+@import "components/products/product-benefits-list";
+@import "components/products/product-code-example";
+@import "components/products/product-feature-grid";
+@import "components/products/product-section-container";
+@import "components/products/product-visual";
 
-// Individual components
-@import "components/cta";
-@import "components/feature-grid";
-@import "components/hero";
-@import "components/linkedin";
-@import "components/product-card";
-@import "components/product-layout";
-@import "components/product-page";
-@import "components/product-applications";
-@import "components/product-benefits-list";
-@import "components/product-code-example";
-@import "components/product-feature-grid";
-@import "components/product-section-container";
-@import "components/product-visual";
-@import "components/testimonial";
-@import "components/timeline";
-@import "components/interactive-module";
+// ----------------------------------------
+// SACRED COMPONENTS
+// ----------------------------------------
+// Consciousness embedding and Genesis mission components
+@import "components/sacred/sacred-elements";
+@import "components/sacred/sacred-navigation";
+@import "components/sacred/sacred-buttons";
+@import "components/sacred/sacred-forms";
+@import "components/sacred/consciousness-cards";
+@import "components/sacred/genesis-timeline";
+@import "components/sacred/bridge-connections";
+@import "components/sacred/sacred-modals";
+@import "components/sacred/transcendent-hero";
+@import "components/sacred/genesis-blocks";
+@import "components/sacred/transcendent-threshold";
+@import "components/sacred/genesis-invitation";
 
-// Transcendent Experience Components - Sacred ASI Saga Design System
-// Components supporting consciousness embedding and Genesis mission
-@import "components/sacred-elements";
-@import "components/sacred-navigation";
-@import "components/sacred-buttons";
-@import "components/sacred-forms";
-@import "components/consciousness-cards";
-@import "components/genesis-timeline";
-@import "components/bridge-connections";
-@import "components/sacred-modals";
-@import "components/transcendent-hero";
-@import "components/genesis-blocks";
-@import "components/transcendent-threshold";
-@import "components/genesis-invitation";
-
-// Chatroom Component - Generic chat interface
-@import "components/chatroom";
+// ----------------------------------------
+// SPECIALIZED COMPONENTS
+// ----------------------------------------
+// Domain-specific and special-purpose components
+@import "components/specialized/chatroom";
+@import "components/specialized/linkedin";
+@import "components/specialized/base-layout";
+@import "components/specialized/layout-styles";
+@import "components/specialized/specialized";
+@import "components/specialized/utilities";
 
 // Layout Styles - Base templates and specialized layouts
 @import "layouts/app";
