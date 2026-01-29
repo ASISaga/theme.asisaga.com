@@ -1,8 +1,22 @@
 # ASI Saga Theme Documentation
 
+*Last Updated: 2026-01-29 | Version 2.1.0*
+
 Welcome to the comprehensive documentation for the ASI Saga Genesis Semantic Design System.
 
+## 🎉 Latest Updates - v2.1.0
+
+### Complete Responsive Layout System (2026-01-29)
+- ✅ **All 21 Jekyll layouts** now fully responsive (375px → 1920px+)
+- ✅ **WCAG 2.5.5 compliance** - All touch targets ≥44px across layouts
+- ✅ **Documentation guidelines** - New mandatory practices in `.github/instructions/docs.instructions.md`
+- ✅ **Consolidated documentation** - Historical work archived properly
+
+See [specifications/responsive-design.md](specifications/responsive-design.md) for complete details.
+
 ## 📚 Documentation Structure
+
+**New in v2.1.0**: Documentation now follows progressive enhancement model. See [`.github/instructions/docs.instructions.md`](../.github/instructions/docs.instructions.md) for guidelines.
 
 ### Active Documentation
 
@@ -47,8 +61,11 @@ Essential, current documentation:
 #### [`/archive/`](archive/README.md) - Completed Work
 Historical records of implementations, refactorings, and audits:
 - **Implementations**: Completed feature implementations and system enhancements
+  - Latest: `RESPONSIVE-UX-v2.1.0.md`, `WEB-DESIGN-ENHANCEMENT-v2.0.md`
 - **Audits**: Code audits, quality assessments, and fixes
 - **Refactorings**: Major refactoring efforts and their outcomes
+
+**Documentation Practice**: Completed implementation docs are archived here, not left in root directory. See [`.github/instructions/docs.instructions.md`](../.github/instructions/docs.instructions.md) for guidelines.
 
 ---
 
@@ -67,9 +84,20 @@ Historical records of implementations, refactorings, and audits:
 
 ## 🔧 Developer Resources
 
+### Documentation Guidelines (NEW v2.1.0)
+- [`.github/instructions/docs.instructions.md`](../.github/instructions/docs.instructions.md) - **Mandatory** documentation practices
+  - Progressive update patterns
+  - Consolidation over duplication
+  - Proper archival procedures
+  - Version section templates
+
 ### Agent Ecosystem
 - [`.github/AGENTS.MD`](../.github/AGENTS.MD) - Agent ecosystem architecture
 - [`.github/skills/`](../.github/skills/) - Agent skill specifications
+  - `responsive-design-agent` - Mobile-first responsive patterns (v2.1.0)
+  - `scss-refactor-agent` - Ontology migration specialist
+  - `html-template-agent` - Semantic HTML & accessibility
+  - `futuristic-effects-agent` - Advanced visual effects
 
 ### Code Quality
 - [`/guides/STYLELINT.md`](guides/STYLELINT.md) - Linting setup and usage
