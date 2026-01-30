@@ -59,14 +59,14 @@
     }
   }
   @else if $vector == 'execute' {
-    // Local function or state modification
+    // Local function or state modification - Black background, white text
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
-    background: var(--accent-neon, oklch(0.88 0.18 95));
-    color: var(--text-inverse, oklch(0.15 0.03 250));
-    border: none;
+    background: oklch(0.10 0.01 250);  // Black background
+    color: oklch(0.99 0.005 90);  // White text
+    border: 1px solid oklch(0.20 0.01 250);  // Subtle border
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     font-weight: 600;
     font-size: var(--size-button, clamp(0.95rem, 1.2vw, 1.05rem));
@@ -85,8 +85,9 @@
     }
     
     &:hover {
-      background: var(--accent-neon-hover, oklch(0.92 0.20 95));
-      box-shadow: 0 4px 12px var(--accent-neon, oklch(0.88 0.18 95 / 0.4));
+      background: oklch(0.15 0.01 250);  // Slightly lighter black
+      border-color: var(--accent-neon, oklch(0.65 0.25 230));  // Neon blue border (purposeful)
+      box-shadow: 0 0 16px var(--accent-neon, oklch(0.65 0.25 230 / 0.3));  // Neon blue glow
       transform: translateY(-1px);
     }
     
@@ -95,7 +96,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline: 2px solid var(--focus-ring, oklch(0.65 0.25 230 / 0.5));
       outline-offset: 2px;
     }
   }

@@ -15,47 +15,47 @@
   transition: all var(--motion-fluid, 0.3s ease);
   
   @if $nature == 'primary' {
-    // Fundamental object of current view (glassmorphism)
-    background: var(--glass-heavy, oklch(0.20 0.04 245 / 0.85));
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--accent-low, oklch(0.85 0.16 85 / 0.2));
-    box-shadow: var(--shadow-ambient, 0 4px 12px oklch(0.15 0.03 250 / 0.2));
+    // Fundamental object of current view - White background with subtle shadow
+    background: oklch(0.99 0.005 90);  // Pure white
+    backdrop-filter: blur(10px);  // Minimal blur
+    border: 1px solid oklch(0.85 0.005 220);  // Light gray border
+    box-shadow: 0 2px 8px oklch(0.08 0.01 250 / 0.15);  // Subtle shadow
     padding: var(--padding-entity-primary, clamp(1.5rem, 3vw, 2rem));
   }
   @else if $nature == 'secondary' {
-    // Supportive, contextual data
-    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    // Supportive, contextual data - Light gray background
+    background: oklch(0.96 0.005 220);  // Very light gray
+    backdrop-filter: blur(5px);
+    border: 1px solid oklch(0.88 0.005 220);  // Lighter border
     padding: var(--padding-entity-secondary, clamp(1rem, 2vw, 1.5rem));
   }
   @else if $nature == 'imperative' {
-    // System-critical, high-urgency signal
-    background: var(--glass-alert, oklch(0.25 0.08 20 / 0.7));
-    border: 2px solid var(--accent-neon, oklch(0.88 0.18 95));
-    box-shadow: 0 0 20px var(--accent-neon, oklch(0.88 0.18 95 / 0.5));
+    // System-critical, high-urgency signal - White with neon blue accent (purposeful)
+    background: oklch(0.99 0.005 90);  // White background
+    border: 2px solid oklch(0.65 0.25 230);  // Neon blue border (purposeful)
+    box-shadow: 0 0 16px oklch(0.65 0.25 230 / 0.3);  // Neon blue glow
     animation: pulse-border 2s infinite;
     padding: var(--padding-entity-primary, clamp(1.5rem, 3vw, 2rem));
   }
   @else if $nature == 'latent' {
-    // Backgrounded info awaiting activation
-    background: var(--glass-dormant, oklch(0.18 0.02 250 / 0.4));
-    opacity: 0.6;
-    filter: grayscale(0.5);
-    border: 1px solid var(--border-dormant, oklch(0.25 0.02 250 / 0.2));
+    // Backgrounded info awaiting activation - Muted gray
+    background: oklch(0.94 0.005 220);  // Light gray
+    opacity: 0.7;
+    filter: grayscale(0.3);
+    border: 1px solid oklch(0.90 0.005 220);
     padding: var(--padding-entity-secondary, clamp(1rem, 2vw, 1.5rem));
   }
   @else if $nature == 'aggregate' {
-    // Container summarizing multiple entities
-    background: var(--glass-container, oklch(0.16 0.03 252 / 0.7));
-    backdrop-filter: blur(15px);
-    border: 1px solid var(--border-container, oklch(0.32 0.05 248 / 0.4));
+    // Container summarizing multiple entities - Very light gray
+    background: oklch(0.97 0.005 220);  // Very light gray
+    backdrop-filter: blur(8px);
+    border: 1px solid oklch(0.87 0.005 220);
     padding: var(--padding-entity-aggregate, clamp(2rem, 4vw, 3rem));
   }
   @else if $nature == 'ancestral' {
-    // Archived or historical data (legacy state)
-    background: var(--glass-archive, oklch(0.17 0.02 255 / 0.5));
-    border: 1px solid var(--border-archive, oklch(0.28 0.03 255 / 0.3));
+    // Archived or historical data (legacy state) - Muted gray
+    background: oklch(0.95 0.005 220);  // Light gray
+    border: 1px solid oklch(0.88 0.005 220);
     opacity: 0.8;
     padding: var(--padding-entity-secondary, clamp(1rem, 2vw, 1.5rem));
   }
