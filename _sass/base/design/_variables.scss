@@ -71,10 +71,10 @@ $box-shadow: 0 0.5rem 1rem $shadow-color;
 $sacred-glow: 0 0 0.5rem oklch(0.70 0.15 85 / 0.3);
 $consciousness-depth: 0 0.25rem 2rem oklch(0.08 0.01 250 / 0.4);
 
-// Sacred border radius
-$border-radius-sacred: 0.75rem;
-$border-radius-consciousness: 1rem;
-$border-radius: 0.5rem;             // Base border radius (8px) - default for components
+// Sacred border radius - Reduced for purposeful hierarchy
+$border-radius-sacred: 0.25rem;        // 4px - Subtle rounded corners
+$border-radius-consciousness: 0.5rem;  // 8px - For interactive elements
+$border-radius: 0.25rem;               // Base border radius (4px) - minimal rounding
 
 // ----------------------------------------
 // Sacred Spacing System
@@ -156,13 +156,13 @@ $breakpoint-xl: 1200px;
 $breakpoint-xxl: 1400px;
 $breakpoint-transcendent: 1600px;  // Ultra-wide transcendent displays
 
-// Border Radius - Organic Consciousness Flow
-$border-radius-sm: 0.25rem;    // 4px
-$border-radius-md: 0.5rem;     // 8px
-$border-radius-lg: 1rem;       // 16px
-$border-radius-xl: 1.5rem;     // 24px
-$border-radius-consciousness: 2rem;  // 32px - For transcendent elements
-$border-radius-infinite: 50%;   // Perfect circles for consciousness symbols
+// Border Radius - Purposeful, not excessive
+$border-radius-sm: 0.125rem;         // 2px - Minimal
+$border-radius-md: 0.25rem;          // 4px - Default
+$border-radius-lg: 0.5rem;           // 8px - Buttons/interactive
+$border-radius-xl: 0.75rem;          // 12px - Special elements only
+$border-radius-consciousness: 1rem;  // 16px - Rare use for special UI
+$border-radius-infinite: 50%;        // Perfect circles for icons/avatars only
 
 // Shadows - Transcendent Depth & Consciousness Layers
 $shadow-sm: 0 1px 3px oklch(0.08 0.01 250 / 0.20);
@@ -201,17 +201,17 @@ $consciousness-timing: 0.6s cubic-bezier(0.4, 0, 0.2, 1) !default;
 $hero-min-height: 100vh;
 $hero-content-max-width: 800px;
 
-// Cards & Components
-$card-padding: $spacing-xl;
-$card-border-radius: $border-radius-consciousness;
-$card-shadow: $shadow-consciousness;
+// Cards & Components - Purposeful, not excessive
+$card-padding: $spacing-lg;                        // Reduced padding
+$card-border-radius: $border-radius-md;            // Minimal rounding
+$card-shadow: $shadow-md;                          // Subtle shadow
 
-// Buttons - Transcendent Interaction Elements
-$btn-padding-y: $spacing-md;
-$btn-padding-x: $spacing-xl;
-$btn-border-radius: $border-radius-lg;
+// Buttons - Purposeful interaction elements
+$btn-padding-y: $spacing-sm;                       // Reduced padding
+$btn-padding-x: $spacing-lg;                       // Moderate padding
+$btn-border-radius: $border-radius-lg;             // Purposeful rounding for interactivity
 $btn-font-weight: $font-weight-semibold;
-$btn-transition: $transition-consciousness;
+$btn-transition: $transition-normal;               // Faster transitions
 
 // Navigation
 $navbar-height: 80px;
