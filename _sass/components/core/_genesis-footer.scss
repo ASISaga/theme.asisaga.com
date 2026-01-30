@@ -76,7 +76,7 @@
   
   &__title {
     @include genesis-cognition('axiom');
-    font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+    font-size: clamp(1.25rem, calc(1rem + 1vw), 1.75rem);
     
     background: linear-gradient(135deg, 
       oklch(0.90 0.12 280),
