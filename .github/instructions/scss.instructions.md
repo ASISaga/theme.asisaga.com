@@ -99,11 +99,11 @@ See [Ontology System - Genesis Semantic Engine (PRIMARY METHOD)](#ontology-syste
 - **Fluid Typography** - clamp() based responsive scaling
 - **Accessibility-first** - WCAG AA, reduced motion, high contrast
 
-## 🎨 Color Philosophy - Purposeful, Not Excessive
+## 🎨 Color Philosophy - Purposeful Usage
 
-**The Genesis Design System follows a strict color hierarchy to ensure purposeful, accessible design:**
+**The Genesis Design System emphasizes purposeful, accessible color usage:**
 
-### Primary Colors (Use Always)
+### Primary Colors (Core Hierarchy)
 - **Black text on white backgrounds** - Primary content, body text, headings
   - Text: `oklch(0.10 0.01 250)` to `oklch(0.15 0.01 250)` (deep black)
   - Background: `oklch(0.99 0.005 90)` (pure white)
@@ -111,60 +111,71 @@ See [Ontology System - Genesis Semantic Engine (PRIMARY METHOD)](#ontology-syste
   - Text: `oklch(0.99 0.005 90)` (white)
   - Background: `oklch(0.08 0.01 250)` to `oklch(0.12 0.01 250)` (black)
 
-### Secondary Colors (Use Purposefully)
-- **Light gray backgrounds** - Cards requiring subtle distinction
-  - `oklch(0.96 0.005 220)` - Very light gray
-  - Use ONLY when semantic purpose requires distinction from white
+### Secondary Colors (Use When Needed)
+- **Light gray backgrounds** - Use when semantic purpose requires distinction from white
+  - `oklch(0.96 0.005 220)` - Very light gray for cards with purpose
 - **Dark gray text** - Secondary information, metadata
   - `oklch(0.30 0.01 230)` to `oklch(0.35 0.01 230)`
 
-### Accent Colors (Use Sparingly)
-- **Neon blue** - ONLY for glows, hover states, focus rings, critical accents
-  - `oklch(0.65 0.25 230)` - Purposeful highlights
-  - Never use for backgrounds or large surfaces
-  - Use for: Links on hover, button borders, focus indicators, alerts
-- **Subtle gold** - Very rare, special highlights only
-  - `oklch(0.70 0.10 85)` - Muted, minimal chroma
-  - Use extremely sparingly
+### Accent Colors (Use Purposefully)
+- **Neon blue** - For interaction feedback, focus states, and emphasis
+  - `oklch(0.65 0.25 230)` - Use for hover states, focus rings, active elements
+  - **When to use**: Links on hover, button interactions, focus indicators, alerts
+  - **Avoid**: Background fills or large surface areas
+- **Gold** - For special highlights and sacred elements
+  - `oklch(0.70 0.15 85)` - Use purposefully for emphasis
+  - **When to use**: Special features, premium content, sacred elements
+  - **Avoid**: Overuse that diminishes impact
 
-### ❌ Do NOT Use
-- Excessive blue tints in backgrounds
-- Purple, green, or other colored backgrounds
-- Rose/peach backgrounds (replace with black)
-- Colored glassmorphism effects
-- Multiple colored borders or shadows
+### ❌ Avoid Excessive Use
+- Too many blue tints in backgrounds (use white/light gray instead)
+- Multiple levels of nested colored boxes (flatten hierarchy)
+- Purple, green backgrounds (use established palette)
+- Rose/peach backgrounds (replace with appropriate colors)
+- Overuse of glassmorphism effects
 
-### Border Radius Philosophy
-- **Minimal by default** - 0.25rem (4px) for most elements
-- **Purposeful for interactivity** - 0.5-0.75rem (8-12px) for buttons
-- **Circular only for icons/avatars** - border-radius: 50%
-- **Never excessive** - No rounded corners > 1rem without semantic purpose
+### Visual Hierarchy Guidelines
+- **Purposeful nesting** - Only nest boxes when semantically meaningful
+- **Border radius** - Use as appropriate for the design, not arbitrarily reduced
+- **Color accents** - Each color should serve a purpose
+- **Glassmorphism** - Use for specific UI needs (headers, modals), not everywhere
 
 ### Example Usage
 ```scss
-// ✅ CORRECT - Black on white, purposeful
+// ✅ CORRECT - Purposeful hierarchy and color usage
 .content-card {
-  background: oklch(0.99 0.005 90);  // White
-  color: oklch(0.12 0.01 250);        // Black text
-  border: 1px solid oklch(0.85 0.005 220);  // Light gray border
-  border-radius: 0.25rem;             // Minimal rounding
+  background: oklch(0.99 0.005 90);  // White - clear primary surface
+  color: oklch(0.12 0.01 250);        // Black text - readable
+  border: 1px solid oklch(0.85 0.005 220);  // Subtle border
+  border-radius: 1rem;                // Rounded as appropriate for design
   
   .action-button {
-    background: oklch(0.10 0.01 250); // Black button
-    color: oklch(0.99 0.005 90);      // White text
-    border-radius: 0.5rem;             // Purposeful for button
+    background: oklch(0.10 0.01 250); // Black button - clear action
+    color: oklch(0.99 0.005 90);      // White text - high contrast
+    border-radius: 0.75rem;            // Appropriate rounding
     
     &:hover {
-      border: 1px solid oklch(0.65 0.25 230);  // Neon blue accent
+      border: 1px solid oklch(0.65 0.25 230);  // Neon blue - interaction feedback
     }
+  }
+  
+  .premium-badge {
+    color: oklch(0.70 0.15 85);       // Gold - purposeful emphasis
   }
 }
 
-// ❌ WRONG - Excessive blue tints, too rounded
+// ❌ WRONG - Excessive blue tints and unnecessary nesting
 .bad-card {
-  background: oklch(0.20 0.06 245 / 0.85);  // Dark blue tint
-  border-radius: 2rem;                       // Too rounded
-  color: oklch(0.75 0.15 210);              // Blue text
+  background: oklch(0.20 0.06 245 / 0.85);  // Dark blue tint (avoid)
+  
+  .inner-wrapper {
+    background: oklch(0.22 0.07 240 / 0.9);  // Nested blue box (unnecessary)
+    
+    .content-wrapper {
+      background: oklch(0.24 0.08 235);      // Another nested box (excessive)
+      color: oklch(0.75 0.15 210);           // Blue text (poor contrast)
+    }
+  }
 }
 ```
 

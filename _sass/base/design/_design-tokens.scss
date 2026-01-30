@@ -190,8 +190,8 @@ $dark: $color-profound-black;
 // State colors for legacy compatibility
 $primary-light: oklch(0.95 0.005 220);                   // Very subtle gray (not blue)
 $primary-dark: $color-profound-black;                    // Profound black
-$sacred-gold-light: oklch(0.75 0.10 82);                // Muted gold light
-$sacred-gold-dark: oklch(0.60 0.08 88);                 // Muted gold dark
+$sacred-gold-light: oklch(0.75 0.18 82);
+$sacred-gold-dark: oklch(0.60 0.12 88);
 
 // Accessible color variants
 $cosmic-deep-blue-accessible: $color-profound-black;
@@ -212,9 +212,9 @@ $btn-padding-x-lg: 2rem;
 $btn-font-size-sm: 0.875rem;
 $btn-font-size: 1rem;
 $btn-font-size-lg: 1.125rem;
-$btn-border-radius: clamp(0.5rem, 1vw, 0.75rem);   // Purposeful button rounding (8-12px)
-$btn-border-radius-sm: 0.375rem;                    // 6px
-$btn-border-radius-lg: 0.75rem;                     // 12px
+$btn-border-radius: clamp(0.5rem, 1vw, 1rem);
+$btn-border-radius-sm: 0.5rem;
+$btn-border-radius-lg: 1rem;
 
 // Z-index variables
 $zindex-dropdown: 1000;

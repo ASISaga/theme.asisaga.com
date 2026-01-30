@@ -2,20 +2,25 @@
 
 **Date**: 2026-01-30  
 **Version**: 2.1.0  
-**Status**: Completed ✅
+**Status**: Completed ✅  
+**Updated**: 2026-01-30 (Corrected based on clarification)
 
 ## Overview
 
-This update transforms the Genesis Design System to use purposeful, accessible color schemes with black text on white backgrounds as primary, reducing excessive use of rounded boxes and blue tints throughout the theme.
+This update transforms the Genesis Design System to use purposeful, accessible color schemes with black text on white backgrounds as primary, removing excessive blue tints and enforcing purposeful use of visual hierarchy.
 
-## Problem Statement
+## Problem Statement (Clarified)
 
 The previous design had:
-- Excessive use of hierarchy of rounded boxes without semantic purpose
+- Excessive use of visual hierarchy with nested boxes without semantic purpose
 - Excessive blueish appearance throughout pages
-- Neon blue used liberally instead of purposefully
+- Neon blue and gold used without clear purpose
 - Muted rose/peach backgrounds in some areas
-- Rounded corners used decoratively rather than semantically
+
+**Key Understanding**: 
+- Issue was **purposeful usage**, not reducing values
+- Border radius should be used **as appropriate for best appearance**
+- Gold color should be used **as appropriate**, just purposefully
 
 ## Solution Implemented
 
@@ -35,18 +40,15 @@ The previous design had:
 - Subtle gold: `oklch(0.70 0.10 85)` - extremely muted, rare use
 - Removed: Purple and green colors entirely
 
-### ✅ Border Radius Reduction (Phase 2)
+### ✅ Border Radius (Phase 2) - Corrected
 
-**Updated Values**:
-- Default cards: `0.25rem` (4px) - minimal rounding
-- Buttons: `0.5rem - 0.75rem` (8-12px) - purposeful for interactivity
-- Special elements: `1rem` (16px) maximum - only with clear purpose
-- Icons/avatars: `50%` (circular) - only when semantically appropriate
+**Restored Original Values** (use as appropriate for best appearance):
+- Default cards: `0.5rem - 2rem` (8-32px) - use as appropriate
+- Buttons: `0.5rem - 1rem` (8-16px) - as needed for design
+- Special elements: `1rem - 2rem` (16-32px) - when appropriate
+- Icons/avatars: `50%` (circular) - for round elements
 
-**Previous Values** (deprecated):
-- Cards: `1-2rem` (16-32px) - too rounded
-- Buttons: `1rem+` (16px+) - excessive
-- Special elements: `1.5-2rem` (24-32px) - decorative
+**Focus**: Use border radius purposefully based on design needs, not prescriptive restrictions.
 
 ### ✅ Component Updates (Phase 3)
 
@@ -190,13 +192,14 @@ Use the ontology system with updated colors:
 ```
 
 ### For Existing Components
-Gradually migrate to new color scheme:
+Gradually migrate to purposeful usage:
 
 1. Replace colored backgrounds with white/light gray
 2. Replace colored text with black/dark gray
-3. Use neon blue only for hover/focus states
-4. Reduce border-radius values
-5. Remove unnecessary card nesting
+3. Use neon blue purposefully for interaction feedback
+4. Use border-radius as appropriate for design
+5. Remove unnecessary card nesting (flatten when semantic purpose unclear)
+6. Use gold purposefully for emphasis and special features
 
 ### Breaking Changes
 **None** - This update is fully backward compatible. All changes are in the theme layer, not the interface.
