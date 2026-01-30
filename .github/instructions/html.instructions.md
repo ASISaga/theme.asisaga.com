@@ -50,6 +50,81 @@ When your HTML reveals a pattern not covered by existing ontology, you can propo
 - Layouts in `_layouts/` use semantic structure
 - Keep pages focused and small; use includes for patterns
 
+## 🎨 Visual Hierarchy Philosophy
+
+**The Genesis Design System enforces purposeful visual hierarchy:**
+
+### Color Usage Principles
+- **Primary content**: Black text on white backgrounds
+- **Navigation/Chrome**: White text on black backgrounds (header, footer, nav)
+- **Buttons/Actions**: Black backgrounds with white text, neon blue hover
+- **Cards**: White or light gray backgrounds only (purposeful distinction)
+- **Accents**: Neon blue (#0080FF range) ONLY for hover, focus, glows
+- **Avoid**: Excessive rounded boxes, blue tints, colored backgrounds
+
+### Border Radius Guidelines
+- **Default**: Minimal rounding (4-8px) for most elements
+- **Buttons**: Purposeful rounding (8-12px) for interactivity
+- **Icons/Avatars**: Circular only when semantically appropriate
+- **Avoid**: Excessive rounded corners (>16px) without clear purpose
+
+### When to Use Cards
+Cards should serve a **semantic purpose**, not just decoration:
+- ✅ Grouping related content (product details, user profile)
+- ✅ Clickable content blocks (blog post preview, service card)
+- ✅ Distinct sections requiring visual separation
+- ❌ Excessive nested cards creating "box soup"
+- ❌ Cards solely for rounded corners or shadows
+
+### Glassmorphism Guidelines
+Use glassmorphism **sparingly and purposefully**:
+- ✅ Header/footer with backdrop blur (black bg, white text)
+- ✅ Modal overlays requiring focus
+- ✅ Floating navigation elements
+- ❌ Excessive blur effects on regular content
+- ❌ Colored glass effects (purple, blue, etc.)
+
+### Example: Purposeful vs. Excessive
+
+**❌ Excessive (Avoid)**:
+```html
+<!-- Too many nested boxes, excessive rounding, blue tints -->
+<div class="rounded-box-outer">
+  <div class="rounded-box-inner blue-tint">
+    <div class="rounded-card">
+      <div class="card-content rounded">
+        <p>Content buried in boxes</p>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+**✅ Purposeful (Use)**:
+```html
+<!-- Clean semantic structure, purposeful card use -->
+<article class="product-card">
+  <h2 class="product-title">Product Name</h2>
+  <p class="product-description">Clear description...</p>
+  <button class="product-action">Buy Now</button>
+</article>
+```
+
+With corresponding SCSS:
+```scss
+.product-card {
+  @include genesis-entity('primary');     // White card, subtle shadow
+  
+  .product-title {
+    @include genesis-cognition('axiom'); // Black text, large
+  }
+  
+  .product-action {
+    @include genesis-synapse('execute');  // Black button, white text
+  }
+}
+```
+
 ## Semantic Layout Patterns
 
 ### Primary Method: Ontology-Based
