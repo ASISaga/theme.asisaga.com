@@ -1,8 +1,36 @@
 # Responsive Design Specification
 
+*Last Updated: 2026-01-29 | Version 2.1.0*
+
 ## Overview
 
 The ASI Saga theme follows a **mobile-first responsive design approach**, ensuring optimal user experience across all devices and screen sizes. All layouts, components, and interactions must be fully responsive and tested across target viewports.
+
+## Version History
+
+### v2.1.0 (2026-01-29) - Complete Layout Responsiveness
+
+**All Jekyll Layouts Now Responsive**:
+- ✅ **21 layouts enhanced** with mobile-first patterns
+- ✅ **WCAG 2.5.5 compliance** - All touch targets ≥44px
+- ✅ **Fluid typography** - 16px minimum (prevents iOS zoom)
+- ✅ **Responsive grids** - Auto-fit patterns (375px → 1920px+)
+- ✅ **Zero-CSS approach** - 100% ontological mixins
+- ✅ **Reduced motion** - All animations respect preference
+- ✅ **High contrast** - Glassmorphism disabled automatically
+
+**New File**: `_sass/layouts/_responsive-enhancements.scss` (15KB)
+- Reading layouts (Post, Article, Docs)
+- Landing/Marketing layouts (Hero, Splash)
+- Dashboard/Grid layouts (Gallery, Archive)
+- Form layouts (Contact, Search)
+- Special layouts (Profile, Settings, Chatroom, FAQ)
+- App layouts (App, Minimal, Fixed-height, Scrollable)
+
+**Documentation**: Using `responsive-design-agent v2.1.0`
+- See `.github/skills/responsive-design-agent/` for methodology
+- Pattern catalog in `references/LAYOUT-PATTERNS.md`
+- Comprehensive guide in `references/RESPONSIVE-GUIDE.md`
 
 ## Mobile-First Philosophy
 

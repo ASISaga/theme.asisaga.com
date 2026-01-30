@@ -87,6 +87,9 @@
 // CORE COMPONENTS
 // ----------------------------------------
 // Fundamental UI components used throughout the theme
+@import "components/core/genesis-core";    // NEW: Modern body/main/skip-link/ambient
+@import "components/core/genesis-header";  // NEW: Modern glassmorphism header
+@import "components/core/genesis-footer";  // NEW: Modern grid footer
 @import "components/core/footer";
 @import "components/core/header";
 @import "components/core/navbar";
@@ -169,6 +172,14 @@
 @import "layouts/settings";
 @import "layouts/minimal";
 @import "layouts/splash";
+
+// ----------------------------------------
+// RESPONSIVE ENHANCEMENTS - v2.1.0
+// ----------------------------------------
+// Comprehensive responsive patterns for ALL layouts
+// Mobile-first (375px → 1920px+), WCAG 2.5.5 compliant
+// responsive-design-agent v2.1.0
+@import "layouts/responsive-enhancements";
 
 // Layout-specific components removed - styles consolidated into layout files
 // Previously: components/layouts/* (10 unused files with -component suffix)

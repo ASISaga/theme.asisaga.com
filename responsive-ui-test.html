@@ -1,0 +1,165 @@
+---
+layout: default
+title: Responsive UI/UX Test - Header, Navigation & Footer
+description: Test page demonstrating responsive design improvements with WCAG 2.5.5 compliance
+---
+
+<style>
+  /* Test page specific styles */
+  .test-section {
+    padding: 3rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .test-info {
+    background: oklch(0.18 0.06 280 / 0.6);
+    border: 1px solid oklch(0.5 0.2 280 / 0.3);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .test-info h2 {
+    color: oklch(0.85 0.12 280);
+    margin-top: 0;
+  }
+  
+  .test-info ul {
+    color: oklch(0.75 0.06 280);
+    line-height: 1.8;
+  }
+  
+  .viewport-indicator {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background: oklch(0.20 0.08 280 / 0.95);
+    border: 1px solid oklch(0.6 0.25 280 / 0.4);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    color: oklch(0.85 0.10 280);
+    font-weight: 600;
+    z-index: 998;
+    backdrop-filter: blur(12px);
+  }
+  
+  .content-placeholder {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: oklch(0.15 0.04 280 / 0.4);
+    border-radius: 16px;
+    margin: 2rem 0;
+  }
+</style>
+
+<div class="test-section">
+  <div class="test-info">
+    <h2>🎯 Responsive UI/UX Test Page</h2>
+    <p><strong>Testing:</strong> Header, Navigation, and Footer responsive behavior</p>
+    
+    <h3>✅ Improvements Made:</h3>
+    <ul>
+      <li><strong>Header:</strong> Sticky positioning with glassmorphism, optimized for all viewports</li>
+      <li><strong>Mobile Navigation:</strong> Off-canvas drawer (85% width, max 360px) with smooth animations</li>
+      <li><strong>Desktop Navigation:</strong> Horizontal layout with dropdown menus</li>
+      <li><strong>Keyboard Navigation:</strong> Full ARIA support with Arrow keys, Enter, Space, Escape</li>
+      <li><strong>Touch Targets:</strong> All interactive elements ≥44px (WCAG 2.5.5 compliant)</li>
+      <li><strong>Dropdown Menus:</strong> Keyboard accessible with proper focus management</li>
+      <li><strong>Footer Grid:</strong> Responsive 1→2→3 column layout with optimized spacing</li>
+      <li><strong>Social Icons:</strong> 48px touch targets with smooth hover effects</li>
+      <li><strong>Back to Top:</strong> Appears after 300px scroll, smooth scroll with reduced motion support</li>
+      <li><strong>Accessibility:</strong> Full keyboard navigation, ARIA states, screen reader support</li>
+    </ul>
+    
+    <h3>📱 Test Viewports:</h3>
+    <ul>
+      <li><strong>375px</strong> - Mobile (iPhone SE)</li>
+      <li><strong>768px</strong> - Tablet (iPad portrait)</li>
+      <li><strong>1024px</strong> - Laptop (breakpoint for horizontal nav)</li>
+      <li><strong>1440px+</strong> - Desktop</li>
+    </ul>
+    
+    <h3>⌨️ Keyboard Testing:</h3>
+    <ul>
+      <li><strong>Tab</strong> - Navigate through interactive elements</li>
+      <li><strong>Enter/Space</strong> - Activate buttons and links</li>
+      <li><strong>Arrow Down/Up</strong> - Navigate dropdown menus</li>
+      <li><strong>Escape</strong> - Close dropdowns and mobile menu</li>
+      <li><strong>Shift+Tab</strong> - Navigate backwards</li>
+    </ul>
+    
+    <h3>🎨 Features to Test:</h3>
+    <ul>
+      <li><strong>Mobile Menu Toggle:</strong> Click hamburger icon (≥44px) on mobile</li>
+      <li><strong>Overlay Close:</strong> Click outside menu to close</li>
+      <li><strong>Dropdown Navigation:</strong> Hover or click on dropdown items (if present)</li>
+      <li><strong>Active State:</strong> Current page highlighted in navigation</li>
+      <li><strong>Footer Grid:</strong> Resize browser to see 1→2→3 column layout</li>
+      <li><strong>Social Icons:</strong> Hover effects with scale and glow</li>
+      <li><strong>Back to Top:</strong> Scroll down, click button to return</li>
+      <li><strong>Smooth Scroll:</strong> Anchor links scroll smoothly</li>
+      <li><strong>Reduced Motion:</strong> Check with OS settings enabled</li>
+    </ul>
+  </div>
+  
+  <div class="content-placeholder">
+    <div style="text-align: center; padding: 2rem;">
+      <h2 style="color: oklch(0.85 0.12 280); margin-bottom: 1rem;">Scroll Down to Test</h2>
+      <p style="color: oklch(0.70 0.06 280);">The back-to-top button will appear after 300px of scrolling</p>
+      <p style="color: oklch(0.70 0.06 280);">Try the mobile menu toggle and keyboard navigation</p>
+    </div>
+  </div>
+  
+  <div class="content-placeholder">
+    <div style="text-align: center; padding: 2rem;">
+      <h2 style="color: oklch(0.85 0.12 280); margin-bottom: 1rem;">Responsive Behavior</h2>
+      <p style="color: oklch(0.70 0.06 280);">Resize your browser window to test different breakpoints</p>
+      <p style="color: oklch(0.70 0.06 280);">Header stays sticky, footer adapts to grid layout</p>
+    </div>
+  </div>
+  
+  <div class="content-placeholder">
+    <div style="text-align: center; padding: 2rem;">
+      <h2 style="color: oklch(0.85 0.12 280); margin-bottom: 1rem;">Accessibility First</h2>
+      <p style="color: oklch(0.70 0.06 280);">All interactive elements are keyboard accessible</p>
+      <p style="color: oklch(0.70 0.06 280);">Touch targets meet WCAG 2.5.5 (≥44px)</p>
+    </div>
+  </div>
+</div>
+
+<!-- Viewport size indicator -->
+<div class="viewport-indicator">
+  <span id="viewport-size">Viewport: <span id="viewport-width">--</span>px</span>
+</div>
+
+<script>
+  // Update viewport indicator
+  function updateViewportIndicator() {
+    const width = window.innerWidth;
+    const widthElement = document.getElementById('viewport-width');
+    const indicator = document.querySelector('.viewport-indicator');
+    
+    if (widthElement) {
+      widthElement.textContent = width;
+      
+      // Color code by breakpoint
+      if (width < 480) {
+        indicator.style.borderColor = 'oklch(0.6 0.25 0 / 0.6)'; // Red
+      } else if (width < 768) {
+        indicator.style.borderColor = 'oklch(0.6 0.25 45 / 0.6)'; // Orange
+      } else if (width < 1024) {
+        indicator.style.borderColor = 'oklch(0.6 0.25 120 / 0.6)'; // Green
+      } else {
+        indicator.style.borderColor = 'oklch(0.6 0.25 280 / 0.6)'; // Blue
+      }
+    }
+  }
+  
+  // Update on load and resize
+  updateViewportIndicator();
+  window.addEventListener('resize', updateViewportIndicator);
+</script>

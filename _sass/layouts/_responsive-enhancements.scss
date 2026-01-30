@@ -1,0 +1,769 @@
+/**
+ * Responsive Enhancements for All Jekyll Layouts
+ * ============================================================================
+ * responsive-design-agent v2.1.0
+ * 
+ * This file adds comprehensive responsive patterns to all Jekyll layouts.
+ * All layouts now follow mobile-first principles with:
+ * - WCAG 2.5.5 touch targets (≥44px)
+ * - Fluid typography (16px minimum)
+ * - Responsive grids (375px → 1920px+)
+ * - Proper breakpoints (sm/md/lg/xl)
+ * - Reduced motion support
+ * 
+ * Usage: Import this after individual layout files to enhance responsiveness.
+ * 
+ * @version 2.1.0
+ * @agent responsive-design-agent
+ * @date 2026-01-29
+ */
+
+@import "ontology/index";
+
+// ============================================================================
+// READING LAYOUTS (Post, Article, Docs)
+// ============================================================================
+
+/**
+ * Post Layout Responsive Enhancements
+ * Single-column blog posts optimized for reading
+ */
+.post-layout {
+  // Already has: genesis-environment('focused')
+  // Add responsive spacing
+  @include genesis-atmosphere('spacious-mobile');
+  
+  // Ensure optimal line length for reading
+  max-width: 70ch; // 45-75ch is optimal
+  margin-inline: auto;
+  
+  @include from(md) {
+    max-width: 75ch;
+  }
+}
+
+.post__header,
+.post__meta,
+.post__taxonomy,
+.post__content,
+.post__footer-cta {
+  // Touch-friendly spacing on mobile
+  padding-block: clamp(1rem, 3vw, 2rem);
+}
+
+.post__tag,
+.post__category {
+  // WCAG 2.5.5: Ensure touch targets ≥44px
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  
+  @include from(md) {
+    min-height: 32px; // Can be smaller on desktop
+    padding: 0.25rem 0.75rem;
+  }
+}
+
+/**
+ * Article Layout Responsive Enhancements
+ * Two-column with sidebar that becomes stacked on mobile
+ */
+.article-layout {
+  // Desktop: sidebar + main
+  // Mobile: stacked
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-bento);
+  
+  @include from(lg) {
+    grid-template-columns: 250px 1fr;
+    gap: var(--space-network);
+  }
+  
+  @include from(xl) {
+    grid-template-columns: 300px 1fr;
+  }
+}
+
+.article-toc-sidebar {
+  // Mobile: sticky header at top
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  max-height: 100vh;
+  overflow-y: auto;
+  
+  @include from(lg) {
+    // Desktop: sidebar
+    max-height: calc(100vh - 2rem);
+  }
+}
+
+.article-main-col {
+  max-width: 70ch;
+  
+  @include from(lg) {
+    max-width: 75ch;
+  }
+}
+
+// ============================================================================
+// LANDING & MARKETING LAYOUTS
+// ============================================================================
+
+/**
+ * Landing Layout Responsive Enhancements
+ * Hero sections with CTAs optimized for conversion
+ */
+.landing__hero {
+  // Full viewport height with mobile browser chrome consideration
+  @include genesis-atmosphere('viewport-aware');
+  
+  // Hero layout: mobile stacked, desktop split
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-bento);
+  align-items: center;
+  
+  @include from(lg) {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-network);
+  }
+}
+
+.landing__hero-image {
+  @include genesis-entity('image-adaptive');
+  width: 100%;
+  height: auto;
+  
+  @include from(lg) {
+    max-height: 600px;
+    object-fit: cover;
+  }
+}
+
+.landing__hero-actions {
+  // Touch-friendly button spacing
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 3vw, 2rem);
+  
+  @include from(sm) {
+    flex-wrap: nowrap;
+  }
+}
+
+.landing__hero-button,
+.landing__cta-button {
+  // WCAG 2.5.5: Touch targets ≥44px
+  min-height: 44px;
+  min-width: 44px;
+  padding: 1rem 2rem;
+  
+  @include from(md) {
+    min-height: 48px; // Slightly larger on desktop
+    padding: 1.125rem 2.5rem;
+  }
+}
+
+/**
+ * Splash Layout Responsive Enhancements
+ * Full-screen centered content
+ */
+.splash-layout {
+  @include genesis-atmosphere('viewport-aware');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-bento);
+  
+  @include from(md) {
+    padding: var(--space-network);
+  }
+}
+
+// ============================================================================
+// DASHBOARD & GRID LAYOUTS
+// ============================================================================
+
+/**
+ * Dashboard Layout Responsive Enhancements
+ * Multi-column dashboard with widgets
+ */
+.dashboard-layout {
+  @include genesis-environment('manifest');
+  
+  // Mobile: 1-2 columns
+  // Tablet: 2-4 columns
+  // Desktop: Full 12-column grid
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-bento);
+  
+  @include from(md) {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  
+  @include from(lg) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.dashboard__widget {
+  @include genesis-entity('primary');
+  
+  // Allow widgets to span multiple columns on desktop
+  grid-column: span 12;
+  
+  @include from(md) {
+    grid-column: span 6;
+  }
+  
+  @include from(lg) {
+    grid-column: span 4;
+  }
+  
+  // Large widgets can span more
+  &--large {
+    @include from(lg) {
+      grid-column: span 6;
+    }
+  }
+  
+  &--full {
+    @include from(lg) {
+      grid-column: span 12;
+    }
+  }
+}
+
+/**
+ * Gallery Layout Responsive Enhancements
+ * Image gallery with responsive grid
+ */
+.gallery-layout {
+  @include genesis-environment('distributed');
+  @include genesis-atmosphere('dense-desktop');
+}
+
+.gallery__item {
+  @include genesis-entity('primary');
+  
+  img {
+    @include genesis-entity('image-adaptive');
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/**
+ * Archive Layout Responsive Enhancements
+ * List of posts/articles with excerpts
+ */
+.archive-layout {
+  @include genesis-environment('chronological');
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.archive__item {
+  @include genesis-entity('primary');
+  
+  // Mobile: stacked
+  // Desktop: image + content side-by-side
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-bento);
+  
+  @include from(md) {
+    grid-template-columns: 200px 1fr;
+  }
+  
+  @include from(lg) {
+    grid-template-columns: 300px 1fr;
+  }
+}
+
+.archive__thumbnail {
+  @include genesis-entity('image-adaptive');
+  aspect-ratio: 16 / 9;
+  
+  @include from(md) {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+// ============================================================================
+// FORM LAYOUTS
+// ============================================================================
+
+/**
+ * Form Layout Responsive Enhancements
+ * Contact forms and data entry
+ */
+.form-layout {
+  @include genesis-environment('interaction-form');
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+.form__group {
+  // Mobile: stacked
+  // Desktop: can be side-by-side for short fields
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-bento);
+  
+  @include from(md) {
+    &--inline {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+.form__label {
+  @include genesis-cognition('motive');
+  // Touch-friendly label with proper spacing
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form__input,
+.form__select,
+.form__textarea {
+  // WCAG 2.5.5: Touch targets ≥44px
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  // Prevent iOS zoom on focus
+  font-size: max(16px, 1rem);
+  
+  @include from(md) {
+    min-height: 48px;
+    padding: 1rem 1.25rem;
+  }
+}
+
+.form__textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form__button {
+  // WCAG 2.5.5: Touch targets ≥44px
+  min-height: 44px;
+  min-width: 44px;
+  padding: 1rem 2rem;
+  
+  @include from(md) {
+    min-height: 48px;
+    padding: 1.125rem 2.5rem;
+  }
+}
+
+// ============================================================================
+// SPECIAL LAYOUTS
+// ============================================================================
+
+/**
+ * Search Layout Responsive Enhancements
+ * Search page with results
+ */
+.search-layout {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.search__input-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding-block: var(--space-bento);
+}
+
+.search__input {
+  // WCAG 2.5.5: Touch targets ≥44px
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  font-size: max(16px, 1rem); // Prevent iOS zoom
+  width: 100%;
+  
+  @include from(md) {
+    min-height: 56px;
+    padding: 1rem 1.5rem;
+    font-size: 1.125rem;
+  }
+}
+
+.search__results {
+  @include genesis-environment('chronological');
+}
+
+/**
+ * Profile Layout Responsive Enhancements
+ * User profile with stats and content
+ */
+.profile-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-bento);
+  max-width: 1200px;
+  margin-inline: auto;
+  
+  @include from(lg) {
+    grid-template-columns: 300px 1fr;
+    gap: var(--space-network);
+  }
+}
+
+.profile__sidebar {
+  @include genesis-entity('secondary');
+}
+
+.profile__avatar {
+  @include genesis-entity('image-adaptive');
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  
+  @include from(lg) {
+    max-width: 100%;
+  }
+}
+
+.profile__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: var(--space-bento);
+}
+
+.profile__stat {
+  @include genesis-entity('secondary');
+  text-align: center;
+  padding: 1rem;
+  
+  // Touch-friendly on mobile
+  min-height: 80px;
+  
+  @include from(md) {
+    min-height: auto;
+  }
+}
+
+/**
+ * Settings Layout Responsive Enhancements
+ * Settings page with tabs/sections
+ */
+.settings-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-bento);
+  max-width: 1200px;
+  margin-inline: auto;
+  
+  @include from(lg) {
+    grid-template-columns: 250px 1fr;
+    gap: var(--space-network);
+  }
+}
+
+.settings__nav {
+  // Mobile: horizontal scroll
+  // Desktop: vertical sidebar
+  @include from(lg) {
+    position: sticky;
+    top: 0;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+}
+
+.settings__nav-list {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.5rem;
+  
+  @include from(lg) {
+    flex-direction: column;
+    overflow-x: visible;
+  }
+}
+
+.settings__nav-item {
+  // WCAG 2.5.5: Touch targets ≥44px
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  white-space: nowrap;
+  
+  @include from(lg) {
+    white-space: normal;
+  }
+}
+
+/**
+ * Chatroom Layout Responsive Enhancements
+ * Chat interface with messages
+ */
+.chatroom-layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  max-height: 100vh;
+}
+
+.chatroom__header {
+  @include genesis-entity('secondary');
+  padding: var(--space-bento);
+}
+
+.chatroom__messages {
+  overflow-y: auto;
+  padding: var(--space-bento);
+  
+  @include from(md) {
+    padding: var(--space-network);
+  }
+}
+
+.chatroom__input-wrapper {
+  @include genesis-entity('secondary');
+  padding: var(--space-bento);
+  
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+}
+
+.chatroom__input {
+  // WCAG 2.5.5: Touch targets ≥44px
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  font-size: max(16px, 1rem); // Prevent iOS zoom
+  
+  @include from(md) {
+    min-height: 48px;
+  }
+}
+
+.chatroom__send-button {
+  // WCAG 2.5.5: Touch targets ≥44px
+  min-height: 44px;
+  min-width: 44px;
+  
+  @include from(md) {
+    min-height: 48px;
+    min-width: 60px;
+  }
+}
+
+/**
+ * FAQ Layout Responsive Enhancements
+ * Accordion-style FAQ
+ */
+.faq-layout {
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.faq__item {
+  @include genesis-entity('primary');
+  margin-bottom: var(--space-bento);
+}
+
+.faq__question {
+  // WCAG 2.5.5: Touch targets ≥44px
+  min-height: 44px;
+  padding: 1rem;
+  cursor: pointer;
+  
+  @include from(md) {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+.faq__answer {
+  padding: 1rem;
+  
+  @include from(md) {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+/**
+ * Docs Layout Responsive Enhancements
+ * Documentation with sidebar navigation
+ */
+.docs-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-bento);
+  max-width: 1400px;
+  margin-inline: auto;
+  
+  @include from(lg) {
+    grid-template-columns: 280px 1fr;
+    gap: var(--space-network);
+  }
+  
+  @include from(xl) {
+    grid-template-columns: 320px 1fr 280px; // Add right sidebar for TOC
+  }
+}
+
+.docs__sidebar {
+  @include from(lg) {
+    position: sticky;
+    top: 0;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+}
+
+.docs__content {
+  max-width: 70ch;
+}
+
+.docs__toc {
+  @include from(xl) {
+    position: sticky;
+    top: 0;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+}
+
+// ============================================================================
+// APP-SPECIFIC LAYOUTS
+// ============================================================================
+
+/**
+ * App Layout Responsive Enhancements
+ * Full application interface
+ */
+.app-layout {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+  max-height: 100vh;
+  
+  @include from(lg) {
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr;
+  }
+}
+
+.app__sidebar {
+  // Mobile: hidden by default (toggle with JavaScript)
+  // Desktop: always visible
+  @include from(lg) {
+    grid-row: 1 / -1;
+    border-right: 1px solid var(--border-primary);
+  }
+}
+
+/**
+ * Minimal Layout Responsive Enhancements
+ * Clean, minimal layout for focus
+ */
+.minimal-layout {
+  max-width: 800px;
+  margin-inline: auto;
+  padding: var(--space-bento);
+  
+  @include from(md) {
+    padding: var(--space-network);
+  }
+}
+
+/**
+ * Fixed Height Layout Responsive Enhancements
+ * Layouts that maintain viewport height
+ */
+.fixed-height-layout {
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/**
+ * Scrollable Layout Responsive Enhancements
+ * Layouts with scrollable content areas
+ */
+.scrollable-layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.scrollable__content {
+  overflow-y: auto;
+  padding: var(--space-bento);
+  
+  @include from(md) {
+    padding: var(--space-network);
+  }
+}
+
+// ============================================================================
+// GLOBAL RESPONSIVE UTILITIES
+// ============================================================================
+
+/**
+ * Responsive Spacing Utilities
+ * Apply across all layouts
+ */
+.responsive-section {
+  @include genesis-atmosphere('spacious-mobile');
+}
+
+.responsive-grid {
+  @include genesis-environment('distributed');
+}
+
+.responsive-form {
+  @include genesis-environment('interaction-form');
+}
+
+/**
+ * Reduced Motion Support
+ * All layouts respect user preferences
+ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/**
+ * High Contrast Support
+ * All layouts adapt to high contrast mode
+ */
+@media (prefers-contrast: high) {
+  .post-layout,
+  .article-layout,
+  .landing-layout,
+  .dashboard-layout,
+  .gallery-layout,
+  .archive-layout,
+  .form-layout,
+  .search-layout,
+  .profile-layout,
+  .settings-layout,
+  .chatroom-layout,
+  .faq-layout,
+  .docs-layout,
+  .app-layout,
+  .minimal-layout,
+  .fixed-height-layout,
+  .scrollable-layout {
+    // Disable glassmorphism in high contrast
+    backdrop-filter: none;
+    background: var(--surface-primary);
+    border: 2px solid var(--border-primary);
+  }
+}

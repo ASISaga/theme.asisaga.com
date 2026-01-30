@@ -1,16 +1,24 @@
+/**
+ * BACK TO TOP BUTTON - 100% Ontological
+ * ============================================================================
+ * Back to top button using ONLY Genesis Semantic mixins.
+ * ZERO raw CSS properties - full ontological compliance.
+ * Refactored by scss-refactor-agent v2.1
+ */
 
 // Back to top button - Genesis Ontological System
-
 .back-to-top {
-  @include genesis-synapse('navigate');
-  @include genesis-entity('imperative');
-  @include genesis-state('latent');
+  @include genesis-synapse('navigate');  // Navigation action (handles button styling, positioning)
+  @include genesis-entity('imperative');  // Urgent/prominent styling (neon glow)
+  @include genesis-state('latent');  // Hidden by default (opacity 0, visibility hidden)
   
+  // Show state (JavaScript adds .show class)
   &.show {
-    @include genesis-state('stable');
+    @include genesis-state('stable');  // Visible and active
   }
   
+  // Icon styling
   i {
-    @include genesis-cognition('quantum');
+    @include genesis-cognition('quantum');  // Small icon text
   }
 }
