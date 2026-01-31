@@ -110,6 +110,10 @@
     
     transition: all 0.3s ease;
     
+    // Fix double-tap delay on mobile
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    
     @include from(lg) {
       width: auto;
       padding: 0.5rem 0.75rem;
@@ -216,6 +220,10 @@
     border-radius: 8px;
     
     transition: all 0.3s ease;
+    
+    // Fix double-tap delay on mobile
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
     
     &:hover,
     &:focus {

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Mobile Header Fix Test</title>
+  <style>
+    /* Minimal reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Apply touch-action fix */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #f5f5f5;
+      min-height: 100vh;
+      overflow-x: hidden;
+      
+      /* FIX: Prevent double-tap zoom delay */
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Genesis Header */
+    .genesis-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      min-height: 70px;
+      
+      backdrop-filter: blur(16px);
+      background: rgba(26, 26, 46, 0.95);
+      border-bottom: 1px solid rgba(51, 51, 77, 1);
+      box-shadow: 0 2px 8px rgba(13, 13, 32, 0.3);
+      
+      /* FIX: Ensure header is touchable */
+      touch-action: manipulation;
+      pointer-events: auto;
+      
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-font-smoothing: antialiased;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+    }
+    
+    .genesis-header.scrolled {
+      background: rgba(20, 20, 32, 1);
+      box-shadow: 0 4px 16px rgba(13, 13, 32, 0.5);
+    }
+    
+    .genesis-header.header-hidden {
+      transform: translate3d(0, -100%, 0);
+    }
+    
+    .genesis-header__container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    
+    .genesis-header__brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: #f5f5f5;
+      min-height: 44px;
+    }
+    
+    .genesis-header__title {
+      font-size: clamp(1.125rem, calc(1rem + 0.5vw), 1.375rem);
+      font-weight: 600;
+      color: #f5f5f5;
+      transition: color 0.3s ease;
+    }
+    
+    .genesis-header__brand:hover .genesis-header__title {
+      color: #6b9fff;
+    }
+    
+    /* Mobile Menu Toggle */
+    .genesis-header__toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      background: rgba(51, 51, 77, 1);
+      border: 1px solid rgba(77, 77, 102, 1);
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      /* FIX: Fast tap response */
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    .genesis-header__toggle:hover,
+    .genesis-header__toggle:focus {
+      background: rgba(64, 64, 92, 1);
+      border-color: #6b9fff;
+      transform: scale(1.05);
+    }
+    
+    .genesis-header__toggle[aria-expanded="true"] {
+      background: rgba(77, 77, 102, 1);
+      border-color: #5fa8ff;
+    }
+    
+    .genesis-header__toggle-icon {
+      position: relative;
+      width: 20px;
+      height: 2px;
+      background: #f5f5f5;
+      transition: all 0.3s ease;
+    }
+    
+    .genesis-header__toggle-icon::before,
+    .genesis-header__toggle-icon::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #f5f5f5;
+      transition: all 0.3s ease;
+    }
+    
+    .genesis-header__toggle-icon::before {
+      transform: translateY(-6px);
+    }
+    
+    .genesis-header__toggle-icon::after {
+      transform: translateY(6px);
+    }
+    
+    .genesis-header__toggle[aria-expanded="true"] .genesis-header__toggle-icon::before {
+      transform: translateY(0) rotate(45deg);
+    }
+    
+    .genesis-header__toggle[aria-expanded="true"] .genesis-header__toggle-icon::after {
+      transform: translateY(0) rotate(-45deg);
+    }
+    
+    /* Navigation - Off-canvas on mobile, inline on desktop */
+    .genesis-header__nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      bottom: 0;
+      width: 85%;
+      max-width: 360px;
+      z-index: 1001;
+      
+      background: rgba(20, 20, 32, 0.98);
+      backdrop-filter: blur(20px);
+      border-left: 1px solid rgba(51, 51, 77, 1);
+      box-shadow: -12px 0 48px rgba(0, 0, 0, 0);
+      
+      padding: 5.5rem 1.5rem 2rem;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+      
+      transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .genesis-header__nav[data-nav-open="true"] {
+      right: 0;
+      box-shadow: -12px 0 48px rgba(0, 0, 0, 0.6);
+    }
+    
+    /* Desktop: Show navigation inline */
+    @media (min-width: 1024px) {
+      .genesis-header__toggle {
+        display: none;
+      }
+      
+      .genesis-header__nav {
+        position: static;
+        width: auto;
+        max-width: none;
+        padding: 0;
+        overflow-y: visible;
+        overflow-x: visible;
+        right: auto;
+        
+        /* FIX: Ensure navigation is visible on desktop */
+        display: flex !important;
+        
+        background: transparent;
+        backdrop-filter: none;
+        border-left: none;
+        box-shadow: none;
+        transition: none;
+        touch-action: auto;
+      }
+    }
+    
+    /* Navbar */
+    .navbar {
+      width: 100%;
+    }
+    
+    .navbar__list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+    
+    @media (min-width: 1024px) {
+      .navbar__list {
+        flex-direction: row;
+        gap: 1.5rem;
+        align-items: center;
+        width: auto;
+      }
+    }
+    
+    .navbar__item {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+    
+    @media (min-width: 1024px) {
+      .navbar__item {
+        width: auto;
+      }
+    }
+    
+    .navbar__link {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      color: #c5c5c5;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      
+      /* FIX: Fast tap response */
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    @media (min-width: 1024px) {
+      .navbar__link {
+        width: auto;
+        padding: 0.5rem 0.75rem;
+      }
+    }
+    
+    .navbar__link:hover,
+    .navbar__link:focus {
+      color: #f5f5f5;
+      background: rgba(51, 51, 77, 0.5);
+      border: 1px solid rgba(107, 159, 255, 0.5);
+    }
+    
+    /* Overlay */
+    .genesis-nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 999;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .genesis-nav-overlay[data-nav-open="true"] {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    @media (min-width: 1024px) {
+      .genesis-nav-overlay {
+        display: none;
+      }
+    }
+    
+    /* Test content */
+    .test-section {
+      min-height: 100vh;
+      padding: 4rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .test-section:nth-child(even) {
+      background: rgba(100, 100, 255, 0.05);
+    }
+    
+    .test-content {
+      max-width: 800px;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .test-content h1, .test-content h2 {
+      margin-bottom: 1rem;
+      color: #6b9fff;
+    }
+    
+    .test-content p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    
+    .test-content ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .test-content li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .status {
+      position: fixed;
+      top: 6rem;
+      right: 1rem;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.9);
+      border: 1px solid #333;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      z-index: 998;
+    }
+    
+    .status-item {
+      margin-bottom: 0.5rem;
+    }
+    
+    .status-good { color: #51cf66; }
+    .status-bad { color: #ff6b6b; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="genesis-header">
+    <div class="genesis-header__container">
+      <a class="genesis-header__brand" href="/">
+        <span class="genesis-header__title">ASISaga Theme</span>
+      </a>
+      
+      <!-- Mobile Menu Toggle -->
+      <button 
+        class="genesis-header__toggle" 
+        type="button" 
+        aria-expanded="false" 
+        aria-controls="genesis-nav"
+        aria-label="Toggle navigation menu"
+        data-nav-toggle
+      >
+        <span class="genesis-header__toggle-icon" aria-hidden="true"></span>
+      </button>
+      
+      <!-- Navigation -->
+      <nav 
+        id="genesis-nav" 
+        class="genesis-header__nav" 
+        aria-label="Primary navigation"
+        data-nav-menu
+      >
+        <ul class="navbar__list">
+          <li class="navbar__item">
+            <a class="navbar__link" href="#section1">Section 1</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="#section2">Section 2</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="#section3">Section 3</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="#section4">Section 4</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Overlay -->
+  <div class="genesis-nav-overlay" data-nav-overlay aria-hidden="true"></div>
+  
+  <!-- Test Content -->
+  <div class="test-section" id="section1">
+    <div class="test-content">
+      <h1>Mobile Header Fix Test ✅</h1>
+      <p><strong>Fixed Issues:</strong></p>
+      <ul>
+        <li>✅ Header is VISIBLE on mobile</li>
+        <li>✅ Navigation appears as INLINE MENU on desktop (≥1024px)</li>
+        <li>✅ Scroll does NOT require double-tap (touch-action: manipulation)</li>
+        <li>✅ Fast, responsive touch interactions</li>
+      </ul>
+      <p><strong>Test Instructions:</strong></p>
+      <ol>
+        <li>Scroll down - header should hide smoothly</li>
+        <li>Scroll up - header should show immediately</li>
+        <li>Try tapping anywhere - should be instant (no 300ms delay)</li>
+        <li>Resize to mobile (&lt;1024px) - menu icon appears</li>
+        <li>Resize to desktop (≥1024px) - navigation shows inline</li>
+      </ol>
+    </div>
+  </div>
+  
+  <div class="test-section" id="section2">
+    <div class="test-content">
+      <h2>Section 2: Touch Test</h2>
+      <p>Tap this text. It should respond instantly without delay.</p>
+      <p>The entire page now has <code>touch-action: manipulation</code> which:</p>
+      <ul>
+        <li>Removes the 300ms tap delay</li>
+        <li>Disables double-tap to zoom (faster scrolling)</li>
+        <li>Enables pinch-to-zoom (still works)</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="test-section" id="section3">
+    <div class="test-content">
+      <h2>Section 3: Navigation Test</h2>
+      <p><strong>On Mobile (&lt;1024px):</strong></p>
+      <ul>
+        <li>Hamburger menu icon visible in header</li>
+        <li>Tap icon to open off-canvas navigation</li>
+        <li>Navigation slides in from right</li>
+        <li>Dark overlay appears behind menu</li>
+        <li>Tap overlay or link to close menu</li>
+      </ul>
+      <p><strong>On Desktop (≥1024px):</strong></p>
+      <ul>
+        <li>Navigation links visible inline in header</li>
+        <li>Hamburger menu hidden</li>
+        <li>Hover effects on links</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="test-section" id="section4">
+    <div class="test-content">
+      <h2>Section 4: Scroll Performance</h2>
+      <p>Scroll rapidly up and down to test smooth scrolling:</p>
+      <ul>
+        <li>Header should respond smoothly to scroll direction</li>
+        <li>No jitter or layout shifts</li>
+        <li>Hardware accelerated animations</li>
+        <li>Passive scroll listeners for performance</li>
+      </ul>
+      <p>Check the status indicator in the top-right corner for real-time feedback.</p>
+    </div>
+  </div>
+  
+  <!-- Status Indicator -->
+  <div class="status">
+    <div class="status-item">Header: <span id="header-state" class="status-good">visible</span></div>
+    <div class="status-item">Scrolled: <span id="scrolled-class">false</span></div>
+    <div class="status-item">Menu: <span id="menu-state">closed</span></div>
+  </div>
+  
+  <!-- Scripts -->
+  <script>
+    // Mobile navigation toggle
+    (function() {
+      const toggle = document.querySelector('[data-nav-toggle]');
+      const menu = document.querySelector('[data-nav-menu]');
+      const overlay = document.querySelector('[data-nav-overlay]');
+      
+      if (!toggle || !menu || !overlay) return;
+      
+      function toggleNav(open) {
+        const isOpen = typeof open === 'boolean' ? open : toggle.getAttribute('aria-expanded') !== 'true';
+        
+        toggle.setAttribute('aria-expanded', isOpen);
+        menu.setAttribute('data-nav-open', isOpen);
+        overlay.setAttribute('data-nav-open', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+        
+        // Update status
+        document.getElementById('menu-state').textContent = isOpen ? 'open' : 'closed';
+        document.getElementById('menu-state').className = isOpen ? 'status-good' : '';
+      }
+      
+      toggle.addEventListener('click', () => toggleNav());
+      overlay.addEventListener('click', () => toggleNav(false));
+      
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+          toggleNav(false);
+        }
+      });
+      
+      // Close on link click (mobile)
+      const navLinks = menu.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth < 1024) {
+            setTimeout(() => toggleNav(false), 300);
+          }
+        });
+      });
+      
+      // Close on resize to desktop
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          if (window.innerWidth >= 1024) {
+            toggleNav(false);
+          }
+        }, 250);
+      });
+    })();
+    
+    // Header scroll behavior
+    (function() {
+      const header = document.querySelector('.genesis-header');
+      if (!header) return;
+      
+      let lastScroll = 0;
+      const scrollThreshold = 50;
+      const hideThreshold = 10;
+      let ticking = false;
+      
+      function handleScroll() {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (currentScroll < 0) {
+          ticking = false;
+          return;
+        }
+        
+        if (currentScroll > scrollThreshold) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+        
+        const scrollDiff = currentScroll - lastScroll;
+        
+        if (Math.abs(scrollDiff) > hideThreshold) {
+          if (scrollDiff > 0 && currentScroll > scrollThreshold) {
+            header.classList.add('header-hidden');
+          } else if (scrollDiff < 0) {
+            header.classList.remove('header-hidden');
+          }
+          lastScroll = currentScroll;
+        }
+        
+        ticking = false;
+      }
+      
+      handleScroll();
+      
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(handleScroll);
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+    
+    // Status indicator update
+    (function() {
+      const header = document.querySelector('.genesis-header');
+      
+      function updateStatus() {
+        const isHidden = header && header.classList.contains('header-hidden');
+        const hasScrolled = header && header.classList.contains('scrolled');
+        
+        const headerState = document.getElementById('header-state');
+        const scrolledClass = document.getElementById('scrolled-class');
+        
+        headerState.textContent = isHidden ? 'hidden' : 'visible';
+        headerState.className = isHidden ? 'status-bad' : 'status-good';
+        
+        scrolledClass.textContent = hasScrolled ? 'true' : 'false';
+        scrolledClass.className = hasScrolled ? 'status-good' : '';
+        
+        requestAnimationFrame(updateStatus);
+      }
+      
+      updateStatus();
+    })();
+  </script>
+</body>
+</html>

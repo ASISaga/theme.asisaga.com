@@ -18,6 +18,10 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  
+  // Fix double-tap zoom delay on mobile - use manipulation for fast scrolling
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 // Main Content Area
