@@ -245,23 +245,24 @@
     
     // Desktop: Inline navigation (FIXED - ensure it displays properly)
     @include from(lg) {
-      // Reset mobile positioning
+      // Reset all mobile positioning and state
       position: static;
       width: auto;
       max-width: none;
       padding: 0;
       overflow-y: visible;
       overflow-x: visible;
-      right: auto;  // Reset right positioning
       
-      // Make navigation visible on desktop
-      display: flex !important;  // Override any mobile hide states
-      
+      // Reset mobile visual properties
       background: transparent;
       backdrop-filter: none;
       box-shadow: none;
       transition: none;
       touch-action: auto;
+      
+      // Always show navigation on desktop (override data-nav-open attribute)
+      // Note: !important needed to override [data-nav-open] attribute selector
+      display: flex !important;
     }
   }
 }
