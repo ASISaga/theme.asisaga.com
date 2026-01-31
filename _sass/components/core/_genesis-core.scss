@@ -10,10 +10,9 @@
   @include genesis-environment('focused');
   @include genesis-atmosphere('neutral');
   
-  // Smooth scroll behavior (respects reduced motion)
-  @media (prefers-reduced-motion: no-preference) {
-    scroll-behavior: smooth;
-  }
+  // Disable smooth scroll on body to prevent conflicts with header animations
+  // Only use smooth scroll for specific anchor links when needed
+  scroll-behavior: auto;
   
   // Full viewport height minimum
   min-height: 100vh;

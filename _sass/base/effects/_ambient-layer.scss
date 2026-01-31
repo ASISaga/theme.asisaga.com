@@ -27,8 +27,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden; // Prevent horizontal scroll from ambient effects
   
-  // Hardware acceleration for smooth performance
-  transform: translate3d(0, 0, 0);
+  // Font smoothing for better text rendering
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   
@@ -153,10 +152,6 @@ body.user-active::before {
   
   html {
     scroll-behavior: auto;
-  }
-  
-  body {
-    transform: none;
   }
 }
 

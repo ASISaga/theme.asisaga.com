@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header Scroll Test - Fixed</title>
+  <style>
+    /* Minimal styles to test header behavior */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #f5f5f5;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    /* Genesis Header Styles */
+    .genesis-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      min-height: 70px;
+      
+      backdrop-filter: blur(16px);
+      background: rgba(26, 26, 46, 0.95);
+      border-bottom: 1px solid rgba(51, 51, 77, 1);
+      box-shadow: 0 2px 8px rgba(13, 13, 32, 0.3);
+      
+      /* Hardware acceleration */
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-font-smoothing: antialiased;
+      
+      /* Smooth transitions */
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                  background-color 0.3s ease;
+    }
+    
+    /* Scrolled state */
+    .genesis-header.scrolled {
+      background: rgba(20, 20, 32, 1);
+      box-shadow: 0 4px 16px rgba(13, 13, 32, 0.5);
+    }
+    
+    /* Hidden state */
+    .genesis-header.header-hidden {
+      transform: translate3d(0, -100%, 0);
+    }
+    
+    .genesis-header__container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    
+    .genesis-header__brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: #f5f5f5;
+    }
+    
+    .genesis-header__title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #f5f5f5;
+      transition: color 0.3s ease;
+    }
+    
+    .genesis-header__brand:hover .genesis-header__title {
+      color: #6b9fff;
+    }
+    
+    .genesis-header__nav {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .genesis-header__nav a {
+      color: #c5c5c5;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .genesis-header__nav a:hover {
+      color: #6b9fff;
+    }
+    
+    /* Test content */
+    .test-section {
+      min-height: 100vh;
+      padding: 4rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .test-section:nth-child(even) {
+      background: rgba(100, 100, 255, 0.05);
+    }
+    
+    .test-content {
+      max-width: 800px;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.9);
+      border-radius: 0.5rem;
+      font-family: monospace;
+      font-size: 0.9rem;
+      z-index: 999;
+      border: 1px solid #333;
+    }
+    
+    .status-good {
+      color: #51cf66;
+    }
+    
+    .status-bad {
+      color: #ff6b6b;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="genesis-header">
+    <div class="genesis-header__container">
+      <a class="genesis-header__brand" href="/">
+        <span class="genesis-header__title">ASISaga Theme</span>
+      </a>
+      <nav class="genesis-header__nav">
+        <a href="#section1">Section 1</a>
+        <a href="#section2">Section 2</a>
+        <a href="#section3">Section 3</a>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Test Content -->
+  <div class="test-section" id="section1">
+    <div class="test-content">
+      <h1>Header Scroll Test - Fixed Version</h1>
+      <p><strong>Testing:</strong></p>
+      <ul>
+        <li>Header should be VISIBLE at page load ✓</li>
+        <li>Header should HIDE when scrolling down</li>
+        <li>Header should SHOW when scrolling up</li>
+        <li>Scroll should be SMOOTH (not sluggish)</li>
+        <li>Background should darken after 50px scroll</li>
+      </ul>
+      <p><strong>Scroll down to test ↓</strong></p>
+    </div>
+  </div>
+  
+  <div class="test-section" id="section2">
+    <div class="test-content">
+      <h2>Section 2: Scroll Down Test</h2>
+      <p>Keep scrolling down. The header should smoothly hide.</p>
+      <p>Notice the header's background becomes more opaque after scrolling past 50px.</p>
+    </div>
+  </div>
+  
+  <div class="test-section" id="section3">
+    <div class="test-content">
+      <h2>Section 3: Scroll Up Test</h2>
+      <p>Now scroll back up. The header should immediately show again.</p>
+      <p>The animation should be smooth without jitter or sluggishness.</p>
+    </div>
+  </div>
+  
+  <div class="test-section">
+    <div class="test-content">
+      <h2>Section 4: Rapid Scroll Test</h2>
+      <p>Try scrolling rapidly up and down.</p>
+      <p>The header should respond smoothly to your scroll direction changes.</p>
+    </div>
+  </div>
+  
+  <div class="test-section">
+    <div class="test-content">
+      <h2>Section 5: Final Verification</h2>
+      <p>Scroll all the way to the top to verify the header appears correctly.</p>
+      <ul>
+        <li>✓ Min height maintained (70px)</li>
+        <li>✓ No layout shifts</li>
+        <li>✓ Smooth transitions</li>
+        <li>✓ Hardware accelerated</li>
+        <li>✓ Passive scroll listeners</li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div>Scroll Y: <span id="scroll-y">0</span>px</div>
+    <div>Header: <span id="header-state" class="status-good">visible</span></div>
+    <div>Scrolled: <span id="scrolled-class">false</span></div>
+  </div>
+  
+  <!-- Header Scroll Script (from assets/js/common/header-scroll.js) -->
+  <script>
+    /**
+     * Header Scroll Enhancement
+     * Adds transparent-to-opaque transition on scroll
+     * Auto-hide header on scroll down, show on scroll up
+     */
+    
+    (function() {
+      'use strict';
+      
+      const header = document.querySelector('.genesis-header, .site-header');
+      if (!header) return;
+      
+      let lastScroll = 0;
+      const scrollThreshold = 50;
+      const hideThreshold = 10; // Minimum scroll distance to trigger hide/show
+      let ticking = false;
+      
+      function handleScroll() {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Prevent negative scroll values (on some browsers/devices)
+        if (currentScroll < 0) {
+          ticking = false;
+          return;
+        }
+        
+        // Add/remove scrolled class based on scroll position
+        if (currentScroll > scrollThreshold) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+        
+        // Auto-hide logic: hide on scroll down, show on scroll up
+        const scrollDiff = currentScroll - lastScroll;
+        
+        // Only apply hide/show if scroll difference exceeds threshold
+        if (Math.abs(scrollDiff) > hideThreshold) {
+          if (scrollDiff > 0 && currentScroll > scrollThreshold) {
+            // Scrolling down & past threshold - hide header
+            header.classList.add('header-hidden');
+          } else if (scrollDiff < 0) {
+            // Scrolling up - show header
+            header.classList.remove('header-hidden');
+          }
+          
+          lastScroll = currentScroll;
+        }
+        
+        ticking = false;
+      }
+      
+      // Initial check
+      handleScroll();
+      
+      // Listen for scroll events with requestAnimationFrame throttling
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(handleScroll);
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+    
+    // Scroll indicator update
+    (function() {
+      const scrollYEl = document.getElementById('scroll-y');
+      const headerStateEl = document.getElementById('header-state');
+      const scrolledClassEl = document.getElementById('scrolled-class');
+      const header = document.querySelector('.genesis-header');
+      
+      function updateIndicator() {
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        scrollYEl.textContent = Math.round(scrollY);
+        
+        const isHidden = header && header.classList.contains('header-hidden');
+        headerStateEl.textContent = isHidden ? 'hidden' : 'visible';
+        headerStateEl.className = isHidden ? 'status-bad' : 'status-good';
+        
+        const hasScrolled = header && header.classList.contains('scrolled');
+        scrolledClassEl.textContent = hasScrolled ? 'true' : 'false';
+        scrolledClassEl.className = hasScrolled ? 'status-good' : '';
+        
+        requestAnimationFrame(updateIndicator);
+      }
+      
+      updateIndicator();
+    })();
+  </script>
+</body>
+</html>

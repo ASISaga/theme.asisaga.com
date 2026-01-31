@@ -7,7 +7,7 @@
 (function() {
   'use strict';
   
-  const header = document.querySelector('.site-header');
+  const header = document.querySelector('.genesis-header, .site-header');
   if (!header) return;
   
   let lastScroll = 0;
