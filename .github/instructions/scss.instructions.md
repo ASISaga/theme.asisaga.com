@@ -99,6 +99,86 @@ See [Ontology System - Genesis Semantic Engine (PRIMARY METHOD)](#ontology-syste
 - **Fluid Typography** - clamp() based responsive scaling
 - **Accessibility-first** - WCAG AA, reduced motion, high contrast
 
+## 🎨 Color Philosophy - Purposeful Usage
+
+**The Genesis Design System emphasizes purposeful, accessible color usage:**
+
+### Primary Colors (Core Hierarchy)
+- **Black text on white backgrounds** - Primary content, body text, headings
+  - Text: `oklch(0.10 0.01 250)` to `oklch(0.15 0.01 250)` (deep black)
+  - Background: `oklch(0.99 0.005 90)` (pure white)
+- **White text on black backgrounds** - Headers, footers, navigation, buttons
+  - Text: `oklch(0.99 0.005 90)` (white)
+  - Background: `oklch(0.08 0.01 250)` to `oklch(0.12 0.01 250)` (black)
+
+### Secondary Colors (Use When Needed)
+- **Light gray backgrounds** - Use when semantic purpose requires distinction from white
+  - `oklch(0.96 0.005 220)` - Very light gray for cards with purpose
+- **Dark gray text** - Secondary information, metadata
+  - `oklch(0.30 0.01 230)` to `oklch(0.35 0.01 230)`
+
+### Accent Colors (Use Purposefully)
+- **Neon blue** - For interaction feedback, focus states, and emphasis
+  - `oklch(0.65 0.25 230)` - Use for hover states, focus rings, active elements
+  - **When to use**: Links on hover, button interactions, focus indicators, alerts
+  - **Avoid**: Background fills or large surface areas
+- **Gold** - For special highlights and sacred elements
+  - `oklch(0.70 0.15 85)` - Use purposefully for emphasis
+  - **When to use**: Special features, premium content, sacred elements
+  - **Avoid**: Overuse that diminishes impact
+
+### ❌ Avoid Excessive Use
+- Too many blue tints in backgrounds (use white/light gray instead)
+- Multiple levels of nested colored boxes (flatten hierarchy)
+- Purple, green backgrounds (use established palette)
+- Rose/peach backgrounds (replace with appropriate colors)
+- Overuse of glassmorphism effects
+
+### Visual Hierarchy Guidelines
+- **Purposeful nesting** - Only nest boxes when semantically meaningful
+- **Border radius** - Use as appropriate for the design, not arbitrarily reduced
+- **Color accents** - Each color should serve a purpose
+- **Glassmorphism** - Use for specific UI needs (headers, modals), not everywhere
+
+### Example Usage
+```scss
+// ✅ CORRECT - Purposeful hierarchy and color usage
+.content-card {
+  background: oklch(0.99 0.005 90);  // White - clear primary surface
+  color: oklch(0.12 0.01 250);        // Black text - readable
+  border: 1px solid oklch(0.85 0.005 220);  // Subtle border
+  border-radius: 1rem;                // Rounded as appropriate for design
+  
+  .action-button {
+    background: oklch(0.10 0.01 250); // Black button - clear action
+    color: oklch(0.99 0.005 90);      // White text - high contrast
+    border-radius: 0.75rem;            // Appropriate rounding
+    
+    &:hover {
+      border: 1px solid oklch(0.65 0.25 230);  // Neon blue - interaction feedback
+    }
+  }
+  
+  .premium-badge {
+    color: oklch(0.70 0.15 85);       // Gold - purposeful emphasis
+  }
+}
+
+// ❌ WRONG - Excessive blue tints and unnecessary nesting
+.bad-card {
+  background: oklch(0.20 0.06 245 / 0.85);  // Dark blue tint (avoid)
+  
+  .inner-wrapper {
+    background: oklch(0.22 0.07 240 / 0.9);  // Nested blue box (unnecessary)
+    
+    .content-wrapper {
+      background: oklch(0.24 0.08 235);      // Another nested box (excessive)
+      color: oklch(0.75 0.15 210);           // Blue text (poor contrast)
+    }
+  }
+}
+```
+
 ## Structure & Entry Points
 
 ### Primary: Ontology System

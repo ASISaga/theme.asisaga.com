@@ -50,6 +50,98 @@ When your HTML reveals a pattern not covered by existing ontology, you can propo
 - Layouts in `_layouts/` use semantic structure
 - Keep pages focused and small; use includes for patterns
 
+## 🎨 Visual Hierarchy Philosophy
+
+**The Genesis Design System emphasizes purposeful visual hierarchy:**
+
+### Color Usage Principles
+- **Primary content**: Black text on white backgrounds (core readability)
+- **Navigation/Chrome**: White text on black backgrounds (header, footer, nav)
+- **Buttons/Actions**: Black backgrounds with white text, neon blue interaction feedback
+- **Cards**: White or light gray backgrounds (when semantic distinction needed)
+- **Accents**: Use neon blue and gold purposefully for emphasis and interaction
+- **Avoid**: Excessive blue tints, unnecessary colored backgrounds, excessive nesting
+
+### Hierarchy Guidelines
+- **Purposeful nesting** - Only nest elements when semantically meaningful
+- **Flat when possible** - Avoid unnecessary wrapper divs and nested boxes
+- **Border radius** - Use as appropriate for the design aesthetic
+- **Visual weight** - Each level should serve a clear purpose
+
+### When to Use Cards
+Cards should serve a **semantic purpose**, not just visual decoration:
+- ✅ Grouping related content (product details, user profile)
+- ✅ Clickable content blocks (blog post preview, service card)
+- ✅ Distinct sections requiring visual separation
+- ❌ Excessive nested cards creating "box soup"
+- ❌ Cards used only for decoration without semantic meaning
+- ❌ Multiple wrapper divs without purpose
+
+### Glassmorphism Guidelines
+Use glassmorphism **purposefully for specific UI needs**:
+- ✅ Header/footer with backdrop blur (creates depth)
+- ✅ Modal overlays requiring focus separation
+- ✅ Floating navigation elements
+- ✅ When blur adds functional value
+- ❌ Excessive blur effects on all content
+- ❌ Multiple colored glass layers
+
+### Accent Color Usage
+- **Neon blue**: Interaction feedback, hover states, focus rings, alerts
+- **Gold**: Special highlights, premium features, sacred/important elements
+- **Purpose**: Each accent should communicate something specific
+- **Avoid**: Random color usage, accents without meaning
+
+### Example: Purposeful vs. Excessive
+
+**❌ Excessive (Avoid)**:
+```html
+<!-- Too many nested boxes without purpose, excessive decoration -->
+<div class="outer-wrapper blue-tint">
+  <div class="rounded-box-outer">
+    <div class="rounded-box-inner">
+      <div class="rounded-card">
+        <div class="card-wrapper">
+          <div class="card-content rounded">
+            <p>Content buried in unnecessary boxes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+**✅ Purposeful (Use)**:
+```html
+<!-- Clean semantic structure, purposeful hierarchy -->
+<article class="product-card">
+  <h2 class="product-title">Product Name</h2>
+  <p class="product-description">Clear description...</p>
+  <span class="premium-badge">Premium</span>
+  <button class="product-action">Buy Now</button>
+</article>
+```
+
+With corresponding SCSS:
+```scss
+.product-card {
+  @include genesis-entity('primary');     // White card with appropriate shadow
+  
+  .product-title {
+    @include genesis-cognition('axiom'); // Black text, large
+  }
+  
+  .premium-badge {
+    color: oklch(0.70 0.15 85);          // Gold - purposeful emphasis
+  }
+  
+  .product-action {
+    @include genesis-synapse('execute');  // Black button, white text
+  }
+}
+```
+
 ## Semantic Layout Patterns
 
 ### Primary Method: Ontology-Based

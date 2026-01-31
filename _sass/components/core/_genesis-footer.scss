@@ -12,14 +12,14 @@
   
   margin-top: auto;  // Push to bottom with flexbox
   
-  // Glassmorphism backdrop
+  // Black background with white text - purposeful contrast
   backdrop-filter: blur(16px);
-  background: oklch(0.12 0.04 280 / 0.9);
-  border-top: 1px solid oklch(0.5 0.2 280 / 0.2);
+  background: oklch(0.10 0.01 250 / 0.95);  // Deep black
+  border-top: 1px solid oklch(0.20 0.01 250);
   
   @media (prefers-contrast: high) {
-    background: oklch(0.05 0 0);
-    border-top: 2px solid oklch(0.5 0 0);
+    background: oklch(0.08 0 0);  // Pure black
+    border-top: 2px solid oklch(0.30 0 0);
     backdrop-filter: none;
   }
   
@@ -77,19 +77,13 @@
   &__title {
     @include genesis-cognition('axiom');
     font-size: clamp(1.25rem, calc(1rem + 1vw), 1.75rem);
-    
-    background: linear-gradient(135deg, 
-      oklch(0.90 0.12 280),
-      oklch(0.80 0.18 45)
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: oklch(0.99 0.005 90);  // White text
+    font-weight: 600;
   }
   
   &__tagline {
     @include genesis-cognition('discourse');
-    color: oklch(0.70 0.05 280);
+    color: oklch(0.75 0.01 220);  // Light gray text
     max-width: 45ch;
   }
   
@@ -104,7 +98,7 @@
     @include genesis-cognition('motive');
     font-size: 1rem;
     font-weight: 600;
-    color: oklch(0.85 0.08 280);
+    color: oklch(0.95 0.005 90);  // White text
     margin: 0;
   }
   
@@ -128,7 +122,7 @@
   &__nav-link {
     @include genesis-synapse('navigate');
     
-    color: oklch(0.75 0.05 280);
+    color: oklch(0.80 0.01 220);  // Light gray text
     text-decoration: none;
     transition: all 0.3s ease;
     
@@ -138,7 +132,7 @@
     
     &:hover,
     &:focus {
-      color: oklch(0.85 0.12 280);
+      color: oklch(0.99 0.005 90);  // White on hover
       transform: translateX(4px);
     }
   }
@@ -154,7 +148,7 @@
     @include genesis-cognition('motive');
     font-size: 1rem;
     font-weight: 600;
-    color: oklch(0.85 0.08 280);
+    color: oklch(0.95 0.005 90);  // White text
     margin: 0;
   }
   
@@ -179,25 +173,25 @@
     align-items: center;
     justify-content: center;
     
-    background: oklch(0.18 0.06 280 / 0.6);
-    border: 1px solid oklch(0.5 0.2 280 / 0.3);
-    border-radius: 50%;
+    background: oklch(0.20 0.01 250);  // Dark background
+    border: 1px solid oklch(0.30 0.01 250);
+    border-radius: 50%;  // Circular for icons - purposeful
     
-    color: oklch(0.80 0.08 280);
+    color: oklch(0.85 0.01 220);  // Light gray icon
     font-size: 1.25rem;
     
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
     &:hover,
     &:focus {
-      background: oklch(0.25 0.10 280 / 0.8);
-      border-color: oklch(0.6 0.25 280 / 0.5);
-      color: oklch(0.90 0.15 280);
+      background: oklch(0.25 0.01 250);
+      border-color: oklch(0.65 0.25 230);  // Neon blue accent
+      color: oklch(0.99 0.005 90);  // White icon
       transform: translateY(-3px) scale(1.08);
       
       box-shadow: 
-        0 6px 20px oklch(0.15 0.08 280 / 0.4),
-        0 0 32px oklch(0.6 0.25 280 / 0.3);
+        0 4px 12px oklch(0.08 0.01 250 / 0.4),
+        0 0 20px oklch(0.65 0.25 230 / 0.3);  // Neon blue glow
     }
     
     &:active {
@@ -220,13 +214,13 @@
     @include genesis-entity('secondary');
     
     padding: 1.5rem 0;
-    border-top: 1px solid oklch(0.5 0.2 280 / 0.15);
+    border-top: 1px solid oklch(0.20 0.01 250);  // Subtle border
     
     text-align: center;
     
     p {
       @include genesis-cognition('gloss');
-      color: oklch(0.65 0.05 280);
+      color: oklch(0.70 0.01 220);  // Light gray text
       margin: 0;
     }
   }

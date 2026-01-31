@@ -71,7 +71,7 @@ $box-shadow: 0 0.5rem 1rem $shadow-color;
 $sacred-glow: 0 0 0.5rem oklch(0.70 0.15 85 / 0.3);
 $consciousness-depth: 0 0.25rem 2rem oklch(0.08 0.01 250 / 0.4);
 
-// Sacred border radius
+// Sacred border radius - Use as appropriate for best appearance
 $border-radius-sacred: 0.75rem;
 $border-radius-consciousness: 1rem;
 $border-radius: 0.5rem;             // Base border radius (8px) - default for components
@@ -156,7 +156,7 @@ $breakpoint-xl: 1200px;
 $breakpoint-xxl: 1400px;
 $breakpoint-transcendent: 1600px;  // Ultra-wide transcendent displays
 
-// Border Radius - Organic Consciousness Flow
+// Border Radius - Use as appropriate for best appearance
 $border-radius-sm: 0.25rem;    // 4px
 $border-radius-md: 0.5rem;     // 8px
 $border-radius-lg: 1rem;       // 16px

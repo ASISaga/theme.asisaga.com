@@ -105,9 +105,9 @@ $border-dark: $color-border-dark;                         // Profound dark borde
 // ----------------------------------------
 // SEMANTIC STATE TOKENS
 // ----------------------------------------
-$state-hover-surface: oklch(0.94 0.01 230);               // Hover state surface (light blue tint)
-$state-active-surface: oklch(0.92 0.02 230);              // Active state surface (darker blue tint)
-$state-focus-ring: oklch(0.65 0.25 230 / 0.5);           // Focus ring color (neon blue)
+$state-hover-surface: oklch(0.95 0.005 220);             // Hover state surface (very subtle gray)
+$state-active-surface: oklch(0.93 0.005 220);            // Active state surface (slightly darker gray)
+$state-focus-ring: oklch(0.65 0.25 230 / 0.5);           // Focus ring color (neon blue - purposeful)
 $state-disabled-surface: oklch(0.96 0.005 220);           // Disabled surface (very light gray)
 $state-disabled-text: oklch(0.60 0.01 220);               // Disabled text (muted gray)
 
@@ -163,10 +163,10 @@ $bg-light: $surface-transcendent;
 $bg-consciousness: $surface-overlay;
 $bg-transcendent: $surface-transcendent;
 
-// Section background colors  
-$section-bg-primary: oklch(0.65 0.25 230 / 0.03);   // Subtle neon blue tint
-$section-bg-secondary: oklch(0.95 0.01 220 / 0.5);  // Light gray sections
-$section-bg-sacred: oklch(0.70 0.15 85 / 0.05);     // Subtle gold (very muted)
+// Section background colors - Purposeful, minimal tints
+$section-bg-primary: $color-transcendent-white;      // Pure white (default)
+$section-bg-secondary: oklch(0.96 0.005 220);        // Very subtle gray (purposeful cards)
+$section-bg-sacred: oklch(0.98 0.005 85 / 0.5);     // Extremely subtle gold (rare use only)
 
 // Dark mode variables (if needed)
 $dark-mode-bg: $color-profound-black;
@@ -188,8 +188,8 @@ $light: oklch(0.95 0.01 220);
 $dark: $color-profound-black;
 
 // State colors for legacy compatibility
-$primary-light: oklch(0.93 0.01 230);
-$primary-dark: oklch(0.05 0.01 250);
+$primary-light: oklch(0.95 0.005 220);                   // Very subtle gray (not blue)
+$primary-dark: $color-profound-black;                    // Profound black
 $sacred-gold-light: oklch(0.75 0.18 82);
 $sacred-gold-dark: oklch(0.60 0.12 88);
 
