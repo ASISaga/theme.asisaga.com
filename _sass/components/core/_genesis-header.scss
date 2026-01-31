@@ -11,13 +11,17 @@
   @include genesis-entity('primary');  // Glassmorphism effect
   @include genesis-state('stable');
   
-  // Sticky positioning
+  // Sticky positioning with proper stacking
   position: sticky;
   top: 0;
   z-index: 1000;
   
   // Fixed minimum height to prevent layout shifts
   min-height: 70px;
+  
+  // Ensure header is always visible and touchable on mobile
+  touch-action: manipulation;
+  pointer-events: auto;
   
   // Black background with white text - purposeful contrast
   backdrop-filter: blur(16px);
@@ -145,6 +149,10 @@
     cursor: pointer;
     transition: all 0.3s ease;
     
+    // Fix double-tap delay on mobile
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    
     &:hover,
     &:focus {
       background: oklch(0.25 0.01 250);
@@ -219,6 +227,7 @@
     
     // Smooth scrolling for mobile menu
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;  // Allow vertical scrolling in mobile menu
     
     transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     
@@ -234,19 +243,25 @@
       transition: right 0.1s linear;
     }
     
-    // Desktop: Inline navigation
+    // Desktop: Inline navigation (FIXED - ensure it displays properly)
     @include from(lg) {
+      // Reset mobile positioning
       position: static;
       width: auto;
       max-width: none;
       padding: 0;
       overflow-y: visible;
       overflow-x: visible;
+      right: auto;  // Reset right positioning
+      
+      // Make navigation visible on desktop
+      display: flex !important;  // Override any mobile hide states
       
       background: transparent;
       backdrop-filter: none;
       box-shadow: none;
       transition: none;
+      touch-action: auto;
     }
   }
 }
