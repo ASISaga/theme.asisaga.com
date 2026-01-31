@@ -62,6 +62,7 @@ $surface-elevated: $color-light-surface;                 // Elevated cards/secti
 $surface-overlay: oklch(0.98 0.005 90 / 0.95);          // Modal/overlay backgrounds
 $surface-glass: oklch(0.96 0.01 220 / 0.85);            // Glassmorphism surfaces (subtle)
 $surface-transcendent: $color-transcendent-white;        // Light mode surfaces
+$surface-dark: $color-profound-black;                    // Dark/black backgrounds
 
 // ----------------------------------------
 // SEMANTIC TEXT TOKENS

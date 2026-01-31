@@ -84,7 +84,7 @@ body {
   font-family: $font-family-body;
   font-size: $font-size-wisdom;
   line-height: $line-height-wisdom;
-  @include color($text-color);
+  @include color($text-inverse);  // White text on black background
   // Standardized body dimensions - inherited by all elements unless overridden
   @include margin(0); // Reset browser defaults
   @include padding(0); // Reset browser defaults for consistency
