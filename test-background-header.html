@@ -1,0 +1,64 @@
+---
+layout: default
+title: Test Background and Header Visibility
+---
+
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center mb-4">Background and Header Test</h1>
+      
+      <div class="mb-4">
+        <h2>Body Background Test</h2>
+        <p>This page tests the black body background and white text visibility.</p>
+        <p>The body background should be black and this text should be white and clearly visible.</p>
+      </div>
+      
+      <div class="bento-card mb-4">
+        <h2>Card on Black Background</h2>
+        <p>This card should have a white/light background and be clearly visible against the black body background.</p>
+        <p>Card text should be black and readable on the white card background.</p>
+      </div>
+      
+      <div class="bento-card bento-card--elevated mb-4">
+        <h2>Elevated Card Test</h2>
+        <p>This elevated card should also be clearly visible with proper contrast.</p>
+        <button class="btn btn-primary">Test Button</button>
+      </div>
+      
+      <div class="mb-4">
+        <h2>Mobile Header Test</h2>
+        <p>The header at the top of the page should be:</p>
+        <ul>
+          <li>Visible on all screen sizes (mobile, tablet, desktop)</li>
+          <li>Have a black/dark background</li>
+          <li>Have white text and logo</li>
+          <li>Have a visible hamburger menu button on mobile (< 1024px)</li>
+          <li>Hamburger icon should be white/light colored</li>
+        </ul>
+        <p><strong>To test mobile:</strong> Resize your browser window to less than 1024px width or use browser dev tools to emulate mobile device.</p>
+      </div>
+      
+      <div class="mb-4">
+        <h2>Scroll Test</h2>
+        <p>Scroll down this page to test if the header remains visible and properly styled when scrolling.</p>
+      </div>
+      
+      <!-- Add some content to enable scrolling -->
+      <div style="height: 100vh; padding: 2rem; margin: 2rem 0; background: oklch(0.15 0.01 250);">
+        <h3>Spacer Section 1</h3>
+        <p>Scroll past this section to test header behavior.</p>
+      </div>
+      
+      <div style="height: 100vh; padding: 2rem; margin: 2rem 0; background: oklch(0.12 0.01 250);">
+        <h3>Spacer Section 2</h3>
+        <p>Continue scrolling to test header visibility.</p>
+      </div>
+      
+      <div class="bento-card">
+        <h2>End of Test Page</h2>
+        <p>If you can read this, scrolling and visibility are working correctly!</p>
+      </div>
+    </div>
+  </div>
+</div>
