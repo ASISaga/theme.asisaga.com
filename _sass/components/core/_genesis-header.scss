@@ -16,6 +16,9 @@
   top: 0;
   z-index: 1000;
   
+  // Fixed minimum height to prevent layout shifts
+  min-height: 70px;
+  
   // Black background with white text - purposeful contrast
   backdrop-filter: blur(16px);
   background: oklch(0.10 0.01 250 / 0.95);  // Deep black with opacity
@@ -24,11 +27,30 @@
   border-bottom: 1px solid oklch(0.20 0.01 250);
   box-shadow: 0 2px 8px oklch(0.05 0.01 250 / 0.3);
   
+  // Hardware acceleration for smoother transitions
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  
+  // Smooth transition for hide/show animation
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+  
   @media (prefers-contrast: high) {
     background: oklch(0.08 0 0);          // Pure black
     border-bottom: 2px solid oklch(0.30 0 0);
     backdrop-filter: none;
     box-shadow: none;
+  }
+  
+  // Scrolled state - more opaque background
+  &.scrolled {
+    background: oklch(0.08 0.01 250);  // More opaque when scrolled
+    box-shadow: 0 4px 16px oklch(0.05 0.01 250 / 0.5);
+  }
+  
+  // Hidden state - slide up out of view
+  &.header-hidden {
+    transform: translate3d(0, -100%, 0);
   }
   
   // Container
