@@ -1,0 +1,405 @@
+---
+layout: default
+title: Mobile Portrait Test - Fixed
+description: Testing mobile portrait mode header visibility and scroll behavior after fixes
+---
+
+<style>
+  .test-hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(180deg, oklch(0.15 0.05 280) 0%, oklch(0.10 0.03 270) 100%);
+  }
+
+  .test-card {
+    background: oklch(0.12 0.01 250 / 0.95);
+    backdrop-filter: blur(16px);
+    border: 1px solid oklch(0.20 0.01 250);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 1rem;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .test-card h2 {
+    color: oklch(0.75 0.25 230);
+    margin-top: 0;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .test-card p {
+    color: oklch(0.85 0.01 220);
+    line-height: 1.6;
+    margin: 0.75rem 0;
+  }
+
+  .test-card ul {
+    color: oklch(0.80 0.01 220);
+    line-height: 1.6;
+    padding-left: 1.5rem;
+  }
+
+  .test-card li {
+    margin: 0.5rem 0;
+  }
+
+  .success-indicator {
+    background: oklch(0.18 0.08 160 / 0.3);
+    border-left: 4px solid oklch(0.65 0.25 160);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+  }
+
+  .info-indicator {
+    background: oklch(0.18 0.08 230 / 0.3);
+    border-left: 4px solid oklch(0.65 0.25 230);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+  }
+
+  .warning-indicator {
+    background: oklch(0.18 0.08 45 / 0.3);
+    border-left: 4px solid oklch(0.70 0.15 45);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+  }
+
+  .test-section {
+    padding: 3rem 1rem;
+    min-height: 80vh;
+    border-bottom: 1px solid oklch(0.20 0.01 250);
+  }
+
+  .test-section:nth-child(odd) {
+    background: oklch(0.08 0.02 280 / 0.5);
+  }
+
+  .scroll-indicator-fixed {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background: oklch(0.08 0.01 250 / 0.95);
+    backdrop-filter: blur(16px);
+    border: 1px solid oklch(0.65 0.25 230);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    font-family: monospace;
+    font-size: 0.875rem;
+    z-index: 9999;
+    color: oklch(0.85 0.01 220);
+    box-shadow: 0 4px 16px oklch(0 0 0 / 0.5);
+  }
+
+  .scroll-indicator-fixed .label {
+    color: oklch(0.65 0.01 220);
+    margin-right: 0.5rem;
+  }
+
+  .scroll-indicator-fixed .value {
+    color: oklch(0.75 0.25 230);
+    font-weight: bold;
+  }
+
+  .test-button {
+    background: oklch(0.20 0.01 250);
+    color: oklch(0.99 0.005 90);
+    border: 1px solid oklch(0.65 0.25 230);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 0.5rem;
+    transition: all 0.3s ease;
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .test-button:hover,
+  .test-button:focus {
+    background: oklch(0.25 0.01 250);
+    border-color: oklch(0.70 0.25 230);
+    transform: translateY(-2px);
+  }
+
+  .viewport-info {
+    font-family: monospace;
+    background: oklch(0.15 0.01 250);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    font-size: 0.875rem;
+  }
+
+  .viewport-info div {
+    margin: 0.25rem 0;
+  }
+
+  @media (max-width: 767px) {
+    .mobile-only-message {
+      display: block !important;
+    }
+  }
+
+  .mobile-only-message {
+    display: none;
+  }
+</style>
+
+<div class="test-hero">
+  <div class="test-card">
+    <h2>✅ Mobile Portrait Test - FIXED</h2>
+    <p>This page tests the fixes for mobile portrait mode issues.</p>
+    
+    <div class="success-indicator">
+      <strong>✓ Fixed Issues:</strong>
+      <ul>
+        <li>Header is now visible in mobile portrait mode</li>
+        <li>Scroll no longer requires double drag</li>
+        <li>Body overflow properly managed</li>
+        <li>Touch gestures work smoothly</li>
+      </ul>
+    </div>
+
+    <div class="viewport-info" id="viewport-info">
+      <strong>Current Viewport:</strong>
+      <div><span class="label">Width:</span> <span id="vp-width"></span></div>
+      <div><span class="label">Height:</span> <span id="vp-height"></span></div>
+      <div><span class="label">Orientation:</span> <span id="vp-orientation"></span></div>
+      <div><span class="label">Device:</span> <span id="vp-device"></span></div>
+    </div>
+
+    <div class="info-indicator">
+      <strong>📱 Test Instructions:</strong>
+      <ol>
+        <li>View this page on a mobile device in portrait mode</li>
+        <li>Check that the header is visible at the top</li>
+        <li>Try scrolling down with a single swipe/drag</li>
+        <li>Try opening the mobile menu (hamburger icon)</li>
+        <li>With menu open, verify you CANNOT scroll the page</li>
+        <li>Close the menu and verify you CAN scroll normally</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<div class="test-section">
+  <div class="test-card">
+    <h2>🔄 Scroll Test Section 1</h2>
+    <p>Scroll down through this page to test scroll behavior.</p>
+    <p>The scroll should be smooth and responsive with a single drag gesture.</p>
+    
+    <div class="success-indicator mobile-only-message">
+      <strong>✓ You're on a mobile device!</strong><br>
+      Perfect for testing mobile portrait mode.
+    </div>
+
+    <button class="test-button" id="test-scroll-top">Scroll to Top</button>
+    <button class="test-button" id="test-scroll-bottom">Scroll to Bottom</button>
+  </div>
+</div>
+
+<div class="test-section">
+  <div class="test-card">
+    <h2>📊 Header Visibility Test</h2>
+    <p>The header should always be visible at the top of the page (unless you've scrolled down past the threshold).</p>
+    
+    <div class="viewport-info" id="header-info">
+      <strong>Header Status:</strong>
+      <div><span class="label">Exists:</span> <span id="header-exists"></span></div>
+      <div><span class="label">Visible:</span> <span id="header-visible"></span></div>
+      <div><span class="label">Position:</span> <span id="header-position"></span></div>
+      <div><span class="label">Z-Index:</span> <span id="header-zindex"></span></div>
+      <div><span class="label">Top:</span> <span id="header-top"></span></div>
+      <div><span class="label">Width:</span> <span id="header-width"></span></div>
+    </div>
+  </div>
+</div>
+
+<div class="test-section">
+  <div class="test-card">
+    <h2>👆 Touch Scroll Test</h2>
+    <p>Try scrolling by touching and dragging on the page.</p>
+    <p><strong>Expected behavior:</strong> Single drag should scroll smoothly</p>
+    <p><strong>Previous bug:</strong> Required double drag to scroll</p>
+    
+    <div id="touch-feedback" class="info-indicator">
+      Touch event count: <span id="touch-count">0</span><br>
+      Last touch type: <span id="last-touch-type">None</span>
+    </div>
+  </div>
+</div>
+
+<div class="test-section">
+  <div class="test-card">
+    <h2>📱 Menu Scroll Lock Test</h2>
+    <p>Open the mobile menu using the hamburger button in the header.</p>
+    <div class="warning-indicator">
+      <strong>Expected behavior when menu is open:</strong>
+      <ul>
+        <li>Page scroll should be locked</li>
+        <li>You should NOT be able to scroll the page behind the menu</li>
+        <li>Only the menu itself should be scrollable (if it has overflow)</li>
+      </ul>
+    </div>
+    
+    <div class="viewport-info" id="body-info">
+      <strong>Body Status:</strong>
+      <div><span class="label">Overflow:</span> <span id="body-overflow"></span></div>
+      <div><span class="label">Position:</span> <span id="body-position"></span></div>
+      <div><span class="label">Width:</span> <span id="body-width"></span></div>
+    </div>
+  </div>
+</div>
+
+<div class="test-section">
+  <div class="test-card">
+    <h2>🎯 Final Verification</h2>
+    <p>Scroll all the way back to the top of the page.</p>
+    
+    <div class="success-indicator">
+      <strong>✓ All tests should pass:</strong>
+      <ul>
+        <li>Header is visible on page load</li>
+        <li>Single drag/swipe scrolls the page</li>
+        <li>Opening menu locks page scroll</li>
+        <li>Closing menu restores scroll</li>
+        <li>Header shows/hides based on scroll direction</li>
+      </ul>
+    </div>
+
+    <button class="test-button" id="test-final-scroll">Scroll to Top</button>
+  </div>
+</div>
+
+<div class="scroll-indicator-fixed">
+  <div><span class="label">Scroll Y:</span> <span class="value" id="scroll-y">0px</span></div>
+  <div><span class="label">Header:</span> <span class="value" id="header-state">visible</span></div>
+  <div><span class="label">Menu:</span> <span class="value" id="menu-state">closed</span></div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  // Viewport info
+  function updateViewportInfo() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const orientation = width > height ? 'landscape' : 'portrait';
+    const isMobile = width < 768;
+    
+    document.getElementById('vp-width').textContent = width + 'px';
+    document.getElementById('vp-height').textContent = height + 'px';
+    document.getElementById('vp-orientation').textContent = orientation;
+    document.getElementById('vp-device').textContent = isMobile ? 'Mobile' : 'Desktop';
+  }
+
+  // Header status
+  function updateHeaderInfo() {
+    const header = document.querySelector('.genesis-header');
+    
+    if (header) {
+      const rect = header.getBoundingClientRect();
+      const styles = window.getComputedStyle(header);
+      const isVisible = rect.top >= 0 && rect.top < window.innerHeight;
+      
+      document.getElementById('header-exists').textContent = '✅ Yes';
+      document.getElementById('header-visible').textContent = isVisible ? '✅ Yes' : '⚠️ No';
+      document.getElementById('header-position').textContent = styles.position;
+      document.getElementById('header-zindex').textContent = styles.zIndex;
+      document.getElementById('header-top').textContent = Math.round(rect.top) + 'px';
+      document.getElementById('header-width').textContent = Math.round(rect.width) + 'px';
+    } else {
+      document.getElementById('header-exists').textContent = '❌ No';
+    }
+  }
+
+  // Body status
+  function updateBodyInfo() {
+    const bodyStyles = window.getComputedStyle(document.body);
+    
+    document.getElementById('body-overflow').textContent = bodyStyles.overflow;
+    document.getElementById('body-position').textContent = bodyStyles.position;
+    document.getElementById('body-width').textContent = bodyStyles.width;
+  }
+
+  // Scroll indicator
+  function updateScrollIndicator() {
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    document.getElementById('scroll-y').textContent = Math.round(scrollY) + 'px';
+
+    const header = document.querySelector('.genesis-header');
+    if (header) {
+      const isHidden = header.classList.contains('header-hidden');
+      document.getElementById('header-state').textContent = isHidden ? 'hidden' : 'visible';
+    }
+
+    const menu = document.querySelector('[data-nav-menu]');
+    if (menu) {
+      const isOpen = menu.getAttribute('data-nav-open') === 'true';
+      document.getElementById('menu-state').textContent = isOpen ? 'OPEN' : 'closed';
+    }
+  }
+
+  // Touch tracking
+  let touchCount = 0;
+  document.addEventListener('touchstart', () => {
+    touchCount++;
+    document.getElementById('touch-count').textContent = touchCount;
+    document.getElementById('last-touch-type').textContent = 'touchstart';
+  }, { passive: true });
+
+  document.addEventListener('touchmove', () => {
+    document.getElementById('last-touch-type').textContent = 'touchmove';
+  }, { passive: true });
+
+  document.addEventListener('touchend', () => {
+    document.getElementById('last-touch-type').textContent = 'touchend';
+  }, { passive: true });
+
+  // Scroll buttons
+  document.getElementById('test-scroll-top')?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  document.getElementById('test-scroll-bottom')?.addEventListener('click', () => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  });
+
+  document.getElementById('test-final-scroll')?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Event listeners
+  window.addEventListener('scroll', () => {
+    updateScrollIndicator();
+    updateHeaderInfo();
+  }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    updateViewportInfo();
+    updateHeaderInfo();
+    updateBodyInfo();
+  });
+
+  // Periodic updates
+  setInterval(() => {
+    updateBodyInfo();
+    updateScrollIndicator();
+  }, 500);
+
+  // Initial updates
+  updateViewportInfo();
+  updateHeaderInfo();
+  updateBodyInfo();
+  updateScrollIndicator();
+})();
+</script>
