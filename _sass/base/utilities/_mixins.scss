@@ -31,8 +31,9 @@
   }
 }
 
-// Bootstrap Grid Compatibility Mixins
-// These provide Bootstrap-like grid functionality for legacy components
+// Grid Layout Mixins
+// These provide grid functionality for legacy components
+// TODO: Gradually migrate to modern CSS Grid/Flexbox
 
 @mixin make-container() {
   width: 100%;
@@ -58,8 +59,8 @@
 
 @mixin make-col($size: null, $columns: 12) {
   @if $size {
-    flex: 0 0 percentage($size / $columns);
-    max-width: percentage($size / $columns);
+    flex: 0 0 calc(#{$size} / #{$columns} * 100%);
+    max-width: calc(#{$size} / #{$columns} * 100%);
   } @else {
     flex-basis: 0;
     flex-grow: 1;
