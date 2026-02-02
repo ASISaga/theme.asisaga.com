@@ -49,8 +49,16 @@
       menu.setAttribute('data-nav-open', isOpen);
       overlay.setAttribute('data-nav-open', isOpen);
       
-      // Prevent body scroll when menu is open
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+      // Prevent body scroll when menu is open, restore when closed
+      if (isOpen) {
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+      } else {
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+      }
       
       // Focus management
       if (isOpen) {
@@ -93,7 +101,10 @@
       resizeTimer = setTimeout(() => {
         if (window.innerWidth >= 1024) {
           toggleNav(false);
+          // Ensure body styles are fully restored on desktop
           document.body.style.overflow = '';
+          document.body.style.position = '';
+          document.body.style.width = '';
         }
       }, 250);
     });
