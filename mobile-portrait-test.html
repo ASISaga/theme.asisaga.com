@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Portrait Test - Header & Scroll</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 300vh;
+      background: linear-gradient(180deg, #0a0a1e 0%, #1a1a3e 100%);
+      color: white;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    .test-container {
+      padding: 2rem 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .test-section {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .test-section h2 {
+      margin-top: 0;
+      color: #64b5f6;
+      font-size: 1.5rem;
+    }
+
+    .test-section p {
+      line-height: 1.6;
+      margin: 0.5rem 0;
+    }
+
+    .test-section ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+
+    .test-section li {
+      margin: 0.5rem 0;
+    }
+
+    .status-indicator {
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      background: rgba(0, 0, 0, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      font-size: 0.875rem;
+      font-family: monospace;
+      z-index: 9999;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      margin: 0.25rem 0;
+    }
+
+    .status-label {
+      color: #888;
+    }
+
+    .status-value {
+      color: #4caf50;
+      font-weight: bold;
+    }
+
+    .status-value.error {
+      color: #f44336;
+    }
+
+    .status-value.warning {
+      color: #ff9800;
+    }
+
+    .issue-highlight {
+      background: rgba(255, 0, 0, 0.2);
+      border-left: 4px solid #f44336;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0.25rem;
+    }
+
+    .success-highlight {
+      background: rgba(0, 255, 0, 0.2);
+      border-left: 4px solid #4caf50;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0.25rem;
+    }
+
+    .viewport-info {
+      background: rgba(33, 150, 243, 0.2);
+      border: 1px solid #2196f3;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .touch-test-area {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px dashed rgba(255, 255, 255, 0.3);
+      padding: 2rem;
+      margin: 1rem 0;
+      border-radius: 0.5rem;
+      text-align: center;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: manipulation;
+    }
+
+    .scroll-test-spacer {
+      height: 150vh;
+      background: linear-gradient(180deg, 
+        rgba(100, 181, 246, 0.1) 0%, 
+        rgba(156, 39, 176, 0.1) 50%,
+        rgba(244, 67, 54, 0.1) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <!-- Genesis Header (from _includes/header.html) -->
+  <header class="genesis-header" role="banner">
+    <div class="genesis-header__container">
+      <!-- Brand / Logo -->
+      <a class="genesis-header__brand" href="/" aria-label="ASI Saga Theme - Home">
+        <img src="assets/images/favicon.ico" class="genesis-header__logo" alt="">
+        <div class="genesis-header__text">
+          <span class="genesis-header__title">ASI Saga Theme</span>
+          <span class="genesis-header__tagline">Mobile Portrait Test</span>
+        </div>
+      </a>
+      
+      <!-- Mobile Menu Toggle -->
+      <button 
+        class="genesis-header__toggle" 
+        type="button" 
+        aria-expanded="false" 
+        aria-controls="genesis-nav"
+        aria-label="Toggle navigation menu"
+        data-nav-toggle
+      >
+        <span class="genesis-header__toggle-icon" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+      
+      <!-- Primary Navigation -->
+      <nav 
+        id="genesis-nav" 
+        class="genesis-header__nav" 
+        aria-label="Primary navigation"
+        data-nav-menu
+      >
+        <nav class="navbar" aria-label="Main navigation">
+          <ul class="navbar__list" role="menubar">
+            <li class="navbar__item" role="none">
+              <a class="navbar__link" href="#" role="menuitem">Home</a>
+            </li>
+            <li class="navbar__item" role="none">
+              <a class="navbar__link" href="#" role="menuitem">Features</a>
+            </li>
+            <li class="navbar__item" role="none">
+              <a class="navbar__link" href="#" role="menuitem">Documentation</a>
+            </li>
+            <li class="navbar__item" role="none">
+              <a class="navbar__link" href="#" role="menuitem">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </nav>
+    </div>
+  </header>
+
+  <div class="test-container">
+    <div class="test-section">
+      <h2>📱 Mobile Portrait Mode Test</h2>
+      <p>This page tests mobile portrait mode issues:</p>
+      <div class="viewport-info">
+        <strong>Current Viewport:</strong>
+        <div id="viewport-dimensions"></div>
+        <div id="orientation-info"></div>
+      </div>
+      
+      <div class="issue-highlight">
+        <strong>⚠️ Known Issues:</strong>
+        <ol>
+          <li>Header not visible in mobile portrait mode</li>
+          <li>Scroll requires double drag</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="test-section">
+      <h2>🧪 Test Instructions</h2>
+      <ol>
+        <li>View this page on a mobile device in portrait mode (or resize browser to < 375px width)</li>
+        <li>Check if header is visible at the top</li>
+        <li>Try scrolling down - check if it requires "double drag"</li>
+        <li>Try opening the mobile menu (hamburger icon)</li>
+        <li>Try scrolling with menu open</li>
+      </ol>
+    </div>
+
+    <div class="test-section">
+      <h2>👆 Touch Test Area</h2>
+      <p>Try to scroll by dragging within this area:</p>
+      <div class="touch-test-area" id="touch-test">
+        Touch and drag to scroll
+      </div>
+      <div id="touch-events"></div>
+    </div>
+
+    <div class="test-section">
+      <h2>📊 Header Visibility Test</h2>
+      <ul>
+        <li>Header element exists: <span id="header-exists"></span></li>
+        <li>Header is visible: <span id="header-visible"></span></li>
+        <li>Header z-index: <span id="header-zindex"></span></li>
+        <li>Header position: <span id="header-position"></span></li>
+        <li>Header top offset: <span id="header-top"></span></li>
+      </ul>
+    </div>
+
+    <div class="test-section">
+      <h2>🔄 Scroll Behavior Test</h2>
+      <p>Scroll down through this spacer to test scroll behavior:</p>
+    </div>
+  </div>
+
+  <div class="scroll-test-spacer">
+    ↓ Keep Scrolling ↓
+  </div>
+
+  <div class="test-container">
+    <div class="test-section">
+      <h2>✅ Bottom of Page</h2>
+      <p>If you made it here, scroll back to the top to test upward scrolling.</p>
+      <p>Header should show/hide appropriately.</p>
+    </div>
+  </div>
+
+  <!-- Status Indicator -->
+  <div class="status-indicator">
+    <div class="status-row">
+      <span class="status-label">Scroll Y:</span>
+      <span class="status-value" id="scroll-y">0px</span>
+    </div>
+    <div class="status-row">
+      <span class="status-label">Header State:</span>
+      <span class="status-value" id="header-state">unknown</span>
+    </div>
+    <div class="status-row">
+      <span class="status-label">Touch Events:</span>
+      <span class="status-value" id="touch-count">0</span>
+    </div>
+    <div class="status-row">
+      <span class="status-label">Body Overflow:</span>
+      <span class="status-value" id="body-overflow">auto</span>
+    </div>
+  </div>
+
+  <script src="assets/js/genesis-theme.js"></script>
+  <script src="assets/js/common/header-scroll.js"></script>
+  <script>
+    (function() {
+      'use strict';
+
+      // Update viewport info
+      function updateViewportInfo() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const orientation = width > height ? 'landscape' : 'portrait';
+        
+        document.getElementById('viewport-dimensions').textContent = 
+          `${width}px × ${height}px`;
+        document.getElementById('orientation-info').textContent = 
+          `Orientation: ${orientation}`;
+      }
+
+      // Check header visibility
+      function checkHeader() {
+        const header = document.querySelector('.genesis-header');
+        const existsEl = document.getElementById('header-exists');
+        const visibleEl = document.getElementById('header-visible');
+        const zindexEl = document.getElementById('header-zindex');
+        const positionEl = document.getElementById('header-position');
+        const topEl = document.getElementById('header-top');
+
+        if (header) {
+          existsEl.textContent = '✅ Yes';
+          existsEl.style.color = '#4caf50';
+
+          const rect = header.getBoundingClientRect();
+          const styles = window.getComputedStyle(header);
+          const isVisible = rect.top >= 0 && rect.top < window.innerHeight && 
+                           styles.display !== 'none' && 
+                           styles.visibility !== 'hidden';
+
+          visibleEl.textContent = isVisible ? '✅ Yes' : '❌ No';
+          visibleEl.style.color = isVisible ? '#4caf50' : '#f44336';
+
+          zindexEl.textContent = styles.zIndex;
+          positionEl.textContent = styles.position;
+          topEl.textContent = `${rect.top}px`;
+        } else {
+          existsEl.textContent = '❌ No';
+          existsEl.style.color = '#f44336';
+        }
+      }
+
+      // Track scroll position
+      let touchEventCount = 0;
+      function updateScrollIndicator() {
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        document.getElementById('scroll-y').textContent = Math.round(scrollY) + 'px';
+
+        const header = document.querySelector('.genesis-header');
+        if (header) {
+          const isHidden = header.classList.contains('header-hidden');
+          const stateEl = document.getElementById('header-state');
+          stateEl.textContent = isHidden ? 'hidden' : 'visible';
+          stateEl.className = isHidden ? 'status-value error' : 'status-value';
+        }
+
+        const bodyOverflow = window.getComputedStyle(document.body).overflow;
+        document.getElementById('body-overflow').textContent = bodyOverflow;
+      }
+
+      // Track touch events
+      const touchTestArea = document.getElementById('touch-test');
+      const touchEventsDisplay = document.getElementById('touch-events');
+      
+      touchTestArea.addEventListener('touchstart', (e) => {
+        touchEventCount++;
+        document.getElementById('touch-count').textContent = touchEventCount;
+        touchEventsDisplay.innerHTML = `
+          <small style="color: #4caf50;">
+            ✓ Touch started at ${new Date().toLocaleTimeString()}
+          </small>
+        `;
+      });
+
+      touchTestArea.addEventListener('touchmove', (e) => {
+        touchEventsDisplay.innerHTML = `
+          <small style="color: #2196f3;">
+            ↕ Touch moving...
+          </small>
+        `;
+      });
+
+      touchTestArea.addEventListener('touchend', (e) => {
+        touchEventsDisplay.innerHTML = `
+          <small style="color: #888;">
+            Touch ended
+          </small>
+        `;
+      });
+
+      // Update on scroll
+      window.addEventListener('scroll', updateScrollIndicator, { passive: true });
+      
+      // Update on resize
+      window.addEventListener('resize', () => {
+        updateViewportInfo();
+        checkHeader();
+      });
+
+      // Initial updates
+      updateViewportInfo();
+      checkHeader();
+      updateScrollIndicator();
+
+      // Periodic header check (in case of dynamic changes)
+      setInterval(checkHeader, 1000);
+    })();
+  </script>
+</body>
+</html>
