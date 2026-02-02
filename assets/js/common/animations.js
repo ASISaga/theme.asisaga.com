@@ -164,16 +164,15 @@ function initScrollReveal() {
 
 /**
  * Initializes the hero carousel for the Possibilities page
+ * Note: Carousel requires custom implementation (Bootstrap removed)
  */
 function initPossibilitiesCarousel() {
   const carousel = document.querySelector('.possibilities-carousel');
   if (!carousel) return;
   
-  // Use Bootstrap's carousel API
-  const bsCarousel = new bootstrap.Carousel(carousel, {
-    interval: 5000,
-    ride: 'carousel'
-  });
+  // Carousel initialization would require custom implementation
+  // Bootstrap was removed - this is a placeholder
+  console.warn('Carousel requires custom implementation - Bootstrap removed');
 }
 
 /**
@@ -192,13 +191,16 @@ function initInteractiveModules() {
         // Display modal with content
         const contentModal = document.getElementById('contentModal');
         if (contentModal) {
-          const modalBody = contentModal.querySelector('.modal-body');
+          const modalBody = contentModal.querySelector('.modal__body');
           if (modalBody) {
             modalBody.innerHTML = modalContent.innerHTML;
             
-            // Show modal using Bootstrap
-            const modal = new bootstrap.Modal(contentModal);
-            modal.show();
+            // Show modal using modern UI component
+            if (contentModal._modalInstance) {
+              const title = module.getAttribute('data-title') || 'Future Possibility';
+              contentModal._modalInstance.setContent(title, modalContent.innerHTML);
+              contentModal._modalInstance.show();
+            }
           }
         }
       }

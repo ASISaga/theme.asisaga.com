@@ -18,7 +18,10 @@
     }
     
     &-content {
-      @include make-container();
+      // Modern container with horizontal padding and centering
+      width: 100%;
+      padding-inline: $spacing-md;
+      margin-inline: auto;
     }
   }
 }

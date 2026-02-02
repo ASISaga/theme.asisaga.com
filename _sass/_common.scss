@@ -88,6 +88,7 @@
 // CORE COMPONENTS
 // ----------------------------------------
 // Fundamental UI components used throughout the theme
+@import "components/core/ui-components";  // Modern lightweight UI components (Modal, Collapse, Tabs)
 @import "components/core/genesis-core";    // NEW: Modern body/main/skip-link/ambient
 @import "components/core/genesis-header";  // NEW: Modern glassmorphism header
 @import "components/core/genesis-footer";  // NEW: Modern grid footer

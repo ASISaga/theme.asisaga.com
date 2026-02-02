@@ -355,14 +355,12 @@ a {
 @include sacred-responsive-headings;
 
 /*
-  Note: Most typography styles are now handled by Bootstrap.
-  This file only contains project-specific overrides.
+  Note: Most typography styles are handled by the semantic design system.
+  This file contains project-specific typography and sacred text styles.
   
-  Bootstrap Typography Classes to Use:
-  - Font weight: .fw-light, .fw-normal, .fw-bold, etc.
-  - Text alignment: .text-start, .text-center, .text-end
-  - Text transformation: .text-uppercase, .text-lowercase, .text-capitalize
-  - Text colors: .text-primary, .text-secondary, .text-body, .text-muted
-  
-  For more details: https://getbootstrap.com/docs/5.3/utilities/text/
+  Available semantic utilities:
+  - Font weight: Use semantic weight variables ($font-weight-normal, $font-weight-bold, etc.)
+  - Text alignment: Use CSS text-align property or semantic mixins
+  - Text transformation: Use CSS text-transform property
+  - Text colors: Use semantic color tokens ($text-primary, $text-secondary, etc.)
 */

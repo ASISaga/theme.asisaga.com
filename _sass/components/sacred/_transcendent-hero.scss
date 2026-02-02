@@ -411,8 +411,9 @@
 
 // Additional class variations
 .transcendent-hero-col {
-  @include make-col(10);
-  max-width: 80%;
+  // Modern flexbox replacement for make-col(10) - 10/12 = 83.333%
+  flex: 0 0 83.333%;
+  max-width: 83.333%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -435,7 +436,10 @@
 }
 
 .transcendent-hero-row {
-  @include make-row();
+  // Modern flexbox row with wrapping
+  display: flex;
+  flex-wrap: wrap;
+  margin-inline: -$spacing-md;
   justify-content: center;
   text-align: center;
 }

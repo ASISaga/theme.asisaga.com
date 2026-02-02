@@ -37,7 +37,10 @@
   }
   // Features/Concepts grid (now in _product-feature-grid.scss)
   .product-grid {
-  @include make-container();
+    // Modern container with horizontal padding and centering
+    width: 100%;
+    padding-inline: $spacing-md;
+    margin-inline: auto;
     display: flex;
     flex-wrap: wrap;
     
@@ -77,7 +80,10 @@
   }
   // Visual content container (now in _product-visual.scss)
   .product-visual-container {
-  @include make-container();
+    // Modern container with horizontal padding and centering
+    width: 100%;
+    padding-inline: $spacing-md;
+    margin-inline: auto;
     
     .product-image {
     }
@@ -85,7 +91,10 @@
   
   // Implementation/code example container (now in _product-code-example.scss)
   .product-code-container {
-  @include make-container();
+    // Modern container with horizontal padding and centering
+    width: 100%;
+    padding-inline: $spacing-md;
+    margin-inline: auto;
     
     .product-code-example {
         .product-code-block {
@@ -97,7 +106,10 @@
   
   // Benefits/List container (now in _product-benefits-list.scss)
   .product-list-container {
-  @include make-container();
+    // Modern container with horizontal padding and centering
+    width: 100%;
+    padding-inline: $spacing-md;
+    margin-inline: auto;
     
     .product-list {
       

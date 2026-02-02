@@ -160,12 +160,6 @@ $ethereal-silver: $color-bridge-silver;
 $primary: $color-neon-blue;                         // Neon blue primary
 $secondary: $text-secondary;
 $accent: $accent-essence;
-
-// Bootstrap Color Overrides for Sacred Experience
-$success: $color-neon-blue;             // Maps to neon blue (was green)
-$info: $ethereal-silver;
-$warning: $luminous-gold;
-$danger: $color-neon-blue;              // Maps to neon blue (was purple)
 $light: oklch(0.95 0.01 220);           // Light gray
 $dark: $color-profound-black;
 
@@ -371,6 +365,16 @@ $glow-human-essence: 0 0 25px oklch(0.85 0.01 220 / 0.6);
   --void-deep: oklch(0.03 0.01 260);      /* Deepest profound black */
   --void-medium: oklch(0.05 0.01 255);    /* Medium profound black */
   --void-surface: oklch(0.08 0.01 250);   /* Surface profound black */
+
+  // ----------------------------------------
+  // Z-INDEX LAYERS - Consciousness Hierarchy
+  // ----------------------------------------
+  --z-background: -1;           /* Background elements */
+  --z-content: 1;               /* Default content layer */
+  --z-overlay: 10;              /* Overlays and dropdowns */
+  --z-consciousness: 100;       /* Consciousness UI elements */
+  --z-transcendent: 1000;       /* Headers, navigation, modals */
+  --z-genesis: 9999;            /* Top-level alerts, toasts */
 }
 
 // ============================================================================

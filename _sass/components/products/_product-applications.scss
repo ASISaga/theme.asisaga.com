@@ -5,7 +5,10 @@
 .product-applications-section {
   
   .product-grid {
-  @include make-container(); // with proper mixin or direct styles for Jekyll compatibility
+    // Modern container with horizontal padding and centering
+    width: 100%;
+    padding-inline: $spacing-md;
+    margin-inline: auto;
     display: flex;
     flex-wrap: wrap;
     

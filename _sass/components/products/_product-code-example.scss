@@ -7,7 +7,10 @@
   }
   
   .product-code-container {
-    @include make-container();
+    // Modern container with horizontal padding and centering
+    width: 100%;
+    padding-inline: $spacing-md;
+    margin-inline: auto;
     
     .product-code-example {
       .product-code-title {
