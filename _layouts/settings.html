@@ -9,7 +9,7 @@ layout: default
       <ul class="settings-nav-list">
         {% for tab in page.tabs %}
         <li class="settings-nav-item">
-          <a class="settings-nav-link{% if forloop.first %} settings-nav-link--active{% endif %}" href="#{{ tab.id }}" data-bs-toggle="tab"{% if forloop.first %} aria-current="page"{% endif %}>
+          <a class="settings-nav-link{% if forloop.first %} settings-nav-link--active{% endif %}" href="#{{ tab.id }}" data-tab-toggle{% if forloop.first %} aria-current="page"{% endif %} role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" tabindex="{% if forloop.first %}0{% else %}-1{% endif %}">
             {% if tab.icon %}
             <i class="{{ tab.icon }}" aria-hidden="true"></i>
             {% endif %}

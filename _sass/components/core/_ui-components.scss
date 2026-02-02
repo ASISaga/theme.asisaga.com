@@ -1,0 +1,283 @@
+/**
+ * Modern UI Components - Styles
+ * CSS for Modal, Collapse/Accordion, and Tab components
+ * Replaces Bootstrap component styles
+ */
+
+// ============================================================================
+// MODAL COMPONENT
+// ============================================================================
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-transcendent, 1000);
+  
+  // Hidden by default
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  
+  // Backdrop
+  background: oklch(0.08 0.01 250 / 0.85);
+  backdrop-filter: blur(8px);
+  
+  // Smooth transitions
+  transition: opacity 0.3s ease, backdrop-filter 0.3s ease;
+  
+  // Center content
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-lg;
+  overflow-y: auto;
+  
+  // Show state
+  &--show {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.modal__dialog {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  
+  // Animation
+  transform: translateY(-50px);
+  transition: transform 0.3s ease;
+  
+  .modal--show & {
+    transform: translateY(0);
+  }
+}
+
+.modal__content {
+  @include genesis-entity('primary');
+  background: oklch(0.99 0.005 90);
+  border-radius: $border-radius-lg;
+  box-shadow: 0 20px 60px oklch(0.08 0.01 250 / 0.4);
+  position: relative;
+  
+  // Top accent border
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      oklch(0.65 0.25 230) 0%, 
+      oklch(0.70 0.15 85) 50%, 
+      oklch(0.65 0.25 230) 100%);
+    border-radius: $border-radius-lg $border-radius-lg 0 0;
+  }
+}
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-xl;
+  border-bottom: 1px solid oklch(0.85 0.005 220);
+}
+
+.modal__title {
+  @include genesis-cognition('axiom');
+  margin: 0;
+  padding-right: $spacing-lg;
+}
+
+.modal__close {
+  background: none;
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: oklch(0.45 0.01 220);
+  border-radius: $border-radius;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  
+  // X icon
+  &::before {
+    content: '✕';
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+  
+  &:hover,
+  &:focus-visible {
+    background: oklch(0.95 0.005 220);
+    color: oklch(0.65 0.25 230);
+  }
+  
+  &:focus-visible {
+    outline: 2px solid var(--focus-ring, oklch(0.65 0.25 230 / 0.5));
+    outline-offset: 2px;
+  }
+}
+
+.modal__body {
+  @include genesis-cognition('discourse');
+  padding: $spacing-xl;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $spacing-md;
+  padding: $spacing-xl;
+  border-top: 1px solid oklch(0.85 0.005 220);
+}
+
+.modal__button {
+  @include genesis-synapse('execute');
+  
+  &[data-modal-dismiss] {
+    @include genesis-synapse('inquiry');
+  }
+}
+
+// ============================================================================
+// COLLAPSE / ACCORDION COMPONENT
+// ============================================================================
+
+.faq-item__content {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease;
+  
+  &--show {
+    height: auto;
+  }
+}
+
+.faq-item__button {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: $spacing-lg;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+  transition: all 0.2s ease;
+  
+  // Arrow indicator
+  &::after {
+    content: '▼';
+    font-size: 0.875rem;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+  
+  // Collapsed state
+  &--collapsed::after {
+    transform: rotate(-90deg);
+  }
+  
+  &:hover,
+  &:focus-visible {
+    background: oklch(0.96 0.005 220);
+  }
+  
+  &:focus-visible {
+    outline: 2px solid var(--focus-ring, oklch(0.65 0.25 230 / 0.5));
+    outline-offset: -2px;
+  }
+}
+
+.faq-item__answer {
+  padding: 0 $spacing-lg $spacing-lg $spacing-lg;
+}
+
+// ============================================================================
+// TAB COMPONENT
+// ============================================================================
+
+.settings-nav-link {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md $spacing-lg;
+  text-decoration: none;
+  color: oklch(0.30 0.01 230);
+  border-radius: $border-radius;
+  transition: all 0.2s ease;
+  
+  &:hover,
+  &:focus-visible {
+    background: oklch(0.96 0.005 220);
+    color: oklch(0.12 0.01 250);
+  }
+  
+  &:focus-visible {
+    outline: 2px solid var(--focus-ring, oklch(0.65 0.25 230 / 0.5));
+    outline-offset: 2px;
+  }
+  
+  // Active state
+  &--active {
+    background: oklch(0.65 0.25 230 / 0.1);
+    color: oklch(0.65 0.25 230);
+    font-weight: 600;
+    border-left: 3px solid oklch(0.65 0.25 230);
+  }
+}
+
+// Tab panels
+.tab-pane {
+  display: none;
+  
+  &[aria-hidden="false"] {
+    display: block;
+  }
+}
+
+// ============================================================================
+// RESPONSIVE BEHAVIOR
+// ============================================================================
+
+@media (max-width: 768px) {
+  .modal {
+    padding: $spacing-md;
+  }
+  
+  .modal__dialog {
+    max-width: 100%;
+  }
+  
+  .modal__header,
+  .modal__body,
+  .modal__footer {
+    padding: $spacing-lg;
+  }
+}
+
+// ============================================================================
+// REDUCED MOTION SUPPORT
+// ============================================================================
+
+@media (prefers-reduced-motion: reduce) {
+  .modal,
+  .modal__dialog,
+  .faq-item__content,
+  .faq-item__button::after {
+    transition: none;
+  }
+}
