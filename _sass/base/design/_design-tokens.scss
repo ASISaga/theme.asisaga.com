@@ -35,30 +35,3 @@ $sacred-glow: 0 0 0.5rem oklch(0.70 0.15 85 / 0.3);
 $consciousness-depth: 0 0.25rem 2rem oklch(0.08 0.01 250 / 0.4);
 $shadow-consciousness: 0 30px 60px oklch(0.70 0.15 85 / 0.2);
 $shadow-transcendent: 0 40px 80px oklch(0.65 0.25 230 / 0.3);
-
-// Z-index variables
-$zindex-dropdown: 1000;
-$zindex-sticky: 1020;
-$zindex-fixed: 1030;
-$zindex-modal-backdrop: 1040;
-$zindex-modal: 1050;
-$zindex-popover: 1060;
-$zindex-tooltip: 1070;
-
-// Grid variables for legacy compatibility
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1400px
-);
-
-$container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1140px,
-  xxl: 1320px
-);
