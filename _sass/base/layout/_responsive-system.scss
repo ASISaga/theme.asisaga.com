@@ -23,6 +23,26 @@ $tablet-min: $breakpoint-md;
 $tablet-max: #{$breakpoint-lg - 1px};
 $desktop-min: $breakpoint-lg;
 
+// Breakpoint map for semantic aliases (supports mixin usage like from(lg))
+$breakpoint-map: (
+  xs: $breakpoint-xs,
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  '2xl': $breakpoint-2xl
+);
+
+@function resolve-breakpoint($breakpoint) {
+  @if type-of($breakpoint) == 'string' {
+    @if map-has-key($breakpoint-map, $breakpoint) {
+      @return map-get($breakpoint-map, $breakpoint);
+    }
+  }
+
+  @return $breakpoint;
+}
+
 // ============================================================================
 // FLUID SPACING SCALE
 // ============================================================================
@@ -43,21 +63,25 @@ $space-3xl: clamp(4rem, 8vw, 6rem);
 
 /// Mobile-first breakpoint: styles apply at this width and above
 @mixin from($breakpoint) {
-  @media (min-width: #{$breakpoint}) {
+  $resolved-breakpoint: resolve-breakpoint($breakpoint);
+  @media (min-width: #{$resolved-breakpoint}) {
     @content;
   }
 }
 
 /// Styles apply up to and including this width
 @mixin until($breakpoint) {
-  @media (max-width: #{$breakpoint - 1px}) {
+  $resolved-breakpoint: resolve-breakpoint($breakpoint);
+  @media (max-width: #{$resolved-breakpoint - 1px}) {
     @content;
   }
 }
 
 /// Styles apply within a specific range
 @mixin between($min, $max) {
-  @media (min-width: #{$min}) and (max-width: #{$max - 1px}) {
+  $resolved-min: resolve-breakpoint($min);
+  $resolved-max: resolve-breakpoint($max);
+  @media (min-width: #{$resolved-min}) and (max-width: #{$resolved-max - 1px}) {
     @content;
   }
 }
