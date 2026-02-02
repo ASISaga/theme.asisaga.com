@@ -11,12 +11,10 @@
  * - search__input
  * - search__submit
  * - search__count
- * - search__main
  * - search__sidebar
  * - search__filters-title
  * - search__filter-group
  * - search__filter-title
- * - search__results
  */
 
 
@@ -55,12 +53,6 @@
   @include genesis-cognition('gloss');      // Small metadata
 }
 
-// Main content area
-.search__main {
-  @include genesis-environment('associative'); // Sidebar layout
-  flex: 1;
-}
-
 // Filter sidebar
 .search__sidebar {
   @include genesis-entity('secondary');     // Filters sidebar
@@ -77,10 +69,4 @@
 
 .search__filter-title {
   @include genesis-cognition('motive');     // Filter heading
-}
-
-// Results section
-.search__results {
-  @include genesis-entity('primary');       // Main results
-  @include genesis-environment('chronological'); // Vertical list
 }

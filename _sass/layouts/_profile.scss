@@ -14,7 +14,6 @@
  * - profile__social
  * - profile__social-link
  * - profile__main
- * - profile__content
  * - profile__sidebar
  * - profile__stats
  * - profile__skills
@@ -68,10 +67,6 @@
 // Main content area
 .profile__main {
   @include genesis-environment('associative'); // Two-column layout
-}
-
-.profile__content {
-  @include genesis-entity('primary');       // Main content
 }
 
 .profile__sidebar {

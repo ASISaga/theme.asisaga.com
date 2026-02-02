@@ -12,7 +12,6 @@
  * - faq__search
  * - faq__categories
  * - faq__category
- * - faq__content
  * - faq__footer-cta (from layout-footer-cta.html)
  * - faq__cta-title
  * - faq__cta-description
@@ -58,11 +57,6 @@
   &--active {
     @include genesis-state('stable');           // Active state
   }
-}
-
-// Main content area
-.faq__content {
-  @include genesis-entity('primary');           // Main content
 }
 
 // Footer CTA section from layout-footer-cta.html include

@@ -11,7 +11,6 @@
  * - gallery__description
  * - gallery__filters
  * - gallery__filter
- * - gallery__grid
  */
 
 
@@ -49,9 +48,4 @@
   &--active {
     @include genesis-state('active');       // Active filter state
   }
-}
-
-// Grid content area
-.gallery__grid {
-  @include genesis-environment('distributed'); // Auto-fit grid
 }

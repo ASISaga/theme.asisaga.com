@@ -13,7 +13,6 @@
  * - article__meta-date
  * - article__meta-author
  * - article__meta-reading-time
- * - article__content
  * - article__footer
  */
 
@@ -65,13 +64,7 @@
   @include genesis-cognition('gloss');        // Small metadata
 }
 
-// Main content area
-.article__content {
-  @include genesis-cognition('discourse');    // Body prose
-  @include genesis-entity('primary');         // Main content
-}
-
-// Footer section (not using CTA include)
+// Footer section from layout-header.html include
 .article__footer {
   @include genesis-entity('secondary');       // Footer section
 }

@@ -18,21 +18,17 @@ layout: default
     {% endif %}
   </header>
   
-  <div class="search__main">
-    {% if page.filters %}
-    <aside class="search__sidebar" aria-label="Search filters">
-      <h2 class="search__filters-title">Filters</h2>
-      {% for filter in page.filters %}
-      <section class="search__filter-group">
-        <h3 class="search__filter-title">{{ filter.name }}</h3>
-        <!-- Filter options -->
-      </section>
-      {% endfor %}
-    </aside>
-    {% endif %}
-    
-    <div class="search__results">
-      {{ content }}
-    </div>
-  </div>
+  {% if page.filters %}
+  <aside class="search__sidebar" aria-label="Search filters">
+    <h2 class="search__filters-title">Filters</h2>
+    {% for filter in page.filters %}
+    <section class="search__filter-group">
+      <h3 class="search__filter-title">{{ filter.name }}</h3>
+      <!-- Filter options -->
+    </section>
+    {% endfor %}
+  </aside>
+  {% endif %}
+  
+  {{ content }}
 </div>

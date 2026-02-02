@@ -40,10 +40,6 @@
     @include genesis-cognition('axiom');      // Headline
   }
   
-  .docs-body {
-    @include genesis-cognition('discourse');  // Body prose
-  }
-  
   .docs-pagination {
     @include genesis-synapse('paginate');     // Page navigation
     @include genesis-environment('associative'); // Horizontal layout
