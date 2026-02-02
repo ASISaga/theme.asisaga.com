@@ -10,7 +10,6 @@
  * - dashboard__title
  * - dashboard__actions
  * - dashboard__action-btn
- * - dashboard__content
  */
 
 
@@ -46,9 +45,4 @@
 
 .dashboard__action-btn {
   @include genesis-synapse('execute');      // Action button
-}
-
-// Main content area
-.dashboard__content {
-  @include genesis-entity('primary');       // Main content
 }

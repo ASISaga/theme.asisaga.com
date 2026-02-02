@@ -20,8 +20,6 @@ Parameters:
   {% endif %}
   
   {% if include.button_text and include.button_url %}
-  <div class="{{ include.class_prefix }}__cta-actions">
-    <a href="{{ include.button_url }}" class="{{ include.class_prefix }}__cta-button">{{ include.button_text }}</a>
-  </div>
+  <a href="{{ include.button_url }}" class="{{ include.class_prefix }}__cta-button">{{ include.button_text }}</a>
   {% endif %}
 </footer>

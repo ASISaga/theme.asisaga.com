@@ -10,7 +10,6 @@
  * - landing__header (from layout-header.html)
  * - landing__title
  * - landing__subtitle
- * - landing__content
  * - landing__footer-cta (from layout-footer-cta.html)
  * - landing__cta-title
  * - landing__cta-description
@@ -52,11 +51,6 @@
 
 .landing__hero-image {
   @include genesis-entity('primary');           // Hero image
-}
-
-// Main content area
-.landing__content {
-  @include genesis-entity('primary');           // Main content
 }
 
 // Footer CTA section from layout-footer-cta.html include

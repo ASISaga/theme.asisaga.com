@@ -12,7 +12,6 @@
  * - archive__controls
  * - archive__select
  * - archive__view-btn
- * - archive__content
  * - archive__pagination
  */
 
@@ -68,11 +67,6 @@
   &--active {
     @include genesis-state('active');       // Active view state
   }
-}
-
-// Content area
-.archive__content {
-  @include genesis-entity('primary');       // Main content
 }
 
 // Pagination

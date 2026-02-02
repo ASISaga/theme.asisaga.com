@@ -17,7 +17,6 @@
  * - post__tag
  * - post__categories
  * - post__category
- * - post__content
  * - post__footer-cta (from layout-footer-cta.html)
  * - post__cta-title
  * - post__cta-button
@@ -75,12 +74,6 @@
 .post__category {
   @include genesis-cognition('quantum');      // Tiny chip
   @include genesis-entity('imperative');      // Primary accent
-}
-
-// Main content area
-.post__content {
-  @include genesis-cognition('discourse');    // Body prose
-  @include genesis-entity('primary');         // Main content
 }
 
 // Footer CTA section from layout-footer-cta.html include
