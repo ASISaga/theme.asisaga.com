@@ -18,9 +18,10 @@
 // ----------------------------------------
 // DESIGN FOUNDATION - The DNA
 // ----------------------------------------
-// Load design tokens and semantic system first
-@import "base/design/design-tokens";      // OKLCH primitives and semantic tokens
-@import "base/design/variables";          // Theme-wide Sass variables
+// Load colors first - all color definitions centralized here
+@import "base/design/colors";             // Centralized color definitions (OKLCH + semantic tokens)
+@import "base/design/design-tokens";      // Non-color design tokens and shadows
+@import "base/design/variables";          // Theme-wide Sass variables (non-color)
 @import "base/design/dimensions";          // Spacing and sizing tokens
 
 // ----------------------------------------
