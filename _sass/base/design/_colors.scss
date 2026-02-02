@@ -7,6 +7,35 @@
 //   - _variables.scss (sacred design system variables)
 //   - _theme.scss (CSS variables)
 //   - _tokens.scss (ontology CSS custom properties)
+//
+// USAGE GUIDELINES:
+// -----------------
+// 1. **For New Colors**: Add them to the appropriate section below
+//    - OKLCH primitives go in Section 1
+//    - Semantic tokens (referencing primitives) go in Section 2
+//    - Legacy mappings go in Section 3
+//    - CSS custom properties go in Section 5
+//
+// 2. **Color Philosophy**:
+//    - Primary: Black text on white backgrounds
+//    - Chrome: White text on black backgrounds (header/footer)
+//    - Accents: Neon blue for interactions, gold for special emphasis
+//    - Avoid: Excessive colored backgrounds, use white/light gray primarily
+//
+// 3. **Updating Colors**:
+//    - Change primitives (Section 1) to affect all derived colors
+//    - Update semantic tokens (Section 2) to change functional usage
+//    - Maintain backward compatibility with legacy mappings (Section 3)
+//
+// 4. **Accessibility**:
+//    - All text colors must meet WCAG AA contrast requirements
+//    - Never use opacity < 0.9 for text
+//    - High contrast mode overrides in Section 7
+//
+// 5. **Dependencies**:
+//    - This file is imported FIRST in _common.scss
+//    - All other design token files depend on colors defined here
+//    - Do NOT import other design files in this file
 // ============================================================================
 
 // ============================================================================
