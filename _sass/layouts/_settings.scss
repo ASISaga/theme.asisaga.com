@@ -44,10 +44,6 @@
     @include genesis-cognition('axiom');      // Headline
   }
   
-  .settings-content {
-    @include genesis-environment('interaction-form'); // Form layout
-  }
-  
   .settings-actions {
     @include genesis-environment('associative'); // Horizontal buttons
     
