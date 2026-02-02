@@ -6,7 +6,10 @@
 @mixin page-layout($prefix: 'page') {
   .#{$prefix} {
     &-container {
-      @include make-container();
+      // Modern container with horizontal padding and centering
+      width: 100%;
+      padding-inline: $spacing-md;
+      margin-inline: auto;
     }
     
     &-row {

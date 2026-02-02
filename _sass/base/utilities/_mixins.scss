@@ -31,49 +31,6 @@
   }
 }
 
-// Grid Layout Mixins
-// These provide grid functionality for legacy components
-// TODO: Gradually migrate to modern CSS Grid/Flexbox
-
-@mixin make-container() {
-  width: 100%;
-  padding-right: $spacing-md;
-  padding-left: $spacing-md;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-@mixin make-row() {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -$spacing-md;
-  margin-left: -$spacing-md;
-}
-
-@mixin make-col-ready() {
-  position: relative;
-  width: 100%;
-  padding-right: $spacing-md;
-  padding-left: $spacing-md;
-}
-
-@mixin make-col($size: null, $columns: 12) {
-  @if $size {
-    flex: 0 0 calc(#{$size} / #{$columns} * 100%);
-    max-width: calc(#{$size} / #{$columns} * 100%);
-  } @else {
-    flex-basis: 0;
-    flex-grow: 1;
-    max-width: 100%;
-  }
-}
-
-@mixin make-col-auto() {
-  flex: 0 0 auto;
-  width: auto;
-  max-width: 100%;
-}
-
 // Typography Mixins - Consciousness-Inspired Text Hierarchy
 @mixin text-luminous-gold {
   color: $luminous-gold;

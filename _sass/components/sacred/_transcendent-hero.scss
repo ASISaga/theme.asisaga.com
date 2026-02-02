@@ -436,7 +436,10 @@
 }
 
 .transcendent-hero-row {
-  @include make-row();
+  // Modern flexbox row with wrapping
+  display: flex;
+  flex-wrap: wrap;
+  margin-inline: -$spacing-md;
   justify-content: center;
   text-align: center;
 }
