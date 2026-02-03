@@ -15,8 +15,8 @@
 // Header enhancements
 import "./common/header-scroll.js";   // Transparent header on scroll
 
-// Import custom animations and interactions
-// import "./common/animations.js";        // Handles site-wide custom animations and effects
+// Import custom animations and interactions (Motion-powered)
+import "./common/animations.js";        // Handles site-wide custom animations and effects using Motion library
 
 // Import Modern UI Components (replaces Bootstrap JS)
 import "./common/ui-components.js";      // Modern lightweight components (Modal, Collapse, Tabs)

@@ -1,11 +1,34 @@
 /**
- * ASI Saga Animation and Interaction Script
+ * ASI Saga Animation and Interaction Script (Motion-Powered)
  * This script provides various animations and interactive features for the ASI Saga website
- * Including parallax effects, micro-interactions, and timeline animations
+ * Using Motion library (https://motion.dev) for all UI/UX animations
+ * 
+ * Motion provides:
+ * - Lightweight (5KB) Web Animations API wrapper
+ * - Built-in reduced motion support
+ * - Timeline support
+ * - Gesture support
+ * 
+ * Load Motion from CDN before this script:
+ * <script src="https://cdn.jsdelivr.net/npm/motion@12/dist/motion.js"></script>
  */
+
+import {
+  initMotionAnimations,
+  setupNavbarScroll,
+  setupParallax,
+  setupScrollReveal,
+  setupCardHover,
+  setupButtonHover,
+  setupTimelineInteraction,
+  animatePageTransition,
+} from './motion-utils.js';
 
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Motion-based animations
+  initMotionAnimations();
+  
   // Initialize all animations and interactions
   initNavbarScroll();
   initParallaxEffects();
@@ -16,150 +39,97 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Initialize accessibility features
   initAccessibilityFeatures();
-  initReducedMotion();
 });
 
 /**
  * Makes the navbar transparent at top and solid on scroll
+ * Using Motion for smooth animated transitions
  */
 function initNavbarScroll() {
   const navbar = document.querySelector('.site-header');
   if (!navbar) return;
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar.classList.add('navbar-scrolled');
-    } else {
-      navbar.classList.remove('navbar-scrolled');
-    }
-  });
+  setupNavbarScroll(navbar);
 }
 
 /**
  * Creates parallax scrolling effects for elements with the .parallax class
+ * Using Motion's scroll() function for smooth performance
  */
 function initParallaxEffects() {
   const parallaxElements = document.querySelectorAll('.parallax');
-  
-  // Skip parallax if prefers-reduced-motion is enabled
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    parallaxElements.forEach(element => {
-      element.style.transform = 'none';  // Reset any transform
-    });
-    return;
-  }
-  
   if (parallaxElements.length === 0) return;
 
-  window.addEventListener('scroll', () => {
-    const scrollPosition = window.pageYOffset;
-    
-    parallaxElements.forEach(element => {
-      const speed = element.getAttribute('data-speed') || 0.5;
-      const yPos = -(scrollPosition * speed);
-      element.style.transform = `translateY(${yPos}px)`;
-    });
+  parallaxElements.forEach(element => {
+    const speed = parseFloat(element.getAttribute('data-speed')) || 0.5;
+    setupParallax(element, { speed });
   });
 }
 
 /**
  * Adds hover animations to interactive elements
+ * Using Motion for smooth hover transitions
  */
 function initHoverEffects() {
   // Animate buttons on hover
   const buttons = document.querySelectorAll('.hero-button, .cta-button');
   buttons.forEach(button => {
-    button.addEventListener('mouseenter', () => {
-      button.classList.add('pulse');
-    });
-    
-    button.addEventListener('mouseleave', () => {
-      button.classList.remove('pulse');
-    });
+    setupButtonHover(button);
   });
 
   // Animate cards on hover
   const cards = document.querySelectorAll('.product-card, .possibilities-card, .thoughtlab-card');
   cards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      card.classList.add('card-hover');
-    });
-    
-    card.addEventListener('mouseleave', () => {
-      card.classList.remove('card-hover');
-    });
+    setupCardHover(card);
   });
 }
 
 /**
  * Handles interactions for the saga timeline
+ * Using Motion for smooth timeline transitions
  */
 function initTimelineInteractions() {
   const timelineMarkers = document.querySelectorAll('.timeline-marker');
   if (timelineMarkers.length === 0) return;
   
   timelineMarkers.forEach(marker => {
-    marker.addEventListener('click', () => {
-      // Close any open content
-      document.querySelectorAll('.timeline-content.active').forEach(content => {
-        content.classList.remove('active');
+    const contentId = marker.getAttribute('data-content-id');
+    const contentElement = document.getElementById(contentId);
+    
+    if (contentElement) {
+      setupTimelineInteraction(marker, contentElement);
+      
+      // Update active marker on click
+      marker.addEventListener('click', () => {
+        document.querySelectorAll('.timeline-marker.active').forEach(m => {
+          m.classList.remove('active');
+        });
+        marker.classList.add('active');
       });
-      
-      // Open the clicked content
-      const contentId = marker.getAttribute('data-content-id');
-      const contentElement = document.getElementById(contentId);
-      
-      if (contentElement) {
-        contentElement.classList.add('active');
-        
-        // Smooth scroll to the content if needed
-        contentElement.scrollIntoView({ behavior: 'smooth' });
-      }
-      
-      // Update active marker
-      document.querySelectorAll('.timeline-marker.active').forEach(m => {
-        m.classList.remove('active');
-      });
-      marker.classList.add('active');
-    });
+    }
   });
 }
 
 /**
  * Adds smooth page transitions
+ * Using Motion for page fade-in effect
  */
 function initPageTransitions() {
-  // Fade-in effect for the main content
   const mainContent = document.querySelector('.site-content');
   if (mainContent) {
-    mainContent.classList.add('fade-in');
+    animatePageTransition(mainContent);
   }
 }
 
 /**
  * Reveals elements as they are scrolled into view
+ * Using Motion's inView() observer for performance
  */
 function initScrollReveal() {
   const revealElements = document.querySelectorAll('.reveal-on-scroll');
-  
   if (revealElements.length === 0) return;
 
-  const revealElementsOnScroll = () => {
-    const windowHeight = window.innerHeight;
-    const revealPoint = 150;
-    
-    revealElements.forEach(element => {
-      const elementTop = element.getBoundingClientRect().top;
-      
-      if (elementTop < windowHeight - revealPoint) {
-        element.classList.add('revealed');
-      }
-    });
-  };
-  
-  window.addEventListener('scroll', revealElementsOnScroll);
-  // Initial check in case elements are already in view
-  revealElementsOnScroll();
+  setupScrollReveal(revealElements);
 }
 
 /**
@@ -210,6 +180,7 @@ function initInteractiveModules() {
 
 /**
  * Initializes features to improve accessibility
+ * Motion library automatically handles reduced motion preferences
  */
 function initAccessibilityFeatures() {
   // Make all interactive elements focusable
@@ -366,34 +337,4 @@ function initKeyboardNavigation() {
       }
     });
   });
-}
-
-/**
- * Adjusts animations if user prefers reduced motion
- */
-function initReducedMotion() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    // Disable AOS animations
-    if (typeof AOS !== 'undefined') {
-      AOS.init({
-        disable: true
-      });
-    }
-    
-    // Remove all animation classes
-    document.querySelectorAll('.fade-in, .reveal-on-scroll, [data-aos]').forEach(element => {
-      element.classList.remove('fade-in', 'reveal-on-scroll');
-      element.removeAttribute('data-aos');
-    });
-    
-    // Disable hover animations
-    const animationStyles = document.createElement('style');
-    animationStyles.textContent = `
-      .pulse:hover, .card-hover:hover { 
-        animation: none !important; 
-        transform: none !important; 
-      }
-    `;
-    document.head.appendChild(animationStyles);
-  }
 }
