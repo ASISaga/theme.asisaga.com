@@ -1,0 +1,394 @@
+---
+layout: default
+title: Web Component Templates Demo
+description: Interactive demonstration of HTML/Liquid template system for web components
+---
+
+<!-- Load the web component templates -->
+{% include web-component-templates/template-loader.html %}
+
+<style>
+  .demo-section {
+    margin: 3rem 0;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: oklch(0.98 0.005 220);
+  }
+  
+  .demo-section__header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .demo-section__title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: oklch(0.10 0.01 250);
+  }
+  
+  .demo-section__description {
+    color: oklch(0.30 0.01 230);
+    margin-bottom: 1rem;
+  }
+  
+  .demo-controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  
+  .demo-button {
+    padding: 0.75rem 1.5rem;
+    background: oklch(0.10 0.01 250);
+    color: oklch(0.99 0.005 90);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .demo-button:hover {
+    background: oklch(0.15 0.01 250);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px oklch(0.10 0.01 250 / 0.3);
+  }
+  
+  .demo-button--secondary {
+    background: transparent;
+    border: 2px solid oklch(0.10 0.01 250);
+    color: oklch(0.10 0.01 250);
+  }
+  
+  .demo-button--secondary:hover {
+    background: oklch(0.10 0.01 250);
+    color: oklch(0.99 0.005 90);
+  }
+  
+  .demo-output {
+    padding: 2rem;
+    background: oklch(0.99 0.005 90);
+    border-radius: 0.75rem;
+    min-height: 200px;
+    border: 2px dashed oklch(0.85 0.005 220);
+  }
+  
+  .demo-output--grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .demo-output--stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .code-example {
+    background: oklch(0.12 0.01 250);
+    color: oklch(0.99 0.005 90);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  
+  .alert-container {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+  }
+</style>
+
+<main class="container" style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
+  
+  <header style="text-align: center; margin-bottom: 4rem;">
+    <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 1rem; color: oklch(0.10 0.01 250);">
+      Web Component Templates
+    </h1>
+    <p style="font-size: 1.25rem; color: oklch(0.30 0.01 230); max-width: 800px; margin: 0 auto;">
+      Interactive demonstration of HTML/Liquid template system with matching HTML5/SCSS/ES6 namespaces.
+      Templates are not rendered on page load but instantiated dynamically via JavaScript.
+    </p>
+  </header>
+
+  <!-- Product Card Demo -->
+  <section class="demo-section">
+    <div class="demo-section__header">
+      <h2 class="demo-section__title">Product Card Template</h2>
+      <p class="demo-section__description">
+        Namespace: <code>product-card.html</code> → <code>_product-card.scss</code> → <code>web-component-product-card.js</code>
+      </p>
+    </div>
+    
+    <div class="demo-controls">
+      <button class="demo-button" id="btn-create-product">Create Product Card</button>
+      <button class="demo-button" id="btn-create-products">Create Multiple (3)</button>
+      <button class="demo-button demo-button--secondary" id="btn-clear-products">Clear</button>
+    </div>
+    
+    <div class="demo-output demo-output--grid" id="product-output"></div>
+    
+    <div class="code-example">
+<pre>// JavaScript instantiation
+import { createProductCard } from './web-component-product-card.js';
+
+const card = createProductCard({
+  title: 'Genesis AI Platform',
+  description: 'Advanced AI capabilities',
+  url: '/products/genesis-ai',
+  image: '/images/genesis-ai.jpg',
+  demoUrl: 'https://demo.genesis.ai'
+});
+
+container.appendChild(card);</pre>
+    </div>
+  </section>
+
+  <!-- Testimonial Card Demo -->
+  <section class="demo-section">
+    <div class="demo-section__header">
+      <h2 class="demo-section__title">Testimonial Card Template</h2>
+      <p class="demo-section__description">
+        Namespace: <code>testimonial-card.html</code> → <code>_testimonial-card.scss</code> → <code>web-component-testimonial-card.js</code>
+      </p>
+    </div>
+    
+    <div class="demo-controls">
+      <button class="demo-button" id="btn-create-testimonial">Create Testimonial</button>
+      <button class="demo-button" id="btn-create-testimonials">Create Multiple (3)</button>
+      <button class="demo-button demo-button--secondary" id="btn-clear-testimonials">Clear</button>
+    </div>
+    
+    <div class="demo-output demo-output--grid" id="testimonial-output"></div>
+    
+    <div class="code-example">
+<pre>// JavaScript instantiation
+import { createTestimonialCard } from './web-component-testimonial-card.js';
+
+const testimonial = createTestimonialCard({
+  text: 'This platform transformed our workflow!',
+  name: 'Sarah Chen',
+  company: 'TechCorp Inc.'
+});
+
+container.appendChild(testimonial);</pre>
+    </div>
+  </section>
+
+  <!-- Alert Card Demo -->
+  <section class="demo-section">
+    <div class="demo-section__header">
+      <h2 class="demo-section__title">Alert Card Template</h2>
+      <p class="demo-section__description">
+        Namespace: <code>alert-card.html</code> → <code>_alert-card.scss</code> → <code>web-component-alert-card.js</code>
+      </p>
+    </div>
+    
+    <div class="demo-controls">
+      <button class="demo-button" id="btn-alert-info">Show Info</button>
+      <button class="demo-button" id="btn-alert-success">Show Success</button>
+      <button class="demo-button" id="btn-alert-warning">Show Warning</button>
+      <button class="demo-button" id="btn-alert-error">Show Error</button>
+    </div>
+    
+    <div class="code-example">
+<pre>// JavaScript instantiation
+import { showAlert } from './web-component-alert-card.js';
+
+showAlert({
+  type: 'success',
+  title: 'Success!',
+  message: 'Operation completed successfully.',
+  dismissible: true
+}, container, 5000); // Auto-dismiss after 5s</pre>
+    </div>
+  </section>
+
+  <!-- Technical Details -->
+  <section class="demo-section">
+    <div class="demo-section__header">
+      <h2 class="demo-section__title">Template System Architecture</h2>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+      <div style="padding: 1.5rem; background: oklch(0.99 0.005 90); border-radius: 0.75rem;">
+        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: oklch(0.10 0.01 250);">
+          HTML Templates
+        </h3>
+        <p style="margin-bottom: 0.5rem;">📁 <code>_includes/web-component-templates/</code></p>
+        <ul style="margin-left: 1.5rem; color: oklch(0.30 0.01 230);">
+          <li>Wrapped in <code>&lt;template&gt;</code> tags</li>
+          <li>Not rendered on page load</li>
+          <li>Semantic class names (BEM pattern)</li>
+          <li>Accessible by JavaScript</li>
+        </ul>
+      </div>
+      
+      <div style="padding: 1.5rem; background: oklch(0.99 0.005 90); border-radius: 0.75rem;">
+        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: oklch(0.10 0.01 250);">
+          SCSS Styling
+        </h3>
+        <p style="margin-bottom: 0.5rem;">📁 <code>_sass/components/web-components/</code></p>
+        <ul style="margin-left: 1.5rem; color: oklch(0.30 0.01 230);">
+          <li>Genesis Ontological mixins</li>
+          <li>Matching component namespace</li>
+          <li>Semantic, purposeful styling</li>
+          <li>Responsive by default</li>
+        </ul>
+      </div>
+      
+      <div style="padding: 1.5rem; background: oklch(0.99 0.005 90); border-radius: 0.75rem;">
+        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: oklch(0.10 0.01 250);">
+          JavaScript
+        </h3>
+        <p style="margin-bottom: 0.5rem;">📁 <code>assets/js/common/</code></p>
+        <ul style="margin-left: 1.5rem; color: oklch(0.30 0.01 230);">
+          <li>Template instantiation utilities</li>
+          <li>Data population helpers</li>
+          <li>Component-specific factories</li>
+          <li>ES6 modules with exports</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Alert container for dynamically created alerts -->
+<div class="alert-container" id="alert-container"></div>
+
+<script type="module">
+  // Import the component factories
+  import { createProductCard, createProductCards } from '/assets/js/common/web-component-product-card.js';
+  import { createTestimonialCard, createTestimonialCards } from '/assets/js/common/web-component-testimonial-card.js';
+  import { showInfo, showSuccess, showWarning, showError } from '/assets/js/common/web-component-alert-card.js';
+
+  // Sample data
+  const sampleProducts = [
+    {
+      title: 'Genesis AI Platform',
+      description: 'Advanced artificial intelligence platform for next-generation applications.',
+      url: '/products/genesis-ai',
+      demoUrl: 'https://demo.genesis.ai'
+    },
+    {
+      title: 'Consciousness Bridge',
+      description: 'Connect human and artificial consciousness through advanced neural interfaces.',
+      url: '/products/consciousness-bridge'
+    },
+    {
+      title: 'Quantum Analytics',
+      description: 'Harness quantum computing for unprecedented data analysis capabilities.',
+      url: '/products/quantum-analytics',
+      demoUrl: 'https://demo.quantum.ai'
+    }
+  ];
+
+  const sampleTestimonials = [
+    {
+      text: 'This platform completely transformed how we approach AI development. The results speak for themselves!',
+      name: 'Dr. Sarah Chen',
+      company: 'AI Research Labs'
+    },
+    {
+      text: 'Incredible technology that bridges the gap between human intuition and machine intelligence.',
+      name: 'Marcus Rodriguez',
+      company: 'TechFuture Inc.'
+    },
+    {
+      text: 'A quantum leap in data analytics. We\'ve seen 10x improvements in processing speed.',
+      name: 'Emily Watson',
+      company: 'DataCorp Analytics'
+    }
+  ];
+
+  // Product Card Controls
+  document.getElementById('btn-create-product').addEventListener('click', () => {
+    const container = document.getElementById('product-output');
+    const card = createProductCard(sampleProducts[0]);
+    container.appendChild(card);
+  });
+
+  document.getElementById('btn-create-products').addEventListener('click', () => {
+    const container = document.getElementById('product-output');
+    const cards = createProductCards(sampleProducts);
+    cards.forEach(card => container.appendChild(card));
+  });
+
+  document.getElementById('btn-clear-products').addEventListener('click', () => {
+    document.getElementById('product-output').innerHTML = '';
+  });
+
+  // Testimonial Card Controls
+  document.getElementById('btn-create-testimonial').addEventListener('click', () => {
+    const container = document.getElementById('testimonial-output');
+    const card = createTestimonialCard(sampleTestimonials[0]);
+    container.appendChild(card);
+  });
+
+  document.getElementById('btn-create-testimonials').addEventListener('click', () => {
+    const container = document.getElementById('testimonial-output');
+    const cards = createTestimonialCards(sampleTestimonials);
+    cards.forEach(card => container.appendChild(card));
+  });
+
+  document.getElementById('btn-clear-testimonials').addEventListener('click', () => {
+    document.getElementById('testimonial-output').innerHTML = '';
+  });
+
+  // Alert Controls
+  const alertContainer = document.getElementById('alert-container');
+
+  document.getElementById('btn-alert-info').addEventListener('click', () => {
+    showInfo(
+      'This is an informational alert. Templates are loaded from HTML and instantiated via JavaScript.',
+      'Information',
+      { dismissible: true, duration: 5000 }
+    );
+  });
+
+  document.getElementById('btn-alert-success').addEventListener('click', () => {
+    showSuccess(
+      'Component created successfully! The template was cloned and populated with data.',
+      'Success!',
+      { dismissible: true, duration: 5000 }
+    );
+  });
+
+  document.getElementById('btn-alert-warning').addEventListener('click', () => {
+    showWarning(
+      'This is a warning alert. Make sure templates are loaded before instantiation.',
+      'Warning',
+      { dismissible: true, duration: 5000 }
+    );
+  });
+
+  document.getElementById('btn-alert-error').addEventListener('click', () => {
+    showError(
+      'This is an error alert. Template not found or invalid data provided.',
+      'Error',
+      { dismissible: true, duration: 5000 }
+    );
+  });
+
+  // Show initial info alert
+  setTimeout(() => {
+    showInfo(
+      'Click the buttons above to dynamically create components from templates!',
+      'Welcome to Web Component Templates',
+      { dismissible: true, duration: 7000 }
+    );
+  }, 1000);
+</script>

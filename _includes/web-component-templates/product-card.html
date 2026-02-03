@@ -1,0 +1,37 @@
+{% comment %}
+Product Card Template
+HTML template for product card web component
+
+Namespace:
+  HTML:  product-card.html
+  SCSS:  _sass/components/web-components/_product-card.scss
+  JS:    assets/js/common/web-component-product-card.js
+
+Data attributes for JavaScript population:
+  - data-image: Product image URL
+  - data-title: Product title
+  - data-description: Product description
+  - data-url: Learn more URL
+  - data-demo-url: Demo URL (optional)
+{% endcomment %}
+
+<template id="template-product-card">
+  <article class="wc-product-card">
+    <div class="wc-product-card__media">
+      <img class="wc-product-card__image" alt="" loading="lazy">
+      <div class="wc-product-card__placeholder" aria-hidden="true">
+        <span class="wc-product-card__placeholder-text"></span>
+      </div>
+    </div>
+    
+    <div class="wc-product-card__content">
+      <h3 class="wc-product-card__title"></h3>
+      <p class="wc-product-card__description"></p>
+    </div>
+    
+    <div class="wc-product-card__actions">
+      <a class="wc-product-card__button wc-product-card__button--primary">Learn More</a>
+      <a class="wc-product-card__button wc-product-card__button--secondary" target="_blank" rel="noopener noreferrer" style="display: none;">View Demo</a>
+    </div>
+  </article>
+</template>

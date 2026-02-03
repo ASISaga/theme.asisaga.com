@@ -153,6 +153,13 @@
 @import "components/specialized/specialized";
 @import "components/specialized/utilities";
 
+// ----------------------------------------
+// WEB COMPONENT TEMPLATES
+// ----------------------------------------
+// Dynamically instantiated components from _includes/web-component-templates/
+// Not rendered on page load - instantiated via JavaScript
+@import "components/web-components/index";
+
 // Layout Styles - Base templates and specialized layouts
 @import "layouts/app";
 @import "layouts/default";

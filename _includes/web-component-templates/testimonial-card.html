@@ -1,0 +1,32 @@
+{% comment %}
+Testimonial Card Template
+HTML template for testimonial card web component
+
+Namespace:
+  HTML:  testimonial-card.html
+  SCSS:  _sass/components/web-components/_testimonial-card.scss
+  JS:    assets/js/common/web-component-testimonial-card.js
+
+Data attributes for JavaScript population:
+  - data-text: Testimonial quote text
+  - data-name: Author name
+  - data-company: Author company (optional)
+  - data-avatar: Author avatar URL (optional)
+{% endcomment %}
+
+<template id="template-testimonial-card">
+  <figure class="wc-testimonial-card">
+    <blockquote class="wc-testimonial-card__quote">
+      <p class="wc-testimonial-card__text"></p>
+    </blockquote>
+    <figcaption class="wc-testimonial-card__author">
+      <div class="wc-testimonial-card__avatar" style="display: none;">
+        <img class="wc-testimonial-card__avatar-image" alt="" loading="lazy">
+      </div>
+      <div class="wc-testimonial-card__author-info">
+        <cite class="wc-testimonial-card__name"></cite>
+        <span class="wc-testimonial-card__company"></span>
+      </div>
+    </figcaption>
+  </figure>
+</template>

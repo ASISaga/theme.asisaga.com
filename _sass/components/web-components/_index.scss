@@ -1,0 +1,13 @@
+/**
+ * Web Components - Index
+ * 
+ * Imports all web component SCSS files for dynamically instantiated components.
+ * These components are defined in _includes/web-component-templates/ and
+ * instantiated via JavaScript.
+ * 
+ * All web components use Genesis Ontological mixins for semantic styling.
+ */
+
+@import "product-card";
+@import "testimonial-card";
+@import "alert-card";
