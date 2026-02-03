@@ -30,7 +30,7 @@ body {
   
   // Enable smooth touch scrolling on iOS/mobile devices
   -webkit-overflow-scrolling: touch;
-  touch-action: pan-y pan-x;  // Allow vertical and horizontal panning
+  touch-action: pan-y;  // Allow vertical panning without horizontal interference
   
   // Font smoothing for better text rendering
   -webkit-font-smoothing: antialiased;

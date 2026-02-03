@@ -42,24 +42,30 @@
     document.body.appendChild(overlay);
     
     // Toggle navigation
+    let savedScrollY = 0;
+
     function toggleNav(open) {
       const isOpen = typeof open === 'boolean' ? open : toggle.getAttribute('aria-expanded') !== 'true';
-      
+
       toggle.setAttribute('aria-expanded', isOpen);
       menu.setAttribute('data-nav-open', isOpen);
       overlay.setAttribute('data-nav-open', isOpen);
-      
+
       // Prevent body scroll when menu is open, restore when closed
       if (isOpen) {
+        savedScrollY = window.scrollY;
         document.body.style.overflow = 'hidden';
         document.body.style.position = 'fixed';
+        document.body.style.top = `-${savedScrollY}px`;
         document.body.style.width = '100%';
       } else {
         document.body.style.overflow = '';
         document.body.style.position = '';
+        document.body.style.top = '';
         document.body.style.width = '';
+        window.scrollTo(0, savedScrollY);
       }
-      
+
       // Focus management
       if (isOpen) {
         // Focus first link in menu
@@ -104,6 +110,7 @@
           // Ensure body styles are fully restored on desktop
           document.body.style.overflow = '';
           document.body.style.position = '';
+          document.body.style.top = '';
           document.body.style.width = '';
         }
       }, 250);
