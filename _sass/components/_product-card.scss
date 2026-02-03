@@ -1,0 +1,92 @@
+/**
+ * Web Component: Product Card - SCSS
+ * 
+ * Namespace:
+ *   HTML:  _includes/web-component-templates/product-card.html
+ *   SCSS:  _sass/components/_product-card.scss
+ *   JS:    assets/js/components/product-card.js
+ * 
+ * Styling for dynamically instantiated product card components.
+ * Uses Genesis Ontological mixins for semantic styling.
+ */
+
+.wc-product-card {
+  @include genesis-entity('primary');
+  @include genesis-state('stable');
+  
+  // Layout
+  @include genesis-environment('focused');
+  
+  .wc-product-card__media {
+    @include genesis-entity('secondary');
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    margin-bottom: var(--space-narrative, 1rem);
+  }
+  
+  .wc-product-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--motion-fluid, 0.3s ease);
+  }
+  
+  .wc-product-card__placeholder {
+    @include genesis-entity('latent');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .wc-product-card__placeholder-text {
+    @include genesis-cognition('axiom');
+    opacity: 0.3;
+  }
+  
+  .wc-product-card__content {
+    margin-bottom: var(--space-narrative, 1rem);
+  }
+  
+  .wc-product-card__title {
+    @include genesis-cognition('axiom');
+    margin-bottom: var(--space-network, 0.5rem);
+  }
+  
+  .wc-product-card__description {
+    @include genesis-cognition('discourse');
+  }
+  
+  .wc-product-card__actions {
+    @include genesis-environment('associative');
+    gap: var(--space-network, 0.5rem);
+  }
+  
+  .wc-product-card__button {
+    @include genesis-synapse('execute');
+    
+    &--primary {
+      // Primary action styling
+      background: oklch(0.10 0.01 250);
+      color: oklch(0.99 0.005 90);
+    }
+    
+    &--secondary {
+      @include genesis-synapse('inquiry');
+    }
+  }
+  
+  // Hover effect
+  &:hover {
+    .wc-product-card__image {
+      transform: scale(1.05);
+    }
+  }
+  
+  // Featured variant
+  &--featured {
+    @include genesis-atmosphere('vibrant');
+  }
+}

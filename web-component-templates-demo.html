@@ -128,7 +128,7 @@ description: Interactive demonstration of HTML/Liquid template system for web co
     <div class="demo-section__header">
       <h2 class="demo-section__title">Product Card Template</h2>
       <p class="demo-section__description">
-        Namespace: <code>product-card.html</code> → <code>_product-card.scss</code> → <code>web-component-product-card.js</code>
+        Namespace: <code>product-card.html</code> → <code>_product-card.scss</code> → <code>product-card.js</code>
       </p>
     </div>
     
@@ -142,7 +142,7 @@ description: Interactive demonstration of HTML/Liquid template system for web co
     
     <div class="code-example">
 <pre>// JavaScript instantiation
-import { createProductCard } from './web-component-product-card.js';
+import { createProductCard } from './product-card.js';
 
 const card = createProductCard({
   title: 'Genesis AI Platform',
@@ -161,7 +161,7 @@ container.appendChild(card);</pre>
     <div class="demo-section__header">
       <h2 class="demo-section__title">Testimonial Card Template</h2>
       <p class="demo-section__description">
-        Namespace: <code>testimonial-card.html</code> → <code>_testimonial-card.scss</code> → <code>web-component-testimonial-card.js</code>
+        Namespace: <code>testimonial-card.html</code> → <code>_testimonial-card.scss</code> → <code>testimonial-card.js</code>
       </p>
     </div>
     
@@ -175,7 +175,7 @@ container.appendChild(card);</pre>
     
     <div class="code-example">
 <pre>// JavaScript instantiation
-import { createTestimonialCard } from './web-component-testimonial-card.js';
+import { createTestimonialCard } from './testimonial-card.js';
 
 const testimonial = createTestimonialCard({
   text: 'This platform transformed our workflow!',
@@ -192,7 +192,7 @@ container.appendChild(testimonial);</pre>
     <div class="demo-section__header">
       <h2 class="demo-section__title">Alert Card Template</h2>
       <p class="demo-section__description">
-        Namespace: <code>alert-card.html</code> → <code>_alert-card.scss</code> → <code>web-component-alert-card.js</code>
+        Namespace: <code>alert-card.html</code> → <code>_alert-card.scss</code> → <code>alert-card.js</code>
       </p>
     </div>
     
@@ -205,7 +205,7 @@ container.appendChild(testimonial);</pre>
     
     <div class="code-example">
 <pre>// JavaScript instantiation
-import { showAlert } from './web-component-alert-card.js';
+import { showAlert } from './alert-card.js';
 
 showAlert({
   type: 'success',
@@ -240,7 +240,7 @@ showAlert({
         <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: oklch(0.10 0.01 250);">
           SCSS Styling
         </h3>
-        <p style="margin-bottom: 0.5rem;">📁 <code>_sass/components/web-components/</code></p>
+        <p style="margin-bottom: 0.5rem;">📁 <code>_sass/components/</code></p>
         <ul style="margin-left: 1.5rem; color: oklch(0.30 0.01 230);">
           <li>Genesis Ontological mixins</li>
           <li>Matching component namespace</li>
@@ -253,7 +253,7 @@ showAlert({
         <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: oklch(0.10 0.01 250);">
           JavaScript
         </h3>
-        <p style="margin-bottom: 0.5rem;">📁 <code>assets/js/common/</code></p>
+        <p style="margin-bottom: 0.5rem;">📁 <code>assets/js/components/</code></p>
         <ul style="margin-left: 1.5rem; color: oklch(0.30 0.01 230);">
           <li>Template instantiation utilities</li>
           <li>Data population helpers</li>
@@ -271,9 +271,9 @@ showAlert({
 
 <script type="module">
   // Import the component factories
-  import { createProductCard, createProductCards } from '/assets/js/common/web-component-product-card.js';
-  import { createTestimonialCard, createTestimonialCards } from '/assets/js/common/web-component-testimonial-card.js';
-  import { showInfo, showSuccess, showWarning, showError } from '/assets/js/common/web-component-alert-card.js';
+  import { createProductCard, createProductCards } from '/assets/js/components/product-card.js';
+  import { createTestimonialCard, createTestimonialCards } from '/assets/js/components/testimonial-card.js';
+  import { showInfo, showSuccess, showWarning, showError } from '/assets/js/components/alert-card.js';
 
   // Sample data
   const sampleProducts = [

@@ -3,11 +3,11 @@
  * 
  * Namespace:
  *   HTML:  _includes/web-component-templates/testimonial-card.html
- *   SCSS:  _sass/components/web-components/_testimonial-card.scss
- *   JS:    assets/js/common/web-component-testimonial-card.js
+ *   SCSS:  _sass/components/_testimonial-card.scss
+ *   JS:    assets/js/components/testimonial-card.js
  * 
  * Usage:
- *   import { createTestimonialCard } from './web-component-testimonial-card.js';
+ *   import { createTestimonialCard } from './testimonial-card.js';
  *   
  *   const testimonial = createTestimonialCard({
  *     text: 'This is amazing!',

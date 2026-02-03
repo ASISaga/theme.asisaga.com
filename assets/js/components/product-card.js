@@ -3,11 +3,11 @@
  * 
  * Namespace:
  *   HTML:  _includes/web-component-templates/product-card.html
- *   SCSS:  _sass/components/web-components/_product-card.scss
- *   JS:    assets/js/common/web-component-product-card.js
+ *   SCSS:  _sass/components/_product-card.scss
+ *   JS:    assets/js/components/product-card.js
  * 
  * Usage:
- *   import { createProductCard } from './web-component-product-card.js';
+ *   import { createProductCard } from './product-card.js';
  *   
  *   const card = createProductCard({
  *     image: '/path/to/image.jpg',

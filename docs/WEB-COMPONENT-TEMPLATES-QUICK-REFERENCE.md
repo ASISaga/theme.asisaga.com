@@ -12,7 +12,7 @@
 
 ```html
 <script type="module">
-  import { createProductCard } from '/assets/js/common/web-component-product-card.js';
+  import { createProductCard } from '/assets/js/components/product-card.js';
   
   const card = createProductCard({
     title: 'My Product',
@@ -29,8 +29,8 @@
 ```
 component-name:
   HTML:  _includes/web-component-templates/component-name.html
-  SCSS:  _sass/components/web-components/_component-name.scss
-  JS:    assets/js/common/web-component-component-name.js
+  SCSS:  _sass/components/_component-name.scss
+  JS:    assets/js/components/component-name.js
 ```
 
 ## Available Templates
@@ -38,7 +38,7 @@ component-name:
 ### Product Card
 
 ```javascript
-import { createProductCard } from './web-component-product-card.js';
+import { createProductCard } from './product-card.js';
 
 createProductCard({
   title: 'Product Name',
@@ -52,7 +52,7 @@ createProductCard({
 ### Testimonial Card
 
 ```javascript
-import { createTestimonialCard } from './web-component-testimonial-card.js';
+import { createTestimonialCard } from './testimonial-card.js';
 
 createTestimonialCard({
   text: 'Testimonial quote',
@@ -65,7 +65,7 @@ createTestimonialCard({
 ### Alert Card
 
 ```javascript
-import { showSuccess } from './web-component-alert-card.js';
+import { showSuccess } from './alert-card.js';
 
 showSuccess(
   'Operation completed!',
@@ -79,7 +79,7 @@ showSuccess(
 ### Create Multiple Instances
 
 ```javascript
-import { createProductCards } from './web-component-product-card.js';
+import { createProductCards } from './product-card.js';
 
 const products = [
   { title: 'Product 1', description: '...', url: '/p1' },
@@ -93,7 +93,7 @@ cards.forEach(card => container.appendChild(card));
 ### Render to Container
 
 ```javascript
-import { renderProductCards } from './web-component-product-card.js';
+import { renderProductCards } from './product-card.js';
 
 renderProductCards('.products-grid', products, true);
 ```
@@ -101,7 +101,7 @@ renderProductCards('.products-grid', products, true);
 ### Alert Types
 
 ```javascript
-import { showInfo, showSuccess, showWarning, showError } from './web-component-alert-card.js';
+import { showInfo, showSuccess, showWarning, showError } from './alert-card.js';
 
 showInfo('Info message', 'Title');
 showSuccess('Success message', 'Title', { dismissible: true });
@@ -125,7 +125,7 @@ showError('Error message', 'Title', { duration: 5000 });
 
 ### 2. SCSS Styling
 
-`_sass/components/web-components/_my-component.scss`:
+`_sass/components/_my-component.scss`:
 
 ```scss
 .wc-my-component {
@@ -139,7 +139,7 @@ showError('Error message', 'Title', { duration: 5000 });
 
 ### 3. JavaScript Factory
 
-`assets/js/common/web-component-my-component.js`:
+`assets/js/components/my-component.js`:
 
 ```javascript
 import { instantiateTemplate } from './template-utils.js';
@@ -161,7 +161,7 @@ export function createMyComponent(data) {
 
 ### 4. Add to Index
 
-In `_sass/components/web-components/_index.scss`:
+In `_sass/components/_index.scss`:
 
 ```scss
 @import "my-component";

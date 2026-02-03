@@ -3,11 +3,11 @@
  * 
  * Namespace:
  *   HTML:  _includes/web-component-templates/alert-card.html
- *   SCSS:  _sass/components/web-components/_alert-card.scss
- *   JS:    assets/js/common/web-component-alert-card.js
+ *   SCSS:  _sass/components/_alert-card.scss
+ *   JS:    assets/js/components/alert-card.js
  * 
  * Usage:
- *   import { createAlertCard } from './web-component-alert-card.js';
+ *   import { createAlertCard } from './alert-card.js';
  *   
  *   const alert = createAlertCard({
  *     type: 'success',

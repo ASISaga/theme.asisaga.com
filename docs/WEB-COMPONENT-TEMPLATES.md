@@ -13,8 +13,8 @@ Every web component consists of three files with matching names:
 ```
 component-name/
 ├── HTML:  _includes/web-component-templates/component-name.html
-├── SCSS:  _sass/components/web-components/_component-name.scss
-└── JS:    assets/js/common/web-component-component-name.js
+├── SCSS:  _sass/components/_component-name.scss
+└── JS:    assets/js/components/component-name.js
 ```
 
 This ensures:
@@ -71,7 +71,7 @@ layout: default
 
 <script type="module">
   // Import and use templates
-  import { createProductCard } from '/assets/js/common/web-component-product-card.js';
+  import { createProductCard } from '/assets/js/components/product-card.js';
   
   // Create instance
   const card = createProductCard({
@@ -105,7 +105,7 @@ Custom template loader - only load what you need
 #### Basic Instantiation
 
 ```javascript
-import { createProductCard } from './web-component-product-card.js';
+import { createProductCard } from './product-card.js';
 
 const card = createProductCard({
   title: 'Genesis AI Platform',
@@ -121,7 +121,7 @@ document.querySelector('.container').appendChild(card);
 #### Multiple Instances
 
 ```javascript
-import { createProductCards } from './web-component-product-card.js';
+import { createProductCards } from './product-card.js';
 
 const products = [
   { title: 'Product 1', description: '...', url: '/p1' },
@@ -138,7 +138,7 @@ cards.forEach(card => {
 #### Render to Container
 
 ```javascript
-import { renderProductCards } from './web-component-product-card.js';
+import { renderProductCards } from './product-card.js';
 
 const products = [/* ... */];
 
@@ -152,7 +152,7 @@ renderProductCards('.products-grid', products, true);
 #### Alert Convenience Methods
 
 ```javascript
-import { showInfo, showSuccess, showWarning, showError } from './web-component-alert-card.js';
+import { showInfo, showSuccess, showWarning, showError } from './alert-card.js';
 
 // Show info alert
 showInfo('Operation in progress...', 'Info');
@@ -175,8 +175,8 @@ showError('An error occurred.', 'Error', {
 
 **Files**:
 - HTML: `_includes/web-component-templates/product-card.html`
-- SCSS: `_sass/components/web-components/_product-card.scss`
-- JS: `assets/js/common/web-component-product-card.js`
+- SCSS: `_sass/components/_product-card.scss`
+- JS: `assets/js/components/product-card.js`
 
 **Data Structure**:
 ```javascript
@@ -198,8 +198,8 @@ showError('An error occurred.', 'Error', {
 
 **Files**:
 - HTML: `_includes/web-component-templates/testimonial-card.html`
-- SCSS: `_sass/components/web-components/_testimonial-card.scss`
-- JS: `assets/js/common/web-component-testimonial-card.js`
+- SCSS: `_sass/components/_testimonial-card.scss`
+- JS: `assets/js/components/testimonial-card.js`
 
 **Data Structure**:
 ```javascript
@@ -220,8 +220,8 @@ showError('An error occurred.', 'Error', {
 
 **Files**:
 - HTML: `_includes/web-component-templates/alert-card.html`
-- SCSS: `_sass/components/web-components/_alert-card.scss`
-- JS: `assets/js/common/web-component-alert-card.js`
+- SCSS: `_sass/components/_alert-card.scss`
+- JS: `assets/js/components/alert-card.js`
 
 **Data Structure**:
 ```javascript
@@ -254,8 +254,8 @@ Brief description of the component
 
 Namespace:
   HTML:  component-name.html
-  SCSS:  _sass/components/web-components/_component-name.scss
-  JS:    assets/js/common/web-component-component-name.js
+  SCSS:  _sass/components/_component-name.scss
+  JS:    assets/js/components/component-name.js
 
 Data attributes for JavaScript population:
   - data-field1: Description
@@ -278,7 +278,7 @@ Data attributes for JavaScript population:
 
 ### Step 2: Create SCSS Styling
 
-Create file in `_sass/components/web-components/_component-name.scss`:
+Create file in `_sass/components/_component-name.scss`:
 
 ```scss
 /**
@@ -286,8 +286,8 @@ Create file in `_sass/components/web-components/_component-name.scss`:
  * 
  * Namespace:
  *   HTML:  _includes/web-component-templates/component-name.html
- *   SCSS:  _sass/components/web-components/_component-name.scss
- *   JS:    assets/js/common/web-component-component-name.js
+ *   SCSS:  _sass/components/_component-name.scss
+ *   JS:    assets/js/components/component-name.js
  * 
  * Brief description of styling approach.
  * Uses Genesis Ontological mixins for semantic styling.
@@ -315,7 +315,7 @@ Create file in `_sass/components/web-components/_component-name.scss`:
 
 ### Step 3: Create JavaScript Factory
 
-Create file in `assets/js/common/web-component-component-name.js`:
+Create file in `assets/js/components/component-name.js`:
 
 ```javascript
 /**
@@ -323,8 +323,8 @@ Create file in `assets/js/common/web-component-component-name.js`:
  * 
  * Namespace:
  *   HTML:  _includes/web-component-templates/component-name.html
- *   SCSS:  _sass/components/web-components/_component-name.scss
- *   JS:    assets/js/common/web-component-component-name.js
+ *   SCSS:  _sass/components/_component-name.scss
+ *   JS:    assets/js/components/component-name.js
  * 
  * Usage:
  *   import { createComponentName } from './web-component-component-name.js';
@@ -377,7 +377,7 @@ export default {
 
 ### Step 4: Add to Index Files
 
-**Add to SCSS index** (`_sass/components/web-components/_index.scss`):
+**Add to SCSS index** (`_sass/components/_index.scss`):
 
 ```scss
 @import "product-card";
@@ -639,7 +639,7 @@ This page includes:
 **Error**: Component has no styling
 
 **Solution**: 
-1. Check SCSS is imported in `_sass/components/web-components/_index.scss`
+1. Check SCSS is imported in `_sass/components/_index.scss`
 2. Verify `_common.scss` imports web-components index
 3. Run `npm run test:scss` to check compilation
 
@@ -654,7 +654,7 @@ This page includes:
 
 ```html
 <script type="module">
-  import { createProductCard } from '/assets/js/common/web-component-product-card.js';
+  import { createProductCard } from '/assets/js/components/product-card.js';
 </script>
 ```
 

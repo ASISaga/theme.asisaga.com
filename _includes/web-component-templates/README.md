@@ -16,8 +16,8 @@ Each web component follows a consistent naming convention across all three techn
 
 ```
 HTML Template:  _includes/web-component-templates/component-name.html
-SCSS Styling:   _sass/components/web-components/_component-name.scss
-JavaScript:     assets/js/common/web-component-component-name.js
+SCSS Styling:   _sass/components/_component-name.scss
+JavaScript:     assets/js/components/component-name.js
 ```
 
 ## Usage

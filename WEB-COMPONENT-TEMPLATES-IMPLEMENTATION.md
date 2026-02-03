@@ -54,22 +54,22 @@ Web Component Templates System
 ### Product Card
 ```
 ✅ HTML:  _includes/web-component-templates/product-card.html
-✅ SCSS:  _sass/components/web-components/_product-card.scss
-✅ JS:    assets/js/common/web-component-product-card.js
+✅ SCSS:  _sass/components/_product-card.scss
+✅ JS:    assets/js/components/product-card.js
 ```
 
 ### Testimonial Card
 ```
 ✅ HTML:  _includes/web-component-templates/testimonial-card.html
-✅ SCSS:  _sass/components/web-components/_testimonial-card.scss
-✅ JS:    assets/js/common/web-component-testimonial-card.js
+✅ SCSS:  _sass/components/_testimonial-card.scss
+✅ JS:    assets/js/components/testimonial-card.js
 ```
 
 ### Alert Card
 ```
 ✅ HTML:  _includes/web-component-templates/alert-card.html
-✅ SCSS:  _sass/components/web-components/_alert-card.scss
-✅ JS:    assets/js/common/web-component-alert-card.js
+✅ SCSS:  _sass/components/_alert-card.scss
+✅ JS:    assets/js/components/alert-card.js
 ```
 
 ## ✨ Key Features Implemented
@@ -172,7 +172,7 @@ Web Component Templates System
 <div id="products"></div>
 
 <script type="module">
-  import { createProductCard } from '/assets/js/common/web-component-product-card.js';
+  import { createProductCard } from '/assets/js/components/product-card.js';
   
   const card = createProductCard({
     title: 'Genesis AI Platform',
@@ -304,7 +304,7 @@ Include in any page that needs templates:
 ### JavaScript Imports
 Use ES6 module imports:
 ```javascript
-import { createProductCard } from '/assets/js/common/web-component-product-card.js';
+import { createProductCard } from '/assets/js/components/product-card.js';
 ```
 
 ## 🎓 Developer Guidelines
