@@ -44,6 +44,10 @@ import { GenesisCognition } from './genesis-cognition.js';
 import { GenesisSynapse } from './genesis-synapse.js';
 import { GenesisState } from './genesis-state.js';
 import { GenesisAtmosphere } from './genesis-atmosphere.js';
+import { GenesisCard } from './genesis-card.js';
+import { GenesisNavigation } from './genesis-navigation.js';
+import { GenesisForm } from './genesis-form.js';
+import { GenesisMedia } from './genesis-media.js';
 
 /**
  * Initialize ontology components
@@ -53,13 +57,17 @@ function initOntologyComponents() {
   // Components register themselves when imported
   // This function can be used for any additional initialization if needed
   
-  console.log('Genesis Ontology Web Components initialized (all 6 categories):', {
+  console.log('Genesis Ontology Web Components initialized (all 10 components):', {
     'genesis-environment': customElements.get('genesis-environment') !== undefined,
     'genesis-entity': customElements.get('genesis-entity') !== undefined,
     'genesis-cognition': customElements.get('genesis-cognition') !== undefined,
     'genesis-synapse': customElements.get('genesis-synapse') !== undefined,
     'genesis-state': customElements.get('genesis-state') !== undefined,
     'genesis-atmosphere': customElements.get('genesis-atmosphere') !== undefined,
+    'genesis-card': customElements.get('genesis-card') !== undefined,
+    'genesis-navigation': customElements.get('genesis-navigation') !== undefined,
+    'genesis-form': customElements.get('genesis-form') !== undefined,
+    'genesis-media': customElements.get('genesis-media') !== undefined,
   });
 }
 
@@ -78,4 +86,8 @@ export {
   GenesisSynapse,
   GenesisState,
   GenesisAtmosphere,
+  GenesisCard,
+  GenesisNavigation,
+  GenesisForm,
+  GenesisMedia,
 };

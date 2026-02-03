@@ -1,55 +1,71 @@
 ---
 layout: default
 ---
-<div class="archive-layout">
-  {% include layouts/layout-header.html
-     class_prefix="archive"
-     title=page.title
-     description=page.description
-  %}
-  
-  {% if page.show_filters or page.show_sort or page.show_view_toggle %}
-  <div class="archive__controls">
-    {% if page.show_filters %}
-    <div class="archive__filters">
-      <label for="archive-filter" class="sr-only">Filter items</label>
-      <select id="archive-filter" class="archive__select">
-        <option selected>All Categories</option>
-      </select>
-    </div>
+<genesis-environment logic="distributed">
+  <div class="archive-layout">
+    <genesis-entity nature="primary">
+      {% include layouts/layout-header.html
+         class_prefix="archive"
+         title=page.title
+         description=page.description
+      %}
+    </genesis-entity>
+    
+    {% if page.show_filters or page.show_sort or page.show_view_toggle %}
+    <genesis-form layout="horizontal">
+      <div class="archive__controls">
+        {% if page.show_filters %}
+        <div class="archive__filters">
+          <label for="archive-filter" class="sr-only">Filter items</label>
+          <genesis-synapse vector="inquiry">
+            <select id="archive-filter" class="archive__select">
+              <option selected>All Categories</option>
+            </select>
+          </genesis-synapse>
+        </div>
+        {% endif %}
+        
+        {% if page.show_sort %}
+        <div class="archive__sort">
+          <label for="archive-sort" class="sr-only">Sort items</label>
+          <genesis-synapse vector="inquiry">
+            <select id="archive-sort" class="archive__select">
+              <option selected>Latest First</option>
+              <option>Oldest First</option>
+              <option>Title A-Z</option>
+            </select>
+          </genesis-synapse>
+        </div>
+        {% endif %}
+        
+        {% if page.show_view_toggle %}
+        <div class="archive__view-toggle" role="group" aria-label="View mode">
+          <genesis-synapse vector="execute">
+            <button type="button" class="archive__view-btn archive__view-btn--active" aria-label="Grid view" aria-pressed="true">
+              <i class="fas fa-th" aria-hidden="true"></i>
+            </button>
+          </genesis-synapse>
+          <genesis-synapse vector="execute">
+            <button type="button" class="archive__view-btn" aria-label="List view" aria-pressed="false">
+              <i class="fas fa-list" aria-hidden="true"></i>
+            </button>
+          </genesis-synapse>
+        </div>
+        {% endif %}
+      </div>
+    </genesis-form>
     {% endif %}
     
-    {% if page.show_sort %}
-    <div class="archive__sort">
-      <label for="archive-sort" class="sr-only">Sort items</label>
-      <select id="archive-sort" class="archive__select">
-        <option selected>Latest First</option>
-        <option>Oldest First</option>
-        <option>Title A-Z</option>
-      </select>
-    </div>
-    {% endif %}
+    {{ content }}
     
-    {% if page.show_view_toggle %}
-    <div class="archive__view-toggle" role="group" aria-label="View mode">
-      <button type="button" class="archive__view-btn archive__view-btn--active" aria-label="Grid view" aria-pressed="true">
-        <i class="fas fa-th" aria-hidden="true"></i>
-      </button>
-      <button type="button" class="archive__view-btn" aria-label="List view" aria-pressed="false">
-        <i class="fas fa-list" aria-hidden="true"></i>
-      </button>
-    </div>
+    {% if page.show_pagination %}
+    <genesis-navigation type="breadcrumb">
+      <nav class="archive__pagination" aria-label="Archive pagination">
+        <ul class="pagination-list">
+          <!-- Pagination items -->
+        </ul>
+      </nav>
+    </genesis-navigation>
     {% endif %}
   </div>
-  {% endif %}
-  
-  {{ content }}
-  
-  {% if page.show_pagination %}
-  <nav class="archive__pagination" aria-label="Archive pagination">
-    <ul class="pagination-list">
-      <!-- Pagination items -->
-    </ul>
-  </nav>
-  {% endif %}
-</div>
+</genesis-environment>
