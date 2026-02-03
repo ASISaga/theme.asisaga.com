@@ -10,26 +10,28 @@ Parameters:
 {% endcomment %}
 
 {% if include.date or include.author or include.reading_time %}
-<div class="{{ include.class_prefix }}__meta">
-  {% if include.date %}
-  <span class="{{ include.class_prefix }}__meta-date">
-    <i class="far fa-calendar" aria-hidden="true"></i>
-    <time datetime="{{ include.date | date_to_xmlschema }}">{{ include.date | date: "%B %d, %Y" }}</time>
-  </span>
-  {% endif %}
-  
-  {% if include.author %}
-  <span class="{{ include.class_prefix }}__meta-author">
-    <i class="far fa-user" aria-hidden="true"></i>
-    {{ include.author }}
-  </span>
-  {% endif %}
-  
-  {% if include.reading_time %}
-  <span class="{{ include.class_prefix }}__meta-reading-time">
-    <i class="far fa-clock" aria-hidden="true"></i>
-    {{ include.reading_time }} min read
-  </span>
-  {% endif %}
-</div>
+<genesis-cognition intent="gloss">
+  <div class="{{ include.class_prefix }}__meta">
+    {% if include.date %}
+    <span class="{{ include.class_prefix }}__meta-date">
+      <i class="far fa-calendar" aria-hidden="true"></i>
+      <time datetime="{{ include.date | date_to_xmlschema }}">{{ include.date | date: "%B %d, %Y" }}</time>
+    </span>
+    {% endif %}
+    
+    {% if include.author %}
+    <span class="{{ include.class_prefix }}__meta-author">
+      <i class="far fa-user" aria-hidden="true"></i>
+      {{ include.author }}
+    </span>
+    {% endif %}
+    
+    {% if include.reading_time %}
+    <span class="{{ include.class_prefix }}__meta-reading-time">
+      <i class="far fa-clock" aria-hidden="true"></i>
+      {{ include.reading_time }} min read
+    </span>
+    {% endif %}
+  </div>
+</genesis-cognition>
 {% endif %}
