@@ -7,9 +7,11 @@
     
     {% include header.html %}
     
-    <main id="skip-target" tabindex="-1" class="app-content">
-      {{ content }}
-    </main>
+    <genesis-environment logic="focused">
+      <main id="skip-target" tabindex="-1" class="app-content">
+        {{ content }}
+      </main>
+    </genesis-environment>
     
     {% include footer.html %}
   </body>

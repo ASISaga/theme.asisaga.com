@@ -1,91 +1,113 @@
 ---
 layout: default
 ---
-<div class="docs-layout">
-  <aside class="docs-sidebar" aria-label="Documentation navigation">
-    {% if page.search %}
-    <div class="docs-search">
-      <label for="docs-search" class="sr-only">Search documentation</label>
-      <input type="search" id="docs-search" class="docs-search-input" placeholder="Search docs...">
-    </div>
-    {% endif %}
-    
-    {% if page.nav_items %}
-    <nav class="docs-nav">
-      <ul class="docs-nav-list">
-        {% for item in page.nav_items %}
-        <li class="docs-nav-item">
-          <a class="docs-nav-link{% if page.url == item.url %} docs-nav-link--active{% endif %}" href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>
-            {{ item.title }}
-          </a>
-          {% if item.children %}
-          <ul class="docs-nav-list docs-nav-list--nested">
-            {% for child in item.children %}
+<genesis-environment logic="navigation-sidebar">
+  <div class="docs-layout">
+    <genesis-navigation type="sidebar" orientation="vertical">
+      <aside class="docs-sidebar" aria-label="Documentation navigation">
+        {% if page.search %}
+        <genesis-search live-search="true" min-chars="2">
+          <div class="docs-search">
+            <label for="docs-search" class="sr-only">Search documentation</label>
+            <input type="search" id="docs-search" class="docs-search-input" placeholder="Search docs...">
+          </div>
+        </genesis-search>
+        {% endif %}
+        
+        {% if page.nav_items %}
+        <nav class="docs-nav">
+          <ul class="docs-nav-list">
+            {% for item in page.nav_items %}
             <li class="docs-nav-item">
-              <a class="docs-nav-link{% if page.url == child.url %} docs-nav-link--active{% endif %}" href="{{ child.url }}"{% if page.url == child.url %} aria-current="page"{% endif %}>
-                {{ child.title }}
+              <a class="docs-nav-link{% if page.url == item.url %} docs-nav-link--active{% endif %}" href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>
+                {{ item.title }}
               </a>
+              {% if item.children %}
+              <ul class="docs-nav-list docs-nav-list--nested">
+                {% for child in item.children %}
+                <li class="docs-nav-item">
+                  <a class="docs-nav-link{% if page.url == child.url %} docs-nav-link--active{% endif %}" href="{{ child.url }}"{% if page.url == child.url %} aria-current="page"{% endif %}>
+                    {{ child.title }}
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+              {% endif %}
             </li>
             {% endfor %}
           </ul>
-          {% endif %}
-        </li>
-        {% endfor %}
-      </ul>
-    </nav>
-    {% endif %}
-  </aside>
-  
-  <div class="docs-content">
-    {% if page.breadcrumbs %}
-    <nav class="docs-breadcrumb" aria-label="Breadcrumb">
-      <ol class="docs-breadcrumb-list">
-        {% for crumb in page.breadcrumbs %}
-        <li class="docs-breadcrumb-item{% if forloop.last %} docs-breadcrumb-item--current{% endif %}">
-          {% if forloop.last %}
-          {{ crumb.title }}
-          {% else %}
-          <a href="{{ crumb.url }}">{{ crumb.title }}</a>
-          {% endif %}
-        </li>
-        {% endfor %}
-      </ol>
-    </nav>
-    {% endif %}
+        </nav>
+        {% endif %}
+      </aside>
+    </genesis-navigation>
     
-    <article class="docs-article">
-      {% if page.title %}
-      <h1 class="docs-title">{{ page.title }}</h1>
-      {% endif %}
-      
-      {{ content }}
-    </article>
+    <genesis-entity nature="primary">
+      <div class="docs-content">
+        {% if page.breadcrumbs %}
+        <genesis-navigation type="breadcrumb">
+          <nav class="docs-breadcrumb" aria-label="Breadcrumb">
+            <ol class="docs-breadcrumb-list">
+              {% for crumb in page.breadcrumbs %}
+              <li class="docs-breadcrumb-item{% if forloop.last %} docs-breadcrumb-item--current{% endif %}">
+                {% if forloop.last %}
+                {{ crumb.title }}
+                {% else %}
+                <a href="{{ crumb.url }}">{{ crumb.title }}</a>
+                {% endif %}
+              </li>
+              {% endfor %}
+            </ol>
+          </nav>
+        </genesis-navigation>
+        {% endif %}
+        
+        <article class="docs-article">
+          {% if page.title %}
+          <genesis-cognition intent="axiom">
+            <h1 class="docs-title">{{ page.title }}</h1>
+          </genesis-cognition>
+          {% endif %}
+          
+          <genesis-cognition intent="discourse">
+            {{ content }}
+          </genesis-cognition>
+        </article>
+        
+        {% if page.prev or page.next %}
+        <genesis-navigation type="primary">
+          <nav class="docs-pagination" aria-label="Page navigation">
+            {% if page.prev %}
+            <genesis-synapse vector="navigate">
+              <a href="{{ page.prev.url }}" class="docs-pagination-link docs-pagination-link--prev">
+                <span class="docs-pagination-label">← Previous</span>
+                <span class="docs-pagination-title">{{ page.prev.title }}</span>
+              </a>
+            </genesis-synapse>
+            {% endif %}
+            
+            {% if page.next %}
+            <genesis-synapse vector="navigate">
+              <a href="{{ page.next.url }}" class="docs-pagination-link docs-pagination-link--next">
+                <span class="docs-pagination-label">Next →</span>
+                <span class="docs-pagination-title">{{ page.next.title }}</span>
+              </a>
+            </genesis-synapse>
+            {% endif %}
+          </nav>
+        </genesis-navigation>
+        {% endif %}
+      </div>
+    </genesis-entity>
     
-    {% if page.prev or page.next %}
-    <nav class="docs-pagination" aria-label="Page navigation">
-      {% if page.prev %}
-      <a href="{{ page.prev.url }}" class="docs-pagination-link docs-pagination-link--prev">
-        <span class="docs-pagination-label">← Previous</span>
-        <span class="docs-pagination-title">{{ page.prev.title }}</span>
-      </a>
-      {% endif %}
-      
-      {% if page.next %}
-      <a href="{{ page.next.url }}" class="docs-pagination-link docs-pagination-link--next">
-        <span class="docs-pagination-label">Next →</span>
-        <span class="docs-pagination-title">{{ page.next.title }}</span>
-      </a>
-      {% endif %}
-    </nav>
+    {% if page.toc %}
+    <genesis-navigation type="sidebar" orientation="vertical">
+      <aside class="docs-toc" aria-label="Table of contents">
+        <h2 class="docs-toc-title">On this page</h2>
+        <nav class="docs-toc-nav">
+          {{ page.toc }}
+        </nav>
+      </aside>
+    </genesis-navigation>
     {% endif %}
   </div>
-  
-  {% if page.toc %}
-  <aside class="docs-toc" aria-label="Table of contents">
-    <h2 class="docs-toc-title">On this page</h2>
-    <nav class="docs-toc-nav">
-      {{ page.toc }}
-    </nav>
-  </aside>
-  {% endif %}
-</div>
+</genesis-environment>
