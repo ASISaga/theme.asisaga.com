@@ -1,38 +1,44 @@
 ---
 layout: default
 ---
-<div class="faq-layout">
-  {% include layouts/layout-header.html
-     class_prefix="faq"
-     title=page.title
-     description=page.description
-  %}
-  
-  {% if page.search %}
-  <div class="faq__search">
-    <label for="faq-search" class="sr-only">Search frequently asked questions</label>
-    <input type="search" id="faq-search" class="faq__search-input" placeholder="Search FAQ...">
+<genesis-accordion allow-multiple="false" animate="true">
+  <div class="faq-layout">
+    {% include layouts/layout-header.html
+       class_prefix="faq"
+       title=page.title
+       description=page.description
+    %}
+    
+    {% if page.search %}
+    <genesis-search live-search="true" min-chars="2">
+      <div class="faq__search">
+        <label for="faq-search" class="sr-only">Search frequently asked questions</label>
+        <input type="search" id="faq-search" class="faq__search-input" placeholder="Search FAQ...">
+      </div>
+    </genesis-search>
+    {% endif %}
+    
+    {% if page.categories %}
+    <genesis-navigation type="tabs">
+      <div class="faq__categories" role="group" aria-label="FAQ categories">
+        <button type="button" class="faq__category faq__category--active">All</button>
+        {% for category in page.categories %}
+        <button type="button" class="faq__category">{{ category }}</button>
+        {% endfor %}
+      </div>
+    </genesis-navigation>
+    {% endif %}
+    
+    {{ content }}
+    
+    {% if page.contact_cta %}
+    {% include layouts/layout-footer-cta.html
+       class_prefix="faq"
+       title="Still have questions?"
+       description=page.contact_cta.description
+       button_text=page.contact_cta.text
+       button_url=page.contact_cta.url
+    %}
+    {% endif %}
   </div>
-  {% endif %}
-  
-  {% if page.categories %}
-  <div class="faq__categories" role="group" aria-label="FAQ categories">
-    <button type="button" class="faq__category faq__category--active">All</button>
-    {% for category in page.categories %}
-    <button type="button" class="faq__category">{{ category }}</button>
-    {% endfor %}
-  </div>
-  {% endif %}
-  
-  {{ content }}
-  
-  {% if page.contact_cta %}
-  {% include layouts/layout-footer-cta.html
-     class_prefix="faq"
-     title="Still have questions?"
-     description=page.contact_cta.description
-     button_text=page.contact_cta.text
-     button_url=page.contact_cta.url
-  %}
-  {% endif %}
-</div>
+</genesis-accordion>

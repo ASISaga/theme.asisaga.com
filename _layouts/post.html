@@ -1,32 +1,40 @@
 ---
 layout: default
 ---
-<article class="post-layout">
-  {% include layouts/layout-header.html
-     class_prefix="post"
-     title=page.title
-  %}
-  
-  {% include layouts/content-meta.html
-     class_prefix="post"
-     date=page.date
-     author=page.author
-  %}
-  
-  {% include layouts/tags-categories.html
-     class_prefix="post"
-     tags=page.tags
-     categories=page.categories
-  %}
-  
-  {{ content }}
-  
-  {% if page.share %}
-  {% include layouts/layout-footer-cta.html
-     class_prefix="post"
-     title="Share this post"
-     button_text="Share"
-     button_url="#share"
-  %}
-  {% endif %}
-</article>
+<genesis-environment logic="focused">
+  <genesis-entity nature="primary">
+    <article class="post-layout">
+      {% include layouts/layout-header.html
+         class_prefix="post"
+         title=page.title
+      %}
+      
+      {% include layouts/content-meta.html
+         class_prefix="post"
+         date=page.date
+         author=page.author
+      %}
+      
+      {% include layouts/tags-categories.html
+         class_prefix="post"
+         tags=page.tags
+         categories=page.categories
+      %}
+      
+      <genesis-cognition intent="discourse">
+        {{ content }}
+      </genesis-cognition>
+      
+      {% if page.share %}
+      <genesis-synapse vector="social">
+        {% include layouts/layout-footer-cta.html
+           class_prefix="post"
+           title="Share this post"
+           button_text="Share"
+           button_url="#share"
+        %}
+      </genesis-synapse>
+      {% endif %}
+    </article>
+  </genesis-entity>
+</genesis-environment>

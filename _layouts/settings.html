@@ -1,37 +1,51 @@
 ---
 layout: default
 ---
-<div class="settings-layout">
-  <aside class="settings-sidebar" aria-label="Settings navigation">
-    <h2 class="settings-sidebar-title">Settings</h2>
-    {% if page.tabs %}
-    <nav class="settings-nav">
-      <ul class="settings-nav-list">
-        {% for tab in page.tabs %}
-        <li class="settings-nav-item">
-          <a class="settings-nav-link{% if forloop.first %} settings-nav-link--active{% endif %}" href="#{{ tab.id }}" data-tab-toggle{% if forloop.first %} aria-current="page"{% endif %} role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" tabindex="{% if forloop.first %}0{% else %}-1{% endif %}">
-            {% if tab.icon %}
-            <i class="{{ tab.icon }}" aria-hidden="true"></i>
-            {% endif %}
-            {{ tab.title }}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-    </nav>
-    {% endif %}
-  </aside>
-  
-  <div class="settings-main">
-    {% if page.title %}
-    <h1 class="settings-title">{{ page.title }}</h1>
-    {% endif %}
+<genesis-environment logic="navigation-sidebar">
+  <div class="settings-layout">
+    <genesis-navigation type="sidebar" orientation="vertical">
+      <aside class="settings-sidebar" aria-label="Settings navigation">
+        <h2 class="settings-sidebar-title">Settings</h2>
+        {% if page.tabs %}
+        <nav class="settings-nav">
+          <ul class="settings-nav-list">
+            {% for tab in page.tabs %}
+            <li class="settings-nav-item">
+              <a class="settings-nav-link{% if forloop.first %} settings-nav-link--active{% endif %}" href="#{{ tab.id }}" data-tab-toggle{% if forloop.first %} aria-current="page"{% endif %} role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" tabindex="{% if forloop.first %}0{% else %}-1{% endif %}">
+                {% if tab.icon %}
+                <i class="{{ tab.icon }}" aria-hidden="true"></i>
+                {% endif %}
+                {{ tab.title }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </nav>
+        {% endif %}
+      </aside>
+    </genesis-navigation>
     
-    {{ content }}
-    
-    <div class="settings-actions">
-      <button type="button" class="settings-button settings-button--primary">Save Changes</button>
-      <button type="button" class="settings-button settings-button--secondary">Cancel</button>
-    </div>
+    <genesis-entity nature="primary">
+      <div class="settings-main">
+        {% if page.title %}
+        <genesis-cognition intent="axiom">
+          <h1 class="settings-title">{{ page.title }}</h1>
+        </genesis-cognition>
+        {% endif %}
+        
+        {{ content }}
+        
+        <genesis-environment logic="interaction-form">
+          <div class="settings-actions">
+            <genesis-synapse vector="execute">
+              <button type="button" class="settings-button settings-button--primary">Save Changes</button>
+            </genesis-synapse>
+            <genesis-synapse vector="navigate">
+              <button type="button" class="settings-button settings-button--secondary">Cancel</button>
+            </genesis-synapse>
+          </div>
+        </genesis-environment>
+      </div>
+    </genesis-entity>
   </div>
-</div>
+</genesis-environment>

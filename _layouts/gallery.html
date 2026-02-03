@@ -1,21 +1,27 @@
 ---
 layout: default
 ---
-<div class="gallery-layout">
-  {% include layouts/layout-header.html
-     class_prefix="gallery"
-     title=page.title
-     description=page.description
-  %}
-  
-  {% if page.categories %}
-  <div class="gallery__filters" role="group" aria-label="Filter gallery items">
-    <button class="gallery__filter gallery__filter--active" data-filter="all">All</button>
-    {% for category in page.categories %}
-    <button class="gallery__filter" data-filter="{{ category.slug }}">{{ category.name }}</button>
-    {% endfor %}
+<genesis-environment logic="distributed">
+  <div class="gallery-layout">
+    <genesis-entity nature="primary">
+      {% include layouts/layout-header.html
+         class_prefix="gallery"
+         title=page.title
+         description=page.description
+      %}
+    </genesis-entity>
+    
+    {% if page.categories %}
+    <genesis-navigation type="tabs">
+      <div class="gallery__filters" role="group" aria-label="Filter gallery items">
+        <button class="gallery__filter gallery__filter--active" data-filter="all">All</button>
+        {% for category in page.categories %}
+        <button class="gallery__filter" data-filter="{{ category.slug }}">{{ category.name }}</button>
+        {% endfor %}
+      </div>
+    </genesis-navigation>
+    {% endif %}
+    
+    {{ content }}
   </div>
-  {% endif %}
-  
-  {{ content }}
-</div>
+</genesis-environment>

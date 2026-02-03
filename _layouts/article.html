@@ -1,41 +1,53 @@
 ---
 layout: default
 ---
-<article class="article-layout">
-  {% if page.toc %}
-  <aside class="article-toc-sidebar" aria-label="Table of contents">
-    <nav class="article-toc">
-      <h2 class="article-toc-title">Table of Contents</h2>
-      <div class="article-toc-content">
-        {{ page.toc }}
-      </div>
-    </nav>
-  </aside>
-  {% endif %}
-  
-  <div class="article-main-col">
-    {% include layouts/layout-header.html
-       class_prefix="article"
-       title=page.title
-       subtitle=page.subtitle
-    %}
-    
-    {% include layouts/content-meta.html
-       class_prefix="article"
-       date=page.date
-       author=page.author
-       reading_time=page.reading_time
-    %}
-    
-    {{ content }}
-    
-    {% if page.related_articles %}
-    <footer class="article__footer">
-      <h2 class="article__footer-title">Related Articles</h2>
-      <div class="article__related">
-        <!-- Related articles list -->
-      </div>
-    </footer>
+<genesis-environment logic="focused">
+  <article class="article-layout">
+    {% if page.toc %}
+    <genesis-navigation type="sidebar" orientation="vertical">
+      <aside class="article-toc-sidebar" aria-label="Table of contents">
+        <nav class="article-toc">
+          <h2 class="article-toc-title">Table of Contents</h2>
+          <div class="article-toc-content">
+            {{ page.toc }}
+          </div>
+        </nav>
+      </aside>
+    </genesis-navigation>
     {% endif %}
-  </div>
-</article>
+    
+    <genesis-entity nature="primary">
+      <div class="article-main-col">
+        {% include layouts/layout-header.html
+           class_prefix="article"
+           title=page.title
+           subtitle=page.subtitle
+        %}
+        
+        {% include layouts/content-meta.html
+           class_prefix="article"
+           date=page.date
+           author=page.author
+           reading_time=page.reading_time
+        %}
+        
+        <genesis-cognition intent="discourse">
+          {{ content }}
+        </genesis-cognition>
+        
+        {% if page.related_articles %}
+        <footer class="article__footer">
+          <genesis-cognition intent="axiom">
+            <h2 class="article__footer-title">Related Articles</h2>
+          </genesis-cognition>
+          <genesis-environment logic="distributed">
+            <div class="article__related">
+              <!-- Related articles list -->
+            </div>
+          </genesis-environment>
+        </footer>
+        {% endif %}
+      </div>
+    </genesis-entity>
+  </article>
+</genesis-environment>

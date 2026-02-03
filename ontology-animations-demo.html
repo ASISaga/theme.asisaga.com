@@ -1,0 +1,174 @@
+---
+layout: default
+title: Ontology Animations Demo
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ontology Animations Demo - ASI Saga</title>
+  
+  <!-- Motion Library -->
+  <script src="https://cdn.jsdelivr.net/npm/motion@12.30.0/dist/index.es.js" type="module"></script>
+  <script type="module">
+    import * as Motion from 'https://cdn.jsdelivr.net/npm/motion@12.30.0/dist/index.es.js';
+    window.Motion = Motion;
+  </script>
+  
+  <!-- Ontology SCSS (automatically includes animation integration) -->
+  <style>
+    @import url('assets/css/ontology-demo.css');
+  </style>
+</head>
+<body>
+  <div class="demo-container">
+    <header class="demo-header">
+      <h1>🎭 Ontology-Based Animations</h1>
+      <p>Animations automatically applied through SCSS ontology - no JavaScript needed in subdomains!</p>
+    </header>
+
+    <section class="demo-section">
+      <h2>Entity Animations</h2>
+      <p>Elements using <code>genesis-entity()</code> mixins get automatic animations based on their role</p>
+      
+      <div class="entity-demo">
+        <div class="demo-card primary-card">
+          <h3>Primary Entity</h3>
+          <p>Uses: <code>@include genesis-entity('primary');</code></p>
+          <p>Gets: fadeInUp entrance + card hover effect</p>
+        </div>
+        
+        <div class="demo-card secondary-card">
+          <h3>Secondary Entity</h3>
+          <p>Uses: <code>@include genesis-entity('secondary');</code></p>
+          <p>Gets: fadeIn entrance + subtle hover</p>
+        </div>
+        
+        <div class="demo-card imperative-card">
+          <h3>Imperative Entity</h3>
+          <p>Uses: <code>@include genesis-entity('imperative');</code></p>
+          <p>Gets: bounceIn entrance + pulse emphasis</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section">
+      <h2>Synapse Animations</h2>
+      <p>Interactive elements using <code>genesis-synapse()</code> get hover animations</p>
+      
+      <div class="synapse-demo">
+        <button class="demo-button execute-button">
+          Execute Action
+          <small>genesis-synapse('execute')</small>
+        </button>
+        
+        <a href="#" class="demo-link navigate-link">
+          Navigate Link
+          <small>genesis-synapse('navigate')</small>
+        </a>
+        
+        <button class="demo-button destructive-button">
+          Destructive Action
+          <small>genesis-synapse('destructive')</small>
+        </button>
+      </div>
+    </section>
+
+    <section class="demo-section">
+      <h2>Cognition Animations</h2>
+      <p>Typography using <code>genesis-cognition()</code> gets entrance animations</p>
+      
+      <div class="cognition-demo">
+        <h1 class="demo-heading axiom-heading">Axiom Heading</h1>
+        <p class="discourse-text">This is discourse text using <code>genesis-cognition('discourse')</code></p>
+        
+        <div class="tag-container">
+          <span class="demo-tag quantum-tag">Quantum Tag 1</span>
+          <span class="demo-tag quantum-tag">Quantum Tag 2</span>
+          <span class="demo-tag quantum-tag">Quantum Tag 3</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section scroll-section">
+      <h2>Scroll-Triggered Animations</h2>
+      <p>Elements using <code>genesis-state('scroll-triggered')</code> reveal on scroll</p>
+      
+      <div class="scroll-demo">
+        <div class="scroll-item">Scroll down to see these reveal...</div>
+        <div class="scroll-item">Each item fades in...</div>
+        <div class="scroll-item">When it enters the viewport...</div>
+        <div class="scroll-item">Automatically through ontology!</div>
+      </div>
+    </section>
+
+    <section class="demo-section">
+      <h2>How It Works</h2>
+      <div class="how-it-works">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Subdomain SCSS</h3>
+          <pre><code>.my-card {
+  @include genesis-entity('primary');
+}</code></pre>
+          <p>Subdomain uses ontological mixins</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>HTML</h3>
+          <pre><code>&lt;div class="my-card"&gt;
+  Content here
+&lt;/div&gt;</code></pre>
+          <p>Simple semantic HTML</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Auto-Animation</h3>
+          <p>✨ Animations automatically applied!</p>
+          <ul>
+            <li>fadeInUp entrance</li>
+            <li>Card hover effect</li>
+            <li>Reduced motion support</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section benefits-section">
+      <h2>Benefits</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h3>🎯 Zero Subdomain Code</h3>
+          <p>Subdomains only use SCSS mixins. No JavaScript, no data attributes, no manual setup.</p>
+        </div>
+
+        <div class="benefit-card">
+          <h3>🧬 Ontologically Pure</h3>
+          <p>Animations are semantic - tied to role, not appearance. Change styling without breaking animations.</p>
+        </div>
+
+        <div class="benefit-card">
+          <h3>♿ Accessible by Default</h3>
+          <p>Automatic reduced motion support. Animations disabled for users who prefer reduced motion.</p>
+        </div>
+
+        <div class="benefit-card">
+          <h3>🎨 Consistent Experience</h3>
+          <p>All subdomains get the same high-quality animations through the ontology system.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="demo-footer">
+      <p>Powered by Genesis Ontological Design System + Motion Library v2.0</p>
+    </footer>
+  </div>
+
+  <!-- Ontology animations auto-initialize from common.js -->
+  <script type="module" src="assets/js/common.js"></script>
+</body>
+</html>

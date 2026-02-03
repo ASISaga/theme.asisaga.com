@@ -1,34 +1,48 @@
 ---
 layout: default
 ---
-<div class="search-layout">
-  <header class="search__header">
-    <form class="search__form" role="search">
-      <label for="search-input" class="sr-only">Search</label>
-      <div class="search__input-group">
-        <input type="search" id="search-input" class="search__input" placeholder="Search..." value="{{ page.query }}">
-        <button type="submit" class="search__submit" aria-label="Submit search">
-          <i class="fas fa-search" aria-hidden="true"></i>
-        </button>
-      </div>
-    </form>
+<genesis-search live-search="true" min-chars="2" debounce="300">
+  <div class="search-layout">
+    <genesis-entity nature="primary">
+      <header class="search__header">
+        <genesis-form layout="horizontal">
+          <form class="search__form" role="search">
+            <label for="search-input" class="sr-only">Search</label>
+            <div class="search__input-group">
+              <input type="search" id="search-input" class="search__input" placeholder="Search..." value="{{ page.query }}">
+              <genesis-synapse vector="execute">
+                <button type="submit" class="search__submit" aria-label="Submit search">
+                  <i class="fas fa-search" aria-hidden="true"></i>
+                </button>
+              </genesis-synapse>
+            </div>
+          </form>
+        </genesis-form>
+        
+        {% if page.results_count %}
+        <p class="search__count" aria-live="polite" data-results-count>{{ page.results_count }} results found</p>
+        {% endif %}
+      </header>
+    </genesis-entity>
     
-    {% if page.results_count %}
-    <p class="search__count" aria-live="polite">{{ page.results_count }} results found</p>
+    {% if page.filters %}
+    <genesis-environment logic="interaction-form">
+      <aside class="search__sidebar" aria-label="Search filters">
+        <h2 class="search__filters-title">Filters</h2>
+        {% for filter in page.filters %}
+        <section class="search__filter-group">
+          <h3 class="search__filter-title">{{ filter.name }}</h3>
+          <!-- Filter options -->
+        </section>
+        {% endfor %}
+      </aside>
+    </genesis-environment>
     {% endif %}
-  </header>
-  
-  {% if page.filters %}
-  <aside class="search__sidebar" aria-label="Search filters">
-    <h2 class="search__filters-title">Filters</h2>
-    {% for filter in page.filters %}
-    <section class="search__filter-group">
-      <h3 class="search__filter-title">{{ filter.name }}</h3>
-      <!-- Filter options -->
-    </section>
-    {% endfor %}
-  </aside>
-  {% endif %}
-  
-  {{ content }}
-</div>
+    
+    <genesis-environment logic="distributed">
+      <div data-search-results>
+        {{ content }}
+      </div>
+    </genesis-environment>
+  </div>
+</genesis-search>

@@ -1,36 +1,50 @@
 ---
 layout: default
 ---
-<div class="form-layout">
-  {% include layouts/layout-header.html
-     class_prefix="form"
-     title=page.title
-     description=page.description
-  %}
-  
-  <div class="form__content">
-    {% if page.show_progress and page.steps %}
-    <div class="form__progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Form completion progress">
-      <div class="form__progress-bar"></div>
-      <ol class="form__steps">
-        {% for step in page.steps %}
-        <li class="form__step">{{ step }}</li>
-        {% endfor %}
-      </ol>
+<genesis-environment logic="focused">
+  <genesis-form layout="vertical" validate="true">
+    <div class="form-layout">
+      <genesis-entity nature="primary">
+        {% include layouts/layout-header.html
+           class_prefix="form"
+           title=page.title
+           description=page.description
+        %}
+      </genesis-entity>
+      
+      <div class="form__content">
+        {% if page.show_progress and page.steps %}
+        <genesis-state condition="evolving">
+          <div class="form__progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Form completion progress">
+            <div class="form__progress-bar"></div>
+            <ol class="form__steps">
+              {% for step in page.steps %}
+              <li class="form__step">{{ step }}</li>
+              {% endfor %}
+            </ol>
+          </div>
+        </genesis-state>
+        {% endif %}
+        
+        {{ content }}
+      </div>
+      
+      {% if page.help_text or page.privacy_link %}
+      <genesis-entity nature="secondary">
+        <footer class="form__footer">
+          {% if page.help_text %}
+          <genesis-cognition intent="gloss">
+            <p class="form__help">{{ page.help_text }}</p>
+          </genesis-cognition>
+          {% endif %}
+          {% if page.privacy_link %}
+          <genesis-synapse vector="navigate">
+            <a href="{{ page.privacy_link }}" class="form__privacy">Privacy Policy</a>
+          </genesis-synapse>
+          {% endif %}
+        </footer>
+      </genesis-entity>
+      {% endif %}
     </div>
-    {% endif %}
-    
-    {{ content }}
-  </div>
-  
-  {% if page.help_text or page.privacy_link %}
-  <footer class="form__footer">
-    {% if page.help_text %}
-    <p class="form__help">{{ page.help_text }}</p>
-    {% endif %}
-    {% if page.privacy_link %}
-    <a href="{{ page.privacy_link }}" class="form__privacy">Privacy Policy</a>
-    {% endif %}
-  </footer>
-  {% endif %}
-</div>
+  </genesis-form>
+</genesis-environment>

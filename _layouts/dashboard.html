@@ -1,19 +1,25 @@
 ---
 layout: default
 ---
-<div class="dashboard-layout">
-  {% include layouts/layout-header.html
-     class_prefix="dashboard"
-     title=page.title
-  %}
-  
-  {% if page.actions %}
-  <div class="dashboard__actions">
-    {% for action in page.actions %}
-    <button type="button" class="dashboard__action-btn">{{ action }}</button>
-    {% endfor %}
+<genesis-dashboard layout="grid" columns="3">
+  <div class="dashboard-layout">
+    {% include layouts/layout-header.html
+       class_prefix="dashboard"
+       title=page.title
+    %}
+    
+    {% if page.actions %}
+    <genesis-environment logic="interaction-form">
+      <div class="dashboard__actions">
+        {% for action in page.actions %}
+        <genesis-synapse vector="execute">
+          <button type="button" class="dashboard__action-btn">{{ action }}</button>
+        </genesis-synapse>
+        {% endfor %}
+      </div>
+    </genesis-environment>
+    {% endif %}
+    
+    {{ content }}
   </div>
-  {% endif %}
-  
-  {{ content }}
-</div>
+</genesis-dashboard>
