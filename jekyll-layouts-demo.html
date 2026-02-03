@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jekyll Layouts with Ontological Web Components - Demo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 2rem;
+    }
+
+    .demo-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+
+    .demo-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .demo-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .demo-header p {
+      font-size: 1.25rem;
+      opacity: 0.95;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .demo-content {
+      padding: 3rem 2rem;
+    }
+
+    .demo-section {
+      margin-bottom: 4rem;
+    }
+
+    .demo-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #667eea;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #667eea;
+    }
+
+    .demo-section h3 {
+      font-size: 1.5rem;
+      margin: 2rem 0 1rem;
+      color: #555;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .demo-card {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 1.5rem;
+      border: 2px solid #e9ecef;
+      transition: all 0.3s ease;
+    }
+
+    .demo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+      border-color: #667eea;
+    }
+
+    .demo-card h4 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #667eea;
+    }
+
+    .demo-card .component-tag {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-family: 'Courier New', monospace;
+      margin: 0.25rem 0.25rem 0.25rem 0;
+    }
+
+    .demo-card .description {
+      color: #666;
+      margin: 1rem 0;
+      line-height: 1.8;
+    }
+
+    .demo-card .features {
+      list-style: none;
+      margin: 1rem 0;
+    }
+
+    .demo-card .features li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: #555;
+    }
+
+    .demo-card .features li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #667eea;
+      font-weight: bold;
+    }
+
+    .code-block {
+      background: #2d3748;
+      color: #e2e8f0;
+      padding: 1.5rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1rem 0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    .code-block .comment {
+      color: #718096;
+    }
+
+    .code-block .tag {
+      color: #81e6d9;
+    }
+
+    .code-block .attr {
+      color: #fbd38d;
+    }
+
+    .code-block .value {
+      color: #fc8181;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .stat-card .number {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-card .label {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .benefit-card {
+      background: white;
+      border: 2px solid #667eea;
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .benefit-card .icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .benefit-card h4 {
+      color: #667eea;
+      margin-bottom: 0.5rem;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .comparison-table th {
+      background: #667eea;
+      color: white;
+      font-weight: 600;
+    }
+
+    .comparison-table tr:hover {
+      background: #f8f9fa;
+    }
+
+    .comparison-table .old {
+      color: #e53e3e;
+    }
+
+    .comparison-table .new {
+      color: #38a169;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-container">
+    <div class="demo-header">
+      <h1>Jekyll Layouts + Ontological Web Components</h1>
+      <p>Complete integration of Genesis Ontology Web Components into Jekyll theme layouts</p>
+    </div>
+
+    <div class="demo-content">
+      <!-- Statistics Section -->
+      <div class="demo-section">
+        <h2>📊 Implementation Summary</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="number">10</div>
+            <div class="label">Web Components</div>
+          </div>
+          <div class="stat-card">
+            <div class="number">8</div>
+            <div class="label">Layouts Updated</div>
+          </div>
+          <div class="stat-card">
+            <div class="number">4</div>
+            <div class="label">New Components</div>
+          </div>
+          <div class="stat-card">
+            <div class="number">100%</div>
+            <div class="label">Triad Compliant</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- New Components Section -->
+      <div class="demo-section">
+        <h2>🆕 New Specialized Components</h2>
+        
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h4>Genesis Card</h4>
+            <span class="component-tag">&lt;genesis-card&gt;</span>
+            <p class="description">Specialized card component with animations, hover effects, and clickable behavior.</p>
+            <ul class="features">
+              <li>Variants: default, featured, compact, media</li>
+              <li>Entrance animations based on variant</li>
+              <li>Hover lift effect</li>
+              <li>Clickable card behavior</li>
+              <li>ARIA article role</li>
+            </ul>
+            <div class="code-block">
+<span class="tag">&lt;genesis-card</span> <span class="attr">variant</span>=<span class="value">"featured"</span>
+              <span class="attr">clickable</span>
+              <span class="attr">hover-lift</span>=<span class="value">"true"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;h3&gt;</span>Card Title<span class="tag">&lt;/h3&gt;</span>
+  <span class="tag">&lt;p&gt;</span>Card content<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/genesis-card&gt;</span>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h4>Genesis Navigation</h4>
+            <span class="component-tag">&lt;genesis-navigation&gt;</span>
+            <p class="description">Enhanced navigation with keyboard support and ARIA roles.</p>
+            <ul class="features">
+              <li>Types: primary, secondary, tabs, breadcrumb, sidebar</li>
+              <li>Keyboard navigation (Arrow keys, Home, End)</li>
+              <li>Auto ARIA roles and states</li>
+              <li>Collapsible sections</li>
+              <li>Current page marking</li>
+            </ul>
+            <div class="code-block">
+<span class="tag">&lt;genesis-navigation</span>
+  <span class="attr">type</span>=<span class="value">"tabs"</span>
+  <span class="attr">orientation</span>=<span class="value">"horizontal"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;nav&gt;</span>
+    <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"/"</span><span class="tag">&gt;</span>Home<span class="tag">&lt;/a&gt;</span>
+    <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"/about"</span><span class="tag">&gt;</span>About<span class="tag">&lt;/a&gt;</span>
+  <span class="tag">&lt;/nav&gt;</span>
+<span class="tag">&lt;/genesis-navigation&gt;</span>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h4>Genesis Form</h4>
+            <span class="component-tag">&lt;genesis-form&gt;</span>
+            <p class="description">Enhanced form component with validation and accessibility.</p>
+            <ul class="features">
+              <li>Layouts: vertical, horizontal, inline</li>
+              <li>Built-in HTML5 validation</li>
+              <li>Floating label support</li>
+              <li>Error message handling</li>
+              <li>Accessibility enhancements</li>
+            </ul>
+            <div class="code-block">
+<span class="tag">&lt;genesis-form</span>
+  <span class="attr">layout</span>=<span class="value">"vertical"</span>
+  <span class="attr">validate</span>=<span class="value">"true"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;form&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="value">"text"</span> <span class="attr">required</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="value">"submit"</span><span class="tag">&gt;</span>Submit<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/form&gt;</span>
+<span class="tag">&lt;/genesis-form&gt;</span>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h4>Genesis Media</h4>
+            <span class="component-tag">&lt;genesis-media&gt;</span>
+            <p class="description">Media container with lazy loading and aspect ratio support.</p>
+            <ul class="features">
+              <li>Aspect ratios: 16:9, 4:3, 1:1, 21:9, auto</li>
+              <li>Lazy loading support</li>
+              <li>Loading states</li>
+              <li>Caption generation</li>
+              <li>Entrance animations</li>
+            </ul>
+            <div class="code-block">
+<span class="tag">&lt;genesis-media</span>
+  <span class="attr">ratio</span>=<span class="value">"16:9"</span>
+  <span class="attr">lazy</span>=<span class="value">"true"</span>
+  <span class="attr">caption</span>=<span class="value">"Image description"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"image.jpg"</span> <span class="attr">alt</span>=<span class="value">"Description"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/genesis-media&gt;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Updated Layouts Section -->
+      <div class="demo-section">
+        <h2>📄 Updated Jekyll Layouts</h2>
+
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Layout</th>
+              <th>Components Used</th>
+              <th>Key Changes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>default.html</strong></td>
+              <td><code>genesis-atmosphere</code></td>
+              <td>Wrapped main content with atmospheric context</td>
+            </tr>
+            <tr>
+              <td><strong>article.html</strong></td>
+              <td><code>genesis-environment</code>, <code>genesis-entity</code>, <code>genesis-cognition</code>, <code>genesis-navigation</code></td>
+              <td>Full ontological structure with sidebar navigation, content entities, and typography</td>
+            </tr>
+            <tr>
+              <td><strong>post.html</strong></td>
+              <td><code>genesis-environment</code>, <code>genesis-entity</code>, <code>genesis-cognition</code>, <code>genesis-synapse</code></td>
+              <td>Focused layout with social sharing synapse</td>
+            </tr>
+            <tr>
+              <td><strong>landing.html</strong></td>
+              <td><code>genesis-atmosphere</code>, <code>genesis-entity</code>, <code>genesis-synapse</code>, <code>genesis-media</code></td>
+              <td>Vibrant atmosphere, imperative hero entity, media integration</td>
+            </tr>
+            <tr>
+              <td><strong>archive.html</strong></td>
+              <td><code>genesis-environment</code>, <code>genesis-form</code>, <code>genesis-synapse</code>, <code>genesis-navigation</code></td>
+              <td>Distributed layout with form controls and navigation</td>
+            </tr>
+            <tr>
+              <td><strong>gallery.html</strong></td>
+              <td><code>genesis-environment</code>, <code>genesis-entity</code>, <code>genesis-navigation</code></td>
+              <td>Tab navigation for filtering</td>
+            </tr>
+            <tr>
+              <td><strong>form.html</strong></td>
+              <td><code>genesis-environment</code>, <code>genesis-form</code>, <code>genesis-entity</code>, <code>genesis-cognition</code>, <code>genesis-state</code></td>
+              <td>Enhanced form with validation and progress state</td>
+            </tr>
+            <tr>
+              <td><strong>profile.html</strong></td>
+              <td><code>genesis-environment</code>, <code>genesis-entity</code>, <code>genesis-cognition</code>, <code>genesis-navigation</code>, <code>genesis-media</code></td>
+              <td>Media avatar, social navigation, skill tags</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Migration Examples -->
+      <div class="demo-section">
+        <h2>🔄 Before & After Examples</h2>
+
+        <h3>Archive Layout Controls</h3>
+        <div class="code-block">
+<span class="comment">&lt;!-- BEFORE (Traditional HTML) --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="value">"archive-layout"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;select</span> <span class="attr">class</span>=<span class="value">"archive__select"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/select&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="comment">&lt;!-- AFTER (Web Components) --&gt;</span>
+<span class="tag">&lt;genesis-environment</span> <span class="attr">logic</span>=<span class="value">"distributed"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;genesis-synapse</span> <span class="attr">vector</span>=<span class="value">"inquiry"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;select&gt;</span>...<span class="tag">&lt;/select&gt;</span>
+  <span class="tag">&lt;/genesis-synapse&gt;</span>
+<span class="tag">&lt;/genesis-environment&gt;</span>
+        </div>
+
+        <h3>Profile Header</h3>
+        <div class="code-block">
+<span class="comment">&lt;!-- BEFORE (Traditional HTML) --&gt;</span>
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"avatar.jpg"</span> <span class="attr">class</span>=<span class="value">"profile__avatar"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;h1</span> <span class="attr">class</span>=<span class="value">"profile__name"</span><span class="tag">&gt;</span>John Doe<span class="tag">&lt;/h1&gt;</span>
+
+<span class="comment">&lt;!-- AFTER (Web Components) --&gt;</span>
+<span class="tag">&lt;genesis-media</span> <span class="attr">ratio</span>=<span class="value">"1:1"</span> <span class="attr">lazy</span>=<span class="value">"true"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"avatar.jpg"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/genesis-media&gt;</span>
+<span class="tag">&lt;genesis-cognition</span> <span class="attr">intent</span>=<span class="value">"axiom"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;h1&gt;</span>John Doe<span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;/genesis-cognition&gt;</span>
+        </div>
+      </div>
+
+      <!-- Benefits Section -->
+      <div class="demo-section">
+        <h2>✨ Benefits</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="icon">🎯</div>
+            <h4>Semantic HTML</h4>
+            <p>Components describe intent, not appearance</p>
+          </div>
+          <div class="benefit-card">
+            <div class="icon">⚡</div>
+            <h4>Automatic Behavior</h4>
+            <p>Animations, keyboard nav, validation built-in</p>
+          </div>
+          <div class="benefit-card">
+            <div class="icon">♿</div>
+            <h4>Accessibility</h4>
+            <p>ARIA roles, keyboard support automatic</p>
+          </div>
+          <div class="benefit-card">
+            <div class="icon">📐</div>
+            <h4>Triad Philosophy</h4>
+            <p>Clean HTML/SCSS/JS separation</p>
+          </div>
+          <div class="benefit-card">
+            <div class="icon">🔄</div>
+            <h4>Progressive Enhancement</h4>
+            <p>Works without JavaScript</p>
+          </div>
+          <div class="benefit-card">
+            <div class="icon">🎨</div>
+            <h4>Consistent API</h4>
+            <p>All components follow same patterns</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- All Components -->
+      <div class="demo-section">
+        <h2>📦 Complete Component Library</h2>
+        
+        <h3>Core Ontological (6)</h3>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h4>1. Environment</h4>
+            <span class="component-tag">&lt;genesis-environment&gt;</span>
+            <p class="description">Layout and spatial organization</p>
+          </div>
+          <div class="demo-card">
+            <h4>2. Entity</h4>
+            <span class="component-tag">&lt;genesis-entity&gt;</span>
+            <p class="description">Content blocks with presence</p>
+          </div>
+          <div class="demo-card">
+            <h4>3. Cognition</h4>
+            <span class="component-tag">&lt;genesis-cognition&gt;</span>
+            <p class="description">Typography and information</p>
+          </div>
+          <div class="demo-card">
+            <h4>4. Synapse</h4>
+            <span class="component-tag">&lt;genesis-synapse&gt;</span>
+            <p class="description">Interactive elements</p>
+          </div>
+          <div class="demo-card">
+            <h4>5. State</h4>
+            <span class="component-tag">&lt;genesis-state&gt;</span>
+            <p class="description">Temporal conditions</p>
+          </div>
+          <div class="demo-card">
+            <h4>6. Atmosphere</h4>
+            <span class="component-tag">&lt;genesis-atmosphere&gt;</span>
+            <p class="description">Sensory texture and vibe</p>
+          </div>
+        </div>
+
+        <h3>Specialized (4 NEW)</h3>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h4>7. Card</h4>
+            <span class="component-tag">&lt;genesis-card&gt;</span>
+            <p class="description">Card components with animations</p>
+          </div>
+          <div class="demo-card">
+            <h4>8. Navigation</h4>
+            <span class="component-tag">&lt;genesis-navigation&gt;</span>
+            <p class="description">Navigation with keyboard support</p>
+          </div>
+          <div class="demo-card">
+            <h4>9. Form</h4>
+            <span class="component-tag">&lt;genesis-form&gt;</span>
+            <p class="description">Enhanced forms with validation</p>
+          </div>
+          <div class="demo-card">
+            <h4>10. Media</h4>
+            <span class="component-tag">&lt;genesis-media&gt;</span>
+            <p class="description">Media with lazy loading</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    console.log('Jekyll Layouts + Web Components Demo');
+    console.log('10 components available:', [
+      'genesis-environment',
+      'genesis-entity',
+      'genesis-cognition',
+      'genesis-synapse',
+      'genesis-state',
+      'genesis-atmosphere',
+      'genesis-card',
+      'genesis-navigation',
+      'genesis-form',
+      'genesis-media'
+    ]);
+  </script>
+</body>
+</html>
