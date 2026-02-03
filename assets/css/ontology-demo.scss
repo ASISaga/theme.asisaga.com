@@ -1,0 +1,282 @@
+---
+---
+@import "ontology/index";
+
+/**
+ * Ontology Animations Demo Stylesheet
+ * 
+ * This demonstrates how animations are automatically applied when using
+ * ontological mixins. No JavaScript needed in the subdomain!
+ */
+
+// Demo container
+.demo-container {
+  @include genesis-environment('focused');
+  @include genesis-atmosphere('ethereal');
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+// Header
+.demo-header {
+  @include genesis-entity('aggregate');
+  text-align: center;
+  margin-bottom: 3rem;
+  
+  h1 {
+    @include genesis-cognition('axiom');
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    @include genesis-cognition('discourse');
+  }
+}
+
+// Sections
+.demo-section {
+  @include genesis-entity('secondary');
+  margin-bottom: 2rem;
+  
+  h2 {
+    @include genesis-cognition('axiom');
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    @include genesis-cognition('discourse');
+  }
+  
+  code {
+    @include genesis-cognition('protocol');
+    background: oklch(0.94 0.005 220);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+}
+
+// Entity demo cards
+.entity-demo {
+  @include genesis-environment('distributed');
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.demo-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  
+  h3 {
+    @include genesis-cognition('motive');
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    @include genesis-cognition('discourse');
+    margin-bottom: 0.5rem;
+  }
+}
+
+// Different entity types - each gets different automatic animations
+.primary-card {
+  @include genesis-entity('primary');
+  // Automatically gets: fadeInUp + card hover
+}
+
+.secondary-card {
+  @include genesis-entity('secondary');
+  // Automatically gets: fadeIn + subtle hover
+}
+
+.imperative-card {
+  @include genesis-entity('imperative');
+  // Automatically gets: bounceIn + pulse emphasis
+}
+
+// Synapse demo
+.synapse-demo {
+  @include genesis-environment('associative');
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.demo-button {
+  @include genesis-synapse('execute');
+  // Automatically gets: button hover animation
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  
+  small {
+    @include genesis-cognition('gloss');
+  }
+}
+
+.demo-link {
+  @include genesis-synapse('navigate');
+  // Automatically gets: link hover underline animation
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  
+  small {
+    @include genesis-cognition('gloss');
+  }
+}
+
+.destructive-button {
+  @include genesis-synapse('destructive');
+  // Could get shake animation on hover (if configured)
+}
+
+// Cognition demo
+.cognition-demo {
+  margin-top: 1.5rem;
+}
+
+.axiom-heading {
+  @include genesis-cognition('axiom');
+  // Automatically gets: fadeInDown entrance
+}
+
+.discourse-text {
+  @include genesis-cognition('discourse');
+  // Automatically gets: fadeIn entrance
+}
+
+.tag-container {
+  @include genesis-environment('associative');
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.quantum-tag {
+  @include genesis-cognition('quantum');
+  // Automatically gets: scaleIn entrance + bounce hover
+}
+
+// Scroll-triggered demo
+.scroll-section {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.scroll-demo {
+  @include genesis-environment('chronological');
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.scroll-item {
+  @include genesis-entity('primary');
+  @include genesis-state('scroll-triggered');
+  // Automatically gets: scroll reveal animation
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+// How it works section
+.how-it-works {
+  @include genesis-environment('distributed');
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.step-card {
+  @include genesis-entity('primary');
+  text-align: center;
+  
+  .step-number {
+    @include genesis-cognition('axiom');
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, oklch(0.65 0.25 230), oklch(0.70 0.15 85));
+    color: oklch(0.99 0.005 90);
+    margin-bottom: 1rem;
+  }
+  
+  h3 {
+    @include genesis-cognition('motive');
+    margin-bottom: 1rem;
+  }
+  
+  pre {
+    @include genesis-entity('secondary');
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: left;
+    overflow-x: auto;
+    margin: 1rem 0;
+    
+    code {
+      @include genesis-cognition('protocol');
+      font-size: 0.875rem;
+    }
+  }
+  
+  ul {
+    text-align: left;
+    margin-left: 1.5rem;
+    
+    li {
+      @include genesis-cognition('discourse');
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+// Benefits section
+.benefits-grid {
+  @include genesis-environment('distributed');
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.benefit-card {
+  @include genesis-entity('primary');
+  
+  h3 {
+    @include genesis-cognition('motive');
+    margin-bottom: 0.75rem;
+  }
+  
+  p {
+    @include genesis-cognition('discourse');
+  }
+}
+
+// Footer
+.demo-footer {
+  @include genesis-entity('aggregate');
+  text-align: center;
+  margin-top: 4rem;
+  
+  p {
+    @include genesis-cognition('gloss');
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .demo-container {
+    padding: 1rem;
+  }
+  
+  .entity-demo,
+  .how-it-works,
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -17,6 +17,7 @@ import "./common/header-scroll.js";   // Transparent header on scroll
 
 // Import custom animations and interactions (Motion-powered)
 import "./common/animations.js";        // Handles site-wide custom animations and effects using Motion library
+import "./common/ontology-animations.js";  // Auto-initializes animations based on ontological SCSS mixins
 
 // Import Modern UI Components (replaces Bootstrap JS)
 import "./common/ui-components.js";      // Modern lightweight components (Modal, Collapse, Tabs)
