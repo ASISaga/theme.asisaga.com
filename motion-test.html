@@ -1,0 +1,260 @@
+---
+layout: default
+title: Motion Animation Test
+---
+
+<style>
+  .test-container {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .test-section {
+    margin: 4rem 0;
+    padding: 2rem;
+    background: oklch(0.08 0.01 250 / 0.3);
+    border-radius: 1rem;
+  }
+  
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .test-card {
+    padding: 2rem;
+    background: oklch(0.10 0.01 250 / 0.5);
+    border-radius: 0.5rem;
+    border: 1px solid oklch(0.65 0.25 230 / 0.2);
+    cursor: pointer;
+  }
+  
+  .test-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin: 1rem;
+    background: oklch(0.10 0.01 250);
+    color: oklch(0.99 0.005 90);
+    border: 1px solid oklch(0.65 0.25 230);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .parallax-section {
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, oklch(0.08 0.01 250), oklch(0.12 0.01 250));
+    border-radius: 1rem;
+  }
+  
+  .parallax-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .reveal-item {
+    padding: 2rem;
+    margin: 2rem 0;
+    background: oklch(0.10 0.01 250 / 0.5);
+    border-radius: 0.5rem;
+    opacity: 0;
+  }
+  
+  .sacred-demo {
+    padding: 3rem;
+    text-align: center;
+    border-radius: 1rem;
+    border: 2px solid oklch(0.70 0.15 85 / 0.3);
+  }
+</style>
+
+<div class="test-container">
+  <header class="test-section">
+    <h1>Motion Library Animation Test</h1>
+    <p>This page tests the Motion library integration for UI/UX animations.</p>
+    <p><strong>Scroll down to see various animations in action!</strong></p>
+  </header>
+
+  <!-- Sacred Animations -->
+  <section class="test-section">
+    <h2>Sacred Animations (Data Attributes)</h2>
+    <p>These elements use data-motion attributes for declarative animations.</p>
+    
+    <div class="test-grid">
+      <div class="sacred-demo" data-motion="sacred-rhythm">
+        <h3>Sacred Rhythm</h3>
+        <p>Heartbeat pattern (2s loop)</p>
+      </div>
+      
+      <div class="sacred-demo" data-motion="consciousness-pulse">
+        <h3>Consciousness Pulse</h3>
+        <p>Pulsing glow (2s loop)</p>
+      </div>
+      
+      <div class="sacred-demo" data-motion="transcendence-spiral">
+        <h3>Transcendence Spiral</h3>
+        <p>Rotating spiral (8s loop)</p>
+      </div>
+      
+      <div class="sacred-demo" data-motion="gentle-spiral">
+        <h3>Gentle Spiral</h3>
+        <p>Slow rotation (20s loop)</p>
+      </div>
+      
+      <div class="sacred-demo" data-motion="sacred-glow">
+        <h3>Sacred Glow</h3>
+        <p>Glowing effect (3s loop)</p>
+      </div>
+      
+      <div class="sacred-demo" data-motion="bounce">
+        <h3>Bounce</h3>
+        <p>Scroll indicator (2s loop)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Card Hover Effects -->
+  <section class="test-section">
+    <h2>Card Hover Effects</h2>
+    <p>Hover over these cards to see Motion-powered transitions.</p>
+    
+    <div class="test-grid">
+      <div class="test-card" data-motion="card-hover">
+        <h3>Card 1</h3>
+        <p>Hover to lift with shadow</p>
+      </div>
+      
+      <div class="test-card" data-motion="card-hover">
+        <h3>Card 2</h3>
+        <p>Smooth Motion transitions</p>
+      </div>
+      
+      <div class="test-card" data-motion="card-hover">
+        <h3>Card 3</h3>
+        <p>Respects reduced motion</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Button Hover Effects -->
+  <section class="test-section">
+    <h2>Button Hover Effects</h2>
+    <p>Hover over these buttons to see pulse animations.</p>
+    
+    <div style="text-align: center;">
+      <a href="#" class="test-button" data-motion="button-hover">Pulse Button 1</a>
+      <a href="#" class="test-button" data-motion="button-hover">Pulse Button 2</a>
+      <a href="#" class="test-button" data-motion="button-hover">Pulse Button 3</a>
+    </div>
+  </section>
+
+  <!-- Sacred Interactive -->
+  <section class="test-section">
+    <h2>Sacred Interactive</h2>
+    <p>Hover to see lift with sacred glow effect.</p>
+    
+    <div class="test-grid">
+      <div class="test-card" data-motion="sacred-interactive">
+        <h3>Interactive 1</h3>
+        <p>Lift with golden glow</p>
+      </div>
+      
+      <div class="test-card" data-motion="sacred-interactive">
+        <h3>Interactive 2</h3>
+        <p>Motion-powered effects</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parallax Effect -->
+  <section class="test-section">
+    <h2>Parallax Scroll Effect</h2>
+    <p>Scroll to see parallax motion (speed: 0.3).</p>
+    
+    <div class="parallax-section">
+      <div class="parallax-layer parallax" data-motion="parallax" data-speed="0.3">
+        Parallax Layer
+      </div>
+    </div>
+  </section>
+
+  <!-- Scroll Reveal -->
+  <section class="test-section">
+    <h2>Scroll Reveal Animation</h2>
+    <p>Scroll down to reveal these items one by one.</p>
+    
+    <div data-motion-group="stagger">
+      <div class="reveal-item" data-motion="stagger-item">
+        <h3>Reveal Item 1</h3>
+        <p>Fades in from bottom with stagger delay</p>
+      </div>
+      
+      <div class="reveal-item" data-motion="stagger-item">
+        <h3>Reveal Item 2</h3>
+        <p>Each item appears after the previous</p>
+      </div>
+      
+      <div class="reveal-item" data-motion="stagger-item">
+        <h3>Reveal Item 3</h3>
+        <p>Stagger creates a cascading effect</p>
+      </div>
+      
+      <div class="reveal-item" data-motion="stagger-item">
+        <h3>Reveal Item 4</h3>
+        <p>All powered by Motion library</p>
+      </div>
+      
+      <div class="reveal-item" data-motion="stagger-item">
+        <h3>Reveal Item 5</h3>
+        <p>Respects prefers-reduced-motion</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Performance Info -->
+  <section class="test-section">
+    <h2>Performance & Accessibility</h2>
+    <ul>
+      <li><strong>Motion Library Size:</strong> ~5KB (minified + gzipped)</li>
+      <li><strong>Reduced Motion:</strong> Automatically respects user preferences</li>
+      <li><strong>GPU Acceleration:</strong> Uses Web Animations API for optimal performance</li>
+      <li><strong>Three.js:</strong> Continues to handle 3D graphics (futuristic-effects.js)</li>
+      <li><strong>Declarative Usage:</strong> Use data-motion attributes for easy integration</li>
+    </ul>
+  </section>
+</div>
+
+<script>
+// Add visual feedback for reduced motion testing
+document.addEventListener('DOMContentLoaded', () => {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) {
+    const banner = document.createElement('div');
+    banner.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: oklch(0.70 0.15 85);
+      color: oklch(0.08 0.01 250);
+      padding: 1rem;
+      text-align: center;
+      font-weight: bold;
+      z-index: 10000;
+    `;
+    banner.textContent = '⚠️ Reduced Motion Enabled - Animations Disabled';
+    document.body.prepend(banner);
+  }
+});
+</script>

@@ -16,6 +16,18 @@ JavaScript should **enhance** the semantic HTML and ontological SCSS foundation,
 - **Behavior hooks** via `data-*` attributes, not classes
 - **Accessibility** maintained at all levels
 
+### 🎨 Animation Library: Motion
+
+**All UI/UX animations use Motion library** (https://motion.dev):
+- **Lightweight**: 5KB Web Animations API wrapper
+- **Built-in reduced motion support**: Automatically respects user preferences
+- **Declarative usage**: Use `data-motion` attributes
+- **Performance**: GPU-accelerated transforms and opacity
+
+**Three.js remains for 3D graphics** (particle systems, neural networks).
+
+See `docs/MOTION-INTEGRATION.md` for complete documentation.
+
 ### 🧬 Part of Living Genome
 
 Your JavaScript may reveal interaction patterns not covered by existing `genesis-synapse` variants. If you find yourself repeatedly implementing the same interaction type that lacks semantic identity, consider proposing a new synapse variant (see `.github/AGENTS.MD`).
@@ -136,6 +148,61 @@ function updateContentState(element, dataState) {
   &.state-deprecated { @include genesis-state('deprecated'); }
 }
 ```
+
+## Using Motion for Animations
+
+### Declarative Animations (Recommended)
+
+Use `data-motion` attributes for simple animations:
+
+```html
+<!-- Sacred Animations -->
+<div data-motion="sacred-rhythm">Heartbeat animation</div>
+<div data-motion="consciousness-pulse">Pulsing glow</div>
+<div data-motion="transcendence-spiral">Rotating spiral</div>
+
+<!-- Interactive Effects -->
+<div data-motion="card-hover">Hover to lift</div>
+<button data-motion="button-hover">Hover to pulse</button>
+
+<!-- Scroll Effects -->
+<div data-motion-group="stagger">
+  <div data-motion="stagger-item">Item 1</div>
+  <div data-motion="stagger-item">Item 2</div>
+</div>
+```
+
+### Programmatic Animations
+
+Import Motion utilities for complex animations:
+
+```javascript
+import {
+  animateFadeIn,
+  setupCardHover,
+  setupScrollReveal,
+} from './common/motion-utils.js';
+
+// Animate element
+const element = document.querySelector('.my-element');
+animateFadeIn(element, { duration: 1, delay: 0.2 });
+
+// Setup hover effect
+const cards = document.querySelectorAll('.product-card');
+cards.forEach(card => setupCardHover(card));
+```
+
+### Available Animations
+
+**Sacred Animations**: `sacred-rhythm`, `consciousness-pulse`, `transcendence-spiral`, `gentle-spiral`, `sacred-glow`
+
+**Basic**: `fade-in`, `pulse`, `bounce`
+
+**Interactive**: `card-hover`, `button-hover`, `sacred-interactive`
+
+**Scroll**: `parallax`, `reveal`, `stagger-item` (in `stagger` group)
+
+See `docs/MOTION-INTEGRATION.md` for complete API reference.
 
 ## Evolutionary Considerations
 

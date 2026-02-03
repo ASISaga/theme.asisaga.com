@@ -11,11 +11,19 @@
  * - Gesture support
  * 
  * This module can be used with Motion loaded from CDN:
- * <script src="https://cdn.jsdelivr.net/npm/motion@12/dist/motion.js"></script>
+ * <script src="https://cdn.jsdelivr.net/npm/motion@12.30.0/dist/index.es.js"></script>
  */
 
 // Motion will be available globally as window.Motion when loaded from CDN
-const Motion = window.Motion || {};
+// Throw error if Motion is not available
+function getMotion() {
+  if (!window.Motion || typeof window.getMotion().animate !== 'function') {
+    throw new Error(
+      'Motion library not loaded. Please include Motion from CDN before using motion-utils.js'
+    );
+  }
+  return window.Motion;
+}
 
 /**
  * Check if user prefers reduced motion
@@ -53,7 +61,7 @@ export function animateSacredRhythm(element, options = {}) {
     ...options,
   });
 
-  return Motion.animate(
+  return getMotion().animate(
     element,
     {
       opacity: [0.8, 1, 0.8],
@@ -74,7 +82,7 @@ export function animateConsciousnessPulse(element, options = {}) {
     ...options,
   });
 
-  return Motion.animate(
+  return getMotion().animate(
     element,
     {
       boxShadow: [
@@ -99,7 +107,7 @@ export function animateTranscendenceSpiral(element, options = {}) {
     ...options,
   });
 
-  return Motion.animate(
+  return getMotion().animate(
     element,
     {
       opacity: [0.6, 0.8, 1],
@@ -122,7 +130,7 @@ export function animateGentleSpiral(element, options = {}) {
     ...options,
   });
 
-  return Motion.animate(element, { rotate: [0, 360] }, opts);
+  return getMotion().animate(element, { rotate: [0, 360] }, opts);
 }
 
 /**
@@ -136,7 +144,7 @@ export function animateFadeIn(element, options = {}) {
     ...options,
   });
 
-  return Motion.animate(
+  return getMotion().animate(
     element,
     {
       opacity: [0, 1],
@@ -157,7 +165,7 @@ export function animatePulse(element, options = {}) {
     ...options,
   });
 
-  return Motion.animate(element, { scale: [1, 1.05, 1] }, opts);
+  return getMotion().animate(element, { scale: [1, 1.05, 1] }, opts);
 }
 
 /**
@@ -171,7 +179,7 @@ export function animateBounce(element, options = {}) {
     ...options,
   });
 
-  return Motion.animate(
+  return getMotion().animate(
     element,
     {
       y: [0, -10, -5, 0, 0],
@@ -193,7 +201,7 @@ export function animateSacredGlow(element, options = {}) {
     ...options,
   });
 
-  return Motion.animate(
+  return getMotion().animate(
     element,
     {
       boxShadow: [
@@ -220,7 +228,7 @@ export function setupCardHover(element, options = {}) {
   };
 
   element.addEventListener('mouseenter', () => {
-    Motion.animate(
+    getMotion().animate(
       element,
       {
         y: -10,
@@ -231,7 +239,7 @@ export function setupCardHover(element, options = {}) {
   });
 
   element.addEventListener('mouseleave', () => {
-    Motion.animate(
+    getMotion().animate(
       element,
       {
         y: 0,
@@ -259,7 +267,7 @@ export function setupButtonHover(element, options = {}) {
     if (pulseAnimation) {
       pulseAnimation.stop();
       // Reset to original state
-      Motion.animate(element, { scale: 1 }, { duration: 0.2 });
+      getMotion().animate(element, { scale: 1 }, { duration: 0.2 });
     }
   });
 }
@@ -273,7 +281,7 @@ export function setupParallax(element, options = {}) {
 
   const speed = options.speed || 0.5;
 
-  Motion.scroll(
+  getMotion().scroll(
     ({ y }) => {
       const yPos = -(y.current * speed);
       element.style.transform = `translateY(${yPos}px)`;
@@ -305,10 +313,10 @@ export function setupScrollReveal(elements, options = {}) {
     ...options,
   };
 
-  Motion.inView(
+  getMotion().inView(
     elements,
     ({ target }) => {
-      Motion.animate(
+      getMotion().animate(
         target,
         {
           opacity: [0, 1],
@@ -339,14 +347,14 @@ export function setupStaggeredReveal(elements, options = {}) {
   const opts = {
     duration: 0.8,
     easing: 'ease',
-    delay: Motion.stagger(0.1),
+    delay: getMotion().stagger(0.1),
     ...options,
   };
 
-  Motion.inView(
+  getMotion().inView(
     elements,
     () => {
-      Motion.animate(
+      getMotion().animate(
         elements,
         {
           opacity: [0, 1],
@@ -373,7 +381,7 @@ export function animatePageTransition(element, options = {}) {
     ...options,
   });
 
-  return Motion.animate(
+  return getMotion().animate(
     element,
     {
       opacity: [0, 1],
@@ -396,7 +404,7 @@ export function setupTimelineInteraction(marker, content, options = {}) {
 
   const opts = {
     duration: 0.5,
-    easing: Motion.spring({ stiffness: 300, damping: 30 }),
+    easing: getMotion().spring({ stiffness: 300, damping: 30 }),
     ...options,
   };
 
@@ -404,7 +412,7 @@ export function setupTimelineInteraction(marker, content, options = {}) {
     // Close other content
     document.querySelectorAll('.timeline-content.active').forEach(other => {
       if (other !== content) {
-        Motion.animate(other, { opacity: 0, height: 0 }, { duration: 0.3 });
+        getMotion().animate(other, { opacity: 0, height: 0 }, { duration: 0.3 });
         other.classList.remove('active');
       }
     });
@@ -414,7 +422,7 @@ export function setupTimelineInteraction(marker, content, options = {}) {
     content.classList.toggle('active');
 
     if (!isActive) {
-      Motion.animate(
+      getMotion().animate(
         content,
         {
           opacity: [0, 1],
@@ -426,7 +434,7 @@ export function setupTimelineInteraction(marker, content, options = {}) {
       // Smooth scroll to content
       content.scrollIntoView({ behavior: 'smooth' });
     } else {
-      Motion.animate(content, { opacity: 0, height: 0 }, { duration: 0.3 });
+      getMotion().animate(content, { opacity: 0, height: 0 }, { duration: 0.3 });
     }
   });
 }
@@ -460,7 +468,7 @@ export function setupNavbarScroll(navbar, options = {}) {
 
       if (isScrolled) {
         navbar.classList.add('navbar-scrolled');
-        Motion.animate(
+        getMotion().animate(
           navbar,
           {
             backgroundColor: 'oklch(0.08 0.01 250 / 0.95)',
@@ -470,7 +478,7 @@ export function setupNavbarScroll(navbar, options = {}) {
         );
       } else {
         navbar.classList.remove('navbar-scrolled');
-        Motion.animate(
+        getMotion().animate(
           navbar,
           {
             backgroundColor: 'transparent',
@@ -497,7 +505,7 @@ export function setupSacredInteractive(element, options = {}) {
   };
 
   element.addEventListener('mouseenter', () => {
-    Motion.animate(
+    getMotion().animate(
       element,
       {
         y: -2,
@@ -508,7 +516,7 @@ export function setupSacredInteractive(element, options = {}) {
   });
 
   element.addEventListener('mouseleave', () => {
-    Motion.animate(
+    getMotion().animate(
       element,
       {
         y: 0,
@@ -530,7 +538,7 @@ export function animateConsciousnessEmergence(element, options = {}) {
     ...options,
   });
 
-  return Motion.timeline([
+  return getMotion().timeline([
     [
       element,
       {
@@ -554,8 +562,11 @@ export function animateConsciousnessEmergence(element, options = {}) {
  * Auto-initialization for declarative usage
  */
 export function initMotionAnimations() {
-  if (!Motion || typeof Motion.animate !== 'function') {
-    console.warn('Motion library not loaded. Please include Motion from CDN.');
+  // Check if Motion is available
+  try {
+    getMotion();
+  } catch (error) {
+    console.warn('Motion library not loaded. Animations disabled.', error);
     return;
   }
 
