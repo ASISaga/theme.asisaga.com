@@ -41,6 +41,22 @@
   
   // Smooth transition for hide/show animation
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+
+  @include until(md) {
+    position: sticky;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    padding: 0;
+    overflow: visible;
+    transform: none;
+
+    &.header-hidden {
+      transform: none;
+    }
+  }
   
   @media (prefers-contrast: high) {
     background: oklch(0.08 0 0);          // Pure black
