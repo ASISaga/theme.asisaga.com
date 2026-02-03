@@ -19,6 +19,13 @@
   // Fixed minimum height to prevent layout shifts
   min-height: 70px;
   
+  // Ensure header is always visible on mobile portrait
+  // Prevent header from being cut off or hidden
+  width: 100%;
+  
+  // Enable touch scrolling interactions on mobile
+  touch-action: pan-y;  // Allow vertical scrolling while header is sticky
+  
   // Black background with white text - purposeful contrast
   backdrop-filter: blur(16px);
   background: oklch(0.10 0.01 250 / 0.95);  // Deep black with opacity

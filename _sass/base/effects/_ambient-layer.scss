@@ -26,6 +26,11 @@ body {
   position: relative;
   min-height: 100vh;
   overflow-x: hidden; // Prevent horizontal scroll from ambient effects
+  overflow-y: auto;   // Explicitly enable vertical scrolling (fix mobile portrait scroll)
+  
+  // Enable smooth touch scrolling on iOS/mobile devices
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y pan-x;  // Allow vertical and horizontal panning
   
   // Font smoothing for better text rendering
   -webkit-font-smoothing: antialiased;
