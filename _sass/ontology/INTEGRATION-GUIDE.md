@@ -4,6 +4,8 @@
 
 The **Genesis Semantic SCSS Engine** is a three-tier architecture that enables subdomain repositories to remain "style-blind" while the theme repository acts as the "visual brain." This creates a clean separation between content semantics and visual presentation.
 
+**NEW in v2.3**: Animations are now automatically integrated into the ontology system! When you use ontological mixins like `genesis-entity('primary')`, appropriate animations are applied automatically - no JavaScript setup needed in your subdomain.
+
 ## Architecture Layers
 
 ### Tier 1: Content (Subdomain HTML)
@@ -20,6 +22,11 @@ The **Genesis Semantic SCSS Engine** is a three-tier architecture that enables s
 - **Responsibility**: Defines the LOOK (OKLCH, Bento, Glassmorphism)
 - **Constraint**: The ONLY place for raw CSS properties
 - **Location**: `_sass/ontology/_engines.scss`
+
+### Tier 4: Animation Layer (Automatic) ✨ NEW
+- **Responsibility**: Applies animations based on ontological roles
+- **Constraint**: Zero code needed in subdomains
+- **Location**: `assets/js/common/ontology-animations.js`
 
 ---
 
@@ -48,21 +55,115 @@ For each class in your HTML, determine its ontological role and apply the approp
   
   .my-content-card {
     @include genesis-entity('primary');     // Presence & weight
+    // ✨ Automatically gets: fadeInUp entrance + card hover effect
     
     .card-title {
       @include genesis-cognition('axiom');  // Information intent
+      // ✨ Automatically gets: fadeInDown entrance animation
     }
     
     .card-description {
       @include genesis-cognition('discourse'); // Body text
+      // ✨ Automatically gets: fadeIn entrance animation
     }
     
     .action-button {
       @include genesis-synapse('execute');   // Interaction vector
+      // ✨ Automatically gets: button hover animation
     }
   }
 }
 ```
+
+**That's it!** Animations apply automatically. No JavaScript needed in your subdomain.
+
+---
+
+## ✨ Automatic Animation Integration
+
+### How It Works
+
+When you use ontological mixins in your SCSS, the theme automatically applies appropriate animations:
+
+1. **You write semantic SCSS** using ontology mixins
+2. **HTML uses semantic classes** - no special attributes needed
+3. **JavaScript auto-detects** ontological roles from class patterns
+4. **Animations apply automatically** based on semantic context
+5. **Zero subdomain code** - everything handled by theme
+
+### Animation Mappings
+
+**Entity Animations** (based on `genesis-entity($nature)`):
+- `'primary'` → fadeInUp entrance + card hover lift
+- `'secondary'` → fadeIn entrance + subtle hover
+- `'imperative'` → bounceIn entrance + pulse emphasis
+- `'latent'` → fadeIn entrance (no hover)
+- `'aggregate'` → scaleIn entrance (no hover)
+
+**Synapse Animations** (based on `genesis-synapse($vector)`):
+- `'navigate'` → link underline hover animation
+- `'execute'` → button pulse hover animation
+- `'inquiry'` → subtle opacity hover
+- `'destructive'` → shake hover (warning)
+- `'social'` → bounce hover animation
+
+**Cognition Animations** (based on `genesis-cognition($intent)`):
+- `'axiom'` → fadeInDown entrance (headlines)
+- `'discourse'` → fadeIn entrance (body text)
+- `'quantum'` → scaleIn entrance + bounce hover (tags/chips)
+
+**State Animations** (based on `genesis-state($condition)`):
+- `'scroll-triggered'` → scroll reveal animation
+- `'evolving'` → continuous pulse emphasis
+
+### Example: Automatic Animations in Action
+
+**Your SCSS** (all you need):
+```scss
+.product-card {
+  @include genesis-entity('primary');
+  
+  h3 {
+    @include genesis-cognition('axiom');
+  }
+  
+  .price {
+    @include genesis-cognition('quantum');
+  }
+  
+  .buy-button {
+    @include genesis-synapse('execute');
+  }
+}
+```
+
+**Automatic Result**:
+- Product card: fadeInUp entrance + hover lift effect
+- Heading: fadeInDown entrance
+- Price tag: scaleIn entrance + bounce hover
+- Buy button: button pulse hover animation
+- All animations respect `prefers-reduced-motion`
+- Zero JavaScript in your subdomain!
+
+### Benefits
+
+✅ **Zero Subdomain Code** - No JavaScript setup, no data attributes, no manual animation code
+✅ **Semantically Driven** - Animations based on content role, not arbitrary choices
+✅ **Accessible by Default** - Automatic reduced motion support
+✅ **Consistent Experience** - All subdomains get same high-quality animations
+✅ **Maintainable** - Change animations centrally without touching subdomains
+
+### Disabling Auto-Animations
+
+If you need to disable automatic animations (e.g., for testing):
+
+```html
+<script>
+  window.disableOntologyAnimations = true;
+</script>
+```
+
+Place this before loading the theme's common.js.
 
 ---
 
