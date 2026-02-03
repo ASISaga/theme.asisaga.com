@@ -11,16 +11,22 @@ Parameters:
 
 <header class="{{ include.class_prefix }}__header">
   {% if include.title %}
-  <h1 class="{{ include.class_prefix }}__title">{{ include.title }}</h1>
+  <genesis-cognition intent="axiom">
+    <h1 class="{{ include.class_prefix }}__title">{{ include.title }}</h1>
+  </genesis-cognition>
   {% endif %}
   
   {% if include.subtitle %}
-  <p class="{{ include.class_prefix }}__subtitle">{{ include.subtitle }}</p>
+  <genesis-cognition intent="motive">
+    <p class="{{ include.class_prefix }}__subtitle">{{ include.subtitle }}</p>
+  </genesis-cognition>
   {% endif %}
   
   {% if include.description %}
-  <div class="{{ include.class_prefix }}__description">
-    {{ include.description }}
-  </div>
+  <genesis-cognition intent="discourse">
+    <div class="{{ include.class_prefix }}__description">
+      {{ include.description }}
+    </div>
+  </genesis-cognition>
   {% endif %}
 </header>

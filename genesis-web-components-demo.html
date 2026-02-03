@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Genesis Web Components Demo - ASI Saga</title>
+  
+  <!-- Motion Library -->
+  <script src="https://cdn.jsdelivr.net/npm/motion@12.30.0/dist/index.es.js" type="module"></script>
+  <script type="module">
+    import * as Motion from 'https://cdn.jsdelivr.net/npm/motion@12.30.0/dist/index.es.js';
+    window.Motion = Motion;
+  </script>
+  
+  <!-- Ontology Components -->
+  <script type="module" src="assets/js/common.js"></script>
+  
+  <style>
+    /* Minimal styling - SCSS would handle this in production */
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: oklch(0.98 0.005 220);
+      color: oklch(0.15 0.01 250);
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+    }
+
+    .demo-section {
+      background: oklch(0.99 0.005 90);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px oklch(0.2 0.01 250 / 0.1);
+    }
+
+    /* Entity Components */
+    genesis-entity {
+      display: block;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      background: oklch(0.97 0.005 220);
+      border: 1px solid oklch(0.85 0.005 220);
+    }
+
+    genesis-entity[nature="primary"] {
+      background: linear-gradient(135deg, oklch(0.20 0.06 245 / 0.85), oklch(0.22 0.07 240 / 0.9));
+      color: oklch(0.99 0.005 90);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 2px 8px oklch(0.2 0.01 250 / 0.1);
+    }
+
+    genesis-entity[nature="secondary"] {
+      background: oklch(0.95 0.005 220);
+    }
+
+    genesis-entity[nature="imperative"] {
+      border: 2px solid oklch(0.65 0.25 230);
+      box-shadow: 0 0 20px oklch(0.65 0.25 230 / 0.3);
+    }
+
+    /* Synapse Components */
+    genesis-synapse {
+      display: inline-block;
+      margin: 0.5rem;
+    }
+
+    genesis-synapse[vector="execute"] {
+      background: oklch(0.10 0.01 250);
+      color: oklch(0.99 0.005 90);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    genesis-synapse[vector="navigate"] {
+      color: oklch(0.65 0.25 230);
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+    }
+
+    genesis-synapse[vector="destructive"] {
+      background: oklch(0.50 0.20 25);
+      color: oklch(0.99 0.005 90);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* Cognition Components */
+    genesis-cognition {
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    genesis-cognition[intent="axiom"] {
+      font-size: 2rem;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    genesis-cognition[intent="discourse"] {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    genesis-cognition[intent="quantum"] {
+      display: inline-block;
+      background: oklch(0.65 0.25 230);
+      color: oklch(0.99 0.005 90);
+      padding: 0.25rem 0.75rem;
+      border-radius: 16px;
+      font-size: 0.875rem;
+      margin: 0.25rem;
+      font-weight: 600;
+    }
+
+    /* State Components */
+    genesis-state[condition="evolving"] {
+      display: block;
+      padding: 1rem;
+      background: oklch(0.65 0.25 230 / 0.1);
+      border: 2px dashed oklch(0.65 0.25 230);
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    genesis-state[condition="scroll-triggered"] {
+      display: block;
+      padding: 2rem;
+      background: oklch(0.97 0.005 220);
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-size: 1.25rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .scroll-spacer {
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: oklch(0.5 0.01 250);
+    }
+
+    code {
+      background: oklch(0.94 0.005 220);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+
+    .badge {
+      display: inline-block;
+      background: oklch(0.70 0.15 85);
+      color: oklch(0.15 0.01 250);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      margin-left: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-section">
+    <h1>🌟 Genesis Ontology Web Components</h1>
+    <p><strong>Natural HTML extension approach</strong> - Components feel like native HTML elements</p>
+    <p>
+      <span class="badge">v2.0</span>
+      No inline HTML/SCSS in JavaScript • Lifecycle-driven • Declarative attributes
+    </p>
+  </div>
+
+  <!-- Entity Component Demo -->
+  <div class="demo-section">
+    <h2>1. Genesis Entity Components</h2>
+    <p>Use <code>&lt;genesis-entity nature="..."&gt;</code> for content blocks</p>
+    
+    <div class="grid">
+      <genesis-entity nature="primary">
+        <h3>Primary Entity</h3>
+        <p>Main content with glassmorphism</p>
+        <p>Automatic fadeInUp + card hover</p>
+      </genesis-entity>
+
+      <genesis-entity nature="secondary">
+        <h3>Secondary Entity</h3>
+        <p>Supporting contextual data</p>
+        <p>Simple fadeIn + subtle hover</p>
+      </genesis-entity>
+
+      <genesis-entity nature="imperative">
+        <h3>Imperative Entity</h3>
+        <p>Urgent system signal</p>
+        <p>BounceIn entrance + pulse</p>
+      </genesis-entity>
+    </div>
+
+    <details style="margin-top: 1rem;">
+      <summary><strong>View Code</strong></summary>
+      <pre><code>&lt;genesis-entity nature="primary"&gt;
+  &lt;h3&gt;Primary Entity&lt;/h3&gt;
+  &lt;p&gt;Main content with glassmorphism&lt;/p&gt;
+&lt;/genesis-entity&gt;</code></pre>
+    </details>
+  </div>
+
+  <!-- Synapse Component Demo -->
+  <div class="demo-section">
+    <h2>2. Genesis Synapse Components</h2>
+    <p>Use <code>&lt;genesis-synapse vector="..."&gt;</code> for interactive elements</p>
+    
+    <div>
+      <genesis-synapse vector="execute">
+        Execute Action
+      </genesis-synapse>
+
+      <genesis-synapse vector="navigate">
+        Navigate Link
+      </genesis-synapse>
+
+      <genesis-synapse vector="destructive">
+        Destructive Action
+      </genesis-synapse>
+    </div>
+
+    <details style="margin-top: 1rem;">
+      <summary><strong>View Code</strong></summary>
+      <pre><code>&lt;genesis-synapse vector="execute"&gt;
+  Execute Action
+&lt;/genesis-synapse&gt;
+
+&lt;genesis-synapse vector="navigate"&gt;
+  Navigate Link
+&lt;/genesis-synapse&gt;</code></pre>
+    </details>
+  </div>
+
+  <!-- Cognition Component Demo -->
+  <div class="demo-section">
+    <h2>3. Genesis Cognition Components</h2>
+    <p>Use <code>&lt;genesis-cognition intent="..."&gt;</code> for typography</p>
+    
+    <genesis-cognition intent="axiom">
+      Axiom: Foundational Headline
+    </genesis-cognition>
+
+    <genesis-cognition intent="discourse">
+      Discourse: This is standard body text that communicates ideas and information in a clear, readable format. It fades in with a simple animation.
+    </genesis-cognition>
+
+    <div>
+      <genesis-cognition intent="quantum">AI</genesis-cognition>
+      <genesis-cognition intent="quantum">Machine Learning</genesis-cognition>
+      <genesis-cognition intent="quantum">Web Components</genesis-cognition>
+      <genesis-cognition intent="quantum">Ontology</genesis-cognition>
+    </div>
+
+    <details style="margin-top: 1rem;">
+      <summary><strong>View Code</strong></summary>
+      <pre><code>&lt;genesis-cognition intent="axiom"&gt;
+  Headline Text
+&lt;/genesis-cognition&gt;
+
+&lt;genesis-cognition intent="quantum"&gt;Tag&lt;/genesis-cognition&gt;</code></pre>
+    </details>
+  </div>
+
+  <!-- State Component Demo -->
+  <div class="demo-section">
+    <h2>4. Genesis State Components</h2>
+    <p>Use <code>&lt;genesis-state condition="..."&gt;</code> for temporal states</p>
+    
+    <genesis-state condition="evolving">
+      <strong>Evolving State:</strong> Content that is currently updating or streaming (pulses continuously)
+    </genesis-state>
+
+    <details style="margin-top: 1rem;">
+      <summary><strong>View Code</strong></summary>
+      <pre><code>&lt;genesis-state condition="evolving"&gt;
+  Content that updates...
+&lt;/genesis-state&gt;</code></pre>
+    </details>
+  </div>
+
+  <!-- Scroll-Triggered Demo -->
+  <div class="scroll-spacer">
+    ⬇️ Scroll down to see scroll-triggered animations ⬇️
+  </div>
+
+  <div class="demo-section">
+    <h2>5. Scroll-Triggered Animations</h2>
+    <p>Use <code>condition="scroll-triggered"</code> for reveal-on-scroll</p>
+  </div>
+
+  <genesis-state condition="scroll-triggered">
+    First item reveals when scrolled into view
+  </genesis-state>
+
+  <genesis-state condition="scroll-triggered">
+    Second item reveals with stagger delay
+  </genesis-state>
+
+  <genesis-state condition="scroll-triggered">
+    Third item completes the sequence
+  </genesis-state>
+
+  <!-- Benefits -->
+  <div class="demo-section">
+    <h2>✨ Why Web Components?</h2>
+    
+    <genesis-entity nature="primary">
+      <h3>🎯 Natural HTML Extension</h3>
+      <p>Components feel like native HTML elements, not JavaScript constructs. <code>&lt;genesis-entity&gt;</code> is as natural as <code>&lt;div&gt;</code>.</p>
+    </genesis-entity>
+
+    <genesis-entity nature="secondary">
+      <h3>🔄 Lifecycle-Driven</h3>
+      <p>Animations tied to component lifecycle (mount, unmount, attribute changes). More predictable than DOM scanning.</p>
+    </genesis-entity>
+
+    <genesis-entity nature="secondary">
+      <h3>📝 Declarative Attributes</h3>
+      <p>Clear intent with <code>nature="primary"</code> instead of relying on class name patterns. Explicit is better than implicit.</p>
+    </genesis-entity>
+
+    <genesis-entity nature="secondary">
+      <h3>🎨 SCSS Stays Separate</h3>
+      <p>No inline HTML/SCSS in JavaScript. Components are transparent containers. Styling lives in <code>.scss</code> files where it belongs.</p>
+    </genesis-entity>
+  </div>
+
+  <!-- SCSS Integration -->
+  <div class="demo-section">
+    <h2>🧬 SCSS Integration</h2>
+    <p>Web Components work seamlessly with ontological SCSS mixins:</p>
+    
+    <pre><code>/* In your subdomain SCSS */
+@import "ontology/index";
+
+genesis-entity {
+  @include genesis-entity('primary');
+}
+
+genesis-synapse {
+  @include genesis-synapse('execute');
+}
+
+genesis-cognition {
+  @include genesis-cognition('axiom');
+}</code></pre>
+
+    <p><strong>Result:</strong> Visual styling from SCSS + animation behavior from Web Components = Complete ontological integration</p>
+  </div>
+
+  <!-- Footer -->
+  <div class="demo-section" style="text-align: center;">
+    <p><strong>Genesis Ontological Design System v2.0</strong></p>
+    <p>Web Components • Motion Library • OKLCH Colors • Glassmorphism</p>
+  </div>
+</body>
+</html>

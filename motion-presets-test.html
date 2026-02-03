@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motion Presets & Gestures Test - ASI Saga</title>
+  
+  <!-- Motion Library -->
+  <script src="https://cdn.jsdelivr.net/npm/motion@12.30.0/dist/index.es.js" type="module"></script>
+  <script type="module">
+    import * as Motion from 'https://cdn.jsdelivr.net/npm/motion@12.30.0/dist/index.es.js';
+    window.Motion = Motion;
+  </script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: oklch(0.12 0.01 250);
+      color: oklch(0.95 0.005 90);
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, oklch(0.65 0.25 230), oklch(0.70 0.15 85));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      margin: 2rem 0 1rem;
+      color: oklch(0.70 0.15 85);
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin: 1.5rem 0 0.75rem;
+      color: oklch(0.65 0.25 230);
+    }
+
+    .section {
+      background: oklch(0.15 0.01 250 / 0.5);
+      border: 1px solid oklch(0.25 0.02 240);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .demo-card {
+      background: oklch(0.20 0.02 245 / 0.8);
+      border: 1px solid oklch(0.30 0.04 240);
+      border-radius: 8px;
+      padding: 2rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+
+    .demo-card:hover {
+      border-color: oklch(0.65 0.25 230);
+    }
+
+    .demo-box {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, oklch(0.65 0.25 230), oklch(0.70 0.15 85));
+      border-radius: 8px;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    button {
+      background: oklch(0.65 0.25 230);
+      color: oklch(0.99 0.005 90);
+      border: none;
+      border-radius: 6px;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin: 0.5rem;
+    }
+
+    button:hover {
+      background: oklch(0.70 0.27 235);
+    }
+
+    button:active {
+      background: oklch(0.60 0.23 225);
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .info {
+      background: oklch(0.25 0.03 250 / 0.5);
+      border-left: 3px solid oklch(0.70 0.15 85);
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+
+    /* Gesture Demo Areas */
+    .swipe-area {
+      background: oklch(0.20 0.02 245 / 0.8);
+      border: 2px dashed oklch(0.65 0.25 230);
+      border-radius: 12px;
+      padding: 3rem;
+      text-align: center;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      touch-action: none;
+    }
+
+    .drag-area {
+      background: oklch(0.15 0.01 250);
+      border: 2px solid oklch(0.30 0.04 240);
+      border-radius: 12px;
+      padding: 2rem;
+      min-height: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .draggable-item {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, oklch(0.70 0.15 85), oklch(0.65 0.25 230));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: grab;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      box-shadow: 0 4px 20px oklch(0.08 0.01 250 / 0.3);
+    }
+
+    .pinch-area {
+      background: oklch(0.20 0.02 245 / 0.8);
+      border: 2px solid oklch(0.30 0.04 240);
+      border-radius: 12px;
+      padding: 2rem;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .pinchable-item {
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(135deg, oklch(0.65 0.25 230), oklch(0.70 0.15 85));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      transition: transform 0.1s;
+    }
+
+    .status {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: oklch(0.15 0.01 250 / 0.8);
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.9rem;
+    }
+
+    .reduced-motion-indicator {
+      background: oklch(0.70 0.15 85 / 0.2);
+      border: 1px solid oklch(0.70 0.15 85);
+      border-radius: 6px;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    code {
+      background: oklch(0.18 0.02 250);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎭 Motion Presets & Gestures Test</h1>
+    <p>Comprehensive testing for animation presets and gesture support</p>
+    
+    <div id="reduced-motion-warning" class="reduced-motion-indicator" style="display: none;">
+      ⚠️ Reduced motion is enabled. Animations will have minimal movement.
+    </div>
+
+    <!-- ENTRANCE ANIMATIONS -->
+    <div class="section">
+      <h2>🌅 Entrance Animations</h2>
+      <p>Click any card to trigger the entrance animation</p>
+      
+      <div class="grid">
+        <div class="demo-card" onclick="triggerPreset('entrance', 'fadeIn', this.querySelector('.demo-box'))">
+          <div class="demo-box">↓</div>
+          <strong>fadeIn</strong>
+        </div>
+        <div class="demo-card" onclick="triggerPreset('entrance', 'fadeInUp', this.querySelector('.demo-box'))">
+          <div class="demo-box">↑</div>
+          <strong>fadeInUp</strong>
+        </div>
+        <div class="demo-card" onclick="triggerPreset('entrance', 'fadeInDown', this.querySelector('.demo-box'))">
+          <div class="demo-box">↓</div>
+          <strong>fadeInDown</strong>
+        </div>
+        <div class="demo-card" onclick="triggerPreset('entrance', 'fadeInLeft', this.querySelector('.demo-box'))">
+          <div class="demo-box">→</div>
+          <strong>fadeInLeft</strong>
+        </div>
+        <div class="demo-card" onclick="triggerPreset('entrance', 'fadeInRight', this.querySelector('.demo-box'))">
+          <div class="demo-box">←</div>
+          <strong>fadeInRight</strong>
+        </div>
+        <div class="demo-card" onclick="triggerPreset('entrance', 'scaleIn', this.querySelector('.demo-box'))">
+          <div class="demo-box">⊕</div>
+          <strong>scaleIn</strong>
+        </div>
+        <div class="demo-card" onclick="triggerPreset('entrance', 'zoomIn', this.querySelector('.demo-box'))">
+          <div class="demo-box">🔍</div>
+          <strong>zoomIn</strong>
+        </div>
+        <div class="demo-card" onclick="triggerPreset('entrance', 'bounceIn', this.querySelector('.demo-box'))">
+          <div class="demo-box">🎾</div>
+          <strong>bounceIn</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMPHASIS ANIMATIONS -->
+    <div class="section">
+      <h2>⚡ Emphasis Animations</h2>
+      <p>Click to start/stop looping emphasis animations</p>
+      
+      <div class="grid">
+        <div class="demo-card" onclick="toggleEmphasis('pulse', this.querySelector('.demo-box'))">
+          <div class="demo-box">💓</div>
+          <strong>pulse</strong>
+        </div>
+        <div class="demo-card" onclick="toggleEmphasis('heartbeat', this.querySelector('.demo-box'))">
+          <div class="demo-box">❤️</div>
+          <strong>heartbeat</strong>
+        </div>
+        <div class="demo-card" onclick="toggleEmphasis('shake', this.querySelector('.demo-box'))">
+          <div class="demo-box">🌊</div>
+          <strong>shake</strong>
+        </div>
+        <div class="demo-card" onclick="toggleEmphasis('bounce', this.querySelector('.demo-box'))">
+          <div class="demo-box">⬆️</div>
+          <strong>bounce</strong>
+        </div>
+        <div class="demo-card" onclick="toggleEmphasis('spin', this.querySelector('.demo-box'))">
+          <div class="demo-box">🔄</div>
+          <strong>spin</strong>
+        </div>
+        <div class="demo-card" onclick="toggleEmphasis('glow', this.querySelector('.demo-box'))">
+          <div class="demo-box">✨</div>
+          <strong>glow</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- SACRED ANIMATIONS -->
+    <div class="section">
+      <h2>🕉️ Sacred Animations</h2>
+      <p>ASI Saga themed animations</p>
+      
+      <div class="grid">
+        <div class="demo-card" onclick="toggleSacred('rhythm', this.querySelector('.demo-box'))">
+          <div class="demo-box">🫀</div>
+          <strong>Sacred Rhythm</strong>
+        </div>
+        <div class="demo-card" onclick="toggleSacred('consciousnessPulse', this.querySelector('.demo-box'))">
+          <div class="demo-box">🧠</div>
+          <strong>Consciousness Pulse</strong>
+        </div>
+        <div class="demo-card" onclick="toggleSacred('spiral', this.querySelector('.demo-box'))">
+          <div class="demo-box">🌀</div>
+          <strong>Spiral</strong>
+        </div>
+        <div class="demo-card" onclick="toggleSacred('gentleSpiral', this.querySelector('.demo-box'))">
+          <div class="demo-box">🍥</div>
+          <strong>Gentle Spiral</strong>
+        </div>
+        <div class="demo-card" onclick="toggleSacred('shimmer', this.querySelector('.demo-box'))">
+          <div class="demo-box">💫</div>
+          <strong>Shimmer</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- GESTURE SUPPORT -->
+    <div class="section">
+      <h2>👆 Gesture Support</h2>
+      
+      <h3>Swipe Gestures</h3>
+      <div class="info">
+        <strong>Mobile/Touch:</strong> Swipe in any direction<br>
+        <strong>Desktop:</strong> Gestures are touch-only
+      </div>
+      <div class="swipe-area" id="swipe-area">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">👆</div>
+        <div><strong>Swipe here</strong></div>
+        <div style="opacity: 0.7;">Try swiping up, down, left, or right</div>
+      </div>
+      <div class="status" id="swipe-status">Waiting for swipe...</div>
+
+      <h3>Drag & Drop</h3>
+      <div class="info">
+        <strong>Desktop/Mobile:</strong> Drag the box around<br>
+        Features inertia and bounds constraints
+      </div>
+      <div class="drag-area" id="drag-area">
+        <div class="draggable-item" id="draggable">🎯</div>
+      </div>
+      <div class="status" id="drag-status">Position: (0, 0)</div>
+
+      <h3>Pinch to Zoom</h3>
+      <div class="info">
+        <strong>Mobile/Touch Only:</strong> Use two fingers to pinch/zoom<br>
+        Scale range: 0.5x - 3x
+      </div>
+      <div class="pinch-area" id="pinch-area">
+        <div class="pinchable-item" id="pinchable">🔍</div>
+      </div>
+      <div class="status" id="pinch-status">Scale: 1.0x</div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="section">
+      <h2>🎛️ Global Controls</h2>
+      <div class="controls">
+        <button onclick="resetAllAnimations()">Reset All Animations</button>
+        <button onclick="testAllEntrances()">Test All Entrances (Sequence)</button>
+        <button onclick="window.location.reload()">Reload Page</button>
+      </div>
+    </div>
+
+    <div class="info">
+      <strong>Performance:</strong> <span id="performance-info">Motion library loaded</span><br>
+      <strong>Touch Support:</strong> <span id="touch-support">Checking...</span><br>
+      <strong>Reduced Motion:</strong> <span id="reduced-motion-status">Checking...</span>
+    </div>
+  </div>
+
+  <script type="module">
+    import { presets, applyEntrance, applyEmphasis, applySacred } from './assets/js/common/motion-presets.js';
+    import { setupSwipe, setupDrag, setupPinch, hasTouchSupport } from './assets/js/common/motion-gestures.js';
+
+    // Store active animations
+    const activeAnimations = new Map();
+
+    // Make functions global for onclick handlers
+    window.triggerPreset = (category, name, element) => {
+      const preset = presets[category][name];
+      if (preset) {
+        window.Motion.animate(element, preset.keyframes, preset.options);
+      }
+    };
+
+    window.toggleEmphasis = (name, element) => {
+      const key = `emphasis-${name}-${element.id || Math.random()}`;
+      
+      if (activeAnimations.has(key)) {
+        activeAnimations.get(key).cancel();
+        activeAnimations.delete(key);
+      } else {
+        const animation = applyEmphasis(element, name);
+        if (animation) {
+          activeAnimations.set(key, animation);
+        }
+      }
+    };
+
+    window.toggleSacred = (name, element) => {
+      const key = `sacred-${name}-${element.id || Math.random()}`;
+      
+      if (activeAnimations.has(key)) {
+        activeAnimations.get(key).cancel();
+        activeAnimations.delete(key);
+      } else {
+        const animation = applySacred(element, name);
+        if (animation) {
+          activeAnimations.set(key, animation);
+        }
+      }
+    };
+
+    window.resetAllAnimations = () => {
+      activeAnimations.forEach(anim => anim.cancel());
+      activeAnimations.clear();
+    };
+
+    window.testAllEntrances = async () => {
+      const entrances = Object.keys(presets.entrance);
+      const cards = document.querySelectorAll('.demo-card .demo-box');
+      
+      for (let i = 0; i < Math.min(entrances.length, cards.length); i++) {
+        await new Promise(resolve => {
+          window.triggerPreset('entrance', entrances[i], cards[i]);
+          setTimeout(resolve, 700);
+        });
+      }
+    };
+
+    // Setup gestures
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check reduced motion
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.getElementById('reduced-motion-status').textContent = reducedMotion ? 'Yes' : 'No';
+      if (reducedMotion) {
+        document.getElementById('reduced-motion-warning').style.display = 'block';
+      }
+
+      // Check touch support
+      const touchSupported = hasTouchSupport();
+      document.getElementById('touch-support').textContent = touchSupported ? 'Yes (gestures enabled)' : 'No (mouse only)';
+
+      // Performance info
+      document.getElementById('performance-info').textContent = 
+        `Motion v12.30.0 loaded (${window.Motion ? '✓' : '✗'})`;
+
+      // Setup swipe gesture
+      setupSwipe(document.getElementById('swipe-area'), {
+        onSwipeLeft: (e) => {
+          document.getElementById('swipe-status').textContent = '⬅️ Swiped LEFT';
+        },
+        onSwipeRight: (e) => {
+          document.getElementById('swipe-status').textContent = '➡️ Swiped RIGHT';
+        },
+        onSwipeUp: (e) => {
+          document.getElementById('swipe-status').textContent = '⬆️ Swiped UP';
+        },
+        onSwipeDown: (e) => {
+          document.getElementById('swipe-status').textContent = '⬇️ Swiped DOWN';
+        },
+      });
+
+      // Setup drag gesture
+      const dragArea = document.getElementById('drag-area');
+      const draggable = document.getElementById('draggable');
+      const dragAreaRect = dragArea.getBoundingClientRect();
+      
+      setupDrag(draggable, {
+        axis: 'both',
+        bounds: {
+          left: -dragAreaRect.width / 2 + 50,
+          right: dragAreaRect.width / 2 - 50,
+          top: -dragAreaRect.height / 2 + 50,
+          bottom: dragAreaRect.height / 2 - 50,
+        },
+        onDrag: ({ x, y }) => {
+          document.getElementById('drag-status').textContent = 
+            `Position: (${Math.round(x)}, ${Math.round(y)})`;
+        },
+        inertia: true,
+      });
+
+      // Setup pinch gesture
+      setupPinch(document.getElementById('pinchable'), {
+        minScale: 0.5,
+        maxScale: 3,
+        onPinch: ({ scale }) => {
+          document.getElementById('pinch-status').textContent = 
+            `Scale: ${scale.toFixed(2)}x`;
+        },
+      });
+    });
+  </script>
+</body>
+</html>

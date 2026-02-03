@@ -18,6 +18,9 @@ import "./common/header-scroll.js";   // Transparent header on scroll
 // Import custom animations and interactions (Motion-powered)
 import "./common/animations.js";        // Handles site-wide custom animations and effects using Motion library
 
+// Import Ontology Web Components (v2.0 - Natural HTML extension approach)
+import "./common/ontology-components.js";  // Registers genesis-entity, genesis-synapse, genesis-cognition, genesis-state components
+
 // Import Modern UI Components (replaces Bootstrap JS)
 import "./common/ui-components.js";      // Modern lightweight components (Modal, Collapse, Tabs)
 

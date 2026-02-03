@@ -1,58 +1,78 @@
 ---
 layout: minimal-base
 ---
-<div class="splash-layout-content">
-  {% if page.logo %}
-  <img src="{{ page.logo }}" alt="{{ page.title }}" class="splash__logo">
-  {% endif %}
-  
-  {% if page.title %}
-  <h1 class="splash__title">{{ page.title }}</h1>
-  {% endif %}
-  
-  {% if page.subtitle %}
-  <p class="splash__subtitle">{{ page.subtitle }}</p>
-  {% endif %}
-  
-  {{ content }}
-  
-  {% if page.countdown %}
-  <div class="splash__countdown" aria-label="Countdown timer">
-    <div class="splash__countdown-item">
-      <span class="splash__countdown-value" id="days" aria-label="Days">00</span>
-      <span class="splash__countdown-label">Days</span>
+<genesis-atmosphere vibe="vibrant">
+  <genesis-entity nature="imperative">
+    <div class="splash-layout-content">
+      {% if page.logo %}
+      <genesis-media ratio="auto">
+        <img src="{{ page.logo }}" alt="{{ page.title }}" class="splash__logo">
+      </genesis-media>
+      {% endif %}
+      
+      {% if page.title %}
+      <genesis-cognition intent="axiom">
+        <h1 class="splash__title">{{ page.title }}</h1>
+      </genesis-cognition>
+      {% endif %}
+      
+      {% if page.subtitle %}
+      <genesis-cognition intent="motive">
+        <p class="splash__subtitle">{{ page.subtitle }}</p>
+      </genesis-cognition>
+      {% endif %}
+      
+      {{ content }}
+      
+      {% if page.countdown %}
+      <genesis-state condition="evolving">
+        <div class="splash__countdown" aria-label="Countdown timer">
+          <div class="splash__countdown-item">
+            <span class="splash__countdown-value" id="days" aria-label="Days">00</span>
+            <span class="splash__countdown-label">Days</span>
+          </div>
+          <div class="splash__countdown-item">
+            <span class="splash__countdown-value" id="hours" aria-label="Hours">00</span>
+            <span class="splash__countdown-label">Hours</span>
+          </div>
+          <div class="splash__countdown-item">
+            <span class="splash__countdown-value" id="minutes" aria-label="Minutes">00</span>
+            <span class="splash__countdown-label">Minutes</span>
+          </div>
+          <div class="splash__countdown-item">
+            <span class="splash__countdown-value" id="seconds" aria-label="Seconds">00</span>
+            <span class="splash__countdown-label">Seconds</span>
+          </div>
+        </div>
+      </genesis-state>
+      {% endif %}
+      
+      {% if page.email_capture %}
+      <genesis-form layout="inline" validate="true">
+        <form class="splash__email-form">
+          <label for="splash-email" class="sr-only">Email address</label>
+          <input type="email" id="splash-email" class="splash__email-input" placeholder="Enter your email" required>
+          <genesis-synapse vector="execute">
+            <button type="submit" class="splash__email-button">{{ page.email_capture.button_text | default: "Notify Me" }}</button>
+          </genesis-synapse>
+        </form>
+      </genesis-form>
+      {% endif %}
+      
+      {% if page.social_links %}
+      <genesis-navigation type="primary">
+        <nav class="splash__social" aria-label="Social media links">
+          {% for link in page.social_links %}
+          <genesis-synapse vector="social">
+            <a href="{{ link.url }}" class="splash__social-link" target="_blank" rel="noopener noreferrer" aria-label="{{ link.platform | capitalize }}">
+              <i class="fab fa-{{ link.platform }}" aria-hidden="true"></i>
+              <span class="sr-only">{{ link.platform | capitalize }}</span>
+            </a>
+          </genesis-synapse>
+          {% endfor %}
+        </nav>
+      </genesis-navigation>
+      {% endif %}
     </div>
-    <div class="splash__countdown-item">
-      <span class="splash__countdown-value" id="hours" aria-label="Hours">00</span>
-      <span class="splash__countdown-label">Hours</span>
-    </div>
-    <div class="splash__countdown-item">
-      <span class="splash__countdown-value" id="minutes" aria-label="Minutes">00</span>
-      <span class="splash__countdown-label">Minutes</span>
-    </div>
-    <div class="splash__countdown-item">
-      <span class="splash__countdown-value" id="seconds" aria-label="Seconds">00</span>
-      <span class="splash__countdown-label">Seconds</span>
-    </div>
-  </div>
-  {% endif %}
-  
-  {% if page.email_capture %}
-  <form class="splash__email-form">
-    <label for="splash-email" class="sr-only">Email address</label>
-    <input type="email" id="splash-email" class="splash__email-input" placeholder="Enter your email" required>
-    <button type="submit" class="splash__email-button">{{ page.email_capture.button_text | default: "Notify Me" }}</button>
-  </form>
-  {% endif %}
-  
-  {% if page.social_links %}
-  <nav class="splash__social" aria-label="Social media links">
-    {% for link in page.social_links %}
-    <a href="{{ link.url }}" class="splash__social-link" target="_blank" rel="noopener noreferrer" aria-label="{{ link.platform | capitalize }}">
-      <i class="fab fa-{{ link.platform }}" aria-hidden="true"></i>
-      <span class="sr-only">{{ link.platform | capitalize }}</span>
-    </a>
-    {% endfor %}
-  </nav>
-  {% endif %}
-</div>
+  </genesis-entity>
+</genesis-atmosphere>

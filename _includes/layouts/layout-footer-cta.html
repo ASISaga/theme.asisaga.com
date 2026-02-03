@@ -12,14 +12,20 @@ Parameters:
 
 <footer class="{{ include.class_prefix }}__footer-cta">
   {% if include.title %}
-  <h2 class="{{ include.class_prefix }}__cta-title">{{ include.title }}</h2>
+  <genesis-cognition intent="axiom">
+    <h2 class="{{ include.class_prefix }}__cta-title">{{ include.title }}</h2>
+  </genesis-cognition>
   {% endif %}
   
   {% if include.description %}
-  <p class="{{ include.class_prefix }}__cta-description">{{ include.description }}</p>
+  <genesis-cognition intent="discourse">
+    <p class="{{ include.class_prefix }}__cta-description">{{ include.description }}</p>
+  </genesis-cognition>
   {% endif %}
   
   {% if include.button_text and include.button_url %}
-  <a href="{{ include.button_url }}" class="{{ include.class_prefix }}__cta-button">{{ include.button_text }}</a>
+  <genesis-synapse vector="execute">
+    <a href="{{ include.button_url }}" class="{{ include.class_prefix }}__cta-button">{{ include.button_text }}</a>
+  </genesis-synapse>
   {% endif %}
 </footer>

@@ -1,36 +1,46 @@
 ---
 layout: default
 ---
-<div class="landing-layout">
-  {% if page.hero %}
-  <section class="landing__hero">
-    {% include layouts/layout-header.html
-       class_prefix="landing"
-       title=page.hero.title
-       subtitle=page.hero.subtitle
-    %}
-    
-    {% if page.hero.cta %}
-    <div class="landing__hero-actions">
-      <a href="{{ page.hero.cta.url }}" class="landing__hero-button">{{ page.hero.cta.text }}</a>
-    </div>
+<genesis-atmosphere vibe="vibrant">
+  <div class="landing-layout">
+    {% if page.hero %}
+    <genesis-entity nature="imperative">
+      <section class="landing__hero">
+        {% include layouts/layout-header.html
+           class_prefix="landing"
+           title=page.hero.title
+           subtitle=page.hero.subtitle
+        %}
+        
+        {% if page.hero.cta %}
+        <div class="landing__hero-actions">
+          <genesis-synapse vector="execute">
+            <a href="{{ page.hero.cta.url }}" class="landing__hero-button">{{ page.hero.cta.text }}</a>
+          </genesis-synapse>
+        </div>
+        {% endif %}
+        
+        {% if page.hero.image %}
+        <genesis-media ratio="16:9" lazy="true">
+          <img src="{{ page.hero.image }}" alt="{{ page.hero.title }}" class="landing__hero-image">
+        </genesis-media>
+        {% endif %}
+      </section>
+    </genesis-entity>
     {% endif %}
     
-    {% if page.hero.image %}
-    <img src="{{ page.hero.image }}" alt="{{ page.hero.title }}" class="landing__hero-image">
+    {{ content }}
+    
+    {% if page.final_cta %}
+    <genesis-entity nature="secondary">
+      {% include layouts/layout-footer-cta.html
+         class_prefix="landing"
+         title=page.final_cta.title
+         description=page.final_cta.description
+         button_text=page.final_cta.text
+         button_url=page.final_cta.url
+      %}
+    </genesis-entity>
     {% endif %}
-  </section>
-  {% endif %}
-  
-  {{ content }}
-  
-  {% if page.final_cta %}
-  {% include layouts/layout-footer-cta.html
-     class_prefix="landing"
-     title=page.final_cta.title
-     description=page.final_cta.description
-     button_text=page.final_cta.text
-     button_url=page.final_cta.url
-  %}
-  {% endif %}
-</div>
+  </div>
+</genesis-atmosphere>
