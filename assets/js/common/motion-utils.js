@@ -14,10 +14,12 @@
  * <script src="https://cdn.jsdelivr.net/npm/motion@12.30.0/dist/index.es.js"></script>
  */
 
+import { presets } from './motion-presets.js';
+
 // Motion will be available globally as window.Motion when loaded from CDN
 // Throw error if Motion is not available
 function getMotion() {
-  if (!window.Motion || typeof window.getMotion().animate !== 'function') {
+  if (!window.Motion || typeof window.Motion.animate !== 'function') {
     throw new Error(
       'Motion library not loaded. Please include Motion from CDN before using motion-utils.js'
     );
