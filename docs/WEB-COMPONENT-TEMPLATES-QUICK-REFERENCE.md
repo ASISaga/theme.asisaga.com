@@ -5,7 +5,7 @@
 ### 1. Include templates in page
 
 ```liquid
-{% include web-component-templates/template-loader.html %}
+{% include components/template-loader.html %}
 ```
 
 ### 2. Instantiate in JavaScript
@@ -28,7 +28,7 @@
 
 ```
 component-name:
-  HTML:  _includes/web-component-templates/component-name.html
+  HTML:  _includes/components/component-name.html
   SCSS:  _sass/components/_component-name.scss
   JS:    assets/js/components/component-name.js
 ```
@@ -113,7 +113,7 @@ showError('Error message', 'Title', { duration: 5000 });
 
 ### 1. HTML Template
 
-`_includes/web-component-templates/my-component.html`:
+`_includes/components/my-component.html`:
 
 ```html
 <template id="template-my-component">
@@ -167,7 +167,7 @@ In `_sass/components/_index.scss`:
 @import "my-component";
 ```
 
-In `_includes/web-component-templates/template-loader.html`:
+In `_includes/components/template-loader.html`:
 
 ```liquid
 {% include web-component-templates/my-component.html %}
@@ -184,7 +184,7 @@ web-component-templates-demo.html
 ## Resources
 
 - **Full Documentation**: `docs/WEB-COMPONENT-TEMPLATES.md`
-- **Template Directory**: `_includes/web-component-templates/`
+- **Template Directory**: `_includes/components/`
 - **SCSS Directory**: `_sass/components/web-components/`
 - **JavaScript Utilities**: `assets/js/common/template-utils.js`
 

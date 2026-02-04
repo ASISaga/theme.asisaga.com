@@ -6,7 +6,7 @@ Templates are wrapped in HTML5 <template> tags which are inert (not rendered).
 JavaScript can clone and instantiate these templates as needed.
 
 Usage:
-  {% include web-component-templates/template-loader.html %}
+  {% include components/template-loader.html %}
 
 The templates will be available via:
   document.getElementById('template-{name}')
@@ -16,12 +16,12 @@ The templates will be available via:
 <div id="web-component-templates" style="display: none;" aria-hidden="true">
   
   <!-- Product Card Template -->
-  {% include web-component-templates/product-card.html %}
+  {% include components/product-card.html %}
   
   <!-- Testimonial Card Template -->
-  {% include web-component-templates/testimonial-card.html %}
+  {% include components/testimonial-card.html %}
   
   <!-- Alert Card Template -->
-  {% include web-component-templates/alert-card.html %}
+  {% include components/alert-card.html %}
   
 </div>

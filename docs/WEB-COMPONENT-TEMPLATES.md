@@ -12,7 +12,7 @@ Every web component consists of three files with matching names:
 
 ```
 component-name/
-├── HTML:  _includes/web-component-templates/component-name.html
+├── HTML:  _includes/components/component-name.html
 ├── SCSS:  _sass/components/_component-name.scss
 └── JS:    assets/js/components/component-name.js
 ```
@@ -31,7 +31,7 @@ Templates use HTML5 `<template>` tags which are:
 - **Isolated**: Does not interfere with page styles
 - **Accessible**: Can be retrieved via `getElementById()`
 
-**Location**: `_includes/web-component-templates/`
+**Location**: `_includes/components/`
 
 ### SCSS Styling (Genesis Ontological)
 
@@ -64,7 +64,7 @@ Add the template loader to any page that needs to instantiate components:
 layout: default
 ---
 
-{% include web-component-templates/template-loader.html %}
+{% include components/template-loader.html %}
 
 <!-- Your page content here -->
 <div id="products-container"></div>
@@ -174,7 +174,7 @@ showError('An error occurred.', 'Error', {
 ### Product Card
 
 **Files**:
-- HTML: `_includes/web-component-templates/product-card.html`
+- HTML: `_includes/components/product-card.html`
 - SCSS: `_sass/components/_product-card.scss`
 - JS: `assets/js/components/product-card.js`
 
@@ -197,7 +197,7 @@ showError('An error occurred.', 'Error', {
 ### Testimonial Card
 
 **Files**:
-- HTML: `_includes/web-component-templates/testimonial-card.html`
+- HTML: `_includes/components/testimonial-card.html`
 - SCSS: `_sass/components/_testimonial-card.scss`
 - JS: `assets/js/components/testimonial-card.js`
 
@@ -219,7 +219,7 @@ showError('An error occurred.', 'Error', {
 ### Alert Card
 
 **Files**:
-- HTML: `_includes/web-component-templates/alert-card.html`
+- HTML: `_includes/components/alert-card.html`
 - SCSS: `_sass/components/_alert-card.scss`
 - JS: `assets/js/components/alert-card.js`
 
@@ -245,7 +245,7 @@ showError('An error occurred.', 'Error', {
 
 ### Step 1: Create HTML Template
 
-Create file in `_includes/web-component-templates/component-name.html`:
+Create file in `_includes/components/component-name.html`:
 
 ```liquid
 {% comment %}
@@ -285,7 +285,7 @@ Create file in `_sass/components/_component-name.scss`:
  * Web Component: Component Name - SCSS
  * 
  * Namespace:
- *   HTML:  _includes/web-component-templates/component-name.html
+ *   HTML:  _includes/components/component-name.html
  *   SCSS:  _sass/components/_component-name.scss
  *   JS:    assets/js/components/component-name.js
  * 
@@ -322,7 +322,7 @@ Create file in `assets/js/components/component-name.js`:
  * Web Component: Component Name
  * 
  * Namespace:
- *   HTML:  _includes/web-component-templates/component-name.html
+ *   HTML:  _includes/components/component-name.html
  *   SCSS:  _sass/components/_component-name.scss
  *   JS:    assets/js/components/component-name.js
  * 
@@ -386,7 +386,7 @@ export default {
 @import "component-name";  // Add your new component
 ```
 
-**Add to template loader** (`_includes/web-component-templates/template-loader.html`):
+**Add to template loader** (`_includes/components/template-loader.html`):
 
 ```liquid
 <div id="web-component-templates" style="display: none;" aria-hidden="true">
@@ -400,7 +400,7 @@ export default {
 ### Step 5: Update Documentation
 
 Update the README files:
-- `_includes/web-component-templates/README.md`
+- `_includes/components/README.md`
 - `docs/WEB-COMPONENT-TEMPLATES.md`
 
 ## Template Utilities API
@@ -631,7 +631,7 @@ This page includes:
 **Solution**: Ensure template loader is included:
 
 ```liquid
-{% include web-component-templates/template-loader.html %}
+{% include components/template-loader.html %}
 ```
 
 ### Styles not applying
@@ -670,7 +670,7 @@ This page includes:
 
 ## Resources
 
-- **Template Loader**: `_includes/web-component-templates/template-loader.html`
+- **Template Loader**: `_includes/components/template-loader.html`
 - **Template Utils**: `assets/js/common/template-utils.js`
 - **Demo Page**: `web-component-templates-demo.html`
 - **Genesis Ontology**: `_sass/ontology/INTEGRATION-GUIDE.md`

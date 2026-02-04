@@ -19,7 +19,7 @@ Successfully created a comprehensive web component template system with **matchi
 Web Component Templates System
 │
 ├── HTML Templates (Not rendered on load)
-│   ├── _includes/web-component-templates/
+│   ├── _includes/components/
 │   │   ├── README.md
 │   │   ├── template-loader.html
 │   │   ├── product-card.html
@@ -43,7 +43,7 @@ Web Component Templates System
 ├── Documentation
 │   ├── docs/WEB-COMPONENT-TEMPLATES.md
 │   ├── docs/WEB-COMPONENT-TEMPLATES-QUICK-REFERENCE.md
-│   └── _includes/web-component-templates/README.md
+│   └── _includes/components/README.md
 │   
 └── Demo
     └── web-component-templates-demo.html
@@ -53,21 +53,21 @@ Web Component Templates System
 
 ### Product Card
 ```
-✅ HTML:  _includes/web-component-templates/product-card.html
+✅ HTML:  _includes/components/product-card.html
 ✅ SCSS:  _sass/components/_product-card.scss
 ✅ JS:    assets/js/components/product-card.js
 ```
 
 ### Testimonial Card
 ```
-✅ HTML:  _includes/web-component-templates/testimonial-card.html
+✅ HTML:  _includes/components/testimonial-card.html
 ✅ SCSS:  _sass/components/_testimonial-card.scss
 ✅ JS:    assets/js/components/testimonial-card.js
 ```
 
 ### Alert Card
 ```
-✅ HTML:  _includes/web-component-templates/alert-card.html
+✅ HTML:  _includes/components/alert-card.html
 ✅ SCSS:  _sass/components/_alert-card.scss
 ✅ JS:    assets/js/components/alert-card.js
 ```
@@ -240,7 +240,7 @@ Contains:
 - API summaries
 
 ### Directory README
-**File**: `_includes/web-component-templates/README.md` (2KB)
+**File**: `_includes/components/README.md` (2KB)
 
 Contains:
 - Directory purpose
@@ -291,7 +291,7 @@ Features:
 Added to `_sass/_common.scss` at line 161:
 ```scss
 // WEB COMPONENT TEMPLATES
-// Dynamically instantiated components from _includes/web-component-templates/
+// Dynamically instantiated components from _includes/components/
 @import "components/web-components/index";
 ```
 
@@ -311,7 +311,7 @@ import { createProductCard } from '/assets/js/components/product-card.js';
 
 ### Creating New Templates
 
-1. **Create HTML template** in `_includes/web-component-templates/`
+1. **Create HTML template** in `_includes/components/`
 2. **Create SCSS file** in `_sass/components/web-components/`
 3. **Create JavaScript factory** in `assets/js/common/`
 4. **Add to index files** (SCSS index, template loader)
@@ -338,7 +338,7 @@ import { createProductCard } from '/assets/js/components/product-card.js';
 
 ## 🎯 Goals Achieved
 
-✅ **Dedicated template files** - Created in `_includes/web-component-templates/`
+✅ **Dedicated template files** - Created in `_includes/components/`
 ✅ **Not rendered on load** - Using HTML5 `<template>` tags
 ✅ **JavaScript instantiation** - Full factory pattern with utilities
 ✅ **Matching namespaces** - Strict HTML/SCSS/ES6 matching

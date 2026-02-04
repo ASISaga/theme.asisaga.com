@@ -15,7 +15,7 @@ Templates in this directory serve as reusable HTML structures that:
 Each web component follows a consistent naming convention across all three technologies:
 
 ```
-HTML Template:  _includes/web-component-templates/component-name.html
+HTML Template:  _includes/components/component-name.html
 SCSS Styling:   _sass/components/_component-name.scss
 JavaScript:     assets/js/components/component-name.js
 ```
@@ -27,7 +27,7 @@ JavaScript:     assets/js/components/component-name.js
 To include templates on a page (but not render them):
 
 ```liquid
-{% include web-component-templates/template-loader.html %}
+{% include components/template-loader.html %}
 ```
 
 This loads all templates into hidden `<template>` tags.
@@ -37,7 +37,7 @@ This loads all templates into hidden `<template>` tags.
 To instantiate a template:
 
 ```javascript
-import { instantiateTemplate } from './common/template-utils.js';
+import { instantiateTemplate } from './template-utils.js';
 
 // Get the template content
 const template = document.getElementById('template-component-name');
@@ -61,7 +61,7 @@ document.querySelector('.container').appendChild(instance);
 1. Create HTML template file in this directory
 2. Use `<template id="template-name">` wrapper
 3. Use semantic class names with BEM pattern
-4. Create matching SCSS in `_sass/components/web-components/`
-5. Create matching JavaScript helper in `assets/js/common/`
+4. Create matching SCSS in `_sass/components/`
+5. Create matching JavaScript helper in `assets/js/components/`
 6. Add to `template-loader.html` include
 7. Document in this README
