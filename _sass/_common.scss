@@ -153,6 +153,15 @@
 @import "components/specialized/specialized";
 @import "components/specialized/utilities";
 
+// ----------------------------------------
+// WEB COMPONENT TEMPLATES
+// ----------------------------------------
+// Dynamically instantiated components from _includes/web-component-templates/
+// Not rendered on page load - instantiated via JavaScript
+@import "components/product-card";
+@import "components/testimonial-card";
+@import "components/alert-card";
+
 // Layout Styles - Base templates and specialized layouts
 @import "layouts/app";
 @import "layouts/default";

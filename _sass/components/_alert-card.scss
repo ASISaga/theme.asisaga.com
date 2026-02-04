@@ -1,0 +1,114 @@
+/**
+ * Web Component: Alert Card - SCSS
+ * 
+ * Namespace:
+ *   HTML:  _includes/web-component-templates/alert-card.html
+ *   SCSS:  _sass/components/_alert-card.scss
+ *   JS:    assets/js/components/alert-card.js
+ * 
+ * Styling for dynamically instantiated alert card components.
+ * Uses Genesis Ontological mixins for semantic styling with type-specific variants.
+ */
+
+.wc-alert-card {
+  @include genesis-entity('primary');
+  @include genesis-state('stable');
+  
+  // Layout
+  @include genesis-environment('associative');
+  align-items: flex-start;
+  gap: var(--space-network, 0.75rem);
+  padding: var(--space-narrative, 1rem);
+  
+  // Default (info) styling
+  border-left: 4px solid oklch(0.65 0.25 230);  // Neon blue
+  
+  .wc-alert-card__icon {
+    flex-shrink: 0;
+    color: oklch(0.65 0.25 230);  // Neon blue
+  }
+  
+  .wc-alert-card__icon-svg {
+    display: block;
+  }
+  
+  .wc-alert-card__content {
+    flex: 1;
+    @include genesis-environment('focused');
+  }
+  
+  .wc-alert-card__title {
+    @include genesis-cognition('motive');
+    margin: 0 0 var(--space-network, 0.25rem) 0;
+  }
+  
+  .wc-alert-card__message {
+    @include genesis-cognition('discourse');
+    margin: 0;
+  }
+  
+  .wc-alert-card__dismiss {
+    @include genesis-synapse('destructive');
+    background: transparent;
+    border: none;
+    padding: 0.25rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    color: currentColor;
+    opacity: 0.5;
+    transition: opacity var(--motion-fluid, 0.2s ease);
+    
+    &:hover {
+      opacity: 1;
+    }
+    
+    svg {
+      display: block;
+    }
+  }
+  
+  // Type variants
+  &--success {
+    border-left-color: oklch(0.60 0.20 145);  // Green
+    
+    .wc-alert-card__icon {
+      color: oklch(0.60 0.20 145);
+    }
+  }
+  
+  &--warning {
+    border-left-color: oklch(0.70 0.18 80);  // Amber/Gold
+    
+    .wc-alert-card__icon {
+      color: oklch(0.70 0.18 80);
+    }
+  }
+  
+  &--error {
+    @include genesis-entity('imperative');
+    border-left-color: oklch(0.55 0.25 25);  // Red
+    
+    .wc-alert-card__icon {
+      color: oklch(0.55 0.25 25);
+    }
+  }
+  
+  // Entrance animation
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  animation: slideInRight 0.3s ease-out;
+  
+  // Respect reduced motion preference
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}

@@ -1,0 +1,40 @@
+{% comment %}
+Alert Card Template
+HTML template for alert/notification card web component
+
+Namespace:
+  HTML:  _includes/components/alert-card.html
+  SCSS:  _sass/components/_alert-card.scss
+  JS:    assets/js/components/alert-card.js
+
+Data attributes for JavaScript population:
+  - data-type: Alert type (info|success|warning|error)
+  - data-title: Alert title (optional)
+  - data-message: Alert message text
+  - data-dismissible: Whether alert can be dismissed (true|false)
+  - data-icon: Icon class/name (optional)
+{% endcomment %}
+
+<template id="template-alert-card">
+  <div class="wc-alert-card" role="alert">
+    <div class="wc-alert-card__icon" aria-hidden="true">
+      <svg class="wc-alert-card__icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+      </svg>
+    </div>
+    
+    <div class="wc-alert-card__content">
+      <h4 class="wc-alert-card__title"></h4>
+      <p class="wc-alert-card__message"></p>
+    </div>
+    
+    <button class="wc-alert-card__dismiss" aria-label="Dismiss alert" type="button" style="display: none;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+</template>
