@@ -6,11 +6,26 @@
 // ============================================================================
 
 // ----------------------------------------
+// GLOBAL RESET - Prevent Horizontal Overflow
+// ----------------------------------------
+// Universal box-sizing for predictable layout calculations
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// ----------------------------------------
 // AMBIENT RESET - Canvas Preparation
 // ----------------------------------------
 html {
   // Ensure consistent baseline across all pages
   min-height: 100vh;
+  
+  // Prevent horizontal overflow at root level
+  max-width: 100%;
+  overflow-x: hidden;
+  
   // Smooth scroll only for anchor links, not general page scroll
   // This prevents conflicts with header scroll animations
   scroll-behavior: auto;
@@ -25,6 +40,9 @@ body {
   // Establish the atmospheric canvas
   position: relative;
   min-height: 100vh;
+  
+  // Prevent horizontal overflow completely
+  max-width: 100%;
   overflow-x: hidden; // Prevent horizontal scroll from ambient effects
   overflow-y: auto;   // Explicitly enable vertical scrolling (fix mobile portrait scroll)
   

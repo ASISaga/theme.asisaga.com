@@ -211,7 +211,7 @@
     // Mobile: Off-canvas drawer
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     bottom: 0;
     width: 85%;
     max-width: 360px;
@@ -227,18 +227,20 @@
     // Smooth scrolling for mobile menu
     -webkit-overflow-scrolling: touch;
     
-    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    // Use transform for better performance and no overflow issues
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     
     // Enhanced shadow when open
     box-shadow: -12px 0 48px oklch(0 0 0 / 0);
     
     &[data-nav-open="true"] {
-      right: 0;
+      transform: translateX(0);
       box-shadow: -12px 0 48px oklch(0 0 0 / 0.6);
     }
     
     @media (prefers-reduced-motion: reduce) {
-      transition: right 0.1s linear;
+      transition: transform 0.1s linear;
     }
     
     // Desktop: Inline navigation
@@ -249,6 +251,7 @@
       padding: 0;
       overflow-y: visible;
       overflow-x: visible;
+      transform: none;
       
       background: transparent;
       backdrop-filter: none;

@@ -198,13 +198,18 @@ $space-3xl: clamp(4rem, 8vw, 6rem);
 // ============================================================================
 
 /// Full-bleed element that breaks out of container
+/// Uses 100% instead of 100vw to prevent horizontal overflow on mobile
 @mixin full-bleed {
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
   position: relative;
   left: 50%;
   right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  margin-left: -50%;
+  margin-right: -50%;
+  
+  // Prevent overflow
+  overflow-x: hidden;
 }
 
 /// Content that respects safe areas on notched devices
