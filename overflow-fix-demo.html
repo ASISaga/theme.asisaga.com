@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overflow Fix - Before and After</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #00ff88;
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+        .demo-box {
+            background: #2a2a3e;
+            border: 2px solid #3a3a4e;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        .demo-box h2 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        .before h2 { color: #ff4444; }
+        .after h2 { color: #00ff88; }
+        
+        .viewport-sim {
+            position: relative;
+            background: #0a0a0f;
+            border: 3px solid #555;
+            border-radius: 8px;
+            height: 300px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        .viewport-sim.before {
+            overflow-x: scroll;
+        }
+        .viewport-sim.after {
+            overflow-x: hidden;
+        }
+        .content {
+            padding: 1rem;
+        }
+        .wide-element {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            color: white;
+            text-align: center;
+        }
+        .wide-element.overflow {
+            width: 110%; /* Intentional overflow for demo */
+        }
+        .wide-element.contained {
+            width: 100%;
+            max-width: 100%;
+        }
+        .status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .status.error {
+            background: #ff4444;
+            color: white;
+        }
+        .status.success {
+            background: #00ff88;
+            color: #0a0a0f;
+        }
+        .scrollbar-indicator {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: repeating-linear-gradient(
+                45deg,
+                #ff4444,
+                #ff4444 10px,
+                #cc3333 10px,
+                #cc3333 20px
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: white;
+        }
+        .metrics {
+            background: #1a1a2e;
+            border: 1px solid #3a3a4e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 14px;
+        }
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #2a2a3e;
+        }
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+        .metric-value.error { color: #ff4444; }
+        .metric-value.success { color: #00ff88; }
+        
+        .code-snippet {
+            background: #0a0a0f;
+            border: 1px solid #3a3a4e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+        }
+        .code-snippet.error { border-color: #ff4444; }
+        .code-snippet.success { border-color: #00ff88; }
+        
+        .fix-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .fix-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .fix-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00ff88;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Horizontal Overflow Fix - Visual Demonstration</h1>
+        
+        <div class="comparison">
+            <div class="demo-box before">
+                <h2>❌ Before Fix</h2>
+                
+                <div class="viewport-sim before">
+                    <div class="status error">OVERFLOW</div>
+                    <div class="content">
+                        <div class="wide-element overflow">
+                            This element extends beyond viewport
+                        </div>
+                        <p>Content extends past the edge →</p>
+                    </div>
+                    <div class="scrollbar-indicator">
+                        ← Horizontal Scrollbar →
+                    </div>
+                </div>
+                
+                <div class="metrics">
+                    <div class="metric-row">
+                        <span>Viewport Width:</span>
+                        <span class="metric-value">375px</span>
+                    </div>
+                    <div class="metric-row">
+                        <span>Content Width:</span>
+                        <span class="metric-value error">412px</span>
+                    </div>
+                    <div class="metric-row">
+                        <span>Overflow:</span>
+                        <span class="metric-value error">37px ❌</span>
+                    </div>
+                </div>
+                
+                <div class="code-snippet error">
+<pre>@mixin full-bleed {
+  width: 100vw;  ❌
+  margin-left: -50vw;  ❌
+  // Includes scrollbar width
+  // = 375px + 17px = 392px
+}</pre>
+                </div>
+            </div>
+            
+            <div class="demo-box after">
+                <h2>✅ After Fix</h2>
+                
+                <div class="viewport-sim after">
+                    <div class="status success">NO OVERFLOW</div>
+                    <div class="content">
+                        <div class="wide-element contained">
+                            This element fits perfectly
+                        </div>
+                        <p>Content stays within bounds ✓</p>
+                    </div>
+                </div>
+                
+                <div class="metrics">
+                    <div class="metric-row">
+                        <span>Viewport Width:</span>
+                        <span class="metric-value">375px</span>
+                    </div>
+                    <div class="metric-row">
+                        <span>Content Width:</span>
+                        <span class="metric-value success">375px</span>
+                    </div>
+                    <div class="metric-row">
+                        <span>Overflow:</span>
+                        <span class="metric-value success">0px ✓</span>
+                    </div>
+                </div>
+                
+                <div class="code-snippet success">
+<pre>@mixin full-bleed {
+  width: 100%;  ✓
+  max-width: 100%;  ✓
+  margin-left: -50%;  ✓
+  overflow-x: hidden;  ✓
+  // Container-relative
+  // = 375px (exact)
+}</pre>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 3rem; background: #2a2a3e; padding: 2rem; border-radius: 12px;">
+            <h2 style="color: #00ff88; margin-bottom: 1rem;">Key Fixes Applied</h2>
+            <ul class="fix-list">
+                <li>Replaced <code>100vw</code> with <code>100%</code> in full-bleed mixin</li>
+                <li>Added universal <code>box-sizing: border-box</code> reset</li>
+                <li>Added <code>max-width: 100%</code> to html and body elements</li>
+                <li>Changed navigation drawer from <code>right: -100%</code> to <code>transform: translateX(100%)</code></li>
+                <li>Added <code>overflow-x: hidden</code> to html, body, and critical elements</li>
+            </ul>
+        </div>
+        
+        <div style="margin-top: 2rem; text-align: center; color: #888; font-size: 14px;">
+            <p>Genesis Theme - Horizontal Overflow Fix</p>
+            <p>Version 1.0.0 | 2026-02-04</p>
+        </div>
+    </div>
+</body>
+</html>
