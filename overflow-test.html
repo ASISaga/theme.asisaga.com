@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Overflow Test - Genesis Theme</title>
+    <style>
+        /* Include core Genesis styles inline for testing */
+        
+        /* Global Reset - Prevent Horizontal Overflow */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+        
+        html {
+            min-height: 100vh;
+            max-width: 100%;
+            overflow-x: hidden;
+            scroll-behavior: auto;
+        }
+        
+        body {
+            position: relative;
+            min-height: 100vh;
+            max-width: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-y pan-x;
+            
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #0a0a0f;
+            color: #f8f8f8;
+        }
+        
+        /* Test Container */
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: clamp(1rem, 3vw, 2rem);
+        }
+        
+        /* Visual Overflow Detector */
+        .overflow-indicator {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            background: #ff0000;
+            color: white;
+            padding: 10px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 9999;
+            display: none;
+        }
+        
+        .overflow-indicator.show {
+            display: block;
+        }
+        
+        /* Test Elements */
+        .test-header {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        .test-wide-content {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: 1rem;
+            width: 100%;
+        }
+        
+        .test-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-width: 0; /* Prevent overflow in grid */
+            max-width: 100%;
+        }
+        
+        .test-full-bleed {
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50%;
+            margin-right: -50%;
+            overflow-x: hidden;
+            background: rgba(100, 150, 255, 0.1);
+            padding: 2rem;
+        }
+        
+        /* Fixed Element Test */
+        .test-fixed-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85%;
+            max-width: 360px;
+            height: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            transform: translateX(100%);
+            transition: transform 0.35s ease;
+            padding: 2rem;
+            overflow-y: auto;
+            overflow-x: hidden;
+            z-index: 1001;
+        }
+        
+        .test-fixed-nav.open {
+            transform: translateX(0);
+        }
+        
+        /* Status Display */
+        .status-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00ff88;
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 12px;
+            font-family: monospace;
+            z-index: 9998;
+            max-width: 300px;
+        }
+        
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            gap: 10px;
+        }
+        
+        .status-label {
+            color: #888;
+        }
+        
+        .status-value {
+            color: #00ff88;
+            font-weight: bold;
+        }
+        
+        .status-value.error {
+            color: #ff0044;
+        }
+        
+        .status-value.warning {
+            color: #ffaa00;
+        }
+        
+        .test-button {
+            background: rgba(100, 150, 255, 0.2);
+            border: 1px solid rgba(100, 150, 255, 0.5);
+            color: #88ccff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 10px 5px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .test-button:hover {
+            background: rgba(100, 150, 255, 0.3);
+            border-color: rgba(100, 150, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <!-- Overflow Indicator -->
+    <div class="overflow-indicator" id="overflowIndicator">
+        ⚠️ HORIZONTAL OVERFLOW DETECTED
+    </div>
+    
+    <!-- Status Panel -->
+    <div class="status-panel">
+        <div style="color: #00ff88; font-weight: bold; margin-bottom: 10px;">Overflow Monitor</div>
+        <div class="status-item">
+            <span class="status-label">Viewport:</span>
+            <span class="status-value" id="viewportWidth">-</span>
+        </div>
+        <div class="status-item">
+            <span class="status-label">Document:</span>
+            <span class="status-value" id="documentWidth">-</span>
+        </div>
+        <div class="status-item">
+            <span class="status-label">Body:</span>
+            <span class="status-value" id="bodyWidth">-</span>
+        </div>
+        <div class="status-item">
+            <span class="status-label">Overflow:</span>
+            <span class="status-value" id="overflowStatus">-</span>
+        </div>
+        <div class="status-item">
+            <span class="status-label">ScrollX:</span>
+            <span class="status-value" id="scrollX">-</span>
+        </div>
+    </div>
+    
+    <!-- Test Header -->
+    <header class="test-header">
+        <h1 style="margin: 0; font-size: 1.5rem;">Horizontal Overflow Test</h1>
+        <p style="margin: 0.5rem 0 0; opacity: 0.7; font-size: 0.9rem;">Testing Genesis Theme overflow fixes</p>
+    </header>
+    
+    <!-- Test Container -->
+    <div class="test-container">
+        <section style="margin: 2rem 0;">
+            <h2>Test Controls</h2>
+            <button class="test-button" onclick="toggleFixedNav()">Toggle Fixed Nav</button>
+            <button class="test-button" onclick="testFullBleed()">Test Full Bleed</button>
+            <button class="test-button" onclick="testWideContent()">Add Wide Content</button>
+            <button class="test-button" onclick="resetTests()">Reset</button>
+        </section>
+        
+        <section style="margin: 2rem 0;">
+            <h2>Standard Content</h2>
+            <p>This is a standard paragraph of text that should stay within the viewport boundaries. No horizontal scrolling should occur when viewing this content on mobile devices.</p>
+        </section>
+        
+        <section style="margin: 2rem 0;">
+            <h2>Responsive Grid</h2>
+            <div class="test-grid">
+                <div class="test-card">
+                    <h3>Card 1</h3>
+                    <p>Grid items should stack on mobile and expand on larger screens without causing overflow.</p>
+                </div>
+                <div class="test-card">
+                    <h3>Card 2</h3>
+                    <p>Each card has max-width: 100% and min-width: 0 to prevent grid overflow.</p>
+                </div>
+                <div class="test-card">
+                    <h3>Card 3</h3>
+                    <p>Testing responsive grid behavior with auto-fit and minmax.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section style="margin: 2rem 0;">
+            <h2>Wide Content Container</h2>
+            <div class="test-wide-content">
+                <p>This container has width: 100% and max-width: 100% with overflow-x: hidden. It should never extend beyond the viewport width.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </section>
+        
+        <section style="margin: 2rem 0;" id="fullBleedTest">
+            <!-- Full bleed content added dynamically -->
+        </section>
+        
+        <section style="margin: 2rem 0;" id="wideContentTest">
+            <!-- Wide content added dynamically -->
+        </section>
+        
+        <section style="margin: 4rem 0 2rem;">
+            <h2>Test Results</h2>
+            <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.3); padding: 1rem; border-radius: 0.5rem;">
+                <h3 style="margin-top: 0; color: #00ff88;">✓ Expected Behavior</h3>
+                <ul style="margin: 0.5rem 0;">
+                    <li>No horizontal scrollbar at any viewport size</li>
+                    <li>Viewport width = Document width</li>
+                    <li>Body width ≤ Viewport width</li>
+                    <li>Overflow status shows "NONE"</li>
+                    <li>ScrollX remains at 0</li>
+                    <li>Fixed nav slides in from right without causing overflow</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Fixed Navigation Test -->
+    <div class="test-fixed-nav" id="fixedNav">
+        <h2>Fixed Navigation</h2>
+        <p>This drawer slides in from the right using transform: translateX(100%) instead of right: -100%.</p>
+        <p>This approach prevents layout overflow and performs better.</p>
+        <button class="test-button" onclick="toggleFixedNav()">Close</button>
+        
+        <div style="margin-top: 2rem;">
+            <h3>Navigation Items</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin: 1rem 0;"><a href="#" style="color: #88ccff; text-decoration: none;">Home</a></li>
+                <li style="margin: 1rem 0;"><a href="#" style="color: #88ccff; text-decoration: none;">Features</a></li>
+                <li style="margin: 1rem 0;"><a href="#" style="color: #88ccff; text-decoration: none;">Documentation</a></li>
+                <li style="margin: 1rem 0;"><a href="#" style="color: #88ccff; text-decoration: none;">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Monitor overflow in real-time
+        function checkOverflow() {
+            const viewportWidth = window.innerWidth;
+            const documentWidth = document.documentElement.scrollWidth;
+            const bodyWidth = document.body.scrollWidth;
+            const scrollX = window.scrollX || window.pageXOffset;
+            
+            // Update status display
+            document.getElementById('viewportWidth').textContent = viewportWidth + 'px';
+            document.getElementById('documentWidth').textContent = documentWidth + 'px';
+            document.getElementById('bodyWidth').textContent = bodyWidth + 'px';
+            document.getElementById('scrollX').textContent = scrollX + 'px';
+            
+            const hasOverflow = documentWidth > viewportWidth || bodyWidth > viewportWidth;
+            const overflowStatusEl = document.getElementById('overflowStatus');
+            const overflowIndicator = document.getElementById('overflowIndicator');
+            
+            if (hasOverflow) {
+                overflowStatusEl.textContent = 'DETECTED';
+                overflowStatusEl.classList.add('error');
+                overflowStatusEl.classList.remove('warning');
+                overflowIndicator.classList.add('show');
+            } else if (scrollX > 0) {
+                overflowStatusEl.textContent = 'SCROLLED';
+                overflowStatusEl.classList.add('warning');
+                overflowStatusEl.classList.remove('error');
+                overflowIndicator.classList.add('show');
+            } else {
+                overflowStatusEl.textContent = 'NONE ✓';
+                overflowStatusEl.classList.remove('error', 'warning');
+                overflowIndicator.classList.remove('show');
+            }
+        }
+        
+        // Toggle fixed navigation
+        function toggleFixedNav() {
+            const nav = document.getElementById('fixedNav');
+            nav.classList.toggle('open');
+        }
+        
+        // Test full bleed element
+        function testFullBleed() {
+            const container = document.getElementById('fullBleedTest');
+            container.innerHTML = `
+                <h2>Full Bleed Element</h2>
+                <div class="test-full-bleed">
+                    <p style="text-align: center; font-size: 1.1rem;">
+                        This is a full-bleed element that should span edge-to-edge without causing horizontal overflow.
+                    </p>
+                </div>
+            `;
+            setTimeout(checkOverflow, 100);
+        }
+        
+        // Test wide content
+        function testWideContent() {
+            const container = document.getElementById('wideContentTest');
+            container.innerHTML = `
+                <h2>Wide Content Test</h2>
+                <div style="width: 100%; max-width: 100%; overflow-x: hidden;">
+                    <div style="background: rgba(255, 100, 100, 0.1); padding: 1rem; border-radius: 0.5rem;">
+                        <p>This content has explicit width: 100% and max-width: 100% constraints.</p>
+                        <p>Even with long content, it should wrap and not cause horizontal scroll: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
+                    </div>
+                </div>
+            `;
+            setTimeout(checkOverflow, 100);
+        }
+        
+        // Reset tests
+        function resetTests() {
+            document.getElementById('fullBleedTest').innerHTML = '';
+            document.getElementById('wideContentTest').innerHTML = '';
+            const nav = document.getElementById('fixedNav');
+            nav.classList.remove('open');
+            setTimeout(checkOverflow, 100);
+        }
+        
+        // Initialize monitoring
+        checkOverflow();
+        
+        // Update on resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(checkOverflow, 100);
+        });
+        
+        // Update on scroll
+        window.addEventListener('scroll', checkOverflow);
+        
+        // Periodic check
+        setInterval(checkOverflow, 1000);
+        
+        console.log('Overflow test initialized. Monitor the status panel for real-time overflow detection.');
+        console.log('Expected result: Overflow status should show "NONE ✓" at all viewport sizes.');
+    </script>
+</body>
+</html>
