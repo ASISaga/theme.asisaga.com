@@ -1,61 +1,59 @@
-<genesis-footer show-back-to-top="true">
-  <footer class="genesis-footer">
-    <div class="genesis-footer__container">
-      <!-- Footer Grid -->
-      <div class="genesis-footer__grid">
-        <!-- Brand Section -->
-        <div class="genesis-footer__brand">
-          <span class="genesis-footer__title">{{ site.title | default: site.github.repository_name }}</span>
-          {% if site.description or site.github.project_tagline %}
-          <p class="genesis-footer__tagline">{{ site.description | default: site.github.project_tagline }}</p>
-          {% endif %}
-        </div>
-        
-        <!-- Footer Navigation -->
-        {% if site.data.nav.footer_nav %}
-        <nav class="genesis-footer__nav" aria-label="Footer navigation">
-          <h2 class="genesis-footer__nav-title">Quick Links</h2>
-          <ul class="genesis-footer__nav-list">
-            {% for item in site.data.nav.footer_nav %}
-            <li class="genesis-footer__nav-item">
-              <a href="{{ item.url }}" class="genesis-footer__nav-link">{{ item.title }}</a>
-            </li>
-            {% endfor %}
-          </ul>
-        </nav>
-        {% endif %}
-        
-        <!-- Social Links -->
-        {% if site.data.nav.social_links %}
-        <div class="genesis-footer__social" aria-labelledby="social-heading">
-          <h2 id="social-heading" class="genesis-footer__social-title">Connect</h2>
-          <div class="genesis-footer__social-links">
-            {% for link in site.data.nav.social_links %}
-            <a href="{{ link.url }}" class="genesis-footer__social-link" aria-label="{{ link.aria_label | default: link.name }}">
-              <i class="{{ link.icon }}" aria-hidden="true"></i>
-              <span class="sr-only">{{ link.name }}</span>
-            </a>
-            {% endfor %}
-          </div>
-        </div>
+<genesis-footer show-back-to-top="true" role="contentinfo" class="genesis-footer">
+  <div class="genesis-footer__container">
+    <!-- Footer Grid -->
+    <div class="genesis-footer__grid">
+      <!-- Brand Section -->
+      <div class="genesis-footer__brand">
+        <span class="genesis-footer__title">{{ site.title | default: site.github.repository_name }}</span>
+        {% if site.description or site.github.project_tagline %}
+        <p class="genesis-footer__tagline">{{ site.description | default: site.github.project_tagline }}</p>
         {% endif %}
       </div>
       
-      <!-- Copyright Bar -->
-      <div class="genesis-footer__copyright">
-        <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title | default: site.github.repository_name }}. All rights reserved.</p>
+      <!-- Footer Navigation -->
+      {% if site.data.nav.footer_nav %}
+      <nav class="genesis-footer__nav" aria-label="Footer navigation">
+        <h2 class="genesis-footer__nav-title">Quick Links</h2>
+        <ul class="genesis-footer__nav-list">
+          {% for item in site.data.nav.footer_nav %}
+          <li class="genesis-footer__nav-item">
+            <a href="{{ item.url }}" class="genesis-footer__nav-link">{{ item.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+      {% endif %}
+      
+      <!-- Social Links -->
+      {% if site.data.nav.social_links %}
+      <div class="genesis-footer__social" aria-labelledby="social-heading">
+        <h2 id="social-heading" class="genesis-footer__social-title">Connect</h2>
+        <div class="genesis-footer__social-links">
+          {% for link in site.data.nav.social_links %}
+          <a href="{{ link.url }}" class="genesis-footer__social-link" aria-label="{{ link.aria_label | default: link.name }}">
+            <i class="{{ link.icon }}" aria-hidden="true"></i>
+            <span class="sr-only">{{ link.name }}</span>
+          </a>
+          {% endfor %}
+        </div>
       </div>
+      {% endif %}
     </div>
     
-    <!-- Back to Top Button -->
-    <button 
-      id="back-to-top" 
-      class="genesis-back-to-top" 
-      aria-label="Back to top"
-      data-back-to-top
-    >
-      <i class="fas fa-arrow-up" aria-hidden="true"></i>
-      <span class="sr-only">Back to top</span>
-    </button>
-  </footer>
+    <!-- Copyright Bar -->
+    <div class="genesis-footer__copyright">
+      <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title | default: site.github.repository_name }}. All rights reserved.</p>
+    </div>
+  </div>
+  
+  <!-- Back to Top Button -->
+  <button 
+    id="back-to-top" 
+    class="genesis-back-to-top" 
+    aria-label="Back to top"
+    data-back-to-top
+  >
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    <span class="sr-only">Back to top</span>
+  </button>
 </genesis-footer>
