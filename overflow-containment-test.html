@@ -1,0 +1,340 @@
+---
+layout: default
+title: "Horizontal Overflow Containment Test"
+---
+
+<style>
+  /* Test page specific styles */
+  .overflow-monitor {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    font-size: 12px;
+    z-index: 10000;
+    border-radius: 8px;
+    max-width: 250px;
+    font-family: monospace;
+  }
+  
+  .overflow-monitor__item {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .overflow-monitor__label {
+    font-weight: bold;
+  }
+  
+  .overflow-monitor__value {
+    color: #4ade80;
+  }
+  
+  .overflow-monitor__value.error {
+    color: #f87171;
+  }
+  
+  .overflow-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    background: #f87171;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 12px;
+    display: none;
+    z-index: 10001;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  }
+  
+  .overflow-alert.visible {
+    display: block;
+  }
+  
+  .test-section {
+    margin: 40px 0;
+    padding: 20px;
+    border: 2px solid #cbd5e1;
+    border-radius: 8px;
+  }
+  
+  .test-section__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: oklch(0.10 0.01 250);
+  }
+  
+  .test-section__description {
+    margin-bottom: 20px;
+    color: oklch(0.30 0.01 230);
+  }
+  
+  .test-controls {
+    margin: 20px 0;
+    padding: 15px;
+    background: oklch(0.96 0.005 220);
+    border-radius: 8px;
+  }
+  
+  .test-button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    background: oklch(0.10 0.01 250);
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .test-button:hover {
+    background: oklch(0.65 0.25 230);
+  }
+  
+  /* Test elements */
+  .test-wide-content {
+    background: oklch(0.85 0.005 220);
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 6px;
+  }
+  
+  .test-animated-element {
+    background: oklch(0.65 0.25 230 / 0.2);
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 6px;
+    transition: transform 0.3s ease;
+  }
+  
+  .test-animated-element:hover {
+    transform: translateX(10px);
+  }
+  
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    gap: 1rem;
+    margin: 10px 0;
+  }
+  
+  .test-grid-item {
+    background: oklch(0.70 0.15 85 / 0.2);
+    padding: 20px;
+    border-radius: 6px;
+  }
+</style>
+
+<div class="overflow-monitor" id="overflowMonitor">
+  <div class="overflow-monitor__item">
+    <span class="overflow-monitor__label">Viewport:</span>
+    <span class="overflow-monitor__value" id="viewportWidth">-</span>
+  </div>
+  <div class="overflow-monitor__item">
+    <span class="overflow-monitor__label">Document:</span>
+    <span class="overflow-monitor__value" id="documentWidth">-</span>
+  </div>
+  <div class="overflow-monitor__item">
+    <span class="overflow-monitor__label">Body:</span>
+    <span class="overflow-monitor__value" id="bodyWidth">-</span>
+  </div>
+  <div class="overflow-monitor__item">
+    <span class="overflow-monitor__label">Max Child:</span>
+    <span class="overflow-monitor__value" id="maxChildWidth">-</span>
+  </div>
+  <div class="overflow-monitor__item">
+    <span class="overflow-monitor__label">ScrollX:</span>
+    <span class="overflow-monitor__value" id="scrollX">-</span>
+  </div>
+  <div class="overflow-monitor__item">
+    <span class="overflow-monitor__label">Status:</span>
+    <span class="overflow-monitor__value" id="overflowStatus">-</span>
+  </div>
+</div>
+
+<div class="overflow-alert" id="overflowAlert">
+  ⚠️ HORIZONTAL OVERFLOW DETECTED!
+</div>
+
+<main id="skip-target" tabindex="-1" style="padding: 20px;">
+  <h1>Horizontal Overflow Containment Test</h1>
+  
+  <div class="test-controls">
+    <h2 style="margin-top: 0;">Viewport Testing</h2>
+    <p>Resize browser window to test different viewports</p>
+    <button class="test-button" onclick="setViewportWidth(320)">320px (Mobile)</button>
+    <button class="test-button" onclick="setViewportWidth(375)">375px (iPhone)</button>
+    <button class="test-button" onclick="setViewportWidth(414)">414px (Large Mobile)</button>
+    <button class="test-button" onclick="setViewportWidth(768)">768px (Tablet)</button>
+    <button class="test-button" onclick="setViewportWidth(1024)">1024px (Desktop)</button>
+  </div>
+  
+  <!-- Test 1: Basic Content -->
+  <div class="test-section">
+    <h2 class="test-section__title">Test 1: Basic Content Containment</h2>
+    <p class="test-section__description">Standard content should never overflow viewport</p>
+    <div class="test-wide-content">
+      <p>This is a standard paragraph that should always stay within the viewport boundaries, regardless of screen size.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+  </div>
+  
+  <!-- Test 2: Grid Layouts -->
+  <div class="test-section">
+    <h2 class="test-section__title">Test 2: Grid Layout with Auto-Fit</h2>
+    <p class="test-section__description">Grid with minmax(min(250px, 100%), 1fr) should adapt to small viewports</p>
+    <div class="test-grid">
+      <div class="test-grid-item">Grid Item 1</div>
+      <div class="test-grid-item">Grid Item 2</div>
+      <div class="test-grid-item">Grid Item 3</div>
+      <div class="test-grid-item">Grid Item 4</div>
+    </div>
+  </div>
+  
+  <!-- Test 3: Animated Elements -->
+  <div class="test-section">
+    <h2 class="test-section__title">Test 3: Animated Elements</h2>
+    <p class="test-section__description">Hover animations should not cause overflow</p>
+    <div class="test-animated-element">
+      <p>Hover over this element to see animation (translateX(10px))</p>
+    </div>
+    <div class="test-animated-element">
+      <p>Another animated element that should stay contained</p>
+    </div>
+  </div>
+  
+  <!-- Test 4: Navigation Component -->
+  <div class="test-section">
+    <h2 class="test-section__title">Test 4: Off-Canvas Navigation</h2>
+    <p class="test-section__description">Test the header navigation (toggle hamburger menu)</p>
+    <p>Open and close the mobile navigation menu using the hamburger icon in the header. The nav drawer should not cause horizontal scrolling.</p>
+  </div>
+  
+  <!-- Test 5: Wide Text Content -->
+  <div class="test-section">
+    <h2 class="test-section__title">Test 5: Long Unbreakable Content</h2>
+    <p class="test-section__description">Long URLs and text should wrap or truncate</p>
+    <div class="test-wide-content" style="word-wrap: break-word; overflow-wrap: break-word;">
+      <p>URL: https://www.example.com/this-is-a-very-long-url-that-should-wrap-or-break-appropriately-on-small-screens</p>
+      <p>Code: thisisaverylongstringwithoutspacesthatmightcauseoverflowifnothandledproperly</p>
+    </div>
+  </div>
+  
+  <!-- Test 6: Multiple Containers -->
+  <div class="test-section">
+    <h2 class="test-section__title">Test 6: Nested Containers</h2>
+    <p class="test-section__description">Nested divs should all respect max-width: 100%</p>
+    <div class="test-wide-content">
+      <div class="test-wide-content">
+        <div class="test-wide-content">
+          <p>Triple nested content - all containers should stay within viewport</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Test Results Summary -->
+  <div class="test-section" style="background: oklch(0.96 0.005 220);">
+    <h2 class="test-section__title">✓ Expected Results</h2>
+    <ul>
+      <li><strong>Viewport Width</strong>: Should match window.innerWidth</li>
+      <li><strong>Document Width</strong>: Should equal or be less than viewport width</li>
+      <li><strong>Body Width</strong>: Should equal or be less than viewport width</li>
+      <li><strong>Max Child Width</strong>: Should not exceed viewport width</li>
+      <li><strong>ScrollX</strong>: Should remain at 0</li>
+      <li><strong>Status</strong>: Should show "NO OVERFLOW ✓" in green</li>
+    </ul>
+    
+    <h3 style="margin-top: 20px;">Viewport Test Coverage</h3>
+    <ul>
+      <li>320px - iPhone SE (smallest modern mobile)</li>
+      <li>375px - iPhone 13/14 standard</li>
+      <li>414px - iPhone Plus models</li>
+      <li>768px - iPad portrait</li>
+      <li>1024px - iPad landscape / small desktop</li>
+    </ul>
+  </div>
+</main>
+
+<script>
+  // Overflow monitoring system
+  function checkOverflow() {
+    const viewport = window.innerWidth;
+    const docWidth = document.documentElement.scrollWidth;
+    const bodyWidth = document.body.scrollWidth;
+    const scrollX = window.scrollX || window.pageXOffset;
+    
+    // Find widest element
+    let maxChildWidth = 0;
+    let maxChildElement = null;
+    document.querySelectorAll('*').forEach(el => {
+      // Skip the monitor itself
+      if (el.id === 'overflowMonitor' || el.id === 'overflowAlert') return;
+      
+      const rect = el.getBoundingClientRect();
+      const rightEdge = rect.right;
+      
+      if (rightEdge > maxChildWidth) {
+        maxChildWidth = rightEdge;
+        maxChildElement = el;
+      }
+    });
+    
+    // Determine if overflow exists
+    const hasOverflow = docWidth > viewport || bodyWidth > viewport || maxChildWidth > viewport;
+    
+    // Update monitor display
+    document.getElementById('viewportWidth').textContent = viewport + 'px';
+    document.getElementById('documentWidth').textContent = docWidth + 'px';
+    document.getElementById('bodyWidth').textContent = bodyWidth + 'px';
+    document.getElementById('maxChildWidth').textContent = Math.round(maxChildWidth) + 'px';
+    document.getElementById('scrollX').textContent = scrollX + 'px';
+    
+    const statusEl = document.getElementById('overflowStatus');
+    if (hasOverflow) {
+      statusEl.textContent = 'OVERFLOW ❌';
+      statusEl.classList.add('error');
+      document.getElementById('overflowAlert').classList.add('visible');
+      
+      // Highlight problematic element
+      if (maxChildElement && maxChildWidth > viewport) {
+        console.warn('Overflow detected! Widest element:', maxChildElement);
+        console.warn('Element width:', maxChildWidth, 'Viewport:', viewport);
+      }
+    } else {
+      statusEl.textContent = 'NO OVERFLOW ✓';
+      statusEl.classList.remove('error');
+      document.getElementById('overflowAlert').classList.remove('visible');
+    }
+    
+    // Color code the values
+    document.getElementById('documentWidth').classList.toggle('error', docWidth > viewport);
+    document.getElementById('bodyWidth').classList.toggle('error', bodyWidth > viewport);
+    document.getElementById('maxChildWidth').classList.toggle('error', maxChildWidth > viewport);
+    document.getElementById('scrollX').classList.toggle('error', scrollX > 0);
+  }
+  
+  // Note: setViewportWidth is just for documentation, can't actually resize browser
+  function setViewportWidth(width) {
+    alert('Please manually resize your browser window to ' + width + 'px width.\n\nNote: This is for testing purposes. The actual resize must be done manually by dragging the browser window.');
+  }
+  
+  // Run checks
+  window.addEventListener('load', checkOverflow);
+  window.addEventListener('resize', checkOverflow);
+  window.addEventListener('scroll', checkOverflow);
+  
+  // Continuous monitoring
+  setInterval(checkOverflow, 1000);
+  
+  // Initial check
+  checkOverflow();
+</script>
