@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Centering Fix Test - Visual Drift Correction</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    
+    .test-section {
+      margin: 3rem 0;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 12px;
+      border: 1px solid rgba(0, 217, 255, 0.2);
+    }
+    
+    h1, h2 {
+      color: #00d9ff;
+      margin-bottom: 1rem;
+    }
+    
+    .info-box {
+      padding: 1rem;
+      background: rgba(0, 217, 255, 0.1);
+      border-left: 4px solid #00d9ff;
+      margin: 1rem 0;
+    }
+    
+    .visual-guide {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    
+    .center-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba(255, 0, 255, 0.5);
+      transform: translateX(-50%);
+    }
+    
+    .center-label {
+      position: absolute;
+      left: 50%;
+      top: 10px;
+      transform: translateX(-50%);
+      background: rgba(255, 0, 255, 0.9);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: bold;
+    }
+    
+    /* Test card styling */
+    .test-card {
+      padding: 2rem;
+      background: rgba(0, 217, 255, 0.05);
+      border: 1px solid rgba(0, 217, 255, 0.2);
+      border-radius: 8px;
+      text-align: center;
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .genesis-blocks-section {
+      background: rgba(10, 10, 20, 0.8);
+      padding: 4rem 0;
+      position: relative;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .genesis-blocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      justify-content: center;  /* THE FIX */
+    }
+    
+    .genesis-block {
+      background: rgba(255, 255, 255, 0.03);
+      border: 2px solid rgba(0, 217, 255, 0.3);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .genesis-block:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 217, 255, 0.6);
+    }
+    
+    /* Without fix demo */
+    .grid-without-fix {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+      gap: 2rem;
+      /* justify-content: center; - MISSING! */
+    }
+    
+    /* With fix demo */
+    .grid-with-fix {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+      gap: 2rem;
+      justify-content: center;  /* ADDED! */
+    }
+    
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: bold;
+      margin-left: 0.5rem;
+    }
+    
+    .status-bad {
+      background: rgba(255, 0, 0, 0.2);
+      color: #ff6b6b;
+      border: 1px solid rgba(255, 0, 0, 0.5);
+    }
+    
+    .status-good {
+      background: rgba(0, 255, 0, 0.2);
+      color: #51cf66;
+      border: 1px solid rgba(0, 255, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <!-- Visual guide overlay -->
+  <div class="visual-guide">
+    <div class="center-line"></div>
+    <div class="center-label">CENTER LINE (50%)</div>
+  </div>
+
+  <h1>🎯 Grid Centering Fix Test</h1>
+  
+  <div class="info-box">
+    <strong>Purpose:</strong> This page demonstrates the visual drift fix by comparing grids 
+    <strong>without</strong> and <strong>with</strong> <code>justify-content: center;</code>
+    <br><br>
+    <strong>Visual Guide:</strong> The magenta center line shows the exact middle of the viewport.
+    <br><br>
+    <strong>Issue:</strong> When auto-fit grid tracks don't perfectly fill the container, they default to start (left), 
+    causing empty space on the right side.
+    <br><br>
+    <strong>Fix:</strong> Adding <code>justify-content: center;</code> distributes leftover space equally on both sides.
+  </div>
+
+  <!-- Test 1: Grid WITHOUT fix -->
+  <section class="test-section">
+    <h2>❌ BEFORE: Grid Without justify-content: center <span class="status-badge status-bad">DRIFT</span></h2>
+    <p>Notice the empty space on the right when there are 3 cards (not perfectly filling the container):</p>
+    
+    <div class="grid-without-fix">
+      <div class="test-card">Card 1<br><small>Left-aligned</small></div>
+      <div class="test-card">Card 2<br><small>Left-aligned</small></div>
+      <div class="test-card">Card 3<br><small>Left-aligned</small></div>
+    </div>
+    
+    <p style="margin-top: 1rem; color: #ff6b6b;">
+      ⚠️ The grid is pinned to the left, creating a "void" on the right side.
+    </p>
+  </section>
+
+  <!-- Test 2: Grid WITH fix -->
+  <section class="test-section">
+    <h2>✅ AFTER: Grid With justify-content: center <span class="status-badge status-good">CENTERED</span></h2>
+    <p>With the fix, leftover space is distributed equally on both sides:</p>
+    
+    <div class="grid-with-fix">
+      <div class="test-card">Card 1<br><small>Centered</small></div>
+      <div class="test-card">Card 2<br><small>Centered</small></div>
+      <div class="test-card">Card 3<br><small>Centered</small></div>
+    </div>
+    
+    <p style="margin-top: 1rem; color: #51cf66;">
+      ✓ The grid is centered, with equal space on both left and right sides.
+    </p>
+  </section>
+
+  <!-- Test 3: Real Genesis Blocks -->
+  <section class="genesis-blocks-section">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 0.5rem;">
+        🧬 Real Genesis Blocks Grid
+        <span class="status-badge status-good">FIXED</span>
+      </h2>
+      <p style="text-align: center; color: rgba(255, 255, 255, 0.7); margin-bottom: 2rem;">
+        The actual genesis-blocks component with the fix applied
+      </p>
+      
+      <div class="genesis-blocks">
+        <div class="genesis-block">
+          <h3 style="margin: 0 0 1rem 0; color: #00d9ff;">Human Essence</h3>
+          <p style="margin: 0; opacity: 0.8;">Embedding consciousness into digital form</p>
+        </div>
+        <div class="genesis-block">
+          <h3 style="margin: 0 0 1rem 0; color: #ffd700;">Self-Improvement</h3>
+          <p style="margin: 0; opacity: 0.8;">Continuous evolution and growth</p>
+        </div>
+        <div class="genesis-block">
+          <h3 style="margin: 0 0 1rem 0; color: #00d9ff;">Infinite Possibilities</h3>
+          <p style="margin: 0; opacity: 0.8;">Boundless potential for creation</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Test 4: Different card counts -->
+  <section class="test-section">
+    <h2>📊 Testing Various Card Counts (All Centered)</h2>
+    
+    <h3 style="margin-top: 2rem;">2 Cards:</h3>
+    <div class="grid-with-fix">
+      <div class="test-card">Card 1</div>
+      <div class="test-card">Card 2</div>
+    </div>
+    
+    <h3 style="margin-top: 2rem;">4 Cards:</h3>
+    <div class="grid-with-fix">
+      <div class="test-card">Card 1</div>
+      <div class="test-card">Card 2</div>
+      <div class="test-card">Card 3</div>
+      <div class="test-card">Card 4</div>
+    </div>
+    
+    <h3 style="margin-top: 2rem;">5 Cards (Odd number - Shows centering clearly):</h3>
+    <div class="grid-with-fix">
+      <div class="test-card">Card 1</div>
+      <div class="test-card">Card 2</div>
+      <div class="test-card">Card 3</div>
+      <div class="test-card">Card 4</div>
+      <div class="test-card">Card 5</div>
+    </div>
+  </section>
+
+  <div class="info-box" style="margin-top: 3rem;">
+    <strong>✅ Fix Applied To:</strong>
+    <ul style="margin: 0.5rem 0 0 1.5rem;">
+      <li><code>genesis-environment('distributed')</code> - Main Bento grid layout</li>
+      <li><code>genesis-environment('interaction-form')</code> - Form layouts</li>
+      <li><code>genesis-environment('navigation-footer')</code> - Footer navigation</li>
+      <li><code>genesis-environment('user-grid')</code> - User/member grids</li>
+      <li><code>genesis-atmosphere('dense-desktop')</code> - High-density layouts</li>
+      <li><code>.genesis-blocks</code> - Genesis blocks component</li>
+      <li>Auto-fit grids in <code>_layout-wrappers.scss</code> (6 classes: landing-features, gallery, profile-stats, splash-countdown, docs-nav, article-nav)</li>
+    </ul>
+  </div>
+
+  <script>
+    // Add resize handler to demonstrate responsive behavior
+    window.addEventListener('resize', () => {
+      console.log('Window width:', window.innerWidth);
+    });
+    
+    // Log initial viewport size
+    console.log('Initial viewport width:', window.innerWidth);
+  </script>
+</body>
+</html>

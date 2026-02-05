@@ -93,6 +93,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
       gap: 1.5rem;
+      justify-content: center;  // Center items to prevent drift
     }
     
     // Ultrawide: cap at 4 columns
