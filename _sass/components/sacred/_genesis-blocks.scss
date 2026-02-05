@@ -32,6 +32,7 @@
   grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: $spacing-2xl;
   margin-top: $spacing-4xl;
+  justify-content: center;  // Center tracks when they don't fill container
   
   @include media-breakpoint-down(md) {
     grid-template-columns: 1fr;

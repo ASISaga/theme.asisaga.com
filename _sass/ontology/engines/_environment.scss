@@ -18,6 +18,7 @@
   @if $logic == 'distributed' {
     // Autonomous entities in non-linear grid (Bento) - responsive by default
     container-type: inline-size;
+    justify-content: center;  // Center tracks to prevent right-side drift
     
     // Mobile: single column for clarity
     @media (max-width: 767px) {
@@ -41,7 +42,7 @@
     @media (min-width: 1920px) {
       grid-template-columns: repeat(4, 1fr);
       max-width: 1600px;
-      margin: 0 auto;
+      margin-inline: auto;  // Explicit inline centering for consistency
     }
   } 
   @else if $logic == 'focused' {
@@ -167,6 +168,7 @@
     // Form layout optimized for data entry
     display: grid;
     gap: 1.5rem;
+    justify-content: center;  // Center form fields to prevent drift
     
     // Mobile: force single column for clarity
     @media (max-width: 767px) {
@@ -256,6 +258,7 @@
     // Multi-column footer navigation layout
     display: grid;
     gap: var(--space-footer, clamp(2rem, 3vw, 3rem));
+    justify-content: center;  // Center footer columns to prevent drift
     
     // Mobile: single column for clarity
     @media (max-width: 767px) {
@@ -430,6 +433,7 @@
     display: grid;
     gap: var(--space-user-grid, clamp(1rem, 2vw, 1.5rem));
     container-type: inline-size;
+    justify-content: center;  // Center user cards to prevent drift
     
     // Mobile: single column for user cards
     @media (max-width: 767px) {

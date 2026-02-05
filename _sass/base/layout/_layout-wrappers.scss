@@ -75,6 +75,7 @@
   gap: clamp(1rem, 2vw, 2rem);
   max-width: 100%;  // Enforce horizontal containment
   overflow-x: hidden;  // Prevent grid overflow
+  justify-content: center;  // Center tracks to prevent right-side drift
 }
 
 // Three-column grids
