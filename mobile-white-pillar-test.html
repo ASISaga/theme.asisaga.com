@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>White Pillar Mobile Layout Test</title>
+  <title>White Pillar Mobile Layout Test - Before & After Fix</title>
   <link rel="stylesheet" href="assets/css/main.css">
   <style>
     body {
@@ -11,6 +11,7 @@
       padding: 0;
       background: #0a0a0a;
       font-family: system-ui, -apple-system, sans-serif;
+      color: #e0e0e0;
     }
     
     /* Visual debugging helper */
@@ -22,8 +23,8 @@
       height: 100vh;
       pointer-events: none;
       z-index: 9999;
-      border-left: 2px dashed rgba(255, 0, 0, 0.3);
-      border-right: 2px dashed rgba(255, 0, 0, 0.3);
+      border-left: 2px dashed rgba(255, 0, 0, 0.5);
+      border-right: 2px dashed rgba(255, 0, 0, 0.5);
     }
     
     .guide-label {
@@ -32,10 +33,11 @@
       right: 10px;
       background: rgba(255, 0, 0, 0.8);
       color: white;
-      padding: 0.5rem;
+      padding: 0.5rem 0.75rem;
       font-size: 0.75rem;
       z-index: 10000;
       border-radius: 4px;
+      font-weight: bold;
     }
     
     h1, h2, h3 {
@@ -45,9 +47,68 @@
     .test-description {
       background: rgba(0, 217, 255, 0.1);
       border-left: 4px solid #00d9ff;
-      padding: 1rem;
-      margin: 1rem 0;
+      padding: 1.5rem;
+      margin: 0 1rem 2rem 1rem;
       color: #e0e0e0;
+    }
+    
+    .test-section {
+      margin: 3rem 0;
+    }
+    
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: bold;
+      margin-left: 0.5rem;
+    }
+    
+    .status-fixed {
+      background: rgba(0, 255, 0, 0.2);
+      color: #51cf66;
+      border: 1px solid rgba(0, 255, 0, 0.5);
+    }
+    
+    .status-broken {
+      background: rgba(255, 0, 0, 0.2);
+      color: #ff6b6b;
+      border: 1px solid rgba(255, 0, 0, 0.5);
+    }
+    
+    /* Demonstration: Add vibrant atmosphere to section */
+    .genesis-blocks-section--vibrant {
+      background: oklch(0.99 0.005 90);  /* White background */
+      border: 2px solid oklch(0.65 0.25 230);  /* Neon blue border */
+      box-shadow: 
+        0 0 16px oklch(0.65 0.25 230 / 0.25),
+        0 4px 12px oklch(0.08 0.01 250 / 0.15);
+    }
+    
+    .genesis-blocks-section--vibrant h3,
+    .genesis-blocks-section--vibrant p {
+      color: oklch(0.12 0.01 250);  /* Black text for white bg */
+    }
+    
+    /* Info callouts */
+    .callout {
+      padding: 1rem;
+      margin: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid;
+    }
+    
+    .callout-issue {
+      background: rgba(255, 200, 0, 0.1);
+      border-color: #ffc800;
+      color: #ffc800;
+    }
+    
+    .callout-success {
+      background: rgba(0, 255, 0, 0.1);
+      border-color: #51cf66;
+      color: #51cf66;
     }
   </style>
 </head>
@@ -55,76 +116,141 @@
   
   <!-- Visual debugging guide - shows viewport edges -->
   <div class="visual-guide"></div>
-  <div class="guide-label">Screen Edges (Red Dashed)</div>
+  <div class="guide-label">Viewport Edges</div>
   
-  <!-- Test Section: Genesis Blocks with Vibrant Atmosphere -->
-  <section class="genesis-blocks-section">
-    <div class="test-description" style="margin: 0 1rem 2rem 1rem;">
-      <h2>Test: Genesis Blocks Section</h2>
-      <p><strong>Expected:</strong> Either full-bleed white (edge-to-edge) OR black background with white cards.</p>
-      <p><strong>Problem (Mobile):</strong> White background "pinched" by padding, showing black gutters at edges.</p>
+  <!-- Introduction -->
+  <div class="test-description">
+    <h1>Mobile "White Pillar" Layout Fix</h1>
+    <p><strong>Problem:</strong> When a section has a white/colored atmosphere background and the inner container has horizontal padding, the background gets "pinched" on mobile, showing black gutters at the edges instead of edge-to-edge white.</p>
+    <p><strong>Solution:</strong> De-couple atmosphere from layout padding. Section extends to viewport edges, inner wrapper provides content padding.</p>
+  </div>
+  
+  <!-- Test 1: BEFORE FIX - The Problem -->
+  <div class="test-section">
+    <div class="callout callout-issue">
+      <h2>❌ BEFORE FIX <span class="status-badge status-broken">BROKEN</span></h2>
+      <p>This section shows the "white pillar" problem. On mobile (< 768px), notice:</p>
+      <ul>
+        <li>White background doesn't reach red dashed edges</li>
+        <li>Black gutters visible on left/right sides</li>
+        <li>Container padding "pinches" the atmosphere</li>
+      </ul>
     </div>
     
-    <div class="container">
-      <h3 style="text-align: center; color: white; margin-bottom: 2rem;">
-        The Genesis of Human Transcendence
-      </h3>
-      
-      <div class="genesis-blocks">
-        <article class="genesis-block consciousness-embedding">
-          <div class="genesis-block-icon">
-            <i class="fas fa-brain"></i>
-          </div>
-          <h4 class="genesis-block-title">Human Essence Embedding</h4>
-          <p class="genesis-block-text">
-            Your unique creativity, wisdom, and consciousness become integral to ASI's evolution.
-          </p>
-          <a href="#" class="genesis-block-link">Learn More →</a>
-        </article>
+    <section class="genesis-blocks-section genesis-blocks-section--vibrant">
+      <!-- Using OLD structure: container with padding -->
+      <div class="container">
+        <h3 style="text-align: center; margin-bottom: 2rem;">
+          The Genesis of Human Transcendence
+        </h3>
         
-        <article class="genesis-block transcendent-evolution">
-          <div class="genesis-block-icon">
-            <i class="fas fa-infinity"></i>
-          </div>
-          <h4 class="genesis-block-title">Continuous Self-Improvement</h4>
-          <p class="genesis-block-text">
-            Each contribution creates feedback loops that make ASI more aligned with human values.
-          </p>
-          <a href="#" class="genesis-block-link">Explore →</a>
-        </article>
-        
-        <article class="genesis-block infinite-potential">
-          <div class="genesis-block-icon">
-            <i class="fas fa-star"></i>
-          </div>
-          <h4 class="genesis-block-title">Infinite Possibilities</h4>
-          <p class="genesis-block-text">
-            Together, we transcend limitations and create a future beyond imagination.
-          </p>
-          <a href="#" class="genesis-block-link transcendent-cta">Join Genesis →</a>
-        </article>
+        <div class="genesis-blocks">
+          <article class="genesis-block consciousness-embedding">
+            <div class="genesis-block-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h4 class="genesis-block-title">Human Essence</h4>
+            <p class="genesis-block-text">
+              Your unique creativity becomes integral to ASI.
+            </p>
+          </article>
+          
+          <article class="genesis-block transcendent-evolution">
+            <div class="genesis-block-icon">
+              <i class="fas fa-infinity"></i>
+            </div>
+            <h4 class="genesis-block-title">Self-Improvement</h4>
+            <p class="genesis-block-text">
+              Each contribution creates alignment feedback loops.
+            </p>
+          </article>
+          
+          <article class="genesis-block infinite-potential">
+            <div class="genesis-block-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <h4 class="genesis-block-title">Infinite Possibilities</h4>
+            <p class="genesis-block-text">
+              Together, we transcend limitations.
+            </p>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
   
-  <!-- Instructions for testing -->
+  <!-- Test 2: AFTER FIX - The Solution -->
+  <div class="test-section" style="margin-top: 5rem;">
+    <div class="callout callout-success">
+      <h2>✅ AFTER FIX <span class="status-badge status-fixed">FIXED</span></h2>
+      <p>This section demonstrates the fixed layout. On mobile, notice:</p>
+      <ul>
+        <li>White background reaches red dashed edges (full-bleed)</li>
+        <li>No black gutters - atmosphere extends to viewport</li>
+        <li>Content has proper padding inside via wrapper</li>
+      </ul>
+    </div>
+    
+    <section class="genesis-blocks-section genesis-blocks-section--vibrant">
+      <!-- Using NEW structure: wrapper with padding -->
+      <div class="genesis-blocks-wrapper">
+        <h3 style="text-align: center; margin-bottom: 2rem;">
+          The Genesis of Human Transcendence
+        </h3>
+        
+        <div class="genesis-blocks">
+          <article class="genesis-block consciousness-embedding">
+            <div class="genesis-block-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h4 class="genesis-block-title">Human Essence</h4>
+            <p class="genesis-block-text">
+              Your unique creativity becomes integral to ASI.
+            </p>
+          </article>
+          
+          <article class="genesis-block transcendent-evolution">
+            <div class="genesis-block-icon">
+              <i class="fas fa-infinity"></i>
+            </div>
+            <h4 class="genesis-block-title">Self-Improvement</h4>
+            <p class="genesis-block-text">
+              Each contribution creates alignment feedback loops.
+            </p>
+          </article>
+          
+          <article class="genesis-block infinite-potential">
+            <div class="genesis-block-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <h4 class="genesis-block-title">Infinite Possibilities</h4>
+            <p class="genesis-block-text">
+              Together, we transcend limitations.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <!-- Testing Instructions -->
   <section style="padding: 2rem; background: rgba(255, 255, 255, 0.05); margin: 2rem 1rem;">
-    <h2>How to Test</h2>
-    <ol style="color: #e0e0e0; line-height: 1.8;">
-      <li><strong>Resize browser to mobile width (375px)</strong></li>
-      <li>Look at the section background - does it reach the red dashed edges?</li>
-      <li>Check for "white pillar" effect: white background with black gutters on sides</li>
-      <li>The background should either:
-        <ul>
-          <li>Option A: Reach edge-to-edge (full bleed white)</li>
-          <li>Option B: Be black with white cards inside</li>
-        </ul>
-      </li>
+    <h2>Testing Instructions</h2>
+    <ol style="line-height: 1.8;">
+      <li><strong>Resize browser to mobile width (375px or use DevTools)</strong></li>
+      <li>Compare the two sections above</li>
+      <li>Notice the difference in how the white background extends</li>
+      <li>The red dashed lines show viewport edges for reference</li>
     </ol>
     
-    <div style="background: rgba(255, 200, 0, 0.1); padding: 1rem; margin-top: 1rem; border-left: 4px solid #ffc800;">
-      <strong>Current Issue:</strong> The white/colored background is "pinched" by padding,
-      creating unwanted black gutters on mobile screens.
+    <h3>Key Differences:</h3>
+    <ul style="line-height: 1.8;">
+      <li><strong>BEFORE:</strong> Uses <code>.container</code> with horizontal padding → creates "white pillar"</li>
+      <li><strong>AFTER:</strong> Uses <code>.genesis-blocks-wrapper</code> with padding → full-bleed atmosphere</li>
+    </ul>
+    
+    <div style="background: rgba(0, 217, 255, 0.1); padding: 1rem; margin-top: 1.5rem; border-left: 4px solid #00d9ff;">
+      <strong>Pattern:</strong> Atmosphere = Viewport Width (100%); Entities = Content Width (Viewport - Gutters)
     </div>
   </section>
   
