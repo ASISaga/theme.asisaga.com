@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>White Pillar Mobile Layout Test</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    
+    /* Visual debugging helper */
+    .visual-guide {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+      border-left: 2px dashed rgba(255, 0, 0, 0.3);
+      border-right: 2px dashed rgba(255, 0, 0, 0.3);
+    }
+    
+    .guide-label {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: rgba(255, 0, 0, 0.8);
+      color: white;
+      padding: 0.5rem;
+      font-size: 0.75rem;
+      z-index: 10000;
+      border-radius: 4px;
+    }
+    
+    h1, h2, h3 {
+      color: #00d9ff;
+    }
+    
+    .test-description {
+      background: rgba(0, 217, 255, 0.1);
+      border-left: 4px solid #00d9ff;
+      padding: 1rem;
+      margin: 1rem 0;
+      color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Visual debugging guide - shows viewport edges -->
+  <div class="visual-guide"></div>
+  <div class="guide-label">Screen Edges (Red Dashed)</div>
+  
+  <!-- Test Section: Genesis Blocks with Vibrant Atmosphere -->
+  <section class="genesis-blocks-section">
+    <div class="test-description" style="margin: 0 1rem 2rem 1rem;">
+      <h2>Test: Genesis Blocks Section</h2>
+      <p><strong>Expected:</strong> Either full-bleed white (edge-to-edge) OR black background with white cards.</p>
+      <p><strong>Problem (Mobile):</strong> White background "pinched" by padding, showing black gutters at edges.</p>
+    </div>
+    
+    <div class="container">
+      <h3 style="text-align: center; color: white; margin-bottom: 2rem;">
+        The Genesis of Human Transcendence
+      </h3>
+      
+      <div class="genesis-blocks">
+        <article class="genesis-block consciousness-embedding">
+          <div class="genesis-block-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h4 class="genesis-block-title">Human Essence Embedding</h4>
+          <p class="genesis-block-text">
+            Your unique creativity, wisdom, and consciousness become integral to ASI's evolution.
+          </p>
+          <a href="#" class="genesis-block-link">Learn More →</a>
+        </article>
+        
+        <article class="genesis-block transcendent-evolution">
+          <div class="genesis-block-icon">
+            <i class="fas fa-infinity"></i>
+          </div>
+          <h4 class="genesis-block-title">Continuous Self-Improvement</h4>
+          <p class="genesis-block-text">
+            Each contribution creates feedback loops that make ASI more aligned with human values.
+          </p>
+          <a href="#" class="genesis-block-link">Explore →</a>
+        </article>
+        
+        <article class="genesis-block infinite-potential">
+          <div class="genesis-block-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <h4 class="genesis-block-title">Infinite Possibilities</h4>
+          <p class="genesis-block-text">
+            Together, we transcend limitations and create a future beyond imagination.
+          </p>
+          <a href="#" class="genesis-block-link transcendent-cta">Join Genesis →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Instructions for testing -->
+  <section style="padding: 2rem; background: rgba(255, 255, 255, 0.05); margin: 2rem 1rem;">
+    <h2>How to Test</h2>
+    <ol style="color: #e0e0e0; line-height: 1.8;">
+      <li><strong>Resize browser to mobile width (375px)</strong></li>
+      <li>Look at the section background - does it reach the red dashed edges?</li>
+      <li>Check for "white pillar" effect: white background with black gutters on sides</li>
+      <li>The background should either:
+        <ul>
+          <li>Option A: Reach edge-to-edge (full bleed white)</li>
+          <li>Option B: Be black with white cards inside</li>
+        </ul>
+      </li>
+    </ol>
+    
+    <div style="background: rgba(255, 200, 0, 0.1); padding: 1rem; margin-top: 1rem; border-left: 4px solid #ffc800;">
+      <strong>Current Issue:</strong> The white/colored background is "pinched" by padding,
+      creating unwanted black gutters on mobile screens.
+    </div>
+  </section>
+  
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
