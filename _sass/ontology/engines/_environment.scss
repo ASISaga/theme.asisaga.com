@@ -31,9 +31,9 @@
       gap: 1.75rem;
     }
     
-    // Desktop: auto-fit with min/max
+    // Desktop: auto-fit with min/max (responsive to ultra-small screens)
     @media (min-width: 1024px) {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
       gap: 2rem;
     }
     
@@ -174,15 +174,15 @@
       gap: 1.25rem;
     }
     
-    // Tablet: 2-column where appropriate
+    // Tablet: 2-column where appropriate (responsive to ultra-small screens)
     @media (min-width: 768px) and (max-width: 1023px) {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
       gap: 1.5rem 1.25rem;
     }
     
-    // Desktop: allow multi-column with intelligent fitting
+    // Desktop: allow multi-column with intelligent fitting (responsive to ultra-small screens)
     @media (min-width: 1024px) {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
       gap: 2rem 1.5rem;
     }
     
@@ -269,9 +269,9 @@
       gap: 2.5rem 2rem;
     }
     
-    // Desktop: 3-4 columns based on content
+    // Desktop: 3-4 columns based on content (responsive to ultra-small screens)
     @media (min-width: 1024px) {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
       gap: 3rem 2rem;
     }
   }
@@ -443,9 +443,9 @@
       gap: 1.25rem;
     }
     
-    // Desktop: 3-4 columns based on container size
+    // Desktop: 3-4 columns based on container size (responsive to ultra-small screens)
     @media (min-width: 1024px) {
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
       gap: 1.5rem;
     }
     
