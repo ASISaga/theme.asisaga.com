@@ -4,11 +4,23 @@
  * 
  * Interactive blocks that showcase Human Essence Embedding, Continuous Self-Improvement,
  * and Infinite Possibilities - the core elements of humanity's Transcendent Pathway
+ * 
+ * ARCHITECTURE NOTE:
+ * - Section = Atmosphere carrier (full-bleed, no horizontal padding)
+ * - Wrapper = Content constrainer (applies horizontal padding for touch safety)
+ * - This decouples atmosphere boundaries from content padding to prevent "white pillar" effect
  */
 
 .genesis-blocks-section {
   @include section-spacing-large;
   position: relative;
+  
+  // DE-COUPLED ATMOSPHERE PATTERN:
+  // Atmosphere extends to viewport edges (no horizontal padding)
+  // Content padding applied to inner wrapper instead
+  width: 100%;
+  margin-inline: 0;
+  padding-inline: 0;
   
   // Consciousness network background
   &::before {
@@ -20,10 +32,30 @@
     pointer-events: none;
   }
   
-  .container {
+  // OVERRIDE: Remove horizontal padding from direct child container only
+  // to prevent "white pillar" effect on mobile
+  // Using child combinator (>) to limit scope and prevent side effects
+  > .container {
     position: relative;
     z-index: 2;
+    padding-inline: 0;
+    max-width: none;
   }
+}
+
+// Genesis Blocks Wrapper - Content Constrainer
+// Applies horizontal padding for touch-friendly spacing
+// while allowing section atmosphere to reach edges
+.genesis-blocks-wrapper {
+  // Horizontal padding for content safety (mobile-first)
+  padding-inline: clamp(1rem, 3vw, 2rem);
+  
+  // Max width constraint for readability
+  max-width: 1200px;
+  margin-inline: auto;
+  
+  // Ensure full width usage within max-width
+  width: 100%;
 }
 
 // Genesis Block Grid (responsive to ultra-small screens)
