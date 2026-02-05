@@ -32,9 +32,10 @@
     pointer-events: none;
   }
   
-  // OVERRIDE: Remove horizontal padding from container
+  // OVERRIDE: Remove horizontal padding from direct child container only
   // to prevent "white pillar" effect on mobile
-  .container {
+  // Using child combinator (>) to limit scope and prevent side effects
+  > .container {
     position: relative;
     z-index: 2;
     padding-inline: 0;
