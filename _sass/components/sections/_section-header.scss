@@ -6,7 +6,7 @@
   @include genesis-environment('focused');
   @include genesis-atmosphere('spacious-mobile');
   
-  // Safety gutter - prevents text from touching edges on mobile
+  // Safety gutter - prevents text from touching edges
   padding-inline: 1.5rem;
   
   .section-title {

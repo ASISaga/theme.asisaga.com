@@ -24,7 +24,7 @@
   @include genesis-environment('chronological'); // Vertical flow
   @include genesis-atmosphere('neutral');         // Standard vibe
   
-  // Safety gutter - prevents content from touching edges on mobile
+  // Safety gutter - prevents content from touching edges
   padding-inline: 1.5rem;
 }
 
