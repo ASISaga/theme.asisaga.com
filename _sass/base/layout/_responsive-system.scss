@@ -225,6 +225,18 @@ $space-3xl: clamp(4rem, 8vw, 6rem);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(#{$min-column-width}, 100%), 1fr));
   gap: $gap;
+  
+  // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
+  width: 100%;
+  max-width: 100%;
+  
+  // TRACK-TO-ITEM STRETCHING - Items fill column width
+  justify-items: stretch;
+  
+  // MOBILE FLUIDITY - Single column below 768px
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 /// Stack layout with responsive gap

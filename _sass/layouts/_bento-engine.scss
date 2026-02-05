@@ -53,10 +53,22 @@
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: clamp(1rem, 2vw, 2rem);
   
+  // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
+  width: 100%;
+  max-width: 100%;
+  
+  // TRACK-TO-ITEM STRETCHING - Items fill column width
+  justify-items: stretch;
+  
   // Enable container queries
   container-type: inline-size;
   contain: layout style;
   isolation: isolate;
+  
+  // MOBILE FLUIDITY - Single column below 768px
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 // Dashboard Bento - Named areas for sentient dashboard feel
@@ -109,12 +121,24 @@
   
   display: grid;
   // Using Uppercase Min to ensure the browser handles the 100% logic
-  grid-template-columns: repeat(auto-fill, minmax(Min(var(--card-min-width), 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--card-min-width), 100%), 1fr));
   gap: clamp(0.75rem, 1.5vw, 1.5rem);
+  
+  // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
+  width: 100%;
+  max-width: 100%;
+  
+  // TRACK-TO-ITEM STRETCHING - Items fill column width
+  justify-items: stretch;
   
   container-type: inline-size;
   contain: layout style;
   isolation: isolate;
+  
+  // MOBILE FLUIDITY - Single column below 768px
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 // Masonry Bento - Dense auto-flow layout (responsive to ultra-small screens)
@@ -125,9 +149,21 @@
   gap: clamp(1rem, 2vw, 2rem);
   grid-auto-flow: dense;
   
+  // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
+  width: 100%;
+  max-width: 100%;
+  
+  // TRACK-TO-ITEM STRETCHING - Items fill column width
+  justify-items: stretch;
+  
   container-type: inline-size;
   contain: layout style;
   isolation: isolate;
+  
+  // MOBILE FLUIDITY - Single column below 768px
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 // ----------------------------------------
@@ -140,6 +176,10 @@
   flex-direction: column;
   padding: clamp(1.25rem, 3vw, 2rem);
   border-radius: clamp(0.75rem, 1.5vw, 1.5rem);
+  
+  // BOX-SIZING & WIDTH STABILIZATION - Prevent content squashing
+  box-sizing: border-box;
+  width: 100%;
   
   // CSS Containment
   contain: layout style;

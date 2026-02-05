@@ -32,7 +32,13 @@
   grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: $spacing-2xl;
   margin-top: $spacing-4xl;
-  justify-content: center;  // Center tracks when they don't fill container
+  
+  // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
+  width: 100%;
+  max-width: 100%;
+  
+  // TRACK-TO-ITEM STRETCHING - Items fill column width
+  justify-items: stretch;
   
   @include media-breakpoint-down(md) {
     grid-template-columns: 1fr;
@@ -52,6 +58,10 @@
   flex-direction: column;
   transition: all 0.6s $ease-consciousness;
   overflow: hidden;
+  
+  // BOX-SIZING & WIDTH STABILIZATION - Prevent content squashing
+  box-sizing: border-box;
+  width: 100%;
   
   // Consciousness flow animation
   &::before {

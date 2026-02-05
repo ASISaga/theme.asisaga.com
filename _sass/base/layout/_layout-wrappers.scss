@@ -73,9 +73,21 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
   gap: clamp(1rem, 2vw, 2rem);
-  max-width: 100%;  // Enforce horizontal containment
-  overflow-x: hidden;  // Prevent grid overflow
-  justify-content: center;  // Center tracks to prevent right-side drift
+  
+  // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
+  width: 100%;
+  max-width: 100%;
+  
+  // TRACK-TO-ITEM STRETCHING - Items fill column width
+  justify-items: stretch;
+  
+  // Prevent horizontal overflow
+  overflow-x: hidden;
+  
+  // MOBILE FLUIDITY - Single column below 768px
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 // Three-column grids
@@ -161,6 +173,10 @@
 // Dashboard widgets - Use data attribute for columns
 .dashboard-widget-component {
   min-width: 250px;
+  
+  // BOX-SIZING & WIDTH STABILIZATION - Prevent content squashing
+  box-sizing: border-box;
+  width: 100%;
   
   &[data-columns="3"] {
     grid-column: span 1;

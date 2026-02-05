@@ -198,8 +198,16 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: var(--space-bento);
-  max-width: 100%;  // Enforce horizontal containment
-  overflow-x: hidden;  // Prevent grid overflow
+  
+  // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
+  width: 100%;
+  max-width: 100%;
+  
+  // TRACK-TO-ITEM STRETCHING - Items fill column width
+  justify-items: stretch;
+  
+  // Prevent horizontal overflow
+  overflow-x: hidden;
   
   @include from(md) {
     grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
@@ -213,7 +221,9 @@
 .dashboard__widget {
   @include genesis-entity('primary');
   
-  // Prevent widget content from overflowing
+  // BOX-SIZING & WIDTH STABILIZATION - Prevent widget content from overflowing
+  box-sizing: border-box;
+  width: 100%;
   max-width: 100%;
   overflow-x: hidden;
   
@@ -441,8 +451,21 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100px, 100%), 1fr));
   gap: var(--space-bento);
-  max-width: 100%;  // Enforce horizontal containment
-  overflow-x: hidden;  // Prevent grid overflow
+  
+  // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
+  width: 100%;
+  max-width: 100%;
+  
+  // TRACK-TO-ITEM STRETCHING - Items fill column width
+  justify-items: stretch;
+  
+  // Prevent horizontal overflow
+  overflow-x: hidden;
+  
+  // MOBILE FLUIDITY - Single column below 768px
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .profile__stat {
