@@ -203,7 +203,9 @@ body.user-active::before {
   }
   
   body {
-    overflow-x: visible;
+    overflow-x: auto;  // Allow overflow in print only if necessary, but don't force it
+    overflow-y: visible;
     min-height: auto;
+    max-width: 100%;  // Maintain containment even in print
   }
 }

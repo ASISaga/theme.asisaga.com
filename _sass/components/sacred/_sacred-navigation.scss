@@ -176,6 +176,7 @@
 // ----------------------------------------
 .sacred-sidenav {
   width: 280px;
+  max-width: 85vw;  // Prevent overflow on small viewports (320px = 272px max)
   background: oklch(0.99 0.005 90 / 0.98);
   border-right: 1px solid oklch(0.70 0.15 85 / 0.2);
   padding: 2rem 0;
@@ -186,6 +187,8 @@
   transform: translateX(-100%);
   transition: transform 0.3s ease;
   z-index: 1050;
+  overflow-x: hidden;  // Enforce horizontal containment
+  overflow-y: auto;    // Allow vertical scrolling if needed
   
   &.active {
     transform: translateX(0);

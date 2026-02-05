@@ -17,7 +17,8 @@
   oklch(0.55 0.22 228 / 0.9) 70%,
     oklch(0.08 0.01 250 / 0.95) 100%
   );
-  overflow: hidden;
+  overflow: hidden;  // Already present - ensures animations stay contained
+  max-width: 100%;  // Add explicit max-width for containment
   
   // Cosmic consciousness background layers
   &::before {
