@@ -19,10 +19,14 @@
   grid-template-rows: auto 1fr auto;
 }
 
-// Main Content Area
+// Main Content Area - Transparent Pass-Through Container
 .genesis-main {
   @include genesis-environment('chronological');
-  @include genesis-atmosphere('spacious-mobile');
+  
+  // De-constrained parent - allows internal atmospheres to reach edges
+  padding: 0;
+  margin: 0;
+  width: 100%;
   
   // Focus management for skip link
   &:focus {
@@ -153,12 +157,5 @@
   }
   50% {
     background-position: 100% 100%;
-  }
-}
-
-// Responsive adjustments
-@include from(md) {
-  .genesis-main {
-    @include genesis-atmosphere('neutral');  // Less padding on desktop
   }
 }

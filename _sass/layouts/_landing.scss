@@ -20,6 +20,9 @@
 .landing-layout {
   @include genesis-environment('chronological'); // Vertical flow
   @include genesis-atmosphere('vibrant');         // High-energy vibe
+  
+  // Safety gutter - prevents content from touching edges on mobile
+  padding-inline: 1.5rem;
 }
 
 // Hero section containing layout-header.html include
