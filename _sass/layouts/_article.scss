@@ -22,6 +22,9 @@
 .article-layout {
   @include genesis-environment('associative'); // Sidebar + main layout
   @include genesis-atmosphere('neutral');       // Standard vibe
+  
+  // Safety gutter - prevents content from touching edges on mobile
+  padding-inline: 1.5rem;
 }
 
 // Table of contents sidebar (not from includes - kept as-is)
