@@ -10,8 +10,9 @@
   @include section-spacing-xl;
   position: relative;
   background: $cosmic-deep-blue;
-  overflow: hidden;
+  overflow: hidden;  // Already present - ensures animations stay contained
   text-align: center;
+  max-width: 100%;  // Add explicit max-width for containment
   
   // Cosmic canvas background styling
   &.cosmic-invitation {

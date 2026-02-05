@@ -21,7 +21,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: hidden;  // Already present - ensures animations stay contained
+  max-width: 100%;  // Add explicit max-width for containment
   
   // Sacred cosmic consciousness background
   &.sacred-gradient {

@@ -247,10 +247,10 @@
     @include from(lg) {
       position: static;
       width: auto;
-      max-width: none;
+      max-width: 100%;  // Prevent overflow on desktop
       padding: 0;
       overflow-y: visible;
-      overflow-x: visible;
+      overflow-x: hidden;  // Enforce horizontal containment
       transform: none;
       
       background: transparent;

@@ -196,11 +196,13 @@
   // Tablet: 2-4 columns
   // Desktop: Full 12-column grid
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: var(--space-bento);
+  max-width: 100%;  // Enforce horizontal containment
+  overflow-x: hidden;  // Prevent grid overflow
   
   @include from(md) {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   }
   
   @include from(lg) {
@@ -210,6 +212,10 @@
 
 .dashboard__widget {
   @include genesis-entity('primary');
+  
+  // Prevent widget content from overflowing
+  max-width: 100%;
+  overflow-x: hidden;
   
   // Allow widgets to span multiple columns on desktop
   grid-column: span 12;
@@ -433,8 +439,10 @@
 
 .profile__stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100px, 100%), 1fr));
   gap: var(--space-bento);
+  max-width: 100%;  // Enforce horizontal containment
+  overflow-x: hidden;  // Prevent grid overflow
 }
 
 .profile__stat {
