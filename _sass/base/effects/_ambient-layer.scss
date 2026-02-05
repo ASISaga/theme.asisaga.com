@@ -59,6 +59,48 @@ body {
 }
 
 // ----------------------------------------
+// GEOMETRIC LEAK PREVENTION - Media & Typography
+// ----------------------------------------
+// Prevent horizontal overflow from media elements and long text
+
+// Global media constraints - prevent overflow
+img,
+svg,
+canvas,
+video,
+iframe,
+embed,
+object {
+  max-width: 100%;
+  height: auto;  // Maintain aspect ratio
+}
+
+// Ensure SVGs inside containers don't overflow
+svg {
+  display: block;  // Remove inline spacing
+}
+
+// Typography word-breaking for long unbreakable strings
+h1, h2, h3, h4, h5, h6,
+p, li, td, th,
+.content, .prose,
+article, section {
+  // Break long words to prevent overflow
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  
+  // Hyphenation for better text flow (optional, graceful degradation)
+  hyphens: auto;
+}
+
+// Prevent code blocks from causing overflow
+code, pre {
+  overflow-wrap: break-word;
+  word-break: break-all;  // More aggressive for code
+  max-width: 100%;
+}
+
+// ----------------------------------------
 // ATMOSPHERIC LAYER - Sentient Background
 // ----------------------------------------
 // Fixed pseudo-elements create persistent ambient consciousness

@@ -47,10 +47,10 @@
 // BENTO LAYOUTS - Grid Systems
 // ----------------------------------------
 
-// Primary Bento layout - Flexible grid system
+// Primary Bento layout - Flexible grid system (responsive to ultra-small screens)
 .bento-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: clamp(1rem, 2vw, 2rem);
   
   // Enable container queries
@@ -70,7 +70,7 @@
     "sidebar main main"
     "sidebar main main";
   
-  grid-template-columns: minmax(250px, 1fr) 2fr 2fr;
+  grid-template-columns: minmax(min(250px, 100%), 1fr) 2fr 2fr;
   grid-template-rows: auto 1fr 1fr;
   
   // Enable container queries
@@ -102,10 +102,10 @@
   grid-area: main;
 }
 
-// Gallery Bento - Image-optimized grid
+// Gallery Bento - Image-optimized grid (responsive to ultra-small screens)
 .bento-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(clamp(200px, 30vw, 400px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(clamp(200px, 30vw, 400px), 100%), 1fr));
   gap: clamp(0.75rem, 1.5vw, 1.5rem);
   
   container-type: inline-size;
@@ -113,10 +113,10 @@
   isolation: isolate;
 }
 
-// Masonry Bento - Dense auto-flow layout
+// Masonry Bento - Dense auto-flow layout (responsive to ultra-small screens)
 .bento-masonry {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
   grid-auto-rows: minmax(100px, auto);
   gap: clamp(1rem, 2vw, 2rem);
   grid-auto-flow: dense;

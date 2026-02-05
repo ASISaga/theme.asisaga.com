@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geometric Leak Test - ASI Saga Theme</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: oklch(0.95 0.005 220);
+      padding: 1rem;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    
+    .test-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .status-panel {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      z-index: 1000;
+      min-width: 280px;
+      max-width: 90vw;
+    }
+    
+    .status-item {
+      display: flex;
+      justify-content: space-between;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    
+    .status-ok {
+      background: oklch(0.85 0.15 150);
+      color: oklch(0.20 0.10 150);
+    }
+    
+    .status-error {
+      background: oklch(0.85 0.20 25);
+      color: oklch(0.30 0.15 25);
+    }
+    
+    .overflow-alert {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: oklch(0.55 0.25 25);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-weight: bold;
+      z-index: 2000;
+      display: none;
+    }
+    
+    .overflow-alert.active {
+      display: block;
+    }
+    
+    .test-section {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .test-section h2 {
+      margin-bottom: 1rem;
+      color: oklch(0.20 0.05 250);
+    }
+    
+    .test-description {
+      color: oklch(0.40 0.02 250);
+      margin-bottom: 1.5rem;
+      font-size: 14px;
+    }
+    
+    /* Test 1: Grid with min() function */
+    .grid-test {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+      gap: 1rem;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    
+    .grid-item {
+      background: oklch(0.75 0.15 230);
+      padding: 1.5rem;
+      border-radius: 4px;
+      color: white;
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    /* Test 2: Long unbreakable text */
+    .text-test {
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: auto;
+    }
+    
+    .code-test {
+      background: oklch(0.15 0.01 250);
+      color: oklch(0.85 0.02 150);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-wrap: break-word;
+      word-break: break-all;
+      max-width: 100%;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+    }
+    
+    /* Test 3: Images and media */
+    .media-test img,
+    .media-test svg,
+    .media-test video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* Test 4: Transform animations */
+    .animation-container {
+      position: relative;
+      height: 200px;
+      background: oklch(0.92 0.005 220);
+      border-radius: 4px;
+      overflow: hidden;
+      max-width: 100%;
+    }
+    
+    .animated-element {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 80px;
+      height: 80px;
+      background: oklch(0.65 0.25 230);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: slideAnimation 3s ease-in-out infinite;
+    }
+    
+    @keyframes slideAnimation {
+      0%, 100% { transform: translate(-50%, -50%) translateX(0); }
+      50% { transform: translate(-50%, -50%) translateX(30px); }
+    }
+    
+    /* Test 5: Flex containers */
+    .flex-test {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      max-width: 100%;
+    }
+    
+    .flex-item {
+      flex: 1 1 200px;
+      min-width: 0;  /* Critical for text wrapping */
+      background: oklch(0.70 0.15 85);
+      padding: 1rem;
+      border-radius: 4px;
+      color: oklch(0.20 0.05 85);
+    }
+    
+    /* Test 6: Box shadows */
+    .shadow-test {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px oklch(0.08 0.01 250 / 0.4);
+      max-width: 100%;
+    }
+    
+    .viewport-sizes {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+    
+    .viewport-btn {
+      padding: 0.5rem 1rem;
+      background: oklch(0.65 0.25 230);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    
+    .viewport-btn:hover {
+      background: oklch(0.70 0.27 230);
+    }
+  </style>
+</head>
+<body>
+  <div class="overflow-alert" id="overflowAlert">
+    ⚠️ HORIZONTAL OVERFLOW DETECTED - Check console for details
+  </div>
+
+  <div class="status-panel" id="statusPanel">
+    <h3 style="margin-bottom: 1rem;">Overflow Monitor</h3>
+    <div class="status-item" id="viewportStatus">
+      <span>Viewport:</span>
+      <strong id="viewportWidth">-</strong>
+    </div>
+    <div class="status-item" id="documentStatus">
+      <span>Document:</span>
+      <strong id="documentWidth">-</strong>
+    </div>
+    <div class="status-item" id="bodyStatus">
+      <span>Body:</span>
+      <strong id="bodyWidth">-</strong>
+    </div>
+    <div class="status-item" id="scrollStatus">
+      <span>ScrollX:</span>
+      <strong id="scrollX">-</strong>
+    </div>
+    <div class="status-item" id="overflowStatus">
+      <span>Status:</span>
+      <strong id="statusText">CHECKING...</strong>
+    </div>
+    
+    <div class="viewport-sizes">
+      <button class="viewport-btn" onclick="resizeWindow(320)">320px</button>
+      <button class="viewport-btn" onclick="resizeWindow(375)">375px</button>
+      <button class="viewport-btn" onclick="resizeWindow(414)">414px</button>
+      <button class="viewport-btn" onclick="resizeWindow(768)">768px</button>
+      <button class="viewport-btn" onclick="resizeWindow(1024)">1024px</button>
+    </div>
+  </div>
+
+  <div class="test-container">
+    <h1 style="margin: 2rem 0; color: oklch(0.20 0.05 250);">Geometric Leak Test Suite</h1>
+    
+    <!-- Test 1: Responsive Grids -->
+    <div class="test-section">
+      <h2>1. Responsive Grid with min() Function</h2>
+      <p class="test-description">
+        Grid uses minmax(min(300px, 100%), 1fr) to prevent overflow on ultra-small screens (320px).
+      </p>
+      <div class="grid-test">
+        <div class="grid-item">Grid Item 1</div>
+        <div class="grid-item">Grid Item 2</div>
+        <div class="grid-item">Grid Item 3</div>
+        <div class="grid-item">Grid Item 4</div>
+      </div>
+    </div>
+
+    <!-- Test 2: Long Text -->
+    <div class="test-section">
+      <h2>2. Long Unbreakable Text</h2>
+      <p class="test-description">
+        Tests overflow-wrap: anywhere and word-break: break-word for long strings.
+      </p>
+      <div class="text-test">
+        <p style="margin-bottom: 1rem;">
+          This is a test with a very long unbreakable URL: 
+          https://www.example.com/very/long/path/that/might/cause/horizontal/overflow/on/mobile/devices/if/not/properly/handled
+        </p>
+        <div class="code-test">
+          supercalifragilisticexpialidociousthisisaverylongwordthatmightcauseoverflowissuesifnotproperlyhandledwithwordbreakandoverflowwrap
+        </div>
+      </div>
+    </div>
+
+    <!-- Test 3: Media Constraints -->
+    <div class="test-section">
+      <h2>3. Media Element Constraints</h2>
+      <p class="test-description">
+        All media elements (img, svg, video) have max-width: 100% to prevent overflow.
+      </p>
+      <div class="media-test">
+        <svg width="1200" height="100" style="background: oklch(0.85 0.15 230); border-radius: 4px;">
+          <rect width="100%" height="100%" fill="oklch(0.75 0.20 230)"/>
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="20">
+            SVG wider than viewport (1200px) - should scale down
+          </text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Test 4: Transform Animations -->
+    <div class="test-section">
+      <h2>4. Transform Animation Containment</h2>
+      <p class="test-description">
+        Animated elements use transform: translateX() but stay within overflow: hidden container.
+      </p>
+      <div class="animation-container">
+        <div class="animated-element"></div>
+      </div>
+    </div>
+
+    <!-- Test 5: Flex Containers -->
+    <div class="test-section">
+      <h2>5. Flex Container with Long Content</h2>
+      <p class="test-description">
+        Flex items with min-width: 0 allow content to wrap and shrink properly.
+      </p>
+      <div class="flex-test">
+        <div class="flex-item">
+          Normal flex item with reasonable content that should wrap nicely.
+        </div>
+        <div class="flex-item">
+          Flex item with very long unbreakable content: 
+          thisisaverylongwordthatmightcauseissuesifminwidthisnotsetto0
+        </div>
+        <div class="flex-item">
+          Another normal flex item to test the wrapping behavior.
+        </div>
+      </div>
+    </div>
+
+    <!-- Test 6: Box Shadow -->
+    <div class="test-section">
+      <h2>6. Box Shadow Containment</h2>
+      <p class="test-description">
+        Elements with large box-shadow values don't cause horizontal overflow.
+      </p>
+      <div class="shadow-test">
+        <p>This element has a large box-shadow (60px blur) but should not cause overflow.</p>
+      </div>
+    </div>
+
+    <!-- Test 7: Negative Margins -->
+    <div class="test-section">
+      <h2>7. Negative Margin Test</h2>
+      <p class="test-description">
+        Negative margins use percentage values, not viewport units, to avoid scrollbar width issues.
+      </p>
+      <div style="max-width: 600px; margin: 0 auto; padding: 0 1rem;">
+        <div style="width: 100%; max-width: 100%; position: relative; left: 50%; right: 50%; margin-left: -50%; margin-right: -50%; background: oklch(0.75 0.15 230); padding: 2rem; color: white; text-align: center; border-radius: 4px;">
+          Full-bleed element using percentage-based negative margins (not vw units)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function checkOverflow() {
+      const viewportWidth = window.innerWidth;
+      const documentWidth = document.documentElement.scrollWidth;
+      const bodyWidth = document.body.scrollWidth;
+      const scrollX = window.scrollX || window.pageXOffset;
+      
+      // Update status panel
+      document.getElementById('viewportWidth').textContent = viewportWidth + 'px';
+      document.getElementById('documentWidth').textContent = documentWidth + 'px';
+      document.getElementById('bodyWidth').textContent = bodyWidth + 'px';
+      document.getElementById('scrollX').textContent = scrollX + 'px';
+      
+      // Check for overflow
+      const hasOverflow = documentWidth > viewportWidth || bodyWidth > viewportWidth || scrollX > 0;
+      
+      const statusText = document.getElementById('statusText');
+      const overflowStatus = document.getElementById('overflowStatus');
+      const overflowAlert = document.getElementById('overflowAlert');
+      
+      if (hasOverflow) {
+        statusText.textContent = 'OVERFLOW ✗';
+        overflowStatus.classList.remove('status-ok');
+        overflowStatus.classList.add('status-error');
+        overflowAlert.classList.add('active');
+        
+        console.error('OVERFLOW DETECTED:', {
+          viewportWidth,
+          documentWidth,
+          bodyWidth,
+          scrollX,
+          widthDiff: documentWidth - viewportWidth
+        });
+      } else {
+        statusText.textContent = 'NO OVERFLOW ✓';
+        overflowStatus.classList.remove('status-error');
+        overflowStatus.classList.add('status-ok');
+        overflowAlert.classList.remove('active');
+      }
+      
+      // Update other status items
+      document.getElementById('viewportStatus').className = 'status-item status-ok';
+      document.getElementById('documentStatus').className = 
+        documentWidth <= viewportWidth ? 'status-item status-ok' : 'status-item status-error';
+      document.getElementById('bodyStatus').className = 
+        bodyWidth <= viewportWidth ? 'status-item status-ok' : 'status-item status-error';
+      document.getElementById('scrollStatus').className = 
+        scrollX === 0 ? 'status-item status-ok' : 'status-item status-error';
+    }
+    
+    function resizeWindow(width) {
+      // Note: Window resizing only works in some contexts (not all browsers)
+      alert(`To test ${width}px viewport:\n1. Open DevTools (F12)\n2. Toggle Device Toolbar (Ctrl+Shift+M)\n3. Set width to ${width}px`);
+    }
+    
+    // Check on load
+    window.addEventListener('load', checkOverflow);
+    
+    // Check on resize
+    window.addEventListener('resize', checkOverflow);
+    
+    // Check on scroll
+    window.addEventListener('scroll', checkOverflow);
+    
+    // Periodic check
+    setInterval(checkOverflow, 1000);
+  </script>
+</body>
+</html>
