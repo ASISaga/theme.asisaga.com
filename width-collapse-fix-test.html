@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Width Collapse Fix Test - Mobile & Desktop</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: oklch(0.10 0.01 250);
+      color: oklch(0.99 0.005 90);
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    
+    .test-header {
+      background: oklch(0.08 0.01 250);
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 2px solid oklch(0.65 0.25 230);
+    }
+    
+    .test-header h1 {
+      color: oklch(0.65 0.25 230);
+      margin: 0 0 0.5rem 0;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+    }
+    
+    .test-header p {
+      color: oklch(0.70 0.02 220);
+      margin: 0;
+      font-size: clamp(0.875rem, 2vw, 1rem);
+    }
+    
+    .test-section {
+      margin: 2rem auto;
+      max-width: 1400px;
+      padding: 0 1rem;
+    }
+    
+    .test-section h2 {
+      color: oklch(0.70 0.15 85);
+      margin: 2rem 0 1rem 0;
+      font-size: clamp(1.25rem, 3vw, 2rem);
+      border-bottom: 2px solid oklch(0.70 0.15 85 / 0.3);
+      padding-bottom: 0.5rem;
+    }
+    
+    .test-info {
+      background: oklch(0.15 0.02 245 / 0.5);
+      border-left: 4px solid oklch(0.65 0.25 230);
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      border-radius: 0.5rem;
+    }
+    
+    .test-info strong {
+      color: oklch(0.65 0.25 230);
+    }
+    
+    .test-card {
+      background: oklch(0.99 0.005 90 / 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid oklch(0.85 0.005 220);
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 12px oklch(0.08 0.01 250 / 0.2);
+    }
+    
+    .test-card h3 {
+      color: oklch(0.12 0.01 250);
+      margin: 0 0 0.5rem 0;
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+    }
+    
+    .test-card p {
+      color: oklch(0.30 0.01 230);
+      margin: 0;
+      font-size: clamp(0.875rem, 2vw, 1rem);
+    }
+    
+    .test-card .card-number {
+      display: inline-block;
+      background: oklch(0.65 0.25 230);
+      color: oklch(0.99 0.005 90);
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    
+    /* Visual guides */
+    .viewport-guide {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(to right, 
+        transparent 0%, 
+        oklch(0.65 0.25 230 / 0.5) 50%, 
+        transparent 100%);
+      pointer-events: none;
+      z-index: 9999;
+    }
+    
+    .width-indicator {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      background: oklch(0.08 0.01 250 / 0.9);
+      color: oklch(0.65 0.25 230);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid oklch(0.65 0.25 230);
+      font-size: 0.875rem;
+      font-weight: bold;
+      z-index: 9998;
+      backdrop-filter: blur(10px);
+    }
+    
+    @media (max-width: 767px) {
+      .mobile-only {
+        display: block;
+        background: oklch(0.65 0.25 230 / 0.1);
+        border: 2px dashed oklch(0.65 0.25 230);
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 0.5rem;
+        text-align: center;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .mobile-only {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Viewport guide -->
+  <div class="viewport-guide"></div>
+  
+  <!-- Width indicator -->
+  <div class="width-indicator">
+    Viewport: <span id="viewport-width">-</span>px
+  </div>
+
+  <!-- Test header -->
+  <div class="test-header">
+    <h1>Width Collapse Fix Verification</h1>
+    <p>Testing grid containers with auto-fit/auto-fill on mobile and desktop</p>
+  </div>
+
+  <!-- Test sections -->
+  <div class="test-section">
+    <h2>1. Bento Layout (auto-fit grid)</h2>
+    <div class="test-info">
+      <strong>Test:</strong> Verifies width: 100%, max-width: 100%, justify-items: stretch<br>
+      <strong>Expected:</strong> Cards should fill full width, no collapse, single column on mobile
+    </div>
+    
+    <div class="mobile-only">
+      📱 Mobile View Active - Should be single column
+    </div>
+    
+    <div class="bento-layout">
+      <div class="test-card">
+        <div class="card-number">1</div>
+        <h3>Card One</h3>
+        <p>Should fill full track width</p>
+      </div>
+      <div class="test-card">
+        <div class="card-number">2</div>
+        <h3>Card Two</h3>
+        <p>Should fill full track width</p>
+      </div>
+      <div class="test-card">
+        <div class="card-number">3</div>
+        <h3>Card Three</h3>
+        <p>Should fill full track width</p>
+      </div>
+      <div class="test-card">
+        <div class="card-number">4</div>
+        <h3>Card Four</h3>
+        <p>Should fill full track width</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>2. Bento Gallery (auto-fill grid)</h2>
+    <div class="test-info">
+      <strong>Test:</strong> Gallery layout with image optimization<br>
+      <strong>Expected:</strong> Responsive grid, full width usage, mobile single column
+    </div>
+    
+    <div class="mobile-only">
+      📱 Mobile View Active - Should be single column
+    </div>
+    
+    <div class="bento-gallery">
+      <div class="test-card">
+        <div class="card-number">G1</div>
+        <h3>Gallery 1</h3>
+      </div>
+      <div class="test-card">
+        <div class="card-number">G2</div>
+        <h3>Gallery 2</h3>
+      </div>
+      <div class="test-card">
+        <div class="card-number">G3</div>
+        <h3>Gallery 3</h3>
+      </div>
+      <div class="test-card">
+        <div class="card-number">G4</div>
+        <h3>Gallery 4</h3>
+      </div>
+      <div class="test-card">
+        <div class="card-number">G5</div>
+        <h3>Gallery 5</h3>
+      </div>
+      <div class="test-card">
+        <div class="card-number">G6</div>
+        <h3>Gallery 6</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>3. Landing Features Grid</h2>
+    <div class="test-info">
+      <strong>Test:</strong> Feature cards layout from layout-wrappers<br>
+      <strong>Expected:</strong> Full width behavior, no horizontal overflow
+    </div>
+    
+    <div class="mobile-only">
+      📱 Mobile View Active - Should be single column
+    </div>
+    
+    <div class="landing-features-grid">
+      <div class="test-card">
+        <div class="card-number">F1</div>
+        <h3>Feature One</h3>
+        <p>Full width track</p>
+      </div>
+      <div class="test-card">
+        <div class="card-number">F2</div>
+        <h3>Feature Two</h3>
+        <p>Full width track</p>
+      </div>
+      <div class="test-card">
+        <div class="card-number">F3</div>
+        <h3>Feature Three</h3>
+        <p>Full width track</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>4. Genesis Blocks (ontology)</h2>
+    <div class="test-info">
+      <strong>Test:</strong> Genesis blocks with auto-fit grid<br>
+      <strong>Expected:</strong> Centered tracks, full width items, mobile single column
+    </div>
+    
+    <div class="mobile-only">
+      📱 Mobile View Active - Should be single column
+    </div>
+    
+    <div class="genesis-blocks">
+      <div class="test-card genesis-block">
+        <div class="card-number">GB1</div>
+        <h3>Genesis Block 1</h3>
+        <p>Width should fill track</p>
+      </div>
+      <div class="test-card genesis-block">
+        <div class="card-number">GB2</div>
+        <h3>Genesis Block 2</h3>
+        <p>Width should fill track</p>
+      </div>
+      <div class="test-card genesis-block">
+        <div class="card-number">GB3</div>
+        <h3>Genesis Block 3</h3>
+        <p>Width should fill track</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>5. Box-Sizing Verification</h2>
+    <div class="test-info">
+      <strong>Test:</strong> Cards with heavy padding shouldn't overflow<br>
+      <strong>Expected:</strong> Content stays within track bounds
+    </div>
+    
+    <div class="mobile-only">
+      📱 Mobile View Active - Should be single column
+    </div>
+    
+    <div class="bento-layout">
+      <div class="bento-card">
+        <h3>Heavy Padding Card</h3>
+        <p>This card has clamp(1.25rem, 3vw, 2rem) padding.</p>
+        <p>Content should not overflow or squash.</p>
+        <p>Box-sizing: border-box ensures proper sizing.</p>
+      </div>
+      <div class="bento-card">
+        <h3>Another Padded Card</h3>
+        <p>Multiple paragraphs to test vertical spacing.</p>
+        <p>Should maintain width: 100% within track.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section" style="margin-bottom: 4rem;">
+    <h2>Test Summary</h2>
+    <div class="test-info">
+      <strong>Breakpoints to test:</strong><br>
+      • 375px - Small mobile (iPhone SE)<br>
+      • 414px - Large mobile (iPhone 12)<br>
+      • 768px - Tablet portrait<br>
+      • 1024px - Tablet landscape / small desktop<br>
+      • 1440px - Desktop<br>
+      • 1920px - Large desktop<br>
+      <br>
+      <strong>What to verify:</strong><br>
+      ✓ No width collapse on any viewport<br>
+      ✓ Cards fill full track width (justify-items: stretch)<br>
+      ✓ Single column below 768px<br>
+      ✓ No horizontal overflow<br>
+      ✓ Proper centering of grid tracks
+    </div>
+  </div>
+
+  <script>
+    // Update viewport width indicator
+    function updateViewportWidth() {
+      const width = window.innerWidth;
+      document.getElementById('viewport-width').textContent = width;
+    }
+    
+    updateViewportWidth();
+    window.addEventListener('resize', updateViewportWidth);
+  </script>
+</body>
+</html>

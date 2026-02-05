@@ -18,7 +18,13 @@
   @if $logic == 'distributed' {
     // Autonomous entities in non-linear grid (Bento) - responsive by default
     container-type: inline-size;
-    justify-content: center;  // Center tracks to prevent right-side drift
+    
+    // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
+    width: 100%;
+    max-width: 100%;
+    
+    // TRACK-TO-ITEM STRETCHING - Items fill column width
+    justify-items: stretch;
     
     // Mobile: single column for clarity
     @media (max-width: 767px) {
@@ -36,6 +42,7 @@
     @media (min-width: 1024px) {
       grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
       gap: 2rem;
+      justify-content: center;  // Center tracks to prevent right-side drift
     }
     
     // Ultrawide: cap at 4 columns for readability
@@ -43,6 +50,7 @@
       grid-template-columns: repeat(4, 1fr);
       max-width: 1600px;
       margin-inline: auto;  // Explicit inline centering for consistency
+      justify-content: center;
     }
   } 
   @else if $logic == 'focused' {
@@ -71,6 +79,13 @@
     // High-density dashboard for system oversight - responsive grid
     gap: var(--space-tight, clamp(0.75rem, 1.5vw, 1rem));
     container-type: inline-size;
+    
+    // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
+    width: 100%;
+    max-width: 100%;
+    
+    // TRACK-TO-ITEM STRETCHING - Items fill column width
+    justify-items: stretch;
     
     // Mobile: simplified 2-column layout
     @media (max-width: 767px) {
@@ -168,7 +183,13 @@
     // Form layout optimized for data entry
     display: grid;
     gap: 1.5rem;
-    justify-content: center;  // Center form fields to prevent drift
+    
+    // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
+    width: 100%;
+    max-width: 100%;
+    
+    // TRACK-TO-ITEM STRETCHING - Items fill column width
+    justify-items: stretch;
     
     // Mobile: force single column for clarity
     @media (max-width: 767px) {
@@ -258,7 +279,13 @@
     // Multi-column footer navigation layout
     display: grid;
     gap: var(--space-footer, clamp(2rem, 3vw, 3rem));
-    justify-content: center;  // Center footer columns to prevent drift
+    
+    // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
+    width: 100%;
+    max-width: 100%;
+    
+    // TRACK-TO-ITEM STRETCHING - Items fill column width
+    justify-items: stretch;
     
     // Mobile: single column for clarity
     @media (max-width: 767px) {
@@ -276,6 +303,7 @@
     @media (min-width: 1024px) {
       grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
       gap: 3rem 2rem;
+      justify-content: center;  // Center footer columns to prevent drift
     }
   }
   @else if $logic == 'navigation-breadcrumb' {
@@ -433,7 +461,13 @@
     display: grid;
     gap: var(--space-user-grid, clamp(1rem, 2vw, 1.5rem));
     container-type: inline-size;
-    justify-content: center;  // Center user cards to prevent drift
+    
+    // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
+    width: 100%;
+    max-width: 100%;
+    
+    // TRACK-TO-ITEM STRETCHING - Items fill column width
+    justify-items: stretch;
     
     // Mobile: single column for user cards
     @media (max-width: 767px) {
@@ -451,6 +485,7 @@
     @media (min-width: 1024px) {
       grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
       gap: 1.5rem;
+      justify-content: center;  // Center user cards to prevent drift
     }
     
     // Ultrawide: cap at 4 columns
