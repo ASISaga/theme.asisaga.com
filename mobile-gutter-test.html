@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Gutter Fix Test</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: oklch(0.08 0.01 250);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    }
+    
+    .test-main {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+    
+    .edge-marker {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: red;
+      z-index: 10000;
+      pointer-events: none;
+    }
+    
+    .edge-marker--left { left: 0; }
+    .edge-marker--right { right: 0; }
+    
+    .viewport-info {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: oklch(0.10 0.01 250 / 0.95);
+      color: oklch(0.99 0.005 90);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.75rem;
+      z-index: 10001;
+      text-align: center;
+    }
+    
+    .test-section {
+      padding-inline: 1.5rem;
+      padding-block: 2rem;
+    }
+    
+    genesis-atmosphere[vibe="vibrant"] {
+      display: block;
+      background: oklch(0.99 0.005 90);
+      border: 2px solid oklch(0.65 0.25 230);
+      box-shadow: 
+        0 0 16px oklch(0.65 0.25 230 / 0.25),
+        0 4px 12px oklch(0.08 0.01 250 / 0.15);
+      backdrop-filter: blur(8px);
+    }
+    
+    h1, h2 { color: oklch(0.12 0.01 250); margin: 0 0 1rem; }
+    p, li { color: oklch(0.25 0.01 250); line-height: 1.6; }
+    
+    .test-block {
+      background: oklch(0.95 0.01 250);
+      padding: 1rem;
+      margin: 1rem 0;
+      border-left: 4px solid oklch(0.65 0.25 230);
+    }
+  </style>
+</head>
+<body>
+  <div class="edge-marker edge-marker--left"></div>
+  <div class="edge-marker edge-marker--right"></div>
+  <div class="viewport-info">
+    <strong>Viewport:</strong> <span id="width">-</span>px | Red = edges | Blue glow should touch edges
+  </div>
+
+  <main class="test-main">
+    <genesis-atmosphere vibe="vibrant">
+      <section class="test-section">
+        <h1>Mobile Gutter Fix Test</h1>
+        
+        <p><strong>Expected:</strong></p>
+        <ul>
+          <li>✅ Blue glow touches RED screen edges</li>
+          <li>✅ Text stays 24px from edges</li>
+          <li>❌ NO black space between glow and edges</li>
+        </ul>
+        
+        <div class="test-block">
+          <h2>Test Block 1</h2>
+          <p>This text has 24px safety gutter from screen edges.</p>
+        </div>
+        
+        <div class="test-block">
+          <h2>Test Block 2</h2>
+          <p>The vibrant atmosphere (white + blue glow) reaches screen edges while text maintains clearance.</p>
+        </div>
+        
+        <h2>Success Criteria</h2>
+        <ul>
+          <li>Atmosphere reaches screen edges</li>
+          <li>Content has 24px safety gutter</li>
+          <li>No visible black background on sides</li>
+        </ul>
+      </section>
+    </genesis-atmosphere>
+  </main>
+
+  <script>
+    function update() {
+      const w = window.innerWidth;
+      document.getElementById('width').textContent = w;
+    }
+    update();
+    window.addEventListener('resize', update);
+  </script>
+</body>
+</html>
