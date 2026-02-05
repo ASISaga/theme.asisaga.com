@@ -24,6 +24,9 @@
   @include genesis-environment('focused');    // Centered content
   @include genesis-atmosphere('vibrant');      // High-energy vibe
   
+  // Safety gutter - prevents content from touching edges
+  padding-inline: 1.5rem;
+  
   min-height: 75vh;
   display: flex;
   align-items: center;

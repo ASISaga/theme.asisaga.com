@@ -23,6 +23,9 @@
 .profile-layout {
   @include genesis-environment('chronological'); // Vertical flow
   @include genesis-atmosphere('neutral');         // Standard vibe
+  
+  // Safety gutter - prevents content from touching edges
+  padding-inline: 1.5rem;
 }
 
 // Header section (custom structure, not using include)
