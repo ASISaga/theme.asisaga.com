@@ -1,5 +1,16 @@
 // Base layout styles for overall site structure
 
+// ============================================================================
+// CUSTOM ELEMENT DISPLAY RESET
+// ============================================================================
+// Ensure custom web components are treated as block-level elements
+genesis-header,
+genesis-atmosphere,
+genesis-ambient {
+  display: block;
+  width: 100%;
+}
+
 .site-main {
   // Replaced @extend with direct properties for Jekyll compatibility
   width: 100%;
