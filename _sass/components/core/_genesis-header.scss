@@ -7,9 +7,14 @@
 // ============================================================================
 
 .genesis-header {
-  @include genesis-environment('navigation-primary');
-  @include genesis-entity('primary');  // Glassmorphism effect
+  // DO NOT use genesis-environment('navigation-primary') on the header wrapper
+  // That mixin is for navigation menus only and includes mobile drawer logic
+  @include genesis-entity('surface-glass');  // Dark glassmorphism for headers
   @include genesis-state('stable');
+  
+  // Manual layout for header wrapper (not from ontology)
+  display: block;
+  width: 100%;
   
   // Sticky positioning
   position: sticky;
@@ -19,20 +24,8 @@
   // Fixed minimum height to prevent layout shifts
   min-height: 70px;
   
-  // Ensure header is always visible on mobile portrait
-  // Prevent header from being cut off or hidden
-  width: 100%;
-  
   // Enable touch scrolling interactions on mobile
   touch-action: pan-y;  // Allow vertical scrolling while header is sticky
-  
-  // Black background with white text - purposeful contrast
-  backdrop-filter: blur(16px);
-  background: oklch(0.10 0.01 250 / 0.95);  // Deep black with opacity
-  
-  // Subtle border
-  border-bottom: 1px solid oklch(0.20 0.01 250);
-  box-shadow: 0 2px 8px oklch(0.05 0.01 250 / 0.3);
   
   // Hardware acceleration for smoother transitions
   will-change: transform;
@@ -42,20 +35,13 @@
   // Smooth transition for hide/show animation
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
   
-  @media (prefers-contrast: high) {
-    background: oklch(0.08 0 0);          // Pure black
-    border-bottom: 2px solid oklch(0.30 0 0);
-    backdrop-filter: none;
-    box-shadow: none;
-  }
-  
-  // Scrolled state - more opaque background
+  // Scrolled state - more opaque background (optional enhancement)
   &.scrolled {
     background: oklch(0.08 0.01 250);  // More opaque when scrolled
     box-shadow: 0 4px 16px oklch(0.05 0.01 250 / 0.5);
   }
   
-  // Hidden state - slide up out of view
+  // Hidden state - slide up out of view (controlled by JS)
   &.header-hidden {
     transform: translate3d(0, -100%, 0);
   }
@@ -70,6 +56,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
+    height: 100%;  // Fill parent height
     
     @include from(lg) {
       padding: 1.25rem 2rem;
