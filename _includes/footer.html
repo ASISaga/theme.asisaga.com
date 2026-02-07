@@ -14,7 +14,7 @@
         <!-- Footer Navigation -->
         {% if site.data.nav.footer_nav %}
         <nav class="genesis-footer__nav" aria-label="Footer navigation">
-          <h2 class="genesis-footer__nav-title">Quick Links</h2>
+          <h2 class="genesis-footer__nav-title">Navigate</h2>
           <ul class="genesis-footer__nav-list">
             {% for item in site.data.nav.footer_nav %}
             <li class="genesis-footer__nav-item">
@@ -38,14 +38,14 @@
             {% endfor %}
           </div>
         </div>
-{% endif %}
-</div>
+        {% endif %}
+      </div>
 
       <!-- Copyright Bar -->
       <div class="genesis-footer__copyright">
-        <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title | default: site.github.repository_name }}. All rights reserved.</p>
-</div>
-</div>
+        <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title | default: site.github.repository_name }}</p>
+      </div>
+    </div>
 
     <!-- Back to Top Button -->
     <button 
@@ -54,7 +54,7 @@
       aria-label="Back to top"
       data-back-to-top
     >
-      <i class="fas fa-arrow-up" aria-hidden="true"></i>
+      <i class="fas fa-chevron-up" aria-hidden="true"></i>
       <span class="sr-only">Back to top</span>
     </button>
   </footer>

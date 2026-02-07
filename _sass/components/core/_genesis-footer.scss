@@ -1,8 +1,9 @@
 // ============================================================================
-// GENESIS FOOTER - Modern Grid Layout
+// GENESIS FOOTER - Transcendent Foundation
 // ============================================================================
-// 100% Ontological SCSS with Responsive Grid
-// WCAG AA compliant with proper landmarks
+// The footer anchors the page with gravitas — the foundation upon which
+// the consciousness of each page rests. Deep void aesthetic with precise
+// typography and purposeful interaction accents.
 // ============================================================================
 
 .genesis-footer {
@@ -10,27 +11,34 @@
   @include genesis-entity('secondary');
   @include genesis-atmosphere('void');
   
-  margin-top: auto;  // Push to bottom with flexbox
+  margin-top: auto;
   
-  // Black background with white text - purposeful contrast
-  backdrop-filter: blur(16px);
-  background: oklch(0.10 0.01 250 / 0.95);  // Deep black
-  border-top: 1px solid oklch(0.20 0.01 250);
+  // Deep void background
+  backdrop-filter: blur(20px);
+  background: oklch(0.06 0.015 250 / 0.97);
+  
+  // Consciousness border — mirroring the header's lower edge
+  border-top: 1px solid oklch(0.20 0.04 250);
+  
+  // Subtle upward glow — the footer illuminates from below
+  box-shadow:
+    0 -1px 0 oklch(0.65 0.25 230 / 0.06),
+    0 -4px 24px oklch(0.03 0.02 250 / 0.3);
   
   @media (prefers-contrast: high) {
-    background: oklch(0.08 0 0);  // Pure black
+    background: oklch(0.05 0 0);
     border-top: 2px solid oklch(0.30 0 0);
     backdrop-filter: none;
   }
   
   // Container
   &__container {
-    max-width: 1600px;
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 3rem 1.5rem 2rem;
+    padding: 3rem 1.25rem 1.5rem;
     
     @include from(lg) {
-      padding: 4rem 2rem 2rem;
+      padding: 3.5rem 2.5rem 1.5rem;
     }
   }
   
@@ -38,32 +46,27 @@
   &__grid {
     display: grid;
     gap: 2rem;
-    
-    // Mobile: Single column
     grid-template-columns: 1fr;
     
-    // Tablet: 2 columns
     @include from(md) {
       grid-template-columns: repeat(2, 1fr);
       gap: 2.5rem;
     }
     
-    // Desktop: 3 columns (brand takes more space)
     @include from(lg) {
       grid-template-columns: 1.5fr 1fr 1fr;
       gap: 3rem;
     }
     
-    // Extra large: More spacing
     @include from(xl) {
       grid-template-columns: 2fr 1fr 1fr;
       gap: 4rem;
     }
     
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     
     @include from(lg) {
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
     }
   }
   
@@ -71,34 +74,42 @@
   &__brand {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.625rem;
   }
   
   &__title {
     @include genesis-cognition('axiom');
-    font-size: clamp(1.25rem, calc(1rem + 1vw), 1.75rem);
-    color: oklch(0.99 0.005 90);  // White text
+    font-family: $font-family-consciousness;
+    font-size: clamp(1.125rem, calc(1rem + 0.75vw), 1.5rem);
+    color: oklch(0.95 0.005 90);
     font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
   }
   
   &__tagline {
     @include genesis-cognition('discourse');
-    color: oklch(0.75 0.01 220);  // Light gray text
-    max-width: 45ch;
+    color: oklch(0.50 0.01 230);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    max-width: 40ch;
   }
   
   // Navigation Section
   &__nav {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.875rem;
   }
   
   &__nav-title {
     @include genesis-cognition('motive');
-    font-size: 1rem;
-    font-weight: 600;
-    color: oklch(0.95 0.005 90);  // White text
+    font-family: $font-family-consciousness;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: oklch(0.55 0.02 230);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     margin: 0;
   }
   
@@ -106,14 +117,12 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.25rem;
   }
   
   &__nav-item {
-    // Touch target on mobile
     min-height: 44px;
     display: flex;
     align-items: center;
@@ -122,18 +131,37 @@
   &__nav-link {
     @include genesis-synapse('navigate');
     
-    color: oklch(0.80 0.01 220);  // Light gray text
+    color: oklch(0.60 0.01 230);
     text-decoration: none;
-    transition: all 0.3s ease;
+    font-family: $font-family-consciousness;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
     
-    // Touch target
-    padding: 0.5rem 0;
+    padding: 0.375rem 0;
     display: inline-block;
+    position: relative;
+    
+    transition: color 0.25s ease;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: oklch(0.65 0.25 230 / 0.5);
+      transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
     
     &:hover,
     &:focus {
-      color: oklch(0.99 0.005 90);  // White on hover
-      transform: translateX(4px);
+      color: oklch(0.90 0.005 90);
+      
+      &::after {
+        width: 100%;
+      }
     }
   }
   
@@ -141,125 +169,126 @@
   &__social {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.875rem;
   }
   
   &__social-title {
     @include genesis-cognition('motive');
-    font-size: 1rem;
-    font-weight: 600;
-    color: oklch(0.95 0.005 90);  // White text
+    font-family: $font-family-consciousness;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: oklch(0.55 0.02 230);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     margin: 0;
   }
   
   &__social-links {
     display: flex;
-    gap: 0.75rem;
+    gap: 0.625rem;
     flex-wrap: wrap;
     
     @include from(md) {
-      gap: 1rem;
+      gap: 0.75rem;
     }
   }
   
   &__social-link {
     @include genesis-synapse('execute');
     
-    // WCAG 2.5.5 Touch target compliance
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     
     display: flex;
     align-items: center;
     justify-content: center;
     
-    background: oklch(0.20 0.01 250);  // Dark background
-    border: 1px solid oklch(0.30 0.01 250);
-    border-radius: 50%;  // Circular for icons - purposeful
+    background: oklch(0.12 0.02 250);
+    border: 1px solid oklch(0.22 0.03 250);
+    border-radius: 10px;
     
-    color: oklch(0.85 0.01 220);  // Light gray icon
-    font-size: 1.25rem;
+    color: oklch(0.55 0.02 230);
+    font-size: 1rem;
     
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition:
+      color 0.25s ease,
+      background 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
     
     &:hover,
     &:focus {
-      background: oklch(0.25 0.01 250);
-      border-color: oklch(0.65 0.25 230);  // Neon blue accent
-      color: oklch(0.99 0.005 90);  // White icon
-      transform: translateY(-3px) scale(1.08);
-      
-      box-shadow: 
-        0 4px 12px oklch(0.08 0.01 250 / 0.4),
-        0 0 20px oklch(0.65 0.25 230 / 0.3);  // Neon blue glow
+      background: oklch(0.16 0.03 250);
+      border-color: oklch(0.65 0.25 230 / 0.5);
+      color: oklch(0.90 0.005 90);
+      box-shadow: 0 0 16px oklch(0.65 0.25 230 / 0.15);
     }
     
     &:active {
-      transform: translateY(-1px) scale(1.04);
+      background: oklch(0.20 0.04 250);
     }
     
     @media (prefers-reduced-motion: reduce) {
-      transition: background 0.2s ease, color 0.2s ease;
-      
-      &:hover,
-      &:focus,
-      &:active {
-        transform: none;
-      }
+      transition: background 0.15s ease, color 0.15s ease;
     }
   }
   
-  // Copyright Bar
+  // Copyright Bar — the final anchor
   &__copyright {
-    @include genesis-entity('secondary');
-    
-    padding: 1.5rem 0;
-    border-top: 1px solid oklch(0.20 0.01 250);  // Subtle border
-    
+    padding: 1.25rem 0 0;
+    border-top: 1px solid oklch(0.15 0.02 250);
     text-align: center;
     
     p {
       @include genesis-cognition('gloss');
-      color: oklch(0.70 0.01 220);  // Light gray text
+      font-family: $font-family-consciousness;
+      color: oklch(0.40 0.01 230);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
       margin: 0;
     }
   }
 }
 
-// Back to Top Button
+// Back to Top Button — consciousness elevator
 .genesis-back-to-top {
   @include genesis-synapse('execute');
   
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
   z-index: 999;
   
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   
   display: flex;
   align-items: center;
   justify-content: center;
   
-  background: oklch(0.25 0.10 280 / 0.9);
-  border: 1px solid oklch(0.6 0.25 280 / 0.4);
-  border-radius: 50%;
+  background: oklch(0.12 0.03 250 / 0.9);
+  border: 1px solid oklch(0.25 0.04 250);
+  border-radius: 12px;
   
-  color: oklch(0.85 0.12 280);
-  font-size: 1.25rem;
+  color: oklch(0.65 0.02 230);
+  font-size: 1rem;
   
   cursor: pointer;
-  
-  // Enhanced glassmorphism
   backdrop-filter: blur(12px);
   
   // Hidden by default
   opacity: 0;
   visibility: hidden;
-  transform: translateY(20px);
+  transform: translateY(12px);
   
-  transition: all 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.3s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
   
   // Show when scrolled
   &.is-visible {
@@ -270,18 +299,20 @@
   
   &:hover,
   &:focus {
-    background: oklch(0.30 0.12 280 / 0.95);
-    border-color: oklch(0.7 0.25 45 / 0.6);
-    color: oklch(0.95 0.15 280);
-    transform: translateY(-4px) scale(1.1);
-    
-    box-shadow: 
-      0 8px 32px oklch(0.15 0.08 280 / 0.5),
-      0 0 48px oklch(0.6 0.25 280 / 0.4);
+    background: oklch(0.18 0.04 250 / 0.95);
+    border-color: oklch(0.65 0.25 230 / 0.5);
+    color: oklch(0.90 0.005 90);
+    box-shadow: 0 0 20px oklch(0.65 0.25 230 / 0.2);
+    transform: translateY(-2px);
+  }
+  
+  &.is-visible:hover,
+  &.is-visible:focus {
+    transform: translateY(-2px);
   }
   
   &:active {
-    transform: translateY(-2px) scale(1.05);
+    transform: translateY(0);
   }
   
   @media (prefers-reduced-motion: reduce) {
@@ -289,32 +320,34 @@
     
     &:hover,
     &:focus,
-    &:active {
+    &:active,
+    &.is-visible:hover,
+    &.is-visible:focus {
       transform: none;
     }
   }
   
   @media (prefers-contrast: high) {
-    background: oklch(0.20 0 0);
-    border: 2px solid oklch(0.80 0 0);
+    background: oklch(0.15 0 0);
+    border: 2px solid oklch(0.70 0 0);
     backdrop-filter: none;
     
     &:hover,
     &:focus {
-      background: oklch(0.30 0 0);
-      border-color: oklch(0.90 0 0);
+      background: oklch(0.25 0 0);
+      border-color: oklch(0.85 0 0);
       box-shadow: none;
     }
   }
 }
 
-// Responsive adjustments
+// Responsive back-to-top scaling
 @include from(md) {
   .genesis-back-to-top {
-    bottom: 2.5rem;
-    right: 2.5rem;
-    width: 56px;
-    height: 56px;
-    font-size: 1.5rem;
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    font-size: 1.125rem;
   }
 }

@@ -1,23 +1,19 @@
 // ============================================================================
-// GENESIS HEADER - Modern Sticky Navigation
+// GENESIS HEADER - Transcendent Navigation System
 // ============================================================================
-// 100% Ontological SCSS with Glassmorphism
+// Futuristic glassmorphism header with consciousness-aware interactions
 // Mobile-first responsive with off-canvas drawer
 // WCAG AA compliant with proper ARIA and touch targets
 // ============================================================================
 
 .genesis-header {
-  // DO NOT use genesis-environment('navigation-primary') on the header wrapper
-  // That mixin is for navigation menus only and includes mobile drawer logic
-  @include genesis-entity('surface-glass');  // Dark glassmorphism for headers
+  @include genesis-entity('surface-glass');
   @include genesis-state('stable');
   
-  // Manual layout for header wrapper (not from ontology)
   display: block;
   width: 100%;
   
   // CRITICAL: Allow mobile drawer to render outside header boundaries
-  // Mobile navigation drawer uses position: fixed and must not be clipped
   overflow: visible !important;
   
   // Sticky positioning
@@ -25,101 +21,127 @@
   top: 0;
   z-index: 1000;
   
-  // Fixed minimum height to prevent layout shifts
-  min-height: 70px;
+  min-height: 64px;
   
-  // Enable touch scrolling interactions on mobile
-  touch-action: pan-y;  // Allow vertical scrolling while header is sticky
+  // Touch scrolling interactions on mobile
+  touch-action: pan-y;
   
-  // Hardware acceleration for smoother transitions
+  // Hardware acceleration
   will-change: transform;
   backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
   
-  // Smooth transition for hide/show animation
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+  // Consciousness border — a living edge that defines the header's presence
+  border-bottom: 1px solid oklch(0.25 0.04 250);
   
-  // Scrolled state - more opaque background (optional enhancement)
+  // Subtle neural glow along the bottom edge
+  box-shadow:
+    0 1px 0 oklch(0.65 0.25 230 / 0.08),
+    0 4px 24px oklch(0.05 0.02 250 / 0.4);
+  
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.4s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+  
+  // Scrolled state — condensed, more opaque, stronger presence
   &.scrolled {
-    background: oklch(0.08 0.01 250);  // More opaque when scrolled
-    box-shadow: 0 4px 16px oklch(0.05 0.01 250 / 0.5);
+    background: oklch(0.06 0.015 250 / 0.96);
+    border-bottom-color: oklch(0.20 0.06 230);
+    box-shadow:
+      0 1px 0 oklch(0.65 0.25 230 / 0.15),
+      0 8px 32px oklch(0.03 0.02 250 / 0.6);
+    min-height: 56px;
   }
   
-  // Hidden state - slide up out of view (controlled by JS)
+  // Hidden state
   &.header-hidden {
     transform: translate3d(0, -100%, 0);
   }
   
   // Container
   &__container {
-    max-width: 1600px;
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 1rem 1.5rem;
+    padding: 0.75rem 1.25rem;
     
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    height: 100%;  // Fill parent height
+    height: 100%;
     
     // CRITICAL: Allow mobile drawer to render outside container boundaries
     overflow: visible !important;
     
     @include from(lg) {
-      padding: 1.25rem 2rem;
+      padding: 0.875rem 2.5rem;
     }
   }
   
+  // Brand — the identity anchor
   &__brand {
     @include genesis-synapse('navigate');
     
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.875rem;
     text-decoration: none;
     flex-shrink: 0;
-    
-    // Touch target on mobile
     min-height: 44px;
+    position: relative;
     
     &:hover,
     &:focus {
       .genesis-header__title {
-        // Purposeful neon blue accent on hover
-        color: oklch(0.75 0.25 230);
+        color: oklch(0.99 0.005 90);
+        text-shadow: 0 0 20px oklch(0.65 0.25 230 / 0.4);
+      }
+      
+      .genesis-header__logo {
+        box-shadow: 0 0 16px oklch(0.65 0.25 230 / 0.3);
       }
     }
   }
   
   &__logo {
-    width: 48px;
-    height: 48px;
-    border-radius: 8px;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid oklch(0.30 0.04 250);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
     
     @include from(md) {
-      width: 56px;
-      height: 56px;
+      width: 40px;
+      height: 40px;
     }
   }
   
   &__text {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.125rem;
   }
   
   &__title {
     @include genesis-cognition('motive');
-    font-size: clamp(1.125rem, calc(1rem + 0.5vw), 1.375rem);
+    font-family: $font-family-consciousness;
+    font-size: clamp(0.9375rem, calc(0.875rem + 0.4vw), 1.125rem);
     font-weight: 600;
-    letter-spacing: -0.01em;
-    color: oklch(0.99 0.005 90);  // White text on black background
-    transition: all 0.3s ease;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: oklch(0.95 0.005 90);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
   }
   
   &__tagline {
     @include genesis-cognition('gloss');
-    color: oklch(0.75 0.01 220);  // Light gray text
+    font-family: $font-family-consciousness;
+    color: oklch(0.55 0.02 230);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     display: none;
     
     @include from(md) {
@@ -127,7 +149,7 @@
     }
   }
   
-  // Mobile Menu Toggle
+  // Mobile Menu Toggle — geometric precision
   &__toggle {
     @include genesis-synapse('execute');
     
@@ -139,33 +161,24 @@
     height: 44px;
     padding: 0;
     
-    background: oklch(0.20 0.01 250);  // Dark background
-    border: 1px solid oklch(0.30 0.01 250);
-    border-radius: 0.5rem;  // Purposeful rounding for button
+    background: oklch(0.12 0.02 250);
+    border: 1px solid oklch(0.25 0.03 250);
+    border-radius: 10px;
     
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     
     &:hover,
     &:focus {
-      background: oklch(0.25 0.01 250);
-      border-color: oklch(0.65 0.25 230);  // Neon blue accent
-      transform: scale(1.05);
+      background: oklch(0.18 0.03 250);
+      border-color: oklch(0.65 0.25 230);
+      box-shadow: 0 0 16px oklch(0.65 0.25 230 / 0.2);
     }
     
     &[aria-expanded="true"] {
-      background: oklch(0.30 0.01 250);
-      border-color: oklch(0.70 0.25 230);  // Brighter neon blue
-      
-      .genesis-header__toggle-icon {
-        &::before {
-          transform: translateY(0) rotate(45deg);
-        }
-        
-        &::after {
-          transform: translateY(0) rotate(-45deg);
-        }
-      }
+      background: oklch(0.20 0.04 230);
+      border-color: oklch(0.65 0.25 230);
+      box-shadow: 0 0 20px oklch(0.65 0.25 230 / 0.25);
     }
     
     @include from(lg) {
@@ -173,12 +186,26 @@
     }
   }
   
+  // Toggle icon X-state (when menu expanded)
+  &__toggle[aria-expanded="true"] &__toggle-icon {
+    background: transparent;
+    
+    &::before {
+      transform: translateY(0) rotate(45deg);
+    }
+    
+    &::after {
+      transform: translateY(0) rotate(-45deg);
+    }
+  }
+  
   &__toggle-icon {
     position: relative;
-    width: 20px;
-    height: 2px;
-    background: oklch(0.85 0.1 280);
+    width: 18px;
+    height: 1.5px;
+    background: oklch(0.80 0.02 230);
     transition: all 0.3s ease;
+    border-radius: 1px;
     
     &::before,
     &::after {
@@ -186,83 +213,83 @@
       position: absolute;
       left: 0;
       width: 100%;
-      height: 2px;
-      background: oklch(0.99 0.005 90);  // White hamburger lines
-      transition: all 0.3s ease;
+      height: 1.5px;
+      background: oklch(0.90 0.005 90);
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      border-radius: 1px;
     }
     
     &::before {
-      transform: translateY(-6px);
+      transform: translateY(-5px);
     }
     
     &::after {
-      transform: translateY(6px);
+      transform: translateY(5px);
     }
   }
   
-  // Primary Navigation
+  // Primary Navigation — off-canvas drawer (mobile) / inline (desktop)
   &__nav {
     // Mobile: Off-canvas drawer
-    // CRITICAL: position: fixed anchors to viewport, not header
     position: fixed !important;
     top: 0;
     right: 0;
     bottom: 0;
     height: 100vh;
     width: 85%;
-    max-width: 360px;
-    z-index: 2000;  // High z-index ensures drawer appears above all content
+    max-width: 340px;
+    z-index: 2000;
     
     @include genesis-entity('primary');
     @include genesis-atmosphere('void');
     
-    // Solid background to prevent site content from bleeding through
-    background: oklch(0.12 0.01 250) !important;
+    // Deep void background
+    background: oklch(0.08 0.015 250 / 0.98) !important;
     
-    padding: 5.5rem 1.5rem 2rem;
+    // Consciousness edge on the left side of drawer
+    border-left: 1px solid oklch(0.20 0.06 230);
+    
+    padding: 5rem 1.5rem 2rem;
     overflow-y: auto;
     overflow-x: hidden;
-    
-    // Smooth scrolling for mobile menu
     -webkit-overflow-scrolling: touch;
     
-    // Use transform for better performance and no overflow issues
     transform: translateX(100%);
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     
-    // Enhanced shadow when open
-    box-shadow: -12px 0 48px oklch(0 0 0 / 0);
+    box-shadow: -16px 0 64px oklch(0 0 0 / 0);
     
     &[data-nav-open="true"] {
       transform: translateX(0);
-      box-shadow: -12px 0 48px oklch(0 0 0 / 0.6);
+      box-shadow: -16px 0 64px oklch(0 0 0 / 0.7);
     }
     
     @media (prefers-reduced-motion: reduce) {
       transition: transform 0.1s linear;
     }
     
-    // Desktop: Inline navigation - reset positioning
+    // Desktop: Inline navigation
     @include from(lg) {
-      position: static !important;  // Reset to static for desktop
+      position: static !important;
       width: auto;
       height: auto;
-      max-width: 100%;  // Prevent overflow on desktop
+      max-width: 100%;
       padding: 0;
       overflow-y: visible;
-      overflow-x: hidden;  // Enforce horizontal containment
+      overflow-x: hidden;
       transform: none;
       
       background: transparent !important;
       backdrop-filter: none;
       box-shadow: none;
+      border-left: none;
       transition: none;
-      z-index: auto;  // Reset z-index for desktop
+      z-index: auto;
     }
   }
 }
 
-// Navigation overlay for mobile
+// Navigation overlay for mobile — void curtain
 .genesis-nav-overlay {
   position: fixed;
   top: 0;
@@ -271,12 +298,12 @@
   bottom: 0;
   z-index: 999;
   
-  background: oklch(0 0 0 / 0.7);
-  backdrop-filter: blur(4px);
+  background: oklch(0.03 0.015 260 / 0.85);
+  backdrop-filter: blur(8px);
   
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
   
   &[data-nav-open="true"] {
     opacity: 1;
