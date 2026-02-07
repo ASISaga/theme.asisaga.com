@@ -16,6 +16,10 @@
   display: block;
   width: 100%;
   
+  // CRITICAL: Allow mobile drawer to render outside header boundaries
+  // Mobile navigation drawer uses position: fixed and must not be clipped
+  overflow: visible !important;
+  
   // Sticky positioning
   position: sticky;
   top: 0;
@@ -57,6 +61,9 @@
     justify-content: space-between;
     gap: 1.5rem;
     height: 100%;  // Fill parent height
+    
+    // CRITICAL: Allow mobile drawer to render outside container boundaries
+    overflow: visible !important;
     
     @include from(lg) {
       padding: 1.25rem 2rem;
@@ -196,16 +203,21 @@
   // Primary Navigation
   &__nav {
     // Mobile: Off-canvas drawer
-    position: fixed;
+    // CRITICAL: position: fixed anchors to viewport, not header
+    position: fixed !important;
     top: 0;
     right: 0;
     bottom: 0;
+    height: 100vh;
     width: 85%;
     max-width: 360px;
-    z-index: 1001;
+    z-index: 2000;  // High z-index ensures drawer appears above all content
     
     @include genesis-entity('primary');
     @include genesis-atmosphere('void');
+    
+    // Solid background to prevent site content from bleeding through
+    background: oklch(0.12 0.01 250) !important;
     
     padding: 5.5rem 1.5rem 2rem;
     overflow-y: auto;
@@ -230,20 +242,22 @@
       transition: transform 0.1s linear;
     }
     
-    // Desktop: Inline navigation
+    // Desktop: Inline navigation - reset positioning
     @include from(lg) {
-      position: static;
+      position: static !important;  // Reset to static for desktop
       width: auto;
+      height: auto;
       max-width: 100%;  // Prevent overflow on desktop
       padding: 0;
       overflow-y: visible;
       overflow-x: hidden;  // Enforce horizontal containment
       transform: none;
       
-      background: transparent;
+      background: transparent !important;
       backdrop-filter: none;
       box-shadow: none;
       transition: none;
+      z-index: auto;  // Reset z-index for desktop
     }
   }
 }

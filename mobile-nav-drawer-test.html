@@ -1,0 +1,224 @@
+---
+layout: default
+title: "Mobile Navigation Drawer Test"
+description: "Testing mobile navigation drawer fixes - should not be clipped by header"
+---
+
+<style>
+  .test-page {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .test-header {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: oklch(0.15 0.02 250);
+    border-radius: 1rem;
+  }
+  
+  .test-header h1 {
+    color: oklch(0.99 0.005 90);
+    margin: 0 0 1rem 0;
+  }
+  
+  .test-header p {
+    color: oklch(0.80 0.01 220);
+    margin: 0;
+  }
+  
+  .instructions {
+    background: oklch(0.96 0.005 220);
+    border: 2px solid oklch(0.65 0.25 230);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .instructions h2 {
+    color: oklch(0.12 0.01 250);
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+  }
+  
+  .instructions ol {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+  
+  .instructions li {
+    color: oklch(0.20 0.01 250);
+    margin-bottom: 0.5rem;
+  }
+  
+  .test-content {
+    background: oklch(0.99 0.005 90);
+    border: 1px solid oklch(0.85 0.005 220);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem 0;
+    min-height: 400px;
+  }
+  
+  .test-content h2 {
+    color: oklch(0.12 0.01 250);
+    margin: 0 0 1rem 0;
+  }
+  
+  .test-content p {
+    color: oklch(0.30 0.01 230);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .success-indicator {
+    background: oklch(0.70 0.15 140);
+    color: oklch(0.99 0.005 90);
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    margin: 1rem 0;
+  }
+  
+  .fail-indicator {
+    background: oklch(0.60 0.25 25);
+    color: oklch(0.99 0.005 90);
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    margin: 1rem 0;
+  }
+  
+  .expected-behavior {
+    background: oklch(0.85 0.15 85);
+    border-left: 4px solid oklch(0.70 0.15 85);
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .expected-behavior h3 {
+    color: oklch(0.12 0.01 250);
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+  }
+  
+  .expected-behavior p {
+    color: oklch(0.20 0.01 250);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+</style>
+
+<article class="test-page">
+  <header class="test-header">
+    <h1>Mobile Navigation Drawer Test</h1>
+    <p>Testing fixes for mobile navigation drawer clipping issue</p>
+  </header>
+
+  <div class="instructions">
+    <h2>📱 Testing Instructions</h2>
+    <ol>
+      <li><strong>Resize your browser window</strong> to mobile width (< 1024px) or use browser DevTools mobile view</li>
+      <li><strong>Click the hamburger menu icon</strong> in the top-right corner of the header</li>
+      <li><strong>Verify the navigation drawer</strong> slides in from the right side</li>
+      <li><strong>Check that the drawer</strong> extends to full viewport height (not clipped at 70px)</li>
+      <li><strong>Verify the drawer background</strong> is solid dark (site content should not bleed through)</li>
+      <li><strong>Test on desktop</strong> (≥ 1024px) - navigation should be horizontal in header, not a drawer</li>
+    </ol>
+  </div>
+
+  <div class="expected-behavior">
+    <h3>✅ Expected Behavior (Mobile)</h3>
+    <p>
+      The navigation drawer should slide in from the right side of the screen and extend from top to bottom of the viewport.
+      It should NOT be clipped or limited to the header's 70px height. The drawer should have a solid dark background
+      with a semi-transparent overlay behind it. Navigation links should be vertically stacked and easily accessible.
+    </p>
+  </div>
+
+  <div class="expected-behavior">
+    <h3>✅ Expected Behavior (Desktop)</h3>
+    <p>
+      On desktop screens (≥ 1024px), the navigation should appear horizontally in the header bar, not as a drawer.
+      The hamburger menu button should be hidden. Navigation links should be visible and clickable in the header.
+    </p>
+  </div>
+
+  <div class="test-content">
+    <h2>Technical Changes Applied</h2>
+    
+    <h3>1. Parent Overflow Fixes</h3>
+    <p>
+      <strong>.genesis-header</strong> and <strong>.genesis-header__container</strong> now have 
+      <code>overflow: visible !important;</code> to allow the mobile drawer to render outside the header boundaries.
+    </p>
+    
+    <h3>2. Mobile Drawer Positioning</h3>
+    <p>
+      <strong>.genesis-header__nav</strong> uses <code>position: fixed !important;</code> on mobile with:
+    </p>
+    <ul>
+      <li><code>top: 0;</code> - Anchored to top of viewport</li>
+      <li><code>bottom: 0;</code> - Anchored to bottom of viewport</li>
+      <li><code>right: 0;</code> - Aligned to right edge</li>
+      <li><code>height: 100vh;</code> - Full viewport height</li>
+      <li><code>z-index: 2000;</code> - High stacking context</li>
+    </ul>
+    
+    <h3>3. Solid Background</h3>
+    <p>
+      Mobile drawer has <code>background: oklch(0.12 0.01 250) !important;</code> to ensure solid dark background
+      that prevents site content from bleeding through.
+    </p>
+    
+    <h3>4. Desktop Reset</h3>
+    <p>
+      On desktop screens (≥ 1024px), positioning resets to <code>position: static !important;</code> 
+      and background becomes transparent, allowing navigation to appear inline in the header.
+    </p>
+  </div>
+
+  <div class="test-content">
+    <h2>Manual Test Checklist</h2>
+    <p>Use the following checklist to verify all aspects of the fix:</p>
+    
+    <h3>Mobile (< 1024px)</h3>
+    <ul>
+      <li>✓ Hamburger menu button is visible</li>
+      <li>✓ Clicking hamburger opens drawer from right</li>
+      <li>✓ Drawer extends full viewport height (not 70px)</li>
+      <li>✓ Drawer has solid dark background</li>
+      <li>✓ Navigation links are vertically stacked</li>
+      <li>✓ All links are touchable (≥44px touch targets)</li>
+      <li>✓ Clicking overlay closes drawer</li>
+      <li>✓ Transform animation is smooth</li>
+    </ul>
+    
+    <h3>Desktop (≥ 1024px)</h3>
+    <ul>
+      <li>✓ Hamburger menu button is hidden</li>
+      <li>✓ Navigation appears horizontally in header</li>
+      <li>✓ Links have transparent background</li>
+      <li>✓ Hover states work correctly</li>
+      <li>✓ No drawer behavior on desktop</li>
+    </ul>
+  </div>
+
+  <div class="test-content">
+    <h2>Filler Content for Scrolling</h2>
+    <p>This section provides content to test that the header remains sticky and the drawer works correctly during scrolling.</p>
+    
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    
+    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    
+    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+    
+    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+    
+    <p>Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+  </div>
+</article>
