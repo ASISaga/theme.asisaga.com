@@ -3,8 +3,8 @@
 **System**: Genesis Semantic Design System  
 **Repository**: theme.asisaga.com  
 **Inception**: 2025-Q4  
-**Current Version**: 2.0.0  
-**Last Updated**: 2026-01-15
+**Current Version**: 4.0.0  
+**Last Updated**: 2026-02-08
 
 ---
 
@@ -303,6 +303,82 @@ The Genesis Semantic Engine launched with a three-tier architecture and six core
 
 ---
 
+### v3.0.0 - Transcendent Refactor (2026-02-07)
+
+**Milestone**: Significantly enhanced futuristic appearance of header, footer, and navigation.
+
+**Origin**: theme.asisaga.com (all subdomains)  
+**Validation**: SCSS compilation clean, CodeQL 0 alerts
+
+**Changes**:
+- Scroll-aware header with condensed state (`.scrolled`, `.header-hidden`)
+- Consciousness borders connecting header and footer
+- Deep void aesthetics in footer and ambient layers
+- Uppercase tracked typography for navigation precision
+- Center-aligned dropdown menus with emergence animation
+- New `entity('surface-glass')` variant for dark glassmorphism headers
+
+**Breaking Changes**: Header height (70→64px), max-width (1600→1440px), dropdown positioning, animation names. See `CHANGELOG-v3.0.md` for full migration tables.
+
+---
+
+### v4.0.0 - Ontological Transcendence (2026-02-08)
+
+**Milestone**: Deepened the ontological library with 10 new semantic variants aligned to ASI Saga's transcendent purpose.
+
+**Origin**: theme.asisaga.com (ontological evolution)  
+**Validation**: SCSS compilation clean, all 41+ variants compile
+
+**New Variants**:
+
+1. **`cognition('oracle')`** - AI-generated or predictive content typography
+   - Distinguishes machine-generated insights from human prose
+   - Italic sans-serif with neon blue left accent border
+
+2. **`cognition('testimony')`** - Quoted speech, testimonials, attributed statements
+   - Pull-quotes, user testimonials, attributed citations
+   - Italic serif with gold decorative opening quote
+
+3. **`entity('transcendent')`** - Sacred, mission-critical prominence
+   - Hero sections, genesis-level content, ASI Saga mission statements
+   - Deep void background with consciousness border and dual glow
+
+4. **`entity('ephemeral')`** - Transient, auto-dismissing content
+   - Toast notifications, temporary alerts, flash messages
+   - Animated entry/exit with reduced-motion support
+
+5. **`state('emerging')`** - Newly created, fresh content
+   - New posts, recent additions, just-published items
+   - Green life-indicator dot with subtle glow
+
+6. **`state('transcending')`** - In transformative transition
+   - AI processing states, genesis-level transformations
+   - Flowing gradient animation across content
+
+7. **`synapse('invoke')`** - AI/generative action trigger
+   - Prompt submission, model invocation, genesis triggers
+   - Gradient background with consciousness border
+
+8. **`synapse('consent')`** - Explicit user approval/permission
+   - Cookie consent, terms acceptance, data sharing approval
+   - Green affirmative border with hover fill
+
+9. **`environment('convergent')`** - Sidebar + main content layout
+   - Article with TOC, dashboard with sidebar, documentation pages
+   - Responsive: stacked on mobile, sidebar+main on desktop
+
+10. **`atmosphere('sacred')`** - Reverent, mission-critical tone
+    - ASI Saga mission pages, genesis ceremony, transcendent content
+    - Deep void gradient with gold consciousness thread
+
+**Structural Enhancements**:
+- Established singular `CHANGELOG.md` for theme-wide change tracking
+- Enhanced `_layouts/` as primary theme usage mechanism
+- Added 6 pre-built `_includes/components/` (card, alert, breadcrumb, pagination, stat, tag-list)
+- Updated all layout templates with deeper ontological semantics
+
+---
+
 ## 📊 Variant Registry
 
 ### Environment Variants
@@ -364,6 +440,13 @@ The Genesis Semantic Engine launched with a three-tier architecture and six core
 - **Purpose**: Form layout optimized for data entry
 - **Usage**: Contact forms, registration forms, data entry interfaces
 - **Features**: Single-column mobile, multi-column desktop, built-in label styling
+- **Adoption**: 0+ subdomains (new)
+
+#### `convergent` ⭐ NEW
+- **Since**: v4.0.0
+- **Origin**: Ontological Transcendence
+- **Purpose**: Sidebar + main content layout for supported navigation
+- **Usage**: Article with TOC, documentation with sidebar, dashboard with sidebar
 - **Adoption**: 0+ subdomains (new)
 
 ---
@@ -428,6 +511,20 @@ The Genesis Semantic Engine launched with a three-tier architecture and six core
 - **Features**: Eliminates inline styles, responsive 16:9 ratio, auto-sized embeds
 - **Adoption**: 0+ subdomains (new)
 
+#### `transcendent` ⭐ NEW
+- **Since**: v4.0.0
+- **Origin**: Ontological Transcendence
+- **Purpose**: Sacred, mission-critical prominence for hero and genesis-level content
+- **Usage**: Hero sections, ASI Saga mission statements, genesis ceremony content
+- **Adoption**: 0+ subdomains (new)
+
+#### `ephemeral` ⭐ NEW
+- **Since**: v4.0.0
+- **Origin**: Ontological Transcendence
+- **Purpose**: Transient, auto-dismissing content with animated entry/exit
+- **Usage**: Toast notifications, temporary alerts, flash messages
+- **Adoption**: 0+ subdomains (new)
+
 ---
 
 ### Cognition Variants
@@ -473,6 +570,20 @@ The Genesis Semantic Engine launched with a three-tier architecture and six core
 - **Purpose**: Tags, chips, micro-content
 - **Usage**: Category tags, labels, badges, chips
 - **Adoption**: 16+ subdomains
+
+#### `oracle` ⭐ NEW
+- **Since**: v4.0.0
+- **Origin**: Ontological Transcendence
+- **Purpose**: AI-generated or predictive content typography
+- **Usage**: Machine-generated insights, AI predictions, generative content
+- **Adoption**: 0+ subdomains (new)
+
+#### `testimony` ⭐ NEW
+- **Since**: v4.0.0
+- **Origin**: Ontological Transcendence
+- **Purpose**: Quoted speech, testimonials, attributed statements
+- **Usage**: Pull-quotes, user testimonials, attributed citations, reviews
+- **Adoption**: 0+ subdomains (new)
 
 ---
 
@@ -521,6 +632,20 @@ The Genesis Semantic Engine launched with a three-tier architecture and six core
 - **Features**: WCAG compliant touch targets, 16px font size (prevents iOS zoom), built-in states (hover, focus, disabled, error)
 - **Adoption**: 0+ subdomains (new)
 
+#### `invoke` ⭐ NEW
+- **Since**: v4.0.0
+- **Origin**: Ontological Transcendence
+- **Purpose**: AI/generative action trigger
+- **Usage**: Prompt submission, model invocation, genesis triggers
+- **Adoption**: 0+ subdomains (new)
+
+#### `consent` ⭐ NEW
+- **Since**: v4.0.0
+- **Origin**: Ontological Transcendence
+- **Purpose**: Explicit user approval/permission actions
+- **Usage**: Cookie consent, terms acceptance, data sharing approval
+- **Adoption**: 0+ subdomains (new)
+
 ---
 
 ### State Variants
@@ -566,6 +691,20 @@ The Genesis Semantic Engine launched with a three-tier architecture and six core
 - **Purpose**: Content with scroll-based animations
 - **Usage**: Fade-in effects, parallax scrolling, reveal animations
 - **Features**: Respects `prefers-reduced-motion`, mobile-optimized timing, multiple trigger class support
+- **Adoption**: 0+ subdomains (new)
+
+#### `emerging` ⭐ NEW
+- **Since**: v4.0.0
+- **Origin**: Ontological Transcendence
+- **Purpose**: Newly created, fresh content indicator
+- **Usage**: New posts, recent additions, just-published items
+- **Adoption**: 0+ subdomains (new)
+
+#### `transcending` ⭐ NEW
+- **Since**: v4.0.0
+- **Origin**: Ontological Transcendence
+- **Purpose**: In transformative transition (AI processing, genesis)
+- **Usage**: Content undergoing fundamental change, AI processing states
 - **Adoption**: 0+ subdomains (new)
 
 ---
@@ -622,6 +761,13 @@ The Genesis Semantic Engine launched with a three-tier architecture and six core
 - **Purpose**: Content sized relative to viewport (hero sections)
 - **Usage**: Hero sections, splash screens, full-height content
 - **Features**: Uses dynamic viewport height (dvh), mobile browser chrome aware, auto-adjusts on short viewports
+- **Adoption**: 0+ subdomains (new)
+
+#### `sacred` ⭐ NEW
+- **Since**: v4.0.0
+- **Origin**: Ontological Transcendence
+- **Purpose**: Reverent, mission-critical tone for transcendent content
+- **Usage**: ASI Saga mission pages, genesis ceremony, transcendent content
 - **Adoption**: 0+ subdomains (new)
 
 ---

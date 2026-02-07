@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<genesis-environment logic="focused">
+<genesis-environment logic="{% if page.toc %}convergent{% else %}focused{% endif %}">
   <article class="article-layout">
     {% if page.toc %}
     <genesis-navigation type="sidebar" orientation="vertical">

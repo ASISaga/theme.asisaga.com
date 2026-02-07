@@ -1,0 +1,48 @@
+{% comment %}
+Pagination Component
+Semantic pagination controls
+
+Parameters:
+- paginator: Jekyll paginator object (optional, falls back to paginator variable)
+- prev_text: Previous button text (default: ← Previous)
+- next_text: Next button text (default: Next →)
+- class: Additional CSS classes (optional)
+{% endcomment %}
+
+{% assign pager = include.paginator | default: paginator %}
+{% assign prev_label = include.prev_text | default: "← Previous" %}
+{% assign next_label = include.next_text | default: "Next →" %}
+
+{% if pager.total_pages > 1 %}
+<genesis-environment logic="navigation-pagination">
+  <nav class="genesis-pagination{% if include.class %} {{ include.class }}{% endif %}" aria-label="Pagination">
+    {% if pager.previous_page %}
+    <genesis-synapse vector="paginate">
+      <a href="{{ pager.previous_page_path }}" class="genesis-pagination__link genesis-pagination__link--prev" rel="prev">
+        {{ prev_label }}
+      </a>
+    </genesis-synapse>
+    {% else %}
+    <span class="genesis-pagination__link genesis-pagination__link--prev genesis-pagination__link--disabled" aria-disabled="true">
+      {{ prev_label }}
+    </span>
+    {% endif %}
+    
+    <span class="genesis-pagination__info">
+      Page {{ pager.page }} of {{ pager.total_pages }}
+    </span>
+    
+    {% if pager.next_page %}
+    <genesis-synapse vector="paginate">
+      <a href="{{ pager.next_page_path }}" class="genesis-pagination__link genesis-pagination__link--next" rel="next">
+        {{ next_label }}
+      </a>
+    </genesis-synapse>
+    {% else %}
+    <span class="genesis-pagination__link genesis-pagination__link--next genesis-pagination__link--disabled" aria-disabled="true">
+      {{ next_label }}
+    </span>
+    {% endif %}
+  </nav>
+</genesis-environment>
+{% endif %}

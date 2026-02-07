@@ -1,0 +1,20 @@
+{% comment %}
+Card Component
+Universal semantic card component that wraps content in an entity
+
+Parameters:
+- entity: Entity variant (primary|secondary|imperative|transcendent) (default: primary)
+- class: Additional CSS classes (optional)
+- id: Element ID (optional)
+- tag: HTML element to use (default: div)
+- aria_label: Accessibility label (optional)
+{% endcomment %}
+
+{% assign card_tag = include.tag | default: "div" %}
+{% assign card_entity = include.entity | default: "primary" %}
+
+<genesis-entity nature="{{ card_entity }}">
+  <{{ card_tag }} class="genesis-card{% if include.class %} {{ include.class }}{% endif %}"{% if include.id %} id="{{ include.id }}"{% endif %}{% if include.aria_label %} aria-label="{{ include.aria_label }}"{% endif %}>
+    {{ include.content }}
+  </{{ card_tag }}>
+</genesis-entity>

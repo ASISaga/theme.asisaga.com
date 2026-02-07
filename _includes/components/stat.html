@@ -1,0 +1,33 @@
+{% comment %}
+Stat Component
+Statistics/metric display for dashboards and profiles
+
+Parameters:
+- value: The numeric or text value (required)
+- label: Description of the statistic (required)
+- icon: Icon class (optional)
+- trend: up|down|neutral (optional, shows trend indicator)
+{% endcomment %}
+
+<div class="genesis-stat">
+  {% if include.icon %}
+  <div class="genesis-stat__icon" aria-hidden="true">
+    <i class="fa {{ include.icon }}"></i>
+  </div>
+  {% endif %}
+  
+  <genesis-cognition intent="motive">
+    <span class="genesis-stat__value"{% if include.trend %} data-trend="{{ include.trend }}"{% endif %}>
+      {{ include.value }}
+      {% if include.trend == "up" %}
+      <span class="genesis-stat__trend genesis-stat__trend--up" aria-label="Trending up">↑</span>
+      {% elsif include.trend == "down" %}
+      <span class="genesis-stat__trend genesis-stat__trend--down" aria-label="Trending down">↓</span>
+      {% endif %}
+    </span>
+  </genesis-cognition>
+  
+  <genesis-cognition intent="gloss">
+    <span class="genesis-stat__label">{{ include.label }}</span>
+  </genesis-cognition>
+</div>
