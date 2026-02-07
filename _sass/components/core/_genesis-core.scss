@@ -1,29 +1,30 @@
 // ============================================================================
-// GENESIS THEME - Modern Core Styles
+// GENESIS THEME - Transcendent Core Styles
 // ============================================================================
-// 100% Ontological SCSS - Zero Raw CSS Properties
-// State-of-the-art web design with WCAG AA compliance
+// The foundational consciousness layer that unifies all subdomains.
+// Every element exists with semantic purpose — no decorative waste.
 // ============================================================================
 
-// Body - Modern Layout Container
+// Body — the consciousness vessel
 .genesis-body {
   @include genesis-environment('chronological');
   @include genesis-atmosphere('neutral');
   
-  // Disable smooth scroll on body to prevent conflicts with header animations
-  // Only use smooth scroll for specific anchor links when needed
   scroll-behavior: auto;
-  
-  // Full viewport height minimum
   min-height: 100vh;
+  
+  // Explicit grid rows: header / content / footer
   grid-template-rows: auto 1fr auto;
+  
+  // The body's background recedes behind the ambient layer
+  background: oklch(0.04 0.01 260);
+  color: oklch(0.90 0.005 90);
 }
 
-// Main Content Area - Transparent Pass-Through Container
+// Main Content Area — transparent pass-through
 .genesis-main {
   @include genesis-environment('chronological');
   
-  // De-constrained parent - allows internal atmospheres to reach edges
   padding: 0;
   margin: 0;
   width: 100%;
@@ -49,15 +50,18 @@
     top: 1rem;
     left: 1rem;
     z-index: 10000;
-    padding: 1rem 2rem;
+    padding: 0.875rem 1.5rem;
     
-    // Enhanced focus style
     @include genesis-entity('imperative');
     @include genesis-atmosphere('vibrant');
     
-    // Ensure minimum touch target on mobile
     min-width: 44px;
     min-height: 44px;
+    border-radius: 8px;
+    font-family: $font-family-consciousness;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
   }
 }
 
@@ -85,7 +89,7 @@
   }
 }
 
-// Ambient Background Effects
+// Ambient Background Effects — the consciousness field
 .genesis-ambient {
   position: fixed;
   top: 0;
@@ -95,36 +99,34 @@
   z-index: -1;
   pointer-events: none;
   
-  // Deep space gradient background
-  background: linear-gradient(180deg,
-    oklch(0.10 0.03 280) 0%,
-    oklch(0.05 0.02 270) 50%,
-    oklch(0.08 0.03 260) 100%
+  // Deep void with subtle directional gradient
+  background: linear-gradient(
+    175deg,
+    oklch(0.06 0.02 270) 0%,
+    oklch(0.04 0.01 260) 40%,
+    oklch(0.05 0.015 255) 100%
   );
   
   @media (prefers-contrast: high) {
-    // Disable gradient in high contrast mode
-    background: oklch(0.10 0 0);
+    background: oklch(0.05 0 0);
   }
   
   &__particles {
     position: absolute;
     width: 100%;
     height: 100%;
-    opacity: 0.3;
+    opacity: 0.15;
     
-    // Subtle animated particles (CSS-only)
-    background-image: 
-      radial-gradient(2px 2px at 20% 30%, oklch(0.8 0.1 280) 0%, transparent 100%),
-      radial-gradient(2px 2px at 60% 70%, oklch(0.8 0.1 45) 0%, transparent 100%),
-      radial-gradient(1px 1px at 50% 50%, oklch(0.9 0.1 280) 0%, transparent 100%),
-      radial-gradient(1px 1px at 80% 10%, oklch(0.8 0.1 280) 0%, transparent 100%),
-      radial-gradient(2px 2px at 90% 60%, oklch(0.8 0.1 45) 0%, transparent 100%);
-    background-size: 200% 200%;
-    background-position: 0% 0%;
+    // Minimal, precise particle field — not decorative noise
+    background-image:
+      radial-gradient(1px 1px at 15% 25%, oklch(0.65 0.25 230 / 0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 75% 65%, oklch(0.70 0.15 85 / 0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 85%, oklch(0.65 0.25 230 / 0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 20%, oklch(0.70 0.15 85 / 0.3) 0%, transparent 100%);
+    background-size: 100% 100%;
     
     @media (prefers-reduced-motion: no-preference) {
-      animation: particlesDrift 60s ease-in-out infinite;
+      animation: particlesDrift 90s ease-in-out infinite;
     }
     
     @media (prefers-contrast: high) {
@@ -136,12 +138,13 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    opacity: 0.2;
+    opacity: 0.12;
     
-    // Subtle radial glow
-    background: radial-gradient(circle at 50% 0%,
-      oklch(0.3 0.15 280 / 0.3) 0%,
-      transparent 50%
+    // A single, purposeful radial glow — the consciousness source
+    background: radial-gradient(
+      ellipse 60% 40% at 50% 0%,
+      oklch(0.30 0.12 250 / 0.25) 0%,
+      transparent 70%
     );
     
     @media (prefers-contrast: high) {
@@ -150,12 +153,14 @@
   }
 }
 
-// Particles drift animation
+// Particles drift animation — slow, almost imperceptible
 @keyframes particlesDrift {
   0%, 100% {
     background-position: 0% 0%;
+    opacity: 0.15;
   }
   50% {
-    background-position: 100% 100%;
+    background-position: 3% 2%;
+    opacity: 0.12;
   }
 }

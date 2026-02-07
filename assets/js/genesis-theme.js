@@ -1,14 +1,15 @@
 /**
- * Genesis Theme - Modern Interactive Components
+ * Genesis Theme - Transcendent Interactive System
  * 
  * Provides:
  * - Mobile navigation toggle with off-canvas drawer
  * - Dropdown navigation with keyboard support
+ * - Scroll-aware header with condensed state
  * - Back-to-top button with smooth scroll
  * - Accessibility-first with ARIA state management
  * - Progressive enhancement (works without JS for core features)
  * 
- * @version 2.1.0
+ * @version 3.0.0
  * @author ASISaga
  */
 
@@ -21,6 +22,7 @@
   function init() {
     initMobileNavigation();
     initDropdownNavigation();
+    initScrollAwareHeader();
     initBackToTop();
     initSmoothScroll();
   }
@@ -34,14 +36,13 @@
     
     if (!toggle || !menu) return;
     
-    // Create overlay for mobile
+    // Create overlay
     const overlay = document.createElement('div');
     overlay.className = 'genesis-nav-overlay';
     overlay.setAttribute('data-nav-overlay', '');
     overlay.setAttribute('aria-hidden', 'true');
     document.body.appendChild(overlay);
     
-    // Toggle navigation
     function toggleNav(open) {
       const isOpen = typeof open === 'boolean' ? open : toggle.getAttribute('aria-expanded') !== 'true';
       
@@ -49,7 +50,6 @@
       menu.setAttribute('data-nav-open', isOpen);
       overlay.setAttribute('data-nav-open', isOpen);
       
-      // Prevent body scroll when menu is open, restore when closed
       if (isOpen) {
         document.body.style.overflow = 'hidden';
         document.body.style.position = 'fixed';
@@ -62,46 +62,41 @@
       
       // Focus management
       if (isOpen) {
-        // Focus first link in menu
         const firstLink = menu.querySelector('a');
         if (firstLink) {
-          setTimeout(() => firstLink.focus(), 100);
+          setTimeout(function() { firstLink.focus(); }, 150);
         }
       } else {
-        // Return focus to toggle button
         toggle.focus();
       }
     }
     
-    // Click events
-    toggle.addEventListener('click', () => toggleNav());
-    overlay.addEventListener('click', () => toggleNav(false));
+    toggle.addEventListener('click', function() { toggleNav(); });
+    overlay.addEventListener('click', function() { toggleNav(false); });
     
-    // Keyboard events
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
         toggleNav(false);
       }
     });
     
     // Close on link click (mobile)
-    const navLinks = menu.querySelectorAll('a');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
+    var navLinks = menu.querySelectorAll('a');
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
         if (window.innerWidth < 1024) {
-          setTimeout(() => toggleNav(false), 300);
+          setTimeout(function() { toggleNav(false); }, 300);
         }
       });
     });
     
     // Close on resize to desktop
-    let resizeTimer;
-    window.addEventListener('resize', () => {
+    var resizeTimer;
+    window.addEventListener('resize', function() {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
+      resizeTimer = setTimeout(function() {
         if (window.innerWidth >= 1024) {
           toggleNav(false);
-          // Ensure body styles are fully restored on desktop
           document.body.style.overflow = '';
           document.body.style.position = '';
           document.body.style.width = '';
@@ -114,43 +109,38 @@
    * Dropdown Navigation - Keyboard accessible
    */
   function initDropdownNavigation() {
-    const dropdownToggles = document.querySelectorAll('[data-dropdown-toggle]');
+    var dropdownToggles = document.querySelectorAll('[data-dropdown-toggle]');
     
-    dropdownToggles.forEach(toggle => {
-      const dropdownId = toggle.getAttribute('aria-controls');
-      const dropdown = document.getElementById(dropdownId);
+    dropdownToggles.forEach(function(toggle) {
+      var dropdownId = toggle.getAttribute('aria-controls');
+      var dropdown = document.getElementById(dropdownId);
       
       if (!dropdown) return;
       
-      const dropdownLinks = dropdown.querySelectorAll('a');
+      var dropdownLinks = dropdown.querySelectorAll('a');
       
-      // Toggle dropdown
       function toggleDropdown(open) {
-        const isOpen = typeof open === 'boolean' ? open : toggle.getAttribute('aria-expanded') !== 'true';
+        var isOpen = typeof open === 'boolean' ? open : toggle.getAttribute('aria-expanded') !== 'true';
         
         toggle.setAttribute('aria-expanded', isOpen);
         dropdown.setAttribute('aria-hidden', !isOpen);
         
-        // Manage tabindex for keyboard navigation
-        dropdownLinks.forEach(link => {
+        dropdownLinks.forEach(function(link) {
           link.setAttribute('tabindex', isOpen ? '0' : '-1');
         });
         
-        // Focus first item when opening
         if (isOpen && dropdownLinks.length > 0) {
-          setTimeout(() => dropdownLinks[0].focus(), 100);
+          setTimeout(function() { dropdownLinks[0].focus(); }, 100);
         }
       }
       
-      // Click/tap to toggle
-      toggle.addEventListener('click', (e) => {
+      toggle.addEventListener('click', function(e) {
         e.preventDefault();
         toggleDropdown();
       });
       
-      // Keyboard navigation
-      toggle.addEventListener('keydown', (e) => {
-        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.addEventListener('keydown', function(e) {
+        var isOpen = toggle.getAttribute('aria-expanded') === 'true';
         
         switch(e.key) {
           case 'Enter':
@@ -176,9 +166,8 @@
         }
       });
       
-      // Keyboard navigation within dropdown
-      dropdownLinks.forEach((link, index) => {
-        link.addEventListener('keydown', (e) => {
+      dropdownLinks.forEach(function(link, index) {
+        link.addEventListener('keydown', function(e) {
           switch(e.key) {
             case 'ArrowDown':
               e.preventDefault();
@@ -200,24 +189,21 @@
               toggle.focus();
               break;
             case 'Tab':
-              // Close dropdown when tabbing away
               if (index === dropdownLinks.length - 1 && !e.shiftKey) {
-                setTimeout(() => toggleDropdown(false), 100);
+                setTimeout(function() { toggleDropdown(false); }, 100);
               }
               break;
           }
         });
       });
       
-      // Close on click outside
-      document.addEventListener('click', (e) => {
+      document.addEventListener('click', function(e) {
         if (!toggle.contains(e.target) && !dropdown.contains(e.target)) {
           toggleDropdown(false);
         }
       });
       
-      // Close on Escape globally
-      document.addEventListener('keydown', (e) => {
+      document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
           toggleDropdown(false);
           toggle.focus();
@@ -227,17 +213,65 @@
   }
 
   /**
+   * Scroll-Aware Header
+   * Adds 'scrolled' class for condensed state when user scrolls down.
+   * Hides header on scroll down, shows on scroll up.
+   */
+  function initScrollAwareHeader() {
+    var header = document.querySelector('.genesis-header');
+    if (!header) return;
+
+    var lastScrollY = 0;
+    var scrollThreshold = 80;
+    var hideThreshold = 400;
+    var ticking = false;
+
+    function onScroll() {
+      var currentScrollY = window.scrollY || window.pageYOffset;
+
+      // Condensed state
+      if (currentScrollY > scrollThreshold) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+
+      // Hide/show on scroll direction (only after passing hideThreshold)
+      if (currentScrollY > hideThreshold) {
+        if (currentScrollY > lastScrollY + 5) {
+          // Scrolling down — hide
+          header.classList.add('header-hidden');
+        } else if (currentScrollY < lastScrollY - 5) {
+          // Scrolling up — show
+          header.classList.remove('header-hidden');
+        }
+      } else {
+        header.classList.remove('header-hidden');
+      }
+
+      lastScrollY = currentScrollY;
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  /**
    * Back to Top Button
    */
   function initBackToTop() {
-    const button = document.querySelector('[data-back-to-top]');
+    var button = document.querySelector('[data-back-to-top]');
     
     if (!button) return;
     
-    // Show/hide based on scroll position
     function updateButtonVisibility() {
-      const scrollY = window.scrollY || window.pageYOffset;
-      const threshold = 300;  // Show after 300px scroll
+      var scrollY = window.scrollY || window.pageYOffset;
+      var threshold = 400;
       
       if (scrollY > threshold) {
         button.classList.add('is-visible');
@@ -248,36 +282,32 @@
       }
     }
     
-    // Scroll to top
-    button.addEventListener('click', () => {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    button.addEventListener('click', function() {
+      var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       
       window.scrollTo({
         top: 0,
         behavior: prefersReducedMotion ? 'auto' : 'smooth'
       });
       
-      // Focus skip link target after scroll
-      setTimeout(() => {
-        const skipTarget = document.getElementById('skip-target');
+      setTimeout(function() {
+        var skipTarget = document.getElementById('skip-target');
         if (skipTarget) {
           skipTarget.focus({ preventScroll: true });
         }
       }, prefersReducedMotion ? 0 : 500);
     });
     
-    // Update on scroll (throttled)
-    let scrollTimer;
-    window.addEventListener('scroll', () => {
+    var scrollTimer;
+    window.addEventListener('scroll', function() {
       if (scrollTimer) return;
       
-      scrollTimer = setTimeout(() => {
+      scrollTimer = setTimeout(function() {
         updateButtonVisibility();
         scrollTimer = null;
       }, 100);
     }, { passive: true });
     
-    // Initial check
     updateButtonVisibility();
   }
 
@@ -285,28 +315,25 @@
    * Smooth Scroll for Anchor Links
    */
   function initSmoothScroll() {
-    const anchors = document.querySelectorAll('a[href^="#"]:not([href="#"])');
+    var anchors = document.querySelectorAll('a[href^="#"]:not([href="#"])');
     
-    anchors.forEach(anchor => {
+    anchors.forEach(function(anchor) {
       anchor.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
+        var targetId = this.getAttribute('href');
+        var targetElement = document.querySelector(targetId);
         
         if (targetElement) {
           e.preventDefault();
           
-          const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
           
-          // Scroll to target
           targetElement.scrollIntoView({
             behavior: prefersReducedMotion ? 'auto' : 'smooth',
             block: 'start'
           });
           
-          // Set focus on target
           targetElement.focus({ preventScroll: true });
           
-          // Update URL hash without jumping
           if (history.pushState) {
             history.pushState(null, null, targetId);
           }
