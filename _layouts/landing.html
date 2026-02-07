@@ -5,7 +5,7 @@ layout: default
   <div class="landing-layout">
     {% if page.hero %}
     <genesis-entity nature="transcendent">
-      <section class="landing__hero" aria-labelledby="landing-hero-title">
+      <section class="landing__hero">
         {% include layouts/layout-header.html
            class_prefix="landing"
            title=page.hero.title
@@ -15,7 +15,7 @@ layout: default
         {% if page.hero.cta %}
         <div class="landing__hero-actions">
           <genesis-synapse vector="{% if page.hero.cta.invoke %}invoke{% else %}execute{% endif %}">
-            <a href="{{ page.hero.cta.url }}" class="landing__hero-button"{% if page.hero.cta.invoke %} id="landing-hero-title"{% endif %}>{{ page.hero.cta.text }}</a>
+            <a href="{{ page.hero.cta.url }}" class="landing__hero-button">{{ page.hero.cta.text }}</a>
           </genesis-synapse>
         </div>
         {% endif %}

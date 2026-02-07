@@ -43,7 +43,7 @@ Parameters:
     </div>
     
     {% if include.dismissible == "true" %}
-    <button class="genesis-alert__dismiss" aria-label="Dismiss alert" type="button" onclick="this.closest('.genesis-alert').remove()">
+    <button class="genesis-alert__dismiss" aria-label="Dismiss alert" type="button" data-dismiss="alert">
       <i class="fa fa-times" aria-hidden="true"></i>
     </button>
     {% endif %}
