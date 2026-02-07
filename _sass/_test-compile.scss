@@ -32,6 +32,7 @@
   &.env-associative { @include genesis-environment('associative'); }
   &.env-chronological { @include genesis-environment('chronological'); }
   &.env-manifest { @include genesis-environment('manifest'); }
+  &.env-convergent { @include genesis-environment('convergent'); }
   
   // All entity variants
   &.entity-primary { @include genesis-entity('primary'); }
@@ -40,6 +41,8 @@
   &.entity-latent { @include genesis-entity('latent'); }
   &.entity-aggregate { @include genesis-entity('aggregate'); }
   &.entity-ancestral { @include genesis-entity('ancestral'); }
+  &.entity-transcendent { @include genesis-entity('transcendent'); }
+  &.entity-ephemeral { @include genesis-entity('ephemeral'); }
   
   // All cognition variants
   &.cog-axiom { @include genesis-cognition('axiom'); }
@@ -48,6 +51,8 @@
   &.cog-gloss { @include genesis-cognition('gloss'); }
   &.cog-motive { @include genesis-cognition('motive'); }
   &.cog-quantum { @include genesis-cognition('quantum'); }
+  &.cog-oracle { @include genesis-cognition('oracle'); }
+  &.cog-testimony { @include genesis-cognition('testimony'); }
   
   // All synapse variants
   &.syn-navigate { @include genesis-synapse('navigate'); }
@@ -55,6 +60,8 @@
   &.syn-inquiry { @include genesis-synapse('inquiry'); }
   &.syn-destructive { @include genesis-synapse('destructive'); }
   &.syn-social { @include genesis-synapse('social'); }
+  &.syn-invoke { @include genesis-synapse('invoke'); }
+  &.syn-consent { @include genesis-synapse('consent'); }
   
   // All state variants
   &.state-stable { @include genesis-state('stable'); }
@@ -62,10 +69,13 @@
   &.state-deprecated { @include genesis-state('deprecated'); }
   &.state-locked { @include genesis-state('locked'); }
   &.state-simulated { @include genesis-state('simulated'); }
+  &.state-emerging { @include genesis-state('emerging'); }
+  &.state-transcending { @include genesis-state('transcending'); }
   
   // All atmosphere variants
   &.atmos-neutral { @include genesis-atmosphere('neutral'); }
   &.atmos-ethereal { @include genesis-atmosphere('ethereal'); }
   &.atmos-void { @include genesis-atmosphere('void'); }
   &.atmos-vibrant { @include genesis-atmosphere('vibrant'); }
+  &.atmos-sacred { @include genesis-atmosphere('sacred'); }
 }
