@@ -21,6 +21,10 @@ export class GenesisHeader extends GenesisElement {
     super();
     this._mobileMenuOpen = false;
     this._scrollY = 0;
+    this._mobileBreakpoint = 1024;
+    this._navHandlers = null;
+    this._navLinkHandlers = [];
+    this._overlayCreated = false;
   }
 
   connectedCallback() {
@@ -39,6 +43,7 @@ export class GenesisHeader extends GenesisElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     window.removeEventListener('scroll', this._handleScroll);
+    this._teardownMobileToggle();
   }
 
   /**
@@ -66,6 +71,7 @@ export class GenesisHeader extends GenesisElement {
       overlay.setAttribute('data-nav-overlay', '');
       overlay.setAttribute('aria-hidden', 'true');
       document.body.appendChild(overlay);
+      this._overlayCreated = true;
     }
 
     const setNavState = (open) => {
@@ -97,45 +103,91 @@ export class GenesisHeader extends GenesisElement {
       }
     };
 
-    toggle.addEventListener('click', () => setNavState(!this._mobileMenuOpen));
-
-    if (overlay) {
-      overlay.addEventListener('click', () => setNavState(false));
-    }
-
-    const navLinks = nav.querySelectorAll('a');
-    navLinks.forEach((link) => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth < 1024) {
-          setTimeout(() => setNavState(false), 300);
-        }
-      });
-    });
-
-    // Close menu on escape key
-    document.addEventListener('keydown', (e) => {
+    const onToggleClick = () => setNavState(!this._mobileMenuOpen);
+    const onOverlayClick = () => setNavState(false);
+    const onKeydown = (e) => {
       if (e.key === 'Escape' && this._mobileMenuOpen) {
         setNavState(false);
       }
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
+    };
+    const onDocumentClick = (e) => {
       if (this._mobileMenuOpen && !this.contains(e.target)) {
         setNavState(false);
       }
+    };
+
+    const navLinks = nav.querySelectorAll('a');
+    navLinks.forEach((link) => {
+      const handler = () => {
+        if (window.innerWidth < this._mobileBreakpoint) {
+          setTimeout(() => setNavState(false), 300);
+        }
+      };
+      link.addEventListener('click', handler);
+      this._navLinkHandlers.push({ link, handler });
     });
 
-    // Close on resize to desktop
     let resizeTimer;
-    window.addEventListener('resize', () => {
+    const onResize = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        if (window.innerWidth >= 1024) {
+        if (window.innerWidth >= this._mobileBreakpoint) {
           setNavState(false);
         }
       }, 250);
+    };
+
+    toggle.addEventListener('click', onToggleClick);
+    if (overlay) {
+      overlay.addEventListener('click', onOverlayClick);
+    }
+    document.addEventListener('keydown', onKeydown);
+    document.addEventListener('click', onDocumentClick);
+    window.addEventListener('resize', onResize);
+
+    this._navHandlers = {
+      toggle,
+      nav,
+      overlay,
+      onToggleClick,
+      onOverlayClick,
+      onKeydown,
+      onDocumentClick,
+      onResize,
+      resizeTimer,
+    };
+  }
+
+  _teardownMobileToggle() {
+    if (!this._navHandlers) return;
+
+    const {
+      toggle,
+      overlay,
+      onToggleClick,
+      onOverlayClick,
+      onKeydown,
+      onDocumentClick,
+      onResize,
+    } = this._navHandlers;
+
+    toggle?.removeEventListener('click', onToggleClick);
+    overlay?.removeEventListener('click', onOverlayClick);
+    document.removeEventListener('keydown', onKeydown);
+    document.removeEventListener('click', onDocumentClick);
+    window.removeEventListener('resize', onResize);
+
+    this._navLinkHandlers.forEach(({ link, handler }) => {
+      link.removeEventListener('click', handler);
     });
+    this._navLinkHandlers = [];
+
+    if (this._overlayCreated) {
+      overlay?.remove();
+      this._overlayCreated = false;
+    }
+
+    this._navHandlers = null;
   }
 
   /**

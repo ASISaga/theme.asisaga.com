@@ -101,16 +101,19 @@ $genesis-environment-logics: (
   'manifest',
   'convergent',
   'interaction-form',
+  'navigation-accordion',
   'navigation-sidebar',
   'navigation-breadcrumb',
-  'navigation-pagination'
+  'navigation-pagination',
+  'navigation-tabs'
 );
 
 $genesis-entity-natures: (
   'primary',
   'secondary',
   'imperative',
-  'transcendent'
+  'transcendent',
+  'image-adaptive'
 );
 
 $genesis-cognition-intents: (
