@@ -25,10 +25,12 @@ export class GenesisHeader extends GenesisElement {
     super();
     this._mobileMenuOpen = false;
     this._scrollY = 0;
+    this._scrollPosition = 0;
     this._mobileBreakpoint = 1024;
     this._navHandlers = null;
     this._navLinkHandlers = [];
     this._overlayCreated = false;
+    this._navCloseTimer = null;
   }
 
   connectedCallback() {
@@ -91,9 +93,11 @@ export class GenesisHeader extends GenesisElement {
       }
 
       if (open) {
+        this._scrollPosition = window.scrollY || window.pageYOffset;
         document.body.style.overflow = 'hidden';
         document.body.style.position = 'fixed';
         document.body.style.width = '100%';
+        document.body.style.top = `-${this._scrollPosition}px`;
 
         const firstLink = nav.querySelector('a, button');
         if (firstLink) {
@@ -103,6 +107,9 @@ export class GenesisHeader extends GenesisElement {
         document.body.style.overflow = '';
         document.body.style.position = '';
         document.body.style.width = '';
+        document.body.style.top = '';
+        window.scrollTo(0, this._scrollPosition);
+        this._scrollPosition = 0;
         toggle.focus();
       }
     };
@@ -125,7 +132,8 @@ export class GenesisHeader extends GenesisElement {
       const handler = () => {
         const windowWidth = window.innerWidth;
         if (windowWidth < this._mobileBreakpoint) {
-          setTimeout(() => {
+          clearTimeout(this._navCloseTimer);
+          this._navCloseTimer = setTimeout(() => {
             if (!this.isConnected) return;
             setNavState(false);
           }, NAV_CLOSE_DELAY_MS);
@@ -182,6 +190,10 @@ export class GenesisHeader extends GenesisElement {
 
     if (this._navHandlers.resizeTimer) {
       clearTimeout(this._navHandlers.resizeTimer);
+    }
+    if (this._navCloseTimer) {
+      clearTimeout(this._navCloseTimer);
+      this._navCloseTimer = null;
     }
 
     toggle?.removeEventListener('click', onToggleClick);
