@@ -12,11 +12,8 @@
  * Load Motion from CDN before this script:
  * <script src="https://cdn.jsdelivr.net/npm/motion@12/dist/motion.js"></script>
  */
-// Motion Library bridge
-// Loads Motion as a module and exposes it globally for compatibility.
-import * as Motion from 'https://cdn.jsdelivr.net/npm/motion@12.32.0/dist/motion.js';
-window.Motion = Motion;
-
+// Motion Library is loaded via _includes/motion-library.html
+// and exposed globally as window.Motion
 
 import {
   initMotionAnimations,

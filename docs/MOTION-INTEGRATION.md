@@ -27,14 +27,15 @@ This document explains how the Motion library is integrated into the ASI Saga th
 Motion is loaded from CDN in the `<head>` via `_includes/motion-library.html`:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/motion@12.30.0/dist/index.es.js" type="module"></script>
 <script type="module">
-  import * as Motion from 'https://cdn.jsdelivr.net/npm/motion@12.30.0/dist/index.es.js';
+  import * as Motion from 'https://cdn.jsdelivr.net/npm/motion@12.32.0/dist/motion.js';
   window.Motion = Motion;
 </script>
 ```
 
 This makes Motion available globally as `window.Motion` for use in our utilities.
+
+**Important**: The Motion library MUST be loaded in the HTML head before `common.js` to ensure `window.Motion` is available when `motion-utils.js` is imported. This is handled automatically by `_includes/head.html`.
 
 ## Available Animation Functions
 

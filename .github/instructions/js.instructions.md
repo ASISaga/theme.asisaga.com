@@ -33,8 +33,9 @@ See `docs/MOTION-INTEGRATION.md` for complete documentation.
 Your JavaScript may reveal interaction patterns not covered by existing `genesis-synapse` variants. If you find yourself repeatedly implementing the same interaction type that lacks semantic identity, consider proposing a new synapse variant (see `.github/AGENTS.MD`).
 
 ## Entry Points & Structure
-- All shared JS should live in the theme's `assets/js/common.js`.
-- Each subdomain must have `assets/js/script.js` which imports `common.js` first, then subdomain-specific modules.
+- All shared JS should live in the theme's `assets/js/common/` directory.
+- The theme's main entry point is `assets/js/common.js` (loaded via `_includes/head.html`).
+- Each subdomain can have `assets/js/script.js` which imports theme's `common.js` first, then subdomain-specific modules.
 - Use ES6 modules and `import`/`export` syntax.
 
 ## Loading & Initialization
