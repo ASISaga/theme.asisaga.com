@@ -17,13 +17,10 @@
 
   <!-- Jekyll SEO tag plugin -->
   {% seo %}
-  
-  <!-- Motion Library for UI/UX Animations -->
-  {% include motion-library.html %}
-  
+
   <!-- Genesis Theme JavaScript -->
   <script type="module" src="{{ '/assets/js/script.js' | relative_url }}"></script>
-  
+
   <!-- Page-specific JavaScript -->
   {% if page.custom_js %}
   <script src="{{ '/assets/js/' | append: page.custom_js | relative_url }}" defer></script>
