@@ -111,7 +111,7 @@ export class GenesisHeader extends GenesisElement {
       }
     };
     const onDocumentClick = (e) => {
-      if (this._mobileMenuOpen && !this.contains(e.target)) {
+      if (this._mobileMenuOpen && !this.contains(e.target) && e.target !== overlay) {
         setNavState(false);
       }
     };
@@ -135,6 +135,9 @@ export class GenesisHeader extends GenesisElement {
           setNavState(false);
         }
       }, 250);
+      if (this._navHandlers) {
+        this._navHandlers.resizeTimer = resizeTimer;
+      }
     };
 
     toggle.addEventListener('click', onToggleClick);
@@ -154,7 +157,7 @@ export class GenesisHeader extends GenesisElement {
       onKeydown,
       onDocumentClick,
       onResize,
-      resizeTimer,
+      resizeTimer: null,
     };
   }
 
@@ -170,6 +173,10 @@ export class GenesisHeader extends GenesisElement {
       onDocumentClick,
       onResize,
     } = this._navHandlers;
+
+    if (this._navHandlers.resizeTimer) {
+      clearTimeout(this._navHandlers.resizeTimer);
+    }
 
     toggle?.removeEventListener('click', onToggleClick);
     overlay?.removeEventListener('click', onOverlayClick);

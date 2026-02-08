@@ -244,6 +244,7 @@ genesis-media[ratio="auto"] {
   overflow: visible;
 }
 
+// Remove aspect-ratio placeholder when media should size to intrinsic content
 genesis-media[ratio="auto"]::before {
   display: none;
 }
