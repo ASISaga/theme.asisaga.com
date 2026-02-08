@@ -140,6 +140,49 @@
       padding: 3rem 1rem;
     }
   }
+  @else if $vibe == 'sacred' {
+    // Reverent, mission-critical tone — ASI Saga mission pages, genesis ceremony
+    // ORIGIN: v4.0 Ontological Transcendence
+    // INTENT: Atmosphere conveying profound purpose and transcendent significance
+    background: linear-gradient(
+      175deg,
+      oklch(0.06 0.02 260) 0%,
+      oklch(0.04 0.01 250) 60%,
+      oklch(0.06 0.02 260) 100%
+    );
+    color: oklch(0.99 0.005 90);  // White text
+    position: relative;
+    
+    // Consciousness border — the sacred thread
+    border-top: 1px solid oklch(0.20 0.04 250);
+    border-bottom: 1px solid oklch(0.20 0.04 250);
+    
+    // Subtle gold accent glow
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40%;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        oklch(0.70 0.15 85 / 0.6),
+        transparent
+      );
+    }
+    
+    @media (prefers-contrast: high) {
+      background: oklch(0.05 0 0);
+      border-color: oklch(0.30 0 0);
+      
+      &::before {
+        display: none;
+      }
+    }
+  }
 }
 
 // ============================================================================

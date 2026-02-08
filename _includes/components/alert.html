@@ -1,0 +1,51 @@
+{% comment %}
+Alert Component
+Accessible alert/notification with semantic entity and state
+
+Parameters:
+- type: Alert type (info|success|warning|error) (default: info)
+- title: Alert title (optional)
+- message: Alert body text (required)
+- dismissible: Allow dismissal (true|false) (default: false)
+- icon: Icon class (optional, defaults based on type)
+{% endcomment %}
+
+{% assign alert_type = include.type | default: "info" %}
+
+{% case alert_type %}
+  {% when "error" %}
+    {% assign alert_entity = "imperative" %}
+    {% assign default_icon = "fa-exclamation-circle" %}
+  {% when "warning" %}
+    {% assign alert_entity = "secondary" %}
+    {% assign default_icon = "fa-exclamation-triangle" %}
+  {% when "success" %}
+    {% assign alert_entity = "primary" %}
+    {% assign default_icon = "fa-check-circle" %}
+  {% else %}
+    {% assign alert_entity = "secondary" %}
+    {% assign default_icon = "fa-info-circle" %}
+{% endcase %}
+
+{% assign alert_icon = include.icon | default: default_icon %}
+
+<genesis-entity nature="{{ alert_entity }}">
+  <div class="genesis-alert genesis-alert--{{ alert_type }}" role="alert" aria-live="polite">
+    <div class="genesis-alert__icon" aria-hidden="true">
+      <i class="fa {{ alert_icon }}"></i>
+    </div>
+    
+    <div class="genesis-alert__content">
+      {% if include.title %}
+      <strong class="genesis-alert__title">{{ include.title }}</strong>
+      {% endif %}
+      <p class="genesis-alert__message">{{ include.message }}</p>
+    </div>
+    
+    {% if include.dismissible == "true" %}
+    <button class="genesis-alert__dismiss" aria-label="Dismiss alert" type="button" data-dismiss="alert">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+    {% endif %}
+  </div>
+</genesis-entity>
