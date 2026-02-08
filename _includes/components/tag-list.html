@@ -1,0 +1,33 @@
+{% comment %}
+Tag List Component
+Displays tags/categories as semantic quantum cognition chips
+
+Parameters:
+- tags: Array of tag strings (required, or falls back to page.tags)
+- url_prefix: URL prefix for tag links (optional, e.g., "/tags/")
+- class: Additional CSS classes (optional)
+{% endcomment %}
+
+{% assign tag_items = include.tags | default: page.tags %}
+
+{% if tag_items.size > 0 %}
+<genesis-environment logic="associative">
+  <div class="genesis-tag-list{% if include.class %} {{ include.class }}{% endif %}" aria-label="Tags">
+    {% for tag in tag_items %}
+    {% if include.url_prefix %}
+    <genesis-synapse vector="navigate">
+      <a href="{{ include.url_prefix }}{{ tag | slugify }}" class="genesis-tag-list__tag">
+        <genesis-cognition intent="quantum">
+          {{ tag }}
+        </genesis-cognition>
+      </a>
+    </genesis-synapse>
+    {% else %}
+    <genesis-cognition intent="quantum">
+      <span class="genesis-tag-list__tag">{{ tag }}</span>
+    </genesis-cognition>
+    {% endif %}
+    {% endfor %}
+  </div>
+</genesis-environment>
+{% endif %}

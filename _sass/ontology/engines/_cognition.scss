@@ -112,4 +112,53 @@
       letter-spacing: 0.08em; // More spacing on mobile for clarity
     }
   }
+  @else if $intent == 'oracle' {
+    // AI-generated or predictive content — distinguishes machine insights from human prose
+    // ORIGIN: v4.0 Ontological Transcendence
+    // INTENT: Semantic identity for AI/generated content typography
+    font-size: var(--size-body, clamp(1rem, 1.5vw, 1.125rem));
+    font-weight: 400;
+    line-height: 1.6;
+    color: oklch(0.20 0.02 250);  // Slightly softer than discourse
+    font-family: var(--font-consciousness, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+    font-style: italic;
+    border-left: 3px solid oklch(0.65 0.25 230);  // Neon blue left accent
+    padding-left: 1em;
+    
+    // Mobile readability
+    @media (max-width: 767px) {
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+  }
+  @else if $intent == 'testimony' {
+    // Quoted speech, testimonials, attributed statements
+    // ORIGIN: v4.0 Ontological Transcendence
+    // INTENT: Pull-quotes, user testimonials, attributed citations
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    font-weight: 400;
+    line-height: 1.5;
+    color: oklch(0.15 0.01 250);  // Deep text
+    font-family: var(--font-wisdom, Georgia, "Times New Roman", serif);
+    font-style: italic;
+    position: relative;
+    padding-left: 1.5em;
+    
+    &::before {
+      content: '\201C';  // Opening smart quote
+      position: absolute;
+      left: 0;
+      top: -0.15em;
+      font-size: 2.5em;
+      line-height: 1;
+      color: oklch(0.70 0.15 85);  // Gold accent (purposeful emphasis)
+      font-family: Georgia, serif;
+    }
+    
+    // Mobile readability
+    @media (max-width: 767px) {
+      font-size: 1.125rem;
+      line-height: 1.55;
+    }
+  }
 }

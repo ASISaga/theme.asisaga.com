@@ -854,5 +854,84 @@
       border-radius: 0.25em;
     }
   }
+  @else if $vector == 'invoke' {
+    // AI/generative action trigger — prompt submission, model invocation
+    // ORIGIN: v4.0 Ontological Transcendence
+    // INTENT: Semantic identity for actions that trigger AI/generative processes
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
+    background: linear-gradient(135deg, oklch(0.12 0.02 250), oklch(0.08 0.02 260));
+    color: oklch(0.99 0.005 90);  // White text
+    border: 1px solid oklch(0.25 0.04 250);  // Consciousness border
+    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    font-weight: 600;
+    font-size: var(--size-button, clamp(0.95rem, 1.2vw, 1.05rem));
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.75rem 1.75rem;
+    }
+    
+    &:hover {
+      border-color: oklch(0.65 0.25 230);  // Neon blue
+      box-shadow:
+        0 0 20px oklch(0.65 0.25 230 / 0.3),
+        inset 0 0 10px oklch(0.65 0.25 230 / 0.1);
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      transform: scale(0.98) translateY(0);
+    }
+    
+    &:focus-visible {
+      outline: 2px solid oklch(0.65 0.25 230 / 0.5);
+      outline-offset: 2px;
+    }
+  }
+  @else if $vector == 'consent' {
+    // Explicit user approval/permission — cookie consent, terms acceptance
+    // ORIGIN: v4.0 Ontological Transcendence
+    // INTENT: Semantic identity for approval/permission actions
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
+    background: oklch(0.99 0.005 90);  // White
+    color: oklch(0.10 0.01 250);  // Black text
+    border: 2px solid oklch(0.65 0.25 150);  // Green — affirmative
+    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+    font-weight: 600;
+    font-size: var(--size-button, clamp(0.95rem, 1.2vw, 1.05rem));
+    
+    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
+    @media (max-width: 767px) {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.75rem 1.75rem;
+    }
+    
+    &:hover {
+      background: oklch(0.65 0.25 150);  // Green fill
+      color: oklch(0.99 0.005 90);  // White text on green
+      box-shadow: 0 0 12px oklch(0.65 0.25 150 / 0.3);
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      transform: scale(0.98) translateY(0);
+    }
+    
+    &:focus-visible {
+      outline: 2px solid oklch(0.65 0.25 150 / 0.5);
+      outline-offset: 2px;
+    }
+  }
 }
 

@@ -493,4 +493,41 @@
       grid-template-columns: repeat(4, 1fr);
     }
   }
+  @else if $logic == 'convergent' {
+    // Sidebar + main content layout — article with TOC, docs with sidebar
+    // ORIGIN: v4.0 Ontological Transcendence
+    // INTENT: Two-region layout where sidebar supports main content
+    container-type: inline-size;
+    width: 100%;
+    max-width: 100%;
+    
+    // Mobile: single column, sidebar below content
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    // Tablet: sidebar narrower
+    @media (min-width: 768px) and (max-width: 1023px) {
+      grid-template-columns: 240px 1fr;
+      gap: 2rem;
+    }
+    
+    // Desktop: sidebar + main content
+    @media (min-width: 1024px) {
+      grid-template-columns: 280px 1fr;
+      gap: 2.5rem;
+    }
+    
+    // Sidebar sticks while content scrolls
+    > :first-child {
+      @media (min-width: 768px) {
+        position: sticky;
+        top: 80px;
+        align-self: flex-start;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+      }
+    }
+  }
 }

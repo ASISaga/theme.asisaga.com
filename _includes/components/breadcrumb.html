@@ -1,0 +1,31 @@
+{% comment %}
+Breadcrumb Component
+Semantic breadcrumb navigation trail
+
+Parameters:
+- items: Array of breadcrumb items [{title, url}] (from page front matter)
+  Falls back to page.breadcrumbs if not provided
+- separator: Separator character (default: ›)
+{% endcomment %}
+
+{% assign crumbs = include.items | default: page.breadcrumbs %}
+{% assign sep = include.separator | default: "›" %}
+
+{% if crumbs %}
+<genesis-environment logic="navigation-breadcrumb">
+  <nav class="genesis-breadcrumb" aria-label="Breadcrumb">
+    <ol class="genesis-breadcrumb__list">
+      {% for crumb in crumbs %}
+      <li class="genesis-breadcrumb__item{% if forloop.last %} genesis-breadcrumb__item--current{% endif %}">
+        {% if forloop.last %}
+        <span aria-current="page">{{ crumb.title }}</span>
+        {% else %}
+        <a href="{{ crumb.url }}" class="genesis-breadcrumb__link">{{ crumb.title }}</a>
+        <span class="genesis-breadcrumb__separator" aria-hidden="true">{{ sep }}</span>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </nav>
+</genesis-environment>
+{% endif %}
