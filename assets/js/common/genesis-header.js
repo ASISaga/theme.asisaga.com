@@ -22,17 +22,17 @@ export class GenesisHeader extends GenesisElement {
   }
 
   static overlayElement = null;
+  static overlayCount = 0;
 
   constructor() {
     super();
     this._mobileMenuOpen = false;
     this._scrollY = 0;
-    this._scrollPosition = 0;
+    this._lockedScrollPosition = 0;
     this._mobileBreakpoint = 1024;
     this._windowWidth = window.innerWidth;
     this._navHandlers = null;
     this._navLinkHandlers = [];
-    this._overlayCreated = false;
     this._navCloseTimer = null;
   }
 
@@ -72,6 +72,7 @@ export class GenesisHeader extends GenesisElement {
     const nav = this.querySelector('[data-nav-menu], .genesis-header__nav');
     
     if (!toggle || !nav) return;
+    if (this._navHandlers) return;
 
     let overlay = this.constructor.overlayElement || document.querySelector('[data-nav-overlay]');
     if (!overlay) {
@@ -81,8 +82,8 @@ export class GenesisHeader extends GenesisElement {
       overlay.setAttribute('aria-hidden', 'true');
       document.body.appendChild(overlay);
       this.constructor.overlayElement = overlay;
-      this._overlayCreated = true;
     }
+    this.constructor.overlayCount += 1;
 
     const setNavState = (open) => {
       this._mobileMenuOpen = open;
@@ -97,11 +98,11 @@ export class GenesisHeader extends GenesisElement {
       }
 
       if (open) {
-        this._scrollPosition = window.scrollY;
+        this._lockedScrollPosition = window.scrollY;
         document.body.style.overflow = 'hidden';
         document.body.style.position = 'fixed';
         document.body.style.width = '100%';
-        document.body.style.top = `-${this._scrollPosition}px`;
+        document.body.style.top = `-${this._lockedScrollPosition}px`;
 
         const firstLink = nav.querySelector('a, button');
         if (firstLink) {
@@ -112,8 +113,8 @@ export class GenesisHeader extends GenesisElement {
         document.body.style.position = '';
         document.body.style.width = '';
         document.body.style.top = '';
-        window.scrollTo(0, this._scrollPosition);
-        this._scrollPosition = 0;
+        window.scrollTo(0, this._lockedScrollPosition);
+        this._lockedScrollPosition = 0;
         toggle.focus();
       }
     };
@@ -211,10 +212,10 @@ export class GenesisHeader extends GenesisElement {
     });
     this._navLinkHandlers = [];
 
-    if (this._overlayCreated) {
-      overlay?.remove();
+    this.constructor.overlayCount = Math.max(0, this.constructor.overlayCount - 1);
+    if (this.constructor.overlayCount === 0 && this.constructor.overlayElement) {
+      this.constructor.overlayElement.remove();
       this.constructor.overlayElement = null;
-      this._overlayCreated = false;
     }
 
     this._navHandlers = null;
