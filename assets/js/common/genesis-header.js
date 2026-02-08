@@ -124,7 +124,10 @@ export class GenesisHeader extends GenesisElement {
     navLinks.forEach((link) => {
       const handler = () => {
         if (window.innerWidth < this._mobileBreakpoint) {
-          setTimeout(() => setNavState(false), NAV_CLOSE_DELAY_MS);
+          setTimeout(() => {
+            if (!this.isConnected) return;
+            setNavState(false);
+          }, NAV_CLOSE_DELAY_MS);
         }
       };
       link.addEventListener('click', handler);
@@ -132,6 +135,7 @@ export class GenesisHeader extends GenesisElement {
     });
 
     const onResize = () => {
+      if (!this._navHandlers) return;
       clearTimeout(this._navHandlers.resizeTimer);
       this._navHandlers.resizeTimer = setTimeout(() => {
         if (window.innerWidth >= this._mobileBreakpoint) {
