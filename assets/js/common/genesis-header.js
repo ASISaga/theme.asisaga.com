@@ -12,6 +12,10 @@
 
 import { GenesisElement } from './genesis-element.js';
 
+const NAV_FOCUS_DELAY_MS = 150;
+const NAV_CLOSE_DELAY_MS = 300;
+const NAV_RESIZE_DEBOUNCE_MS = 250;
+
 export class GenesisHeader extends GenesisElement {
   static get observedAttributes() {
     return ['brand-url', 'logo-src', 'brand-text', 'tagline', 'sticky'];
@@ -93,7 +97,7 @@ export class GenesisHeader extends GenesisElement {
 
         const firstLink = nav.querySelector('a, button');
         if (firstLink) {
-          setTimeout(() => firstLink.focus(), 150);
+          setTimeout(() => firstLink.focus(), NAV_FOCUS_DELAY_MS);
         }
       } else {
         document.body.style.overflow = '';
@@ -120,7 +124,7 @@ export class GenesisHeader extends GenesisElement {
     navLinks.forEach((link) => {
       const handler = () => {
         if (window.innerWidth < this._mobileBreakpoint) {
-          setTimeout(() => setNavState(false), 300);
+          setTimeout(() => setNavState(false), NAV_CLOSE_DELAY_MS);
         }
       };
       link.addEventListener('click', handler);
@@ -134,19 +138,9 @@ export class GenesisHeader extends GenesisElement {
         if (window.innerWidth >= this._mobileBreakpoint) {
           setNavState(false);
         }
-      }, 250);
-      if (this._navHandlers) {
-        this._navHandlers.resizeTimer = resizeTimer;
-      }
+      }, NAV_RESIZE_DEBOUNCE_MS);
+      this._navHandlers.resizeTimer = resizeTimer;
     };
-
-    toggle.addEventListener('click', onToggleClick);
-    if (overlay) {
-      overlay.addEventListener('click', onOverlayClick);
-    }
-    document.addEventListener('keydown', onKeydown);
-    document.addEventListener('click', onDocumentClick);
-    window.addEventListener('resize', onResize);
 
     this._navHandlers = {
       toggle,
@@ -159,6 +153,14 @@ export class GenesisHeader extends GenesisElement {
       onResize,
       resizeTimer: null,
     };
+
+    toggle.addEventListener('click', onToggleClick);
+    if (overlay) {
+      overlay.addEventListener('click', onOverlayClick);
+    }
+    document.addEventListener('keydown', onKeydown);
+    document.addEventListener('click', onDocumentClick);
+    window.addEventListener('resize', onResize);
   }
 
   _teardownMobileToggle() {
