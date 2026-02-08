@@ -89,6 +89,179 @@
   }
 }
 
+// ============================================================================
+// ONTOLOGY WEB COMPONENTS - Structural Display & Attribute Mapping
+// ============================================================================
+
+$genesis-environment-logics: (
+  'focused',
+  'distributed',
+  'associative',
+  'chronological',
+  'manifest',
+  'convergent',
+  'interaction-form',
+  'navigation-sidebar',
+  'navigation-breadcrumb',
+  'navigation-pagination'
+);
+
+$genesis-entity-natures: (
+  'primary',
+  'secondary',
+  'imperative',
+  'transcendent'
+);
+
+$genesis-cognition-intents: (
+  'axiom',
+  'discourse',
+  'gloss',
+  'motive',
+  'quantum'
+);
+
+$genesis-synapse-vectors: (
+  'navigate',
+  'execute',
+  'inquiry',
+  'paginate',
+  'social',
+  'invoke'
+);
+
+$genesis-state-conditions: (
+  'stable',
+  'evolving'
+);
+
+$genesis-atmosphere-vibes: (
+  'neutral',
+  'vibrant',
+  'sacred'
+);
+
+genesis-environment {
+  display: block;
+  width: 100%;
+}
+
+@each $logic in $genesis-environment-logics {
+  genesis-environment[logic="#{$logic}"] {
+    @include genesis-environment($logic);
+  }
+}
+
+genesis-entity {
+  display: block;
+}
+
+@each $nature in $genesis-entity-natures {
+  genesis-entity[nature="#{$nature}"] {
+    @include genesis-entity($nature);
+  }
+}
+
+genesis-cognition {
+  display: block;
+}
+
+@each $intent in $genesis-cognition-intents {
+  genesis-cognition[intent="#{$intent}"] {
+    @include genesis-cognition($intent);
+  }
+}
+
+genesis-state {
+  display: block;
+}
+
+@each $condition in $genesis-state-conditions {
+  genesis-state[condition="#{$condition}"] {
+    @include genesis-state($condition);
+  }
+}
+
+genesis-atmosphere {
+  display: block;
+  width: 100%;
+}
+
+@each $vibe in $genesis-atmosphere-vibes {
+  genesis-atmosphere[vibe="#{$vibe}"] {
+    @include genesis-atmosphere($vibe);
+  }
+}
+
+genesis-navigation,
+genesis-navbar,
+genesis-form,
+genesis-media,
+genesis-search,
+genesis-accordion,
+genesis-dashboard,
+genesis-chat {
+  display: block;
+  width: 100%;
+}
+
+genesis-navigation[type="sidebar"] {
+  @include genesis-environment('navigation-sidebar');
+}
+
+genesis-navigation[type="tabs"] {
+  @include genesis-environment('navigation-tabs');
+}
+
+genesis-navigation[type="breadcrumb"] {
+  @include genesis-environment('navigation-breadcrumb');
+}
+
+genesis-form {
+  @include genesis-environment('interaction-form');
+}
+
+genesis-dashboard {
+  @include genesis-environment('manifest');
+}
+
+genesis-accordion {
+  @include genesis-environment('navigation-accordion');
+}
+
+genesis-media {
+  @include genesis-entity('image-adaptive');
+}
+
+genesis-media[ratio="1:1"] {
+  --aspect-ratio: 100%;
+}
+
+genesis-media[ratio="auto"] {
+  overflow: visible;
+}
+
+genesis-media[ratio="auto"]::before {
+  display: none;
+}
+
+genesis-media[ratio="auto"] img {
+  position: static;
+  width: 100%;
+  height: auto;
+}
+
+genesis-synapse {
+  display: contents;
+}
+
+@each $vector in $genesis-synapse-vectors {
+  genesis-synapse[vector="#{$vector}"] > a,
+  genesis-synapse[vector="#{$vector}"] > button {
+    @include genesis-synapse($vector);
+  }
+}
+
 // Ambient Background Effects — the consciousness field
 .genesis-ambient {
   position: fixed;
