@@ -131,15 +131,13 @@ export class GenesisHeader extends GenesisElement {
       this._navLinkHandlers.push({ link, handler });
     });
 
-    let resizeTimer;
     const onResize = () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
+      clearTimeout(this._navHandlers.resizeTimer);
+      this._navHandlers.resizeTimer = setTimeout(() => {
         if (window.innerWidth >= this._mobileBreakpoint) {
           setNavState(false);
         }
       }, NAV_RESIZE_DEBOUNCE_MS);
-      this._navHandlers.resizeTimer = resizeTimer;
     };
 
     this._navHandlers = {
