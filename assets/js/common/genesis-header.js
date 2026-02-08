@@ -12,15 +12,28 @@
 
 import { GenesisElement } from './genesis-element.js';
 
+const NAV_FOCUS_DELAY_MS = 150;
+const NAV_CLOSE_DELAY_MS = 300;
+const NAV_RESIZE_DEBOUNCE_MS = 250;
+
 export class GenesisHeader extends GenesisElement {
   static get observedAttributes() {
     return ['brand-url', 'logo-src', 'brand-text', 'tagline', 'sticky'];
   }
 
+  static overlayElement = null;
+  static overlayCount = 0;
+
   constructor() {
     super();
     this._mobileMenuOpen = false;
     this._scrollY = 0;
+    this._lockedScrollPosition = 0;
+    this._mobileBreakpoint = 1024;
+    this._windowWidth = window.innerWidth;
+    this._navHandlers = null;
+    this._navLinkHandlers = [];
+    this._navCloseTimer = null;
   }
 
   connectedCallback() {
@@ -39,6 +52,7 @@ export class GenesisHeader extends GenesisElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     window.removeEventListener('scroll', this._handleScroll);
+    this._teardownMobileToggle();
   }
 
   /**
@@ -57,43 +71,154 @@ export class GenesisHeader extends GenesisElement {
     const toggle = this.querySelector('[data-nav-toggle], .genesis-header__toggle');
     const nav = this.querySelector('[data-nav-menu], .genesis-header__nav');
     
-    if (toggle && nav) {
-      toggle.addEventListener('click', () => {
-        this._mobileMenuOpen = !this._mobileMenuOpen;
-        toggle.setAttribute('aria-expanded', this._mobileMenuOpen);
-        nav.classList.toggle('is-open', this._mobileMenuOpen);
-        this.classList.toggle('menu-open', this._mobileMenuOpen);
-        
-        // Prevent body scroll when menu is open
-        if (this._mobileMenuOpen) {
-          document.body.style.overflow = 'hidden';
-        } else {
-          document.body.style.overflow = '';
-        }
-      });
+    if (!toggle || !nav) return;
+    if (this._navHandlers) return;
 
-      // Close menu on escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && this._mobileMenuOpen) {
-          this._mobileMenuOpen = false;
-          toggle.setAttribute('aria-expanded', 'false');
-          nav.classList.remove('is-open');
-          this.classList.remove('menu-open');
-          document.body.style.overflow = '';
-        }
-      });
-
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
-        if (this._mobileMenuOpen && !this.contains(e.target)) {
-          this._mobileMenuOpen = false;
-          toggle.setAttribute('aria-expanded', 'false');
-          nav.classList.remove('is-open');
-          this.classList.remove('menu-open');
-          document.body.style.overflow = '';
-        }
-      });
+    let overlay = this.constructor.overlayElement || document.querySelector('[data-nav-overlay]');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.className = 'genesis-nav-overlay';
+      overlay.setAttribute('data-nav-overlay', '');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(overlay);
+      this.constructor.overlayElement = overlay;
     }
+    this.constructor.overlayCount += 1;
+
+    const setNavState = (open) => {
+      this._mobileMenuOpen = open;
+      toggle.setAttribute('aria-expanded', open);
+      nav.classList.toggle('is-open', open);
+      nav.setAttribute('data-nav-open', open);
+      this.classList.toggle('menu-open', open);
+
+      if (overlay) {
+        overlay.setAttribute('data-nav-open', open);
+        overlay.setAttribute('aria-hidden', (!open).toString());
+      }
+
+      if (open) {
+        this._lockedScrollPosition = window.scrollY;
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+        document.body.style.top = `-${this._lockedScrollPosition}px`;
+
+        const firstLink = nav.querySelector('a, button');
+        if (firstLink) {
+          setTimeout(() => firstLink.focus(), NAV_FOCUS_DELAY_MS);
+        }
+      } else {
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+        document.body.style.top = '';
+        window.scrollTo(0, this._lockedScrollPosition);
+        this._lockedScrollPosition = 0;
+        toggle.focus();
+      }
+    };
+
+    const onToggleClick = () => setNavState(!this._mobileMenuOpen);
+    const onOverlayClick = () => setNavState(false);
+    const onKeydown = (e) => {
+      if (e.key === 'Escape' && this._mobileMenuOpen) {
+        setNavState(false);
+      }
+    };
+    const onDocumentClick = (e) => {
+      if (this._mobileMenuOpen && !this.contains(e.target) && e.target !== overlay) {
+        setNavState(false);
+      }
+    };
+
+    const navLinks = nav.querySelectorAll('a');
+    navLinks.forEach((link) => {
+      const handler = () => {
+        const windowWidth = this._windowWidth;
+        if (windowWidth < this._mobileBreakpoint) {
+          clearTimeout(this._navCloseTimer);
+          this._navCloseTimer = setTimeout(() => {
+            if (!this.isConnected) return;
+            setNavState(false);
+          }, NAV_CLOSE_DELAY_MS);
+        }
+      };
+      link.addEventListener('click', handler);
+      this._navLinkHandlers.push({ link, handler });
+    });
+
+    const onResize = () => {
+      if (!this._navHandlers) return;
+      this._windowWidth = window.innerWidth;
+      clearTimeout(this._navHandlers.resizeTimer);
+      this._navHandlers.resizeTimer = setTimeout(() => {
+        if (this._windowWidth >= this._mobileBreakpoint) {
+          setNavState(false);
+        }
+      }, NAV_RESIZE_DEBOUNCE_MS);
+    };
+
+    this._navHandlers = {
+      toggle,
+      nav,
+      overlay,
+      onToggleClick,
+      onOverlayClick,
+      onKeydown,
+      onDocumentClick,
+      onResize,
+      resizeTimer: null,
+    };
+
+    toggle.addEventListener('click', onToggleClick);
+    if (overlay) {
+      overlay.addEventListener('click', onOverlayClick);
+    }
+    document.addEventListener('keydown', onKeydown);
+    document.addEventListener('click', onDocumentClick);
+    window.addEventListener('resize', onResize);
+  }
+
+  _teardownMobileToggle() {
+    if (!this._navHandlers) return;
+
+    const {
+      toggle,
+      overlay,
+      onToggleClick,
+      onOverlayClick,
+      onKeydown,
+      onDocumentClick,
+      onResize,
+    } = this._navHandlers;
+
+    if (this._navHandlers.resizeTimer) {
+      clearTimeout(this._navHandlers.resizeTimer);
+    }
+    if (this._navCloseTimer) {
+      clearTimeout(this._navCloseTimer);
+      this._navCloseTimer = null;
+    }
+
+    toggle?.removeEventListener('click', onToggleClick);
+    overlay?.removeEventListener('click', onOverlayClick);
+    document.removeEventListener('keydown', onKeydown);
+    document.removeEventListener('click', onDocumentClick);
+    window.removeEventListener('resize', onResize);
+
+    this._navLinkHandlers.forEach(({ link, handler }) => {
+      link.removeEventListener('click', handler);
+    });
+    this._navLinkHandlers = [];
+
+    this.constructor.overlayCount = Math.max(0, this.constructor.overlayCount - 1);
+    if (this.constructor.overlayCount === 0 && this.constructor.overlayElement) {
+      this.constructor.overlayElement.remove();
+      this.constructor.overlayElement = null;
+    }
+
+    this._navHandlers = null;
   }
 
   /**
