@@ -21,12 +21,15 @@ export class GenesisHeader extends GenesisElement {
     return ['brand-url', 'logo-src', 'brand-text', 'tagline', 'sticky'];
   }
 
+  static overlayElement = null;
+
   constructor() {
     super();
     this._mobileMenuOpen = false;
     this._scrollY = 0;
     this._scrollPosition = 0;
     this._mobileBreakpoint = 1024;
+    this._windowWidth = window.innerWidth;
     this._navHandlers = null;
     this._navLinkHandlers = [];
     this._overlayCreated = false;
@@ -70,13 +73,14 @@ export class GenesisHeader extends GenesisElement {
     
     if (!toggle || !nav) return;
 
-    let overlay = document.querySelector('[data-nav-overlay]');
+    let overlay = this.constructor.overlayElement || document.querySelector('[data-nav-overlay]');
     if (!overlay) {
       overlay = document.createElement('div');
       overlay.className = 'genesis-nav-overlay';
       overlay.setAttribute('data-nav-overlay', '');
       overlay.setAttribute('aria-hidden', 'true');
       document.body.appendChild(overlay);
+      this.constructor.overlayElement = overlay;
       this._overlayCreated = true;
     }
 
@@ -93,7 +97,7 @@ export class GenesisHeader extends GenesisElement {
       }
 
       if (open) {
-        this._scrollPosition = window.scrollY || window.pageYOffset;
+        this._scrollPosition = window.scrollY;
         document.body.style.overflow = 'hidden';
         document.body.style.position = 'fixed';
         document.body.style.width = '100%';
@@ -130,7 +134,7 @@ export class GenesisHeader extends GenesisElement {
     const navLinks = nav.querySelectorAll('a');
     navLinks.forEach((link) => {
       const handler = () => {
-        const windowWidth = window.innerWidth;
+        const windowWidth = this._windowWidth;
         if (windowWidth < this._mobileBreakpoint) {
           clearTimeout(this._navCloseTimer);
           this._navCloseTimer = setTimeout(() => {
@@ -145,10 +149,10 @@ export class GenesisHeader extends GenesisElement {
 
     const onResize = () => {
       if (!this._navHandlers) return;
+      this._windowWidth = window.innerWidth;
       clearTimeout(this._navHandlers.resizeTimer);
       this._navHandlers.resizeTimer = setTimeout(() => {
-        const windowWidth = window.innerWidth;
-        if (windowWidth >= this._mobileBreakpoint) {
+        if (this._windowWidth >= this._mobileBreakpoint) {
           setNavState(false);
         }
       }, NAV_RESIZE_DEBOUNCE_MS);
@@ -209,6 +213,7 @@ export class GenesisHeader extends GenesisElement {
 
     if (this._overlayCreated) {
       overlay?.remove();
+      this.constructor.overlayElement = null;
       this._overlayCreated = false;
     }
 
