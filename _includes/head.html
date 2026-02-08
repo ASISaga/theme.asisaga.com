@@ -18,8 +18,11 @@
   <!-- Jekyll SEO tag plugin -->
   {% seo %}
 
+  <!-- Motion Library (required for animations) -->
+  {% include motion-library.html %}
+
   <!-- Genesis Theme JavaScript -->
-  <script type="module" src="{{ '/assets/js/script.js' | relative_url }}"></script>
+  <script type="module" src="{{ '/assets/js/common.js' | relative_url }}"></script>
 
   <!-- Page-specific JavaScript -->
   {% if page.custom_js %}

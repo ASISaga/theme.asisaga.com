@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motion Library Test</title>
+  
+  <!-- Motion Library (must load first) -->
+  <script type="module">
+    import * as Motion from 'https://cdn.jsdelivr.net/npm/motion@12.32.0/dist/motion.js';
+    window.Motion = Motion;
+    console.log('Motion library loaded:', typeof window.Motion);
+    console.log('Motion.animate available:', typeof window.Motion.animate);
+  </script>
+  
+  <!-- Test script that uses Motion -->
+  <script type="module">
+    // Small delay to ensure Motion is set
+    setTimeout(() => {
+      console.log('Checking window.Motion:', window.Motion);
+      
+      if (window.Motion && typeof window.Motion.animate === 'function') {
+        console.log('✅ SUCCESS: Motion library is loaded and available!');
+        
+        // Test a simple animation
+        const testDiv = document.getElementById('test-element');
+        if (testDiv) {
+          window.Motion.animate(
+            testDiv,
+            { opacity: [0, 1], transform: ['translateY(20px)', 'translateY(0)'] },
+            { duration: 1, easing: 'ease-out' }
+          );
+          console.log('✅ Animation applied successfully!');
+        }
+      } else {
+        console.error('❌ FAILED: Motion library not loaded');
+      }
+    }, 100);
+  </script>
+  
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #1a1a2e;
+      color: white;
+    }
+    
+    #test-element {
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      text-align: center;
+      margin: 40px 0;
+    }
+    
+    .console-output {
+      background: #0a0a0f;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Motion Library Loading Test</h1>
+  <p>This page tests if the Motion library loads correctly before motion-utils.js tries to use it.</p>
+  
+  <div id="test-element">
+    <h2>Test Element</h2>
+    <p>This should fade in and slide up if Motion is working.</p>
+  </div>
+  
+  <div class="console-output">
+    <strong>Expected Console Output:</strong>
+    <pre>
+Motion library loaded: object
+Motion.animate available: function
+Checking window.Motion: [object Object]
+✅ SUCCESS: Motion library is loaded and available!
+✅ Animation applied successfully!
+    </pre>
+  </div>
+  
+  <p><strong>Instructions:</strong> Open browser DevTools console (F12) to see the results.</p>
+</body>
+</html>
