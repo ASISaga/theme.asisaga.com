@@ -7,10 +7,11 @@
 // ============================================================================
 
 .genesis-footer {
-  @include genesis-environment('focused');
   @include genesis-entity('secondary');
   @include genesis-atmosphere('void');
   
+  display: block;
+  width: 100%;
   margin-top: auto;
   
   // Deep void background
