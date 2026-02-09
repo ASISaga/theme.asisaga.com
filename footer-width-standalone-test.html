@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footer Width Test - Genesis Theme</title>
+  <style>
+    /* Minimal CSS to test footer width behavior */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: oklch(0.98 0.005 90);
+      color: oklch(0.12 0.01 250);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* CRITICAL: Custom element reset (from _sass/base/layout/_layout.scss) */
+    genesis-header,
+    genesis-footer,
+    genesis-atmosphere,
+    genesis-ambient {
+      display: block;
+      width: 100%;
+    }
+    
+    /* Header styling (minimal) */
+    genesis-header {
+      background: oklch(0.15 0.02 250 / 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid oklch(0.25 0.02 250);
+      padding: 1rem 1.5rem;
+      min-height: 70px;
+    }
+    
+    .header-content {
+      max-width: 1440px;
+      margin: 0 auto;
+      color: oklch(0.99 0.005 90);
+    }
+    
+    /* Main content area */
+    main {
+      flex: 1;
+      padding: 3rem 1.5rem;
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    /* Footer styling - FIXED VERSION */
+    genesis-footer {
+      /* This simulates the FIXED footer CSS */
+      display: block;
+      width: 100%;
+      margin-top: auto;
+      
+      /* Deep void background */
+      backdrop-filter: blur(20px);
+      background: oklch(0.06 0.015 250 / 0.97);
+      border-top: 1px solid oklch(0.20 0.04 250);
+      box-shadow:
+        0 -1px 0 oklch(0.65 0.25 230 / 0.06),
+        0 -4px 24px oklch(0.03 0.02 250 / 0.3);
+    }
+    
+    .genesis-footer__container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 3rem 1.25rem 1.5rem;
+      width: 100%;
+    }
+    
+    @media (min-width: 1024px) {
+      .genesis-footer__container {
+        padding: 3.5rem 2.5rem 1.5rem;
+      }
+    }
+    
+    /* Footer Grid */
+    .genesis-footer__grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr;
+      margin-bottom: 2rem;
+    }
+    
+    @media (min-width: 768px) {
+      .genesis-footer__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .genesis-footer__grid {
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 2.5rem;
+      }
+    }
+    
+    @media (min-width: 1440px) {
+      .genesis-footer__grid {
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 4rem;
+      }
+    }
+    
+    /* Footer Brand Section */
+    .genesis-footer__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+    
+    .genesis-footer__title {
+      font-size: clamp(1.125rem, calc(1rem + 0.75vw), 1.5rem);
+      color: oklch(0.95 0.005 90);
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    
+    .genesis-footer__tagline {
+      color: oklch(0.50 0.01 230);
+      font-size: 0.875rem;
+      line-height: 1.6;
+      max-width: 40ch;
+    }
+    
+    /* Copyright Bar */
+    .genesis-footer__copyright {
+      padding: 1.25rem 0 0;
+      border-top: 1px solid oklch(0.15 0.02 250);
+      text-align: center;
+      color: oklch(0.40 0.01 230);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    
+    /* Visual indicators */
+    .width-indicator {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      background: oklch(0.90 0.01 250);
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px oklch(0.05 0.01 250 / 0.3);
+      font-size: 0.875rem;
+      z-index: 1000;
+    }
+    
+    .content-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px oklch(0.05 0.01 250 / 0.15);
+    }
+    
+    .status-box {
+      background: oklch(0.20 0.04 250);
+      color: oklch(0.95 0.005 90);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    
+    .status-box.success {
+      background: oklch(0.50 0.15 140);
+    }
+    
+    h1, h2 {
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <!-- Width Indicator -->
+  <div class="width-indicator">
+    <strong>Viewport Width:</strong> <span id="viewport-width"></span><br>
+    <strong>Footer Width:</strong> <span id="footer-width"></span>
+  </div>
+  
+  <!-- Header -->
+  <genesis-header>
+    <div class="header-content">
+      <h1 style="font-size: 1.25rem; margin: 0;">Footer Width Test</h1>
+    </div>
+  </genesis-header>
+  
+  <!-- Main Content -->
+  <main>
+    <div class="content-card">
+      <h1>Footer Width Fix Verification</h1>
+      
+      <div class="status-box success">
+        <strong>✓ FIXED:</strong> Footer now uses <code>width: 100%</code> instead of <code>max-width: 70ch</code>
+      </div>
+      
+      <h2>What Was Fixed:</h2>
+      <p>The footer was incorrectly using <code>@include genesis-environment('focused')</code> which applies <code>max-width: var(--width-reading, 70ch)</code> - designed for reading content, not full-width layout components.</p>
+      
+      <h2>The Solution:</h2>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li>Removed <code>@include genesis-environment('focused')</code> from <code>.genesis-footer</code></li>
+        <li>Added explicit <code>display: block</code> and <code>width: 100%</code></li>
+        <li>Footer container maintains <code>max-width: 1440px</code> with centered content</li>
+      </ul>
+      
+      <h2>Testing Instructions:</h2>
+      <ol style="margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li>Open this page on desktop (viewport ≥ 1024px)</li>
+        <li>Check the "Width Indicator" in the top-right corner</li>
+        <li>Verify footer width matches viewport width</li>
+        <li>Resize browser window and verify footer remains full-width</li>
+        <li>Check that footer content is centered with max-width: 1440px</li>
+      </ol>
+      
+      <div style="height: 40vh; background: oklch(0.96 0.005 220); padding: 2rem; border-radius: 12px; margin-top: 2rem;">
+        <h3>Spacer Content</h3>
+        <p>This spacer helps you scroll down to see the footer at the bottom of the page.</p>
+        <p>The footer should span the full width of the viewport, with content centered inside a 1440px container.</p>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <genesis-footer>
+    <footer class="genesis-footer">
+      <div class="genesis-footer__container">
+        <!-- Footer Grid -->
+        <div class="genesis-footer__grid">
+          <!-- Brand Section -->
+          <div class="genesis-footer__brand">
+            <span class="genesis-footer__title">Genesis Theme</span>
+            <p class="genesis-footer__tagline">A semantic design system built on consciousness and clarity</p>
+          </div>
+          
+          <!-- Navigation Section -->
+          <div class="genesis-footer__nav">
+            <h2 style="color: oklch(0.55 0.02 230); font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.875rem;">Navigate</h2>
+            <p style="color: oklch(0.60 0.01 230); font-size: 0.8125rem;">Documentation</p>
+            <p style="color: oklch(0.60 0.01 230); font-size: 0.8125rem;">Examples</p>
+          </div>
+          
+          <!-- Social Links -->
+          <div class="genesis-footer__social">
+            <h2 style="color: oklch(0.55 0.02 230); font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.875rem;">Connect</h2>
+            <p style="color: oklch(0.60 0.01 230); font-size: 0.8125rem;">GitHub</p>
+          </div>
+        </div>
+
+        <!-- Copyright Bar -->
+        <div class="genesis-footer__copyright">
+          <p>&copy; 2026 Genesis Theme</p>
+        </div>
+      </div>
+    </footer>
+  </genesis-footer>
+  
+  <script>
+    // Display viewport and footer widths
+    function updateWidthIndicator() {
+      const viewportWidth = window.innerWidth;
+      const footer = document.querySelector('genesis-footer');
+      const footerWidth = footer ? footer.offsetWidth : 0;
+      
+      document.getElementById('viewport-width').textContent = viewportWidth + 'px';
+      document.getElementById('footer-width').textContent = footerWidth + 'px';
+      
+      // Check if footer is full-width
+      if (footerWidth === viewportWidth) {
+        document.getElementById('footer-width').style.color = '#22c55e';
+        document.getElementById('footer-width').style.fontWeight = 'bold';
+      } else {
+        document.getElementById('footer-width').style.color = '#ef4444';
+        document.getElementById('footer-width').style.fontWeight = 'bold';
+      }
+    }
+    
+    // Update on load and resize
+    updateWidthIndicator();
+    window.addEventListener('resize', updateWidthIndicator);
+  </script>
+</body>
+</html>
