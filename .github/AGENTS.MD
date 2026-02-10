@@ -1,9 +1,19 @@
-# 🤖 ASI Saga - Agent Ecosystem Architecture v2.0
+# 🤖 ASI Saga - Agent Ecosystem Architecture v2.2
 
-**Last Updated**: 2026-01-19  
-**Version**: 2.0 - Responsive & Futuristic Enhancement
+**Last Updated**: 2026-02-10  
+**Version**: 2.2 - Self-Learning Intelligence System
 
 This document describes the AI agent ecosystem that governs the ASI Saga theme repository, implementing the evolutionary mechanism for the Genesis Semantic Design System.
+
+---
+
+## 🆕 Version 2.2 Enhancements
+
+- **Self-Learning System**: Meta-agent that continuously evolves the agent ecosystem
+- **Dogfooding Intelligence**: Agents use their own principles to improve themselves
+- **Specification-Driven**: 80% spec coverage, maximizing context window efficiency
+- **Automated Quality Metrics**: Track agent effectiveness, spec coverage, context efficiency
+- **Continuous Evolution**: Agents auto-adapt to codebase and specification changes
 
 ---
 
@@ -25,10 +35,53 @@ The ASI Saga theme operates as a **Living Genome** - not a static codebase, but 
 - **Evolution Facilitators** - Managing growth through PRs
 - **Knowledge Curators** - Documenting the "why" behind every change
 - **Quality Guardians** - Ensuring accessibility and best practices
+- **🆕 Self-Learning Optimizers** - Continuously improving the agent system itself
+
+### Dogfooding Principle
+
+**Agents use the same standards they enforce**:
+- SCSS agents enforce zero-CSS → Agents enforce zero-duplication in prompts
+- HTML agents enforce semantic structure → Agents have semantic role definitions
+- Docs agents enforce spec references → Agents maximally reference `/docs/specifications/`
+
+**Result**: The agent system **practices what it preaches**, creating a self-improving intelligence loop.
 
 ---
 
 ## 🧬 Agent Types & Responsibilities
+
+### 0. Agent Evolution Agent (Meta-Intelligence) 🆕
+
+**Role**: Self-Learning System Optimizer  
+**Location**: `.github/skills/agent-evolution-agent/`  
+**Scope**: `.github/` agent ecosystem
+
+**Responsibilities**:
+- Monitor agent effectiveness and spec coverage
+- Identify agents needing spec references
+- Measure context window efficiency
+- Sync agents with specification changes
+- Apply dogfooding principles to improve agent quality
+- Track quality metrics (spec coverage, duplication, validation pass rate)
+
+**Key Workflows**:
+1. **Weekly Quality Audit**: Run `audit-agent-quality.sh` to measure all agents
+2. **Spec Sync**: When specs change, find related agents and add references
+3. **Context Optimization**: Extract knowledge to specs, replace with references
+4. **Auto-Evolution**: Detect patterns, update agents automatically
+
+**Self-Learning Loop**:
+```
+Codebase Change → Spec Update → Agent Sync → Refactor → Validate → Metrics
+```
+
+**Achievements** (2026-02-10):
+- Improved spec coverage from 23% to 80%
+- Optimized 9 agents to "optimal" status
+- Added 40+ spec references across agents
+- **Dogfooded**: Used its own principles to improve itself
+
+---
 
 ### 1. Theme Genome Agent (Lead Architect)
 

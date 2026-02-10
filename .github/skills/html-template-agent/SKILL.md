@@ -137,14 +137,18 @@ Ready-to-use semantic HTML patterns:
 - `references/COMPONENT-PATTERNS.md` - **NEW** Ready-to-use HTML patterns catalog
 
 ### In Repository
+- `/docs/specifications/html-semantic-patterns.md` - Complete semantic HTML patterns
+- `/docs/specifications/accessibility.md` - WCAG compliance guide
+- `/docs/specifications/component-library.md` - Reusable components
+- `/docs/specifications/scss-ontology-system.md` - Ontology for class mapping
 - `.github/instructions/html.instructions.md` - Complete HTML guidelines
-- `_sass/ontology/INTEGRATION-GUIDE.md` - Ontology reference for class mapping
 - `.github/AGENT-INDEX.md` - Quick navigation guide
 
 ### Related Agents
 - `scss-refactor-agent` - Maps HTML to ontological SCSS
 - `responsive-design-agent` - Ensures mobile-first patterns
 - `theme-genome-agent` - Maintains design system
+- `agent-evolution-agent` - Meta-agent for continuous learning
 
-**Version**: 2.1.1 - Added Component Patterns Catalog  
-**Last Updated**: 2026-01-29
+**Version**: 2.1.2 - Enhanced Spec References  
+**Last Updated**: 2026-02-10

@@ -424,12 +424,32 @@ These are automatically available when using effect mixins:
 }
 ```
 
-## 📚 Reference Files
+---
 
-- [_futuristic-effects.scss](_sass/base/_futuristic-effects.scss) - Effect implementations
-- [_tokens.scss](_sass/ontology/_tokens.scss) - CSS custom properties
-- [demo.html](demo.html) - Visual examples
-- [GENOME.md](GENOME.md) - Design philosophy
+## 📚 Related Documentation
+
+**Effects & Animation**:
+- `/docs/specifications/animation-system.md` - Complete animation architecture
+- `/docs/MOTION-INTEGRATION.md` - Motion library integration guide
+- `.github/skills/futuristic-effects-agent/references/EFFECTS-GUIDE.md` - Detailed effects patterns
+
+**Design Foundations**:
+- `/docs/specifications/scss-ontology-system.md` - Ontological variants (atmosphere, state)
+- `/docs/specifications/color-system.md` - OKLCH color tokens
+- `/docs/specifications/accessibility.md` - Reduced motion, high contrast
+
+**System Implementation**:
+- `/docs/specifications/scss-styling.md` - SCSS architecture
+- `/docs/specifications/performance.md` - Performance optimization
+- `_sass/base/_futuristic-effects.scss` - Effect implementations
+
+**Design Philosophy**:
+- `GENOME.md` - Evolutionary design system history
+- `/docs/specifications/architecture.md` - Overall system design
+
+**Related Agents**:
+- `.github/skills/futuristic-effects-agent/SKILL.md` - Skill definition
+- `.github/skills/agent-evolution-agent/SKILL.md` - Meta-agent for continuous learning
 
 ---
 

@@ -352,7 +352,10 @@ npm test
 - `references/LAYOUT-PATTERNS.md` - **NEW** Production-ready responsive layout patterns
 
 ### In Repository
-- `_sass/ontology/INTEGRATION-GUIDE.md` - All responsive variants
+- `/docs/specifications/responsive-design.md` - Complete responsive design guide
+- `/docs/specifications/accessibility.md` - WCAG 2.5.5 touch targets
+- `/docs/specifications/scss-ontology-system.md` - All responsive variants
+- `/docs/specifications/architecture.md` - System design
 - `.github/instructions/scss.instructions.md` - SCSS best practices
 - `.github/prompts/responsive-design-agent.prompt.md` - Detailed prompt
 - `GENOME.md` - v2.1.0 responsive enhancements documentation
@@ -361,6 +364,7 @@ npm test
 - `scss-refactor-agent` - Ontology migration and zero-CSS compliance
 - `html-template-agent` - Semantic HTML structure and component patterns
 - `futuristic-effects-agent` - Advanced visual effects
+- `agent-evolution-agent` - Meta-agent for continuous learning
 
-**Version**: 2.1.0 - Layout Patterns Catalog Added  
-**Last Updated**: 2026-01-29
+**Version**: 2.1.1 - Enhanced Spec References  
+**Last Updated**: 2026-02-10
