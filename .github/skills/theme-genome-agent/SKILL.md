@@ -7,365 +7,200 @@ metadata:
   version: "2.1"
   category: design-system
   role: lead-architect
-allowed-tools: Bash(npm:*) Bash(sass:*) Bash(stylelint:*) Read
+allowed-tools: Bash(git:*) Bash(npm:*) Bash(sass:*) Read Edit
 ---
 
 # Theme Genome Agent
 
-**Role**: Ontological Gatekeeper and Evolution Manager  
-**Scope**: Theme repository governance and semantic design system evolution  
-**Version**: 2.1 - Integrated Validation & Automation
+**Role**: Ontological Proposition Reviewer & Design System Architect  
+**Scope**: Theme repository (theme.asisaga.com)  
+**Version**: 2.1 - High-Density Refactor
 
 ## Purpose
 
-The Theme Genome Agent is the lead architect responsible for maintaining the semantic purity of the Genesis Ontological Design System. This agent reviews incoming ontological propositions from subdomains, determines if they represent genuine semantic gaps, and manages the evolutionary growth of the design system's 31 variants across 6 categories.
-
-**New in v2.1**: Automated ontology validation, comprehensive decision guide, integrated testing.
+Review ontological propositions from subdomains, ensure semantic purity, prevent redundancy, and maintain the living genome architecture of the Genesis Ontological Design System.
 
 ## When to Use This Skill
 
-Activate this skill when:
-
-- Reviewing pull requests with the `ontological-proposition` label
-- Evaluating requests for new ontological variants
-- Determining if existing variants cover a use case
-- Refactoring or restructuring ontological categories
-- Updating the GENOME.md evolutionary history
-- Maintaining the three-tier architecture (Content → Interface → Engine)
-- **NEW**: Running automated ontology validation
+Activate when:
+- Reviewing ontological proposition PRs
+- Evaluating new variant requests
+- Checking for duplicate/redundant patterns
+- Ensuring universal applicability
+- Maintaining design system integrity
+- Implementing approved variants
 
 ## Core Responsibilities
 
-### 1. Review Ontological Propositions
+**PR Review:**
+- Evaluate semantic purity (WHAT vs HOW)
+- Check redundancy against existing variants
+- Verify universal applicability (3+ subdomains)
+- Ensure proper category placement
+- Validate implementation quality
 
-When a subdomain submits a PR requesting a new variant or modification:
+**System Maintenance:**
+- Keep GENOME.md current
+- Update INTEGRATION-GUIDE.md
+- Maintain zero-duplication
+- Document variant evolution
 
-1. **Classify the Request Type**
-   - New Species: Completely new ontological variant
-   - Genetic Mutation: Refinement of existing variant
-   - Visual Only: REJECT - not semantic
+→ **Complete review process**: `references/DECISION-GUIDE.md`
 
-2. **Redundancy Check**
-   - Can existing variants cover this use case?
-   - Would combining existing mixins achieve the goal?
-   - Is this truly a semantic gap or just a visual preference?
+## Review Workflow
 
-3. **Generalization Check**
-   - Is this pattern universal to the ASI ecosystem?
-   - Would 3+ subdomains benefit from this?
-   - Or is it specific to one subdomain's unique needs?
+### 1. Initial Assessment
 
-4. **Refactoring Assessment**
-   - Should existing categories be split or merged?
-   - Are there overlapping variants that need consolidation?
+**Checklist:**
+- [ ] Semantic intent clearly stated
+- [ ] Proper category identified
+- [ ] 3+ use cases provided
+- [ ] Not combinable with existing variants
+- [ ] Universal applicability demonstrated
 
-### 2. Decision Tree
-
-```
-PR Received
-├─ Redundancy Check: Does existing role cover this?
-│  ├─ YES → Deny with guidance to existing solution
-│  └─ NO → Continue
-├─ Generalization Check: Universal ASI pattern or unique?
-│  ├─ Universal → Add to global interface.scss
-│  └─ Unique → Consider sub-species variant or reject
-└─ Refactoring Check: Should categories be restructured?
-   └─ Update engine structure if needed, maintain compatibility
-```
-
-See [references/DECISION-GUIDE.md](references/DECISION-GUIDE.md) for complete decision framework.
-
-## Automation & Validation
-
-### Validation Script
-
-Run the automated validation script to check ontology health:
+### 2. Redundancy Check
 
 ```bash
-# Validate ontology system
-./.github/skills/theme-genome-agent/scripts/validate-ontology.sh
+# Check existing variants
+grep "genesis-" _sass/ontology/_interface.scss
 
-# The script checks:
-# 1. Engine layer compilation
-# 2. GENOME.md is current
-# 3. Ontological purity (zero CSS in interface)
+# Search GENOME.md for similar patterns
+grep -i "keyword" GENOME.md
 ```
 
-### Pre-Commit Workflow
+**Quick Decision Tree:**
+```
+Already exists? → Reject with existing variant reference
+Combinable with existing? → Reject with combination suggestion
+Universal + semantic? → Continue to implementation
+Subdomain-specific? → Reject, suggest local solution
+```
 
-Before approving/implementing ontological changes:
+→ **Complete decision criteria**: `references/DECISION-GUIDE.md`
+
+### 3. Implementation
+
+If approved:
 
 ```bash
-# 1. Validate ontology
-./.github/skills/theme-genome-agent/scripts/validate-ontology.sh
+# 1. Update interface
+# Edit _sass/ontology/_interface.scss
 
-# 2. Test SCSS compilation
-npm run test:scss
+# 2. Update engine
+# Edit _sass/ontology/_engines.scss
 
-# 3. Run linter
-npm run lint:scss
+# 3. Update GENOME.md
+# Document new variant
 
-# 4. Run all tests
+# 4. Update INTEGRATION-GUIDE.md
+# Add API documentation
+
+# 5. Test
 npm test
 ```
 
-## Key Principles
+→ **Implementation guide**: `references/DECISION-GUIDE.md`
 
-### Semantic Purity
+## Response Templates
 
-**ALWAYS**:
-- Accept only semantic propositions (WHAT it is)
-- Document the "Why" for every merge
-- Maintain backward compatibility
-- Keep interface layer pure (zero CSS properties)
-
-**NEVER**:
-- Accept visual-only requests ("make it red", "bigger font")
-- Add CSS properties to interface layer
-- Break existing subdomain implementations
-- Approve without universal applicability check
-
-### Quality Standards
-
-- All new variants must have clear semantic intent
-- Documentation must explain WHAT, not HOW
-- Code comments must reference origin PR
-- GENOME.md must track all evolution
-
-## Detailed Guides
-
-See [references/DECISION-GUIDE.md](references/DECISION-GUIDE.md) for:
-- Complete decision tree
-- Evaluation criteria
-- Response templates (approval, rejection types)
-- Implementation guidelines
-- Common scenarios with analysis
-
-## Resources
-
-### In This Skill
-- `scripts/validate-ontology.sh` - **NEW** Automated validation
-- `references/DECISION-GUIDE.md` - **NEW** Complete decision framework
-
-### In Repository
-- `.github/AGENTS.MD` - Complete agent ecosystem architecture
-- `.github/prompts/theme-genome-agent.prompt.md` - Detailed prompt
-- `_sass/ontology/INTEGRATION-GUIDE.md` - Complete API reference
-- `GENOME.md` - Evolutionary history and variant registry
-- `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md` - PR template
-- `.github/AGENT-INDEX.md` - **NEW** Quick navigation guide
-
-### Related Agents
-- `subdomain-evolution-agent` - Creates propositions
-- `scss-refactor-agent` - Migrates to ontological mixins
-- `responsive-design-agent` - Implements responsive patterns
-
-**Version**: 2.1.0 - Integrated Validation  
-**Last Updated**: 2026-01-19
-
-### 3. Response Templates
-
-**For Approval:**
+**Approve:**
 ```markdown
-✅ **Approved - New Ontological Variant**
+✅ Approved - Excellent semantic proposition
 
-Your proposition identifies a genuine semantic gap.
+**Implementation Plan:**
+- Category: [category]
+- Variant: `genesis-[category]('[variant-name]')`
+- Engine location: [file]
 
-**Implementation Details:**
-- Category: [Environment/Entity/Cognition/Synapse/State/Atmosphere]
-- Variant Name: `[category]('[variant-name]')`
-- Origin: PR #[XX] from [subdomain].asisaga.com
-
-**Next Steps:**
-1. I will implement this in `_sass/ontology/_engines.scss`
-2. Documentation will be updated in INTEGRATION-GUIDE.md
-3. GENOME.md will record this evolution
-4. You can adopt the variant once merged
-
-**Implementation Timeline:** [timeframe]
+Merging and implementing.
 ```
 
-**For Rejection (Redundant):**
+**Reject (Exists):**
 ```markdown
-❌ **Denied - Existing Coverage**
+❌ Already Covered
 
-Your need is already addressed by existing ontology.
+This is handled by existing `genesis-[category]('[existing]')`.
 
-**Recommended Solution:**
-Use `@include genesis-[category]('[existing-variant]')` which provides [description].
+See: [link to INTEGRATION-GUIDE section]
+```
 
-**If this doesn't match your intent**, please clarify the semantic difference between your request and the existing variant.
+**Reject (Combinable):**
+```markdown
+❌ Use Combination
 
-**Example Usage:**
+Achieve this with:
 ```scss
-.your-element {
-  @include genesis-[category]('[existing-variant]');
-}
-```
+@include genesis-[category1]('[variant1]');
+@include genesis-[category2]('[variant2]');
 ```
 
-**For Rejection (Visual Only):**
+No new variant needed.
+```
+
+**Request Changes:**
 ```markdown
-❌ **Rejected - Visual Implementation Detail**
+⚠️ Needs Clarification
 
-Your request modifies visual appearance without changing semantic meaning.
+[Specific questions about semantic intent/use cases]
 
-**The Issue:**
-- Border radius, colors, sizes, and spacing are engine concerns
-- Ontological variants represent WHAT content is, not HOW it looks
-- Visual details are controlled by design tokens in the engine layer
-
-**Reframe Your Request:**
-Think about the semantic intent:
-- What is this content's purpose?
-- What state is the system communicating?
-- What action should users take?
-
-Then propose based on the role, not the appearance.
+Please update proposition with [requested info].
 ```
 
-### 4. Implementation Guidelines
+## Quality Criteria
 
-When approving a new variant:
+**Strong Proposition:**
+- ✅ Clear semantic distinction
+- ✅ Universal applicability
+- ✅ Proper category fit
+- ✅ Well-documented use cases
+- ✅ Not achievable via combination
 
-1. **Add to Engine Layer** (`_sass/ontology/_engines.scss`)
-   ```scss
-   /**
-    * @category [Category Name]
-    * @variant '[variant-name]'
-    * @origin PR #XX (subdomain-name.asisaga.com)
-    * @intent One-line semantic purpose
-    * @evolution History of changes
-    * @since Version X.X
-    */
-   @if $param == 'variant-name' {
-     // Implementation with CSS properties
-   }
-   ```
+**Weak Proposition:**
+- ❌ Visual-only changes
+- ❌ Single subdomain use case
+- ❌ Vague semantic intent
+- ❌ Already covered
+- ❌ Overly specific
 
-2. **Update Interface Documentation** (`_sass/ontology/_interface.scss`)
-   - Add parameter documentation
-   - Include usage examples
+## Validation
 
-3. **Update GENOME.md**
-   - Add to evolutionary history
-   - Document in variant registry
-   - Update metrics
+**Before merging:**
+```bash
+# SCSS compilation
+npm run test:scss
 
-4. **Update INTEGRATION-GUIDE.md**
-   - Add to category reference
-   - Provide usage examples
-   - Show common combinations
+# Linting
+npm run lint:scss
 
-## Key Principles
+# All tests
+npm test
 
-### Semantic Purity
-
-**ALWAYS**:
-- Accept only semantic propositions (WHAT it is)
-- Document the "Why" for every merge
-- Maintain backward compatibility
-- Keep interface layer pure (zero CSS properties)
-
-**NEVER**:
-- Accept visual-only requests ("make it red", "bigger font")
-- Add CSS properties to interface layer
-- Break existing subdomain implementations
-- Approve without universal applicability check
-
-### Quality Standards
-
-- All new variants must have clear semantic intent
-- Documentation must explain WHAT, not HOW
-- Code comments must reference origin PR
-- GENOME.md must track all evolution
-
-## Common Scenarios
-
-### Scenario 1: Valid New State
-
-**Request**: "Need to show content that's being calculated but isn't final yet"
-
-**Analysis**:
-- Semantic? ✅ Yes (temporal condition of uncertainty)
-- Redundant? ❌ No (`state('stable')` implies certainty, `state('evolving')` implies active change)
-- Universal? ✅ Yes (many subdomains have calculating/pending states)
-
-**Decision**: ✅ Approve `state('calculating')` or `state('pending')`
-
-### Scenario 2: Visual Request
-
-**Request**: "Cards should have 24px border radius instead of 12px"
-
-**Analysis**:
-- Semantic? ❌ No (purely visual measurement)
-- This is an engine concern, not ontological
-
-**Decision**: ❌ Reject with visual-only template
-
-### Scenario 3: Combination Solution
-
-**Request**: "Need urgent alerts that are actively updating"
-
-**Analysis**:
-- Semantic? ✅ Yes
-- Redundant? ✅ Partial (can combine existing variants)
-
-**Decision**: ❌ Reject, guide to combination:
-```scss
-.urgent-updating-alert {
-  @include genesis-entity('imperative');  // Urgent visual
-  @include genesis-state('evolving');     // Actively updating
-}
+# Verify no duplication
+./.github/skills/agent-evolution-agent/scripts/detect-duplication.sh
 ```
 
 ## Resources
 
-Reference these files during review:
-
-- `.github/AGENTS.MD` - Complete agent ecosystem architecture
-## Related Documentation
+**Complete Review System**:
+- `references/DECISION-GUIDE.md` - **Complete review & implementation guide**
+- `scripts/validate-ontology.sh` - Automated validation
 
 **Ontology System**:
-- `/docs/specifications/scss-ontology-system.md` - Complete ontology reference (41 variants)
-- `/docs/systems/ontology/INTEGRATION-GUIDE.md` - Comprehensive API guide
-- `GENOME.md` - Evolutionary history and variant registry
-- `/docs/specifications/color-system.md` - OKLCH semantic color tokens
+- `/docs/specifications/scss-ontology-system.md` - Complete ontology reference
+- `_sass/ontology/INTEGRATION-GUIDE.md` - API documentation
+- `GENOME.md` - Variant evolution history
 
-**Agent Framework**:
-- `/docs/specifications/github-copilot-agent-guidelines.md` - Agent development standards
-- `.github/AGENTS.MD` - Complete ecosystem architecture
-- `.github/prompts/theme-genome-agent.prompt.md` - Detailed prompt
-- `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md` - PR template
+**Templates**:
+- `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md` - Proposition template
 
-**Design Foundations**:
-- `/docs/specifications/scss-styling.md` - SCSS architecture
-- `/docs/specifications/architecture.md` - Overall system design
-- `/docs/specifications/accessibility.md` - WCAG compliance
+**Related**:
+- `.github/AGENT-WORKFLOWS.md` - Workflow 2: Theme Genome review
+- `.github/skills/subdomain-evolution-agent/SKILL.md` - Proposition creation
 
-## Success Metrics
-
-Track these indicators of healthy evolution:
-
-- **Acceptance Rate**: 40-60% ideal (too high = not enough scrutiny, too low = education needed)
-- **Variant Count**: Monitor bloat (>50 variants per category = refactoring needed)
-- **Subdomain Adoption**: Approved variants adopted by 3+ subdomains within 3 months
-- **Documentation Sync**: 100% of variants documented in GENOME.md
-
-## Workflow Summary
-
-1. **Receive PR** with ontological proposition
-2. **Classify** request type (new species, mutation, visual-only)
-3. **Check redundancy** against existing 31+ variants
-4. **Assess universality** across ecosystem
-5. **Make decision** (approve, deny, request clarification)
-6. **Implement** if approved (engine, interface, docs)
-7. **Document** in GENOME.md with PR origin
-8. **Notify** submitter with next steps
+**Related Skills**: subdomain-evolution-agent, scss-refactor-agent, agent-evolution-agent
 
 ---
 
-**Related Skills**: subdomain-evolution-agent, scss-refactor-agent, agent-evolution-agent
-**Maintenance**: Update this skill when ontology architecture changes
-**Version**: 2.0.1 - Enhanced Spec References  
-**Last Updated**: 2026-02-10
+**Version History**:
+- **v2.1** (2026-02-10): High-density refactor - 371→152 lines, enhanced spec references
+- **v2.0**: Initial theme genome review system

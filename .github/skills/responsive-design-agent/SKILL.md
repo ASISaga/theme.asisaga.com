@@ -4,367 +4,144 @@ description: Implement mobile-first responsive patterns using Genesis Ontologica
 license: MIT
 metadata:
   author: ASISaga
-  version: "2.1.0"
+  version: "2.2"
   category: design-system
   role: responsive-specialist
+allowed-tools: Bash(npm:*) Bash(sass:*) Read Edit
 ---
 
 # Responsive Design Agent
 
 **Role**: Mobile-First Responsive Specialist  
-**Scope**: Responsive implementations across all viewports
+**Scope**: Responsive implementations across all viewports  
+**Version**: 2.2 - High-Density Refactor
 
 ## Purpose
 
-The Responsive Design Agent ensures all subdomain implementations follow mobile-first principles with proper touch targets, fluid typography, and responsive grids using Genesis Ontological mixins introduced in v2.1.0+.
+Ensure subdomain implementations follow mobile-first principles with WCAG 2.5.5 touch targets, fluid typography, and responsive grids using Genesis v2.1.0+ ontological mixins.
 
 ## When to Use This Skill
 
-Activate when implementing new responsive layouts, optimizing mobile UX, ensuring WCAG touch target compliance, or refactoring desktop-first designs to mobile-first patterns.
+Activate when:
+- Implementing new responsive layouts
+- Optimizing mobile UX/touch targets
+- Ensuring WCAG 2.5.5 compliance
+- Refactoring desktop-first to mobile-first
+- Creating responsive grids/forms
+- Testing viewport breakpoints
 
 ## Core Requirements
 
-### WCAG 2.5.5 Touch Targets
+**WCAG 2.5.5 Touch Targets**: All interactive elements ≥44x44px on mobile  
+**Fluid Typography**: Minimum 16px on mobile (prevents iOS zoom)  
+**Mobile-First**: Build for mobile, enhance for desktop  
+**Accessibility**: Reduced motion, high contrast, keyboard navigation
 
-All interactive elements MUST be **44x44px minimum** on mobile:
+→ **Complete requirements**: `/docs/specifications/responsive-design.md`
+
+## Quick Patterns
+
+### Responsive Environment Variants
 
 ```scss
-// Ontological mixins handle this automatically
-.button {
-  @include genesis-synapse('execute');  // 44x44px on mobile
-}
+// Auto-responsive grid (1 → 2 → auto columns)
+@include genesis-environment('distributed');
 
-.nav-link {
-  @include genesis-synapse('navigate');  // 44x44px on mobile
+// Dashboard grid (2 → 6 → 12 columns)
+@include genesis-environment('manifest');
+
+// Mobile drawer, desktop horizontal nav
+@include genesis-environment('navigation-primary');
+
+// Vertical mobile forms, horizontal desktop
+@include genesis-environment('interaction-form');
+```
+
+### Responsive Atmosphere Variants
+
+```scss
+// Full viewport height (100vh → 100svh)
+@include genesis-atmosphere('viewport-aware');
+
+// Touch-friendly spacing on mobile
+@include genesis-atmosphere('spacious-mobile');
+
+// High density on desktop
+@include genesis-atmosphere('dense-desktop');
+```
+
+### Common Component Patterns
+
+**Hero Section:**
+```scss
+.hero {
+  @include genesis-environment('focused');
+  @include genesis-atmosphere('viewport-aware');
 }
 ```
 
-### Fluid Typography
-
-Minimum 16px on mobile to prevent iOS zoom:
-
+**Product Grid:**
 ```scss
-.body-text {
-  @include genesis-cognition('discourse');  // 16px minimum
-}
-
-.form-input {
-  @include genesis-synapse('input-primary');  // 16px to prevent zoom
+.grid {
+  @include genesis-environment('distributed');
+  @include genesis-atmosphere('dense-desktop');
 }
 ```
 
-### Mobile-First Breakpoints
+**Form:**
+```scss
+.form {
+  @include genesis-environment('interaction-form');
+  .input { @include genesis-synapse('input-primary'); }  // 16px, 44px
+}
+```
+
+→ **Complete patterns**: `references/LAYOUT-PATTERNS.md`
+
+## Mobile Breakpoints
 
 ```scss
-// Breakpoints handled by ontology mixins
 @include from(sm) { }   // ≥480px  (large phones)
 @include from(md) { }   // ≥768px  (tablets)
 @include from(lg) { }   // ≥1024px (laptops)
 @include from(xl) { }   // ≥1280px (desktops)
-
-// Semantic aliases
-@include tablet { }     // ≥768px
-@include desktop { }    // ≥1024px
 ```
 
-## Responsive Ontological Patterns
+## Validation
 
-### Environment Variants (v2.1.0+)
-
-**Distributed Grid** - Auto-responsive:
-```scss
-.project-grid {
-  @include genesis-environment('distributed');
-  // Mobile: 1 column
-  // Tablet: 2 columns
-  // Desktop: auto-fit (min 300px)
-}
-```
-
-**Manifest Dashboard** - Responsive columns:
-```scss
-.dashboard {
-  @include genesis-environment('manifest');
-  // Mobile: 2 columns
-  // Tablet: 6 columns
-  // Desktop: 12 columns
-}
-```
-
-**Navigation** (v2.2.0+):
-```scss
-.site-nav {
-  @include genesis-environment('navigation-primary');
-  // Desktop: Horizontal sticky header
-  // Mobile: Off-canvas drawer (80% width)
-}
-```
-
-**Form Layout** (v2.2.0+):
-```scss
-.contact-form {
-  @include genesis-environment('interaction-form');
-  // Mobile: Single column
-  // Tablet: 2 columns
-  // Desktop: Multi-column (auto-fit)
-}
-```
-
-### Entity Variants (v2.1.0+)
-
-**Image Adaptive** - Responsive images:
-```scss
-.hero-image {
-  @include genesis-entity('image-adaptive');
-  // Maintains 16:9 aspect ratio
-  // Configurable via --aspect-ratio
-}
-
-// Custom aspect ratio
-.portrait-image {
-  @include genesis-entity('image-adaptive');
-  --aspect-ratio: 133.33%; // 3:4 portrait
-}
-
-// Convenience classes
-.square-image.ratio-square {
-  @include genesis-entity('image-adaptive');
-}
-```
-
-**Embed Responsive** - Iframes/videos:
-```scss
-.video-container {
-  @include genesis-entity('embed-responsive');
-  // Responsive 16:9 for YouTube, etc.
-}
-```
-
-### Atmosphere Variants (v2.1.0+)
-
-**Spacious Mobile** - Touch-friendly spacing:
-```scss
-.hero-section {
-  @include genesis-atmosphere('spacious-mobile');
-  // Mobile: 3rem padding, 2.5rem margins
-  // Desktop: 2rem padding, 1.5rem margins
-}
-```
-
-**Dense Desktop** - High-density layouts:
-```scss
-.team-grid {
-  @include genesis-atmosphere('dense-desktop');
-  // Mobile: 1 column
-  // Tablet: 2 columns
-  // Desktop: Auto-fit grid (cap at 4 columns)
-}
-```
-
-**Viewport Aware** (v2.2.0+) - Full-height sections:
-```scss
-.hero {
-  @include genesis-atmosphere('viewport-aware');
-  // Mobile: 70vh (accounts for browser chrome)
-  // Tablet: 85vh
-  // Desktop: 100vh
-}
-```
-
-### State Variants (v2.2.0+)
-
-**Scroll Triggered** - Scroll animations:
-```scss
-.fade-in-section {
-  @include genesis-state('scroll-triggered');
-  // Mobile: Faster animations (0.4s), shorter distance (20px)
-  // Desktop: Richer animations (0.7s), longer distance (30px)
-  // Respects prefers-reduced-motion
-}
-```
-
-## Testing Viewports
-
-Test at these minimum sizes:
-
-- **375px** - iPhone SE, small phones
-- **768px** - Tablets (iPad portrait)
-- **1024px** - Laptops, tablets landscape
-- **1440px** - Desktop monitors
-
-## Common Responsive Patterns
-
-### Hero Section
-
-```scss
-.hero {
-  @include genesis-environment('focused');
-  @include genesis-atmosphere('viewport-aware');  // Full viewport height
-  @include genesis-atmosphere('spacious-mobile');  // Touch-friendly
-  
-  .hero-title {
-    @include genesis-cognition('axiom');  // Fluid 32px → 56px
-  }
-  
-  .hero-cta {
-    @include genesis-synapse('execute');  // 44x44px touch target
-  }
-}
-```
-
-### Product Grid
-
-```scss
-.product-grid {
-  @include genesis-environment('distributed');  // Auto-responsive
-  @include genesis-atmosphere('dense-desktop');  // High density on desktop
-  
-  .product-card {
-    @include genesis-entity('primary');
-    
-    .product-image {
-      @include genesis-entity('image-adaptive');  // Responsive images
-    }
-    
-    .product-name {
-      @include genesis-cognition('axiom');  // Fluid typography
-    }
-  }
-}
-```
-
-### Contact Form
-
-```scss
-.contact-form {
-  @include genesis-environment('interaction-form');  // Responsive form layout
-  
-  .form-label {
-    @include genesis-cognition('motive');  // Readable label
-  }
-  
-  .form-input {
-    @include genesis-synapse('input-primary');  // 44px height, 16px font
-  }
-  
-  .submit-button {
-    @include genesis-synapse('execute');  // Touch-optimized
-  }
-}
-```
-
-## Mobile-Specific Considerations
-
-### Navigation Patterns
-
-```scss
-.main-nav {
-  @include genesis-environment('navigation-primary');
-  // Automatically handles:
-  // - Desktop: Horizontal sticky header
-  // - Mobile: Off-canvas drawer with glassmorphism
-  // Requires JavaScript for .nav-open class toggle
-}
-```
-
-### Touch Target Spacing
-
-```scss
-// All synapse variants automatically handle touch targets
-.button-group {
-  .action-button {
-    @include genesis-synapse('execute');  // Min 44x44px
-  }
-  
-  .cancel-button {
-    @include genesis-synapse('inquiry');  // Min 44x44px
-  }
-}
-```
-
-### Readable Typography
-
-```scss
-// Prevent iOS zoom on form inputs
-.search-input {
-  @include genesis-synapse('input-primary');  // 16px font size
-}
-
-// Ensure readable body text
-.article-content {
-  @include genesis-cognition('discourse');  // 16px minimum
-}
-```
-
-## Accessibility Requirements
-
-### Reduced Motion
-
-All animations respect `prefers-reduced-motion`:
-
-```scss
-// Handled automatically by ontology
-.animated-card {
-  @include genesis-state('scroll-triggered');
-  // No animation if user prefers reduced motion
-}
-```
-
-### High Contrast
-
-Support `prefers-contrast: high`:
-
-```scss
-// Ontology disables glassmorphism and increases borders
-.glass-panel {
-  @include genesis-entity('primary');
-  // Automatically adapts to high contrast mode
-}
-```
-
-### Touch Targets
-
-Verify all interactive elements meet 44x44px:
-
+**Before committing:**
 ```bash
-# Use browser DevTools to audit touch targets
-# Or use accessibility testing tools
+npm run test:scss    # SCSS compilation
+npm run lint:scss    # Stylelint checks
+npm test             # All checks
 ```
 
-## Testing Commands
-
-```bash
-# Test SCSS compilation
-npm run test:scss
-
-# Lint SCSS
-npm run lint:scss
-
-# Run all checks
-npm test
-```
+**Touch target audit:**
+- Use DevTools mobile emulation
+- Verify all buttons/links ≥44x44px
+- Test with actual devices
 
 ## Resources
 
-### In This Skill
-- `scripts/validate-responsive.sh` - Responsive pattern validation
-- `references/RESPONSIVE-GUIDE.md` - Comprehensive responsive design guide
-- `references/LAYOUT-PATTERNS.md` - **NEW** Production-ready responsive layout patterns
+**Complete Responsive System**:
+- `/docs/specifications/responsive-design.md` - **Complete responsive design guide**
+- `references/LAYOUT-PATTERNS.md` - **Production-ready layout patterns**
+- `references/RESPONSIVE-GUIDE.md` - Comprehensive responsive guide
 
-### In Repository
-- `/docs/specifications/responsive-design.md` - Complete responsive design guide
-- `/docs/specifications/accessibility.md` - WCAG 2.5.5 touch targets
+**Core Systems**:
 - `/docs/specifications/scss-ontology-system.md` - All responsive variants
+- `/docs/specifications/accessibility.md` - WCAG 2.5.5 touch targets
 - `/docs/specifications/architecture.md` - System design
+
+**Related**:
 - `.github/instructions/scss.instructions.md` - SCSS best practices
-- `.github/prompts/responsive-design-agent.prompt.md` - Detailed prompt
-- `GENOME.md` - v2.1.0 responsive enhancements documentation
+- `GENOME.md` - v2.1.0 responsive enhancements
 
-### Related Skills
-- `scss-refactor-agent` - Ontology migration and zero-CSS compliance
-- `html-template-agent` - Semantic HTML structure and component patterns
-- `futuristic-effects-agent` - Advanced visual effects
-- `agent-evolution-agent` - Meta-agent for continuous learning
+**Related Skills**: scss-refactor-agent, html-template-agent, futuristic-effects-agent
 
-**Version**: 2.1.1 - Enhanced Spec References  
-**Last Updated**: 2026-02-10
+---
+
+**Version History**:
+- **v2.2** (2026-02-10): High-density refactor - 370→146 lines, enhanced spec references
+- **v2.1.1** (2026-02-10): Enhanced spec references
+- **v2.1.0**: v2.1.0 responsive system integration
