@@ -1,6 +1,6 @@
-# 🚀 Agent Ecosystem - Supercharged v2.2.0
+# 🚀 Agent Ecosystem - Supercharged v2.3.0
 
-**Version**: 2.2.0 - Self-Learning Intelligence System  
+**Version**: 2.3.0 - Enhanced Dogfooding Intelligence  
 **Last Updated**: 2026-02-10  
 **Status**: Production Ready with Continuous Evolution
 
@@ -17,36 +17,47 @@
 | **References** | Detailed specifications | `.github/skills/*/references/` |
 | **Patterns** | Ready-to-use component & layout patterns | `.github/skills/*/references/` |
 | **🆕 Self-Learning** | Meta-agent evolution system | `.github/skills/agent-evolution-agent/` |
+| **🆕 Dogfooding Guide** | Agent self-improvement workflows | `.github/DOGFOODING-GUIDE.md` |
 
 ---
 
 ## 🆕 Meta-Intelligence Layer
 
-### Agent Evolution Agent (NEW)
+### Agent Evolution Agent (v2.3)
 **Skill**: `.github/skills/agent-evolution-agent/`  
-**Validation**: 
-- `scripts/audit-agent-quality.sh`
-- `scripts/find-related-agents.sh`
-- `scripts/measure-context-efficiency.sh`
-- `scripts/sync-agents-with-specs.sh`
+**Documentation**: 
+- `.github/DOGFOODING-GUIDE.md` - Complete workflows
+- `.github/skills/agent-evolution-agent/scripts/README.md` - Script documentation
+
+**Validation Scripts (7 total)**: 
+- `scripts/audit-agent-quality.sh` - Quality metrics audit
+- `scripts/find-related-agents.sh` - Find agents for a spec
+- `scripts/measure-context-efficiency.sh` - Context analysis
+- `scripts/sync-agents-with-specs.sh` - Spec synchronization
+- `scripts/detect-duplication.sh` - **NEW** Duplication detection
+- `scripts/recommend-improvements.sh` - **NEW** Improvement recommendations
+- `scripts/track-metrics.sh` - **NEW** Metrics tracking over time
 
 **Capabilities**:
 - ✅ Audits agent quality and spec coverage
 - ✅ Identifies agents needing spec references
 - ✅ Measures context window efficiency
 - ✅ Syncs agents with specification changes
+- ✅ **NEW**: Detects duplicate content across agents
+- ✅ **NEW**: Generates actionable improvement recommendations
+- ✅ **NEW**: Tracks quality metrics over time with trend analysis
 - ✅ **Dogfooding**: Uses its own principles to improve itself
 
 **Quick Start**:
 ```bash
-# Audit all agents
+# Weekly quality workflow
 ./.github/skills/agent-evolution-agent/scripts/audit-agent-quality.sh
+./.github/skills/agent-evolution-agent/scripts/track-metrics.sh
+./.github/skills/agent-evolution-agent/scripts/detect-duplication.sh
+./.github/skills/agent-evolution-agent/scripts/recommend-improvements.sh
 
-# Find agents that should reference a spec
-./.github/skills/agent-evolution-agent/scripts/find-related-agents.sh docs/specifications/scss-ontology-system.md
-
-# Measure efficiency of an agent
-./.github/skills/agent-evolution-agent/scripts/measure-context-efficiency.sh .github/prompts/theme-genome-agent.prompt.md
+# View historical trends
+./.github/skills/agent-evolution-agent/scripts/track-metrics.sh --history
 
 # Sync all agents with specs
 ./.github/skills/agent-evolution-agent/scripts/sync-agents-with-specs.sh
