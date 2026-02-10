@@ -1,14 +1,5 @@
 # Ontology System Integration Guide
 
-> **📚 Documentation Location**: This file has been copied to [`/docs/systems/ontology/INTEGRATION-GUIDE.md`](../../docs/systems/ontology/INTEGRATION-GUIDE.md) for easier access. Both versions are kept in sync.
-> 
-> **See also**:
-> - [Ontology System Overview](../../docs/systems/ontology/README.md) - System introduction
-> - [Quick Start](../../docs/systems/ontology/ONTOLOGY-QUICK-START.md) - Getting started
-> - [Migration Guide](../../docs/systems/ontology/ONTOLOGY-MIGRATION-GUIDE.md) - Legacy migration
-
----
-
 ## Overview
 
 The **Genesis Semantic SCSS Engine** is a three-tier architecture that enables subdomain repositories to remain "style-blind" while the theme repository acts as the "visual brain." This creates a clean separation between content semantics and visual presentation.

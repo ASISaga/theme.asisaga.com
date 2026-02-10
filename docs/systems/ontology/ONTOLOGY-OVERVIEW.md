@@ -1,13 +1,5 @@
 # Project Genesis: The Ontological Handshake
 
-> **📚 Complete Documentation**: This file remains for reference, but comprehensive documentation has moved to [`/docs/systems/ontology/`](../../docs/systems/ontology/).
-> 
-> - **[Ontology System Overview](../../docs/systems/ontology/README.md)** - Start here
-> - **[Integration Guide](../../docs/systems/ontology/INTEGRATION-GUIDE.md)** - Complete API reference (41+ variants)
-> - **[Quick Start](../../docs/systems/ontology/ONTOLOGY-QUICK-START.md)** - Getting started guide
-
----
-
 **Architecture Version: 2.0 (Exhaustive & Agnostic)**
 
 This documentation serves as the Standard Operating Procedure (SOP) for both human architects and AI agents. It defines the three-tier architecture that allows your 20+ subdomains to remain "Style-Blind" while the Theme Repository acts as the "Visual Brain."
