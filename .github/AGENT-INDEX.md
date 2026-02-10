@@ -13,6 +13,7 @@
 | **Skills** | Executable agent capabilities | `.github/skills/` |
 | **Prompts** | Detailed agent instructions | `.github/prompts/` |
 | **Instructions** | Coding standards & guidelines | `.github/instructions/` |
+| **Agents** | 🔒 Internal configurations (protected) | `.github/agents/` |
 | **Validation** | Automated testing scripts | `.github/skills/*/scripts/` |
 | **References** | Detailed specifications | `.github/skills/*/references/` |
 | **Patterns** | Ready-to-use component & layout patterns | `.github/skills/*/references/` |
@@ -324,6 +325,10 @@ npm run lint:scss:fix
 ├── AGENTS.MD - Detailed ecosystem architecture
 ├── AGENT-QUICK-REFERENCE.md - Ontology cheat sheet
 ├── AGENT-WORKFLOWS.md - Workflow examples
+├── DOGFOODING-GUIDE.md - Self-improvement workflows
+│
+├── agents/ - 🔒 Internal configurations (protected)
+│   └── README.md - Purpose and access restrictions
 │
 ├── skills/ - Executable agent capabilities
 │   ├── {agent-name}/

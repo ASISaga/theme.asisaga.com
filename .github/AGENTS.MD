@@ -58,6 +58,37 @@ The ASI Saga theme operates as a **Living Genome** - not a static codebase, but 
 
 ---
 
+## 📁 Repository Structure
+
+The agent intelligence system is organized across multiple directories in `.github/`:
+
+```
+.github/
+├── agents/           # 🔒 Internal configurations (protected)
+├── instructions/     # 📋 Coding standards (path-specific)
+├── prompts/          # 🤖 Agent instructions (detailed workflows)
+├── skills/           # 🛠️ Executable capabilities (reusable)
+├── AGENTS.MD         # 📚 Ecosystem architecture (this file)
+├── AGENT-INDEX.md    # 🚀 Quick navigation
+└── DOGFOODING-GUIDE.md  # 🔄 Self-improvement workflows
+```
+
+### Directory Purposes
+
+**`.github/agents/`** 🔒  
+Protected internal configurations for cross-agent coordination. Contains agent handoff logic, system-level feature toggles, and internal coordination metadata. **Agents cannot access this directory during normal task execution** to maintain clean separation between task work and system coordination.
+
+**`.github/instructions/`** 📋  
+Path-specific coding standards that apply automatically based on file patterns. Define WHAT to do (ontology usage, semantic HTML, accessibility requirements).
+
+**`.github/prompts/`** 🤖  
+Detailed agent instruction files defining HOW agents execute tasks. Include workflows, examples, decision matrices, and tool integration.
+
+**`.github/skills/`** 🛠️  
+Executable agent capabilities following the Agent Skills specification. Each skill includes validation scripts, references, and reusable patterns.
+
+---
+
 ## 🧬 Agent Types & Responsibilities
 
 ### 0. Agent Evolution Agent (Meta-Intelligence) 🆕
