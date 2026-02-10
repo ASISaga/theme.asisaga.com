@@ -145,4 +145,12 @@ Every documentation file should:
 4. **Be accurate** - Reflect current codebase
 5. **Be complete** - Cover topic comprehensively
 
-**Complete guidelines**: This file contains the core principles. For detailed templates, migration patterns, and examples, these would be in `/docs/guides/DOCUMENTATION-STANDARDS.md` if needed.
+## Documentation References
+
+**Core standards:**
+- `/docs/specifications/architecture.md` - System architecture and organization
+- `/docs/specifications/build-deployment.md` - Build and deployment processes
+
+**Applies to**: `docs/**/*.md`, `*.md` in repository root  
+**Version**: 1.1 - Added spec references for improved context efficiency  
+**Last Updated**: 2026-02-10
