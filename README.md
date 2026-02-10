@@ -83,7 +83,7 @@ The Genesis Semantic Design System is a **Living Genome** that grows through int
 
 **Found a semantic gap?** The ontology doesn't cover every pattern yet - it evolves!
 
-1. **Review existing variants**: Check all 31 variants in [INTEGRATION-GUIDE.md](_sass/ontology/INTEGRATION-GUIDE.md)
+1. **Review existing variants**: Check all 41+ variants in [Ontology Integration Guide](/docs/systems/ontology/INTEGRATION-GUIDE.md)
 2. **Try combinations**: Mix ontological mixins creatively
 3. **Propose evolution**: If genuine gap exists, create [Ontological Proposition PR](.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md)
 4. **Theme Agent reviews**: Your proposal is evaluated for semantic purity and universal applicability
@@ -127,22 +127,38 @@ This creates **design with memory** - future developers understand not just WHAT
 
 ## 📖 Documentation
 
+> **📚 [Complete Documentation Hub](/docs/)** - Comprehensive, organized documentation system (100+ files)
+
+### Quick Access
+
+**New in 2026-02-10**: All documentation reorganized into highly structured system!
+
+- **[📖 Documentation Index](/docs/INDEX.md)** - Searchable index of all documentation
+- **[🚀 Quick Start Guide](/docs/guides/QUICK-START-NAVIGATION.md)** - Get started quickly
+- **[🎨 Ontology System](/docs/systems/ontology/)** - Genesis Semantic SCSS Engine
+- **[📐 Layout System](/docs/systems/layout/)** - Responsive layout patterns
+- **[✨ Motion System](/docs/systems/motion/)** - Animation and motion
+- **[🧩 Component System](/docs/systems/components/)** - Web components and templates
+
 ### Primary Documentation (Ontology System)
 
 **Core Architecture**:
-- **[Ontology Architecture Overview](_sass/ontology/Readme.md)** - Three-tier system SOP
-- **[Complete API Reference](_sass/ontology/INTEGRATION-GUIDE.md)** - All 6 categories with examples
-- **[Implementation Summary](_sass/ontology/IMPLEMENTATION-SUMMARY.md)** - System status and features
+- **[Ontology System Overview](/docs/systems/ontology/README.md)** - Start here
+- **[Complete API Reference](/docs/systems/ontology/INTEGRATION-GUIDE.md)** - All 41+ variants with examples
+- **[Quick Start](/docs/systems/ontology/ONTOLOGY-QUICK-START.md)** - Getting started guide
+- **[Migration Guide](/docs/systems/ontology/ONTOLOGY-MIGRATION-GUIDE.md)** - Legacy to ontology
 
 **Evolution & Intelligence**:
 - **[AGENTS.MD](.github/AGENTS.MD)** - AI agent ecosystem architecture
 - **[GENOME.md](GENOME.md)** - Evolutionary history and variant registry
-- **[evolution.md](evolution.md)** - Philosophical foundation
+- **[Evolution Narrative](/docs/references/evolution.md)** - Philosophical foundation
 - **[AGENT-WORKFLOWS.md](.github/AGENT-WORKFLOWS.md)** - Complete workflows
 - **[AGENT-QUICK-REFERENCE.md](.github/AGENT-QUICK-REFERENCE.md)** - Fast lookup guide
 
 **Developer Guides**:
-- **[SCSS Refactor Guide](_sass/ontology/refactor-agent.md)** - Migration workflow
+- **[User Guides](/docs/guides/)** - How-to documentation and tutorials
+- **[Technical Specifications](/docs/specifications/)** - Complete technical specs
+- **[Quick References](/docs/references/)** - Quick lookups and cheat sheets
 - **[SCSS Instructions](.github/instructions/scss.instructions.md)** - Coding standards
 - **[HTML Instructions](.github/instructions/html.instructions.md)** - Template best practices
 - **[JS Instructions](.github/instructions/js.instructions.md)** - Integration patterns
@@ -150,14 +166,14 @@ This creates **design with memory** - future developers understand not just WHAT
 ### Quick References
 
 - **[Ontology Demo](docs/ontology-demo.html)** - Visual HTML demonstration
-- **[Semantic Quick Reference](docs/SEMANTIC-QUICK-REFERENCE.md)** - Tokens and classes
+- **[Semantic Quick Reference](/docs/systems/ontology/SEMANTIC-QUICK-REFERENCE.md)** - Tokens and classes
 - **[PR Template](.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md)** - Propose new variants
 
 ### Legacy Documentation (Backward Compatibility)
 
-- **[Bento Engine Guide](docs/layout-implementation-guide.md)** - CSS Grid layout system
-- **[Layout Taxonomy](docs/layout-taxonomy.md)** - Layout classes reference
-- **[Material Primitives](docs/specifications.md)** - Glassmorphism components
+- **[Layout System](/docs/systems/layout/)** - Complete layout documentation
+- **[Layout Implementation Guide](/docs/systems/layout/layout-implementation-guide.md)** - Layout patterns
+- **[Layout Taxonomy](/docs/systems/layout/layout-taxonomy.md)** - Layout classes reference
 
 ---
 
