@@ -4,7 +4,7 @@ description: Meta-agent that evolves the agent intelligence system through dogfo
 license: MIT
 metadata:
   author: ASISaga
-  version: "1.0"
+  version: "1.1"
   category: meta-intelligence
   role: self-evolution-specialist
 allowed-tools: Bash(npm:*) Bash(git:*) Read Edit
@@ -156,6 +156,15 @@ npm run lint:agents         # Agent prompt linting (if implemented)
 
 # Sync agents with specs
 ./.github/skills/agent-evolution-agent/scripts/sync-agents-with-specs.sh
+
+# Detect duplicate content (v1.0+)
+./.github/skills/agent-evolution-agent/scripts/detect-duplication.sh
+
+# Generate improvement recommendations (v1.0+)
+./.github/skills/agent-evolution-agent/scripts/recommend-improvements.sh
+
+# Track metrics over time (v1.0+)
+./.github/skills/agent-evolution-agent/scripts/track-metrics.sh [--history]
 ```
 
 ### Git Integration
@@ -216,4 +225,5 @@ git log --oneline .github/skills/ .github/prompts/
 ---
 
 **Version History**:
+- **v1.1** (2026-02-10): Added duplication detection, recommendations, and metrics tracking
 - **v1.0** (2026-02-10): Initial meta-agent implementation with dogfooding principles

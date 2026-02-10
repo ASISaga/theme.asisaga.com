@@ -187,20 +187,15 @@ tools: ['mcp-server-name/*']
 
 **Complete guidelines:**
 - `/docs/specifications/github-copilot-agent-guidelines.md` - Comprehensive agent development guide
+- `/docs/specifications/agent-self-learning-system.md` - Dogfooding and continuous learning
 - `.github/AGENTS.MD` - Complete ecosystem architecture
 - `.github/AGENT-INDEX.md` - Quick navigation
-- `.github/skills/README.md` - Skills overview
-- `/docs/references/agent-skill-spec.md` - Agent Skills specification
 
 **Related instructions:**
 - `.github/instructions/scss.instructions.md` - SCSS standards
 - `.github/instructions/html.instructions.md` - HTML/Liquid templates
 - `.github/instructions/js.instructions.md` - JavaScript patterns
 - `.github/instructions/docs.instructions.md` - Documentation standards
-
-**Related systems:**
-- `/docs/systems/ontology/` - Ontological design system
-- `GENOME.md` - Evolutionary history
 
 ## GitHub Copilot Best Practices
 
@@ -224,4 +219,6 @@ tools: ['mcp-server-name/*']
 
 **Applies to**: `.github/**/*.md`, `.github/**/*.prompt.md`, `.github/skills/**/*`  
 **Complements**: Other `.github/instructions/*.instructions.md` files  
-**Tool Integration**: npm scripts, bash validation, MCP servers, linters
+**Tool Integration**: npm scripts, bash validation, MCP servers, linters  
+**Version**: 1.1 - Improved spec references and context efficiency  
+**Last Updated**: 2026-02-10

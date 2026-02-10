@@ -15,3 +15,9 @@ tools:
   "viteConfig": "${workspaceFolder}/Website/theme.asisaga.com/vite.config.js"
 }
 ```
+
+## Related Documentation
+
+→ **Build Process**: `/docs/specifications/build-deployment.md`
+→ **JavaScript Architecture**: `/docs/specifications/javascript.md`
+→ **Agent Guidelines**: `/docs/specifications/github-copilot-agent-guidelines.md`
