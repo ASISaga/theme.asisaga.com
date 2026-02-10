@@ -241,7 +241,9 @@ npm run lint:scss:fix
 └── instructions/ - Coding standards
     ├── scss.instructions.md
     ├── html.instructions.md
-    └── js.instructions.md
+    ├── js.instructions.md
+    ├── docs.instructions.md
+    └── github.instructions.md
 ```
 
 ---
