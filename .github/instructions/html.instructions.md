@@ -5,6 +5,34 @@ description: "HTML & Liquid templating for Genesis Semantic Design System"
 
 # HTML & Liquid Instructions
 
+## Theme/Subdomain Architecture (CRITICAL)
+
+**Theme repository (this repo):**
+- Defines Jekyll layouts in `_layouts/` (default.html, post.html, page.html, etc.)
+- Provides reusable includes in `_includes/` (head.html, header.html, footer.html, etc.)
+- Layouts load SCSS via `<head>` using `<link rel="stylesheet" href="/assets/css/style.css">`
+- **Responsibility**: All layouts, includes, and styling infrastructure
+
+**Subdomain repositories:**
+- Create content pages (Markdown or HTML) with front matter specifying `layout: default`
+- Pages automatically use theme's layouts and styling
+- **NO `_layouts/` directory** in subdomains
+- **NO `_includes/` directory** in subdomains
+- **NO direct SCSS** in pages (styling handled by theme layouts)
+- **Responsibility**: Content only
+
+**Example subdomain page:**
+```markdown
+---
+layout: default
+title: "My Page"
+---
+
+# Content goes here
+
+Theme layouts handle all structure and styling.
+```
+
 ## PRIMARY METHOD: Semantic HTML + Ontology SCSS Mapping
 
 **HTML should be semantic, clean, and ontology-agnostic. SCSS maps classes to ontological roles.**
@@ -141,6 +169,12 @@ Parameters:
 **Ontology mapping:**
 - `/docs/specifications/scss-ontology-system.md` - All ontological variants
 - `_sass/ontology/INTEGRATION-GUIDE.md` - API reference
+
+**Test pages** (organized in `/tests/`):
+- `/tests/layouts/` - Jekyll layout integration tests
+- `/tests/components/` - Component library demos
+- `/tests/responsive/` - Responsive behavior tests
+- See `/tests/README.md` for complete catalog
 
 **Evolution:**
 - `.github/AGENTS.MD` - Ontological Proposition system
