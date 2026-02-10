@@ -1,0 +1,408 @@
+# Agent Quality Thresholds
+#
+# Defines quality metrics, thresholds, and acceptance criteria for agent
+# work products. Used for validation and continuous improvement.
+#
+# Version: 1.0.0
+# Last Updated: 2026-02-10
+# Access: Protected - Meta-intelligence layer only
+
+# Universal Quality Standards
+universal:
+  minimum_standards:
+    spec_coverage_percent: 60
+    context_efficiency_score: 50
+    validation_pass_rate: 95
+    zero_duplication: true
+    documentation_complete: true
+  
+  optimal_standards:
+    spec_coverage_percent: 80
+    context_efficiency_score: 75
+    validation_pass_rate: 100
+    zero_duplication: true
+    documentation_complete: true
+    cross_references: 3
+
+  excellence_standards:
+    spec_coverage_percent: 100
+    context_efficiency_score: 90
+    validation_pass_rate: 100
+    zero_duplication: true
+    documentation_complete: true
+    cross_references: 5
+    innovation_score: 80
+
+# Agent-Specific Thresholds
+agents:
+  instruction_files:
+    target_metrics:
+      max_lines: 200
+      min_spec_references: 3
+      spec_coverage_percent: 60
+      format: high-density
+    
+    quality_gates:
+      must_have:
+        - YAML frontmatter with applyTo pattern
+        - Description field
+        - Version and date headers
+        - Reference to /docs/specifications/
+      
+      should_have:
+        - Quick start templates
+        - Mandatory rules section
+        - Anti-patterns section
+        - Related documentation links
+      
+      nice_to_have:
+        - Visual examples
+        - Common pitfalls
+        - Troubleshooting guide
+
+  prompt_files:
+    target_metrics:
+      max_lines: 400
+      min_spec_references: 3
+      spec_coverage_percent: 80
+      format: detailed-workflow
+    
+    quality_gates:
+      must_have:
+        - YAML frontmatter
+        - Agent name (snake_case)
+        - Model specification
+        - Tools list
+        - Core responsibilities
+        - When to use section
+      
+      should_have:
+        - Version enhancements
+        - Key workflows
+        - Decision matrices
+        - Examples
+        - Tool integration
+      
+      nice_to_have:
+        - Edge cases
+        - Performance tips
+        - Common mistakes
+        - Related agents
+
+  skill_files:
+    target_metrics:
+      max_lines: 150
+      min_spec_references: 3
+      spec_coverage_percent: 80
+      format: workflow-focused
+    
+    quality_gates:
+      must_have:
+        - YAML frontmatter
+        - Skill name (kebab-case)
+        - Category and role
+        - Purpose paragraph
+        - When to use section
+        - Validation instructions
+      
+      should_have:
+        - Core principles
+        - Workflows and examples
+        - Tool integration
+        - Related documentation
+        - Scripts directory
+      
+      nice_to_have:
+        - References directory
+        - Assets directory
+        - Pattern catalogs
+        - Quick reference
+
+# Code Quality Thresholds
+code_quality:
+  scss:
+    zero_css_compliance:
+      subdomain_files:
+        allowed_raw_properties: 0
+        required_mixin_usage: 100%
+      
+      theme_files:
+        max_nesting_depth: 3
+        no_extend_usage: true
+        bem_naming: recommended
+    
+    compilation:
+      must_compile: true
+      max_compilation_time_seconds: 30
+      no_warnings: preferred
+    
+    linting:
+      stylelint_errors: 0
+      stylelint_warnings: 0
+      custom_rules: all_passing
+    
+    ontological_purity:
+      mixin_only_in_subdomain: true
+      raw_css_only_in_engine: true
+      no_visual_language_in_class_names: true
+
+  html:
+    semantic_structure:
+      meaningful_class_names: true
+      proper_landmarks: required
+      single_main_per_page: true
+      skip_link_present: true
+    
+    accessibility:
+      wcag_level: AA
+      min_wcag_score: 95
+      landmark_violations: 0
+      aria_violations: 0
+      color_contrast_ratio: 4.5
+    
+    validation:
+      html5_valid: true
+      no_inline_styles: true
+      no_inline_scripts: true
+      max_nesting_depth: 8
+
+  javascript:
+    code_quality:
+      no_console_errors: true
+      eslint_errors: 0
+      eslint_warnings: 0
+    
+    accessibility:
+      keyboard_navigable: true
+      screen_reader_compatible: true
+      focus_management: true
+    
+    performance:
+      max_bundle_size_kb: 100
+      lazy_loading: recommended
+      tree_shaking: enabled
+
+# Documentation Quality
+documentation:
+  structure:
+    required_sections:
+      - Purpose or Description
+      - Version information
+      - Last updated date
+    
+    organization:
+      proper_directory: true
+      no_duplicate_summaries: true
+      archival_enforced: true
+    
+    metadata:
+      version_header: required
+      date_format: "YYYY-MM-DD"
+      status_field: recommended
+
+  content:
+    clarity:
+      min_description_length: 50
+      max_description_length: 1024
+      jargon_explained: true
+    
+    completeness:
+      all_features_documented: true
+      examples_provided: true
+      edge_cases_covered: recommended
+    
+    accuracy:
+      links_valid: true
+      code_examples_tested: true
+      outdated_content_removed: true
+
+  cross_references:
+    min_spec_references: 3
+    related_docs_linked: true
+    circular_references: none
+    broken_links: 0
+
+# Validation Thresholds
+validation:
+  compilation:
+    sass:
+      must_pass: true
+      max_errors: 0
+      max_warnings: 0
+      timeout_seconds: 60
+  
+  linting:
+    scss:
+      max_errors: 0
+      max_warnings: 0
+      custom_rules: enforced
+    
+    markdown:
+      max_errors: 0
+      max_warnings: 5
+      link_checking: enabled
+  
+  testing:
+    unit_tests:
+      min_coverage_percent: 80
+      all_tests_pass: true
+    
+    integration_tests:
+      critical_paths: all_passing
+      regression_tests: all_passing
+
+# Performance Thresholds
+performance:
+  build_time:
+    sass_compilation_seconds: 30
+    full_build_seconds: 120
+    incremental_build_seconds: 10
+  
+  file_size:
+    max_scss_file_kb: 50
+    max_css_output_kb: 1100
+    max_html_file_kb: 100
+  
+  runtime:
+    max_layout_shift: 0.1
+    max_interaction_delay_ms: 100
+    lighthouse_performance: 90
+
+# Ontological Quality
+ontology:
+  semantic_purity:
+    no_visual_propositions: true
+    clear_semantic_intent: required
+    universal_applicability: preferred
+  
+  engine_layer:
+    max_variants_per_category: 12
+    no_duplicate_variants: true
+    backward_compatible: true
+  
+  documentation:
+    genome_updated: required
+    pr_origin_documented: required
+    evolution_history: complete
+
+# Agent Self-Improvement
+self_improvement:
+  dogfooding_metrics:
+    applies_own_standards: true
+    zero_duplication: required
+    spec_references: 3
+    context_efficiency: 75
+  
+  continuous_improvement:
+    quality_trend: improving
+    spec_coverage_trend: stable_or_improving
+    duplication_trend: zero_maintained
+    efficiency_trend: stable_or_improving
+  
+  audit_frequency:
+    weekly_quality_check: recommended
+    monthly_deep_audit: required
+    quarterly_review: required
+
+# Quality Gates by Stage
+quality_gates:
+  pre_commit:
+    - All linters pass
+    - All tests pass
+    - Compilation successful
+    - No console errors
+    - Documentation updated
+  
+  pre_merge:
+    - Code review approved
+    - CI/CD pipeline green
+    - Quality thresholds met
+    - No regressions introduced
+    - Breaking changes documented
+  
+  post_merge:
+    - Metrics tracked
+    - Documentation validated
+    - Agents synced if specs changed
+    - Quality trends monitored
+
+# Error Budgets
+error_budgets:
+  validation_failures:
+    daily_budget: 5
+    weekly_budget: 20
+    monthly_budget: 50
+  
+  handoff_failures:
+    daily_budget: 2
+    weekly_budget: 10
+    monthly_budget: 30
+  
+  quality_score_drops:
+    max_drop_percent: 10
+    recovery_time_days: 7
+    escalation_threshold: 15
+
+# Improvement Targets
+improvement_targets:
+  short_term:  # 1 month
+    spec_coverage_increase: 5%
+    optimal_agents_increase: 2
+    context_efficiency_increase: 5
+  
+  medium_term:  # 3 months
+    spec_coverage_target: 90%
+    optimal_agents_target: 15
+    zero_duplication_maintained: true
+  
+  long_term:  # 6 months
+    spec_coverage_target: 100%
+    optimal_agents_target: 18
+    excellence_standard_achieved: true
+
+# Acceptance Criteria Templates
+acceptance_criteria:
+  new_agent:
+    - Follows naming conventions
+    - Has complete frontmatter
+    - Includes validation logic
+    - References ≥3 specifications
+    - Has working examples
+    - Passes all quality gates
+    - Documentation complete
+  
+  ontological_proposition:
+    - Semantic intent clear
+    - Use cases documented (≥3)
+    - Universal applicability assessed
+    - No visual-only requests
+    - Redundancy checked
+    - Template followed correctly
+  
+  code_refactoring:
+    - Zero-CSS compliance (subdomain)
+    - Only ontological mixins used
+    - Compilation successful
+    - Linting passed
+    - Tests passed
+    - No regressions
+    - Documentation updated
+
+# SLA (Service Level Agreements)
+sla:
+  response_times:
+    critical_priority: 1_hour
+    high_priority: 4_hours
+    medium_priority: 1_day
+    low_priority: 3_days
+  
+  resolution_times:
+    critical_bugs: 4_hours
+    high_priority_bugs: 1_day
+    medium_priority_tasks: 3_days
+    low_priority_tasks: 1_week
+  
+  availability:
+    agent_uptime_percent: 99
+    validation_availability_percent: 99.9
+    documentation_accessibility: 100

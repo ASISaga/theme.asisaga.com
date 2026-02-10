@@ -1,0 +1,306 @@
+# Agent Feature Flags
+#
+# System-level feature toggles controlling agent behaviors and capabilities.
+# Allows gradual rollout of new features and quick disabling if issues arise.
+#
+# Version: 1.0.0
+# Last Updated: 2026-02-10
+# Access: Protected - Meta-intelligence layer only
+
+# Global Feature Flags
+global:
+  # Core System Features
+  agent_coordination_enabled: true
+  multi_agent_workflows: true
+  automatic_handoffs: true
+  validation_enforcement: true
+  
+  # Quality Controls
+  dogfooding_enabled: true
+  zero_duplication_enforcement: true
+  spec_coverage_tracking: true
+  context_efficiency_measurement: true
+  
+  # Safety Features
+  protected_directory_access: false  # Agents cannot access .github/agents/
+  approval_required_for_engine: true
+  breaking_change_detection: true
+  rollback_capability: true
+
+# Agent-Specific Features
+agents:
+  agent-evolution-agent:
+    enabled: true
+    features:
+      auto_quality_audit: true
+      auto_spec_sync: true
+      duplication_detection: true
+      metrics_tracking: true
+      improvement_recommendations: true
+      self_dogfooding: true
+    limits:
+      max_agents_per_audit: 20
+      metric_history_days: 90
+      recommendation_count: 10
+
+  theme-genome-agent:
+    enabled: true
+    features:
+      ontological_proposition_review: true
+      engine_layer_modification: true
+      genome_documentation: true
+      redundancy_checking: true
+      universal_applicability_check: true
+      auto_refactoring: false  # Manual review required
+    limits:
+      max_variants_per_category: 12
+      proposition_review_time_hours: 48
+    safeguards:
+      require_semantic_justification: true
+      block_visual_only_requests: true
+      enforce_backward_compatibility: true
+
+  subdomain-evolution-agent:
+    enabled: true
+    features:
+      gap_identification: true
+      proposition_creation: true
+      use_case_documentation: true
+      universality_assessment: true
+      automatic_pr_creation: true
+    limits:
+      max_propositions_per_subdomain: 5
+      cooldown_between_propositions_days: 7
+    safeguards:
+      require_multiple_use_cases: true
+      block_subdomain_specific_requests: true
+
+  scss-refactor-agent:
+    enabled: true
+    features:
+      zero_css_enforcement: true
+      ontological_mixin_conversion: true
+      automatic_sass_compilation: true
+      stylelint_integration: true
+      raw_css_detection: true
+      batch_refactoring: true
+    limits:
+      max_files_per_batch: 50
+      compilation_timeout_seconds: 300
+    safeguards:
+      require_backup_before_refactor: true
+      enforce_zero_css_compliance: true
+      validate_before_commit: true
+
+  html-template-agent:
+    enabled: true
+    features:
+      semantic_html_creation: true
+      wcag_validation: true
+      landmark_checking: true
+      aria_validation: true
+      bem_naming_enforcement: true
+      accessibility_scoring: true
+    limits:
+      max_nesting_depth: 5
+      max_landmarks_per_page: 8
+    safeguards:
+      require_skip_link: true
+      enforce_single_main: true
+      block_inline_styles: true
+      require_meaningful_classes: true
+
+  responsive-design-agent:
+    enabled: true
+    features:
+      mobile_first_enforcement: true
+      touch_target_validation: true
+      fluid_typography: true
+      container_queries: true
+      dynamic_viewport_units: true
+      reduced_motion_support: true
+    limits:
+      min_touch_target_px: 44
+      max_breakpoints: 5
+    safeguards:
+      enforce_mobile_first: true
+      require_reduced_motion: true
+      validate_touch_targets: true
+
+  futuristic-effects-agent:
+    enabled: true
+    features:
+      glassmorphism: true
+      neon_effects: true
+      quantum_gradients: true
+      consciousness_animations: true
+      reduced_motion_respect: true
+      performance_optimization: true
+    limits:
+      max_effects_per_component: 3
+      max_animation_duration_ms: 5000
+    safeguards:
+      require_reduced_motion_alt: true
+      enforce_gpu_acceleration: true
+      limit_blur_radius: 20
+
+  documentation-manager-agent:
+    enabled: true
+    features:
+      structure_validation: true
+      link_checking: true
+      redundancy_detection: true
+      metadata_validation: true
+      archival_enforcement: true
+      version_tracking: true
+    limits:
+      max_link_check_depth: 3
+      similarity_threshold_percent: 80
+    safeguards:
+      prevent_duplicate_summaries: true
+      enforce_version_headers: true
+      require_archive_migration: true
+
+# Experimental Features (Beta)
+experimental:
+  auto_variant_suggestion:
+    enabled: false
+    agents: [subdomain-evolution-agent]
+    description: "AI suggests variants based on usage patterns"
+    rollout_percentage: 0
+  
+  cross_subdomain_learning:
+    enabled: false
+    agents: [agent-evolution-agent]
+    description: "Learn patterns from multiple subdomains"
+    rollout_percentage: 0
+  
+  predictive_refactoring:
+    enabled: false
+    agents: [scss-refactor-agent]
+    description: "Predict needed refactorings before requested"
+    rollout_percentage: 0
+  
+  auto_accessibility_fixes:
+    enabled: false
+    agents: [html-template-agent]
+    description: "Automatically fix common a11y issues"
+    rollout_percentage: 0
+  
+  smart_handoffs:
+    enabled: false
+    agents: [all]
+    description: "AI-determined optimal agent routing"
+    rollout_percentage: 0
+
+# Deprecated Features (To be removed)
+deprecated:
+  manual_ontology_updates:
+    sunset_date: "2026-03-01"
+    replacement: theme-genome-agent automated workflow
+    migration_guide: ".github/MIGRATION-GUIDES.md"
+  
+  inline_css_tolerance:
+    sunset_date: "2026-02-15"
+    replacement: strict zero-CSS enforcement
+    migration_guide: ".github/instructions/scss.instructions.md"
+
+# Feature Flag Overrides (Emergency)
+overrides:
+  emergency_disable_all: false
+  safe_mode:
+    enabled: false
+    when_enabled:
+      - Disable all automatic modifications
+      - Enable validation-only mode
+      - Require manual approval for all changes
+      - Increase logging verbosity
+
+# Conditional Feature Activation
+conditional_features:
+  high_quality_mode:
+    condition: spec_coverage >= 80%
+    enables:
+      - auto_spec_sync
+      - improvement_recommendations
+      - context_efficiency_measurement
+  
+  production_ready:
+    condition: zero_duplication_achieved
+    enables:
+      - batch_refactoring
+      - automatic_pr_creation
+      - auto_quality_audit
+  
+  experimental_eligible:
+    condition: agent_quality_score >= 90
+    enables:
+      - All experimental features at 10% rollout
+
+# Performance Controls
+performance:
+  parallel_execution:
+    enabled: true
+    max_concurrent_agents: 3
+    priority_queue: true
+  
+  resource_limits:
+    max_memory_mb: 2048
+    max_execution_time_seconds: 600
+    max_file_size_mb: 10
+  
+  caching:
+    enabled: true
+    cache_validation_results: true
+    cache_spec_references: true
+    cache_ttl_hours: 24
+
+# Monitoring and Telemetry
+monitoring:
+  collect_metrics: true
+  track_handoffs: true
+  measure_performance: true
+  log_decisions: true
+  
+  metrics_to_track:
+    - Agent invocation count
+    - Task completion time
+    - Validation pass rate
+    - Handoff success rate
+    - Error frequency
+    - Quality score trends
+    - Spec coverage changes
+    - Context efficiency
+  
+  alerting:
+    enabled: true
+    alert_on:
+      - validation_failure_rate > 20%
+      - handoff_failure_rate > 10%
+      - agent_error_rate > 5%
+      - quality_score_drop > 15%
+
+# Version Compatibility
+compatibility:
+  min_agent_version: "2.3.0"
+  max_agent_version: "3.0.0"
+  breaking_change_notifications: true
+  auto_update_recommendations: true
+
+# Feature Rollout Schedule
+rollout_schedule:
+  "2026-02-15":
+    - Enable strict zero-CSS enforcement
+    - Remove inline CSS tolerance
+  
+  "2026-03-01":
+    - Enable auto_variant_suggestion at 10%
+    - Sunset manual_ontology_updates
+  
+  "2026-04-01":
+    - Enable cross_subdomain_learning at 25%
+    - Enable smart_handoffs at 10%
+  
+  "2026-06-01":
+    - Enable predictive_refactoring at 50%
+    - Full rollout of auto_accessibility_fixes

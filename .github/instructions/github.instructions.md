@@ -53,6 +53,18 @@ allowed-tools: Bash(npm:*) Read
 
 → **All scripts**: `.github/skills/agent-evolution-agent/scripts/README.md`
 
+## Agent Ecosystem Structure
+
+```
+.github/
+├── agents/           # 🔒 Internal configurations (protected access)
+├── instructions/     # 📋 Coding standards
+├── prompts/          # 🤖 Agent instructions
+└── skills/           # 🛠️ Executable capabilities
+```
+
+**Protected Directory**: `.github/agents/` contains internal agent coordination logic. Agents cannot access this directory during normal task execution to maintain clean separation between task work and system coordination.
+
 ## Skill Directory Structure
 
 ```
@@ -130,5 +142,5 @@ allowed-tools: Bash(npm:*) Read
 ---
 
 **Applies to**: `.github/**/*.md`, `.github/**/*.prompt.md`, `.github/skills/**/*`  
-**Version**: 1.3 - Added test page organization references
+**Version**: 1.4 - Added .github/agents/ directory reference  
 **Last Updated**: 2026-02-10

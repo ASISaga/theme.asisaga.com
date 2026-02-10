@@ -1,0 +1,308 @@
+# Agent Capability Matrix
+# 
+# This file defines the capabilities and scope of each agent in the ecosystem.
+# Used by meta-agents to understand which agent to invoke for specific tasks.
+#
+# Version: 1.0.0
+# Last Updated: 2026-02-10
+# Access: Protected - Meta-intelligence layer only
+
+agents:
+  # Meta-Intelligence Layer
+  agent-evolution-agent:
+    category: meta-intelligence
+    role: lead-architect
+    scope:
+      - .github/**
+      - Agent ecosystem files
+    capabilities:
+      - audit_agent_quality
+      - measure_spec_coverage
+      - detect_duplication
+      - recommend_improvements
+      - track_metrics
+      - sync_with_specifications
+      - find_related_agents
+    tools:
+      - bash
+      - read
+      - edit
+      - grep
+    outputs:
+      - Quality metrics reports
+      - Improvement recommendations
+      - Duplication analysis
+      - Historical trend data
+    dependencies: []
+    can_trigger:
+      - scss-refactor-agent
+      - documentation-manager-agent
+      - theme-genome-agent
+
+  # Ontological Layer
+  theme-genome-agent:
+    category: design-system
+    role: lead-architect
+    scope:
+      - _sass/ontology/**
+      - GENOME.md
+      - Ontological propositions
+    capabilities:
+      - review_ontological_propositions
+      - validate_semantic_purity
+      - check_redundancy
+      - assess_universality
+      - update_engine_layer
+      - maintain_genome_documentation
+      - refactor_ontology
+    tools:
+      - bash
+      - read
+      - edit
+      - sass
+    outputs:
+      - Approved/rejected propositions
+      - Engine layer updates
+      - GENOME.md updates
+      - Variant documentation
+    dependencies:
+      - subdomain-evolution-agent
+    can_trigger:
+      - scss-refactor-agent
+      - responsive-design-agent
+      - futuristic-effects-agent
+
+  subdomain-evolution-agent:
+    category: design-system
+    role: specialist
+    scope:
+      - Subdomain repositories
+      - Ontological gaps
+    capabilities:
+      - identify_semantic_gaps
+      - analyze_existing_ontology
+      - create_propositions
+      - formulate_use_cases
+      - assess_universality
+    tools:
+      - bash
+      - read
+      - edit
+    outputs:
+      - Ontological proposition PRs
+      - Gap analysis reports
+      - Use case documentation
+    dependencies: []
+    can_trigger:
+      - theme-genome-agent
+
+  # Implementation Layer
+  scss-refactor-agent:
+    category: design-system
+    role: migration
+    scope:
+      - "**/*.scss"
+      - "**/*.sass"
+      - _sass/**
+      - assets/css/**
+    capabilities:
+      - convert_to_ontological_mixins
+      - enforce_zero_css_compliance
+      - validate_mixin_usage
+      - identify_raw_css
+      - suggest_semantic_mapping
+    tools:
+      - bash
+      - sass
+      - stylelint
+      - read
+      - edit
+    outputs:
+      - Refactored SCSS files
+      - Zero-CSS compliant code
+      - Migration reports
+    dependencies:
+      - theme-genome-agent
+    can_trigger:
+      - responsive-design-agent
+      - futuristic-effects-agent
+
+  html-template-agent:
+    category: design-system
+    role: semantic-structure
+    scope:
+      - "**/*.html"
+      - "**/*.liquid"
+      - _layouts/**
+      - _includes/**
+    capabilities:
+      - create_semantic_html
+      - enforce_accessibility
+      - validate_landmarks
+      - ensure_wcag_compliance
+      - apply_bem_naming
+      - check_aria_usage
+    tools:
+      - bash
+      - read
+      - edit
+      - html_validator
+    outputs:
+      - Semantic HTML templates
+      - Accessibility reports
+      - Landmark validation
+    dependencies: []
+    can_trigger:
+      - scss-refactor-agent
+      - responsive-design-agent
+
+  responsive-design-agent:
+    category: design-system
+    role: specialist
+    scope:
+      - Responsive patterns
+      - Mobile-first design
+      - "**/*.scss"
+    capabilities:
+      - implement_mobile_first
+      - apply_responsive_mixins
+      - validate_touch_targets
+      - ensure_fluid_typography
+      - check_container_queries
+      - verify_breakpoints
+    tools:
+      - bash
+      - sass
+      - read
+      - edit
+    outputs:
+      - Responsive SCSS
+      - Mobile-first layouts
+      - Accessibility compliance
+    dependencies:
+      - theme-genome-agent
+    can_trigger:
+      - futuristic-effects-agent
+
+  futuristic-effects-agent:
+    category: design-system
+    role: specialist
+    scope:
+      - Visual effects
+      - Glassmorphism
+      - "**/*.scss"
+    capabilities:
+      - apply_glassmorphism
+      - create_neon_effects
+      - implement_quantum_gradients
+      - add_consciousness_animations
+      - ensure_reduced_motion
+    tools:
+      - bash
+      - sass
+      - read
+      - edit
+    outputs:
+      - Advanced visual effects
+      - Motion-safe animations
+      - Glassmorphic UI
+    dependencies:
+      - theme-genome-agent
+      - responsive-design-agent
+    can_trigger: []
+
+  # Documentation Layer
+  documentation-manager-agent:
+    category: documentation
+    role: specialist
+    scope:
+      - docs/**
+      - "**/*.md"
+    capabilities:
+      - validate_doc_structure
+      - check_internal_links
+      - detect_redundancy
+      - validate_metadata
+      - enforce_archival
+      - check_version_headers
+    tools:
+      - bash
+      - read
+      - edit
+      - grep
+    outputs:
+      - Structure validation
+      - Link integrity reports
+      - Redundancy analysis
+      - Metadata compliance
+    dependencies: []
+    can_trigger:
+      - agent-evolution-agent
+
+# Capability Categories
+capability_categories:
+  validation:
+    - validate_semantic_purity
+    - validate_mixin_usage
+    - validate_doc_structure
+    - enforce_accessibility
+    - ensure_wcag_compliance
+    - check_internal_links
+    - validate_metadata
+
+  creation:
+    - create_semantic_html
+    - create_propositions
+    - implement_mobile_first
+    - apply_glassmorphism
+    - update_engine_layer
+
+  analysis:
+    - identify_semantic_gaps
+    - analyze_existing_ontology
+    - detect_redundancy
+    - audit_agent_quality
+    - assess_universality
+    - check_redundancy
+
+  refactoring:
+    - convert_to_ontological_mixins
+    - refactor_ontology
+    - enforce_zero_css_compliance
+
+  coordination:
+    - review_ontological_propositions
+    - recommend_improvements
+    - sync_with_specifications
+    - find_related_agents
+
+# Tool Requirements
+tool_requirements:
+  bash:
+    - agent-evolution-agent
+    - theme-genome-agent
+    - subdomain-evolution-agent
+    - scss-refactor-agent
+    - html-template-agent
+    - responsive-design-agent
+    - futuristic-effects-agent
+    - documentation-manager-agent
+
+  sass:
+    - scss-refactor-agent
+    - responsive-design-agent
+    - futuristic-effects-agent
+    - theme-genome-agent
+
+  stylelint:
+    - scss-refactor-agent
+
+  read:
+    - All agents
+
+  edit:
+    - All agents (except documentation-manager in read-only mode)
+
+  grep:
+    - agent-evolution-agent
+    - documentation-manager-agent

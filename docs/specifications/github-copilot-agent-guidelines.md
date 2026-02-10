@@ -1,7 +1,7 @@
 # GitHub Copilot Agent Guidelines
 
 **Last Updated**: 2026-02-10  
-**Version**: 1.0  
+**Version**: 1.1 - Added `.github/agents/` directory  
 **Status**: Active
 
 This document provides comprehensive guidelines for creating and maintaining GitHub Copilot agents, prompts, and skills within the `.github/` directory.
@@ -115,7 +115,41 @@ allowed-tools: Bash(npm:*) Bash(sass:*) Read
 - `migration` - Legacy code refactoring
 - `semantic-structure` - Content and accessibility
 
-### 3. Agent Documentation (`.github/*.MD`)
+### 3. Agent Internal Configurations (`.github/agents/`)
+
+Protected directory for internal agent coordination logic and system-level configuration.
+
+**Purpose:**
+- Agent handoff logic and coordination rules
+- System-level feature toggles
+- Internal performance metrics schemas
+- Cross-agent state management
+
+**Access Restrictions:**
+- **Agents cannot access during normal task execution**
+- Prevents context contamination and misbehavior
+- Maintains clean separation between task work and system coordination
+- Only accessible during meta-intelligence tasks (e.g., agent-evolution-agent)
+
+**Directory Structure:**
+```
+.github/agents/
+├── README.md        # Purpose and access guidelines
+├── .gitkeep         # Ensures directory is tracked
+└── [Future configs] # Added as system evolves
+```
+
+**When to Add Files:**
+- Content is genuinely internal system configuration
+- Exposing it to agents during tasks would cause issues
+- Not appropriate for instructions/, prompts/, or skills/
+- Documented why it belongs here
+
+**Related Documentation:**
+- `.github/agents/README.md` - Complete access guidelines
+- `.github/AGENTS.MD` - Ecosystem architecture including agents/
+
+### 4. Agent Documentation (`.github/*.MD`)
 
 Central documentation files that govern the agent ecosystem.
 
