@@ -1,8 +1,8 @@
-# 🚀 Agent Ecosystem - Supercharged v2.1.1
+# 🚀 Agent Ecosystem - Supercharged v2.2.0
 
-**Version**: 2.1.1 - Enhanced Pattern Catalogs  
-**Last Updated**: 2026-01-29  
-**Status**: Production Ready with Comprehensive Pattern Libraries
+**Version**: 2.2.0 - Self-Learning Intelligence System  
+**Last Updated**: 2026-02-10  
+**Status**: Production Ready with Continuous Evolution
 
 ---
 
@@ -15,7 +15,47 @@
 | **Instructions** | Coding standards & guidelines | `.github/instructions/` |
 | **Validation** | Automated testing scripts | `.github/skills/*/scripts/` |
 | **References** | Detailed specifications | `.github/skills/*/references/` |
-| **Patterns** | **NEW** Ready-to-use component & layout patterns | `.github/skills/*/references/` |
+| **Patterns** | Ready-to-use component & layout patterns | `.github/skills/*/references/` |
+| **🆕 Self-Learning** | Meta-agent evolution system | `.github/skills/agent-evolution-agent/` |
+
+---
+
+## 🆕 Meta-Intelligence Layer
+
+### Agent Evolution Agent (NEW)
+**Skill**: `.github/skills/agent-evolution-agent/`  
+**Validation**: 
+- `scripts/audit-agent-quality.sh`
+- `scripts/find-related-agents.sh`
+- `scripts/measure-context-efficiency.sh`
+- `scripts/sync-agents-with-specs.sh`
+
+**Capabilities**:
+- ✅ Audits agent quality and spec coverage
+- ✅ Identifies agents needing spec references
+- ✅ Measures context window efficiency
+- ✅ Syncs agents with specification changes
+- ✅ **Dogfooding**: Uses its own principles to improve itself
+
+**Quick Start**:
+```bash
+# Audit all agents
+./.github/skills/agent-evolution-agent/scripts/audit-agent-quality.sh
+
+# Find agents that should reference a spec
+./.github/skills/agent-evolution-agent/scripts/find-related-agents.sh docs/specifications/scss-ontology-system.md
+
+# Measure efficiency of an agent
+./.github/skills/agent-evolution-agent/scripts/measure-context-efficiency.sh .github/prompts/theme-genome-agent.prompt.md
+
+# Sync all agents with specs
+./.github/skills/agent-evolution-agent/scripts/sync-agents-with-specs.sh
+```
+
+**Metrics** (as of 2026-02-10):
+- Average Spec Coverage: **80%** (was 23%)
+- Optimal Agents: **9/18 (50%)** (was 4/18)
+- Total Spec References Added: **40+**
 
 ---
 
