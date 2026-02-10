@@ -1,912 +1,121 @@
 ---
 applyTo: "**/*.{scss,sass,css},_sass/**,assets/css/**"
-description: "SCSS guidance for the ASI Saga semantic design system v2.0. Mobile-first responsive with container queries and futuristic effects."
-version: "2.0.0"
-last-updated: "2026-01-19"
+description: "SCSS coding instructions for Genesis Semantic Design System v2.0"
 ---
 
-# Semantic Design System - SCSS Instructions v2.0
+# SCSS Instructions
 
-This file contains rules for the OKLCH-based semantic design system with native CSS Grid, Glassmorphism, and modern responsive features.
+## PRIMARY METHOD: Genesis Ontology System
 
-## 🚀 What's New in v2.0
+**For ALL new development, use ontology mixins exclusively.**
 
-- **Modern Responsive System**: Mobile-first with container queries, dynamic viewport units, and fluid spacing
-- **Futuristic Effects**: Advanced glassmorphism, neon glows, quantum gradients, consciousness animations
-- **Enhanced Ontology Tokens**: New tokens for responsive behavior, touch targets, safe areas
-- **Accessibility-First**: WCAG 2.5.5 touch targets (44px), reduced motion, high contrast support
+### Quick Start
 
-## 🌟 PRIMARY METHOD: Genesis Semantic Engine (Ontology System)
-
-**For ALL new development, use the ontology system exclusively.**
-
-The Genesis Semantic Engine is the **primary and recommended interface** for styling. It provides a three-tier architecture that separates content semantics from visual presentation.
-
-### Quick Start (Primary Method)
-
-**For subdomain/standalone SCSS files** (compilation entry points):
-
+**Standalone SCSS files** (compilation entry points with Jekyll front matter):
 ```scss
 ---
 ---
-@import "ontology/index";  // MUST be first import for standalone files
+@import "ontology/index";  // Required for standalone files
 
-.my-component {
-  @include genesis-environment('distributed');  // Layout logic
-  @include genesis-entity('primary');           // Visual presence
-  
-  .title {
-    @include genesis-cognition('axiom');        // Typography
-  }
-  
-  .action-button {
-    @include genesis-synapse('execute');        // Interaction
-  }
+.component {
+  @include genesis-environment('distributed');  // Layout
+  @include genesis-entity('primary');           // Visual
+  @include genesis-cognition('axiom');          // Typography
+  @include genesis-synapse('execute');          // Interaction
 }
 ```
 
-**For theme component/layout files** in `_sass/components/` or `_sass/layouts/`:
-
+**Theme internal files** (`_sass/components/`, `_sass/layouts/`):
 ```scss
-// NO @import needed - ontology already available via _common.scss
-
-.my-component {
-  @include genesis-environment('distributed');  // Already available
-  @include genesis-entity('primary');
-  
-  .title {
-    @include genesis-cognition('axiom');
-  }
+// NO @import - ontology available via _common.scss
+.component {
+  @include genesis-environment('distributed');
 }
 ```
 
-**Golden Rule**: NEVER use raw CSS properties (margin, padding, color, etc.) in subdomain SCSS. All styling comes from ontological mixins.
+### MANDATORY RULES
 
-### 🧬 Evolutionary System
+**Subdomain SCSS** - ZERO raw CSS properties:
+- ❌ NO `margin`, `padding`, `color`, `font-size`, `background`
+- ❌ NO unit values: `px`, `rem`, `%`
+- ❌ NO color values: `#hex`, `rgb()`, `oklch()`
+- ✅ ONLY ontological mixins
 
-The Genesis Ontology is a **Living Genome** that grows through semantic propositions:
+**Theme internal SCSS:**
+- ❌ NEVER use `@extend` (Jekyll build errors)
+- ✅ Max 3 nesting levels
+- ✅ Use ontology mixins when possible
+- ✅ BEM-style naming: `.block__element--modifier`
 
-- **Found a semantic gap?** Submit an Ontological Proposition PR to theme repository
-- **Need guidance?** Consult `.github/AGENTS.MD` and `.github/prompts/subdomain-evolution-agent.prompt.md`
-- **Uncertain about mixins?** Review `GENOME.md` for variant history and usage examples
-- **Visual changes only?** Use existing mixins - don't create PRs for visual preferences
+## Ontology Reference
 
-**Before creating a PR**, ask:
-1. Can I combine existing mixins to achieve this?
-2. Is this a semantic role or just a visual preference?
-3. Would other subdomains benefit from this pattern?
+**Six semantic categories** (31 variants total):
+→ **Complete reference**: `/docs/specifications/scss-ontology-system.md`
 
-See [Ontology System - Genesis Semantic Engine (PRIMARY METHOD)](#ontology-system---genesis-semantic-engine-primary-method) below or [INTEGRATION-GUIDE.md](../../_sass/ontology/INTEGRATION-GUIDE.md) for complete details.
+**Quick category list:**
+- `genesis-environment($logic)` - Layout: `'distributed'`, `'focused'`, `'associative'`, `'chronological'`, `'manifest'`
+- `genesis-entity($nature)` - Visual: `'primary'`, `'secondary'`, `'imperative'`, `'latent'`, `'aggregate'`, `'ancestral'`
+- `genesis-cognition($intent)` - Typography: `'axiom'`, `'discourse'`, `'protocol'`, `'gloss'`, `'motive'`, `'quantum'`
+- `genesis-synapse($vector)` - Interaction: `'navigate'`, `'execute'`, `'inquiry'`, `'destructive'`, `'social'`
+- `genesis-state($condition)` - State: `'stable'`, `'evolving'`, `'deprecated'`, `'locked'`, `'simulated'`
+- `genesis-atmosphere($vibe)` - Atmosphere: `'neutral'`, `'ethereal'`, `'void'`, `'vibrant'`
 
----
+## Import Rules (CRITICAL)
 
-## Architecture Overview
+**DO import `ontology/index` in:**
+- ✅ Subdomain SCSS (e.g., `assets/css/custom.scss`)
+- ✅ Standalone files with Jekyll front matter `---`
 
-### Primary: Ontology System (Use This)
-- **Three-tier architecture** - Content → Interface → Engine
-- **Six semantic categories** - 31 total variants covering all UI needs
-- **Zero raw CSS** - Subdomain SCSS uses only mixins
-- **Single source of truth** - All visual styling in theme engine
+**DO NOT import in:**
+- ❌ `_sass/components/` partials (already via `_common.scss`)
+- ❌ `_sass/layouts/` partials (creates 22MB bloat)
 
-### Legacy: Bento/Material Classes (Backward Compatibility)
-- **Bento Engine** - Native CSS Grid layout system  
-- **Material Primitives** - Glassmorphism components
-- **Bootstrap compatibility** - For gradual migration
-- **Maintained but deprecated** - Use ontology for new work
+**Why**: `_common.scss` imports ontology at line 37. Duplicate imports cause massive CSS bloat (22MB vs 1.1MB).
 
-### Foundation (All Methods)
-- **OKLCH color space** - Perceptually uniform, HDR-ready
-- **Fluid Typography** - clamp() based responsive scaling
-- **Accessibility-first** - WCAG AA, reduced motion, high contrast
-
-## 🎨 Color Philosophy - Purposeful Usage
-
-**The Genesis Design System emphasizes purposeful, accessible color usage:**
-
-### Primary Colors (Core Hierarchy)
-- **Black text on white backgrounds** - Primary content, body text, headings
-  - Text: `oklch(0.10 0.01 250)` to `oklch(0.15 0.01 250)` (deep black)
-  - Background: `oklch(0.99 0.005 90)` (pure white)
-- **White text on black backgrounds** - Headers, footers, navigation, buttons
-  - Text: `oklch(0.99 0.005 90)` (white)
-  - Background: `oklch(0.08 0.01 250)` to `oklch(0.12 0.01 250)` (black)
-
-### Secondary Colors (Use When Needed)
-- **Light gray backgrounds** - Use when semantic purpose requires distinction from white
-  - `oklch(0.96 0.005 220)` - Very light gray for cards with purpose
-- **Dark gray text** - Secondary information, metadata
-  - `oklch(0.30 0.01 230)` to `oklch(0.35 0.01 230)`
-
-### Accent Colors (Use Purposefully)
-- **Neon blue** - For interaction feedback, focus states, and emphasis
-  - `oklch(0.65 0.25 230)` - Use for hover states, focus rings, active elements
-  - **When to use**: Links on hover, button interactions, focus indicators, alerts
-  - **Avoid**: Background fills or large surface areas
-- **Gold** - For special highlights and sacred elements
-  - `oklch(0.70 0.15 85)` - Use purposefully for emphasis
-  - **When to use**: Special features, premium content, sacred elements
-  - **Avoid**: Overuse that diminishes impact
-
-### ❌ Avoid Excessive Use
-- Too many blue tints in backgrounds (use white/light gray instead)
-- Multiple levels of nested colored boxes (flatten hierarchy)
-- Purple, green backgrounds (use established palette)
-- Rose/peach backgrounds (replace with appropriate colors)
-- Overuse of glassmorphism effects
-
-### Visual Hierarchy Guidelines
-- **Purposeful nesting** - Only nest boxes when semantically meaningful
-- **Border radius** - Use as appropriate for the design, not arbitrarily reduced
-- **Color accents** - Each color should serve a purpose
-- **Glassmorphism** - Use for specific UI needs (headers, modals), not everywhere
-
-### Example Usage
-```scss
-// ✅ CORRECT - Purposeful hierarchy and color usage
-.content-card {
-  background: oklch(0.99 0.005 90);  // White - clear primary surface
-  color: oklch(0.12 0.01 250);        // Black text - readable
-  border: 1px solid oklch(0.85 0.005 220);  // Subtle border
-  border-radius: 1rem;                // Rounded as appropriate for design
-  
-  .action-button {
-    background: oklch(0.10 0.01 250); // Black button - clear action
-    color: oklch(0.99 0.005 90);      // White text - high contrast
-    border-radius: 0.75rem;            // Appropriate rounding
-    
-    &:hover {
-      border: 1px solid oklch(0.65 0.25 230);  // Neon blue - interaction feedback
-    }
-  }
-  
-  .premium-badge {
-    color: oklch(0.70 0.15 85);       // Gold - purposeful emphasis
-  }
-}
-
-// ❌ WRONG - Excessive blue tints and unnecessary nesting
-.bad-card {
-  background: oklch(0.20 0.06 245 / 0.85);  // Dark blue tint (avoid)
-  
-  .inner-wrapper {
-    background: oklch(0.22 0.07 240 / 0.9);  // Nested blue box (unnecessary)
-    
-    .content-wrapper {
-      background: oklch(0.24 0.08 235);      // Another nested box (excessive)
-      color: oklch(0.75 0.15 210);           // Blue text (poor contrast)
-    }
-  }
-}
-```
-
-## Structure & Entry Points
-
-### Primary: Ontology System
-- **Main entry**: `@import "ontology/index";` in your SCSS file
-- **Interface layer**: `/_sass/ontology/_interface.scss` (6 public mixins)
-- **Engine layer**: `/_sass/ontology/_engines.scss` (visual implementation)
-- **Documentation**: `/_sass/ontology/INTEGRATION-GUIDE.md`
-
-### Theme Internal Structure
-- All theme SCSS lives in `/_sass`
-- Theme entry: `_sass/_common.scss` (imports ontology + legacy systems)
-- Subdomain entry: `assets/css/style.scss` → imports `ontology/index`
-- Component partials: `/_sass/components/` (migrating to ontology)
-- Layout partials: `/_sass/layouts/` (legacy patterns)
-
-### ⚠️ IMPORTANT: When to Import `ontology/index`
-
-**DO import in standalone SCSS files:**
-- ✅ Subdomain SCSS files (e.g., `assets/css/custom-styles.scss`)
-- ✅ Standalone example/demo files (e.g., `assets/css/ontology-examples.scss`)
-- ✅ Any SCSS file that is a **compilation entry point** (has Jekyll front matter `---`)
-
-**DO NOT import in theme internal files:**
-- ❌ Component partials in `_sass/components/` (already available via `_common.scss`)
-- ❌ Layout partials in `_sass/layouts/` (already available via `_common.scss`)
-- ❌ Any file imported by `_common.scss` (creates duplication and CSS bloat)
-
-**Why this matters:**
-- `_common.scss` imports `ontology/index` at line 37
-- `_common.scss` then imports all component and layout partials
-- If components/layouts also import ontology, the entire system gets duplicated
-- This causes **massive CSS bloat** (22MB instead of 1.1MB output)
-- Compilation becomes much slower
-
-## Design Tokens
-
-### Primary: Ontology CSS Custom Properties
-When using the ontology system, you **do not need** to reference tokens directly. The engine handles all token usage internally.
-
-The ontology engine uses 150+ CSS custom properties defined in `_sass/ontology/_tokens.scss`:
-- Spacing: `--space-bento`, `--space-narrative`, `--space-network`
-- Typography: `--font-size-*`, `--font-weight-*`, `--line-height-*`
-- Colors: `--glass-*`, `--accent-*`, `--border-*`
-- Motion: `--motion-fluid`, `--motion-snap`
-
-### Legacy: Sass Variables (Theme Internal Use)
-For legacy components and theme development, tokens are in `_sass/base/_design-tokens.scss`:
-- Surface tokens: `$surface-primary`, `$surface-elevated`, `$surface-glass`
-- Text tokens: `$text-primary`, `$text-secondary`, `$text-accent`
-- Accent tokens: `$accent-glow`, `$accent-neural`, `$accent-essence`
-- Border tokens: `$border-primary`, `$border-accent`, `$border-glow`
-- Shadow tokens: `$shadow-sm`, `$shadow-md`, `$shadow-glow-essence`
-
-**Note**: When using ontology mixins, you never touch these directly.
-
-## Layout System
-
-### Primary: Ontology Environment Mixins
-Use **`genesis-environment($logic)`** mixin instead of layout classes:
-
-```scss
-.my-layout {
-  @include genesis-environment('distributed');  // Auto-fit Bento grid
-  @include genesis-environment('focused');      // Single column reading
-  @include genesis-environment('associative');  // Flexbox network
-  @include genesis-environment('chronological'); // Timeline stream
-  @include genesis-environment('manifest');     // 12-column dashboard
-}
-```
-
-### Legacy: Bento Engine Classes (Backward Compatible)
-For HTML-only styling (not recommended for new work):
-- **Containers**: `.genesis-viewport`, `.consciousness-viewport`, `.essence-viewport`
-- **Layouts**: `.bento-layout`, `.bento-dashboard`, `.bento-gallery`, `.bento-masonry`
-- **Cards**: `.bento-card`, `.bento-card--elevated`, `.bento-card--accent`
-
-**Migration Path**: Replace Bento classes with `genesis-environment()` mixins in SCSS.
-
-## Material & Visual Effects
-
-### Primary: Ontology Entity Mixins
-Use **`genesis-entity($nature)`** mixin for glassmorphism and visual presence:
-
-```scss
-.my-card {
-  @include genesis-entity('primary');      // Main glassmorphism card
-  @include genesis-entity('secondary');    // Lighter glass effect
-  @include genesis-entity('imperative');   // Urgent alert with glow
-  @include genesis-entity('latent');       // Dimmed, inactive
-  @include genesis-entity('aggregate');    // Container styling
-  @include genesis-entity('ancestral');    // Archived appearance
-}
-```
-
-### Legacy: Material Primitive Classes (Backward Compatible)
-For HTML-only styling (not recommended for new work):
-- **Glass effects**: `.material-glass`, `.material-glass-elevated`, `.material-glass-subtle`
-- **Navigation**: `.material-header`, `.material-footer`
-- **Overlays**: `.material-modal`, `.material-overlay`
-- **Masks**: `.mask-fade-bottom`, `.mask-fade-top`, `.mask-fade-edges`
-
-**Migration Path**: Replace Material classes with `genesis-entity()` mixins in SCSS.
-
-## Typography
-
-### Primary: Ontology Cognition Mixins
-Use **`genesis-cognition($intent)`** mixin for all typography:
-
-```scss
-.my-text {
-  @include genesis-cognition('axiom');      // Headlines (2-3.5rem, bold)
-  @include genesis-cognition('discourse');  // Body text (1-1.125rem, readable)
-  @include genesis-cognition('protocol');   // Code/technical (monospace)
-  @include genesis-cognition('gloss');      // Small annotations (0.8rem, muted)
-  @include genesis-cognition('motive');     // Instructional (semibold, accent)
-  @include genesis-cognition('quantum');    // Tags/chips (tiny, uppercase)
-}
-```
-
-Typography is **semantic** - choose based on information intent, not size.
-
-### Legacy: Typography Classes & Variables (Backward Compatible)
-- **Fluid scales**: `$font-h1` through `$font-h6`, `$font-body`, `$font-display-xl`
-- **Classes**: `.display-xl`, `.h1`, `.text-lg`, `.font-semibold`
-
-**Migration Path**: Replace typography classes/variables with `genesis-cognition()` mixins.
-
-## Mixins & Utilities
-
-### Primary: Ontology System Mixins (Use These)
-
-**Complete set of 6 ontological categories** (see detailed section below):
-- `genesis-environment($logic)` - Layout and spatial organization
-- `genesis-entity($nature)` - Visual presence and glassmorphism
-- `genesis-cognition($intent)` - Typography and information type
-- `genesis-synapse($vector)` - Interactions and navigation
-- `genesis-state($condition)` - Temporal state and system status
-- `genesis-atmosphere($vibe)` - Sensory texture and emotional tone
-
-These mixins cover **all UI styling needs** without requiring raw CSS.
-
-### Legacy: Semantic Mixins (Theme Internal Use)
-From `_sass/base/_semantic-mixins.scss` (for theme development only):
-- Layout: `@include d-flex`, `@include flex-direction(column)`
-- Spacing: `@include padding-section`, `@include padding-component`
-- Buttons: `@include button-variant($bg, $border, $text)`
-- Glass: `@include glass-surface($opacity, $blur)`
-- Responsive: `@include breakpoint-md { ... }`
-- Accessibility: `@include focus-visible`, `@include reduced-motion`
-
-**Note**: Subdomain SCSS should use ontology mixins, not legacy semantic mixins.
-
-## SCSS Rules (MANDATORY)
-
-### For Ontology System (Primary Method)
-
-**ZERO Raw CSS Properties:**
-Subdomain SCSS files using ontology MUST NOT contain:
-- ❌ `margin`, `padding`, `display`, `color`, `font-size`, `background`
-- ❌ Any unit values: `px`, `rem`, `em`, `%`
-- ❌ Any color values: `#hex`, `rgb()`, `oklch()`
-- ❌ Any raw CSS properties whatsoever
-
-**Only use ontological mixins** - All styling comes from the engine layer.
-
-❌ **WRONG:**
-```scss
-.my-card {
-  padding: 2rem;
-  background: #1a1a2e;
-  border-radius: 12px;
-  color: white;
-}
-```
-
-✅ **CORRECT:**
-```scss
-.my-card {
-  @include genesis-entity('primary');  // All styling from engine
-}
-```
-
-### For Theme Development (Internal SCSS)
-
-When working on theme engine or legacy component SCSS:
-- **NEVER use `@extend`** in Jekyll SCSS (causes build errors)
-- All layout containers MUST use: `contain: layout style; isolation: isolate;`
-- All grids MUST be responsive: `grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))`
-- Limit nesting to 3 levels; use `&` for modifiers
-- Each component has ONE matching SCSS partial
-- Use CSS custom properties from token system, not hardcoded values
-
-## Linting & Code Quality
-
-### Running the Linter
-
-The repository uses **stylelint** to enforce SCSS code quality and consistency:
-
-```bash
-# Lint all SCSS files
-npm run lint:scss
-
-# Automatically fix issues where possible
-npm run lint:scss:fix
-
-# Get detailed verbose output
-npm run lint:scss:report
-```
-
-### Sass Test Compilation (REQUIRED)
-
-**Stylelint cannot detect undefined mixins or variables.** Use Sass test compilation to catch these errors:
-
-```bash
-# Test compile all SCSS (REQUIRED before committing)
-npm run test:scss
-
-# Test with verbose output (for debugging)
-npm run test:scss:verbose
-
-# Run both linting and compilation tests
-npm test
-```
-
-**Why this is necessary:**
-- ✅ **Catches undefined variables** - `$gray-100`, `$text-dark`, etc.
-- ✅ **Catches undefined mixins** - `@include non-existent-mixin`
-- ✅ **Catches missing mixin parameters** - `@include button-variant($bg, $border)` missing `$text`
-- ✅ **Catches undefined functions** - Custom SCSS functions
-- ✅ **Fast feedback** - Compiles in 2-5 seconds vs 30-60 seconds for Jekyll
-
-**Example error output:**
-```bash
-Error: Undefined variable.
-   ╷
-10 │   background-color: $gray-100;
-   │                     ^^^^^^^^^
-   ╵
-  _sass/components/_testimonial.scss 10:21
-
-Error: Missing argument $text.
-    ┌──> _sass/layouts/_faq.scss
-79  │     @include button-variant($primary, $primary);
-    │     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invocation
-```
-
-**Development workflow:**
-1. Make SCSS changes
-2. Run `npm run test:scss` to test compilation
-3. Fix any errors reported
-4. Run `npm run lint:scss` to check code style
-5. Commit when both pass
-
-**See also:** [STYLELINT-LIMITATIONS.md](../../STYLELINT-LIMITATIONS.md) for complete documentation on Sass testing.
-
-### Linting Rules Enforced
-
-**Critical Rules** (must follow):
-- ❌ **NEVER use `@extend`** - Causes Jekyll build errors (will fail lint)
-- ✅ **Max 3 nesting levels** - Prevents overly complex selectors
-- ✅ **No duplicate properties** - Ensures clean declarations
-- ✅ **Remove units from zero values** - Use `0` not `0px`
-- ✅ **BEM-style class naming** - `.block__element--modifier` pattern
-- ✅ **No ID selectors** - Use classes for styling
-
-**Best Practices** (recommended):
-- Use CSS custom properties from design token system
-- Prefer kebab-case for variable names
-- Keep selectors specific but not overly nested
-- Use semantic class names (WHAT, not HOW)
-
-**Detection Capabilities:**
-- ✅ **Stylelint detects**: Code style, naming patterns, duplicate properties, invalid CSS syntax
-- ❌ **Stylelint CANNOT detect**: Undefined mixins, undefined variables, missing mixin parameters
-- ✅ **Sass test compilation detects**: All undefined mixins, variables, functions, and parameter mismatches
-
-**Use BOTH tools:**
-- `npm run lint:scss` - For code style and best practices
-- `npm run test:scss` - For undefined mixins/variables (REQUIRED)
-- `npm test` - Runs both (recommended before committing)
-
-### Linting and Testing in Copilot Sessions
-
-**During GitHub Copilot coding sessions**:
-
-1. **Before making SCSS changes**: Run `npm test` to establish baseline
-2. **After making changes**: Run `npm run test:scss` for fast compilation feedback
-3. **Before committing**: Run `npm test` to ensure both linting and compilation pass
-4. **Use auto-fix**: Run `npm run lint:scss:fix` for automatic formatting fixes
+## Testing & Linting
 
 **Required workflow:**
 ```bash
-# Fast iteration during development
-npm run test:scss
-
-# Before committing (runs both linter and compiler)
-npm test
+npm run test:scss    # Fast Sass compilation check (catches undefined mixins/vars)
+npm run lint:scss    # Code style and best practices
+npm test             # Both (run before committing)
 ```
 
-**Common issues caught by Sass test compilation:**
-- ❌ Undefined variables (e.g., `$gray-100`, `$text-dark`)
-- ❌ Undefined mixins (e.g., `@include non-existent-mixin`)
-- ❌ Missing mixin parameters (e.g., `button-variant($bg, $border)` needs `$text`)
-- ❌ Incorrect function calls
-- ❌ Import order issues (using before defining)
-
-**Common linting issues to watch for:**
-- ❌ Using `@extend` (replace with mixins or CSS custom properties)
-- ❌ Nesting too deeply (refactor to reduce nesting)
-- ❌ Using `0px` instead of `0`
-- ❌ ID selectors in styles (use classes instead)
-
-**Note**: All critical @extend violations have been fixed! Remaining issues are nesting depth warnings (non-critical).
-
-### Bootstrap Compatibility Removed
-
-**Bootstrap compatibility files have been deleted** (January 2026 update):
-- ~~`_sass/base/_base-section.scss`~~ DELETED (28 lines)
-- ~~`_sass/base/_utilities.scss`~~ DELETED (261 lines)
-- ~~`_sass/base/_utilities-combined.scss`~~ DELETED (261 lines)
-
-Total: **550 lines of Bootstrap compatibility code removed**
-
-### @extend Violations Fixed
-
-~~The following legacy files contained @extend violations - ALL FIXED!~~
-
-**Fixed files** (all @extend removed, replaced with CSS properties):
-- ~~`_sass/base/_base-section.scss`~~ DELETED
-- ~~`_sass/components/layouts/_archive-item.scss`~~ FIXED
-- ~~`_sass/components/layouts/_article-toc.scss`~~ FIXED
-- ~~`_sass/components/layouts/_faq-item.scss`~~ FIXED
-- ~~`_sass/components/layouts/_gallery-item.scss`~~ FIXED
-- ~~`_sass/components/layouts/_landing-features.scss`~~ FIXED
-- ~~`_sass/components/layouts/_post-navigation.scss`~~ FIXED
-- ~~`_sass/components/layouts/_profile-stats.scss`~~ FIXED
-- ~~`_sass/components/layouts/_splash-countdown.scss`~~ FIXED
-- ~~`_sass/layouts/_archive.scss`~~ FIXED
-- ~~`_sass/layouts/_article.scss`~~ FIXED
-
-**Result**: 0 @extend violations remaining! ✅
-
-**How @extend violations were fixed**:
-
-Instead of using @extend with utility classes:
-```scss
-// ❌ WRONG (causes Jekyll build errors)
-.section {
-  @extend .bg-gradient-primary-light;
-  @extend .rounded;
-  @extend .shadow;
-}
-```
-
-Use mixins or direct properties:
-```scss
-// ✅ CORRECT (using mixins)
-.section {
-  @include glass-surface(0.85, 20px);
-  @include padding-section;
-  border-radius: var(--radius-bento);
-  box-shadow: var(--shadow-ambient);
-}
-
-// ✅ CORRECT (using ontology for new code)
-.section {
-  @include genesis-entity('primary');
-  @include genesis-environment('focused');
-}
-```
-
-## Color & Contrast (MANDATORY)
-- Text MUST be solid colors, WCAG AA compliant
-- NEVER use opacity < 0.9 for text (breaks contrast)
-- Header/footer text on dark: use `$text-primary` (white)
-- Use semantic tokens: `$text-accent`, `$text-consciousness`, etc.
-
-## Responsive Design
-- Mobile-first approach required
-- Test viewports: 375px, 768px, 1440px minimum
-- Touch targets MUST be ≥ 44px
-- Minimum font size: 16px (use clamp() for fluid scaling)
-- Use `@container` queries where appropriate for component density
-
-## Accessibility
-- All interactive elements MUST have visible focus indicators
-- Support `prefers-reduced-motion` - disable animations
-- Support `prefers-contrast: high` - disable glass effects, increase borders
-- Never rely on color alone for meaning
-
-## Ontology System - Genesis Semantic Engine (PRIMARY METHOD)
-
-**This is the REQUIRED approach for all new subdomain development.**
-
-### Three-Tier Architecture
-
-The Genesis Semantic Engine provides a rigorous separation between content and presentation:
-
-**Tier 1: Content (Subdomain HTML)**
-- Defines WHAT the data is
-- Semantic HTML5 elements with meaningful class names
-- One semantic class per element
-- No inline styles or style attributes
-
-**Tier 2: Interface (Ontological API)**
-- Defines the ROLE of the content
-- Agnostic semantic mixins
-- NO CSS properties allowed in subdomain SCSS
-- Import via: `@import "ontology/index";`
-
-**Tier 3: Engine (Physical Manifestation)**
-- Defines the LOOK (OKLCH, Bento, Glassmorphism)
-- The ONLY place for raw CSS properties
-- Lives in theme repository: `_sass/ontology/_engines.scss`
-- Subdomains never touch this layer
-
-### Using the Ontological API
-
-**Import in subdomain SCSS (REQUIRED):**
-```scss
----
----
-@import "ontology/index";  // Must be first import
-
-.my-content {
-  @include genesis-environment('focused');  // Layout logic
-  @include genesis-entity('primary');       // Visual presence
-  @include genesis-cognition('axiom');      // Typography intent
-  @include genesis-synapse('execute');      // Interaction type
-  @include genesis-state('stable');         // Temporal state
-  @include genesis-atmosphere('ethereal');  // Sensory vibe
-}
-```
-
-### Complete Ontological Categories (All 31 Variants)
-
-**1. `genesis-environment($logic)` - Layout Organization**
-Defines spatial arrangement and layout logic:
-- `'distributed'` - Autonomous entities in Bento grid (auto-fit, responsive)
-- `'focused'` - Single column for deep reading (max 70ch, centered)
-- `'associative'` - Network layout where connections matter (flexbox wrap)
-- `'chronological'` - Time-linear vertical stream (timeline, feed)
-- `'manifest'` - High-density dashboard (12-column grid, monitoring)
-
-**2. `genesis-entity($nature)` - Visual Presence**
-Defines glassmorphism and visual weight:
-- `'primary'` - Main content object (active glassmorphism, elevated)
-- `'secondary'` - Supporting contextual data (lighter glass, less prominent)
-- `'imperative'` - System-critical urgent signal (pulsing neon border, alert)
-- `'latent'` - Dormant/inactive content (dimmed, grayscale filter)
-- `'aggregate'` - Container for multiple items (larger padding, wrapper)
-- `'ancestral'` - Archived/historical data (muted, legacy appearance)
-
-**3. `genesis-cognition($intent)` - Information Type**
-Defines typography based on semantic meaning:
-- `'axiom'` - Foundational headlines (2-3.5rem, bold, high-resonance)
-- `'discourse'` - Standard body prose (1-1.125rem, serif, readable)
-- `'protocol'` - Technical/code content (monospace, code styling)
-- `'gloss'` - Minor annotations/citations (0.8-0.875rem, muted)
-- `'motive'` - Persuasive/instructional text (semibold, accent color)
-- `'quantum'` - Tags/chips/micro-content (tiny, uppercase, dense)
-
-**4. `genesis-synapse($vector)` - Interaction**
-Defines navigation and action patterns:
-- `'navigate'` - Portal to different page (link, underline on hover)
-- `'execute'` - Local state change/command (primary action button)
-- `'inquiry'` - Request for more data (search, expand, secondary action)
-- `'destructive'` - Permanent removal/reset (danger button, red/warning)
-- `'social'` - Social sharing connection (rounded, social colors)
-
-**5. `genesis-state($condition)` - Temporal State**
-Defines time-based system condition:
-- `'stable'` - Content in equilibrium (normal, verified, no special state)
-- `'evolving'` - Currently updating/streaming (animated progress indicator)
-- `'deprecated'` - No longer verified/current (strikethrough, warning icon)
-- `'locked'` - Immutable, requires clearance (blur effect, lock icon)
-- `'simulated'` - Projected data, not live (dashed border, diagonal stripes)
-
-**6. `genesis-atmosphere($vibe)` - Sensory Texture**
-Defines emotional tone and sensory feel:
-- `'neutral'` - Standard system transparency (default, balanced)
-- `'ethereal'` - High-transparency, light focus (bright, minimal, peaceful)
-- `'void'` - Deep-space, high-contrast (dark, immersive, zero distraction)
-- `'vibrant'` - High-energy, data-saturated (colorful, energetic, neon)
-
-### Subdomain SCSS Rules (MANDATORY)
-
-**ZERO Raw CSS:** Subdomain SCSS files MUST NOT contain:
-- `margin`, `padding`, `display`, `color`, `font-size`, `background`, etc.
-- Any pixel (`px`), rem, or other unit values
-- Any color values (hex, rgb, oklch, etc.)
-- Any CSS properties whatsoever
-
-**Only use ontological mixins** - All styling comes from the engine layer.
-
-❌ **WRONG:**
-```scss
-.my-card {
-  padding: 2rem;
-  background: #1a1a2e;
-  border-radius: 12px;
-}
-```
-
-✅ **CORRECT:**
-```scss
-.my-card {
-  @include genesis-entity('primary');
-}
-```
-
-### Complete Example: Blog Post
-
-```scss
----
----
-@import "ontology/index";
-
-.blog-post {
-  @include genesis-environment('focused');     // Reading layout
-  @include genesis-atmosphere('ethereal');     // Light, peaceful
-  
-  .post-header {
-    @include genesis-entity('primary');        // Elevated card
-    
-    .post-title { 
-      @include genesis-cognition('axiom');     // Large headline
-    }
-    
-    .post-date { 
-      @include genesis-cognition('gloss');     // Small metadata
-    }
-    
-    .category-tag {
-      @include genesis-cognition('quantum');   // Tiny chip
-    }
-  }
-  
-  .post-content {
-    @include genesis-cognition('discourse');   // Body text
-    
-    .code-block {
-      @include genesis-cognition('protocol');  // Monospace code
-    }
-  }
-  
-  .post-footer {
-    @include genesis-entity('secondary');      // Lighter card
-    
-    .share-button {
-      @include genesis-synapse('social');      // Social action
-    }
-    
-    .read-more {
-      @include genesis-synapse('navigate');    // Link to next
-    }
-  }
-}
-```
-
-### Documentation & Examples
-- **Full API guide**: `_sass/ontology/INTEGRATION-GUIDE.md` (11KB comprehensive reference)
-- **Usage examples**: `_sass/ontology/_sample.scss` (6+ complete patterns)
-- **Architecture SOP**: `_sass/ontology/Readme.md` (Three-tier system overview)
-- **AI migration**: `_sass/ontology/refactor-agent.md` (Automated conversion guide)
-- **Visual demo**: `/docs/ontology-demo.html` (HTML structure demonstration)
-
-## Legacy Systems (Backward Compatibility Only)
-
-**Note**: These systems are maintained for backward compatibility but are NOT recommended for new development. Use the ontology system instead.
-
-### Bootstrap Compatibility Layer
-- Legacy components may use Bootstrap classes via compatibility layer
-- Compatibility layer in `_sass/base/_bootstrap-compat.scss`
-- Gradually migrate to ontology system
-- Bootstrap grid: `.container`, `.row`, `.col-*` (deprecated)
-
-### Bento Engine Classes (HTML-only)
-- `.bento-layout`, `.bento-dashboard`, `.bento-gallery` (deprecated)
-- Replace with `genesis-environment()` mixins in SCSS
-
-### Material Primitive Classes (HTML-only)
-- `.material-glass`, `.material-glass-elevated` (deprecated)
-- Replace with `genesis-entity()` mixins in SCSS
-
-## Best Practices (Ontology System)
-
-### Semantic Clarity
-- Use meaningful class names: `.research-paper`, not `.blue-box`
-- Think about WHAT it is, not HOW it looks
-- One primary mixin from each category as needed
-
-### Mirrored Structure
-- SCSS nesting should mirror HTML DOM hierarchy exactly
-- Makes code easier to understand and maintain
-
-### Combining Mixins
-- Apply one from each category for rich semantic meaning
-- Example: `genesis-entity('imperative')` + `genesis-state('evolving')` + `genesis-atmosphere('vibrant')`
-
-### Validation Checklist
-Before committing subdomain SCSS:
-- [ ] Imports `@import "ontology/index";` at the top
-- [ ] No raw CSS properties anywhere in file
-- [ ] All styling via ontological mixins only
-- [ ] SCSS structure mirrors HTML hierarchy
-- [ ] Semantic class names used throughout
-
-## Best Practices (Theme Development)
-
-When working on theme engine or legacy components:
-- Use semantic tokens from design token system
-- Never use raw OKLCH values directly
-- Prefer CSS custom properties over Sass variables
-- Add descriptive comments in partials
-- Test color contrast before committing (WCAG AA minimum)
-- Use fluid clamp() for all sizing
-
-## Evolution Mechanism
-
-### 🧬 Living Genome System
-
-The Genesis Ontology grows organically through **Ontological Propositions** from subdomains.
-
-**For Subdomain Developers**:
-
-When you discover a semantic pattern not covered by existing ontology:
-
-1. **Analyze First**:
-   - Review all 31 variants in [Complete Ontological Categories](#complete-ontological-categories-all-31-variants)
-   - Try combining existing mixins creatively
-   - Ask: "Is this semantic (WHAT) or visual (HOW)?"
-
-2. **If Genuine Gap Exists**:
-   - Use PR template: `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md`
-   - Follow guidance: `.github/prompts/subdomain-evolution-agent.prompt.md`
-   - Submit to theme repository with label: `ontological-proposition`
-
-3. **Theme Agent Reviews**:
-   - Checks for redundancy with existing variants
-   - Validates universal applicability
-   - Decides: Accept, Refactor, or Reject with guidance
-
-4. **Upon Approval**:
-   - Theme Agent implements in `_sass/ontology/_engines.scss`
-   - Updates `GENOME.md` with variant history
-   - Documents in `INTEGRATION-GUIDE.md`
-   - You adopt new variant in your subdomain
-
-**Valid Proposition Examples**:
-- ✅ "Need to represent uncertain/calculating data state" → `cognition('speculation')`
-- ✅ "Require visual distinction for draft vs. published content" → `state('draft')`
-- ✅ "Social proof elements need semantic identity" → `entity('testimonial')`
-
-**Invalid Proposition Examples**:
-- ❌ "Cards should have 24px border radius" → Visual detail, use existing `entity()` variants
-- ❌ "Text should be bigger" → Use existing `cognition()` scales
-- ❌ "Want purple accent color" → Engine concern, not semantic role
-
-**For Theme Maintainers**:
-
-As Theme Genome Agent, you:
-
-1. **Review Incoming PRs**:
-   - Apply decision tree from `.github/prompts/theme-genome-agent.prompt.md`
-   - Reject visual-only requests firmly but kindly
-   - Guide submitters to semantic thinking
-
-2. **Maintain Ontological Purity**:
-   - Interface layer (`_interface.scss`) contains ZERO CSS properties
-   - All visual implementation in Engine layer (`_engines.scss`)
-   - Document every variant's origin in code comments
-
-3. **Document Evolution**:
-   ```scss
-   /**
-    * @param $intent [new-variant] 
-    * ORIGIN: PR #XX (subdomain-name.asisaga.com)
-    * INTENT: One-line semantic purpose
-    * EVOLUTION: History of changes to this variant
-    * @since Version X.X
-    */
-   ```
-
-4. **Update GENOME.md**:
-   - Track all additions, refactorings, deprecations
-   - Document "why" for each change
-   - Measure adoption and impact
-
-**Decision Tree** (for Theme Agent):
-```
-PR Received
-├─ Redundancy Check: Covered by existing mixins?
-│  ├─ YES → Deny; guide to existing solution
-│  └─ NO → Continue
-├─ Generalization: Universal or domain-specific?
-│  ├─ Universal → Add to global interface
-│  └─ Unique → Consider sub-species variant
-└─ Refactoring: Should categories be restructured?
-   └─ Update if needed, maintain compatibility
-```
-
-### Resources
-
-**For All Developers**:
-- **Agent Guide**: `.github/AGENTS.MD` - Complete ecosystem architecture
-- **Evolution History**: `GENOME.md` - Variant registry and growth tracking
-- **API Reference**: `_sass/ontology/INTEGRATION-GUIDE.md` - All mixins documented
-
-**For Subdomain Developers**:
-- **Proposition Guide**: `.github/prompts/subdomain-evolution-agent.prompt.md`
-- **PR Template**: `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md`
-- **Refactor Workflow**: `_sass/ontology/refactor-agent.md`
-
-**For Theme Maintainers**:
-- **Genome Agent Prompt**: `.github/prompts/theme-genome-agent.prompt.md`
-- **Review Checklist**: In AGENTS.MD
-- **Response Templates**: In theme-genome-agent.prompt.md
-
-### Philosophy
-
-The ontology is **alive** - it grows through collective intelligence:
-
-- **Subdomains** identify gaps through real-world usage
-- **Theme Agent** filters and refines propositions
-- **GENOME.md** preserves the "why" behind every decision
-- **Documentation** self-updates with each evolution
-
-This creates a **design system with memory** - future developers understand not just WHAT exists, but WHY it was created and WHO needed it.
-
-**Think semantically. Document thoroughly. Evolve consciously.**
+**Sass compilation catches:**
+- Undefined variables (`$gray-100`)
+- Undefined mixins (`@include non-existent`)
+- Missing mixin parameters
+
+**Stylelint catches:**
+- `@extend` usage (forbidden)
+- Nesting depth > 3 levels
+- Code style violations
+
+→ **Detailed guide**: `/docs/guides/STYLELINT.md`, `/docs/guides/STYLELINT-LIMITATIONS.md`
+
+## Ontology Evolution
+
+**Found a semantic gap?**
+1. Review existing 31 variants: `/docs/specifications/scss-ontology-system.md`
+2. Check combination possibilities
+3. Submit Ontological Proposition if genuine gap
+
+→ **Process guide**: `.github/AGENTS.MD`, `.github/prompts/subdomain-evolution-agent.prompt.md`
+
+## Documentation References
+
+**Complete ontology system:**
+- `/docs/specifications/scss-ontology-system.md` - All 31 variants, OKLCH colors, design tokens, complete examples
+- `_sass/ontology/INTEGRATION-GUIDE.md` - Comprehensive API guide
+- `_sass/ontology/_sample.scss` - Working code examples
+- `_sass/ontology/Readme.md` - Three-tier architecture
+- `GENOME.md` - Variant history and evolution
+- `/docs/ontology-demo.html` - Visual demonstrations
+
+**Style guidelines:**
+- `/docs/guides/STYLELINT.md` - Linting setup and rules
+- `/docs/guides/STYLELINT-LIMITATIONS.md` - Why Sass compilation is needed
+
+**Migration resources:**
+- `_sass/ontology/refactor-agent.md` - Automated SCSS migration
+- `.github/prompts/scss-refactor-agent.prompt.md` - AI refactoring guide
