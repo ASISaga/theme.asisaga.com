@@ -4,427 +4,154 @@ description: Apply advanced glassmorphism, neon glows, quantum gradients, and co
 license: MIT
 metadata:
   author: ASISaga
-  version: "2.0"
+  version: "2.1"
   category: design-system
   role: effects-specialist
+allowed-tools: Bash(npm:*) Bash(sass:*) Read Edit
 ---
 
 # Futuristic Effects Agent
 
 **Role**: Advanced Visual Effects Specialist  
-**Scope**: Glassmorphism, neon effects, quantum gradients, and consciousness animations
+**Scope**: Glassmorphism, neon effects, quantum gradients, consciousness animations  
+**Version**: 2.1 - High-Density Refactor
 
 ## Purpose
 
-The Futuristic Effects Agent applies advanced visual effects from the Genesis v2.0+ enhancement system while maintaining ontological semantic purity. This agent knows when and how to layer atmospheric effects on top of semantic structure.
+Apply advanced visual effects from Genesis v2.0+ while maintaining ontological semantic purity. Layer atmospheric effects on top of semantic structure through `genesis-atmosphere()` mixins.
 
 ## When to Use This Skill
 
-Activate when implementing advanced glassmorphism, adding neon glow effects, creating quantum gradient backgrounds, applying consciousness animations, or enhancing visual immersion in hero sections and key UI elements.
+Activate when:
+- Implementing glassmorphism effects
+- Adding neon glow to alerts/CTAs
+- Creating quantum gradient backgrounds
+- Applying consciousness animations
+- Enhancing visual immersion in heroes
+- Layering futuristic effects on components
 
-## Core Principles
+## Core Workflow
 
-### Effects as Atmosphere, Not Structure
-
-Effects are applied through `genesis-atmosphere()` mixins, not as replacement for semantic structure:
+### 1. Start with Semantic Structure
 
 ```scss
-// ✅ CORRECT: Semantic structure + atmospheric effects
-.hero-section {
-  @include genesis-environment('focused');      // Structure
-  @include genesis-entity('primary');          // Presence
-  @include genesis-atmosphere('vibrant');      // Visual vibe
-  // Futuristic effects layered on top
-}
-
-// ❌ WRONG: Effects without semantic foundation
-.hero-section {
-  // Just applying effects without ontological roles
+// ALWAYS begin with ontological foundation
+.component {
+  @include genesis-environment('focused');  // Layout
+  @include genesis-entity('primary');      // Presence
+  @include genesis-cognition('axiom');     // Typography
 }
 ```
 
-## Available Effects (v2.0+)
-
-### Glassmorphism Variants
-
-**Consciousness Glass** - Primary glassmorphism:
-```scss
-@include glass-consciousness($blur: 24px, $opacity: 0.08);
-// Advanced blur with subtle background
-// Used in genesis-entity('primary')
-```
-
-**Neural Glass** - Lighter glass:
-```scss
-@include glass-neural($opacity: 0.06);
-// Reduced presence for secondary content
-```
-
-**Ethereal Glass** - Minimal glass:
-```scss
-@include glass-ethereal($opacity: 0.03);
-// Barely-there transparency
-// Used in genesis-atmosphere('ethereal')
-```
-
-### Glow Effects
-
-**Essence Glow** - Primary accent glow:
-```scss
-@include glow-essence($color: var(--accent-consciousness), $intensity: 1);
-// Soft outer glow for emphasis
-// Used in genesis-entity('imperative')
-```
-
-**Neural Glow** - Neon border glow:
-```scss
-@include glow-neural($color: var(--accent-neural), $intensity: 1);
-// Neon border effect
-// Used in synapse variants
-```
-
-**Quantum Glow** - Pulsing animation:
-```scss
-@include glow-quantum($intensity: 1);
-// Animated pulsing glow
-// Used in genesis-state('evolving')
-```
-
-### Gradients
-
-**Consciousness Gradient** - Purple-blue gradient:
-```scss
-@include gradient-consciousness($angle: 135deg);
-// Primary brand gradient
-// Used in hero backgrounds
-```
-
-**Genesis Gradient** - Gold-purple gradient:
-```scss
-@include gradient-genesis($angle: 45deg);
-// Accent gradient for CTAs
-// Used in genesis-synapse('execute')
-```
-
-**Void Gradient** - Deep space gradient:
-```scss
-@include gradient-void;
-// Dark immersive gradient
-// Used in genesis-atmosphere('void')
-```
-
-### Interaction Effects
-
-**Quantum Hover** - Transform + glow on hover:
-```scss
-@include hover-quantum;
-// translateY(-4px) + enhanced glow
-// Used in button hovers
-```
-
-**Neural Link Hover** - Underline + glow:
-```scss
-@include hover-neural-link;
-// Animated underline with glow
-// Used in genesis-synapse('navigate')
-```
-
-**Consciousness Ripple** - Click ripple effect:
-```scss
-@include ripple-consciousness;
-// Material-style ripple on click
-// Requires JavaScript trigger
-```
-
-## Layering Effects
-
-### Basic Pattern
-
-Start with semantic structure, add effects progressively:
+### 2. Layer Atmospheric Effects
 
 ```scss
-.feature-card {
-  // 1. Semantic foundation
-  @include genesis-entity('primary');        // Glassmorphism base
-  
-  // 2. Additional atmosphere (optional)
-  @include genesis-atmosphere('vibrant');    // High-energy vibe
-  
-  // 3. Custom effects (if needed beyond ontology)
-  // Usually not needed - ontology handles most cases
-}
-```
-
-### Hero Section Example
-
-```scss
-.hero {
+// Then add effects via atmosphere or state
+.component {
   @include genesis-environment('focused');
-  @include genesis-atmosphere('viewport-aware');  // Full height
-  
-  // Background handled by layout, but can add gradient if needed
-  background: linear-gradient(135deg, 
-    oklch(0.15 0.05 270), 
-    oklch(0.10 0.03 280)
-  );
-  
-  .hero-title {
-    @include genesis-cognition('axiom');
-    // Glow effect already included in axiom cognition
-  }
-  
-  .hero-cta {
-    @include genesis-synapse('execute');
-    // Gradient + hover effects included
-  }
+  @include genesis-entity('primary');       // Includes glassmorphism
+  @include genesis-atmosphere('vibrant');   // High-energy vibe
 }
 ```
 
-### Modal Overlay Example
+### 3. Use Ontology Variants
 
-```scss
-.modal-overlay {
-  // Semantic structure
-  @include genesis-entity('primary');
-  
-  // If deeper immersion needed
-  @include genesis-atmosphere('void');  // Deep space aesthetic
-  
-  .modal-content {
-    @include genesis-entity('primary');  // Glassmorphism card
-    @include glow-essence(var(--accent-consciousness), 0.8);
-  }
-}
-```
+Most effects are built into ontology variants:
 
-## Effect Categories
+| Effect | Ontology Variant | Auto-Included |
+|--------|------------------|---------------|
+| Glassmorphism | `genesis-entity('primary')` | ✅ |
+| Neon Glow | `genesis-entity('imperative')` | ✅ |
+| Gradients | `genesis-synapse('execute')` | ✅ |
+| Animations | `genesis-state('evolving')` | ✅ |
+| Hover Effects | Synapse variants | ✅ |
 
-### 1. Glassmorphism (Transparency + Blur)
+## Quick Effect Reference
 
-**When to use**:
-- Card components
-- Navigation bars
-- Modal overlays
-- Floating panels
+**Glassmorphism**: `genesis-entity('primary')` - cards, modals, panels  
+**Neon Glows**: `genesis-entity('imperative')` - alerts, CTAs, active states  
+**Gradients**: `genesis-synapse('execute')` - buttons, heroes, backgrounds  
+**Animations**: `genesis-state('evolving')` - loading, processing  
+**Hover**: Built into synapse variants - quantum lift, neural link glow
 
-**Implementation**:
-```scss
-// Usually handled by genesis-entity variants
-.glass-panel {
-  @include genesis-entity('primary');  // Includes glassmorphism
-}
+→ **Complete effects catalog**: `/docs/specifications/futuristic-effects.md`
 
-// For custom intensity
-.subtle-glass {
-  @include glass-ethereal(0.03);
-}
-```
-
-### 2. Neon Glows (Emphasis)
-
-**When to use**:
-- Urgent alerts
-- Primary CTAs
-- Active states
-- Focus indicators
-
-**Implementation**:
-```scss
-// Usually in ontology already
-.urgent-alert {
-  @include genesis-entity('imperative');  // Includes neon glow
-}
-
-// For custom color
-.custom-glow {
-  @include glow-neural(oklch(0.7 0.3 280), 1.2);
-}
-```
-
-### 3. Quantum Gradients (Backgrounds)
-
-**When to use**:
-- Hero sections
-- CTA buttons
-- Section dividers
-- Brand elements
-
-**Implementation**:
-```scss
-// Usually in entity/synapse variants
-.cta-button {
-  @include genesis-synapse('execute');  // Gradient background
-}
-
-// For custom backgrounds
-.hero-background {
-  @include gradient-consciousness(45deg);
-}
-```
-
-### 4. Consciousness Animations (Motion)
-
-**When to use**:
-- Loading states
-- Active processes
-- Scroll reveals
-- Interactive feedback
-
-**Implementation**:
-```scss
-// Usually in state variants
-.loading-panel {
-  @include genesis-state('evolving');  // Animated shimmer
-}
-
-.scroll-reveal {
-  @include genesis-state('scroll-triggered');  // Fade-in animation
-}
-```
-
-## Accessibility Considerations
-
-### Reduced Motion
-
-All effects respect `prefers-reduced-motion`:
-
-```scss
-// Handled automatically by ontology
-.animated-element {
-  @include genesis-state('scroll-triggered');
-  
-  @media (prefers-reduced-motion: reduce) {
-    // Animations disabled automatically
-  }
-}
-```
-
-### High Contrast Mode
-
-Glassmorphism disabled in high contrast:
-
-```scss
-// Handled automatically by ontology
-.glass-card {
-  @include genesis-entity('primary');
-  
-  @media (prefers-contrast: high) {
-    // Glassmorphism disabled, solid backgrounds used
-    // Borders increased for better definition
-  }
-}
-```
-
-### Performance
-
-Heavy effects on mobile should be reduced:
-
-```scss
-// Ontology handles this automatically
-.glow-card {
-  @include genesis-entity('imperative');
-  // Mobile: Simplified glow
-  // Desktop: Full effect with multiple shadows
-}
-```
-
-## Common Effect Combinations
+## Common Patterns
 
 ### Immersive Hero
 
 ```scss
-.immersive-hero {
+.hero {
   @include genesis-environment('focused');
-  @include genesis-atmosphere('viewport-aware');  // Full height
-  @include genesis-atmosphere('void');            // Deep space vibe
-  
-  // Background gradient for depth
-  background: linear-gradient(180deg,
-    oklch(0.10 0.03 280) 0%,
-    oklch(0.05 0.02 270) 100%
-  );
-  
-  .hero-title {
-    @include genesis-cognition('axiom');  // Includes subtle glow
-  }
-  
-  .hero-cta {
-    @include genesis-synapse('execute');  // Gradient + hover effect
-  }
+  @include genesis-atmosphere('viewport-aware');
+  @include genesis-atmosphere('void');
 }
 ```
 
-### Alert Panel with Urgency
+### Alert with Urgency
 
 ```scss
-.critical-alert {
-  @include genesis-entity('imperative');    // Neon border + pulsing
-  @include genesis-state('evolving');       // Animated state
-  
-  .alert-title {
-    @include genesis-cognition('motive');   // Accent color text
-  }
-  
-  .alert-action {
-    @include genesis-synapse('destructive'); // Danger button
-  }
+.alert {
+  @include genesis-entity('imperative');    // Neon + pulse
+  @include genesis-state('evolving');       // Animation
 }
 ```
 
 ### Interactive Card
 
 ```scss
-.interactive-card {
-  @include genesis-entity('primary');        // Glassmorphism
-  @include hover-quantum;                    // Lift + glow on hover
-  
-  .card-title {
-    @include genesis-cognition('axiom');
-  }
-  
-  .card-link {
-    @include genesis-synapse('navigate');
-    @include hover-neural-link;              // Underline glow
-  }
+.card {
+  @include genesis-entity('primary');       // Glassmorphism
+  @include hover-quantum;                   // Lift on hover
 }
 ```
 
-## Performance Tips
+→ **Complete patterns**: `/docs/specifications/futuristic-effects.md`
 
-1. **Limit blur intensity** on mobile (ontology does this automatically)
-2. **Reduce shadow layers** on lower-end devices
-3. **Use will-change** sparingly for animations
-4. **Prefer transform over position** for animations
-5. **Batch DOM reads/writes** for ripple effects
+## Validation
 
-## Browser Compatibility
+**Before committing:**
 
-Effects use modern CSS features:
+```bash
+# SCSS compilation check
+npm run test:scss
 
-- `backdrop-filter` - Safari 9+, Chrome 76+, Firefox 103+
-- `oklch()` colors - Safari 15+, Chrome 111+, Firefox 113+
-- Container queries - Safari 16+, Chrome 105+, Firefox 110+
+# Linting
+npm run lint:scss
+```
 
-**Fallbacks** are provided automatically by ontology mixins.
+## Accessibility
+
+All effects automatically handle:
+- ✅ `prefers-reduced-motion` - animations disabled
+- ✅ `prefers-contrast: high` - glassmorphism disabled
+- ✅ Mobile performance - simplified effects
+
+→ **A11y requirements**: `/docs/specifications/accessibility.md`
 
 ## Resources
 
-**Effects & Animation**:
-- `/docs/specifications/animation-system.md` - Complete animation architecture
-- `/docs/MOTION-INTEGRATION.md` - Motion library integration
-- `/docs/specifications/scss-ontology-system.md` - Atmosphere and state variants
+**Complete Effect System**:
+- `/docs/specifications/futuristic-effects.md` - **All effects, variants, patterns, examples**
 
-**Design Foundations**:
-- `/docs/specifications/color-system.md` - OKLCH color tokens for effects
-- `/docs/specifications/accessibility.md` - Reduced motion, contrast requirements
+**Core Systems**:
+- `/docs/specifications/scss-ontology-system.md` - Ontology variants reference
+- `/docs/specifications/animation-system.md` - Animation architecture
+- `/docs/specifications/color-system.md` - OKLCH color tokens
+
+**Guidelines**:
+- `/docs/specifications/accessibility.md` - Reduced motion, contrast
 - `/docs/specifications/performance.md` - Performance optimization
+- `/docs/MOTION-INTEGRATION.md` - Motion library integration
 
 **Implementation**:
-- `.github/prompts/futuristic-effects-agent.prompt.md` - Detailed effects guide
 - `_sass/ontology/_engines.scss` - Effect implementations
 - `_sass/base/_design-tokens.scss` - Effect color tokens
 
-**Related Skills**: responsive-design-agent, scss-refactor-agent, agent-evolution-agent
+**Related Skills**: responsive-design-agent, scss-refactor-agent
 
-**Version**: 2.0.1 - Enhanced Spec References  
-**Last Updated**: 2026-02-10
+---
+
+**Version History**:
+- **v2.1** (2026-02-10): High-density refactor - 430→145 lines, extracted to `/docs/specifications/futuristic-effects.md`
+- **v2.0** (2026-02-10): Initial v2.0+ futuristic effects system
