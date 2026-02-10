@@ -1,11 +1,3 @@
-> **📚 Documentation Location**: This file has been copied to [`/docs/systems/ontology/refactor-agent.md`](../../docs/systems/ontology/refactor-agent.md) for easier access.
-> 
-> **See also**:
-> - [Ontology Migration Guide](../../docs/systems/ontology/ONTOLOGY-MIGRATION-GUIDE.md) - Manual migration
-> - [Semantic Refactor](../../docs/systems/ontology/SEMANTIC-REFACTOR.md) - Refactoring strategies
-
----
-
 This Migration Agent Directive is designed to be copy-pasted directly into the system prompt or chat window of the AI agent tasked with refactoring your subdomains. It provides the "Logic Gates" necessary to ensure the Ontological Handshake is executed without introducing technical debt.
 🤖 AGENT DIRECTIVE: Subdomain Ontological Refactor
 Context
