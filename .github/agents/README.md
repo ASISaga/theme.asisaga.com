@@ -1,8 +1,8 @@
 # 🔒 Agent Internal Configuration
 
-**Version**: 1.0.0  
+**Version**: 1.1.0  
 **Last Updated**: 2026-02-10  
-**Status**: Protected Directory
+**Status**: Production - Active Configuration
 
 ---
 
@@ -55,9 +55,13 @@ This restriction ensures:
 
 ```
 .github/agents/
-├── README.md (this file)        # Directory purpose and guidelines
-├── .gitkeep                     # Ensures directory is tracked
-└── [Future internal configs]    # Added as system evolves
+├── README.md (this file)              # Directory purpose and guidelines
+├── .gitkeep                           # Ensures directory is tracked
+├── agent-capabilities.yml             # Capability matrix for all agents
+├── agent-routing.yml                  # Task routing rules and priorities
+├── agent-handoff.yml                  # Multi-agent handoff protocols
+├── feature-flags.yml                  # System-level feature toggles
+└── quality-thresholds.yml             # Quality metrics and thresholds
 ```
 
 ## Relationship to Agent Ecosystem
@@ -78,6 +82,7 @@ This directory is part of the broader agent intelligence system:
 1. **Instructions** define coding standards (WHAT to do)
 2. **Prompts** define agent workflows (HOW to do it)
 3. **Skills** package capabilities (EXECUTABLE tools)
+4. **Agents/** contains internal coordination (PROTECTED logic)
 4. **Agents/** contains internal coordination (PROTECTED logic)
 
 ## When to Add Files Here
@@ -114,7 +119,137 @@ Developers and maintainers can access this directory directly for:
 - Ecosystem architecture changes
 - Integration testing
 
+## Configuration Files
+
+### agent-capabilities.yml
+
+Defines the capabilities, scope, and tools for each agent in the ecosystem.
+
+**Purpose**: Meta-agents use this to understand which agent handles which tasks.
+
+**Contents**:
+- Agent category and role definitions
+- Scope of each agent (file patterns, domains)
+- Specific capabilities (validation, creation, analysis, etc.)
+- Tool requirements
+- Agent dependencies and trigger relationships
+
+**Example Use**: When a task involves SCSS refactoring, the routing system checks this file to see that `scss-refactor-agent` has `convert_to_ontological_mixins` capability.
+
+### agent-routing.yml
+
+Task routing rules determining which agent handles which tasks based on patterns, context, and priority.
+
+**Purpose**: Automated task assignment to appropriate agents.
+
+**Contents**:
+- Pattern-based routing (file types, paths)
+- Context-based routing (keywords, task types)
+- Priority levels (critical, high, medium, low)
+- Workflow chains for common scenarios
+- Conflict resolution rules
+- Emergency override protocols
+
+**Example Use**: A file matching `**/*.scss` with context "legacy CSS conversion" routes to `scss-refactor-agent` with high priority.
+
+### agent-handoff.yml
+
+Protocols for how agents coordinate and hand off work in multi-step workflows.
+
+**Purpose**: Ensures smooth transitions between agents with proper context passing.
+
+**Contents**:
+- Handoff protocols between agent pairs
+- Context data passed during handoffs
+- Validation checklists for handoffs
+- Workflow chains with sequential/parallel steps
+- State management during handoffs
+- Failure handling procedures
+
+**Example Use**: When `html-template-agent` completes semantic HTML, it hands off to `scss-refactor-agent` with HTML structure, class names, and accessibility requirements.
+
+### feature-flags.yml
+
+System-level feature toggles controlling agent behaviors and capabilities.
+
+**Purpose**: Gradual rollout of new features and quick disabling if issues arise.
+
+**Contents**:
+- Global feature flags (coordination, validation, dogfooding)
+- Agent-specific feature toggles
+- Experimental features in beta
+- Deprecated features with sunset dates
+- Performance controls and limits
+- Monitoring and telemetry settings
+- Rollout schedules
+
+**Example Use**: `zero_duplication_enforcement: true` ensures all agents check for duplicate content before committing.
+
+### quality-thresholds.yml
+
+Quality metrics, thresholds, and acceptance criteria for agent work products.
+
+**Purpose**: Validation standards and continuous improvement targets.
+
+**Contents**:
+- Universal quality standards (minimum, optimal, excellence)
+- Agent-specific thresholds (lines, spec references, coverage)
+- Code quality requirements (SCSS, HTML, JavaScript)
+- Documentation quality standards
+- Performance thresholds
+- Ontological purity criteria
+- Quality gates by stage (pre-commit, pre-merge, post-merge)
+- Error budgets and SLAs
+
+**Example Use**: Before merging, validates that SCSS files have `zero_css_compliance: true` in subdomain files and all linters pass.
+
+## When to Update Configuration Files
+
+### agent-capabilities.yml
+- New agent added to ecosystem
+- Agent gains new capability
+- Agent scope changes
+- Tool requirements updated
+- Dependencies change
+
+### agent-routing.yml
+- New file patterns need routing
+- Task type workflows change
+- Priority levels adjusted
+- New conflict scenarios emerge
+- Emergency procedures updated
+
+### agent-handoff.yml
+- New multi-agent workflow created
+- Handoff protocols refined
+- Context passing requirements change
+- Validation steps updated
+- Failure handling improved
+
+### feature-flags.yml
+- New feature rolled out
+- Experimental feature tested
+- Feature deprecated/sunset
+- Performance limits adjusted
+- Monitoring requirements change
+
+### quality-thresholds.yml
+- Quality standards raised
+- New validation requirements
+- Performance targets adjusted
+- SLA commitments change
+- Error budgets modified
+
 ## Version History
+
+### v1.1.0 (2026-02-10)
+- Added agent-capabilities.yml (capability matrix)
+- Added agent-routing.yml (task routing rules)
+- Added agent-handoff.yml (handoff protocols)
+- Added feature-flags.yml (feature toggles)
+- Added quality-thresholds.yml (quality metrics)
+- Documented all configuration files
+- Established update guidelines
 
 ### v1.0.0 (2026-02-10)
 - Initial directory creation

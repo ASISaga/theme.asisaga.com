@@ -1,0 +1,378 @@
+# Agent Handoff Protocols
+#
+# Defines how agents coordinate and hand off work to each other in multi-step
+# workflows. Ensures smooth transitions and proper context passing.
+#
+# Version: 1.0.0
+# Last Updated: 2026-02-10
+# Access: Protected - Meta-intelligence layer only
+
+# Handoff Protocols
+protocols:
+  # Ontological Evolution Handoff
+  subdomain_to_theme:
+    from: subdomain-evolution-agent
+    to: theme-genome-agent
+    trigger: ontological_proposition_created
+    context_passed:
+      - Proposition document (markdown)
+      - Use case examples
+      - Subdomain source
+      - Gap analysis
+      - Universal applicability assessment
+    validation:
+      - Proposition uses correct template
+      - Use cases are documented
+      - Semantic intent is clear
+      - No visual-only requests
+    handoff_checklist:
+      - "[ ] Proposition document created"
+      - "[ ] Gap analysis completed"
+      - "[ ] Use cases documented with examples"
+      - "[ ] Universal applicability assessed"
+      - "[ ] PR created with ontological-proposition label"
+    expected_response:
+      - approve: theme-genome-agent implements in engine
+      - reject: theme-genome-agent provides guidance
+      - refactor: theme-genome-agent suggests existing solution
+
+  theme_to_implementation:
+    from: theme-genome-agent
+    to:
+      - scss-refactor-agent
+      - responsive-design-agent
+      - futuristic-effects-agent
+    trigger: ontological_variant_approved
+    context_passed:
+      - New variant name and category
+      - Engine layer implementation
+      - GENOME.md update
+      - Documentation reference
+    validation:
+      - Engine layer compiled successfully
+      - GENOME.md updated
+      - No breaking changes introduced
+    handoff_checklist:
+      - "[ ] Engine layer variant added"
+      - "[ ] GENOME.md documented with PR origin"
+      - "[ ] Compilation successful"
+      - "[ ] All tests pass"
+      - "[ ] Breaking changes documented (if any)"
+    expected_response:
+      - Implementation agents adopt new variant
+      - Update existing code to use new pattern
+
+  # Implementation Chain Handoff
+  html_to_scss:
+    from: html-template-agent
+    to: scss-refactor-agent
+    trigger: semantic_html_created
+    context_passed:
+      - HTML structure with semantic class names
+      - BEM naming conventions applied
+      - Accessibility requirements
+      - Component purpose and intent
+    validation:
+      - HTML is semantic and valid
+      - Classes follow naming conventions
+      - Landmarks properly defined
+      - No inline styles
+    handoff_checklist:
+      - "[ ] Semantic HTML structure complete"
+      - "[ ] Class names meaningful (not visual)"
+      - "[ ] Accessibility validated"
+      - "[ ] No inline styles or scripts"
+    expected_response:
+      - Map class names to ontological mixins
+      - Create zero-CSS compliant SCSS
+
+  scss_to_responsive:
+    from: scss-refactor-agent
+    to: responsive-design-agent
+    trigger: ontological_scss_created
+    context_passed:
+      - SCSS using ontological mixins
+      - Component structure
+      - Semantic intent
+      - Desktop-first implementation (if any)
+    validation:
+      - Zero-CSS compliance achieved
+      - Only Genesis mixins used
+      - No raw CSS properties in subdomain
+    handoff_checklist:
+      - "[ ] Ontological mixins applied"
+      - "[ ] Zero-CSS compliance verified"
+      - "[ ] Sass compilation successful"
+      - "[ ] Stylelint passes"
+    expected_response:
+      - Add mobile-first patterns
+      - Ensure responsive breakpoints
+      - Validate touch targets
+
+  responsive_to_effects:
+    from: responsive-design-agent
+    to: futuristic-effects-agent
+    trigger: responsive_implementation_complete
+    context_passed:
+      - Responsive SCSS patterns
+      - Mobile-first implementation
+      - Breakpoint usage
+      - Component context
+    validation:
+      - Mobile-first verified
+      - Touch targets ≥44px
+      - Fluid typography implemented
+      - Container queries if applicable
+    handoff_checklist:
+      - "[ ] Mobile-first patterns applied"
+      - "[ ] Touch targets validated"
+      - "[ ] Responsive typography implemented"
+      - "[ ] All breakpoints tested"
+    expected_response:
+      - Add glassmorphism if appropriate
+      - Implement visual effects
+      - Ensure reduced-motion support
+
+  # Documentation Handoff
+  code_to_docs:
+    from:
+      - scss-refactor-agent
+      - html-template-agent
+      - theme-genome-agent
+    to: documentation-manager-agent
+    trigger: code_changes_merged
+    context_passed:
+      - Changed files list
+      - New patterns introduced
+      - Documentation updates needed
+      - Version changes
+    validation:
+      - Code changes complete
+      - Tests passing
+      - Linting successful
+    handoff_checklist:
+      - "[ ] Code changes merged"
+      - "[ ] Tests passing"
+      - "[ ] New patterns documented"
+      - "[ ] Version updated if needed"
+    expected_response:
+      - Validate documentation structure
+      - Check for broken links
+      - Detect redundancy
+      - Update metadata
+
+  docs_to_evolution:
+    from: documentation-manager-agent
+    to: agent-evolution-agent
+    trigger: documentation_updated
+    context_passed:
+      - Updated documentation files
+      - New specifications added
+      - Metadata changes
+    validation:
+      - Structure validation passed
+      - Links valid
+      - No redundancy
+      - Metadata complete
+    handoff_checklist:
+      - "[ ] Documentation validated"
+      - "[ ] Links checked"
+      - "[ ] Redundancy checked"
+      - "[ ] Metadata validated"
+    expected_response:
+      - Sync agents with new specs
+      - Update spec references
+      - Measure context efficiency
+
+# Workflow Handoff Chains
+workflow_chains:
+  new_feature_complete:
+    name: "Complete Feature Implementation"
+    steps:
+      - step: 1
+        agent: html-template-agent
+        output: Semantic HTML structure
+        handoff_to: scss-refactor-agent
+      
+      - step: 2
+        agent: scss-refactor-agent
+        output: Ontological SCSS
+        handoff_to: responsive-design-agent
+      
+      - step: 3
+        agent: responsive-design-agent
+        output: Responsive patterns
+        handoff_to: futuristic-effects-agent
+      
+      - step: 4
+        agent: futuristic-effects-agent
+        output: Visual effects
+        handoff_to: documentation-manager-agent
+      
+      - step: 5
+        agent: documentation-manager-agent
+        output: Documentation validation
+        completion: true
+
+  ontological_evolution:
+    name: "Ontological Evolution Cycle"
+    steps:
+      - step: 1
+        agent: subdomain-evolution-agent
+        output: Ontological proposition
+        handoff_to: theme-genome-agent
+      
+      - step: 2
+        agent: theme-genome-agent
+        output: Review decision
+        conditional: true
+        paths:
+          approved:
+            - step: 3
+              agent: theme-genome-agent
+              output: Engine implementation
+              handoff_to: scss-refactor-agent
+          rejected:
+            - completion: true
+              feedback: Guidance provided
+      
+      - step: 4
+        agent: scss-refactor-agent
+        output: Adoption of new variant
+        handoff_to: documentation-manager-agent
+      
+      - step: 5
+        agent: documentation-manager-agent
+        output: Documentation updated
+        handoff_to: agent-evolution-agent
+      
+      - step: 6
+        agent: agent-evolution-agent
+        output: Metrics updated
+        completion: true
+
+  quality_improvement:
+    name: "Agent Quality Improvement"
+    steps:
+      - step: 1
+        agent: agent-evolution-agent
+        output: Quality audit report
+        parallel:
+          - handoff_to: scss-refactor-agent
+          - handoff_to: html-template-agent
+          - handoff_to: documentation-manager-agent
+      
+      - step: 2
+        agents: multiple
+        output: Improvements implemented
+        handoff_to: agent-evolution-agent
+      
+      - step: 3
+        agent: agent-evolution-agent
+        output: Metrics verification
+        completion: true
+
+# Handoff State Management
+state_management:
+  context_preservation:
+    - Original task intent
+    - User requirements
+    - Quality thresholds
+    - Validation results
+    - Intermediate artifacts
+    - Agent decisions and reasoning
+
+  state_transitions:
+    - from: initiated
+      to: in_progress
+      trigger: Agent starts work
+    
+    - from: in_progress
+      to: validation
+      trigger: Agent completes work
+    
+    - from: validation
+      to: handoff_ready
+      trigger: Validation passes
+    
+    - from: handoff_ready
+      to: handed_off
+      trigger: Next agent accepts
+    
+    - from: handed_off
+      to: in_progress
+      trigger: Next agent starts
+    
+    - from: validation
+      to: retry
+      trigger: Validation fails
+    
+    - from: retry
+      to: in_progress
+      trigger: Agent retries
+
+  failure_handling:
+    validation_failure:
+      action: Return to originating agent
+      max_retries: 3
+      escalation: theme-genome-agent (for critical issues)
+    
+    handoff_failure:
+      action: Notify meta-agent
+      fallback: agent-evolution-agent reviews
+      resolution: Manual intervention or re-route
+
+# Cross-Agent Communication Protocols
+communication:
+  message_format:
+    required_fields:
+      - from_agent: Agent ID
+      - to_agent: Agent ID
+      - task_id: Unique identifier
+      - context: Task context
+      - artifacts: Output files/data
+      - validation_status: Pass/fail
+      - next_steps: Expected actions
+    
+    optional_fields:
+      - warnings: Issues to be aware of
+      - recommendations: Suggestions
+      - blockers: Impediments
+      - metadata: Additional context
+
+  context_passing_standards:
+    file_references:
+      - Use absolute paths
+      - Include file hashes for verification
+      - Document purpose of each file
+    
+    semantic_intent:
+      - Always include the "why" not just "what"
+      - Reference relevant specifications
+      - Cite related patterns
+    
+    quality_metrics:
+      - Pass validation results
+      - Include lint/test status
+      - Note performance considerations
+
+# Emergency Handoff Procedures
+emergency_procedures:
+  critical_bug:
+    immediate_handoff_to: theme-genome-agent
+    skip_validation: false
+    priority: critical
+    notification: Required
+  
+  security_issue:
+    immediate_handoff_to: theme-genome-agent
+    skip_validation: false
+    priority: critical
+    notification: Required
+    documentation: Mandatory
+  
+  breaking_change:
+    handoff_to: theme-genome-agent
+    requires_approval: true
+    notification: All affected agents
+    documentation: Required
