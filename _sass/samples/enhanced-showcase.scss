@@ -1,8 +1,5 @@
----
----
-@import "ontology/index";
-
 // Enhanced Showcase Styles - Demonstrating Ontological SCSS with Mobile-First Responsive Design
+// NOTE: ontology/index is available via _common.scss - DO NOT import here to avoid code bloat
 
 .enhanced-showcase {
   @include genesis-environment('focused');

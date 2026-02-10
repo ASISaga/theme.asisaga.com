@@ -120,10 +120,15 @@ allowed-tools: Bash(npm:*) Read
 - `.github/AGENTS.MD` - Ecosystem architecture
 - `.github/AGENT-INDEX.md` - Quick navigation
 
+**Test pages** (organized in `/tests/`):
+- `/tests/README.md` - Complete test page catalog and organization
+- Test pages moved from root to categorized subdirectories
+- Integration with agent testing workflows
+
 **Related instructions**: scss.instructions.md, html.instructions.md, js.instructions.md, docs.instructions.md
 
 ---
 
 **Applies to**: `.github/**/*.md`, `.github/**/*.prompt.md`, `.github/skills/**/*`  
-**Version**: 1.2 - High-density refactor (224→180 lines)  
+**Version**: 1.3 - Added test page organization references
 **Last Updated**: 2026-02-10

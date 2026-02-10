@@ -1,7 +1,5 @@
----
----
 // Test compilation of ontology system
-@import "ontology/index";
+// NOTE: ontology/index is available via _common.scss - DO NOT import here to avoid code bloat
 
 // Simple test to verify all mixins work
 .ontology-test-container {

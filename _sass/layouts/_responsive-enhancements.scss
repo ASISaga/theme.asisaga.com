@@ -12,13 +12,12 @@
  * - Reduced motion support
  * 
  * Usage: Import this after individual layout files to enhance responsiveness.
+ * NOTE: ontology/index is available via _common.scss - DO NOT import here to avoid code bloat
  * 
  * @version 2.1.0
  * @agent responsive-design-agent
  * @date 2026-01-29
  */
-
-@import "ontology/index";
 
 // ============================================================================
 // READING LAYOUTS (Post, Article, Docs)

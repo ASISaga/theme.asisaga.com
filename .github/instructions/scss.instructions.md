@@ -60,17 +60,34 @@ description: "SCSS coding instructions for Genesis Semantic Design System v2.0"
 - `genesis-state($condition)` - State: `'stable'`, `'evolving'`, `'deprecated'`, `'locked'`, `'simulated'`
 - `genesis-atmosphere($vibe)` - Atmosphere: `'neutral'`, `'ethereal'`, `'void'`, `'vibrant'`
 
+## Theme/Subdomain Architecture (CRITICAL)
+
+**Theme repository (this repo):**
+- Defines Jekyll layouts in `_layouts/` and `_includes/`
+- Provides SCSS via `_sass/` imported through layout head
+- Builds final theme by importing `ontology/index` in `_sass/_common.scss` (line 64)
+- **Responsibility**: All SCSS, layouts, components
+
+**Subdomain repositories:**
+- Create pages using Jekyll layouts from theme
+- Pages reference theme's SCSS through layout `<head>` 
+- **NO direct SCSS files** in subdomain (except optional `assets/css/custom.scss`)
+- **NO `_layouts/` or `_includes/`** directories in subdomains
+- **Responsibility**: Content only
+
 ## Import Rules (CRITICAL)
 
-**DO import `ontology/index` in:**
-- ✅ Subdomain SCSS (e.g., `assets/css/custom.scss`)
-- ✅ Standalone files with Jekyll front matter `---`
+**DO import `ontology/index` ONLY in:**
+- ✅ `assets/css/style.scss` (theme's main stylesheet entry point)
+- ✅ Subdomain SCSS if it exists (e.g., `assets/css/custom.scss`)
 
-**DO NOT import in:**
-- ❌ `_sass/components/` partials (already via `_common.scss`)
-- ❌ `_sass/layouts/` partials (creates 22MB bloat)
+**NEVER import in:**
+- ❌ `_sass/components/` partials (ontology available via `_common.scss`)
+- ❌ `_sass/layouts/` partials (ontology available via `_common.scss`)
+- ❌ `_sass/samples/` files (ontology available via `_common.scss`)
+- ❌ Any file inside `_sass/` directory (creates 22MB bloat)
 
-**Why**: `_common.scss` imports ontology at line 37. Duplicate imports cause massive CSS bloat (22MB vs 1.1MB).
+**Why**: `_common.scss` imports ontology at line 64. Duplicate imports cause massive CSS bloat (22MB vs 1.1MB).
 
 ## Testing & Linting
 
@@ -110,11 +127,18 @@ npm test             # Both (run before committing)
 - `_sass/ontology/_sample.scss` - Working code examples
 - `_sass/ontology/Readme.md` - Three-tier architecture
 - `GENOME.md` - Variant history and evolution
-- `/docs/ontology-demo.html` - Visual demonstrations
+- `tests/ontology/ontology-animations-demo.html` - Visual demonstrations
 
 **Style guidelines:**
 - `/docs/guides/STYLELINT.md` - Linting setup and rules
 - `/docs/guides/STYLELINT-LIMITATIONS.md` - Why Sass compilation is needed
+
+**Test pages** (organized in `/tests/`):
+- `/tests/responsive/` - Responsive design tests
+- `/tests/mobile/` - Mobile-specific tests
+- `/tests/motion/` - Motion library tests
+- `/tests/ontology/` - Ontology system demos
+- See `/tests/README.md` for complete catalog
 
 **Migration resources:**
 - `_sass/ontology/refactor-agent.md` - Automated SCSS migration
