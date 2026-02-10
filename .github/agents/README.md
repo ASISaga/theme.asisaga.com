@@ -1,6 +1,6 @@
 # 🔒 Agent Internal Configuration
 
-**Version**: 1.1.0  
+**Version**: 1.2.0  
 **Last Updated**: 2026-02-10  
 **Status**: Production - Active Configuration
 
@@ -57,11 +57,23 @@ This restriction ensures:
 .github/agents/
 ├── README.md (this file)              # Directory purpose and guidelines
 ├── .gitkeep                           # Ensures directory is tracked
+│
+├── Configuration Files (YAML - Centralized)
 ├── agent-capabilities.yml             # Capability matrix for all agents
 ├── agent-routing.yml                  # Task routing rules and priorities
 ├── agent-handoff.yml                  # Multi-agent handoff protocols
 ├── feature-flags.yml                  # System-level feature toggles
-└── quality-thresholds.yml             # Quality metrics and thresholds
+├── quality-thresholds.yml             # Quality metrics and thresholds
+│
+└── Agent Context Files (Markdown - Per-Agent)
+    ├── agent-evolution-agent.agent.md
+    ├── theme-genome-agent.agent.md
+    ├── subdomain-evolution-agent.agent.md
+    ├── scss-refactor-agent.agent.md
+    ├── html-template-agent.agent.md
+    ├── responsive-design-agent.agent.md
+    ├── futuristic-effects-agent.agent.md
+    └── documentation-manager-agent.agent.md
 ```
 
 ## Relationship to Agent Ecosystem
@@ -121,7 +133,9 @@ Developers and maintainers can access this directory directly for:
 
 ## Configuration Files
 
-### agent-capabilities.yml
+### YAML Files (Centralized Coordination)
+
+#### agent-capabilities.yml
 
 Defines the capabilities, scope, and tools for each agent in the ecosystem.
 
@@ -203,6 +217,49 @@ Quality metrics, thresholds, and acceptance criteria for agent work products.
 
 **Example Use**: Before merging, validates that SCSS files have `zero_css_compliance: true` in subdomain files and all linters pass.
 
+### Markdown Files (Per-Agent Context)
+
+#### *.agent.md Files
+
+Individual agent context and metadata files following the `{agent-name}.agent.md` naming pattern.
+
+**Purpose**: Human-readable per-agent configuration, context requirements, and coordination preferences.
+
+**Contents** (standardized structure):
+- **Agent Identity**: Name, version, category, role, status
+- **Context Requirements**: Token budget, dependencies, required tools
+- **Coordination Metadata**: Routing priority, handoff protocols, workflow chains
+- **Performance Characteristics**: Speed, accuracy, resource usage
+- **Configuration Overrides**: Agent-specific feature flags and thresholds
+- **Cross-References**: Links to prompt, skill, YAML configs, documentation
+- **Historical Context**: Achievements, lessons learned, common pitfalls
+- **Agent-Specific Notes**: Unique capabilities, preferences, future enhancements
+
+**Files**:
+1. `agent-evolution-agent.agent.md` - Meta-intelligence optimizer
+2. `theme-genome-agent.agent.md` - Ontological gatekeeper
+3. `subdomain-evolution-agent.agent.md` - Proposition creator
+4. `scss-refactor-agent.agent.md` - Migration expert
+5. `html-template-agent.agent.md` - Semantic structure specialist
+6. `responsive-design-agent.agent.md` - Mobile-first specialist
+7. `futuristic-effects-agent.agent.md` - Visual effects specialist
+8. `documentation-manager-agent.agent.md` - Documentation quality
+
+**Example Use**: When coordinating agents, reference individual `.agent.md` files for agent-specific context like token budgets, coordination preferences, and historical lessons learned.
+
+**Relationship to Other Files**:
+```
+Per-Agent Files:
+├── .github/prompts/{agent}.prompt.md     → Detailed instructions (HOW)
+├── .github/skills/{agent}/SKILL.md       → Executable capability (WHAT)
+└── .github/agents/{agent}.agent.md       → Internal metadata (WHO) ← NEW
+
+Centralized Files:
+└── .github/agents/*.yml                  → System coordination (WHEN/WHERE)
+```
+
+The `.agent.md` files complement (not duplicate) the centralized YAML configs by providing human-readable, per-agent context that doesn't fit into machine-readable structured data.
+
 ## When to Update Configuration Files
 
 ### agent-capabilities.yml
@@ -241,6 +298,13 @@ Quality metrics, thresholds, and acceptance criteria for agent work products.
 - Error budgets modified
 
 ## Version History
+
+### v1.2.0 (2026-02-10)
+- Added 8 `*.agent.md` files (per-agent context and metadata)
+- Standardized agent file structure following naming pattern
+- Documented agent identity, context, coordination, performance
+- Established cross-references between prompts, skills, and agent files
+- Total: 13 files (5 YAML + 8 Markdown + README)
 
 ### v1.1.0 (2026-02-10)
 - Added agent-capabilities.yml (capability matrix)
