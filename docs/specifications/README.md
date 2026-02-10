@@ -15,6 +15,7 @@ These specifications serve as:
 ### Core Architecture
 1. [**Architecture Overview**](./architecture.md) - System architecture, technology stack, and design patterns
 2. [**Build & Deployment**](./build-deployment.md) - Build process, asset compilation, and deployment workflows
+3. [**GitHub Copilot Agent Guidelines**](./github-copilot-agent-guidelines.md) - AI agent development for .github/ directory
 
 ### Frontend Technologies
 3. [**HTML & Liquid Templating**](./html-liquid.md) - Jekyll templates, Liquid syntax, and semantic HTML patterns

@@ -459,10 +459,11 @@ Label: ontological-proposition
 **Creating PR?** → subdomain-evolution-agent.prompt.md (Training Examples)  
 **Reviewing PR?** → theme-genome-agent.prompt.md (Review Checklist)  
 **Visual regression?** → AGENT-WORKFLOWS.md (Validation section)  
+**Agent development?** → instructions/github.instructions.md (Copilot guidelines)
 
 ---
 
 **Print this card** | Keep handy during agent work sessions  
-**Version**: 2.0 | **Last Updated**: 2025-01-17
+**Version**: 2.0 | **Last Updated**: 2026-02-10
 
 *Quick reference for conscious evolution* 🧬

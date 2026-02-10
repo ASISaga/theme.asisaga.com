@@ -73,6 +73,7 @@ Complete searchable index of all documentation in the ASI Saga Genesis theme.
 - [SCSS Ontology System](specifications/scss-ontology-system.md) - Complete ontology spec
 - [HTML Semantic Patterns](specifications/html-semantic-patterns.md) - Semantic HTML
 - [JavaScript Interaction Patterns](specifications/javascript-interaction-patterns.md) - JS patterns
+- [GitHub Copilot Agent Guidelines](specifications/github-copilot-agent-guidelines.md) - AI agent development
 - [Architecture](specifications/architecture.md) - System architecture
 - [Component Library](specifications/component-library.md) - Component reference
 - [Layout System](specifications/layout-system.md) - Layout spec
