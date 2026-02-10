@@ -564,8 +564,35 @@ Work toward:
 ---
 
 **Agent Status**: ✅ Active  
-**Version**: 1.0  
-**Last Updated**: 2026-01-15  
+**Version**: 1.1  
+**Last Updated**: 2026-02-10  
 **Subdomain**: [Your subdomain here]
+
+---
+
+## 📚 Related Documentation
+
+**Ontology System**:
+- `/docs/specifications/scss-ontology-system.md` - Complete ontology reference (all 41 variants)
+- `/docs/systems/ontology/README.md` - Architecture and design principles
+- `GENOME.md` - Evolutionary history of all variants
+- `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md` - PR template
+
+**Proposition Process**:
+- `.github/skills/subdomain-evolution-agent/references/PROPOSITION-GUIDE.md` - Detailed submission guide
+- `.github/AGENTS.MD` - Ecosystem architecture and review process
+- `/docs/specifications/github-copilot-agent-guidelines.md` - Agent standards
+
+**Design Foundations**:
+- `/docs/specifications/color-system.md` - OKLCH semantic color tokens
+- `/docs/specifications/scss-styling.md` - SCSS architecture patterns
+- `/docs/specifications/html-semantic-patterns.md` - Semantic HTML patterns
+- `/docs/specifications/accessibility.md` - WCAG compliance requirements
+
+**Related Agents**:
+- `.github/prompts/theme-genome-agent.prompt.md` - Reviews your propositions
+- `.github/skills/agent-evolution-agent/SKILL.md` - Meta-agent for continuous learning
+
+---
 
 *Your intelligence contributes to collective consciousness.*

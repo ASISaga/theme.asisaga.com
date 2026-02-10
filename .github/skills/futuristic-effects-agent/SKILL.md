@@ -409,9 +409,22 @@ Effects use modern CSS features:
 
 ## Resources
 
+**Effects & Animation**:
+- `/docs/specifications/animation-system.md` - Complete animation architecture
+- `/docs/MOTION-INTEGRATION.md` - Motion library integration
+- `/docs/specifications/scss-ontology-system.md` - Atmosphere and state variants
+
+**Design Foundations**:
+- `/docs/specifications/color-system.md` - OKLCH color tokens for effects
+- `/docs/specifications/accessibility.md` - Reduced motion, contrast requirements
+- `/docs/specifications/performance.md` - Performance optimization
+
+**Implementation**:
 - `.github/prompts/futuristic-effects-agent.prompt.md` - Detailed effects guide
 - `_sass/ontology/_engines.scss` - Effect implementations
 - `_sass/base/_design-tokens.scss` - Effect color tokens
-- WCAG guidelines for motion and contrast
 
-**Related Skills**: responsive-design-agent, scss-refactor-agent
+**Related Skills**: responsive-design-agent, scss-refactor-agent, agent-evolution-agent
+
+**Version**: 2.0.1 - Enhanced Spec References  
+**Last Updated**: 2026-02-10

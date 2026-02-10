@@ -192,9 +192,13 @@ WCAG 2.2 AA compliance comprehensive guide:
 - `references/ACCESSIBILITY-STANDARDS.md` - **NEW** WCAG 2.2 AA compliance
 
 ### In Repository
-- `_sass/ontology/INTEGRATION-GUIDE.md` - Complete mixin reference
-- `_sass/ontology/refactor-agent.md` - Detailed migration guide
+- `/docs/specifications/scss-ontology-system.md` - Complete ontology reference
+- `/docs/systems/ontology/INTEGRATION-GUIDE.md` - Comprehensive API guide
+- `/docs/specifications/scss-styling.md` - SCSS architecture patterns
+- `/docs/specifications/color-system.md` - OKLCH color tokens
+- `/docs/specifications/architecture.md` - Overall system design
 - `.github/instructions/scss.instructions.md` - SCSS coding standards
+- `_sass/ontology/refactor-agent.md` - Detailed migration guide
 - `.github/AGENT-INDEX.md` - Quick navigation guide
 
 ### Related Agents
@@ -204,5 +208,5 @@ WCAG 2.2 AA compliance comprehensive guide:
 - `futuristic-effects-agent` - Advanced visual effects
 - `html-template-agent` - Semantic HTML and accessibility
 
-**Version**: 2.1.0 - Integrated Validation + State-of-the-Art Guidelines  
-**Last Updated**: 2026-01-29
+**Version**: 2.1.1 - Enhanced Spec References for Self-Learning  
+**Last Updated**: 2026-02-10

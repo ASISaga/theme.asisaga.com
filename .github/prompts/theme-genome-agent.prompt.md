@@ -405,6 +405,25 @@ Work toward:
 
 ---
 
+## 📚 Related Documentation
+
+**Ontology System**:
+- `/docs/specifications/scss-ontology-system.md` - Complete ontology reference (41 variants, OKLCH colors)
+- `/docs/systems/ontology/README.md` - Ontology architecture overview
+- `GENOME.md` - Evolutionary history and variant origins
+
+**Agent Framework**:
+- `/docs/specifications/github-copilot-agent-guidelines.md` - Agent development standards
+- `.github/AGENTS.MD` - Complete ecosystem architecture
+- `.github/skills/agent-evolution-agent/references/SELF-LEARNING-ARCHITECTURE.md` - Self-learning principles
+
+**Design System Specs**:
+- `/docs/specifications/color-system.md` - OKLCH color tokens
+- `/docs/specifications/scss-styling.md` - SCSS architecture
+- `/docs/specifications/architecture.md` - Overall system design
+
+---
+
 ## 🚀 Getting Started
 
 When you begin a review session:

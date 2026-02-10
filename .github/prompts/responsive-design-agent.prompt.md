@@ -443,10 +443,28 @@ font-size: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
 
 ---
 
-## Resources
+## 📚 Related Documentation
 
-- **Responsive System**: `_sass/base/_responsive-system.scss`
-- **Futuristic Effects**: `_sass/base/_futuristic-effects.scss`
-- **Ontology Tokens**: `_sass/ontology/_tokens.scss`
-- **Demo Page**: `/demo/` (shows all responsive patterns)
-- **WCAG 2.5.5**: https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
+**Responsive Design**:
+- `/docs/specifications/responsive-design.md` - Complete responsive system guide
+- `/docs/specifications/accessibility.md` - WCAG 2.5.5 touch targets and A11y
+- `.github/skills/responsive-design-agent/references/RESPONSIVE-GUIDE.md` - Detailed patterns
+- `.github/skills/responsive-design-agent/references/LAYOUT-PATTERNS.md` - Layout examples
+
+**Ontology & Design Tokens**:
+- `/docs/specifications/scss-ontology-system.md` - All ontological variants
+- `/docs/specifications/color-system.md` - OKLCH semantic colors
+- `/docs/systems/ontology/` - Complete ontology documentation
+
+**System Architecture**:
+- `/docs/specifications/architecture.md` - Overall design system
+- `/docs/specifications/scss-styling.md` - SCSS architecture
+- `_sass/base/_responsive-system.scss` - Implementation reference
+
+**External Resources**:
+- WCAG 2.5.5: https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
+
+**Related Agents**:
+- `.github/skills/responsive-design-agent/SKILL.md` - Skill definition  
+- `.github/skills/agent-evolution-agent/SKILL.md` - Meta-agent for continuous learning
+

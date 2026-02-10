@@ -324,10 +324,24 @@ When approving a new variant:
 Reference these files during review:
 
 - `.github/AGENTS.MD` - Complete agent ecosystem architecture
-- `.github/prompts/theme-genome-agent.prompt.md` - Detailed prompt
-- `_sass/ontology/INTEGRATION-GUIDE.md` - Complete API reference
+## Related Documentation
+
+**Ontology System**:
+- `/docs/specifications/scss-ontology-system.md` - Complete ontology reference (41 variants)
+- `/docs/systems/ontology/INTEGRATION-GUIDE.md` - Comprehensive API guide
 - `GENOME.md` - Evolutionary history and variant registry
+- `/docs/specifications/color-system.md` - OKLCH semantic color tokens
+
+**Agent Framework**:
+- `/docs/specifications/github-copilot-agent-guidelines.md` - Agent development standards
+- `.github/AGENTS.MD` - Complete ecosystem architecture
+- `.github/prompts/theme-genome-agent.prompt.md` - Detailed prompt
 - `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md` - PR template
+
+**Design Foundations**:
+- `/docs/specifications/scss-styling.md` - SCSS architecture
+- `/docs/specifications/architecture.md` - Overall system design
+- `/docs/specifications/accessibility.md` - WCAG compliance
 
 ## Success Metrics
 
@@ -351,6 +365,7 @@ Track these indicators of healthy evolution:
 
 ---
 
-**Related Skills**: subdomain-evolution-agent, scss-refactor-agent
+**Related Skills**: subdomain-evolution-agent, scss-refactor-agent, agent-evolution-agent
 **Maintenance**: Update this skill when ontology architecture changes
-**Version**: Aligned with Genesis Semantic Design System v2.0+
+**Version**: 2.0.1 - Enhanced Spec References  
+**Last Updated**: 2026-02-10

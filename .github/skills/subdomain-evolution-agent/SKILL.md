@@ -329,6 +329,24 @@ A successful proposition should:
 - [ ] Distinguish itself from existing variants
 - [ ] Document why combinations don't work
 
+## Related Documentation
+
+**Ontology System**:
+- `/docs/specifications/scss-ontology-system.md` - Complete ontology reference (41 variants)
+- `/docs/systems/ontology/README.md` - Architecture and design principles
+- `GENOME.md` - Evolutionary history of all variants
+- `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md` - PR template
+
+**Proposition Process**:
+- `.github/skills/subdomain-evolution-agent/references/PROPOSITION-GUIDE.md` - Detailed guide
+- `.github/AGENTS.MD` - Ecosystem architecture and review process
+- `/docs/specifications/github-copilot-agent-guidelines.md` - Agent standards
+
+**Design Foundations**:
+- `/docs/specifications/color-system.md` - OKLCH semantic color tokens
+- `/docs/specifications/scss-styling.md` - SCSS architecture patterns
+- `/docs/specifications/accessibility.md` - WCAG compliance
+
 ## Workflow Summary
 
 1. **Identify gap** during subdomain development
@@ -342,6 +360,7 @@ A successful proposition should:
 
 ---
 
-**Related Skills**: theme-genome-agent, scss-refactor-agent
+**Related Skills**: theme-genome-agent, scss-refactor-agent, agent-evolution-agent
 **Maintenance**: Update when ontological categories change
-**Version**: Aligned with Genesis Semantic Design System v2.0+
+**Version**: 2.0.1 - Enhanced Spec References  
+**Last Updated**: 2026-02-10

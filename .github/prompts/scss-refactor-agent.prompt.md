@@ -452,8 +452,34 @@ When beginning a refactor:
 ---
 
 **Agent Status**: ✅ Active  
-**Version**: 1.0  
-**Last Updated**: 2026-01-15  
+**Version**: 1.1  
+**Last Updated**: 2026-02-10  
 **Specialization**: Legacy CSS → Ontology Migration
+
+---
+
+## 📚 Related Documentation
+
+**Ontology System**:
+- `/docs/specifications/scss-ontology-system.md` - Complete ontology reference (41 variants)
+- `/docs/systems/ontology/INTEGRATION-GUIDE.md` - Comprehensive API guide
+- `/docs/systems/ontology/ONTOLOGY-QUICK-START.md` - Quick reference
+- `GENOME.md` - Evolutionary history
+
+**SCSS Architecture**:
+- `/docs/specifications/scss-styling.md` - SCSS structure and patterns
+- `/docs/specifications/architecture.md` - Overall system design
+- `/docs/specifications/color-system.md` - OKLCH color tokens
+
+**Migration Resources**:
+- `_sass/ontology/refactor-agent.md` - Automated migration patterns
+- `.github/skills/scss-refactor-agent/references/CSS-ARCHITECTURE-PATTERNS.md` - Architecture patterns
+- `/docs/guides/STYLELINT.md` - Linting setup
+
+**Related Agents**:
+- `.github/skills/scss-refactor-agent/SKILL.md` - Skill definition
+- `.github/skills/agent-evolution-agent/SKILL.md` - Meta-agent for continuous learning
+
+---
 
 *Transform with precision. Think semantically. Preserve visually.*
