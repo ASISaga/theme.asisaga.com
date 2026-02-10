@@ -188,6 +188,33 @@ cat ./.github/skills/responsive-design-agent/references/LAYOUT-PATTERNS.md
 - ✅ Creates quantum gradients
 - ✅ Adds consciousness animations
 
+#### Documentation Manager Agent
+**Skill**: `.github/skills/documentation-manager-agent/`  
+**Instructions**: `.github/instructions/docs.instructions.md`  
+**Validation**: 4 automated validation scripts
+
+**Capabilities**:
+- ✅ Validates documentation structure
+- ✅ Checks internal links and references
+- ✅ Detects redundant documentation
+- ✅ Validates version metadata
+- ✅ Enforces archival workflows
+
+**Quick Start**:
+```bash
+# Validate overall structure
+./.github/skills/documentation-manager-agent/scripts/validate-doc-structure.sh
+
+# Check links in docs
+./.github/skills/documentation-manager-agent/scripts/validate-doc-links.sh docs/
+
+# Detect redundancy
+./.github/skills/documentation-manager-agent/scripts/detect-doc-redundancy.sh
+
+# Validate metadata
+./.github/skills/documentation-manager-agent/scripts/check-doc-metadata.sh docs/specifications/
+```
+
 ---
 
 ## 🔄 Integrated Workflows
@@ -240,6 +267,22 @@ npm run test:scss
 npm run lint:scss
 ```
 
+### Workflow 4: Documentation Quality Control
+
+```bash
+# 1. Check documentation structure
+./.github/skills/documentation-manager-agent/scripts/validate-doc-structure.sh
+
+# 2. Validate links
+./.github/skills/documentation-manager-agent/scripts/validate-doc-links.sh docs/
+
+# 3. Check for redundancy
+./.github/skills/documentation-manager-agent/scripts/detect-doc-redundancy.sh
+
+# 4. Validate metadata
+./.github/skills/documentation-manager-agent/scripts/check-doc-metadata.sh docs/specifications/
+```
+
 ---
 
 ## 🛠️ Automation Scripts
@@ -251,6 +294,10 @@ All skills now include automated validation scripts:
 | theme-genome-agent | `validate-ontology.sh` | Check engine layer & ontological purity |
 | scss-refactor-agent | `validate-scss.sh` | Zero-CSS compliance & mixin usage |
 | html-template-agent | `validate-html.sh` | Semantic structure & accessibility |
+| documentation-manager-agent | `validate-doc-structure.sh` | Check documentation organization |
+| documentation-manager-agent | `validate-doc-links.sh` | Verify internal links |
+| documentation-manager-agent | `detect-doc-redundancy.sh` | Find duplicate content |
+| documentation-manager-agent | `check-doc-metadata.sh` | Validate version metadata |
 
 **Global Commands**:
 ```bash

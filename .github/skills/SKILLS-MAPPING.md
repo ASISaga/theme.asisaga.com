@@ -14,6 +14,7 @@ Each skill corresponds to an agent defined in the ecosystem:
 | **html-template-agent** | N/A (instructions-based) | `.github/instructions/html.instructions.md` | Create semantic HTML templates |
 | **responsive-design-agent** | `.github/prompts/responsive-design-agent.prompt.md` | `.github/instructions/scss.instructions.md` | Implement responsive patterns |
 | **futuristic-effects-agent** | `.github/prompts/futuristic-effects-agent.prompt.md` | `.github/instructions/scss.instructions.md` | Apply advanced visual effects |
+| **documentation-manager-agent** | N/A (instructions-based) | `.github/instructions/docs.instructions.md` | Validate and manage documentation quality |
 
 ## Architectural Alignment
 
@@ -146,6 +147,24 @@ Skills provide:
 1. `html-template-agent` - Check WCAG compliance, landmarks
 2. `responsive-design-agent` - Verify touch targets, typography
 3. `scss-refactor-agent` - Ensure semantic purity maintained
+
+### Scenario 5: Documentation Quality Control
+
+**Skills Used:**
+1. `documentation-manager-agent` - Validate structure and organization
+2. `documentation-manager-agent` - Check internal links
+3. `documentation-manager-agent` - Detect redundancy
+4. `documentation-manager-agent` - Validate metadata and archival
+
+**Workflow:**
+```bash
+# Pre-commit workflow
+./.github/skills/documentation-manager-agent/scripts/validate-doc-structure.sh
+./.github/skills/documentation-manager-agent/scripts/validate-doc-links.sh docs/
+./.github/skills/documentation-manager-agent/scripts/detect-doc-redundancy.sh
+./.github/skills/documentation-manager-agent/scripts/check-doc-metadata.sh docs/specifications/
+```
+
 
 ## Maintenance
 
