@@ -1,7 +1,7 @@
 # GitHub Copilot Agent Guidelines
 
 **Last Updated**: 2026-02-10  
-**Version**: 1.0  
+**Version**: 1.1 - Added `.github/agents/` directory  
 **Status**: Active
 
 This document provides comprehensive guidelines for creating and maintaining GitHub Copilot agents, prompts, and skills within the `.github/` directory.

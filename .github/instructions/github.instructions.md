@@ -142,5 +142,5 @@ allowed-tools: Bash(npm:*) Read
 ---
 
 **Applies to**: `.github/**/*.md`, `.github/**/*.prompt.md`, `.github/skills/**/*`  
-**Version**: 1.3 - Added test page organization references
+**Version**: 1.4 - Added .github/agents/ directory reference  
 **Last Updated**: 2026-02-10

@@ -1,9 +1,18 @@
-# 🤖 ASI Saga - Agent Ecosystem Architecture v2.3
+# 🤖 ASI Saga - Agent Ecosystem Architecture v2.3.1
 
 **Last Updated**: 2026-02-10  
-**Version**: 2.3 - Enhanced Dogfooding Intelligence
+**Version**: 2.3.1 - Added Protected Agents Directory
 
 This document describes the AI agent ecosystem that governs the ASI Saga theme repository, implementing the evolutionary mechanism for the Genesis Semantic Design System.
+
+---
+
+## 🆕 Version 2.3.1 Enhancements
+
+- **Protected Configuration Directory**: Added `.github/agents/` for internal agent coordination
+- **Access Restrictions**: Agents prevented from accessing during normal task execution
+- **System Separation**: Clean boundary between task work and system coordination
+- **Documentation Integration**: Complete references in all ecosystem documentation
 
 ---
 
@@ -704,8 +713,8 @@ Theme Agent should review:
 ---
 
 **Status**: ✅ Active  
-**Version**: 1.0  
+**Version**: 2.3.1 - Added `.github/agents/` directory  
 **Maintainer**: Theme Genome Agent  
-**Last Review**: 2026-01-15
+**Last Review**: 2026-02-10
 
 *This document evolves with the system. Agents should reference the latest version.*

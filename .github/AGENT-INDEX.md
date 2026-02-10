@@ -1,6 +1,6 @@
-# 🚀 Agent Ecosystem - Supercharged v2.3.0
+# 🚀 Agent Ecosystem - Supercharged v2.3.1
 
-**Version**: 2.3.0 - Enhanced Dogfooding Intelligence  
+**Version**: 2.3.1 - Added Protected Agents Directory  
 **Last Updated**: 2026-02-10  
 **Status**: Production Ready with Continuous Evolution
 
