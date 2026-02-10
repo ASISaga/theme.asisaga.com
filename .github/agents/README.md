@@ -1,8 +1,8 @@
 # 🔒 Agent Internal Configuration
 
-**Version**: 1.2.0  
+**Version**: 1.3.0  
 **Last Updated**: 2026-02-10  
-**Status**: Production - Active Configuration
+**Status**: Production - GitHub Copilot Custom Agents Compatible
 
 ---
 
@@ -219,23 +219,31 @@ Quality metrics, thresholds, and acceptance criteria for agent work products.
 
 ### Markdown Files (Per-Agent Context)
 
-#### *.agent.md Files
+#### *.agent.md Files (GitHub Copilot Custom Agents Format)
 
-Individual agent context and metadata files following the `{agent-name}.agent.md` naming pattern.
+Individual agent profiles following GitHub Copilot's Custom Agents specification with YAML frontmatter.
 
-**Purpose**: Human-readable per-agent configuration, context requirements, and coordination preferences.
+**Format** (GitHub Copilot Custom Agents):
+```yaml
+---
+name: agent-name
+description: Purpose and capabilities (one-line)
+prompt: |
+  Detailed instructions defining behavior and expertise
+  (multi-line prompt with all agent context)
+tools: ['tool1', 'tool2']  # optional
+---
+```
 
-**Contents** (standardized structure):
-- **Agent Identity**: Name, version, category, role, status
-- **Context Requirements**: Token budget, dependencies, required tools
-- **Coordination Metadata**: Routing priority, handoff protocols, workflow chains
-- **Performance Characteristics**: Speed, accuracy, resource usage
-- **Configuration Overrides**: Agent-specific feature flags and thresholds
-- **Cross-References**: Links to prompt, skill, YAML configs, documentation
-- **Historical Context**: Achievements, lessons learned, common pitfalls
-- **Agent-Specific Notes**: Unique capabilities, preferences, future enhancements
+**Purpose**: Agent profiles that define custom agent behavior for GitHub Copilot coding agent.
 
-**Files**:
+**Contents** (YAML frontmatter):
+- **name**: Unique identifier for the agent (e.g., `scss-refactor-agent`)
+- **description**: One-line explanation of purpose and capabilities
+- **prompt**: Custom instructions defining behavior, expertise, workflows, and standards
+- **tools**: Optional list of tools the agent can access
+
+**Files** (8 custom agents):
 1. `agent-evolution-agent.agent.md` - Meta-intelligence optimizer
 2. `theme-genome-agent.agent.md` - Ontological gatekeeper
 3. `subdomain-evolution-agent.agent.md` - Proposition creator
@@ -245,20 +253,22 @@ Individual agent context and metadata files following the `{agent-name}.agent.md
 7. `futuristic-effects-agent.agent.md` - Visual effects specialist
 8. `documentation-manager-agent.agent.md` - Documentation quality
 
-**Example Use**: When coordinating agents, reference individual `.agent.md` files for agent-specific context like token budgets, coordination preferences, and historical lessons learned.
+**Specification**: Follows GitHub Copilot Custom Agents format with YAML frontmatter. See: GitHub Copilot/Concepts/Agents/Coding agent/Custom agents documentation.
+
+**Example Use**: Assign agent to task or issue to instantiate custom agent with defined behavior, tools, and expertise.
 
 **Relationship to Other Files**:
 ```
 Per-Agent Files:
 ├── .github/prompts/{agent}.prompt.md     → Detailed instructions (HOW)
 ├── .github/skills/{agent}/SKILL.md       → Executable capability (WHAT)
-└── .github/agents/{agent}.agent.md       → Internal metadata (WHO) ← NEW
+└── .github/agents/{agent}.agent.md       → Custom agent profile (WHO) ← GitHub Copilot Format
 
 Centralized Files:
 └── .github/agents/*.yml                  → System coordination (WHEN/WHERE)
 ```
 
-The `.agent.md` files complement (not duplicate) the centralized YAML configs by providing human-readable, per-agent context that doesn't fit into machine-readable structured data.
+The `.agent.md` files use GitHub Copilot's Custom Agents specification format, making them compatible with GitHub Copilot coding agent for assignment to tasks and issues.
 
 ## When to Update Configuration Files
 
@@ -298,6 +308,13 @@ The `.agent.md` files complement (not duplicate) the centralized YAML configs by
 - Error budgets modified
 
 ## Version History
+
+### v1.3.0 (2026-02-10)
+- Converted 8 `*.agent.md` files to GitHub Copilot Custom Agents format
+- Added YAML frontmatter with name, description, prompt, tools
+- Files now compatible with GitHub Copilot coding agent
+- Follows official GitHub Copilot Custom Agents specification
+- Reduced from ~1,530 lines to ~482 lines (focused on agent profiles)
 
 ### v1.2.0 (2026-02-10)
 - Added 8 `*.agent.md` files (per-agent context and metadata)
