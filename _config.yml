@@ -11,7 +11,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-remote-theme
 
-remote_theme:.
+remote_theme: .
 
 exclude:
   - docs/
