@@ -1,0 +1,180 @@
+# Copilot Instructions for ASI Saga Subdomain
+
+You are working in an **ASI Saga subdomain repository**. This repository creates content pages that use layouts and styling from the shared theme at `theme.asisaga.com`.
+
+## Architecture: Content Only
+
+This subdomain is **content-only**. The theme repository provides all infrastructure:
+
+- **NO `_layouts/` directory** — Theme provides layouts (`default`, `post`, `page`, etc.)
+- **NO `_includes/` directory** — Theme provides includes (`head.html`, `header.html`, `footer.html`)
+- **NO `_sass/` directory** — Theme provides all SCSS and ontological mixins
+- **YES content pages** — Markdown (`.md`) and HTML in root or organized directories
+- **YES optional `assets/css/custom.scss`** — For subdomain-specific ontological styling
+- **YES optional `assets/js/script.js`** — For subdomain-specific progressive enhancements
+
+## Creating Content Pages
+
+### Markdown Pages
+
+```markdown
+---
+layout: default
+title: "Page Title"
+description: "Brief description for SEO and social sharing"
+---
+
+# Heading
+
+Content goes here. Theme layouts handle all structure and styling.
+```
+
+### HTML Pages
+
+```html
+---
+layout: default
+title: "Page Title"
+---
+
+<article class="content-section">
+  <h1>{{ page.title }}</h1>
+  <p>Content with semantic HTML structure.</p>
+</article>
+```
+
+### Front Matter Options
+
+| Key | Required | Description |
+|-----|----------|-------------|
+| `layout` | Yes | Theme layout to use (`default`, `post`, `page`) |
+| `title` | Yes | Page title |
+| `description` | No | SEO description |
+| `date` | Posts | Publication date (`YYYY-MM-DD`) |
+| `categories` | No | Content categories |
+| `tags` | No | Content tags |
+| `permalink` | No | Custom URL path |
+
+## Semantic HTML Standards
+
+Use meaningful, content-first class names:
+
+- ✅ `.research-paper`, `.team-member`, `.project-card`
+- ❌ `.blue-box`, `.large-text`, `.rounded-card`
+
+### Accessibility Requirements
+
+- Every `<img>` needs `alt` text (empty `alt=""` for decorative images)
+- Use semantic elements: `<article>`, `<section>`, `<nav>`, `<aside>`
+- Proper heading hierarchy (`h1` → `h2` → `h3`, no skipping)
+- Form inputs require associated `<label>` elements
+
+### BEM Naming Convention
+
+```html
+<article class="blog-post">
+  <header class="blog-post__header">
+    <h2 class="blog-post__title">Title</h2>
+    <time class="blog-post__date">2026-01-15</time>
+  </header>
+  <div class="blog-post__content">Content</div>
+</article>
+```
+
+## Custom SCSS (Optional)
+
+If you need subdomain-specific styling in `assets/css/custom.scss`:
+
+```scss
+---
+---
+@import "ontology/index";
+
+.my-component {
+  @include genesis-entity('primary');
+  @include genesis-cognition('discourse');
+}
+```
+
+### MANDATORY: Zero Raw CSS
+
+- ❌ NO `margin`, `padding`, `color`, `font-size`, `background`
+- ❌ NO unit values: `px`, `rem`, `%`
+- ❌ NO color values: `#hex`, `rgb()`, `oklch()`
+- ✅ ONLY ontological mixins from `@import "ontology/index"`
+
+### Ontology Quick Reference
+
+**Six semantic categories** (31+ variants):
+
+| Category | Mixin | Purpose | Variants |
+|----------|-------|---------|----------|
+| Environment | `genesis-environment($logic)` | Layout | `distributed`, `focused`, `associative`, `chronological`, `manifest` |
+| Entity | `genesis-entity($nature)` | Visual presence | `primary`, `secondary`, `imperative`, `latent`, `aggregate`, `ancestral` |
+| Cognition | `genesis-cognition($intent)` | Typography | `axiom`, `discourse`, `protocol`, `gloss`, `motive`, `quantum` |
+| Synapse | `genesis-synapse($vector)` | Interaction | `navigate`, `execute`, `inquiry`, `destructive`, `social` |
+| State | `genesis-state($condition)` | Temporal state | `stable`, `evolving`, `deprecated`, `locked`, `simulated` |
+| Atmosphere | `genesis-atmosphere($vibe)` | Mood/tone | `neutral`, `ethereal`, `void`, `vibrant` |
+
+### Common Patterns
+
+**Card grid:**
+```scss
+.card-grid {
+  @include genesis-environment('distributed');
+
+  .card {
+    @include genesis-entity('primary');
+    .card-title { @include genesis-cognition('axiom'); }
+    .card-text { @include genesis-cognition('discourse'); }
+    .card-link { @include genesis-synapse('navigate'); }
+  }
+}
+```
+
+**Blog post:**
+```scss
+.blog-post {
+  @include genesis-environment('focused');
+  .post-title { @include genesis-cognition('axiom'); }
+  .post-date { @include genesis-cognition('gloss'); }
+  .post-content { @include genesis-cognition('discourse'); }
+  .read-more { @include genesis-synapse('navigate'); }
+}
+```
+
+## JavaScript (Optional)
+
+For `assets/js/script.js`:
+
+- Use `data-*` attributes for behavior hooks, not CSS classes
+- Progressive enhancement: content works without JavaScript
+- ES6 modules with `import`/`export`
+- Ensure keyboard and screen reader accessibility
+
+```javascript
+// Use data attributes for DOM hooks
+document.querySelectorAll('[data-action="toggle"]').forEach(el => {
+  el.addEventListener('click', () => { /* enhancement */ });
+});
+```
+
+## Proposing Ontological Evolutions
+
+If you discover a semantic pattern not covered by existing ontology:
+
+1. **Review** all 31+ variants above
+2. **Try** combining existing mixins creatively
+3. **Confirm** the gap is semantic (WHAT it represents), not visual (HOW it looks)
+4. **Confirm** the pattern would be useful across multiple subdomains
+5. **Submit** a PR to `theme.asisaga.com` with an Ontological Proposition
+
+→ See theme's `.github/AGENTS.MD` for the full proposition process.
+
+## Key Principles
+
+1. **Content First** — Focus on creating great content; theme handles presentation
+2. **Semantic Thinking** — Name things by what they are, not how they look
+3. **Zero Raw CSS** — If custom SCSS is needed, use only ontological mixins
+4. **Accessibility Always** — Semantic HTML, alt text, proper headings, keyboard support
+5. **Progressive Enhancement** — Core content accessible without JavaScript

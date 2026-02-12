@@ -60,10 +60,13 @@ allowed-tools: Bash(npm:*) Read
 ├── agents/           # 🔒 Internal configurations (protected access)
 ├── instructions/     # 📋 Coding standards
 ├── prompts/          # 🤖 Agent instructions
-└── skills/           # 🛠️ Executable capabilities
+├── skills/           # 🛠️ Executable capabilities
+└── subdomain/        # 📦 Reference intelligence for subdomain repos
 ```
 
 **Protected Directory**: `.github/agents/` contains internal agent coordination logic. Agents cannot access this directory during normal task execution to maintain clean separation between task work and system coordination.
+
+**Subdomain Directory**: `.github/subdomain/` contains a reference GitHub Copilot coding agent intelligence system that subdomain repositories copy into their `.github/`. See `.github/subdomain/README.md` for setup.
 
 ## Skill Directory Structure
 
@@ -142,5 +145,5 @@ allowed-tools: Bash(npm:*) Read
 ---
 
 **Applies to**: `.github/**/*.md`, `.github/**/*.prompt.md`, `.github/skills/**/*`  
-**Version**: 1.4 - Added .github/agents/ directory reference  
-**Last Updated**: 2026-02-10
+**Version**: 1.5 - Added .github/subdomain/ directory reference  
+**Last Updated**: 2026-02-12
