@@ -9,6 +9,11 @@
     "lint:scss:report": "stylelint \"_sass/**/*.scss\" \"assets/css/**/*.scss\" --formatter verbose",
     "test:scss": "sass --no-source-map --load-path=_sass _sass/_test-compile.scss /tmp/test-compile.css",
     "test:scss:verbose": "sass --no-source-map --load-path=_sass --verbose _sass/_test-compile.scss /tmp/test-compile.css",
+    "test:e2e": "playwright test",
+    "test:e2e:local": "TEST_LOCAL=1 playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:report": "playwright show-report",
     "test": "npm run test:scss && npm run lint:scss"
   },
   "keywords": [
@@ -21,6 +26,7 @@
   "author": "ASI Saga",
   "license": "MIT",
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "sass": "^1.97.2",
     "stylelint": "^16.12.0",
     "stylelint-config-standard-scss": "^13.1.0",

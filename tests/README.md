@@ -63,6 +63,11 @@ Component library demonstrations.
 Miscellaneous test pages and legacy tests.
 - `geometric-leak-test.html` - Geometric rendering tests
 
+### `/e2e/`
+End-to-end structural regression tests using Playwright.
+- `structural-regression.spec.js` - Main test suite for live demo page
+- See `/docs/PLAYWRIGHT-TESTING.md` for complete documentation
+
 ## Root-Level Demos (Keep in Root)
 
 These are primary showcase pages that should remain in the repository root:

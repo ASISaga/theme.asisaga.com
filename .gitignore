@@ -25,3 +25,8 @@ Thumbs.db
 *.log
 tmp/
 header-navbar-test.html
+
+# Playwright
+playwright-report/
+test-results/
+playwright/.cache/
