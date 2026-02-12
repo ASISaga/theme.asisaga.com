@@ -1,12 +1,12 @@
 # 📦 Subdomain Intelligence System - Reference Template
 
-**Version**: 1.0  
+**Version**: 1.1 - Added linting and SCSS testing infrastructure  
 **Last Updated**: 2026-02-12  
 **Source**: `theme.asisaga.com/.github/subdomain/`
 
 ## Overview
 
-This directory contains a **reference GitHub Copilot coding agent intelligence system** for ASI Saga subdomain repositories. Copy this directory into your subdomain's `.github/` to enable coherent theme-subdomain AI-assisted development.
+This directory contains a **reference GitHub Copilot coding agent intelligence system** for ASI Saga subdomain repositories. Copy this directory into your subdomain's `.github/` to enable coherent theme-subdomain AI-assisted development with integrated linting and testing.
 
 ## Setup
 
@@ -22,20 +22,25 @@ Your subdomain `.github/` should then contain:
 ```
 .github/
 ├── copilot-instructions.md   # Main Copilot context
-├── agents/                    # GitHub Copilot Custom Agent definitions
+├── package.json              # npm scripts for linting and testing
+├── .stylelintrc.yml          # Stylelint configuration
+├── agents/                   # GitHub Copilot Custom Agent definitions
 │   ├── content-author.agent.md
 │   ├── scss-compliance.agent.md
 │   └── subdomain-evolution.agent.md
-├── instructions/              # Path-specific coding standards
+├── instructions/             # Path-specific coding standards
 │   ├── content.instructions.md    # HTML-only content authoring
 │   ├── scss.instructions.md       # Page-specific ontology SCSS
 │   └── js.instructions.md         # Mandatory script.js
-├── prompts/                   # Agent workflows
+├── prompts/                  # Agent workflows
 │   └── content-author.prompt.md
-└── skills/                    # Agent skill definitions
-    ├── content-author/SKILL.md
-    ├── scss-compliance/SKILL.md
-    └── subdomain-evolution/SKILL.md
+├── skills/                   # Agent skill definitions
+│   ├── content-author/SKILL.md
+│   ├── scss-compliance/SKILL.md
+│   └── subdomain-evolution/SKILL.md
+└── _sass/                    # SCSS reference and testing
+    ├── README.md             # SCSS reference documentation
+    └── _test-compile.scss    # SCSS compilation test file
 ```
 
 ### 2. Verify Theme Dependency
@@ -100,10 +105,38 @@ npm run lint:scss:fix # Auto-fix stylelint issues
 - `.stylelintrc.yml` — Stylelint rules for subdomain SCSS
 - `_sass/_test-compile.scss` — SCSS compilation test file
 
+## GitHub Copilot MCP Configuration
+
+**IMPORTANT**: Add the theme repository URL to your GitHub Copilot MCP firewall settings for code reference:
+
+- **Theme URL**: `https://github.com/ASISaga/theme.asisaga.com`
+
+This enables GitHub Copilot to:
+- Reference theme's ontological SCSS mixins and design system
+- Access theme's layout and component documentation  
+- Understand theme-subdomain architecture for accurate code generation
+- Propose ontological evolutions based on theme's current capabilities
+
+**How to configure:**
+1. Open GitHub Copilot settings in your IDE
+2. Add the theme repository URL to the MCP allowed sources
+3. Restart your IDE to apply the settings
+
+This ensures that when GitHub Copilot generates code for your subdomain, it has access to the theme's design system documentation and can provide accurate ontological mixin suggestions.
+
 ## File Purposes
 
 ### `copilot-instructions.md`
-Main context file for GitHub Copilot. Provides the agent with understanding of the theme-subdomain architecture, available ontological mixins, and content creation standards.
+Main context file for GitHub Copilot. Provides the agent with understanding of the theme-subdomain architecture, available ontological mixins, content creation standards, and MCP firewall configuration for theme code reference.
+
+### `package.json`
+npm scripts and dependencies for SCSS linting and testing. Includes Sass compiler, Stylelint, and required plugins. Install with `npm install`.
+
+### `.stylelintrc.yml`
+Stylelint configuration enforcing subdomain-specific rules: no `@import` statements, BEM naming, max 3 nesting levels, zero raw CSS properties.
+
+### `_sass/`
+SCSS reference and testing directory. Contains `_test-compile.scss` for SCSS compilation validation and `README.md` explaining subdomain SCSS structure.
 
 ### `agents/`
 GitHub Copilot Custom Agent definitions (`.agent.md` format). Three subdomain-scoped agents for content authoring, SCSS compliance, and ontological evolution. See `agents/README.md`.
