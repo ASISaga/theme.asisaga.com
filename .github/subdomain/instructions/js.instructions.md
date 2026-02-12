@@ -1,24 +1,38 @@
 ---
-applyTo: "**/*.js,assets/js/**"
-description: "JavaScript standards for ASI Saga subdomain repositories — progressive enhancement"
+applyTo: "assets/js/**/*.js"
+description: "JavaScript standards for ASI Saga subdomain repositories — mandatory script.js with progressive enhancement"
 ---
 
 # Subdomain JavaScript Instructions
 
-## Philosophy: Progressive Enhancement
+## Mandatory File: assets/js/script.js
 
-JavaScript is optional in subdomain repositories. Core content must be accessible without it. Use JS only to enhance the user experience.
+**REQUIRED**: Every subdomain must have `assets/js/script.js`. This file is called from the HTML `<head>` in the theme layouts and gets merged into the subdomain at build time by Jekyll.
 
-## File Setup
-
-If JavaScript is needed, create `assets/js/script.js`:
+### File Structure
 
 ```javascript
-// Subdomain-specific progressive enhancements
+// assets/js/script.js
+// This file is MANDATORY in all subdomains
+
+// First, import common utilities from theme (if needed)
+// import { animateFadeIn } from '/assets/js/common/motion-utils.js';
+
+// Then add subdomain-specific enhancements
 document.addEventListener('DOMContentLoaded', () => {
-  // Enhancements loaded after DOM is ready
+  // Subdomain-specific progressive enhancements
 });
 ```
+
+**IMPORTANT**:
+- `assets/js/script.js` must exist even if minimal
+- Theme's `assets/js/common.js` is loaded first by layouts
+- Your script.js can use utilities from theme's common.js
+- Script is loaded via theme layouts, automatically included
+
+## Philosophy: Progressive Enhancement
+
+Core content must be accessible without JavaScript running. Use JS only to enhance the user experience. The mandatory `assets/js/script.js` file should gracefully enhance, not gate content.
 
 ## Core Rules
 
@@ -26,7 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
 2. **`data-*` attributes for hooks** — Not CSS classes
 3. **Keyboard accessible** — All interactions work with keyboard
 4. **Screen reader friendly** — ARIA attributes where needed
-5. **ES6 modules** — Use `import`/`export` syntax
+5. **ES6 modules** — Use `import`/`export` syntax when needed
+6. **Theme utilities available** — Can use utilities from theme's common.js
 
 ## DOM Hooks
 
@@ -84,8 +99,10 @@ newContent.focus();
 ## Quality Checklist
 
 Before committing JavaScript:
-- [ ] Content accessible without JS
+- [ ] `assets/js/script.js` exists (mandatory)
+- [ ] Content accessible without JS running
 - [ ] DOM hooks use `data-*` attributes
 - [ ] Keyboard accessible
 - [ ] No inline scripts in HTML
 - [ ] Error handling in place
+- [ ] Progressive enhancement pattern followed

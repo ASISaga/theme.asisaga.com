@@ -1,13 +1,15 @@
 ---
-applyTo: "**/*.{scss,sass,css},assets/css/**"
-description: "SCSS standards for ASI Saga subdomain repositories — ontology-only, zero raw CSS"
+applyTo: "_sass/**/*.{scss,sass}"
+description: "SCSS standards for ASI Saga subdomain repositories — page-specific ontology-only styling"
 ---
 
 # Subdomain SCSS Instructions
 
-## Content-Only Architecture
+## Content-Only Architecture with Page-Specific SCSS
 
-Subdomain repositories should rarely need custom SCSS. The theme provides complete styling through layouts and the ontological design system. Only create `assets/css/custom.scss` when you need subdomain-specific component styling.
+Subdomain repositories should have page-specific SCSS in `_sass/main.scss` when needed. The theme provides the ontological design system. At build time, `assets/css/style.scss` from the theme gets merged into the subdomain by Jekyll, importing `_sass/main.scss` from the subdomain.
+
+**NO `assets/css/custom.scss`** — Use `_sass/main.scss` for page-specific styling only.
 
 ## MANDATORY: Zero Raw CSS
 
@@ -17,24 +19,28 @@ Subdomain SCSS files must contain **ZERO raw CSS properties**:
 - ❌ NO unit values: `px`, `rem`, `em`, `%`, `vh`, `vw`
 - ❌ NO color values: `#hex`, `rgb()`, `hsl()`, `oklch()`
 - ❌ NO `@extend` (causes Jekyll build errors)
-- ✅ ONLY ontological mixins from `@import "ontology/index"`
+- ❌ NO `@import "ontology/index"` (theme provides this)
+- ✅ ONLY ontological mixins (already available from theme)
 - ✅ Max 3 nesting levels
 
 ## File Setup
 
-If custom styling is needed, create `assets/css/custom.scss`:
+If page-specific styling is needed, create `_sass/main.scss`:
 
 ```scss
----
----
-@import "ontology/index";
+// NO front matter needed
+// NO @import needed - ontology mixins already available from theme
 
-.my-component {
+.my-page-component {
   @include genesis-entity('primary');
 }
 ```
 
-The `---` front matter is required for Jekyll to process the file.
+**IMPORTANT**: 
+- Do NOT add Jekyll front matter (`---`) to `_sass/main.scss`
+- Do NOT import `ontology/index` (theme already provides it)
+- This file is for page-specific component styling only
+- For new components needed across subdomains, create PR to theme
 
 ## Ontology Mixins
 
@@ -132,19 +138,24 @@ The `---` front matter is required for Jekyll to process the file.
 
 ## Identifying Semantic Gaps
 
-If no mixin combination serves your need:
+If no mixin combination serves your page-specific styling need:
 
 1. Review all variants above and try creative combinations
 2. Confirm the gap is **semantic** (WHAT), not **visual** (HOW)
-3. Submit an Ontological Proposition PR to `theme.asisaga.com`
+3. Confirm this styling would be useful across multiple subdomains
+4. Submit PR to `theme.asisaga.com` to add the component to theme (NOT subdomain)
+5. If truly page-specific to this subdomain only, submit an Ontological Proposition
 
 → **Proposition process**: Theme's `.github/AGENTS.MD`
 
 ## Verification Checklist
 
 Before committing SCSS:
-- [ ] Only `@import "ontology/index"` (no other imports)
+- [ ] File is `_sass/main.scss` (NOT `assets/css/custom.scss`)
+- [ ] NO Jekyll front matter (`---`)
+- [ ] NO `@import` statements (ontology already available)
 - [ ] Zero raw CSS properties
 - [ ] No `px`, `rem`, `%`, or color values
 - [ ] SCSS nesting mirrors HTML structure
 - [ ] Max 3 nesting levels
+- [ ] Page-specific components only (shared components go to theme)
