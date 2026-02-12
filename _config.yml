@@ -1,6 +1,9 @@
 title: ASI Saga Design Genome
 description: Genesis of Artificial Superintelligence
 
+theme: 
+remote_theme: 
+
 sass:
   load_paths:
     - _sass
