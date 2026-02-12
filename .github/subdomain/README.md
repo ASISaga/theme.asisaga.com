@@ -26,10 +26,10 @@ Your subdomain `.github/` should then contain:
 │   ├── content-author.agent.md
 │   ├── scss-compliance.agent.md
 │   └── subdomain-evolution.agent.md
-├── instructions/              # Coding standards
-│   ├── content.instructions.md
-│   ├── scss.instructions.md
-│   └── js.instructions.md
+├── instructions/              # Path-specific coding standards
+│   ├── content.instructions.md    # HTML-only content authoring
+│   ├── scss.instructions.md       # Page-specific ontology SCSS
+│   └── js.instructions.md         # Mandatory script.js
 ├── prompts/                   # Agent workflows
 │   └── content-author.prompt.md
 └── skills/                    # Agent skill definitions
@@ -52,17 +52,22 @@ Edit `copilot-instructions.md` to set your subdomain name and any domain-specifi
 
 ## Architecture
 
-Subdomain repositories are **content-only**. The theme repository provides all layouts, includes, SCSS, and styling infrastructure.
+Subdomain repositories are **content-only** with HTML pages and optional page-specific styling/JavaScript. The theme repository provides all layouts, includes, and styling infrastructure.
 
 | Responsibility | Theme Repo | Subdomain Repo |
 |---------------|-----------|----------------|
 | Layouts (`_layouts/`) | ✅ | ❌ |
 | Includes (`_includes/`) | ✅ | ❌ |
-| SCSS / Ontology (`_sass/`) | ✅ | ❌ |
-| Design tokens | ✅ | ❌ |
-| Content pages | ❌ | ✅ |
-| Custom SCSS (optional) | ❌ | ✅ (`assets/css/custom.scss`) |
-| JavaScript (optional) | ❌ | ✅ (`assets/js/script.js`) |
+| Ontology SCSS (`_sass/ontology/`) | ✅ | ❌ |
+| Design tokens & theme SCSS | ✅ | ❌ |
+| HTML content pages | ❌ | ✅ (HTML only, NO Markdown) |
+| Page-specific SCSS | ❌ | ✅ (`_sass/main.scss`, ontology-only) |
+| JavaScript | ❌ | ✅ (`assets/js/script.js`, MANDATORY) |
+
+**Build Process**:
+- Theme's `assets/css/style.scss` imports `_sass/common.scss` (which includes ontology)
+- At build time, Jekyll merges theme's `style.scss` with subdomain's `_sass/main.scss`
+- Theme layouts automatically load `assets/js/common.js` then `assets/js/script.js`
 
 ## File Purposes
 
@@ -73,13 +78,13 @@ Main context file for GitHub Copilot. Provides the agent with understanding of t
 GitHub Copilot Custom Agent definitions (`.agent.md` format). Three subdomain-scoped agents for content authoring, SCSS compliance, and ontological evolution. See `agents/README.md`.
 
 ### `instructions/content.instructions.md`
-Standards for creating Markdown and HTML content pages. Covers front matter, semantic structure, and content organization.
+Standards for creating HTML content pages (NO Markdown). Covers front matter, semantic structure, and HTML organization. Path-specific instruction triggered by `**/*.html`.
 
 ### `instructions/scss.instructions.md`
-Rules for subdomain SCSS (if custom styling is needed). Enforces ontology-only patterns with zero raw CSS.
+Rules for page-specific SCSS in `_sass/main.scss`. Enforces ontology-only patterns with zero raw CSS. NO `assets/css/custom.scss`. Path-specific instruction triggered by `_sass/**/*.scss`.
 
 ### `instructions/js.instructions.md`
-Standards for subdomain JavaScript. Covers progressive enhancement, `data-*` attribute hooks, and interaction patterns.
+Standards for mandatory `assets/js/script.js`. Covers progressive enhancement, `data-*` attribute hooks, and interaction patterns. Path-specific instruction triggered by `assets/js/**/*.js`.
 
 ### `prompts/content-author.prompt.md`
 Agent prompt for content creation workflows. Guides AI in creating well-structured, accessible content pages.

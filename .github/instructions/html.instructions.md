@@ -14,23 +14,25 @@ description: "HTML & Liquid templating for Genesis Semantic Design System"
 - **Responsibility**: All layouts, includes, and styling infrastructure
 
 **Subdomain repositories:**
-- Create content pages (Markdown or HTML) with front matter specifying `layout: default`
+- Create HTML content pages with front matter specifying `layout: default`
 - Pages automatically use theme's layouts and styling
 - **NO `_layouts/` directory** in subdomains
 - **NO `_includes/` directory** in subdomains
-- **NO direct SCSS** in pages (styling handled by theme layouts)
-- **Responsibility**: Content only
+- **Page-specific SCSS** in `_sass/main.scss` (optional, ontology-only)
+- **Mandatory `assets/js/script.js`** (loaded after theme's common.js)
+- **Responsibility**: HTML content only (NO Markdown)
 
 **Example subdomain page:**
-```markdown
+```html
 ---
 layout: default
 title: "My Page"
 ---
 
-# Content goes here
-
-Theme layouts handle all structure and styling.
+<article class="content-section">
+  <h1>{{ page.title }}</h1>
+  <p>Content goes here. Theme layouts handle all structure and styling.</p>
+</article>
 ```
 
 ## PRIMARY METHOD: Semantic HTML + Ontology SCSS Mapping

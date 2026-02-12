@@ -1,6 +1,6 @@
 # Copilot Instructions for ASI Saga Subdomain
 
-You are working in an **ASI Saga subdomain repository**. This repository creates content pages that use layouts and styling from the shared theme at `theme.asisaga.com`.
+You are working in an **ASI Saga subdomain repository**. This repository creates HTML content pages that use layouts and styling from the shared theme at `theme.asisaga.com`.
 
 ## Architecture: Content Only
 
@@ -8,33 +8,21 @@ This subdomain is **content-only**. The theme repository provides all infrastruc
 
 - **NO `_layouts/` directory** — Theme provides layouts (`default`, `post`, `page`, etc.)
 - **NO `_includes/` directory** — Theme provides includes (`head.html`, `header.html`, `footer.html`)
-- **NO `_sass/` directory** — Theme provides all SCSS and ontological mixins
-- **YES content pages** — Markdown (`.md`) and HTML in root or organized directories
-- **YES optional `assets/css/custom.scss`** — For subdomain-specific ontological styling
-- **YES optional `assets/js/script.js`** — For subdomain-specific progressive enhancements
+- **NO `_sass/` directory in theme** — But YES `_sass/main.scss` for page-specific styling
+- **NO `assets/css/custom.scss`** — Use `_sass/main.scss` instead for page-specific ontological styling
+- **YES HTML content pages** — HTML (NOT Markdown) in root or organized directories
+- **YES `_sass/main.scss`** — For page-specific ontological styling (optional, ontology mixins already available from theme)
+- **YES `assets/js/script.js`** — For subdomain-specific JavaScript (MANDATORY - loaded after theme's common.js)
 
 ## Creating Content Pages
 
-### Markdown Pages
-
-```markdown
----
-layout: default
-title: "Page Title"
-description: "Brief description for SEO and social sharing"
----
-
-# Heading
-
-Content goes here. Theme layouts handle all structure and styling.
-```
-
-### HTML Pages
+### HTML Pages (ONLY - No Markdown)
 
 ```html
 ---
 layout: default
 title: "Page Title"
+description: "Brief description for SEO and social sharing"
 ---
 
 <article class="content-section">
@@ -42,6 +30,8 @@ title: "Page Title"
   <p>Content with semantic HTML structure.</p>
 </article>
 ```
+
+**IMPORTANT**: Subdomain content is HTML-only. NO Markdown (.md) files.
 
 ### Front Matter Options
 
@@ -83,14 +73,13 @@ Use meaningful, content-first class names:
 
 ## Custom SCSS (Optional)
 
-If you need subdomain-specific styling in `assets/css/custom.scss`:
+If you need page-specific styling in `_sass/main.scss`:
 
 ```scss
----
----
-@import "ontology/index";
+// NO front matter
+// NO @import needed - ontology mixins already available from theme
 
-.my-component {
+.my-page-component {
   @include genesis-entity('primary');
   @include genesis-cognition('discourse');
 }
@@ -101,7 +90,9 @@ If you need subdomain-specific styling in `assets/css/custom.scss`:
 - ❌ NO `margin`, `padding`, `color`, `font-size`, `background`
 - ❌ NO unit values: `px`, `rem`, `%`
 - ❌ NO color values: `#hex`, `rgb()`, `oklch()`
-- ✅ ONLY ontological mixins from `@import "ontology/index"`
+- ❌ NO `@import` statements (ontology already available from theme)
+- ❌ NO `assets/css/custom.scss` (use `_sass/main.scss` instead)
+- ✅ ONLY ontological mixins (already available from theme via `assets/css/style.scss`)
 
 ### Ontology Quick Reference
 
@@ -143,21 +134,26 @@ If you need subdomain-specific styling in `assets/css/custom.scss`:
 }
 ```
 
-## JavaScript (Optional)
+## JavaScript (Mandatory)
 
-For `assets/js/script.js`:
-
-- Use `data-*` attributes for behavior hooks, not CSS classes
-- Progressive enhancement: content works without JavaScript
-- ES6 modules with `import`/`export`
-- Ensure keyboard and screen reader accessibility
+**REQUIRED**: `assets/js/script.js` is mandatory in all subdomains.
 
 ```javascript
-// Use data attributes for DOM hooks
-document.querySelectorAll('[data-action="toggle"]').forEach(el => {
-  el.addEventListener('click', () => { /* enhancement */ });
+// assets/js/script.js
+// This file is MANDATORY - loaded after theme's common.js
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Subdomain-specific progressive enhancements
+  // Theme utilities available if needed
 });
 ```
+
+**IMPORTANT**:
+- Theme's `assets/js/common.js` is loaded first automatically
+- Your `script.js` can use utilities from theme's common.js
+- Use `data-*` attributes for behavior hooks, not CSS classes
+- Progressive enhancement: content works without JavaScript
+- Ensure keyboard and screen reader accessibility
 
 ## Proposing Ontological Evolutions
 

@@ -1,10 +1,10 @@
 ---
 name: scss-compliance
-description: Validate and enforce zero-CSS compliance in subdomain SCSS files. Ensure all styling uses only Genesis Ontological mixins with no raw CSS properties, unit values, or color values. Use when auditing or creating subdomain custom SCSS.
+description: Validate and enforce zero-CSS compliance in subdomain page-specific SCSS files. Ensure all styling uses only Genesis Ontological mixins with no raw CSS properties, unit values, color values, or imports. Use when auditing or creating subdomain page-specific SCSS in _sass/main.scss.
 license: MIT
 metadata:
   author: ASISaga
-  version: "1.0"
+  version: "2.0"
   category: design-system
   role: compliance-specialist
 allowed-tools: Bash Read Edit
@@ -13,24 +13,26 @@ allowed-tools: Bash Read Edit
 # SCSS Compliance
 
 **Role**: Zero-CSS Compliance Enforcer  
-**Scope**: Subdomain SCSS files (`assets/css/`)  
-**Version**: 1.0
+**Scope**: Subdomain page-specific SCSS (`_sass/main.scss`)  
+**Version**: 2.0
 
 ## Purpose
 
-Ensure subdomain SCSS files use only Genesis Ontological mixins with zero raw CSS properties. Subdomains rarely need custom SCSS — the theme provides complete styling. When custom SCSS is needed, it must use ontological mixins exclusively.
+Ensure subdomain page-specific SCSS files use only Genesis Ontological mixins with zero raw CSS properties. Subdomains rarely need custom SCSS — the theme provides complete styling. When page-specific SCSS is needed, it must use ontological mixins exclusively in `_sass/main.scss`.
 
 ## When to Use This Skill
 
 Activate when:
-- Creating `assets/css/custom.scss`
+- Creating `_sass/main.scss` for page-specific styling
 - Auditing existing subdomain SCSS for compliance
 - Reviewing PRs that add or modify SCSS files
 - Checking for raw CSS violations
+- Migrating from old `assets/css/custom.scss` pattern
 
 **Don't use for:**
 - Theme SCSS refactoring (use theme's scss-refactor-agent)
-- Modifying `_sass/` directory (theme responsibility)
+- Modifying theme's `_sass/` directory (theme responsibility)
+- Creating `assets/css/custom.scss` (deprecated, use `_sass/main.scss`)
 
 ## Zero-CSS Rules
 
@@ -39,10 +41,13 @@ Activate when:
 - ❌ Unit values: `px`, `rem`, `em`, `%`, `vh`, `vw`
 - ❌ Color values: `#hex`, `rgb()`, `hsl()`, `oklch()`
 - ❌ `@extend` (Jekyll build errors)
+- ❌ `@import` statements (ontology already available from theme)
+- ❌ Jekyll front matter (`---`)
 
 **Required:**
-- ✅ Jekyll front matter (`---`)
-- ✅ `@import "ontology/index"` as only import
+- ✅ File location: `_sass/main.scss` (NOT `assets/css/custom.scss`)
+- ✅ NO front matter (it's a partial, not a standalone file)
+- ✅ NO imports (ontology mixins already available)
 - ✅ Only ontological mixins
 - ✅ Max 3 nesting levels
 
@@ -51,27 +56,31 @@ Activate when:
 ### 1. Find SCSS Files
 
 ```bash
-find assets/css -name "*.scss" 2>/dev/null
+find _sass -name "*.scss" 2>/dev/null
+# Should only find _sass/main.scss if present
 ```
 
 ### 2. Check for Raw CSS
 
 ```bash
 # Raw properties
-grep -nE "(margin|padding|color|font-size|background|border|display|position):" assets/css/custom.scss
+grep -nE "(margin|padding|color|font-size|background|border|display|position):" _sass/main.scss
 
 # Raw values
-grep -nE "[0-9]+(px|rem|em|%)" assets/css/custom.scss
+grep -nE "[0-9]+(px|rem|em|%)" _sass/main.scss
 
 # Color values
-grep -nE "(#[0-9a-fA-F]{3,8}|rgb|hsl|oklch)\(" assets/css/custom.scss
+grep -nE "(#[0-9a-fA-F]{3,8}|rgb|hsl|oklch)\(" _sass/main.scss
 ```
 
-### 3. Verify Import
+### 3. Verify NO Imports or Front Matter
 
 ```bash
-# Should only have ontology/index import
-grep -n "@import" assets/css/custom.scss
+# Should have NO imports (ontology already available)
+grep -n "@import" _sass/main.scss
+
+# Should have NO front matter
+head -5 _sass/main.scss | grep "^---$"
 ```
 
 ## Ontology Quick Reference
@@ -87,7 +96,9 @@ grep -n "@import" assets/css/custom.scss
 
 ## Compliance Checklist
 
-- [ ] Only `@import "ontology/index"` (no other imports)
+- [ ] File is `_sass/main.scss` (NOT `assets/css/custom.scss`)
+- [ ] NO Jekyll front matter (`---`)
+- [ ] NO `@import` statements
 - [ ] Zero raw CSS properties
 - [ ] No unit values (`px`, `rem`, `%`)
 - [ ] No color values (`#hex`, `rgb()`, `oklch()`)

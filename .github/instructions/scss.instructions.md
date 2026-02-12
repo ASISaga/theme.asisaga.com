@@ -69,25 +69,27 @@ description: "SCSS coding instructions for Genesis Semantic Design System v2.0"
 - **Responsibility**: All SCSS, layouts, components
 
 **Subdomain repositories:**
-- Create pages using Jekyll layouts from theme
+- Create HTML pages using Jekyll layouts from theme
 - Pages reference theme's SCSS through layout `<head>` 
-- **NO direct SCSS files** in subdomain (except optional `assets/css/custom.scss`)
+- **Page-specific SCSS** in `_sass/main.scss` (optional, ontology-only, NO imports)
+- **NO `assets/css/custom.scss`** (deprecated, use `_sass/main.scss` instead)
 - **NO `_layouts/` or `_includes/`** directories in subdomains
-- **Responsibility**: Content only
+- **Mandatory `assets/js/script.js`** (loaded after theme's common.js)
+- **Responsibility**: HTML content only
 
 ## Import Rules (CRITICAL)
 
 **DO import `ontology/index` ONLY in:**
 - ✅ `assets/css/style.scss` (theme's main stylesheet entry point)
-- ✅ Subdomain SCSS if it exists (e.g., `assets/css/custom.scss`)
 
 **NEVER import in:**
+- ❌ Subdomain's `_sass/main.scss` (ontology already available from theme)
 - ❌ `_sass/components/` partials (ontology available via `_common.scss`)
 - ❌ `_sass/layouts/` partials (ontology available via `_common.scss`)
 - ❌ `_sass/samples/` files (ontology available via `_common.scss`)
 - ❌ Any file inside `_sass/` directory (creates 22MB bloat)
 
-**Why**: `_common.scss` imports ontology at line 64. Duplicate imports cause massive CSS bloat (22MB vs 1.1MB).
+**Why**: `_common.scss` imports ontology at line 64. Theme's `assets/css/style.scss` imports subdomain's `_sass/main.scss` at build time. Duplicate imports cause massive CSS bloat (22MB vs 1.1MB).
 
 ## Testing & Linting
 
