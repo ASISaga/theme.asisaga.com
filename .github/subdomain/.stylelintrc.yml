@@ -10,9 +10,12 @@ rules:
   # CRITICAL RULES FOR SUBDOMAIN REPOSITORIES
   # ========================================
   
-  # NEVER use @extend (causes Jekyll build errors)
+  # NEVER use @extend or @import
+  # @extend causes Jekyll build errors
+  # @import not needed - subdomain gets ontology from theme
   at-rule-disallowed-list:
     - extend
+    - import
   
   # Limit nesting to 3 levels
   max-nesting-depth:
@@ -20,11 +23,6 @@ rules:
     - ignore:
         - blockless-at-rules
         - pseudo-classes
-  
-  # SUBDOMAIN SPECIFIC: No @import allowed (ontology from theme)
-  at-rule-disallowed-list:
-    - extend
-    - import  # Subdomain gets ontology from theme, no imports needed
   
   # Color format requirements
   color-function-notation: null

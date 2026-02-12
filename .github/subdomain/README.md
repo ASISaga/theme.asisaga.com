@@ -24,6 +24,7 @@ Your subdomain `.github/` should then contain:
 ├── copilot-instructions.md   # Main Copilot context
 ├── package.json              # npm scripts for linting and testing
 ├── .stylelintrc.yml          # Stylelint configuration
+├── .gitignore                # Exclude node_modules and build artifacts
 ├── agents/                   # GitHub Copilot Custom Agent definitions
 │   ├── content-author.agent.md
 │   ├── scss-compliance.agent.md
@@ -134,6 +135,9 @@ npm scripts and dependencies for SCSS linting and testing. Includes Sass compile
 
 ### `.stylelintrc.yml`
 Stylelint configuration enforcing subdomain-specific rules: no `@import` statements, BEM naming, max 3 nesting levels, zero raw CSS properties.
+
+### `.gitignore`
+Excludes node_modules, build artifacts, and OS/IDE files from version control. Subdomain repositories should use this to keep their repository clean.
 
 ### `_sass/`
 SCSS reference and testing directory. Contains `_test-compile.scss` for SCSS compilation validation and `README.md` explaining subdomain SCSS structure.
