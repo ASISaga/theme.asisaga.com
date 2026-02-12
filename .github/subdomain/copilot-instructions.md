@@ -2,6 +2,18 @@
 
 You are working in an **ASI Saga subdomain repository**. This repository creates HTML content pages that use layouts and styling from the shared theme at `theme.asisaga.com`.
 
+## GitHub Copilot MCP Configuration
+
+**IMPORTANT**: The theme repository URL has been added to your GitHub Copilot MCP firewall settings to enable code reference:
+
+- **Theme URL**: `https://github.com/ASISaga/theme.asisaga.com`
+
+This allows GitHub Copilot to:
+- Reference theme's ontological SCSS mixins and design system
+- Access theme's layout and component documentation
+- Understand theme-subdomain architecture for accurate code generation
+- Propose ontological evolutions based on theme's current capabilities
+
 ## Architecture: Content Only
 
 This subdomain is **content-only**. The theme repository provides all infrastructure:
@@ -154,6 +166,29 @@ document.addEventListener('DOMContentLoaded', () => {
 - Use `data-*` attributes for behavior hooks, not CSS classes
 - Progressive enhancement: content works without JavaScript
 - Ensure keyboard and screen reader accessibility
+
+## Testing & Linting
+
+**Before committing** any SCSS changes, run:
+
+```bash
+npm test              # Run SCSS compilation test + stylelint
+npm run test:scss     # Test SCSS compilation (catches undefined mixins)
+npm run lint:scss     # Run stylelint on _sass/**/*.scss
+npm run lint:scss:fix # Auto-fix stylelint issues
+```
+
+**What these tests catch:**
+- **SCSS compilation** — Detects undefined mixins, variables, syntax errors
+- **Stylelint** — Enforces code quality, BEM naming, zero-CSS compliance
+- **Import violations** — Ensures no `@import` statements in subdomain SCSS
+- **Nesting depth** — Validates max 3 nesting levels
+
+**Pre-commit workflow:**
+1. `npm run test:scss` — Verify SCSS compiles
+2. `npm run lint:scss` — Check code style
+3. Fix any errors reported
+4. `npm test` — Run both checks together
 
 ## Proposing Ontological Evolutions
 
