@@ -1,7 +1,7 @@
-# 🚀 Agent Ecosystem - Supercharged v2.3.1
+# 🚀 Agent Ecosystem - Supercharged v2.4
 
-**Version**: 2.3.1 - Added Protected Agents Directory  
-**Last Updated**: 2026-02-10  
+**Version**: 2.4 - Subdomain Intelligence System  
+**Last Updated**: 2026-02-12  
 **Status**: Production Ready with Continuous Evolution
 
 ---
@@ -17,8 +17,9 @@
 | **Validation** | Automated testing scripts | `.github/skills/*/scripts/` |
 | **References** | Detailed specifications | `.github/skills/*/references/` |
 | **Patterns** | Ready-to-use component & layout patterns | `.github/skills/*/references/` |
-| **🆕 Self-Learning** | Meta-agent evolution system | `.github/skills/agent-evolution-agent/` |
-| **🆕 Dogfooding Guide** | Agent self-improvement workflows | `.github/DOGFOODING-GUIDE.md` |
+| **🆕 Subdomain Intelligence** | Reference agent system for subdomains | `.github/subdomain/` |
+| **Self-Learning** | Meta-agent evolution system | `.github/skills/agent-evolution-agent/` |
+| **Dogfooding Guide** | Agent self-improvement workflows | `.github/DOGFOODING-GUIDE.md` |
 
 ---
 
@@ -68,6 +69,32 @@
 - Average Spec Coverage: **80%** (was 23%)
 - Optimal Agents: **9/18 (50%)** (was 4/18)
 - Total Spec References Added: **40+**
+
+---
+
+## 📦 Subdomain Intelligence System
+
+**Location**: `.github/subdomain/`  
+**Purpose**: Reference Copilot agent intelligence for subdomain repositories
+
+Subdomain repos copy this directory's contents into their `.github/` to gain AI-assisted development aligned with the theme's ontology.
+
+**Contents**:
+
+| File | Purpose |
+|------|---------|
+| `copilot-instructions.md` | Main Copilot context (architecture, ontology, patterns) |
+| `instructions/content.instructions.md` | Content authoring (front matter, Markdown, HTML) |
+| `instructions/scss.instructions.md` | Zero-raw-CSS ontology-only SCSS rules |
+| `instructions/js.instructions.md` | Progressive enhancement JS standards |
+| `prompts/content-author.prompt.md` | Content page creation agent |
+
+**Setup**:
+```bash
+cp -r <theme-repo>/.github/subdomain/* <subdomain-repo>/.github/
+```
+
+→ **Full guide**: `.github/subdomain/README.md`
 
 ---
 
@@ -340,6 +367,12 @@ npm run lint:scss:fix
 │
 ├── prompts/ - Detailed agent instructions
 │   └── {agent-name}.prompt.md
+│
+├── subdomain/ - 📦 Reference intelligence for subdomain repos
+│   ├── README.md - Setup and usage guide
+│   ├── copilot-instructions.md - Main Copilot context
+│   ├── instructions/ - Subdomain coding standards
+│   └── prompts/ - Subdomain agent workflows
 │
 └── instructions/ - Coding standards
     ├── scss.instructions.md

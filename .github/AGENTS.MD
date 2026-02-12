@@ -1,9 +1,18 @@
-# 🤖 ASI Saga - Agent Ecosystem Architecture v2.3.1
+# 🤖 ASI Saga - Agent Ecosystem Architecture v2.4
 
-**Last Updated**: 2026-02-10  
-**Version**: 2.3.1 - Added Protected Agents Directory
+**Last Updated**: 2026-02-12  
+**Version**: 2.4 - Subdomain Intelligence System
 
 This document describes the AI agent ecosystem that governs the ASI Saga theme repository, implementing the evolutionary mechanism for the Genesis Semantic Design System.
+
+---
+
+## 🆕 Version 2.4 Enhancements
+
+- **Subdomain Intelligence System**: Reference `.github/subdomain/` template for subdomain repos
+- **Theme-Subdomain Coherence**: Shared vocabulary and aligned agent standards
+- **Content Author Agent**: New agent prompt for subdomain content creation
+- **Subdomain Instructions**: Focused coding standards for content-only repositories
 
 ---
 
@@ -77,6 +86,7 @@ The agent intelligence system is organized across multiple directories in `.gith
 ├── instructions/     # 📋 Coding standards (path-specific)
 ├── prompts/          # 🤖 Agent instructions (detailed workflows)
 ├── skills/           # 🛠️ Executable capabilities (reusable)
+├── subdomain/        # 📦 Reference intelligence for subdomain repos
 ├── AGENTS.MD         # 📚 Ecosystem architecture (this file)
 ├── AGENT-INDEX.md    # 🚀 Quick navigation
 └── DOGFOODING-GUIDE.md  # 🔄 Self-improvement workflows
@@ -95,6 +105,9 @@ Detailed agent instruction files defining HOW agents execute tasks. Include work
 
 **`.github/skills/`** 🛠️  
 Executable agent capabilities following the Agent Skills specification. Each skill includes validation scripts, references, and reusable patterns.
+
+**`.github/subdomain/`** 📦  
+Reference GitHub Copilot coding agent intelligence system for subdomain repositories. Subdomain repos copy this directory's contents into their own `.github/` to gain coherent AI-assisted development aligned with the theme's ontological architecture.
 
 ---
 
@@ -688,6 +701,58 @@ Theme Agent should review:
 
 ---
 
+## 📦 Subdomain Intelligence System
+
+### Purpose
+
+The `.github/subdomain/` directory provides a **reference GitHub Copilot coding agent intelligence system** that subdomain repositories copy into their own `.github/`. This ensures coherent AI-assisted development across the entire ASI Saga ecosystem.
+
+### Architecture
+
+```
+Theme repo (.github/)              Subdomain repo (.github/)
+├── agents/         🔒             ├── copilot-instructions.md  ← from subdomain/
+├── instructions/   📋             ├── instructions/             ← from subdomain/
+├── prompts/        🤖             │   ├── content.instructions.md
+├── skills/         🛠️             │   ├── scss.instructions.md
+├── subdomain/      📦 ──copy──→   │   └── js.instructions.md
+│   ├── copilot-instructions.md    └── prompts/                  ← from subdomain/
+│   ├── instructions/                  └── content-author.prompt.md
+│   ├── prompts/
+│   └── README.md
+└── AGENTS.MD
+```
+
+### What Subdomains Get
+
+| File | Purpose |
+|------|---------|
+| `copilot-instructions.md` | Main Copilot context (architecture, ontology reference, patterns) |
+| `instructions/content.instructions.md` | Content authoring standards (front matter, Markdown, HTML) |
+| `instructions/scss.instructions.md` | Zero-raw-CSS ontology-only SCSS rules |
+| `instructions/js.instructions.md` | Progressive enhancement JavaScript standards |
+| `prompts/content-author.prompt.md` | Agent for creating well-structured content pages |
+
+### Theme-Subdomain Coherence
+
+The subdomain system ensures AI agents across all repositories share:
+
+1. **Shared vocabulary** — Genesis Ontological terminology (6 categories, 31+ variants)
+2. **Aligned standards** — Same semantic HTML, accessibility, and naming conventions
+3. **Clear boundaries** — Subdomains know what they own (content) vs. what theme owns (presentation)
+4. **Evolution pathway** — Subdomains can propose ontological evolutions through the established PR process
+
+### Setup for New Subdomains
+
+```bash
+# Copy reference intelligence to subdomain
+cp -r <theme-repo>/.github/subdomain/* <subdomain-repo>/.github/
+```
+
+→ **Full setup guide**: `.github/subdomain/README.md`
+
+---
+
 ## 📜 Appendix: Ontological Categories Reference
 
 ### Quick Reference for Agents
@@ -713,7 +778,7 @@ Theme Agent should review:
 ---
 
 **Status**: ✅ Active  
-**Version**: 2.3.1 - Added `.github/agents/` directory  
+**Version**: 2.4 - Subdomain Intelligence System  
 **Maintainer**: Theme Genome Agent  
 **Last Review**: 2026-02-10
 
