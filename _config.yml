@@ -1,0 +1,35 @@
+title: ASI Saga Design Genome
+description: Genesis of Artificial Superintelligence
+
+sass:
+  load_paths:
+    - _sass
+    - assets/css
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-remote-theme
+
+remote_theme:.
+
+exclude:
+  - docs/
+  - LICENSE
+  - README.md
+  - website_structure.json
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - lint-scss-mixins.js
+  - compile-scss.js
+  - detect-raw-css.js
+  - playwright.config.js
+  - .stylelintrc.json
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
