@@ -1,0 +1,29 @@
+{
+  "name": "asisaga-subdomain",
+  "version": "1.0.0",
+  "description": "ASI Saga Subdomain - Content repository using theme.asisaga.com via remote_theme",
+  "private": true,
+  "scripts": {
+    "lint:scss": "stylelint \"_sass/**/*.scss\"",
+    "lint:scss:fix": "stylelint \"_sass/**/*.scss\" --fix",
+    "lint:scss:report": "stylelint \"_sass/**/*.scss\" --formatter verbose",
+    "test:scss": "sass --no-source-map --load-path=_sass _sass/_test-compile.scss /tmp/test-compile.css",
+    "test:scss:verbose": "sass --no-source-map --load-path=_sass --verbose _sass/_test-compile.scss /tmp/test-compile.css",
+    "test": "npm run test:scss && npm run lint:scss"
+  },
+  "keywords": [
+    "jekyll",
+    "subdomain",
+    "content",
+    "asisaga"
+  ],
+  "author": "ASI Saga",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.97.2",
+    "stylelint": "^16.12.0",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "stylelint-order": "^6.0.4",
+    "stylelint-scss": "^6.10.0"
+  }
+}

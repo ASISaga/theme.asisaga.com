@@ -159,3 +159,6 @@ Before committing SCSS:
 - [ ] SCSS nesting mirrors HTML structure
 - [ ] Max 3 nesting levels
 - [ ] Page-specific components only (shared components go to theme)
+- [ ] Run `npm run test:scss` — Verify SCSS compiles
+- [ ] Run `npm run lint:scss` — Check code quality
+- [ ] All tests pass before committing

@@ -46,7 +46,17 @@ Ensure your subdomain's `_config.yml` references the theme:
 remote_theme: ASISaga/theme.asisaga.com
 ```
 
-### 3. Customize
+### 3. Install Development Dependencies
+
+Install npm packages for linting and testing:
+
+```bash
+npm install
+```
+
+This installs Sass compiler, Stylelint, and required plugins for SCSS validation.
+
+### 4. Customize
 
 Edit `copilot-instructions.md` to set your subdomain name and any domain-specific context.
 
@@ -68,6 +78,27 @@ Subdomain repositories are **content-only** with HTML pages and optional page-sp
 - Theme's `assets/css/style.scss` imports `_sass/common.scss` (which includes ontology)
 - At build time, Jekyll merges theme's `style.scss` with subdomain's `_sass/main.scss`
 - Theme layouts automatically load `assets/js/common.js` then `assets/js/script.js`
+
+## Testing & Linting
+
+The subdomain reference template includes npm scripts for SCSS testing and linting:
+
+```bash
+npm test              # Run SCSS compilation test + stylelint
+npm run test:scss     # Test SCSS compilation (catches undefined mixins)
+npm run lint:scss     # Run stylelint on _sass/**/*.scss
+npm run lint:scss:fix # Auto-fix stylelint issues
+```
+
+**Pre-commit workflow:**
+1. `npm run test:scss` — Verify SCSS compiles without errors
+2. `npm run lint:scss` — Check code quality and style
+3. `npm test` — Run both checks together
+
+**Configuration files included:**
+- `package.json` — npm scripts and dependencies
+- `.stylelintrc.yml` — Stylelint rules for subdomain SCSS
+- `_sass/_test-compile.scss` — SCSS compilation test file
 
 ## File Purposes
 
