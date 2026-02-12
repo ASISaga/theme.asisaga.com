@@ -712,35 +712,43 @@ The `.github/subdomain/` directory provides a **reference GitHub Copilot coding 
 ```
 Theme repo (.github/)              Subdomain repo (.github/)
 ├── agents/         🔒             ├── copilot-instructions.md  ← from subdomain/
-├── instructions/   📋             ├── instructions/             ← from subdomain/
-├── prompts/        🤖             │   ├── content.instructions.md
-├── skills/         🛠️             │   ├── scss.instructions.md
-├── subdomain/      📦 ──copy──→   │   └── js.instructions.md
-│   ├── copilot-instructions.md    └── prompts/                  ← from subdomain/
-│   ├── instructions/                  └── content-author.prompt.md
-│   ├── prompts/
-│   └── README.md
-└── AGENTS.MD
+├── instructions/   📋             ├── agents/                   ← from subdomain/
+├── prompts/        🤖             │   ├── content-author.agent.md
+├── skills/         🛠️             │   ├── scss-compliance.agent.md
+├── subdomain/      📦 ──copy──→   │   └── subdomain-evolution.agent.md
+│   ├── copilot-instructions.md    ├── instructions/             ← from subdomain/
+│   ├── agents/                    │   ├── content.instructions.md
+│   ├── instructions/              │   ├── scss.instructions.md
+│   ├── prompts/                   │   └── js.instructions.md
+│   ├── skills/                    ├── prompts/                  ← from subdomain/
+│   └── README.md                  │   └── content-author.prompt.md
+└── AGENTS.MD                      └── skills/                   ← from subdomain/
+                                       ├── content-author/SKILL.md
+                                       ├── scss-compliance/SKILL.md
+                                       └── subdomain-evolution/SKILL.md
 ```
 
 ### What Subdomains Get
 
-| File | Purpose |
-|------|---------|
+| Directory/File | Purpose |
+|---------------|---------|
 | `copilot-instructions.md` | Main Copilot context (architecture, ontology reference, patterns) |
+| `agents/` | GitHub Copilot Custom Agent definitions (3 agents) |
 | `instructions/content.instructions.md` | Content authoring standards (front matter, Markdown, HTML) |
 | `instructions/scss.instructions.md` | Zero-raw-CSS ontology-only SCSS rules |
 | `instructions/js.instructions.md` | Progressive enhancement JavaScript standards |
-| `prompts/content-author.prompt.md` | Agent for creating well-structured content pages |
+| `prompts/content-author.prompt.md` | Agent prompt for content creation workflows |
+| `skills/` | Agent skill definitions (3 skills: content, SCSS, evolution) |
 
 ### Theme-Subdomain Coherence
 
 The subdomain system ensures AI agents across all repositories share:
 
 1. **Shared vocabulary** — Genesis Ontological terminology (6 categories, 31+ variants)
-2. **Aligned standards** — Same semantic HTML, accessibility, and naming conventions
-3. **Clear boundaries** — Subdomains know what they own (content) vs. what theme owns (presentation)
-4. **Evolution pathway** — Subdomains can propose ontological evolutions through the established PR process
+2. **Shared formats** — `.agent.md` (Copilot Custom Agents) and `SKILL.md` (Agent Skills spec)
+3. **Aligned standards** — Same semantic HTML, accessibility, and naming conventions
+4. **Clear boundaries** — Subdomains know what they own (content) vs. what theme owns (presentation)
+5. **Evolution pathway** — Subdomains can propose ontological evolutions through the established PR process
 
 ### Setup for New Subdomains
 

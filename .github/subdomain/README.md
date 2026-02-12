@@ -22,12 +22,20 @@ Your subdomain `.github/` should then contain:
 ```
 .github/
 ├── copilot-instructions.md   # Main Copilot context
+├── agents/                    # GitHub Copilot Custom Agent definitions
+│   ├── content-author.agent.md
+│   ├── scss-compliance.agent.md
+│   └── subdomain-evolution.agent.md
 ├── instructions/              # Coding standards
 │   ├── content.instructions.md
 │   ├── scss.instructions.md
 │   └── js.instructions.md
-└── prompts/                   # Agent workflows
-    └── content-author.prompt.md
+├── prompts/                   # Agent workflows
+│   └── content-author.prompt.md
+└── skills/                    # Agent skill definitions
+    ├── content-author/SKILL.md
+    ├── scss-compliance/SKILL.md
+    └── subdomain-evolution/SKILL.md
 ```
 
 ### 2. Verify Theme Dependency
@@ -61,6 +69,9 @@ Subdomain repositories are **content-only**. The theme repository provides all l
 ### `copilot-instructions.md`
 Main context file for GitHub Copilot. Provides the agent with understanding of the theme-subdomain architecture, available ontological mixins, and content creation standards.
 
+### `agents/`
+GitHub Copilot Custom Agent definitions (`.agent.md` format). Three subdomain-scoped agents for content authoring, SCSS compliance, and ontological evolution. See `agents/README.md`.
+
 ### `instructions/content.instructions.md`
 Standards for creating Markdown and HTML content pages. Covers front matter, semantic structure, and content organization.
 
@@ -72,6 +83,9 @@ Standards for subdomain JavaScript. Covers progressive enhancement, `data-*` att
 
 ### `prompts/content-author.prompt.md`
 Agent prompt for content creation workflows. Guides AI in creating well-structured, accessible content pages.
+
+### `skills/`
+Agent skill definitions (SKILL.md format). Three subdomain-scoped skills for content authoring, SCSS compliance, and ontological proposition creation. See `skills/README.md`.
 
 ## Relationship to Theme Intelligence System
 
@@ -94,7 +108,8 @@ The subdomain intelligence system is a **focused subset** designed for content-o
 1. **Theme agents** manage the ontology, layouts, and styling infrastructure
 2. **Subdomain agents** create content using theme layouts and propose ontological evolutions
 3. **Shared vocabulary**: Both use Genesis Ontological terminology
-4. **Evolution flow**: Subdomain identifies gap → proposes to theme → theme reviews → implements
+4. **Shared format**: Both use `.agent.md` (GitHub Copilot Custom Agents) and `SKILL.md` (Agent Skills spec)
+5. **Evolution flow**: Subdomain identifies gap → proposes to theme → theme reviews → implements
 
 ## Ontological Propositions
 

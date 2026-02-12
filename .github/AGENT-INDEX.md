@@ -81,13 +81,16 @@ Subdomain repos copy this directory's contents into their `.github/` to gain AI-
 
 **Contents**:
 
-| File | Purpose |
-|------|---------|
+| Directory/File | Purpose |
+|---------------|---------|
 | `copilot-instructions.md` | Main Copilot context (architecture, ontology, patterns) |
-| `instructions/content.instructions.md` | Content authoring (front matter, Markdown, HTML) |
-| `instructions/scss.instructions.md` | Zero-raw-CSS ontology-only SCSS rules |
-| `instructions/js.instructions.md` | Progressive enhancement JS standards |
-| `prompts/content-author.prompt.md` | Content page creation agent |
+| `agents/` | 3 GitHub Copilot Custom Agents (content, SCSS, evolution) |
+| `instructions/` | 3 coding standards (content, SCSS, JS) |
+| `prompts/` | Agent workflow prompts (content-author) |
+| `skills/` | 3 Agent Skills (content, SCSS compliance, evolution) |
+
+**Agents**: `content-author`, `scss-compliance`, `subdomain-evolution`  
+**Skills**: `content-author`, `scss-compliance`, `subdomain-evolution`
 
 **Setup**:
 ```bash
@@ -371,8 +374,10 @@ npm run lint:scss:fix
 ├── subdomain/ - 📦 Reference intelligence for subdomain repos
 │   ├── README.md - Setup and usage guide
 │   ├── copilot-instructions.md - Main Copilot context
+│   ├── agents/ - GitHub Copilot Custom Agent definitions
 │   ├── instructions/ - Subdomain coding standards
-│   └── prompts/ - Subdomain agent workflows
+│   ├── prompts/ - Subdomain agent workflows
+│   └── skills/ - Subdomain agent skill definitions
 │
 └── instructions/ - Coding standards
     ├── scss.instructions.md
