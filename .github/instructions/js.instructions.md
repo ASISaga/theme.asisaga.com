@@ -46,9 +46,15 @@ setupCardHover(card);
 ## Entry Points & Structure
 
 - Theme main entry: `assets/js/common.js` (loaded via `_includes/head.html`)
-- Subdomain entry: `assets/js/script.js` (imports `common.js` first)
+- Subdomain entry: `assets/js/script.js` (MANDATORY - loaded after `common.js`)
 - Use ES6 modules and `import`/`export` syntax
 - Shared JS in `assets/js/common/`
+
+**Subdomain `script.js` requirement:**
+- Every subdomain MUST have `assets/js/script.js`
+- Loaded automatically by theme layouts after `common.js`
+- Can use utilities from theme's `common.js`
+- Progressive enhancement pattern required
 
 ## DOM Hooks & Eventing
 
