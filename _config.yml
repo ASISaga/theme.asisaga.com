@@ -19,6 +19,7 @@ exclude:
   - docs/
   - LICENSE
   - README.md
+  - CHANGELOG.md
   - website_structure.json
   - node_modules/
   - package.json
