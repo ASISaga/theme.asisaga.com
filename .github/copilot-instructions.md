@@ -32,7 +32,8 @@ The ontological design system follows a three-tier architecture:
 - **`.github/instructions/html.instructions.md`** — Semantic HTML, accessibility, Jekyll/Liquid
 - **`.github/instructions/js.instructions.md`** — Progressive enhancement, Motion library, interaction patterns
 - **`.github/instructions/docs.instructions.md`** — Documentation standards, version tracking, archival
-- **`.github/instructions/github.instructions.md`** — Agent ecosystem, prompts, skills, validation
+- **`.github/instructions/github-agent-system.instructions.md`** — Generic agent intelligence framework (reusable)
+- **`.github/instructions/theme-specific.instructions.md`** — Theme-only patterns (Ontological Propositions, subdomain system)
 
 **DO NOT duplicate these instructions**. They are loaded automatically by GitHub Copilot based on file path.
 

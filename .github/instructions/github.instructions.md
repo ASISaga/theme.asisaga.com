@@ -1,149 +1,80 @@
 ---
 applyTo: ".github/**/*.md,.github/**/*.prompt.md,.github/skills/**/*"
-description: "GitHub Copilot agent instructions for .github directory: prompts, skills, and agent documentation"
+description: "GitHub Copilot agent instructions - pointer to generic framework and theme-specific patterns"
 ---
 
 # GitHub Agent Instructions
 
-## PRIMARY METHOD: Tool Leverage, Not Replacement
+**This file is now a navigation pointer to separated generic and theme-specific instructions.**
 
-**AI agents SUPERCHARGE existing tools (linters, validation scripts, npm commands), not replace them.**
+## 📚 Instruction Files
 
-### Quick Start Templates
+### Generic Framework (Reusable Across Repositories)
 
-**Agent prompt** (`.prompt.md`):
-```yaml
----
-description: "Brief (1-256 chars)"
-name: "agent_name"  # snake_case
-agent: "agent"
-model: "claude-3-5-sonnet-20241022"
-tools: ['*']
----
-```
+→ **`.github/instructions/github-agent-system.instructions.md`**
 
-**Agent skill** (`SKILL.md`):
-```yaml
----
-name: skill-name  # kebab-case
-description: One-sentence purpose (1-1024 chars)
-license: MIT
-metadata:
-  author: ASISaga
-  version: "2.1"
-  category: design-system
-  role: specialist-role
-allowed-tools: Bash(npm:*) Read
----
-```
+Complete reusable framework for establishing GitHub Copilot agent intelligence systems:
+- Ouroboros & dogfooding philosophy
+- Five-pillar structure (agents, instructions, prompts, skills, copilot-instructions.md)
+- Agent/prompt/skill templates
+- Validation workflows
+- Tool integration patterns
+- Context window optimization
+- Repository adaptation guide
 
-→ **Complete guidelines**: `/docs/specifications/github-copilot-agent-guidelines.md`
+**Copy this file to any repository** to establish best-practice Copilot agent ecosystem.
 
-## MANDATORY RULES
+### Theme-Specific Patterns (This Repository Only)
 
-**Prompts**: YAML frontmatter, snake_case names, reference tools, no duplication  
-**Skills**: kebab-case, Purpose→When→Workflows→Validation structure, scripts in `scripts/`, specs in `references/`  
-**Docs**: Version headers, update (don't create new), no duplication
+→ **`.github/instructions/theme-specific.instructions.md`**
 
-## Tool Integration (REQUIRED)
+Genesis Ontological Design System theme-specific patterns:
+- Ontological Proposition System
+- Subdomain intelligence system (`.github/subdomain/`)
+- Theme vs subdomain responsibilities
+- Theme-specific npm scripts
+- Theme-specific validation scripts
 
-**npm scripts**: `npm test`, `npm run test:scss`, `npm run lint:scss`  
-**Validation scripts**: `./.github/skills/[agent]/scripts/validate-*.sh`  
-**Linters**: Stylelint (`.stylelintrc.json`), Sass compiler, custom scripts
+**DO NOT copy to other repositories** unless implementing similar theme/subdomain architecture.
 
-→ **All scripts**: `.github/skills/agent-evolution-agent/scripts/README.md`
+## Quick Reference
 
-## Agent Ecosystem Structure
+**For generic agent work:**
+- Read: `github-agent-system.instructions.md`
+- Follow: Generic templates and patterns
+- Copy: To other repositories as needed
 
-```
-.github/
-├── agents/           # 🔒 Internal configurations (protected access)
-├── instructions/     # 📋 Coding standards
-├── prompts/          # 🤖 Agent instructions
-├── skills/           # 🛠️ Executable capabilities
-└── subdomain/        # 📦 Reference intelligence for subdomain repos
-```
+**For theme-specific work:**
+- Read: `theme-specific.instructions.md`
+- Follow: Ontological Proposition System
+- Coordinate: With subdomain repositories
 
-**Protected Directory**: `.github/agents/` contains internal agent coordination logic. Agents cannot access this directory during normal task execution to maintain clean separation between task work and system coordination.
+**For detailed specifications:**
+- Read: `/docs/specifications/github-copilot-agent-guidelines.md`
+- Review: `.github/AGENTS.MD` for complete ecosystem
 
-**Subdomain Directory**: `.github/subdomain/` contains a reference GitHub Copilot coding agent intelligence system that subdomain repositories copy into their `.github/`. See `.github/subdomain/README.md` for setup.
+## Migration from v1.5
 
-## Skill Directory Structure
+**v2.0 changes (2026-02-13):**
+- Split into generic framework + theme-specific
+- Generic content → `github-agent-system.instructions.md` (16KB, MIT licensed)
+- Theme-specific content → `theme-specific.instructions.md` (10KB)
+- This file → Navigation pointer
+- Optimal context window usage
+- Reusable across repositories
 
-```
-.github/skills/agent-name/
-├── SKILL.md           # Main definition
-├── scripts/           # Validation scripts
-├── references/        # Detailed specs
-└── assets/            # Visual examples (optional)
-```
+**What's where:**
 
-**Categories**: design-system, testing, documentation, automation, meta-intelligence  
-**Roles**: lead-architect, specialist, expert, migration, semantic-structure
-
-## Validation
-
-**Before committing:**
-1. YAML frontmatter valid
-2. Names match conventions (snake_case prompts, kebab-case skills)
-3. Tools explicitly listed
-4. Run `npm test`
-5. Test validation scripts
-
-**Scripts must**: Be executable, return exit codes, integrate existing tools
-
-## Documentation Updates
-
-**Core files**: `AGENTS.MD` (~600L), `AGENT-INDEX.md` (~400L), `AGENT-QUICK-REFERENCE.md`, `AGENT-WORKFLOWS.md`
-
-**Version tracking**:
-```markdown
-**Version**: X.Y.Z - Enhancement  
-**Last Updated**: YYYY-MM-DD
-```
-
-## Anti-Patterns
-
-❌ Duplicate tool functionality (npm, linters)  
-❌ Overlapping agent responsibilities  
-❌ Static content in SKILL.md (use `references/`)  
-❌ Validate without scripts  
-❌ Skip tool declarations
-
-✅ Reference npm scripts  
-✅ Clear agent boundaries  
-✅ Offload to `references/*.md`  
-✅ Automate via `scripts/*.sh`  
-✅ Maintain version history
-
-## Ontological Proposition System
-
-**Evolutionary mechanism:**
-1. Subdomain Evolution Agent identifies gap
-2. Creates proposition PR
-3. Theme Genome Agent reviews (semantic, redundancy, universal)
-4. If approved, implements in engine
-5. Documents in GENOME.md
-
-→ **Template**: `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md`
-
-## Documentation References
-
-**Complete guidelines**:
-- `/docs/specifications/github-copilot-agent-guidelines.md` - **Comprehensive agent development**
-- `/docs/specifications/agent-self-learning-system.md` - Dogfooding & continuous learning
-- `.github/AGENTS.MD` - Ecosystem architecture
-- `.github/AGENT-INDEX.md` - Quick navigation
-
-**Test pages** (organized in `/tests/`):
-- `/tests/README.md` - Complete test page catalog and organization
-- Test pages moved from root to categorized subdirectories
-- Integration with agent testing workflows
-
-**Related instructions**: scss.instructions.md, html.instructions.md, js.instructions.md, docs.instructions.md
+| Content | v1.5 Location | v2.0 Location |
+|---------|---------------|---------------|
+| Generic framework | `github.instructions.md` | `github-agent-system.instructions.md` |
+| Ontological Propositions | `github.instructions.md` | `theme-specific.instructions.md` |
+| Subdomain references | `github.instructions.md` | `theme-specific.instructions.md` |
+| Tool integration | `github.instructions.md` | Both (generic + theme-specific) |
+| Templates | `github.instructions.md` | `github-agent-system.instructions.md` |
 
 ---
 
 **Applies to**: `.github/**/*.md`, `.github/**/*.prompt.md`, `.github/skills/**/*`  
-**Version**: 1.5 - Added .github/subdomain/ directory reference  
-**Last Updated**: 2026-02-12
+**Version**: 2.0.0 - Split into generic + theme-specific  
+**Last Updated**: 2026-02-13
