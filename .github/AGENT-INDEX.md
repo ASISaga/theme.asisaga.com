@@ -1,8 +1,23 @@
-# 🚀 Agent Ecosystem - Supercharged v2.4
+# 🚀 Agent Ecosystem - Supercharged v2.5
 
-**Version**: 2.4 - Subdomain Intelligence System  
-**Last Updated**: 2026-02-12  
+**Version**: 2.5 - Generic Agent Intelligence Framework  
+**Last Updated**: 2026-02-13  
 **Status**: Production Ready with Continuous Evolution
+
+---
+
+## 🆕 Version 2.5: Generic Framework
+
+**Reusable agent intelligence system** now available:
+
+| File | Lines | Purpose | License |
+|------|-------|---------|---------|
+| `instructions/github-agent-system.instructions.md` | 682 | Generic framework | MIT ✅ |
+| `instructions/theme-specific.instructions.md` | 287 | Theme-only | Repository |
+| `instructions/TEMPLATE-EXTRACTION-GUIDE.md` | 616 | Adaptation guide | MIT ✅ |
+| `instructions/README.md` | 228 | Navigation | MIT ✅ |
+
+**Copy the generic framework to any repository** for instant agent intelligence!
 
 ---
 

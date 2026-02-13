@@ -134,7 +134,9 @@ grep -r "@import.*ontology/index" _sass/ --include="*.scss"
 ### Instruction Files
 - `.github/instructions/scss.instructions.md`
 - `.github/instructions/html.instructions.md`
-- `.github/instructions/github.instructions.md`
+- `.github/instructions/github-agent-system.instructions.md` - Generic framework (reusable)
+- `.github/instructions/theme-specific.instructions.md` - Theme-only patterns
+- `.github/instructions/github.instructions.md` - Navigation pointer
 
 ### New Files
 - `/tests/README.md`

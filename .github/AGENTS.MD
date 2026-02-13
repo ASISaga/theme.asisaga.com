@@ -1,9 +1,25 @@
-# 🤖 ASI Saga - Agent Ecosystem Architecture v2.4
+# 🤖 ASI Saga - Agent Ecosystem Architecture v2.5
 
-**Last Updated**: 2026-02-12  
-**Version**: 2.4 - Subdomain Intelligence System
+**Last Updated**: 2026-02-13  
+**Version**: 2.5 - Generic Agent Intelligence Framework
 
 This document describes the AI agent ecosystem that governs the ASI Saga theme repository, implementing the evolutionary mechanism for the Genesis Semantic Design System.
+
+---
+
+## 🆕 Version 2.5 Enhancements
+
+- **Generic Agent Intelligence Framework**: Extracted reusable framework to `github-agent-system.instructions.md` (MIT licensed)
+- **Theme-Specific Separation**: Isolated theme-only patterns to `theme-specific.instructions.md`
+- **Repository Adaptation Guide**: Comprehensive `TEMPLATE-EXTRACTION-GUIDE.md` for using framework in any repository
+- **Optimal Context Window**: Eliminated duplication between generic/theme-specific instructions
+- **Ouroboros Documentation**: Explicit dogfooding and self-improvement patterns
+
+**New files:**
+- `.github/instructions/github-agent-system.instructions.md` (682 lines, reusable)
+- `.github/instructions/theme-specific.instructions.md` (287 lines, theme-only)
+- `.github/instructions/README.md` (navigation and best practices)
+- `.github/instructions/TEMPLATE-EXTRACTION-GUIDE.md` (step-by-step adaptation)
 
 ---
 
