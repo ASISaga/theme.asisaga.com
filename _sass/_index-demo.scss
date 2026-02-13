@@ -252,6 +252,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: clamp(1rem, 2vw, 2rem);
+  width: 100%;
+  max-width: 100%;
+  
+  // MOBILE: Single column below 768px for better readability
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .bento-card {
@@ -261,6 +268,8 @@
   border-radius: clamp(0.75rem, 1.5vw, 1.25rem);
   border: 1px solid oklch(0.35 0.05 248 / 0.4);
   transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
   
   &:hover {
     transform: translateY(-4px);
@@ -408,12 +417,20 @@
   padding: clamp(1.5rem, 3vw, 2rem);
   border-radius: 1rem;
   border: 1px solid oklch(0.30 0.04 250 / 0.3);
+  width: 100%;
+  box-sizing: border-box;
   
   h3 {
     font-size: 1.125rem;
     font-weight: 600;
     color: oklch(0.85 0.18 85);
     margin-bottom: 1.5rem;
+  }
+  
+  &--wide {
+    @media (min-width: 768px) {
+      grid-column: 1 / -1;
+    }
   }
 }
 
