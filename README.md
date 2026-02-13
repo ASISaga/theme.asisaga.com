@@ -478,6 +478,63 @@ See [Subdomain Evolution Agent guide](.github/prompts/subdomain-evolution-agent.
 
 ---
 
+## 🧪 Testing
+
+### Structural Regression Testing
+
+The theme includes comprehensive Playwright tests for the live demo page:
+
+```bash
+# Run all tests against live site
+npm run test:e2e
+
+# Run tests against local Jekyll server
+npm run test:e2e:local
+
+# Run with visible browser
+npm run test:e2e:headed
+
+# View interactive Playwright UI
+npm run test:e2e:ui
+
+# View HTML test report
+npm run test:e2e:report
+```
+
+**Test Coverage**:
+- ✅ Semantic HTML structure and accessibility
+- ✅ Responsive behavior across viewports (mobile, tablet, desktop)
+- ✅ Component presence and structure
+- ✅ Landmark elements and navigation
+- ✅ CSS loading and ontological classes
+- ✅ JavaScript features and interactivity
+- ✅ Performance and load times
+
+See **[Playwright Testing Guide](/docs/PLAYWRIGHT-TESTING.md)** for complete documentation.
+
+### SCSS Testing
+
+```bash
+# SCSS compilation test
+npm run test:scss
+
+# SCSS linting
+npm run lint:scss
+
+# Run all tests
+npm test
+```
+
+### CI/CD Integration
+
+Tests run automatically via GitHub Actions:
+- On push/PR to main branch
+- Weekly scheduled runs (Sundays)
+- Manual trigger support
+- Artifacts uploaded (reports, screenshots)
+
+---
+
 ## 📜 License
 
 This theme is part of the ASI Saga ecosystem. See [LICENSE](LICENSE) for details.
