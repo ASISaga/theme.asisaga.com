@@ -30,3 +30,8 @@ header-navbar-test.html
 playwright-report/
 test-results/
 playwright/.cache/
+
+# Agent metrics (keep directory and README, track baseline and latest manually)
+.github/metrics/metrics-*.txt
+!.github/metrics/metrics-baseline-*.txt
+!.github/metrics/README.md

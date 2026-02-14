@@ -113,15 +113,52 @@ The system should grow organically based on real needs:
 - 📉 Agents unable to find relevant information
 - 📉 Metrics stagnating or declining
 
+## Active Implementation
+
+**Dogfooding is now automated** - not just philosophy:
+
+### CI/CD Workflow
+`.github/workflows/agent-quality.yml` runs automatically:
+- Every PR affecting agent files
+- Weekly on Sunday (continuous improvement)
+- Manual workflow dispatch
+
+**Validates**:
+- Agent quality metrics
+- Duplication detection
+- Spec synchronization
+- Improvement recommendations
+
+### NPM Scripts
+```bash
+npm run dogfood              # Complete validation suite
+npm run validate:agents      # Quality audit
+npm run audit:agents         # Get recommendations
+npm run metrics:agents       # Track trends
+```
+
+### Metrics Tracking
+`.github/metrics/` stores historical data:
+- Baseline established: 2026-02-14
+- 26 agents analyzed
+- 52% spec coverage (target: ≥90%)
+- 39/100 context efficiency (target: ≥85)
+- 16 agents need improvement
+
+**Goal**: Ouroboros loop - agents continuously improving agents
+
 ## References
 
 **Related Documentation**:
 - `.github/specs/agent-intelligence-framework.md` - Complete framework specification
 - `.github/docs/dogfooding-guide.md` - Self-improvement workflows
 - `.github/docs/agent-metrics.md` - Measuring system health
+- `.github/docs/conventional-tools.md` - All validation commands
 - `.github/docs/agent-onboarding.md` - Training new agents in these principles
+- `.github/workflows/agent-quality.yml` - Automated quality checks
 
 ---
 
-**Version**: 1.0  
+**Version**: 1.1 - Added active implementation section  
+**Last Updated**: 2026-02-14  
 **Purpose**: Define philosophical foundation for agent intelligence system
