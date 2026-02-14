@@ -32,7 +32,9 @@ The ontological design system follows a three-tier architecture:
 - **`.github/instructions/html.instructions.md`** — Semantic HTML, accessibility, Jekyll/Liquid
 - **`.github/instructions/js.instructions.md`** — Progressive enhancement, Motion library, interaction patterns
 - **`.github/instructions/docs.instructions.md`** — Documentation standards, version tracking, archival
-- **`.github/instructions/github.instructions.md`** — Agent system file standards
+- **`.github/instructions/agents.instructions.md`** — Custom agent file standards
+- **`.github/instructions/prompts.instructions.md`** — Agent prompt file standards
+- **`.github/instructions/skills.instructions.md`** — Agent skill file standards
 
 **DO NOT duplicate these instructions**. They are loaded automatically by GitHub Copilot based on file path.
 
@@ -81,7 +83,9 @@ This repository uses a structured GitHub Copilot agent intelligence system:
 │   ├── html.instructions.md   # Semantic HTML & Jekyll
 │   ├── js.instructions.md     # JavaScript & Motion library
 │   ├── docs.instructions.md   # Documentation standards
-│   └── github.instructions.md # Agent system files
+│   ├── agents.instructions.md # Custom agent files
+│   ├── prompts.instructions.md # Agent prompt files
+│   └── skills.instructions.md # Agent skill files
 ├── specs/                      # Agent specifications & frameworks
 ├── docs/                       # Agent system documentation
 ├── agents/                     # Custom agents (*.agent.md)
