@@ -95,7 +95,7 @@ The Genesis Semantic Engine launched with a three-tier architecture and six core
 - Established Ontological Proposition PR process
 - Created Theme Genome Agent for evolution management
 - Documented all 31 variants in INTEGRATION-GUIDE.md
-- Launched agent ecosystem (AGENTS.MD)
+- Launched agent system documentation (.github/docs/)
 
 **Impact**:
 - Foundation for subdomain evolution mechanism
@@ -867,7 +867,8 @@ The Genesis Semantic Engine launched with a three-tier architecture and six core
 
 **Core Documents**:
 - This file (GENOME.md) - Evolutionary history
-- AGENTS.MD - Agent ecosystem architecture
+- .github/docs/ - Agent system documentation
+- .github/specs/ - Technical specifications
 - INTEGRATION-GUIDE.md - Complete API reference
 - Refactor-agent.md - Migration workflow
 - IMPLEMENTATION-SUMMARY.md - Technical status

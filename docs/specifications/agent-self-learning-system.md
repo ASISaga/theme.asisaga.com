@@ -431,4 +431,4 @@ bash -x ./scripts/audit-agent-quality.sh
 - `.github/skills/agent-evolution-agent/SKILL.md` - Skill definition
 - `.github/skills/agent-evolution-agent/references/SELF-LEARNING-ARCHITECTURE.md` - Architecture
 - `/docs/specifications/github-copilot-agent-guidelines.md` - Agent guidelines
-- `.github/AGENTS.MD` - Ecosystem overview
+- `.github/docs/agent-philosophy.md` - Ecosystem overview
