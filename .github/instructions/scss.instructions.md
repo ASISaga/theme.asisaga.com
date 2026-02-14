@@ -93,28 +93,78 @@ description: "SCSS coding instructions for Genesis Semantic Design System v2.0"
 
 ## Testing & Linting
 
+### CRITICAL: Pre-Commit Validation
+
+**ALWAYS run `npm test` before committing SCSS changes.** This prevents build failures like:
+```
+Conversion error: Jekyll::Converters::Scss encountered an error while converting 'assets/css/style.scss':
+Incompatible units: 'vw' and 'rem'. on line 81
+```
+
 **Required workflow:**
+```bash
+npm test                    # ⚠️ MANDATORY before committing (runs all checks below)
+```
+
+Individual validation commands (all included in `npm test`):
 ```bash
 npm run test:scss           # Fast Sass compilation check (catches undefined mixins/vars)
 npm run validate:scss:units # Unit compatibility validation (vw/rem mixing)
 npm run lint:scss           # Code style and best practices
-npm test                    # All of above (run before committing)
 ```
 
-**Sass compilation catches:**
+### Common Errors and Fixes
+
+**❌ Incompatible units error:**
+```scss
+// WRONG - Direct arithmetic with incompatible units
+.component {
+  margin: 5vw + 1rem;        // ❌ Sass compilation error
+  padding: 2rem + 3vw;       // ❌ Incompatible units
+}
+```
+
+**✅ Correct approach:**
+```scss
+// CORRECT - Use calc() or clamp() for mixing units
+.component {
+  margin: calc(5vw + 1rem);           // ✅ Browser calculates at runtime
+  padding: clamp(1rem, 2vw + 0.5rem, 3rem);  // ✅ Fluid with constraints
+}
+```
+
+### What Each Tool Catches
+
+**Sass compilation (`npm run test:scss`):**
 - Undefined variables (`$gray-100`)
 - Undefined mixins (`@include non-existent`)
 - Missing mixin parameters
+- Syntax errors
 
-**Unit validator catches:**
-- Incompatible unit mixing outside calc()/clamp() (e.g., `5vw + 1rem`)
+**Unit validator (`npm run validate:scss:units`):**
+- ⚠️ **Incompatible unit mixing** outside calc()/clamp() (e.g., `5vw + 1rem`)
 - Invalid fluid design patterns
-- Sass compilation errors from mixed units
+- Direct arithmetic with viewport units (vw, vh, vmin, vmax) and root units (rem, em)
 
-**Stylelint catches:**
-- `@extend` usage (forbidden)
+**Stylelint (`npm run lint:scss`):**
+- `@extend` usage (forbidden in Jekyll)
 - Nesting depth > 3 levels
 - Code style violations
+- Best practice enforcement
+
+### Pre-Commit Hook (Recommended)
+
+Add to `.git/hooks/pre-commit`:
+```bash
+#!/bin/bash
+# Validate SCSS before allowing commit
+npm test || {
+  echo "❌ SCSS validation failed. Fix errors before committing."
+  exit 1
+}
+```
+
+Make executable: `chmod +x .git/hooks/pre-commit`
 
 → **Unit compatibility**: `/docs/specifications/fluid-design-unit-compatibility.md`  
 → **Stylelint guide**: `/docs/guides/STYLELINT.md`, `/docs/guides/STYLELINT-LIMITATIONS.md`  
