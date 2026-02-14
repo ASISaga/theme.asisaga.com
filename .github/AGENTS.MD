@@ -1,25 +1,33 @@
-# 🤖 ASI Saga - Agent Ecosystem Architecture v2.5
+# 🤖 ASI Saga - Agent Ecosystem Architecture v2.6
 
-**Last Updated**: 2026-02-13  
-**Version**: 2.5 - Generic Agent Intelligence Framework
+**Last Updated**: 2026-02-14  
+**Version**: 2.6 - Proper Directory Structure
 
 This document describes the AI agent ecosystem that governs the ASI Saga theme repository, implementing the evolutionary mechanism for the Genesis Semantic Design System.
 
 ---
 
-## 🆕 Version 2.5 Enhancements
+## 🆕 Version 2.6 Restructuring
 
-- **Generic Agent Intelligence Framework**: Extracted reusable framework to `github-agent-system.instructions.md` (MIT licensed)
-- **Theme-Specific Separation**: Isolated theme-only patterns to `theme-specific.instructions.md`
-- **Repository Adaptation Guide**: Comprehensive `TEMPLATE-EXTRACTION-GUIDE.md` for using framework in any repository
-- **Optimal Context Window**: Eliminated duplication between generic/theme-specific instructions
-- **Ouroboros Documentation**: Explicit dogfooding and self-improvement patterns
+- **Proper Directory Structure**: Separated concerns following Copilot coding agent guidelines
+- **`.github/instructions/`**: ONLY glob-path-specific coding standards
+- **`.github/specs/`**: Agent framework specifications and patterns
+- **`.github/docs/`**: Agent system documentation and guides
+- **Tool Leverage**: Reference repository documents, npm scripts, linters - no duplication
+- **Minimal Files**: Each directory strictly adheres to its purpose
 
-**New files:**
-- `.github/instructions/github-agent-system.instructions.md` (682 lines, reusable)
-- `.github/instructions/theme-specific.instructions.md` (287 lines, theme-only)
-- `.github/instructions/README.md` (navigation and best practices)
-- `.github/instructions/TEMPLATE-EXTRACTION-GUIDE.md` (step-by-step adaptation)
+**Directory structure:**
+```
+.github/
+├── copilot-instructions.md     # Architecture description
+├── instructions/               # Path-activated coding standards (glob patterns)
+├── specs/                      # Specifications & frameworks
+├── docs/                       # Documentation & guides
+├── agents/                     # Custom agents (Copilot format)
+├── prompts/                    # Agent prompts (strict format)
+├── skills/                     # Agent skills (agentskills.io)
+└── subdomain/                  # Reference for subdomains
+```
 
 ---
 

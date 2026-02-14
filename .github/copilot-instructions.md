@@ -32,8 +32,7 @@ The ontological design system follows a three-tier architecture:
 - **`.github/instructions/html.instructions.md`** — Semantic HTML, accessibility, Jekyll/Liquid
 - **`.github/instructions/js.instructions.md`** — Progressive enhancement, Motion library, interaction patterns
 - **`.github/instructions/docs.instructions.md`** — Documentation standards, version tracking, archival
-- **`.github/instructions/github-agent-system.instructions.md`** — Generic agent intelligence framework (reusable)
-- **`.github/instructions/theme-specific.instructions.md`** — Theme-only patterns (Ontological Propositions, subdomain system)
+- **`.github/instructions/github.instructions.md`** — Agent system file standards
 
 **DO NOT duplicate these instructions**. They are loaded automatically by GitHub Copilot based on file path.
 
@@ -69,26 +68,37 @@ The ontological design system follows a three-tier architecture:
 - Jekyll merges theme's `assets/css/style.scss` with subdomain's `_sass/main.scss`
 - Theme layouts load `common.js` first, then subdomain's `script.js`
 
-## Agent Ecosystem
+## Agent Intelligence System
 
-This repository maintains agent intelligence for both theme and subdomains:
+This repository uses a structured GitHub Copilot agent intelligence system:
 
-- **`.github/agents/`** — Internal agent coordination (protected directory)
-- **`.github/prompts/`** — Agent workflows for theme development
-- **`.github/skills/`** — Executable agent capabilities
-- **`.github/subdomain/`** — Reference intelligence system for subdomains to copy
+**Directory Structure:**
+```
+.github/
+├── copilot-instructions.md     # This file - high-level architecture
+├── instructions/               # Path-activated coding standards
+│   ├── scss.instructions.md   # SCSS ontology system
+│   ├── html.instructions.md   # Semantic HTML & Jekyll
+│   ├── js.instructions.md     # JavaScript & Motion library
+│   ├── docs.instructions.md   # Documentation standards
+│   └── github.instructions.md # Agent system files
+├── specs/                      # Agent specifications & frameworks
+├── docs/                       # Agent system documentation
+├── agents/                     # Custom agents (*.agent.md)
+├── prompts/                    # Agent prompts (*.prompt.md)
+├── skills/                     # Agent skills (SKILL.md + scripts)
+└── subdomain/                  # Reference system for subdomains
+```
 
-**Key agents:**
-- `html-template-agent` — Semantic HTML5 templates with accessibility
-- `scss-refactor-agent` — Migrate legacy CSS to ontology
-- `responsive-design-agent` — Mobile-first responsive patterns
-- `futuristic-effects-agent` — Advanced visual effects
-- `theme-genome-agent` — Ontological evolution gatekeeper
-- `subdomain-evolution-agent` — Ontological proposition creation
-- `documentation-manager-agent` — Documentation quality and structure
-- `agent-evolution-agent` — Meta-agent for ecosystem optimization
+**How it works:**
+- **Path-specific instructions** auto-load when editing matching files (via `applyTo` glob patterns)
+- **Agents/prompts/skills** follow strict Copilot coding agent specifications
+- **Specs** define frameworks and patterns
+- **Docs** provide implementation guides
 
-→ **Complete guide**: `.github/AGENTS.MD`
+→ **Complete architecture**: `.github/AGENTS.MD`  
+→ **Framework spec**: `.github/specs/agent-intelligence-framework.md`  
+→ **System docs**: `.github/docs/`
 
 ## Ontological Evolution
 

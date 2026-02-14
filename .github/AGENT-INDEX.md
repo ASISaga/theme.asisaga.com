@@ -1,23 +1,25 @@
-# 🚀 Agent Ecosystem - Supercharged v2.5
+# 🚀 Agent Ecosystem - Properly Structured v2.6
 
-**Version**: 2.5 - Generic Agent Intelligence Framework  
-**Last Updated**: 2026-02-13  
+**Version**: 2.6 - Proper Directory Structure  
+**Last Updated**: 2026-02-14  
 **Status**: Production Ready with Continuous Evolution
 
 ---
 
-## 🆕 Version 2.5: Generic Framework
+## 🆕 Version 2.6: Proper Structure
 
-**Reusable agent intelligence system** now available:
+**Fixed directory structure** following Copilot coding agent guidelines:
 
-| File | Lines | Purpose | License |
-|------|-------|---------|---------|
-| `instructions/github-agent-system.instructions.md` | 682 | Generic framework | MIT ✅ |
-| `instructions/theme-specific.instructions.md` | 287 | Theme-only | Repository |
-| `instructions/TEMPLATE-EXTRACTION-GUIDE.md` | 616 | Adaptation guide | MIT ✅ |
-| `instructions/README.md` | 228 | Navigation | MIT ✅ |
+| Directory | Purpose | Files |
+|-----------|---------|-------|
+| `instructions/` | Path-activated coding standards (glob patterns only) | 5 `.instructions.md` files |
+| `specs/` | Agent specifications & frameworks | `agent-intelligence-framework.md` |
+| `docs/` | Documentation & guides | `agent-system-overview.md`, guides |
+| `agents/` | Custom agents (Copilot format) | `*.agent.md` |
+| `prompts/` | Agent prompts (strict format) | `*.prompt.md` |
+| `skills/` | Agent skills (agentskills.io) | `*/SKILL.md` + scripts |
 
-**Copy the generic framework to any repository** for instant agent intelligence!
+**Key principle**: Reference repository documents/tools/linters, never duplicate!
 
 ---
 
@@ -25,16 +27,16 @@
 
 | Component | Purpose | Location |
 |-----------|---------|----------|
+| **Instructions** | Path-activated coding standards | `.github/instructions/` |
+| **Specs** | Agent specifications & frameworks | `.github/specs/` |
+| **Docs** | Documentation & guides | `.github/docs/` |
 | **Skills** | Executable agent capabilities | `.github/skills/` |
 | **Prompts** | Detailed agent instructions | `.github/prompts/` |
-| **Instructions** | Coding standards & guidelines | `.github/instructions/` |
-| **Agents** | 🔒 Internal configurations (protected) | `.github/agents/` |
+| **Agents** | Custom agents (Copilot format) | `.github/agents/` |
 | **Validation** | Automated testing scripts | `.github/skills/*/scripts/` |
-| **References** | Detailed specifications | `.github/skills/*/references/` |
-| **Patterns** | Ready-to-use component & layout patterns | `.github/skills/*/references/` |
-| **🆕 Subdomain Intelligence** | Reference agent system for subdomains | `.github/subdomain/` |
-| **Self-Learning** | Meta-agent evolution system | `.github/skills/agent-evolution-agent/` |
-| **Dogfooding Guide** | Agent self-improvement workflows | `.github/DOGFOODING-GUIDE.md` |
+| **Subdomain** | Reference system for subdomains | `.github/subdomain/` |
+| **Architecture** | Complete ecosystem docs | `.github/AGENTS.MD` |
+| **Dogfooding** | Self-improvement workflows | `.github/DOGFOODING-GUIDE.md` |
 
 ---
 

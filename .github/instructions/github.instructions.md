@@ -1,80 +1,64 @@
 ---
-applyTo: ".github/**/*.md,.github/**/*.prompt.md,.github/skills/**/*"
-description: "GitHub Copilot agent instructions - pointer to generic framework and theme-specific patterns"
+applyTo: ".github/**/*.md,.github/**/*.prompt.md,.github/skills/**/*,.github/prompts/**/*,.github/agents/**/*"
+description: "Coding standards for agent intelligence system files"
 ---
 
-# GitHub Agent Instructions
+# GitHub Agent System Instructions
 
-**This file is now a navigation pointer to separated generic and theme-specific instructions.**
+## File Structure Requirements
 
-## 📚 Instruction Files
+**Agent files** (`.github/agents/*.agent.md`):
+- YAML frontmatter with `name`, `description`, `prompt`, optional `tools`
+- Follow GitHub Copilot Custom Agents specification
+- Keep concise, reference `.github/specs/` for detailed patterns
 
-### Generic Framework (Reusable Across Repositories)
+**Prompt files** (`.github/prompts/*.prompt.md`):
+- YAML frontmatter: `description`, `name`, `agent`, `model`, `tools`
+- Body: Role, responsibilities, workflows, tool integration
+- Reference npm scripts and validation scripts, don't duplicate
 
-→ **`.github/instructions/github-agent-system.instructions.md`**
+**Skill files** (`.github/skills/*/SKILL.md`):
+- Follow agentskills.io specification
+- YAML frontmatter: `name`, `description`, `license`, `metadata`, `allowed-tools`
+- Body: Purpose, when to use, workflows, validation
+- Scripts in `scripts/`, detailed specs in `references/`
 
-Complete reusable framework for establishing GitHub Copilot agent intelligence systems:
-- Ouroboros & dogfooding philosophy
-- Five-pillar structure (agents, instructions, prompts, skills, copilot-instructions.md)
-- Agent/prompt/skill templates
-- Validation workflows
-- Tool integration patterns
-- Context window optimization
-- Repository adaptation guide
+## Tool Integration (REQUIRED)
 
-**Copy this file to any repository** to establish best-practice Copilot agent ecosystem.
+**Reference existing tools, never duplicate:**
 
-### Theme-Specific Patterns (This Repository Only)
+```bash
+npm test              # Run all tests
+npm run test:scss     # SCSS compilation
+npm run lint:scss     # Stylelint validation
+```
 
-→ **`.github/instructions/theme-specific.instructions.md`**
+**Validation scripts pattern:**
+```bash
+./.github/skills/[skill-name]/scripts/validate-*.sh
+```
 
-Genesis Ontological Design System theme-specific patterns:
-- Ontological Proposition System
-- Subdomain intelligence system (`.github/subdomain/`)
-- Theme vs subdomain responsibilities
-- Theme-specific npm scripts
-- Theme-specific validation scripts
+## Ontological Proposition System
 
-**DO NOT copy to other repositories** unless implementing similar theme/subdomain architecture.
+**For theme-specific evolutionary mechanism:**
 
-## Quick Reference
+1. Subdomain Evolution Agent identifies semantic gap
+2. Creates Ontological Proposition PR
+3. Theme Genome Agent reviews (semantic purity, no redundancy, universal applicability)
+4. If approved, implements in `_sass/ontology/` and documents in `GENOME.md`
 
-**For generic agent work:**
-- Read: `github-agent-system.instructions.md`
-- Follow: Generic templates and patterns
-- Copy: To other repositories as needed
+→ **Template**: `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md`  
+→ **Agent**: `.github/prompts/theme-genome-agent.prompt.md`  
+→ **Skill**: `.github/skills/theme-genome-agent/SKILL.md`
 
-**For theme-specific work:**
-- Read: `theme-specific.instructions.md`
-- Follow: Ontological Proposition System
-- Coordinate: With subdomain repositories
+## Documentation References
 
-**For detailed specifications:**
-- Read: `/docs/specifications/github-copilot-agent-guidelines.md`
-- Review: `.github/AGENTS.MD` for complete ecosystem
-
-## Migration from v1.5
-
-**v2.0 changes (2026-02-13):**
-- Split into generic framework + theme-specific
-- Generic content → `github-agent-system.instructions.md` (16KB, MIT licensed)
-- Theme-specific content → `theme-specific.instructions.md` (10KB)
-- This file → Navigation pointer
-- Optimal context window usage
-- Reusable across repositories
-
-**What's where:**
-
-| Content | v1.5 Location | v2.0 Location |
-|---------|---------------|---------------|
-| Generic framework | `github.instructions.md` | `github-agent-system.instructions.md` |
-| Ontological Propositions | `github.instructions.md` | `theme-specific.instructions.md` |
-| Subdomain references | `github.instructions.md` | `theme-specific.instructions.md` |
-| Tool integration | `github.instructions.md` | Both (generic + theme-specific) |
-| Templates | `github.instructions.md` | `github-agent-system.instructions.md` |
+**Specifications**: `.github/specs/agent-intelligence-framework.md`  
+**System docs**: `.github/docs/`  
+**Complete architecture**: `.github/AGENTS.MD`  
+**Guidelines**: `/docs/specifications/github-copilot-agent-guidelines.md`
 
 ---
 
-**Applies to**: `.github/**/*.md`, `.github/**/*.prompt.md`, `.github/skills/**/*`  
-**Version**: 2.0.0 - Split into generic + theme-specific  
-**Last Updated**: 2026-02-13
+**Version**: 2.1 - Proper glob-path structure  
+**Last Updated**: 2026-02-14
