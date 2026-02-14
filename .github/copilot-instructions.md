@@ -1,72 +1,42 @@
-# Copilot Instructions for Genesis Ontological Design System Theme
+# GitHub Copilot Agent Intelligence System
 
-You are working in the **Genesis Ontological Design System theme repository** at `theme.asisaga.com`.
+This repository uses a structured GitHub Copilot agent intelligence system for optimal AI-assisted development.
 
-## Repository Role
+## Repository Context
 
-This is a **Jekyll theme repository** providing:
-- Ontological SCSS design system
-- Semantic HTML layouts and includes
-- Agent intelligence system templates
-- Reference implementation for subdomains
-
-→ **Complete architecture**: `.github/specs/theme-subdomain-architecture.md`  
-→ **Ontology specification**: `.github/specs/ontological-design-system.md`
+→ **Repository-specific details**: `.github/specs/genesis-theme-repository.md`
 
 ## Path-Specific Instructions
 
-**IMPORTANT**: Detailed coding standards are in `.github/instructions/` and are automatically activated by file path:
+Detailed coding standards are in `.github/instructions/` and are **automatically activated** by GitHub Copilot when editing files matching their glob patterns.
 
-- **`.github/instructions/scss.instructions.md`** — SCSS ontology system, import rules, testing
-- **`.github/instructions/html.instructions.md`** — Semantic HTML, accessibility, Jekyll/Liquid
-- **`.github/instructions/js.instructions.md`** — Progressive enhancement, Motion library, interaction patterns
-- **`.github/instructions/docs.instructions.md`** — Documentation standards, version tracking, archival
-- **`.github/instructions/agents.instructions.md`** — Custom agent file standards
-- **`.github/instructions/prompts.instructions.md`** — Agent prompt file standards
-- **`.github/instructions/skills.instructions.md`** — Agent skill file standards
+**Current instruction files:**
+- `scss.instructions.md` — SCSS/CSS patterns and standards
+- `html.instructions.md` — HTML/Liquid templating
+- `js.instructions.md` — JavaScript patterns
+- `docs.instructions.md` — Documentation standards
+- `agents.instructions.md` — Agent file standards
+- `prompts.instructions.md` — Prompt file standards
+- `skills.instructions.md` — Skill file standards
+- Plus meta-instructions for specs, docs, and instructions directories
 
-**DO NOT duplicate these instructions**. They are loaded automatically by GitHub Copilot based on file path.
-
-## Repository-Specific Specifications
-
-This repository implements two key systems:
-
-**Ontological Design System**:
-- Six semantic categories: environment, entity, cognition, synapse, state, atmosphere
-- 31 total variants for complete semantic expression
-- Three-tier architecture: Engine → Theme → Subdomains
-
-→ **Full specification**: `.github/specs/ontological-design-system.md`
-
-**Theme-Subdomain Architecture**:
-- Theme provides: layouts, includes, SCSS, JS infrastructure
-- Subdomains provide: HTML content, optional page-specific SCSS
-- Clean separation via Jekyll's `remote_theme` mechanism
-
-→ **Full specification**: `.github/specs/theme-subdomain-architecture.md`
+→ **How it works**: `.github/docs/path-specific-instructions.md`  
+→ **DO NOT duplicate**: These load automatically, no need to mention in this file
 
 ## Agent Intelligence System
 
-This repository uses a structured GitHub Copilot agent intelligence system:
+This repository implements a complete GitHub Copilot agent intelligence system with structured organization:
 
 **Directory Structure:**
 ```
 .github/
 ├── copilot-instructions.md     # This file - high-level architecture
 ├── instructions/               # Path-activated coding standards
-│   ├── scss.instructions.md   # SCSS ontology system
-│   ├── html.instructions.md   # Semantic HTML & Jekyll
-│   ├── js.instructions.md     # JavaScript & Motion library
-│   ├── docs.instructions.md   # Documentation standards
-│   ├── agents.instructions.md # Custom agent files
-│   ├── prompts.instructions.md # Agent prompt files
-│   └── skills.instructions.md # Agent skill files
-├── specs/                      # Agent specifications & frameworks
-├── docs/                       # Agent system documentation
+├── specs/                      # Detailed specifications & frameworks
+├── docs/                       # Implementation guides & references
 ├── agents/                     # Custom agents (*.agent.md)
 ├── prompts/                    # Agent prompts (*.prompt.md)
-├── skills/                     # Agent skills (SKILL.md + scripts)
-└── subdomain/                  # Reference system for subdomains
+└── skills/                     # Agent skills (SKILL.md + scripts)
 ```
 
 **How it works:**
@@ -76,54 +46,64 @@ This repository uses a structured GitHub Copilot agent intelligence system:
 - **Agents/prompts/skills** provide executable capabilities
 
 → **Complete architecture**: `.github/AGENTS.MD`  
-→ **Framework spec**: `.github/specs/agent-intelligence-framework.md`  
-→ **Onboarding**: `.github/prompts/repository-onboarding.prompt.md`
+→ **Framework spec**: `.github/specs/agent-intelligence-framework.md`
 
 ## Bootstrapping New Repositories
 
-To set up agent intelligence in a new repository:
+This agent intelligence system is designed to be reusable across repositories.
+
+**To set up in a new repository:**
 
 1. **Use onboarding agent**: Invoke `repository-onboarding` agent
 2. **Or manual setup**: Follow `.github/prompts/repository-onboarding.prompt.md`
 3. **Or copy templates**: Extract from `.github/specs/agent-intelligence-framework.md`
 
-The system will create:
-- `.github/copilot-instructions.md` (this file, adapted to your repo)
+**The system will create:**
+- `.github/copilot-instructions.md` (adapted to your repo)
 - Path-specific instruction files based on tech stack
 - Initial agents, prompts, skills
 - Specs and docs directories
 - Validation and testing setup
 
-## Testing & Validation
+→ **Extraction guide**: `.github/docs/TEMPLATE-EXTRACTION-GUIDE.md`
 
-**Before committing:**
-1. `npm test` — Run all linters and SCSS compilation
-2. `npm run test:scss` — Sass compilation check (catches undefined mixins/vars)
-3. `npm run lint:scss` — Stylelint for code quality
-4. Agent validation scripts in `.github/skills/*/scripts/`
+## Conventional Tools & Testing
 
-**Test pages** organized in `/tests/` with categorized subdirectories.
+All conventional (non-AI) software tools are documented separately for reference.
 
-## Key Design Principles
+**Primary validation workflow:**
+```bash
+npm test                # Run all tests and linters
+```
 
-**For this repository**:
-1. **Semantic Purity** — Name by WHAT, not HOW
-2. **Accessibility First** — WCAG compliance, semantic HTML
-3. **Progressive Enhancement** — Content-first approach
-4. **Context Efficiency** — Reference specs/docs, don't duplicate
+→ **Complete tool reference**: `.github/docs/conventional-tools.md`  
+→ **Includes**: npm scripts, linters, test suites, validation scripts, CI/CD integration
 
-**For agent intelligence**:
-1. **Tool Leverage** — Use existing linters/tests, don't duplicate
-2. **Path Specificity** — Instructions match exact file patterns
-3. **Template-Based** — Bootstrap from proven patterns
-4. **Spec-Driven** — Details in specs, summaries in instructions
+## Core Principles
+
+**Agent Intelligence Philosophy:**
+
+1. **Tool Leverage** — Orchestrate existing automation, never duplicate
+2. **Path Specificity** — Instructions auto-load based on file patterns
+3. **Context Efficiency** — Reference specs/docs, eliminate redundancy
+4. **Ouroboros Pattern** — Agents evolve themselves through continuous use
+
+→ **Philosophy details**: `.github/specs/agent-intelligence-framework.md`
 
 ---
 
-**Quick Links**:
-- **Specifications**: `.github/specs/` - Detailed systems and frameworks
-- **Documentation**: `.github/docs/` - Implementation guides
-- **Subdomain Template**: `.github/subdomain/` - Copy to content repos
-- **Full Documentation**: `/docs/` - Complete reference materials
+## Quick Links
 
-**Repository**: `theme.asisaga.com`
+**Agent System:**
+- **Architecture**: `.github/AGENTS.MD` - Complete ecosystem overview
+- **Framework**: `.github/specs/agent-intelligence-framework.md` - Reusable framework
+- **Guides**: `.github/docs/` - Implementation and usage guides
+
+**Repository Details:**
+- **Repository spec**: `.github/specs/genesis-theme-repository.md` - This repository's specifics
+- **All specifications**: `.github/specs/` - Detailed systems and frameworks
+- **Documentation**: `/docs/` - Complete reference materials
+
+**Tools & Testing:**
+- **Conventional tools**: `.github/docs/conventional-tools.md` - npm scripts, linters, validators
+- **Path-specific mechanism**: `.github/docs/path-specific-instructions.md` - How auto-loading works
