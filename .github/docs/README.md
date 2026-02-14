@@ -7,14 +7,13 @@ This directory contains documentation and guides for the agent intelligence syst
 ### Core Philosophy & Architecture
 
 - **`agent-philosophy.md`** - Vision, dogfooding principle, and core principles (Living Genome, Ouroboros pattern)
-- **`agent-system-overview.md`** - Overview of directory structure and file purposes
+- **`agent-system-overview.md`** - Agent catalog, directory structure, learning paths, and workflows
 - **`ecosystem-summary.md`** - Complete ecosystem overview
 
 ### Agent Training & Development
 
 - **`agent-onboarding.md`** - Structured onboarding path, training scenarios, and certification levels
 - **`agent-quick-reference.md`** - Quick reference for common tasks
-- **`agent-index.md`** - Agent ecosystem navigation
 - **`decision-matrices.md`** - Quick decision trees for all agent scenarios
 
 ### Ontological Evolution

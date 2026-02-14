@@ -475,7 +475,7 @@ npm test
 - **SCSS Instructions**: `.github/instructions/scss.instructions.md`
 - **HTML Instructions**: `.github/instructions/html.instructions.md`
 - **Skills Overview**: `.github/skills/README.md`
-- **Agent Index**: `.github/AGENT-INDEX.md`
+- **Agent System Overview**: `.github/docs/agent-system-overview.md`
 
 ---
 

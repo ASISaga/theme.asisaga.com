@@ -276,7 +276,7 @@ chmod +x .github/skills/agent-evolution-agent/scripts/*.sh
 
 ## Related Documentation
 
-- `.github/DOGFOODING-GUIDE.md` - Complete dogfooding guide
+- `.github/docs/dogfooding-guide.md` - Complete dogfooding guide
 - `.github/skills/agent-evolution-agent/SKILL.md` - Meta-agent skill definition
 - `/docs/specifications/agent-self-learning-system.md` - Technical architecture
 - `/docs/specifications/github-copilot-agent-guidelines.md` - Agent standards

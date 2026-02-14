@@ -155,7 +155,7 @@ Central documentation files that govern the agent ecosystem.
 
 **Core Documents:**
 - `agent system documentation` - Complete ecosystem architecture (detailed, ~600 lines)
-- `AGENT-INDEX.md` - Quick navigation and version info (~400 lines)
+- `.github/docs/agent-system-overview.md` - Agent catalog and navigation
 - `AGENT-QUICK-REFERENCE.md` - Ontology cheat sheet
 - `AGENT-WORKFLOWS.md` - Integrated workflows
 
@@ -304,7 +304,7 @@ npm test  # Compilation + linting
 ```
 
 4. **Update cross-references:**
-- Update `AGENT-INDEX.md` with new skill
+- Update `.github/docs/agent-system-overview.md` with new skill
 - Add to workflow examples if applicable
 - Cross-link in related documentation
 
@@ -430,7 +430,7 @@ When adding new agent capabilities:
    - Document validation process
 
 5. **Update ecosystem:**
-   - Add to `AGENT-INDEX.md`
+   - Add to `.github/docs/agent-system-overview.md`
    - Document in `agent system documentation` if major
    - Cross-reference related agents
    - Update workflow examples
@@ -485,7 +485,7 @@ Every component must meet:
 
 **Agent ecosystem:**
 - `.github/docs/agent-philosophy.md` - Complete architecture
-- `.github/AGENT-INDEX.md` - Quick navigation
+- `.github/docs/agent-system-overview.md` - Agent catalog and navigation
 - `.github/skills/README.md` - Skills overview
 - `/docs/references/agent-skill-spec.md` - Agent Skills specification
 

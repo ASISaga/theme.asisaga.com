@@ -54,7 +54,7 @@ prompt: |
   **Scope**: .github/ agent ecosystem files, /docs/specifications/, agent quality metrics
   
   **Related Documentation**:
-  - .github/DOGFOODING-GUIDE.md - Complete workflows
+  - .github/docs/dogfooding-guide.md - Complete workflows
   - .github/skills/agent-evolution-agent/SKILL.md - Skill definition
   - docs/specifications/agent-self-learning-system.md - Architecture
   - .github/agents/agent-capabilities.yml - Capability matrix

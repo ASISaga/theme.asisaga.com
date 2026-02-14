@@ -534,4 +534,4 @@ Adding effects on top of semantic foundation:
 **Last Updated**: 2026-01-19  
 **Maintained by**: scss-refactor-agent
 
-For questions or issues, see `.github/AGENT-INDEX.md` or `.github/.github/docs/agent-philosophy.md`
+For questions or issues, see `.github/docs/agent-system-overview.md` or `.github/docs/agent-philosophy.md`
