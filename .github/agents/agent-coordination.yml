@@ -1,0 +1,141 @@
+# Agent Coordination Matrix
+#
+# Unified capabilities, routing, and coordination for the agent ecosystem.
+# Used by meta-agents to understand agent roles and route tasks.
+#
+# Version: 1.0.0
+# Last Updated: 2026-02-14
+
+agents:
+  # Meta-Intelligence Layer
+  agent-evolution-agent:
+    category: meta-intelligence
+    role: lead-architect
+    scope: [".github/**"]
+    capabilities: [audit_quality, measure_coverage, detect_duplication, recommend_improvements, track_metrics, sync_specs]
+    tools: [bash, read, edit, grep]
+    triggers: [scss-refactor-agent, documentation-manager-agent, theme-genome-agent]
+    routing:
+      patterns: ["agent quality", "spec coverage", "duplication", "metrics"]
+      file_patterns: [".github/**", ".github/prompts/**", ".github/skills/**"]
+
+  # Ontological Layer
+  theme-genome-agent:
+    category: design-system
+    role: lead-architect
+    scope: ["_sass/ontology/**", "GENOME.md"]
+    capabilities: [review_propositions, validate_semantic_purity, check_redundancy, update_engine, maintain_genome]
+    tools: [bash, read, edit, sass]
+    depends_on: [subdomain-evolution-agent]
+    triggers: [scss-refactor-agent, responsive-design-agent, futuristic-effects-agent]
+    routing:
+      patterns: ["ontological proposition", "variant", "engine layer", "GENOME"]
+      file_patterns: ["_sass/ontology/**", "GENOME.md"]
+      priority: critical
+      approval_required: true
+
+  subdomain-evolution-agent:
+    category: design-system
+    role: specialist
+    scope: ["Subdomain repositories", "Ontological gaps"]
+    capabilities: [identify_gaps, analyze_ontology, create_propositions, assess_universality]
+    tools: [bash, read, edit]
+    triggers: [theme-genome-agent]
+    routing:
+      patterns: ["semantic gap", "missing pattern", "propose variant"]
+
+  # Implementation Layer
+  scss-refactor-agent:
+    category: design-system
+    role: migration
+    scope: ["**/*.scss", "_sass/**", "assets/css/**"]
+    capabilities: [convert_to_mixins, enforce_zero_css, validate_usage, suggest_mapping]
+    tools: [bash, sass, stylelint, read, edit]
+    depends_on: [theme-genome-agent]
+    triggers: [responsive-design-agent, futuristic-effects-agent]
+    routing:
+      patterns: ["mixin", "ontology", "zero-css", "semantic SCSS"]
+      file_patterns: ["**/*.scss"]
+      priority: high
+
+  html-template-agent:
+    category: design-system
+    role: semantic-structure
+    scope: ["**/*.html", "**/*.liquid", "_layouts/**", "_includes/**"]
+    capabilities: [create_semantic_html, enforce_accessibility, validate_landmarks, apply_bem]
+    tools: [bash, read, edit]
+    triggers: [scss-refactor-agent, responsive-design-agent]
+    routing:
+      patterns: ["semantic HTML", "accessibility", "WCAG", "landmark", "ARIA"]
+      file_patterns: ["**/*.{html,liquid}", "_layouts/**", "_includes/**"]
+      priority: high
+
+  responsive-design-agent:
+    category: design-system
+    role: specialist
+    scope: ["Responsive patterns", "**/*.scss"]
+    capabilities: [mobile_first, responsive_mixins, touch_targets, fluid_typography, container_queries]
+    tools: [bash, sass, read, edit]
+    depends_on: [theme-genome-agent]
+    triggers: [futuristic-effects-agent]
+    routing:
+      patterns: ["responsive", "mobile-first", "breakpoint", "touch target"]
+
+  futuristic-effects-agent:
+    category: design-system
+    role: specialist
+    scope: ["Visual effects", "**/*.scss"]
+    capabilities: [glassmorphism, neon_effects, quantum_gradients, consciousness_animations]
+    tools: [bash, sass, read, edit]
+    depends_on: [theme-genome-agent, responsive-design-agent]
+    routing:
+      patterns: ["glassmorphism", "neon", "quantum", "visual effect"]
+
+  # Documentation Layer
+  documentation-manager-agent:
+    category: documentation
+    role: specialist
+    scope: ["docs/**", "**/*.md"]
+    capabilities: [validate_structure, check_links, detect_redundancy, validate_metadata, enforce_archival]
+    tools: [bash, read, edit, grep]
+    triggers: [agent-evolution-agent]
+    routing:
+      patterns: ["documentation", "update docs", "broken link", "redundant"]
+      file_patterns: ["docs/**/*.md", ".github/**/*.md"]
+
+# Task Workflows (agent sequences for common tasks)
+workflows:
+  new_feature:
+    - html-template-agent      # 1. Semantic structure
+    - scss-refactor-agent      # 2. Ontological styling
+    - responsive-design-agent  # 3. Mobile-first patterns
+    - futuristic-effects-agent # 4. Visual effects (optional)
+
+  legacy_migration:
+    - html-template-agent      # 1. Audit HTML
+    - scss-refactor-agent      # 2. Convert to zero-CSS
+    - responsive-design-agent  # 3. Add responsive
+
+  ontological_evolution:
+    - subdomain-evolution-agent  # 1. Identify gap
+    - theme-genome-agent         # 2. Review & approve
+    - scss-refactor-agent        # 3. Adopt (if approved)
+
+  quality_audit:
+    - agent-evolution-agent      # Full quality workflow
+
+# Conflict Resolution
+conflict_resolution:
+  scss_and_responsive:
+    order: [scss-refactor-agent, responsive-design-agent]
+  html_and_styling:
+    order: [html-template-agent, scss-refactor-agent]
+  code_and_docs:
+    parallel: true
+
+# Priority Levels
+priorities:
+  critical: ["Engine layer changes", "Theme layouts", "Ontological propositions"]
+  high: ["New feature SCSS", "Semantic HTML", "Responsive"]
+  medium: ["Visual effects", "Documentation", "Agent improvements"]
+  low: ["Validation", "Metrics tracking", "Audits"]

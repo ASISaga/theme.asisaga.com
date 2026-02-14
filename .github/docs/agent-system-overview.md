@@ -1,52 +1,113 @@
-# GitHub Copilot Instructions Directory
+# Agent System Overview
 
-This directory contains path-activated instruction files that GitHub Copilot automatically loads based on the files you're editing.
+**Last Updated**: 2026-02-14
 
-## Structure Overview
+Overview of the GitHub Copilot agent intelligence system: directory structure, agent catalog, and learning paths.
 
-### Generic Framework (Reusable)
+---
 
-**`github-agent-system.instructions.md`** (16KB, MIT Licensed)
-- Complete reusable framework for GitHub Copilot agent intelligence
-- Ouroboros & dogfooding philosophy
-- Five-pillar structure (agents, instructions, prompts, skills)
-- Agent/prompt/skill templates
-- Validation workflows and tool integration
-- Context window optimization strategies
-- Repository adaptation guide
+## Directory Structure
 
-**Copy this file to any repository** to establish a best-practice Copilot agent ecosystem.
+```
+.github/
+├── copilot-instructions.md          # High-level architecture context
+├── instructions/                    # Path-activated coding standards (glob-based)
+│   ├── scss.instructions.md         #   SCSS/CSS patterns
+│   ├── html.instructions.md         #   HTML/Liquid templating
+│   ├── js.instructions.md           #   JavaScript patterns
+│   ├── docs.instructions.md         #   Documentation standards
+│   ├── agents.instructions.md       #   Agent file standards
+│   ├── prompts.instructions.md      #   Prompt file standards
+│   └── skills.instructions.md       #   Skill file standards
+├── specs/                           # Detailed specifications & frameworks
+│   └── agent-intelligence-framework.md
+├── docs/                            # Documentation & guides (this directory)
+├── agents/                          # Custom agents (*.agent.md)
+├── prompts/                         # Agent prompts (*.prompt.md)
+├── skills/                          # Agent skills (SKILL.md + scripts)
+│   └── {agent-name}/
+│       ├── SKILL.md
+│       ├── scripts/                 #   Validation & automation
+│       └── references/              #   Detailed specifications
+└── subdomain/                       # Reference intelligence for subdomain repos
+    ├── copilot-instructions.md
+    ├── agents/
+    ├── instructions/
+    ├── prompts/
+    └── skills/
+```
 
-### Repository-Specific
+**Key principle**: Instructions auto-load via `applyTo` glob patterns. Specs and docs are referenced, never duplicated.
 
-**`theme-specific.instructions.md`** (10KB, Theme Only)
-- Genesis Ontological Design System theme patterns
-- Ontological Proposition System
-- Subdomain intelligence system (`.github/subdomain/`)
-- Theme vs subdomain responsibilities
-- Theme-specific npm scripts and validation
+---
 
-**DO NOT copy to other repositories** unless implementing similar architecture.
+## Agent Catalog
 
-**`github.instructions.md`** (3KB, Navigation Pointer)
-- Points to generic framework and theme-specific files
-- Helps agents find the right instructions
-- Migration guide from v1.5 to v2.0
+### Evolutionary Management
 
-### Other Instruction Files
+| Agent | Skill | Prompt | Validation |
+|-------|-------|--------|------------|
+| Theme Genome | `.github/skills/theme-genome-agent/` | `theme-genome-agent.prompt.md` | `scripts/validate-ontology.sh` |
+| Subdomain Evolution | `.github/skills/subdomain-evolution-agent/` | `subdomain-evolution-agent.prompt.md` | — |
+| Agent Evolution | `.github/skills/agent-evolution-agent/` | — | 7 scripts (audit, sync, metrics, duplication, recommendations) |
 
-These files contain both generic patterns (reusable) and repository-specific content:
+### Implementation Specialists
 
-- **`scss.instructions.md`** - SCSS patterns + Genesis Ontology system
-- **`html.instructions.md`** - HTML/Liquid patterns + theme architecture
-- **`js.instructions.md`** - JavaScript patterns + Motion library
-- **`docs.instructions.md`** - Generic documentation standards
+| Agent | Skill | Prompt | Validation |
+|-------|-------|--------|------------|
+| SCSS Refactor | `.github/skills/scss-refactor-agent/` | `scss-refactor-agent.prompt.md` | `scripts/validate-scss.sh` |
+| HTML Template | `.github/skills/html-template-agent/` | — | `scripts/validate-html.sh` |
+| Responsive Design | `.github/skills/responsive-design-agent/` | `responsive-design-agent.prompt.md` | — |
+| Futuristic Effects | `.github/skills/futuristic-effects-agent/` | `futuristic-effects-agent.prompt.md` | — |
 
-## How It Works
+### Support
 
-### Path-Based Activation
+| Agent | Skill | Prompt | Validation |
+|-------|-------|--------|------------|
+| Documentation Manager | `.github/skills/documentation-manager-agent/` | — | 4 scripts (structure, links, redundancy, metadata) |
 
-Each instruction file has an `applyTo` glob pattern in its frontmatter:
+All prompts are in `.github/prompts/`. All validation scripts are under `.github/skills/{agent}/scripts/`.
+
+---
+
+## Agent Evolution Agent
+
+The meta-intelligence agent audits and improves the agent ecosystem itself.
+
+**Scripts** (in `.github/skills/agent-evolution-agent/scripts/`):
+
+| Script | Purpose |
+|--------|---------|
+| `audit-agent-quality.sh` | Quality metrics audit |
+| `find-related-agents.sh` | Find agents for a spec |
+| `measure-context-efficiency.sh` | Context window analysis |
+| `sync-agents-with-specs.sh` | Spec synchronization |
+| `detect-duplication.sh` | Cross-agent duplication detection |
+| `recommend-improvements.sh` | Improvement recommendations |
+| `track-metrics.sh` | Quality metrics over time |
+
+---
+
+## Subdomain Intelligence System
+
+**Location**: `.github/subdomain/`
+
+Subdomain repositories copy this directory into their `.github/` to get AI-assisted development aligned with the theme ontology.
+
+**Contents**: `copilot-instructions.md`, plus `agents/`, `instructions/`, `prompts/`, and `skills/` directories providing 3 agents (`content-author`, `scss-compliance`, `subdomain-evolution`) with matching skills and coding standards.
+
+**Setup**:
+```bash
+cp -r <theme-repo>/.github/subdomain/* <subdomain-repo>/.github/
+```
+
+Full guide: `.github/subdomain/README.md`
+
+---
+
+## Path-Activated Instructions
+
+Each instruction file has an `applyTo` glob pattern in its YAML frontmatter:
 
 ```yaml
 ---
@@ -55,174 +116,100 @@ description: "SCSS coding standards"
 ---
 ```
 
-When you edit a file matching the pattern, GitHub Copilot automatically loads these instructions into context.
+When editing a matching file, GitHub Copilot automatically loads the relevant instructions.
 
-### Context Window Optimization
-
-**Key strategies:**
-
-1. **No Duplication**: Instructions don't repeat `copilot-instructions.md`
-2. **Path Specificity**: Only relevant instructions loaded per file
-3. **Reference, Don't Inline**: Link to `/docs/specifications/` for details
-4. **Lean Content**: Tables, lists, examples over prose
-
-### Navigation Pattern
-
+**Context loading order**:
 ```
-copilot-instructions.md (high-level context)
-    ↓
-.github/instructions/ (path-specific details)
-    ↓
-/docs/specifications/ (complete references)
+copilot-instructions.md  →  .github/instructions/  →  /docs/specifications/
+(high-level context)        (path-specific details)    (complete references)
 ```
 
-## Using in Your Repository
-
-### Option 1: Copy Generic Framework Only
-
-```bash
-# Copy the generic template
-cp .github/instructions/github-agent-system.instructions.md \
-   /your-repo/.github/instructions/
-
-# Adapt to your domain
-# - Update npm scripts references
-# - Customize categories/roles
-# - Add domain-specific examples
-```
-
-### Option 2: Full Theme Structure
-
-```bash
-# Copy all instruction files
-cp -r .github/instructions/ /your-repo/.github/
-
-# Remove theme-specific file
-rm /your-repo/.github/instructions/theme-specific.instructions.md
-
-# Adapt remaining files to your domain
-```
-
-### Option 3: Start Fresh with Generic Template
-
-1. Create `.github/instructions/` directory
-2. Copy `github-agent-system.instructions.md` as your base
-3. Create domain-specific instruction files as needed
-4. Update `copilot-instructions.md` to reference them
-
-## File Naming Conventions
-
-**Pattern**: `category.instructions.md`
-
-**Examples:**
-- `scss.instructions.md` - SCSS/CSS patterns
-- `python.instructions.md` - Python patterns
-- `api.instructions.md` - API development
-- `testing.instructions.md` - Testing practices
-
-**Always use lowercase** for better cross-platform compatibility.
-
-## Frontmatter Requirements
-
-All instruction files must have valid YAML frontmatter:
-
-```yaml
----
-applyTo: "glob/pattern/**"
-description: "Brief description for agent discovery"
----
-```
-
-**`applyTo`**: Glob pattern for file activation
-**`description`**: One-line purpose (helps agents discover)
-
-## Best Practices
-
-### DO ✅
-
-- Keep instructions focused and specific
-- Reference external docs (`/docs/specifications/`)
-- Use tables, lists, and examples
-- Update inline (don't create new versions)
-- Test glob patterns match intended files
-
-### DON'T ❌
-
-- Duplicate `copilot-instructions.md` content
-- Include massive code blocks (reference files instead)
-- Create overlapping `applyTo` patterns
-- Use generic patterns that always load
-
-## Testing Glob Patterns
-
-Verify your `applyTo` pattern matches intended files:
-
-```bash
-# Test pattern matching
-shopt -s globstar
-echo .github/**/*.md
-echo **/*.{scss,sass,css}
-```
-
-Or use a glob tester like [globtester.com](https://globtester.com).
-
-## Migration Guide
-
-### From v1.5 (Monolithic)
-
-**Before (v1.5):**
-```
-.github/instructions/
-└── github.instructions.md (all content, 5KB)
-```
-
-**After (v2.0):**
-```
-.github/instructions/
-├── github.instructions.md (navigation, 3KB)
-├── github-agent-system.instructions.md (generic, 16KB)
-└── theme-specific.instructions.md (theme only, 10KB)
-```
-
-**Benefits:**
-- Generic framework can be copied to other repos
-- Theme-specific patterns isolated
-- Better context window efficiency
-- Clearer separation of concerns
-
-## Documentation
-
-**Complete guidelines:**
-- `/docs/specifications/github-copilot-agent-guidelines.md` - Agent development
-- `.github/.github/docs/agent-philosophy.md` - Ecosystem architecture
-- `.github/AGENT-INDEX.md` - Quick navigation
-
-**Related:**
-- `.github/prompts/` - Agent task definitions
-- `.github/skills/` - Executable capabilities
-- `.github/agents/` - Internal coordination
-
-## Version History
-
-**v2.0.0 (2026-02-13):**
-- Split into generic framework + theme-specific
-- Created `github-agent-system.instructions.md` (reusable)
-- Created `theme-specific.instructions.md` (theme only)
-- Updated `github.instructions.md` (navigation)
-- Added this README
-
-**v1.5 (2026-02-12):**
-- Single `github.instructions.md` file
-- Mixed generic and theme-specific content
-
-## License
-
-**Generic files** (`github-agent-system.instructions.md`): MIT License - Free to copy and adapt
-
-**Theme-specific files**: For Genesis Ontological Design System theme repository only
-
-**Other files**: Follow repository license
+Detailed guide: `.github/docs/path-specific-instructions.md`
 
 ---
 
-**Questions?** See `.github/.github/docs/agent-philosophy.md` or `/docs/specifications/github-copilot-agent-guidelines.md`
+## Common Workflows
+
+### New Feature Development
+
+```bash
+# Validate HTML structure
+./.github/skills/html-template-agent/scripts/validate-html.sh template.html
+
+# Validate SCSS
+./.github/skills/scss-refactor-agent/scripts/validate-scss.sh styles.scss
+
+# Run full test suite
+npm test
+```
+
+### Ontological Evolution
+
+```bash
+# Validate current ontology
+./.github/skills/theme-genome-agent/scripts/validate-ontology.sh
+
+# After engine layer changes
+npm run test:scss
+
+# Update GENOME.md and INTEGRATION-GUIDE.md
+```
+
+### Documentation Quality
+
+```bash
+./.github/skills/documentation-manager-agent/scripts/validate-doc-structure.sh
+./.github/skills/documentation-manager-agent/scripts/validate-doc-links.sh docs/
+./.github/skills/documentation-manager-agent/scripts/detect-doc-redundancy.sh
+./.github/skills/documentation-manager-agent/scripts/check-doc-metadata.sh docs/specifications/
+```
+
+### Agent Quality (Dogfooding)
+
+```bash
+npm run validate:agents
+npm run validate:agents:duplicates
+npm run audit:agents
+npm run metrics:agents
+```
+
+---
+
+## Learning Paths
+
+### New Contributors
+
+1. Read `agent-philosophy.md` — core principles
+2. Follow `agent-onboarding.md` — structured training
+3. Browse `.github/skills/` — available capabilities
+4. Run `npm test` — verify your setup
+
+### AI Agents
+
+1. Load `.github/skills/{agent-name}/SKILL.md`
+2. Check `.github/prompts/{agent-name}.prompt.md`
+3. Follow `.github/instructions/*.instructions.md` for the file type
+4. Run `scripts/validate-*.sh` to validate output
+
+### Theme Maintainers
+
+1. Use theme-genome-agent for PR reviews
+2. Run `./.github/skills/theme-genome-agent/scripts/validate-ontology.sh`
+3. Keep `GENOME.md` current
+4. Run `npm test` before merging
+
+---
+
+## Key Resources
+
+| Resource | Location |
+|----------|----------|
+| Ontology Integration Guide | `_sass/ontology/INTEGRATION-GUIDE.md` |
+| Evolution History | `GENOME.md` |
+| Agent Framework Spec | `.github/specs/agent-intelligence-framework.md` |
+| Agent Philosophy | `.github/docs/agent-philosophy.md` |
+| Conventional Tools | `.github/docs/conventional-tools.md` |
+| Dogfooding Guide | `.github/docs/dogfooding-guide.md` |
+| Agent Guidelines | `/docs/specifications/github-copilot-agent-guidelines.md` |
+| Component Patterns | `.github/skills/html-template-agent/references/COMPONENT-PATTERNS.md` |
+| Layout Patterns | `.github/skills/responsive-design-agent/references/LAYOUT-PATTERNS.md` |

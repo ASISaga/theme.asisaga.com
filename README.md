@@ -107,7 +107,7 @@ The Genesis Semantic Design System is a **Living Genome** that grows through int
 - **[Agent Philosophy](.github/docs/agent-philosophy.md)** - Core principles and vision
 - **[Agent Onboarding](.github/docs/agent-onboarding.md)** - Training and workflows
 - **[Decision Matrices](.github/docs/decision-matrices.md)** - Quick lookup guide
-- **[Workflow Examples](.github/docs/workflow-examples.md)** - Practical examples
+- **[Agent Workflows](.github/docs/agent-workflows.md)** - Workflows and practical examples
 
 **Agent Prompts**:
 - [Theme Genome Agent](.github/prompts/theme-genome-agent.prompt.md) - Ontological gatekeeper

@@ -184,7 +184,7 @@ This document provides quick-reference decision matrices for common scenarios in
 
 **Related Documentation**:
 - `.github/docs/ontological-proposition-guide.md` - PR workflow
-- `.github/docs/workflow-examples.md` - Practical examples
+- `.github/docs/agent-workflows.md` - Workflows and practical examples
 - `/docs/specifications/scss-ontology-system.md` - All variants detailed
 - `.github/specs/ontological-design-system.md` - Complete specification
 

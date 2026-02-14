@@ -54,10 +54,10 @@ prompt: |
   **Scope**: .github/ agent ecosystem files, /docs/specifications/, agent quality metrics
   
   **Related Documentation**:
-  - .github/DOGFOODING-GUIDE.md - Complete workflows
+  - .github/docs/dogfooding-guide.md - Complete workflows
   - .github/skills/agent-evolution-agent/SKILL.md - Skill definition
   - docs/specifications/agent-self-learning-system.md - Architecture
-  - .github/agents/agent-capabilities.yml - Capability matrix
+  - .github/agents/agent-coordination.yml - Capability matrix and routing
   - .github/agents/feature-flags.yml - Feature toggles
   - .github/agents/quality-thresholds.yml - Quality standards
 tools: ['bash', 'read', 'edit', 'grep']

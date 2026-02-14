@@ -463,7 +463,7 @@ All agent files should include:
 Maintain ecosystem-level documentation:
 
 - `.github/docs/` - Complete architecture (~600 lines typical)
-- `AGENT-INDEX.md` - Quick navigation (~400 lines typical)
+- `.github/docs/agent-system-overview.md` - Agent catalog and navigation
 - Additional files as needed for your domain
 
 ### Update Pattern

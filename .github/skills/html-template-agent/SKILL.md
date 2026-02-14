@@ -142,7 +142,7 @@ Ready-to-use semantic HTML patterns:
 - `/docs/specifications/component-library.md` - Reusable components
 - `/docs/specifications/scss-ontology-system.md` - Ontology for class mapping
 - `.github/instructions/html.instructions.md` - Complete HTML guidelines
-- `.github/AGENT-INDEX.md` - Quick navigation guide
+- `.github/docs/agent-system-overview.md` - Agent catalog and navigation
 
 ### Related Agents
 - `scss-refactor-agent` - Maps HTML to ontological SCSS

@@ -69,11 +69,10 @@ mkdir -p .github/{instructions,specs,docs,agents,prompts,skills}
 ./.github/skills/repository-onboarding/scripts/validate-setup.sh
 ```
 
-## Related Documentation
+## References
 
-→ **Onboarding prompt**: `.github/prompts/repository-onboarding.prompt.md`  
-→ **Framework spec**: `.github/specs/agent-intelligence-framework.md`  
-→ **Agent guidelines**: `/docs/specifications/github-copilot-agent-guidelines.md`  
-→ **Architecture**: `/docs/specifications/architecture.md`  
-→ **Extraction guide**: `.github/docs/TEMPLATE-EXTRACTION-GUIDE.md`  
-→ **Conventional tools**: `.github/docs/conventional-tools.md`
+→ `/docs/specifications/github-copilot-agent-guidelines.md` — Agent standards  
+→ `/docs/specifications/architecture.md` — System architecture  
+→ `/docs/specifications/agent-self-learning-system.md` — Self-learning system  
+→ `.github/prompts/repository-onboarding.prompt.md` — Onboarding prompt  
+→ `.github/specs/agent-intelligence-framework.md` — Framework spec

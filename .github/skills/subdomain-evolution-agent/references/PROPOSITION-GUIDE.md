@@ -308,7 +308,7 @@ This represents a unique semantic role: data in an uncertain/calculating state, 
 I will update:
 - [ ] `_sass/ontology/INTEGRATION-GUIDE.md` - Add to State variants
 - [ ] `GENOME.md` - Document origin and rationale
-- [ ] `.github/skills/README.md` - Update variant count
+- [ ] `.github/docs/agent-system-overview.md` - Update variant count
 
 ## Labels
 

@@ -115,12 +115,12 @@ npm test
 - `/docs/specifications/agent-self-learning-system.md` - **Complete architecture**
 - `scripts/README.md` - **All validation scripts**
 - `references/SELF-LEARNING-ARCHITECTURE.md` - Detailed architecture
-- `.github/DOGFOODING-GUIDE.md` - Dogfooding workflows
+- `.github/docs/dogfooding-guide.md` - Dogfooding workflows
 
 **Framework**:
 - `/docs/specifications/github-copilot-agent-guidelines.md` - Agent standards
 - `.github/.github/docs/agent-philosophy.md` - Ecosystem architecture
-- `.github/AGENT-INDEX.md` - Navigation
+- `.github/docs/agent-system-overview.md` - Agent catalog and navigation
 
 **Related Skills**: documentation-manager-agent, scss-refactor-agent
 

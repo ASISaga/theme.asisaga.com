@@ -1,66 +1,37 @@
-# 🔄 Agent Workflow Guide
+# Agent Workflow Guide
 
-**Version**: 2.0  
-**Last Updated**: 2025-01-17  
+**Last Updated**: 2026-02-14  
 **Audience**: AI Agents and Human Developers
 
-This document provides comprehensive workflows for all agents in the Genesis Semantic Design System ecosystem.
-
-## 🆕 Version 2.0 Changes
-
-- **Mobile-First Responsive System**: All workflows now assume mobile-first breakpoints
-- **Futuristic Effects Integration**: New glassmorphism, glow, and gradient mixins
-- **Container Queries**: Support for component-level responsive design
-- **Fluid Spacing**: Use `$space-*` tokens for responsive spacing
-- **Accessibility Requirements**: WCAG 2.5.5 touch targets, reduced motion support
+Core workflows for the Genesis Semantic Design System agent ecosystem.
 
 ---
 
-## 📊 Workflow Overview
+## Workflow Overview
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                   ASI Saga Agent Ecosystem                  │
-│                                                             │
-│  Subdomain          Theme Repository         Documentation │
-│  Agents      ←→     Genome Agent      ←→     Maintenance   │
-│     ↓                    ↓                         ↓        │
-│  SCSS Refactor      Review & Merge         GENOME.md       │
-│  HTML Template      Implement Engine       GUIDE Updates   │
-│  JS Integration     Update Interface       Version Docs    │
-└─────────────────────────────────────────────────────────────┘
+Subdomain Agents  ←→  Theme Genome Agent  ←→  Documentation
+     ↓                      ↓                       ↓
+SCSS Refactor          Review & Merge          GENOME.md
+HTML Template          Implement Engine        Guide Updates
 ```
 
 ---
 
-## 🌱 Workflow 1: Subdomain Identifies Semantic Gap
+## Workflow 1: Ontological Evolution
 
-**Trigger**: Developer encounters pattern not covered by existing ontology
+**Trigger**: Developer encounters a semantic pattern not covered by existing ontology.
 
-### Phase 1: Local Analysis
+### Phase 1: Gap Identification
 
 **Agent**: Subdomain Evolution Agent
 
-**Steps**:
+1. **Identify the need** - Ask: "What am I trying to represent semantically?"
 
-1. **Identify the Need**
-   ```
-   Question: "What am I trying to represent?"
-   Examples:
-   - "Content that's calculating/uncertain"
-   - "Historical/archived data"
-   - "Social proof elements"
-   - "Real-time collaborative presence"
-   ```
+2. **Review existing ontology** - Check all 31 variants in `_sass/ontology/INTEGRATION-GUIDE.md` and `/docs/specifications/scss-ontology-system.md`.
 
-2. **Review Existing Ontology**
-   - Open `_sass/ontology/INTEGRATION-GUIDE.md`
-   - Check all 31 variants across 6 categories
-   - Review `GENOME.md` for usage examples
-
-3. **Try Combination Approach**
+3. **Try combinations first**:
    ```scss
-   // Can I combine existing mixins?
    .my-element {
      @include genesis-entity('primary');
      @include genesis-state('evolving');
@@ -68,29 +39,13 @@ This document provides comprehensive workflows for all agents in the Genesis Sem
    }
    ```
 
-4. **Determine if Gap is Real**
-   
-   **Valid Gap Indicators**:
-   - ✅ Semantic meaning not expressible with combinations
-   - ✅ Pattern appears in multiple contexts
-   - ✅ Other subdomains would likely need this
-   - ✅ Represents information/interaction intent, not visual style
-
-   **Not Valid**:
-   - ❌ Just want different colors/sizes
-   - ❌ One-off edge case for specific page
-   - ❌ Can achieve with mixin combination
-   - ❌ Purely visual preference
+4. **Determine if gap is real**:
+   - Valid: Semantic meaning not expressible with combinations, appears in multiple contexts, universal across subdomains, represents intent not visual style
+   - Not valid: Just wants different colors/sizes, one-off edge case, achievable with mixin combination, purely visual preference
 
 ### Phase 2: Proposition Creation
 
-**If genuine gap identified**:
-
-5. **Draft Proposition**
-   - Use template: `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md`
-   - Follow guide: `.github/prompts/subdomain-evolution-agent.prompt.md`
-
-6. **Required Elements**:
+5. **Draft proposition** using template from `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md`:
    ```markdown
    - Source Node: [subdomain name]
    - Intent: [One sentence - WHAT it represents]
@@ -101,511 +56,230 @@ This document provides comprehensive workflows for all agents in the Genesis Sem
    - Universal Applicability: [How others use it]
    ```
 
-7. **Self-Review Checklist**:
+6. **Self-review checklist**:
    - [ ] Describes semantic role, not visual style
    - [ ] Cannot achieve with existing combinations
    - [ ] Universal beyond my subdomain
    - [ ] Fits clearly into one category
-   - [ ] Well documented with examples
    - [ ] No visual language (colors, sizes, etc.)
 
-### Phase 3: Submission
+### Phase 3: Submission & Review
 
-8. **Create PR to Theme Repository**
-   - Branch from theme repo or fork
-   - Add label: `ontological-proposition`
-   - Complete entire template
-   - Submit for review
+7. **Create PR** to theme repository with label `ontological-proposition`.
 
-9. **Wait for Theme Agent Review**
-   - Response typically within 1-3 days
-   - May receive: Approval, Refinement Request, or Rejection with Guidance
+8. **Theme Genome Agent reviews** (see review workflow below).
 
----
-
-## 🧬 Workflow 2: Theme Genome Agent Reviews Proposition
-
-**Trigger**: PR labeled `ontological-proposition` submitted
+### Phase 4: Theme Genome Agent Review Process
 
 **Agent**: Theme Genome Agent
 
-### Phase 1: Initial Assessment
+1. **Semantic purity check** - Reject immediately if: contains color/pixel values, uses "modern"/"clean"/"pretty", requests visual changes without semantic meaning.
 
-**Steps**:
+2. **Redundancy analysis** - Can this be achieved with current variants or combinations? If yes, deny with code example showing how.
 
-1. **Read Proposition Completely**
-   - Understand Intent (WHAT)
-   - Understand Context (WHY)
-   - Note proposed category and label
+3. **Generalization check** - Would 3+ subdomains use this? Is it universal or an edge case? Reject if too specific.
 
-2. **Semantic Purity Check**
-   
-   **Red Flags** (Immediate Reject):
-   - Contains color names, pixel values
-   - Uses "modern", "clean", "pretty", etc.
-   - Requests visual changes without semantic meaning
-   - Poorly documented or vague
+4. **System impact assessment** - Does this reveal bloat? Should similar variants be merged? Is a new category needed?
 
-   **If Red Flags**: Use rejection template from `theme-genome-agent.prompt.md`
+### Phase 5: Implementation
 
-### Phase 2: Redundancy Analysis
+If approved, the Theme Genome Agent:
 
-3. **Check Existing Ontology**
-   ```
-   Question: "Can this be achieved with current variants?"
-   
-   Review:
-   - All variants in proposed category
-   - Combinations across categories
-   - Similar patterns in GENOME.md
-   ```
-
-4. **Decision Point 1**:
-   
-   **If Covered by Existing**:
-   - Deny PR kindly
-   - Explain which mixins solve their need
-   - Provide code example
-   - Use "Covered by Existing" template
-
-   **If NOT Covered**:
-   - Continue to Generalization Check
-
-### Phase 3: Generalization Analysis
-
-5. **Assess Universal Applicability**
-   ```
-   Questions:
-   - Would 3+ subdomains use this?
-   - Is this ASI-ecosystem universal or edge case?
-   - Does it represent information architecture or implementation detail?
-   ```
-
-6. **Decision Point 2**:
-   
-   **If Universal**:
-   - Plan to add to global interface
-   - Continue to Refactoring Check
-
-   **If Domain-Specific but Valid**:
-   - Consider sub-species variant in engine
-   - Mark as specialized use case
-   - Document clearly
-
-   **If Too Specific**:
-   - Reject with guidance
-   - Suggest alternative approaches
-
-### Phase 4: Ontological Refactoring Check
-
-7. **Evaluate System Impact**
-   ```
-   Questions:
-   - Does this reveal bloat in existing category?
-   - Should similar variants be merged?
-   - Would splitting category improve clarity?
-   - Does this suggest new category needed?
-   ```
-
-8. **Decision Point 3**:
-   
-   **If Refactoring Needed**:
-   - Plan broader changes
-   - Ensure backward compatibility
-   - Document migration path
-
-   **If Clean Addition**:
-   - Proceed to implementation
-
-### Phase 5: Implementation & Documentation
-
-9. **Update Engine** (`_sass/ontology/_engines.scss`)
-   ```scss
-   /**
-    * @param $[parameter] [new-variant]
-    * ORIGIN: PR #XX ([subdomain].asisaga.com)
-    * INTENT: [One-line purpose]
-    * EVOLUTION: [Initial implementation]
-    * @since vX.X.X
-    */
-   @if $[parameter] == 'new-variant' {
-     // Implementation with semantic comments
-   }
-   ```
-
-10. **Update Interface** (`_sass/ontology/_interface.scss`)
-    - Add to parameter documentation
-    - Include usage example
-    - Note relationships to other variants
-
-11. **Update INTEGRATION-GUIDE.md**
-    - Add to appropriate category section
-    - Provide complete example
-    - Explain when to use vs. alternatives
-
-12. **Update GENOME.md**
-    ```markdown
-    ## vX.X - Variant Name (YYYY-MM)
-    
-    ### New Variants
-    - `category('variant')` - PR #XX from [subdomain]
-      - **Why**: [Semantic gap description]
-      - **Impact**: [Expected adoption]
-    ```
-
-13. **Version Bump & Changelog**
-    - Minor version: New variants (v2.1.0)
-    - Patch version: Bug fixes (v2.0.1)
-    - Major version: Breaking changes (v3.0.0)
-
-14. **Merge PR**
-    - Use "Approved" template in PR comment
-    - Merge to main
-    - Tag release if appropriate
-    - Close PR with summary
-
-### Phase 6: Post-Merge
-
-15. **Monitor Adoption**
-    - Watch for subdomains using new variant
-    - Track issues or questions
-    - Gather feedback for future refinements
-
-16. **Update Metrics** (in GENOME.md)
-    - Document adoption rate
-    - Note any unexpected uses
-    - Record feedback themes
+1. **Updates engine** (`_sass/ontology/_engines.scss`) with full doc comments including PR origin and intent.
+2. **Updates interface** (`_sass/ontology/_interface.scss`) with parameter docs.
+3. **Updates INTEGRATION-GUIDE.md** with usage examples.
+4. **Updates GENOME.md** with evolution history.
+5. **Version bumps**: Minor for new variants, patch for fixes, major for breaking changes.
+6. **Merges PR** and tags release.
 
 ---
 
-## 🔄 Workflow 3: SCSS Refactor (Legacy to Ontology)
+## Workflow 2: SCSS Refactoring (Legacy to Ontology)
 
-**Trigger**: Need to migrate existing CSS to ontological system
-
+**Trigger**: Need to migrate existing CSS to ontological system.  
 **Agent**: SCSS Refactor Agent
 
-### Phase 1: Preparation
+### Step 1: Audit
 
-**Steps**:
+- Note all HTML classes and their semantic purpose
+- Analyze current CSS for intended meaning
+- Review ontology options and plan mixin combinations
 
-1. **Audit HTML Structure**
-   - Note all classes and hierarchy
-   - Identify semantic purpose of each element
-   - Document any complex interactions
+### Step 2: Classify
 
-2. **Analyze Current CSS**
-   - What visual styles are applied?
-   - What's the intended meaning?
-   - Are there any one-off hacks?
+Create a mapping table:
+```
+Class Name         -> Semantic Role      -> Ontological Mixin
+.article-grid      -> Layout grid        -> genesis-environment('distributed')
+.article-card      -> Content block      -> genesis-entity('primary')
+.article-title     -> Headline           -> genesis-cognition('axiom')
+.article-date      -> Metadata           -> genesis-cognition('gloss')
+.read-more         -> Navigation link    -> genesis-synapse('navigate')
+```
 
-3. **Review Ontology Options**
-   - Study all 31 variants
-   - Plan mixin combinations
-   - Note any potential gaps
+### Step 3: Implement
 
-### Phase 2: Classification
+Build new SCSS mirroring HTML structure with only mixin calls. Remove all raw CSS properties, imports, and variables.
 
-4. **Classify Each HTML Element**
-   
-   **Create mapping table**:
-   ```
-   Class Name         → Semantic Role      → Ontological Mixin
-   .article-grid      → Layout grid        → genesis-environment('distributed')
-   .article-card      → Content block      → genesis-entity('primary')
-   .article-title     → Headline           → genesis-cognition('axiom')
-   .article-date      → Metadata           → genesis-cognition('gloss')
-   .read-more         → Navigation link    → genesis-synapse('navigate')
-   ```
+### Step 4: Verify
 
-### Phase 3: Implementation
+- [ ] Zero raw CSS properties
+- [ ] No pixel/color values
+- [ ] Structure mirrors HTML
+- [ ] HTML unchanged
+- Run: `npm run test:scss && npm run lint:scss`
 
-5. **Create New SCSS File**
-   ```scss
-   ---
-   ---
-   @import "ontology/index";
-   
-   // Mapped classes below
-   ```
+### Step 5: Test & Document
 
-6. **Build Mirrored Structure**
-   - Match HTML hierarchy exactly
-   - Use nesting to show relationships
-   - Apply ontological mixins
-
-7. **Purge Raw CSS**
-   - Remove ALL raw properties
-   - Remove ALL old imports
-   - Remove ALL variables
-   - Keep ONLY mixin calls
-
-### Phase 4: Verification
-
-8. **Run Verification Checklist**
-   - [ ] Only `@import "ontology/index";`
-   - [ ] Zero raw CSS properties
-   - [ ] No pixel/color values
-   - [ ] Structure mirrors HTML
-   - [ ] HTML unchanged
-
-9. **Visual Testing**
-   - Load page in browser
-   - Compare to original appearance
-   - Test responsive behavior
-   - Check accessibility
-
-10. **Identify Any Gaps**
-    - Document patterns not mappable
-    - Consider if gaps are genuine
-    - Propose to Theme Agent if needed
-
-### Phase 5: Finalization
-
-11. **Documentation**
-    ```scss
-    /**
-     * Refactored: [Date]
-     * From: Legacy CSS
-     * To: Genesis Ontology v2.0
-     * Agent: SCSS Refactor Agent
-     */
-    ```
-
-12. **Commit & Deploy**
-    - Clear commit message
-    - Note any visual changes
-    - Update any related docs
+- Visual comparison with original
+- Responsive testing at 375px, 768px, 1440px
+- Document any unmappable patterns (potential ontological gaps)
 
 ---
 
-## 🎯 Workflow 4: Validation & Quality Assurance
+## Workflow 3: Validation & Quality Assurance
 
-**Trigger**: Pre-deployment validation needed
+**Trigger**: Pre-deployment validation.
 
-**Agent**: Any agent performing final checks
+### Pre-Commit Checklists
 
-### Pre-Commit Validation
+**Subdomain SCSS**:
+- Import only `ontology/index`
+- Zero raw CSS properties
+- All classes mapped to mixins
+- Structure mirrors HTML
+- Accessibility preserved
 
-**For Subdomain SCSS**:
-
-```bash
-# Checklist
-✓ Import only ontology/index
-✓ Zero raw CSS properties
-✓ All classes mapped to mixins
-✓ Structure mirrors HTML
-✓ Visual fidelity maintained
-✓ Accessibility preserved
-```
-
-**For Theme Engine**:
-
-```bash
-# Checklist
-✓ Interface layer has no CSS properties
-✓ Engine has all implementations
-✓ Documentation updated (GENOME.md, INTEGRATION-GUIDE.md)
-✓ Comments include PR origin
-✓ Backward compatibility maintained
-✓ Accessibility compliance (WCAG AA)
-```
+**Theme Engine**:
+- Interface layer has no CSS properties
+- Engine has all implementations
+- Documentation updated (GENOME.md, INTEGRATION-GUIDE.md)
+- Comments include PR origin
+- Backward compatibility maintained
 
 ### Testing Protocol
 
-**Visual Regression**:
-1. Screenshot before changes
-2. Screenshot after changes
-3. Compare side-by-side
-4. Note any differences
+```bash
+npm run test:scss    # Compilation check
+npm run lint:scss    # Style compliance
+npm test             # Full validation
+```
 
-**Accessibility Testing**:
-1. Screen reader navigation
-2. Keyboard-only interaction
-3. Color contrast ratios
-4. Focus indicators visible
-
-**Responsive Testing**:
-1. Test at 375px (mobile)
-2. Test at 768px (tablet)
-3. Test at 1440px (desktop)
-4. Test at 1920px+ (wide)
-
-**Browser Testing**:
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+**Responsive**: Test at 375px, 768px, 1440px, 1920px+  
+**Accessibility**: Screen reader, keyboard-only, color contrast, focus indicators  
+**Browsers**: Chrome, Firefox, Safari, Edge (latest)
 
 ---
 
-## 📚 Workflow 5: Documentation Maintenance
+## Workflow 4: Documentation Maintenance
 
-**Trigger**: Any ontological change
+**Trigger**: Any ontological change.
 
-**Agent**: Theme Genome Agent or Documentation Maintainer
+**For new variants**, update:
+1. `GENOME.md` - Variant registry with origin and intent
+2. `_sass/ontology/INTEGRATION-GUIDE.md` - Usage examples
+3. `_sass/ontology/_interface.scss` - Parameter documentation
+4. `_sass/ontology/_engines.scss` - Implementation with doc comments
 
-### Required Updates
-
-**For New Variants**:
-
-1. **GENOME.md**
-   - Add to variant registry
-   - Document origin and intent
-   - Track adoption metrics
-
-2. **INTEGRATION-GUIDE.md**
-   - Add to appropriate category
-   - Include usage examples
-   - Explain when to use
-
-3. **_interface.scss**
-   - Update parameter documentation
-   - Add inline code examples
-
-4. **_engines.scss**
-   - Implement with full doc comments
-   - Reference originating PR
-
-**For Refactorings**:
-
-1. **GENOME.md**
-   - Document in "Refactorings" section
-   - Explain reasoning
-   - Note affected subdomains
-
-2. **Migration Guide**
-   - Create if breaking change
-   - Provide before/after examples
-   - List affected variants
-
-3. **Changelog**
-   - Version bump
-   - Clear description
-   - Migration instructions
+**For breaking changes**, also create a migration guide with before/after examples.
 
 ---
 
-## 🚨 Emergency Workflows
+## Practical Example: Adding "Ancestral" Entity Variant
 
-### Workflow 6: Reverting Bad Merge
+This end-to-end example shows the ontological evolution workflow.
 
-**If problematic variant was merged**:
+### Scenario
 
-1. **Assessment**
-   - What broke?
-   - How many subdomains affected?
-   - Can we fix forward or must revert?
+`docs.asisaga.com` needs to mark old API versions visually while keeping them accessible. `state('deprecated')` implies "don't use," but archived docs are still valid references.
 
-2. **Communication**
-   - Create issue documenting problem
-   - Notify affected subdomains
-   - Propose solution
+### Gap Analysis
 
-3. **Resolution**
-   - Fix forward if possible (patch release)
-   - Revert if necessary (with migration guide)
-   - Update documentation
-   - Learn and document in GENOME.md
+Review `/docs/specifications/scss-ontology-system.md`:
+- `state('deprecated')` - Too negative, implies broken
+- `state('stable')` - Doesn't convey historical nature
+- `entity('latent')` - Wrong category
+- **Conclusion**: Gap exists for representing historical content
 
-### Workflow 7: Subdomain Bypassed System
+### Proposition PR
 
-**If subdomain committed raw CSS**:
+```markdown
+## Ontological Proposition
 
-1. **Detection**
-   - Code review caught it
-   - Agent noticed in audit
-   - Build warnings triggered
+**Source Node**: docs.asisaga.com
+**Intent**: Represent archived/historical content
+**Context**: Old documentation should remain accessible but clearly marked
+as historical. Current options don't convey "valid but old" status.
 
-2. **Education**
-   - Create issue (kind, educational tone)
-   - Link to relevant documentation
-   - Offer to help with refactor
+**Type**: Entity
+**Suggested Label**: `entity('ancestral')`
 
-3. **Remediation**
-   - Work with subdomain to refactor
-   - Use SCSS Refactor Agent
-   - Document in GENOME.md as lesson learned
+**Use Cases**:
+1. Old API version documentation (still functional)
+2. Historical blog posts or announcements
+3. Archived project documentation
 
----
+**Universal Applicability**:
+- Research subdomain: Past experiments and results
+- Analytics subdomain: Historical data visualizations
+- Blog: Archive section
+```
 
-## 🎓 Training Workflows
+### Review Outcome
 
-### For New Agents
+Theme Genome Agent evaluates:
+- Redundancy: Not covered by `state('deprecated')` (different meaning) or `entity('latent')` (latent = low priority, not historical)
+- Generalization: Universal pattern - all sites have historical content
+- Semantic: Represents "content from the past, valid but not current"
+- **Decision: APPROVE**
 
-**Onboarding Sequence**:
+### Implementation
 
-1. **Week 1**: Read all documentation
-   - .github/docs/agent-philosophy.md
-   - GENOME.md
-   - INTEGRATION-GUIDE.md
-   - All instruction files
+Engine addition in `_sass/ontology/_engines.scss`:
+```scss
+/**
+ * @category Entity
+ * @variant 'ancestral'
+ * @origin PR #145 (docs.asisaga.com)
+ * @intent Represent historical/archived content
+ * @since 2.8.0
+ */
+@if $nature == 'ancestral' {
+  opacity: 0.7;
+  filter: grayscale(0.3);
+  border-color: var(--border-muted);
+  background-color: var(--background-muted);
+}
+```
 
-2. **Week 2**: Shadow reviews
-   - Observe existing PR reviews
-   - Study approved propositions
-   - Understand rejection reasoning
+### Subdomain Adoption
 
-3. **Week 3**: Practice refactors
-   - Take sample legacy CSS
-   - Convert to ontology
-   - Get feedback from senior agent
-
-4. **Week 4**: Supervised work
-   - Review PRs with oversight
-   - Perform refactors with review
-   - Ask questions liberally
-
----
-
-## 📊 Metrics & Monitoring
-
-### Key Performance Indicators
-
-**System Health**:
-- % of subdomain SCSS with zero raw CSS
-- Average time from PR to merge
-- Acceptance vs. rejection rate
-- Variant usage distribution
-
-**Quality Metrics**:
-- Documentation completeness
-- Accessibility compliance rate
-- Visual regression incidents
-- Performance benchmarks
-
-**Growth Metrics**:
-- New variants per quarter
-- Subdomain adoption rate
-- Refactoring completions
-- Community satisfaction
+```scss
+// _sass/main.scss at docs.asisaga.com
+.archived-doc {
+  @include genesis-entity('ancestral');
+  @include genesis-cognition('discourse');
+}
+```
 
 ---
 
-## 🔗 Quick Reference Links
+## Rejection Example: Visual-Only Request
 
-**Core Documents**:
-- [.github/docs/agent-philosophy.md](.github/docs/agent-philosophy.md) - Agent ecosystem
-- [GENOME.md](../GENOME.md) - Evolutionary history
-- [Evolution Philosophy](../evolution.md) - Foundational concepts
+**Submitted**: "Make cards have rounded corners of 24px instead of 12px"
 
-**Agent Prompts**:
-- [Theme Genome Agent](prompts/theme-genome-agent.prompt.md)
-- [Subdomain Evolution Agent](prompts/subdomain-evolution-agent.prompt.md)
-- [SCSS Refactor Agent](prompts/scss-refactor-agent.prompt.md)
+**Why rejected**: This is a visual implementation detail, not a semantic meaning. Border radius is controlled by design tokens in `_sass/ontology/_variables.scss`.
 
-**Templates**:
-- [Ontological Proposition PR](PULL_REQUEST_TEMPLATE/ontological_proposition.md)
-
-**Instructions**:
-- [SCSS Instructions](instructions/scss.instructions.md)
-- [HTML Instructions](instructions/html.instructions.md)
-- [JS Instructions](instructions/js.instructions.md)
+**Guidance provided**: Reframe as semantic need. Instead of "cards need bigger border radius," try "we need to represent highlighted community posts with more visual prominence than standard posts." Then review existing entity variants (`primary`, `secondary`, `imperative`) for combinations that may already solve the need.
 
 ---
 
-**Version**: 1.0  
-**Maintained By**: Theme Genome Agent  
-**Review Cadence**: Quarterly  
-**Last Review**: 2026-01-15
+## References
 
-*Workflows evolve with the system. Always use latest version.*
+- `.github/docs/agent-philosophy.md` - Agent ecosystem architecture
+- `GENOME.md` - Evolutionary history
+- `/docs/specifications/scss-ontology-system.md` - Complete variant reference
+- `.github/prompts/theme-genome-agent.prompt.md` - Theme review agent
+- `.github/prompts/subdomain-evolution-agent.prompt.md` - Proposition creation agent
+- `.github/prompts/scss-refactor-agent.prompt.md` - Refactoring agent
+- `.github/instructions/scss.instructions.md` - SCSS coding standards

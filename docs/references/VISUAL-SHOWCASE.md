@@ -385,7 +385,7 @@ https://theme.asisaga.com/enhanced-showcase/
 ### Related Docs
 - **Ontology Guide**: `_sass/ontology/INTEGRATION-GUIDE.md`
 - **Quick Reference**: `.github/skills/WEB-DESIGN-QUICK-REFERENCE.md`
-- **Agent Index**: `.github/AGENT-INDEX.md`
+- **Agent System Overview**: `.github/docs/agent-system-overview.md`
 
 ---
 

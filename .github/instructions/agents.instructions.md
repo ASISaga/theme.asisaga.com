@@ -42,8 +42,8 @@ Agent files should be minimal. For detailed patterns:
 → **Agent framework**: `.github/specs/agent-intelligence-framework.md` - Complete agent system specification  
 → **Agent guidelines**: `/docs/specifications/github-copilot-agent-guidelines.md` - Standards and best practices  
 → **Self-learning system**: `/docs/specifications/agent-self-learning-system.md` - Dogfooding and Ouroboros  
-→ **Agent philosophy**: `.github/docs/agent-philosophy.md` - Core principles and vision  
-→ **Conventional tools**: `.github/docs/conventional-tools.md` - All npm scripts and validation
+→ **Architecture**: `/docs/specifications/architecture.md` - System architecture and organization  
+→ **Agent philosophy**: `.github/docs/agent-philosophy.md` - Core principles and vision
 
 ---
 

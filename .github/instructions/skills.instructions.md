@@ -67,11 +67,11 @@ Detailed specifications belong in `references/` subdirectory, not in SKILL.md.
 
 ## Related Documentation
 
-→ **Agent framework**: `.github/specs/agent-intelligence-framework.md` - Complete system specification  
-→ **Agent guidelines**: `/docs/specifications/github-copilot-agent-guidelines.md` - Standards and best practices  
-→ **Self-learning system**: `/docs/specifications/agent-self-learning-system.md` - Dogfooding and Ouroboros  
-→ **Conventional tools**: `.github/docs/conventional-tools.md` - All npm scripts and validation commands  
-→ **Agent philosophy**: `.github/docs/agent-philosophy.md` - Core principles
+→ `/docs/specifications/github-copilot-agent-guidelines.md` - Agent standards and practices  
+→ `/docs/specifications/agent-self-learning-system.md` - Ouroboros and self-improvement  
+→ `/docs/specifications/architecture.md` - System architecture overview  
+→ `.github/specs/agent-intelligence-framework.md` - Framework specification  
+→ `.github/docs/agent-philosophy.md` - Design principles
 
 ---
 
