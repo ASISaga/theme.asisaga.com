@@ -126,7 +126,7 @@ Theme Genome Agent will review based on:
 4. Proper documentation and examples
 
 For guidance, see:
-- .github/AGENTS.MD - Agent ecosystem
+- .github/agent system documentation - Agent ecosystem
 - _sass/ontology/INTEGRATION-GUIDE.md - Complete API
 - .github/prompts/subdomain-evolution-agent.prompt.md - Submission guide
 -->

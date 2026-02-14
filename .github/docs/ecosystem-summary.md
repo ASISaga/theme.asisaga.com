@@ -94,7 +94,7 @@ All SKILL.md files updated with:
 ```
 .github/
 ├── AGENT-INDEX.md (NEW)
-├── AGENTS.MD
+├── .github/docs/agent-philosophy.md
 ├── AGENT-QUICK-REFERENCE.md
 ├── AGENT-WORKFLOWS.md
 ├── skills/
@@ -232,7 +232,7 @@ Entry Point: .github/AGENT-INDEX.md
     │       ├─ Automation: scripts/validate-*.sh
     │       └─ References: references/*-GUIDE.md
     │
-    ├─ Ecosystem Architecture: .github/AGENTS.MD
+    ├─ Ecosystem Architecture: .github/.github/docs/agent-philosophy.md
     ├─ Quick Reference: .github/AGENT-QUICK-REFERENCE.md
     ├─ Workflows: .github/AGENT-WORKFLOWS.md
     │
@@ -248,7 +248,7 @@ Entry Point: .github/AGENT-INDEX.md
 
 1. Start: Read `AGENT-INDEX.md`
 2. Learn: Review `AGENT-QUICK-REFERENCE.md`
-3. Understand: Read `AGENTS.MD`
+3. Understand: Read `.github/docs/`
 4. Practice: Try validation scripts
 5. Deep Dive: Read references/ guides
 

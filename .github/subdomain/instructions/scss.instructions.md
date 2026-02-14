@@ -146,7 +146,7 @@ If no mixin combination serves your page-specific styling need:
 4. Submit PR to `theme.asisaga.com` to add the component to theme (NOT subdomain)
 5. If truly page-specific to this subdomain only, submit an Ontological Proposition
 
-→ **Proposition process**: Theme's `.github/AGENTS.MD`
+→ **Proposition process**: Theme's `.github/.github/docs/agent-philosophy.md`
 
 ## Verification Checklist
 

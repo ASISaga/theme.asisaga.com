@@ -357,7 +357,7 @@ Vibe/atmosphere → genesis-atmosphere
 ## 📚 Essential Files
 
 **Must Read First**:
-- `.github/AGENTS.MD` - Agent architecture (17KB)
+- `.github/.github/docs/agent-philosophy.md` - Agent architecture (17KB)
 - `GENOME.md` - Variant history (13KB)
 - `_sass/ontology/INTEGRATION-GUIDE.md` - Complete API (11KB)
 

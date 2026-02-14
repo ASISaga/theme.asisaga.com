@@ -329,7 +329,7 @@ When your HTML structure reveals a pattern not covered by existing ontology, you
 - Elements representing "uncertain/in-progress calculation"
 - UI showing "social proof" or "testimonials"
 
-These gaps may warrant Ontological Propositions (see `.github/AGENTS.MD`).
+These gaps may warrant Ontological Propositions (see `.github/docs/agent-philosophy.md`).
 
 ## Documentation References
 

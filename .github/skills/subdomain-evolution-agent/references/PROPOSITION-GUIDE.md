@@ -474,7 +474,7 @@ Theme Agent will:
 - **SKILL.md** - Full agent instructions
 - **_sass/ontology/INTEGRATION-GUIDE.md** - All current variants
 - **GENOME.md** - Evolution history
-- **.github/AGENTS.MD** - Ecosystem overview
+- **.github/.github/docs/agent-philosophy.md** - Ecosystem overview
 - **.github/prompts/theme-genome-agent.prompt.md** - Review criteria
 
 ---

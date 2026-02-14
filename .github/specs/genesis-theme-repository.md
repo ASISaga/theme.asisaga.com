@@ -109,7 +109,7 @@ The theme provides a complete reference system in `.github/subdomain/` for boots
 ```
 
 → **Setup guide**: `.github/subdomain/README.md`  
-→ **Architecture**: `.github/AGENTS.MD` (Subdomain Intelligence System section)
+→ **Architecture**: `.github/.github/docs/agent-philosophy.md` (Subdomain Intelligence System section)
 
 ## Bootstrapping New Repositories
 

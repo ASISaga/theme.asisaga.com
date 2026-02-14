@@ -535,7 +535,7 @@ This document provides comprehensive workflows for all agents in the Genesis Sem
 **Onboarding Sequence**:
 
 1. **Week 1**: Read all documentation
-   - AGENTS.MD
+   - .github/docs/agent-philosophy.md
    - GENOME.md
    - INTEGRATION-GUIDE.md
    - All instruction files
@@ -584,7 +584,7 @@ This document provides comprehensive workflows for all agents in the Genesis Sem
 ## 🔗 Quick Reference Links
 
 **Core Documents**:
-- [AGENTS.MD](AGENTS.MD) - Agent ecosystem
+- [.github/docs/agent-philosophy.md](.github/docs/agent-philosophy.md) - Agent ecosystem
 - [GENOME.md](../GENOME.md) - Evolutionary history
 - [Evolution Philosophy](../evolution.md) - Foundational concepts
 

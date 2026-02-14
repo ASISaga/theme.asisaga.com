@@ -90,7 +90,8 @@ The Genesis Semantic Design System is a **Living Genome** that grows through int
 5. **Approval & implementation**: New variants are documented in [GENOME.md](GENOME.md) with origin story
 
 **Resources**:
-- **[AGENTS.MD](.github/AGENTS.MD)** - Complete agent ecosystem architecture
+- **[Agent Philosophy](.github/docs/agent-philosophy.md)** - Core principles and vision
+- **[Agent Guides](.github/docs/)** - Complete documentation index
 - **[Subdomain Evolution Agent](.github/prompts/subdomain-evolution-agent.prompt.md)** - How to propose changes
 - **[GENOME.md](GENOME.md)** - Evolutionary history and variant registry
 
@@ -103,9 +104,10 @@ The Genesis Semantic Design System is a **Living Genome** that grows through int
 - **SCSS Refactor Agent**: Migrates legacy CSS to ontological system
 
 **Essential Reading**:
-- **[AGENTS.MD](.github/AGENTS.MD)** - Your role in the ecosystem (17KB comprehensive guide)
-- **[AGENT-WORKFLOWS.md](.github/AGENT-WORKFLOWS.md)** - Complete workflows and decision trees
-- **[AGENT-QUICK-REFERENCE.md](.github/AGENT-QUICK-REFERENCE.md)** - Fast lookup cheat sheet
+- **[Agent Philosophy](.github/docs/agent-philosophy.md)** - Core principles and vision
+- **[Agent Onboarding](.github/docs/agent-onboarding.md)** - Training and workflows
+- **[Decision Matrices](.github/docs/decision-matrices.md)** - Quick lookup guide
+- **[Workflow Examples](.github/docs/workflow-examples.md)** - Practical examples
 
 **Agent Prompts**:
 - [Theme Genome Agent](.github/prompts/theme-genome-agent.prompt.md) - Ontological gatekeeper
@@ -149,11 +151,12 @@ This creates **design with memory** - future developers understand not just WHAT
 - **[Migration Guide](/docs/systems/ontology/ONTOLOGY-MIGRATION-GUIDE.md)** - Legacy to ontology
 
 **Evolution & Intelligence**:
-- **[AGENTS.MD](.github/AGENTS.MD)** - AI agent ecosystem architecture
+- **[Agent System](.github/docs/)** - Complete agent documentation
+- **[Agent Philosophy](.github/docs/agent-philosophy.md)** - Core principles and vision
 - **[GENOME.md](GENOME.md)** - Evolutionary history and variant registry
 - **[Evolution Narrative](/docs/references/evolution.md)** - Philosophical foundation
-- **[AGENT-WORKFLOWS.md](.github/AGENT-WORKFLOWS.md)** - Complete workflows
-- **[AGENT-QUICK-REFERENCE.md](.github/AGENT-QUICK-REFERENCE.md)** - Fast lookup guide
+- **[Ontological Propositions](.github/docs/ontological-proposition-guide.md)** - PR workflow
+- **[Decision Matrices](.github/docs/decision-matrices.md)** - Quick decisions
 
 **Developer Guides**:
 - **[User Guides](/docs/guides/)** - How-to documentation and tutorials
@@ -408,9 +411,8 @@ Legacy classes (Bento, Material) remain functional:
 ```
 theme.asisaga.com/
 ├── .github/
-│   ├── AGENTS.MD               # Agent ecosystem architecture
-│   ├── AGENT-WORKFLOWS.md      # Complete workflows
-│   ├── AGENT-QUICK-REFERENCE.md # Fast lookup guide
+│   ├── docs/                   # Agent documentation
+│   ├── specs/                  # Technical specifications
 │   ├── instructions/           # AI coding standards
 │   │   ├── scss.instructions.md
 │   │   ├── html.instructions.md

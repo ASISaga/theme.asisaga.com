@@ -119,7 +119,7 @@ npm test             # Both (run before committing)
 2. Check combination possibilities
 3. Submit Ontological Proposition if genuine gap
 
-→ **Process guide**: `.github/AGENTS.MD`, `.github/prompts/subdomain-evolution-agent.prompt.md`
+→ **Process guide**: `.github/.github/docs/agent-philosophy.md`, `.github/prompts/subdomain-evolution-agent.prompt.md`
 
 ## Documentation References
 

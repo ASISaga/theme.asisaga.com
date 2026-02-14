@@ -307,7 +307,7 @@ The agent system is designed to continuously improve:
 
 - `/docs/specifications/agent-self-learning-system.md` - Technical architecture
 - `/docs/specifications/github-copilot-agent-guidelines.md` - Agent standards
-- `.github/AGENTS.MD` - Ecosystem overview
+- `.github/.github/docs/agent-philosophy.md` - Ecosystem overview
 - `.github/skills/agent-evolution-agent/SKILL.md` - Meta-agent skill
 
 ---

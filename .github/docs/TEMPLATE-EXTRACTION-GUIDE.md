@@ -599,7 +599,7 @@ EOF
 - [GitHub Copilot](https://docs.github.com/copilot) - Official docs
 
 **This repository:**
-- `.github/AGENTS.MD` - Complete ecosystem architecture
+- `.github/.github/docs/agent-philosophy.md` - Complete ecosystem architecture
 - `/docs/specifications/github-copilot-agent-guidelines.md` - Detailed guidelines
 
 ## Support

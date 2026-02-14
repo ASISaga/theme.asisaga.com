@@ -44,6 +44,6 @@ Reference these specs when:
 - Learning repository-specific patterns
 - Understanding the ontological design system
 
-→ **Architecture**: `.github/AGENTS.MD`  
+→ **Architecture**: `.github/.github/docs/agent-philosophy.md`  
 → **Documentation**: `.github/docs/`  
 → **Instructions**: `.github/instructions/`

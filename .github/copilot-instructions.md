@@ -45,8 +45,9 @@ This repository implements a complete GitHub Copilot agent intelligence system w
 - **Docs** provide implementation guides
 - **Agents/prompts/skills** provide executable capabilities
 
-→ **Complete architecture**: `.github/AGENTS.MD`  
-→ **Framework spec**: `.github/specs/agent-intelligence-framework.md`
+→ **Complete framework**: `.github/specs/agent-intelligence-framework.md` - Reusable framework  
+→ **Philosophy**: `.github/docs/agent-philosophy.md` - Core principles and vision  
+→ **All guides**: `.github/docs/README.md` - Complete documentation index
 
 ## Bootstrapping New Repositories
 
@@ -88,16 +89,17 @@ npm test                # Run all tests and linters
 3. **Context Efficiency** — Reference specs/docs, eliminate redundancy
 4. **Ouroboros Pattern** — Agents evolve themselves through continuous use
 
-→ **Philosophy details**: `.github/specs/agent-intelligence-framework.md`
+→ **Philosophy details**: `.github/docs/agent-philosophy.md` - Living Genome, dogfooding, core principles
 
 ---
 
 ## Quick Links
 
 **Agent System:**
-- **Architecture**: `.github/AGENTS.MD` - Complete ecosystem overview
 - **Framework**: `.github/specs/agent-intelligence-framework.md` - Reusable framework
+- **Philosophy**: `.github/docs/agent-philosophy.md` - Core principles and vision
 - **Guides**: `.github/docs/` - Implementation and usage guides
+- **Index**: `.github/docs/README.md` - Complete documentation index
 
 **Repository Details:**
 - **Repository spec**: `.github/specs/genesis-theme-repository.md` - This repository's specifics

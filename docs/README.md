@@ -118,7 +118,8 @@ Historical records organized by type (50+ files):
   - Version section templates
 
 ### Agent Ecosystem
-- [`.github/AGENTS.MD`](../.github/AGENTS.MD) - Agent ecosystem architecture
+- [`.github/docs/`](../.github/docs/) - Agent system documentation
+- [`.github/specs/`](../.github/specs/) - Technical specifications  
 - [`.github/skills/`](../.github/skills/) - Agent skill specifications
 - [Using Agent Skills](guides/USING-AGENT-SKILLS.md) - AI assistance guide
 

@@ -8,8 +8,8 @@ Each skill corresponds to an agent defined in the ecosystem:
 
 | Agent Skill | Related Prompt | Related Instructions | Purpose |
 |-------------|----------------|---------------------|---------|
-| **theme-genome-agent** | `.github/prompts/theme-genome-agent.prompt.md` | `.github/AGENTS.MD` | Review and approve ontological propositions |
-| **subdomain-evolution-agent** | `.github/prompts/subdomain-evolution-agent.prompt.md` | `.github/AGENTS.MD` | Create ontological propositions from subdomains |
+| **theme-genome-agent** | `.github/prompts/theme-genome-agent.prompt.md` | `.github/.github/docs/agent-philosophy.md` | Review and approve ontological propositions |
+| **subdomain-evolution-agent** | `.github/prompts/subdomain-evolution-agent.prompt.md` | `.github/.github/docs/agent-philosophy.md` | Create ontological propositions from subdomains |
 | **scss-refactor-agent** | `.github/prompts/scss-refactor-agent.prompt.md` | `.github/instructions/scss.instructions.md` | Migrate to ontological mixins |
 | **html-template-agent** | N/A (instructions-based) | `.github/instructions/html.instructions.md` | Create semantic HTML templates |
 | **responsive-design-agent** | `.github/prompts/responsive-design-agent.prompt.md` | `.github/instructions/scss.instructions.md` | Implement responsive patterns |
@@ -105,7 +105,7 @@ html-template-agent (creates structure)
 
 Skills complement existing documentation:
 
-- **AGENTS.MD** (11.9 KB) - High-level agent ecosystem overview
+- **.github/docs/agent-philosophy.md** (11.9 KB) - High-level agent ecosystem overview
 - **AGENT-QUICK-REFERENCE.md** (11.9 KB) - Quick lookup for ontological categories
 - **AGENT-WORKFLOWS.md** (15.6 KB) - Detailed workflow examples
 - **agent-skill-spec.md** - Format specification for these skills
@@ -189,7 +189,7 @@ Current: v2.0 (aligned with Genesis v2.0)
 
 ## References
 
-- **Agent Ecosystem**: `.github/AGENTS.MD`
+- **Agent Ecosystem**: `.github/.github/docs/agent-philosophy.md`
 - **Ontology Guide**: `_sass/ontology/INTEGRATION-GUIDE.md`
 - **Evolution History**: `GENOME.md`
 - **Prompts**: `.github/prompts/`

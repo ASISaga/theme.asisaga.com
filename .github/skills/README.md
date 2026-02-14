@@ -321,7 +321,7 @@ This creates a **living genome** where the design system evolves based on real u
 - **[WEB-DESIGN-QUICK-REFERENCE.md](WEB-DESIGN-QUICK-REFERENCE.md)** - **NEW** One-page cheat sheet for fast pattern lookup
 
 ### Documentation
-- **AGENTS.MD** - Complete agent ecosystem architecture
+- **.github/docs/agent-philosophy.md** - Complete agent ecosystem architecture
 - **GENOME.md** - Evolutionary history and variant registry
 - **agent-skill-spec.md** - Agent Skills format specification
 - **_sass/ontology/INTEGRATION-GUIDE.md** - Complete ontological API reference
