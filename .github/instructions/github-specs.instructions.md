@@ -72,7 +72,14 @@ Before committing:
 4. Examples are correct and tested
 5. No duplication with docs or instructions
 
+## Related Documentation
+
+→ **Agent framework**: `.github/specs/agent-intelligence-framework.md` - Complete system specification  
+→ **Architecture**: `/docs/specifications/architecture.md` - System architecture and organization  
+→ **Self-learning system**: `/docs/specifications/agent-self-learning-system.md` - Dogfooding and Ouroboros  
+→ **Agent guidelines**: `/docs/specifications/github-copilot-agent-guidelines.md` - Standards and best practices
+
 ---
 
-**Version**: 1.0  
+**Version**: 1.1 - Added spec references for dogfooding  
 **Last Updated**: 2026-02-14
