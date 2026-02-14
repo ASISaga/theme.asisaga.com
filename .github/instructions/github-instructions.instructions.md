@@ -74,7 +74,8 @@ Before committing:
 → **Agent framework**: `.github/specs/agent-intelligence-framework.md` - Complete system specification  
 → **Path-specific instructions**: `.github/docs/path-specific-instructions.md` - How glob patterns work  
 → **Self-learning system**: `/docs/specifications/agent-self-learning-system.md` - Dogfooding and Ouroboros  
-→ **Conventional tools**: `.github/docs/conventional-tools.md` - All npm scripts and validation commands
+→ **Conventional tools**: `.github/docs/conventional-tools.md` - All npm scripts and validation commands  
+→ **Agent philosophy**: `.github/docs/agent-philosophy.md` - Core principles
 
 ---
 

@@ -91,7 +91,8 @@ Before committing:
 → **Agent framework**: `.github/specs/agent-intelligence-framework.md` - Complete system specification  
 → **Architecture**: `/docs/specifications/architecture.md` - System architecture and organization  
 → **Dogfooding guide**: `.github/docs/dogfooding-guide.md` - Self-improvement workflows  
-→ **Documentation index**: `.github/docs/README.md` - Complete documentation catalog
+→ **Documentation index**: `.github/docs/README.md` - Complete documentation catalog  
+→ **Agent philosophy**: `.github/docs/agent-philosophy.md` - Core principles
 
 ---
 

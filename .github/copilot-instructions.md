@@ -108,6 +108,21 @@ npm run metrics:agents            # Track quality metrics
 
 → **Philosophy details**: `.github/docs/agent-philosophy.md` - Living Genome, dogfooding, core principles
 
+## System Integration
+
+**All components work together**:
+
+- **Instructions** (`.github/instructions/`) auto-load for specific file types
+- **Specs** (`.github/specs/` & `/docs/specifications/`) define detailed frameworks
+- **Docs** (`.github/docs/`) provide implementation guides
+- **Agents/Prompts/Skills** (`.github/agents/`, `.github/prompts/`, `.github/skills/`) provide executable capabilities
+- **Validation** (`npm run dogfood`) ensures continuous quality improvement
+- **CI/CD** (`.github/workflows/agent-quality.yml`) automates quality checks
+
+→ **Agent framework**: `.github/specs/agent-intelligence-framework.md` - Complete system specification  
+→ **Self-learning system**: `/docs/specifications/agent-self-learning-system.md` - Dogfooding architecture  
+→ **Agent guidelines**: `/docs/specifications/github-copilot-agent-guidelines.md` - Standards and best practices
+
 ---
 
 ## Quick Links
@@ -126,3 +141,4 @@ npm run metrics:agents            # Track quality metrics
 **Tools & Testing:**
 - **Conventional tools**: `.github/docs/conventional-tools.md` - npm scripts, linters, validators
 - **Path-specific mechanism**: `.github/docs/path-specific-instructions.md` - How auto-loading works
+- **Agent quality**: Run `npm run dogfood` to validate the agent system itself
