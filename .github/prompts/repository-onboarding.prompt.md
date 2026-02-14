@@ -260,11 +260,10 @@ After onboarding:
 ## Related Documentation
 
 → **Framework spec**: `.github/specs/agent-intelligence-framework.md`  
-→ **Setup guide**: `.github/docs/repository-onboarding-guide.md`  
 → **Extraction guide**: `.github/docs/TEMPLATE-EXTRACTION-GUIDE.md`  
 → **Agent guidelines**: `/docs/specifications/github-copilot-agent-guidelines.md`  
 → **Architecture**: `/docs/specifications/architecture.md`  
-→ **Conventional tools**: `.github/docs/conventional-tools.md`  
+→ **Self-learning**: `/docs/specifications/agent-self-learning-system.md`  
 → **Agent philosophy**: `.github/docs/agent-philosophy.md`
 
 ---

@@ -173,7 +173,7 @@ Create SCSS that **exactly mirrors HTML structure**:
 ## Related Documentation
 
 - `/docs/specifications/scss-ontology-system.md` — Complete ontology reference
+- `/docs/specifications/scss-styling.md` — SCSS architecture patterns
+- `/docs/specifications/accessibility.md` — WCAG compliance requirements
 - `_sass/ontology/INTEGRATION-GUIDE.md` — Mixin API and usage examples
-- `_sass/ontology/refactor-agent.md` — Original workflow patterns
 - `.github/instructions/scss.instructions.md` — SCSS coding standards
-- `.github/prompts/subdomain-evolution-agent.prompt.md` — For proposing gaps

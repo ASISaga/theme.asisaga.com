@@ -122,7 +122,7 @@ The Engine (`_engines.scss`) is the ONLY place for technical CSS properties.
 ## Related Documentation
 
 - `/docs/specifications/scss-ontology-system.md` — Complete ontology reference
+- `/docs/specifications/github-copilot-agent-guidelines.md` — Agent development standards
+- `/docs/specifications/accessibility.md` — WCAG compliance requirements
 - `_sass/ontology/INTEGRATION-GUIDE.md` — Mixin API and usage examples
 - `GENOME.md` — Evolutionary history and variant origins
-- `.github/docs/agent-philosophy.md` — Agent ecosystem architecture
-- `/docs/specifications/github-copilot-agent-guidelines.md` — Agent development standards

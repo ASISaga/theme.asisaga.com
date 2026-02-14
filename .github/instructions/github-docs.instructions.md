@@ -90,8 +90,8 @@ Before committing:
 
 → **Agent framework**: `.github/specs/agent-intelligence-framework.md` - Complete system specification  
 → **Architecture**: `/docs/specifications/architecture.md` - System architecture and organization  
-→ **Dogfooding guide**: `.github/docs/dogfooding-guide.md` - Self-improvement workflows  
-→ **Documentation index**: `.github/docs/README.md` - Complete documentation catalog  
+→ **Agent guidelines**: `/docs/specifications/github-copilot-agent-guidelines.md` - Standards and best practices  
+→ **Self-learning**: `/docs/specifications/agent-self-learning-system.md` - Dogfooding and Ouroboros  
 → **Agent philosophy**: `.github/docs/agent-philosophy.md` - Core principles
 
 ---
