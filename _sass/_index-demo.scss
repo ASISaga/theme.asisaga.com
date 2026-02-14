@@ -25,6 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  touch-action: pan-y;
   overflow: hidden;
   background: var(--void-deep, oklch(0.08 0.02 260));
 }
