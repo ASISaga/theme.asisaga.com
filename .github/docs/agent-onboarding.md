@@ -34,7 +34,7 @@ This guide provides a structured onboarding path for new agents (AI or human) jo
 
 - [ ] Read `.github/docs/ontological-proposition-guide.md` - PR workflow
 - [ ] Read `.github/docs/decision-matrices.md` - Quick decisions
-- [ ] Read `.github/docs/workflow-examples.md` - Practical examples
+- [ ] Read `.github/docs/agent-workflows.md` - Workflows and practical examples
 - [ ] Practice with refactor examples
 
 ### Phase 5: Quality & Evolution (Recommended)
@@ -502,7 +502,7 @@ REFERENCES
 Variants: /docs/specifications/scss-ontology-system.md
 Philosophy: .github/docs/agent-philosophy.md
 Decisions: .github/docs/decision-matrices.md
-Examples: .github/docs/workflow-examples.md
+Examples: .github/docs/agent-workflows.md
 ```
 
 ## References

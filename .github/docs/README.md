@@ -19,7 +19,6 @@ This directory contains documentation and guides for the agent intelligence syst
 ### Ontological Evolution
 
 - **`ontological-proposition-guide.md`** - Complete PR workflow and evolutionary handshake protocol
-- **`workflow-examples.md`** - Step-by-step practical examples of ontological evolution
 
 ### Agent Collaboration
 
@@ -55,7 +54,7 @@ Documentation provides **guides** and **explanations** for using the agent syste
 
 ### Contributing to Ontology?
 1. Read: `ontological-proposition-guide.md` - PR workflow
-2. Study: `workflow-examples.md` - Practical examples
+2. Study: `agent-workflows.md` - Workflows and practical examples
 3. Use: `decision-matrices.md` - Quick validation
 
 ### Improving the System?

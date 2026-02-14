@@ -466,8 +466,7 @@ Updated decision-matrices.md to clarify this distinction.
 **Related Documentation**:
 - `.github/docs/ontological-proposition-guide.md` - PR workflow
 - `.github/docs/decision-matrices.md` - Quick decisions
-- `.github/docs/workflow-examples.md` - Practical examples
-- `.github/agents/README.md` - Internal coordination files
+- `.github/docs/agent-workflows.md` - Workflows and practical examples
 
 **Templates**:
 - `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md`

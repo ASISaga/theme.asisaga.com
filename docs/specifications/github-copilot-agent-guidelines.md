@@ -146,7 +146,7 @@ Protected directory for internal agent coordination logic and system-level confi
 - Documented why it belongs here
 
 **Related Documentation:**
-- `.github/agents/README.md` - Complete access guidelines
+- `.github/docs/agent-system-overview.md` - Agent catalog and navigation
 - `.github/docs/agent-philosophy.md` - Ecosystem architecture including agents/
 
 ### 4. Agent Documentation (`.github/*.MD`)
@@ -486,7 +486,7 @@ Every component must meet:
 **Agent ecosystem:**
 - `.github/docs/agent-philosophy.md` - Complete architecture
 - `.github/docs/agent-system-overview.md` - Agent catalog and navigation
-- `.github/skills/README.md` - Skills overview
+- `.github/docs/agent-system-overview.md` - Skills and agent overview
 - `/docs/references/agent-skill-spec.md` - Agent Skills specification
 
 **Instruction files:**
