@@ -161,8 +161,7 @@ This document defines how agents communicate with each other, with human develop
 
 **Files**:
 - `agent-handoff.yml` - Workflow transitions between agents
-- `agent-capabilities.yml` - What each agent can do
-- `agent-routing.yml` - Which agent handles what
+- `agent-coordination.yml` - Agent capabilities, routing, and coordination
 - `quality-thresholds.yml` - Quality gates
 - `feature-flags.yml` - System-level toggles
 
