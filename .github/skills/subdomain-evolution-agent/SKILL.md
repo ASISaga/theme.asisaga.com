@@ -140,10 +140,13 @@ cat _sass/ontology/INTEGRATION-GUIDE.md | grep "genesis-"
 - `/docs/specifications/scss-ontology-system.md` - All 41+ variants, categories
 - `_sass/ontology/INTEGRATION-GUIDE.md` - API reference
 - `GENOME.md` - Variant evolution history
+- `/docs/specifications/scss-styling.md` - SCSS patterns and standards
 
 **Related**:
 - `.github/skills/theme-genome-agent/SKILL.md` - Proposition review process
 - `.github/AGENT-WORKFLOWS.md` - Workflow 1: Subdomain identifies gap
+- `.github/docs/ontological-proposition-guide.md` - Proposition creation guide
+- `/docs/specifications/github-copilot-agent-guidelines.md` - Agent standards
 
 **Related Skills**: theme-genome-agent, scss-refactor-agent
 

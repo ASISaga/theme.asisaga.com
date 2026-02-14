@@ -140,6 +140,9 @@ Activate when:
 **Core Standards**:
 - `.github/instructions/docs.instructions.md` - Core documentation standards
 - `/docs/specifications/architecture.md` - System architecture
+- `/docs/specifications/agent-self-learning-system.md` - Dogfooding and Ouroboros
+- `.github/docs/dogfooding-guide.md` - Self-improvement workflows
+- `/docs/specifications/github-copilot-agent-guidelines.md` - Agent standards
 
 **Related Skills**: agent-evolution-agent, html-template-agent
 

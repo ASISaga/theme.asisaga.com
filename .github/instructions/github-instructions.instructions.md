@@ -69,7 +69,15 @@ Before committing:
 3. Content references specs/docs, doesn't duplicate
 4. No overlap with other instruction files
 
+## Related Documentation
+
+→ **Agent framework**: `.github/specs/agent-intelligence-framework.md` - Complete system specification  
+→ **Path-specific instructions**: `.github/docs/path-specific-instructions.md` - How glob patterns work  
+→ **Self-learning system**: `/docs/specifications/agent-self-learning-system.md` - Dogfooding and Ouroboros  
+→ **Conventional tools**: `.github/docs/conventional-tools.md` - All npm scripts and validation commands  
+→ **Agent philosophy**: `.github/docs/agent-philosophy.md` - Core principles
+
 ---
 
-**Version**: 1.0  
+**Version**: 1.1 - Added spec references for dogfooding  
 **Last Updated**: 2026-02-14

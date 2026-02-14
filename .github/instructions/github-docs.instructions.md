@@ -86,7 +86,15 @@ Before committing:
 4. Links to other docs/specs are correct
 5. No duplication with specs or instructions
 
+## Related Documentation
+
+→ **Agent framework**: `.github/specs/agent-intelligence-framework.md` - Complete system specification  
+→ **Architecture**: `/docs/specifications/architecture.md` - System architecture and organization  
+→ **Dogfooding guide**: `.github/docs/dogfooding-guide.md` - Self-improvement workflows  
+→ **Documentation index**: `.github/docs/README.md` - Complete documentation catalog  
+→ **Agent philosophy**: `.github/docs/agent-philosophy.md` - Core principles
+
 ---
 
-**Version**: 1.0  
+**Version**: 1.1 - Added spec references for dogfooding  
 **Last Updated**: 2026-02-14

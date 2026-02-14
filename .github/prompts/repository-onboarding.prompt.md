@@ -260,9 +260,15 @@ After onboarding:
 ## Related Documentation
 
 → **Framework spec**: `.github/specs/agent-intelligence-framework.md`  
-→ **Setup guide**: `.github/docs/repository-onboarding-guide.md`
+→ **Setup guide**: `.github/docs/repository-onboarding-guide.md`  
+→ **Extraction guide**: `.github/docs/TEMPLATE-EXTRACTION-GUIDE.md`  
+→ **Agent guidelines**: `/docs/specifications/github-copilot-agent-guidelines.md`  
+→ **Architecture**: `/docs/specifications/architecture.md`  
+→ **Conventional tools**: `.github/docs/conventional-tools.md`  
+→ **Agent philosophy**: `.github/docs/agent-philosophy.md`
 
 ---
 
 **Version History**:
+- 1.1.0 (2026-02-14) - Added spec references for dogfooding
 - 1.0.0 (2026-02-14) - Initial onboarding agent

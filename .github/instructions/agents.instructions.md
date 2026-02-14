@@ -37,7 +37,15 @@ Agent files should be minimal. For detailed patterns:
 - Corresponding prompt file: `.github/prompts/{name}.prompt.md`
 - Corresponding skill directory: `.github/skills/{name}/`
 
+## Related Documentation
+
+→ **Agent framework**: `.github/specs/agent-intelligence-framework.md` - Complete agent system specification  
+→ **Agent guidelines**: `/docs/specifications/github-copilot-agent-guidelines.md` - Standards and best practices  
+→ **Self-learning system**: `/docs/specifications/agent-self-learning-system.md` - Dogfooding and Ouroboros  
+→ **Agent philosophy**: `.github/docs/agent-philosophy.md` - Core principles and vision  
+→ **Conventional tools**: `.github/docs/conventional-tools.md` - All npm scripts and validation
+
 ---
 
-**Version**: 1.0  
+**Version**: 1.1 - Added spec references for dogfooding  
 **Last Updated**: 2026-02-14

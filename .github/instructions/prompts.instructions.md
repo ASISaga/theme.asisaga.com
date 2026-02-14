@@ -48,7 +48,15 @@ Reference detailed patterns instead of duplicating:
 → **Specifications**: `.github/specs/agent-intelligence-framework.md`  
 → **Documentation**: `.github/docs/`
 
+## Related Documentation
+
+→ **Agent framework**: `.github/specs/agent-intelligence-framework.md` - Complete system specification  
+→ **Agent guidelines**: `/docs/specifications/github-copilot-agent-guidelines.md` - Standards and best practices  
+→ **Self-learning system**: `/docs/specifications/agent-self-learning-system.md` - Dogfooding and Ouroboros  
+→ **Conventional tools**: `.github/docs/conventional-tools.md` - All npm scripts and validation commands  
+→ **Agent philosophy**: `.github/docs/agent-philosophy.md` - Core principles
+
 ---
 
-**Version**: 1.0  
+**Version**: 1.1 - Added spec references for dogfooding  
 **Last Updated**: 2026-02-14

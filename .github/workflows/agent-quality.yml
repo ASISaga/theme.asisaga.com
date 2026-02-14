@@ -1,0 +1,110 @@
+name: Agent Quality Validation (Dogfooding)
+
+on:
+  push:
+    branches: [ main, 'copilot/**' ]
+    paths:
+      - '.github/agents/**'
+      - '.github/prompts/**'
+      - '.github/skills/**'
+      - '.github/instructions/**'
+      - '.github/specs/**'
+      - '.github/docs/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '.github/agents/**'
+      - '.github/prompts/**'
+      - '.github/skills/**'
+      - '.github/instructions/**'
+      - '.github/specs/**'
+      - '.github/docs/**'
+  schedule:
+    # Run weekly on Sundays at 00:00 UTC
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+jobs:
+  agent-quality-audit:
+    name: Agent Quality Audit
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Run quality audit
+        id: audit
+        run: |
+          echo "## Agent Quality Audit Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          ./.github/skills/agent-evolution-agent/scripts/audit-agent-quality.sh | tee audit-output.txt
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          cat audit-output.txt >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Check for duplicates
+        run: |
+          echo "## Duplication Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          ./.github/skills/agent-evolution-agent/scripts/detect-duplication.sh | tee duplication-output.txt
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          cat duplication-output.txt >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Check spec synchronization
+        run: |
+          echo "## Spec Synchronization Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          ./.github/skills/agent-evolution-agent/scripts/sync-agents-with-specs.sh | tee sync-output.txt
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          cat sync-output.txt >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Generate recommendations
+        run: |
+          echo "## Improvement Recommendations" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          ./.github/skills/agent-evolution-agent/scripts/recommend-improvements.sh | tee recommendations-output.txt
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          cat recommendations-output.txt >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Track metrics
+        run: |
+          # Create metrics directory if it doesn't exist
+          mkdir -p .github/metrics
+          
+          # Record current metrics with timestamp
+          TIMESTAMP=$(date +%Y-%m-%d-%H%M%S)
+          ./.github/skills/agent-evolution-agent/scripts/track-metrics.sh > ".github/metrics/metrics-${TIMESTAMP}.txt"
+          
+          echo "## Metrics Tracking" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Metrics recorded at: ${TIMESTAMP}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          cat ".github/metrics/metrics-${TIMESTAMP}.txt" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Upload metrics artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-metrics-${{ github.sha }}
+          path: .github/metrics/
+          retention-days: 90
+      
+      - name: Upload audit reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-audit-reports-${{ github.sha }}
+          path: |
+            audit-output.txt
+            duplication-output.txt
+            sync-output.txt
+            recommendations-output.txt
+          retention-days: 30
