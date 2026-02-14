@@ -1,8 +1,25 @@
-# 🚀 Agent Ecosystem - Supercharged v2.4
+# 🚀 Agent Ecosystem - Properly Structured v2.6
 
-**Version**: 2.4 - Subdomain Intelligence System  
-**Last Updated**: 2026-02-12  
+**Version**: 2.6 - Proper Directory Structure  
+**Last Updated**: 2026-02-14  
 **Status**: Production Ready with Continuous Evolution
+
+---
+
+## 🆕 Version 2.6: Proper Structure
+
+**Fixed directory structure** following Copilot coding agent guidelines:
+
+| Directory | Purpose | Files |
+|-----------|---------|-------|
+| `instructions/` | Path-activated coding standards (glob patterns only) | 7 `.instructions.md` files |
+| `specs/` | Agent specifications & frameworks | `agent-intelligence-framework.md` |
+| `docs/` | Documentation & guides | `agent-system-overview.md`, guides |
+| `agents/` | Custom agents (Copilot format) | `*.agent.md` |
+| `prompts/` | Agent prompts (strict format) | `*.prompt.md` |
+| `skills/` | Agent skills (agentskills.io) | `*/SKILL.md` + scripts |
+
+**Key principle**: Reference repository documents/tools/linters, never duplicate!
 
 ---
 
@@ -10,16 +27,16 @@
 
 | Component | Purpose | Location |
 |-----------|---------|----------|
+| **Instructions** | Path-activated coding standards | `.github/instructions/` |
+| **Specs** | Agent specifications & frameworks | `.github/specs/` |
+| **Docs** | Documentation & guides | `.github/docs/` |
 | **Skills** | Executable agent capabilities | `.github/skills/` |
 | **Prompts** | Detailed agent instructions | `.github/prompts/` |
-| **Instructions** | Coding standards & guidelines | `.github/instructions/` |
-| **Agents** | 🔒 Internal configurations (protected) | `.github/agents/` |
+| **Agents** | Custom agents (Copilot format) | `.github/agents/` |
 | **Validation** | Automated testing scripts | `.github/skills/*/scripts/` |
-| **References** | Detailed specifications | `.github/skills/*/references/` |
-| **Patterns** | Ready-to-use component & layout patterns | `.github/skills/*/references/` |
-| **🆕 Subdomain Intelligence** | Reference agent system for subdomains | `.github/subdomain/` |
-| **Self-Learning** | Meta-agent evolution system | `.github/skills/agent-evolution-agent/` |
-| **Dogfooding Guide** | Agent self-improvement workflows | `.github/DOGFOODING-GUIDE.md` |
+| **Subdomain** | Reference system for subdomains | `.github/subdomain/` |
+| **Architecture** | Complete ecosystem docs | `.github/AGENTS.MD` |
+| **Dogfooding** | Self-improvement workflows | `.github/DOGFOODING-GUIDE.md` |
 
 ---
 
@@ -384,7 +401,12 @@ npm run lint:scss:fix
     ├── html.instructions.md
     ├── js.instructions.md
     ├── docs.instructions.md
-    └── github.instructions.md
+    ├── html.instructions.md
+    ├── js.instructions.md
+    ├── docs.instructions.md
+    ├── agents.instructions.md
+    ├── prompts.instructions.md
+    └── skills.instructions.md
 ```
 
 ---
