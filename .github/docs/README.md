@@ -4,8 +4,20 @@ This directory contains documentation and guides for the agent intelligence syst
 
 ## Files
 
+### System Documentation
+
 - **`agent-system-overview.md`** - Overview of directory structure and file purposes
 - **`TEMPLATE-EXTRACTION-GUIDE.md`** - Step-by-step guide for adapting system to new repositories
+- **`conventional-tools.md`** - Complete reference for npm scripts, linters, validators, and testing tools
+- **`path-specific-instructions.md`** - How glob pattern-based instruction loading works
+
+### Navigation & Reference
+
+- **`agent-index.md`** - Agent ecosystem navigation
+- **`agent-quick-reference.md`** - Quick reference for common tasks
+- **`agent-workflows.md`** - Common workflows and patterns
+- **`dogfooding-guide.md`** - Ouroboros pattern and self-improvement
+- **`ecosystem-summary.md`** - Complete ecosystem overview
 
 ## Purpose
 
@@ -18,6 +30,8 @@ Consult these docs when:
 - Adapting system to new repositories
 - Learning best practices
 - Setting up new agents
+- Understanding tooling and validation
+- Learning about path-specific instruction mechanism
 
 → **Architecture**: `.github/AGENTS.MD`  
 → **Specifications**: `.github/specs/`  
