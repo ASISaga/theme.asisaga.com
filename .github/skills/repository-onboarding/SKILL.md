@@ -72,4 +72,7 @@ mkdir -p .github/{instructions,specs,docs,agents,prompts,skills}
 ## Related Documentation
 
 → **Onboarding prompt**: `.github/prompts/repository-onboarding.prompt.md`  
-→ **Framework spec**: `.github/specs/agent-intelligence-framework.md`
+→ **Framework spec**: `.github/specs/agent-intelligence-framework.md`  
+→ **Agent guidelines**: `/docs/specifications/github-copilot-agent-guidelines.md`  
+→ **Architecture**: `/docs/specifications/architecture.md`  
+→ **Extraction guide**: `.github/docs/TEMPLATE-EXTRACTION-GUIDE.md`

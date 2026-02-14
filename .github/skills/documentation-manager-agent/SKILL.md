@@ -140,6 +140,8 @@ Activate when:
 **Core Standards**:
 - `.github/instructions/docs.instructions.md` - Core documentation standards
 - `/docs/specifications/architecture.md` - System architecture
+- `/docs/specifications/agent-self-learning-system.md` - Dogfooding and Ouroboros
+- `.github/docs/dogfooding-guide.md` - Self-improvement workflows
 
 **Related Skills**: agent-evolution-agent, html-template-agent
 

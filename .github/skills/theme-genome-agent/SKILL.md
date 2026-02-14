@@ -189,6 +189,7 @@ npm test
 - `/docs/specifications/scss-ontology-system.md` - Complete ontology reference
 - `_sass/ontology/INTEGRATION-GUIDE.md` - API documentation
 - `GENOME.md` - Variant evolution history
+- `/docs/specifications/scss-styling.md` - SCSS patterns and standards
 
 **Templates**:
 - `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md` - Proposition template
@@ -196,6 +197,9 @@ npm test
 **Related**:
 - `.github/AGENT-WORKFLOWS.md` - Workflow 2: Theme Genome review
 - `.github/skills/subdomain-evolution-agent/SKILL.md` - Proposition creation
+- `.github/docs/ontological-proposition-guide.md` - Proposition guide
+- `/docs/specifications/github-copilot-agent-guidelines.md` - Agent standards
+- `/docs/specifications/agent-self-learning-system.md` - Dogfooding and quality
 
 **Related Skills**: subdomain-evolution-agent, scss-refactor-agent, agent-evolution-agent
 
