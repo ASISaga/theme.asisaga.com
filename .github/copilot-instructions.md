@@ -75,10 +75,27 @@ All conventional (non-AI) software tools are documented separately for reference
 **Primary validation workflow:**
 ```bash
 npm test                # Run all tests and linters
+npm run dogfood         # Validate agent quality (self-improvement)
 ```
 
 → **Complete tool reference**: `.github/docs/conventional-tools.md`  
 → **Includes**: npm scripts, linters, test suites, validation scripts, CI/CD integration
+
+## Dogfooding & Ouroboros
+
+**This agent system practices what it preaches** - agents continuously improve agents using validation scripts.
+
+**Quick validation:**
+```bash
+npm run validate:agents           # Quality audit
+npm run validate:agents:duplicates # Duplication check
+npm run audit:agents              # Get improvement recommendations
+npm run metrics:agents            # Track quality metrics
+```
+
+→ **Complete dogfooding guide**: `.github/docs/dogfooding-guide.md`  
+→ **CI/CD workflow**: `.github/workflows/agent-quality.yml` - Automated weekly audits  
+→ **Metrics tracking**: `.github/metrics/` - Historical quality trends
 
 ## Core Principles
 

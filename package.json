@@ -14,6 +14,13 @@
     "test:e2e:headed": "playwright test --headed",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:report": "playwright show-report",
+    "validate:agents": "./.github/skills/agent-evolution-agent/scripts/audit-agent-quality.sh",
+    "validate:agents:duplicates": "./.github/skills/agent-evolution-agent/scripts/detect-duplication.sh",
+    "validate:agents:sync": "./.github/skills/agent-evolution-agent/scripts/sync-agents-with-specs.sh",
+    "audit:agents": "./.github/skills/agent-evolution-agent/scripts/recommend-improvements.sh",
+    "metrics:agents": "./.github/skills/agent-evolution-agent/scripts/track-metrics.sh",
+    "metrics:agents:history": "./.github/skills/agent-evolution-agent/scripts/track-metrics.sh --history",
+    "dogfood": "npm run validate:agents && npm run validate:agents:duplicates && npm run validate:agents:sync",
     "test": "npm run test:scss && npm run lint:scss"
   },
   "keywords": [

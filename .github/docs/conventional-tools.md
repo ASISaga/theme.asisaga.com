@@ -24,11 +24,28 @@ All automation is accessible through npm scripts defined in `package.json`:
 
 ```bash
 npm test                    # Run all tests (SCSS compilation + linting)
+npm run dogfood             # Validate agent quality (Ouroboros self-improvement)
 npm run test:scss           # Sass compilation check (catches undefined mixins/vars)
 npm run lint:scss           # Stylelint for code quality
 npm run test:e2e            # Playwright E2E tests (live site)
 npm run test:e2e:local      # Playwright E2E tests (local Jekyll server)
 ```
+
+### Agent Quality Validation (Dogfooding)
+
+**Ouroboros Pattern** - Agents improve agents using same standards they enforce:
+
+```bash
+npm run validate:agents              # Complete quality audit
+npm run validate:agents:duplicates   # Check for duplicate content
+npm run validate:agents:sync         # Verify spec synchronization
+npm run audit:agents                 # Get improvement recommendations
+npm run metrics:agents               # Track quality metrics
+npm run metrics:agents:history       # View historical trends
+npm run dogfood                      # Run all validations
+```
+
+**See**: `.github/docs/dogfooding-guide.md` for complete workflow
 
 ### Detailed SCSS Testing
 
@@ -296,8 +313,73 @@ max-nesting-depth: Expected nesting depth to be no more than 3
 ```
 → Flatten selector structure
 
+## Agent Validation Tools
+
+### 7. Agent Evolution Scripts
+
+**Purpose**: Self-improving agent quality validation (Ouroboros pattern)
+
+**Location**: `.github/skills/agent-evolution-agent/scripts/`
+
+**Key scripts:**
+
+**`audit-agent-quality.sh`** - Complete quality audit
+- Analyzes all instruction files, prompts, and skills
+- Calculates spec coverage and context efficiency
+- Identifies optimal vs needs-improvement agents
+- Run via: `npm run validate:agents`
+
+**`detect-duplication.sh`** - Find duplicate content
+- Scans for repeated content across agent files
+- Enforces zero-duplication principle (dogfooding)
+- Run via: `npm run validate:agents:duplicates`
+
+**`sync-agents-with-specs.sh`** - Check spec references
+- Verifies agents reference relevant specs
+- Detects missing spec coverage
+- Run via: `npm run validate:agents:sync`
+
+**`recommend-improvements.sh`** - Generate action items
+- Priority-ranked improvement recommendations
+- Specific actions for each agent
+- Dogfooding principles to apply
+- Run via: `npm run audit:agents`
+
+**`track-metrics.sh`** - Record quality trends
+- Tracks metrics over time
+- Shows historical improvements
+- Run via: `npm run metrics:agents`
+
+**`find-related-agents.sh`** - Spec relationship analysis
+- Find agents that should reference a spec
+- Useful when adding new specs
+- Direct execution: `./.github/skills/agent-evolution-agent/scripts/find-related-agents.sh <spec-file>`
+
+**`measure-context-efficiency.sh`** - Individual agent analysis
+- Calculate context efficiency score for single agent
+- Direct execution: `./.github/skills/agent-evolution-agent/scripts/measure-context-efficiency.sh <agent-file>`
+
+**Configuration**: None required, scripts are self-contained
+
+**CI/CD Integration**: `.github/workflows/agent-quality.yml` runs automatically on:
+- PRs affecting agent files
+- Weekly schedule (Sundays)
+- Manual workflow dispatch
+
+**Metrics Storage**: `.github/metrics/` directory stores historical data
+
+**Best Practices:**
+1. **Run before agent changes** - `npm run validate:agents`
+2. **Track improvements** - `npm run metrics:agents:history`
+3. **Follow recommendations** - `npm run audit:agents`
+4. **Verify zero duplication** - `npm run validate:agents:duplicates`
+5. **Run full dogfooding check** - `npm run dogfood`
+
 ## Related Documentation
 
+- **Dogfooding guide**: `.github/docs/dogfooding-guide.md` - Complete workflow
+- **Agent metrics**: `.github/docs/agent-metrics.md` - Metric definitions
+- **Agent philosophy**: `.github/docs/agent-philosophy.md` - Ouroboros pattern
 - **Stylelint guide**: `/docs/guides/STYLELINT.md`
 - **Stylelint limitations**: `/docs/guides/STYLELINT-LIMITATIONS.md`
 - **Playwright testing**: `/docs/PLAYWRIGHT-TESTING.md`
@@ -305,5 +387,6 @@ max-nesting-depth: Expected nesting depth to be no more than 3
 
 ---
 
-**Version**: 1.0.0  
+**Version**: 1.1.0 - Added agent validation tools  
+**Last Updated**: 2026-02-14  
 **Mechanism**: Reference this file from `copilot-instructions.md` instead of duplicating tool lists
