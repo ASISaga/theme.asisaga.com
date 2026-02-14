@@ -485,8 +485,7 @@ Every component must meet:
 
 **Agent ecosystem:**
 - `.github/docs/agent-philosophy.md` - Complete architecture
-- `.github/docs/agent-system-overview.md` - Agent catalog and navigation
-- `.github/docs/agent-system-overview.md` - Skills and agent overview
+- `.github/docs/agent-system-overview.md` - Agent catalog, skills, and navigation
 - `/docs/references/agent-skill-spec.md` - Agent Skills specification
 
 **Instruction files:**
