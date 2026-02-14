@@ -37,7 +37,7 @@ This directory contains active, user-facing guides for working with the ASI Saga
 - [`Readme.md`](../../_sass/ontology/Readme.md) - Ontology system overview
 
 ### In `.github/`
-- [`AGENTS.MD`](../../.github/AGENTS.MD) - Agent ecosystem architecture
+- [`.github/docs/`](../../.github/.github/docs/agent-philosophy.md) - Agent ecosystem architecture
 - Agent skill specifications and workflows
 
 ## Historical Documentation

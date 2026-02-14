@@ -616,7 +616,7 @@ genesis validate
 ## References
 
 **Related Documentation**:
-- `.github/docs/agent-philosophy.md` - Evolution principles
+- `.github/docs/` - Evolution principles
 - `.github/docs/agent-metrics.md` - Measuring success
 - `.github/specs/agent-intelligence-framework.md` - Current framework
 - `GENOME.md` - Historical evolution

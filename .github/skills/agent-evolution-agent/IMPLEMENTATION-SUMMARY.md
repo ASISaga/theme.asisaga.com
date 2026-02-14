@@ -76,7 +76,7 @@ Technical documentation covering:
 - Troubleshooting
 
 #### Updated Core Documentation
-- **AGENTS.MD**: v2.2 → v2.3 with achievements
+- **.github/docs/agent-philosophy.md**: v2.2 → v2.3 with achievements
 - **AGENT-INDEX.md**: v2.2.0 → v2.3.0 with new scripts
 
 ## Metrics Improvement
@@ -127,7 +127,7 @@ Historical metrics show consistent improvement:
 2. `.github/instructions/github.instructions.md` - Added spec references, reduced verbosity
 3. `.github/prompts/build-popper.prompt.md` - Added spec references
 4. `.github/skills/agent-evolution-agent/SKILL.md` - v1.0 → v1.1, documented new scripts
-5. `.github/AGENTS.MD` - v2.2 → v2.3, updated achievements
+5. `.github/.github/docs/agent-philosophy.md` - v2.2 → v2.3, updated achievements
 6. `.github/AGENT-INDEX.md` - v2.2.0 → v2.3.0, added new capabilities
 7. `.github/skills/agent-evolution-agent/.metrics/history.log` - Created with baseline data
 

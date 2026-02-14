@@ -397,7 +397,7 @@ If truly unique and justified, propose to Theme Agent.
 - `.github/instructions/scss.instructions.md` - Coding standards
 
 **Reference**:
-- `.github/AGENTS.MD` - Agent ecosystem
+- `.github/.github/docs/agent-philosophy.md` - Agent ecosystem
 - `GENOME.md` - Variant history and usage
 - `.github/prompts/subdomain-evolution-agent.prompt.md` - For proposing gaps
 

@@ -179,5 +179,5 @@ Parameters:
 - See `/tests/README.md` for complete catalog
 
 **Evolution:**
-- `.github/AGENTS.MD` - Ontological Proposition system
+- `.github/.github/docs/agent-philosophy.md` - Ontological Proposition system
 - `.github/prompts/subdomain-evolution-agent.prompt.md` - Proposing new variants

@@ -194,7 +194,7 @@ Or use a glob tester like [globtester.com](https://globtester.com).
 
 **Complete guidelines:**
 - `/docs/specifications/github-copilot-agent-guidelines.md` - Agent development
-- `.github/AGENTS.MD` - Ecosystem architecture
+- `.github/.github/docs/agent-philosophy.md` - Ecosystem architecture
 - `.github/AGENT-INDEX.md` - Quick navigation
 
 **Related:**
@@ -225,4 +225,4 @@ Or use a glob tester like [globtester.com](https://globtester.com).
 
 ---
 
-**Questions?** See `.github/AGENTS.MD` or `/docs/specifications/github-copilot-agent-guidelines.md`
+**Questions?** See `.github/.github/docs/agent-philosophy.md` or `/docs/specifications/github-copilot-agent-guidelines.md`

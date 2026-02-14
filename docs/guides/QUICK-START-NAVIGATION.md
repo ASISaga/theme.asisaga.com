@@ -130,4 +130,4 @@ Pick the navigation pattern you need:
 - Review examples in `_sass/ontology/_sample.scss`
 - Check the visual demo at `navigation-demo.html`
 - See full documentation in `NAVIGATION-MECHANISMS-v2.3.0.md`
-- Consult `.github/AGENTS.MD` for ontological evolution process
+- Consult `.github/.github/docs/agent-philosophy.md` for ontological evolution process

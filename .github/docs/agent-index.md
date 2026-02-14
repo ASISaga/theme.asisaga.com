@@ -35,7 +35,7 @@
 | **Agents** | Custom agents (Copilot format) | `.github/agents/` |
 | **Validation** | Automated testing scripts | `.github/skills/*/scripts/` |
 | **Subdomain** | Reference system for subdomains | `.github/subdomain/` |
-| **Architecture** | Complete ecosystem docs | `.github/AGENTS.MD` |
+| **Architecture** | Complete ecosystem docs | `.github/.github/docs/agent-philosophy.md` |
 | **Dogfooding** | Self-improvement workflows | `.github/DOGFOODING-GUIDE.md` |
 
 ---
@@ -369,7 +369,7 @@ npm run lint:scss:fix
 ```
 .github/
 ├── AGENT-INDEX.md (this file) - Quick navigation
-├── AGENTS.MD - Detailed ecosystem architecture
+├── agent system documentation - Detailed ecosystem architecture
 ├── AGENT-QUICK-REFERENCE.md - Ontology cheat sheet
 ├── AGENT-WORKFLOWS.md - Workflow examples
 ├── DOGFOODING-GUIDE.md - Self-improvement workflows
@@ -417,7 +417,7 @@ npm run lint:scss:fix
 
 1. **Start here**: Read this AGENT-INDEX.md
 2. **Learn ontology**: `.github/AGENT-QUICK-REFERENCE.md`
-3. **Understand architecture**: `.github/AGENTS.MD`
+3. **Understand architecture**: `.github/.github/docs/agent-philosophy.md`
 4. **Pick a skill**: Browse `.github/skills/README.md`
 5. **Run validation**: Test scripts in `skills/*/scripts/`
 

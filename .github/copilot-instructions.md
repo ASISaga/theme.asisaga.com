@@ -46,7 +46,7 @@ This repository implements a complete GitHub Copilot agent intelligence system w
 - **Agents/prompts/skills** provide executable capabilities
 
 → **Complete framework**: `.github/specs/agent-intelligence-framework.md` - Reusable framework  
-→ **Philosophy**: `.github/docs/agent-philosophy.md` - Core principles and vision  
+→ **Philosophy**: `.github/docs/` - Core principles and vision  
 → **All guides**: `.github/docs/` - Complete implementation guides
 
 ## Bootstrapping New Repositories
@@ -97,7 +97,7 @@ npm test                # Run all tests and linters
 
 **Agent System:**
 - **Framework**: `.github/specs/agent-intelligence-framework.md` - Reusable framework
-- **Philosophy**: `.github/docs/agent-philosophy.md` - Core principles and vision
+- **Philosophy**: `.github/docs/` - Core principles and vision
 - **Guides**: `.github/docs/` - Implementation and usage guides
 - **Index**: `.github/docs/README.md` - Complete documentation index
 

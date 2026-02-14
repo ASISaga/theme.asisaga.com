@@ -170,7 +170,7 @@ Theme .github/
 ├── instructions/     # Theme coding standards
 ├── prompts/          # Theme agent workflows
 ├── skills/           # Executable capabilities
-├── AGENTS.MD         # Ecosystem architecture
+├── .github/docs/agent-philosophy.md         # Ecosystem architecture
 └── subdomain/        # ← This reference template
 ```
 
@@ -193,7 +193,7 @@ When your subdomain identifies a semantic gap not covered by current ontology:
 3. If genuine gap exists, create a PR to `theme.asisaga.com` using the Ontological Proposition template
 4. The Theme Genome Agent will review your proposal
 
-→ **Full process**: Theme's `.github/AGENTS.MD`  
+→ **Full process**: Theme's `.github/.github/docs/agent-philosophy.md`  
 → **PR template**: Theme's `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md`
 
 ## Keeping Up to Date

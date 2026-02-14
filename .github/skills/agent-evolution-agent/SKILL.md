@@ -119,7 +119,7 @@ npm test
 
 **Framework**:
 - `/docs/specifications/github-copilot-agent-guidelines.md` - Agent standards
-- `.github/AGENTS.MD` - Ecosystem architecture
+- `.github/.github/docs/agent-philosophy.md` - Ecosystem architecture
 - `.github/AGENT-INDEX.md` - Navigation
 
 **Related Skills**: documentation-manager-agent, scss-refactor-agent

@@ -335,7 +335,7 @@ jobs:
 ## References
 
 **Related Documentation**:
-- `.github/docs/agent-philosophy.md` - Core principles including metrics
+- `.github/docs/` - Core principles including metrics
 - `.github/docs/dogfooding-guide.md` - Self-improvement workflows
 - `.github/skills/agent-evolution-agent/SKILL.md` - Validation tools
 - `.github/specs/agent-intelligence-framework.md` - Framework spec

@@ -483,7 +483,7 @@ After theme updates:
 
 Master these before proposing changes:
 
-1. **[AGENTS.MD]** - Agent ecosystem architecture
+1. **[.github/docs/agent-philosophy.md]** - Agent ecosystem architecture
 2. **[Ontology INTEGRATION-GUIDE]** - Complete mixin API
 3. **[SCSS Instructions]** - Coding standards
 4. **[HTML Instructions]** - Semantic structure
@@ -505,7 +505,7 @@ You're succeeding if:
 - Semantic questions → Consult INTEGRATION-GUIDE.md
 - Technical issues → Open issue in theme repo
 - Refactoring assistance → Use refactor-agent.md workflow
-- General guidance → Reference AGENTS.MD
+- General guidance → Reference .github/docs/agent-philosophy.md
 
 **Found a bug in theme?**
 - Report in theme repository issues
@@ -580,7 +580,7 @@ Work toward:
 
 **Proposition Process**:
 - `.github/skills/subdomain-evolution-agent/references/PROPOSITION-GUIDE.md` - Detailed submission guide
-- `.github/AGENTS.MD` - Ecosystem architecture and review process
+- `.github/.github/docs/agent-philosophy.md` - Ecosystem architecture and review process
 - `/docs/specifications/github-copilot-agent-guidelines.md` - Agent standards
 
 **Design Foundations**:

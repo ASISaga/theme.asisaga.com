@@ -200,7 +200,7 @@ If you discover a semantic pattern not covered by existing ontology:
 4. **Confirm** the pattern would be useful across multiple subdomains
 5. **Submit** a PR to `theme.asisaga.com` with an Ontological Proposition
 
-→ See theme's `.github/AGENTS.MD` for the full proposition process.
+→ See theme's `.github/.github/docs/agent-philosophy.md` for the full proposition process.
 
 ## Key Principles
 

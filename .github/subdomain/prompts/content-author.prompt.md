@@ -116,4 +116,4 @@ If content requires a semantic pattern not in the current ontology:
 2. Try combining existing mixins
 3. If genuine gap, propose an Ontological Proposition PR to `theme.asisaga.com`
 
-→ **Process**: Theme's `.github/AGENTS.MD`
+→ **Process**: Theme's `.github/.github/docs/agent-philosophy.md`

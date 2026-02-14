@@ -60,7 +60,7 @@ agent-evolution-agent/
 - `/docs/specifications/agent-self-learning-system.md` - Comprehensive specification
 
 **Related Documentation**:
-- `.github/AGENTS.MD` - Ecosystem overview (updated with v2.2)
+- `.github/.github/docs/agent-philosophy.md` - Ecosystem overview (updated with v2.2)
 - `.github/AGENT-INDEX.md` - Quick navigation (updated with meta-intelligence)
 - `/docs/specifications/github-copilot-agent-guidelines.md` - Agent standards
 

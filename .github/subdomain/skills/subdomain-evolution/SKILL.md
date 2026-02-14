@@ -96,6 +96,6 @@ Create PR to `theme.asisaga.com` with label `ontological-proposition`. Theme Gen
 
 - `copilot-instructions.md` — Ontology quick reference
 - `instructions/scss.instructions.md` — All current variants listed
-- Theme's `.github/AGENTS.MD` — Full proposition process and review criteria
+- Theme's `.github/.github/docs/agent-philosophy.md` — Full proposition process and review criteria
 
 **Related Skills**: content-author, scss-compliance

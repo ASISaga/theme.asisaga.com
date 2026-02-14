@@ -387,7 +387,7 @@ Your effectiveness is measured by:
 
 Always consult before making decisions:
 
-1. **[AGENTS.MD]** - Agent ecosystem architecture
+1. **[.github/docs/agent-philosophy.md]** - Agent ecosystem architecture
 2. **[evolution.md]** - Philosophical foundation
 3. **[Ontology INTEGRATION-GUIDE]** - Complete mixin reference
 4. **[SCSS Instructions]** - Coding standards
@@ -414,7 +414,7 @@ Work toward:
 
 **Agent Framework**:
 - `/docs/specifications/github-copilot-agent-guidelines.md` - Agent development standards
-- `.github/AGENTS.MD` - Complete ecosystem architecture
+- `.github/.github/docs/agent-philosophy.md` - Complete ecosystem architecture
 - `.github/skills/agent-evolution-agent/references/SELF-LEARNING-ARCHITECTURE.md` - Self-learning principles
 
 **Design System Specs**:

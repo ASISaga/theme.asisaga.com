@@ -462,7 +462,7 @@ All agent files should include:
 
 Maintain ecosystem-level documentation:
 
-- `AGENTS.MD` - Complete architecture (~600 lines typical)
+- `.github/docs/` - Complete architecture (~600 lines typical)
 - `AGENT-INDEX.md` - Quick navigation (~400 lines typical)
 - Additional files as needed for your domain
 
@@ -672,7 +672,7 @@ npm test
 
 → **Repository-specific patterns**: Other instruction files in `.github/instructions/`  
 → **Complete guidelines**: `/docs/specifications/github-copilot-agent-guidelines.md` (if exists)  
-→ **Ecosystem architecture**: `.github/AGENTS.MD` (if exists)
+→ **Ecosystem architecture**: `.github/.github/docs/agent-philosophy.md` (if exists)
 
 ---
 

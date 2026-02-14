@@ -86,7 +86,7 @@ This directory is part of the broader agent intelligence system:
 ├── instructions/     # 📋 Coding standards (path-specific)
 ├── prompts/          # 🤖 Agent instructions (detailed workflows)
 ├── skills/           # 🛠️ Executable capabilities (reusable)
-├── AGENTS.MD         # 📚 Ecosystem architecture
+├── .github/docs/agent-philosophy.md         # 📚 Ecosystem architecture
 └── AGENT-INDEX.md    # 🚀 Quick navigation
 ```
 
@@ -342,7 +342,7 @@ The `.agent.md` files use GitHub Copilot's Custom Agents specification format, m
 
 ## Related Documentation
 
-- `.github/AGENTS.MD` - Complete ecosystem architecture
+- `.github/.github/docs/agent-philosophy.md` - Complete ecosystem architecture
 - `.github/AGENT-INDEX.md` - Quick navigation and directory structure
 - `.github/instructions/github.instructions.md` - Agent development standards
 - `/docs/specifications/github-copilot-agent-guidelines.md` - Comprehensive guidelines

@@ -146,5 +146,5 @@ If you implement a repeated interaction pattern without clear synapse mapping:
 - `/docs/specifications/animation-system.md` - Animation architecture
 
 **Evolution:**
-- `.github/AGENTS.MD` - Ontological Proposition system
+- `.github/.github/docs/agent-philosophy.md` - Ontological Proposition system
 - `.github/prompts/subdomain-evolution-agent.prompt.md` - Proposing new synapse variants

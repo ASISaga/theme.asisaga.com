@@ -11,7 +11,7 @@ This guide provides a structured onboarding path for new agents (AI or human) jo
 
 ### Phase 1: Foundation (Required)
 
-- [ ] Read `.github/docs/agent-philosophy.md` - Core principles
+- [ ] Read `.github/docs/` - Core principles
 - [ ] Read `.github/copilot-instructions.md` - High-level architecture
 - [ ] Review directory structure in `.github/`
 - [ ] Understand separation of concerns (instructions vs specs vs docs)
@@ -168,7 +168,7 @@ If none of these match your semantic need, please describe WHAT type of informat
 
 **Principle**: Guide toward semantic thinking, not visual solutions.
 
-**Reference**: `.github/docs/agent-philosophy.md` - Semantic Purity
+**Reference**: `.github/docs/` - Semantic Purity
 </details>
 
 ---
@@ -509,7 +509,7 @@ Examples: .github/docs/workflow-examples.md
 
 **Onboarding Materials**:
 - `.github/copilot-instructions.md` - Start here
-- `.github/docs/agent-philosophy.md` - Core principles
+- `.github/docs/` - Core principles
 - `.github/specs/agent-intelligence-framework.md` - Complete framework
 - All files in `.github/docs/` - Implementation guides
 

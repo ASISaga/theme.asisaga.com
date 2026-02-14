@@ -294,4 +294,4 @@ Recent Improvements:
 **References**:
 - Agent Evolution Skill: `.github/skills/agent-evolution-agent/SKILL.md`
 - Agent Guidelines: `/docs/specifications/github-copilot-agent-guidelines.md`
-- Ecosystem Overview: `.github/AGENTS.MD`
+- Ecosystem Overview: `.github/.github/docs/agent-philosophy.md`
