@@ -95,9 +95,10 @@ description: "SCSS coding instructions for Genesis Semantic Design System v2.0"
 
 **Required workflow:**
 ```bash
-npm run test:scss    # Fast Sass compilation check (catches undefined mixins/vars)
-npm run lint:scss    # Code style and best practices
-npm test             # Both (run before committing)
+npm run test:scss           # Fast Sass compilation check (catches undefined mixins/vars)
+npm run validate:scss:units # Unit compatibility validation (vw/rem mixing)
+npm run lint:scss           # Code style and best practices
+npm test                    # All of above (run before committing)
 ```
 
 **Sass compilation catches:**
@@ -105,12 +106,19 @@ npm test             # Both (run before committing)
 - Undefined mixins (`@include non-existent`)
 - Missing mixin parameters
 
+**Unit validator catches:**
+- Incompatible unit mixing outside calc()/clamp() (e.g., `5vw + 1rem`)
+- Invalid fluid design patterns
+- Sass compilation errors from mixed units
+
 **Stylelint catches:**
 - `@extend` usage (forbidden)
 - Nesting depth > 3 levels
 - Code style violations
 
-→ **Detailed guide**: `/docs/guides/STYLELINT.md`, `/docs/guides/STYLELINT-LIMITATIONS.md`
+→ **Unit compatibility**: `/docs/specifications/fluid-design-unit-compatibility.md`  
+→ **Stylelint guide**: `/docs/guides/STYLELINT.md`, `/docs/guides/STYLELINT-LIMITATIONS.md`  
+→ **Unit validator skill**: `.github/skills/scss-unit-validator/SKILL.md`
 
 ## Ontology Evolution
 
@@ -132,6 +140,7 @@ npm test             # Both (run before committing)
 - `tests/ontology/ontology-animations-demo.html` - Visual demonstrations
 
 **Style guidelines:**
+- `/docs/specifications/fluid-design-unit-compatibility.md` - Unit mixing rules, calc/clamp patterns
 - `/docs/guides/STYLELINT.md` - Linting setup and rules
 - `/docs/guides/STYLELINT-LIMITATIONS.md` - Why Sass compilation is needed
 

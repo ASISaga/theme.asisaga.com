@@ -1,0 +1,69 @@
+name: SCSS Validation
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '_sass/**/*.scss'
+      - 'assets/css/**/*.scss'
+      - '.github/workflows/scss-validation.yml'
+      - 'package.json'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '_sass/**/*.scss'
+      - 'assets/css/**/*.scss'
+      - '.github/workflows/scss-validation.yml'
+      - 'package.json'
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: SCSS Unit Compatibility & Compilation
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
+    permissions:
+      contents: read
+      pull-requests: write  # For PR comments
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Test Sass compilation
+        run: npm run test:scss
+
+      - name: Validate unit compatibility
+        run: npm run validate:scss:units
+
+      - name: Run StyleLint
+        run: npm run lint:scss
+
+      - name: Comment on PR with results
+        if: github.event_name == 'pull_request' && failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `⚠️ SCSS validation failed. Please check:
+              
+              1. **Sass Compilation**: Ensure all SCSS files compile without errors
+              2. **Unit Compatibility**: Mixed units (vw/rem) must be in calc()/clamp()
+              3. **StyleLint**: Follow SCSS code quality standards
+              
+              See workflow logs for details.`
+            })

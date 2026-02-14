@@ -9,6 +9,7 @@
     "lint:scss:report": "stylelint \"_sass/**/*.scss\" \"assets/css/**/*.scss\" --formatter verbose",
     "test:scss": "sass --no-source-map --load-path=_sass _sass/_test-compile.scss /tmp/test-compile.css",
     "test:scss:verbose": "sass --no-source-map --load-path=_sass --verbose _sass/_test-compile.scss /tmp/test-compile.css",
+    "validate:scss:units": "./.github/skills/scss-unit-validator/scripts/validate-units.sh",
     "test:e2e": "playwright test",
     "test:e2e:local": "TEST_LOCAL=1 playwright test",
     "test:e2e:headed": "playwright test --headed",
@@ -21,7 +22,7 @@
     "metrics:agents": "./.github/skills/agent-evolution-agent/scripts/track-metrics.sh",
     "metrics:agents:history": "./.github/skills/agent-evolution-agent/scripts/track-metrics.sh --history",
     "dogfood": "npm run validate:agents && npm run validate:agents:duplicates && npm run validate:agents:sync",
-    "test": "npm run test:scss && npm run lint:scss"
+    "test": "npm run test:scss && npm run validate:scss:units && npm run lint:scss"
   },
   "keywords": [
     "jekyll",
