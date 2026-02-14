@@ -12,7 +12,7 @@
 
 | Directory | Purpose | Files |
 |-----------|---------|-------|
-| `instructions/` | Path-activated coding standards (glob patterns only) | 5 `.instructions.md` files |
+| `instructions/` | Path-activated coding standards (glob patterns only) | 7 `.instructions.md` files |
 | `specs/` | Agent specifications & frameworks | `agent-intelligence-framework.md` |
 | `docs/` | Documentation & guides | `agent-system-overview.md`, guides |
 | `agents/` | Custom agents (Copilot format) | `*.agent.md` |
@@ -401,7 +401,12 @@ npm run lint:scss:fix
     ├── html.instructions.md
     ├── js.instructions.md
     ├── docs.instructions.md
-    └── github.instructions.md
+    ├── html.instructions.md
+    ├── js.instructions.md
+    ├── docs.instructions.md
+    ├── agents.instructions.md
+    ├── prompts.instructions.md
+    └── skills.instructions.md
 ```
 
 ---
