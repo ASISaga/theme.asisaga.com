@@ -51,9 +51,12 @@ fi
 
 # Find direct arithmetic mixing (INVALID - outside calc/clamp)
 TEMP_INVALID=$(mktemp)
-grep -rn '[0-9.]\+v[wh]\|vmin\|vmax' _sass --include="*.scss" | \
-  grep -E '[+\-*/].*[0-9.]+r?em|r?em.*[+\-*/]' | \
-  grep -v 'calc\|clamp' > "$TEMP_INVALID" || true
+grep -rn -E '[0-9.]+v[wh]|vmin|vmax' _sass --include="*.scss" 2>/dev/null | \
+  grep -v '^\s*//' | \
+  grep -v '^\s*/\*' | \
+  grep -v '///' | \
+  grep -E '[\+\-\*\/].*[0-9.]+r?em|r?em.*[\+\-\*\/]' 2>/dev/null | \
+  grep -v 'calc\|clamp' > "$TEMP_INVALID" 2>/dev/null || true
 
 if [ -s "$TEMP_INVALID" ]; then
   while IFS=: read -r file line content; do
