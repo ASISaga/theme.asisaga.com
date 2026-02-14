@@ -1,9 +1,33 @@
-# 🤖 ASI Saga - Agent Ecosystem Architecture v2.6
+# 🤖 ASI Saga - Agent Ecosystem Architecture v2.7
 
 **Last Updated**: 2026-02-14  
-**Version**: 2.6 - Proper Directory Structure
+**Version**: 2.7 - Comprehensive Refactoring & Onboarding System
 
 This document describes the AI agent ecosystem that governs the ASI Saga theme repository, implementing the evolutionary mechanism for the Genesis Semantic Design System.
+
+---
+
+## 🆕 Version 2.7 Enhancements
+
+- **Ontology Specifications**: Extracted to `.github/specs/ontological-design-system.md` and `.github/specs/theme-subdomain-architecture.md`
+- **Path-Specific Instructions**: Added for `.github/instructions/`, `.github/specs/`, `.github/docs/`
+- **Repository Onboarding System**: Complete agent/prompt/skill for bootstrapping new repositories
+- **Documentation Organization**: Moved all agent docs to `.github/docs/` directory
+- **Generic copilot-instructions.md**: Refactored to reference specs, reduced by 40%
+- **Template-Based Bootstrap**: New repos can auto-generate agent intelligence from templates
+
+**New files**:
+- `specs/ontological-design-system.md` - Complete ontology specification
+- `specs/theme-subdomain-architecture.md` - Architecture specification
+- `prompts/repository-onboarding.prompt.md` - Onboarding workflow
+- `agents/repository-onboarding.agent.md` - Onboarding agent
+- `skills/repository-onboarding/SKILL.md` - Onboarding skill
+- `instructions/github-*.instructions.md` - Path-specific standards for .github dirs
+
+**Documentation organization**:
+- All agent docs now in `.github/docs/`
+- Clean `.github/` root (only copilot-instructions.md and AGENTS.MD)
+- Better discoverability and navigation
 
 ---
 
@@ -108,12 +132,13 @@ The agent intelligence system is organized across multiple directories in `.gith
 .github/
 ├── agents/           # 🔒 Internal configurations (protected)
 ├── instructions/     # 📋 Coding standards (path-specific)
-├── prompts/          # 🤖 Agent instructions (detailed workflows)
-├── skills/           # 🛠️ Executable capabilities (reusable)
-├── subdomain/        # 📦 Reference intelligence for subdomain repos
-├── AGENTS.MD         # 📚 Ecosystem architecture (this file)
-├── AGENT-INDEX.md    # 🚀 Quick navigation
-└── DOGFOODING-GUIDE.md  # 🔄 Self-improvement workflows
+├── specs/           # 📐 Specifications & frameworks
+├── docs/            # 📚 Documentation & guides
+├── prompts/         # 🤖 Agent instructions (detailed workflows)
+├── skills/          # 🛠️ Executable capabilities (reusable)
+├── subdomain/       # 📦 Reference intelligence for subdomain repos
+├── AGENTS.MD        # 📚 Ecosystem architecture (this file)
+└── copilot-instructions.md  # 🎯 Repository context
 ```
 
 ### Directory Purposes
