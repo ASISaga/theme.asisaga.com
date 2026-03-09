@@ -68,6 +68,12 @@
     gap: var(--space-network, clamp(1rem, 2vw, 1.5rem));
     justify-content: center;
     align-items: flex-start;
+    
+    // Responsive growth: items must be at least their minimum or 100% of the container,
+    // whichever is smaller — prevents unreadable slivers inside narrow manifest grids.
+    > * {
+      min-width: min(100%, var(--associative-min-width, 280px));
+    }
   }
   @else if $logic == 'chronological' {
     // Time-linear stream of sequential events
@@ -87,9 +93,10 @@
     // TRACK-TO-ITEM STRETCHING - Items fill column width
     justify-items: stretch;
     
-    // Mobile: simplified 2-column layout
+    // Mobile: single column — prevents forced narrow columns on phone-sized screens
     @media (max-width: 767px) {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
+      margin-inline: auto;
     }
     
     // Tablet: 6-column grid
