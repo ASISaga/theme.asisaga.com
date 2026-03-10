@@ -17,11 +17,11 @@
 // Minimal layout content wrapper - centered lightweight content
 // Applied to wrapper div in minimal.html
 .minimal-layout-content {
-  @include genesis-environment('focused');    // Single column centered
+  @include genesis-environment('focused');    // Single column centered — provides gap between children
   @include genesis-atmosphere('ethereal');    // Light minimal vibe
+  // padding responsibility belongs to genesis-entity; minimal.html wraps this in genesis-entity
   
   text-align: center;
-  padding: clamp(3rem, 8vw, 6rem) 0;
   
   .minimal-error-code {
     @include genesis-cognition('axiom');      // Large headline
@@ -47,8 +47,8 @@
   
   .minimal-home-link {
     @include genesis-synapse('navigate');     // Navigation link
+    // margin-top responsibility belongs to genesis-environment gap (provided by focused environment above)
     
     display: inline-block;
-    margin-top: clamp(1.5rem, 3vw, 2rem);
   }
 }

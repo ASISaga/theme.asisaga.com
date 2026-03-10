@@ -18,9 +18,7 @@
 .dashboard-layout {
   @include genesis-environment('manifest');   // High-density dashboard
   @include genesis-atmosphere('neutral');      // Standard vibe
-  
-  // Safety gutter - prevents content from touching edges
-  padding-inline: 1.5rem;
+  // padding responsibility belongs to genesis-entity; inner sections use genesis-entity for spacing
   
   height: 100%;
 }
