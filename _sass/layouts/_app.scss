@@ -23,10 +23,10 @@
   position: relative;
 }
 
-// App content area - flexible growth with minimal padding
+// App content area - flexible growth
 // Applied to <main class="app-content"> in app.html
 .app-content {
-  @include genesis-entity('primary');   // Main content styling
+  @include genesis-entity('primary');   // Main content styling — provides padding via genesis-entity
   
   // Fundamental flex properties for layout structure
   flex: 1;
@@ -34,9 +34,7 @@
   flex-direction: column;
   position: relative;
   width: 100%;
-  
-  // Minimal padding for breathing room
-  padding: clamp(1rem, 3vw, 2rem);
+  // padding responsibility belongs to genesis-entity (provided by the mixin above)
   
   // CSS Containment for performance
   contain: layout style;

@@ -22,9 +22,7 @@
 .form-layout {
   @include genesis-environment('interaction-form'); // Form layout
   @include genesis-atmosphere('neutral');            // Standard vibe
-  
-  // Safety gutter - prevents content from touching edges
-  padding-inline: 1.5rem;
+  // padding responsibility belongs to genesis-entity; inner sections use genesis-entity for spacing
 }
 
 // Header section from layout-header.html include

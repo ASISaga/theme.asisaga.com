@@ -46,8 +46,7 @@
 .post__taxonomy,
 .post__content,
 .post__footer-cta {
-  // Touch-friendly spacing on mobile
-  padding-block: clamp(1rem, 3vw, 2rem);
+  // Touch-friendly spacing on mobile — padding responsibility belongs to genesis-entity (applied in _post.scss)
 }
 
 .post__tag,
@@ -173,11 +172,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-bento);
-  
-  @include from(md) {
-    padding: var(--space-network);
-  }
+  // padding responsibility belongs to genesis-entity; splash.html wraps content in genesis-entity
 }
 
 // ============================================================================
@@ -392,7 +387,7 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  padding-block: var(--space-bento);
+  // padding responsibility belongs to genesis-entity; wrap in genesis-entity for proper spacing
 }
 
 .search__input {
@@ -435,11 +430,10 @@
 }
 
 .profile__avatar {
-  @include genesis-entity('image-adaptive');
+  @include genesis-entity('avatar');  // Circular avatar with status indicator support (owns border-radius: 50%)
   width: 100%;
   max-width: 200px;
   aspect-ratio: 1;
-  border-radius: 50%;
   
   @include from(lg) {
     max-width: 100%;
@@ -470,7 +464,7 @@
 .profile__stat {
   @include genesis-entity('secondary');
   text-align: center;
-  padding: 1rem;
+  // padding responsibility belongs to genesis-entity (provided by mixin above)
   
   // Touch-friendly on mobile
   min-height: 80px;
@@ -543,21 +537,17 @@
 
 .chatroom__header {
   @include genesis-entity('secondary');
-  padding: var(--space-bento);
+  // padding responsibility belongs to genesis-entity (provided by mixin above and in _chatroom.scss)
 }
 
 .chatroom__messages {
   overflow-y: auto;
-  padding: var(--space-bento);
-  
-  @include from(md) {
-    padding: var(--space-network);
-  }
+  // padding responsibility belongs to genesis-entity (genesis-entity('primary') applied in _chatroom.scss)
 }
 
 .chatroom__input-wrapper {
   @include genesis-entity('secondary');
-  padding: var(--space-bento);
+  // padding responsibility belongs to genesis-entity (provided by mixin above and in _chatroom.scss)
   
   display: grid;
   grid-template-columns: 1fr auto;
@@ -687,7 +677,7 @@
   // Desktop: always visible
   @include from(lg) {
     grid-row: 1 / -1;
-    border-right: 1px solid var(--border-primary);
+    // border-right responsibility belongs to genesis-entity; use genesis-entity mixin on this element for visual separation
   }
 }
 
@@ -698,11 +688,7 @@
 .minimal-layout {
   max-width: 800px;
   margin-inline: auto;
-  padding: var(--space-bento);
-  
-  @include from(md) {
-    padding: var(--space-network);
-  }
+  // padding responsibility belongs to genesis-entity; minimal.html wraps content in genesis-entity
 }
 
 /**
@@ -729,11 +715,7 @@
 
 .scrollable__content {
   overflow-y: auto;
-  padding: var(--space-bento);
-  
-  @include from(md) {
-    padding: var(--space-network);
-  }
+  // padding responsibility belongs to genesis-entity; wrap content in genesis-entity for proper spacing
 }
 
 // ============================================================================
