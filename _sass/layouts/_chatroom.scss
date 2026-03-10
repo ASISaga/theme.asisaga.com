@@ -19,8 +19,7 @@
   flex-direction: column;
   
   .chatroom-header {
-    @include genesis-entity('secondary');     // Header section
-    
+    // Structural header: transparent, layout-only
     flex-shrink: 0;
   }
   
@@ -33,7 +32,8 @@
   }
   
   .chatroom-messages {
-    @include genesis-entity('primary');       // Main content area
+    // Structural message viewport: transparent, layout-only
+    // Individual messages are the leaf entities
     @include genesis-environment('chronological'); // Message stream
     
     flex: 1;
@@ -41,8 +41,7 @@
   }
   
   .chatroom-input {
-    @include genesis-entity('secondary');     // Input section
-    
+    // Structural input bar: transparent, layout-only
     flex-shrink: 0;
   }
   

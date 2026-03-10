@@ -14,7 +14,7 @@
   display: flex;
   
   .settings-sidebar {
-    @include genesis-entity('secondary');     // Sidebar section
+    // Structural sidebar: transparent, layout-only
     @include genesis-environment('navigation-tabs'); // Tab navigation
   }
   
@@ -35,8 +35,7 @@
   }
   
   .settings-main {
-    @include genesis-entity('primary');       // Main content
-    
+    // Structural main content: transparent, layout-only
     flex: 1;
   }
   

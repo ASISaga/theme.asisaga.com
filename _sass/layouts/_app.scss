@@ -26,7 +26,8 @@
 // App content area - flexible growth
 // Applied to <main class="app-content"> in app.html
 .app-content {
-  @include genesis-entity('primary');   // Main content styling — provides padding via genesis-entity
+  // Structural container: transparent, layout-only (no visual box)
+  // padding/border responsibility belongs to leaf content entities within
   
   // Fundamental flex properties for layout structure
   flex: 1;
@@ -34,7 +35,6 @@
   flex-direction: column;
   position: relative;
   width: 100%;
-  // padding responsibility belongs to genesis-entity (provided by the mixin above)
   
   // CSS Containment for performance
   contain: layout style;

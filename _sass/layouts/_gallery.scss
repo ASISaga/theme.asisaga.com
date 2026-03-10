@@ -19,13 +19,11 @@
 .gallery-layout {
   @include genesis-environment('chronological');  // Vertical flow
   @include genesis-atmosphere('neutral');          // Standard vibe
-  // padding responsibility belongs to genesis-entity; inner sections use genesis-entity for spacing
 }
 
 // Header section from layout-header.html include
 .gallery__header {
-  @include genesis-entity('secondary');     // Supporting header
-  
+  // Structural section: transparent, layout-only
   text-align: center;
 }
 

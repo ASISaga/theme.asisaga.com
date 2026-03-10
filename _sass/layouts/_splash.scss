@@ -23,7 +23,7 @@
 .splash-layout-content {
   @include genesis-environment('focused');    // Centered content
   @include genesis-atmosphere('vibrant');      // High-energy vibe
-  // padding responsibility belongs to genesis-entity; content is wrapped in genesis-entity in splash.html
+  // Visual presence provided by <genesis-entity> web component in splash.html
   
   min-height: 75vh;
   display: flex;
@@ -54,7 +54,8 @@
 }
 
 .splash__countdown-item {
-  @include genesis-entity('secondary');     // Individual counter
+  // Countdown time unit — transparent, text flows on parent countdown background
+  text-align: center;
 }
 
 .splash__countdown-value {

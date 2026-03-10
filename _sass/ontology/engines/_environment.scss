@@ -137,10 +137,7 @@
       z-index: 1001;
       overflow-y: auto;
       
-      // Apply glassmorphism to mobile nav
-      background: var(--glass-heavy, oklch(0.20 0.04 245 / 0.95));
-      backdrop-filter: blur(20px);
-      box-shadow: 2px 0 20px oklch(0.10 0.03 250 / 0.3);
+      // Visual styling delegated to genesis-entity (surface-glass) applied by consumer
       
       // Open state (controlled by JavaScript)
       &.nav-open {
@@ -230,9 +227,9 @@
   }
   @else if $logic == 'navigation-tabs' {
     // Horizontal tab navigation for content switching
+    // Visual separator (border-bottom) delegated to genesis-entity applied by consumer
     display: flex;
     gap: var(--space-tabs, clamp(0.5rem, 1vw, 1rem));
-    border-bottom: 2px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
     
     // Mobile: scrollable tabs if overflow
     @media (max-width: 767px) {
@@ -394,12 +391,11 @@
     flex-direction: column;
     gap: var(--space-comments, clamp(0.75rem, 1.5vw, 1rem));
     
-    // Nested comment indentation
+    // Nested comment indentation — visual border delegated to genesis-entity applied by consumer
     .comment-reply,
     .comment-nested {
       margin-left: var(--comment-indent, clamp(1.5rem, 3vw, 2.5rem));
       padding-left: var(--comment-border, 1rem);
-      border-left: 2px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
     }
     
     // Mobile: reduce indentation to save space
@@ -443,13 +439,12 @@
       max-height: 600px;
     }
     
-    // Notification grouping
+    // Notification grouping — visual separator delegated to genesis-entity applied by consumer
     .notification-group {
       padding: 0.75rem 0;
-      border-bottom: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
       
       &:last-child {
-        border-bottom: none;
+        // No separator on last item
       }
     }
     

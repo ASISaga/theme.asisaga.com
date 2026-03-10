@@ -38,9 +38,8 @@
 // Main content area - flexible growth
 // Applied to <main class="page-content"> in default.html
 .page-content {
-  // Fundamental flex properties for layout structure
+  // Structural container: transparent, layout-only (no visual box)
+  // padding/border responsibility belongs to leaf content entities within
   flex: 1 0 auto;
   width: 100%;
-  
-  @include genesis-entity('primary');   // Main content styling
 }

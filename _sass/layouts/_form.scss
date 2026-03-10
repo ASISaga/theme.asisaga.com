@@ -22,13 +22,11 @@
 .form-layout {
   @include genesis-environment('interaction-form'); // Form layout
   @include genesis-atmosphere('neutral');            // Standard vibe
-  // padding responsibility belongs to genesis-entity; inner sections use genesis-entity for spacing
 }
 
 // Header section from layout-header.html include
 .form__header {
-  @include genesis-entity('secondary');     // Header section
-  
+  // Structural section: transparent, layout-only
   text-align: center;
 }
 
@@ -42,12 +40,12 @@
 
 // Main form content area
 .form__content {
-  @include genesis-entity('primary');       // Main form area
+  // Structural content area: transparent, layout-only
 }
 
 // Progress indicator (custom for form)
 .form__progress {
-  @include genesis-entity('secondary');     // Progress section
+  // Structural indicator: transparent, state-only
   @include genesis-state('evolving');        // In-progress state
 }
 
@@ -70,7 +68,7 @@
 
 // Footer section
 .form__footer {
-  @include genesis-entity('secondary');     // Footer section
+  // Structural section: transparent, layout-only
   text-align: center;
 }
 

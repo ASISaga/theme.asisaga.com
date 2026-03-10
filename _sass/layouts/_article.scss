@@ -22,12 +22,11 @@
 .article-layout {
   @include genesis-environment('associative'); // Sidebar + main layout
   @include genesis-atmosphere('neutral');       // Standard vibe
-  // padding responsibility belongs to genesis-entity; inner sections use genesis-entity for spacing
 }
 
 // Table of contents sidebar (not from includes - kept as-is)
 .article-toc-sidebar {
-  @include genesis-entity('secondary');       // Sidebar section
+  // Structural sidebar: transparent, layout-only
   @include genesis-environment('chronological'); // Vertical navigation
 }
 
@@ -42,7 +41,7 @@
 
 // Header section from layout-header.html include
 .article__header {
-  @include genesis-entity('secondary');       // Header section
+  // Structural section: transparent, layout-only
 }
 
 .article__title {
@@ -67,7 +66,7 @@
 
 // Footer section from layout-header.html include
 .article__footer {
-  @include genesis-entity('secondary');       // Footer section
+  // Structural section: transparent, layout-only
 }
 
 .article__footer-title {
