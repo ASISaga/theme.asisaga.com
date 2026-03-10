@@ -28,48 +28,22 @@
     box-shadow: 
       inset 0 0 30px oklch(0.05 0.01 260),
       0 2px 12px oklch(0.05 0.01 260 / 0.6);
-    border-bottom: 1px solid oklch(0.20 0.01 250);  // Subtle border
+    // Border omitted: border/padding responsibility belongs to genesis-entity
   }
   @else if $vibe == 'vibrant' {
     // High-energy, data-saturated - white with purposeful neon blue accent
     background: oklch(0.99 0.005 90);  // White background
-    border: 2px solid oklch(0.65 0.25 230);  // Neon blue border (purposeful)
     box-shadow: 
       0 0 16px oklch(0.65 0.25 230 / 0.25),  // Neon blue glow (subtle)
       0 4px 12px oklch(0.08 0.01 250 / 0.15);  // Depth shadow
     backdrop-filter: blur(8px);
+    // Border omitted: border/padding responsibility belongs to genesis-entity
   }
   @else if $vibe == 'spacious-mobile' {
     // Content that needs generous spacing on mobile for touch-friendliness
-    // Mobile: generous spacing
-    @media (max-width: 767px) {
-      padding: 3rem 1.5rem;
-      margin-bottom: 2.5rem;
-      
-      > * + * {
-        margin-top: 1.5rem;
-      }
-    }
-    
-    // Tablet: moderate spacing
-    @media (min-width: 768px) and (max-width: 1023px) {
-      padding: 2.5rem 2rem;
-      margin-bottom: 2rem;
-      
-      > * + * {
-        margin-top: 1.25rem;
-      }
-    }
-    
-    // Desktop: compact
-    @media (min-width: 1024px) {
-      padding: 2rem 3rem;
-      margin-bottom: 1.5rem;
-      
-      > * + * {
-        margin-top: 1rem;
-      }
-    }
+    // padding/margin responsibility belongs to genesis-entity and genesis-environment.
+    // Migration: use genesis-entity('aggregate') for container padding,
+    // and genesis-environment('distributed') or 'focused' for item-level gap/spacing.
   }
   @else if $vibe == 'dense-desktop' {
     // Content that benefits from high information density on large screens
@@ -117,27 +91,27 @@
     @media (max-width: 767px) {
       min-height: 70vh;
       min-height: 70dvh;
-      padding: 2rem 1rem;
+      // padding responsibility belongs to genesis-entity
     }
     
     // Tablet: moderate viewport usage
     @media (min-width: 768px) and (max-width: 1023px) {
       min-height: 85vh;
       min-height: 85dvh;
-      padding: 3rem 2rem;
+      // padding responsibility belongs to genesis-entity
     }
     
     // Desktop: full viewport
     @media (min-width: 1024px) {
       min-height: 100vh;
       min-height: 100dvh;
-      padding: 4rem 3rem;
+      // padding responsibility belongs to genesis-entity
     }
     
     // Prevent content overflow on short viewports
     @media (max-height: 600px) {
       min-height: auto;
-      padding: 3rem 1rem;
+      // padding responsibility belongs to genesis-entity
     }
   }
   @else if $vibe == 'sacred' {
@@ -152,10 +126,7 @@
     );
     color: oklch(0.99 0.005 90);  // White text
     position: relative;
-    
-    // Consciousness border — the sacred thread
-    border-top: 1px solid oklch(0.20 0.04 250);
-    border-bottom: 1px solid oklch(0.20 0.04 250);
+    // Border omitted: border/padding responsibility belongs to genesis-entity
     
     // Subtle gold accent glow
     &::before {
@@ -176,7 +147,6 @@
     
     @media (prefers-contrast: high) {
       background: oklch(0.05 0 0);
-      border-color: oklch(0.30 0 0);
       
       &::before {
         display: none;
