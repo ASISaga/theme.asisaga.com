@@ -72,7 +72,10 @@
   }
   @else if $condition == 'simulated' {
     // Data is a projection, not a live log
-    border: 2px dashed var(--border-simulation, oklch(0.75 0.15 210 / 0.5));
+    // outline used instead of border so it does not affect layout or conflict with genesis-entity.
+    // Note: outlines may extend beyond elements with overflow:hidden; this is expected behavior.
+    outline: 2px dashed var(--border-simulation, oklch(0.75 0.15 210 / 0.5));
+    outline-offset: 2px;
     background: repeating-linear-gradient(
       45deg,
       transparent,
@@ -190,9 +193,10 @@
   }
   @else if $condition == 'mentioned' {
     // Content where user is mentioned/tagged
+    // border-left and padding-left omitted: border/padding responsibility belongs to genesis-entity.
+    // For stronger visual distinction, combine with genesis-entity using a custom --notification-accent.
+    // The background highlight meets WCAG for informational styling; use genesis-entity for structural emphasis.
     background: var(--mention-highlight, oklch(0.88 0.18 95 / 0.1));
-    border-left: 3px solid var(--mention-accent, oklch(0.88 0.18 95));
-    padding-left: calc(var(--padding-inline, 1rem) - 3px); // Adjust for border
     
     // Subtle animation on load
     animation: mention-pulse 0.6s ease-out;
