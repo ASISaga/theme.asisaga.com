@@ -23,9 +23,7 @@
 .splash-layout-content {
   @include genesis-environment('focused');    // Centered content
   @include genesis-atmosphere('vibrant');      // High-energy vibe
-  
-  // Safety gutter - prevents content from touching edges
-  padding-inline: 1.5rem;
+  // padding responsibility belongs to genesis-entity; content is wrapped in genesis-entity in splash.html
   
   min-height: 75vh;
   display: flex;

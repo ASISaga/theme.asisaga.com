@@ -28,9 +28,7 @@
 .post-layout {
   @include genesis-environment('focused');    // Single column reading
   @include genesis-atmosphere('neutral');      // Standard vibe
-  
-  // Safety gutter - prevents content from touching edges
-  padding-inline: 1.5rem;
+  // padding responsibility belongs to genesis-entity; post.html wraps this in genesis-entity
 }
 
 // Header section from layout-header.html include
