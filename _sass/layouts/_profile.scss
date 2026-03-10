@@ -23,13 +23,11 @@
 .profile-layout {
   @include genesis-environment('chronological'); // Vertical flow
   @include genesis-atmosphere('neutral');         // Standard vibe
-  // padding responsibility belongs to genesis-entity; inner sections use genesis-entity for spacing
 }
 
 // Header section (custom structure, not using include)
 .profile__header {
-  @include genesis-entity('primary');       // Main profile section
-  
+  // Structural section: transparent, layout-only
   text-align: center;
 }
 
@@ -71,7 +69,7 @@
 }
 
 .profile__sidebar {
-  @include genesis-entity('secondary');     // Sidebar section
+  // Structural sidebar: transparent, layout-only
 }
 
 // Stats section

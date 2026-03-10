@@ -26,7 +26,7 @@
 
 // Header section from layout-header.html include
 .faq__header {
-  @include genesis-entity('secondary');         // Header section
+  // Structural section: transparent, layout-only
 }
 
 .faq__title {
@@ -61,7 +61,7 @@
 
 // Footer CTA section from layout-footer-cta.html include
 .faq__footer-cta {
-  @include genesis-entity('secondary');         // Footer section
+  // Structural section: transparent, layout-only
 }
 
 .faq__cta-title {

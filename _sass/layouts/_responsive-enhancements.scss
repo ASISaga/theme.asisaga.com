@@ -46,7 +46,7 @@
 .post__taxonomy,
 .post__content,
 .post__footer-cta {
-  // Touch-friendly spacing on mobile — padding responsibility belongs to genesis-entity (applied in _post.scss)
+  // Structural sections: transparent, layout-only (touch-friendly via WCAG 2.5.5 via leaf elements)
 }
 
 .post__tag,
@@ -172,7 +172,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  // padding responsibility belongs to genesis-entity; splash.html wraps content in genesis-entity
+  // Visual presence provided by <genesis-entity> web component in splash.html
 }
 
 // ============================================================================
@@ -387,7 +387,7 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  // padding responsibility belongs to genesis-entity; wrap in genesis-entity for proper spacing
+  // Structural wrapper: transparent, layout-only
 }
 
 .search__input {
@@ -426,7 +426,7 @@
 }
 
 .profile__sidebar {
-  @include genesis-entity('secondary');
+  // Structural sidebar: transparent, layout-only
 }
 
 .profile__avatar {
@@ -464,7 +464,6 @@
 .profile__stat {
   @include genesis-entity('secondary');
   text-align: center;
-  // padding responsibility belongs to genesis-entity (provided by mixin above)
   
   // Touch-friendly on mobile
   min-height: 80px;
@@ -536,19 +535,16 @@
 }
 
 .chatroom__header {
-  @include genesis-entity('secondary');
-  // padding responsibility belongs to genesis-entity (provided by mixin above and in _chatroom.scss)
+  // Structural header: transparent, layout-only
 }
 
 .chatroom__messages {
   overflow-y: auto;
-  // padding responsibility belongs to genesis-entity (genesis-entity('primary') applied in _chatroom.scss)
+  // Structural message viewport: transparent, layout-only; individual messages are leaf entities
 }
 
 .chatroom__input-wrapper {
-  @include genesis-entity('secondary');
-  // padding responsibility belongs to genesis-entity (provided by mixin above and in _chatroom.scss)
-  
+  // Structural input container: transparent, layout-only
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 0.5rem;
@@ -688,7 +684,7 @@
 .minimal-layout {
   max-width: 800px;
   margin-inline: auto;
-  // padding responsibility belongs to genesis-entity; minimal.html wraps content in genesis-entity
+  // Visual presence provided by <genesis-entity> web component in minimal.html
 }
 
 /**
@@ -715,7 +711,7 @@
 
 .scrollable__content {
   overflow-y: auto;
-  // padding responsibility belongs to genesis-entity; wrap content in genesis-entity for proper spacing
+  // Structural container: transparent, layout-only; leaf content entities provide visual presence
 }
 
 // ============================================================================

@@ -19,7 +19,7 @@
 .minimal-layout-content {
   @include genesis-environment('focused');    // Single column centered — provides gap between children
   @include genesis-atmosphere('ethereal');    // Light minimal vibe
-  // padding responsibility belongs to genesis-entity; minimal.html wraps this in genesis-entity
+  // Visual presence provided by <genesis-entity> web component in minimal.html
   
   text-align: center;
   

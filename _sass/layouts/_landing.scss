@@ -20,18 +20,17 @@
 .landing-layout {
   @include genesis-environment('chronological'); // Vertical flow
   @include genesis-atmosphere('vibrant');         // High-energy vibe
-  // padding responsibility belongs to genesis-entity; inner sections use genesis-entity for spacing
 }
 
 // Hero section containing layout-header.html include
+// Visual presence provided by <genesis-entity nature="transcendent"> in landing.html
 .landing__hero {
-  @include genesis-entity('imperative');        // Hero section - urgent/important
-  @include genesis-atmosphere('vibrant');        // High-energy
+  @include genesis-environment('focused');   // Centered content layout
 }
 
 // Header within hero from layout-header.html include
 .landing__header {
-  @include genesis-entity('imperative');        // Urgent/important header
+  // Structural section: transparent, layout-only
 }
 
 .landing__title {
@@ -55,9 +54,9 @@
 }
 
 // Footer CTA section from layout-footer-cta.html include
+// Visual presence provided by <genesis-entity nature="secondary"> in landing.html
 .landing__footer-cta {
-  @include genesis-entity('imperative');        // CTA section
-  @include genesis-atmosphere('vibrant');        // High-energy
+  // Structural section: transparent, layout-only
 }
 
 .landing__cta-title {

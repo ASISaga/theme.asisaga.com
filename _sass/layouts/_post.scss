@@ -28,12 +28,12 @@
 .post-layout {
   @include genesis-environment('focused');    // Single column reading
   @include genesis-atmosphere('neutral');      // Standard vibe
-  // padding responsibility belongs to genesis-entity; post.html wraps this in genesis-entity
+  // Visual presence provided by <genesis-entity> web component in post.html
 }
 
 // Header section from layout-header.html include
 .post__header {
-  @include genesis-entity('secondary');       // Header section
+  // Structural section: transparent, layout-only
 }
 
 .post__title {
@@ -79,7 +79,7 @@
 
 // Footer CTA section from layout-footer-cta.html include
 .post__footer-cta {
-  @include genesis-entity('secondary');       // Footer section
+  // Structural section: transparent, layout-only
 }
 
 .post__cta-title {

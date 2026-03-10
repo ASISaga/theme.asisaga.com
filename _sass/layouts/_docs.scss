@@ -9,9 +9,8 @@
 .docs-layout {
   @include genesis-environment('navigation-sidebar'); // Sidebar navigation
   @include genesis-atmosphere('neutral');              // Standard vibe
-  // padding responsibility belongs to genesis-entity; inner sections use genesis-entity for spacing
   .docs-sidebar {
-    @include genesis-entity('secondary');     // Sidebar section
+    // Structural sidebar: transparent, layout-only
     @include genesis-environment('navigation-sidebar'); // Vertical nav
   }
   
@@ -28,7 +27,7 @@
   }
   
   .docs-content {
-    @include genesis-entity('primary');       // Main content
+    // Structural reading column: transparent, layout-only
     @include genesis-environment('focused');  // Reading layout
   }
   
@@ -46,7 +45,7 @@
   }
   
   .docs-toc {
-    @include genesis-entity('secondary');     // TOC sidebar
+    // Structural TOC container: transparent, layout-only
     @include genesis-environment('navigation-sidebar'); // Vertical nav
   }
   

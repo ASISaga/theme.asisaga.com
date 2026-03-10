@@ -29,7 +29,7 @@
 
 // Header section
 .search__header {
-  @include genesis-entity('secondary');     // Header section
+  // Structural section: transparent, layout-only
 }
 
 .search__form {
@@ -55,7 +55,7 @@
 
 // Filter sidebar
 .search__sidebar {
-  @include genesis-entity('secondary');     // Filters sidebar
+  // Structural sidebar: transparent, layout-only
   @include genesis-environment('chronological'); // Vertical filters
 }
 

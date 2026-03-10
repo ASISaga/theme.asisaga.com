@@ -18,15 +18,13 @@
 .dashboard-layout {
   @include genesis-environment('manifest');   // High-density dashboard
   @include genesis-atmosphere('neutral');      // Standard vibe
-  // padding responsibility belongs to genesis-entity; inner sections use genesis-entity for spacing
   
   height: 100%;
 }
 
 // Header section from layout-header.html include
 .dashboard__header {
-  @include genesis-entity('secondary');     // Header section
-  
+  // Structural section: transparent, layout-only
   display: flex;
   justify-content: space-between;
   align-items: center;
