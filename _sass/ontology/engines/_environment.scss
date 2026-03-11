@@ -571,7 +571,7 @@
 
       // Main content area grows to fill all remaining space
       > main,
-      > [role="main"] {
+      > [data-panel="main"] {
         flex: 1 1 0;
         min-width: 0;    // Prevent overflow when content is wide
         overflow: auto;
