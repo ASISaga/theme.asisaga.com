@@ -189,6 +189,8 @@ Place this before loading the theme's common.js.
 - `'navigation-primary'` ⭐ **NEW v2.2.0** - Main site navigation (horizontal desktop → mobile drawer)
 - `'navigation-secondary'` ⭐ **NEW v2.2.0** - Contextual navigation (breadcrumbs, footer nav)
 - `'interaction-form'` ⭐ **NEW v2.2.0** - Form layout optimized for data entry
+- `'convergent'` ⭐ **NEW v4.0.0** - Sidebar + main content layout (article TOC, docs sidebar)
+- `'panelled'` ⭐ **NEW v5.0.0** - Multi-panel app shell (rigid non-wrapping row, fixed panels + fluid main)
 
 **Example:**
 ```scss
@@ -232,6 +234,24 @@ Place this before loading the theme's common.js.
 
 .faq-accordion {
   @include genesis-environment('navigation-accordion');  // Accordion layout
+}
+
+// New in v4.0.0: Sidebar + main reading layout
+.article-layout {
+  @include genesis-environment('convergent');  // Sticky sidebar + main content
+}
+
+// New in v5.0.0: Multi-panel app shell (default panel width: 280px)
+.app-shell {
+  @include genesis-environment('panelled');  // Rigid row: panels + fluid main
+}
+
+// Custom panel width (e.g. narrow strip panel):
+.app-shell--narrow-panel {
+  @include genesis-environment('panelled');
+  --panel-width: 220px;
+  --panel-width-tablet: 180px;
+  --space-panel-gap: 1px;  // hairline divider between panels and main
 }
 
 ```
