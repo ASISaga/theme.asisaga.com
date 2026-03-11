@@ -379,6 +379,29 @@ The Genesis Semantic Engine launched with a three-tier architecture and six core
 
 ---
 
+### v5.0.0 - Multi-Panel App Shell Primitive (2026-03-11)
+
+**Milestone**: New layout primitive for multi-panel app shells, closing the gap between the reading-oriented `convergent` layout and the distinct needs of application workspaces.
+
+**Origin**: theme.asisaga.com (ontological evolution — app shell use case)  
+**Validation**: `npm test` clean (SCSS compilation + unit validator + stylelint) — pre-existing lint errors in unrelated files unaffected
+
+**New Variants**:
+
+1. **`environment('panelled')`** - Multi-panel app shell layout
+   - Rigid, non-wrapping horizontal row of fixed-width panels + fluid main content
+   - CSS custom properties: `--panel-width` (default 280px), `--panel-width-tablet` (default 240px), `--space-panel-gap`
+   - Mobile: supporting panels collapse (`display: none`), main content fills full width
+   - Tablet: `--panel-width-tablet` (240px) × panels + `1fr` main
+   - Desktop: `--panel-width` (280px) × panels + `1fr` main
+   - Mark the main content area with `<main>` or `[role="main"]`; all other direct children are treated as fixed-width panels
+
+**Decision Rationale**:
+
+The existing `convergent` variant was designed for reading-oriented two-region layouts (article + TOC, docs + sidebar) and intentionally makes its first child sticky. App shells require a structurally distinct primitive: multiple panels are possible, panels collapse (not stack) on mobile, and the sticky positioning of individual panel content is the consumer's responsibility — not an automatic behaviour. A new `panelled` variant preserves the semantic integrity of `convergent` while providing the correct layout contract for application workspaces.
+
+---
+
 ## 📊 Variant Registry
 
 ### Environment Variants
@@ -447,6 +470,14 @@ The Genesis Semantic Engine launched with a three-tier architecture and six core
 - **Origin**: Ontological Transcendence
 - **Purpose**: Sidebar + main content layout for supported navigation
 - **Usage**: Article with TOC, documentation with sidebar, dashboard with sidebar
+- **Adoption**: 0+ subdomains (new)
+
+#### `panelled` ⭐ NEW
+- **Since**: v5.0.0
+- **Origin**: Multi-Panel App Shell Primitive
+- **Purpose**: Rigid non-wrapping row of fixed-width supporting panels + fluid main content area
+- **Usage**: Application workspaces, IDE-style layouts, split-screen dashboards, any multi-panel app shell
+- **Features**: CSS custom property–driven panel widths, panels collapse on mobile, `<main>`/`[role="main"]` identifies the fluid content area
 - **Adoption**: 0+ subdomains (new)
 
 ---

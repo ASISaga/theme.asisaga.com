@@ -532,4 +532,65 @@
       }
     }
   }
+  @else if $logic == 'panelled' {
+    // Multi-panel app shell — rigid non-wrapping row, fixed panels + fluid main
+    // ORIGIN: v5.0 Multi-panel layout primitive
+    // INTENT: App shell with one or more fixed-width supporting panels flanking a
+    //         main content area that fills all remaining space; panels collapse on mobile.
+    //
+    // Usage: apply to the shell container; mark the main content area with <main> or
+    //        [role="main"]. All other direct children are treated as fixed-width panels.
+    //
+    //   CSS custom properties:
+    //     --panel-width        Width of each supporting panel (default: 280px)
+    //     --panel-width-tablet Width on tablet viewports (default: 240px)
+    //     --space-panel-gap    Gap between panels and main content (default: 0)
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;   // Rigid row — panels never reflow onto a second line
+    width: 100%;
+    min-height: 0;       // Allow flex children to shrink below intrinsic height
+
+    // Tablet and desktop: fixed-width panels + fluid main
+    @media (min-width: 768px) {
+      gap: var(--space-panel-gap, 0);
+
+      // Supporting panels hold their declared width and never grow or shrink
+      > :not(main, [role="main"]) {
+        flex: 0 0 var(--panel-width, 280px);
+        min-width: 0;
+        overflow: hidden;
+      }
+
+      // Tablet: slightly narrower panels
+      @media (max-width: 1023px) {
+        > :not(main, [role="main"]) {
+          flex-basis: var(--panel-width-tablet, 240px);
+        }
+      }
+
+      // Main content area grows to fill all remaining space
+      > main,
+      > [role="main"] {
+        flex: 1 1 0;
+        min-width: 0;    // Prevent overflow when content is wide
+        overflow: auto;
+      }
+    }
+
+    // Mobile: supporting panels collapse, main content takes full width
+    @media (max-width: 767px) {
+      flex-direction: column;
+
+      > :not(main, [role="main"]) {
+        display: none;   // Panels are hidden — main content claims the full viewport
+      }
+
+      > main,
+      > [role="main"] {
+        flex: 1 1 auto;
+        width: 100%;
+      }
+    }
+  }
 }
