@@ -155,9 +155,9 @@
 // Archive — already uses genesis-environment('chronological') in _archive.scss
 .archive__item {
   @include genesis-entity('primary');              // Card surface (Level 3)
+  @include genesis-environment('associative');     // Internal layout (Level 3 optional)
 
   @include from(md) {
-    display: grid;
     grid-template-columns: 200px 1fr;
   }
 

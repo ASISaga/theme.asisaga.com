@@ -47,7 +47,6 @@
 // Metadata section from content-meta.html include (Level 2: section)
 .post__meta {
   @include genesis-environment('associative'); // Horizontal flex
-  @include genesis-state('stable');            // Normal state
 }
 
 .post__meta-date,

@@ -50,11 +50,10 @@
 // Countdown timer (Level 2: section container for countdown items)
 .splash__countdown {
   @include genesis-environment('associative'); // Horizontal countdown items
-  @include genesis-state('evolving');           // Active/changing state
 }
 
 .splash__countdown-item {
-  // Countdown time unit — transparent, text flows on parent countdown background
+  @include genesis-state('evolving');           // Active/changing countdown (Level 3)
   text-align: center;
 }
 
