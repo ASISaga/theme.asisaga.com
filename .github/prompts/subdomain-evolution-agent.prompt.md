@@ -22,6 +22,7 @@ Maintain semantic consistency in your subdomain while facilitating organic growt
 - ZERO raw CSS properties in your subdomain SCSS
 - Map every HTML class to appropriate semantic role
 - Maintain mirrored SCSS structure (matching HTML DOM)
+- Respect hierarchy-level rules from `/docs/specifications/ontology-html-mapping.md`
 
 ```scss
 ---
@@ -29,19 +30,32 @@ Maintain semantic consistency in your subdomain while facilitating organic growt
 @import "ontology/index";
 
 .research-paper {
-  @include genesis-environment('focused');
-  @include genesis-atmosphere('ethereal');
+  @include genesis-environment('focused');     // Level 1: layout
+  @include genesis-atmosphere('ethereal');     // Level 1: tone
   
   .paper-header {
-    @include genesis-entity('primary');
-    .paper-title { @include genesis-cognition('axiom'); }
+    @include genesis-environment('associative'); // Level 2: section — NO entity here
+    .paper-title { @include genesis-cognition('axiom'); }  // Level 4: leaf
   }
   
-  .download-link { @include genesis-synapse('navigate'); }
+  .download-link { @include genesis-synapse('navigate'); } // Level 4: leaf
 }
 ```
 
+**Visual design element ownership** — each concern has exactly one owner:
+
+| Visual Element | Owner | Never Set By |
+|---------------|-------|-------------|
+| White space / gap | `environment` | entity, cognition |
+| Internal padding | `entity` | environment, cognition |
+| Colors / backgrounds | `atmosphere` | cognition, synapse |
+| Typography | `cognition` | entity, environment |
+| Borders / shape | `entity` | atmosphere, environment |
+| Animations | `state` | entity, cognition |
+| Hover / focus | `synapse` | cognition, atmosphere |
+
 → Complete variant reference: `/docs/specifications/scss-ontology-system.md`
+→ Hierarchy-level rules: `/docs/specifications/ontology-html-mapping.md`
 
 ### 2. Gap Identification
 
@@ -152,6 +166,7 @@ Be humble, clear, receptive, and patient in all interactions.
 
 ## Related Documentation
 
+- `/docs/specifications/ontology-html-mapping.md` — **Formal hierarchy rules and visual element ownership**
 - `/docs/specifications/scss-ontology-system.md` — Complete ontology reference
 - `_sass/ontology/INTEGRATION-GUIDE.md` — Mixin API and usage examples
 - `.github/docs/agent-philosophy.md` — Agent ecosystem architecture

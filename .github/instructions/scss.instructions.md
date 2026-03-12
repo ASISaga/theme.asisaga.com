@@ -60,6 +60,29 @@ description: "SCSS coding instructions for Genesis Semantic Design System v2.0"
 - `genesis-state($condition)` - State: `'stable'`, `'evolving'`, `'deprecated'`, `'locked'`, `'simulated'`
 - `genesis-atmosphere($vibe)` - Atmosphere: `'neutral'`, `'ethereal'`, `'void'`, `'vibrant'`
 
+## Visual Design Element Ownership (CRITICAL)
+
+Each visual CSS concern has **exactly one** owning ontological category. Never set a property outside its owner.
+
+| Visual Element | Owner | CSS Properties | Semantic Purpose |
+|---------------|-------|---------------|-----------------|
+| **White space** | `environment` | `gap`, `margin` (via grid/flex) | Spatial separation between siblings |
+| **Spacing (internal)** | `entity` | `padding` | Breathing room within visual surfaces |
+| **Layout / grid** | `environment` | `display`, `grid-*`, `flex-*`, `place-*`, `max-width` | Spatial arrangement of children |
+| **Color palette** | `atmosphere` + `entity` | `background`, `color` (via tokens) | Emotional tone (atmosphere) and surface identity (entity) |
+| **Typography** | `cognition` | `font-size`, `font-weight`, `font-family`, `line-height`, `letter-spacing`, `text-transform` | Information hierarchy and reading intent |
+| **Sizes** | `environment` + `cognition` | `max-width`, `min-height` (env); `font-size` (cog) | Container constraints (env) and text scale (cog) |
+| **Borders** | `entity` | `border`, `border-radius` | Visual surface boundaries and shape |
+| **Shading / shadows** | `atmosphere` | `box-shadow` | Depth, elevation, and ambient mood |
+| **Gradients** | `atmosphere` | `background-image` (gradient) | Emotional tone and visual depth |
+| **Backdrop effects** | `atmosphere` + `entity` | `backdrop-filter` | Glass morphism (entity surface) and ambient blur (atmosphere) |
+| **Animations** | `state` | `animation`, `transition`, `@keyframes` | Temporal condition changes |
+| **Opacity / filters** | `state` | `opacity`, `filter` | Visibility and temporal condition |
+| **Hover / focus** | `synapse` | `:hover`, `:focus`, `cursor`, `transition` | Interaction feedback and affordance |
+| **Text decoration** | `state` + `synapse` | `text-decoration` | Deprecation (state) and link behavior (synapse) |
+
+→ **Full specification**: `/docs/specifications/ontology-html-mapping.md`
+
 ## Hierarchy-Level Rules (CRITICAL)
 
 → **Full specification**: `/docs/specifications/ontology-html-mapping.md`
@@ -78,6 +101,9 @@ Each HTML element falls into a hierarchy level that determines which mixins are 
 - ❌ `genesis-cognition()` on containers — cognition is for text elements only
 - ❌ `genesis-atmosphere()` on leaf elements — atmosphere is for containers only
 - ❌ Stacking `environment` + `entity` on Level 1/2 wrappers
+- ❌ Setting `border` or `padding` in any mixin other than `entity`
+- ❌ Setting `font-*` properties in any mixin other than `cognition`
+- ❌ Setting `background` in any mixin other than `atmosphere` (or entity surface tokens)
 
 ## Theme/Subdomain Architecture (CRITICAL)
 

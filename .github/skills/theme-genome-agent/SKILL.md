@@ -154,6 +154,7 @@ Please update proposition with [requested info].
 - ✅ Proper category fit
 - ✅ Well-documented use cases
 - ✅ Not achievable via combination
+- ✅ Respects visual element ownership (each CSS concern stays in its owning category)
 
 **Weak Proposition:**
 - ❌ Visual-only changes
@@ -161,6 +162,9 @@ Please update proposition with [requested info].
 - ❌ Vague semantic intent
 - ❌ Already covered
 - ❌ Overly specific
+- ❌ Violates hierarchy-level rules (e.g., entity on Level 2 section)
+
+→ **Hierarchy rules**: `/docs/specifications/ontology-html-mapping.md`
 
 ## Validation
 
@@ -186,6 +190,7 @@ npm test
 - `scripts/validate-ontology.sh` - Automated validation
 
 **Ontology System**:
+- `/docs/specifications/ontology-html-mapping.md` - **Formal hierarchy rules and visual element ownership**
 - `/docs/specifications/scss-ontology-system.md` - Complete ontology reference
 - `_sass/ontology/INTEGRATION-GUIDE.md` - API documentation
 - `GENOME.md` - Variant evolution history

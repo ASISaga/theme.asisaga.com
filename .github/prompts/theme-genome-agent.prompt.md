@@ -68,6 +68,27 @@ The Engine (`_engines.scss`) is the ONLY place for technical CSS properties.
 
 **ACCEPT** requests containing: information architecture roles, interaction intents, state descriptions, relationship types.
 
+**Visual Design Element Ownership** — enforce that each visual concern stays in its owning category:
+
+| Visual Element | Owner | Forbidden Elsewhere |
+|---------------|-------|-------------------|
+| White space / gap | `environment` | Entity must not set gap |
+| Internal padding | `entity` | Environment must not set padding |
+| Colors / backgrounds | `atmosphere` | Entity surface tokens are the exception |
+| Typography | `cognition` | Entity/environment must not set font-* |
+| Borders / shape | `entity` | Atmosphere must not set border |
+| Animations | `state` | Entity must not set animation |
+| Hover / focus | `synapse` | Cognition must not set :hover |
+
+**Hierarchy-Level Compliance** — enforce from `/docs/specifications/ontology-html-mapping.md`:
+
+| Level | Required | Forbidden |
+|-------|----------|-----------|
+| 1 — Page Layout | `environment` + `atmosphere` | `entity`, `cognition`, `synapse` |
+| 2 — Section | `environment` | `entity`, `cognition` |
+| 3 — Component | `entity` | — |
+| 4 — Leaf | `cognition` or `synapse` | `environment`, `atmosphere`, `entity` |
+
 ## Review Checklist
 
 - [ ] Semantic intent clear (WHAT and WHY, not HOW)
@@ -121,6 +142,7 @@ The Engine (`_engines.scss`) is the ONLY place for technical CSS properties.
 
 ## Related Documentation
 
+- `/docs/specifications/ontology-html-mapping.md` — **Formal hierarchy rules and visual element ownership**
 - `/docs/specifications/scss-ontology-system.md` — Complete ontology reference
 - `/docs/specifications/github-copilot-agent-guidelines.md` — Agent development standards
 - `/docs/specifications/accessibility.md` — WCAG compliance requirements

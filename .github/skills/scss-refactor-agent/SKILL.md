@@ -110,6 +110,29 @@ npm test             # All checks
 
 → **All 41+ variants**: `/docs/specifications/scss-ontology-system.md`
 
+**Visual Design Element Ownership:**
+
+| Visual Element | Owner |
+|---------------|-------|
+| White space / gap | `environment` |
+| Internal padding | `entity` |
+| Colors / backgrounds | `atmosphere` |
+| Typography | `cognition` |
+| Borders / shape | `entity` |
+| Animations | `state` |
+| Hover / focus | `synapse` |
+
+**Hierarchy-Level Rules:**
+
+| Level | Required | Forbidden |
+|-------|----------|-----------|
+| 1 — Page Layout | `environment` + `atmosphere` | `entity`, `cognition`, `synapse` |
+| 2 — Section | `environment` | `entity`, `cognition` |
+| 3 — Component | `entity` | — |
+| 4 — Leaf | `cognition` or `synapse` | `environment`, `atmosphere`, `entity` |
+
+→ **Full specification**: `/docs/specifications/ontology-html-mapping.md`
+
 ## Import Rules
 
 **DO import in:**
@@ -135,6 +158,7 @@ npm test
 ## Resources
 
 **Complete Ontology System**:
+- `/docs/specifications/ontology-html-mapping.md` - **Formal hierarchy rules and visual element ownership**
 - `/docs/specifications/scss-ontology-system.md` - **All 41+ variants, complete API**
 - `_sass/ontology/INTEGRATION-GUIDE.md` - Integration guide
 - `_sass/ontology/_sample.scss` - Working examples

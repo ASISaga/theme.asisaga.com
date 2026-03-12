@@ -29,19 +29,32 @@ Scan HTML files and classify every unique class by its semantic role:
 | Loading/archived | Status indicator | `genesis-state('stable'/'evolving'/'deprecated'/'locked'/'simulated')` |
 | Background vibe | Atmosphere | `genesis-atmosphere('neutral'/'ethereal'/'void'/'vibrant')` |
 
+**Visual Design Element Ownership** — each visual concern maps to exactly one owner:
+
+| Visual Element | Owner | CSS Properties |
+|---------------|-------|---------------|
+| White space / gap | `environment` | `gap`, `margin` (via grid/flex) |
+| Internal padding | `entity` | `padding` |
+| Colors / backgrounds | `atmosphere` | `background`, `box-shadow` |
+| Typography | `cognition` | `font-*`, `line-height`, `letter-spacing` |
+| Borders / shape | `entity` | `border`, `border-radius` |
+| Animations | `state` | `animation`, `opacity`, `filter` |
+| Hover / focus | `synapse` | `:hover`, `:focus`, `cursor`, `transition` |
+
 → Complete variant reference: `/docs/specifications/scss-ontology-system.md`
+→ Hierarchy-level rules: `/docs/specifications/ontology-html-mapping.md`
 
 ### Step 2: Mirrored Mapping
 
-Create SCSS that **exactly mirrors HTML structure**:
+Create SCSS that **exactly mirrors HTML structure** and respects hierarchy levels:
 
 ```html
-<article class="research-paper">
-  <header class="paper-header">
-    <h1 class="paper-title">Title</h1>
-    <time class="paper-date">Date</time>
+<article class="research-paper">          <!-- Level 1: page wrapper -->
+  <header class="paper-header">           <!-- Level 2: section -->
+    <h1 class="paper-title">Title</h1>   <!-- Level 4: leaf -->
+    <time class="paper-date">Date</time>  <!-- Level 4: leaf -->
   </header>
-  <div class="paper-content"><p>Content...</p></div>
+  <div class="paper-content"><p>Content...</p></div>  <!-- Level 2: section -->
 </article>
 ```
 
@@ -51,18 +64,24 @@ Create SCSS that **exactly mirrors HTML structure**:
 @import "ontology/index";
 
 .research-paper {
-  @include genesis-environment('focused');
-  @include genesis-atmosphere('ethereal');
+  @include genesis-environment('focused');    // Level 1: layout
+  @include genesis-atmosphere('ethereal');    // Level 1: tone
   
   .paper-header {
-    @include genesis-entity('primary');
-    .paper-title { @include genesis-cognition('axiom'); }
-    .paper-date { @include genesis-cognition('gloss'); }
+    @include genesis-environment('associative'); // Level 2: horizontal layout
+    .paper-title { @include genesis-cognition('axiom'); }  // Level 4: headline
+    .paper-date { @include genesis-cognition('gloss'); }   // Level 4: metadata
   }
   
-  .paper-content { @include genesis-cognition('discourse'); }
+  .paper-content { @include genesis-cognition('discourse'); } // Level 4: body text
 }
 ```
+
+**Hierarchy rules** (from `/docs/specifications/ontology-html-mapping.md`):
+- Level 1 (page wrapper): `environment` + `atmosphere` — no `entity`
+- Level 2 (sections): `environment` only — no `entity`, no `cognition`
+- Level 3 (components): `entity` required
+- Level 4 (leaf elements): `cognition` or `synapse`
 
 ### Step 3: Variable & Mixin Purge
 
@@ -85,6 +104,8 @@ Create SCSS that **exactly mirrors HTML structure**:
 - [ ] **No Pixel Values**: No `px`, `rem`, `em` values
 - [ ] **No Color Values**: No `#hex`, `rgb()`, `oklch()`
 - [ ] **Mirrored Structure**: SCSS nesting matches HTML
+- [ ] **Hierarchy Compliance**: Level 1/2 use `environment` only — no `entity`; Level 4 uses `cognition`/`synapse` only
+- [ ] **Property Ownership**: Each CSS property set by its owning category only (borders by entity, fonts by cognition, etc.)
 - [ ] **HTML Untouched**: No changes to HTML classes
 - [ ] **Visual Fidelity**: Appearance matches original
 
@@ -172,6 +193,7 @@ Create SCSS that **exactly mirrors HTML structure**:
 
 ## Related Documentation
 
+- `/docs/specifications/ontology-html-mapping.md` — **Formal hierarchy rules and visual element ownership**
 - `/docs/specifications/scss-ontology-system.md` — Complete ontology reference
 - `/docs/specifications/scss-styling.md` — SCSS architecture patterns
 - `/docs/specifications/accessibility.md` — WCAG compliance requirements

@@ -137,6 +137,7 @@ cat _sass/ontology/INTEGRATION-GUIDE.md | grep "genesis-"
 - `.github/PULL_REQUEST_TEMPLATE/ontological_proposition.md` - PR template
 
 **Ontology Reference**:
+- `/docs/specifications/ontology-html-mapping.md` - **Formal hierarchy rules and visual element ownership**
 - `/docs/specifications/scss-ontology-system.md` - All 41+ variants, categories
 - `_sass/ontology/INTEGRATION-GUIDE.md` - API reference
 - `GENOME.md` - Variant evolution history

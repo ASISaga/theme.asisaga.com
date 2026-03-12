@@ -57,6 +57,22 @@ Every element falls into one of four hierarchy levels. Each level has permitted 
 - ❌ **Never** apply `genesis-cognition()` to containers — cognition is for text elements only
 - ❌ **Never** apply `genesis-atmosphere()` to leaf elements — atmosphere is for containers
 
+### Visual Design Element Ownership
+
+Each visual CSS concern is owned by exactly one ontological category. When writing SCSS for HTML elements, use only the owning category's mixin:
+
+| Visual Element | Owner | Semantic Purpose |
+|---------------|-------|-----------------|
+| White space / gap | `environment` | Spatial separation between siblings |
+| Internal padding | `entity` | Breathing room within visual surfaces |
+| Layout / grid | `environment` | Spatial arrangement of children |
+| Colors / backgrounds | `atmosphere` | Emotional tone and ambient mood |
+| Typography | `cognition` | Information hierarchy and reading intent |
+| Borders / border-radius | `entity` | Visual surface boundaries |
+| Shadows / elevation | `atmosphere` | Depth and ambient mood |
+| Animations | `state` | Temporal condition changes |
+| Hover / focus feedback | `synapse` | Interaction affordance |
+
 ### Quick Pattern
 
 **HTML** (semantic class names):
