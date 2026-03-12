@@ -36,6 +36,8 @@ These specifications serve as:
 12. [**Color System**](./color-system.md) - Sacred color palette, contrast requirements, and theming
 13. [**Typography**](./typography.md) - Font system, text hierarchy, and readability standards
 14. [**Animation System**](./animation-system.md) - Sacred animations, transitions, and motion design
+15. [**SCSS Ontology System**](./scss-ontology-system.md) - Genesis Semantic Engine: 6 categories, 31 variants
+16. [**Ontology-to-HTML Mapping**](./ontology-html-mapping.md) - Formal hierarchy rules for applying ontological mixins to HTML elements
 
 ## How to Use These Specifications
 
