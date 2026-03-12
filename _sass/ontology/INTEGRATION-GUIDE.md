@@ -587,7 +587,7 @@ Your SCSS nesting should perfectly mirror your HTML DOM hierarchy.
   @include genesis-environment('focused');
   
   .intro-section {
-    @include genesis-environment('associative'); // Section = environment only
+    @include genesis-environment('associative'); // Section: environment only
     
     .hub-title {
       @include genesis-cognition('axiom');
