@@ -108,18 +108,18 @@ If you need page-specific styling in `_sass/main.scss`:
 
 ### Visual Design Element Ownership
 
-Each visual CSS concern is owned by exactly one ontological category. Never set a property outside its owner:
+Each visual CSS concern maps from a semantic purpose through an owning ontological category. Never set a property outside its owner:
 
-| Visual Element | Owner | Semantic Purpose |
-|---------------|-------|-----------------|
-| White space / gap | `environment` | Responsive `--space-*` token gaps between grid/flex children |
-| Internal padding | `entity` | Responsive `--padding-entity-*` clamps per variant density |
-| Colors / backgrounds | `atmosphere` | Page mood via OKLCH: `void`=black, `ethereal`=translucent, `sacred`=gradient |
-| Typography | `cognition` | Text role: `axiom`=bold headlines, `discourse`=serif body, `protocol`=monospace |
-| Borders / shape | `entity` | Edge treatment: 1px subtle, 2px neon accent, 999px pill via `--radius-bento` |
-| Shadows / elevation | `atmosphere` | Ambient depth: `ethereal`=outer glow, `void`=inset shadow, `vibrant`=neon glow |
-| Animations | `state` | Temporal: `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `mentioned`=pulse |
-| Hover / focus | `synapse` | Interaction: `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets |
+| Semantic Purpose | Owner | Visual Design Element |
+|-----------------|-------|---------------------|
+| Responsive spatial rhythm — `--space-*` token gaps between grid/flex children | `environment` | White space / gap |
+| Component breathing room — `--padding-entity-*` clamps per variant density | `entity` | Internal padding |
+| Page mood and emotional tone — OKLCH: `void`=black, `ethereal`=translucent, `sacred`=gradient | `atmosphere` | Colors / backgrounds |
+| Information voice and reading intent — `axiom`=bold headlines, `discourse`=serif body, `protocol`=monospace | `cognition` | Typography |
+| Component edge treatment — 1px subtle, 2px neon accent, 999px pill via `--radius-bento` | `entity` | Borders / shape |
+| Ambient depth and spatial layering — `ethereal`=outer glow, `void`=inset shadow, `vibrant`=neon glow | `atmosphere` | Shadows / elevation |
+| Lifecycle transitions and temporal signaling — `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `mentioned`=pulse | `state` | Animations |
+| Action-specific interaction feedback — `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets | `synapse` | Hover / focus |
 
 ### Hierarchy-Level Rules
 

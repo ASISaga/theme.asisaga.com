@@ -62,24 +62,24 @@ description: "SCSS coding instructions for Genesis Semantic Design System v2.0"
 
 ## Visual Design Element Ownership (CRITICAL)
 
-Each visual CSS concern has **exactly one** owning ontological category. Never set a property outside its owner.
+Each visual CSS concern maps from a **semantic purpose** through an owning ontological category to its implementation. Never set a property outside its owner.
 
-| Visual Element | Owner | CSS Properties | Semantic Purpose |
-|---------------|-------|---------------|-----------------|
-| **White space** | `environment` | `gap`, `margin` (via grid/flex) | Responsive `var(--space-*)` token gaps — larger gaps signal section boundaries, tighter gaps signal grouped content |
-| **Spacing (internal)** | `entity` | `padding` | Responsive `--padding-entity-*` clamps — `primary` cards get generous padding, `secondary`/`badge` get compact padding |
-| **Layout / grid** | `environment` | `display`, `grid-*`, `flex-*`, `place-*`, `max-width` | Content flow — `distributed` creates auto-fit grids, `focused` constrains to 70ch, `manifest` enables 12-col dashboard |
-| **Color palette** | `atmosphere` + `entity` | `background`, `color` (via tokens) | Atmosphere sets page mood via OKLCH (`void`=deep black, `ethereal`=translucent). Entity sets surface (`primary`=white card, `surface-glass`=dark glassmorphism) |
-| **Typography** | `cognition` | `font-size`, `font-weight`, `font-family`, `line-height`, `letter-spacing`, `text-transform` | Text role — `axiom`=2–3.5rem bold headlines, `discourse`=serif body at 1.6 line-height, `protocol`=monospace code, `quantum`=tiny uppercase pills |
-| **Sizes** | `environment` + `cognition` | `max-width`, `min-height` (env); `font-size` (cog) | Container: `focused`=70ch reading width, `manifest`=full 12-col. Text: `axiom`=clamp(2rem,5vw,3.5rem) to `gloss`=clamp(0.875rem) |
-| **Borders** | `entity` | `border`, `border-radius` | Edge treatment — `primary`=subtle 1px, `imperative`=2px neon accent, `badge`=999px pill, radii use `--radius-bento` tokens |
-| **Shading / shadows** | `atmosphere` | `box-shadow` | Ambient depth — `ethereal`=subtle outer glow, `void`=inset depth shadow, `vibrant`=neon blue glow, `sacred`=gold accent line |
-| **Gradients** | `atmosphere` | `background-image` (gradient) | Page mood — `sacred`=deep blue-to-indigo gradient, `void`=solid black. Entity `transcendent`=surface gradient overlay |
-| **Backdrop effects** | `atmosphere` + `entity` | `backdrop-filter` | Entity `surface-glass`=blur 20px at 15% opacity. Atmosphere `ethereal`=blur 10px translucency, `vibrant`=blur 8px with glow |
-| **Animations** | `state` | `animation`, `transition`, `@keyframes` | Temporal — `evolving`=sweeping gradient for progress, `scroll-triggered`=fade-in-up on intersection, `mentioned`=pulse highlight |
-| **Opacity / filters** | `state` | `opacity`, `filter` | Availability — `stable`=full visibility, `deprecated`=50% opacity + grayscale, `locked`=2px blur + disabled interaction |
-| **Hover / focus** | `synapse` | `:hover`, `:focus`, `cursor`, `transition` | Feedback — `navigate`=hover underline, `execute`=neon glow, `destructive`=red warning glow, all enforce 44px WCAG touch targets |
-| **Text decoration** | `state` + `synapse` | `text-decoration` | `deprecated`=line-through for outdated. `navigate`=removes underline, restores on hover for discoverable links |
+| Semantic Purpose | Owner | Visual Design Element | CSS Properties |
+|-----------------|-------|---------------------|---------------|
+| **Responsive spatial rhythm** — larger gaps signal section boundaries, tighter gaps group related items | `environment` | White space | `gap`, `margin` (via grid/flex) |
+| **Component breathing room** — `primary` cards get generous padding, `secondary`/`badge` get compact padding | `entity` | Spacing (internal) | `padding` |
+| **Content flow architecture** — `distributed`=auto-fit grids, `focused`=70ch, `manifest`=12-col dashboard | `environment` | Layout / grid | `display`, `grid-*`, `flex-*`, `place-*`, `max-width` |
+| **Page mood and component surface** — atmosphere OKLCH (`void`=black, `ethereal`=translucent); entity surface (`primary`=white card, `surface-glass`=glassmorphism) | `atmosphere` + `entity` | Color palette | `background`, `color` (via tokens) |
+| **Information voice and reading intent** — `axiom`=2–3.5rem bold headlines, `discourse`=serif body at 1.6 line-height, `protocol`=monospace code, `quantum`=tiny uppercase pills | `cognition` | Typography | `font-size`, `font-weight`, `font-family`, `line-height`, `letter-spacing`, `text-transform` |
+| **Spatial containment and text scale** — Container: `focused`=70ch, `manifest`=full 12-col. Text: `axiom`=clamp(2rem,5vw,3.5rem) to `gloss`=clamp(0.875rem) | `environment` + `cognition` | Sizes | `max-width`, `min-height` (env); `font-size` (cog) |
+| **Component edge treatment** — `primary`=subtle 1px, `imperative`=2px neon accent, `badge`=999px pill, radii use `--radius-bento` tokens | `entity` | Borders | `border`, `border-radius` |
+| **Ambient depth and spatial layering** — `ethereal`=subtle outer glow, `void`=inset depth shadow, `vibrant`=neon blue glow, `sacred`=gold accent line | `atmosphere` | Shading / shadows | `box-shadow` |
+| **Emotional backdrop and mood** — `sacred`=blue-to-indigo gradient, `void`=solid black; entity `transcendent`=surface gradient overlay | `atmosphere` | Gradients | `background-image` (gradient) |
+| **Visual transparency and glass** — entity `surface-glass`=blur 20px at 15% opacity; atmosphere `ethereal`=blur 10px, `vibrant`=blur 8px with glow | `atmosphere` + `entity` | Backdrop effects | `backdrop-filter` |
+| **Lifecycle transitions and temporal signaling** — `evolving`=sweeping gradient for progress, `scroll-triggered`=fade-in-up on intersection, `mentioned`=pulse highlight | `state` | Animations | `animation`, `transition`, `@keyframes` |
+| **Content availability and lifecycle** — `stable`=full visibility, `deprecated`=50% opacity + grayscale, `locked`=2px blur + disabled interaction | `state` | Opacity / filters | `opacity`, `filter` |
+| **Action-specific interaction feedback** — `navigate`=hover underline, `execute`=neon glow, `destructive`=red warning glow, all enforce 44px WCAG touch targets | `synapse` | Hover / focus | `:hover`, `:focus`, `cursor`, `transition` |
+| **Content deprecation and link discoverability** — `deprecated`=line-through for outdated; `navigate`=removes underline, restores on hover | `state` + `synapse` | Text decoration | `text-decoration` |
 
 → **Full specification**: `/docs/specifications/ontology-html-mapping.md`
 

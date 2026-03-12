@@ -2,7 +2,7 @@
 
 *Formal guidelines for applying Genesis ontological mixins to HTML elements*
 
-**Version**: 1.2.0
+**Version**: 1.3.0
 **Status**: Active
 **Last Updated**: 2026-03-12
 
@@ -32,25 +32,25 @@ Each ontological category owns exactly one concern. **Never apply a mixin to han
 
 ## Visual Design Element Semantic Ownership
 
-Each visual design element has a defined **semantic purpose** and an owning ontological category. When working with any visual concern, use only its owning category's mixin.
+Each visual design element maps from a **semantic purpose** through an owning ontological category to its CSS implementation. When working with any visual concern, start from the purpose and use only its owning category's mixin.
 
-| Visual Design Element | Owner | CSS Properties | Semantic Purpose |
-|----------------------|-------|---------------|-----------------|
-| **White space** (between elements) | Environment | `gap`, `margin` (via grid/flex) | Responsive `var(--space-*)` token gaps between grid/flex children — larger gaps signal section boundaries, tighter gaps signal grouped content (e.g., `distributed` bento grid vs `focused` reading column) |
-| **Spacing** (within elements) | Entity | `padding` | Responsive `--padding-entity-*` clamps that scale per variant — `primary` cards get generous padding for emphasis, `secondary`/`badge` get compact padding for density |
-| **Layout / grid** | Environment | `display`, `grid-*`, `flex-*`, `place-*`, `max-width` | Content flow pattern — `distributed` creates responsive auto-fit grids, `focused` constrains to 70ch reading width, `manifest` enables 12-column dashboard grid, `associative` creates flex-wrap networks |
-| **Color palette** | Atmosphere + Entity | `background`, `color` (via design tokens) | Atmosphere sets page mood via OKLCH backgrounds (`void`=deep black immersive, `ethereal`=translucent white, `sacred`=deep gradient). Entity sets component surface (`primary`=white card, `imperative`=neon-accented urgency, `surface-glass`=dark glassmorphism) |
-| **Typography** | Cognition | `font-size`, `font-weight`, `font-family`, `line-height`, `letter-spacing`, `text-transform` | Text role via size/weight/family — `axiom` renders 2–3.5rem bold headlines, `discourse` renders serif body at line-height 1.6, `protocol` renders monospace code blocks, `quantum` renders tiny uppercase tag pills |
-| **Sizes** (containers) | Environment | `max-width`, `min-height` | Container constraints — `focused`=70ch optimal reading width, `manifest`=full-width 12-col dashboard, `navigation-sidebar`=sticky min-width panel, `viewport-aware`(atmosphere)=100dvh full-screen |
-| **Sizes** (text) | Cognition | `font-size` | Responsive text scale via clamp() — `axiom`=clamp(2rem,5vw,3.5rem) hero to `gloss`=clamp(0.875rem,1.5vw,0.95rem) annotation, ensuring fluid scaling across viewports |
-| **Borders** | Entity | `border`, `border-radius` | Component edge treatment — `primary` gets subtle 1px containment, `imperative` gets 2px neon accent for urgency, `badge`/`quantum` get 999px pill shape, all radii use responsive `--radius-bento` tokens |
-| **Shading / shadows** | Atmosphere | `box-shadow` | Ambient depth effects — `ethereal` adds subtle outer glow for lifted feel, `void` adds inset shadow for enclosed depth, `vibrant` adds neon blue outer glow for energy, `sacred` adds gold accent line glow |
-| **Gradients** | Atmosphere | `background-image` (gradient) | Page-level mood via gradient backgrounds — `sacred` renders deep blue-to-indigo cosmic gradient, `void` renders solid deep black. Entity `transcendent` adds surface gradient overlay for elevated components |
-| **Backdrop effects** | Atmosphere + Entity | `backdrop-filter` | Entity creates glass component surfaces (`surface-glass`=blur 20px at 15% opacity). Atmosphere creates ambient page blur (`ethereal`=blur 10px translucency, `vibrant`=blur 8px with glow) |
-| **Animations** | State | `animation`, `transition`, `@keyframes` | Temporal transitions — `evolving` animates sweeping gradient for loading/progress, `scroll-triggered` fades-in-up on viewport intersection, `transcending` flows animated gradient spectrum, `mentioned` pulses highlight for attention |
-| **Opacity / filters** | State | `opacity`, `filter` | Element availability — `stable` ensures full visibility, `deprecated` dims to 50% opacity with 70% grayscale for outdated content, `locked` applies 2px blur and disables pointer-events for restricted content |
-| **Hover / focus states** | Synapse | `:hover`, `:focus`, `cursor`, `transition` | Interaction-specific feedback — `navigate` underlines on hover with accent color, `execute` adds neon glow on hover, `destructive` adds red warning glow, all enforce 44px WCAG 2.5.5 touch targets on mobile |
-| **Text decoration** | State + Synapse | `text-decoration` | State `deprecated` adds line-through to signal outdated content. Synapse `navigate` removes default underline, restores on hover for discoverable links |
+| Semantic Purpose | Owner | Visual Design Element | CSS Properties |
+|-----------------|-------|---------------------|---------------|
+| **Responsive spatial rhythm** — larger `--space-*` gaps signal section boundaries, tighter gaps group related items (`distributed` bento grid vs `focused` reading column) | Environment | White space (between elements) | `gap`, `margin` (via grid/flex) |
+| **Component breathing room** — `--padding-entity-*` clamps scale per variant weight: `primary` cards get generous padding for emphasis, `secondary`/`badge` get compact padding for density | Entity | Spacing (within elements) | `padding` |
+| **Content flow architecture** — `distributed` creates responsive auto-fit bento grids, `focused` constrains to 70ch reading width, `manifest` enables 12-column dashboard grid, `associative` creates flex-wrap tag networks | Environment | Layout / grid | `display`, `grid-*`, `flex-*`, `place-*`, `max-width` |
+| **Page mood and component surface** — atmosphere sets page-level mood via OKLCH (`void`=deep black immersive, `ethereal`=translucent white, `sacred`=deep gradient); entity sets component surface (`primary`=white card, `imperative`=neon-accented urgency, `surface-glass`=dark glassmorphism) | Atmosphere + Entity | Color palette | `background`, `color` (via design tokens) |
+| **Information voice and reading intent** — `axiom` renders 2–3.5rem bold headlines for foundational claims, `discourse` renders serif body at 1.6 line-height for sustained reading, `protocol` renders monospace for code, `quantum` renders tiny uppercase pills for metadata tags | Cognition | Typography | `font-size`, `font-weight`, `font-family`, `line-height`, `letter-spacing`, `text-transform` |
+| **Spatial containment constraints** — `focused`=70ch optimal reading width, `manifest`=full-width 12-col dashboard, `navigation-sidebar`=sticky min-width panel, `viewport-aware`(atmosphere)=100dvh full-screen sections | Environment | Sizes (containers) | `max-width`, `min-height` |
+| **Responsive text scale hierarchy** — fluid clamp() scaling from `axiom`=clamp(2rem,5vw,3.5rem) hero headlines to `gloss`=clamp(0.875rem,1.5vw,0.95rem) annotations, ensuring proportional scaling across viewports | Cognition | Sizes (text) | `font-size` |
+| **Component edge treatment and shape** — `primary` gets subtle 1px containment, `imperative` gets 2px neon accent for urgency, `badge`/`quantum` get 999px pill shape, all radii use responsive `--radius-bento` tokens | Entity | Borders | `border`, `border-radius` |
+| **Ambient depth and spatial layering** — `ethereal` adds subtle outer glow for lifted feel, `void` adds inset shadow for enclosed depth, `vibrant` adds neon blue outer glow for energy, `sacred` adds gold accent line glow | Atmosphere | Shading / shadows | `box-shadow` |
+| **Emotional backdrop and mood transitions** — `sacred` renders deep blue-to-indigo cosmic gradient, `void` renders solid deep black; entity `transcendent` adds surface gradient overlay for elevated components | Atmosphere | Gradients | `background-image` (gradient) |
+| **Visual transparency and glass surfaces** — entity `surface-glass`=blur 20px at 15% opacity for glass components; atmosphere `ethereal`=blur 10px translucency, `vibrant`=blur 8px with neon glow | Atmosphere + Entity | Backdrop effects | `backdrop-filter` |
+| **Lifecycle transitions and temporal signaling** — `evolving` animates sweeping gradient for loading/progress, `scroll-triggered` fades-in-up on viewport entry, `transcending` flows animated gradient spectrum, `mentioned` pulses highlight for @-mentions | State | Animations | `animation`, `transition`, `@keyframes` |
+| **Content availability and lifecycle visibility** — `stable` ensures full visibility, `deprecated` dims to 50% opacity with 70% grayscale for outdated content, `locked` applies 2px blur and disables pointer-events for restricted access | State | Opacity / filters | `opacity`, `filter` |
+| **Action-specific interaction feedback** — `navigate` underlines on hover with accent color for links, `execute` adds neon glow for primary buttons, `destructive` adds red warning glow for danger actions, all enforce 44px WCAG 2.5.5 touch targets on mobile | Synapse | Hover / focus states | `:hover`, `:focus`, `cursor`, `transition` |
+| **Content deprecation and link discoverability** — state `deprecated` adds line-through to signal outdated content; synapse `navigate` removes default underline, restores on hover for discoverable links | State + Synapse | Text decoration | `text-decoration` |
 
 ## HTML Hierarchy Levels
 

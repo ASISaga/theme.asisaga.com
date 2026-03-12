@@ -42,17 +42,17 @@ Maintain semantic consistency in your subdomain while facilitating organic growt
 }
 ```
 
-**Visual design element ownership** — each concern has exactly one owner:
+**Visual design element ownership** — each concern maps from semantic purpose to owner:
 
-| Visual Element | Owner | Never Set By | Semantic Purpose |
-|---------------|-------|-------------|-----------------|
-| White space / gap | `environment` | entity, cognition | Responsive `--space-*` token gaps between grid/flex children |
-| Internal padding | `entity` | environment, cognition | Responsive `--padding-entity-*` clamps per variant density |
-| Colors / backgrounds | `atmosphere` | cognition, synapse | Page mood via OKLCH: `void`=black, `ethereal`=translucent, `sacred`=gradient |
-| Typography | `cognition` | entity, environment | Text role: `axiom`=bold headlines, `discourse`=serif body, `protocol`=monospace |
-| Borders / shape | `entity` | atmosphere, environment | Edge treatment: 1px subtle, 2px neon accent, 999px pill via `--radius-bento` |
-| Animations | `state` | entity, cognition | Temporal: `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `deprecated`=dimmed |
-| Hover / focus | `synapse` | cognition, atmosphere | Feedback: `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets |
+| Semantic Purpose | Owner | Visual Design Element | Never Set By |
+|-----------------|-------|---------------------|-------------|
+| Responsive spatial rhythm — gaps signal section vs group boundaries | `environment` | White space / gap | entity, cognition |
+| Component breathing room — variant-scaled density (`primary`=generous, `badge`=compact) | `entity` | Internal padding | environment, cognition |
+| Page mood and emotional tone — OKLCH: `void`=black, `ethereal`=translucent, `sacred`=gradient | `atmosphere` | Colors / backgrounds | cognition, synapse |
+| Information voice and reading intent — `axiom`=bold headlines, `discourse`=serif body, `protocol`=monospace | `cognition` | Typography | entity, environment |
+| Component edge treatment — 1px subtle, 2px neon accent, 999px pill via `--radius-bento` | `entity` | Borders / shape | atmosphere, environment |
+| Lifecycle transitions and temporal signaling — `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `deprecated`=dimmed | `state` | Animations | entity, cognition |
+| Action-specific interaction feedback — `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets | `synapse` | Hover / focus | cognition, atmosphere |
 
 → Complete variant reference: `/docs/specifications/scss-ontology-system.md`
 → Hierarchy-level rules: `/docs/specifications/ontology-html-mapping.md`

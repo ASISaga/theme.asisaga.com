@@ -29,17 +29,17 @@ Scan HTML files and classify every unique class by its semantic role:
 | Loading/archived | Status indicator | `genesis-state('stable'/'evolving'/'deprecated'/'locked'/'simulated')` |
 | Background vibe | Atmosphere | `genesis-atmosphere('neutral'/'ethereal'/'void'/'vibrant')` |
 
-**Visual Design Element Ownership** — each visual concern maps to exactly one owner:
+**Visual Design Element Ownership** — each visual concern maps from semantic purpose to owner:
 
-| Visual Element | Owner | CSS Properties | Semantic Purpose |
-|---------------|-------|---------------|-----------------|
-| White space / gap | `environment` | `gap`, `margin` (via grid/flex) | Responsive `--space-*` token gaps between grid/flex children |
-| Internal padding | `entity` | `padding` | Responsive `--padding-entity-*` clamps per variant density |
-| Colors / backgrounds | `atmosphere` | `background`, `box-shadow` | Page mood via OKLCH: `void`=black, `ethereal`=translucent, `sacred`=gradient |
-| Typography | `cognition` | `font-*`, `line-height`, `letter-spacing` | Text role: `axiom`=bold headlines, `discourse`=serif body, `protocol`=monospace |
-| Borders / shape | `entity` | `border`, `border-radius` | Edge treatment: 1px subtle, 2px neon accent, 999px pill via `--radius-bento` |
-| Animations | `state` | `animation`, `opacity`, `filter` | Temporal: `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `deprecated`=dimmed |
-| Hover / focus | `synapse` | `:hover`, `:focus`, `cursor`, `transition` | Feedback: `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets |
+| Semantic Purpose | Owner | Visual Design Element | CSS Properties |
+|-----------------|-------|---------------------|---------------|
+| Responsive spatial rhythm — gaps signal section vs group boundaries | `environment` | White space / gap | `gap`, `margin` (via grid/flex) |
+| Component breathing room — variant-scaled density (`primary`=generous, `badge`=compact) | `entity` | Internal padding | `padding` |
+| Page mood and emotional tone — OKLCH: `void`=black, `ethereal`=translucent, `sacred`=gradient | `atmosphere` | Colors / backgrounds | `background`, `box-shadow` |
+| Information voice and reading intent — `axiom`=bold headlines, `discourse`=serif body, `protocol`=monospace | `cognition` | Typography | `font-*`, `line-height`, `letter-spacing` |
+| Component edge treatment — 1px subtle, 2px neon accent, 999px pill via `--radius-bento` | `entity` | Borders / shape | `border`, `border-radius` |
+| Lifecycle transitions and temporal signaling — `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `deprecated`=dimmed | `state` | Animations | `animation`, `opacity`, `filter` |
+| Action-specific interaction feedback — `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets | `synapse` | Hover / focus | `:hover`, `:focus`, `cursor`, `transition` |
 
 → Complete variant reference: `/docs/specifications/scss-ontology-system.md`
 → Hierarchy-level rules: `/docs/specifications/ontology-html-mapping.md`

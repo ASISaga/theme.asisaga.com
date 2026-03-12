@@ -31,14 +31,14 @@ prompt: |
   - genesis-state($condition): stable, evolving, deprecated, locked, simulated
   - genesis-atmosphere($vibe): neutral, ethereal, void, vibrant
 
-  **Visual Design Element Ownership** (each CSS concern has one owner with specific implementation):
-  - White space/gap → environment: responsive `--space-*` token gaps between grid/flex children (never entity)
-  - Padding → entity: responsive `--padding-entity-*` clamps per variant density (never environment)
-  - Colors/backgrounds → atmosphere: page mood via OKLCH — `void`=black, `ethereal`=translucent (never cognition)
-  - Typography → cognition: text role — `axiom`=bold headlines, `discourse`=serif body (never entity/environment)
-  - Borders/shape → entity: edge treatment — 1px subtle, 2px neon accent, 999px pill (never atmosphere)
-  - Animations → state: temporal — `evolving`=sweep gradient, `deprecated`=dimmed (never entity)
-  - Hover/focus → synapse: feedback — `navigate`=hover underline, `execute`=neon glow (never cognition)
+  **Visual Design Element Ownership** — each CSS concern maps from semantic purpose to owner:
+  - Responsive spatial rhythm → environment → White space/gap: `--space-*` token gaps between grid/flex children (never entity)
+  - Component breathing room → entity → Padding: `--padding-entity-*` clamps per variant density (never environment)
+  - Page mood and emotional tone → atmosphere → Colors/backgrounds: OKLCH — `void`=black, `ethereal`=translucent (never cognition)
+  - Information voice and reading intent → cognition → Typography: `axiom`=bold headlines, `discourse`=serif body (never entity/environment)
+  - Component edge treatment → entity → Borders/shape: 1px subtle, 2px neon accent, 999px pill (never atmosphere)
+  - Lifecycle transitions and temporal signaling → state → Animations: `evolving`=sweep gradient, `deprecated`=dimmed (never entity)
+  - Action-specific interaction feedback → synapse → Hover/focus: `navigate`=hover underline, `execute`=neon glow (never cognition)
 
   **Hierarchy-Level Rules** (subdomain content is Level 3–4):
   - Level 3 (cards, widgets): entity required

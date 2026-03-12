@@ -112,15 +112,15 @@ npm test             # All checks
 
 **Visual Design Element Ownership:**
 
-| Visual Element | Owner | Semantic Purpose |
-|---------------|-------|-----------------|
-| White space / gap | `environment` | Responsive `--space-*` token gaps between grid/flex children |
-| Internal padding | `entity` | Responsive `--padding-entity-*` clamps per variant density |
-| Colors / backgrounds | `atmosphere` | Page mood via OKLCH: `void`=black, `ethereal`=translucent, `sacred`=gradient |
-| Typography | `cognition` | Text role: `axiom`=bold headlines, `discourse`=serif body, `protocol`=monospace |
-| Borders / shape | `entity` | Edge treatment: 1px subtle, 2px neon accent, 999px pill via `--radius-bento` |
-| Animations | `state` | Temporal: `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `deprecated`=dimmed |
-| Hover / focus | `synapse` | Feedback: `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets |
+| Semantic Purpose | Owner | Visual Design Element |
+|-----------------|-------|---------------------|
+| Responsive spatial rhythm — gaps signal section vs group boundaries | `environment` | White space / gap |
+| Component breathing room — variant-scaled density | `entity` | Internal padding |
+| Page mood and emotional tone — OKLCH: `void`=black, `ethereal`=translucent, `sacred`=gradient | `atmosphere` | Colors / backgrounds |
+| Information voice and reading intent — `axiom`=bold headlines, `discourse`=serif body, `protocol`=monospace | `cognition` | Typography |
+| Component edge treatment — 1px subtle, 2px neon accent, 999px pill via `--radius-bento` | `entity` | Borders / shape |
+| Lifecycle transitions and temporal signaling — `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `deprecated`=dimmed | `state` | Animations |
+| Action-specific interaction feedback — `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets | `synapse` | Hover / focus |
 
 **Hierarchy-Level Rules:**
 

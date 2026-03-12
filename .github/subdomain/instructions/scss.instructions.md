@@ -25,19 +25,19 @@ Subdomain SCSS files must contain **ZERO raw CSS properties**:
 
 ## Visual Design Element Ownership
 
-Each visual CSS concern is owned by exactly one ontological category. Never set a property outside its owner:
+Each visual CSS concern maps from a semantic purpose through an owning ontological category. Never set a property outside its owner:
 
-| Visual Element | Owner | CSS Properties | Semantic Purpose |
-|---------------|-------|---------------|-----------------|
-| White space / gap | `environment` | `gap`, `margin` (via grid/flex) | Responsive `--space-*` token gaps — larger gaps signal section boundaries, tighter gaps signal grouped content |
-| Internal padding | `entity` | `padding` | Responsive `--padding-entity-*` clamps — `primary` gets generous padding, `secondary`/`badge` get compact padding |
-| Layout / grid | `environment` | `display`, `grid-*`, `flex-*` | Content flow — `distributed` creates auto-fit grids, `focused` constrains to 70ch, `manifest` enables 12-col dashboard |
-| Colors / backgrounds | `atmosphere` | `background`, `box-shadow` | Page mood via OKLCH — `void`=deep black, `ethereal`=translucent white, `sacred`=deep gradient |
-| Typography | `cognition` | `font-*`, `line-height`, `letter-spacing` | Text role — `axiom`=2–3.5rem bold headlines, `discourse`=serif body at 1.6 line-height, `protocol`=monospace code |
-| Borders / shape | `entity` | `border`, `border-radius` | Edge treatment — `primary`=subtle 1px, `imperative`=2px neon accent, `badge`=999px pill via `--radius-bento` |
-| Shadows / elevation | `atmosphere` | `box-shadow` | Ambient depth — `ethereal`=subtle outer glow, `void`=inset shadow, `vibrant`=neon blue glow |
-| Animations | `state` | `animation`, `opacity`, `filter` | Temporal — `evolving`=sweeping gradient for progress, `scroll-triggered`=fade-in-up, `deprecated`=50% opacity + grayscale |
-| Hover / focus | `synapse` | `:hover`, `:focus`, `cursor`, `transition` | Feedback — `navigate`=hover underline, `execute`=neon glow, `destructive`=red warning, 44px WCAG touch targets |
+| Semantic Purpose | Owner | Visual Design Element | CSS Properties |
+|-----------------|-------|---------------------|---------------|
+| Responsive spatial rhythm — larger gaps signal section boundaries, tighter gaps group related items | `environment` | White space / gap | `gap`, `margin` (via grid/flex) |
+| Component breathing room — `primary` gets generous padding, `secondary`/`badge` get compact padding | `entity` | Internal padding | `padding` |
+| Content flow architecture — `distributed`=auto-fit grids, `focused`=70ch, `manifest`=12-col dashboard | `environment` | Layout / grid | `display`, `grid-*`, `flex-*` |
+| Page mood and emotional tone — OKLCH: `void`=deep black, `ethereal`=translucent white, `sacred`=deep gradient | `atmosphere` | Colors / backgrounds | `background`, `box-shadow` |
+| Information voice and reading intent — `axiom`=2–3.5rem bold headlines, `discourse`=serif body at 1.6 line-height, `protocol`=monospace code | `cognition` | Typography | `font-*`, `line-height`, `letter-spacing` |
+| Component edge treatment — `primary`=subtle 1px, `imperative`=2px neon accent, `badge`=999px pill via `--radius-bento` | `entity` | Borders / shape | `border`, `border-radius` |
+| Ambient depth and spatial layering — `ethereal`=subtle outer glow, `void`=inset shadow, `vibrant`=neon blue glow | `atmosphere` | Shadows / elevation | `box-shadow` |
+| Lifecycle transitions and temporal signaling — `evolving`=sweeping gradient for progress, `scroll-triggered`=fade-in-up, `deprecated`=50% opacity + grayscale | `state` | Animations | `animation`, `opacity`, `filter` |
+| Action-specific interaction feedback — `navigate`=hover underline, `execute`=neon glow, `destructive`=red warning, 44px WCAG touch targets | `synapse` | Hover / focus | `:hover`, `:focus`, `cursor`, `transition` |
 
 ## Hierarchy-Level Rules
 
