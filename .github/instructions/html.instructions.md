@@ -63,15 +63,15 @@ Each visual CSS concern is owned by exactly one ontological category. When writi
 
 | Visual Element | Owner | Semantic Purpose |
 |---------------|-------|-----------------|
-| White space / gap | `environment` | Spatial separation between siblings |
-| Internal padding | `entity` | Breathing room within visual surfaces |
-| Layout / grid | `environment` | Spatial arrangement of children |
-| Colors / backgrounds | `atmosphere` | Emotional tone and ambient mood |
-| Typography | `cognition` | Information hierarchy and reading intent |
-| Borders / border-radius | `entity` | Visual surface boundaries |
-| Shadows / elevation | `atmosphere` | Depth and ambient mood |
-| Animations | `state` | Temporal condition changes |
-| Hover / focus feedback | `synapse` | Interaction affordance |
+| White space / gap | `environment` | Responsive `--space-*` token gaps between grid/flex children |
+| Internal padding | `entity` | Responsive `--padding-entity-*` clamps per variant density |
+| Layout / grid | `environment` | Content flow: auto-fit grids, 70ch reading, 12-col dashboard |
+| Colors / backgrounds | `atmosphere` | Page mood via OKLCH: `void`=black, `ethereal`=translucent, `sacred`=gradient |
+| Typography | `cognition` | Text role: `axiom`=bold headlines, `discourse`=serif body, `protocol`=monospace |
+| Borders / border-radius | `entity` | Edge treatment: 1px subtle, 2px neon accent, 999px pill via `--radius-bento` |
+| Shadows / elevation | `atmosphere` | Ambient depth: `ethereal`=outer glow, `void`=inset shadow, `vibrant`=neon glow |
+| Animations | `state` | Temporal: `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `mentioned`=pulse |
+| Hover / focus feedback | `synapse` | Interaction: `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets |
 
 ### Quick Pattern
 

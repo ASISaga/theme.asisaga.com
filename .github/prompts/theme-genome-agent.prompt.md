@@ -70,15 +70,15 @@ The Engine (`_engines.scss`) is the ONLY place for technical CSS properties.
 
 **Visual Design Element Ownership** — enforce that each visual concern stays in its owning category:
 
-| Visual Element | Owner | Forbidden Elsewhere |
-|---------------|-------|-------------------|
-| White space / gap | `environment` | Entity must not set gap |
-| Internal padding | `entity` | Environment must not set padding |
-| Colors / backgrounds | `atmosphere` | Entity surface tokens are the exception |
-| Typography | `cognition` | Entity/environment must not set font-* |
-| Borders / shape | `entity` | Atmosphere must not set border |
-| Animations | `state` | Entity must not set animation |
-| Hover / focus | `synapse` | Cognition must not set :hover |
+| Visual Element | Owner | Forbidden Elsewhere | Semantic Purpose |
+|---------------|-------|-------------------|-----------------|
+| White space / gap | `environment` | Entity must not set gap | Responsive `--space-*` token gaps between grid/flex children |
+| Internal padding | `entity` | Environment must not set padding | Responsive `--padding-entity-*` clamps per variant density |
+| Colors / backgrounds | `atmosphere` | Entity surface tokens are the exception | Page mood via OKLCH: `void`=black, `ethereal`=translucent, `sacred`=gradient |
+| Typography | `cognition` | Entity/environment must not set font-* | Text role: `axiom`=bold headlines, `discourse`=serif body, `protocol`=monospace |
+| Borders / shape | `entity` | Atmosphere must not set border | Edge treatment: 1px subtle, 2px neon accent, 999px pill via `--radius-bento` |
+| Animations | `state` | Entity must not set animation | Temporal: `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `deprecated`=dimmed |
+| Hover / focus | `synapse` | Cognition must not set :hover | Feedback: `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets |
 
 **Hierarchy-Level Compliance** — enforce from `/docs/specifications/ontology-html-mapping.md`:
 

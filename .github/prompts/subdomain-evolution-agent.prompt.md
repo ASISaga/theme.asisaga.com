@@ -44,15 +44,15 @@ Maintain semantic consistency in your subdomain while facilitating organic growt
 
 **Visual design element ownership** — each concern has exactly one owner:
 
-| Visual Element | Owner | Never Set By |
-|---------------|-------|-------------|
-| White space / gap | `environment` | entity, cognition |
-| Internal padding | `entity` | environment, cognition |
-| Colors / backgrounds | `atmosphere` | cognition, synapse |
-| Typography | `cognition` | entity, environment |
-| Borders / shape | `entity` | atmosphere, environment |
-| Animations | `state` | entity, cognition |
-| Hover / focus | `synapse` | cognition, atmosphere |
+| Visual Element | Owner | Never Set By | Semantic Purpose |
+|---------------|-------|-------------|-----------------|
+| White space / gap | `environment` | entity, cognition | Responsive `--space-*` token gaps between grid/flex children |
+| Internal padding | `entity` | environment, cognition | Responsive `--padding-entity-*` clamps per variant density |
+| Colors / backgrounds | `atmosphere` | cognition, synapse | Page mood via OKLCH: `void`=black, `ethereal`=translucent, `sacred`=gradient |
+| Typography | `cognition` | entity, environment | Text role: `axiom`=bold headlines, `discourse`=serif body, `protocol`=monospace |
+| Borders / shape | `entity` | atmosphere, environment | Edge treatment: 1px subtle, 2px neon accent, 999px pill via `--radius-bento` |
+| Animations | `state` | entity, cognition | Temporal: `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `deprecated`=dimmed |
+| Hover / focus | `synapse` | cognition, atmosphere | Feedback: `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets |
 
 → Complete variant reference: `/docs/specifications/scss-ontology-system.md`
 → Hierarchy-level rules: `/docs/specifications/ontology-html-mapping.md`

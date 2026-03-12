@@ -31,15 +31,15 @@ Scan HTML files and classify every unique class by its semantic role:
 
 **Visual Design Element Ownership** — each visual concern maps to exactly one owner:
 
-| Visual Element | Owner | CSS Properties |
-|---------------|-------|---------------|
-| White space / gap | `environment` | `gap`, `margin` (via grid/flex) |
-| Internal padding | `entity` | `padding` |
-| Colors / backgrounds | `atmosphere` | `background`, `box-shadow` |
-| Typography | `cognition` | `font-*`, `line-height`, `letter-spacing` |
-| Borders / shape | `entity` | `border`, `border-radius` |
-| Animations | `state` | `animation`, `opacity`, `filter` |
-| Hover / focus | `synapse` | `:hover`, `:focus`, `cursor`, `transition` |
+| Visual Element | Owner | CSS Properties | Semantic Purpose |
+|---------------|-------|---------------|-----------------|
+| White space / gap | `environment` | `gap`, `margin` (via grid/flex) | Responsive `--space-*` token gaps between grid/flex children |
+| Internal padding | `entity` | `padding` | Responsive `--padding-entity-*` clamps per variant density |
+| Colors / backgrounds | `atmosphere` | `background`, `box-shadow` | Page mood via OKLCH: `void`=black, `ethereal`=translucent, `sacred`=gradient |
+| Typography | `cognition` | `font-*`, `line-height`, `letter-spacing` | Text role: `axiom`=bold headlines, `discourse`=serif body, `protocol`=monospace |
+| Borders / shape | `entity` | `border`, `border-radius` | Edge treatment: 1px subtle, 2px neon accent, 999px pill via `--radius-bento` |
+| Animations | `state` | `animation`, `opacity`, `filter` | Temporal: `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `deprecated`=dimmed |
+| Hover / focus | `synapse` | `:hover`, `:focus`, `cursor`, `transition` | Feedback: `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets |
 
 → Complete variant reference: `/docs/specifications/scss-ontology-system.md`
 → Hierarchy-level rules: `/docs/specifications/ontology-html-mapping.md`

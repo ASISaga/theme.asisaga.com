@@ -112,15 +112,15 @@ npm test             # All checks
 
 **Visual Design Element Ownership:**
 
-| Visual Element | Owner |
-|---------------|-------|
-| White space / gap | `environment` |
-| Internal padding | `entity` |
-| Colors / backgrounds | `atmosphere` |
-| Typography | `cognition` |
-| Borders / shape | `entity` |
-| Animations | `state` |
-| Hover / focus | `synapse` |
+| Visual Element | Owner | Semantic Purpose |
+|---------------|-------|-----------------|
+| White space / gap | `environment` | Responsive `--space-*` token gaps between grid/flex children |
+| Internal padding | `entity` | Responsive `--padding-entity-*` clamps per variant density |
+| Colors / backgrounds | `atmosphere` | Page mood via OKLCH: `void`=black, `ethereal`=translucent, `sacred`=gradient |
+| Typography | `cognition` | Text role: `axiom`=bold headlines, `discourse`=serif body, `protocol`=monospace |
+| Borders / shape | `entity` | Edge treatment: 1px subtle, 2px neon accent, 999px pill via `--radius-bento` |
+| Animations | `state` | Temporal: `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `deprecated`=dimmed |
+| Hover / focus | `synapse` | Feedback: `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets |
 
 **Hierarchy-Level Rules:**
 

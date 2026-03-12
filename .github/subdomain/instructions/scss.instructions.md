@@ -29,15 +29,15 @@ Each visual CSS concern is owned by exactly one ontological category. Never set 
 
 | Visual Element | Owner | CSS Properties | Semantic Purpose |
 |---------------|-------|---------------|-----------------|
-| White space / gap | `environment` | `gap`, `margin` (via grid/flex) | Spatial separation between siblings |
-| Internal padding | `entity` | `padding` | Breathing room within visual surfaces |
-| Layout / grid | `environment` | `display`, `grid-*`, `flex-*` | Spatial arrangement of children |
-| Colors / backgrounds | `atmosphere` | `background`, `box-shadow` | Emotional tone and ambient mood |
-| Typography | `cognition` | `font-*`, `line-height`, `letter-spacing` | Information hierarchy and reading intent |
-| Borders / shape | `entity` | `border`, `border-radius` | Visual surface boundaries |
-| Shadows / elevation | `atmosphere` | `box-shadow` | Depth and ambient mood |
-| Animations | `state` | `animation`, `opacity`, `filter` | Temporal condition changes |
-| Hover / focus | `synapse` | `:hover`, `:focus`, `cursor`, `transition` | Interaction affordance |
+| White space / gap | `environment` | `gap`, `margin` (via grid/flex) | Responsive `--space-*` token gaps — larger gaps signal section boundaries, tighter gaps signal grouped content |
+| Internal padding | `entity` | `padding` | Responsive `--padding-entity-*` clamps — `primary` gets generous padding, `secondary`/`badge` get compact padding |
+| Layout / grid | `environment` | `display`, `grid-*`, `flex-*` | Content flow — `distributed` creates auto-fit grids, `focused` constrains to 70ch, `manifest` enables 12-col dashboard |
+| Colors / backgrounds | `atmosphere` | `background`, `box-shadow` | Page mood via OKLCH — `void`=deep black, `ethereal`=translucent white, `sacred`=deep gradient |
+| Typography | `cognition` | `font-*`, `line-height`, `letter-spacing` | Text role — `axiom`=2–3.5rem bold headlines, `discourse`=serif body at 1.6 line-height, `protocol`=monospace code |
+| Borders / shape | `entity` | `border`, `border-radius` | Edge treatment — `primary`=subtle 1px, `imperative`=2px neon accent, `badge`=999px pill via `--radius-bento` |
+| Shadows / elevation | `atmosphere` | `box-shadow` | Ambient depth — `ethereal`=subtle outer glow, `void`=inset shadow, `vibrant`=neon blue glow |
+| Animations | `state` | `animation`, `opacity`, `filter` | Temporal — `evolving`=sweeping gradient for progress, `scroll-triggered`=fade-in-up, `deprecated`=50% opacity + grayscale |
+| Hover / focus | `synapse` | `:hover`, `:focus`, `cursor`, `transition` | Feedback — `navigate`=hover underline, `execute`=neon glow, `destructive`=red warning, 44px WCAG touch targets |
 
 ## Hierarchy-Level Rules
 

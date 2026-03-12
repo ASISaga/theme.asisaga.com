@@ -66,20 +66,20 @@ Each visual CSS concern has **exactly one** owning ontological category. Never s
 
 | Visual Element | Owner | CSS Properties | Semantic Purpose |
 |---------------|-------|---------------|-----------------|
-| **White space** | `environment` | `gap`, `margin` (via grid/flex) | Spatial separation between siblings |
-| **Spacing (internal)** | `entity` | `padding` | Breathing room within visual surfaces |
-| **Layout / grid** | `environment` | `display`, `grid-*`, `flex-*`, `place-*`, `max-width` | Spatial arrangement of children |
-| **Color palette** | `atmosphere` + `entity` | `background`, `color` (via tokens) | Emotional tone (atmosphere) and surface identity (entity) |
-| **Typography** | `cognition` | `font-size`, `font-weight`, `font-family`, `line-height`, `letter-spacing`, `text-transform` | Information hierarchy and reading intent |
-| **Sizes** | `environment` + `cognition` | `max-width`, `min-height` (env); `font-size` (cog) | Container constraints (env) and text scale (cog) |
-| **Borders** | `entity` | `border`, `border-radius` | Visual surface boundaries and shape |
-| **Shading / shadows** | `atmosphere` | `box-shadow` | Depth, elevation, and ambient mood |
-| **Gradients** | `atmosphere` | `background-image` (gradient) | Emotional tone and visual depth |
-| **Backdrop effects** | `atmosphere` + `entity` | `backdrop-filter` | Glass morphism (entity surface) and ambient blur (atmosphere) |
-| **Animations** | `state` | `animation`, `transition`, `@keyframes` | Temporal condition changes |
-| **Opacity / filters** | `state` | `opacity`, `filter` | Visibility and temporal condition |
-| **Hover / focus** | `synapse` | `:hover`, `:focus`, `cursor`, `transition` | Interaction feedback and affordance |
-| **Text decoration** | `state` + `synapse` | `text-decoration` | Deprecation (state) and link behavior (synapse) |
+| **White space** | `environment` | `gap`, `margin` (via grid/flex) | Responsive `var(--space-*)` token gaps — larger gaps signal section boundaries, tighter gaps signal grouped content |
+| **Spacing (internal)** | `entity` | `padding` | Responsive `--padding-entity-*` clamps — `primary` cards get generous padding, `secondary`/`badge` get compact padding |
+| **Layout / grid** | `environment` | `display`, `grid-*`, `flex-*`, `place-*`, `max-width` | Content flow — `distributed` creates auto-fit grids, `focused` constrains to 70ch, `manifest` enables 12-col dashboard |
+| **Color palette** | `atmosphere` + `entity` | `background`, `color` (via tokens) | Atmosphere sets page mood via OKLCH (`void`=deep black, `ethereal`=translucent). Entity sets surface (`primary`=white card, `surface-glass`=dark glassmorphism) |
+| **Typography** | `cognition` | `font-size`, `font-weight`, `font-family`, `line-height`, `letter-spacing`, `text-transform` | Text role — `axiom`=2–3.5rem bold headlines, `discourse`=serif body at 1.6 line-height, `protocol`=monospace code, `quantum`=tiny uppercase pills |
+| **Sizes** | `environment` + `cognition` | `max-width`, `min-height` (env); `font-size` (cog) | Container: `focused`=70ch reading width, `manifest`=full 12-col. Text: `axiom`=clamp(2rem,5vw,3.5rem) to `gloss`=clamp(0.875rem) |
+| **Borders** | `entity` | `border`, `border-radius` | Edge treatment — `primary`=subtle 1px, `imperative`=2px neon accent, `badge`=999px pill, radii use `--radius-bento` tokens |
+| **Shading / shadows** | `atmosphere` | `box-shadow` | Ambient depth — `ethereal`=subtle outer glow, `void`=inset depth shadow, `vibrant`=neon blue glow, `sacred`=gold accent line |
+| **Gradients** | `atmosphere` | `background-image` (gradient) | Page mood — `sacred`=deep blue-to-indigo gradient, `void`=solid black. Entity `transcendent`=surface gradient overlay |
+| **Backdrop effects** | `atmosphere` + `entity` | `backdrop-filter` | Entity `surface-glass`=blur 20px at 15% opacity. Atmosphere `ethereal`=blur 10px translucency, `vibrant`=blur 8px with glow |
+| **Animations** | `state` | `animation`, `transition`, `@keyframes` | Temporal — `evolving`=sweeping gradient for progress, `scroll-triggered`=fade-in-up on intersection, `mentioned`=pulse highlight |
+| **Opacity / filters** | `state` | `opacity`, `filter` | Availability — `stable`=full visibility, `deprecated`=50% opacity + grayscale, `locked`=2px blur + disabled interaction |
+| **Hover / focus** | `synapse` | `:hover`, `:focus`, `cursor`, `transition` | Feedback — `navigate`=hover underline, `execute`=neon glow, `destructive`=red warning glow, all enforce 44px WCAG touch targets |
+| **Text decoration** | `state` + `synapse` | `text-decoration` | `deprecated`=line-through for outdated. `navigate`=removes underline, restores on hover for discoverable links |
 
 → **Full specification**: `/docs/specifications/ontology-html-mapping.md`
 
