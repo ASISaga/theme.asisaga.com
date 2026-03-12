@@ -70,9 +70,9 @@ export function createTestimonialCard(data) {
     if (data.avatar) {
       avatarImage.src = data.avatar;
       avatarImage.alt = data.name || '';
-      avatarContainer.style.display = '';
+      avatarContainer.hidden = false;
     } else {
-      avatarContainer.style.display = 'none';
+      avatarContainer.hidden = true;
     }
   }
   

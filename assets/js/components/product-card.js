@@ -82,7 +82,7 @@ export function createProductCard(data) {
   if (secondaryButton) {
     if (data.demoUrl) {
       secondaryButton.href = data.demoUrl;
-      secondaryButton.style.display = '';
+      secondaryButton.hidden = false;
     } else {
       secondaryButton.remove();
     }
