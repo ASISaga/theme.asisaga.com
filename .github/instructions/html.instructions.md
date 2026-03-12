@@ -39,30 +39,51 @@ title: "My Page"
 
 **HTML should be semantic, clean, and ontology-agnostic. SCSS maps classes to ontological roles.**
 
+→ **Complete mapping specification**: `/docs/specifications/ontology-html-mapping.md`
+
+### Ontology-to-HTML Hierarchy Rules
+
+Every element falls into one of four hierarchy levels. Each level has permitted and forbidden mixin categories:
+
+| Level | Element type | Required mixin | Forbidden mixins |
+|-------|-------------|----------------|-----------------|
+| **1 — Page Layout** | Outermost wrapper inside `<main>` | `genesis-environment()` + `genesis-atmosphere()` | `genesis-entity()`, `genesis-cognition()`, `genesis-synapse()` |
+| **2 — Section** | `<header>`, `<footer>`, `<section>`, `<aside>`, `<nav>` | `genesis-environment()` | `genesis-entity()`, `genesis-cognition()` |
+| **3 — Component** | Cards, widgets, alerts, form groups | `genesis-entity()` | — (most other categories optional) |
+| **4 — Leaf Element** | `<h1>`–`<h6>`, `<p>`, `<a>`, `<button>`, `<span>`, `<time>` | `genesis-cognition()` or `genesis-synapse()` | `genesis-environment()`, `genesis-atmosphere()`, `genesis-entity()` |
+
+**Critical rules:**
+- ❌ **Never** apply `genesis-entity()` to structural containers (Level 1 or 2) — entity is for visual objects at Level 3
+- ❌ **Never** apply `genesis-cognition()` to containers — cognition is for text elements only
+- ❌ **Never** apply `genesis-atmosphere()` to leaf elements — atmosphere is for containers
+
 ### Quick Pattern
 
 **HTML** (semantic class names):
 ```html
-<article class="blog-post">
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <time class="post-date">{{ page.date }}</time>
+<article class="blog-post">              <!-- Level 1: page wrapper -->
+  <header class="post-header">           <!-- Level 2: section -->
+    <h1 class="post-title">Title</h1>    <!-- Level 4: leaf -->
+    <time class="post-date">Date</time>  <!-- Level 4: leaf -->
   </header>
-  <div class="post-content">{{ content }}</div>
+  <div class="post-body">                <!-- Level 2: section -->
+    <p class="post-content">Text</p>     <!-- Level 4: leaf -->
+  </div>
 </article>
 ```
 
 **SCSS** (ontology mapping):
 ```scss
-@import "ontology/index";
-
 .blog-post {
-  @include genesis-environment('focused');
-  
-  .post-header { @include genesis-entity('primary'); }
-  .post-title { @include genesis-cognition('axiom'); }
-  .post-date { @include genesis-cognition('gloss'); }
-  .post-content { @include genesis-cognition('discourse'); }
+  @include genesis-environment('focused');   // Level 1: layout
+  @include genesis-atmosphere('neutral');    // Level 1: tone
+
+  .post-header {
+    @include genesis-environment('associative'); // Level 2: horizontal layout
+  }
+  .post-title { @include genesis-cognition('axiom'); }     // Level 4
+  .post-date { @include genesis-cognition('gloss'); }      // Level 4
+  .post-content { @include genesis-cognition('discourse'); } // Level 4
 }
 ```
 
@@ -169,6 +190,7 @@ Parameters:
 - `/docs/specifications/responsive-design.md` - Responsive patterns
 
 **Ontology mapping:**
+- `/docs/specifications/ontology-html-mapping.md` - **Formal hierarchy rules for mixin-to-HTML mapping**
 - `/docs/specifications/scss-ontology-system.md` - All ontological variants
 - `_sass/ontology/INTEGRATION-GUIDE.md` - API reference
 

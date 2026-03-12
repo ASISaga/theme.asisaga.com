@@ -60,6 +60,25 @@ description: "SCSS coding instructions for Genesis Semantic Design System v2.0"
 - `genesis-state($condition)` - State: `'stable'`, `'evolving'`, `'deprecated'`, `'locked'`, `'simulated'`
 - `genesis-atmosphere($vibe)` - Atmosphere: `'neutral'`, `'ethereal'`, `'void'`, `'vibrant'`
 
+## Hierarchy-Level Rules (CRITICAL)
+
+→ **Full specification**: `/docs/specifications/ontology-html-mapping.md`
+
+Each HTML element falls into a hierarchy level that determines which mixins are permitted:
+
+| Level | Element type | Required | Optional | Forbidden |
+|-------|-------------|----------|----------|-----------|
+| **1 — Page Layout** | Outermost wrapper | `environment` + `atmosphere` | — | `entity`, `cognition`, `synapse` |
+| **2 — Section** | `<header>`, `<footer>`, `<nav>`, `<aside>` | `environment` | `atmosphere`, `state` | `entity`, `cognition` |
+| **3 — Component** | Cards, widgets, alerts | `entity` | `environment`, `state`, `atmosphere` | — |
+| **4 — Leaf** | `<h1>`–`<h6>`, `<p>`, `<a>`, `<button>` | `cognition` or `synapse` | `state` | `environment`, `atmosphere`, `entity` |
+
+**Key violations to avoid:**
+- ❌ `genesis-entity()` on structural containers (Level 1/2) — entity is for visual objects only
+- ❌ `genesis-cognition()` on containers — cognition is for text elements only
+- ❌ `genesis-atmosphere()` on leaf elements — atmosphere is for containers only
+- ❌ Stacking `environment` + `entity` on Level 1/2 wrappers
+
 ## Theme/Subdomain Architecture (CRITICAL)
 
 **Theme repository (this repo):**
@@ -182,6 +201,7 @@ Make executable: `chmod +x .git/hooks/pre-commit`
 ## Documentation References
 
 **Complete ontology system:**
+- `/docs/specifications/ontology-html-mapping.md` - **Formal hierarchy rules for mixin-to-HTML mapping**
 - `/docs/specifications/scss-ontology-system.md` - All 31 variants, OKLCH colors, design tokens, complete examples
 - `_sass/ontology/INTEGRATION-GUIDE.md` - Comprehensive API guide
 - `_sass/ontology/_sample.scss` - Working code examples
