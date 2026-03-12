@@ -1,8 +1,8 @@
 # Genesis Ontological Design System Specification
 
-**Version**: 2.0.0  
+**Version**: 2.1.0  
 **Status**: Active  
-**Last Updated**: 2026-02-14
+**Last Updated**: 2026-03-12
 
 ## Overview
 
@@ -46,11 +46,13 @@ Content pages with optional page-specific styling:
 **Purpose**: Layout structure and spatial organization
 
 **Variants**:
-- `'distributed'` - Grid-based, auto-fitting layouts
-- `'focused'` - Centered, constrained content
-- `'associative'` - Related items grouped together
-- `'chronological'` - Time-based or sequential flow
-- `'manifest'` - Full visibility, prominent display
+- `'distributed'` - Responsive auto-fit bento grid (card grids, portfolios, galleries)
+- `'focused'` - Centered narrow column, 70ch reading width (blog posts, articles, docs)
+- `'associative'` - Flex-wrap groupings (tag clouds, metadata rows, related items)
+- `'chronological'` - Time-linear vertical stack (feeds, timelines, marketing sections)
+- `'manifest'` - High-density 12-column dashboard grid (analytics, monitoring)
+- `'convergent'` - Two-column sidebar + main content layout
+- `'panelled'` - Multi-panel app shell (three+ columns)
 
 ### 2. genesis-entity($nature)
 
@@ -69,12 +71,12 @@ Content pages with optional page-specific styling:
 **Purpose**: Typography and textual meaning
 
 **Variants**:
-- `'axiom'` - Headers, fundamental truths
-- `'discourse'` - Body text, main narrative
-- `'protocol'` - Instructions, procedures
-- `'gloss'` - Metadata, annotations
-- `'motive'` - Calls to action
-- `'quantum'` - Code, technical content
+- `'axiom'` - Page titles, section headings (2–3.5rem bold, fluid scaling)
+- `'discourse'` - Body text, prose paragraphs (1–1.125rem, serif, 1.6 line-height)
+- `'protocol'` - Code blocks, technical content (monospace, code styling)
+- `'gloss'` - Metadata, captions, timestamps (0.8–0.875rem, muted)
+- `'motive'` - Calls to action, persuasive copy (semibold, accent color)
+- `'quantum'` - Tags, chips, badges (tiny, uppercase, dense pill shape)
 
 ### 4. genesis-synapse($vector)
 
@@ -112,30 +114,76 @@ Content pages with optional page-specific styling:
 
 ```scss
 .blog-post {
-  @include genesis-environment('focused');
-  
+  @include genesis-environment('focused');    // Level 1: narrow reading column
+  @include genesis-atmosphere('neutral');     // Level 1: standard tone
+
   .post-header {
-    @include genesis-entity('primary');
+    @include genesis-environment('associative');  // Level 2: horizontal section
   }
-  
+
   .post-title {
-    @include genesis-cognition('axiom');
+    @include genesis-cognition('axiom');      // Level 4: page heading
   }
-  
+
   .post-meta {
-    @include genesis-cognition('gloss');
+    @include genesis-environment('associative');  // Level 2: metadata section
   }
-  
+
+  .post-date,
+  .post-author {
+    @include genesis-cognition('gloss');      // Level 4: metadata leaf elements
+  }
+
   .post-content {
-    @include genesis-cognition('discourse');
+    @include genesis-environment('focused');  // Level 2: body section
   }
-  
+
+  .post-body-text {
+    @include genesis-cognition('discourse');  // Level 4: prose paragraphs
+  }
+
   .read-more {
-    @include genesis-synapse('navigate');
-    @include genesis-cognition('motive');
+    @include genesis-synapse('navigate');     // Level 4: navigation link
   }
 }
 ```
+
+## HTML Hierarchy Rules
+
+Every HTML element falls into one of four hierarchy levels. Each level has permitted and forbidden mixin categories.
+
+| Level | Element type | Required | Forbidden |
+|-------|-------------|----------|-----------|
+| **1 — Page Layout** | Outermost content wrapper | `genesis-environment()` + `genesis-atmosphere()` | `genesis-entity()`, `genesis-cognition()`, `genesis-synapse()` |
+| **2 — Section** | `<header>`, `<footer>`, `<section>`, `<aside>`, `<nav>` | `genesis-environment()` | `genesis-entity()`, `genesis-cognition()` |
+| **3 — Component** | Cards, widgets, alerts, form groups | `genesis-entity()` | `genesis-cognition()` |
+| **4 — Leaf** | `<h1>`–`<h6>`, `<p>`, `<a>`, `<button>`, `<span>`, `<time>` | `genesis-cognition()` or `genesis-synapse()` | `genesis-environment()`, `genesis-atmosphere()`, `genesis-entity()` |
+
+**Key violations to avoid:**
+- ❌ `genesis-entity()` on structural containers (Level 1/2) — entity is for component-level visual objects only
+- ❌ `genesis-cognition()` on containers — cognition is for text elements only
+- ❌ `genesis-atmosphere()` on leaf elements — atmosphere is for containers
+
+→ **Full hierarchy specification**: `docs/specifications/ontology-html-mapping.md`
+
+## Visual Design Element Semantic Ownership
+
+Each visual CSS concern maps from a **semantic purpose** through an owning ontological category. Never set a property outside its owning category.
+
+| Semantic Purpose | Owner | Visual Design Element | CSS Properties |
+|-----------------|-------|---------------------|---------------|
+| **Responsive spatial rhythm** — gaps signal section boundaries | Environment | White space (between elements) | `gap`, `margin` (via grid/flex) |
+| **Component breathing room** — variant-weight padding per component density | Entity | Spacing (within elements) | `padding` |
+| **Content flow architecture** — `distributed`=auto-fit grids, `focused`=70ch, `manifest`=12-col | Environment | Layout / grid | `display`, `grid-*`, `flex-*`, `place-*`, `max-width` |
+| **Page mood and component surface** — OKLCH palette per atmosphere/entity variant | Atmosphere + Entity | Color palette | `background`, `color` (via tokens) |
+| **Information voice and reading intent** — `axiom`=headlines, `discourse`=body, `protocol`=code | Cognition | Typography | `font-size`, `font-weight`, `font-family`, `line-height`, `letter-spacing`, `text-transform` |
+| **Component edge treatment and shape** — 1px subtle, 2px neon accent, 999px pill | Entity | Borders | `border`, `border-radius` |
+| **Ambient depth and spatial layering** — glow, inset shadow, neon glow per atmosphere | Atmosphere | Shading / shadows | `box-shadow` |
+| **Lifecycle transitions and temporal signaling** — `evolving`=sweep gradient, `scroll-triggered`=fade-in-up | State | Animations | `animation`, `transition`, `@keyframes` |
+| **Content availability and lifecycle visibility** — `stable`=full, `deprecated`=50% + grayscale, `locked`=blur | State | Opacity / filters | `opacity`, `filter` |
+| **Action-specific interaction feedback** — `navigate`=hover underline, `execute`=neon glow, 44px touch targets | Synapse | Hover / focus states | `:hover`, `:focus`, `cursor`, `transition` |
+
+→ **Full ownership table with CSS implementation details**: `docs/specifications/ontology-html-mapping.md`
 
 ## Import Rules
 
@@ -207,6 +255,7 @@ npm run lint:scss     # Stylelint validation
 
 ## Complete Reference
 
+→ **Ontology-to-HTML mapping**: `docs/specifications/ontology-html-mapping.md`  
 → **Full ontology documentation**: `/docs/specifications/scss-ontology-system.md`  
 → **Integration guide**: `_sass/ontology/INTEGRATION-GUIDE.md`  
 → **Genome history**: `GENOME.md`
