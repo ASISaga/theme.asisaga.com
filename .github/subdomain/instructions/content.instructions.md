@@ -128,6 +128,21 @@ Use content-first BEM naming:
 - ✅ `.research-paper__title`, `.team-member__bio`
 - ❌ `.big-text`, `.blue-box`, `.mt-4`
 
+### Hierarchy-Level Awareness
+
+When creating HTML content, understand which ontology level each element maps to:
+
+| Your HTML Element | Ontology Level | SCSS Mixin |
+|------------------|---------------|-----------|
+| Content wrapper (`<article>`, `<section>`) | Level 3 — Component | `genesis-entity()` |
+| Headings (`<h1>`–`<h6>`) | Level 4 — Leaf | `genesis-cognition('axiom')` |
+| Body text (`<p>`) | Level 4 — Leaf | `genesis-cognition('discourse')` |
+| Links (`<a>`) | Level 4 — Leaf | `genesis-synapse('navigate')` |
+| Buttons (`<button>`) | Level 4 — Leaf | `genesis-synapse('execute')` |
+| Metadata (`<time>`, `<span>`) | Level 4 — Leaf | `genesis-cognition('gloss')` |
+
+→ **Full specification**: theme's `docs/specifications/ontology-html-mapping.md`
+
 ## Blog Posts
 
 Posts go in `_posts/` with filename format `YYYY-MM-DD-title.html`:

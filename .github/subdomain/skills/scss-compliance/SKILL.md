@@ -94,6 +94,31 @@ head -5 _sass/main.scss | grep "^---$"
 | State | `genesis-state($condition)` | `stable`, `evolving`, `deprecated` |
 | Atmosphere | `genesis-atmosphere($vibe)` | `neutral`, `ethereal`, `void` |
 
+## Visual Design Element Ownership
+
+Each CSS concern has one owning category. Verify no property is set by the wrong mixin:
+
+| Visual Element | Owner | Forbidden Elsewhere |
+|---------------|-------|-------------------|
+| White space / gap | `environment` | Entity must not set gap |
+| Internal padding | `entity` | Environment must not set padding |
+| Colors / backgrounds | `atmosphere` | Cognition must not set background |
+| Typography | `cognition` | Entity must not set font-* |
+| Borders / shape | `entity` | Atmosphere must not set border |
+| Animations | `state` | Entity must not set animation |
+| Hover / focus | `synapse` | Cognition must not set :hover |
+
+## Hierarchy-Level Rules
+
+Subdomain content is typically Level 3–4:
+
+| Level | Element type | Required | Forbidden |
+|-------|-------------|----------|-----------|
+| 3 — Component | Cards, widgets | `entity` | — |
+| 4 — Leaf | `<h1>`, `<p>`, `<a>`, `<button>` | `cognition` or `synapse` | `environment`, `atmosphere`, `entity` |
+
+→ **Full specification**: theme's `docs/specifications/ontology-html-mapping.md`
+
 ## Compliance Checklist
 
 - [ ] File is `_sass/main.scss` (NOT `assets/css/custom.scss`)
@@ -105,10 +130,13 @@ head -5 _sass/main.scss | grep "^---$"
 - [ ] No `@extend` usage
 - [ ] Max 3 nesting levels
 - [ ] SCSS nesting mirrors HTML structure
+- [ ] Hierarchy compliance: components use `entity`, leaf elements use `cognition`/`synapse`
+- [ ] Property ownership: borders only by `entity`, fonts only by `cognition`, backgrounds only by `atmosphere`
 
 ## Resources
 
-- `instructions/scss.instructions.md` — Complete SCSS standards with all variants
-- `copilot-instructions.md` — Ontology quick reference table
+- `instructions/scss.instructions.md` — Complete SCSS standards with hierarchy rules and visual element ownership
+- `copilot-instructions.md` — Ontology quick reference table with hierarchy rules
+- Theme's `docs/specifications/ontology-html-mapping.md` — Formal hierarchy rules
 
 **Related Skills**: content-author, subdomain-evolution

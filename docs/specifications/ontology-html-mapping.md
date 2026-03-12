@@ -2,7 +2,7 @@
 
 *Formal guidelines for applying Genesis ontological mixins to HTML elements*
 
-**Version**: 1.0.0
+**Version**: 1.1.0
 **Status**: Active
 **Last Updated**: 2026-03-12
 
@@ -29,6 +29,28 @@ Each ontological category owns exactly one concern. **Never apply a mixin to han
 | **Synapse** | Interaction | `cursor`, hover/focus states, `transition`, interaction feedback | `display`, `grid`, `font-size` |
 | **State** | Temporal condition | `opacity`, `filter`, `animation`, `text-decoration` | `display`, `padding`, `font-size`, `background` |
 | **Atmosphere** | Emotional tone | `background`, `box-shadow`, `backdrop-filter` | `display`, `grid`, `font-*`, `border` |
+
+## Visual Design Element Semantic Ownership
+
+Each visual design element has a defined **semantic purpose** and an owning ontological category. When working with any visual concern, use only its owning category's mixin.
+
+| Visual Design Element | Owner | CSS Properties | Semantic Purpose |
+|----------------------|-------|---------------|-----------------|
+| **White space** (between elements) | Environment | `gap`, `margin` (via grid/flex) | Spatial separation between siblings — expresses relationship distance |
+| **Spacing** (within elements) | Entity | `padding` | Breathing room within visual surfaces — expresses content importance |
+| **Layout / grid** | Environment | `display`, `grid-*`, `flex-*`, `place-*`, `max-width` | Spatial arrangement of children — expresses information architecture |
+| **Color palette** | Atmosphere + Entity | `background`, `color` (via design tokens) | Emotional tone (atmosphere) and surface identity (entity) |
+| **Typography** | Cognition | `font-size`, `font-weight`, `font-family`, `line-height`, `letter-spacing`, `text-transform` | Information hierarchy and reading intent — expresses content importance |
+| **Sizes** (containers) | Environment | `max-width`, `min-height` | Container constraints — expresses reading comfort and spatial boundaries |
+| **Sizes** (text) | Cognition | `font-size` | Text scale — expresses information hierarchy |
+| **Borders** | Entity | `border`, `border-radius` | Visual surface boundaries — expresses containment and shape identity |
+| **Shading / shadows** | Atmosphere | `box-shadow` | Depth and elevation — expresses ambient mood and spatial layering |
+| **Gradients** | Atmosphere | `background-image` (gradient) | Emotional tone and visual depth — expresses mood transitions |
+| **Backdrop effects** | Atmosphere + Entity | `backdrop-filter` | Glass morphism — expresses transparency and depth |
+| **Animations** | State | `animation`, `transition`, `@keyframes` | Temporal condition changes — expresses loading, progress, attention |
+| **Opacity / filters** | State | `opacity`, `filter` | Visibility conditions — expresses availability and temporal state |
+| **Hover / focus states** | Synapse | `:hover`, `:focus`, `cursor`, `transition` | Interaction feedback — expresses clickability and affordance |
+| **Text decoration** | State + Synapse | `text-decoration` | Deprecation (state) and link behavior (synapse) |
 
 ## HTML Hierarchy Levels
 

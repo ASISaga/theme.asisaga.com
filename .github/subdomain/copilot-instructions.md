@@ -106,6 +106,32 @@ If you need page-specific styling in `_sass/main.scss`:
 - ❌ NO `assets/css/custom.scss` (use `_sass/main.scss` instead)
 - ✅ ONLY ontological mixins (already available from theme via `assets/css/style.scss`)
 
+### Visual Design Element Ownership
+
+Each visual CSS concern is owned by exactly one ontological category. Never set a property outside its owner:
+
+| Visual Element | Owner | Semantic Purpose |
+|---------------|-------|-----------------|
+| White space / gap | `environment` | Spatial separation between siblings |
+| Internal padding | `entity` | Breathing room within visual surfaces |
+| Colors / backgrounds | `atmosphere` | Emotional tone and ambient mood |
+| Typography | `cognition` | Information hierarchy and reading intent |
+| Borders / shape | `entity` | Visual surface boundaries |
+| Shadows / elevation | `atmosphere` | Depth and ambient mood |
+| Animations | `state` | Temporal condition changes |
+| Hover / focus | `synapse` | Interaction affordance |
+
+### Hierarchy-Level Rules
+
+Subdomain content sits inside the theme layout (Level 1–2). Subdomain elements are typically Level 3–4:
+
+| Level | Required | Forbidden |
+|-------|----------|-----------|
+| 3 — Component (cards, widgets) | `entity` | — |
+| 4 — Leaf (`<h1>`, `<p>`, `<a>`, `<button>`) | `cognition` or `synapse` | `environment`, `atmosphere`, `entity` |
+
+→ **Full specification**: theme's `docs/specifications/ontology-html-mapping.md`
+
 ### Ontology Quick Reference
 
 **Six semantic categories** (31+ variants):

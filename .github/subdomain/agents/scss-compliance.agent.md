@@ -31,6 +31,22 @@ prompt: |
   - genesis-state($condition): stable, evolving, deprecated, locked, simulated
   - genesis-atmosphere($vibe): neutral, ethereal, void, vibrant
 
+  **Visual Design Element Ownership** (each CSS concern has one owner):
+  - White space/gap → environment (never entity)
+  - Padding → entity (never environment)
+  - Colors/backgrounds → atmosphere (never cognition)
+  - Typography → cognition (never entity/environment)
+  - Borders/shape → entity (never atmosphere)
+  - Animations → state (never entity)
+  - Hover/focus → synapse (never cognition)
+
+  **Hierarchy-Level Rules** (subdomain content is Level 3–4):
+  - Level 3 (cards, widgets): entity required
+  - Level 4 (headings, text, links, buttons): cognition or synapse required
+  - NEVER use entity on page wrappers or sections
+  - NEVER use cognition on container divs
+  - NEVER use atmosphere on leaf elements
+
   **Audit Workflow**:
   1. Find SCSS files: find _sass -name "*.scss"
   2. Check for raw CSS: grep -E "(margin|padding|color|font-size|background|border):" _sass/main.scss
@@ -38,12 +54,15 @@ prompt: |
   4. Check for @import statements (should be NONE)
   5. Check for front matter (should be NONE)
   6. Check nesting depth (max 3)
+  7. Check hierarchy: entity should NOT be on page wrappers or sections
+  8. Check property ownership: borders only set by entity, fonts only by cognition
 
   **When Gap Identified**:
   If no mixin combination serves the need, recommend an Ontological Proposition PR to theme.asisaga.com.
 
   **Related Files**:
-  - instructions/scss.instructions.md - Complete SCSS standards
+  - instructions/scss.instructions.md - Complete SCSS standards with hierarchy rules and visual element ownership
   - copilot-instructions.md - Ontology quick reference
+  - Theme's docs/specifications/ontology-html-mapping.md - Formal hierarchy rules
 tools: ['bash', 'read', 'edit']
 ---

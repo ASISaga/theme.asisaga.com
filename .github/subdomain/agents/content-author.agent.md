@@ -23,6 +23,12 @@ prompt: |
   - Links need descriptive text (not "click here")
   - No inline styles or scripts
 
+  **Hierarchy-Level Awareness** (from theme's ontology-html-mapping.md):
+  - Your content sits inside theme's Level 1 (page layout) and Level 2 (sections)
+  - Components you create (cards, widgets) are Level 3 → use genesis-entity() in SCSS
+  - Leaf elements (headings, text, links, buttons) are Level 4 → use genesis-cognition() or genesis-synapse()
+  - NEVER apply genesis-entity() to structural containers like headers or footers
+
   **Blog Posts**: _posts/YYYY-MM-DD-title.html with layout: post
   **Data Files**: _data/*.yml for structured content
 
@@ -34,8 +40,8 @@ prompt: |
 
   **Related Files**:
   - instructions/content.instructions.md - HTML content authoring standards
-  - instructions/scss.instructions.md - Page-specific SCSS rules
+  - instructions/scss.instructions.md - Page-specific SCSS rules with hierarchy and visual element ownership
   - instructions/js.instructions.md - Mandatory script.js standards
-  - copilot-instructions.md - Architecture overview
+  - copilot-instructions.md - Architecture overview with hierarchy rules
 tools: ['bash', 'read', 'edit']
 ---
