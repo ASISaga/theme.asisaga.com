@@ -22,8 +22,10 @@ This directory contains specifications and frameworks for the agent intelligence
 
 - **`ontological-design-system.md`** - Genesis Ontological Design System specification
   - Six semantic categories and 31 variants
+  - HTML hierarchy rules and visual design element ownership
   - Three-tier architecture
   - Ontological Proposition System
+  - → Full mapping rules: `docs/specifications/ontology-html-mapping.md`
 
 - **`theme-subdomain-architecture.md`** - Theme-subdomain architecture pattern
   - Repository responsibilities split

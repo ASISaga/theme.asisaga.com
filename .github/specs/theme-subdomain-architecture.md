@@ -1,8 +1,8 @@
 # Theme-Subdomain Architecture Specification
 
-**Version**: 2.0.0  
+**Version**: 2.1.0  
 **Status**: Active  
-**Last Updated**: 2026-02-14
+**Last Updated**: 2026-03-12
 
 ## Overview
 
@@ -86,7 +86,8 @@ title: "My Page"
 - File: `_sass/main.scss`
 - NO Jekyll front matter
 - NO `@import` statements
-- Uses ontology mixins only
+- Uses ontology mixins only (no raw CSS properties like `margin`, `padding`, `color`, `font-size`)
+- Follows HTML hierarchy rules: Level 3 components use `genesis-entity()`, Level 4 leaves use `genesis-cognition()` or `genesis-synapse()`
 - Theme's `assets/css/style.scss` imports this at build time
 
 Example `_sass/main.scss`:
@@ -94,8 +95,12 @@ Example `_sass/main.scss`:
 // NO front matter, NO @import
 
 .custom-section {
-  @include genesis-environment('focused');
-  @include genesis-entity('primary');
+  @include genesis-environment('distributed');  // Level 1: grid layout
+  @include genesis-atmosphere('neutral');        // Level 1: page tone
+}
+
+.custom-card {
+  @include genesis-entity('primary');            // Level 3: component surface
 }
 ```
 
@@ -254,24 +259,28 @@ title: "About Us"
 With optional styling (`_sass/main.scss`):
 ```scss
 .about-content {
-  @include genesis-environment('focused');
+  @include genesis-environment('focused');  // Level 1: narrow reading column
+  @include genesis-atmosphere('neutral');   // Level 1: standard tone
 }
 
 .about-header {
-  @include genesis-entity('primary');
-  
+  @include genesis-environment('associative');  // Level 2: horizontal section
   h1 {
-    @include genesis-cognition('axiom');
+    @include genesis-cognition('axiom');         // Level 4: page heading
   }
 }
 
 .about-body {
-  @include genesis-cognition('discourse');
+  @include genesis-environment('focused');  // Level 2: body section
+  p {
+    @include genesis-cognition('discourse');  // Level 4: prose text
+  }
 }
 ```
 
 ## References
 
+→ **Ontology-to-HTML mapping**: `docs/specifications/ontology-html-mapping.md`  
 → **Ontology specification**: `.github/specs/ontological-design-system.md`  
 → **Subdomain setup guide**: `.github/subdomain/README.md`  
 → **Complete SCSS reference**: `/docs/specifications/scss-ontology-system.md`
