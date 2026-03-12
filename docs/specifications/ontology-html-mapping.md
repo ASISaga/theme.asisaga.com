@@ -225,7 +225,10 @@ This section shows the correct ontological mixin application for each theme layo
   }
   .post__meta {                                // Level 2: metadata section
     @include genesis-environment('associative');
-    @include genesis-cognition('gloss');       // Exception: meta row inherits gloss
+  }
+  .post__meta-date,
+  .post__meta-author {                         // Level 4: leaf metadata
+    @include genesis-cognition('gloss');
   }
   .post__tag {                                 // Level 4: leaf
     @include genesis-cognition('quantum');
@@ -260,6 +263,9 @@ This section shows the correct ontological mixin application for each theme layo
   }
   .article__meta {                             // Level 2: metadata section
     @include genesis-environment('associative');
+  }
+  .article__meta-date,
+  .article__meta-author {                      // Level 4: leaf metadata
     @include genesis-cognition('gloss');
   }
 }

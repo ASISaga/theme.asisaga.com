@@ -52,10 +52,9 @@
   @include genesis-cognition('discourse');    // Subheading text
 }
 
-// Metadata section from content-meta.html include
+// Metadata section from content-meta.html include (Level 2: section)
 .article__meta {
   @include genesis-environment('associative'); // Horizontal flex
-  @include genesis-cognition('gloss');         // Small metadata
 }
 
 .article__meta-date,
