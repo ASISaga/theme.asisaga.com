@@ -38,11 +38,7 @@
 
 // Controls section (custom for archive)
 .archive__controls {
-  @include genesis-environment('associative'); // Horizontal flex
-  
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  @include genesis-environment('associative'); // Horizontal flex (Level 2)
 }
 
 .archive__filters,
@@ -55,9 +51,7 @@
 }
 
 .archive__view-toggle {
-  @include genesis-environment('associative'); // Horizontal group
-  
-  display: inline-flex;
+  @include genesis-environment('associative'); // Horizontal group (Level 2)
 }
 
 .archive__view-btn {
@@ -75,10 +69,5 @@
 }
 
 .pagination-list {
-  @include genesis-environment('associative'); // Horizontal flex
-  
-  display: flex;
-  list-style: none;
-  padding-left: 0;
-  justify-content: center;
+  @include genesis-environment('associative'); // Horizontal flex (Level 2)
 }

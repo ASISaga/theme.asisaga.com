@@ -213,6 +213,7 @@ For legacy components: `_sass/base/_design-tokens.scss`
 
 ## Documentation References
 
+- **Ontology-to-HTML mapping**: `/docs/specifications/ontology-html-mapping.md` (formal hierarchy rules)
 - **Full API guide**: `_sass/ontology/INTEGRATION-GUIDE.md` (comprehensive reference)
 - **Usage examples**: `_sass/ontology/_sample.scss` (complete patterns)
 - **Architecture SOP**: `_sass/ontology/Readme.md` (three-tier system)

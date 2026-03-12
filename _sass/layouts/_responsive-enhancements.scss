@@ -1,106 +1,61 @@
 /**
  * Responsive Enhancements for All Jekyll Layouts
  * ============================================================================
- * responsive-design-agent v2.1.0
+ * responsive-design-agent v3.0.0
  * 
- * This file adds comprehensive responsive patterns to all Jekyll layouts.
- * All layouts now follow mobile-first principles with:
- * - WCAG 2.5.5 touch targets (≥44px)
- * - Fluid typography (16px minimum)
- * - Responsive grids (375px → 1920px+)
- * - Proper breakpoints (sm/md/lg/xl)
- * - Reduced motion support
- * 
- * Usage: Import this after individual layout files to enhance responsiveness.
- * NOTE: ontology/index is available via _common.scss - DO NOT import here to avoid code bloat
- * 
- * @version 2.1.0
+ * This file provides responsive refinements that complement the ontological
+ * mixins already applied in individual layout files. It should NOT override
+ * or duplicate mixin output — only add supplementary responsive behavior.
+ *
+ * Rules:
+ * - NEVER duplicate properties already set by genesis-environment/entity/etc.
+ * - Use genesis-* mixins for any new ontological concerns
+ * - Only raw CSS for genuinely supplementary responsive adjustments
+ * - WCAG 2.5.5 touch targets (≥44px) on leaf interactive elements only
+ *
+ * @version 3.0.0
  * @agent responsive-design-agent
- * @date 2026-01-29
+ * @date 2026-03-12
  */
 
 // ============================================================================
 // READING LAYOUTS (Post, Article, Docs)
 // ============================================================================
 
-/**
- * Post Layout Responsive Enhancements
- * Single-column blog posts optimized for reading
- */
-.post-layout {
-  // Already has: genesis-environment('focused')
-  // Add responsive spacing
-  @include genesis-atmosphere('spacious-mobile');
-  
-  // Ensure optimal line length for reading
-  max-width: 70ch; // 45-75ch is optimal
-  margin-inline: auto;
-  
-  @include from(md) {
-    max-width: 75ch;
-  }
-}
-
-.post__header,
-.post__meta,
-.post__taxonomy,
-.post__content,
-.post__footer-cta {
-  // Structural sections: transparent, layout-only (touch-friendly via WCAG 2.5.5 via leaf elements)
-}
-
+// Post layout — already uses genesis-environment('focused') in _post.scss
+// Only add touch-friendly sizing for leaf interactive elements (Level 4)
 .post__tag,
 .post__category {
-  // WCAG 2.5.5: Ensure touch targets ≥44px
+  // WCAG 2.5.5: Ensure touch targets ≥44px on mobile (synapse concern)
   min-height: 44px;
-  padding: 0.5rem 1rem;
-  
+
   @include from(md) {
-    min-height: 32px; // Can be smaller on desktop
-    padding: 0.25rem 0.75rem;
+    min-height: 32px;
   }
 }
 
-/**
- * Article Layout Responsive Enhancements
- * Two-column with sidebar that becomes stacked on mobile
- */
+// Article layout — already uses genesis-environment('associative') in _article.scss
+// Responsive column refinements for sidebar layout
 .article-layout {
-  // Desktop: sidebar + main
-  // Mobile: stacked
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-bento);
-  
   @include from(lg) {
     grid-template-columns: 250px 1fr;
-    gap: var(--space-network);
   }
-  
+
   @include from(xl) {
     grid-template-columns: 300px 1fr;
   }
 }
 
 .article-toc-sidebar {
-  // Mobile: sticky header at top
+  // Sticky sidebar behavior (environment structural concern)
   position: sticky;
   top: 0;
   z-index: 10;
   max-height: 100vh;
   overflow-y: auto;
-  
-  @include from(lg) {
-    // Desktop: sidebar
-    max-height: calc(100vh - 2rem);
-  }
-}
 
-.article-main-col {
-  max-width: 70ch;
-  
   @include from(lg) {
-    max-width: 75ch;
+    max-height: calc(100vh - 2rem);
   }
 }
 
@@ -108,137 +63,74 @@
 // LANDING & MARKETING LAYOUTS
 // ============================================================================
 
-/**
- * Landing Layout Responsive Enhancements
- * Hero sections with CTAs optimized for conversion
- */
+// Landing hero — supplementary responsive split layout
 .landing__hero {
-  // Full viewport height with mobile browser chrome consideration
-  @include genesis-atmosphere('viewport-aware');
-  
-  // Hero layout: mobile stacked, desktop split
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-bento);
-  align-items: center;
-  
+  @include genesis-atmosphere('viewport-aware');  // Full-height hero (Level 1)
+
   @include from(lg) {
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-network);
   }
 }
 
 .landing__hero-image {
-  @include genesis-entity('image-adaptive');
-  width: 100%;
-  height: auto;
-  
+  @include genesis-entity('image-adaptive');       // Responsive image (Level 3)
+
   @include from(lg) {
     max-height: 600px;
     object-fit: cover;
   }
 }
 
-.landing__hero-actions {
-  // Touch-friendly button spacing
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(1rem, 3vw, 2rem);
-  
-  @include from(sm) {
-    flex-wrap: nowrap;
-  }
-}
-
+// Touch-friendly button sizing (synapse concern — Level 4)
 .landing__hero-button,
 .landing__cta-button {
-  // WCAG 2.5.5: Touch targets ≥44px
   min-height: 44px;
   min-width: 44px;
-  padding: 1rem 2rem;
-  
+
   @include from(md) {
-    min-height: 48px; // Slightly larger on desktop
-    padding: 1.125rem 2.5rem;
+    min-height: 48px;
   }
 }
 
-/**
- * Splash Layout Responsive Enhancements
- * Full-screen centered content
- */
+// Splash layout — supplementary viewport sizing
 .splash-layout {
-  @include genesis-atmosphere('viewport-aware');
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  // Visual presence provided by <genesis-entity> web component in splash.html
+  @include genesis-atmosphere('viewport-aware');  // Full-height (Level 1)
 }
 
 // ============================================================================
 // DASHBOARD & GRID LAYOUTS
 // ============================================================================
 
-/**
- * Dashboard Layout Responsive Enhancements
- * Multi-column dashboard with widgets
- */
+// Dashboard — already uses genesis-environment('manifest') in _dashboard.scss
+// Responsive column refinements only
 .dashboard-layout {
-  @include genesis-environment('manifest');
-  
-  // Mobile: 1-2 columns
-  // Tablet: 2-4 columns
-  // Desktop: Full 12-column grid
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-  gap: var(--space-bento);
-  
-  // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
-  width: 100%;
-  max-width: 100%;
-  
-  // TRACK-TO-ITEM STRETCHING - Items fill column width
-  justify-items: stretch;
-  
-  // Prevent horizontal overflow
-  overflow-x: hidden;
-  
   @include from(md) {
     grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   }
-  
+
   @include from(lg) {
     grid-template-columns: repeat(12, 1fr);
   }
 }
 
 .dashboard__widget {
-  @include genesis-entity('primary');
-  
-  // BOX-SIZING & WIDTH STABILIZATION - Prevent widget content from overflowing
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  
-  // Allow widgets to span multiple columns on desktop
+  // Grid span behavior (structural, not visual)
   grid-column: span 12;
-  
+
   @include from(md) {
     grid-column: span 6;
   }
-  
+
   @include from(lg) {
     grid-column: span 4;
   }
-  
-  // Large widgets can span more
+
   &--large {
     @include from(lg) {
       grid-column: span 6;
     }
   }
-  
+
   &--full {
     @include from(lg) {
       grid-column: span 12;
@@ -246,58 +138,37 @@
   }
 }
 
-/**
- * Gallery Layout Responsive Enhancements
- * Image gallery with responsive grid
- */
+// Gallery — already uses genesis-environment('distributed') in _gallery.scss
 .gallery-layout {
-  @include genesis-environment('distributed');
-  @include genesis-atmosphere('dense-desktop');
+  @include genesis-atmosphere('dense-desktop');    // Responsive density (Level 1)
 }
 
 .gallery__item {
-  @include genesis-entity('primary');
-  
   img {
-    @include genesis-entity('image-adaptive');
+    @include genesis-entity('image-adaptive');     // Responsive image (Level 3)
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 }
 
-/**
- * Archive Layout Responsive Enhancements
- * List of posts/articles with excerpts
- */
-.archive-layout {
-  @include genesis-environment('chronological');
-  max-width: 1200px;
-  margin-inline: auto;
-}
-
+// Archive — already uses genesis-environment('chronological') in _archive.scss
 .archive__item {
-  @include genesis-entity('primary');
-  
-  // Mobile: stacked
-  // Desktop: image + content side-by-side
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-bento);
-  
+  @include genesis-entity('primary');              // Card surface (Level 3)
+  @include genesis-environment('associative');     // Internal layout (Level 3 optional)
+
   @include from(md) {
     grid-template-columns: 200px 1fr;
   }
-  
+
   @include from(lg) {
     grid-template-columns: 300px 1fr;
   }
 }
 
 .archive__thumbnail {
-  @include genesis-entity('image-adaptive');
-  aspect-ratio: 16 / 9;
-  
+  @include genesis-entity('image-adaptive');       // Responsive image (Level 3)
+
   @include from(md) {
     aspect-ratio: 4 / 3;
   }
@@ -307,49 +178,25 @@
 // FORM LAYOUTS
 // ============================================================================
 
-/**
- * Form Layout Responsive Enhancements
- * Contact forms and data entry
- */
+// Form — already uses genesis-environment('interaction-form') in _form.scss
 .form-layout {
-  @include genesis-environment('interaction-form');
   max-width: 800px;
   margin-inline: auto;
 }
 
-.form__group {
-  // Mobile: stacked
-  // Desktop: can be side-by-side for short fields
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-bento);
-  
-  @include from(md) {
-    &--inline {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-}
-
 .form__label {
-  @include genesis-cognition('motive');
-  // Touch-friendly label with proper spacing
-  display: block;
-  margin-bottom: 0.5rem;
+  @include genesis-cognition('motive');            // Instructional text (Level 4)
 }
 
+// Form inputs — WCAG touch target sizing (synapse concern — Level 4)
 .form__input,
 .form__select,
 .form__textarea {
-  // WCAG 2.5.5: Touch targets ≥44px
   min-height: 44px;
-  padding: 0.75rem 1rem;
-  // Prevent iOS zoom on focus
-  font-size: max(16px, 1rem);
-  
+  font-size: max(16px, 1rem); // Prevent iOS zoom
+
   @include from(md) {
     min-height: 48px;
-    padding: 1rem 1.25rem;
   }
 }
 
@@ -359,14 +206,11 @@
 }
 
 .form__button {
-  // WCAG 2.5.5: Touch targets ≥44px
   min-height: 44px;
   min-width: 44px;
-  padding: 1rem 2rem;
-  
+
   @include from(md) {
     min-height: 48px;
-    padding: 1.125rem 2.5rem;
   }
 }
 
@@ -374,10 +218,7 @@
 // SPECIAL LAYOUTS
 // ============================================================================
 
-/**
- * Search Layout Responsive Enhancements
- * Search page with results
- */
+// Search — supplementary constraints
 .search-layout {
   max-width: 1200px;
   margin-inline: auto;
@@ -387,112 +228,56 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  // Structural wrapper: transparent, layout-only
 }
 
 .search__input {
-  // WCAG 2.5.5: Touch targets ≥44px
   min-height: 44px;
-  padding: 0.75rem 1rem;
   font-size: max(16px, 1rem); // Prevent iOS zoom
-  width: 100%;
-  
+
   @include from(md) {
     min-height: 56px;
-    padding: 1rem 1.5rem;
-    font-size: 1.125rem;
   }
 }
 
 .search__results {
-  @include genesis-environment('chronological');
+  @include genesis-environment('chronological');   // Vertical results list (Level 2)
 }
 
-/**
- * Profile Layout Responsive Enhancements
- * User profile with stats and content
- */
+// Profile — supplementary responsive column layout
 .profile-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-bento);
   max-width: 1200px;
   margin-inline: auto;
-  
+
   @include from(lg) {
     grid-template-columns: 300px 1fr;
-    gap: var(--space-network);
   }
 }
 
-.profile__sidebar {
-  // Structural sidebar: transparent, layout-only
-}
-
 .profile__avatar {
-  @include genesis-entity('avatar');  // Circular avatar with status indicator support (owns border-radius: 50%)
-  width: 100%;
+  @include genesis-entity('avatar');               // Circular avatar (Level 3)
   max-width: 200px;
-  aspect-ratio: 1;
-  
+
   @include from(lg) {
     max-width: 100%;
   }
 }
 
-.profile__stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100px, 100%), 1fr));
-  gap: var(--space-bento);
-  
-  // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
-  width: 100%;
-  max-width: 100%;
-  
-  // TRACK-TO-ITEM STRETCHING - Items fill column width
-  justify-items: stretch;
-  
-  // Prevent horizontal overflow
-  overflow-x: hidden;
-  
-  // MOBILE FLUIDITY - Single column below 768px
-  @media (max-width: 767px) {
-    grid-template-columns: 1fr;
-  }
-}
-
 .profile__stat {
-  @include genesis-entity('secondary');
+  @include genesis-entity('secondary');            // Stat card surface (Level 3)
   text-align: center;
-  
-  // Touch-friendly on mobile
-  min-height: 80px;
-  
-  @include from(md) {
-    min-height: auto;
-  }
 }
 
-/**
- * Settings Layout Responsive Enhancements
- * Settings page with tabs/sections
- */
+// Settings — supplementary responsive column layout
 .settings-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-bento);
   max-width: 1200px;
   margin-inline: auto;
-  
+
   @include from(lg) {
     grid-template-columns: 250px 1fr;
-    gap: var(--space-network);
   }
 }
 
 .settings__nav {
-  // Mobile: horizontal scroll
-  // Desktop: vertical sidebar
   @include from(lg) {
     position: sticky;
     top: 0;
@@ -501,128 +286,65 @@
   }
 }
 
-.settings__nav-list {
-  display: flex;
-  overflow-x: auto;
-  gap: 0.5rem;
-  
-  @include from(lg) {
-    flex-direction: column;
-    overflow-x: visible;
-  }
-}
-
 .settings__nav-item {
-  // WCAG 2.5.5: Touch targets ≥44px
-  min-height: 44px;
-  padding: 0.75rem 1rem;
-  white-space: nowrap;
-  
+  min-height: 44px; // WCAG 2.5.5 touch target
+
   @include from(lg) {
     white-space: normal;
   }
 }
 
-/**
- * Chatroom Layout Responsive Enhancements
- * Chat interface with messages
- */
+// Chatroom — supplementary viewport sizing
 .chatroom-layout {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
   height: 100vh;
   max-height: 100vh;
 }
 
-.chatroom__header {
-  // Structural header: transparent, layout-only
-}
-
-.chatroom__messages {
-  overflow-y: auto;
-  // Structural message viewport: transparent, layout-only; individual messages are leaf entities
-}
-
-.chatroom__input-wrapper {
-  // Structural input container: transparent, layout-only
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 0.5rem;
-}
-
 .chatroom__input {
-  // WCAG 2.5.5: Touch targets ≥44px
   min-height: 44px;
-  padding: 0.75rem 1rem;
   font-size: max(16px, 1rem); // Prevent iOS zoom
-  
+
   @include from(md) {
     min-height: 48px;
   }
 }
 
 .chatroom__send-button {
-  // WCAG 2.5.5: Touch targets ≥44px
   min-height: 44px;
   min-width: 44px;
-  
+
   @include from(md) {
     min-height: 48px;
     min-width: 60px;
   }
 }
 
-/**
- * FAQ Layout Responsive Enhancements
- * Accordion-style FAQ
- */
+// FAQ — supplementary constraints
 .faq-layout {
   max-width: 900px;
   margin-inline: auto;
 }
 
 .faq__item {
-  @include genesis-entity('primary');
-  margin-bottom: var(--space-bento);
+  @include genesis-entity('primary');              // FAQ card surface (Level 3)
 }
 
 .faq__question {
-  // WCAG 2.5.5: Touch targets ≥44px
-  min-height: 44px;
-  padding: 1rem;
+  min-height: 44px; // WCAG 2.5.5 touch target
   cursor: pointer;
-  
-  @include from(md) {
-    padding: 1.25rem 1.5rem;
-  }
 }
 
-.faq__answer {
-  padding: 1rem;
-  
-  @include from(md) {
-    padding: 1.25rem 1.5rem;
-  }
-}
-
-/**
- * Docs Layout Responsive Enhancements
- * Documentation with sidebar navigation
- */
+// Docs — supplementary responsive column layout
 .docs-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-bento);
   max-width: 1400px;
   margin-inline: auto;
-  
+
   @include from(lg) {
     grid-template-columns: 280px 1fr;
-    gap: var(--space-network);
   }
-  
+
   @include from(xl) {
-    grid-template-columns: 320px 1fr 280px; // Add right sidebar for TOC
+    grid-template-columns: 320px 1fr 280px; // Right sidebar for TOC
   }
 }
 
@@ -633,10 +355,6 @@
     max-height: calc(100vh - 2rem);
     overflow-y: auto;
   }
-}
-
-.docs__content {
-  max-width: 70ch;
 }
 
 .docs__toc {
@@ -652,92 +370,65 @@
 // APP-SPECIFIC LAYOUTS
 // ============================================================================
 
-/**
- * App Layout Responsive Enhancements
- * Full application interface
- */
+// App layout — supplementary viewport sizing
 .app-layout {
-  display: grid;
-  grid-template-rows: auto 1fr;
   height: 100vh;
   max-height: 100vh;
-  
+
   @include from(lg) {
     grid-template-columns: 250px 1fr;
-    grid-template-rows: auto 1fr;
   }
 }
 
 .app__sidebar {
-  // Mobile: hidden by default (toggle with JavaScript)
-  // Desktop: always visible
   @include from(lg) {
     grid-row: 1 / -1;
-    // border-right responsibility belongs to genesis-entity; use genesis-entity mixin on this element for visual separation
   }
 }
 
-/**
- * Minimal Layout Responsive Enhancements
- * Clean, minimal layout for focus
- */
+// Minimal layout — supplementary constraints
 .minimal-layout {
   max-width: 800px;
   margin-inline: auto;
-  // Visual presence provided by <genesis-entity> web component in minimal.html
 }
 
-/**
- * Fixed Height Layout Responsive Enhancements
- * Layouts that maintain viewport height
- */
+// Fixed height layout — supplementary viewport sizing
 .fixed-height-layout {
   height: 100vh;
   max-height: 100vh;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
 
-/**
- * Scrollable Layout Responsive Enhancements
- * Layouts with scrollable content areas
- */
+// Scrollable layout — supplementary viewport sizing
 .scrollable-layout {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
 }
 
 .scrollable__content {
   overflow-y: auto;
-  // Structural container: transparent, layout-only; leaf content entities provide visual presence
 }
 
 // ============================================================================
 // GLOBAL RESPONSIVE UTILITIES
 // ============================================================================
 
-/**
- * Responsive Spacing Utilities
- * Apply across all layouts
- */
 .responsive-section {
-  @include genesis-atmosphere('spacious-mobile');
+  @include genesis-atmosphere('spacious-mobile');   // Touch-friendly spacing
 }
 
 .responsive-grid {
-  @include genesis-environment('distributed');
+  @include genesis-environment('distributed');      // Responsive bento grid
 }
 
 .responsive-form {
-  @include genesis-environment('interaction-form');
+  @include genesis-environment('interaction-form'); // Responsive form layout
 }
 
-/**
- * Reduced Motion Support
- * All layouts respect user preferences
- */
+// ============================================================================
+// ACCESSIBILITY
+// ============================================================================
+
+// Reduced motion support — all layouts respect user preferences
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -747,10 +438,7 @@
   }
 }
 
-/**
- * High Contrast Support
- * All layouts adapt to high contrast mode
- */
+// High contrast support — all layouts adapt
 @media (prefers-contrast: high) {
   .post-layout,
   .article-layout,
@@ -769,9 +457,6 @@
   .minimal-layout,
   .fixed-height-layout,
   .scrollable-layout {
-    // Disable glassmorphism in high contrast
     backdrop-filter: none;
-    background: var(--surface-primary);
-    border: 2px solid var(--border-primary);
   }
 }

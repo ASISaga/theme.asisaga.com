@@ -47,14 +47,13 @@
   @include genesis-cognition('discourse');  // Subheading
 }
 
-// Countdown timer
+// Countdown timer (Level 2: section container for countdown items)
 .splash__countdown {
-  @include genesis-entity('imperative');    // Urgent countdown
-  @include genesis-state('evolving');        // Active/changing state
+  @include genesis-environment('associative'); // Horizontal countdown items
 }
 
 .splash__countdown-item {
-  // Countdown time unit — transparent, text flows on parent countdown background
+  @include genesis-state('evolving');           // Active/changing countdown (Level 3)
   text-align: center;
 }
 

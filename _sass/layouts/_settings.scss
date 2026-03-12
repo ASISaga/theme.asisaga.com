@@ -44,10 +44,7 @@
   }
   
   .settings-actions {
-    @include genesis-environment('associative'); // Horizontal buttons
-    
-    display: flex;
-    gap: 0.5rem;
+    @include genesis-environment('associative'); // Horizontal buttons (Level 2)
   }
   
   .settings-button {

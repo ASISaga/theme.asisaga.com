@@ -22,6 +22,7 @@ Maintain semantic consistency in your subdomain while facilitating organic growt
 - ZERO raw CSS properties in your subdomain SCSS
 - Map every HTML class to appropriate semantic role
 - Maintain mirrored SCSS structure (matching HTML DOM)
+- Respect hierarchy-level rules from `/docs/specifications/ontology-html-mapping.md`
 
 ```scss
 ---
@@ -29,19 +30,32 @@ Maintain semantic consistency in your subdomain while facilitating organic growt
 @import "ontology/index";
 
 .research-paper {
-  @include genesis-environment('focused');
-  @include genesis-atmosphere('ethereal');
+  @include genesis-environment('focused');     // Level 1: layout
+  @include genesis-atmosphere('ethereal');     // Level 1: tone
   
   .paper-header {
-    @include genesis-entity('primary');
-    .paper-title { @include genesis-cognition('axiom'); }
+    @include genesis-environment('associative'); // Level 2: section — NO entity here
+    .paper-title { @include genesis-cognition('axiom'); }  // Level 4: leaf
   }
   
-  .download-link { @include genesis-synapse('navigate'); }
+  .download-link { @include genesis-synapse('navigate'); } // Level 4: leaf
 }
 ```
 
+**Visual design element ownership** — each concern maps from semantic purpose to owner:
+
+| Semantic Purpose | Owner | Visual Design Element | Never Set By |
+|-----------------|-------|---------------------|-------------|
+| Responsive spatial rhythm — gaps signal section vs group boundaries | `environment` | White space / gap | entity, cognition |
+| Component breathing room — variant-scaled density (`primary`=generous, `badge`=compact) | `entity` | Internal padding | environment, cognition |
+| Page mood and emotional tone — OKLCH: `void`=black, `ethereal`=translucent, `sacred`=gradient | `atmosphere` | Colors / backgrounds | cognition, synapse |
+| Information voice and reading intent — `axiom`=bold headlines, `discourse`=serif body, `protocol`=monospace | `cognition` | Typography | entity, environment |
+| Component edge treatment — 1px subtle, 2px neon accent, 999px pill via `--radius-bento` | `entity` | Borders / shape | atmosphere, environment |
+| Lifecycle transitions and temporal signaling — `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `deprecated`=dimmed | `state` | Animations | entity, cognition |
+| Action-specific interaction feedback — `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets | `synapse` | Hover / focus | cognition, atmosphere |
+
 → Complete variant reference: `/docs/specifications/scss-ontology-system.md`
+→ Hierarchy-level rules: `/docs/specifications/ontology-html-mapping.md`
 
 ### 2. Gap Identification
 
@@ -152,6 +166,7 @@ Be humble, clear, receptive, and patient in all interactions.
 
 ## Related Documentation
 
+- `/docs/specifications/ontology-html-mapping.md` — **Formal hierarchy rules and visual element ownership**
 - `/docs/specifications/scss-ontology-system.md` — Complete ontology reference
 - `_sass/ontology/INTEGRATION-GUIDE.md` — Mixin API and usage examples
 - `.github/docs/agent-philosophy.md` — Agent ecosystem architecture

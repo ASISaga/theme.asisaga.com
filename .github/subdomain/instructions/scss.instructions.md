@@ -23,6 +23,40 @@ Subdomain SCSS files must contain **ZERO raw CSS properties**:
 - ✅ ONLY ontological mixins (already available from theme)
 - ✅ Max 3 nesting levels
 
+## Visual Design Element Ownership
+
+Each visual CSS concern maps from a semantic purpose through an owning ontological category. Never set a property outside its owner:
+
+| Semantic Purpose | Owner | Visual Design Element | CSS Properties |
+|-----------------|-------|---------------------|---------------|
+| Responsive spatial rhythm — larger gaps signal section boundaries, tighter gaps group related items | `environment` | White space / gap | `gap`, `margin` (via grid/flex) |
+| Component breathing room — `primary` gets generous padding, `secondary`/`badge` get compact padding | `entity` | Internal padding | `padding` |
+| Content flow architecture — `distributed`=auto-fit grids, `focused`=70ch, `manifest`=12-col dashboard | `environment` | Layout / grid | `display`, `grid-*`, `flex-*` |
+| Page mood and emotional tone — OKLCH: `void`=deep black, `ethereal`=translucent white, `sacred`=deep gradient | `atmosphere` | Colors / backgrounds | `background`, `box-shadow` |
+| Information voice and reading intent — `axiom`=2–3.5rem bold headlines, `discourse`=serif body at 1.6 line-height, `protocol`=monospace code | `cognition` | Typography | `font-*`, `line-height`, `letter-spacing` |
+| Component edge treatment — `primary`=subtle 1px, `imperative`=2px neon accent, `badge`=999px pill via `--radius-bento` | `entity` | Borders / shape | `border`, `border-radius` |
+| Ambient depth and spatial layering — `ethereal`=subtle outer glow, `void`=inset shadow, `vibrant`=neon blue glow | `atmosphere` | Shadows / elevation | `box-shadow` |
+| Lifecycle transitions and temporal signaling — `evolving`=sweeping gradient for progress, `scroll-triggered`=fade-in-up, `deprecated`=50% opacity + grayscale | `state` | Animations | `animation`, `opacity`, `filter` |
+| Action-specific interaction feedback — `navigate`=hover underline, `execute`=neon glow, `destructive`=red warning, 44px WCAG touch targets | `synapse` | Hover / focus | `:hover`, `:focus`, `cursor`, `transition` |
+
+## Hierarchy-Level Rules
+
+Subdomain content sits inside theme layout (Level 1–2). Subdomain elements are typically Level 3–4:
+
+| Level | Element type | Required | Forbidden |
+|-------|-------------|----------|-----------|
+| **3 — Component** | Cards, widgets, alerts | `entity` | — |
+| **4 — Leaf** | `<h1>`, `<p>`, `<a>`, `<button>` | `cognition` or `synapse` | `environment`, `atmosphere`, `entity` |
+
+**Key violations to avoid:**
+- ❌ `genesis-entity()` on page-level wrappers — use `environment` + `atmosphere`
+- ❌ `genesis-cognition()` on container divs — cognition is for text elements only
+- ❌ `genesis-atmosphere()` on leaf elements — atmosphere is for containers only
+- ❌ Setting `border` or `padding` in any mixin other than `entity`
+- ❌ Setting `font-*` properties in any mixin other than `cognition`
+
+→ **Full specification**: theme's `docs/specifications/ontology-html-mapping.md`
+
 ## File Setup
 
 If page-specific styling is needed, create `_sass/main.scss`:
@@ -127,12 +161,13 @@ If page-specific styling is needed, create `_sass/main.scss`:
 
 ```scss
 .article {
-  @include genesis-environment('focused');
-  @include genesis-atmosphere('ethereal');
+  @include genesis-environment('focused');   // Level 1: layout
+  @include genesis-atmosphere('ethereal');   // Level 1: tone
 
-  .article__title { @include genesis-cognition('axiom'); }
-  .article__meta { @include genesis-cognition('gloss'); }
-  .article__body { @include genesis-cognition('discourse'); }
+  .article__title { @include genesis-cognition('axiom'); }     // Level 4: headline
+  .article__meta { @include genesis-environment('associative'); } // Level 2: horizontal meta
+  .article__meta-date { @include genesis-cognition('gloss'); } // Level 4: metadata
+  .article__body { @include genesis-cognition('discourse'); }  // Level 4: body text
 }
 ```
 
@@ -158,6 +193,8 @@ Before committing SCSS:
 - [ ] No `px`, `rem`, `%`, or color values
 - [ ] SCSS nesting mirrors HTML structure
 - [ ] Max 3 nesting levels
+- [ ] Hierarchy compliance: components use `entity`, leaf elements use `cognition`/`synapse`
+- [ ] Property ownership: borders set only by `entity`, fonts only by `cognition`, backgrounds only by `atmosphere`
 - [ ] Page-specific components only (shared components go to theme)
 - [ ] Run `npm run test:scss` — Verify SCSS compiles
 - [ ] Run `npm run lint:scss` — Check code quality

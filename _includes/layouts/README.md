@@ -206,57 +206,60 @@ layout: default
 
 ## Styling with Ontology
 
-After using these includes, create corresponding SCSS using ontological mixins:
+After using these includes, create corresponding SCSS using ontological mixins.
+Each element must follow the hierarchy rules defined in `docs/specifications/ontology-html-mapping.md`:
+
+- **Level 1** (page wrapper): `genesis-environment()` + `genesis-atmosphere()`
+- **Level 2** (sections): `genesis-environment()` only — never `genesis-entity()`
+- **Level 3** (components): `genesis-entity()` required
+- **Level 4** (leaf elements): `genesis-cognition()` or `genesis-synapse()`
 
 ```scss
----
----
-@import "ontology/index";
-
+// Theme layout SCSS — NO @import needed (ontology available via _common.scss)
 .post {
-  @include genesis-environment('focused');
-  
+  @include genesis-environment('focused');       // Level 1: page layout
+  @include genesis-atmosphere('neutral');        // Level 1: tone
+
   &__header {
-    @include genesis-entity('primary');
+    @include genesis-environment('associative'); // Level 2: section
   }
-  
+
   &__title {
-    @include genesis-cognition('axiom');
+    @include genesis-cognition('axiom');         // Level 4: headline
   }
-  
+
   &__subtitle {
-    @include genesis-cognition('discourse');
+    @include genesis-cognition('discourse');     // Level 4: body text
   }
-  
+
   &__meta {
-    @include genesis-entity('secondary');
-    @include genesis-environment('associative');
-    
+    @include genesis-environment('associative'); // Level 2: horizontal meta row
+
     &-date,
     &-author,
     &-reading-time {
-      @include genesis-cognition('gloss');
+      @include genesis-cognition('gloss');       // Level 4: small metadata
     }
   }
-  
+
   &__taxonomy {
-    @include genesis-environment('associative');
+    @include genesis-environment('associative'); // Level 2: tag list container
   }
-  
+
   &__tag,
   &__category {
-    @include genesis-cognition('quantum');
+    @include genesis-cognition('quantum');       // Level 4: chips
   }
-  
+
   &__footer-cta {
-    @include genesis-entity('imperative');
-    
+    @include genesis-environment('focused');     // Level 2: CTA section
+
     .post__cta-title {
-      @include genesis-cognition('motive');
+      @include genesis-cognition('motive');      // Level 4: persuasive text
     }
-    
+
     .post__cta-button {
-      @include genesis-synapse('execute');
+      @include genesis-synapse('execute');       // Level 4: action button
     }
   }
 }
@@ -279,3 +282,39 @@ After using these includes, create corresponding SCSS using ontological mixins:
 4. **Graceful Degradation** - Handles missing optional parameters elegantly
 5. **No Inline Styles** - All visual styling via ontological SCSS mapping
 6. **ARIA Where Needed** - Use `aria-hidden` for decorative icons, `aria-label` for context
+7. **Hierarchy Compliance** - Section containers (Level 2) use `genesis-environment()` only, never `genesis-entity()`
+
+## Subdomain Usage
+
+Subdomain repositories create HTML content pages using the theme's layouts. Their content sits inside the layout structure (Levels 1–2 are handled by the theme). Subdomain-defined elements are typically Level 3 (components) and Level 4 (leaf elements):
+
+```html
+---
+layout: post
+title: "My Post"
+---
+<!-- Subdomain content starts at Level 3/4 inside theme's Level 1/2 layout -->
+<div class="custom-widget">
+  <h2 class="custom-widget__title">Widget Title</h2>
+  <p class="custom-widget__body">Widget content...</p>
+  <a class="custom-widget__link" href="/more">Read more</a>
+</div>
+```
+
+```scss
+// Subdomain _sass/main.scss — ZERO raw CSS properties, NO @import
+.custom-widget {
+  @include genesis-entity('primary');              // Level 3: visual surface
+
+  &__title { @include genesis-cognition('axiom'); }    // Level 4
+  &__body { @include genesis-cognition('discourse'); }  // Level 4
+  &__link { @include genesis-synapse('navigate'); }     // Level 4
+}
+```
+
+## References
+
+- **Ontology-to-HTML mapping**: `docs/specifications/ontology-html-mapping.md` (formal hierarchy rules)
+- **SCSS ontology system**: `docs/specifications/scss-ontology-system.md` (all 31 variants)
+- **Integration guide**: `_sass/ontology/INTEGRATION-GUIDE.md` (API reference)
+- **Layout README**: `_layouts/README.md` (layout selector and frontmatter)

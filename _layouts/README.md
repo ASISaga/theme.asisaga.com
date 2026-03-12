@@ -281,6 +281,37 @@ email_capture:
 	button_text: "Notify Me"
 ```
 
+Ontological styling reference
+
+Each layout has a corresponding SCSS file in `_sass/layouts/` that maps semantic classes to ontological mixins. The following table shows which Level 1 (page layout) mixins are applied per layout:
+
+| Layout | Environment | Atmosphere | Rationale |
+|--------|------------|------------|-----------|
+| `default.html` | — (wrapper only) | `'neutral'` | Base scaffold; child layouts set environment |
+| `post.html` | `'focused'` | `'neutral'` | Narrow reading column for blog posts |
+| `article.html` | `'convergent'` | `'neutral'` | Sidebar TOC + main content |
+| `landing.html` | `'chronological'` | `'vibrant'` | Stacked hero sections, high-energy |
+| `dashboard.html` | `'manifest'` | `'neutral'` | High-density 12-column grid |
+| `archive.html` | `'distributed'` | `'neutral'` | Grid of items for browsing |
+| `gallery.html` | `'distributed'` | `'neutral'` | Bento grid for media items |
+| `form.html` | `'interaction-form'` | `'neutral'` | Centered form flow |
+| `docs.html` | `'convergent'` | `'ethereal'` | Sidebar nav + reading column |
+| `faq.html` | `'focused'` | `'neutral'` | Single column with accordions |
+| `search.html` | `'convergent'` | `'neutral'` | Filters sidebar + results |
+| `settings.html` | `'convergent'` | `'neutral'` | Tab nav + settings panels |
+| `profile.html` | `'focused'` | `'neutral'` | Single column profile view |
+| `splash.html` | `'focused'` | `'vibrant'` | Centered hero with countdown |
+| `chatroom.html` | `'panelled'` | `'void'` | Multi-panel app shell |
+| `minimal.html` | `'focused'` | `'neutral'` | Centered minimal content |
+
+Hierarchy rules (enforced for all layouts):
+- **Level 1** (page wrapper): `genesis-environment()` + `genesis-atmosphere()` only
+- **Level 2** (sections like header, footer, sidebar): `genesis-environment()` only — never `genesis-entity()`
+- **Level 3** (components like cards, widgets): `genesis-entity()` required
+- **Level 4** (leaf elements like headings, buttons): `genesis-cognition()` or `genesis-synapse()`
+
+→ **Full specification**: `docs/specifications/ontology-html-mapping.md`
+
 Guidance & best practices
 - Choose `default.html` as the canonical shell for pages that should look like the rest of the site. Use `app.html` when you prefer a lighter shell without additional page wrappers.
 - For long-form content prefer `article.html` or `post.html` (depending on metadata needs). For documentation use `docs.html` to gain built-in sidebar and navigation.
@@ -288,7 +319,8 @@ Guidance & best practices
 - Keep frontmatter small and declarative — layouts read simple YAML keys to toggle functionality. When in doubt, inspect the corresponding layout file to see which variables it expects.
 
 Related files
-- Layout directory: [Website/theme.asisaga.com/_layouts](Website/theme.asisaga.com/_layouts)
-
-Next steps
-- Tell me which layout(s) you want example page files for and I will generate ready-to-use frontmatter plus a minimal content stub.
+- Layout directory: `_layouts/`
+- Layout SCSS: `_sass/layouts/`
+- Ontology-HTML mapping spec: `docs/specifications/ontology-html-mapping.md`
+- Ontology system reference: `docs/specifications/scss-ontology-system.md`
+- Layout includes: `_includes/layouts/`

@@ -110,6 +110,29 @@ npm test             # All checks
 
 → **All 41+ variants**: `/docs/specifications/scss-ontology-system.md`
 
+**Visual Design Element Ownership:**
+
+| Semantic Purpose | Owner | Visual Design Element |
+|-----------------|-------|---------------------|
+| Responsive spatial rhythm — gaps signal section vs group boundaries | `environment` | White space / gap |
+| Component breathing room — variant-scaled density | `entity` | Internal padding |
+| Page mood and emotional tone — OKLCH: `void`=black, `ethereal`=translucent, `sacred`=gradient | `atmosphere` | Colors / backgrounds |
+| Information voice and reading intent — `axiom`=bold headlines, `discourse`=serif body, `protocol`=monospace | `cognition` | Typography |
+| Component edge treatment — 1px subtle, 2px neon accent, 999px pill via `--radius-bento` | `entity` | Borders / shape |
+| Lifecycle transitions and temporal signaling — `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `deprecated`=dimmed | `state` | Animations |
+| Action-specific interaction feedback — `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets | `synapse` | Hover / focus |
+
+**Hierarchy-Level Rules:**
+
+| Level | Required | Forbidden |
+|-------|----------|-----------|
+| 1 — Page Layout | `environment` + `atmosphere` | `entity`, `cognition`, `synapse` |
+| 2 — Section | `environment` | `entity`, `cognition` |
+| 3 — Component | `entity` | — |
+| 4 — Leaf | `cognition` or `synapse` | `environment`, `atmosphere`, `entity` |
+
+→ **Full specification**: `/docs/specifications/ontology-html-mapping.md`
+
 ## Import Rules
 
 **DO import in:**
@@ -135,6 +158,7 @@ npm test
 ## Resources
 
 **Complete Ontology System**:
+- `/docs/specifications/ontology-html-mapping.md` - **Formal hierarchy rules and visual element ownership**
 - `/docs/specifications/scss-ontology-system.md` - **All 41+ variants, complete API**
 - `_sass/ontology/INTEGRATION-GUIDE.md` - Integration guide
 - `_sass/ontology/_sample.scss` - Working examples

@@ -60,6 +60,51 @@ description: "SCSS coding instructions for Genesis Semantic Design System v2.0"
 - `genesis-state($condition)` - State: `'stable'`, `'evolving'`, `'deprecated'`, `'locked'`, `'simulated'`
 - `genesis-atmosphere($vibe)` - Atmosphere: `'neutral'`, `'ethereal'`, `'void'`, `'vibrant'`
 
+## Visual Design Element Ownership (CRITICAL)
+
+Each visual CSS concern maps from a **semantic purpose** through an owning ontological category to its implementation. Never set a property outside its owner.
+
+| Semantic Purpose | Owner | Visual Design Element | CSS Properties |
+|-----------------|-------|---------------------|---------------|
+| **Responsive spatial rhythm** — larger gaps signal section boundaries, tighter gaps group related items | `environment` | White space | `gap`, `margin` (via grid/flex) |
+| **Component breathing room** — `primary` cards get generous padding, `secondary`/`badge` get compact padding | `entity` | Spacing (internal) | `padding` |
+| **Content flow architecture** — `distributed`=auto-fit grids, `focused`=70ch, `manifest`=12-col dashboard | `environment` | Layout / grid | `display`, `grid-*`, `flex-*`, `place-*`, `max-width` |
+| **Page mood and component surface** — atmosphere OKLCH (`void`=black, `ethereal`=translucent); entity surface (`primary`=white card, `surface-glass`=glassmorphism) | `atmosphere` + `entity` | Color palette | `background`, `color` (via tokens) |
+| **Information voice and reading intent** — `axiom`=2–3.5rem bold headlines, `discourse`=serif body at 1.6 line-height, `protocol`=monospace code, `quantum`=tiny uppercase pills | `cognition` | Typography | `font-size`, `font-weight`, `font-family`, `line-height`, `letter-spacing`, `text-transform` |
+| **Spatial containment and text scale** — Container: `focused`=70ch, `manifest`=full 12-col. Text: `axiom`=clamp(2rem,5vw,3.5rem) to `gloss`=clamp(0.875rem) | `environment` + `cognition` | Sizes | `max-width`, `min-height` (env); `font-size` (cog) |
+| **Component edge treatment** — `primary`=subtle 1px, `imperative`=2px neon accent, `badge`=999px pill, radii use `--radius-bento` tokens | `entity` | Borders | `border`, `border-radius` |
+| **Ambient depth and spatial layering** — `ethereal`=subtle outer glow, `void`=inset depth shadow, `vibrant`=neon blue glow, `sacred`=gold accent line | `atmosphere` | Shading / shadows | `box-shadow` |
+| **Emotional backdrop and mood** — `sacred`=blue-to-indigo gradient, `void`=solid black; entity `transcendent`=surface gradient overlay | `atmosphere` | Gradients | `background-image` (gradient) |
+| **Visual transparency and glass** — entity `surface-glass`=blur 20px at 15% opacity; atmosphere `ethereal`=blur 10px, `vibrant`=blur 8px with glow | `atmosphere` + `entity` | Backdrop effects | `backdrop-filter` |
+| **Lifecycle transitions and temporal signaling** — `evolving`=sweeping gradient for progress, `scroll-triggered`=fade-in-up on intersection, `mentioned`=pulse highlight | `state` | Animations | `animation`, `transition`, `@keyframes` |
+| **Content availability and lifecycle** — `stable`=full visibility, `deprecated`=50% opacity + grayscale, `locked`=2px blur + disabled interaction | `state` | Opacity / filters | `opacity`, `filter` |
+| **Action-specific interaction feedback** — `navigate`=hover underline, `execute`=neon glow, `destructive`=red warning glow, all enforce 44px WCAG touch targets | `synapse` | Hover / focus | `:hover`, `:focus`, `cursor`, `transition` |
+| **Content deprecation and link discoverability** — `deprecated`=line-through for outdated; `navigate`=removes underline, restores on hover | `state` + `synapse` | Text decoration | `text-decoration` |
+
+→ **Full specification**: `/docs/specifications/ontology-html-mapping.md`
+
+## Hierarchy-Level Rules (CRITICAL)
+
+→ **Full specification**: `/docs/specifications/ontology-html-mapping.md`
+
+Each HTML element falls into a hierarchy level that determines which mixins are permitted:
+
+| Level | Element type | Required | Optional | Forbidden |
+|-------|-------------|----------|----------|-----------|
+| **1 — Page Layout** | Outermost wrapper | `environment` + `atmosphere` | — | `entity`, `cognition`, `synapse` |
+| **2 — Section** | `<header>`, `<footer>`, `<nav>`, `<aside>` | `environment` | `atmosphere`, `state` | `entity`, `cognition` |
+| **3 — Component** | Cards, widgets, alerts | `entity` | `environment`, `state`, `atmosphere` | — |
+| **4 — Leaf** | `<h1>`–`<h6>`, `<p>`, `<a>`, `<button>` | `cognition` or `synapse` | `state` | `environment`, `atmosphere`, `entity` |
+
+**Key violations to avoid:**
+- ❌ `genesis-entity()` on structural containers (Level 1/2) — entity is for visual objects only
+- ❌ `genesis-cognition()` on containers — cognition is for text elements only
+- ❌ `genesis-atmosphere()` on leaf elements — atmosphere is for containers only
+- ❌ Stacking `environment` + `entity` on Level 1/2 wrappers
+- ❌ Setting `border` or `padding` in any mixin other than `entity`
+- ❌ Setting `font-*` properties in any mixin other than `cognition`
+- ❌ Setting `background` in any mixin other than `atmosphere` (or entity surface tokens)
+
 ## Theme/Subdomain Architecture (CRITICAL)
 
 **Theme repository (this repo):**
@@ -182,6 +227,7 @@ Make executable: `chmod +x .git/hooks/pre-commit`
 ## Documentation References
 
 **Complete ontology system:**
+- `/docs/specifications/ontology-html-mapping.md` - **Formal hierarchy rules for mixin-to-HTML mapping**
 - `/docs/specifications/scss-ontology-system.md` - All 31 variants, OKLCH colors, design tokens, complete examples
 - `_sass/ontology/INTEGRATION-GUIDE.md` - Comprehensive API guide
 - `_sass/ontology/_sample.scss` - Working code examples

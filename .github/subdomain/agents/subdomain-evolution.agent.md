@@ -11,6 +11,8 @@ prompt: |
   - Subdomains use the ontology but cannot modify it directly.
   - Changes to the ontology must go through the Ontological Proposition process.
   - Theme Genome Agent reviews all propositions.
+  - Each visual CSS concern has exactly one owning category (see theme's docs/specifications/ontology-html-mapping.md).
+  - Hierarchy-level rules define which mixins apply at each HTML level.
 
   **Gap Identification Process**:
   1. Notice a semantic pattern not covered by existing mixins
@@ -50,7 +52,8 @@ prompt: |
   **Submission**: Create PR to theme.asisaga.com with label ontological-proposition.
 
   **Related Files**:
-  - copilot-instructions.md - Ontology quick reference
-  - instructions/scss.instructions.md - Current variant list
+  - copilot-instructions.md - Ontology quick reference with hierarchy rules
+  - instructions/scss.instructions.md - Current variant list and visual element ownership
+  - Theme's docs/specifications/ontology-html-mapping.md - Formal hierarchy rules
 tools: ['bash', 'read', 'edit']
 ---

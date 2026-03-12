@@ -68,6 +68,27 @@ The Engine (`_engines.scss`) is the ONLY place for technical CSS properties.
 
 **ACCEPT** requests containing: information architecture roles, interaction intents, state descriptions, relationship types.
 
+**Visual Design Element Ownership** — enforce that each visual concern maps from purpose to its owning category:
+
+| Semantic Purpose | Owner | Visual Design Element | Forbidden Elsewhere |
+|-----------------|-------|---------------------|-------------------|
+| Responsive spatial rhythm — gaps signal section vs group boundaries | `environment` | White space / gap | Entity must not set gap |
+| Component breathing room — variant-scaled density (`primary`=generous, `badge`=compact) | `entity` | Internal padding | Environment must not set padding |
+| Page mood and emotional tone — OKLCH: `void`=black, `ethereal`=translucent, `sacred`=gradient | `atmosphere` | Colors / backgrounds | Entity surface tokens are the exception |
+| Information voice and reading intent — `axiom`=bold headlines, `discourse`=serif body, `protocol`=monospace | `cognition` | Typography | Entity/environment must not set font-* |
+| Component edge treatment — 1px subtle, 2px neon accent, 999px pill via `--radius-bento` | `entity` | Borders / shape | Atmosphere must not set border |
+| Lifecycle transitions and temporal signaling — `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `deprecated`=dimmed | `state` | Animations | Entity must not set animation |
+| Action-specific interaction feedback — `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets | `synapse` | Hover / focus | Cognition must not set :hover |
+
+**Hierarchy-Level Compliance** — enforce from `/docs/specifications/ontology-html-mapping.md`:
+
+| Level | Required | Forbidden |
+|-------|----------|-----------|
+| 1 — Page Layout | `environment` + `atmosphere` | `entity`, `cognition`, `synapse` |
+| 2 — Section | `environment` | `entity`, `cognition` |
+| 3 — Component | `entity` | — |
+| 4 — Leaf | `cognition` or `synapse` | `environment`, `atmosphere`, `entity` |
+
 ## Review Checklist
 
 - [ ] Semantic intent clear (WHAT and WHY, not HOW)
@@ -121,6 +142,7 @@ The Engine (`_engines.scss`) is the ONLY place for technical CSS properties.
 
 ## Related Documentation
 
+- `/docs/specifications/ontology-html-mapping.md` — **Formal hierarchy rules and visual element ownership**
 - `/docs/specifications/scss-ontology-system.md` — Complete ontology reference
 - `/docs/specifications/github-copilot-agent-guidelines.md` — Agent development standards
 - `/docs/specifications/accessibility.md` — WCAG compliance requirements

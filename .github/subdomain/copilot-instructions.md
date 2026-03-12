@@ -106,6 +106,32 @@ If you need page-specific styling in `_sass/main.scss`:
 - ❌ NO `assets/css/custom.scss` (use `_sass/main.scss` instead)
 - ✅ ONLY ontological mixins (already available from theme via `assets/css/style.scss`)
 
+### Visual Design Element Ownership
+
+Each visual CSS concern maps from a semantic purpose through an owning ontological category. Never set a property outside its owner:
+
+| Semantic Purpose | Owner | Visual Design Element |
+|-----------------|-------|---------------------|
+| Responsive spatial rhythm — `--space-*` token gaps between grid/flex children | `environment` | White space / gap |
+| Component breathing room — `--padding-entity-*` clamps per variant density | `entity` | Internal padding |
+| Page mood and emotional tone — OKLCH: `void`=black, `ethereal`=translucent, `sacred`=gradient | `atmosphere` | Colors / backgrounds |
+| Information voice and reading intent — `axiom`=bold headlines, `discourse`=serif body, `protocol`=monospace | `cognition` | Typography |
+| Component edge treatment — 1px subtle, 2px neon accent, 999px pill via `--radius-bento` | `entity` | Borders / shape |
+| Ambient depth and spatial layering — `ethereal`=outer glow, `void`=inset shadow, `vibrant`=neon glow | `atmosphere` | Shadows / elevation |
+| Lifecycle transitions and temporal signaling — `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `mentioned`=pulse | `state` | Animations |
+| Action-specific interaction feedback — `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets | `synapse` | Hover / focus |
+
+### Hierarchy-Level Rules
+
+Subdomain content sits inside the theme layout (Level 1–2). Subdomain elements are typically Level 3–4:
+
+| Level | Required | Forbidden |
+|-------|----------|-----------|
+| 3 — Component (cards, widgets) | `entity` | — |
+| 4 — Leaf (`<h1>`, `<p>`, `<a>`, `<button>`) | `cognition` or `synapse` | `environment`, `atmosphere`, `entity` |
+
+→ **Full specification**: theme's `docs/specifications/ontology-html-mapping.md`
+
 ### Ontology Quick Reference
 
 **Six semantic categories** (31+ variants):

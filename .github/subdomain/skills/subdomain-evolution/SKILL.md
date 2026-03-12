@@ -94,8 +94,9 @@ Create PR to `theme.asisaga.com` with label `ontological-proposition`. Theme Gen
 
 ## Resources
 
-- `copilot-instructions.md` — Ontology quick reference
-- `instructions/scss.instructions.md` — All current variants listed
+- `copilot-instructions.md` — Ontology quick reference with hierarchy rules and visual element ownership
+- `instructions/scss.instructions.md` — All current variants listed with hierarchy rules
 - Theme's `.github/.github/docs/agent-philosophy.md` — Full proposition process and review criteria
+- Theme's `docs/specifications/ontology-html-mapping.md` — Formal hierarchy rules
 
 **Related Skills**: content-author, scss-compliance

@@ -65,9 +65,9 @@ export function createAlertCard(data) {
   if (title) {
     if (data.title) {
       title.textContent = data.title;
-      title.style.display = '';
+      title.hidden = false;
     } else {
-      title.style.display = 'none';
+      title.hidden = true;
     }
   }
   
@@ -81,7 +81,7 @@ export function createAlertCard(data) {
   const dismissButton = card.querySelector('.wc-alert-card__dismiss');
   if (dismissButton) {
     if (data.dismissible) {
-      dismissButton.style.display = '';
+      dismissButton.hidden = false;
       dismissButton.addEventListener('click', () => {
         card.remove();
       });

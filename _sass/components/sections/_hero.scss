@@ -46,6 +46,16 @@
   @include genesis-entity('latent');  // Background layer
 }
 
+// Hero background image — uses CSS custom property set via HTML style attribute
+// NOTE: background-size/position are required here because genesis-entity('image-adaptive')
+// handles <img> elements via object-fit, not CSS background images.
+.hero-section__image {
+  @include genesis-entity('image-adaptive');  // Responsive image surface (Level 3)
+  background-image: var(--hero-bg);
+  background-size: cover;
+  background-position: center;
+}
+
 // Hero background image - dynamic background set via data attribute or CSS variable
 .hero-background-image-dynamic {
   @include genesis-entity('image-adaptive');

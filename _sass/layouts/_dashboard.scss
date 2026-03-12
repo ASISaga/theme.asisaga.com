@@ -22,26 +22,20 @@
   height: 100%;
 }
 
-// Header section from layout-header.html include
+// Header section from layout-header.html include (Level 2: section)
 .dashboard__header {
-  // Structural section: transparent, layout-only
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include genesis-environment('associative');  // Horizontal layout
 }
 
 .dashboard__title {
-  @include genesis-cognition('axiom');      // Headline
+  @include genesis-cognition('axiom');      // Level 4: headline
 }
 
-// Actions section (custom for dashboard)
+// Actions section (Level 2: section)
 .dashboard__actions {
   @include genesis-environment('associative'); // Horizontal flex
-  
-  display: flex;
-  gap: 0.5rem;
 }
 
 .dashboard__action-btn {
-  @include genesis-synapse('execute');      // Action button
+  @include genesis-synapse('execute');      // Level 4: action button
 }

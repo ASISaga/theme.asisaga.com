@@ -72,9 +72,9 @@
   // Structural sidebar: transparent, layout-only
 }
 
-// Stats section
+// Stats section (Level 2: section container for stat items)
 .profile__stats {
-  @include genesis-entity('aggregate');     // Stats container
+  @include genesis-environment('distributed'); // Grid of stat items
 }
 
 .profile__stats-title {

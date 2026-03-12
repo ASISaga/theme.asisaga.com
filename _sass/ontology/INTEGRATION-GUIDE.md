@@ -6,6 +6,7 @@
 > - [Ontology System Overview](../../docs/systems/ontology/README.md) - System introduction
 > - [Quick Start](../../docs/systems/ontology/ONTOLOGY-QUICK-START.md) - Getting started
 > - [Migration Guide](../../docs/systems/ontology/ONTOLOGY-MIGRATION-GUIDE.md) - Legacy migration
+> - [Ontology-to-HTML Mapping](../../docs/specifications/ontology-html-mapping.md) - **Formal hierarchy rules for which mixins to apply at each HTML level**
 
 ---
 
@@ -586,7 +587,7 @@ Your SCSS nesting should perfectly mirror your HTML DOM hierarchy.
   @include genesis-environment('focused');
   
   .intro-section {
-    @include genesis-entity('primary');
+    @include genesis-environment('associative'); // Section: environment only
     
     .hub-title {
       @include genesis-cognition('axiom');
@@ -595,7 +596,24 @@ Your SCSS nesting should perfectly mirror your HTML DOM hierarchy.
 }
 ```
 
-### 4. Single Responsibility
+### 4. Hierarchy-Level Rules
+
+Each element has a hierarchy level that determines which mixins are permitted.
+→ **Full specification**: `docs/specifications/ontology-html-mapping.md`
+
+| Level | Element type | Required | Forbidden |
+|-------|-------------|----------|-----------|
+| **1 — Page Layout** | Outermost wrapper | `environment` + `atmosphere` | `entity`, `cognition`, `synapse` |
+| **2 — Section** | `<header>`, `<footer>`, `<nav>`, `<aside>` | `environment` | `entity`, `cognition` |
+| **3 — Component** | Cards, widgets, alerts | `entity` | — |
+| **4 — Leaf** | `<h1>`–`<h6>`, `<p>`, `<a>`, `<button>` | `cognition` or `synapse` | `environment`, `atmosphere`, `entity` |
+
+**Critical violations:**
+- ❌ `genesis-entity()` on structural containers (Level 1/2) — entity is for visual objects only
+- ❌ `genesis-cognition()` on containers — cognition is for text elements only
+- ❌ `genesis-atmosphere()` on leaf elements — atmosphere is for containers only
+
+### 5. Single Responsibility
 Apply one primary mixin from each category as needed:
 - One `genesis-environment` per layout container
 - One `genesis-entity` per content block
@@ -612,6 +630,7 @@ Before committing subdomain SCSS, verify:
 - [ ] **Semantic Purity**: HTML uses semantic tags (`<article>`, `<section>`, etc.) correctly
 - [ ] **Property Isolation**: SCSS contains NO raw CSS properties (no `px`, `rem`, `color`, `display`, etc.)
 - [ ] **Role Alignment**: Buttons mapped to `synapse`, titles to `axiom`, etc.
+- [ ] **Hierarchy Compliance**: Level 1/2 containers use `environment` only — never `entity` or `cognition`
 - [ ] **Theme Inheritance**: Subdomain relies entirely on `_engines.scss` for visual weight
 - [ ] **Mirrored Structure**: SCSS nesting matches HTML DOM hierarchy exactly
 
