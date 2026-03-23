@@ -95,11 +95,13 @@
   font-weight: 700;
   color: oklch(1 0 0);
 
-  &--jd { background: oklch(0.5 0.15 250); }
-  &--sj { background: oklch(0.55 0.15 145); }
-  &--mp { background: oklch(0.65 0.15 85); }
-  &--you { background: oklch(0.5 0.15 210); }
-  &--ec { background: oklch(0.55 0.2 25); }
+  // Avatar colors use distinct hue ranges for visual differentiation
+  // in multi-user contexts (blue, green, amber, cyan, red)
+  &--jd { background: oklch(0.5 0.15 250); }  // blue
+  &--sj { background: oklch(0.55 0.15 145); } // green
+  &--mp { background: oklch(0.65 0.15 85); }  // amber
+  &--you { background: oklch(0.5 0.15 210); } // cyan
+  &--ec { background: oklch(0.55 0.2 25); }   // red
 }
 
 .chatroom__message-body {
