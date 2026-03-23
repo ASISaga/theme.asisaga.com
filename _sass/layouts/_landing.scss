@@ -14,6 +14,10 @@
  * - landing__cta-title
  * - landing__cta-description
  * - landing__cta-button
+ * - landing__proof (support section)
+ * - landing__detail (depth section)
+ * - landing__pillars (3-column feature grid)
+ * - landing__voices (testimonials without cards)
  */
 
 
@@ -69,4 +73,60 @@
 
 .landing__cta-button {
   @include genesis-synapse('execute');          // Primary CTA
+}
+
+// ============================================================================
+// Sample content sections (used by sample-landing.html and subdomain pages)
+// ============================================================================
+
+// Support / proof section — centered single-column
+.landing__proof {
+  text-align: center;
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.landing__proof-headline {
+  @include genesis-cognition('axiom');
+}
+
+.landing__proof-body {
+  @include genesis-cognition('discourse');
+}
+
+// Detail / depth section — pillar grid
+.landing__detail {
+  // Structural section: layout-only
+}
+
+.landing__pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.landing__pillar {
+  // Each pillar is a lightweight article — no card wrapper
+}
+
+// Voices / testimonials without cards
+.landing__voices {
+  text-align: center;
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.landing__voices-headline {
+  @include genesis-cognition('axiom');
+}
+
+.landing__quotes {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.landing__quote {
+  @include genesis-entity('secondary');
+  text-align: left;
 }
