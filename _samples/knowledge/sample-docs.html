@@ -1,14 +1,13 @@
 ---
 layout: docs
-title: "Documentation Home"
+title: "Getting Started"
 search: true
 breadcrumbs:
   - title: "Home"
     url: "/"
-  - title: "Documentation"
+  - title: "Docs"
     url: "/docs"
   - title: "Getting Started"
-    url: "/docs/getting-started"
 nav_items:
   - title: "Getting Started"
     url: "/docs/getting-started"
@@ -17,7 +16,7 @@ nav_items:
     children:
       - title: "Base Templates"
         url: "/docs/layouts/base"
-      - title: "Specialized Layouts"
+      - title: "Specialized"
         url: "/docs/layouts/specialized"
   - title: "Components"
     url: "/docs/components"
@@ -31,88 +30,62 @@ next:
   url: "/docs/layout-basics"
 ---
 
-# Getting Started
-
-Welcome to the documentation! This page demonstrates the **docs layout**, designed for documentation sites with sidebar navigation and breadcrumbs.
+This page walks you through installing the theme and building your first page.
 
 ## Prerequisites
 
-Before you begin, ensure you have:
-
-- Jekyll 4.0 or higher
-- Ruby 2.7 or higher
-- Basic knowledge of Markdown and YAML
+- Jekyll 4.0+
+- Ruby 2.7+
+- Familiarity with YAML front matter
 
 ## Installation
 
-### Step 1: Clone the Repository
+### 1. Clone
 
 ```bash
-git clone https://github.com/your-repo/theme.git
-cd theme
+git clone https://github.com/ASISaga/theme.asisaga.com.git
+cd theme.asisaga.com
 ```
 
-### Step 2: Install Dependencies
+### 2. Install dependencies
 
 ```bash
 bundle install
 ```
 
-### Step 3: Run the Development Server
+### 3. Serve locally
 
 ```bash
 bundle exec jekyll serve
 ```
 
-Your site will be available at `http://localhost:4000`.
+Open `http://localhost:4000`.
 
-## Basic Usage
+## Your first page
 
-### Creating a Page
-
-Create a new Markdown file in your project:
-
-```markdown
----
-layout: post
-title: "My First Post"
----
-
-# Hello World
-
-This is my first post!
-```
-
-### Using Layouts
-
-Choose from our comprehensive layout collection:
-
-- **Content Layouts**: post, article, archive, profile
-- **Marketing Layouts**: landing, gallery, form
-- **Knowledge Layouts**: docs, faq
-- **Application Layouts**: dashboard, chatroom, search, settings
-- **Utility Layouts**: minimal, splash
-
-## Configuration
-
-Edit `_config.yml` to customize your site:
+Create a file with front matter specifying the layout:
 
 ```yaml
-title: Your Site Title
-description: Your site description
-theme: your-theme-name
+---
+layout: post
+title: "Hello World"
+---
 ```
 
-## Next Steps
+Write your content below the front matter block. The layout handles typography, spacing, and responsive behavior.
 
-- Learn about [Layout Basics](/docs/layout-basics)
-- Explore [Components](/docs/components)
-- Check out [Customization Options](/docs/customization)
+## Available layouts
 
-## Need Help?
+| Category | Layouts |
+|----------|---------|
+| Content | post, article, archive, profile |
+| Marketing | landing, gallery, form |
+| Knowledge | docs, faq |
+| Application | dashboard, chatroom, search, settings |
+| Utility | minimal, splash |
 
-If you encounter any issues:
+## Next steps
 
-1. Check the [FAQ](/faq)
-2. Search the [documentation](/docs)
-3. Open an issue on [GitHub](https://github.com/your-repo/theme/issues)
+- Read [Layout Basics](/docs/layout-basics) to understand the hierarchy
+- Browse [Components](/docs/components) for reusable includes
+- Check [Customization](/docs/customization) for token overrides

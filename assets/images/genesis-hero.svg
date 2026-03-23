@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#16213e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f3460"/>
+      <stop offset="100%" stop-color="#533483"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <circle cx="400" cy="250" r="120" fill="url(#accent)" opacity="0.3"/>
+  <circle cx="400" cy="250" r="80" fill="url(#accent)" opacity="0.5"/>
+  <circle cx="400" cy="250" r="40" fill="#533483" opacity="0.7"/>
+  <circle cx="400" cy="250" r="8" fill="#e94560"/>
+  <!-- Grid lines -->
+  <line x1="100" y1="0" x2="100" y2="500" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  <line x1="200" y1="0" x2="200" y2="500" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  <line x1="300" y1="0" x2="300" y2="500" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  <line x1="400" y1="0" x2="400" y2="500" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  <line x1="500" y1="0" x2="500" y2="500" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="500" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  <line x1="700" y1="0" x2="700" y2="500" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  <line x1="0" y1="100" x2="800" y2="100" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  <line x1="0" y1="200" x2="800" y2="200" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  <line x1="0" y1="300" x2="800" y2="300" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  <line x1="0" y1="400" x2="800" y2="400" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+</svg>

@@ -1,123 +1,81 @@
 ---
 layout: chatroom
-title: "Development Team Chat"
+title: "Development Team"
 participants: 12
 ---
 
-<!-- Sample messages for chatroom interface -->
 <div class="message-list">
-  <!-- Message from user 1 -->
-  <div class="message mb-3">
-    <div class="d-flex align-items-start">
-      <div class="avatar bg-primary text-white rounded-circle me-3 flex-shrink-0">
-        <strong>JD</strong>
-      </div>
-      <div class="message-content flex-grow-1">
-        <div class="message-header mb-1">
-          <strong class="me-2">John Doe</strong>
-          <small class="text-muted">10:23 AM</small>
-        </div>
-        <div class="message-body bg-light p-3 rounded">
-          <p class="mb-0">Hey team, I just pushed the latest updates to the layout system. Can someone review the PR?</p>
-        </div>
+  <div class="chatroom__message">
+    <div class="chatroom__message-row">
+      <span class="chatroom__avatar chatroom__avatar--jd" aria-hidden="true">JD</span>
+      <div class="chatroom__message-body">
+        <header class="chatroom__message-meta">
+          <strong class="chatroom__author">John Doe</strong>
+          <time class="chatroom__time">10:23 AM</time>
+        </header>
+        <p class="chatroom__text">Just pushed the layout system updates. Can someone review the PR?</p>
       </div>
     </div>
   </div>
 
-  <!-- Message from user 2 -->
-  <div class="message mb-3">
-    <div class="d-flex align-items-start">
-      <div class="avatar bg-success text-white rounded-circle me-3 flex-shrink-0">
-        <strong>SJ</strong>
-      </div>
-      <div class="message-content flex-grow-1">
-        <div class="message-header mb-1">
-          <strong class="me-2">Sarah Johnson</strong>
-          <small class="text-muted">10:25 AM</small>
-        </div>
-        <div class="message-body bg-light p-3 rounded">
-          <p class="mb-0">Sure! I'll take a look this afternoon. The new layouts look great btw! 🎉</p>
-        </div>
+  <div class="chatroom__message">
+    <div class="chatroom__message-row">
+      <span class="chatroom__avatar chatroom__avatar--sj" aria-hidden="true">SJ</span>
+      <div class="chatroom__message-body">
+        <header class="chatroom__message-meta">
+          <strong class="chatroom__author">Sarah Johnson</strong>
+          <time class="chatroom__time">10:25 AM</time>
+        </header>
+        <p class="chatroom__text">On it this afternoon. The new layouts look great 🎉</p>
       </div>
     </div>
   </div>
 
-  <!-- Message from user 3 -->
-  <div class="message mb-3">
-    <div class="d-flex align-items-start">
-      <div class="avatar bg-warning text-dark rounded-circle me-3 flex-shrink-0">
-        <strong>MP</strong>
-      </div>
-      <div class="message-content flex-grow-1">
-        <div class="message-header mb-1">
-          <strong class="me-2">Mike Park</strong>
-          <small class="text-muted">10:27 AM</small>
-        </div>
-        <div class="message-body bg-light p-3 rounded">
-          <p class="mb-0">Quick question - are we using the fixed-height layout for all application pages?</p>
-        </div>
+  <div class="chatroom__message">
+    <div class="chatroom__message-row">
+      <span class="chatroom__avatar chatroom__avatar--mp" aria-hidden="true">MP</span>
+      <div class="chatroom__message-body">
+        <header class="chatroom__message-meta">
+          <strong class="chatroom__author">Mike Park</strong>
+          <time class="chatroom__time">10:27 AM</time>
+        </header>
+        <p class="chatroom__text">Are we using fixed-height for all app pages?</p>
       </div>
     </div>
   </div>
 
-  <!-- Current user message (right-aligned) -->
-  <div class="message mb-3">
-    <div class="d-flex align-items-start flex-row-reverse">
-      <div class="avatar bg-info text-white rounded-circle ms-3 flex-shrink-0">
-        <strong>You</strong>
+  <div class="chatroom__message chatroom__message--own">
+    <div class="chatroom__message-row">
+      <div class="chatroom__message-body">
+        <header class="chatroom__message-meta">
+          <time class="chatroom__time">10:28 AM</time>
+          <strong class="chatroom__author">You</strong>
+        </header>
+        <p class="chatroom__text">Yes — fixed-height is recommended for dashboards, chat, and settings.</p>
       </div>
-      <div class="message-content flex-grow-1">
-        <div class="message-header mb-1 text-end">
-          <small class="text-muted me-2">10:28 AM</small>
-          <strong>You</strong>
-        </div>
-        <div class="message-body bg-primary text-white p-3 rounded">
-          <p class="mb-0">Yes, the fixed-height layout is recommended for all app-style interfaces like dashboards, chats, and settings.</p>
-        </div>
+      <span class="chatroom__avatar chatroom__avatar--you" aria-hidden="true">Y</span>
+    </div>
+  </div>
+
+  <div class="chatroom__system-message">
+    <em>Emma Chen joined the chat</em>
+  </div>
+
+  <div class="chatroom__message">
+    <div class="chatroom__message-row">
+      <span class="chatroom__avatar chatroom__avatar--ec" aria-hidden="true">EC</span>
+      <div class="chatroom__message-body">
+        <header class="chatroom__message-meta">
+          <strong class="chatroom__author">Emma Chen</strong>
+          <time class="chatroom__time">10:30 AM</time>
+        </header>
+        <p class="chatroom__text">Just saw the docs update. Very thorough 📚</p>
       </div>
     </div>
   </div>
 
-  <!-- System message -->
-  <div class="message mb-3">
-    <div class="text-center">
-      <small class="text-muted">
-        <em>Emma Chen joined the chat</em>
-      </small>
-    </div>
-  </div>
-
-  <!-- Message from user 4 -->
-  <div class="message mb-3">
-    <div class="d-flex align-items-start">
-      <div class="avatar bg-danger text-white rounded-circle me-3 flex-shrink-0">
-        <strong>EC</strong>
-      </div>
-      <div class="message-content flex-grow-1">
-        <div class="message-header mb-1">
-          <strong class="me-2">Emma Chen</strong>
-          <small class="text-muted">10:30 AM</small>
-        </div>
-        <div class="message-body bg-light p-3 rounded">
-          <p class="mb-0">Hi everyone! Just saw the new documentation. Very comprehensive! 📚</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Typing indicator -->
-  <div class="message mb-3">
-    <div class="d-flex align-items-start">
-      <div class="avatar bg-secondary text-white rounded-circle me-3 flex-shrink-0">
-        <strong>JD</strong>
-      </div>
-      <div class="message-content flex-grow-1">
-        <div class="message-header mb-1">
-          <small class="text-muted">
-            <em>John Doe is typing...</em>
-          </small>
-        </div>
-      </div>
-    </div>
+  <div class="chatroom__typing">
+    <span class="chatroom__avatar chatroom__avatar--jd" aria-hidden="true">JD</span>
+    <em class="chatroom__typing-text">John Doe is typing…</em>
   </div>
 </div>

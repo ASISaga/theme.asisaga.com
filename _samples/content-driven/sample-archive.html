@@ -1,38 +1,51 @@
 ---
 layout: archive
-title: "Blog Archive"
-description: "Browse all blog posts and articles"
+title: "Archive"
+description: "All posts and articles, newest first."
 show_filters: true
 show_sort: true
 show_view_toggle: true
 show_pagination: true
 ---
 
-<!-- Archive items would be dynamically generated here -->
-<!-- This is a sample demonstrating the structure -->
+<article class="archive-item">
+  <div class="archive-item__content">
+    <h3 class="archive-item__title">
+      <a href="/samples/content-driven/sample-post.html" class="archive-item__link">Getting Started with Jekyll Layouts</a>
+    </h3>
+    <time datetime="2024-01-15" class="archive-item__date">January 15, 2024</time>
+    <p class="archive-item__excerpt">The layout system that ships with every page type and how to use it.</p>
+    <div class="archive-item__tags">
+      <span class="archive-item__tag">Jekyll</span>
+      <span class="archive-item__tag">Tutorial</span>
+    </div>
+  </div>
+</article>
 
-{% include layouts/archive/archive-item.html 
-  title="Getting Started with Jekyll Layouts"
-  url="/samples/content-driven/sample-post.html"
-  date="2024-01-15"
-  excerpt="Learn how to use the various Jekyll layouts in this comprehensive guide."
-  tags=["Jekyll", "Tutorial"]
-  image="https://via.placeholder.com/400x300"
-%}
+<article class="archive-item">
+  <div class="archive-item__content">
+    <h3 class="archive-item__title">
+      <a href="/samples/content-driven/sample-article.html" class="archive-item__link">The Architecture of Modern Web Layouts</a>
+    </h3>
+    <time datetime="2024-01-20" class="archive-item__date">January 20, 2024</time>
+    <p class="archive-item__excerpt">From table hacks to CSS Grid, a history of layout on the web.</p>
+    <div class="archive-item__tags">
+      <span class="archive-item__tag">CSS</span>
+      <span class="archive-item__tag">Architecture</span>
+    </div>
+  </div>
+</article>
 
-{% include layouts/archive/archive-item.html 
-  title="The Complete Guide to Modern Web Layouts"
-  url="/samples/content-driven/sample-article.html"
-  date="2024-01-20"
-  excerpt="A comprehensive exploration of layout patterns in modern web development."
-  tags=["Web Development", "Layouts"]
-  image="https://via.placeholder.com/400x300"
-%}
-
-{% include layouts/archive/archive-item.html 
-  title="Building Responsive Galleries"
-  url="#"
-  date="2024-01-10"
-  excerpt="Create beautiful, responsive image galleries with the gallery layout."
-  tags=["Gallery", "Responsive"]
-%}
+<article class="archive-item">
+  <div class="archive-item__content">
+    <h3 class="archive-item__title">
+      <a href="#" class="archive-item__link">Building Responsive Galleries</a>
+    </h3>
+    <time datetime="2024-01-10" class="archive-item__date">January 10, 2024</time>
+    <p class="archive-item__excerpt">Image-led grids that reflow gracefully from phone to ultrawide.</p>
+    <div class="archive-item__tags">
+      <span class="archive-item__tag">Gallery</span>
+      <span class="archive-item__tag">Responsive</span>
+    </div>
+  </div>
+</article>
