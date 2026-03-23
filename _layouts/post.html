@@ -1,13 +1,28 @@
 ---
 layout: default
 ---
+{% assign post_image = page.image | default: "" %}
+
+{% if post_image != "" %}
+{% include transcendent-hero.html
+   title=page.title
+   description=page.description
+   image=post_image
+   image_alt=page.title
+   size="compact"
+   button_text=""
+%}
+{% endif %}
+
 <genesis-environment logic="focused">
   <genesis-entity nature="primary">
     <article class="post-layout">
+      {% if post_image == "" %}
       {% include layouts/layout-header.html
          class_prefix="post"
          title=page.title
       %}
+      {% endif %}
       
       {% include layouts/content-meta.html
          class_prefix="post"

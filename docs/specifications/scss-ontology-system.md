@@ -12,6 +12,7 @@ Defines spatial arrangement and layout logic:
 - `'focused'` - Single column for deep reading (max 70ch, centered)
 - `'associative'` - Network layout where connections matter (flexbox wrap)
 - `'chronological'` - Time-linear vertical stream (timeline, feed)
+- `'editorial-feed'` - Featured-first editorial stream (lead item + supporting list)
 - `'manifest'` - High-density dashboard (12-column grid, monitoring)
 
 ### 2. `genesis-entity($nature)` - Visual Presence
@@ -20,6 +21,7 @@ Defines glassmorphism and visual weight:
 
 - `'primary'` - Main content object (active glassmorphism, elevated)
 - `'secondary'` - Supporting contextual data (lighter glass, less prominent)
+- `'editorial'` - Card-less editorial entry (divider-led, typographic, listing-friendly)
 - `'imperative'` - System-critical urgent signal (pulsing neon border, alert)
 - `'latent'` - Dormant/inactive content (dimmed, grayscale filter)
 - `'aggregate'` - Container for multiple items (larger padding, wrapper)
@@ -30,6 +32,7 @@ Defines glassmorphism and visual weight:
 Defines typography based on semantic meaning:
 
 - `'axiom'` - Foundational headlines (2-3.5rem, bold, high-resonance)
+- `'heading'` - Secondary headings (1.25-1.75rem, titles and section structure)
 - `'discourse'` - Standard body prose (1-1.125rem, serif, readable)
 - `'protocol'` - Technical/code content (monospace, code styling)
 - `'gloss'` - Minor annotations/citations (0.8-0.875rem, muted)
@@ -64,6 +67,7 @@ Defines emotional tone and sensory feel:
 - `'ethereal'` - High-transparency, light focus (bright, minimal, peaceful)
 - `'void'` - Deep-space, high-contrast (dark, immersive, zero distraction)
 - `'vibrant'` - High-energy, data-saturated (colorful, energetic, neon)
+- `'cosmic'` - Deep-space editorial atmosphere (immersive, expansive, star-field depth)
 
 ## Color Philosophy - OKLCH Values
 

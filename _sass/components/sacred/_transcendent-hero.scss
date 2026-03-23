@@ -45,6 +45,64 @@
   &.standard {
     min-height: 80vh;
   }
+
+  &.compact {
+    min-height: clamp(24rem, 60vh, 40rem);
+  }
+
+  &--with-image {
+    .consciousness-background {
+      opacity: 0.4;
+    }
+
+    .transcendent-hero-content {
+      text-align: left;
+    }
+
+    .transcendent-hero-row {
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    .transcendent-hero-col {
+      margin-left: 0;
+      margin-right: auto;
+      max-width: min(100%, 42rem);
+    }
+
+    .transcendent-hero-title,
+    .transcendent-hero-description {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .transcendent-hero-actions,
+    .consciousness-indicators {
+      justify-content: flex-start;
+    }
+  }
+}
+
+.transcendent-hero__image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--hero-image);
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      oklch(0.05 0.02 260 / 0.88) 0%,
+      oklch(0.05 0.02 260 / 0.58) 48%,
+      oklch(0.05 0.02 260 / 0.24) 100%
+    );
+  }
 }
 
 // Consciousness Background Animation System
@@ -366,6 +424,28 @@
     
     &.full {
       min-height: 90vh;
+    }
+  }
+
+  .transcendent-hero--with-image {
+    .transcendent-hero-content,
+    .transcendent-hero-row {
+      text-align: center;
+    }
+
+    .transcendent-hero-col {
+      margin-left: auto;
+    }
+
+    .transcendent-hero-title,
+    .transcendent-hero-description {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .transcendent-hero-actions,
+    .consciousness-indicators {
+      justify-content: center;
     }
   }
   

@@ -7,7 +7,7 @@
  *   </genesis-cognition>
  * 
  * Attributes:
- *   - intent: axiom|discourse|protocol|gloss|motive|quantum
+ *   - intent: axiom|heading|discourse|protocol|gloss|motive|quantum
  * 
  * SCSS Integration:
  *   genesis-cognition {
@@ -24,6 +24,10 @@ import { presets } from './motion-presets.js';
 const COGNITION_ANIMATIONS = {
   axiom: {
     entrance: 'fadeInDown',
+    hover: null,
+  },
+  heading: {
+    entrance: 'fadeIn',
     hover: null,
   },
   discourse: {

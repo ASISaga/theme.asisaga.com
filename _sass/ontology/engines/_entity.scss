@@ -29,6 +29,33 @@
     border: 1px solid oklch(0.88 0.005 220);  // Lighter border
     padding: var(--padding-entity-secondary, clamp(1rem, 2vw, 1.5rem));
   }
+  @else if $nature == 'editorial' {
+    // Editorial content entry - typographic object without card chrome
+    background: transparent;
+    border: 0;
+    border-top: 1px solid oklch(0.90 0.005 220);
+    border-radius: 0;
+    box-shadow: none;
+    padding: var(--padding-entity-secondary, clamp(1rem, 2vw, 1.5rem)) 0;
+
+    &.editorial-featured {
+      border-top: 2px solid oklch(0.70 0.15 85);
+      padding-top: var(--padding-entity-aggregate, clamp(2rem, 4vw, 3rem));
+    }
+
+    &:hover {
+      border-top-color: oklch(0.75 0.10 85);
+    }
+
+    @media (prefers-contrast: high) {
+      border-top-color: oklch(0.50 0 0);
+
+      &.editorial-featured {
+        border-top-color: oklch(0.60 0 0);
+        border-top-width: 3px;
+      }
+    }
+  }
   @else if $nature == 'imperative' {
     // System-critical, high-urgency signal - White with neon blue accent (purposeful)
     background: oklch(0.99 0.005 90);  // White background

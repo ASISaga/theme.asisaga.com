@@ -15,7 +15,7 @@
  *   }
  * 
  * Attributes:
- *   - vibe: neutral|ethereal|void|vibrant|spacious-mobile|dense-desktop|viewport-aware
+ *   - vibe: neutral|ethereal|void|vibrant|cosmic|spacious-mobile|dense-desktop|viewport-aware
  * 
  * Philosophy:
  *   - No inline HTML/SCSS - pure atmosphere control
@@ -95,6 +95,9 @@ export class GenesisAtmosphere extends HTMLElement {
       case 'vibrant':
         this._applyVibrantContext();
         break;
+      case 'cosmic':
+        this._applyCosmicContext();
+        break;
       case 'spacious-mobile':
         this._applySpaciousContext();
         break;
@@ -121,6 +124,7 @@ export class GenesisAtmosphere extends HTMLElement {
       'ethereal': '0.8',
       'void': '1.0',
       'vibrant': '1.0',
+      'cosmic': '0.9',
       'spacious-mobile': '0.6',
       'dense-desktop': '0.4',
       'viewport-aware': '0.5',
@@ -132,6 +136,7 @@ export class GenesisAtmosphere extends HTMLElement {
       'ethereal': '0.3',
       'void': '0.2',
       'vibrant': '0.7',
+      'cosmic': '0.3',
       'spacious-mobile': '0.2',
       'dense-desktop': '0.8',
       'viewport-aware': '0.5',
@@ -173,6 +178,15 @@ export class GenesisAtmosphere extends HTMLElement {
     // High energy, data-saturated, neon
     // Behavior: Enhanced contrast
     this.dataset.highContrast = 'true';
+  }
+
+  /**
+   * Apply cosmic atmospheric context
+   * @private
+   */
+  _applyCosmicContext() {
+    this.dataset.depth = 'cosmic';
+    this._reduceMotionIfPreferred();
   }
 
   /**

@@ -7,7 +7,7 @@
  *   </genesis-entity>
  * 
  * Attributes:
- *   - nature: primary|secondary|imperative|latent|aggregate|ancestral
+ *   - nature: primary|secondary|editorial|imperative|latent|aggregate|ancestral
  *   - scroll-reveal: Enable scroll-triggered animation
  * 
  * SCSS Integration:
@@ -28,6 +28,10 @@ const ENTITY_ANIMATIONS = {
     hover: 'cardHover',
   },
   secondary: {
+    entrance: 'fadeIn',
+    hover: 'subtle',
+  },
+  editorial: {
     entrance: 'fadeIn',
     hover: 'subtle',
   },
