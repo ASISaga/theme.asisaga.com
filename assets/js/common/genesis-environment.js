@@ -15,7 +15,7 @@
  *   }
  * 
  * Attributes:
- *   - logic: distributed|focused|associative|chronological|manifest|
+ *   - logic: distributed|focused|associative|chronological|editorial-feed|manifest|
  *            navigation-primary|navigation-secondary|navigation-tabs|
  *            navigation-sidebar|navigation-footer|navigation-breadcrumb|
  *            navigation-pagination|navigation-accordion|

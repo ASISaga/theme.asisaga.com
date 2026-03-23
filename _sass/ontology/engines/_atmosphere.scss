@@ -39,6 +39,86 @@
     backdrop-filter: blur(8px);
     // Border omitted: border/padding responsibility belongs to genesis-entity
   }
+  @else if $vibe == 'cosmic' {
+    // Deep-space backdrop for editorial and mission-adjacent sections
+    background:
+      radial-gradient(
+        ellipse at 20% 50%,
+        oklch(0.12 0.04 260 / 0.8) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse at 80% 20%,
+        oklch(0.10 0.03 250 / 0.6) 0%,
+        transparent 50%
+      ),
+      oklch(0.09 0.02 255);
+    color: oklch(0.92 0.005 90);
+    position: relative;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    li,
+    blockquote,
+    figcaption,
+    small,
+    time,
+    span {
+      color: oklch(0.92 0.005 90);
+    }
+
+    a {
+      color: oklch(0.95 0.03 235);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, oklch(0.99 0 0 / 0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 40% 70%, oklch(0.99 0 0 / 0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 15%, oklch(0.99 0 0 / 0.25) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (prefers-contrast: high) {
+      background: oklch(0.05 0 0);
+      color: oklch(0.99 0 0);
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      li,
+      blockquote,
+      figcaption,
+      small,
+      time,
+      span,
+      a {
+        color: oklch(0.99 0 0);
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+  }
   @else if $vibe == 'spacious-mobile' {
     // Content that needs generous spacing on mobile for touch-friendliness
     // padding/margin responsibility belongs to genesis-entity and genesis-environment.

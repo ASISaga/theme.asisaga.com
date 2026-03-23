@@ -81,6 +81,38 @@
     gap: var(--space-timeline, clamp(1rem, 2vw, 1.5rem));
     position: relative;
   }
+  @else if $logic == 'editorial-feed' {
+    // Editorial stream with promoted lead item and compact supporting entries
+    --color-editorial-separator: oklch(0.75 0.10 85 / 0.5);
+    grid-template-columns: 1fr;
+    gap: var(--space-editorial, clamp(0.75rem, 1.5vw, 1rem));
+    position: relative;
+
+    > :first-child {
+      padding-bottom: clamp(2rem, 4vw, 3rem);
+      margin-bottom: clamp(1rem, 2vw, 1.5rem);
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--color-editorial-separator),
+          transparent
+        );
+      }
+    }
+
+    @media (min-width: 1024px) {
+      gap: var(--space-editorial-desktop, clamp(1rem, 2vw, 1.5rem));
+    }
+  }
   @else if $logic == 'manifest' {
     // High-density dashboard for system oversight - responsive grid
     gap: var(--space-tight, clamp(0.75rem, 1.5vw, 1rem));
