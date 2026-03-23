@@ -27,9 +27,6 @@
   max-width: 1200px;
   margin-inline: auto;
   padding-inline: clamp(1rem, 3vw, 2rem);
-  
-  contain: layout style;
-  isolation: isolate;
 }
 
 // Wider wrappers for dashboard/settings
@@ -39,9 +36,6 @@
   max-width: 1600px;
   margin-inline: auto;
   padding-inline: clamp(1rem, 3vw, 2rem);
-  
-  contain: layout style;
-  isolation: isolate;
 }
 
 // ----------------------------------------

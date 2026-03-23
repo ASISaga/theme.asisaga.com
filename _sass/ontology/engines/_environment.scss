@@ -11,86 +11,67 @@
 // SPATIAL ENGINE - Environment Layout Logic
 // ============================================================================
 @mixin _theme-engine-environment($logic) {
-  display: grid;
-  contain: layout style;
-  isolation: isolate;
-  
   @if $logic == 'distributed' {
     // Autonomous entities in non-linear grid (Bento) - responsive by default
+    display: grid;
     container-type: inline-size;
-    
-    // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
     width: 100%;
     max-width: 100%;
-    
-    // TRACK-TO-ITEM STRETCHING - Items fill column width
     justify-items: stretch;
     
-    // Mobile: single column for clarity
     @media (max-width: 767px) {
       grid-template-columns: 1fr;
       gap: 1.5rem;
     }
     
-    // Tablet: 2 columns
     @media (min-width: 768px) and (max-width: 1023px) {
       grid-template-columns: repeat(2, 1fr);
       gap: 1.75rem;
     }
     
-    // Desktop: auto-fit with min/max (responsive to ultra-small screens)
     @media (min-width: 1024px) {
       grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
       gap: 2rem;
-      justify-content: center;  // Center tracks to prevent right-side drift
     }
     
-    // Ultrawide: cap at 4 columns for readability
     @media (min-width: 1920px) {
       grid-template-columns: repeat(4, 1fr);
       max-width: 1600px;
-      margin-inline: auto;  // Explicit inline centering for consistency
-      justify-content: center;
+      margin-inline: auto;
     }
   } 
   @else if $logic == 'focused' {
     // Singular narrative thread for deep reading
+    display: grid;
     grid-template-columns: 1fr;
     max-width: var(--width-reading, 70ch);
     margin-inline: auto;
-    gap: var(--space-narrative, clamp(1.5rem, 2.5vw, 2rem));
+    gap: var(--space-narrative, clamp(1.25rem, 2vw, 1.75rem));
     padding-inline: var(--padding-inline, clamp(1rem, 3vw, 2rem));
   }
   @else if $logic == 'associative' {
     // Network where connections outweigh nodes
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-network, clamp(1rem, 2vw, 1.5rem));
-    justify-content: center;
-    align-items: flex-start;
-    
-    // Responsive growth: items must be at least their minimum or 100% of the container,
-    // whichever is smaller — prevents unreadable slivers inside narrow manifest grids.
-    > * {
-      min-width: min(100%, var(--associative-min-width, 280px));
-    }
+    gap: var(--space-network, clamp(0.75rem, 1.5vw, 1.25rem));
+    align-items: center;
   }
   @else if $logic == 'chronological' {
     // Time-linear stream of sequential events
+    display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-timeline, clamp(1rem, 2vw, 1.5rem));
-    position: relative;
+    gap: var(--space-timeline, clamp(0.75rem, 1.5vw, 1.25rem));
   }
   @else if $logic == 'editorial-feed' {
     // Editorial stream with promoted lead item and compact supporting entries
+    display: grid;
     --color-editorial-separator: oklch(0.75 0.10 85 / 0.5);
     grid-template-columns: 1fr;
     gap: var(--space-editorial, clamp(0.75rem, 1.5vw, 1rem));
-    position: relative;
 
     > :first-child {
-      padding-bottom: clamp(2rem, 4vw, 3rem);
-      margin-bottom: clamp(1rem, 2vw, 1.5rem);
+      padding-bottom: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
       position: relative;
 
       &::after {
@@ -108,42 +89,30 @@
         );
       }
     }
-
-    @media (min-width: 1024px) {
-      gap: var(--space-editorial-desktop, clamp(1rem, 2vw, 1.5rem));
-    }
   }
   @else if $logic == 'manifest' {
     // High-density dashboard for system oversight - responsive grid
-    gap: var(--space-tight, clamp(0.75rem, 1.5vw, 1rem));
+    display: grid;
+    gap: var(--space-tight, clamp(0.5rem, 1vw, 0.75rem));
     container-type: inline-size;
-    
-    // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
     width: 100%;
     max-width: 100%;
-    
-    // TRACK-TO-ITEM STRETCHING - Items fill column width
     justify-items: stretch;
     
-    // Mobile: single column — prevents forced narrow columns on phone-sized screens
     @media (max-width: 767px) {
       grid-template-columns: 1fr;
-      margin-inline: auto;
     }
     
-    // Tablet: 6-column grid
     @media (min-width: 768px) and (max-width: 1023px) {
       grid-template-columns: repeat(6, 1fr);
     }
     
-    // Desktop: full 12-column grid
     @media (min-width: 1024px) {
       grid-template-columns: repeat(12, 1fr);
     }
   }
   @else if $logic == 'navigation-primary' {
     // Main site navigation - horizontal desktop → mobile drawer
-    // Desktop: horizontal header
     @media (min-width: 768px) {
       display: flex;
       flex-direction: row;
@@ -152,34 +121,31 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      gap: var(--space-nav, clamp(1rem, 2vw, 2rem));
-      padding: var(--padding-nav, clamp(1rem, 2vw, 1.5rem));
+      gap: var(--space-nav, clamp(0.75rem, 1.5vw, 1.5rem));
+      padding: var(--padding-nav, clamp(0.75rem, 1.5vw, 1rem));
     }
     
-    // Mobile: off-canvas drawer pattern
     @media (max-width: 767px) {
+      display: flex;
+      flex-direction: column;
       position: fixed;
       top: 0;
       left: -100%;
       width: 80%;
       max-width: 320px;
       height: 100vh;
-      padding: 2rem 1.5rem;
+      padding: 1.5rem 1rem;
       transition: left 0.3s ease-in-out;
       z-index: 1001;
       overflow-y: auto;
       
-      // Visual styling delegated to genesis-entity (surface-glass) applied by consumer
-      
-      // Open state (controlled by JavaScript)
       &.nav-open {
         left: 0;
       }
       
-      // Navigation items stack vertically on mobile
       > * {
         display: block;
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
       }
     }
   }
@@ -187,97 +153,52 @@
     // Contextual navigation - breadcrumbs, footer nav
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-nav-secondary, clamp(0.5rem, 1vw, 1rem));
+    gap: var(--space-nav-secondary, clamp(0.375rem, 0.75vw, 0.75rem));
     align-items: center;
-    
-    // Desktop: full visibility
-    @media (min-width: 768px) {
-      justify-content: flex-start;
-      
-      > * {
-        display: inline-flex;
-      }
-    }
-    
-    // Tablet: condensed with potential overflow
-    @media (min-width: 768px) and (max-width: 1023px) {
-      font-size: 0.9rem;
-    }
-    
-    // Mobile: minimal or hidden (controlled by subdomain)
-    @media (max-width: 767px) {
-      font-size: 0.85rem;
-      justify-content: center;
-      
-      // Allow subdomains to hide non-essential items
-      .secondary-only {
-        display: none;
-      }
-    }
   }
   @else if $logic == 'interaction-form' {
     // Form layout optimized for data entry
     display: grid;
-    gap: 1.5rem;
-    
-    // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
+    gap: 1.25rem;
     width: 100%;
     max-width: 100%;
-    
-    // TRACK-TO-ITEM STRETCHING - Items fill column width
     justify-items: stretch;
     
-    // Mobile: force single column for clarity
     @media (max-width: 767px) {
       grid-template-columns: 1fr;
-      gap: 1.25rem;
     }
     
-    // Tablet: 2-column where appropriate (responsive to ultra-small screens)
-    @media (min-width: 768px) and (max-width: 1023px) {
-      grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
       gap: 1.5rem 1.25rem;
     }
     
-    // Desktop: allow multi-column with intelligent fitting (responsive to ultra-small screens)
-    @media (min-width: 1024px) {
-      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-      gap: 2rem 1.5rem;
-    }
-    
-    // Form-specific child elements
     label {
       display: block;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.375rem;
       font-weight: 500;
     }
     
-    // Ensure full-width elements span all columns
     .form-full-width {
       grid-column: 1 / -1;
     }
   }
   @else if $logic == 'navigation-tabs' {
     // Horizontal tab navigation for content switching
-    // Visual separator (border-bottom) delegated to genesis-entity applied by consumer
     display: flex;
-    gap: var(--space-tabs, clamp(0.5rem, 1vw, 1rem));
+    gap: var(--space-tabs, clamp(0.375rem, 0.75vw, 0.75rem));
     
-    // Mobile: scrollable tabs if overflow
     @media (max-width: 767px) {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
+      flex-wrap: nowrap;
       
       &::-webkit-scrollbar {
         display: none;
       }
-      
-      // Prevent wrapping on mobile
-      flex-wrap: nowrap;
     }
     
-    // Tablet and desktop: wrap if needed
     @media (min-width: 768px) {
       flex-wrap: wrap;
     }
@@ -286,22 +207,8 @@
     // Vertical sidebar navigation layout
     display: flex;
     flex-direction: column;
-    gap: var(--space-sidebar, clamp(0.5rem, 1vw, 0.75rem));
+    gap: var(--space-sidebar, clamp(0.375rem, 0.75vw, 0.5rem));
     
-    // Mobile: can be hidden or converted to horizontal
-    @media (max-width: 767px) {
-      // Allow subdomains to convert to horizontal or hide
-      &.mobile-horizontal {
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
-      
-      &.mobile-hidden {
-        display: none;
-      }
-    }
-    
-    // Tablet and desktop: consistent vertical layout
     @media (min-width: 768px) {
       width: var(--sidebar-width, clamp(200px, 25vw, 280px));
       position: sticky;
@@ -314,32 +221,24 @@
   @else if $logic == 'navigation-footer' {
     // Multi-column footer navigation layout
     display: grid;
-    gap: var(--space-footer, clamp(2rem, 3vw, 3rem));
-    
-    // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
+    gap: var(--space-footer, clamp(1.5rem, 2.5vw, 2.5rem));
     width: 100%;
     max-width: 100%;
-    
-    // TRACK-TO-ITEM STRETCHING - Items fill column width
     justify-items: stretch;
     
-    // Mobile: single column for clarity
     @media (max-width: 767px) {
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 1.5rem;
     }
     
-    // Tablet: 2 columns
     @media (min-width: 768px) and (max-width: 1023px) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 2.5rem 2rem;
+      gap: 2rem 1.5rem;
     }
     
-    // Desktop: 3-4 columns based on content (responsive to ultra-small screens)
     @media (min-width: 1024px) {
       grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
-      gap: 3rem 2rem;
-      justify-content: center;  // Center footer columns to prevent drift
+      gap: 2rem 1.5rem;
     }
   }
   @else if $logic == 'navigation-breadcrumb' {
@@ -347,105 +246,45 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--space-breadcrumb, 0.5rem);
-    
-    // Mobile: allow truncation or scrolling
-    @media (max-width: 767px) {
-      font-size: 0.875rem;
-      
-      // Option to make scrollable on mobile
-      &.mobile-scroll {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        
-        &::-webkit-scrollbar {
-          display: none;
-        }
-      }
-    }
+    gap: var(--space-breadcrumb, 0.375rem);
   }
   @else if $logic == 'navigation-pagination' {
     // Pagination controls layout
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: var(--space-pagination, clamp(0.5rem, 1vw, 0.75rem));
+    gap: var(--space-pagination, clamp(0.25rem, 0.5vw, 0.5rem));
     flex-wrap: wrap;
-    
-    // Mobile: show fewer page numbers, prioritize prev/next
-    @media (max-width: 767px) {
-      gap: 0.5rem;
-      
-      // Allow hiding non-essential page numbers
-      .page-number-optional {
-        display: none;
-      }
-    }
-    
-    // Tablet and desktop: show more page numbers
-    @media (min-width: 768px) {
-      gap: 0.75rem;
-    }
   }
   @else if $logic == 'navigation-accordion' {
     // Accordion/collapsible navigation layout
     display: flex;
     flex-direction: column;
-    gap: var(--space-accordion, clamp(0.5rem, 1vw, 1rem));
-    
-    // Consistent across all viewport sizes
+    gap: var(--space-accordion, clamp(0.375rem, 0.75vw, 0.75rem));
     width: 100%;
   }
   @else if $logic == 'community-feed' {
     // Activity feed/timeline layout for community updates
     display: flex;
     flex-direction: column;
-    gap: var(--space-feed, clamp(1rem, 2vw, 1.5rem));
-    
-    // Mobile: single column with tighter spacing
-    @media (max-width: 767px) {
-      gap: 1rem;
-    }
-    
-    // Tablet and desktop: maintain spacing
-    @media (min-width: 768px) {
-      gap: 1.5rem;
-    }
-    
-    // Container query support for responsive feed items
+    gap: var(--space-feed, clamp(0.75rem, 1.5vw, 1.25rem));
     container-type: inline-size;
   }
   @else if $logic == 'comment-thread' {
     // Nested comment discussion layout
     display: flex;
     flex-direction: column;
-    gap: var(--space-comments, clamp(0.75rem, 1.5vw, 1rem));
+    gap: var(--space-comments, clamp(0.5rem, 1vw, 0.75rem));
     
-    // Nested comment indentation — visual border delegated to genesis-entity applied by consumer
     .comment-reply,
     .comment-nested {
-      margin-left: var(--comment-indent, clamp(1.5rem, 3vw, 2.5rem));
-      padding-left: var(--comment-border, 1rem);
+      margin-left: var(--comment-indent, clamp(1rem, 2vw, 2rem));
+      padding-left: var(--comment-border, 0.75rem);
     }
     
-    // Mobile: reduce indentation to save space
-    @media (max-width: 767px) {
-      --comment-indent: 1rem;
-      --comment-border: 0.75rem;
-    }
-    
-    // Desktop: show deeper nesting levels
-    @media (min-width: 1024px) {
-      --comment-indent: 2.5rem;
-      --comment-border: 1rem;
-    }
-    
-    // Limit nesting depth visually
     .comment-nested .comment-nested .comment-nested {
       margin-left: 0;
-      padding-left: var(--comment-border, 1rem);
+      padding-left: var(--comment-border, 0.75rem);
     }
   }
   @else if $logic == 'notification-center' {
@@ -454,106 +293,68 @@
     flex-direction: column;
     max-height: var(--notification-max-height, 400px);
     overflow-y: auto;
-    gap: var(--space-notifications, 0.5rem);
+    gap: var(--space-notifications, 0.375rem);
     
-    // Mobile: full height available
-    @media (max-width: 767px) {
-      max-height: calc(100vh - 200px);
-    }
-    
-    // Tablet: moderate height
-    @media (min-width: 768px) and (max-width: 1023px) {
-      max-height: 500px;
-    }
-    
-    // Desktop: fixed height with scroll
-    @media (min-width: 1024px) {
-      max-height: 600px;
-    }
-    
-    // Notification grouping — visual separator delegated to genesis-entity applied by consumer
     .notification-group {
-      padding: 0.75rem 0;
-      
-      &:last-child {
-        // No separator on last item
-      }
+      padding: 0.5rem 0;
     }
     
     .notification-group-header {
       font-size: 0.75rem;
       font-weight: 600;
-      color: var(--text-secondary, oklch(0.70 0.02 220));
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.375rem;
       padding: 0 0.5rem;
     }
   }
   @else if $logic == 'user-grid' {
     // User/member grid display layout
     display: grid;
-    gap: var(--space-user-grid, clamp(1rem, 2vw, 1.5rem));
+    gap: var(--space-user-grid, clamp(0.75rem, 1.5vw, 1.25rem));
     container-type: inline-size;
-    
-    // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
     width: 100%;
     max-width: 100%;
-    
-    // TRACK-TO-ITEM STRETCHING - Items fill column width
     justify-items: stretch;
     
-    // Mobile: single column for user cards
     @media (max-width: 767px) {
       grid-template-columns: 1fr;
-      gap: 1rem;
     }
     
-    // Tablet: 2 columns
     @media (min-width: 768px) and (max-width: 1023px) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
     }
     
-    // Desktop: 3-4 columns based on container size (responsive to ultra-small screens)
     @media (min-width: 1024px) {
       grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
-      gap: 1.5rem;
-      justify-content: center;  // Center user cards to prevent drift
     }
     
-    // Ultrawide: cap at 4 columns
     @media (min-width: 1920px) {
       grid-template-columns: repeat(4, 1fr);
     }
   }
   @else if $logic == 'convergent' {
-    // Sidebar + main content layout — article with TOC, docs with sidebar
-    // ORIGIN: v4.0 Ontological Transcendence
-    // INTENT: Two-region layout where sidebar supports main content
+    // Sidebar + main content layout
+    display: grid;
     container-type: inline-size;
     width: 100%;
     max-width: 100%;
     
-    // Mobile: single column, sidebar below content
     @media (max-width: 767px) {
       grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    
+    @media (min-width: 768px) and (max-width: 1023px) {
+      grid-template-columns: 240px 1fr;
       gap: 1.5rem;
     }
     
-    // Tablet: sidebar narrower
-    @media (min-width: 768px) and (max-width: 1023px) {
-      grid-template-columns: 240px 1fr;
+    @media (min-width: 1024px) {
+      grid-template-columns: 280px 1fr;
       gap: 2rem;
     }
     
-    // Desktop: sidebar + main content
-    @media (min-width: 1024px) {
-      grid-template-columns: 280px 1fr;
-      gap: 2.5rem;
-    }
-    
-    // Sidebar sticks while content scrolls
     > :first-child {
       @media (min-width: 768px) {
         position: sticky;
@@ -565,57 +366,41 @@
     }
   }
   @else if $logic == 'panelled' {
-    // Multi-panel app shell — rigid non-wrapping row, fixed panels + fluid main
-    // ORIGIN: v5.0 Multi-panel layout primitive
-    // INTENT: App shell with one or more fixed-width supporting panels flanking a
-    //         main content area that fills all remaining space; panels collapse on mobile.
-    //
-    // Usage: apply to the shell container; mark the main content area with <main> or
-    //        [role="main"]. All other direct children are treated as fixed-width panels.
-    //
-    //   CSS custom properties:
-    //     --panel-width        Width of each supporting panel (default: 280px)
-    //     --panel-width-tablet Width on tablet viewports (default: 240px)
-    //     --space-panel-gap    Gap between panels and main content (default: 0)
+    // Multi-panel app shell — rigid non-wrapping row
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;   // Rigid row — panels never reflow onto a second line
+    flex-wrap: nowrap;
     width: 100%;
-    min-height: 0;       // Allow flex children to shrink below intrinsic height
+    min-height: 0;
 
-    // Tablet and desktop: fixed-width panels + fluid main
     @media (min-width: 768px) {
       gap: var(--space-panel-gap, 0);
 
-      // Supporting panels hold their declared width and never grow or shrink
       > :not(main, [role="main"]) {
         flex: 0 0 var(--panel-width, 280px);
         min-width: 0;
         overflow: hidden;
       }
 
-      // Tablet: slightly narrower panels
       @media (max-width: 1023px) {
         > :not(main, [role="main"]) {
           flex-basis: var(--panel-width-tablet, 240px);
         }
       }
 
-      // Main content area grows to fill all remaining space
       > main,
       > [data-panel="main"] {
         flex: 1 1 0;
-        min-width: 0;    // Prevent overflow when content is wide
+        min-width: 0;
         overflow: auto;
       }
     }
 
-    // Mobile: supporting panels collapse, main content takes full width
     @media (max-width: 767px) {
       flex-direction: column;
 
       > :not(main, [role="main"]) {
-        display: none;   // Panels are hidden — main content claims the full viewport
+        display: none;
       }
 
       > main,
