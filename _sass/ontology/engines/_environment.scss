@@ -83,6 +83,7 @@
   }
   @else if $logic == 'editorial-feed' {
     // Editorial stream with promoted lead item and compact supporting entries
+    --color-editorial-separator: oklch(0.75 0.10 85 / 0.5);
     grid-template-columns: 1fr;
     gap: var(--space-editorial, clamp(0.75rem, 1.5vw, 1rem));
     position: relative;
@@ -102,7 +103,7 @@
         background: linear-gradient(
           90deg,
           transparent,
-          oklch(0.75 0.10 85 / 0.5),
+          var(--color-editorial-separator),
           transparent
         );
       }

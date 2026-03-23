@@ -16,6 +16,11 @@
  */
 
 .transcendent-hero {
+  --transcendent-hero-content-max-width: 42rem;
+  --transcendent-image-scrim-strong: oklch(0.05 0.02 260 / 0.88);
+  --transcendent-image-scrim-mid: oklch(0.05 0.02 260 / 0.58);
+  --transcendent-image-scrim-light: oklch(0.05 0.02 260 / 0.24);
+  --transcendent-image-scrim-midpoint: 48%;
   position: relative;
   min-height: 100vh;
   display: flex;
@@ -67,7 +72,7 @@
     .transcendent-hero-col {
       margin-left: 0;
       margin-right: auto;
-      max-width: min(100%, 42rem);
+      max-width: min(100%, var(--transcendent-hero-content-max-width));
     }
 
     .transcendent-hero-title,
@@ -87,10 +92,15 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: var(--hero-image);
-  background-position: center 30%;
-  background-repeat: no-repeat;
-  background-size: cover;
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
 
   &::after {
     content: '';
@@ -98,9 +108,9 @@
     inset: 0;
     background: linear-gradient(
       90deg,
-      oklch(0.05 0.02 260 / 0.88) 0%,
-      oklch(0.05 0.02 260 / 0.58) 48%,
-      oklch(0.05 0.02 260 / 0.24) 100%
+      var(--transcendent-image-scrim-strong) 0%,
+      var(--transcendent-image-scrim-mid) var(--transcendent-image-scrim-midpoint),
+      var(--transcendent-image-scrim-light) 100%
     );
   }
 }

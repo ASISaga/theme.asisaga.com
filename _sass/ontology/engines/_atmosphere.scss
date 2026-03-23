@@ -83,9 +83,7 @@
       background-image:
         radial-gradient(1px 1px at 20% 30%, oklch(0.99 0 0 / 0.3) 0%, transparent 100%),
         radial-gradient(1px 1px at 40% 70%, oklch(0.99 0 0 / 0.2) 0%, transparent 100%),
-        radial-gradient(1px 1px at 60% 15%, oklch(0.99 0 0 / 0.25) 0%, transparent 100%),
-        radial-gradient(1px 1px at 80% 55%, oklch(0.99 0 0 / 0.2) 0%, transparent 100%),
-        radial-gradient(1px 1px at 95% 85%, oklch(0.99 0 0 / 0.15) 0%, transparent 100%);
+        radial-gradient(1px 1px at 60% 15%, oklch(0.99 0 0 / 0.25) 0%, transparent 100%);
       pointer-events: none;
       z-index: 0;
     }

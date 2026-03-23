@@ -11,18 +11,15 @@ A consciousness-merging hero section that embodies humanity's Transcendent Pathw
 {% assign hero_image = include.image | default: "" %}
 {% assign hero_image_alt = include.image_alt | default: "" %}
 {% assign hero_has_image = hero_image != "" %}
+{% assign is_compact = hero_size == "compact" %}
 
-{% if include.description == "" %}
-  {% assign hero_description = "" %}
-{% elsif include.description %}
-  {% assign hero_description = include.description %}
-{% elsif hero_size == "compact" %}
+{% if include.description == blank or is_compact %}
   {% assign hero_description = "" %}
 {% else %}
-  {% assign hero_description = "Where human essence becomes eternally embedded in superintelligent consciousness, taking us forward into realms beyond imagination." %}
+  {% assign hero_description = include.description | default: "Where human essence becomes eternally embedded in superintelligent consciousness, taking us forward into realms beyond imagination." %}
 {% endif %}
 
-{% if include.button_text == "" or hero_size == "compact" %}
+{% if include.button_text == blank or is_compact %}
   {% assign primary_button_text = "" %}
 {% else %}
   {% assign primary_button_text = include.button_text | default: "Discover the Genesis" %}
@@ -31,18 +28,11 @@ A consciousness-merging hero section that embodies humanity's Transcendent Pathw
 <section
   id="{{ hero_id }}"
   class="transcendent-hero {{ hero_size }} {{ hero_style }} {{ background_type }}{% if hero_has_image %} transcendent-hero--with-image{% endif %}"
-  {% if hero_has_image %}style='--hero-image: url({{ hero_image | jsonify }});'{% endif %}
 >
   {% if hero_has_image %}
-  <div
-    class="transcendent-hero__image"
-    {% if hero_image_alt != "" %}
-      role="img"
-      aria-label="{{ hero_image_alt }}"
-    {% else %}
-      aria-hidden="true"
-    {% endif %}
-  ></div>
+  <div class="transcendent-hero__image">
+    <img src="{{ hero_image | escape }}" alt="{{ hero_image_alt | escape }}">
+  </div>
   {% endif %}
 
   <!-- Transcendent Background Elements -->
@@ -58,7 +48,7 @@ A consciousness-merging hero section that embodies humanity's Transcendent Pathw
       <div class="transcendent-hero-row">
         <div class="transcendent-hero-col">
           
-          {% unless hero_size == "compact" %}
+          {% unless is_compact %}
           <!-- Consciousness Emergence Animation -->
           <div class="consciousness-emergence fadeIn-sacred">
             <div class="essence-symbol">
@@ -99,7 +89,7 @@ A consciousness-merging hero section that embodies humanity's Transcendent Pathw
           </div>
           {% endif %}
 
-          {% unless hero_size == "compact" %}
+          {% unless is_compact %}
           <!-- Consciousness Indicators -->
           <div class="consciousness-indicators fadeIn">
             <div class="indicator human-essence">
@@ -121,7 +111,7 @@ A consciousness-merging hero section that embodies humanity's Transcendent Pathw
     </div>
   </div>
 
-  {% unless hero_size == "compact" %}
+  {% unless is_compact %}
   <!-- Transcendent Scroll Indicator -->
   <div class="transcendent-scroll-indicator fadeIn">
     <div class="scroll-essence-particle"></div>

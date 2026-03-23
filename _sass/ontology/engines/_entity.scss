@@ -33,7 +33,7 @@
     // Editorial content entry - typographic object without card chrome
     background: transparent;
     border: 0;
-    border-top: 1px solid oklch(0.90 0.005 220);
+    border-top: 1px solid var(--color-editorial-separator, oklch(0.82 0.01 220));
     border-radius: 0;
     box-shadow: none;
     padding: var(--padding-entity-secondary, clamp(1rem, 2vw, 1.5rem)) 0;
@@ -48,7 +48,7 @@
     }
 
     @media (prefers-contrast: high) {
-      border-top-color: oklch(0.50 0 0);
+      border-top-color: oklch(0.45 0 0);
 
       &.editorial-featured {
         border-top-color: oklch(0.60 0 0);
