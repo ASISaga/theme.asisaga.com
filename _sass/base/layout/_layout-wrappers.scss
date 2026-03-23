@@ -49,7 +49,7 @@
 .post-navigation-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(1.5rem, 3vw, 3rem);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
   align-items: center;
   
   @media (min-width: 768px) {
@@ -66,19 +66,12 @@
 .article-nav-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-  gap: clamp(1rem, 2vw, 2rem);
+  gap: clamp(1rem, 2vw, 1.5rem);
   
-  // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior
   width: 100%;
   max-width: 100%;
-  
-  // TRACK-TO-ITEM STRETCHING - Items fill column width
   justify-items: stretch;
   
-  // Prevent horizontal overflow
-  overflow-x: hidden;
-  
-  // MOBILE FLUIDITY - Single column below 768px
   @media (max-width: 767px) {
     grid-template-columns: 1fr;
   }
@@ -91,7 +84,7 @@
 .post-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(1.5rem, 3vw, 3rem);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
   
   @media (min-width: 992px) {
     grid-template-columns: 250px 1fr;
@@ -108,7 +101,7 @@
 .profile-content-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(1.5rem, 3vw, 3rem);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
   
   @media (min-width: 992px) {
     grid-template-columns: 2fr 1fr;
@@ -120,14 +113,14 @@
 .archive-item-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(1rem, 2vw, 1.5rem);
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
 }
 
 // Form layouts
 .form-layout-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(1.5rem, 3vw, 2rem);
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
   max-width: 800px;
   margin-inline: auto;
 }
@@ -137,7 +130,7 @@
   display: grid;
   place-items: center;
   min-height: 60vh;
-  padding: clamp(2rem, 5vw, 4rem);
+  padding: clamp(2rem, 4vw, 3rem);
 }
 
 // Search layout

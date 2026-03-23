@@ -29,7 +29,7 @@
 // Hero section containing layout-header.html include
 // Visual presence provided by <genesis-entity nature="transcendent"> in landing.html
 .landing__hero {
-  @include genesis-environment('focused');   // Centered content layout
+  @include genesis-environment('distributed');  // Full-width responsive layout
 }
 
 // Header within hero from layout-header.html include
@@ -102,7 +102,7 @@
 .landing__pillars {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
-  gap: clamp(1.5rem, 3vw, 3rem);
+  gap: clamp(1.25rem, 2vw, 2rem);
 }
 
 .landing__pillar {
@@ -123,7 +123,7 @@
 .landing__quotes {
   display: flex;
   flex-direction: column;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
+  gap: clamp(1.25rem, 2vw, 2rem);
 }
 
 .landing__quote {
