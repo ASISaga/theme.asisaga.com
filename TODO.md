@@ -26,7 +26,7 @@ The repository specification (`.github/specs/repository.md`) describes a W3C DTC
 
 ## 2. Ontology Variant Documentation
 
-The ontology has grown from 31 foundational variants to 89 total variants through subdomain evolution. Documentation needs to reflect this growth.
+The ontology has grown from 33 foundational variants to 89 total variants through subdomain evolution. Documentation needs to reflect this growth.
 
 - [ ] Update `docs/specifications/scss-ontology-system.md` to document all 89 variants (currently may only cover foundational set)
 - [ ] Update `_sass/ontology/INTEGRATION-GUIDE.md` with examples for evolved variants

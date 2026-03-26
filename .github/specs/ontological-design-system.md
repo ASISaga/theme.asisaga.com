@@ -41,7 +41,7 @@ Content pages with optional page-specific styling:
 
 ## Six Semantic Categories
 
-The ontology defines **89 total variants** across 6 categories. The original 31 foundational variants form the core semantic vocabulary, while 58 evolved variants extend the system for specialized use cases discovered through subdomain development.
+The ontology defines **89 total variants** across 6 categories. The 33 foundational variants form the core semantic vocabulary, while 56 evolved variants extend the system for specialized use cases discovered through subdomain development.
 
 ### 1. genesis-environment($logic) — 21 variants
 

@@ -26,7 +26,7 @@ The Genesis theme implements two major architectural systems:
 ### 1. Ontological Design System
 
 **Six semantic categories: environment, entity, cognition, synapse, state, atmosphere**
-- 89 total variants (31 foundational + 58 evolved)
+- 89 total variants (33 foundational + 56 evolved)
 - Three-tier architecture: Engine → Theme → Subdomains
 
 → **Full specification**: `.github/specs/ontological-design-system.md`

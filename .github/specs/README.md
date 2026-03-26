@@ -35,7 +35,7 @@ This directory contains specifications and frameworks for the Genesis Ontologica
   - Cross-references to all documentation resources
 
 - **`ontological-design-system.md`** - Genesis Ontological Design System specification
-  - Six semantic categories with 89 total variants (31 foundational + 58 evolved)
+  - Six semantic categories with 89 total variants (33 foundational + 56 evolved)
   - HTML hierarchy rules and visual design element ownership
   - Three-tier architecture (Engine → Theme → Subdomains)
   - Ontological Proposition System for evolution
