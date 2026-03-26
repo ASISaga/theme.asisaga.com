@@ -1,15 +1,99 @@
 
-// Do not edit directly, this file was auto-generated.
+// Do not edit directly — generated from tokens.json
+// Run: node .github/skills/style-dictionary/script.mjs
+// Source: .github/skills/style-dictionary/tokens.json
 
-$colors-base-gray-light: #cccccc;
-$colors-base-gray-medium: #999999;
-$colors-base-gray-dark: #111111;
-$colors-base-red: #ff0000;
-$colors-base-green: #00ff00;
-$colors-font-base: #ff0000;
-$colors-font-secondary: #00ff00;
-$colors-font-tertiary: #cccccc;
-$size-font-small: 0.75rem; // the small size of the font
-$size-font-medium: 1rem; // the medium size of the font
-$size-font-large: 2rem; // the large size of the font
-$size-font-base: 1rem; // the base size of the font
+// color.light
+$color-light-white: oklch(0.99 0.005 90); // Pure white background
+$color-light-surface: oklch(0.96 0.01 90); // Light surface background
+$color-light-subtle-gray: oklch(0.93 0.01 220); // Subtle gray for depth
+
+// color.text
+$color-text-primary: oklch(0.12 0.01 250); // Primary profound black text
+$color-text-secondary: oklch(0.25 0.01 230); // Secondary deep gray text
+$color-text-muted: oklch(0.45 0.01 220); // Muted gray text
+
+// color.dark
+$color-dark-profound-black: oklch(0.08 0.01 250); // Deep profound black
+
+// color.accent
+$color-accent-neon-blue: oklch(0.65 0.25 230); // Electric neon blue (primary accent)
+$color-accent-neon-blue-bright: oklch(0.75 0.28 225); // Bright electric blue (hover/active)
+$color-accent-neon-blue-glow: oklch(0.70 0.30 228); // Glowing neon blue effect
+$color-accent-gold: oklch(0.70 0.15 85); // Subtle gold accent
+$color-accent-gold-bright: oklch(0.75 0.18 82); // Bright gold (hover)
+
+// color.border
+$color-border-light: oklch(0.85 0.01 220); // Light borders on white
+$color-border-dark: oklch(0.15 0.01 220); // Dark borders for contrast
+$color-border-silver: oklch(0.65 0.02 220); // Neutral gray borders
+
+// font.family
+$font-family-consciousness: 'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif; // Primary sans-serif for UI and body
+$font-family-wisdom: 'Crimson Text', 'Times New Roman', Georgia, serif; // Serif for narrative and wisdom text
+$font-family-sacred: 'Montserrat', sans-serif; // Display font for sacred headings
+
+// font.weight
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-sacred: 800; // Extra-bold for sacred headings
+
+// font.size
+$font-size-xs: 0.75rem; // 12px
+$font-size-sm: 0.875rem; // 14px
+$font-size-base: 1rem; // 16px
+$font-size-lg: 1.125rem; // 18px
+$font-size-xl: 1.25rem; // 20px
+$font-size-xxl: 1.5rem; // 24px
+$font-size-3xl: 1.875rem; // 30px
+$font-size-4xl: 2.25rem; // 36px
+$font-size-5xl: 3rem; // 48px
+$font-size-genesis: 4rem; // 64px - Hero Genesis headlines
+$font-size-sacred-xl: 2.618rem; // Golden ratio scaling for transcendent headers
+$font-size-sacred-lg: 1.618rem; // Golden ratio for sacred content
+
+// line-height
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+$line-height-transcendent: 2; // Meditative, flowing content
+$line-height-sacred: 1.618; // Golden ratio for sacred content
+$line-height-consciousness: 1.75; // Spacious for contemplation
+$line-height-wisdom: 1.6; // Optimal for sustained reading
+
+// spacing
+$spacing-xs: 0.25rem; // 4px
+$spacing-sm: 0.5rem; // 8px
+$spacing-md: 1rem; // 16px
+$spacing-lg: 1.5rem; // 24px
+$spacing-xl: 2rem; // 32px
+$spacing-2xl: 3rem; // 48px
+$spacing-3xl: 4rem; // 64px
+$spacing-4xl: 6rem; // 96px
+$spacing-genesis: 8rem; // 128px - Major section spacing
+
+// border-radius
+$border-radius-sm: 0.25rem; // 4px
+$border-radius-md: 0.5rem; // 8px
+$border-radius-lg: 1rem; // 16px
+$border-radius-xl: 1.5rem; // 24px
+$border-radius-consciousness: 2rem; // 32px - Transcendent elements
+$border-radius-infinite: 50%; // Perfect circles for consciousness symbols
+
+// transition
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
+$transition-consciousness: 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$transition-transcendent: 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+// z-index
+$z-index-background: -1;
+$z-index-content: 1;
+$z-index-overlay: 10;
+$z-index-consciousness: 100;
+$z-index-transcendent: 1000;
+$z-index-genesis: 9999;
