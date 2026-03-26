@@ -1,8 +1,8 @@
 # Genesis Ontological Design System Specification
 
-**Version**: 2.1.0  
+**Version**: 2.2.0  
 **Status**: Active  
-**Last Updated**: 2026-03-12
+**Last Updated**: 2026-03-26
 
 ## Overview
 
@@ -41,74 +41,156 @@ Content pages with optional page-specific styling:
 
 ## Six Semantic Categories
 
-### 1. genesis-environment($logic)
+The ontology defines **89 total variants** across 6 categories. The original 31 foundational variants form the core semantic vocabulary, while 58 evolved variants extend the system for specialized use cases discovered through subdomain development.
+
+### 1. genesis-environment($logic) — 21 variants
 
 **Purpose**: Layout structure and spatial organization
 
-**Variants**:
-- `'distributed'` - Responsive auto-fit bento grid (card grids, portfolios, galleries)
-- `'focused'` - Centered narrow column, 70ch reading width (blog posts, articles, docs)
-- `'associative'` - Flex-wrap groupings (tag clouds, metadata rows, related items)
-- `'chronological'` - Time-linear vertical stack (feeds, timelines, marketing sections)
-- `'manifest'` - High-density 12-column dashboard grid (analytics, monitoring)
-- `'convergent'` - Two-column sidebar + main content layout
-- `'panelled'` - Multi-panel app shell (three+ columns)
+**Foundational variants** (7):
+- `'distributed'` — Responsive auto-fit bento grid (card grids, portfolios, galleries)
+- `'focused'` — Centered narrow column, 70ch reading width (blog posts, articles, docs)
+- `'associative'` — Flex-wrap groupings (tag clouds, metadata rows, related items)
+- `'chronological'` — Time-linear vertical stack (feeds, timelines, marketing sections)
+- `'manifest'` — High-density 12-column dashboard grid (analytics, monitoring)
+- `'convergent'` — Two-column sidebar + main content layout
+- `'panelled'` — Multi-panel app shell (three+ columns)
 
-### 2. genesis-entity($nature)
+**Evolved variants** (14):
+- `'editorial-feed'` — Editorial content feed layout
+- `'interaction-form'` — Form-based interaction layout
+- `'navigation-accordion'` — Accordion navigation structure
+- `'navigation-breadcrumb'` — Breadcrumb trail layout
+- `'navigation-footer'` — Footer navigation layout
+- `'navigation-pagination'` — Pagination controls layout
+- `'navigation-primary'` — Primary navigation layout
+- `'navigation-secondary'` — Secondary navigation layout
+- `'navigation-sidebar'` — Sidebar navigation layout
+- `'navigation-tabs'` — Tab navigation layout
+- `'notification-center'` — Notification center layout
+- `'comment-thread'` — Threaded comment layout
+- `'community-feed'` — Community content feed
+- `'user-grid'` — User/avatar grid layout
+
+### 2. genesis-entity($nature) — 17 variants
 
 **Purpose**: Visual presence and hierarchy
 
-**Variants**:
-- `'primary'` - Main content or action
-- `'secondary'` - Supporting content
-- `'imperative'` - Critical or urgent
-- `'latent'` - De-emphasized or hidden until interaction
-- `'aggregate'` - Collection or summary
-- `'ancestral'` - Historical or deprecated but preserved
+**Foundational variants** (6):
+- `'primary'` — Main content or action
+- `'secondary'` — Supporting content
+- `'imperative'` — Critical or urgent
+- `'latent'` — De-emphasized or hidden until interaction
+- `'aggregate'` — Collection or summary
+- `'ancestral'` — Historical or deprecated but preserved
 
-### 3. genesis-cognition($intent)
+**Evolved variants** (11):
+- `'avatar'` — User avatar/profile image
+- `'badge'` — Notification or status badge
+- `'editorial'` — Editorial content entity
+- `'embed-responsive'` — Responsive embed container
+- `'ephemeral'` — Temporary/dismissible content
+- `'image-adaptive'` — Adaptive image container
+- `'notification'` — Notification entity
+- `'reaction-picker'` — Emoji/reaction selector
+- `'surface-glass'` — Glassmorphism surface
+- `'transcendent'` — Elevated/transcendent visual treatment
+- `'user-card'` — User profile card
+
+### 3. genesis-cognition($intent) — 9 variants
 
 **Purpose**: Typography and textual meaning
 
-**Variants**:
-- `'axiom'` - Page titles, section headings (2–3.5rem bold, fluid scaling)
-- `'discourse'` - Body text, prose paragraphs (1–1.125rem, serif, 1.6 line-height)
-- `'protocol'` - Code blocks, technical content (monospace, code styling)
-- `'gloss'` - Metadata, captions, timestamps (0.8–0.875rem, muted)
-- `'motive'` - Calls to action, persuasive copy (semibold, accent color)
-- `'quantum'` - Tags, chips, badges (tiny, uppercase, dense pill shape)
+**Foundational variants** (6):
+- `'axiom'` — Page titles, section headings (2–3.5rem bold, fluid scaling)
+- `'discourse'` — Body text, prose paragraphs (1–1.125rem, serif, 1.6 line-height)
+- `'protocol'` — Code blocks, technical content (monospace, code styling)
+- `'gloss'` — Metadata, captions, timestamps (0.8–0.875rem, muted)
+- `'motive'` — Calls to action, persuasive copy (semibold, accent color)
+- `'quantum'` — Tags, chips, badges (tiny, uppercase, dense pill shape)
 
-### 4. genesis-synapse($vector)
+**Evolved variants** (3):
+- `'heading'` — Sub-heading typography
+- `'oracle'` — Instructional/wisdom text
+- `'testimony'` — Testimonial/quote typography
+
+### 4. genesis-synapse($vector) — 19 variants
 
 **Purpose**: Interaction and user actions
 
-**Variants**:
-- `'navigate'` - Links and navigation
-- `'execute'` - Buttons and actions
-- `'inquiry'` - Forms and input
-- `'destructive'` - Delete or remove actions
-- `'social'` - Share and connect
+**Foundational variants** (5):
+- `'navigate'` — Links and navigation
+- `'execute'` — Buttons and actions
+- `'inquiry'` — Forms and input
+- `'destructive'` — Delete or remove actions
+- `'social'` — Share and connect
 
-### 5. genesis-state($condition)
+**Evolved variants** (14):
+- `'anchor'` — In-page anchor link
+- `'comment'` — Comment/reply action
+- `'consent'` — Consent/agreement interaction
+- `'input-primary'` — Primary input field
+- `'invoke'` — Invocation/trigger action
+- `'mention'` — @mention interaction
+- `'notify'` — Notification trigger
+- `'paginate'` — Pagination control
+- `'react'` — Reaction/emoji interaction
+- `'share'` — Content sharing action
+- `'step'` — Stepper/wizard step
+- `'tab'` — Tab switching interaction
+- `'toggle'` — Toggle switch
+- `'vote'` — Upvote/downvote interaction
+
+### 5. genesis-state($condition) — 14 variants
 
 **Purpose**: Temporal states and status
 
-**Variants**:
-- `'stable'` - Normal, default state
-- `'evolving'` - Loading, in progress
-- `'deprecated'` - Outdated but accessible
-- `'locked'` - Disabled or restricted
-- `'simulated'` - Preview or demo mode
+**Foundational variants** (5):
+- `'stable'` — Normal, default state
+- `'evolving'` — Loading, in progress
+- `'deprecated'` — Outdated but accessible
+- `'locked'` — Disabled or restricted
+- `'simulated'` — Preview or demo mode
 
-### 6. genesis-atmosphere($vibe)
+**Evolved variants** (9):
+- `'active'` — Currently active/selected state
+- `'collapsed'` — Collapsed/minimized state
+- `'expanded'` — Expanded/open state
+- `'emerging'` — Transitioning into view
+- `'mentioned'` — Highlighted by @mention
+- `'reacted'` — Has received reactions
+- `'scroll-triggered'` — Activated by scroll position
+- `'transcending'` — Elevated/transcending state
+- `'unread'` — Unread/new content indicator
+
+### 6. genesis-atmosphere($vibe) — 9 variants
 
 **Purpose**: Mood and emotional tone
 
-**Variants**:
-- `'neutral'` - Default, balanced
-- `'ethereal'` - Light, airy
-- `'void'` - Dark, mysterious
-- `'vibrant'` - Energetic, bold
+**Foundational variants** (4):
+- `'neutral'` — Default, balanced
+- `'ethereal'` — Light, airy
+- `'void'` — Dark, mysterious
+- `'vibrant'` — Energetic, bold
+
+**Evolved variants** (5):
+- `'cosmic'` — Cosmic/space-inspired atmosphere
+- `'sacred'` — Sacred/spiritual tone
+- `'dense-desktop'` — Desktop-optimized density
+- `'spacious-mobile'` — Mobile-optimized spacing
+- `'viewport-aware'` — Responsive viewport-based atmosphere
+
+### Variant Summary
+
+| Category | Foundational | Evolved | Total |
+|----------|-------------|---------|-------|
+| Environment | 7 | 14 | **21** |
+| Entity | 6 | 11 | **17** |
+| Cognition | 6 | 3 | **9** |
+| Synapse | 5 | 14 | **19** |
+| State | 5 | 9 | **14** |
+| Atmosphere | 4 | 5 | **9** |
+| **Total** | **33** | **56** | **89** |
 
 ## Usage Example
 
@@ -216,7 +298,7 @@ Evolutionary mechanism for extending the ontology when subdomains encounter use 
 ### Process
 
 1. **Subdomain Evolution Agent** identifies semantic gap
-   - Reviews existing 31 variants
+   - Reviews existing 89 variants (33 foundational + 56 evolved)
    - Confirms gap can't be solved by combination
    - Creates Ontological Proposition PR
 
