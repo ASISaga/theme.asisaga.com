@@ -16,28 +16,26 @@
     // No additional styling needed - base state
   }
   @else if $vibe == 'ethereal' {
-    // High-transparency, light-based focus - pure white with subtle shadow
+    // High-transparency, light-based focus
     backdrop-filter: blur(10px) brightness(1.02);
-    background: oklch(0.99 0.005 90);  // Pure white
-    box-shadow: 0 2px 8px oklch(0.08 0.01 250 / 0.08);  // Subtle shadow
+    background: oklch(0.99 0.005 90);
+    box-shadow: 0 1px 4px oklch(0.08 0.01 250 / 0.06);
   }
   @else if $vibe == 'void' {
-    // Deep-space, profound black, ultra high-contrast - black bg, white text
-    background: oklch(0.08 0.01 250);  // Deep black
-    color: oklch(0.99 0.005 90);  // White text
+    // Deep-space, profound black, ultra high-contrast
+    background: oklch(0.08 0.01 250);
+    color: oklch(0.99 0.005 90);
     box-shadow: 
-      inset 0 0 30px oklch(0.05 0.01 260),
-      0 2px 12px oklch(0.05 0.01 260 / 0.6);
-    // Border omitted: border/padding responsibility belongs to genesis-entity
+      inset 0 0 20px oklch(0.05 0.01 260),
+      0 1px 8px oklch(0.05 0.01 260 / 0.4);
   }
   @else if $vibe == 'vibrant' {
-    // High-energy, data-saturated - white with purposeful neon blue accent
-    background: oklch(0.99 0.005 90);  // White background
+    // High-energy, data-saturated
+    background: oklch(0.99 0.005 90);
     box-shadow: 
-      0 0 16px oklch(0.65 0.25 230 / 0.25),  // Neon blue glow (subtle)
-      0 4px 12px oklch(0.08 0.01 250 / 0.15);  // Depth shadow
+      0 0 12px oklch(0.65 0.25 230 / 0.15),
+      0 2px 8px oklch(0.08 0.01 250 / 0.1);
     backdrop-filter: blur(8px);
-    // Border omitted: border/padding responsibility belongs to genesis-entity
   }
   @else if $vibe == 'cosmic' {
     // Deep-space backdrop for editorial and mission-adjacent sections
@@ -127,32 +125,10 @@
   }
   @else if $vibe == 'dense-desktop' {
     // Content that benefits from high information density on large screens
-    // Mobile: minimal density (single column, simple)
-    @media (max-width: 767px) {
-      > * {
-        width: 100%;
-        margin-bottom: 1rem;
-      }
-    }
-    
-    // Tablet: moderate density (2 columns)
-    @media (min-width: 768px) and (max-width: 1023px) {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-    
-    // Desktop: high density (auto-fit grid - responsive to ultra-small screens)
-    @media (min-width: 1024px) {
+    @media (min-width: 768px) {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-      gap: 1.5rem;
-      justify-content: center;  // Center items to prevent drift
-    }
-    
-    // Ultrawide: cap at 4 columns
-    @media (min-width: 1920px) {
-      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
     }
   }
   @else if $vibe == 'viewport-aware' {
@@ -162,53 +138,29 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    
-    // Use modern dynamic viewport height (accounts for mobile browser chrome)
     min-height: 100vh;
-    min-height: 100dvh; // Dynamic viewport height for mobile
+    min-height: 100dvh;
     
-    // Mobile: reduce height to account for browser chrome
     @media (max-width: 767px) {
       min-height: 70vh;
       min-height: 70dvh;
-      // padding responsibility belongs to genesis-entity
     }
     
-    // Tablet: moderate viewport usage
-    @media (min-width: 768px) and (max-width: 1023px) {
-      min-height: 85vh;
-      min-height: 85dvh;
-      // padding responsibility belongs to genesis-entity
-    }
-    
-    // Desktop: full viewport
-    @media (min-width: 1024px) {
-      min-height: 100vh;
-      min-height: 100dvh;
-      // padding responsibility belongs to genesis-entity
-    }
-    
-    // Prevent content overflow on short viewports
     @media (max-height: 600px) {
       min-height: auto;
-      // padding responsibility belongs to genesis-entity
     }
   }
   @else if $vibe == 'sacred' {
-    // Reverent, mission-critical tone — ASI Saga mission pages, genesis ceremony
-    // ORIGIN: v4.0 Ontological Transcendence
-    // INTENT: Atmosphere conveying profound purpose and transcendent significance
+    // Reverent, mission-critical tone
     background: linear-gradient(
       175deg,
       oklch(0.06 0.02 260) 0%,
       oklch(0.04 0.01 250) 60%,
       oklch(0.06 0.02 260) 100%
     );
-    color: oklch(0.99 0.005 90);  // White text
+    color: oklch(0.99 0.005 90);
     position: relative;
-    // Border omitted: border/padding responsibility belongs to genesis-entity
     
-    // Subtle gold accent glow
     &::before {
       content: '';
       position: absolute;
@@ -223,14 +175,6 @@
         oklch(0.70 0.15 85 / 0.6),
         transparent
       );
-    }
-    
-    @media (prefers-contrast: high) {
-      background: oklch(0.05 0 0);
-      
-      &::before {
-        display: none;
-      }
     }
   }
 }

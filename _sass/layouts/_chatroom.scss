@@ -56,3 +56,95 @@
     @include genesis-synapse('execute');      // Action button
   }
 }
+
+// ============================================================================
+// Sample content classes (used by sample-chatroom.html and subdomain pages)
+// ============================================================================
+
+.chatroom__message {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-block: 0.5rem;
+}
+
+.chatroom__message-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+
+.chatroom__message--own .chatroom__message-row {
+  flex-direction: row-reverse;
+}
+
+.chatroom__message--own .chatroom__message-body {
+  @include genesis-entity('imperative');
+  text-align: right;
+}
+
+.chatroom__avatar {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: oklch(1 0 0);
+
+  // Avatar colors use distinct hue ranges for visual differentiation
+  // in multi-user contexts (blue, green, amber, cyan, red)
+  &--jd { background: oklch(0.5 0.15 250); }  // blue
+  &--sj { background: oklch(0.55 0.15 145); } // green
+  &--mp { background: oklch(0.65 0.15 85); }  // amber
+  &--you { background: oklch(0.5 0.15 210); } // cyan
+  &--ec { background: oklch(0.55 0.2 25); }   // red
+}
+
+.chatroom__message-body {
+  @include genesis-entity('secondary');
+  flex: 1;
+  min-width: 0;
+}
+
+.chatroom__message-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.chatroom__author {
+  @include genesis-cognition('gloss');
+  font-weight: 600;
+}
+
+.chatroom__time {
+  @include genesis-cognition('gloss');
+  opacity: 0.6;
+}
+
+.chatroom__text {
+  @include genesis-cognition('discourse');
+  margin: 0;
+}
+
+.chatroom__system-message {
+  @include genesis-cognition('gloss');
+  text-align: center;
+  padding-block: 0.5rem;
+  opacity: 0.6;
+}
+
+.chatroom__typing {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.5;
+}
+
+.chatroom__typing-text {
+  @include genesis-cognition('gloss');
+}

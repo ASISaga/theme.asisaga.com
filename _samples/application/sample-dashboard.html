@@ -1,18 +1,18 @@
 ---
 layout: dashboard
-title: "Analytics Dashboard"
-actions: ["Export", "Refresh", "Settings"]
+title: "Analytics"
+actions: ["Export", "Refresh"]
 ---
 
-<div class="row">
+<!-- KPI row — no cards, just metrics -->
+<section class="dashboard__kpis">
   {% include layouts/dashboard/dashboard-widget.html
-    title="Total Users"
+    title="Users"
     value="12,543"
     change=12.5
     icon="fas fa-users"
     columns="3"
   %}
-  
   {% include layouts/dashboard/dashboard-widget.html
     title="Revenue"
     value="$45,678"
@@ -20,15 +20,13 @@ actions: ["Export", "Refresh", "Settings"]
     icon="fas fa-dollar-sign"
     columns="3"
   %}
-  
   {% include layouts/dashboard/dashboard-widget.html
-    title="Conversion Rate"
+    title="Conversion"
     value="3.24%"
     change=-2.1
     icon="fas fa-chart-line"
     columns="3"
   %}
-  
   {% include layouts/dashboard/dashboard-widget.html
     title="Avg. Session"
     value="4m 32s"
@@ -36,128 +34,105 @@ actions: ["Export", "Refresh", "Settings"]
     icon="fas fa-clock"
     columns="3"
   %}
-</div>
+</section>
 
-<div class="row mt-4">
-  <div class="col-lg-8 mb-4">
-    <div class="card h-100">
-      <div class="card-header">
-        <h5 class="card-title mb-0">Traffic Overview</h5>
-      </div>
-      <div class="card-body">
-        <div class="chart-container">
-          <!-- Chart would go here -->
-          <div class="d-flex align-items-center justify-content-center h-100 text-muted">
-            <div class="text-center">
-              <i class="fas fa-chart-area fa-3x mb-3"></i>
-              <p>Traffic chart placeholder</p>
-            </div>
-          </div>
-        </div>
+<!-- Primary workspace: chart + sidebar -->
+<section class="dashboard__workspace">
+  <div class="dashboard__main-panel">
+    <header class="dashboard__panel-header">
+      <genesis-cognition intent="motive">
+        <h2>Traffic Overview</h2>
+      </genesis-cognition>
+    </header>
+    <div class="dashboard__chart-area">
+      <div class="dashboard__chart-placeholder" aria-label="Traffic chart">
+        <i class="fas fa-chart-area" aria-hidden="true"></i>
+        <genesis-cognition intent="gloss">
+          <span>Chart renders here</span>
+        </genesis-cognition>
       </div>
     </div>
   </div>
-  
-  <div class="col-lg-4 mb-4">
-    <div class="card h-100">
-      <div class="card-header">
-        <h5 class="card-title mb-0">Top Pages</h5>
-      </div>
-      <div class="card-body">
-        <ul class="list-unstyled mb-0">
-          <li class="mb-3 pb-3 border-bottom">
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <div class="fw-bold">/home</div>
-                <small class="text-muted">15,432 views</small>
-              </div>
-              <span class="badge bg-primary">45%</span>
-            </div>
-          </li>
-          <li class="mb-3 pb-3 border-bottom">
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <div class="fw-bold">/products</div>
-                <small class="text-muted">8,234 views</small>
-              </div>
-              <span class="badge bg-primary">24%</span>
-            </div>
-          </li>
-          <li class="mb-3 pb-3 border-bottom">
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <div class="fw-bold">/about</div>
-                <small class="text-muted">5,123 views</small>
-              </div>
-              <span class="badge bg-primary">15%</span>
-            </div>
-          </li>
-          <li>
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <div class="fw-bold">/contact</div>
-                <small class="text-muted">3,456 views</small>
-              </div>
-              <span class="badge bg-primary">10%</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-12">
-    <div class="card">
-      <div class="card-header">
-        <h5 class="card-title mb-0">Recent Activity</h5>
-      </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Time</th>
-                <th>User</th>
-                <th>Action</th>
-                <th>Page</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>10:23 AM</td>
-                <td>john@example.com</td>
-                <td>Page View</td>
-                <td>/products/item-123</td>
-                <td><span class="badge bg-success">Success</span></td>
-              </tr>
-              <tr>
-                <td>10:21 AM</td>
-                <td>sarah@example.com</td>
-                <td>Purchase</td>
-                <td>/checkout</td>
-                <td><span class="badge bg-success">Success</span></td>
-              </tr>
-              <tr>
-                <td>10:18 AM</td>
-                <td>mike@example.com</td>
-                <td>Sign Up</td>
-                <td>/register</td>
-                <td><span class="badge bg-success">Success</span></td>
-              </tr>
-              <tr>
-                <td>10:15 AM</td>
-                <td>emma@example.com</td>
-                <td>Login Failed</td>
-                <td>/login</td>
-                <td><span class="badge bg-danger">Failed</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+  <aside class="dashboard__side-panel">
+    <header class="dashboard__panel-header">
+      <genesis-cognition intent="motive">
+        <h2>Top Pages</h2>
+      </genesis-cognition>
+    </header>
+    <ul class="dashboard__page-list">
+      <li class="dashboard__page-item">
+        <span class="dashboard__page-path">/home</span>
+        <span class="dashboard__page-meta">15,432 views</span>
+        <span class="dashboard__page-share">45%</span>
+      </li>
+      <li class="dashboard__page-item">
+        <span class="dashboard__page-path">/products</span>
+        <span class="dashboard__page-meta">8,234 views</span>
+        <span class="dashboard__page-share">24%</span>
+      </li>
+      <li class="dashboard__page-item">
+        <span class="dashboard__page-path">/about</span>
+        <span class="dashboard__page-meta">5,123 views</span>
+        <span class="dashboard__page-share">15%</span>
+      </li>
+      <li class="dashboard__page-item">
+        <span class="dashboard__page-path">/contact</span>
+        <span class="dashboard__page-meta">3,456 views</span>
+        <span class="dashboard__page-share">10%</span>
+      </li>
+    </ul>
+  </aside>
+</section>
+
+<!-- Activity table — dense, readable, no card wrapper -->
+<section class="dashboard__activity">
+  <header class="dashboard__panel-header">
+    <genesis-cognition intent="motive">
+      <h2>Recent Activity</h2>
+    </genesis-cognition>
+  </header>
+  <div class="dashboard__table-wrap">
+    <table class="dashboard__table">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>User</th>
+          <th>Action</th>
+          <th>Page</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>10:23 AM</td>
+          <td>john@example.com</td>
+          <td>Page View</td>
+          <td>/products/item-123</td>
+          <td><span class="dashboard__status dashboard__status--success">OK</span></td>
+        </tr>
+        <tr>
+          <td>10:21 AM</td>
+          <td>sarah@example.com</td>
+          <td>Purchase</td>
+          <td>/checkout</td>
+          <td><span class="dashboard__status dashboard__status--success">OK</span></td>
+        </tr>
+        <tr>
+          <td>10:18 AM</td>
+          <td>mike@example.com</td>
+          <td>Sign Up</td>
+          <td>/register</td>
+          <td><span class="dashboard__status dashboard__status--success">OK</span></td>
+        </tr>
+        <tr>
+          <td>10:15 AM</td>
+          <td>emma@example.com</td>
+          <td>Login Failed</td>
+          <td>/login</td>
+          <td><span class="dashboard__status dashboard__status--error">Failed</span></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-</div>
+</section>

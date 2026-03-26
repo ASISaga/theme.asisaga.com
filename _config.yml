@@ -4,6 +4,9 @@ description: Genesis of Artificial Superintelligence
 theme: 
 remote_theme: 
 
+include:
+  - _samples
+
 sass:
   load_paths:
     - _sass

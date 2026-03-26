@@ -1,61 +1,57 @@
 ---
 layout: article
-title: "The Complete Guide to Modern Web Layouts"
-subtitle: "A comprehensive exploration of layout patterns in modern web development"
+title: "The Architecture of Modern Web Layouts"
+subtitle: "From table hacks to semantic grids — a practitioner's guide"
 author: "Jane Smith"
 date: 2024-01-20
-reading_time: 15
+reading_time: 12
 toc: true
 related_articles: true
 ---
 
-# Overview
+Web layouts have always reflected the tools available. Tables gave way to floats, floats to flexbox, flexbox to grid. Each generation removed a hack and replaced it with intent.
 
-This sample article demonstrates the **article layout**, designed for long-form content with enhanced readability features.
+## The table era
 
-## Table of Contents
+Early layouts were built from `<table>` elements. They worked, barely:
 
-The article layout includes an optional table of contents sidebar for easy navigation through long documents.
+- Inflexible at every breakpoint
+- Impossible to maintain at scale
+- Semantically meaningless
 
-## Introduction to Web Layouts
+The web outgrew them in under a decade.
 
-Web layouts have evolved significantly over the years. From table-based layouts to modern CSS Grid and Flexbox, the landscape has transformed dramatically.
+## The modern toolkit
 
-### Historical Perspective
+Today four primitives handle virtually every layout need:
 
-In the early days of the web, layouts were primarily created using HTML tables. This approach was:
+1. **CSS Grid** — two-dimensional placement with named areas and tracks
+2. **Flexbox** — single-axis distribution with automatic wrapping
+3. **Custom Properties** — runtime-variable tokens that cascade through components
+4. **Container Queries** — responsive rules scoped to the component, not the viewport
 
-- Inflexible
-- Difficult to maintain
-- Not semantic
+Together they make external grid frameworks unnecessary.
 
-### Modern Approaches
+## Layout patterns in practice
 
-Today, we have powerful tools at our disposal:
+### The reading column
 
-1. **CSS Grid** - Two-dimensional layout system
-2. **Flexbox** - One-dimensional layout system
-3. **CSS Custom Properties** - Dynamic styling
-4. **Container Queries** - Responsive components
+A single centered column, 60–75 characters wide. Ideal for long-form content like this article. The `focused` environment mixin produces it with one line of SCSS.
 
-## Layout Patterns
+### The dashboard grid
 
-### The Holy Grail Layout
+A dense, auto-fitting grid of metric panels. The `distributed` environment mixin handles column count, gap, and reflow. No media queries required.
 
-This classic pattern includes:
-- Header
-- Footer
-- Main content
-- Left sidebar
-- Right sidebar
+### The sidebar + content pair
 
-### Dashboard Layouts
+Documentation pages, settings panels, and admin tools all share this shape. The `convergent` environment mixin sets the ratio and collapse behavior.
 
-Application-style layouts with:
-- Fixed headers
-- Scrollable content areas
-- Widget grids
+## Where the ontology fits
+
+In the Genesis design system, each CSS concern belongs to exactly one ontological category. Layout is owned by `environment`. Typography by `cognition`. Surface treatment by `entity`. Mood by `atmosphere`.
+
+This separation means a component's visual properties never conflict with its spatial properties. Refactoring one layer cannot break another.
 
 ## Conclusion
 
-Understanding layout patterns is crucial for modern web development. The article layout provides the perfect structure for presenting this type of in-depth content.
+The best layout systems disappear. You describe what a region *is*, and the system determines how it looks. That's the direction modern CSS is heading — and it's where ontological design already lives.

@@ -1,58 +1,56 @@
 ---
 layout: form
-title: "Contact Us"
-description: "We'd love to hear from you. Send us a message and we'll respond as soon as possible."
+title: "Get in Touch"
+description: "Questions, feedback, or partnership ideas - we read every message."
 show_progress: false
-help_text: "All fields marked with * are required"
+help_text: "Fields marked * are required."
 privacy_link: "/privacy"
 ---
 
-<form action="/submit" method="POST" class="needs-validation" novalidate>
+<form action="/submit" method="POST" novalidate>
   {% include layouts/form/form-field.html
     id="name"
-    label="Full Name"
+    label="Name"
     type="text"
-    placeholder="Enter your full name"
+    placeholder="Your name"
     required=true
   %}
-  
+
   {% include layouts/form/form-field.html
     id="email"
-    label="Email Address"
+    label="Email"
     type="email"
-    placeholder="your.email@example.com"
+    placeholder="you@company.com"
     required=true
-    help_text="We'll never share your email with anyone else"
   %}
-  
-  {% include layouts/form/form-field.html
-    id="subject"
-    label="Subject"
-    type="select"
-    required=true
-    options=[
-      {"value": "general", "label": "General Inquiry"},
-      {"value": "support", "label": "Technical Support"},
-      {"value": "sales", "label": "Sales Question"},
-      {"value": "partnership", "label": "Partnership Opportunity"}
-    ]
-  %}
-  
+
+  <div class="form-field">
+    <label for="subject" class="form-field__label form-field__label--required">Subject <span class="form-field__required" aria-label="required">*</span></label>
+    <select class="form-field__input form-field__select" id="subject" name="subject" required aria-required="true">
+      <option value="">Choose...</option>
+      <option value="general">General inquiry</option>
+      <option value="support">Technical support</option>
+      <option value="partnership">Partnership</option>
+    </select>
+  </div>
+
   {% include layouts/form/form-field.html
     id="message"
     label="Message"
     type="textarea"
-    placeholder="Tell us more about your inquiry..."
-    rows=6
+    placeholder="What are you working on?"
+    rows=5
     required=true
   %}
-  
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="newsletter" name="newsletter">
-    <label class="form-check-label" for="newsletter">
-      Subscribe to our newsletter for updates
+
+  <div class="form-field">
+    <label class="form-field__checkbox">
+      <input type="checkbox" id="newsletter" name="newsletter">
+      <span>Send me occasional updates</span>
     </label>
   </div>
-  
-  <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+
+  <genesis-synapse vector="execute">
+    <button type="submit" class="form__submit-button">Send Message</button>
+  </genesis-synapse>
 </form>

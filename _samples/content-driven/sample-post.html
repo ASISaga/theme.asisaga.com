@@ -8,30 +8,28 @@ categories: ["Web Development"]
 share: true
 ---
 
-# Introduction
+Every static site needs structure. Jekyll's layout system gives you that structure — a way to define the bones of each page type once, then fill in the content.
 
-This is a sample blog post demonstrating the **post layout**. It includes metadata, tags, and structured content perfect for blog entries and news articles.
+## What the post layout does
 
-## What is a Post Layout?
+This layout handles blog posts and news entries. It ships with:
 
-The post layout is designed for blog posts and news entries. It provides:
+- Publication date, author, and estimated reading time
+- Tag and category display
+- Social sharing controls
+- Previous / next navigation
 
-- Post metadata (date, author, reading time)
-- Tag and category support
-- Social sharing options
-- Navigation to previous/next posts
+## How it works
 
-## Key Features
+### Metadata
+The layout reads your front matter and renders date, author, and reading time at the top. No configuration beyond the YAML block.
 
-### 1. Metadata Display
-The layout automatically displays post metadata at the top of the page, including publication date, author information, and estimated reading time.
+### Tags
+Tags and categories render as compact labels. Readers can scan them to find related writing.
 
-### 2. Tag Support
-Tags and categories are displayed as badges, making it easy for readers to find related content.
+### Responsive
+The reading column is constrained for comfortable line lengths. Images, code blocks, and tables reflow on smaller screens.
 
-### 3. Responsive Design
-The layout is fully responsive and looks great on all devices.
+## Next steps
 
-## Conclusion
-
-This post layout provides everything you need for a professional blog setup with minimal configuration.
+Copy this file, change the front matter, and start writing. The layout handles the rest.

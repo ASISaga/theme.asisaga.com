@@ -15,8 +15,5 @@
   @include genesis-environment('focused');    // Single column reading
   @include genesis-atmosphere('ethereal');    // Light, minimal vibe
   
-  // Fundamental properties for structure
   width: 100%;
-  contain: layout style;
-  isolation: isolate;
 }

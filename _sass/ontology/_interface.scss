@@ -12,27 +12,11 @@
  * Defines the organizational laws of the digital dimension.
  */
 @mixin genesis-environment($logic: 'distributed') {
-  /**
-   * @param $logic [distributed]: Autonomous entities in a non-linear grid.
-   * @param $logic [focused]: A singular narrative thread for deep cognition.
-   * @param $logic [associative]: A network where connections outweigh the nodes.
-   * @param $logic [chronological]: A time-linear stream of sequential events.
-   * @param $logic [manifest]: A high-density dashboard for total system oversight.
-   * @param $logic [convergent]: Sidebar + main content layout for supported navigation. (v4.0)
-   * @param $logic [navigation-primary]: Main site navigation (horizontal desktop → mobile drawer).
-   * @param $logic [navigation-secondary]: Contextual navigation (breadcrumbs, footer nav).
-   * @param $logic [navigation-tabs]: Horizontal tab navigation for content switching.
-   * @param $logic [navigation-sidebar]: Vertical sidebar navigation layout.
-   * @param $logic [navigation-footer]: Multi-column footer navigation layout.
-   * @param $logic [navigation-breadcrumb]: Breadcrumb trail navigation layout.
-   * @param $logic [navigation-pagination]: Pagination controls layout.
-   * @param $logic [navigation-accordion]: Accordion/collapsible navigation layout.
-   * @param $logic [interaction-form]: Form layout optimized for data entry.
-   * @param $logic [community-feed]: Activity feed/timeline layout for community updates.
-   * @param $logic [comment-thread]: Nested comment discussion layout.
-   * @param $logic [notification-center]: Notification panel layout.
-   * @param $logic [user-grid]: User/member grid display layout.
-   */
+  // Variants: distributed, focused, associative, chronological, manifest,
+  // convergent, panelled, editorial-feed, navigation-primary, navigation-secondary,
+  // navigation-tabs, navigation-sidebar, navigation-footer, navigation-breadcrumb,
+  // navigation-pagination, navigation-accordion, interaction-form,
+  // community-feed, comment-thread, notification-center, user-grid
   @include _theme-engine-environment($logic);
 }
 
@@ -41,24 +25,9 @@
  * Defines the "Presence" and "Weight" of an object in the system.
  */
 @mixin genesis-entity($nature: 'primary') {
-  /**
-   * @param $nature [primary]: The fundamental object of the current view.
-   * @param $nature [secondary]: Supportive, contextual data.
-   * @param $nature [imperative]: System-critical, high-urgency signal.
-   * @param $nature [latent]: Backgrounded info awaiting activation.
-   * @param $nature [aggregate]: A container summarizing multiple entities.
-   * @param $nature [ancestral]: Archived or historical data (legacy state).
-   * @param $nature [transcendent]: Sacred, mission-critical prominence (hero/genesis content). (v4.0)
-   * @param $nature [ephemeral]: Transient, auto-dismissing content (toast/flash). (v4.0)
-   * @param $nature [image-adaptive]: Image that loads appropriate resolution for viewport.
-   * @param $nature [embed-responsive]: Embedded content that maintains aspect ratio.
-   * @param $nature [avatar]: User avatar/profile picture display with status indicator.
-   * @param $nature [badge]: Achievement badges and status indicators.
-   * @param $nature [notification]: Notification cards and alert displays.
-   * @param $nature [reaction-picker]: Emoji/reaction selector UI component.
-   * @param $nature [user-card]: User profile preview card with hover actions.
-   * @param $nature [surface-glass]: Dark glassmorphism surface for headers/navigation.
-   */
+  // Variants: primary, secondary, editorial, imperative, latent, aggregate, ancestral,
+  // transcendent, ephemeral, image-adaptive, embed-responsive, avatar, badge,
+  // notification, reaction-picker, user-card, surface-glass
   @include _theme-engine-entity($nature);
 }
 
@@ -67,16 +36,7 @@
  * Defines the nature and frequency of the information being transmitted.
  */
 @mixin genesis-cognition($intent: 'discourse') {
-  /**
-   * @param $intent [axiom]: The foundational thesis or "Headline."
-   * @param $intent [discourse]: Standard information exchange (Prose).
-   * @param $intent [protocol]: Technical/Mathematical proof (Code/Logs).
-   * @param $intent [gloss]: Minor annotations or citations.
-   * @param $intent [motive]: Persuasive or instructional guidance.
-   * @param $intent [quantum]: Small, high-density fragments (Tags/Chips).
-   * @param $intent [oracle]: AI-generated or predictive content typography. (v4.0)
-   * @param $intent [testimony]: Quoted speech, testimonials, attributed statements. (v4.0)
-   */
+  // Variants: axiom, heading, discourse, protocol, gloss, motive, quantum, oracle, testimony
   @include _theme-engine-cognition($intent);
 }
 
@@ -85,27 +45,9 @@
  * Defines how an observer navigates or modifies the system.
  */
 @mixin genesis-synapse($vector: 'navigate') {
-  /**
-   * @param $vector [navigate]: Portal to a different semantic coordinate.
-   * @param $vector [execute]: Local function or state modification.
-   * @param $vector [inquiry]: A request for more data (Expand/Search).
-   * @param $vector [destructive]: Permanent removal or system reset.
-   * @param $vector [social]: Neural link to other human/AI observers.
-   * @param $vector [invoke]: AI/generative action trigger (prompt, genesis). (v4.0)
-   * @param $vector [consent]: Explicit user approval/permission (accept, approve). (v4.0)
-   * @param $vector [input-primary]: Primary form input with responsive touch optimization.
-   * @param $vector [paginate]: Pagination navigation controls (numbered pages, prev/next).
-   * @param $vector [toggle]: Toggle/expand/collapse interaction (accordion, mobile menu).
-   * @param $vector [anchor]: In-page anchor navigation (TOC, skip links, back to top).
-   * @param $vector [tab]: Tab switching control for content panels.
-   * @param $vector [step]: Multi-step process navigation (wizard, stepper).
-   * @param $vector [react]: Emoji reactions and quick responses (like, heart, emoji picker).
-   * @param $vector [vote]: Voting and rating interactions (upvote, downvote, star rating).
-   * @param $vector [comment]: Comment and reply interactions.
-   * @param $vector [share]: Enhanced sharing with multiple platforms.
-   * @param $vector [notify]: Notification and alert interactions.
-   * @param $vector [mention]: @mention and tagging interactions.
-   */
+  // Variants: navigate, execute, inquiry, destructive, social, invoke, consent,
+  // input-primary, paginate, toggle, anchor, tab, step,
+  // react, vote, comment, share, notify, mention
   @include _theme-engine-synapse($vector);
 }
 
@@ -114,22 +56,9 @@
  * Defines the "Time-Sense" of the content.
  */
 @mixin genesis-state($condition: 'stable') {
-  /**
-   * @param $condition [stable]: The system is in equilibrium.
-   * @param $condition [evolving]: Content is currently being updated/streamed.
-   * @param $condition [deprecated]: Information is no longer verified.
-   * @param $condition [locked]: Data is immutable and requires clearance.
-   * @param $condition [simulated]: The data is a projection, not a live log.
-   * @param $condition [emerging]: Newly created, fresh content (new posts, just-published). (v4.0)
-   * @param $condition [transcending]: In transformative transition (AI processing, genesis). (v4.0)
-   * @param $condition [scroll-triggered]: Content with scroll-based animations.
-   * @param $condition [active]: Current/active navigation item state.
-   * @param $condition [expanded]: Expanded state for toggleable navigation.
-   * @param $condition [collapsed]: Collapsed state for toggleable navigation.
-   * @param $condition [mentioned]: Content where user is mentioned/tagged.
-   * @param $condition [unread]: Unread notifications/messages/content.
-   * @param $condition [reacted]: Content user has reacted to or engaged with.
-   */
+  // Variants: stable, evolving, deprecated, locked, simulated, emerging,
+  // transcending, scroll-triggered, active, expanded, collapsed,
+  // mentioned, unread, reacted
   @include _theme-engine-state($condition);
 }
 
@@ -138,15 +67,7 @@
  * Defines the "Feeling" or "Vibe" of the node without describing visuals.
  */
 @mixin genesis-atmosphere($vibe: 'neutral') {
-  /**
-   * @param $vibe [neutral]: Standard system transparency.
-   * @param $vibe [ethereal]: High-transparency, light-based focus.
-   * @param $vibe [void]: Deep-space, high-contrast, zero-distraction.
-   * @param $vibe [vibrant]: High-energy, data-saturated, high-neon.
-   * @param $vibe [sacred]: Reverent, mission-critical tone (genesis ceremony). (v4.0)
-   * @param $vibe [spacious-mobile]: Generous spacing on mobile for touch-friendliness.
-   * @param $vibe [dense-desktop]: High information density on large screens.
-   * @param $vibe [viewport-aware]: Content sized relative to viewport (hero sections).
-   */
+  // Variants: neutral, ethereal, void, vibrant, cosmic, sacred,
+  // spacious-mobile, dense-desktop, viewport-aware
   @include _theme-engine-atmosphere($vibe);
 }
