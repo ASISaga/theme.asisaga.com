@@ -1,0 +1,255 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "archive",
+  "name": "Archive Layout",
+  "version": "1.0.0",
+  "description": "Content archive listing layout: page header, optional filter/sort/view-mode controls bar, paginated content grid, and optional pagination navigation.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "div",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "environment/distributed"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-lg",
+  "children": [
+    {
+      "id": "archive-header",
+      "name": "Archive Header",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "header",
+          "motion-intent": "entry/slide-down",
+          "layout-variant": "entity/primary"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-sm",
+      "children": [
+        {
+          "id": "archive-title",
+          "name": "Archive Title",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "h1",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "cognition/axiom"
+            }
+          },
+          "content": "{{ page.title }}"
+        },
+        {
+          "id": "archive-description",
+          "name": "Archive Description",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "p",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "cognition/discourse"
+            }
+          },
+          "attributes": {
+            "data-conditional": "page.description"
+          },
+          "content": "{{ page.description }}"
+        }
+      ]
+    },
+    {
+      "id": "archive-controls",
+      "name": "Archive Controls",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "environment/associative"
+        }
+      },
+      "layoutMode": "HORIZONTAL",
+      "itemSpacing": "spacing-sm",
+      "attributes": {
+        "data-conditional": "page.show_filters or page.show_sort or page.show_view_toggle"
+      },
+      "children": [
+        {
+          "id": "archive-filter",
+          "name": "Archive Filter",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-xs",
+          "attributes": {
+            "data-conditional": "page.show_filters"
+          },
+          "children": [
+            {
+              "id": "archive-filter-select",
+              "name": "Archive Filter Select",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "select",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/inquiry"
+                }
+              },
+              "attributes": {
+                "id": "archive-filter"
+              }
+            }
+          ]
+        },
+        {
+          "id": "archive-sort",
+          "name": "Archive Sort",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-xs",
+          "attributes": {
+            "data-conditional": "page.show_sort"
+          },
+          "children": [
+            {
+              "id": "archive-sort-select",
+              "name": "Archive Sort Select",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "select",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/inquiry"
+                }
+              },
+              "attributes": {
+                "id": "archive-sort"
+              }
+            }
+          ]
+        },
+        {
+          "id": "archive-view-toggle",
+          "name": "Archive View Toggle",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-xs",
+          "attributes": {
+            "role": "group",
+            "aria-label": "View mode",
+            "data-conditional": "page.show_view_toggle"
+          },
+          "children": [
+            {
+              "id": "archive-grid-view-btn",
+              "name": "Archive Grid View Button",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "button",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/execute"
+                }
+              },
+              "attributes": {
+                "type": "button",
+                "aria-label": "Grid view",
+                "aria-pressed": "true"
+              }
+            },
+            {
+              "id": "archive-list-view-btn",
+              "name": "Archive List View Button",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "button",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/execute"
+                }
+              },
+              "attributes": {
+                "type": "button",
+                "aria-label": "List view",
+                "aria-pressed": "false"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "archive-content",
+      "name": "Archive Content",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "scroll/reveal",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "layoutMode": "GRID",
+      "itemSpacing": "spacing-md",
+      "content": "{{ content }}"
+    },
+    {
+      "id": "archive-pagination",
+      "name": "Archive Pagination",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "nav",
+          "motion-intent": "scroll/reveal",
+          "layout-variant": "environment/associative"
+        }
+      },
+      "layoutMode": "HORIZONTAL",
+      "itemSpacing": "spacing-sm",
+      "attributes": {
+        "aria-label": "Archive pagination",
+        "data-conditional": "page.show_pagination"
+      },
+      "children": [
+        {
+          "id": "archive-pagination-list",
+          "name": "Archive Pagination List",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "ul",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-xs"
+        }
+      ]
+    }
+  ]
+}

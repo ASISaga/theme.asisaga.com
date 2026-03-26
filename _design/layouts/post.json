@@ -1,0 +1,221 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "post",
+  "name": "Post Layout",
+  "version": "1.0.0",
+  "description": "Blog post article layout: optional hero image above the fold, article body with metadata and tags, main content prose, and optional social share CTA.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "div",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "environment/focused"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-lg",
+  "children": [
+    {
+      "id": "post-hero",
+      "name": "Post Hero",
+      "type": "INSTANCE",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "section",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "entity/transcendent"
+        }
+      },
+      "ref": "includes/hero",
+      "attributes": {
+        "data-conditional": "page.image",
+        "title": "{{ page.title }}",
+        "description": "{{ page.description }}",
+        "image": "{{ page.image }}",
+        "size": "compact"
+      }
+    },
+    {
+      "id": "post-article",
+      "name": "Post Article",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "article",
+          "motion-intent": "scroll/reveal",
+          "layout-variant": "entity/primary"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-md",
+      "children": [
+        {
+          "id": "post-header",
+          "name": "Post Header",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "header",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-sm",
+          "attributes": {
+            "data-conditional": "!page.image"
+          },
+          "children": [
+            {
+              "id": "post-title",
+              "name": "Post Title",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "h1",
+                  "motion-intent": "entry/slide-up",
+                  "layout-variant": "cognition/axiom"
+                }
+              },
+              "content": "{{ page.title }}"
+            }
+          ]
+        },
+        {
+          "id": "post-meta",
+          "name": "Post Meta",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-sm",
+          "children": [
+            {
+              "id": "post-date",
+              "name": "Post Date",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "time",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/gloss"
+                }
+              },
+              "content": "{{ page.date | date: '%B %d, %Y' }}"
+            },
+            {
+              "id": "post-author",
+              "name": "Post Author",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "span",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/gloss"
+                }
+              },
+              "content": "{{ page.author }}"
+            }
+          ]
+        },
+        {
+          "id": "post-tags",
+          "name": "Post Tags",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-xs",
+          "children": [
+            {
+              "id": "post-tag",
+              "name": "Post Tag",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "a",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/navigate"
+                }
+              },
+              "content": "{{ tag }}"
+            }
+          ]
+        },
+        {
+          "id": "post-content",
+          "name": "Post Content",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "cognition/discourse"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-md",
+          "content": "{{ content }}"
+        },
+        {
+          "id": "post-share-cta",
+          "name": "Post Share CTA",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "synapse/social"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-sm",
+          "attributes": {
+            "data-conditional": "page.share"
+          },
+          "children": [
+            {
+              "id": "post-share-label",
+              "name": "Post Share Label",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "span",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/gloss"
+                }
+              },
+              "content": "Share this post"
+            },
+            {
+              "id": "post-share-button",
+              "name": "Post Share Button",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "a",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/social"
+                }
+              },
+              "attributes": {
+                "href": "#share"
+              },
+              "content": "Share"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

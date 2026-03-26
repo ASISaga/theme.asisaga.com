@@ -1,0 +1,393 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "splash",
+  "name": "Splash Layout",
+  "version": "1.0.0",
+  "description": "Full-viewport splash/coming-soon page: vibrant atmosphere wrapper with logo, headline, subtitle, optional countdown timer, optional email capture form, and optional social links.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "div",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "atmosphere/vibrant"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-lg",
+  "children": [
+    {
+      "id": "splash-card",
+      "name": "Splash Card",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/slide-up",
+          "layout-variant": "entity/imperative"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-lg",
+      "children": [
+        {
+          "id": "splash-logo",
+          "name": "Splash Logo",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "img",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "entity/latent"
+            }
+          },
+          "attributes": {
+            "src": "{{ page.logo }}",
+            "alt": "{{ page.title }}",
+            "data-conditional": "page.logo"
+          }
+        },
+        {
+          "id": "splash-title",
+          "name": "Splash Title",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "h1",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "cognition/axiom"
+            }
+          },
+          "attributes": {
+            "data-conditional": "page.title"
+          },
+          "content": "{{ page.title }}"
+        },
+        {
+          "id": "splash-subtitle",
+          "name": "Splash Subtitle",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "p",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "cognition/motive"
+            }
+          },
+          "attributes": {
+            "data-conditional": "page.subtitle"
+          },
+          "content": "{{ page.subtitle }}"
+        },
+        {
+          "id": "splash-content",
+          "name": "Splash Content",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "cognition/discourse"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-sm",
+          "content": "{{ content }}"
+        },
+        {
+          "id": "splash-countdown",
+          "name": "Splash Countdown",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "idle/pulse",
+              "layout-variant": "state/evolving"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-md",
+          "attributes": {
+            "aria-label": "Countdown timer",
+            "data-conditional": "page.countdown"
+          },
+          "children": [
+            {
+              "id": "splash-countdown-days",
+              "name": "Splash Countdown Days",
+              "type": "FRAME",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "div",
+                  "motion-intent": "idle/pulse",
+                  "layout-variant": "environment/focused"
+                }
+              },
+              "layoutMode": "VERTICAL",
+              "itemSpacing": "spacing-xs",
+              "children": [
+                {
+                  "id": "splash-countdown-days-value",
+                  "name": "Splash Countdown Days Value",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "span",
+                      "motion-intent": "idle/pulse",
+                      "layout-variant": "cognition/axiom"
+                    }
+                  },
+                  "attributes": {
+                    "id": "days",
+                    "aria-label": "Days"
+                  },
+                  "content": "00"
+                },
+                {
+                  "id": "splash-countdown-days-label",
+                  "name": "Splash Countdown Days Label",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "span",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "cognition/gloss"
+                    }
+                  },
+                  "content": "Days"
+                }
+              ]
+            },
+            {
+              "id": "splash-countdown-hours",
+              "name": "Splash Countdown Hours",
+              "type": "FRAME",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "div",
+                  "motion-intent": "idle/pulse",
+                  "layout-variant": "environment/focused"
+                }
+              },
+              "layoutMode": "VERTICAL",
+              "itemSpacing": "spacing-xs",
+              "children": [
+                {
+                  "id": "splash-countdown-hours-value",
+                  "name": "Splash Countdown Hours Value",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "span",
+                      "motion-intent": "idle/pulse",
+                      "layout-variant": "cognition/axiom"
+                    }
+                  },
+                  "attributes": {
+                    "id": "hours",
+                    "aria-label": "Hours"
+                  },
+                  "content": "00"
+                },
+                {
+                  "id": "splash-countdown-hours-label",
+                  "name": "Splash Countdown Hours Label",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "span",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "cognition/gloss"
+                    }
+                  },
+                  "content": "Hours"
+                }
+              ]
+            },
+            {
+              "id": "splash-countdown-minutes",
+              "name": "Splash Countdown Minutes",
+              "type": "FRAME",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "div",
+                  "motion-intent": "idle/pulse",
+                  "layout-variant": "environment/focused"
+                }
+              },
+              "layoutMode": "VERTICAL",
+              "itemSpacing": "spacing-xs",
+              "children": [
+                {
+                  "id": "splash-countdown-minutes-value",
+                  "name": "Splash Countdown Minutes Value",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "span",
+                      "motion-intent": "idle/pulse",
+                      "layout-variant": "cognition/axiom"
+                    }
+                  },
+                  "attributes": {
+                    "id": "minutes",
+                    "aria-label": "Minutes"
+                  },
+                  "content": "00"
+                },
+                {
+                  "id": "splash-countdown-minutes-label",
+                  "name": "Splash Countdown Minutes Label",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "span",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "cognition/gloss"
+                    }
+                  },
+                  "content": "Minutes"
+                }
+              ]
+            },
+            {
+              "id": "splash-countdown-seconds",
+              "name": "Splash Countdown Seconds",
+              "type": "FRAME",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "div",
+                  "motion-intent": "idle/pulse",
+                  "layout-variant": "environment/focused"
+                }
+              },
+              "layoutMode": "VERTICAL",
+              "itemSpacing": "spacing-xs",
+              "children": [
+                {
+                  "id": "splash-countdown-seconds-value",
+                  "name": "Splash Countdown Seconds Value",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "span",
+                      "motion-intent": "idle/pulse",
+                      "layout-variant": "cognition/axiom"
+                    }
+                  },
+                  "attributes": {
+                    "id": "seconds",
+                    "aria-label": "Seconds"
+                  },
+                  "content": "00"
+                },
+                {
+                  "id": "splash-countdown-seconds-label",
+                  "name": "Splash Countdown Seconds Label",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "span",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "cognition/gloss"
+                    }
+                  },
+                  "content": "Seconds"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "splash-email-form",
+          "name": "Splash Email Form",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "form",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-sm",
+          "attributes": {
+            "data-conditional": "page.email_capture"
+          },
+          "children": [
+            {
+              "id": "splash-email-input",
+              "name": "Splash Email Input",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "input",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/inquiry"
+                }
+              },
+              "attributes": {
+                "type": "email",
+                "id": "splash-email",
+                "placeholder": "Enter your email",
+                "required": "true"
+              }
+            },
+            {
+              "id": "splash-email-button",
+              "name": "Splash Email Button",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "button",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/execute"
+                }
+              },
+              "attributes": {
+                "type": "submit"
+              },
+              "content": "{{ page.email_capture.button_text | default: 'Notify Me' }}"
+            }
+          ]
+        },
+        {
+          "id": "splash-social-links",
+          "name": "Splash Social Links",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "nav",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-sm",
+          "attributes": {
+            "aria-label": "Social media links",
+            "data-conditional": "page.social_links"
+          },
+          "children": [
+            {
+              "id": "splash-social-link",
+              "name": "Splash Social Link",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "a",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/social"
+                }
+              },
+              "attributes": {
+                "href": "{{ link.url }}",
+                "target": "_blank",
+                "rel": "noopener noreferrer"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

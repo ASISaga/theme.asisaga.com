@@ -1,0 +1,97 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "app",
+  "name": "App Layout",
+  "version": "1.0.0",
+  "description": "Standalone full-page application shell with site header and footer. Wraps the main content area in a focused environment for single-page and interactive application views.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "body",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "atmosphere/neutral"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-none",
+  "children": [
+    {
+      "id": "app-skip-link",
+      "name": "App Skip Link",
+      "type": "INSTANCE",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "a",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "synapse/navigate"
+        }
+      },
+      "attributes": {
+        "href": "#skip-target",
+        "class": "skip-link sr-only focus-visible"
+      },
+      "content": "Skip to main content"
+    },
+    {
+      "id": "app-site-header",
+      "name": "App Site Header",
+      "type": "INSTANCE",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "header",
+          "motion-intent": "entry/slide-down",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "ref": "includes/header"
+    },
+    {
+      "id": "app-content-wrapper",
+      "name": "App Content Wrapper",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "environment/focused"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-none",
+      "children": [
+        {
+          "id": "app-main",
+          "name": "App Main Content",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "main",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-lg",
+          "attributes": {
+            "id": "skip-target",
+            "tabindex": "-1"
+          },
+          "content": "{{ content }}"
+        }
+      ]
+    },
+    {
+      "id": "app-site-footer",
+      "name": "App Site Footer",
+      "type": "INSTANCE",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "footer",
+          "motion-intent": "scroll/reveal",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "ref": "includes/footer"
+    }
+  ]
+}

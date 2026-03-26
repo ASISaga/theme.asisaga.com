@@ -1,0 +1,400 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "app",
+  "name": "App Layout",
+  "version": "1.0.0",
+  "description": "Standalone full-page application shell with site header and footer. Wraps the main content area in a focused environment for single-page and interactive application views.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "body",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "atmosphere/neutral"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-none",
+  "children": [
+    {
+      "id": "app-skip-link",
+      "name": "App Skip Link",
+      "type": "INSTANCE",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "a",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "synapse/navigate"
+        }
+      },
+      "attributes": {
+        "href": "#skip-target",
+        "class": "skip-link sr-only focus-visible"
+      },
+      "content": "Skip to main content"
+    },
+    {
+      "id": "app-site-header",
+      "name": "App Site Header",
+      "version": "1.0.0",
+      "description": "Persistent site header containing brand identity, mobile toggle, and primary navigation.",
+      "type": "INSTANCE",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "header",
+          "motion-intent": "entry/slide-down",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "layoutMode": "HORIZONTAL",
+      "itemSpacing": "spacing-md",
+      "attributes": {
+        "role": "banner"
+      },
+      "children": [
+        {
+          "id": "header-container",
+          "name": "Header Container",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/distributed"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-md",
+          "children": [
+            {
+              "id": "header-brand",
+              "name": "Brand",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "a",
+                  "motion-intent": "hover/scale",
+                  "layout-variant": "entity/primary"
+                }
+              },
+              "layoutMode": "HORIZONTAL",
+              "itemSpacing": "spacing-sm",
+              "attributes": {
+                "href": "/",
+                "aria-label": "{{ site.title | default: site.github.repository_name }} - Home"
+              },
+              "children": [
+                {
+                  "id": "header-logo",
+                  "name": "Logo Image",
+                  "type": "INSTANCE",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "img",
+                      "motion-intent": "idle/pulse",
+                      "layout-variant": "entity/secondary"
+                    }
+                  },
+                  "attributes": {
+                    "src": "{{ '/assets/images/favicon.ico' | relative_url }}",
+                    "alt": ""
+                  }
+                },
+                {
+                  "id": "header-brand-text",
+                  "name": "Brand Text",
+                  "type": "GROUP",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "div",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "cognition/axiom"
+                    }
+                  },
+                  "layoutMode": "VERTICAL",
+                  "itemSpacing": "spacing-xs",
+                  "children": [
+                    {
+                      "id": "header-site-title",
+                      "name": "Site Title",
+                      "type": "TEXT",
+                      "pluginData": {
+                        "asi-saga": {
+                          "semantic-tag": "span",
+                          "motion-intent": "entry/fade-in",
+                          "layout-variant": "cognition/axiom"
+                        }
+                      },
+                      "content": "{{ site.title | default: site.github.repository_name }}"
+                    },
+                    {
+                      "id": "header-tagline",
+                      "name": "Site Tagline",
+                      "type": "TEXT",
+                      "pluginData": {
+                        "asi-saga": {
+                          "semantic-tag": "span",
+                          "motion-intent": "entry/fade-in",
+                          "layout-variant": "cognition/gloss"
+                        }
+                      },
+                      "content": "{{ site.description | default: site.github.project_tagline }}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "header-nav-toggle",
+              "name": "Nav Toggle",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "button",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/navigate"
+                }
+              },
+              "attributes": {
+                "type": "button",
+                "aria-expanded": "false",
+                "aria-controls": "genesis-nav",
+                "aria-label": "Toggle navigation menu",
+                "data-nav-toggle": ""
+              }
+            },
+            {
+              "id": "header-nav",
+              "name": "Primary Navigation",
+              "version": "1.0.0",
+              "description": "Primary site navigation list, driven by site.data.nav.navigation data source.",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "nav",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "environment/associative"
+                }
+              },
+              "layoutMode": "HORIZONTAL",
+              "itemSpacing": "spacing-sm",
+              "attributes": {
+                "id": "genesis-nav",
+                "aria-label": "Primary navigation",
+                "data-nav-menu": ""
+              },
+              "children": [
+                {
+                  "id": "nav-item",
+                  "name": "Nav Item",
+                  "type": "INSTANCE",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "li",
+                      "motion-intent": "hover/scale",
+                      "layout-variant": "entity/secondary"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "nav-link",
+                      "name": "Nav Link",
+                      "type": "TEXT",
+                      "pluginData": {
+                        "asi-saga": {
+                          "semantic-tag": "a",
+                          "motion-intent": "hover/glow",
+                          "layout-variant": "synapse/navigate"
+                        }
+                      },
+                      "attributes": {
+                        "href": "{{ item.url }}"
+                      },
+                      "content": "{{ item.title }}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "app-content-wrapper",
+      "name": "App Content Wrapper",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "environment/focused"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-none",
+      "children": [
+        {
+          "id": "app-main",
+          "name": "App Main Content",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "main",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-lg",
+          "attributes": {
+            "id": "skip-target",
+            "tabindex": "-1"
+          },
+          "content": "{{ content }}"
+        }
+      ]
+    },
+    {
+      "id": "app-site-footer",
+      "name": "App Site Footer",
+      "version": "1.0.0",
+      "description": "Site-wide footer containing brand, navigation links, and social connections.",
+      "type": "INSTANCE",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "footer",
+          "motion-intent": "scroll/reveal",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-lg",
+      "attributes": {
+        "role": "contentinfo"
+      },
+      "children": [
+        {
+          "id": "footer-container",
+          "name": "Footer Container",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/distributed"
+            }
+          },
+          "layoutMode": "GRID",
+          "itemSpacing": "spacing-xl",
+          "children": [
+            {
+              "id": "footer-brand",
+              "name": "Footer Brand",
+              "type": "FRAME",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "div",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "entity/primary"
+                }
+              },
+              "layoutMode": "VERTICAL",
+              "itemSpacing": "spacing-sm",
+              "children": [
+                {
+                  "id": "footer-title",
+                  "name": "Footer Title",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "span",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "cognition/axiom"
+                    }
+                  },
+                  "content": "{{ site.title | default: site.github.repository_name }}"
+                },
+                {
+                  "id": "footer-tagline",
+                  "name": "Footer Tagline",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "p",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "cognition/discourse"
+                    }
+                  },
+                  "content": "{{ site.description | default: site.github.project_tagline }}"
+                }
+              ]
+            },
+            {
+              "id": "footer-nav",
+              "name": "Footer Navigation",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "nav",
+                  "motion-intent": "scroll/reveal",
+                  "layout-variant": "environment/chronological"
+                }
+              },
+              "layoutMode": "VERTICAL",
+              "itemSpacing": "spacing-xs",
+              "attributes": {
+                "aria-label": "Footer navigation"
+              }
+            },
+            {
+              "id": "footer-social",
+              "name": "Footer Social",
+              "type": "FRAME",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "div",
+                  "motion-intent": "scroll/reveal",
+                  "layout-variant": "environment/associative"
+                }
+              },
+              "layoutMode": "HORIZONTAL",
+              "itemSpacing": "spacing-sm",
+              "attributes": {
+                "aria-labelledby": "social-heading"
+              }
+            }
+          ]
+        },
+        {
+          "id": "footer-bottom",
+          "name": "Footer Bottom Bar",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/distributed"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-md",
+          "children": [
+            {
+              "id": "footer-copyright",
+              "name": "Copyright",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "p",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/gloss"
+                }
+              },
+              "content": "© {{ 'now' | date: '%Y' }} {{ site.title }}. All rights reserved."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

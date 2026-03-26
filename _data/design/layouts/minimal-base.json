@@ -1,0 +1,71 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "minimal-base",
+  "name": "Minimal Base Layout",
+  "version": "1.0.0",
+  "description": "Bare-bones full-page shell without site header or footer. Used as parent for splash, minimal, and error pages that require a standalone viewport.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "body",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "atmosphere/neutral"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-xs",
+  "children": [
+    {
+      "id": "minimal-base-skip-link",
+      "name": "Skip Link",
+      "type": "INSTANCE",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "a",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "synapse/navigate"
+        }
+      },
+      "attributes": {
+        "href": "#skip-target",
+        "class": "skip-link sr-only focus-visible"
+      },
+      "content": "Skip to main content"
+    },
+    {
+      "id": "minimal-base-main",
+      "name": "Minimal Main Content",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "main",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "environment/focused"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-lg",
+      "attributes": {
+        "id": "skip-target",
+        "tabindex": "-1"
+      },
+      "children": [
+        {
+          "id": "minimal-base-content",
+          "name": "Minimal Layout Wrapper",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-md",
+          "content": "{{ content }}"
+        }
+      ]
+    }
+  ]
+}

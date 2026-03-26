@@ -1,0 +1,213 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "settings",
+  "name": "Settings Layout",
+  "version": "1.0.0",
+  "description": "Two-column settings page: vertical sidebar navigation on the left with tab links, and a main content panel on the right with title, content area, and save/cancel actions.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "div",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "environment/convergent"
+    }
+  },
+  "layoutMode": "HORIZONTAL",
+  "itemSpacing": "spacing-lg",
+  "children": [
+    {
+      "id": "settings-sidebar",
+      "name": "Settings Sidebar",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "aside",
+          "motion-intent": "entry/slide-down",
+          "layout-variant": "environment/focused"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-sm",
+      "attributes": {
+        "aria-label": "Settings navigation"
+      },
+      "children": [
+        {
+          "id": "settings-sidebar-title",
+          "name": "Settings Sidebar Title",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "h2",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "cognition/motive"
+            }
+          },
+          "content": "Settings"
+        },
+        {
+          "id": "settings-nav",
+          "name": "Settings Navigation",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "nav",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-xs",
+          "attributes": {
+            "data-conditional": "page.tabs"
+          },
+          "children": [
+            {
+              "id": "settings-nav-list",
+              "name": "Settings Nav List",
+              "type": "FRAME",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "ul",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "environment/focused"
+                }
+              },
+              "layoutMode": "VERTICAL",
+              "itemSpacing": "spacing-xs",
+              "children": [
+                {
+                  "id": "settings-nav-item",
+                  "name": "Settings Nav Item",
+                  "type": "INSTANCE",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "li",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "environment/focused"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "settings-nav-link",
+                      "name": "Settings Nav Link",
+                      "type": "TEXT",
+                      "pluginData": {
+                        "asi-saga": {
+                          "semantic-tag": "a",
+                          "motion-intent": "hover/glow",
+                          "layout-variant": "synapse/navigate"
+                        }
+                      },
+                      "attributes": {
+                        "href": "#{{ tab.id }}",
+                        "data-tab-toggle": "",
+                        "role": "tab"
+                      },
+                      "content": "{{ tab.title }}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "settings-main",
+      "name": "Settings Main Panel",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "entity/primary"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-md",
+      "children": [
+        {
+          "id": "settings-title",
+          "name": "Settings Title",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "h1",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "cognition/axiom"
+            }
+          },
+          "attributes": {
+            "data-conditional": "page.title"
+          },
+          "content": "{{ page.title }}"
+        },
+        {
+          "id": "settings-content",
+          "name": "Settings Content",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-md",
+          "content": "{{ content }}"
+        },
+        {
+          "id": "settings-actions",
+          "name": "Settings Actions",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-sm",
+          "children": [
+            {
+              "id": "settings-save-button",
+              "name": "Settings Save Button",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "button",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/execute"
+                }
+              },
+              "attributes": {
+                "type": "button"
+              },
+              "content": "Save Changes"
+            },
+            {
+              "id": "settings-cancel-button",
+              "name": "Settings Cancel Button",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "button",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/navigate"
+                }
+              },
+              "attributes": {
+                "type": "button"
+              },
+              "content": "Cancel"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
