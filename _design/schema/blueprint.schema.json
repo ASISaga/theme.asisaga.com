@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://theme.asisaga.com/_design/schema/blueprint.schema.json",
+  "title": "Blueprint File",
+  "description": "Top-level wrapper for an ASISaga Genesis blueprint file. A blueprint is a software-agnostic, structural skeleton of a UI component or page layout. It carries semantic and ontological intent without touching visual constants or animation physics.",
+  "type": "object",
+  "required": ["$schema", "id", "name", "version", "type", "pluginData"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Must point to blueprint.schema.json.",
+      "const": "../schema/blueprint.schema.json"
+    },
+    "id": {
+      "type": "string",
+      "description": "Globally unique identifier for this blueprint (kebab-case). Used as the filename stem.",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable display name."
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version of the blueprint (e.g., '1.0.0').",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "description": {
+      "type": "string",
+      "description": "One-sentence statement of this blueprint's structural purpose."
+    },
+    "type": {
+      "type": "string",
+      "enum": ["FRAME", "COMPONENT", "INSTANCE", "TEXT", "GROUP"],
+      "description": "The role of the root node: COMPONENT for reusable includes, FRAME for page-level layouts."
+    },
+    "pluginData": {
+      "type": "object",
+      "required": ["asi-saga"],
+      "additionalProperties": false,
+      "properties": {
+        "asi-saga": {
+          "type": "object",
+          "description": "The Ontological Handshake metadata for the root node.",
+          "required": ["semantic-tag", "motion-intent", "layout-variant"],
+          "additionalProperties": false,
+          "properties": {
+            "semantic-tag": {
+              "type": "string",
+              "description": "HTML5 semantic element for the root node.",
+              "enum": [
+                "html", "body",
+                "header", "nav", "main", "section", "article", "aside", "footer",
+                "div", "span",
+                "h1", "h2", "h3", "h4", "h5", "h6",
+                "p", "a", "button",
+                "form", "fieldset", "legend", "label", "input", "textarea", "select",
+                "ul", "ol", "li",
+                "img", "figure", "figcaption",
+                "time", "address", "blockquote", "cite"
+              ]
+            },
+            "motion-intent": {
+              "type": "string",
+              "pattern": "^(entry|exit|hover|scroll|gesture|idle)/[a-z][a-z0-9-]*$"
+            },
+            "layout-variant": {
+              "type": "string",
+              "pattern": "^(environment|entity|cognition|synapse|state|atmosphere)/[a-z][a-z0-9-]*$"
+            }
+          }
+        }
+      }
+    },
+    "layoutMode": {
+      "type": "string",
+      "enum": ["VERTICAL", "HORIZONTAL", "GRID", "NONE"]
+    },
+    "itemSpacing": {
+      "type": "string",
+      "pattern": "^spacing-[a-z0-9-]+$"
+    },
+    "content": {
+      "type": "string"
+    },
+    "attributes": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "children": {
+      "type": "array",
+      "items": { "$ref": "node.schema.json" }
+    }
+  }
+}

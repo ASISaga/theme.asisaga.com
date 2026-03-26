@@ -1,0 +1,109 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "card",
+  "name": "Content Card",
+  "version": "1.0.0",
+  "description": "Reusable content card for surfacing an entity (post, product, feature) with optional image, title, description, and CTA.",
+  "type": "COMPONENT",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "article",
+      "motion-intent": "scroll/reveal",
+      "layout-variant": "entity/primary"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-md",
+  "children": [
+    {
+      "id": "card-media",
+      "name": "Card Media",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "figure",
+          "motion-intent": "hover/scale",
+          "layout-variant": "entity/aggregate"
+        }
+      },
+      "layoutMode": "NONE",
+      "children": [
+        {
+          "id": "card-image",
+          "name": "Card Image",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "img",
+              "motion-intent": "hover/scale",
+              "layout-variant": "entity/latent"
+            }
+          },
+          "attributes": {
+            "src": "{{ include.image }}",
+            "alt": "{{ include.title }}",
+            "loading": "lazy"
+          }
+        }
+      ]
+    },
+    {
+      "id": "card-body",
+      "name": "Card Body",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "environment/focused"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-sm",
+      "children": [
+        {
+          "id": "card-title",
+          "name": "Card Title",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "h3",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "cognition/discourse"
+            }
+          },
+          "content": "{{ include.title }}"
+        },
+        {
+          "id": "card-description",
+          "name": "Card Description",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "p",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "cognition/protocol"
+            }
+          },
+          "content": "{{ include.description }}"
+        },
+        {
+          "id": "card-cta",
+          "name": "Card CTA",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "a",
+              "motion-intent": "hover/glow",
+              "layout-variant": "synapse/navigate"
+            }
+          },
+          "attributes": {
+            "href": "{{ include.url }}"
+          },
+          "content": "{{ include.cta_text | default: 'Read more' }}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://theme.asisaga.com/_design/schema/node.schema.json",
+  "title": "Blueprint Node",
+  "description": "A single structural node in an ASISaga Genesis blueprint. Carries structural intent only — no token values, no animation parameters.",
+  "type": "object",
+  "required": ["id", "name", "type", "pluginData"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this node within its blueprint (kebab-case).",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable label (Title Case). Slugified automatically to form CSS class: 'Site Header' → '.node--site-header'."
+    },
+    "type": {
+      "type": "string",
+      "enum": ["FRAME", "COMPONENT", "INSTANCE", "TEXT", "GROUP"],
+      "description": "Structural node type. FRAME = page-level container; COMPONENT = reusable unit; INSTANCE = placed component; TEXT = leaf text node; GROUP = logical grouping."
+    },
+    "pluginData": {
+      "type": "object",
+      "required": ["asi-saga"],
+      "additionalProperties": false,
+      "properties": {
+        "asi-saga": {
+          "type": "object",
+          "description": "The Ontological Handshake — three mandatory metadata fields that connect structure to the Token DNA and Motion Physics layers.",
+          "required": ["semantic-tag", "motion-intent", "layout-variant"],
+          "additionalProperties": false,
+          "properties": {
+            "semantic-tag": {
+              "type": "string",
+              "description": "The HTML5 element that best represents the semantic purpose of this node.",
+              "enum": [
+                "html", "body",
+                "header", "nav", "main", "section", "article", "aside", "footer",
+                "div", "span",
+                "h1", "h2", "h3", "h4", "h5", "h6",
+                "p", "a", "button",
+                "form", "fieldset", "legend", "label", "input", "textarea", "select",
+                "ul", "ol", "li",
+                "img", "figure", "figcaption",
+                "time", "address", "blockquote", "cite"
+              ]
+            },
+            "motion-intent": {
+              "type": "string",
+              "description": "A token path referencing a named physics behaviour in the Motion Physics layer. Format: '<phase>/<behaviour>'. The blueprint declares INTENT only — execution belongs to the Motion Physics skill.",
+              "pattern": "^(entry|exit|hover|scroll|gesture|idle)/[a-z][a-z0-9-]*$",
+              "examples": [
+                "entry/fade-in",
+                "entry/slide-up",
+                "entry/slide-down",
+                "hover/scale",
+                "hover/glow",
+                "scroll/reveal",
+                "gesture/swipe",
+                "idle/pulse"
+              ]
+            },
+            "layout-variant": {
+              "type": "string",
+              "description": "One of the 89 Genesis ontological variants. Format: '<category>/<variant>'. The blueprint declares the VARIANT only — visual execution belongs to the Token DNA skill.",
+              "pattern": "^(environment|entity|cognition|synapse|state|atmosphere)/[a-z][a-z0-9-]*$",
+              "examples": [
+                "environment/distributed",
+                "environment/focused",
+                "environment/associative",
+                "entity/primary",
+                "entity/secondary",
+                "entity/imperative",
+                "cognition/axiom",
+                "cognition/discourse",
+                "synapse/execute",
+                "synapse/navigate",
+                "state/stable",
+                "state/evolving",
+                "atmosphere/vibrant",
+                "atmosphere/ethereal",
+                "atmosphere/void",
+                "atmosphere/neutral"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "layoutMode": {
+      "type": "string",
+      "enum": ["VERTICAL", "HORIZONTAL", "GRID", "NONE"],
+      "description": "Spatial flow direction for child nodes. Maps to CSS flex-direction or display:grid."
+    },
+    "itemSpacing": {
+      "type": "string",
+      "description": "Token reference for the gap between child nodes. Must match a key in the Token DNA spacing scale. Update this pattern when new tokens are added to _data/tokens.yml.",
+      "pattern": "^spacing-[a-z0-9-]+$"
+    },
+    "content": {
+      "type": "string",
+      "description": "Static text content or a Liquid expression (e.g., '{{ site.title }}'). Only valid on TEXT and leaf nodes."
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Additional HTML attributes to place on the semantic element (e.g., href, aria-label, data-*).",
+      "additionalProperties": { "type": "string" }
+    },
+    "ref": {
+      "type": "string",
+      "description": "Pointer to another blueprint file to be inlined at this position during sync. Resolved by blueprint-to-code skill before Jekyll reads the file.",
+      "pattern": "^(includes|layouts)/[a-z][a-z0-9-]*$"
+    },
+    "children": {
+      "type": "array",
+      "description": "Ordered child nodes. Maximum depth: 5 levels (enforced by validate-blueprint.sh).",
+      "items": { "$ref": "#" }
+    }
+  }
+}

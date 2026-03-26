@@ -1,0 +1,181 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "landing",
+  "name": "Landing Layout",
+  "version": "1.0.0",
+  "description": "Marketing landing page structure: full-bleed hero above the fold, content sections below, and a final conversion CTA at the bottom.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "div",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "atmosphere/vibrant"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-xl",
+  "children": [
+    {
+      "id": "landing-hero",
+      "name": "Landing Hero",
+      "type": "INSTANCE",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "section",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "entity/imperative"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-lg",
+      "children": [
+        {
+          "id": "landing-hero-header",
+          "name": "Landing Hero Header",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-md",
+          "children": [
+            {
+              "id": "landing-hero-title",
+              "name": "Landing Hero Title",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "h1",
+                  "motion-intent": "entry/slide-up",
+                  "layout-variant": "cognition/axiom"
+                }
+              },
+              "content": "{{ page.hero.title }}"
+            },
+            {
+              "id": "landing-hero-subtitle",
+              "name": "Landing Hero Subtitle",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "p",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/discourse"
+                }
+              },
+              "content": "{{ page.hero.subtitle }}"
+            }
+          ]
+        },
+        {
+          "id": "landing-hero-actions",
+          "name": "Landing Hero Actions",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-sm",
+          "children": [
+            {
+              "id": "landing-hero-cta",
+              "name": "Landing Hero CTA",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "a",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/execute"
+                }
+              },
+              "attributes": {
+                "href": "{{ page.hero.cta.url }}"
+              },
+              "content": "{{ page.hero.cta.text }}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "landing-content",
+      "name": "Landing Content",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "section",
+          "motion-intent": "scroll/reveal",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-lg"
+    },
+    {
+      "id": "landing-final-cta",
+      "name": "Landing Final CTA",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "section",
+          "motion-intent": "scroll/reveal",
+          "layout-variant": "entity/secondary"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-md",
+      "children": [
+        {
+          "id": "landing-final-cta-title",
+          "name": "Final CTA Title",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "h2",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "cognition/axiom"
+            }
+          },
+          "content": "{{ page.final_cta.title }}"
+        },
+        {
+          "id": "landing-final-cta-description",
+          "name": "Final CTA Description",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "p",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "cognition/discourse"
+            }
+          },
+          "content": "{{ page.final_cta.description }}"
+        },
+        {
+          "id": "landing-final-cta-button",
+          "name": "Final CTA Button",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "a",
+              "motion-intent": "hover/glow",
+              "layout-variant": "synapse/execute"
+            }
+          },
+          "attributes": {
+            "href": "{{ page.final_cta.url }}"
+          },
+          "content": "{{ page.final_cta.text }}"
+        }
+      ]
+    }
+  ]
+}

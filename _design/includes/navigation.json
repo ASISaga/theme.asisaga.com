@@ -1,0 +1,49 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "navigation",
+  "name": "Navigation",
+  "version": "1.0.0",
+  "description": "Primary site navigation list, driven by site.data.nav.navigation data source.",
+  "type": "COMPONENT",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "ul",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "environment/associative"
+    }
+  },
+  "layoutMode": "HORIZONTAL",
+  "itemSpacing": "spacing-sm",
+  "children": [
+    {
+      "id": "nav-item",
+      "name": "Nav Item",
+      "type": "INSTANCE",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "li",
+          "motion-intent": "hover/scale",
+          "layout-variant": "entity/secondary"
+        }
+      },
+      "children": [
+        {
+          "id": "nav-link",
+          "name": "Nav Link",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "a",
+              "motion-intent": "hover/glow",
+              "layout-variant": "synapse/navigate"
+            }
+          },
+          "attributes": {
+            "href": "{{ item.url }}"
+          },
+          "content": "{{ item.title }}"
+        }
+      ]
+    }
+  ]
+}

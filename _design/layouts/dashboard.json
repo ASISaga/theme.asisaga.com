@@ -1,0 +1,149 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "dashboard",
+  "name": "Dashboard Layout",
+  "version": "1.0.0",
+  "description": "Data-rich dashboard grid layout: header with page title and actions, followed by a multi-column bento grid for metrics and content blocks.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "div",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "environment/distributed"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-lg",
+  "children": [
+    {
+      "id": "dashboard-header",
+      "name": "Dashboard Header",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "header",
+          "motion-intent": "entry/slide-down",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "layoutMode": "HORIZONTAL",
+      "itemSpacing": "spacing-md",
+      "children": [
+        {
+          "id": "dashboard-title",
+          "name": "Dashboard Title",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "h1",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "cognition/axiom"
+            }
+          },
+          "content": "{{ page.title }}"
+        },
+        {
+          "id": "dashboard-actions",
+          "name": "Dashboard Actions",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-sm",
+          "children": [
+            {
+              "id": "dashboard-action-btn",
+              "name": "Action Button",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "button",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/execute"
+                }
+              },
+              "attributes": {
+                "type": "button"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dashboard-grid",
+      "name": "Dashboard Grid",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "section",
+          "motion-intent": "scroll/reveal",
+          "layout-variant": "environment/manifest"
+        }
+      },
+      "layoutMode": "GRID",
+      "itemSpacing": "spacing-md",
+      "children": [
+        {
+          "id": "dashboard-kpi-block",
+          "name": "KPI Block",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "article",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "entity/primary"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-sm",
+          "children": [
+            {
+              "id": "kpi-label",
+              "name": "KPI Label",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "p",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/gloss"
+                }
+              }
+            },
+            {
+              "id": "kpi-value",
+              "name": "KPI Value",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "span",
+                  "motion-intent": "idle/pulse",
+                  "layout-variant": "cognition/axiom"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "dashboard-content-block",
+          "name": "Content Block",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "article",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "entity/secondary"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-md"
+        }
+      ]
+    }
+  ]
+}

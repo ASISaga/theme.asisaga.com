@@ -1,0 +1,114 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "hero",
+  "name": "Hero Section",
+  "version": "1.0.0",
+  "description": "Above-the-fold hero section with headline, optional description, and primary CTA. The page's primary value proposition.",
+  "type": "COMPONENT",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "section",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "entity/imperative"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-lg",
+  "attributes": {
+    "aria-labelledby": "hero-heading"
+  },
+  "children": [
+    {
+      "id": "hero-content",
+      "name": "Hero Content",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/slide-up",
+          "layout-variant": "environment/focused"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-md",
+      "children": [
+        {
+          "id": "hero-title",
+          "name": "Hero Title",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "h1",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "cognition/axiom"
+            }
+          },
+          "attributes": {
+            "id": "hero-heading"
+          },
+          "content": "{{ include.title }}"
+        },
+        {
+          "id": "hero-description",
+          "name": "Hero Description",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "p",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "cognition/discourse"
+            }
+          },
+          "content": "{{ include.description }}"
+        },
+        {
+          "id": "hero-actions",
+          "name": "Hero Actions",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-sm",
+          "children": [
+            {
+              "id": "hero-primary-cta",
+              "name": "Primary CTA",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "a",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/execute"
+                }
+              },
+              "attributes": {
+                "href": "{{ include.button_url }}"
+              },
+              "content": "{{ include.button_text }}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hero-background",
+      "name": "Hero Background",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "idle/pulse",
+          "layout-variant": "atmosphere/vibrant"
+        }
+      },
+      "attributes": {
+        "aria-hidden": "true"
+      }
+    }
+  ]
+}

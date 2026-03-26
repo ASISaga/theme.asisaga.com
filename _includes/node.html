@@ -1,0 +1,98 @@
+{% comment %}
+_includes/node.html — Recursive Blueprint Node Renderer
+
+Walks a JSON blueprint tree from _data/design/ and emits semantic HTML wrapped
+in the appropriate Genesis ontological custom element. This is the Data-Driven
+Assembly engine: the blueprint is the Architect, this template is the Builder.
+
+GOVERNANCE: This template is intentionally blind to Token DNA (visual constants)
+and Motion Physics (animation parameters). It carries structural intent only via
+data attributes — downstream layers (SCSS ontological mixins and Motion.dev)
+consume those attributes to apply visual and kinetic behaviour.
+
+Usage:
+  {% assign bp = site.data.design.layouts.landing %}
+  {% include node.html node=bp %}
+
+  {% assign card_bp = site.data.design.includes.card %}
+  {% include node.html node=card_bp %}
+
+Depth guard (max 5 levels, matching blueprint-designer constraint):
+  {% include node.html node=child_node depth=current_depth %}
+
+Node schema: _design/schema/node.schema.json
+{% endcomment %}
+
+{% assign node  = include.node %}
+{% assign depth = include.depth | default: 0 %}
+
+{% if node and depth < 5 %}
+
+  {% assign meta      = node.pluginData["asi-saga"] %}
+  {% assign sem_tag   = meta["semantic-tag"] | default: "div" %}
+  {% assign motion    = meta["motion-intent"] %}
+  {% assign variant   = meta["layout-variant"] %}
+  {% assign slug      = node.name | slugify %}
+
+  {% comment %} Parse layout-variant into ontological category + value {% endcomment %}
+  {% assign v_parts    = variant | split: "/" %}
+  {% assign v_category = v_parts[0] %}
+  {% assign v_value    = v_parts[1] %}
+
+  {% comment %}
+    Determine whether this variant maps to a known Genesis custom element.
+    Only emit a wrapper when the category is a valid ontological category.
+    Unknown or empty categories emit no wrapper — the semantic element stands alone.
+  {% endcomment %}
+  {% assign has_wrapper = false %}
+  {% if v_category == "atmosphere" or v_category == "entity" or v_category == "environment" or v_category == "synapse" or v_category == "state" or v_category == "cognition" %}
+    {% assign has_wrapper = true %}
+  {% endif %}
+
+  {% comment %} Open the Genesis ontological wrapper element (only for known categories) {% endcomment %}
+  {% if has_wrapper %}
+    {% if v_category == "atmosphere" %}<genesis-atmosphere vibe="{{ v_value }}">
+    {% elsif v_category == "entity" %}<genesis-entity nature="{{ v_value }}">
+    {% elsif v_category == "environment" %}<genesis-environment logic="{{ v_value }}">
+    {% elsif v_category == "synapse" %}<genesis-synapse vector="{{ v_value }}">
+    {% elsif v_category == "state" %}<genesis-state condition="{{ v_value }}">
+    {% elsif v_category == "cognition" %}<genesis-cognition intent="{{ v_value }}">
+    {% endif %}
+  {% endif %}
+
+  {% comment %} Emit the semantic HTML element {% endcomment %}
+  <{{ sem_tag }}
+    class="node node--{{ slug }}"
+    {% if motion %}data-motion="{{ motion }}"{% endif %}
+    {% if node.layoutMode %}data-layout="{{ node.layoutMode | downcase }}"{% endif %}
+    {% if node.itemSpacing %}data-spacing="{{ node.itemSpacing }}"{% endif %}
+    {% if node.attributes %}
+      {% for attr in node.attributes %}{{ attr[0] }}="{{ attr[1] }}" {% endfor %}
+    {% endif %}
+  >
+
+    {% if node.content %}{{ node.content }}{% endif %}
+
+    {% comment %} Recurse into children with incremented depth {% endcomment %}
+    {% if node.children %}
+      {% assign next_depth = depth | plus: 1 %}
+      {% for child in node.children %}
+        {% include node.html node=child depth=next_depth %}
+      {% endfor %}
+    {% endif %}
+
+  </{{ sem_tag }}>
+
+  {% comment %} Close the Genesis ontological wrapper element (symmetrical with open) {% endcomment %}
+  {% if has_wrapper %}
+    {% if v_category == "atmosphere" %}</genesis-atmosphere>
+    {% elsif v_category == "entity" %}</genesis-entity>
+    {% elsif v_category == "environment" %}</genesis-environment>
+    {% elsif v_category == "synapse" %}</genesis-synapse>
+    {% elsif v_category == "state" %}</genesis-state>
+    {% elsif v_category == "cognition" %}</genesis-cognition>
+    {% endif %}
+  {% endif %}
+
+{% endif %}
+
