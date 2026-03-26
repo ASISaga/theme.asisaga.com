@@ -1,0 +1,121 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "default",
+  "name": "Default Layout",
+  "version": "1.0.0",
+  "description": "Base page skeleton shared by all content pages. Assembles header, skip link, main content well, footer, and ambient background layer.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "body",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "atmosphere/neutral"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-xs",
+  "children": [
+    {
+      "id": "skip-link",
+      "name": "Skip Link",
+      "type": "INSTANCE",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "a",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "synapse/navigate"
+        }
+      },
+      "attributes": {
+        "href": "#skip-target",
+        "class": "skip-link sr-only focus-visible"
+      },
+      "content": "Skip to main content"
+    },
+    {
+      "id": "site-header",
+      "name": "Site Header Region",
+      "type": "INSTANCE",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "header",
+          "motion-intent": "entry/slide-down",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "ref": "includes/header"
+    },
+    {
+      "id": "main-content",
+      "name": "Main Content",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "main",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "environment/focused"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-lg",
+      "attributes": {
+        "id": "skip-target",
+        "tabindex": "-1"
+      }
+    },
+    {
+      "id": "site-footer",
+      "name": "Site Footer Region",
+      "type": "INSTANCE",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "footer",
+          "motion-intent": "scroll/reveal",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "ref": "includes/footer"
+    },
+    {
+      "id": "ambient-background",
+      "name": "Ambient Background",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "idle/pulse",
+          "layout-variant": "atmosphere/ethereal"
+        }
+      },
+      "attributes": {
+        "aria-hidden": "true"
+      },
+      "children": [
+        {
+          "id": "ambient-particles",
+          "name": "Ambient Particles",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "idle/pulse",
+              "layout-variant": "atmosphere/ethereal"
+            }
+          }
+        },
+        {
+          "id": "ambient-glow",
+          "name": "Ambient Glow",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "idle/pulse",
+              "layout-variant": "atmosphere/vibrant"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

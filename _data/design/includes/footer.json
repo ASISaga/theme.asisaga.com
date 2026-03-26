@@ -1,0 +1,143 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "footer",
+  "name": "Site Footer",
+  "version": "1.0.0",
+  "description": "Site-wide footer containing brand, navigation links, and social connections.",
+  "type": "COMPONENT",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "footer",
+      "motion-intent": "scroll/reveal",
+      "layout-variant": "environment/distributed"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-lg",
+  "attributes": {
+    "role": "contentinfo"
+  },
+  "children": [
+    {
+      "id": "footer-container",
+      "name": "Footer Container",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "layoutMode": "GRID",
+      "itemSpacing": "spacing-xl",
+      "children": [
+        {
+          "id": "footer-brand",
+          "name": "Footer Brand",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "entity/primary"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-sm",
+          "children": [
+            {
+              "id": "footer-title",
+              "name": "Footer Title",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "span",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/axiom"
+                }
+              },
+              "content": "{{ site.title | default: site.github.repository_name }}"
+            },
+            {
+              "id": "footer-tagline",
+              "name": "Footer Tagline",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "p",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/discourse"
+                }
+              },
+              "content": "{{ site.description | default: site.github.project_tagline }}"
+            }
+          ]
+        },
+        {
+          "id": "footer-nav",
+          "name": "Footer Navigation",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "nav",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "environment/chronological"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-xs",
+          "attributes": {
+            "aria-label": "Footer navigation"
+          }
+        },
+        {
+          "id": "footer-social",
+          "name": "Footer Social",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-sm",
+          "attributes": {
+            "aria-labelledby": "social-heading"
+          }
+        }
+      ]
+    },
+    {
+      "id": "footer-bottom",
+      "name": "Footer Bottom Bar",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "layoutMode": "HORIZONTAL",
+      "itemSpacing": "spacing-md",
+      "children": [
+        {
+          "id": "footer-copyright",
+          "name": "Copyright",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "p",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "cognition/gloss"
+            }
+          },
+          "content": "© {{ 'now' | date: '%Y' }} {{ site.title }}. All rights reserved."
+        }
+      ]
+    }
+  ]
+}
