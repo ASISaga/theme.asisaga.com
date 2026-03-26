@@ -1,0 +1,281 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "profile",
+  "name": "Profile Layout",
+  "version": "1.0.0",
+  "description": "User profile page: avatar and identity header, rich bio content area, and an optional sidebar with statistics and skills.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "div",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "environment/focused"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-lg",
+  "children": [
+    {
+      "id": "profile-header",
+      "name": "Profile Header",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "header",
+          "motion-intent": "entry/slide-down",
+          "layout-variant": "entity/primary"
+        }
+      },
+      "layoutMode": "HORIZONTAL",
+      "itemSpacing": "spacing-lg",
+      "children": [
+        {
+          "id": "profile-avatar",
+          "name": "Profile Avatar",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "img",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "entity/aggregate"
+            }
+          },
+          "attributes": {
+            "src": "{{ page.profile_image }}",
+            "alt": "{{ page.name }}",
+            "data-conditional": "page.profile_image"
+          }
+        },
+        {
+          "id": "profile-info",
+          "name": "Profile Info",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-sm",
+          "children": [
+            {
+              "id": "profile-name",
+              "name": "Profile Name",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "h1",
+                  "motion-intent": "entry/slide-up",
+                  "layout-variant": "cognition/axiom"
+                }
+              },
+              "attributes": {
+                "data-conditional": "page.name"
+              },
+              "content": "{{ page.name }}"
+            },
+            {
+              "id": "profile-role",
+              "name": "Profile Role",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "p",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/motive"
+                }
+              },
+              "attributes": {
+                "data-conditional": "page.role"
+              },
+              "content": "{{ page.role }}"
+            },
+            {
+              "id": "profile-bio",
+              "name": "Profile Bio",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "p",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/discourse"
+                }
+              },
+              "attributes": {
+                "data-conditional": "page.bio"
+              },
+              "content": "{{ page.bio }}"
+            },
+            {
+              "id": "profile-social-links",
+              "name": "Profile Social Links",
+              "type": "FRAME",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "nav",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "environment/associative"
+                }
+              },
+              "layoutMode": "HORIZONTAL",
+              "itemSpacing": "spacing-sm",
+              "attributes": {
+                "aria-label": "Social media links",
+                "data-conditional": "page.social_links"
+              },
+              "children": [
+                {
+                  "id": "profile-social-link",
+                  "name": "Profile Social Link",
+                  "type": "INSTANCE",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "a",
+                      "motion-intent": "hover/glow",
+                      "layout-variant": "synapse/social"
+                    }
+                  },
+                  "attributes": {
+                    "href": "{{ link.url }}",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "profile-main",
+      "name": "Profile Main",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "scroll/reveal",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "layoutMode": "HORIZONTAL",
+      "itemSpacing": "spacing-lg",
+      "children": [
+        {
+          "id": "profile-content",
+          "name": "Profile Content",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "cognition/discourse"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-md",
+          "content": "{{ content }}"
+        },
+        {
+          "id": "profile-sidebar",
+          "name": "Profile Sidebar",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "aside",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "entity/secondary"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-lg",
+          "attributes": {
+            "aria-label": "Additional information",
+            "data-conditional": "page.stats or page.skills"
+          },
+          "children": [
+            {
+              "id": "profile-stats",
+              "name": "Profile Stats",
+              "type": "FRAME",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "section",
+                  "motion-intent": "scroll/reveal",
+                  "layout-variant": "environment/distributed"
+                }
+              },
+              "layoutMode": "VERTICAL",
+              "itemSpacing": "spacing-sm",
+              "attributes": {
+                "data-conditional": "page.stats"
+              },
+              "children": [
+                {
+                  "id": "profile-stats-title",
+                  "name": "Profile Stats Title",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "h2",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "cognition/axiom"
+                    }
+                  },
+                  "content": "Statistics"
+                }
+              ]
+            },
+            {
+              "id": "profile-skills",
+              "name": "Profile Skills",
+              "type": "FRAME",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "section",
+                  "motion-intent": "scroll/reveal",
+                  "layout-variant": "environment/associative"
+                }
+              },
+              "layoutMode": "VERTICAL",
+              "itemSpacing": "spacing-sm",
+              "attributes": {
+                "data-conditional": "page.skills"
+              },
+              "children": [
+                {
+                  "id": "profile-skills-title",
+                  "name": "Profile Skills Title",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "h2",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "cognition/axiom"
+                    }
+                  },
+                  "content": "Skills"
+                },
+                {
+                  "id": "profile-skill-badge",
+                  "name": "Profile Skill Badge",
+                  "type": "INSTANCE",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "span",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "cognition/quantum"
+                    }
+                  },
+                  "content": "{{ skill }}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

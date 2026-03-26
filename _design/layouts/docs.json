@@ -1,0 +1,352 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "docs",
+  "name": "Docs Layout",
+  "version": "1.0.0",
+  "description": "Three-column documentation layout: left sidebar with optional search and hierarchical navigation, central article content with breadcrumbs and prev/next pagination, and an optional right table-of-contents sidebar.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "div",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "environment/convergent"
+    }
+  },
+  "layoutMode": "HORIZONTAL",
+  "itemSpacing": "spacing-lg",
+  "children": [
+    {
+      "id": "docs-sidebar",
+      "name": "Docs Sidebar",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "aside",
+          "motion-intent": "entry/slide-down",
+          "layout-variant": "environment/focused"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-sm",
+      "attributes": {
+        "aria-label": "Documentation navigation"
+      },
+      "children": [
+        {
+          "id": "docs-search",
+          "name": "Docs Search",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-xs",
+          "attributes": {
+            "data-conditional": "page.search"
+          },
+          "children": [
+            {
+              "id": "docs-search-input",
+              "name": "Docs Search Input",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "input",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/inquiry"
+                }
+              },
+              "attributes": {
+                "type": "search",
+                "id": "docs-search",
+                "placeholder": "Search docs..."
+              }
+            }
+          ]
+        },
+        {
+          "id": "docs-nav",
+          "name": "Docs Navigation",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "nav",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-xs",
+          "attributes": {
+            "data-conditional": "page.nav_items"
+          },
+          "children": [
+            {
+              "id": "docs-nav-list",
+              "name": "Docs Nav List",
+              "type": "FRAME",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "ul",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "environment/focused"
+                }
+              },
+              "layoutMode": "VERTICAL",
+              "itemSpacing": "spacing-xs",
+              "children": [
+                {
+                  "id": "docs-nav-item",
+                  "name": "Docs Nav Item",
+                  "type": "INSTANCE",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "li",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "environment/focused"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "docs-nav-link",
+                      "name": "Docs Nav Link",
+                      "type": "TEXT",
+                      "pluginData": {
+                        "asi-saga": {
+                          "semantic-tag": "a",
+                          "motion-intent": "hover/glow",
+                          "layout-variant": "synapse/navigate"
+                        }
+                      },
+                      "attributes": {
+                        "href": "{{ item.url }}"
+                      },
+                      "content": "{{ item.title }}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docs-content",
+      "name": "Docs Content",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "entity/primary"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-lg",
+      "children": [
+        {
+          "id": "docs-breadcrumb",
+          "name": "Docs Breadcrumb",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "nav",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-xs",
+          "attributes": {
+            "aria-label": "Breadcrumb",
+            "data-conditional": "page.breadcrumbs"
+          },
+          "children": [
+            {
+              "id": "docs-breadcrumb-list",
+              "name": "Docs Breadcrumb List",
+              "type": "FRAME",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "ol",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "environment/associative"
+                }
+              },
+              "layoutMode": "HORIZONTAL",
+              "itemSpacing": "spacing-xs",
+              "children": [
+                {
+                  "id": "docs-breadcrumb-item",
+                  "name": "Docs Breadcrumb Item",
+                  "type": "INSTANCE",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "li",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "cognition/gloss"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "docs-article",
+          "name": "Docs Article",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "article",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-md",
+          "children": [
+            {
+              "id": "docs-title",
+              "name": "Docs Title",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "h1",
+                  "motion-intent": "entry/slide-up",
+                  "layout-variant": "cognition/axiom"
+                }
+              },
+              "attributes": {
+                "data-conditional": "page.title"
+              },
+              "content": "{{ page.title }}"
+            },
+            {
+              "id": "docs-body",
+              "name": "Docs Body",
+              "type": "FRAME",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "div",
+                  "motion-intent": "scroll/reveal",
+                  "layout-variant": "cognition/discourse"
+                }
+              },
+              "layoutMode": "VERTICAL",
+              "itemSpacing": "spacing-md",
+              "content": "{{ content }}"
+            }
+          ]
+        },
+        {
+          "id": "docs-pagination",
+          "name": "Docs Pagination",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "nav",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "environment/distributed"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-md",
+          "attributes": {
+            "aria-label": "Page navigation",
+            "data-conditional": "page.prev or page.next"
+          },
+          "children": [
+            {
+              "id": "docs-pagination-prev",
+              "name": "Docs Pagination Prev",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "a",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/navigate"
+                }
+              },
+              "attributes": {
+                "href": "{{ page.prev.url }}",
+                "data-conditional": "page.prev"
+              },
+              "content": "← {{ page.prev.title }}"
+            },
+            {
+              "id": "docs-pagination-next",
+              "name": "Docs Pagination Next",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "a",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/navigate"
+                }
+              },
+              "attributes": {
+                "href": "{{ page.next.url }}",
+                "data-conditional": "page.next"
+              },
+              "content": "{{ page.next.title }} →"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docs-toc",
+      "name": "Docs Table of Contents",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "aside",
+          "motion-intent": "entry/slide-down",
+          "layout-variant": "environment/focused"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-sm",
+      "attributes": {
+        "aria-label": "Table of contents",
+        "data-conditional": "page.toc"
+      },
+      "children": [
+        {
+          "id": "docs-toc-title",
+          "name": "Docs TOC Title",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "h2",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "cognition/motive"
+            }
+          },
+          "content": "On this page"
+        },
+        {
+          "id": "docs-toc-nav",
+          "name": "Docs TOC Nav",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "nav",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-xs",
+          "content": "{{ page.toc }}"
+        }
+      ]
+    }
+  ]
+}

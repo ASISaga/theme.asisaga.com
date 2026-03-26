@@ -1,0 +1,229 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "faq",
+  "name": "FAQ Layout",
+  "version": "1.0.0",
+  "description": "Frequently asked questions layout: page title and description header, optional live search, optional category tab filter, accordion content area, and optional contact CTA footer.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "div",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "environment/focused"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-lg",
+  "children": [
+    {
+      "id": "faq-header",
+      "name": "FAQ Header",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "header",
+          "motion-intent": "entry/slide-down",
+          "layout-variant": "environment/focused"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-sm",
+      "children": [
+        {
+          "id": "faq-title",
+          "name": "FAQ Title",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "h1",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "cognition/axiom"
+            }
+          },
+          "content": "{{ page.title }}"
+        },
+        {
+          "id": "faq-description",
+          "name": "FAQ Description",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "p",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "cognition/discourse"
+            }
+          },
+          "attributes": {
+            "data-conditional": "page.description"
+          },
+          "content": "{{ page.description }}"
+        }
+      ]
+    },
+    {
+      "id": "faq-search",
+      "name": "FAQ Search",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "environment/focused"
+        }
+      },
+      "layoutMode": "HORIZONTAL",
+      "itemSpacing": "spacing-sm",
+      "attributes": {
+        "data-conditional": "page.search"
+      },
+      "children": [
+        {
+          "id": "faq-search-input",
+          "name": "FAQ Search Input",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "input",
+              "motion-intent": "hover/glow",
+              "layout-variant": "synapse/inquiry"
+            }
+          },
+          "attributes": {
+            "type": "search",
+            "id": "faq-search",
+            "placeholder": "Search FAQ..."
+          }
+        }
+      ]
+    },
+    {
+      "id": "faq-categories",
+      "name": "FAQ Categories",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "environment/associative"
+        }
+      },
+      "layoutMode": "HORIZONTAL",
+      "itemSpacing": "spacing-sm",
+      "attributes": {
+        "role": "group",
+        "aria-label": "FAQ categories",
+        "data-conditional": "page.categories"
+      },
+      "children": [
+        {
+          "id": "faq-category-all",
+          "name": "FAQ Category All",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "button",
+              "motion-intent": "hover/glow",
+              "layout-variant": "synapse/execute"
+            }
+          },
+          "attributes": {
+            "type": "button"
+          },
+          "content": "All"
+        },
+        {
+          "id": "faq-category",
+          "name": "FAQ Category",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "button",
+              "motion-intent": "hover/glow",
+              "layout-variant": "synapse/execute"
+            }
+          },
+          "attributes": {
+            "type": "button"
+          },
+          "content": "{{ category }}"
+        }
+      ]
+    },
+    {
+      "id": "faq-content",
+      "name": "FAQ Content",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "scroll/reveal",
+          "layout-variant": "environment/focused"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-sm",
+      "content": "{{ content }}"
+    },
+    {
+      "id": "faq-contact-cta",
+      "name": "FAQ Contact CTA",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "section",
+          "motion-intent": "scroll/reveal",
+          "layout-variant": "entity/secondary"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-sm",
+      "attributes": {
+        "data-conditional": "page.contact_cta"
+      },
+      "children": [
+        {
+          "id": "faq-contact-title",
+          "name": "FAQ Contact Title",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "h2",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "cognition/axiom"
+            }
+          },
+          "content": "Still have questions?"
+        },
+        {
+          "id": "faq-contact-description",
+          "name": "FAQ Contact Description",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "p",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "cognition/discourse"
+            }
+          },
+          "content": "{{ page.contact_cta.description }}"
+        },
+        {
+          "id": "faq-contact-button",
+          "name": "FAQ Contact Button",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "a",
+              "motion-intent": "hover/glow",
+              "layout-variant": "synapse/execute"
+            }
+          },
+          "attributes": {
+            "href": "{{ page.contact_cta.url }}"
+          },
+          "content": "{{ page.contact_cta.text }}"
+        }
+      ]
+    }
+  ]
+}

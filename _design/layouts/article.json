@@ -1,0 +1,250 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "article",
+  "name": "Article Layout",
+  "version": "1.0.0",
+  "description": "Long-form article layout: optional sticky table-of-contents sidebar alongside a primary content column with title, metadata, prose body, and optional related-articles footer.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "article",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "environment/focused"
+    }
+  },
+  "layoutMode": "HORIZONTAL",
+  "itemSpacing": "spacing-lg",
+  "children": [
+    {
+      "id": "article-toc-sidebar",
+      "name": "Article TOC Sidebar",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "aside",
+          "motion-intent": "entry/slide-down",
+          "layout-variant": "environment/focused"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-sm",
+      "attributes": {
+        "aria-label": "Table of contents",
+        "data-conditional": "page.toc"
+      },
+      "children": [
+        {
+          "id": "article-toc-title",
+          "name": "Article TOC Title",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "h2",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "cognition/motive"
+            }
+          },
+          "content": "Table of Contents"
+        },
+        {
+          "id": "article-toc-nav",
+          "name": "Article TOC Nav",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "nav",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-xs",
+          "content": "{{ page.toc }}"
+        }
+      ]
+    },
+    {
+      "id": "article-main-col",
+      "name": "Article Main Column",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "entity/primary"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-md",
+      "children": [
+        {
+          "id": "article-header",
+          "name": "Article Header",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "header",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-sm",
+          "children": [
+            {
+              "id": "article-title",
+              "name": "Article Title",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "h1",
+                  "motion-intent": "entry/slide-up",
+                  "layout-variant": "cognition/axiom"
+                }
+              },
+              "content": "{{ page.title }}"
+            },
+            {
+              "id": "article-subtitle",
+              "name": "Article Subtitle",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "p",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/discourse"
+                }
+              },
+              "attributes": {
+                "data-conditional": "page.subtitle"
+              },
+              "content": "{{ page.subtitle }}"
+            }
+          ]
+        },
+        {
+          "id": "article-meta",
+          "name": "Article Meta",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-sm",
+          "children": [
+            {
+              "id": "article-date",
+              "name": "Article Date",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "time",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/gloss"
+                }
+              },
+              "content": "{{ page.date | date: '%B %d, %Y' }}"
+            },
+            {
+              "id": "article-author",
+              "name": "Article Author",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "span",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/gloss"
+                }
+              },
+              "attributes": {
+                "data-conditional": "page.author"
+              },
+              "content": "{{ page.author }}"
+            },
+            {
+              "id": "article-reading-time",
+              "name": "Article Reading Time",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "span",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/gloss"
+                }
+              },
+              "attributes": {
+                "data-conditional": "page.reading_time"
+              },
+              "content": "{{ page.reading_time }}"
+            }
+          ]
+        },
+        {
+          "id": "article-body",
+          "name": "Article Body",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "cognition/discourse"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-md",
+          "content": "{{ content }}"
+        },
+        {
+          "id": "article-footer",
+          "name": "Article Footer",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "footer",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-md",
+          "attributes": {
+            "data-conditional": "page.related_articles"
+          },
+          "children": [
+            {
+              "id": "article-related-title",
+              "name": "Article Related Title",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "h2",
+                  "motion-intent": "scroll/reveal",
+                  "layout-variant": "cognition/axiom"
+                }
+              },
+              "content": "Related Articles"
+            },
+            {
+              "id": "article-related-grid",
+              "name": "Article Related Grid",
+              "type": "FRAME",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "div",
+                  "motion-intent": "scroll/reveal",
+                  "layout-variant": "environment/distributed"
+                }
+              },
+              "layoutMode": "GRID",
+              "itemSpacing": "spacing-md"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "gallery",
+  "name": "Gallery Layout",
+  "version": "1.0.0",
+  "description": "Media gallery layout: page title and description header, optional category filter tabs, and a distributed content grid for media items.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "div",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "environment/distributed"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-lg",
+  "children": [
+    {
+      "id": "gallery-header",
+      "name": "Gallery Header",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "header",
+          "motion-intent": "entry/slide-down",
+          "layout-variant": "entity/primary"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-sm",
+      "children": [
+        {
+          "id": "gallery-title",
+          "name": "Gallery Title",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "h1",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "cognition/axiom"
+            }
+          },
+          "content": "{{ page.title }}"
+        },
+        {
+          "id": "gallery-description",
+          "name": "Gallery Description",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "p",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "cognition/discourse"
+            }
+          },
+          "attributes": {
+            "data-conditional": "page.description"
+          },
+          "content": "{{ page.description }}"
+        }
+      ]
+    },
+    {
+      "id": "gallery-filters",
+      "name": "Gallery Filters",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "environment/associative"
+        }
+      },
+      "layoutMode": "HORIZONTAL",
+      "itemSpacing": "spacing-sm",
+      "attributes": {
+        "role": "group",
+        "aria-label": "Filter gallery items",
+        "data-conditional": "page.categories"
+      },
+      "children": [
+        {
+          "id": "gallery-filter-all",
+          "name": "Gallery Filter All",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "button",
+              "motion-intent": "hover/glow",
+              "layout-variant": "synapse/execute"
+            }
+          },
+          "attributes": {
+            "data-filter": "all"
+          },
+          "content": "All"
+        },
+        {
+          "id": "gallery-filter",
+          "name": "Gallery Filter",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "button",
+              "motion-intent": "hover/glow",
+              "layout-variant": "synapse/execute"
+            }
+          },
+          "attributes": {
+            "data-filter": "{{ category.slug }}"
+          },
+          "content": "{{ category.name }}"
+        }
+      ]
+    },
+    {
+      "id": "gallery-grid",
+      "name": "Gallery Grid",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "scroll/reveal",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "layoutMode": "GRID",
+      "itemSpacing": "spacing-md",
+      "content": "{{ content }}"
+    }
+  ]
+}

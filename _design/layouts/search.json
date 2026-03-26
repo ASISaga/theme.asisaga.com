@@ -1,0 +1,216 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "search",
+  "name": "Search Layout",
+  "version": "1.0.0",
+  "description": "Search interface layout: prominent search form header with results count, optional filter sidebar, and a results content area.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "div",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "environment/focused"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-lg",
+  "children": [
+    {
+      "id": "search-header",
+      "name": "Search Header",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "header",
+          "motion-intent": "entry/slide-down",
+          "layout-variant": "entity/primary"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-sm",
+      "children": [
+        {
+          "id": "search-form",
+          "name": "Search Form",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "form",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-sm",
+          "attributes": {
+            "role": "search"
+          },
+          "children": [
+            {
+              "id": "search-input-group",
+              "name": "Search Input Group",
+              "type": "FRAME",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "div",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "environment/associative"
+                }
+              },
+              "layoutMode": "HORIZONTAL",
+              "itemSpacing": "spacing-xs",
+              "children": [
+                {
+                  "id": "search-input",
+                  "name": "Search Input",
+                  "type": "INSTANCE",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "input",
+                      "motion-intent": "hover/glow",
+                      "layout-variant": "synapse/inquiry"
+                    }
+                  },
+                  "attributes": {
+                    "type": "search",
+                    "id": "search-input",
+                    "placeholder": "Search...",
+                    "value": "{{ page.query }}"
+                  }
+                },
+                {
+                  "id": "search-submit",
+                  "name": "Search Submit Button",
+                  "type": "INSTANCE",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "button",
+                      "motion-intent": "hover/glow",
+                      "layout-variant": "synapse/execute"
+                    }
+                  },
+                  "attributes": {
+                    "type": "submit",
+                    "aria-label": "Submit search"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "search-results-count",
+          "name": "Search Results Count",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "p",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "cognition/gloss"
+            }
+          },
+          "attributes": {
+            "aria-live": "polite",
+            "data-results-count": "",
+            "data-conditional": "page.results_count"
+          },
+          "content": "{{ page.results_count }} results found"
+        }
+      ]
+    },
+    {
+      "id": "search-body",
+      "name": "Search Body",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "layoutMode": "HORIZONTAL",
+      "itemSpacing": "spacing-lg",
+      "children": [
+        {
+          "id": "search-filters",
+          "name": "Search Filters Sidebar",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "aside",
+              "motion-intent": "entry/slide-down",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-sm",
+          "attributes": {
+            "aria-label": "Search filters",
+            "data-conditional": "page.filters"
+          },
+          "children": [
+            {
+              "id": "search-filters-title",
+              "name": "Search Filters Title",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "h2",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/motive"
+                }
+              },
+              "content": "Filters"
+            },
+            {
+              "id": "search-filter-group",
+              "name": "Search Filter Group",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "section",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "environment/focused"
+                }
+              },
+              "children": [
+                {
+                  "id": "search-filter-title",
+                  "name": "Search Filter Group Title",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "h3",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "cognition/motive"
+                    }
+                  },
+                  "content": "{{ filter.name }}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "search-results",
+          "name": "Search Results",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "environment/distributed"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-md",
+          "attributes": {
+            "data-search-results": ""
+          },
+          "content": "{{ content }}"
+        }
+      ]
+    }
+  ]
+}

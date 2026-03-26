@@ -1,0 +1,268 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "chatroom",
+  "name": "Chatroom Layout",
+  "version": "1.0.0",
+  "description": "Real-time chat interface layout: full-viewport chat container with message list, message composer, and optional typing indicator and connection status.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "div",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "environment/focused"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-none",
+  "children": [
+    {
+      "id": "chatroom-app",
+      "name": "Chatroom App",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "entity/primary"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-none",
+      "attributes": {
+        "data-chatroom": ""
+      },
+      "children": [
+        {
+          "id": "chatroom-header",
+          "name": "Chatroom Header",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "header",
+              "motion-intent": "entry/slide-down",
+              "layout-variant": "environment/distributed"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-sm",
+          "children": [
+            {
+              "id": "chatroom-title",
+              "name": "Chatroom Title",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "h1",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/axiom"
+                }
+              },
+              "content": "{{ page.title }}"
+            },
+            {
+              "id": "chatroom-participants",
+              "name": "Chatroom Participants",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "span",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/gloss"
+                }
+              },
+              "attributes": {
+                "data-conditional": "page.participants"
+              },
+              "content": "{{ page.participants }}"
+            },
+            {
+              "id": "chatroom-connection-status",
+              "name": "Chatroom Connection Status",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "span",
+                  "motion-intent": "idle/pulse",
+                  "layout-variant": "state/stable"
+                }
+              },
+              "attributes": {
+                "data-connection-status": "",
+                "data-conditional": "page.show_connection_status"
+              }
+            }
+          ]
+        },
+        {
+          "id": "chatroom-messages",
+          "name": "Chatroom Messages",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "section",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "environment/chronological"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-sm",
+          "attributes": {
+            "aria-label": "Chat messages",
+            "aria-live": "polite",
+            "data-messages-container": ""
+          },
+          "children": [
+            {
+              "id": "chatroom-message",
+              "name": "Chatroom Message",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "article",
+                  "motion-intent": "entry/slide-up",
+                  "layout-variant": "entity/secondary"
+                }
+              },
+              "children": [
+                {
+                  "id": "chatroom-message-avatar",
+                  "name": "Chatroom Message Avatar",
+                  "type": "INSTANCE",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "img",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "entity/latent"
+                    }
+                  },
+                  "attributes": {
+                    "data-conditional": "page.show_avatar"
+                  }
+                },
+                {
+                  "id": "chatroom-message-body",
+                  "name": "Chatroom Message Body",
+                  "type": "FRAME",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "div",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "environment/focused"
+                    }
+                  },
+                  "layoutMode": "VERTICAL",
+                  "itemSpacing": "spacing-xs",
+                  "children": [
+                    {
+                      "id": "chatroom-message-author",
+                      "name": "Chatroom Message Author",
+                      "type": "TEXT",
+                      "pluginData": {
+                        "asi-saga": {
+                          "semantic-tag": "span",
+                          "motion-intent": "entry/fade-in",
+                          "layout-variant": "cognition/motive"
+                        }
+                      }
+                    },
+                    {
+                      "id": "chatroom-message-text",
+                      "name": "Chatroom Message Text",
+                      "type": "TEXT",
+                      "pluginData": {
+                        "asi-saga": {
+                          "semantic-tag": "p",
+                          "motion-intent": "entry/fade-in",
+                          "layout-variant": "cognition/discourse"
+                        }
+                      }
+                    },
+                    {
+                      "id": "chatroom-message-timestamp",
+                      "name": "Chatroom Message Timestamp",
+                      "type": "TEXT",
+                      "pluginData": {
+                        "asi-saga": {
+                          "semantic-tag": "time",
+                          "motion-intent": "entry/fade-in",
+                          "layout-variant": "cognition/gloss"
+                        }
+                      },
+                      "attributes": {
+                        "data-conditional": "page.show_timestamps"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "chatroom-typing-indicator",
+          "name": "Chatroom Typing Indicator",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "idle/pulse",
+              "layout-variant": "state/evolving"
+            }
+          },
+          "attributes": {
+            "aria-live": "polite",
+            "data-conditional": "page.show_typing_indicator"
+          }
+        },
+        {
+          "id": "chatroom-composer",
+          "name": "Chatroom Composer",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "footer",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-sm",
+          "children": [
+            {
+              "id": "chatroom-input",
+              "name": "Chatroom Input",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "input",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/inquiry"
+                }
+              },
+              "attributes": {
+                "type": "text",
+                "placeholder": "{{ page.placeholder | default: 'Type a message...' }}"
+              }
+            },
+            {
+              "id": "chatroom-send-button",
+              "name": "Chatroom Send Button",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "button",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/execute"
+                }
+              },
+              "attributes": {
+                "type": "submit",
+                "aria-label": "Send message"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

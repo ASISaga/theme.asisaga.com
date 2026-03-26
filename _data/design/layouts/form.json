@@ -1,0 +1,212 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "form",
+  "name": "Form Layout",
+  "version": "1.0.0",
+  "description": "Focused form page layout: centered card with page title and description header, optional multi-step progress indicator, main content area, and optional help-text and privacy-link footer.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "div",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "environment/focused"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-lg",
+  "children": [
+    {
+      "id": "form-card",
+      "name": "Form Card",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/slide-up",
+          "layout-variant": "entity/primary"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-md",
+      "children": [
+        {
+          "id": "form-header",
+          "name": "Form Header",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "header",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-sm",
+          "children": [
+            {
+              "id": "form-title",
+              "name": "Form Title",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "h1",
+                  "motion-intent": "entry/slide-up",
+                  "layout-variant": "cognition/axiom"
+                }
+              },
+              "content": "{{ page.title }}"
+            },
+            {
+              "id": "form-description",
+              "name": "Form Description",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "p",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/discourse"
+                }
+              },
+              "attributes": {
+                "data-conditional": "page.description"
+              },
+              "content": "{{ page.description }}"
+            }
+          ]
+        },
+        {
+          "id": "form-progress",
+          "name": "Form Progress",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "state/evolving"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-sm",
+          "attributes": {
+            "role": "progressbar",
+            "aria-valuenow": "0",
+            "aria-valuemin": "0",
+            "aria-valuemax": "100",
+            "aria-label": "Form completion progress",
+            "data-conditional": "page.show_progress and page.steps"
+          },
+          "children": [
+            {
+              "id": "form-progress-bar",
+              "name": "Form Progress Bar",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "div",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "state/evolving"
+                }
+              }
+            },
+            {
+              "id": "form-steps",
+              "name": "Form Steps",
+              "type": "FRAME",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "ol",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "environment/chronological"
+                }
+              },
+              "layoutMode": "HORIZONTAL",
+              "itemSpacing": "spacing-sm",
+              "children": [
+                {
+                  "id": "form-step",
+                  "name": "Form Step",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "li",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "cognition/gloss"
+                    }
+                  },
+                  "content": "{{ step }}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "form-content",
+          "name": "Form Content",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-md",
+          "content": "{{ content }}"
+        },
+        {
+          "id": "form-footer",
+          "name": "Form Footer",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "footer",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "entity/secondary"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-xs",
+          "attributes": {
+            "data-conditional": "page.help_text or page.privacy_link"
+          },
+          "children": [
+            {
+              "id": "form-help-text",
+              "name": "Form Help Text",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "p",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/gloss"
+                }
+              },
+              "attributes": {
+                "data-conditional": "page.help_text"
+              },
+              "content": "{{ page.help_text }}"
+            },
+            {
+              "id": "form-privacy-link",
+              "name": "Form Privacy Link",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "a",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/navigate"
+                }
+              },
+              "attributes": {
+                "href": "{{ page.privacy_link }}",
+                "data-conditional": "page.privacy_link"
+              },
+              "content": "Privacy Policy"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

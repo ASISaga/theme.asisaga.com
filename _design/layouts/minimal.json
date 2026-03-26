@@ -1,0 +1,115 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "minimal",
+  "name": "Minimal Layout",
+  "version": "1.0.0",
+  "description": "Minimal standalone page for error pages and utility screens: neutral atmosphere wrapper with optional error code, title, description, content, and home link.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "div",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "atmosphere/neutral"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-lg",
+  "children": [
+    {
+      "id": "minimal-card",
+      "name": "Minimal Card",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "entity/secondary"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-md",
+      "children": [
+        {
+          "id": "minimal-error-code",
+          "name": "Minimal Error Code",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "h1",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "cognition/axiom"
+            }
+          },
+          "attributes": {
+            "data-conditional": "page.error_code"
+          },
+          "content": "{{ page.error_code }}"
+        },
+        {
+          "id": "minimal-title",
+          "name": "Minimal Title",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "h2",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "cognition/motive"
+            }
+          },
+          "attributes": {
+            "data-conditional": "page.title"
+          },
+          "content": "{{ page.title }}"
+        },
+        {
+          "id": "minimal-description",
+          "name": "Minimal Description",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "p",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "cognition/discourse"
+            }
+          },
+          "attributes": {
+            "data-conditional": "page.description"
+          },
+          "content": "{{ page.description }}"
+        },
+        {
+          "id": "minimal-content",
+          "name": "Minimal Content",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "cognition/discourse"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-sm",
+          "content": "{{ content }}"
+        },
+        {
+          "id": "minimal-home-link",
+          "name": "Minimal Home Link",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "a",
+              "motion-intent": "hover/glow",
+              "layout-variant": "synapse/navigate"
+            }
+          },
+          "attributes": {
+            "href": "/",
+            "data-conditional": "page.show_home_link"
+          },
+          "content": "Go to Homepage"
+        }
+      ]
+    }
+  ]
+}
