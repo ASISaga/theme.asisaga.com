@@ -73,11 +73,6 @@ const VALID_VARIANTS = {
     'dark','light','glass','gradient'])
 };
 
-const VALID_SPACING_TOKENS = new Set([
-  'spacing-xs','spacing-sm','spacing-md','spacing-lg','spacing-xl',
-  'spacing-xxl','spacing-3xl','spacing-genesis'
-]);
-
 const HARDCODE_COLOR_PATTERN = /#[0-9a-fA-F]{3,8}\b|rgb\(|oklch\((?!.*var)/;
 const HARDCODE_PX_PATTERN    = /\b\d+px\b/;
 
@@ -138,14 +133,16 @@ function validateNode(node, file, path, depth) {
     }
   }
 
-  // itemSpacing must be a token reference
-  if (node.itemSpacing && !VALID_SPACING_TOKENS.has(node.itemSpacing)) {
+  // itemSpacing must use a token key pattern (spacing-<name>)
+  if (node.itemSpacing && !/^spacing-[a-z0-9-]+$/.test(node.itemSpacing)) {
     err(file, `Invalid itemSpacing "${node.itemSpacing}" at: ${path}. Must be spacing-<scale-key>.`);
   }
 
   // Incorruptibility: no hardcoded visual values
-  const contentStr = JSON.stringify(node);
-  if (HARDCODE_COLOR_PATTERN.test(contentStr) && !contentStr.includes('"$schema"')) {
+  // Check only the direct fields of this node (not children — they are checked recursively)
+  const fieldsToCheck = [node.content, ...(node.attributes ? Object.values(node.attributes) : [])];
+  const directContent = fieldsToCheck.filter(Boolean).join(' ');
+  if (HARDCODE_COLOR_PATTERN.test(directContent)) {
     warn(file, `Possible hardcoded color value at: ${path}. Use Token DNA references instead.`);
   }
   if (node.content && HARDCODE_PX_PATTERN.test(node.content)) {

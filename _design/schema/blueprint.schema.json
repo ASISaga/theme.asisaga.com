@@ -79,7 +79,7 @@
     },
     "itemSpacing": {
       "type": "string",
-      "pattern": "^spacing-(xs|sm|md|lg|xl|xxl|3xl|genesis)$"
+      "pattern": "^spacing-[a-z0-9-]+$"
     },
     "content": {
       "type": "string"

@@ -62,14 +62,27 @@ function resolveRefs(node, designDir) {
       process.exit(1);
     }
     const refBlueprint = loadJSON(refPath);
-    // Merge ref blueprint's children into this node's children array
+    // Resolve the referenced blueprint recursively, then inline its structure.
+    // Only pull structural fields from the ref: type, pluginData, layoutMode,
+    // itemSpacing, content, attributes, children.
+    // The referencing node's id and name always take precedence.
     const resolvedRef = resolveRefs(refBlueprint, designDir);
-    const merged = Object.assign({}, node, resolvedRef, {
-      id: node.id,
-      name: node.name
-    });
-    delete merged.ref;
-    return resolveRefs(merged, designDir);
+    const merged = {
+      id:          node.id,
+      name:        node.name,
+      version:     node.version     || resolvedRef.version,
+      description: node.description || resolvedRef.description,
+      type:        node.type        || resolvedRef.type,
+      pluginData:  node.pluginData  || resolvedRef.pluginData,
+      layoutMode:  node.layoutMode  || resolvedRef.layoutMode,
+      itemSpacing: node.itemSpacing || resolvedRef.itemSpacing,
+      content:     node.content     !== undefined ? node.content : resolvedRef.content,
+      attributes:  Object.assign({}, resolvedRef.attributes, node.attributes),
+      children:    node.children    || resolvedRef.children
+    };
+    // Remove undefined fields for a clean output
+    Object.keys(merged).forEach(k => merged[k] === undefined && delete merged[k]);
+    return merged;
   }
 
   // Recurse into children

@@ -132,10 +132,12 @@
         {
           "id": "header-nav",
           "name": "Primary Navigation",
-          "type": "COMPONENT",
+          "version": "1.0.0",
+          "description": "Primary site navigation list, driven by site.data.nav.navigation data source.",
+          "type": "INSTANCE",
           "pluginData": {
             "asi-saga": {
-              "semantic-tag": "ul",
+              "semantic-tag": "nav",
               "motion-intent": "entry/fade-in",
               "layout-variant": "environment/associative"
             }
@@ -147,9 +149,6 @@
             "aria-label": "Primary navigation",
             "data-nav-menu": ""
           },
-          "$schema": "../schema/blueprint.schema.json",
-          "version": "1.0.0",
-          "description": "Primary site navigation list, driven by site.data.nav.navigation data source.",
           "children": [
             {
               "id": "nav-item",

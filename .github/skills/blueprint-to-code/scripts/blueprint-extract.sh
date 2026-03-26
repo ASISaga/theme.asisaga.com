@@ -96,7 +96,6 @@ function extractStructure(htmlContent, sourceFile) {
     },
     layoutMode: htmlContent.includes('flex') || htmlContent.includes('HORIZONTAL') ? 'HORIZONTAL' : 'VERTICAL',
     itemSpacing: 'spacing-md',
-    '_extraction-note': `Auto-extracted from ${path.relative(repoRoot, sourceFile)}. Child count: ${childMatches.length}. Review and enrich before committing.`,
     children: []
   };
 }
@@ -121,17 +120,17 @@ function processFile(srcFile) {
   const existing  = JSON.parse(fs.readFileSync(dstPath, 'utf8'));
   const extracted = extractStructure(content, srcFile);
 
-  // Merge: preserve existing metadata, update only structural fields
+  // Merge: preserve existing metadata, update only structural fields.
+  // Extraction metadata is stored in a separate sidecar comment, not in the JSON
+  // (to avoid conflicting with additionalProperties: false in the schema).
   const merged = Object.assign({}, existing, {
     'pluginData': Object.assign({}, existing.pluginData, {
       'asi-saga': Object.assign({}, existing.pluginData['asi-saga'], {
-        'semantic-tag':  extracted.pluginData['asi-saga']['semantic-tag'],
-        'motion-intent': existing.pluginData['asi-saga']['motion-intent'], // preserve existing
-        'layout-variant': existing.pluginData['asi-saga']['layout-variant'] // preserve existing
+        'semantic-tag':   extracted.pluginData['asi-saga']['semantic-tag'],
+        'motion-intent':  existing.pluginData['asi-saga']['motion-intent'],  // preserve existing
+        'layout-variant': existing.pluginData['asi-saga']['layout-variant']  // preserve existing
       })
-    }),
-    '_last-extracted': new Date().toISOString().split('T')[0],
-    '_extraction-source': path.relative(repoRoot, srcFile)
+    })
   });
 
   const output = JSON.stringify(merged, null, 2);

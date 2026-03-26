@@ -35,7 +35,9 @@
     {
       "id": "site-header",
       "name": "Site Header Region",
-      "type": "COMPONENT",
+      "version": "1.0.0",
+      "description": "Persistent site header containing brand identity, mobile toggle, and primary navigation.",
+      "type": "INSTANCE",
       "pluginData": {
         "asi-saga": {
           "semantic-tag": "header",
@@ -43,9 +45,6 @@
           "layout-variant": "environment/distributed"
         }
       },
-      "$schema": "../schema/blueprint.schema.json",
-      "version": "1.0.0",
-      "description": "Persistent site header containing brand identity, mobile toggle, and primary navigation.",
       "layoutMode": "HORIZONTAL",
       "itemSpacing": "spacing-md",
       "attributes": {
@@ -166,10 +165,12 @@
             {
               "id": "header-nav",
               "name": "Primary Navigation",
-              "type": "COMPONENT",
+              "version": "1.0.0",
+              "description": "Primary site navigation list, driven by site.data.nav.navigation data source.",
+              "type": "INSTANCE",
               "pluginData": {
                 "asi-saga": {
-                  "semantic-tag": "ul",
+                  "semantic-tag": "nav",
                   "motion-intent": "entry/fade-in",
                   "layout-variant": "environment/associative"
                 }
@@ -181,9 +182,6 @@
                 "aria-label": "Primary navigation",
                 "data-nav-menu": ""
               },
-              "$schema": "../schema/blueprint.schema.json",
-              "version": "1.0.0",
-              "description": "Primary site navigation list, driven by site.data.nav.navigation data source.",
               "children": [
                 {
                   "id": "nav-item",
@@ -242,7 +240,9 @@
     {
       "id": "site-footer",
       "name": "Site Footer Region",
-      "type": "COMPONENT",
+      "version": "1.0.0",
+      "description": "Site-wide footer containing brand, navigation links, and social connections.",
+      "type": "INSTANCE",
       "pluginData": {
         "asi-saga": {
           "semantic-tag": "footer",
@@ -250,9 +250,6 @@
           "layout-variant": "environment/distributed"
         }
       },
-      "$schema": "../schema/blueprint.schema.json",
-      "version": "1.0.0",
-      "description": "Site-wide footer containing brand, navigation links, and social connections.",
       "layoutMode": "VERTICAL",
       "itemSpacing": "spacing-lg",
       "attributes": {

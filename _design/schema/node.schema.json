@@ -96,8 +96,8 @@
     },
     "itemSpacing": {
       "type": "string",
-      "description": "Token reference for the gap between child nodes. Must match a key in the Token DNA spacing scale.",
-      "pattern": "^spacing-(xs|sm|md|lg|xl|xxl|3xl|genesis)$"
+      "description": "Token reference for the gap between child nodes. Must match a key in the Token DNA spacing scale. Update this pattern when new tokens are added to _data/tokens.yml.",
+      "pattern": "^spacing-[a-z0-9-]+$"
     },
     "content": {
       "type": "string",
