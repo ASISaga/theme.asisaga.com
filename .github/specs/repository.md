@@ -1,4 +1,4 @@
-# BusinessInfinity Repository Specification
+# Repository Specification
 
 **Version**: 1.0.0  
 **Status**: Active  
@@ -6,134 +6,52 @@
 
 ## Overview
 
-BusinessInfinity is a lean Azure Functions application that delegates all agent orchestration, Service Bus communication, authentication, and deployment scaffolding to the **`aos-client-sdk`**. The application contains only business logic — expressed as workflow functions decorated with `@app.workflow`.
+The repository follows a tri-layer stack architecture: Data (Figma & DTCG JSON), Logic (Jekyll & Liquid), and Presentation (SCSS & Vanilla Motion).
 
-## Scope
+## Details
 
-- Repository role in the AOS ecosystem
-- Technology stack and coding patterns
-- Testing and validation workflows
-- Key design principles for agents and contributors
-
-## Repository Role
-
-| Concern | Owner |
-|---------|-------|
-| Business workflows (strategic review, market analysis, budget approval, etc.) | **BusinessInfinity** |
-| Azure Functions scaffolding, HTTP/Service Bus triggers, auth | `aos-client-sdk` |
-| Agent lifecycle, perpetual orchestration, messaging, storage, monitoring | AOS |
-| Agent catalog (C-suite agents, capabilities) | RealmOfAgents |
-
-BusinessInfinity **knows nothing about agent internals**. It calls `start_orchestration` / `submit_orchestration` and lets AOS handle the rest.
-
-## Technology Stack
-
-| Component | Technology |
-|-----------|-----------|
-| Runtime | Python 3.10+ |
-| App framework | `aos-client-sdk[azure]` — `AOSApp` / `WorkflowRequest` |
-| Hosting | Azure Functions (provisioned by SDK) |
-| Messaging | Azure Service Bus (provisioned by SDK) |
-| Tests | `pytest` + `pytest-asyncio` |
-| Linter | `pylint` |
-| Build / deploy | `azure.yaml` (Azure Developer CLI) |
-
-## Directory Structure
-
-```
-business-infinity/
-├── src/
-│   └── business_infinity/
-│       ├── __init__.py
-│       └── workflows.py       # @app.workflow decorators — all business logic lives here
-├── tests/
-│   └── test_workflows.py      # pytest unit tests
-├── function_app.py            # Azure Functions entry point: app.get_functions()
-├── pyproject.toml             # Build config, dependencies, pytest settings
-└── azure.yaml                 # Azure Developer CLI deployment config
-```
-
-## Core Patterns
-
-### Workflow Definition
-
-```python
-from aos_client import AOSApp, WorkflowRequest
-
-app = AOSApp(name="business-infinity")
-
-@app.workflow("workflow-name")
-async def my_workflow(request: WorkflowRequest) -> dict:
-    agents = await request.client.list_agents()
-    status = await request.client.start_orchestration(
-        agent_ids=[a.agent_id for a in agents],
-        purpose="Describe the perpetual goal",
-        context=request.body,
-    )
-    return {"orchestration_id": status.orchestration_id, "status": status.status.value}
-```
-
-### Perpetual Orchestrations
-
-All orchestrations are **perpetual and purpose-driven** — agents work toward the purpose indefinitely. There is no finite completion.
-
-```python
-status = await request.client.start_orchestration(
-    agent_ids=agent_ids,
-    purpose="Drive strategic review and continuous organisational improvement",
-    purpose_scope="C-suite strategic alignment and cross-functional coordination",
-    context=request.body,
-)
-```
-
-### C-Suite Agent Selection
-
-```python
-# Prefer explicit IDs; fall back to type-based selection
-all_agents = await client.list_agents()
-by_id = {a.agent_id: a for a in all_agents}
-selected = [by_id[aid] for aid in C_SUITE_AGENT_IDS if aid in by_id]
-```
-
-## Testing Workflow
-
-```bash
-# Install dev dependencies
-pip install -e ".[dev]"
-
-# Run all tests
-pytest tests/ -v
-
-# Lint
-pylint src/business_infinity/
-
-# Specific test
-pytest tests/test_workflows.py -v -k "test_workflows_registered"
-```
-
-**CI**: GitHub Actions runs `pytest` across Python 3.10, 3.11, and 3.12 on every push/PR to `main`.
-
-→ **CI workflow**: `.github/workflows/ci.yml`
-
-## Related Repositories
-
-| Repository | Role |
-|-----------|------|
-| [aos-client-sdk](https://github.com/ASISaga/aos-client-sdk) | Client SDK & App Framework |
-| [aos-dispatcher](https://github.com/ASISaga/aos-dispatcher) | AOS Orchestration API |
-| [aos-realm-of-agents](https://github.com/ASISaga/aos-realm-of-agents) | Agent catalog (C-suite) |
-| [aos-kernel](https://github.com/ASISaga/aos-kernel) | OS kernel |
-
-## Key Design Principles
-
-1. **Zero boilerplate** — No Azure Functions scaffolding in this repo
-2. **Purpose-driven** — Orchestrations are perpetual; describe *why*, not *how*
-3. **SDK-delegated** — All infrastructure concerns belong to `aos-client-sdk`
-4. **Business-only** — Only business logic lives here; no agent internals
-
-## References
-
-→ **Agent framework**: `.github/specs/agent-intelligence-framework.md`  
-→ **Conventional tools**: `.github/docs/conventional-tools.md`  
-→ **Python coding standards**: `.github/instructions/python.instructions.md`  
-→ **Azure Functions patterns**: `.github/instructions/azure-functions.instructions.md`
+1. Design Tokens: The "Genetic" Layer
+Tokens are maintained natively in W3C DTCG Format to act as the universal DNA for the project.
+ * JSON Schema: W3C DTCG Standard.
+ * Motion Extensions: Includes $extensions for Spring Physics constants (Stiffness, Damping, Mass).
+ * Recommended Library: Style Dictionary v4.
+ * Agent Skill: Token_DNA_Validator
+   * Logic: Transforms DTCG JSON into _sass/_tokens.scss variables and _data/tokens.yml for Jekyll access.
+   * Constraint: Zero hard-coded hex or pixel values in the final build.
+2. Figma Layout: The "Skeletal" Layer
+The Figma JSON Schema (REST API v1) is the source of truth for structural hierarchy and spatial constraints.
+ * Format: Agnostic JSON Node Tree (as per your provided example).
+ * Agnostic Property Mapping:
+   * layoutMode: "VERTICAL" \rightarrow flex-direction: column
+   * layoutAlign: "STRETCH" \rightarrow width: 100%
+ * Recommended Library: @figma/rest-api-spec.
+ * Agent Skill: Layout_Ontologist
+   * Logic: Identifies the "Being" of the UI (e.g., "Received Bubble" \rightarrow semantic <article> with a "left" orientation).
+3. Jekyll Assembler: The "Semantic" Layer
+Jekyll serves as the Logic Processor. It does not define design; it purely assembles the Skeletal Layer into Semantic HTML5.
+ * Input: _data/layout.yml (The Figma JSON tree).
+ * Implementation: Recursive Liquid Templates (_includes/node.html).
+ * Agent Skill: Jekyll_Architect
+   * Logic: Iterates through the JSON tree. It maps node name or type to the correct HTML5 tags.
+   * Example: A node named "Header" becomes <header>, while "Input Field" becomes <input>.
+4. SCSS Generator: The "Surface" Layer
+SCSS is the rendering engine. It consumes the DNA (Tokens) and the Skeleton (Layout JSON) to apply visual rules.
+ * Standard: Dart Sass.
+ * Recommended Library: jekyll-sass-converter (v3+).
+ * Agent Skill: SCSS_Synthesizer
+   * Logic: Uses mixins to translate Figma-specific layout keys (itemSpacing, paddingLeft, etc.) into modern CSS Flexbox and Grid.
+   * Architecture: _sass/ contains _layout.scss (logic-driven) and _tokens.scss (data-driven).
+5. Vanilla Motion: The "Nervous System"
+Interactive behaviors are managed by the framework-agnostic Motion library, executed post-render.
+ * Recommended Library: motion (Vanilla JS package).
+ * Agent Skill: Physics_Orchestrator
+   * Action: Identifies animated nodes via data-attributes (e.g., data-motion-type="spring") generated by Jekyll.
+   * Logic: Pulls values from the DTCG JSON and applies animate(element, keyframes, transition).
+The Build Protocol Summary
+| Step | Owner | Input | Output |
+|---|---|---|---|
+| 1. Define DNA | Designer / Agent | tokens.json | _data/tokens.yml & _sass/_tokens.scss |
+| 2. Define Skeleton | Designer / Agent | layout.json | _data/layout.yml |
+| 3. Assemble HTML | Jekyll | layout.yml | index.html (Semantic HTML5) |
+| 4. Compile Styles | SCSS | _tokens.scss | assets/css/main.css |
+| 5. Animate | Vanilla JS | motion.js | Interactive micro-interactions |
