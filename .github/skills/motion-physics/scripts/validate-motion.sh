@@ -5,7 +5,8 @@
 set -e
 
 SKILL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-REPO_ROOT="$(cd "$SKILL_DIR/../.." && pwd)"
+# Resolve repository root from skill directory (repo_root = SKILL_DIR/../../..)
+REPO_ROOT="$(cd "$SKILL_DIR/../../.." && pwd)"
 
 echo "🎬 Motion Physics — Validation Script"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

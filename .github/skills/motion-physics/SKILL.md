@@ -156,7 +156,7 @@ bundle exec jekyll serve
 
 ```bash
 # Validate motion JS files exist
-./.github/motion-physics/scripts/validate-motion.sh
+./.github/skills/motion-physics/scripts/validate-motion.sh
 
 # Visual smoke test — run jekyll and visit test pages
 bundle exec jekyll serve --livereload
@@ -178,7 +178,7 @@ bundle exec jekyll serve --livereload
 → **JS interaction patterns**: `docs/specifications/javascript-interaction-patterns.md`  
 → **Performance spec**: `docs/specifications/performance.md`  
 → **Accessibility spec**: `docs/specifications/accessibility.md`  
-→ **Detailed reference**: `.github/motion-physics/references/MOTION-PHYSICS-GUIDE.md`  
+→ **Detailed reference**: `.github/skills/motion-physics/references/MOTION-PHYSICS-GUIDE.md`  
 → **Skills spec**: `.github/specs/skills.md`
 
 ---
