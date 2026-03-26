@@ -1,12 +1,33 @@
 # Repository Specification
 
-**Version**: 1.0.0  
+**Version**: 1.1.0  
 **Status**: Active  
-**Last Updated**: 2026-03-07
+**Last Updated**: 2026-03-26
 
 ## Overview
 
 The repository follows a tri-layer stack architecture: Data (Figma & DTCG JSON), Logic (Jekyll & Liquid), and Presentation (SCSS & Vanilla Motion).
+
+## Implementation Status
+
+> **Note**: The W3C DTCG JSON pipeline described below is the **aspirational target architecture**. The current implementation uses CSS custom properties defined directly in `_sass/ontology/_tokens.scss` and `_sass/base/` files. See [`TODO.md`](../../TODO.md) for the gap analysis and planned work.
+
+**Currently implemented:**
+- ✅ CSS custom properties in `_sass/ontology/_tokens.scss` (spacing, sizing, border-radius, motion, typography tokens)
+- ✅ Jekyll assembly via Liquid templates (`_layouts/`, `_includes/`)
+- ✅ SCSS compilation with ontological mixins (89 variants across 6 categories)
+- ✅ Motion library integration (`assets/js/common/motion-*.js`)
+
+**Not yet implemented:**
+- ❌ W3C DTCG JSON source file (`tokens.json`)
+- ❌ `_data/tokens.yml` for Jekyll template access
+- ❌ Style Dictionary v4 token transformation pipeline
+- ❌ Figma REST API integration (`layout.json` → `_data/layout.yml`)
+- ❌ Token_DNA_Validator agent skill
+- ❌ Layout_Ontologist agent skill
+- ❌ Jekyll_Architect recursive Liquid template
+- ❌ SCSS_Synthesizer agent skill
+- ❌ Physics_Orchestrator agent skill
 
 ## Details
 
