@@ -120,7 +120,7 @@
     },
     "figmaStyles": {
       "type": "object",
-      "description": "Figma API-compatible visual style properties computed from the layout-variant by blueprint-sync-figma.sh. Read by the Wireframe2Code plugin to render fills, strokes, shadows, and typography on the Figma canvas. Ignored by Jekyll's node.html renderer. Do NOT edit manually — regenerate by running blueprint-sync-figma.sh.",
+      "description": "Figma API-compatible visual style properties computed from the layout-variant by blueprint-sync-figma.sh. Read by the Blueprint2Code plugin to render fills, strokes, shadows, and typography on the Figma canvas. Ignored by Jekyll's node.html renderer. Do NOT edit manually — regenerate by running blueprint-sync-figma.sh.",
       "properties": {
         "fills": {
           "type": "array",

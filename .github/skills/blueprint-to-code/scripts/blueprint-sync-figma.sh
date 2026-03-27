@@ -5,7 +5,7 @@
 # node's layout-variant against figma-styles-map.json, injects a "figmaStyles"
 # block, and writes the enriched JSON back to _design/ in-place.
 #
-# _design/ is the single source of truth for BOTH Jekyll and Figma. The Wireframe2Code
+# _design/ is the single source of truth for BOTH Jekyll and Figma. The Blueprint2Code
 # Figma plugin imports blueprints directly from _design/. When the plugin exports a
 # design back from Figma, the exported JSON (which contains figmaStyles) is placed into
 # _design/ and blueprint-sync.sh is run to propagate forward to _data/design/ and

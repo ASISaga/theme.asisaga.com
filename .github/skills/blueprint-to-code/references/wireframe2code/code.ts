@@ -1,4 +1,4 @@
-// Wireframe2Code — bidirectional sync between blueprint JSON files and Figma nodes.
+// Blueprint2Code — bidirectional sync between blueprint JSON files and Figma nodes.
 // Main thread: has access to the Figma document API.
 // UI thread (ui.html): has access to browser APIs (FileReader, Blob, etc.).
 //

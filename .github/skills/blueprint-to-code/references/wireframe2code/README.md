@@ -1,6 +1,6 @@
-# Wireframe2Code — Genesis Design System Integration
+# Blueprint2Code — Genesis Design System Integration
 
-This directory contains the updated plugin source file for the [Wireframe2Code Figma plugin](https://github.com/ASISaga/Wireframe2Code).
+This directory contains the updated plugin source file for the [Blueprint2Code Figma plugin](https://github.com/ASISaga/Blueprint2Code).
 
 ## What changed
 
@@ -25,14 +25,14 @@ This directory contains the updated plugin source file for the [Wireframe2Code F
 
 ## How to apply
 
-1. Open the [Wireframe2Code repository](https://github.com/ASISaga/Wireframe2Code)
+1. Open the [Blueprint2Code repository](https://github.com/ASISaga/Blueprint2Code)
 2. Replace `code.ts` with the file from this directory
 3. Compile TypeScript:
    ```bash
    npm run build
    # or: tsc
    ```
-4. Reload the plugin in Figma (Plugins → Development → Wireframe2Code → Refresh)
+4. Reload the plugin in Figma (Plugins → Development → Blueprint2Code → Refresh)
 
 ## Blueprint workflow
 
@@ -46,7 +46,7 @@ Blueprints come from `_design/layouts/` or `_design/includes/` in the theme repo
 ```
 
 Then in Figma:
-1. Open Wireframe2Code plugin
+1. Open Blueprint2Code plugin
 2. Paste the contents of `_design/layouts/<layout-name>.json`
 3. Click **Import** — fills, borders, shadows, and typography are applied
 
@@ -64,9 +64,9 @@ Then in Figma:
 
 ```
 _design/layouts/*.json        ← Single source of truth (structure + figmaStyles)
-    ↑ Wireframe2Code export         ↓ blueprint-sync.sh
+    ↑ Blueprint2Code export         ↓ blueprint-sync.sh
 Figma canvas              _data/design/layouts/*.json  →  Jekyll / node.html
-    ↓ Wireframe2Code import         ↑ blueprint-sync-figma.sh
+    ↓ Blueprint2Code import         ↑ blueprint-sync-figma.sh
 _design/layouts/*.json        ← enriched in-place with figmaStyles
 ```
 

@@ -1,6 +1,6 @@
 ---
 name: blueprint-to-code
-description: Manage bidirectional synchronization between _design/ JSON blueprints and Jekyll _includes/_layouts code. _design/ is the single source of truth for both Jekyll and Figma. Forward-syncs blueprints to _data/design/ for Jekyll. Reverse-extracts structural changes from HTML back to blueprints. Keeps genesis-core.scss selectors in step with layout-variants. Enriches blueprints with figmaStyles for Wireframe2Code import.
+description: Manage bidirectional synchronization between _design/ JSON blueprints and Jekyll _includes/_layouts code. _design/ is the single source of truth for both Jekyll and Figma. Forward-syncs blueprints to _data/design/ for Jekyll. Reverse-extracts structural changes from HTML back to blueprints. Keeps genesis-core.scss selectors in step with layout-variants. Enriches blueprints with figmaStyles for Blueprint2Code import.
 license: MIT
 metadata:
   author: ASISaga
@@ -13,7 +13,7 @@ allowed-tools: Bash(node:*) Bash(git:*) Read Edit
 # Blueprint to Code Skill
 
 **Role**: Engineer of Symmetry  
-**Scope**: `_design/` ↔ `_data/design/` ↔ `_includes/` / `_layouts/` ↔ SCSS ↔ Figma (Wireframe2Code)  
+**Scope**: `_design/` ↔ `_data/design/` ↔ `_includes/` / `_layouts/` ↔ SCSS ↔ Figma (Blueprint2Code)  
 **Version**: 4.0 — `_design/` as Single Source of Truth for Jekyll and Figma
 
 ## Purpose
@@ -21,7 +21,7 @@ allowed-tools: Bash(node:*) Bash(git:*) Read Edit
 Maintains the **Deterministic Symmetry** between the `_design/` JSON blueprints and both consumers:
 
 - **Jekyll** (`_data/design/` → `_includes/node.html` renders HTML)
-- **Figma** (Wireframe2Code plugin imports/exports `_design/` directly)
+- **Figma** (Blueprint2Code plugin imports/exports `_design/` directly)
 
 `_design/` is the **single authoritative layer** for both structural intent and Figma visual styles. There is no separate Figma-only layer.
 
@@ -34,11 +34,11 @@ Maintains the **Deterministic Symmetry** between the `_design/` JSON blueprints 
                          └───────────┬─────────────────────┘
                     ┌────────────────┤────────────────────────────────┐
                     │                │                                │
-          blueprint-sync.sh   blueprint-sync-figma.sh    Wireframe2Code export
+          blueprint-sync.sh   blueprint-sync-figma.sh    Blueprint2Code export
                     │           (enriches in-place)            (writes back here)
                     ▼                                               │
          _data/design/layouts/                               Figma canvas
-         _data/design/includes/                     ↑ Wireframe2Code import
+         _data/design/includes/                     ↑ Blueprint2Code import
          (Jekyll data, figmaStyles                  │ (reads from _design/)
           carried along, ignored by node.html)      │
                     │                               │
@@ -47,7 +47,7 @@ Maintains the **Deterministic Symmetry** between the `_design/` JSON blueprints 
          _sass/layouts/*.scss                 after Figma edits)
 ```
 
-**Key principle**: `_design/` blueprints contain both structural fields (`pluginData`, `layoutMode`, `children`, etc.) and `figmaStyles` (Figma API visual properties). Jekyll's `node.html` ignores `figmaStyles`. The Wireframe2Code plugin reads and writes `figmaStyles`.
+**Key principle**: `_design/` blueprints contain both structural fields (`pluginData`, `layoutMode`, `children`, etc.) and `figmaStyles` (Figma API visual properties). Jekyll's `node.html` ignores `figmaStyles`. The Blueprint2Code plugin reads and writes `figmaStyles`.
 
 ## When to Use This Skill
 
@@ -86,10 +86,10 @@ Then run forward sync to propagate to `_data/design/`:
 .github/skills/blueprint-to-code/scripts/blueprint-sync.sh
 ```
 
-### 3. Import into Figma (Wireframe2Code)
+### 3. Import into Figma (Blueprint2Code)
 
 1. Run `blueprint-sync-figma.sh` to ensure `_design/` blueprints have up-to-date `figmaStyles`
-2. Open the Wireframe2Code plugin in Figma
+2. Open the Blueprint2Code plugin in Figma
 3. Paste the contents of `_design/layouts/<layout-name>.json` into the import field
 4. Click **Import** — structure and visual styles are both applied to the canvas
 
@@ -97,7 +97,7 @@ Then run forward sync to propagate to `_data/design/`:
 
 After editing in Figma:
 1. Select the root frame in Figma
-2. Click **Export** in the Wireframe2Code plugin
+2. Click **Export** in the Blueprint2Code plugin
 3. Copy the exported JSON into `_design/layouts/<layout-name>.json`
 4. Run forward sync to propagate changes to Jekyll:
    ```bash
@@ -186,8 +186,8 @@ npm run test:scss
 ## References
 
 → **Figma styles map**: `.github/skills/blueprint-to-code/references/figma-styles-map.json`  
-→ **Wireframe2Code plugin source**: `.github/skills/blueprint-to-code/references/wireframe2code/code.ts`  
-→ **Wireframe2Code copy instructions**: `.github/skills/blueprint-to-code/references/wireframe2code/README.md`  
+→ **Blueprint2Code plugin source**: `.github/skills/blueprint-to-code/references/Blueprint2Code/code.ts`  
+→ **Blueprint2Code copy instructions**: `.github/skills/blueprint-to-code/references/Blueprint2Code/README.md`  
 → **Blueprint specification**: `.github/skills/blueprint-designer/references/BLUEPRINT-SPEC.md`  
 → **Node schema** (includes figmaStyles definition): `_design/schema/node.schema.json`  
 → **Recursive renderer**: `_includes/node.html`  
@@ -195,9 +195,9 @@ npm run test:scss
 → **Token DNA**: `.github/skills/style-dictionary/SKILL.md`  
 → **Motion physics**: `.github/skills/motion-physics/SKILL.md`  
 → **Genesis custom element selectors**: `_sass/components/core/_genesis-core.scss`  
-→ **Wireframe2Code plugin**: https://github.com/ASISaga/Wireframe2Code
+→ **Blueprint2Code plugin**: https://github.com/ASISaga/Blueprint2Code
 
 ---
 
-**Version**: 4.0 — _design/ as single source of truth; figmaStyles live in _design/; wireframe2code/ code files replace patch markdown  
+**Version**: 4.0 — _design/ as single source of truth; figmaStyles live in _design/; Blueprint2Code/ code files replace patch markdown  
 **Last Updated**: 2026-03-27
