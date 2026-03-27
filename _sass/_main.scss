@@ -1,1 +1,130 @@
-// REQUIRED: Genesis Ontology System imported in common.scss
+// ============================================================================
+// SEMANTIC DESIGN SYSTEM - ASI Saga Theme v2.0
+// _main.scss — THEME-SPECIFIC IMPORTS (components, includes, layouts bundle)
+// ============================================================================
+// Imported by assets/css/style.scss AFTER _common.scss.
+// Contains every HTML-facing SCSS file that is NOT a dedicated per-layout
+// entry point.  Files are organised to mirror Jekyll Liquid HTML organisation:
+//
+//   _sass/components/   — reusable UI component styles (cards, buttons, forms…)
+//                         These provide styling for HTML patterns that may be
+//                         composed in _includes/ templates; NOT a direct 1:1
+//                         mirror — for the 1:1 mirror see _sass/includes/ below.
+//   _sass/includes/     ↔  _includes/ one-to-one (index.scss aggregates them)
+//   _sass/layouts/      ↔  _layouts/ shared primitives only:
+//                          • bento-engine   (shared grid primitive, all layouts)
+//                          • responsive-enhancements (cross-layout refinements)
+//                          Individual layout files are loaded per-page via
+//                          the flat assets/css/<layout>.scss entry points.
+// ============================================================================
+
+// ----------------------------------------
+// LAYOUT UTILITIES — shared across all layouts
+// ----------------------------------------
+@import "layouts/bento-engine";            // Native CSS Grid system (shared grid primitive)
+
+// ----------------------------------------
+// COMPONENT MIXINS — load before implementations
+// ----------------------------------------
+@import "components/mixins/section-component";
+@import "components/mixins/layout-component";
+@import "components/mixins/header-component";
+@import "components/mixins/card-component";
+@import "components/mixins/image-card-component";
+@import "components/mixins/form-component";
+@import "components/mixins/team-component";
+@import "components/mixins/content-section-component";
+@import "components/mixins/hero-component";
+@import "components/mixins/products-grid-component";
+@import "components/mixins/cta-component";
+
+// ----------------------------------------
+// CORE COMPONENTS — appear on every page
+// ----------------------------------------
+@import "components/core/ui-components";   // Modal, Collapse, Tabs
+@import "components/core/genesis-core";    // body/main/skip-link/ambient
+@import "components/core/genesis-header";  // Glassmorphism header
+@import "components/core/genesis-footer";  // Grid footer
+@import "components/core/footer";
+@import "components/core/header";
+@import "components/core/navbar";
+@import "components/core/cards";
+@import "components/core/back-to-top";
+
+// ----------------------------------------
+// SECTION COMPONENTS
+// ----------------------------------------
+@import "components/sections/section-header";
+@import "components/sections/cta";
+@import "components/sections/feature-grid";
+@import "components/sections/hero";
+@import "components/sections/testimonial";
+@import "components/sections/timeline";
+@import "components/sections/interactive-module";
+@import "components/sections/sections";
+
+// ----------------------------------------
+// PRODUCT COMPONENTS
+// ----------------------------------------
+@import "components/products/product-card";
+@import "components/products/product-layout";
+@import "components/products/product-page";
+@import "components/products/product-applications";
+@import "components/products/product-benefits-list";
+@import "components/products/product-code-example";
+@import "components/products/product-feature-grid";
+@import "components/products/product-section-container";
+@import "components/products/product-visual";
+
+// ----------------------------------------
+// SACRED COMPONENTS
+// ----------------------------------------
+@import "components/sacred/sacred-elements";
+@import "components/sacred/sacred-navigation";
+@import "components/sacred/sacred-buttons";
+@import "components/sacred/sacred-forms";
+@import "components/sacred/consciousness-cards";
+@import "components/sacred/genesis-timeline";
+@import "components/sacred/bridge-connections";
+@import "components/sacred/sacred-modals";
+@import "components/sacred/transcendent-hero";
+@import "components/sacred/genesis-blocks";
+@import "components/sacred/transcendent-threshold";
+@import "components/sacred/genesis-invitation";
+
+// ----------------------------------------
+// SPECIALIZED COMPONENTS
+// ----------------------------------------
+@import "components/specialized/chatroom";
+@import "components/specialized/linkedin";
+@import "components/specialized/base-layout";
+@import "components/specialized/layout-styles";
+@import "components/specialized/specialized";
+@import "components/specialized/utilities";
+
+// ----------------------------------------
+// WEB COMPONENT TEMPLATES
+// ----------------------------------------
+// Dynamically instantiated from _includes/web-component-templates/ via JS
+@import "components/product-card";
+@import "components/testimonial-card";
+@import "components/alert-card";
+
+// ----------------------------------------
+// INCLUDES STYLES — mirrors _includes/ hierarchy
+// ----------------------------------------
+// One-to-one correspondence: each file in _includes/ has a unique SCSS file
+// in _sass/includes/, mirroring the same directory hierarchy.
+@import "includes/index";
+
+// ----------------------------------------
+// RESPONSIVE ENHANCEMENTS — cross-layout refinements
+// ----------------------------------------
+// Supplementary responsive refinements shared across all layouts.
+// Per-layout layout-specific CSS is in assets/css/<layout>.scss entry points.
+@import "layouts/responsive-enhancements";
+
+// ----------------------------------------
+// DEMO PAGE STYLES
+// ----------------------------------------
+@import "index-demo";                      // Genesis theme demo page (index.html)

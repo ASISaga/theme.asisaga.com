@@ -1,0 +1,8 @@
+---
+---
+// app layout — per-layout CSS entry point
+// Source: _sass/layouts/_app.scss  mirrors  _layouts/app.html
+// Note: app.html is a root layout (<!DOCTYPE html>); it does NOT inherit
+// from default.html, so layouts/default is intentionally omitted here.
+@import "common";
+@import "layouts/app";

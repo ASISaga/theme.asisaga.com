@@ -11,7 +11,7 @@
 
   <!-- Layout-specific stylesheet (loaded per page.layout) -->
   {% if page.layout %}
-  <link rel="stylesheet" href="{{ '/assets/css/layouts/' | append: page.layout | append: '.css?v=' | append: site.github.build_revision | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/' | append: page.layout | append: '.css?v=' | append: site.github.build_revision | relative_url }}">
   {% endif %}
 
   <!-- Favicon and device icons -->

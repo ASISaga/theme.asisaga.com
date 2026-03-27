@@ -1,0 +1,8 @@
+---
+---
+// minimal layout — per-layout CSS entry point
+// Source: _sass/layouts/_minimal.scss  mirrors  _layouts/minimal.html
+@import "common";
+@import "layouts/default";
+@import "layouts/minimal-base";
+@import "layouts/minimal";

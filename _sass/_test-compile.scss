@@ -1,19 +1,21 @@
 /**
  * SASS TEST COMPILATION FILE
  * ============================================================================
- * This file imports all theme SCSS to test compilation and catch errors
- * that stylelint cannot detect (undefined mixins, functions, variables).
- * 
- * This file should NOT be used in production - it's for testing only.
- * 
- * Usage: npm run test:scss
+ * Validates that ALL theme SCSS compiles without errors (undefined mixins,
+ * undefined variables, syntax errors).  Run via `npm run test:scss`.
+ * Stylelint cannot catch Sass compilation errors, so this file is essential.
+ *
+ * This file is NOT used in production — it is a compile-only test harness.
  */
 
-// Import the main common file which includes all theme SCSS
+// Import the shared base + ontology
 @import "common";
 
+// Import the theme-specific bundle (components, includes, etc.)
+@import "main";
+
 // Test: layout compilation — each layout SCSS imported directly since they are
-// no longer included via _common.scss (per-layout loading via assets/css/layouts/).
+// loaded per-page via assets/css/<layout>.scss entry points, not via _main.scss.
 @import "layouts/app";
 @import "layouts/default";
 @import "layouts/scrollable";

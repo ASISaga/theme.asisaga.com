@@ -1,0 +1,8 @@
+---
+---
+// default layout — per-layout CSS entry point
+// Source: _sass/layouts/_default.scss  mirrors  _layouts/default.html
+// Note: bento-engine and responsive-enhancements are in _main.scss and are
+// therefore already present in the globally-loaded assets/css/style.css.
+@import "common";
+@import "layouts/default";

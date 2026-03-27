@@ -226,7 +226,26 @@ ignoreFiles:
   - "_sass/fontawesome/**"
   - "assets/js/**"
   - "_sass/ontology/_test.scss"  # Test file with Jekyll front matter
-  - "assets/css/layouts/**"      # Per-layout CSS entry points — Jekyll front matter, @import only
+  - "assets/css/app.scss"        # Per-layout CSS entry points — Jekyll front matter + @import only
+  - "assets/css/archive.scss"
+  - "assets/css/article.scss"
+  - "assets/css/chatroom.scss"
+  - "assets/css/dashboard.scss"
+  - "assets/css/default.scss"
+  - "assets/css/docs.scss"
+  - "assets/css/faq.scss"
+  - "assets/css/fixed-height.scss"
+  - "assets/css/form.scss"
+  - "assets/css/gallery.scss"
+  - "assets/css/landing.scss"
+  - "assets/css/minimal-base.scss"
+  - "assets/css/minimal.scss"
+  - "assets/css/post.scss"
+  - "assets/css/profile.scss"
+  - "assets/css/scrollable.scss"
+  - "assets/css/search.scss"
+  - "assets/css/settings.scss"
+  - "assets/css/splash.scss"
   
 # Ignore Jekyll front matter
 ignorePatterns:
