@@ -1,0 +1,31 @@
+/**
+ * Chatroom Header Include Styles
+ * ============================================================================
+ * Header bar for the chatroom interface.
+ * Corresponds to: _includes/chatroom/header.html
+ * Base styles: _sass/layouts/_chatroom.scss
+ */
+
+// Chatroom header uses .chatroom-header selectors — see _chatroom.scss
+// This file documents the include–SCSS correspondence.
+.chatroom-header {
+  .chatroom-header-content {
+    @include genesis-environment('associative'); // Left + right row
+  }
+
+  .chatroom-title {
+    @include genesis-cognition('axiom');         // Chat room title
+  }
+
+  .chatroom-participants {
+    @include genesis-cognition('gloss');         // Participant count metadata
+  }
+
+  .chatroom-status {
+    @include genesis-cognition('quantum');       // Connection status badge
+  }
+
+  .chatroom-settings-btn {
+    @include genesis-synapse('execute');         // Settings action
+  }
+}

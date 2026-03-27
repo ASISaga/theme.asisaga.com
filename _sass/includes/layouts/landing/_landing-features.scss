@@ -1,0 +1,34 @@
+/**
+ * Landing Features Include Styles
+ * ============================================================================
+ * Feature grid section for landing pages.
+ * Corresponds to: _includes/layouts/landing/landing-features.html
+ */
+
+.landing-features {
+  @include genesis-environment('focused');       // Centered section
+
+  &__title {
+    @include genesis-cognition('axiom');         // Section heading
+  }
+
+  &__grid {
+    @include genesis-environment('distributed'); // Auto-fit feature grid
+  }
+}
+
+.landing-feature {
+  @include genesis-entity('aggregate');          // Feature card
+
+  &__icon {
+    @include genesis-cognition('motive');        // Feature icon
+  }
+
+  &__title {
+    @include genesis-cognition('motive');        // Feature name
+  }
+
+  &__description {
+    @include genesis-cognition('discourse');     // Feature description
+  }
+}

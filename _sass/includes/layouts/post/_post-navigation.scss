@@ -1,0 +1,30 @@
+/**
+ * Post Navigation Include Styles
+ * ============================================================================
+ * Previous/next post navigation links.
+ * Corresponds to: _includes/layouts/post/post-navigation.html
+ */
+
+.post-navigation {
+  @include genesis-environment('associative'); // Prev + next side-by-side
+
+  &__link {
+    @include genesis-synapse('navigate');      // Navigation link
+
+    &--prev {
+      // Previous post direction
+    }
+
+    &--next {
+      // Next post direction
+    }
+  }
+
+  &__label {
+    @include genesis-cognition('gloss');       // "Previous Post" / "Next Post" label
+  }
+
+  &__title {
+    @include genesis-cognition('motive');      // Linked post title
+  }
+}

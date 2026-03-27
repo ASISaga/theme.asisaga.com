@@ -1,0 +1,13 @@
+/**
+ * Layout Header Include Styles
+ * ============================================================================
+ * Reusable layout page header — class_prefix pattern.
+ * Corresponds to: _includes/layouts/layout-header.html
+ *
+ * This include uses a class_prefix parameter; selectors are prefixed
+ * by the caller (e.g. .post__header, .article__header, .landing__header).
+ * Shared styles are defined in the consuming layout SCSS file.
+ */
+
+// Header elements use genesis-cognition('axiom') for title,
+// genesis-cognition('discourse') for description, via layout SCSS.

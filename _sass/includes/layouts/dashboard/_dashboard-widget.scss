@@ -1,0 +1,46 @@
+/**
+ * Dashboard Widget Include Styles
+ * ============================================================================
+ * KPI metric card for dashboard layouts.
+ * Corresponds to: _includes/layouts/dashboard/dashboard-widget.html
+ */
+
+.dashboard-widget {
+  @include genesis-entity('primary');         // Metric card surface
+
+  &__header {
+    @include genesis-environment('associative'); // Title + icon row
+  }
+
+  &__title {
+    @include genesis-cognition('motive');      // Widget heading
+  }
+
+  &__icon {
+    @include genesis-cognition('motive');      // Widget icon
+  }
+
+  &__value {
+    @include genesis-cognition('axiom');       // Large metric value
+  }
+
+  &__change {
+    @include genesis-environment('associative'); // Value + label row
+
+    &--positive {
+      @include genesis-state('active');        // Positive trend
+    }
+
+    &--negative {
+      @include genesis-state('deprecated');    // Negative trend
+    }
+  }
+
+  &__change-value {
+    @include genesis-cognition('gloss');       // Percentage change
+  }
+
+  &__change-label {
+    @include genesis-cognition('gloss');       // Comparison period label
+  }
+}

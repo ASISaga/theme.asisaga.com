@@ -1,0 +1,24 @@
+/**
+ * Navbar Include Styles
+ * ============================================================================
+ * Primary navigation bar with dropdown support.
+ * Corresponds to: _includes/navbar.html
+ * Base styles: _sass/components/core/_navbar.scss
+ */
+
+// Navbar uses .navbar selectors — see _navbar.scss
+// This file documents the include–SCSS correspondence.
+.navbar {
+  .navbar__item {
+    @include genesis-synapse('navigate');         // Nav item link
+  }
+
+  .navbar__dropdown {
+    @include genesis-entity('aggregate');         // Dropdown panel
+    @include genesis-atmosphere('neutral');        // Standard dropdown tone
+  }
+
+  .navbar__dropdown-item {
+    @include genesis-synapse('navigate');         // Dropdown link
+  }
+}

@@ -1,0 +1,34 @@
+/**
+ * Post Meta Include Styles
+ * ============================================================================
+ * Post metadata display (date, author, reading time, tags).
+ * Corresponds to: _includes/layouts/post/post-meta.html
+ */
+
+.post-meta {
+  @include genesis-environment('chronological'); // Vertical meta stack
+
+  &__info {
+    @include genesis-environment('associative'); // Horizontal metadata row
+  }
+
+  &__date {
+    @include genesis-cognition('gloss');         // Publication date
+  }
+
+  &__author {
+    @include genesis-cognition('gloss');         // Author attribution
+  }
+
+  &__reading-time {
+    @include genesis-cognition('gloss');         // Reading time estimate
+  }
+
+  &__tags {
+    @include genesis-environment('associative'); // Horizontal tag row
+  }
+
+  &__tag {
+    @include genesis-cognition('quantum');       // Tag pill
+  }
+}

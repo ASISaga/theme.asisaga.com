@@ -1,0 +1,13 @@
+/**
+ * Node Include Styles
+ * ============================================================================
+ * Recursive blueprint assembly engine node.
+ * Corresponds to: _includes/node.html
+ *
+ * Nodes render with dynamic variant-based class names (.node--<slug>).
+ * Visual styling is applied by the ontological mixin for each variant.
+ */
+
+.node {
+  // Base node container — variant class applied dynamically via slug
+}

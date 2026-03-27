@@ -1,0 +1,13 @@
+/**
+ * Product Section Container Include Styles
+ * ============================================================================
+ * Generic full-width product section wrapper.
+ * Corresponds to: _includes/product-section-container.html
+ * Base styles: _sass/components/products/_product-section-container.scss
+ */
+
+// Product section container uses .product-section-content selectors
+// See _product-section-container.scss for full styles.
+.product-section-content {
+  @include genesis-environment('focused');    // Centered reading width
+}

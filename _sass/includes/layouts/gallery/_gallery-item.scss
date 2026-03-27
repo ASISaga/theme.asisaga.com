@@ -1,0 +1,30 @@
+/**
+ * Gallery Item Include Styles
+ * ============================================================================
+ * Single item in a gallery grid.
+ * Corresponds to: _includes/layouts/gallery/gallery-item.html
+ */
+
+.gallery-item {
+  @include genesis-entity('aggregate');         // Gallery card
+
+  &__link {
+    @include genesis-synapse('navigate');       // Image link
+  }
+
+  &__image {
+    @include genesis-entity('image-adaptive'); // Responsive gallery image
+  }
+
+  &__caption {
+    @include genesis-cognition('gloss');        // Caption/overlay text
+  }
+
+  &__title {
+    @include genesis-cognition('motive');       // Image title
+  }
+
+  &__description {
+    @include genesis-cognition('discourse');    // Image description
+  }
+}

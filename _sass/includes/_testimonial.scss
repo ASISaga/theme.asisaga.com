@@ -1,0 +1,25 @@
+/**
+ * Testimonial Include Styles
+ * ============================================================================
+ * Customer testimonial card.
+ * Corresponds to: _includes/testimonial.html
+ * Base styles: _sass/components/sections/_testimonial.scss
+ */
+
+// Testimonial uses .testimonial-card selectors — see _testimonial.scss
+// This file documents the include–SCSS correspondence.
+.testimonial-card {
+  @include genesis-entity('aggregate');       // Testimonial container
+
+  &__author {
+    @include genesis-environment('associative'); // Avatar + name row
+  }
+
+  &__name {
+    @include genesis-cognition('motive');     // Author name
+  }
+
+  &__company {
+    @include genesis-cognition('gloss');      // Company metadata
+  }
+}

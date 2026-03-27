@@ -1,0 +1,22 @@
+/**
+ * Splash Countdown Include Styles
+ * ============================================================================
+ * Countdown timer display for splash/coming-soon pages.
+ * Corresponds to: _includes/layouts/splash/splash-countdown.html
+ */
+
+.splash-countdown {
+  @include genesis-environment('associative'); // Horizontal countdown units
+
+  &__item {
+    @include genesis-entity('aggregate');      // Individual time unit card
+  }
+
+  &__value {
+    @include genesis-cognition('axiom');       // Large countdown number
+  }
+
+  &__label {
+    @include genesis-cognition('gloss');       // Time unit label (Days, Hours…)
+  }
+}

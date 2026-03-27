@@ -1,0 +1,13 @@
+/**
+ * Layout Footer CTA Include Styles
+ * ============================================================================
+ * Reusable layout footer call-to-action — class_prefix pattern.
+ * Corresponds to: _includes/layouts/layout-footer-cta.html
+ *
+ * This include uses a class_prefix parameter; selectors are prefixed
+ * by the caller (e.g. .post__footer-cta, .landing__footer-cta).
+ * Shared styles are defined in the consuming layout SCSS file.
+ */
+
+// Footer CTA elements use genesis-synapse('execute') for the CTA button
+// and genesis-cognition mixins for title/description text, via layout SCSS.

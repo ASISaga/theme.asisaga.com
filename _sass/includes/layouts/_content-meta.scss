@@ -1,0 +1,13 @@
+/**
+ * Content Meta Include Styles
+ * ============================================================================
+ * Content metadata bar (date, author, reading time) — class_prefix pattern.
+ * Corresponds to: _includes/layouts/content-meta.html
+ *
+ * This include uses a class_prefix parameter; selectors are prefixed
+ * by the caller (e.g. .post__meta, .article__meta). Shared styles are
+ * defined in the consuming layout SCSS file (_post.scss, _article.scss).
+ */
+
+// Meta elements rendered with genesis-cognition('gloss') via layout SCSS.
+// No standalone selectors — class_prefix pattern requires layout context.

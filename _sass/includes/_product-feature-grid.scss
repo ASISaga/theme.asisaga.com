@@ -1,0 +1,13 @@
+/**
+ * Product Feature Grid Include Styles
+ * ============================================================================
+ * Grid layout for product feature cards.
+ * Corresponds to: _includes/product-feature-grid.html
+ * Base styles: _sass/components/products/_product-feature-grid.scss
+ */
+
+// Product feature grid uses .product-feature-grid selectors
+// See _product-feature-grid.scss for full styles.
+.product-feature-grid {
+  @include genesis-environment('distributed'); // Auto-fit card grid
+}

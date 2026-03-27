@@ -1,0 +1,34 @@
+/**
+ * FAQ Item Include Styles
+ * ============================================================================
+ * Accordion-style FAQ question and answer item.
+ * Corresponds to: _includes/layouts/faq/faq-item.html
+ */
+
+.faq-item {
+  @include genesis-entity('aggregate');       // FAQ item container
+
+  &__header {
+    // Structural heading wrapper — no visual styling
+  }
+
+  &__button {
+    @include genesis-synapse('execute');      // Expand/collapse trigger
+
+    &--collapsed {
+      @include genesis-state('collapsed');   // Collapsed state
+    }
+  }
+
+  &__content {
+    @include genesis-state('evolving');       // Animating content area
+
+    &--show {
+      @include genesis-state('expanded');    // Expanded/visible state
+    }
+  }
+
+  &__answer {
+    @include genesis-cognition('discourse'); // Answer body text
+  }
+}

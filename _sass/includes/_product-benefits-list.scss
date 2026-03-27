@@ -1,0 +1,23 @@
+/**
+ * Product Benefits List Include Styles
+ * ============================================================================
+ * Bulleted benefits list section.
+ * Corresponds to: _includes/product-benefits-list.html
+ * Base styles: _sass/components/products/_product-benefits-list.scss
+ */
+
+// Product benefits uses .product-benefits-section selectors
+// See _product-benefits-list.scss for full styles.
+.product-benefits-section {
+  .product-list {
+    @include genesis-environment('chronological'); // Vertical list
+  }
+
+  .product-list-item {
+    @include genesis-cognition('discourse');        // List item text
+  }
+
+  .product-list-highlight {
+    @include genesis-cognition('motive');           // Highlighted item
+  }
+}

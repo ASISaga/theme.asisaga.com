@@ -1,0 +1,34 @@
+/**
+ * Stat Include Styles
+ * ============================================================================
+ * Statistical metric display card.
+ * Corresponds to: _includes/components/stat.html
+ */
+
+.genesis-stat {
+  @include genesis-entity('aggregate');       // Metric container
+
+  &__icon {
+    @include genesis-cognition('motive');     // Metric icon
+  }
+
+  &__value {
+    @include genesis-cognition('axiom');      // Large metric number
+  }
+
+  &__label {
+    @include genesis-cognition('gloss');      // Metric description label
+  }
+
+  &__trend {
+    @include genesis-cognition('gloss');      // Trend indicator
+
+    &--up {
+      @include genesis-state('active');       // Positive trend
+    }
+
+    &--down {
+      @include genesis-state('deprecated');   // Negative trend
+    }
+  }
+}

@@ -1,0 +1,27 @@
+/**
+ * Pagination Include Styles
+ * ============================================================================
+ * Page navigation pagination links.
+ * Corresponds to: _includes/components/pagination.html
+ */
+
+.genesis-pagination {
+  @include genesis-environment('associative'); // Horizontal pagination row
+
+  &__link {
+    @include genesis-synapse('paginate');      // Pagination link
+
+    &--disabled {
+      @include genesis-state('locked');        // Disabled page link
+    }
+
+    &--prev,
+    &--next {
+      @include genesis-synapse('navigate');    // Prev/next directional link
+    }
+  }
+
+  &__info {
+    @include genesis-cognition('gloss');       // Page count metadata
+  }
+}

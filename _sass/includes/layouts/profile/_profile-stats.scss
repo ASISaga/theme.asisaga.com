@@ -1,0 +1,30 @@
+/**
+ * Profile Stats Include Styles
+ * ============================================================================
+ * Profile statistics grid (followers, posts, etc.).
+ * Corresponds to: _includes/layouts/profile/profile-stats.html
+ */
+
+.profile-stats {
+  @include genesis-environment('chronological'); // Title + grid stack
+
+  &__title {
+    @include genesis-cognition('motive');         // Stats section heading
+  }
+
+  &__grid {
+    @include genesis-environment('distributed');  // Auto-fit stats grid
+  }
+
+  &__item {
+    @include genesis-entity('aggregate');         // Individual stat card
+  }
+
+  &__value {
+    @include genesis-cognition('axiom');          // Large stat number
+  }
+
+  &__label {
+    @include genesis-cognition('gloss');          // Stat description label
+  }
+}

@@ -1,0 +1,47 @@
+/**
+ * Alert Include Styles
+ * ============================================================================
+ * Accessible alert/notification component.
+ * Corresponds to: _includes/components/alert.html
+ */
+
+.genesis-alert {
+  @include genesis-entity('aggregate');        // Alert container
+  @include genesis-environment('associative'); // Icon + content row
+
+  &--info {
+    @include genesis-state('stable');          // Informational state
+  }
+
+  &--success {
+    @include genesis-state('active');          // Success state
+  }
+
+  &--warning {
+    @include genesis-state('evolving');        // Warning/in-progress state
+  }
+
+  &--error {
+    @include genesis-state('deprecated');      // Error/degraded state
+  }
+
+  &__icon {
+    @include genesis-cognition('motive');      // Alert icon
+  }
+
+  &__content {
+    @include genesis-environment('chronological'); // Title + message stack
+  }
+
+  &__title {
+    @include genesis-cognition('motive');      // Alert heading
+  }
+
+  &__message {
+    @include genesis-cognition('discourse');   // Alert body text
+  }
+
+  &__dismiss {
+    @include genesis-synapse('destructive');   // Dismiss action
+  }
+}

@@ -1,0 +1,35 @@
+/**
+ * Article TOC Include Styles
+ * ============================================================================
+ * Article table of contents sidebar navigation.
+ * Corresponds to: _includes/layouts/article/article-toc.html
+ * See also: .article-toc-sidebar in _sass/layouts/_article.scss
+ */
+
+.article-toc {
+  @include genesis-entity('aggregate');          // TOC container card
+
+  &__nav {
+    @include genesis-environment('chronological'); // Vertical nav structure
+  }
+
+  &__title {
+    @include genesis-cognition('motive');          // "Table of Contents" heading
+  }
+
+  &__list {
+    @include genesis-environment('chronological'); // Vertical link list
+
+    &--nested {
+      @include genesis-environment('chronological'); // Nested sub-list
+    }
+  }
+
+  &__item {
+    @include genesis-cognition('gloss');           // TOC item label
+  }
+
+  &__link {
+    @include genesis-synapse('anchor');            // In-page anchor link
+  }
+}

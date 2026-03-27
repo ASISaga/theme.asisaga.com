@@ -1,0 +1,13 @@
+/**
+ * Chatroom Messages Include Styles
+ * ============================================================================
+ * Scrollable message stream for the chatroom.
+ * Corresponds to: _includes/chatroom/messages.html
+ * Base styles: _sass/layouts/_chatroom.scss
+ */
+
+// Chatroom messages uses .chatroom-messages selectors — see _chatroom.scss
+// This file documents the include–SCSS correspondence.
+.chatroom-messages {
+  @include genesis-environment('chronological'); // Vertical message stream
+}

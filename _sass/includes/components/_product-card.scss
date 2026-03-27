@@ -1,0 +1,40 @@
+/**
+ * Product Card Include Styles
+ * ============================================================================
+ * Web component product card template.
+ * Corresponds to: _includes/components/product-card.html
+ * Base styles: _sass/components/web-components/_product-card.scss
+ */
+
+// Product card web component uses .wc-product-card selectors
+// See web-components/_product-card.scss for full styles.
+wc-product-card,
+.wc-product-card {
+  @include genesis-entity('primary');          // Product card surface
+
+  &__media {
+    @include genesis-entity('image-adaptive'); // Responsive media area
+  }
+
+  &__content {
+    @include genesis-environment('chronological'); // Vertical content
+  }
+
+  &__description {
+    @include genesis-cognition('discourse');   // Description text
+  }
+
+  &__actions {
+    @include genesis-environment('associative'); // Button row
+  }
+
+  &__button {
+    &--primary {
+      @include genesis-synapse('execute');     // Primary card action
+    }
+
+    &--secondary {
+      @include genesis-synapse('inquiry');     // Secondary card action
+    }
+  }
+}
