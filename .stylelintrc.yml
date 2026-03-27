@@ -226,6 +226,7 @@ ignoreFiles:
   - "_sass/fontawesome/**"
   - "assets/js/**"
   - "_sass/ontology/_test.scss"  # Test file with Jekyll front matter
+  - "assets/css/layouts/**"      # Per-layout CSS entry points — Jekyll front matter, @import only
   
 # Ignore Jekyll front matter
 ignorePatterns:

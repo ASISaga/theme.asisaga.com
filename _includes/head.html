@@ -9,6 +9,11 @@
   <!-- Main stylesheet with cache busting -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
 
+  <!-- Layout-specific stylesheet (loaded per page.layout) -->
+  {% if page.layout %}
+  <link rel="stylesheet" href="{{ '/assets/css/layouts/' | append: page.layout | append: '.css?v=' | append: site.github.build_revision | relative_url }}">
+  {% endif %}
+
   <!-- Favicon and device icons -->
   <link id="favicon" rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
 

@@ -162,32 +162,16 @@
 @import "components/testimonial-card";
 @import "components/alert-card";
 
-// Layout Styles - Base templates and specialized layouts
-@import "layouts/app";
-@import "layouts/default";
-@import "layouts/scrollable";
-@import "layouts/fixed-height";
-@import "layouts/minimal-base";
-@import "layouts/post";
-@import "layouts/article";
-@import "layouts/archive";
-@import "layouts/profile";
-@import "layouts/landing";
-@import "layouts/gallery";
-@import "layouts/form";
-@import "layouts/docs";
-@import "layouts/faq";
-@import "layouts/dashboard";
-@import "layouts/chatroom";
-@import "layouts/search";
-@import "layouts/settings";
-@import "layouts/minimal";
-@import "layouts/splash";
+// Layout Styles - loaded per-layout via assets/css/layouts/*.css
+// Each layout HTML file loads its own CSS entry point through _includes/head.html.
+// See assets/css/layouts/ for per-layout SCSS entry points.
 
 // ----------------------------------------
 // RESPONSIVE ENHANCEMENTS - v2.1.0
 // ----------------------------------------
-// Comprehensive responsive patterns for ALL layouts
+// Supplementary responsive refinements covering all layouts.
+// Kept in common because it is a single cross-layout file; splitting it per
+// layout would require a separate refactor of _responsive-enhancements.scss.
 // Mobile-first (375px → 1920px+), WCAG 2.5.5 compliant
 // responsive-design-agent v2.1.0
 @import "layouts/responsive-enhancements";
@@ -199,9 +183,10 @@
 // in _sass/includes/, mirroring the same directory hierarchy.
 @import "includes/index";
 
-// Layout-specific components removed - styles consolidated into layout files
+// Layout-specific styles are loaded per-layout via assets/css/layouts/*.scss entry points.
+// Each _layouts/*.html page loads its own CSS through the conditional in _includes/head.html.
 // Previously: components/layouts/* (10 unused files with -component suffix)
-// Now: All layout styling is in _sass/layouts/*.scss matching HTML class names
+// Now: All layout styling is in _sass/layouts/*.scss, loaded on demand per layout.
 
 // ----------------------------------------
 // DEMO PAGE STYLES
