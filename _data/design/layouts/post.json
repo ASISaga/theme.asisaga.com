@@ -67,7 +67,33 @@
               "attributes": {
                 "id": "hero-heading"
               },
-              "content": "{{ include.title }}"
+              "content": "{{ include.title }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 48,
+                  "fontWeight": 800,
+                  "lineHeight": {
+                    "value": 115,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": -2,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.067,
+                    "g": 0.071,
+                    "b": 0.102
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Bold"
+                }
+              }
             },
             {
               "id": "hero-description",
@@ -80,7 +106,33 @@
                   "layout-variant": "cognition/discourse"
                 }
               },
-              "content": "{{ include.description }}"
+              "content": "{{ include.description }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 17,
+                  "fontWeight": 400,
+                  "lineHeight": {
+                    "value": 160,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": 0,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.082,
+                    "g": 0.086,
+                    "b": 0.125
+                  },
+                  "fontFamily": "Georgia",
+                  "fontStyle": "Regular"
+                }
+              }
             },
             {
               "id": "hero-actions",
@@ -110,11 +162,83 @@
                   "attributes": {
                     "href": "{{ include.button_url }}"
                   },
-                  "content": "{{ include.button_text }}"
+                  "content": "{{ include.button_text }}",
+                  "figmaStyles": {
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "color": {
+                          "r": 0,
+                          "g": 0.549,
+                          "b": 0.988
+                        },
+                        "opacity": 1
+                      }
+                    ],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 8,
+                    "effects": [
+                      {
+                        "type": "DROP_SHADOW",
+                        "color": {
+                          "r": 0,
+                          "g": 0.549,
+                          "b": 0.988,
+                          "a": 0.3
+                        },
+                        "offset": {
+                          "x": 0,
+                          "y": 4
+                        },
+                        "radius": 12,
+                        "spread": 0,
+                        "visible": true,
+                        "blendMode": "NORMAL"
+                      }
+                    ],
+                    "typography": {
+                      "fontSize": 15,
+                      "fontWeight": 600,
+                      "textColor": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "SemiBold"
+                    }
+                  }
                 }
-              ]
+              ],
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "layoutHint": {
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "layoutWrap": "WRAP"
+                }
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "maxWidth": 1120
+            }
+          }
         },
         {
           "id": "hero-background",
@@ -129,6 +253,46 @@
           },
           "attributes": {
             "aria-hidden": "true"
+          },
+          "figmaStyles": {
+            "fills": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.988,
+                  "g": 0.988,
+                  "b": 0.973
+                },
+                "opacity": 1
+              }
+            ],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [
+              {
+                "type": "DROP_SHADOW",
+                "color": {
+                  "r": 0,
+                  "g": 0.549,
+                  "b": 0.988,
+                  "a": 0.15
+                },
+                "offset": {
+                  "x": 0,
+                  "y": 0
+                },
+                "radius": 12,
+                "spread": 0,
+                "visible": true,
+                "blendMode": "NORMAL"
+              },
+              {
+                "type": "LAYER_BLUR",
+                "radius": 8,
+                "visible": true
+              }
+            ]
           }
         }
       ]
@@ -175,9 +339,48 @@
                   "layout-variant": "cognition/axiom"
                 }
               },
-              "content": "{{ page.title }}"
+              "content": "{{ page.title }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 48,
+                  "fontWeight": 800,
+                  "lineHeight": {
+                    "value": 115,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": -2,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.067,
+                    "g": 0.071,
+                    "b": 0.102
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Bold"
+                }
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "maxWidth": 1120
+            }
+          }
         },
         {
           "id": "post-meta",
@@ -204,7 +407,33 @@
                   "layout-variant": "cognition/gloss"
                 }
               },
-              "content": "{{ page.date | date: '%B %d, %Y' }}"
+              "content": "{{ page.date | date: '%B %d, %Y' }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 14,
+                  "fontWeight": 400,
+                  "lineHeight": {
+                    "value": 150,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": 0,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.306,
+                    "g": 0.314,
+                    "b": 0.349
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Regular"
+                }
+              }
             },
             {
               "id": "post-author",
@@ -217,9 +446,48 @@
                   "layout-variant": "cognition/gloss"
                 }
               },
-              "content": "{{ page.author }}"
+              "content": "{{ page.author }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 14,
+                  "fontWeight": 400,
+                  "lineHeight": {
+                    "value": 150,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": 0,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.306,
+                    "g": 0.314,
+                    "b": 0.349
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Regular"
+                }
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "layoutWrap": "WRAP"
+            }
+          }
         },
         {
           "id": "post-tags",
@@ -246,9 +514,54 @@
                   "layout-variant": "synapse/navigate"
                 }
               },
-              "content": "{{ tag }}"
+              "content": "{{ tag }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.49,
+                      "g": 0.784,
+                      "b": 1
+                    },
+                    "opacity": 0
+                  }
+                ],
+                "strokeWeight": 1,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 15,
+                  "fontWeight": 400,
+                  "lineHeight": {
+                    "value": 100,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.408,
+                    "g": 0.694,
+                    "b": 0.996
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Regular"
+                }
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "layoutWrap": "WRAP"
+            }
+          }
         },
         {
           "id": "post-content",
@@ -263,7 +576,33 @@
           },
           "layoutMode": "VERTICAL",
           "itemSpacing": "spacing-md",
-          "content": "{{ content }}"
+          "content": "{{ content }}",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "typography": {
+              "fontSize": 17,
+              "fontWeight": 400,
+              "lineHeight": {
+                "value": 160,
+                "unit": "PERCENT"
+              },
+              "letterSpacing": {
+                "value": 0,
+                "unit": "PERCENT"
+              },
+              "textColor": {
+                "r": 0.082,
+                "g": 0.086,
+                "b": 0.125
+              },
+              "fontFamily": "Georgia",
+              "fontStyle": "Regular"
+            }
+          }
         },
         {
           "id": "post-share-cta",
@@ -293,7 +632,33 @@
                   "layout-variant": "cognition/gloss"
                 }
               },
-              "content": "Share this post"
+              "content": "Share this post",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 14,
+                  "fontWeight": 400,
+                  "lineHeight": {
+                    "value": 150,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": 0,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.306,
+                    "g": 0.314,
+                    "b": 0.349
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Regular"
+                }
+              }
             },
             {
               "id": "post-share-button",
@@ -309,11 +674,123 @@
               "attributes": {
                 "href": "#share"
               },
-              "content": "Share"
+              "content": "Share",
+              "figmaStyles": {
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.953,
+                      "g": 0.957,
+                      "b": 0.973
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.867,
+                      "g": 0.878,
+                      "b": 0.898
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokeWeight": 1,
+                "cornerRadius": 8,
+                "effects": []
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.953,
+                  "g": 0.957,
+                  "b": 0.973
+                },
+                "opacity": 1
+              }
+            ],
+            "strokes": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.867,
+                  "g": 0.878,
+                  "b": 0.898
+                },
+                "opacity": 1
+              }
+            ],
+            "strokeWeight": 1,
+            "cornerRadius": 8,
+            "effects": []
+          }
         }
-      ]
+      ],
+      "figmaStyles": {
+        "fills": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.988,
+              "g": 0.988,
+              "b": 0.973
+            },
+            "opacity": 1
+          }
+        ],
+        "strokes": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.835,
+              "g": 0.847,
+              "b": 0.867
+            },
+            "opacity": 1
+          }
+        ],
+        "strokeWeight": 1,
+        "cornerRadius": 8,
+        "effects": [
+          {
+            "type": "DROP_SHADOW",
+            "color": {
+              "r": 0.031,
+              "g": 0.039,
+              "b": 0.094,
+              "a": 0.1
+            },
+            "offset": {
+              "x": 0,
+              "y": 1
+            },
+            "radius": 4,
+            "spread": 0,
+            "visible": true,
+            "blendMode": "NORMAL"
+          }
+        ]
+      }
     }
-  ]
+  ],
+  "figmaStyles": {
+    "fills": [],
+    "strokes": [],
+    "strokeWeight": 0,
+    "cornerRadius": 0,
+    "effects": [],
+    "layoutHint": {
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "AUTO",
+      "counterAxisSizingMode": "FIXED",
+      "maxWidth": 1120
+    }
+  }
 }

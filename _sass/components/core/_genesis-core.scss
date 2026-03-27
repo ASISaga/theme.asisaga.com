@@ -112,6 +112,8 @@ $genesis-entity-natures: (
   'primary',
   'secondary',
   'imperative',
+  'latent',
+  'aggregate',
   'transcendent',
   'image-adaptive'
 );
@@ -119,6 +121,7 @@ $genesis-entity-natures: (
 $genesis-cognition-intents: (
   'axiom',
   'discourse',
+  'protocol',
   'gloss',
   'motive',
   'quantum'
@@ -140,6 +143,7 @@ $genesis-state-conditions: (
 
 $genesis-atmosphere-vibes: (
   'neutral',
+  'ethereal',
   'vibrant',
   'sacred'
 );

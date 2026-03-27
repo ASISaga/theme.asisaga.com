@@ -5,7 +5,7 @@
   "description": "A single structural node in an ASISaga Genesis blueprint. Carries structural intent only — no token values, no animation parameters.",
   "type": "object",
   "required": ["id", "name", "type", "pluginData"],
-  "additionalProperties": false,
+  "additionalProperties": true,
   "properties": {
     "id": {
       "type": "string",
@@ -117,6 +117,50 @@
       "type": "array",
       "description": "Ordered child nodes. Maximum depth: 5 levels (enforced by validate-blueprint.sh).",
       "items": { "$ref": "#" }
+    },
+    "figmaStyles": {
+      "type": "object",
+      "description": "Figma API-compatible visual style properties computed from the layout-variant by blueprint-sync-figma.sh. Read by the Wireframe2Code plugin to render fills, strokes, shadows, and typography on the Figma canvas. Ignored by Jekyll's node.html renderer. Do NOT edit manually — regenerate by running blueprint-sync-figma.sh.",
+      "properties": {
+        "fills": {
+          "type": "array",
+          "description": "Background fill paints (SOLID or GRADIENT_LINEAR)."
+        },
+        "strokes": {
+          "type": "array",
+          "description": "Border stroke paints."
+        },
+        "strokeWeight": {
+          "type": "number",
+          "description": "Border width in pixels."
+        },
+        "cornerRadius": {
+          "type": "number",
+          "description": "Border-radius in pixels."
+        },
+        "opacity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Layer opacity (0–1)."
+        },
+        "effects": {
+          "type": "array",
+          "description": "Figma effects (DROP_SHADOW, INNER_SHADOW, LAYER_BLUR)."
+        },
+        "typography": {
+          "type": "object",
+          "description": "Typography properties for TEXT nodes (fontSize, fontWeight, lineHeight, letterSpacing, textColor, fontFamily, fontStyle)."
+        },
+        "layoutHint": {
+          "type": "object",
+          "description": "AutoLayout hints for environment variants (layoutMode, primaryAxisSizingMode, counterAxisSizingMode, layoutWrap, maxWidth)."
+        },
+        "clipsContent": {
+          "type": "boolean",
+          "description": "Whether the frame clips its content."
+        }
+      }
     }
   }
 }

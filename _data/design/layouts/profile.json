@@ -44,6 +44,33 @@
             "src": "{{ page.profile_image }}",
             "alt": "{{ page.name }}",
             "data-conditional": "page.profile_image"
+          },
+          "figmaStyles": {
+            "fills": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.969,
+                  "g": 0.973,
+                  "b": 0.98
+                },
+                "opacity": 1
+              }
+            ],
+            "strokes": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.855,
+                  "g": 0.867,
+                  "b": 0.886
+                },
+                "opacity": 1
+              }
+            ],
+            "strokeWeight": 1,
+            "cornerRadius": 8,
+            "effects": []
           }
         },
         {
@@ -74,7 +101,33 @@
               "attributes": {
                 "data-conditional": "page.name"
               },
-              "content": "{{ page.name }}"
+              "content": "{{ page.name }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 48,
+                  "fontWeight": 800,
+                  "lineHeight": {
+                    "value": 115,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": -2,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.067,
+                    "g": 0.071,
+                    "b": 0.102
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Bold"
+                }
+              }
             },
             {
               "id": "profile-role",
@@ -90,7 +143,33 @@
               "attributes": {
                 "data-conditional": "page.role"
               },
-              "content": "{{ page.role }}"
+              "content": "{{ page.role }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 17,
+                  "fontWeight": 600,
+                  "lineHeight": {
+                    "value": 150,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": 0,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.082,
+                    "g": 0.086,
+                    "b": 0.125
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "SemiBold"
+                }
+              }
             },
             {
               "id": "profile-bio",
@@ -106,7 +185,33 @@
               "attributes": {
                 "data-conditional": "page.bio"
               },
-              "content": "{{ page.bio }}"
+              "content": "{{ page.bio }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 17,
+                  "fontWeight": 400,
+                  "lineHeight": {
+                    "value": 160,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": 0,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.082,
+                    "g": 0.086,
+                    "b": 0.125
+                  },
+                  "fontFamily": "Georgia",
+                  "fontStyle": "Regular"
+                }
+              }
             },
             {
               "id": "profile-social-links",
@@ -141,13 +246,111 @@
                     "href": "{{ link.url }}",
                     "target": "_blank",
                     "rel": "noopener noreferrer"
+                  },
+                  "figmaStyles": {
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "color": {
+                          "r": 0.953,
+                          "g": 0.957,
+                          "b": 0.973
+                        },
+                        "opacity": 1
+                      }
+                    ],
+                    "strokes": [
+                      {
+                        "type": "SOLID",
+                        "color": {
+                          "r": 0.867,
+                          "g": 0.878,
+                          "b": 0.898
+                        },
+                        "opacity": 1
+                      }
+                    ],
+                    "strokeWeight": 1,
+                    "cornerRadius": 8,
+                    "effects": []
                   }
                 }
-              ]
+              ],
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "layoutHint": {
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "layoutWrap": "WRAP"
+                }
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "maxWidth": 1120
+            }
+          }
         }
-      ]
+      ],
+      "figmaStyles": {
+        "fills": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.988,
+              "g": 0.988,
+              "b": 0.973
+            },
+            "opacity": 1
+          }
+        ],
+        "strokes": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.835,
+              "g": 0.847,
+              "b": 0.867
+            },
+            "opacity": 1
+          }
+        ],
+        "strokeWeight": 1,
+        "cornerRadius": 8,
+        "effects": [
+          {
+            "type": "DROP_SHADOW",
+            "color": {
+              "r": 0.031,
+              "g": 0.039,
+              "b": 0.094,
+              "a": 0.1
+            },
+            "offset": {
+              "x": 0,
+              "y": 1
+            },
+            "radius": 4,
+            "spread": 0,
+            "visible": true,
+            "blendMode": "NORMAL"
+          }
+        ]
+      }
     },
     {
       "id": "profile-main",
@@ -176,7 +379,33 @@
           },
           "layoutMode": "VERTICAL",
           "itemSpacing": "spacing-md",
-          "content": "{{ content }}"
+          "content": "{{ content }}",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "typography": {
+              "fontSize": 17,
+              "fontWeight": 400,
+              "lineHeight": {
+                "value": 160,
+                "unit": "PERCENT"
+              },
+              "letterSpacing": {
+                "value": 0,
+                "unit": "PERCENT"
+              },
+              "textColor": {
+                "r": 0.082,
+                "g": 0.086,
+                "b": 0.125
+              },
+              "fontFamily": "Georgia",
+              "fontStyle": "Regular"
+            }
+          }
         },
         {
           "id": "profile-sidebar",
@@ -224,9 +453,48 @@
                       "layout-variant": "cognition/axiom"
                     }
                   },
-                  "content": "Statistics"
+                  "content": "Statistics",
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 48,
+                      "fontWeight": 800,
+                      "lineHeight": {
+                        "value": 115,
+                        "unit": "PERCENT"
+                      },
+                      "letterSpacing": {
+                        "value": -2,
+                        "unit": "PERCENT"
+                      },
+                      "textColor": {
+                        "r": 0.067,
+                        "g": 0.071,
+                        "b": 0.102
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "Bold"
+                    }
+                  }
                 }
-              ]
+              ],
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "layoutHint": {
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "layoutWrap": "WRAP"
+                }
+              }
             },
             {
               "id": "profile-skills",
@@ -256,7 +524,33 @@
                       "layout-variant": "cognition/axiom"
                     }
                   },
-                  "content": "Skills"
+                  "content": "Skills",
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 48,
+                      "fontWeight": 800,
+                      "lineHeight": {
+                        "value": 115,
+                        "unit": "PERCENT"
+                      },
+                      "letterSpacing": {
+                        "value": -2,
+                        "unit": "PERCENT"
+                      },
+                      "textColor": {
+                        "r": 0.067,
+                        "g": 0.071,
+                        "b": 0.102
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "Bold"
+                    }
+                  }
                 },
                 {
                   "id": "profile-skill-badge",
@@ -269,13 +563,126 @@
                       "layout-variant": "cognition/quantum"
                     }
                   },
-                  "content": "{{ skill }}"
+                  "content": "{{ skill }}",
+                  "figmaStyles": {
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "color": {
+                          "r": 0.945,
+                          "g": 0.949,
+                          "b": 0.965
+                        },
+                        "opacity": 1
+                      }
+                    ],
+                    "strokes": [
+                      {
+                        "type": "SOLID",
+                        "color": {
+                          "r": 0.835,
+                          "g": 0.847,
+                          "b": 0.867
+                        },
+                        "opacity": 1
+                      }
+                    ],
+                    "strokeWeight": 1,
+                    "cornerRadius": 999,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 11,
+                      "fontWeight": 600,
+                      "lineHeight": {
+                        "value": 100,
+                        "unit": "PERCENT"
+                      },
+                      "letterSpacing": {
+                        "value": 5,
+                        "unit": "PERCENT"
+                      },
+                      "textColor": {
+                        "r": 0.11,
+                        "g": 0.114,
+                        "b": 0.165
+                      },
+                      "textTransform": "UPPER",
+                      "fontFamily": "Inter",
+                      "fontStyle": "SemiBold"
+                    }
+                  }
                 }
-              ]
+              ],
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "layoutHint": {
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "layoutWrap": "WRAP"
+                }
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.953,
+                  "g": 0.957,
+                  "b": 0.973
+                },
+                "opacity": 1
+              }
+            ],
+            "strokes": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.867,
+                  "g": 0.878,
+                  "b": 0.898
+                },
+                "opacity": 1
+              }
+            ],
+            "strokeWeight": 1,
+            "cornerRadius": 8,
+            "effects": []
+          }
         }
-      ]
+      ],
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [],
+        "layoutHint": {
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "layoutWrap": "WRAP"
+        }
+      }
     }
-  ]
+  ],
+  "figmaStyles": {
+    "fills": [],
+    "strokes": [],
+    "strokeWeight": 0,
+    "cornerRadius": 0,
+    "effects": [],
+    "layoutHint": {
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "AUTO",
+      "counterAxisSizingMode": "FIXED",
+      "maxWidth": 1120
+    }
+  }
 }

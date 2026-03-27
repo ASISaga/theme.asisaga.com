@@ -30,7 +30,39 @@
         "href": "#skip-target",
         "class": "skip-link sr-only focus-visible"
       },
-      "content": "Skip to main content"
+      "content": "Skip to main content",
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.49,
+              "g": 0.784,
+              "b": 1
+            },
+            "opacity": 0
+          }
+        ],
+        "strokeWeight": 1,
+        "cornerRadius": 0,
+        "effects": [],
+        "typography": {
+          "fontSize": 15,
+          "fontWeight": 400,
+          "lineHeight": {
+            "value": 100,
+            "unit": "PERCENT"
+          },
+          "textColor": {
+            "r": 0.408,
+            "g": 0.694,
+            "b": 0.996
+          },
+          "fontFamily": "Inter",
+          "fontStyle": "Regular"
+        }
+      }
     },
     {
       "id": "site-header",
@@ -43,7 +75,20 @@
           "layout-variant": "environment/distributed"
         }
       },
-      "ref": "includes/header"
+      "ref": "includes/header",
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [],
+        "layoutHint": {
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "layoutWrap": "WRAP"
+        }
+      }
     },
     {
       "id": "main-content",
@@ -61,6 +106,19 @@
       "attributes": {
         "id": "skip-target",
         "tabindex": "-1"
+      },
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [],
+        "layoutHint": {
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "maxWidth": 1120
+        }
       }
     },
     {
@@ -74,7 +132,20 @@
           "layout-variant": "environment/distributed"
         }
       },
-      "ref": "includes/footer"
+      "ref": "includes/footer",
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [],
+        "layoutHint": {
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "layoutWrap": "WRAP"
+        }
+      }
     },
     {
       "id": "ambient-background",
@@ -101,6 +172,46 @@
               "motion-intent": "idle/pulse",
               "layout-variant": "atmosphere/ethereal"
             }
+          },
+          "figmaStyles": {
+            "fills": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.988,
+                  "g": 0.988,
+                  "b": 0.973
+                },
+                "opacity": 1
+              }
+            ],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [
+              {
+                "type": "DROP_SHADOW",
+                "color": {
+                  "r": 0.031,
+                  "g": 0.039,
+                  "b": 0.094,
+                  "a": 0.06
+                },
+                "offset": {
+                  "x": 0,
+                  "y": 1
+                },
+                "radius": 4,
+                "spread": 0,
+                "visible": true,
+                "blendMode": "NORMAL"
+              },
+              {
+                "type": "LAYER_BLUR",
+                "radius": 10,
+                "visible": true
+              }
+            ]
           }
         },
         {
@@ -113,9 +224,96 @@
               "motion-intent": "idle/pulse",
               "layout-variant": "atmosphere/vibrant"
             }
+          },
+          "figmaStyles": {
+            "fills": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.988,
+                  "g": 0.988,
+                  "b": 0.973
+                },
+                "opacity": 1
+              }
+            ],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [
+              {
+                "type": "DROP_SHADOW",
+                "color": {
+                  "r": 0,
+                  "g": 0.549,
+                  "b": 0.988,
+                  "a": 0.15
+                },
+                "offset": {
+                  "x": 0,
+                  "y": 0
+                },
+                "radius": 12,
+                "spread": 0,
+                "visible": true,
+                "blendMode": "NORMAL"
+              },
+              {
+                "type": "LAYER_BLUR",
+                "radius": 8,
+                "visible": true
+              }
+            ]
           }
         }
-      ]
+      ],
+      "figmaStyles": {
+        "fills": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.988,
+              "g": 0.988,
+              "b": 0.973
+            },
+            "opacity": 1
+          }
+        ],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [
+          {
+            "type": "DROP_SHADOW",
+            "color": {
+              "r": 0.031,
+              "g": 0.039,
+              "b": 0.094,
+              "a": 0.06
+            },
+            "offset": {
+              "x": 0,
+              "y": 1
+            },
+            "radius": 4,
+            "spread": 0,
+            "visible": true,
+            "blendMode": "NORMAL"
+          },
+          {
+            "type": "LAYER_BLUR",
+            "radius": 10,
+            "visible": true
+          }
+        ]
+      }
     }
-  ]
+  ],
+  "figmaStyles": {
+    "fills": [],
+    "strokes": [],
+    "strokeWeight": 0,
+    "cornerRadius": 0,
+    "effects": []
+  }
 }

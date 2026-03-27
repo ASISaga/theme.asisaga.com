@@ -76,6 +76,44 @@
                     "id": "search-input",
                     "placeholder": "Search...",
                     "value": "{{ page.query }}"
+                  },
+                  "figmaStyles": {
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "color": {
+                          "r": 0.988,
+                          "g": 0.988,
+                          "b": 0.973
+                        },
+                        "opacity": 1
+                      }
+                    ],
+                    "strokes": [
+                      {
+                        "type": "SOLID",
+                        "color": {
+                          "r": 0.867,
+                          "g": 0.878,
+                          "b": 0.898
+                        },
+                        "opacity": 1
+                      }
+                    ],
+                    "strokeWeight": 1,
+                    "cornerRadius": 8,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 15,
+                      "fontWeight": 400,
+                      "textColor": {
+                        "r": 0.082,
+                        "g": 0.086,
+                        "b": 0.125
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "Regular"
+                    }
                   }
                 },
                 {
@@ -92,11 +130,83 @@
                   "attributes": {
                     "type": "submit",
                     "aria-label": "Submit search"
+                  },
+                  "figmaStyles": {
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "color": {
+                          "r": 0,
+                          "g": 0.549,
+                          "b": 0.988
+                        },
+                        "opacity": 1
+                      }
+                    ],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 8,
+                    "effects": [
+                      {
+                        "type": "DROP_SHADOW",
+                        "color": {
+                          "r": 0,
+                          "g": 0.549,
+                          "b": 0.988,
+                          "a": 0.3
+                        },
+                        "offset": {
+                          "x": 0,
+                          "y": 4
+                        },
+                        "radius": 12,
+                        "spread": 0,
+                        "visible": true,
+                        "blendMode": "NORMAL"
+                      }
+                    ],
+                    "typography": {
+                      "fontSize": 15,
+                      "fontWeight": 600,
+                      "textColor": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "SemiBold"
+                    }
                   }
                 }
-              ]
+              ],
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "layoutHint": {
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "layoutWrap": "WRAP"
+                }
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "layoutWrap": "WRAP"
+            }
+          }
         },
         {
           "id": "search-results-count",
@@ -114,9 +224,80 @@
             "data-results-count": "",
             "data-conditional": "page.results_count"
           },
-          "content": "{{ page.results_count }} results found"
+          "content": "{{ page.results_count }} results found",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "typography": {
+              "fontSize": 14,
+              "fontWeight": 400,
+              "lineHeight": {
+                "value": 150,
+                "unit": "PERCENT"
+              },
+              "letterSpacing": {
+                "value": 0,
+                "unit": "PERCENT"
+              },
+              "textColor": {
+                "r": 0.306,
+                "g": 0.314,
+                "b": 0.349
+              },
+              "fontFamily": "Inter",
+              "fontStyle": "Regular"
+            }
+          }
         }
-      ]
+      ],
+      "figmaStyles": {
+        "fills": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.988,
+              "g": 0.988,
+              "b": 0.973
+            },
+            "opacity": 1
+          }
+        ],
+        "strokes": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.835,
+              "g": 0.847,
+              "b": 0.867
+            },
+            "opacity": 1
+          }
+        ],
+        "strokeWeight": 1,
+        "cornerRadius": 8,
+        "effects": [
+          {
+            "type": "DROP_SHADOW",
+            "color": {
+              "r": 0.031,
+              "g": 0.039,
+              "b": 0.094,
+              "a": 0.1
+            },
+            "offset": {
+              "x": 0,
+              "y": 1
+            },
+            "radius": 4,
+            "spread": 0,
+            "visible": true,
+            "blendMode": "NORMAL"
+          }
+        ]
+      }
     },
     {
       "id": "search-body",
@@ -161,7 +342,33 @@
                   "layout-variant": "cognition/motive"
                 }
               },
-              "content": "Filters"
+              "content": "Filters",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 17,
+                  "fontWeight": 600,
+                  "lineHeight": {
+                    "value": 150,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": 0,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.082,
+                    "g": 0.086,
+                    "b": 0.125
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "SemiBold"
+                }
+              }
             },
             {
               "id": "search-filter-group",
@@ -186,11 +393,63 @@
                       "layout-variant": "cognition/motive"
                     }
                   },
-                  "content": "{{ filter.name }}"
+                  "content": "{{ filter.name }}",
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 17,
+                      "fontWeight": 600,
+                      "lineHeight": {
+                        "value": 150,
+                        "unit": "PERCENT"
+                      },
+                      "letterSpacing": {
+                        "value": 0,
+                        "unit": "PERCENT"
+                      },
+                      "textColor": {
+                        "r": 0.082,
+                        "g": 0.086,
+                        "b": 0.125
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "SemiBold"
+                    }
+                  }
                 }
-              ]
+              ],
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "layoutHint": {
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "maxWidth": 1120
+                }
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "maxWidth": 1120
+            }
+          }
         },
         {
           "id": "search-results",
@@ -208,9 +467,48 @@
           "attributes": {
             "data-search-results": ""
           },
-          "content": "{{ content }}"
+          "content": "{{ content }}",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "layoutWrap": "WRAP"
+            }
+          }
         }
-      ]
+      ],
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [],
+        "layoutHint": {
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "layoutWrap": "WRAP"
+        }
+      }
     }
-  ]
+  ],
+  "figmaStyles": {
+    "fills": [],
+    "strokes": [],
+    "strokeWeight": 0,
+    "cornerRadius": 0,
+    "effects": [],
+    "layoutHint": {
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "AUTO",
+      "counterAxisSizingMode": "FIXED",
+      "maxWidth": 1120
+    }
+  }
 }

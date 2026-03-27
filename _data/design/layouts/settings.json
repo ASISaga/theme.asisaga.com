@@ -43,7 +43,33 @@
               "layout-variant": "cognition/motive"
             }
           },
-          "content": "Settings"
+          "content": "Settings",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "typography": {
+              "fontSize": 17,
+              "fontWeight": 600,
+              "lineHeight": {
+                "value": 150,
+                "unit": "PERCENT"
+              },
+              "letterSpacing": {
+                "value": 0,
+                "unit": "PERCENT"
+              },
+              "textColor": {
+                "r": 0.082,
+                "g": 0.086,
+                "b": 0.125
+              },
+              "fontFamily": "Inter",
+              "fontStyle": "SemiBold"
+            }
+          }
         },
         {
           "id": "settings-nav",
@@ -104,15 +130,99 @@
                         "data-tab-toggle": "",
                         "role": "tab"
                       },
-                      "content": "{{ tab.title }}"
+                      "content": "{{ tab.title }}",
+                      "figmaStyles": {
+                        "fills": [],
+                        "strokes": [
+                          {
+                            "type": "SOLID",
+                            "color": {
+                              "r": 0.49,
+                              "g": 0.784,
+                              "b": 1
+                            },
+                            "opacity": 0
+                          }
+                        ],
+                        "strokeWeight": 1,
+                        "cornerRadius": 0,
+                        "effects": [],
+                        "typography": {
+                          "fontSize": 15,
+                          "fontWeight": 400,
+                          "lineHeight": {
+                            "value": 100,
+                            "unit": "PERCENT"
+                          },
+                          "textColor": {
+                            "r": 0.408,
+                            "g": 0.694,
+                            "b": 0.996
+                          },
+                          "fontFamily": "Inter",
+                          "fontStyle": "Regular"
+                        }
+                      }
                     }
-                  ]
+                  ],
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "layoutHint": {
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "FIXED",
+                      "maxWidth": 1120
+                    }
+                  }
                 }
-              ]
+              ],
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "layoutHint": {
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "maxWidth": 1120
+                }
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "maxWidth": 1120
+            }
+          }
         }
-      ]
+      ],
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [],
+        "layoutHint": {
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "maxWidth": 1120
+        }
+      }
     },
     {
       "id": "settings-main",
@@ -142,7 +252,33 @@
           "attributes": {
             "data-conditional": "page.title"
           },
-          "content": "{{ page.title }}"
+          "content": "{{ page.title }}",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "typography": {
+              "fontSize": 48,
+              "fontWeight": 800,
+              "lineHeight": {
+                "value": 115,
+                "unit": "PERCENT"
+              },
+              "letterSpacing": {
+                "value": -2,
+                "unit": "PERCENT"
+              },
+              "textColor": {
+                "r": 0.067,
+                "g": 0.071,
+                "b": 0.102
+              },
+              "fontFamily": "Inter",
+              "fontStyle": "Bold"
+            }
+          }
         },
         {
           "id": "settings-content",
@@ -157,7 +293,20 @@
           },
           "layoutMode": "VERTICAL",
           "itemSpacing": "spacing-md",
-          "content": "{{ content }}"
+          "content": "{{ content }}",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "maxWidth": 1120
+            }
+          }
         },
         {
           "id": "settings-actions",
@@ -187,7 +336,53 @@
               "attributes": {
                 "type": "button"
               },
-              "content": "Save Changes"
+              "content": "Save Changes",
+              "figmaStyles": {
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0,
+                      "g": 0.549,
+                      "b": 0.988
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 8,
+                "effects": [
+                  {
+                    "type": "DROP_SHADOW",
+                    "color": {
+                      "r": 0,
+                      "g": 0.549,
+                      "b": 0.988,
+                      "a": 0.3
+                    },
+                    "offset": {
+                      "x": 0,
+                      "y": 4
+                    },
+                    "radius": 12,
+                    "spread": 0,
+                    "visible": true,
+                    "blendMode": "NORMAL"
+                  }
+                ],
+                "typography": {
+                  "fontSize": 15,
+                  "fontWeight": 600,
+                  "textColor": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "SemiBold"
+                }
+              }
             },
             {
               "id": "settings-cancel-button",
@@ -203,11 +398,113 @@
               "attributes": {
                 "type": "button"
               },
-              "content": "Cancel"
+              "content": "Cancel",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.49,
+                      "g": 0.784,
+                      "b": 1
+                    },
+                    "opacity": 0
+                  }
+                ],
+                "strokeWeight": 1,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 15,
+                  "fontWeight": 400,
+                  "lineHeight": {
+                    "value": 100,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.408,
+                    "g": 0.694,
+                    "b": 0.996
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Regular"
+                }
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "layoutWrap": "WRAP"
+            }
+          }
         }
-      ]
+      ],
+      "figmaStyles": {
+        "fills": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.988,
+              "g": 0.988,
+              "b": 0.973
+            },
+            "opacity": 1
+          }
+        ],
+        "strokes": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.835,
+              "g": 0.847,
+              "b": 0.867
+            },
+            "opacity": 1
+          }
+        ],
+        "strokeWeight": 1,
+        "cornerRadius": 8,
+        "effects": [
+          {
+            "type": "DROP_SHADOW",
+            "color": {
+              "r": 0.031,
+              "g": 0.039,
+              "b": 0.094,
+              "a": 0.1
+            },
+            "offset": {
+              "x": 0,
+              "y": 1
+            },
+            "radius": 4,
+            "spread": 0,
+            "visible": true,
+            "blendMode": "NORMAL"
+          }
+        ]
+      }
     }
-  ]
+  ],
+  "figmaStyles": {
+    "fills": [],
+    "strokes": [],
+    "strokeWeight": 0,
+    "cornerRadius": 0,
+    "effects": [],
+    "layoutHint": {
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "AUTO",
+      "counterAxisSizingMode": "AUTO"
+    }
+  }
 }

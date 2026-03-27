@@ -28,7 +28,33 @@
       },
       "layoutMode": "VERTICAL",
       "itemSpacing": "spacing-none",
-      "content": "{{ content }}"
+      "content": "{{ content }}",
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [],
+        "layoutHint": {
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "maxWidth": 1120
+        }
+      }
     }
-  ]
+  ],
+  "figmaStyles": {
+    "fills": [],
+    "strokes": [],
+    "strokeWeight": 0,
+    "cornerRadius": 0,
+    "effects": [],
+    "layoutHint": {
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "AUTO",
+      "counterAxisSizingMode": "FIXED",
+      "maxWidth": 1120
+    }
+  }
 }
