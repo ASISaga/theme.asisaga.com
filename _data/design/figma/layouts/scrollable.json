@@ -1,0 +1,58 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "scrollable",
+  "name": "Scrollable Layout",
+  "version": "1.0.0",
+  "description": "Chronologically-ordered scrollable feed layout for timelines, activity streams, and infinite-scroll content sequences.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "div",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "environment/chronological"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-lg",
+  "children": [
+    {
+      "id": "scrollable-content",
+      "name": "Scrollable Content",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "scroll/reveal",
+          "layout-variant": "environment/chronological"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-md",
+      "content": "{{ content }}",
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [],
+        "layoutHint": {
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO"
+        }
+      }
+    }
+  ],
+  "figmaStyles": {
+    "fills": [],
+    "strokes": [],
+    "strokeWeight": 0,
+    "cornerRadius": 0,
+    "effects": [],
+    "layoutHint": {
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "AUTO",
+      "counterAxisSizingMode": "AUTO"
+    }
+  }
+}

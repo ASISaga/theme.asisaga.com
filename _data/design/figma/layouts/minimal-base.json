@@ -1,0 +1,136 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "minimal-base",
+  "name": "Minimal Base Layout",
+  "version": "1.0.0",
+  "description": "Bare-bones full-page shell without site header or footer. Used as parent for splash, minimal, and error pages that require a standalone viewport.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "body",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "atmosphere/neutral"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-xs",
+  "children": [
+    {
+      "id": "minimal-base-skip-link",
+      "name": "Skip Link",
+      "type": "INSTANCE",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "a",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "synapse/navigate"
+        }
+      },
+      "attributes": {
+        "href": "#skip-target",
+        "class": "skip-link sr-only focus-visible"
+      },
+      "content": "Skip to main content",
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.49,
+              "g": 0.784,
+              "b": 1
+            },
+            "opacity": 0
+          }
+        ],
+        "strokeWeight": 1,
+        "cornerRadius": 0,
+        "effects": [],
+        "typography": {
+          "fontSize": 15,
+          "fontWeight": 400,
+          "lineHeight": {
+            "value": 100,
+            "unit": "PERCENT"
+          },
+          "textColor": {
+            "r": 0.408,
+            "g": 0.694,
+            "b": 0.996
+          },
+          "fontFamily": "Inter",
+          "fontStyle": "Regular"
+        }
+      }
+    },
+    {
+      "id": "minimal-base-main",
+      "name": "Minimal Main Content",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "main",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "environment/focused"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-lg",
+      "attributes": {
+        "id": "skip-target",
+        "tabindex": "-1"
+      },
+      "children": [
+        {
+          "id": "minimal-base-content",
+          "name": "Minimal Layout Wrapper",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-md",
+          "content": "{{ content }}",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "maxWidth": 1120
+            }
+          }
+        }
+      ],
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [],
+        "layoutHint": {
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "maxWidth": 1120
+        }
+      }
+    }
+  ],
+  "figmaStyles": {
+    "fills": [],
+    "strokes": [],
+    "strokeWeight": 0,
+    "cornerRadius": 0,
+    "effects": []
+  }
+}

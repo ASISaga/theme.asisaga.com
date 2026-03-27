@@ -1,0 +1,523 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "form",
+  "name": "Form Layout",
+  "version": "1.0.0",
+  "description": "Focused form page layout: centered card with page title and description header, optional multi-step progress indicator, main content area, and optional help-text and privacy-link footer.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "div",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "environment/focused"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-lg",
+  "children": [
+    {
+      "id": "form-card",
+      "name": "Form Card",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/slide-up",
+          "layout-variant": "entity/primary"
+        }
+      },
+      "layoutMode": "VERTICAL",
+      "itemSpacing": "spacing-md",
+      "children": [
+        {
+          "id": "form-header",
+          "name": "Form Header",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "header",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-sm",
+          "children": [
+            {
+              "id": "form-title",
+              "name": "Form Title",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "h1",
+                  "motion-intent": "entry/slide-up",
+                  "layout-variant": "cognition/axiom"
+                }
+              },
+              "content": "{{ page.title }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 48,
+                  "fontWeight": 800,
+                  "lineHeight": {
+                    "value": 115,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": -2,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.067,
+                    "g": 0.071,
+                    "b": 0.102
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Bold"
+                }
+              }
+            },
+            {
+              "id": "form-description",
+              "name": "Form Description",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "p",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/discourse"
+                }
+              },
+              "attributes": {
+                "data-conditional": "page.description"
+              },
+              "content": "{{ page.description }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 17,
+                  "fontWeight": 400,
+                  "lineHeight": {
+                    "value": 160,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": 0,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.082,
+                    "g": 0.086,
+                    "b": 0.125
+                  },
+                  "fontFamily": "Georgia",
+                  "fontStyle": "Regular"
+                }
+              }
+            }
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "maxWidth": 1120
+            }
+          }
+        },
+        {
+          "id": "form-progress",
+          "name": "Form Progress",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "state/evolving"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-sm",
+          "attributes": {
+            "role": "progressbar",
+            "aria-valuenow": "0",
+            "aria-valuemin": "0",
+            "aria-valuemax": "100",
+            "aria-label": "Form completion progress",
+            "data-conditional": "page.show_progress and page.steps"
+          },
+          "children": [
+            {
+              "id": "form-progress-bar",
+              "name": "Form Progress Bar",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "div",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "state/evolving"
+                }
+              },
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "opacity": 1,
+                "effects": [
+                  {
+                    "type": "DROP_SHADOW",
+                    "color": {
+                      "r": 0.863,
+                      "g": 0.882,
+                      "b": 0.235,
+                      "a": 0.3
+                    },
+                    "offset": {
+                      "x": 0,
+                      "y": -3
+                    },
+                    "radius": 0,
+                    "spread": 0,
+                    "visible": true,
+                    "blendMode": "NORMAL"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "form-steps",
+              "name": "Form Steps",
+              "type": "FRAME",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "ol",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "environment/chronological"
+                }
+              },
+              "layoutMode": "HORIZONTAL",
+              "itemSpacing": "spacing-sm",
+              "children": [
+                {
+                  "id": "form-step",
+                  "name": "Form Step",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "li",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "cognition/gloss"
+                    }
+                  },
+                  "content": "{{ step }}",
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 14,
+                      "fontWeight": 400,
+                      "lineHeight": {
+                        "value": 150,
+                        "unit": "PERCENT"
+                      },
+                      "letterSpacing": {
+                        "value": 0,
+                        "unit": "PERCENT"
+                      },
+                      "textColor": {
+                        "r": 0.306,
+                        "g": 0.314,
+                        "b": 0.349
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "Regular"
+                    }
+                  }
+                }
+              ],
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "layoutHint": {
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO"
+                }
+              }
+            }
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "opacity": 1,
+            "effects": [
+              {
+                "type": "DROP_SHADOW",
+                "color": {
+                  "r": 0.863,
+                  "g": 0.882,
+                  "b": 0.235,
+                  "a": 0.3
+                },
+                "offset": {
+                  "x": 0,
+                  "y": -3
+                },
+                "radius": 0,
+                "spread": 0,
+                "visible": true,
+                "blendMode": "NORMAL"
+              }
+            ]
+          }
+        },
+        {
+          "id": "form-content",
+          "name": "Form Content",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/focused"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-md",
+          "content": "{{ content }}",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "maxWidth": 1120
+            }
+          }
+        },
+        {
+          "id": "form-footer",
+          "name": "Form Footer",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "footer",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "entity/secondary"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-xs",
+          "attributes": {
+            "data-conditional": "page.help_text or page.privacy_link"
+          },
+          "children": [
+            {
+              "id": "form-help-text",
+              "name": "Form Help Text",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "p",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/gloss"
+                }
+              },
+              "attributes": {
+                "data-conditional": "page.help_text"
+              },
+              "content": "{{ page.help_text }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 14,
+                  "fontWeight": 400,
+                  "lineHeight": {
+                    "value": 150,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": 0,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.306,
+                    "g": 0.314,
+                    "b": 0.349
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Regular"
+                }
+              }
+            },
+            {
+              "id": "form-privacy-link",
+              "name": "Form Privacy Link",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "a",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/navigate"
+                }
+              },
+              "attributes": {
+                "href": "{{ page.privacy_link }}",
+                "data-conditional": "page.privacy_link"
+              },
+              "content": "Privacy Policy",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.49,
+                      "g": 0.784,
+                      "b": 1
+                    },
+                    "opacity": 0
+                  }
+                ],
+                "strokeWeight": 1,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 15,
+                  "fontWeight": 400,
+                  "lineHeight": {
+                    "value": 100,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.408,
+                    "g": 0.694,
+                    "b": 0.996
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Regular"
+                }
+              }
+            }
+          ],
+          "figmaStyles": {
+            "fills": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.953,
+                  "g": 0.957,
+                  "b": 0.973
+                },
+                "opacity": 1
+              }
+            ],
+            "strokes": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.867,
+                  "g": 0.878,
+                  "b": 0.898
+                },
+                "opacity": 1
+              }
+            ],
+            "strokeWeight": 1,
+            "cornerRadius": 8,
+            "effects": []
+          }
+        }
+      ],
+      "figmaStyles": {
+        "fills": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.988,
+              "g": 0.988,
+              "b": 0.973
+            },
+            "opacity": 1
+          }
+        ],
+        "strokes": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.835,
+              "g": 0.847,
+              "b": 0.867
+            },
+            "opacity": 1
+          }
+        ],
+        "strokeWeight": 1,
+        "cornerRadius": 8,
+        "effects": [
+          {
+            "type": "DROP_SHADOW",
+            "color": {
+              "r": 0.031,
+              "g": 0.039,
+              "b": 0.094,
+              "a": 0.1
+            },
+            "offset": {
+              "x": 0,
+              "y": 1
+            },
+            "radius": 4,
+            "spread": 0,
+            "visible": true,
+            "blendMode": "NORMAL"
+          }
+        ]
+      }
+    }
+  ],
+  "figmaStyles": {
+    "fills": [],
+    "strokes": [],
+    "strokeWeight": 0,
+    "cornerRadius": 0,
+    "effects": [],
+    "layoutHint": {
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "AUTO",
+      "counterAxisSizingMode": "FIXED",
+      "maxWidth": 1120
+    }
+  }
+}

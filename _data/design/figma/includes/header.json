@@ -1,0 +1,468 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "header",
+  "name": "Site Header",
+  "version": "1.0.0",
+  "description": "Persistent site header containing brand identity, mobile toggle, and primary navigation.",
+  "type": "COMPONENT",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "header",
+      "motion-intent": "entry/slide-down",
+      "layout-variant": "environment/distributed"
+    }
+  },
+  "layoutMode": "HORIZONTAL",
+  "itemSpacing": "spacing-md",
+  "attributes": {
+    "role": "banner"
+  },
+  "children": [
+    {
+      "id": "header-container",
+      "name": "Header Container",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "layoutMode": "HORIZONTAL",
+      "itemSpacing": "spacing-md",
+      "children": [
+        {
+          "id": "header-brand",
+          "name": "Brand",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "a",
+              "motion-intent": "hover/scale",
+              "layout-variant": "entity/primary"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-sm",
+          "attributes": {
+            "href": "/",
+            "aria-label": "{{ site.title | default: site.github.repository_name }} - Home"
+          },
+          "children": [
+            {
+              "id": "header-logo",
+              "name": "Logo Image",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "img",
+                  "motion-intent": "idle/pulse",
+                  "layout-variant": "entity/secondary"
+                }
+              },
+              "attributes": {
+                "src": "{{ '/assets/images/favicon.ico' | relative_url }}",
+                "alt": ""
+              },
+              "figmaStyles": {
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.953,
+                      "g": 0.957,
+                      "b": 0.973
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.867,
+                      "g": 0.878,
+                      "b": 0.898
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokeWeight": 1,
+                "cornerRadius": 8,
+                "effects": []
+              }
+            },
+            {
+              "id": "header-brand-text",
+              "name": "Brand Text",
+              "type": "GROUP",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "div",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/axiom"
+                }
+              },
+              "layoutMode": "VERTICAL",
+              "itemSpacing": "spacing-xs",
+              "children": [
+                {
+                  "id": "header-site-title",
+                  "name": "Site Title",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "span",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "cognition/axiom"
+                    }
+                  },
+                  "content": "{{ site.title | default: site.github.repository_name }}",
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 48,
+                      "fontWeight": 800,
+                      "lineHeight": {
+                        "value": 115,
+                        "unit": "PERCENT"
+                      },
+                      "letterSpacing": {
+                        "value": -2,
+                        "unit": "PERCENT"
+                      },
+                      "textColor": {
+                        "r": 0.067,
+                        "g": 0.071,
+                        "b": 0.102
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "Bold"
+                    }
+                  }
+                },
+                {
+                  "id": "header-tagline",
+                  "name": "Site Tagline",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "span",
+                      "motion-intent": "entry/fade-in",
+                      "layout-variant": "cognition/gloss"
+                    }
+                  },
+                  "content": "{{ site.description | default: site.github.project_tagline }}",
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 14,
+                      "fontWeight": 400,
+                      "lineHeight": {
+                        "value": 150,
+                        "unit": "PERCENT"
+                      },
+                      "letterSpacing": {
+                        "value": 0,
+                        "unit": "PERCENT"
+                      },
+                      "textColor": {
+                        "r": 0.306,
+                        "g": 0.314,
+                        "b": 0.349
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "Regular"
+                    }
+                  }
+                }
+              ],
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 48,
+                  "fontWeight": 800,
+                  "lineHeight": {
+                    "value": 115,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": -2,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.067,
+                    "g": 0.071,
+                    "b": 0.102
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Bold"
+                }
+              }
+            }
+          ],
+          "figmaStyles": {
+            "fills": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.988,
+                  "g": 0.988,
+                  "b": 0.973
+                },
+                "opacity": 1
+              }
+            ],
+            "strokes": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.835,
+                  "g": 0.847,
+                  "b": 0.867
+                },
+                "opacity": 1
+              }
+            ],
+            "strokeWeight": 1,
+            "cornerRadius": 8,
+            "effects": [
+              {
+                "type": "DROP_SHADOW",
+                "color": {
+                  "r": 0.031,
+                  "g": 0.039,
+                  "b": 0.094,
+                  "a": 0.1
+                },
+                "offset": {
+                  "x": 0,
+                  "y": 1
+                },
+                "radius": 4,
+                "spread": 0,
+                "visible": true,
+                "blendMode": "NORMAL"
+              }
+            ]
+          }
+        },
+        {
+          "id": "header-nav-toggle",
+          "name": "Nav Toggle",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "button",
+              "motion-intent": "hover/glow",
+              "layout-variant": "synapse/navigate"
+            }
+          },
+          "attributes": {
+            "type": "button",
+            "aria-expanded": "false",
+            "aria-controls": "genesis-nav",
+            "aria-label": "Toggle navigation menu",
+            "data-nav-toggle": ""
+          },
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.49,
+                  "g": 0.784,
+                  "b": 1
+                },
+                "opacity": 0
+              }
+            ],
+            "strokeWeight": 1,
+            "cornerRadius": 0,
+            "effects": [],
+            "typography": {
+              "fontSize": 15,
+              "fontWeight": 400,
+              "lineHeight": {
+                "value": 100,
+                "unit": "PERCENT"
+              },
+              "textColor": {
+                "r": 0.408,
+                "g": 0.694,
+                "b": 0.996
+              },
+              "fontFamily": "Inter",
+              "fontStyle": "Regular"
+            }
+          }
+        },
+        {
+          "id": "header-nav",
+          "name": "Primary Navigation",
+          "version": "1.0.0",
+          "description": "Primary site navigation list, driven by site.data.nav.navigation data source.",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "nav",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-sm",
+          "attributes": {
+            "id": "genesis-nav",
+            "aria-label": "Primary navigation",
+            "data-nav-menu": ""
+          },
+          "children": [
+            {
+              "id": "nav-item",
+              "name": "Nav Item",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "li",
+                  "motion-intent": "hover/scale",
+                  "layout-variant": "entity/secondary"
+                }
+              },
+              "children": [
+                {
+                  "id": "nav-link",
+                  "name": "Nav Link",
+                  "type": "TEXT",
+                  "pluginData": {
+                    "asi-saga": {
+                      "semantic-tag": "a",
+                      "motion-intent": "hover/glow",
+                      "layout-variant": "synapse/navigate"
+                    }
+                  },
+                  "attributes": {
+                    "href": "{{ item.url }}"
+                  },
+                  "content": "{{ item.title }}",
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [
+                      {
+                        "type": "SOLID",
+                        "color": {
+                          "r": 0.49,
+                          "g": 0.784,
+                          "b": 1
+                        },
+                        "opacity": 0
+                      }
+                    ],
+                    "strokeWeight": 1,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 15,
+                      "fontWeight": 400,
+                      "lineHeight": {
+                        "value": 100,
+                        "unit": "PERCENT"
+                      },
+                      "textColor": {
+                        "r": 0.408,
+                        "g": 0.694,
+                        "b": 0.996
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "Regular"
+                    }
+                  }
+                }
+              ],
+              "figmaStyles": {
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.953,
+                      "g": 0.957,
+                      "b": 0.973
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.867,
+                      "g": 0.878,
+                      "b": 0.898
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokeWeight": 1,
+                "cornerRadius": 8,
+                "effects": []
+              }
+            }
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "layoutWrap": "WRAP"
+            }
+          }
+        }
+      ],
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [],
+        "layoutHint": {
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "layoutWrap": "WRAP"
+        }
+      }
+    }
+  ],
+  "figmaStyles": {
+    "fills": [],
+    "strokes": [],
+    "strokeWeight": 0,
+    "cornerRadius": 0,
+    "effects": [],
+    "layoutHint": {
+      "layoutMode": "HORIZONTAL",
+      "primaryAxisSizingMode": "AUTO",
+      "counterAxisSizingMode": "AUTO",
+      "layoutWrap": "WRAP"
+    }
+  }
+}

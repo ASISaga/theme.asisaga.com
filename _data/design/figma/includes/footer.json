@@ -1,0 +1,330 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "footer",
+  "name": "Site Footer",
+  "version": "1.0.0",
+  "description": "Site-wide footer containing brand, navigation links, and social connections.",
+  "type": "COMPONENT",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "footer",
+      "motion-intent": "scroll/reveal",
+      "layout-variant": "environment/distributed"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-lg",
+  "attributes": {
+    "role": "contentinfo"
+  },
+  "children": [
+    {
+      "id": "footer-container",
+      "name": "Footer Container",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "layoutMode": "GRID",
+      "itemSpacing": "spacing-xl",
+      "children": [
+        {
+          "id": "footer-brand",
+          "name": "Footer Brand",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "entity/primary"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-sm",
+          "children": [
+            {
+              "id": "footer-title",
+              "name": "Footer Title",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "span",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/axiom"
+                }
+              },
+              "content": "{{ site.title | default: site.github.repository_name }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 48,
+                  "fontWeight": 800,
+                  "lineHeight": {
+                    "value": 115,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": -2,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.067,
+                    "g": 0.071,
+                    "b": 0.102
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Bold"
+                }
+              }
+            },
+            {
+              "id": "footer-tagline",
+              "name": "Footer Tagline",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "p",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/discourse"
+                }
+              },
+              "content": "{{ site.description | default: site.github.project_tagline }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 17,
+                  "fontWeight": 400,
+                  "lineHeight": {
+                    "value": 160,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": 0,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.082,
+                    "g": 0.086,
+                    "b": 0.125
+                  },
+                  "fontFamily": "Georgia",
+                  "fontStyle": "Regular"
+                }
+              }
+            }
+          ],
+          "figmaStyles": {
+            "fills": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.988,
+                  "g": 0.988,
+                  "b": 0.973
+                },
+                "opacity": 1
+              }
+            ],
+            "strokes": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.835,
+                  "g": 0.847,
+                  "b": 0.867
+                },
+                "opacity": 1
+              }
+            ],
+            "strokeWeight": 1,
+            "cornerRadius": 8,
+            "effects": [
+              {
+                "type": "DROP_SHADOW",
+                "color": {
+                  "r": 0.031,
+                  "g": 0.039,
+                  "b": 0.094,
+                  "a": 0.1
+                },
+                "offset": {
+                  "x": 0,
+                  "y": 1
+                },
+                "radius": 4,
+                "spread": 0,
+                "visible": true,
+                "blendMode": "NORMAL"
+              }
+            ]
+          }
+        },
+        {
+          "id": "footer-nav",
+          "name": "Footer Navigation",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "nav",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "environment/chronological"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-xs",
+          "attributes": {
+            "aria-label": "Footer navigation"
+          },
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO"
+            }
+          }
+        },
+        {
+          "id": "footer-social",
+          "name": "Footer Social",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-sm",
+          "attributes": {
+            "aria-labelledby": "social-heading"
+          },
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "layoutWrap": "WRAP"
+            }
+          }
+        }
+      ],
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [],
+        "layoutHint": {
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "layoutWrap": "WRAP"
+        }
+      }
+    },
+    {
+      "id": "footer-bottom",
+      "name": "Footer Bottom Bar",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "div",
+          "motion-intent": "entry/fade-in",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "layoutMode": "HORIZONTAL",
+      "itemSpacing": "spacing-md",
+      "children": [
+        {
+          "id": "footer-copyright",
+          "name": "Copyright",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "p",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "cognition/gloss"
+            }
+          },
+          "content": "© {{ 'now' | date: '%Y' }} {{ site.title }}. All rights reserved.",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "typography": {
+              "fontSize": 14,
+              "fontWeight": 400,
+              "lineHeight": {
+                "value": 150,
+                "unit": "PERCENT"
+              },
+              "letterSpacing": {
+                "value": 0,
+                "unit": "PERCENT"
+              },
+              "textColor": {
+                "r": 0.306,
+                "g": 0.314,
+                "b": 0.349
+              },
+              "fontFamily": "Inter",
+              "fontStyle": "Regular"
+            }
+          }
+        }
+      ],
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [],
+        "layoutHint": {
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "layoutWrap": "WRAP"
+        }
+      }
+    }
+  ],
+  "figmaStyles": {
+    "fills": [],
+    "strokes": [],
+    "strokeWeight": 0,
+    "cornerRadius": 0,
+    "effects": [],
+    "layoutHint": {
+      "layoutMode": "HORIZONTAL",
+      "primaryAxisSizingMode": "AUTO",
+      "counterAxisSizingMode": "AUTO",
+      "layoutWrap": "WRAP"
+    }
+  }
+}

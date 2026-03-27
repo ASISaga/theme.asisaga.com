@@ -1,0 +1,397 @@
+{
+  "$schema": "../schema/blueprint.schema.json",
+  "id": "dashboard",
+  "name": "Dashboard Layout",
+  "version": "1.0.0",
+  "description": "Data-rich dashboard grid layout: header with page title and actions, followed by a multi-column bento grid for metrics and content blocks.",
+  "type": "FRAME",
+  "pluginData": {
+    "asi-saga": {
+      "semantic-tag": "div",
+      "motion-intent": "entry/fade-in",
+      "layout-variant": "environment/distributed"
+    }
+  },
+  "layoutMode": "VERTICAL",
+  "itemSpacing": "spacing-lg",
+  "children": [
+    {
+      "id": "dashboard-header",
+      "name": "Dashboard Header",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "header",
+          "motion-intent": "entry/slide-down",
+          "layout-variant": "environment/distributed"
+        }
+      },
+      "layoutMode": "HORIZONTAL",
+      "itemSpacing": "spacing-md",
+      "children": [
+        {
+          "id": "dashboard-title",
+          "name": "Dashboard Title",
+          "type": "TEXT",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "h1",
+              "motion-intent": "entry/slide-up",
+              "layout-variant": "cognition/axiom"
+            }
+          },
+          "content": "{{ page.title }}",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "typography": {
+              "fontSize": 48,
+              "fontWeight": 800,
+              "lineHeight": {
+                "value": 115,
+                "unit": "PERCENT"
+              },
+              "letterSpacing": {
+                "value": -2,
+                "unit": "PERCENT"
+              },
+              "textColor": {
+                "r": 0.067,
+                "g": 0.071,
+                "b": 0.102
+              },
+              "fontFamily": "Inter",
+              "fontStyle": "Bold"
+            }
+          }
+        },
+        {
+          "id": "dashboard-actions",
+          "name": "Dashboard Actions",
+          "type": "FRAME",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "div",
+              "motion-intent": "entry/fade-in",
+              "layout-variant": "environment/associative"
+            }
+          },
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": "spacing-sm",
+          "children": [
+            {
+              "id": "dashboard-action-btn",
+              "name": "Action Button",
+              "type": "INSTANCE",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "button",
+                  "motion-intent": "hover/glow",
+                  "layout-variant": "synapse/execute"
+                }
+              },
+              "attributes": {
+                "type": "button"
+              },
+              "figmaStyles": {
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0,
+                      "g": 0.549,
+                      "b": 0.988
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 8,
+                "effects": [
+                  {
+                    "type": "DROP_SHADOW",
+                    "color": {
+                      "r": 0,
+                      "g": 0.549,
+                      "b": 0.988,
+                      "a": 0.3
+                    },
+                    "offset": {
+                      "x": 0,
+                      "y": 4
+                    },
+                    "radius": 12,
+                    "spread": 0,
+                    "visible": true,
+                    "blendMode": "NORMAL"
+                  }
+                ],
+                "typography": {
+                  "fontSize": 15,
+                  "fontWeight": 600,
+                  "textColor": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "SemiBold"
+                }
+              }
+            }
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "layoutWrap": "WRAP"
+            }
+          }
+        }
+      ],
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [],
+        "layoutHint": {
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "layoutWrap": "WRAP"
+        }
+      }
+    },
+    {
+      "id": "dashboard-grid",
+      "name": "Dashboard Grid",
+      "type": "FRAME",
+      "pluginData": {
+        "asi-saga": {
+          "semantic-tag": "section",
+          "motion-intent": "scroll/reveal",
+          "layout-variant": "environment/manifest"
+        }
+      },
+      "layoutMode": "GRID",
+      "itemSpacing": "spacing-md",
+      "children": [
+        {
+          "id": "dashboard-kpi-block",
+          "name": "KPI Block",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "article",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "entity/primary"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-sm",
+          "children": [
+            {
+              "id": "kpi-label",
+              "name": "KPI Label",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "p",
+                  "motion-intent": "entry/fade-in",
+                  "layout-variant": "cognition/gloss"
+                }
+              },
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 14,
+                  "fontWeight": 400,
+                  "lineHeight": {
+                    "value": 150,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": 0,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.306,
+                    "g": 0.314,
+                    "b": 0.349
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Regular"
+                }
+              }
+            },
+            {
+              "id": "kpi-value",
+              "name": "KPI Value",
+              "type": "TEXT",
+              "pluginData": {
+                "asi-saga": {
+                  "semantic-tag": "span",
+                  "motion-intent": "idle/pulse",
+                  "layout-variant": "cognition/axiom"
+                }
+              },
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 48,
+                  "fontWeight": 800,
+                  "lineHeight": {
+                    "value": 115,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": -2,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.067,
+                    "g": 0.071,
+                    "b": 0.102
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Bold"
+                }
+              }
+            }
+          ],
+          "figmaStyles": {
+            "fills": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.988,
+                  "g": 0.988,
+                  "b": 0.973
+                },
+                "opacity": 1
+              }
+            ],
+            "strokes": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.835,
+                  "g": 0.847,
+                  "b": 0.867
+                },
+                "opacity": 1
+              }
+            ],
+            "strokeWeight": 1,
+            "cornerRadius": 8,
+            "effects": [
+              {
+                "type": "DROP_SHADOW",
+                "color": {
+                  "r": 0.031,
+                  "g": 0.039,
+                  "b": 0.094,
+                  "a": 0.1
+                },
+                "offset": {
+                  "x": 0,
+                  "y": 1
+                },
+                "radius": 4,
+                "spread": 0,
+                "visible": true,
+                "blendMode": "NORMAL"
+              }
+            ]
+          }
+        },
+        {
+          "id": "dashboard-content-block",
+          "name": "Content Block",
+          "type": "INSTANCE",
+          "pluginData": {
+            "asi-saga": {
+              "semantic-tag": "article",
+              "motion-intent": "scroll/reveal",
+              "layout-variant": "entity/secondary"
+            }
+          },
+          "layoutMode": "VERTICAL",
+          "itemSpacing": "spacing-md",
+          "figmaStyles": {
+            "fills": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.953,
+                  "g": 0.957,
+                  "b": 0.973
+                },
+                "opacity": 1
+              }
+            ],
+            "strokes": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.867,
+                  "g": 0.878,
+                  "b": 0.898
+                },
+                "opacity": 1
+              }
+            ],
+            "strokeWeight": 1,
+            "cornerRadius": 8,
+            "effects": []
+          }
+        }
+      ],
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [],
+        "layoutHint": {
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "layoutWrap": "WRAP"
+        }
+      }
+    }
+  ],
+  "figmaStyles": {
+    "fills": [],
+    "strokes": [],
+    "strokeWeight": 0,
+    "cornerRadius": 0,
+    "effects": [],
+    "layoutHint": {
+      "layoutMode": "HORIZONTAL",
+      "primaryAxisSizingMode": "AUTO",
+      "counterAxisSizingMode": "AUTO",
+      "layoutWrap": "WRAP"
+    }
+  }
+}
