@@ -5,7 +5,7 @@
  */
 
 .chatroom-layout {
-  @include genesis-environment('focused');
+  @include genesis-environment('chronological');
   @include genesis-atmosphere('void');
   display: flex;
   flex-direction: column;
