@@ -1,0 +1,47 @@
+/**
+ * Archive Item Include Styles
+ * ============================================================================
+ * Single item in an archive/collection listing.
+ * Corresponds to: _includes/layouts/archive/archive-item.html
+ */
+
+.archive-item {
+  @include genesis-entity('aggregate');         // Collection item card
+  @include genesis-environment('associative');  // Thumbnail + content row
+
+  &__image-link {
+    @include genesis-synapse('navigate');       // Image link wrapper
+  }
+
+  &__image {
+    @include genesis-entity('image-adaptive'); // Responsive thumbnail
+  }
+
+  &__content {
+    @include genesis-environment('chronological'); // Vertical content stack
+  }
+
+  &__title {
+    @include genesis-cognition('motive');       // Item heading
+  }
+
+  &__link {
+    @include genesis-synapse('navigate');       // Title link
+  }
+
+  &__date {
+    @include genesis-cognition('gloss');        // Publication date
+  }
+
+  &__excerpt {
+    @include genesis-cognition('discourse');    // Short description
+  }
+
+  &__tags {
+    @include genesis-environment('associative'); // Horizontal tag row
+  }
+
+  &__tag {
+    @include genesis-cognition('quantum');      // Tag pill
+  }
+}

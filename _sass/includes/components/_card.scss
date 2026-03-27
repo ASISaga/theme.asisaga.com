@@ -1,0 +1,13 @@
+/**
+ * Card Include Styles
+ * ============================================================================
+ * Generic content card component.
+ * Corresponds to: _includes/components/card.html
+ * Base styles: _sass/components/core/_cards.scss
+ */
+
+// Generic card uses .genesis-card selectors — see _cards.scss
+// This file documents the include–SCSS correspondence.
+.genesis-card {
+  @include genesis-entity('primary');          // Elevated card surface
+}

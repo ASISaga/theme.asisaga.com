@@ -1,0 +1,15 @@
+/**
+ * Product Applications Include Styles
+ * ============================================================================
+ * Grid of product application use-cases.
+ * Corresponds to: _includes/product-applications.html
+ * Base styles: _sass/components/products/_product-applications.scss
+ */
+
+// Product applications uses .product-applications-section selectors
+// See _product-applications.scss for full styles.
+.product-applications-section {
+  .product-grid {
+    @include genesis-environment('distributed'); // Auto-fit card grid
+  }
+}

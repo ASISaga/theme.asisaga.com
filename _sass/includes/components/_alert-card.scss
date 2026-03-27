@@ -1,0 +1,30 @@
+/**
+ * Alert Card Include Styles
+ * ============================================================================
+ * Web component alert card template.
+ * Corresponds to: _includes/components/alert-card.html
+ * Base styles: _sass/components/web-components/_alert-card.scss
+ */
+
+// Alert card uses .wc-alert-card selectors — see web-components/_alert-card.scss
+// This file documents the include–SCSS correspondence.
+wc-alert-card,
+.wc-alert-card {
+  @include genesis-entity('aggregate');       // Alert container
+
+  .wc-alert-card__icon {
+    @include genesis-cognition('motive');     // Alert icon
+  }
+
+  .wc-alert-card__title {
+    @include genesis-cognition('motive');     // Alert heading
+  }
+
+  .wc-alert-card__message {
+    @include genesis-cognition('discourse');  // Alert body text
+  }
+
+  .wc-alert-card__dismiss {
+    @include genesis-synapse('destructive');  // Dismiss action
+  }
+}

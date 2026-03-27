@@ -1,0 +1,39 @@
+/**
+ * Content Modal Include Styles
+ * ============================================================================
+ * Modal dialog for displaying rich content overlays.
+ * Corresponds to: _includes/content-modal.html
+ * Base modal styles: _sass/components/core/_ui-components.scss
+ */
+
+// Content modal uses standard .modal selectors — see _ui-components.scss
+// This file documents the include–SCSS correspondence.
+.modal {
+  .modal__dialog {
+    // Modal dialog panel — visual entity within the overlay
+  }
+
+  .modal__header {
+    // Horizontal title + close button row
+  }
+
+  .modal__title {
+    @include genesis-cognition('axiom');     // Dialog heading
+  }
+
+  .modal__close {
+    @include genesis-synapse('destructive'); // Dismiss action
+  }
+
+  .modal__body {
+    @include genesis-cognition('discourse'); // Body content
+  }
+
+  .modal__footer {
+    // Action button row
+  }
+
+  .modal__button {
+    @include genesis-synapse('execute');     // Primary modal action
+  }
+}

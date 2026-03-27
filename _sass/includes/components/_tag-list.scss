@@ -1,0 +1,14 @@
+/**
+ * Tag List Include Styles
+ * ============================================================================
+ * Horizontal list of content tags.
+ * Corresponds to: _includes/components/tag-list.html
+ */
+
+.genesis-tag-list {
+  @include genesis-environment('associative'); // Horizontal tag row
+
+  &__tag {
+    @include genesis-cognition('quantum');     // Tag pill label
+  }
+}

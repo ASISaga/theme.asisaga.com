@@ -1,0 +1,27 @@
+/**
+ * Interactive Module Include Styles
+ * ============================================================================
+ * Expandable interactive content module.
+ * Corresponds to: _includes/interactive-module.html
+ * Base styles: _sass/components/sections/_interactive-module.scss
+ */
+
+// Interactive module uses .interactive-module selectors — see _interactive-module.scss
+// This file documents the include–SCSS correspondence.
+.interactive-module {
+  .interactive-module-inner {
+    // Inner content wrapper
+  }
+
+  .interactive-module-content {
+    @include genesis-environment('chronological'); // Vertical content flow
+  }
+
+  .interactive-module-image {
+    @include genesis-entity('image-adaptive');     // Responsive image
+  }
+
+  .interactive-module-indicator {
+    @include genesis-synapse('execute');           // Expand/collapse trigger
+  }
+}

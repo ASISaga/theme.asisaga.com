@@ -1,0 +1,28 @@
+/**
+ * Breadcrumb Include Styles
+ * ============================================================================
+ * Semantic breadcrumb navigation trail.
+ * Corresponds to: _includes/components/breadcrumb.html
+ */
+
+.genesis-breadcrumb {
+  &__list {
+    @include genesis-environment('associative'); // Horizontal breadcrumb row
+  }
+
+  &__item {
+    @include genesis-cognition('gloss');         // Breadcrumb item text
+
+    &--current {
+      @include genesis-state('active');          // Current page indicator
+    }
+  }
+
+  &__link {
+    @include genesis-synapse('navigate');        // Breadcrumb navigation link
+  }
+
+  &__separator {
+    @include genesis-cognition('gloss');         // Separator character
+  }
+}

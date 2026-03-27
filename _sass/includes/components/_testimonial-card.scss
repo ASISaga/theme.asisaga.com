@@ -1,0 +1,38 @@
+/**
+ * Testimonial Card Include Styles
+ * ============================================================================
+ * Web component testimonial card template.
+ * Corresponds to: _includes/components/testimonial-card.html
+ * Base styles: _sass/components/web-components/_testimonial-card.scss
+ */
+
+// Testimonial card web component uses .wc-testimonial-card selectors
+// See web-components/_testimonial-card.scss for full styles.
+wc-testimonial-card,
+.wc-testimonial-card {
+  @include genesis-entity('aggregate');       // Testimonial container
+
+  &__quote {
+    @include genesis-entity('editorial');     // Blockquote section
+  }
+
+  &__text {
+    @include genesis-cognition('testimony'); // Testimonial text
+  }
+
+  &__author {
+    @include genesis-environment('associative'); // Avatar + info row
+  }
+
+  &__avatar {
+    @include genesis-entity('avatar');       // Author avatar image
+  }
+
+  &__name {
+    @include genesis-cognition('motive');   // Author name
+  }
+
+  &__company {
+    @include genesis-cognition('gloss');    // Company metadata
+  }
+}

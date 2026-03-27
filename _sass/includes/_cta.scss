@@ -1,0 +1,25 @@
+/**
+ * CTA Include Styles
+ * ============================================================================
+ * Call-to-action section component.
+ * Corresponds to: _includes/cta.html
+ * Base styles: _sass/components/sections/_cta.scss
+ */
+
+// CTA section uses .cta-section selectors — see _cta.scss
+// This file documents the include–SCSS correspondence.
+.cta-section {
+  .cta-section__actions {
+    // Button group row
+  }
+
+  .cta-section__button {
+    &--primary {
+      @include genesis-synapse('execute');  // Primary CTA button
+    }
+
+    &--secondary {
+      @include genesis-synapse('inquiry');  // Secondary CTA button
+    }
+  }
+}

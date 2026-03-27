@@ -1,0 +1,105 @@
+/**
+ * Includes SCSS Index
+ * ============================================================================
+ * Imports all include-specific SCSS files, mirroring the _includes/ directory
+ * hierarchy. Each HTML file in _includes/ has a unique corresponding SCSS file.
+ *
+ * Directory structure mirrors _includes/:
+ * - Root-level includes
+ * - chatroom/
+ * - components/
+ * - layouts/archive/, layouts/article/, layouts/dashboard/, layouts/faq/,
+ *   layouts/form/, layouts/gallery/, layouts/landing/, layouts/post/,
+ *   layouts/profile/, layouts/splash/
+ */
+
+// ----------------------------------------
+// ROOT-LEVEL INCLUDES
+// ----------------------------------------
+@import "content-modal";
+@import "cta";
+@import "feature-grid";
+@import "footer";
+@import "futuristic-effects";
+@import "genesis-invitation";
+@import "head";
+@import "header";
+@import "hero";
+@import "interactive-module";
+@import "linkedin";
+@import "motion-library";
+@import "navbar";
+@import "node";
+@import "product";
+@import "product-applications";
+@import "product-benefits-list";
+@import "product-card";
+@import "product-code-example";
+@import "product-feature-grid";
+@import "product-section-container";
+@import "product-visual";
+@import "section-header";
+@import "testimonial";
+@import "timeline";
+@import "transcendent-hero";
+
+// ----------------------------------------
+// CHATROOM INCLUDES
+// ----------------------------------------
+@import "chatroom/header";
+@import "chatroom/input";
+@import "chatroom/messages";
+@import "chatroom/template";
+
+// ----------------------------------------
+// COMPONENT INCLUDES
+// ----------------------------------------
+@import "components/alert-card";
+@import "components/alert";
+@import "components/breadcrumb";
+@import "components/card";
+@import "components/pagination";
+@import "components/product-card";
+@import "components/stat";
+@import "components/tag-list";
+@import "components/template-loader";
+@import "components/testimonial-card";
+
+// ----------------------------------------
+// LAYOUT INCLUDES
+// ----------------------------------------
+@import "layouts/content-meta";
+@import "layouts/layout-footer-cta";
+@import "layouts/layout-header";
+@import "layouts/tags-categories";
+
+// Archive
+@import "layouts/archive/archive-item";
+
+// Article
+@import "layouts/article/article-toc";
+
+// Dashboard
+@import "layouts/dashboard/dashboard-widget";
+
+// FAQ
+@import "layouts/faq/faq-item";
+
+// Form
+@import "layouts/form/form-field";
+
+// Gallery
+@import "layouts/gallery/gallery-item";
+
+// Landing
+@import "layouts/landing/landing-features";
+
+// Post
+@import "layouts/post/post-meta";
+@import "layouts/post/post-navigation";
+
+// Profile
+@import "layouts/profile/profile-stats";
+
+// Splash
+@import "layouts/splash/splash-countdown";

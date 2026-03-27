@@ -1,0 +1,38 @@
+/**
+ * Form Field Include Styles
+ * ============================================================================
+ * Reusable labeled form input field.
+ * Corresponds to: _includes/layouts/form/form-field.html
+ */
+
+.form-field {
+  @include genesis-environment('chronological'); // Label → input stack
+
+  &__label {
+    @include genesis-cognition('motive');        // Field label
+
+    &--required {
+      // Required marker — styling provided by label context
+    }
+  }
+
+  &__required {
+    @include genesis-cognition('quantum');       // Required asterisk badge
+  }
+
+  &__input {
+    @include genesis-synapse('input-primary');   // Text input
+  }
+
+  &__select {
+    @include genesis-synapse('input-primary');   // Select dropdown
+  }
+
+  &__textarea {
+    @include genesis-synapse('input-primary');   // Textarea
+  }
+
+  &__help {
+    @include genesis-cognition('gloss');         // Helper/hint text
+  }
+}

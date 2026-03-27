@@ -1,0 +1,21 @@
+/**
+ * LinkedIn Include Styles
+ * ============================================================================
+ * LinkedIn sign-in and social link component.
+ * Corresponds to: _includes/linkedin.html
+ * Base styles: _sass/components/specialized/_linkedin.scss
+ */
+
+// LinkedIn component uses .linkedin-* selectors — see _linkedin.scss
+// This file documents the include–SCSS correspondence.
+.linkedin-signin-btn {
+  @include genesis-synapse('social'); // Social sign-in action
+
+  .linkedin-icon {
+    // LinkedIn icon image
+  }
+
+  .linkedin-text {
+    @include genesis-cognition('motive'); // Button label
+  }
+}

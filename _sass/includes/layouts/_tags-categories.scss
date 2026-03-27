@@ -1,0 +1,13 @@
+/**
+ * Tags & Categories Include Styles
+ * ============================================================================
+ * Tags and categories taxonomy display — class_prefix pattern.
+ * Corresponds to: _includes/layouts/tags-categories.html
+ *
+ * This include uses a class_prefix parameter; selectors are prefixed
+ * by the caller (e.g. .post__taxonomy, .article__taxonomy).
+ * Shared styles are defined in the consuming layout SCSS file.
+ */
+
+// Tags and categories use genesis-cognition('quantum') for tag/category pills,
+// via layout SCSS. No standalone selectors — class_prefix pattern.

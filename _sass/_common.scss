@@ -192,6 +192,13 @@
 // responsive-design-agent v2.1.0
 @import "layouts/responsive-enhancements";
 
+// ----------------------------------------
+// INCLUDES STYLES
+// ----------------------------------------
+// One-to-one correspondence: each file in _includes/ has a unique SCSS file
+// in _sass/includes/, mirroring the same directory hierarchy.
+@import "includes/index";
+
 // Layout-specific components removed - styles consolidated into layout files
 // Previously: components/layouts/* (10 unused files with -component suffix)
 // Now: All layout styling is in _sass/layouts/*.scss matching HTML class names

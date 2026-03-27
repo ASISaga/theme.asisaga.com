@@ -1,0 +1,29 @@
+/**
+ * Feature Grid Include Styles
+ * ============================================================================
+ * Responsive feature grid section.
+ * Corresponds to: _includes/feature-grid.html
+ * Base styles: _sass/components/sections/_feature-grid.scss
+ */
+
+// Feature grid uses .feature-section / .feature-card selectors — see _feature-grid.scss
+// This file documents the include–SCSS correspondence.
+.feature-section {
+  .feature-card {
+    &__icon {
+      @include genesis-cognition('motive');   // Icon label
+    }
+
+    &__title {
+      @include genesis-cognition('motive');   // Card heading
+    }
+
+    &__description {
+      @include genesis-cognition('discourse'); // Supporting text
+    }
+
+    &__link {
+      @include genesis-synapse('navigate');   // Read-more link
+    }
+  }
+}

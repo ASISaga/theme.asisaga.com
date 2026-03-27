@@ -1,0 +1,19 @@
+/**
+ * Product Visual Include Styles
+ * ============================================================================
+ * Product hero/visual image section.
+ * Corresponds to: _includes/product-visual.html
+ * Base styles: _sass/components/products/_product-visual.scss
+ */
+
+// Product visual uses .product-visual-section selectors
+// See _product-visual.scss for full styles.
+.product-visual-section {
+  .product-visual-container {
+    @include genesis-environment('associative'); // Side-by-side layout
+  }
+
+  .product-image {
+    @include genesis-entity('image-adaptive');   // Responsive product image
+  }
+}

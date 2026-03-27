@@ -1,0 +1,19 @@
+/**
+ * Product Code Example Include Styles
+ * ============================================================================
+ * Syntax-highlighted code example block.
+ * Corresponds to: _includes/product-code-example.html
+ * Base styles: _sass/components/products/_product-code-example.scss
+ */
+
+// Product code example uses .product-code-example-section selectors
+// See _product-code-example.scss for full styles.
+.product-code-example-section {
+  .product-code-container {
+    @include genesis-environment('focused');    // Centered reading column
+  }
+
+  .product-code-block {
+    @include genesis-entity('editorial');       // Code block surface
+  }
+}

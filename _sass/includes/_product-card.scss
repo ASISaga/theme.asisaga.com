@@ -1,0 +1,39 @@
+/**
+ * Product Card Include Styles
+ * ============================================================================
+ * Reusable product card with image, description, and actions.
+ * Corresponds to: _includes/product-card.html
+ * Base styles: _sass/components/products/_product-card.scss
+ */
+
+// Product card uses .product-card selectors — see _product-card.scss
+// This file documents the include–SCSS correspondence.
+.product-card {
+  @include genesis-entity('primary');         // Elevated card
+
+  &__media {
+    @include genesis-entity('image-adaptive'); // Responsive media area
+  }
+
+  &__content {
+    @include genesis-environment('chronological'); // Vertical content
+  }
+
+  &__description {
+    @include genesis-cognition('discourse');   // Description text
+  }
+
+  &__actions {
+    @include genesis-environment('associative'); // Button row
+  }
+
+  &__button {
+    &--primary {
+      @include genesis-synapse('execute');     // Primary action
+    }
+
+    &--secondary {
+      @include genesis-synapse('inquiry');     // Secondary action
+    }
+  }
+}

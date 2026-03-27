@@ -1,0 +1,13 @@
+/**
+ * Product Include Styles
+ * ============================================================================
+ * Full product page container.
+ * Corresponds to: _includes/product.html
+ * Base styles: _sass/components/products/_product-layout.scss, _product-page.scss
+ */
+
+// Product page uses .product-container selectors — see _product-layout.scss
+// This file documents the include–SCSS correspondence.
+.product-container {
+  @include genesis-environment('chronological'); // Vertical page flow
+}
