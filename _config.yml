@@ -22,6 +22,7 @@ exclude:
   - docs/
   - LICENSE
   - README.md
+  - _samples/README.md
   - CHANGELOG.md
   - website_structure.json
   - node_modules/
