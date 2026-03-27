@@ -64,9 +64,60 @@
                 "type": "search",
                 "id": "docs-search",
                 "placeholder": "Search docs..."
+              },
+              "figmaStyles": {
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.988,
+                      "g": 0.988,
+                      "b": 0.973
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.867,
+                      "g": 0.878,
+                      "b": 0.898
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokeWeight": 1,
+                "cornerRadius": 8,
+                "effects": [],
+                "typography": {
+                  "fontSize": 15,
+                  "fontWeight": 400,
+                  "textColor": {
+                    "r": 0.082,
+                    "g": 0.086,
+                    "b": 0.125
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Regular"
+                }
               }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "maxWidth": 1120
+            }
+          }
         },
         {
           "id": "docs-nav",
@@ -125,15 +176,99 @@
                       "attributes": {
                         "href": "{{ item.url }}"
                       },
-                      "content": "{{ item.title }}"
+                      "content": "{{ item.title }}",
+                      "figmaStyles": {
+                        "fills": [],
+                        "strokes": [
+                          {
+                            "type": "SOLID",
+                            "color": {
+                              "r": 0.49,
+                              "g": 0.784,
+                              "b": 1
+                            },
+                            "opacity": 0
+                          }
+                        ],
+                        "strokeWeight": 1,
+                        "cornerRadius": 0,
+                        "effects": [],
+                        "typography": {
+                          "fontSize": 15,
+                          "fontWeight": 400,
+                          "lineHeight": {
+                            "value": 100,
+                            "unit": "PERCENT"
+                          },
+                          "textColor": {
+                            "r": 0.408,
+                            "g": 0.694,
+                            "b": 0.996
+                          },
+                          "fontFamily": "Inter",
+                          "fontStyle": "Regular"
+                        }
+                      }
                     }
-                  ]
+                  ],
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "layoutHint": {
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "FIXED",
+                      "maxWidth": 1120
+                    }
+                  }
                 }
-              ]
+              ],
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "layoutHint": {
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "maxWidth": 1120
+                }
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "maxWidth": 1120
+            }
+          }
         }
-      ]
+      ],
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [],
+        "layoutHint": {
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "maxWidth": 1120
+        }
+      }
     },
     {
       "id": "docs-content",
@@ -191,11 +326,63 @@
                       "motion-intent": "entry/fade-in",
                       "layout-variant": "cognition/gloss"
                     }
+                  },
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 14,
+                      "fontWeight": 400,
+                      "lineHeight": {
+                        "value": 150,
+                        "unit": "PERCENT"
+                      },
+                      "letterSpacing": {
+                        "value": 0,
+                        "unit": "PERCENT"
+                      },
+                      "textColor": {
+                        "r": 0.306,
+                        "g": 0.314,
+                        "b": 0.349
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "Regular"
+                    }
                   }
                 }
-              ]
+              ],
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "layoutHint": {
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "layoutWrap": "WRAP"
+                }
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "layoutWrap": "WRAP"
+            }
+          }
         },
         {
           "id": "docs-article",
@@ -225,7 +412,33 @@
               "attributes": {
                 "data-conditional": "page.title"
               },
-              "content": "{{ page.title }}"
+              "content": "{{ page.title }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 48,
+                  "fontWeight": 800,
+                  "lineHeight": {
+                    "value": 115,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": -2,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.067,
+                    "g": 0.071,
+                    "b": 0.102
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Bold"
+                }
+              }
             },
             {
               "id": "docs-body",
@@ -240,9 +453,48 @@
               },
               "layoutMode": "VERTICAL",
               "itemSpacing": "spacing-md",
-              "content": "{{ content }}"
+              "content": "{{ content }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 17,
+                  "fontWeight": 400,
+                  "lineHeight": {
+                    "value": 160,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": 0,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.082,
+                    "g": 0.086,
+                    "b": 0.125
+                  },
+                  "fontFamily": "Georgia",
+                  "fontStyle": "Regular"
+                }
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "maxWidth": 1120
+            }
+          }
         },
         {
           "id": "docs-pagination",
@@ -277,7 +529,39 @@
                 "href": "{{ page.prev.url }}",
                 "data-conditional": "page.prev"
               },
-              "content": "← {{ page.prev.title }}"
+              "content": "← {{ page.prev.title }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.49,
+                      "g": 0.784,
+                      "b": 1
+                    },
+                    "opacity": 0
+                  }
+                ],
+                "strokeWeight": 1,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 15,
+                  "fontWeight": 400,
+                  "lineHeight": {
+                    "value": 100,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.408,
+                    "g": 0.694,
+                    "b": 0.996
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Regular"
+                }
+              }
             },
             {
               "id": "docs-pagination-next",
@@ -294,11 +578,101 @@
                 "href": "{{ page.next.url }}",
                 "data-conditional": "page.next"
               },
-              "content": "{{ page.next.title }} →"
+              "content": "{{ page.next.title }} →",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.49,
+                      "g": 0.784,
+                      "b": 1
+                    },
+                    "opacity": 0
+                  }
+                ],
+                "strokeWeight": 1,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 15,
+                  "fontWeight": 400,
+                  "lineHeight": {
+                    "value": 100,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.408,
+                    "g": 0.694,
+                    "b": 0.996
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Regular"
+                }
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "layoutWrap": "WRAP"
+            }
+          }
         }
-      ]
+      ],
+      "figmaStyles": {
+        "fills": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.988,
+              "g": 0.988,
+              "b": 0.973
+            },
+            "opacity": 1
+          }
+        ],
+        "strokes": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.835,
+              "g": 0.847,
+              "b": 0.867
+            },
+            "opacity": 1
+          }
+        ],
+        "strokeWeight": 1,
+        "cornerRadius": 8,
+        "effects": [
+          {
+            "type": "DROP_SHADOW",
+            "color": {
+              "r": 0.031,
+              "g": 0.039,
+              "b": 0.094,
+              "a": 0.1
+            },
+            "offset": {
+              "x": 0,
+              "y": 1
+            },
+            "radius": 4,
+            "spread": 0,
+            "visible": true,
+            "blendMode": "NORMAL"
+          }
+        ]
+      }
     },
     {
       "id": "docs-toc",
@@ -329,7 +703,33 @@
               "layout-variant": "cognition/motive"
             }
           },
-          "content": "On this page"
+          "content": "On this page",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "typography": {
+              "fontSize": 17,
+              "fontWeight": 600,
+              "lineHeight": {
+                "value": 150,
+                "unit": "PERCENT"
+              },
+              "letterSpacing": {
+                "value": 0,
+                "unit": "PERCENT"
+              },
+              "textColor": {
+                "r": 0.082,
+                "g": 0.086,
+                "b": 0.125
+              },
+              "fontFamily": "Inter",
+              "fontStyle": "SemiBold"
+            }
+          }
         },
         {
           "id": "docs-toc-nav",
@@ -344,9 +744,47 @@
           },
           "layoutMode": "VERTICAL",
           "itemSpacing": "spacing-xs",
-          "content": "{{ page.toc }}"
+          "content": "{{ page.toc }}",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "maxWidth": 1120
+            }
+          }
         }
-      ]
+      ],
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [],
+        "layoutHint": {
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "maxWidth": 1120
+        }
+      }
     }
-  ]
+  ],
+  "figmaStyles": {
+    "fills": [],
+    "strokes": [],
+    "strokeWeight": 0,
+    "cornerRadius": 0,
+    "effects": [],
+    "layoutHint": {
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "AUTO",
+      "counterAxisSizingMode": "AUTO"
+    }
+  }
 }

@@ -57,7 +57,33 @@
                   "layout-variant": "cognition/axiom"
                 }
               },
-              "content": "{{ page.title }}"
+              "content": "{{ page.title }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 48,
+                  "fontWeight": 800,
+                  "lineHeight": {
+                    "value": 115,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": -2,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.067,
+                    "g": 0.071,
+                    "b": 0.102
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Bold"
+                }
+              }
             },
             {
               "id": "chatroom-participants",
@@ -73,7 +99,33 @@
               "attributes": {
                 "data-conditional": "page.participants"
               },
-              "content": "{{ page.participants }}"
+              "content": "{{ page.participants }}",
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "typography": {
+                  "fontSize": 14,
+                  "fontWeight": 400,
+                  "lineHeight": {
+                    "value": 150,
+                    "unit": "PERCENT"
+                  },
+                  "letterSpacing": {
+                    "value": 0,
+                    "unit": "PERCENT"
+                  },
+                  "textColor": {
+                    "r": 0.306,
+                    "g": 0.314,
+                    "b": 0.349
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Regular"
+                }
+              }
             },
             {
               "id": "chatroom-connection-status",
@@ -89,9 +141,30 @@
               "attributes": {
                 "data-connection-status": "",
                 "data-conditional": "page.show_connection_status"
+              },
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "opacity": 1,
+                "effects": []
               }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "layoutWrap": "WRAP"
+            }
+          }
         },
         {
           "id": "chatroom-messages",
@@ -137,6 +210,34 @@
                   },
                   "attributes": {
                     "data-conditional": "page.show_avatar"
+                  },
+                  "figmaStyles": {
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "color": {
+                          "r": 0.933,
+                          "g": 0.941,
+                          "b": 0.957
+                        },
+                        "opacity": 0.7
+                      }
+                    ],
+                    "strokes": [
+                      {
+                        "type": "SOLID",
+                        "color": {
+                          "r": 0.894,
+                          "g": 0.902,
+                          "b": 0.922
+                        },
+                        "opacity": 1
+                      }
+                    ],
+                    "strokeWeight": 1,
+                    "cornerRadius": 8,
+                    "opacity": 0.7,
+                    "effects": []
                   }
                 },
                 {
@@ -163,6 +264,32 @@
                           "motion-intent": "entry/fade-in",
                           "layout-variant": "cognition/motive"
                         }
+                      },
+                      "figmaStyles": {
+                        "fills": [],
+                        "strokes": [],
+                        "strokeWeight": 0,
+                        "cornerRadius": 0,
+                        "effects": [],
+                        "typography": {
+                          "fontSize": 17,
+                          "fontWeight": 600,
+                          "lineHeight": {
+                            "value": 150,
+                            "unit": "PERCENT"
+                          },
+                          "letterSpacing": {
+                            "value": 0,
+                            "unit": "PERCENT"
+                          },
+                          "textColor": {
+                            "r": 0.082,
+                            "g": 0.086,
+                            "b": 0.125
+                          },
+                          "fontFamily": "Inter",
+                          "fontStyle": "SemiBold"
+                        }
                       }
                     },
                     {
@@ -174,6 +301,32 @@
                           "semantic-tag": "p",
                           "motion-intent": "entry/fade-in",
                           "layout-variant": "cognition/discourse"
+                        }
+                      },
+                      "figmaStyles": {
+                        "fills": [],
+                        "strokes": [],
+                        "strokeWeight": 0,
+                        "cornerRadius": 0,
+                        "effects": [],
+                        "typography": {
+                          "fontSize": 17,
+                          "fontWeight": 400,
+                          "lineHeight": {
+                            "value": 160,
+                            "unit": "PERCENT"
+                          },
+                          "letterSpacing": {
+                            "value": 0,
+                            "unit": "PERCENT"
+                          },
+                          "textColor": {
+                            "r": 0.082,
+                            "g": 0.086,
+                            "b": 0.125
+                          },
+                          "fontFamily": "Georgia",
+                          "fontStyle": "Regular"
                         }
                       }
                     },
@@ -190,13 +343,91 @@
                       },
                       "attributes": {
                         "data-conditional": "page.show_timestamps"
+                      },
+                      "figmaStyles": {
+                        "fills": [],
+                        "strokes": [],
+                        "strokeWeight": 0,
+                        "cornerRadius": 0,
+                        "effects": [],
+                        "typography": {
+                          "fontSize": 14,
+                          "fontWeight": 400,
+                          "lineHeight": {
+                            "value": 150,
+                            "unit": "PERCENT"
+                          },
+                          "letterSpacing": {
+                            "value": 0,
+                            "unit": "PERCENT"
+                          },
+                          "textColor": {
+                            "r": 0.306,
+                            "g": 0.314,
+                            "b": 0.349
+                          },
+                          "fontFamily": "Inter",
+                          "fontStyle": "Regular"
+                        }
                       }
                     }
-                  ]
+                  ],
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "layoutHint": {
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "FIXED",
+                      "maxWidth": 1120
+                    }
+                  }
                 }
-              ]
+              ],
+              "figmaStyles": {
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.953,
+                      "g": 0.957,
+                      "b": 0.973
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.867,
+                      "g": 0.878,
+                      "b": 0.898
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokeWeight": 1,
+                "cornerRadius": 8,
+                "effects": []
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO"
+            }
+          }
         },
         {
           "id": "chatroom-typing-indicator",
@@ -212,6 +443,32 @@
           "attributes": {
             "aria-live": "polite",
             "data-conditional": "page.show_typing_indicator"
+          },
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "opacity": 1,
+            "effects": [
+              {
+                "type": "DROP_SHADOW",
+                "color": {
+                  "r": 0.863,
+                  "g": 0.882,
+                  "b": 0.235,
+                  "a": 0.3
+                },
+                "offset": {
+                  "x": 0,
+                  "y": -3
+                },
+                "radius": 0,
+                "spread": 0,
+                "visible": true,
+                "blendMode": "NORMAL"
+              }
+            ]
           }
         },
         {
@@ -242,6 +499,44 @@
               "attributes": {
                 "type": "text",
                 "placeholder": "{{ page.placeholder | default: 'Type a message...' }}"
+              },
+              "figmaStyles": {
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.988,
+                      "g": 0.988,
+                      "b": 0.973
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.867,
+                      "g": 0.878,
+                      "b": 0.898
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokeWeight": 1,
+                "cornerRadius": 8,
+                "effects": [],
+                "typography": {
+                  "fontSize": 15,
+                  "fontWeight": 400,
+                  "textColor": {
+                    "r": 0.082,
+                    "g": 0.086,
+                    "b": 0.125
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Regular"
+                }
               }
             },
             {
@@ -258,11 +553,128 @@
               "attributes": {
                 "type": "submit",
                 "aria-label": "Send message"
+              },
+              "figmaStyles": {
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0,
+                      "g": 0.549,
+                      "b": 0.988
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 8,
+                "effects": [
+                  {
+                    "type": "DROP_SHADOW",
+                    "color": {
+                      "r": 0,
+                      "g": 0.549,
+                      "b": 0.988,
+                      "a": 0.3
+                    },
+                    "offset": {
+                      "x": 0,
+                      "y": 4
+                    },
+                    "radius": 12,
+                    "spread": 0,
+                    "visible": true,
+                    "blendMode": "NORMAL"
+                  }
+                ],
+                "typography": {
+                  "fontSize": 15,
+                  "fontWeight": 600,
+                  "textColor": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "SemiBold"
+                }
               }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "layoutWrap": "WRAP"
+            }
+          }
         }
-      ]
+      ],
+      "figmaStyles": {
+        "fills": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.988,
+              "g": 0.988,
+              "b": 0.973
+            },
+            "opacity": 1
+          }
+        ],
+        "strokes": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.835,
+              "g": 0.847,
+              "b": 0.867
+            },
+            "opacity": 1
+          }
+        ],
+        "strokeWeight": 1,
+        "cornerRadius": 8,
+        "effects": [
+          {
+            "type": "DROP_SHADOW",
+            "color": {
+              "r": 0.031,
+              "g": 0.039,
+              "b": 0.094,
+              "a": 0.1
+            },
+            "offset": {
+              "x": 0,
+              "y": 1
+            },
+            "radius": 4,
+            "spread": 0,
+            "visible": true,
+            "blendMode": "NORMAL"
+          }
+        ]
+      }
     }
-  ]
+  ],
+  "figmaStyles": {
+    "fills": [],
+    "strokes": [],
+    "strokeWeight": 0,
+    "cornerRadius": 0,
+    "effects": [],
+    "layoutHint": {
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "AUTO",
+      "counterAxisSizingMode": "FIXED",
+      "maxWidth": 1120
+    }
+  }
 }

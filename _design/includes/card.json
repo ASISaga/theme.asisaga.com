@@ -43,9 +43,64 @@
             "src": "{{ include.image }}",
             "alt": "{{ include.title }}",
             "loading": "lazy"
+          },
+          "figmaStyles": {
+            "fills": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.933,
+                  "g": 0.941,
+                  "b": 0.957
+                },
+                "opacity": 0.7
+              }
+            ],
+            "strokes": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.894,
+                  "g": 0.902,
+                  "b": 0.922
+                },
+                "opacity": 1
+              }
+            ],
+            "strokeWeight": 1,
+            "cornerRadius": 8,
+            "opacity": 0.7,
+            "effects": []
           }
         }
-      ]
+      ],
+      "figmaStyles": {
+        "fills": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.969,
+              "g": 0.973,
+              "b": 0.98
+            },
+            "opacity": 1
+          }
+        ],
+        "strokes": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.855,
+              "g": 0.867,
+              "b": 0.886
+            },
+            "opacity": 1
+          }
+        ],
+        "strokeWeight": 1,
+        "cornerRadius": 8,
+        "effects": []
+      }
     },
     {
       "id": "card-body",
@@ -72,7 +127,33 @@
               "layout-variant": "cognition/discourse"
             }
           },
-          "content": "{{ include.title }}"
+          "content": "{{ include.title }}",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "typography": {
+              "fontSize": 17,
+              "fontWeight": 400,
+              "lineHeight": {
+                "value": 160,
+                "unit": "PERCENT"
+              },
+              "letterSpacing": {
+                "value": 0,
+                "unit": "PERCENT"
+              },
+              "textColor": {
+                "r": 0.082,
+                "g": 0.086,
+                "b": 0.125
+              },
+              "fontFamily": "Georgia",
+              "fontStyle": "Regular"
+            }
+          }
         },
         {
           "id": "card-description",
@@ -85,7 +166,53 @@
               "layout-variant": "cognition/protocol"
             }
           },
-          "content": "{{ include.description }}"
+          "content": "{{ include.description }}",
+          "figmaStyles": {
+            "fills": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.957,
+                  "g": 0.961,
+                  "b": 0.969
+                },
+                "opacity": 1
+              }
+            ],
+            "strokes": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.835,
+                  "g": 0.847,
+                  "b": 0.867
+                },
+                "opacity": 1
+              }
+            ],
+            "strokeWeight": 1,
+            "cornerRadius": 4,
+            "effects": [],
+            "typography": {
+              "fontSize": 14,
+              "fontWeight": 400,
+              "lineHeight": {
+                "value": 150,
+                "unit": "PERCENT"
+              },
+              "letterSpacing": {
+                "value": 0,
+                "unit": "PERCENT"
+              },
+              "textColor": {
+                "r": 0.11,
+                "g": 0.114,
+                "b": 0.165
+              },
+              "fontFamily": "SF Mono",
+              "fontStyle": "Regular"
+            }
+          }
         },
         {
           "id": "card-cta",
@@ -101,9 +228,99 @@
           "attributes": {
             "href": "{{ include.url }}"
           },
-          "content": "{{ include.cta_text | default: 'Read more' }}"
+          "content": "{{ include.cta_text | default: 'Read more' }}",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.49,
+                  "g": 0.784,
+                  "b": 1
+                },
+                "opacity": 0
+              }
+            ],
+            "strokeWeight": 1,
+            "cornerRadius": 0,
+            "effects": [],
+            "typography": {
+              "fontSize": 15,
+              "fontWeight": 400,
+              "lineHeight": {
+                "value": 100,
+                "unit": "PERCENT"
+              },
+              "textColor": {
+                "r": 0.408,
+                "g": 0.694,
+                "b": 0.996
+              },
+              "fontFamily": "Inter",
+              "fontStyle": "Regular"
+            }
+          }
         }
-      ]
+      ],
+      "figmaStyles": {
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 0,
+        "cornerRadius": 0,
+        "effects": [],
+        "layoutHint": {
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "maxWidth": 1120
+        }
+      }
     }
-  ]
+  ],
+  "figmaStyles": {
+    "fills": [
+      {
+        "type": "SOLID",
+        "color": {
+          "r": 0.988,
+          "g": 0.988,
+          "b": 0.973
+        },
+        "opacity": 1
+      }
+    ],
+    "strokes": [
+      {
+        "type": "SOLID",
+        "color": {
+          "r": 0.835,
+          "g": 0.847,
+          "b": 0.867
+        },
+        "opacity": 1
+      }
+    ],
+    "strokeWeight": 1,
+    "cornerRadius": 8,
+    "effects": [
+      {
+        "type": "DROP_SHADOW",
+        "color": {
+          "r": 0.031,
+          "g": 0.039,
+          "b": 0.094,
+          "a": 0.1
+        },
+        "offset": {
+          "x": 0,
+          "y": 1
+        },
+        "radius": 4,
+        "spread": 0,
+        "visible": true,
+        "blendMode": "NORMAL"
+      }
+    ]
+  }
 }

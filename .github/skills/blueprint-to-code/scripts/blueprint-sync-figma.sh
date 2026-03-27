@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
-# blueprint-sync-figma.sh — Figma Visual Sync: _data/design/ → _data/design/figma/
+# blueprint-sync-figma.sh — Figma Visual Sync: enrich _design/ blueprints with figmaStyles
 #
-# Enriches every blueprint in _data/design/ with a "figmaStyles" block on each
-# node, resolving the node's layout-variant to Figma API-compatible fill, stroke,
-# effect, cornerRadius, opacity, and typography properties.
+# Reads every blueprint in _design/includes/ and _design/layouts/, resolves each
+# node's layout-variant against figma-styles-map.json, injects a "figmaStyles"
+# block, and writes the enriched JSON back to _design/ in-place.
 #
-# The enriched blueprints are written to _data/design/figma/ and are the files
-# imported into the Wireframe2Code Figma plugin. The authoritative _design/ source
-# files remain untouched (incorruptibility principle).
+# _design/ is the single source of truth for BOTH Jekyll and Figma. The Wireframe2Code
+# Figma plugin imports blueprints directly from _design/. When the plugin exports a
+# design back from Figma, the exported JSON (which contains figmaStyles) is placed into
+# _design/ and blueprint-sync.sh is run to propagate forward to _data/design/ and
+# _includes/_layouts/.
 #
 # Usage:
 #   .github/skills/blueprint-to-code/scripts/blueprint-sync-figma.sh
@@ -15,23 +17,21 @@
 #
 # Requirements: node >= 18
 #
-# Companion: The Wireframe2Code plugin (code.ts) must be updated to read the
-# "figmaStyles" field and apply it. See:
-#   .github/skills/blueprint-to-code/references/wireframe2code-plugin-patch.md
+# After running, always propagate to _data/design/ via:
+#   .github/skills/blueprint-to-code/scripts/blueprint-sync.sh
 
 set -euo pipefail
 
 REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
-DATA_DIR="$REPO_ROOT/_data/design"
-FIGMA_DIR="$REPO_ROOT/_data/design/figma"
+DESIGN_DIR="$REPO_ROOT/_design"
 STYLES_MAP="$REPO_ROOT/.github/skills/blueprint-to-code/references/figma-styles-map.json"
 DRY_RUN=false
 
 [[ "${1:-}" == "--dry-run" ]] && DRY_RUN=true
 
-echo "🎨  Blueprint Figma Visual Sync: _data/design/ → _data/design/figma/"
+echo "🎨  Blueprint Figma Visual Sync: enriching _design/ with figmaStyles"
 echo "    Source styles map : $STYLES_MAP"
-echo "    Target            : $FIGMA_DIR"
+echo "    Target            : $DESIGN_DIR"
 [[ "$DRY_RUN" == "true" ]] && echo "    Mode              : DRY RUN (no files written)"
 echo ""
 
@@ -41,15 +41,12 @@ if [[ ! -f "$STYLES_MAP" ]]; then
   exit 1
 fi
 
-# Ensure target directories exist
-mkdir -p "$FIGMA_DIR/includes" "$FIGMA_DIR/layouts"
-
 # ── Node.js enricher ──────────────────────────────────────────────────────────
-node - "$DATA_DIR" "$FIGMA_DIR" "$STYLES_MAP" "$DRY_RUN" <<'NODE_SCRIPT'
+node - "$DESIGN_DIR" "$STYLES_MAP" "$DRY_RUN" <<'NODE_SCRIPT'
 const fs   = require('fs');
 const path = require('path');
 
-const [,, dataDir, figmaDir, stylesMapPath, dryRun] = process.argv;
+const [,, designDir, stylesMapPath, dryRun] = process.argv;
 const isDry = dryRun === 'true';
 
 // ── Load the styles map ───────────────────────────────────────────────────
@@ -66,10 +63,6 @@ function resolveStyles(layoutVariant) {
   const variant  = parts[1];
   if (!category || !variant) return null;
   const catMap = stylesMap[category];
-  if (!catMap || catMap.$comment) {
-    // Category exists but has only a $comment (e.g. environment, cognition);
-    // fall through to check the actual variant key
-  }
   if (!catMap) return null;
   const styles = catMap[variant];
   if (!styles) return null;
@@ -79,7 +72,7 @@ function resolveStyles(layoutVariant) {
 }
 
 /**
- * Walk a blueprint node tree and inject figmaStyles on every node that
+ * Walk a blueprint node tree and inject/update figmaStyles on every node that
  * carries a layout-variant. Does NOT mutate the source — returns a new tree.
  */
 function enrichNode(node) {
@@ -91,6 +84,9 @@ function enrichNode(node) {
 
   if (styles) {
     enriched.figmaStyles = styles;
+  } else if ('figmaStyles' in enriched) {
+    // Remove stale figmaStyles if the variant was removed or became unknown
+    delete enriched.figmaStyles;
   }
 
   if (Array.isArray(node.children)) {
@@ -104,21 +100,18 @@ let synced  = 0;
 let skipped = 0;
 let unknown = [];
 
-/** Enrich all blueprints in one subdirectory */
+/** Enrich all blueprints in one subdirectory (in-place in _design/) */
 function processDirectory(subdir) {
-  const srcDir = path.join(dataDir, subdir);
-  const dstDir = path.join(figmaDir, subdir);
+  const dir = path.join(designDir, subdir);
+  if (!fs.existsSync(dir)) return;
 
-  if (!fs.existsSync(srcDir)) return;
-
-  const files = fs.readdirSync(srcDir).filter(f => f.endsWith('.json'));
+  const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'));
   files.forEach(file => {
-    const srcPath = path.join(srcDir, file);
-    const dstPath = path.join(dstDir, file);
+    const filePath = path.join(dir, file);
 
     let blueprint;
     try {
-      blueprint = JSON.parse(fs.readFileSync(srcPath, 'utf8'));
+      blueprint = JSON.parse(fs.readFileSync(filePath, 'utf8'));
     } catch (e) {
       console.error(`  ✗  Failed to parse ${subdir}/${file}: ${e.message}`);
       return;
@@ -137,15 +130,14 @@ function processDirectory(subdir) {
 
     const enriched = enrichNode(blueprint);
     const output   = JSON.stringify(enriched, null, 2);
-    const existing = fs.existsSync(dstPath) ? fs.readFileSync(dstPath, 'utf8') : null;
+    const existing = fs.readFileSync(filePath, 'utf8');
 
     if (existing === output) {
       console.log(`  ↔  ${subdir}/${file} — unchanged`);
       skipped++;
     } else {
       if (!isDry) {
-        fs.mkdirSync(dstDir, { recursive: true });
-        fs.writeFileSync(dstPath, output, 'utf8');
+        fs.writeFileSync(filePath, output, 'utf8');
       }
       console.log(`  ✓  ${subdir}/${file} — enriched${isDry ? ' (dry run)' : ''}`);
       synced++;

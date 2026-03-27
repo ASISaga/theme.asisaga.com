@@ -44,6 +44,34 @@
             "src": "{{ page.logo }}",
             "alt": "{{ page.title }}",
             "data-conditional": "page.logo"
+          },
+          "figmaStyles": {
+            "fills": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.933,
+                  "g": 0.941,
+                  "b": 0.957
+                },
+                "opacity": 0.7
+              }
+            ],
+            "strokes": [
+              {
+                "type": "SOLID",
+                "color": {
+                  "r": 0.894,
+                  "g": 0.902,
+                  "b": 0.922
+                },
+                "opacity": 1
+              }
+            ],
+            "strokeWeight": 1,
+            "cornerRadius": 8,
+            "opacity": 0.7,
+            "effects": []
           }
         },
         {
@@ -60,7 +88,33 @@
           "attributes": {
             "data-conditional": "page.title"
           },
-          "content": "{{ page.title }}"
+          "content": "{{ page.title }}",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "typography": {
+              "fontSize": 48,
+              "fontWeight": 800,
+              "lineHeight": {
+                "value": 115,
+                "unit": "PERCENT"
+              },
+              "letterSpacing": {
+                "value": -2,
+                "unit": "PERCENT"
+              },
+              "textColor": {
+                "r": 0.067,
+                "g": 0.071,
+                "b": 0.102
+              },
+              "fontFamily": "Inter",
+              "fontStyle": "Bold"
+            }
+          }
         },
         {
           "id": "splash-subtitle",
@@ -76,7 +130,33 @@
           "attributes": {
             "data-conditional": "page.subtitle"
           },
-          "content": "{{ page.subtitle }}"
+          "content": "{{ page.subtitle }}",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "typography": {
+              "fontSize": 17,
+              "fontWeight": 600,
+              "lineHeight": {
+                "value": 150,
+                "unit": "PERCENT"
+              },
+              "letterSpacing": {
+                "value": 0,
+                "unit": "PERCENT"
+              },
+              "textColor": {
+                "r": 0.082,
+                "g": 0.086,
+                "b": 0.125
+              },
+              "fontFamily": "Inter",
+              "fontStyle": "SemiBold"
+            }
+          }
         },
         {
           "id": "splash-content",
@@ -91,7 +171,33 @@
           },
           "layoutMode": "VERTICAL",
           "itemSpacing": "spacing-sm",
-          "content": "{{ content }}"
+          "content": "{{ content }}",
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "typography": {
+              "fontSize": 17,
+              "fontWeight": 400,
+              "lineHeight": {
+                "value": 160,
+                "unit": "PERCENT"
+              },
+              "letterSpacing": {
+                "value": 0,
+                "unit": "PERCENT"
+              },
+              "textColor": {
+                "r": 0.082,
+                "g": 0.086,
+                "b": 0.125
+              },
+              "fontFamily": "Georgia",
+              "fontStyle": "Regular"
+            }
+          }
         },
         {
           "id": "splash-countdown",
@@ -140,7 +246,33 @@
                     "id": "days",
                     "aria-label": "Days"
                   },
-                  "content": "00"
+                  "content": "00",
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 48,
+                      "fontWeight": 800,
+                      "lineHeight": {
+                        "value": 115,
+                        "unit": "PERCENT"
+                      },
+                      "letterSpacing": {
+                        "value": -2,
+                        "unit": "PERCENT"
+                      },
+                      "textColor": {
+                        "r": 0.067,
+                        "g": 0.071,
+                        "b": 0.102
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "Bold"
+                    }
+                  }
                 },
                 {
                   "id": "splash-countdown-days-label",
@@ -153,9 +285,48 @@
                       "layout-variant": "cognition/gloss"
                     }
                   },
-                  "content": "Days"
+                  "content": "Days",
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 14,
+                      "fontWeight": 400,
+                      "lineHeight": {
+                        "value": 150,
+                        "unit": "PERCENT"
+                      },
+                      "letterSpacing": {
+                        "value": 0,
+                        "unit": "PERCENT"
+                      },
+                      "textColor": {
+                        "r": 0.306,
+                        "g": 0.314,
+                        "b": 0.349
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "Regular"
+                    }
+                  }
                 }
-              ]
+              ],
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "layoutHint": {
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "maxWidth": 1120
+                }
+              }
             },
             {
               "id": "splash-countdown-hours",
@@ -186,7 +357,33 @@
                     "id": "hours",
                     "aria-label": "Hours"
                   },
-                  "content": "00"
+                  "content": "00",
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 48,
+                      "fontWeight": 800,
+                      "lineHeight": {
+                        "value": 115,
+                        "unit": "PERCENT"
+                      },
+                      "letterSpacing": {
+                        "value": -2,
+                        "unit": "PERCENT"
+                      },
+                      "textColor": {
+                        "r": 0.067,
+                        "g": 0.071,
+                        "b": 0.102
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "Bold"
+                    }
+                  }
                 },
                 {
                   "id": "splash-countdown-hours-label",
@@ -199,9 +396,48 @@
                       "layout-variant": "cognition/gloss"
                     }
                   },
-                  "content": "Hours"
+                  "content": "Hours",
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 14,
+                      "fontWeight": 400,
+                      "lineHeight": {
+                        "value": 150,
+                        "unit": "PERCENT"
+                      },
+                      "letterSpacing": {
+                        "value": 0,
+                        "unit": "PERCENT"
+                      },
+                      "textColor": {
+                        "r": 0.306,
+                        "g": 0.314,
+                        "b": 0.349
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "Regular"
+                    }
+                  }
                 }
-              ]
+              ],
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "layoutHint": {
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "maxWidth": 1120
+                }
+              }
             },
             {
               "id": "splash-countdown-minutes",
@@ -232,7 +468,33 @@
                     "id": "minutes",
                     "aria-label": "Minutes"
                   },
-                  "content": "00"
+                  "content": "00",
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 48,
+                      "fontWeight": 800,
+                      "lineHeight": {
+                        "value": 115,
+                        "unit": "PERCENT"
+                      },
+                      "letterSpacing": {
+                        "value": -2,
+                        "unit": "PERCENT"
+                      },
+                      "textColor": {
+                        "r": 0.067,
+                        "g": 0.071,
+                        "b": 0.102
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "Bold"
+                    }
+                  }
                 },
                 {
                   "id": "splash-countdown-minutes-label",
@@ -245,9 +507,48 @@
                       "layout-variant": "cognition/gloss"
                     }
                   },
-                  "content": "Minutes"
+                  "content": "Minutes",
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 14,
+                      "fontWeight": 400,
+                      "lineHeight": {
+                        "value": 150,
+                        "unit": "PERCENT"
+                      },
+                      "letterSpacing": {
+                        "value": 0,
+                        "unit": "PERCENT"
+                      },
+                      "textColor": {
+                        "r": 0.306,
+                        "g": 0.314,
+                        "b": 0.349
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "Regular"
+                    }
+                  }
                 }
-              ]
+              ],
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "layoutHint": {
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "maxWidth": 1120
+                }
+              }
             },
             {
               "id": "splash-countdown-seconds",
@@ -278,7 +579,33 @@
                     "id": "seconds",
                     "aria-label": "Seconds"
                   },
-                  "content": "00"
+                  "content": "00",
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 48,
+                      "fontWeight": 800,
+                      "lineHeight": {
+                        "value": 115,
+                        "unit": "PERCENT"
+                      },
+                      "letterSpacing": {
+                        "value": -2,
+                        "unit": "PERCENT"
+                      },
+                      "textColor": {
+                        "r": 0.067,
+                        "g": 0.071,
+                        "b": 0.102
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "Bold"
+                    }
+                  }
                 },
                 {
                   "id": "splash-countdown-seconds-label",
@@ -291,11 +618,76 @@
                       "layout-variant": "cognition/gloss"
                     }
                   },
-                  "content": "Seconds"
+                  "content": "Seconds",
+                  "figmaStyles": {
+                    "fills": [],
+                    "strokes": [],
+                    "strokeWeight": 0,
+                    "cornerRadius": 0,
+                    "effects": [],
+                    "typography": {
+                      "fontSize": 14,
+                      "fontWeight": 400,
+                      "lineHeight": {
+                        "value": 150,
+                        "unit": "PERCENT"
+                      },
+                      "letterSpacing": {
+                        "value": 0,
+                        "unit": "PERCENT"
+                      },
+                      "textColor": {
+                        "r": 0.306,
+                        "g": 0.314,
+                        "b": 0.349
+                      },
+                      "fontFamily": "Inter",
+                      "fontStyle": "Regular"
+                    }
+                  }
                 }
-              ]
+              ],
+              "figmaStyles": {
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 0,
+                "effects": [],
+                "layoutHint": {
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "maxWidth": 1120
+                }
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "opacity": 1,
+            "effects": [
+              {
+                "type": "DROP_SHADOW",
+                "color": {
+                  "r": 0.863,
+                  "g": 0.882,
+                  "b": 0.235,
+                  "a": 0.3
+                },
+                "offset": {
+                  "x": 0,
+                  "y": -3
+                },
+                "radius": 0,
+                "spread": 0,
+                "visible": true,
+                "blendMode": "NORMAL"
+              }
+            ]
+          }
         },
         {
           "id": "splash-email-form",
@@ -330,6 +722,44 @@
                 "id": "splash-email",
                 "placeholder": "Enter your email",
                 "required": "true"
+              },
+              "figmaStyles": {
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.988,
+                      "g": 0.988,
+                      "b": 0.973
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.867,
+                      "g": 0.878,
+                      "b": 0.898
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokeWeight": 1,
+                "cornerRadius": 8,
+                "effects": [],
+                "typography": {
+                  "fontSize": 15,
+                  "fontWeight": 400,
+                  "textColor": {
+                    "r": 0.082,
+                    "g": 0.086,
+                    "b": 0.125
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "Regular"
+                }
               }
             },
             {
@@ -346,9 +776,68 @@
               "attributes": {
                 "type": "submit"
               },
-              "content": "{{ page.email_capture.button_text | default: 'Notify Me' }}"
+              "content": "{{ page.email_capture.button_text | default: 'Notify Me' }}",
+              "figmaStyles": {
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0,
+                      "g": 0.549,
+                      "b": 0.988
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokes": [],
+                "strokeWeight": 0,
+                "cornerRadius": 8,
+                "effects": [
+                  {
+                    "type": "DROP_SHADOW",
+                    "color": {
+                      "r": 0,
+                      "g": 0.549,
+                      "b": 0.988,
+                      "a": 0.3
+                    },
+                    "offset": {
+                      "x": 0,
+                      "y": 4
+                    },
+                    "radius": 12,
+                    "spread": 0,
+                    "visible": true,
+                    "blendMode": "NORMAL"
+                  }
+                ],
+                "typography": {
+                  "fontSize": 15,
+                  "fontWeight": 600,
+                  "textColor": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  },
+                  "fontFamily": "Inter",
+                  "fontStyle": "SemiBold"
+                }
+              }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "layoutWrap": "WRAP"
+            }
+          }
         },
         {
           "id": "splash-social-links",
@@ -383,11 +872,136 @@
                 "href": "{{ link.url }}",
                 "target": "_blank",
                 "rel": "noopener noreferrer"
+              },
+              "figmaStyles": {
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.953,
+                      "g": 0.957,
+                      "b": 0.973
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "color": {
+                      "r": 0.867,
+                      "g": 0.878,
+                      "b": 0.898
+                    },
+                    "opacity": 1
+                  }
+                ],
+                "strokeWeight": 1,
+                "cornerRadius": 8,
+                "effects": []
               }
             }
-          ]
+          ],
+          "figmaStyles": {
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 0,
+            "cornerRadius": 0,
+            "effects": [],
+            "layoutHint": {
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "layoutWrap": "WRAP"
+            }
+          }
         }
-      ]
+      ],
+      "figmaStyles": {
+        "fills": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0.988,
+              "g": 0.988,
+              "b": 0.973
+            },
+            "opacity": 1
+          }
+        ],
+        "strokes": [
+          {
+            "type": "SOLID",
+            "color": {
+              "r": 0,
+              "g": 0.549,
+              "b": 0.988
+            },
+            "opacity": 1
+          }
+        ],
+        "strokeWeight": 2,
+        "cornerRadius": 8,
+        "effects": [
+          {
+            "type": "DROP_SHADOW",
+            "color": {
+              "r": 0,
+              "g": 0.549,
+              "b": 0.988,
+              "a": 0.2
+            },
+            "offset": {
+              "x": 0,
+              "y": 0
+            },
+            "radius": 12,
+            "spread": 0,
+            "visible": true,
+            "blendMode": "NORMAL"
+          }
+        ]
+      }
     }
-  ]
+  ],
+  "figmaStyles": {
+    "fills": [
+      {
+        "type": "SOLID",
+        "color": {
+          "r": 0.988,
+          "g": 0.988,
+          "b": 0.973
+        },
+        "opacity": 1
+      }
+    ],
+    "strokes": [],
+    "strokeWeight": 0,
+    "cornerRadius": 0,
+    "effects": [
+      {
+        "type": "DROP_SHADOW",
+        "color": {
+          "r": 0,
+          "g": 0.549,
+          "b": 0.988,
+          "a": 0.15
+        },
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "radius": 12,
+        "spread": 0,
+        "visible": true,
+        "blendMode": "NORMAL"
+      },
+      {
+        "type": "LAYER_BLUR",
+        "radius": 8,
+        "visible": true
+      }
+    ]
+  }
 }
