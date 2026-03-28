@@ -3,10 +3,11 @@
  * Genesis Design Token Builder
  *
  * Bidirectional translation between tokens.json and _variables.scss.
- * Preserves OKLCH color values and CSS functions without transformation.
+ * Forward translation is delegated to Style Dictionary v4 (sd.config.mjs),
+ * which preserves OKLCH color values without hex coercion.
  *
  * Usage:
- *   node script.mjs               -- tokens → _sass/base/design/_variables-generated.scss
+ *   node script.mjs               -- tokens → _sass/base/design/_variables-generated.scss (via Style Dictionary)
  *   node script.mjs --reverse     -- _sass/base/design/ → tokens-extracted.json
  *   node script.mjs --diff        -- generate and show diff against production
  */
@@ -15,73 +16,33 @@ import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
+import StyleDictionary from 'style-dictionary';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, '../../..');
 
-const TOKENS_PATH     = join(__dirname, 'tokens.json');
 const OUTPUT_STAGED   = join(repoRoot, '_sass/base/design/_variables-generated.scss');
 const OUTPUT_TOKENS   = join(__dirname, 'tokens-extracted.json');
 const SCSS_VARIABLES  = join(repoRoot, '_sass/base/design/_variables.scss');
 const SCSS_COLORS     = join(repoRoot, '_sass/base/design/_colors.scss');
 
 // ============================================================================
-// FORWARD: tokens.json → _variables-generated.scss
+// FORWARD: tokens.json → _variables-generated.scss (via Style Dictionary v4)
 // ============================================================================
+// The forward path delegates to sd.config.mjs to use Style Dictionary.
+// This function exists so `node script.mjs` remains a single entry point
+// for both directions (--reverse and default forward). For forward-only
+// use, prefer `npm run tokens:build` or `node sd.config.mjs` directly.
 
-/**
- * Flatten a nested token object into SCSS variable declarations.
- * Resolves {ref.path} token aliases within the same token tree.
- * @param {object} obj   - Token tree or subtree
- * @param {string} prefix - Current variable-name prefix
- * @param {object} root   - Full token root (for alias resolution)
- * @returns {string[]} SCSS lines
- */
-function flattenTokens(obj, prefix = '', root = obj) {
-  const lines = [];
-  for (const [key, val] of Object.entries(obj)) {
-    if (key.startsWith('_')) continue; // skip _comment fields
-    const name = prefix ? `${prefix}-${key}` : key;
-    if (val && typeof val === 'object' && 'value' in val) {
-      const resolved = resolveAlias(val.value, root);
-      const comment  = val.comment ? ` // ${val.comment}` : '';
-      lines.push(`$${name}: ${resolved};${comment}`);
-    } else if (val && typeof val === 'object') {
-      lines.push(...flattenTokens(val, name, root));
-    }
-  }
-  return lines;
-}
-
-/**
- * Resolve Style Dictionary alias syntax: {path.to.token}
- * @param {string} value - Token value, possibly containing {alias}
- * @param {object} root  - Full token root
- * @returns {string} Resolved value
- */
-function resolveAlias(value, root) {
-  return String(value).replace(/\{([^}]+)\}/g, (_, path) => {
-    const parts = path.split('.');
-    let node = root;
-    for (const part of parts) {
-      node = node?.[part];
-    }
-    return node?.value ?? `{${path}}`; // leave unresolved aliases as-is
-  });
-}
-
-function buildTokensToScss() {
-  const tokens = JSON.parse(readFileSync(TOKENS_PATH, 'utf8'));
-  const lines = [
-    '// Do not edit directly — generated from tokens.json',
-    '// Run: node .github/skills/style-dictionary/script.mjs',
-    '// Source: .github/skills/style-dictionary/tokens.json',
-    '',
-  ];
-  lines.push(...flattenTokens(tokens, '', tokens));
-  writeFileSync(OUTPUT_STAGED, lines.join('\n') + '\n');
+async function buildTokensToScss() {
+  // Delegate to sd.config.mjs which registers the Genesis SCSS format and
+  // transform group that preserves OKLCH values without hex coercion.
+  const { default: sdConfig } = await import('./sd.config.mjs');
+  const sd = new StyleDictionary(sdConfig);
+  await sd.buildAllPlatforms();
   console.log(`✓ Generated ${OUTPUT_STAGED}`);
-  console.log('  Review diff: diff _sass/base/design/_variables.scss _sass/base/design/_variables-generated.scss');}
+  console.log('  Review diff: diff _sass/base/design/_variables.scss _sass/base/design/_variables-generated.scss');
+}
 
 // ============================================================================
 // REVERSE: _sass/base/design/ → tokens-extracted.json
@@ -201,8 +162,9 @@ function buildScssToTokens() {
       seen.add(name);
 
       const { category, pathParts } = categoriseVar(name);
-      const entry = { value, type: inferType(value) };
-      if (comment) entry.comment = comment;
+      // Output DTCG format: $value, $type, $description
+      const entry = { $value: value, $type: inferType(value) };
+      if (comment) entry.$description = comment;
 
       if (!result[category]) result[category] = {};
       setNestedPath(result[category], pathParts, entry);
@@ -217,8 +179,8 @@ function buildScssToTokens() {
 // ============================================================================
 // DIFF helper
 // ============================================================================
-function showDiff() {
-  buildTokensToScss();
+async function showDiff() {
+  await buildTokensToScss();
   try {
     const diff = execSync(`diff "${SCSS_VARIABLES}" "${OUTPUT_STAGED}"`, { encoding: 'utf8' });
     if (!diff.trim()) {
@@ -238,7 +200,7 @@ const args = process.argv.slice(2);
 if (args.includes('--reverse')) {
   buildScssToTokens();
 } else if (args.includes('--diff')) {
-  showDiff();
+  await showDiff();
 } else {
-  buildTokensToScss();
+  await buildTokensToScss();
 }

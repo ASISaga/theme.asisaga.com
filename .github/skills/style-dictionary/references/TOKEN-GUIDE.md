@@ -8,7 +8,7 @@
 
 Design tokens are the atomic values that define the Genesis Semantic Design System visual language. This guide documents every token category, its SCSS output variable name, and usage guidance.
 
-The tokens are stored in `tokens.json` using the Style Dictionary format (nested JSON with `value`, `type`, and optional `comment` fields). They are translated into SCSS variable declarations by `script.mjs`.
+The tokens are stored in `tokens.json` using the **DTCG (Design Token Community Group) spec** format (`$value`, `$type`, `$description`). They are translated into SCSS variable declarations by Style Dictionary v4 via `sd.config.mjs`.
 
 ## Token Categories
 
@@ -31,7 +31,7 @@ The Genesis design system uses **OKLCH** color values throughout. OKLCH provides
 | `color.border.light` | `$color-border-light` | `oklch(0.85 0.01 220)` | Borders on white backgrounds |
 | `color.border.dark` | `$color-border-dark` | `oklch(0.15 0.01 220)` | Borders on dark backgrounds |
 
-> ⚠️ **OKLCH preservation**: Never run these tokens through Style Dictionary's default color transforms — they will be corrupted to hex. Always use `node script.mjs` or the provided shell scripts.
+> ⚠️ **OKLCH preservation**: Never run these tokens through Style Dictionary's default color transforms — they will be corrupted to hex. Always use `node sd.config.mjs` or the provided shell scripts.
 
 ### 2. Typography Tokens
 
@@ -123,8 +123,8 @@ Eight-point grid with Genesis-specific extensions:
 
 ## Adding New Tokens
 
-1. Add entry to `tokens.json` following the category pattern
-2. Run `node .github/skills/style-dictionary/script.mjs`
+1. Add entry to `tokens.json` following the DTCG format (`$value`, `$type`, `$description`)
+2. Run `npm run tokens:build` (or `node .github/skills/style-dictionary/sd.config.mjs`)
 3. Review `_sass/base/design/_variables-generated.scss`
 4. Run `npm run test:scss` to confirm Sass compilation
 5. Copy relevant variables into `_sass/base/design/_variables.scss` or apply with `--apply`
@@ -132,23 +132,24 @@ Eight-point grid with Genesis-specific extensions:
 ## Bidirectional Sync Workflow
 
 ```
-tokens.json ──[tokens-to-scss.sh]──► _variables-generated.scss
-                                            │
-                                     Review & --apply
-                                            │
-                                            ▼
-                                    _variables.scss (production)
-                                            │
-                                    [scss-to-tokens.sh]
-                                            │
-                                            ▼
+tokens.json ──[Style Dictionary v4]──► _variables-generated.scss
+(DTCG format)    (sd.config.mjs)              │
+                                       Review & --apply
+                                              │
+                                              ▼
+                                     _variables.scss (production)
+                                              │
+                                     [scss-to-tokens.sh]
+                                              │
+                                              ▼
                                tokens-extracted.json ──► tokens.json
 ```
 
 ## Related Files
 
-- **Token source**: `.github/skills/style-dictionary/tokens.json`
-- **Build script**: `.github/skills/style-dictionary/script.mjs`
+- **Token source**: `.github/skills/style-dictionary/tokens.json` (DTCG format)
+- **Style Dictionary config**: `.github/skills/style-dictionary/sd.config.mjs`
+- **Legacy script (reverse only)**: `.github/skills/style-dictionary/script.mjs`
 - **Forward script**: `.github/skills/style-dictionary/scripts/tokens-to-scss.sh`
 - **Reverse script**: `.github/skills/style-dictionary/scripts/scss-to-tokens.sh`
 - **Production variables**: `_sass/base/design/_variables.scss`
