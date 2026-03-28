@@ -35,11 +35,15 @@ export class GenesisFooter extends GenesisElement {
   }
 
   /**
-   * Set ARIA role for footer
+   * Set ARIA role for footer.
+   * The custom element must NOT carry role="contentinfo" because the inner
+   * <footer> element already implies that landmark.  Having both creates
+   * duplicate-contentinfo and nested-landmark violations (WCAG).
    */
   _setAriaRole() {
-    if (!this.hasAttribute('role')) {
-      this.setAttribute('role', 'contentinfo');
+    // Remove any role to avoid duplicating the inner <footer> landmark
+    if (this.getAttribute('role') === 'contentinfo') {
+      this.removeAttribute('role');
     }
   }
 

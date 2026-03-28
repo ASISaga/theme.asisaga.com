@@ -49,7 +49,7 @@ description: "SCSS coding instructions for Genesis Semantic Design System v2.0"
 
 ## Ontology Reference
 
-**Six semantic categories** (31 variants total):
+**Six semantic categories** (89 variants total — 33 foundational + 56 evolved):
 → **Complete reference**: `/docs/specifications/scss-ontology-system.md`
 
 **Quick category list:**
@@ -78,8 +78,8 @@ Each visual CSS concern maps from a **semantic purpose** through an owning ontol
 | **Visual transparency and glass** — entity `surface-glass`=blur 20px at 15% opacity; atmosphere `ethereal`=blur 10px, `vibrant`=blur 8px with glow | `atmosphere` + `entity` | Backdrop effects | `backdrop-filter` |
 | **Lifecycle transitions and temporal signaling** — `evolving`=sweeping gradient for progress, `scroll-triggered`=fade-in-up on intersection, `mentioned`=pulse highlight | `state` | Animations | `animation`, `transition`, `@keyframes` |
 | **Content availability and lifecycle** — `stable`=full visibility, `deprecated`=50% opacity + grayscale, `locked`=2px blur + disabled interaction | `state` | Opacity / filters | `opacity`, `filter` |
-| **Action-specific interaction feedback** — `navigate`=hover underline, `execute`=neon glow, `destructive`=red warning glow, all enforce 44px WCAG touch targets | `synapse` | Hover / focus | `:hover`, `:focus`, `cursor`, `transition` |
-| **Content deprecation and link discoverability** — `deprecated`=line-through for outdated; `navigate`=removes underline, restores on hover | `state` + `synapse` | Text decoration | `text-decoration` |
+| **Action-specific interaction feedback** — `navigate`=permanent underline with accessible color, `execute`=neon glow, `destructive`=red warning glow, all enforce 44px WCAG touch targets | `synapse` | Hover / focus | `:hover`, `:focus`, `cursor`, `transition` |
+| **Content deprecation and link discoverability** — `deprecated`=line-through for outdated; `navigate`=persistent underline that thickens on hover | `state` + `synapse` | Text decoration | `text-decoration` |
 
 → **Full specification**: `/docs/specifications/ontology-html-mapping.md`
 
@@ -104,6 +104,36 @@ Each HTML element falls into a hierarchy level that determines which mixins are 
 - ❌ Setting `border` or `padding` in any mixin other than `entity`
 - ❌ Setting `font-*` properties in any mixin other than `cognition`
 - ❌ Setting `background` in any mixin other than `atmosphere` (or entity surface tokens)
+
+## WCAG AA Color Accessibility (CRITICAL)
+
+All OKLCH color tokens used for text must meet **4.5:1 contrast ratio** against their background.
+
+**OKLCH lightness rule of thumb:**
+- **L ≤ 0.55** for text on white/light surfaces (`oklch(0.99 …)`)
+- **L ≥ 0.80** for text on dark/void surfaces (`oklch(0.08 …)`)
+
+**Verified accessible tokens:**
+```scss
+// ✅ WCAG AA on white backgrounds
+--text-link: oklch(0.45 0.20 230);       // Links
+--accent-neon: oklch(0.50 0.20 230);     // Interactive accent
+--accent-gold: oklch(0.55 0.12 85);      // Gold accent
+--text-accent: oklch(0.45 0.20 230);     // Accent text
+--focus-ring: oklch(0.45 0.20 230 / 0.7); // Focus indicator
+```
+
+**Link underline requirement:**
+- Synapse `'navigate'` uses `text-decoration: underline` (not `border-bottom: transparent`)
+- Links must be distinguishable from surrounding text without relying solely on color
+- Hover may change `text-decoration-thickness` but must retain underline
+
+**Body text color:**
+- Body defaults to `$text-primary` (dark) — light backgrounds are the default surface
+- Only `void`/`cosmic` atmosphere variants set white text explicitly on their dark backgrounds
+- ❌ NEVER set body color to `$text-inverse` — causes invisible text on all light sections
+
+→ **Full accessibility specification**: `.github/specs/ontological-design-system.md` § Accessibility Compliance
 
 ## Theme/Subdomain Architecture (CRITICAL)
 

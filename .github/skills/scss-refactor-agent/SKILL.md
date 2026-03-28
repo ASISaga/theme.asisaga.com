@@ -100,15 +100,15 @@ npm test             # All checks
 
 ## Quick Reference
 
-**Six Categories:**
-- `genesis-environment($logic)` - Layout (5 variants)
-- `genesis-entity($nature)` - Visual (10 variants)
-- `genesis-cognition($intent)` - Typography (8 variants)
-- `genesis-synapse($vector)` - Interaction (21 variants)
+**Six Categories** (89 total — 33 foundational + 56 evolved):
+- `genesis-environment($logic)` - Layout (21 variants)
+- `genesis-entity($nature)` - Visual (17 variants)
+- `genesis-cognition($intent)` - Typography (9 variants)
+- `genesis-synapse($vector)` - Interaction (19 variants)
 - `genesis-state($condition)` - States (14 variants)
-- `genesis-atmosphere($vibe)` - Atmosphere (8 variants)
+- `genesis-atmosphere($vibe)` - Atmosphere (9 variants)
 
-→ **All 41+ variants**: `/docs/specifications/scss-ontology-system.md`
+→ **All 89 variants**: `/docs/specifications/scss-ontology-system.md`
 
 **Visual Design Element Ownership:**
 
@@ -121,6 +121,14 @@ npm test             # All checks
 | Component edge treatment — 1px subtle, 2px neon accent, 999px pill via `--radius-bento` | `entity` | Borders / shape |
 | Lifecycle transitions and temporal signaling — `evolving`=sweep gradient, `scroll-triggered`=fade-in-up, `deprecated`=dimmed | `state` | Animations |
 | Action-specific interaction feedback — `navigate`=hover underline, `execute`=neon glow, 44px WCAG touch targets | `synapse` | Hover / focus |
+
+### Accessibility Color Rules
+
+When refactoring color values to ontological tokens:
+- **OKLCH L ≤ 0.55** for text on white/light backgrounds (WCAG AA 4.5:1)
+- **Never set body color to `$text-inverse`** — causes invisible text on light sections
+- Links must have `text-decoration: underline` (not just color difference)
+- Synapse `'navigate'` handles this automatically with underline + accessible color
 
 **Hierarchy-Level Rules:**
 
@@ -159,7 +167,7 @@ npm test
 
 **Complete Ontology System**:
 - `/docs/specifications/ontology-html-mapping.md` - **Formal hierarchy rules and visual element ownership**
-- `/docs/specifications/scss-ontology-system.md` - **All 41+ variants, complete API**
+- `/docs/specifications/scss-ontology-system.md` - **All 89 variants, complete API**
 - `_sass/ontology/INTEGRATION-GUIDE.md` - Integration guide
 - `_sass/ontology/_sample.scss` - Working examples
 

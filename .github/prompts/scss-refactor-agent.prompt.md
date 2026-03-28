@@ -174,9 +174,13 @@ Create SCSS that **exactly mirrors HTML structure** and respects hierarchy level
 
 **"I need exact pixel control"** — Spacing is controlled by entity/environment variants. If no variant fits, consider an ontological proposition.
 
-**"Colors don't match exactly"** — Colors are engine concern. Use atmosphere variants to adjust tone.
+**"Colors don't match exactly"** — Colors are engine concern. Use atmosphere variants to adjust tone. All text colors must meet WCAG AA contrast (OKLCH L ≤ 0.55 on white backgrounds).
 
 **"One-off custom styling"** — Ask "What does this element MEAN semantically?" Map to appropriate variant, or propose a new one if justified.
+
+**"Links need to stand out"** — Synapse `'navigate'` provides underlined links with accessible colors. Never use only color to distinguish links from text.
+
+**"Body text is invisible"** — Body text must default to `$text-primary` (dark), not `$text-inverse` (white). Only void/cosmic atmosphere variants set white text.
 
 → Detailed pitfall guide: `_sass/ontology/INTEGRATION-GUIDE.md`
 

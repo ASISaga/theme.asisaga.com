@@ -49,8 +49,8 @@ Each visual design element maps from a **semantic purpose** through an owning on
 | **Visual transparency and glass surfaces** — entity `surface-glass`=blur 20px at 15% opacity for glass components; atmosphere `ethereal`=blur 10px translucency, `vibrant`=blur 8px with neon glow | Atmosphere + Entity | Backdrop effects | `backdrop-filter` |
 | **Lifecycle transitions and temporal signaling** — `evolving` animates sweeping gradient for loading/progress, `scroll-triggered` fades-in-up on viewport entry, `transcending` flows animated gradient spectrum, `mentioned` pulses highlight for @-mentions | State | Animations | `animation`, `transition`, `@keyframes` |
 | **Content availability and lifecycle visibility** — `stable` ensures full visibility, `deprecated` dims to 50% opacity with 70% grayscale for outdated content, `locked` applies 2px blur and disables pointer-events for restricted access | State | Opacity / filters | `opacity`, `filter` |
-| **Action-specific interaction feedback** — `navigate` underlines on hover with accent color for links, `execute` adds neon glow for primary buttons, `destructive` adds red warning glow for danger actions, all enforce 44px WCAG 2.5.5 touch targets on mobile | Synapse | Hover / focus states | `:hover`, `:focus`, `cursor`, `transition` |
-| **Content deprecation and link discoverability** — state `deprecated` adds line-through to signal outdated content; synapse `navigate` removes default underline, restores on hover for discoverable links | State + Synapse | Text decoration | `text-decoration` |
+| **Action-specific interaction feedback** — `navigate` provides permanent underline with WCAG AA accessible color for links, `execute` adds neon glow for primary buttons, `destructive` adds red warning glow for danger actions, all enforce 44px WCAG 2.5.5 touch targets on mobile | Synapse | Hover / focus states | `:hover`, `:focus`, `cursor`, `transition` |
+| **Content deprecation and link discoverability** — state `deprecated` adds line-through to signal outdated content; synapse `navigate` provides persistent underline that thickens on hover for WCAG link-in-text-block compliance | State + Synapse | Text decoration | `text-decoration` |
 
 ## HTML Hierarchy Levels
 
@@ -530,6 +530,27 @@ Before merging any layout, component, or subdomain SCSS:
 - [ ] No `genesis-cognition()` on containers
 - [ ] No `genesis-atmosphere()` on leaf elements
 - [ ] `npm test` passes (SCSS compilation + unit validation + lint)
+
+### Accessibility Checklist
+
+The following items were established through a comprehensive axe-core audit across all theme pages:
+
+- [ ] **Body text color** is `$text-primary` (dark) — not `$text-inverse` (white) which causes invisible text on light backgrounds
+- [ ] **Link colors** have OKLCH L ≤ 0.55 on white backgrounds (4.5:1 WCAG AA contrast)
+- [ ] **Links** have `text-decoration: underline` — not just color difference (link-in-text-block rule)
+- [ ] **No duplicate landmarks** — page has exactly ONE `<header>`, `<footer>`, `<main>`, and `<nav>` (or disambiguated with `aria-label`)
+- [ ] **No nested landmarks** — `<aside>` not inside `<nav>`, `<header>` not inside `<main>` nesting, etc.
+- [ ] **Heading order** is sequential — h1 → h2 → h3 without skipping levels
+- [ ] **One `<h1>` per page** — typically from `layout-header.html` include
+- [ ] **Tab interfaces** follow tablist→tab ownership chain (no `role="group"` wrappers)
+- [ ] **Icon-only spans** have `role="img"` when using `aria-label`
+- [ ] **Scrollable regions** have `tabindex="0"` for keyboard accessibility
+- [ ] **Web component custom elements** do not duplicate inner landmark roles
+- [ ] **Secondary footer sections** use `<div>` (not `<footer>`) to prevent duplicate contentinfo
+
+→ **Accessibility specification**: `docs/specifications/accessibility.md`
+→ **Ontology accessibility rules**: `.github/specs/ontological-design-system.md` § Accessibility Compliance
+→ **Audit report**: `tests/accessibility-audit-report.md`
 
 ## References
 

@@ -56,11 +56,15 @@ export class GenesisHeader extends GenesisElement {
   }
 
   /**
-   * Set ARIA role for header
+   * Set ARIA role for header.
+   * The custom element must NOT carry role="banner" because the inner
+   * <header> element already implies that landmark.  Having both creates
+   * duplicate-banner and nested-landmark violations (WCAG).
    */
   _setAriaRole() {
-    if (!this.hasAttribute('role')) {
-      this.setAttribute('role', 'banner');
+    // Remove any role to avoid duplicating the inner <header> landmark
+    if (this.getAttribute('role') === 'banner') {
+      this.removeAttribute('role');
     }
   }
 
