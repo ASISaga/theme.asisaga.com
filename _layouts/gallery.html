@@ -13,7 +13,7 @@ layout: default
     
     {% if page.categories %}
     <genesis-navigation type="tabs">
-      <div class="gallery__filters" role="group" aria-label="Filter gallery items">
+      <div class="gallery__filters" aria-label="Filter gallery items">
         <button class="gallery__filter gallery__filter--active" data-filter="all">All</button>
         {% for category in page.categories %}
         <button class="gallery__filter" data-filter="{{ category.slug }}">{{ category.name }}</button>

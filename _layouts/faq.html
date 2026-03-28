@@ -20,7 +20,7 @@ layout: default
     
     {% if page.categories %}
     <genesis-navigation type="tabs">
-      <div class="faq__categories" role="group" aria-label="FAQ categories">
+      <div class="faq__categories" aria-label="FAQ categories">
         <button type="button" class="faq__category faq__category--active">All</button>
         {% for category in page.categories %}
         <button type="button" class="faq__category">{{ category }}</button>

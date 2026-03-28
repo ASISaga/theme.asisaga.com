@@ -69,17 +69,28 @@ export class GenesisNavigation extends GenesisElement {
   }
 
   _setupTabs() {
-    const nav = this.querySelector('nav') || this;
-    nav.setAttribute('role', 'tablist');
+    // Set tablist on the component itself — inner wrappers become transparent
+    this.setAttribute('role', 'tablist');
 
-    const links = Array.from(this.querySelectorAll('a, button'));
-    links.forEach((link, index) => {
-      link.setAttribute('role', 'tab');
-      link.setAttribute('tabindex', index === 0 ? '0' : '-1');
+    const tabs = Array.from(this.querySelectorAll('a, button'));
+    tabs.forEach((tab, index) => {
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('tabindex', index === 0 ? '0' : '-1');
       
-      const isSelected = link.classList.contains('active') || 
-                        link.getAttribute('aria-current') === 'page';
-      link.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+      const isSelected = tab.classList.contains('active') || 
+                        tab.getAttribute('aria-current') === 'page';
+      tab.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+
+      // Mark every element between tablist and tab as presentation
+      // so the required tablist → tab parent chain is satisfied
+      let parent = tab.parentElement;
+      while (parent && parent !== this) {
+        const existingRole = parent.getAttribute('role');
+        if (!existingRole || existingRole === 'group') {
+          parent.setAttribute('role', 'presentation');
+        }
+        parent = parent.parentElement;
+      }
     });
   }
 

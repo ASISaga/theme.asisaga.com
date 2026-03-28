@@ -10,7 +10,7 @@ Parameters:
 - class_prefix: BEM block name for styling (required, e.g., "post", "article", "landing")
 {% endcomment %}
 
-<footer class="{{ include.class_prefix }}__footer-cta">
+<div class="{{ include.class_prefix }}__footer-cta" role="group" aria-label="Call to action">
   {% if include.title %}
   <genesis-cognition intent="axiom">
     <h2 class="{{ include.class_prefix }}__cta-title">{{ include.title }}</h2>
@@ -28,4 +28,4 @@ Parameters:
     <a href="{{ include.button_url }}" class="{{ include.class_prefix }}__cta-button">{{ include.button_text }}</a>
   </genesis-synapse>
   {% endif %}
-</footer>
+</div>
