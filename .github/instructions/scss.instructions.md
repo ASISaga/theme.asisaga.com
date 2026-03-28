@@ -27,7 +27,7 @@ description: "SCSS coding instructions for Genesis Semantic Design System v2.0"
 
 **Theme internal files** (`_sass/components/`, `_sass/layouts/`):
 ```scss
-// NO @import - ontology available via _common.scss
+// NO @import - ontology already imported by assets/css/style.scss
 .component {
   @include genesis-environment('distributed');
 }
@@ -110,7 +110,7 @@ Each HTML element falls into a hierarchy level that determines which mixins are 
 **Theme repository (this repo):**
 - Defines Jekyll layouts in `_layouts/` and `_includes/`
 - Provides SCSS via `_sass/` imported through layout head
-- Builds final theme by importing `ontology/index` in `_sass/_common.scss` (line 64)
+- Builds final theme by importing `ontology/index` directly in `assets/css/style.scss`
 - **Responsibility**: All SCSS, layouts, components
 
 **Subdomain repositories:**
@@ -129,12 +129,12 @@ Each HTML element falls into a hierarchy level that determines which mixins are 
 
 **NEVER import in:**
 - ❌ Subdomain's `_sass/main.scss` (ontology already available from theme)
-- ❌ `_sass/components/` partials (ontology available via `_common.scss`)
-- ❌ `_sass/layouts/` partials (ontology available via `_common.scss`)
-- ❌ `_sass/samples/` files (ontology available via `_common.scss`)
+- ❌ `_sass/components/` partials (ontology already imported by `assets/css/style.scss`)
+- ❌ `_sass/layouts/` partials (ontology already imported by `assets/css/style.scss`)
+- ❌ `_sass/samples/` files (ontology already imported by `assets/css/style.scss`)
 - ❌ Any file inside `_sass/` directory (creates 22MB bloat)
 
-**Why**: `_common.scss` imports ontology at line 64. Theme's `assets/css/style.scss` imports subdomain's `_sass/main.scss` at build time. Duplicate imports cause massive CSS bloat (22MB vs 1.1MB).
+**Why**: `assets/css/style.scss` imports `ontology/index` as Layer 1. All `_sass/` partials imported after this (via `_main.scss`) have ontology available without re-importing. Theme's `assets/css/style.scss` also imports subdomain's `_sass/main.scss` at build time. Duplicate imports cause massive CSS bloat (22MB vs 1.1MB).
 
 ## Testing & Linting
 

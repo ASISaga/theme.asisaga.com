@@ -21,8 +21,7 @@ prompt: |
   
   **Import Architecture** (CRITICAL):
   - ONLY import ontology/index in:
-    - _sass/_common.scss (line 64) - Theme internal
-    - assets/css/style.scss - Standalone entry points
+    - assets/css/style.scss - Theme entry point (Layer 1)
   - NEVER import in _sass/ partials (causes 22MB bloat)
   
   **Refactoring Workflow**:

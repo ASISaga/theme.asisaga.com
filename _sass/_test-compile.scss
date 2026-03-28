@@ -8,12 +8,12 @@
  * This file is NOT used in production — it is a compile-only test harness.
  *
  * Compilation chain tested mirrors assets/css/style.scss:
- *   1. _common.scss  (→ ontology/index: fonts, base/*, effects, ontology engine)
- *   2. _main.scss    (→ all components + includes + all layouts + index-demo)
+ *   1. ontology/index  (fonts, base/*, effects, ontology engine)
+ *   2. _main.scss      (all components + includes + all layouts + index-demo)
  */
 
 // Full compilation chain (mirrors production style.scss)
-@import "common";
+@import "ontology/index";
 @import "main";
 
 // Test: ontology examples (imports ontology/index)

@@ -271,15 +271,15 @@ Each visual CSS concern maps from a **semantic purpose** through an owning ontol
 
 ### Theme Repository
 
-**Single import point** in `_sass/_common.scss`:
+**Direct import in `assets/css/style.scss` (Layer 1):**
 ```scss
-@import "ontology/index";  // Line 64
+@import "ontology/index";
 ```
 
 **DO NOT import in**:
 - Component files (`_sass/components/*.scss`)
 - Layout files (`_sass/layouts/*.scss`)
-- Any other `_sass/` file (ontology already available)
+- Any other `_sass/` file (ontology already available via style.scss)
 
 ### Subdomain Repositories
 

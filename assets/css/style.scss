@@ -5,7 +5,7 @@
 // ============================================================================
 // Two-layer architecture:
 //
-//   Layer 1: _common.scss  (→ ontology/index)
+//   Layer 1: ontology/index
 //     Universal base theme: fonts, Font Awesome, design tokens, utility mixins,
 //     responsive system, visual effects, and the full ontological engine.
 //     Subdomains @import "ontology/index" to get this same base.
@@ -16,5 +16,5 @@
 //     (e.g. the 2-3 layouts + their associated includes).
 //     This keeps subdomain CSS minimal — no unused layout CSS loaded.
 // ============================================================================
-@import "common";
+@import "ontology/index";
 @import "main";

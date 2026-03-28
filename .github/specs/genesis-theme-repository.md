@@ -52,7 +52,7 @@ theme.asisaga.com/
 │   ├── components/     # 62+ component files (core, sections, products, sacred, web)
 │   ├── layouts/        # Layout-specific SCSS
 │   ├── base/           # Base styles and design tokens
-│   └── _common.scss    # Common imports (ontology loaded at line 64)
+│   └── _main.scss      # Component bundle (all layouts + includes + components)
 ├── assets/
 │   ├── css/            # Compiled stylesheets
 │   ├── js/             # 50+ JavaScript modules

@@ -369,7 +369,7 @@ _sass/
 ├── layouts/                # Legacy layouts (migrating)
 │   ├── _grid.scss
 │   └── _header.scss
-└── _common.scss            # Theme entry point
+└── _main.scss              # Theme component bundle (Layer 2)
 ```
 
 ### 2. Import Order
@@ -377,13 +377,10 @@ _sass/
 **Critical**: Import in correct order to prevent conflicts
 
 ```scss
-// Theme entry (_common.scss)
-@import "base/reset";
-@import "base/design-tokens";
-@import "ontology/index";      // Ontology system
-@import "base/typography";
-@import "components/**";
-@import "layouts/**";
+// Theme entry (assets/css/style.scss — Layer 1)
+@import "ontology/index";  // Universal base: fonts, tokens, engines, interface
+// Theme entry (assets/css/style.scss — Layer 2)
+@import "main";            // Components, layouts, includes
 ```
 
 **Subdomain entry** (standalone SCSS):

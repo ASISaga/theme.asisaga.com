@@ -140,7 +140,7 @@ npm test             # All checks
 - ✅ Standalone files with `---` frontmatter
 
 **DON'T import in:**
-- ❌ `_sass/components/` partials (already via `_common.scss`)
+- ❌ `_sass/components/` partials (ontology already imported by `assets/css/style.scss`)
 - ❌ `_sass/layouts/` partials (creates 22MB bloat)
 
 → **Import guide**: `.github/instructions/scss.instructions.md`
