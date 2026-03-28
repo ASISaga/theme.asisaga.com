@@ -8,11 +8,13 @@ Parameters:
 - icon: Optional icon class
 - change: Optional percentage change
 - columns: Grid columns to span (default: 3)
+- heading_level: Heading tag to use (default: h2). Set to match context — use h2 under h1, h3 under h2.
 {% endcomment %}
 
+{% assign heading_tag = include.heading_level | default: "h2" %}
 <article class="dashboard-widget" data-columns="{{ include.columns | default: '3' }}">
   <header class="dashboard-widget__header">
-    <h2 class="dashboard-widget__title">{{ include.title }}</h2>
+    <{{ heading_tag }} class="dashboard-widget__title">{{ include.title }}</{{ heading_tag }}>
     {% if include.icon %}
     <i class="dashboard-widget__icon {{ include.icon }}" aria-hidden="true"></i>
     {% endif %}

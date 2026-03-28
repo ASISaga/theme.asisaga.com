@@ -133,9 +133,14 @@ check_audit_rules() {
     fi
     
     # Check heading hierarchy (basic: h3 without preceding h2)
+    # NOTE: This check only applies to complete pages/layouts, not partials or includes
+    # (parent layouts may provide the missing h2 level)
     if grep -q '<h3' "$file" && ! grep -q '<h2' "$file"; then
-        echo "  ⚠️  Found <h3> without <h2> — may skip heading levels"
-        issues=$((issues + 1))
+        if grep -q 'layout:' "$file"; then
+            # Only warn for top-level layouts that define the full page structure
+            echo "  ⚠️  Found <h3> without <h2> — may skip heading levels (verify parent layout provides h2)"
+            issues=$((issues + 1))
+        fi
     fi
     
     if [ $issues -eq 0 ]; then
