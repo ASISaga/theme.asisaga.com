@@ -7,44 +7,14 @@
  *
  * This file is NOT used in production — it is a compile-only test harness.
  *
- * Compilation chain tested:
- *   1. _common.scss  (= ontology/index: fonts, base/*, effects, ontology engine)
- *   2. _default-bundle.scss  (= common + core components + universal includes + default layout)
- *   3. _main.scss  (= all remaining components + includes + index-demo)
- *   4. Each layout SCSS compiled individually (they each import default-bundle in production)
+ * Compilation chain tested mirrors assets/css/style.scss:
+ *   1. _common.scss  (→ ontology/index: fonts, base/*, effects, ontology engine)
+ *   2. _main.scss    (→ all components + includes + all layouts + index-demo)
  */
 
-// Step 1: base theme (absorbs fontawesome + base/* + ontology)
+// Full compilation chain (mirrors production style.scss)
 @import "common";
-
-// Step 2: default layout bundle (core components + universal includes)
-@import "default-bundle";
-
-// Step 3: full component bundle (section, product, sacred, specialized + all includes)
 @import "main";
-
-// Test: layout compilation — each layout SCSS imported directly since they are
-// loaded per-page via assets/css/<layout>.scss entry points, not via _main.scss.
-@import "layouts/app";
-@import "layouts/default";
-@import "layouts/scrollable";
-@import "layouts/fixed-height";
-@import "layouts/minimal-base";
-@import "layouts/post";
-@import "layouts/article";
-@import "layouts/archive";
-@import "layouts/profile";
-@import "layouts/landing";
-@import "layouts/gallery";
-@import "layouts/form";
-@import "layouts/docs";
-@import "layouts/faq";
-@import "layouts/dashboard";
-@import "layouts/chatroom";
-@import "layouts/search";
-@import "layouts/settings";
-@import "layouts/minimal";
-@import "layouts/splash";
 
 // Test: ontology examples (imports ontology/index)
 // Create a test scope to avoid conflicts

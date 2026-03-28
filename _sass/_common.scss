@@ -1,22 +1,16 @@
 // ============================================================================
 // SEMANTIC DESIGN SYSTEM - ASI Saga Theme v2.0
-// _common.scss — THIN ALIAS FOR THE GENESIS BASE THEME
+// _common.scss — LAYER 1: UNIVERSAL BASE THEME (alias for ontology/index)
 // ============================================================================
-// This file is the single entry point for the universal base theme.
-// Subdomains @import "ontology/index" directly; this alias exists for
-// backward compatibility within the theme's own compilation chain.
+// Imported by assets/css/style.scss as the first layer.
+// Subdomains @import "ontology/index" directly to get this same base.
 //
-// What this provides (via ontology/index):
+// Provides (via ontology/index):
 //   • Fonts, icons, Font Awesome
 //   • All design tokens (colors, spacing, typography, dimensions)
 //   • Utility mixins, semantic-mixins, accessibility helpers
 //   • Layout system (breakpoints, responsive utilities, layout wrappers)
 //   • Visual effects (animations, glassmorphism, ambient layer)
 //   • Full ontological engine: tokens → engines → interface
-//
-// What this does NOT provide (loaded per-layout):
-//   • UI components (header, footer, navbar, cards)
-//   • Page layout SCSS (_sass/layouts/*.scss)
-//   • Includes SCSS (_sass/includes/*.scss)
 // ============================================================================
 @import "ontology/index";

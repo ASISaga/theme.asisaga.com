@@ -6,11 +6,8 @@
   <meta name="theme-color" content="#1a1a2e">
   <meta name="color-scheme" content="dark light">
 
-  <!-- Stylesheet: self-contained per-layout CSS (or base theme fallback) -->
-  <!-- Each <layout>.css includes the base theme + components + includes for that layout. -->
-  <!-- style.css (base only) is the fallback for pages that specify no layout. -->
-  {% assign _css_file = page.layout | default: 'style' %}
-  <link rel="stylesheet" href="{{ '/assets/css/' | append: _css_file | append: '.css?v=' | append: site.github.build_revision | relative_url }}">
+  <!-- Main stylesheet (served once per site; cached across all pages) -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
 
   <!-- Favicon and device icons -->
   <link id="favicon" rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">

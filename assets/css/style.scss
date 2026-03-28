@@ -1,14 +1,20 @@
 ---
 ---
 // ============================================================================
-// GENESIS THEME BASE — served to every page
+// GENESIS THEME — Single stylesheet served to every page of the site
 // ============================================================================
-// Contains ONLY the universal base: fonts, design tokens, utility mixins,
-// responsive system, visual effects, and the full ontological engine.
+// Two-layer architecture:
 //
-// Layout-specific CSS (components, includes, layouts) is served via the
-// per-page entry point: assets/css/<layout>.css (see _includes/head.html).
-// Subdomains @import "ontology/index" in their _sass/main.scss to get this
-// same base without loading this compiled file.
+//   Layer 1: _common.scss  (→ ontology/index)
+//     Universal base theme: fonts, Font Awesome, design tokens, utility mixins,
+//     responsive system, visual effects, and the full ontological engine.
+//     Subdomains @import "ontology/index" to get this same base.
+//
+//   Layer 2: _main.scss  (theme bundle OR subdomain-specific override)
+//     For this theme demo site: all components, all includes, all layouts.
+//     Subdomains supply their own _main.scss importing ONLY what they use
+//     (e.g. the 2-3 layouts + their associated includes).
+//     This keeps subdomain CSS minimal — no unused layout CSS loaded.
 // ============================================================================
 @import "common";
+@import "main";
