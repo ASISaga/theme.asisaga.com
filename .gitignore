@@ -36,3 +36,7 @@ tests/.audit-results/
 .github/metrics/metrics-*.txt
 !.github/metrics/metrics-baseline-*.txt
 !.github/metrics/README.md
+
+# Style Dictionary staged output (review before applying)
+_sass/base/design/_variables-generated.scss
+.github/skills/style-dictionary/tokens-extracted.json

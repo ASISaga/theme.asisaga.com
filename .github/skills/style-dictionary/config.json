@@ -1,14 +1,17 @@
 {
-  "_comment": "Genesis Design System -- Style Dictionary config. Use 'node script.mjs' (not 'npx style-dictionary build') to preserve OKLCH color values without hex conversion.",
+  "_comment": "Style Dictionary v4 config reference. The full programmatic config lives in sd.config.mjs.",
   "source": [".github/skills/style-dictionary/tokens.json"],
-  "output": {
+  "platforms": {
     "scss": {
-      "destination": "_sass/base/design/_variables-generated.scss",
-      "comment": "Staged output — review diff before overwriting _variables.scss"
-    },
-    "tokens-extracted": {
-      "destination": ".github/skills/style-dictionary/tokens-extracted.json",
-      "comment": "Output of reverse translation (scss-to-tokens.sh)"
+      "transformGroup": "scss/genesis",
+      "buildPath": "_sass/base/design/",
+      "files": [
+        {
+          "destination": "_variables-generated.scss",
+          "format": "scss/genesis-variables"
+        }
+      ]
     }
-  }
+  },
+  "log": { "verbosity": "default" }
 }

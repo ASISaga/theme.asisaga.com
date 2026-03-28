@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # ============================================================================
-# TOKENS → SCSS (Forward Translation)
+# TOKENS → SCSS (Forward Translation via Style Dictionary v4)
 # ============================================================================
 # Converts .github/skills/style-dictionary/tokens.json into SCSS variable
-# declarations at _sass/base/design/_variables-generated.scss.
+# declarations at _sass/base/design/_variables-generated.scss using
+# Style Dictionary v4.
 #
 # Usage:
 #   .github/skills/style-dictionary/scripts/tokens-to-scss.sh           # generate staged file
@@ -29,13 +30,13 @@ BLUE='\033[0;34m'
 NC='\033[0m'
 
 echo -e "${BLUE}┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "${BLUE}│   Style Dictionary — Tokens → SCSS                 │${NC}"
+echo -e "${BLUE}│   Style Dictionary v4 — Tokens → SCSS              │${NC}"
 echo -e "${BLUE}└─────────────────────────────────────────────────────┘${NC}"
 echo ""
 
-# Generate SCSS from tokens.json using the Node.js script
-echo -e "${BLUE}Generating SCSS from tokens.json...${NC}"
-node "$SKILL_DIR/script.mjs"
+# Generate SCSS from tokens.json using Style Dictionary v4
+echo -e "${BLUE}Generating SCSS from tokens.json via Style Dictionary...${NC}"
+node "$SKILL_DIR/sd.config.mjs"
 echo ""
 
 # Diff mode
