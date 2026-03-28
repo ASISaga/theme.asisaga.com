@@ -31,6 +31,7 @@
     
     @include from(lg) {
       flex-direction: row;
+      flex-wrap: nowrap;
       gap: 0.25rem;
       align-items: center;
       width: auto;
@@ -114,6 +115,7 @@
       font-size: 0.8125rem;
       letter-spacing: 0.04em;
       text-transform: uppercase;
+      white-space: nowrap;
     }
     
     &:hover,

@@ -98,6 +98,20 @@ export class GenesisElement extends HTMLElement {
   }
 
   /**
+   * Alias for _prefersReducedMotion (used by some subclasses)
+   */
+  _reducedMotion() {
+    return this._prefersReducedMotion();
+  }
+
+  /**
+   * Check if animations should run (motion available and not reduced)
+   */
+  _shouldAnimate() {
+    return !this._prefersReducedMotion();
+  }
+
+  /**
    * Apply animation preset with reduced motion support
    */
   _applyPreset(element, preset, customOptions = {}) {

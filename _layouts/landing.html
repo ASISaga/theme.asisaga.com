@@ -4,7 +4,7 @@ layout: default
 <genesis-atmosphere vibe="{% if page.sacred %}sacred{% else %}vibrant{% endif %}">
   <div class="landing-layout">
     {% if page.hero %}
-    <genesis-entity nature="transcendent">
+    <genesis-entity nature="imperative">
       <section class="landing__hero">
         {% include layouts/layout-header.html
            class_prefix="landing"
@@ -14,7 +14,7 @@ layout: default
         
         {% if page.hero.cta %}
         <div class="landing__hero-actions">
-          <genesis-synapse vector="{% if page.hero.cta.invoke %}invoke{% else %}execute{% endif %}">
+          <genesis-synapse vector="execute">
             <a href="{{ page.hero.cta.url }}" class="landing__hero-button">{{ page.hero.cta.text }}</a>
           </genesis-synapse>
         </div>

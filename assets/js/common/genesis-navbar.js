@@ -221,17 +221,21 @@ export class GenesisNavbar extends GenesisElement {
     const links = this.querySelectorAll('a');
     
     links.forEach(link => {
-      const linkPath = new URL(link.href, window.location.origin).pathname;
-      
-      if (linkPath === currentPath) {
-        link.setAttribute('aria-current', 'page');
-        link.classList.add('active', 'navbar__link--active');
+      try {
+        const linkPath = new URL(link.href, window.location.origin).pathname;
         
-        // Also mark parent item if in dropdown
-        const parentItem = link.closest('.navbar__item');
-        if (parentItem) {
-          parentItem.classList.add('navbar__item--active');
+        if (linkPath === currentPath) {
+          link.setAttribute('aria-current', 'page');
+          link.classList.add('active', 'navbar__link--active');
+          
+          // Also mark parent item if in dropdown
+          const parentItem = link.closest('.navbar__item');
+          if (parentItem) {
+            parentItem.classList.add('navbar__item--active');
+          }
         }
+      } catch {
+        // Skip links with invalid URLs (e.g., empty href, javascript:, etc.)
       }
     });
   }

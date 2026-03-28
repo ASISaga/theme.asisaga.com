@@ -45,6 +45,25 @@ layout: minimal-base
           </div>
         </div>
       </genesis-state>
+      <script>
+      (function() {
+        var target = '{{ page.countdown_target | default: "" }}';
+        if (!target) return;
+        var targetDate = new Date(target).getTime();
+        function update() {
+          var now = new Date().getTime();
+          var d = targetDate - now;
+          if (d < 0) d = 0;
+          var el = function(id) { return document.getElementById(id); };
+          el('days').textContent = String(Math.floor(d / 86400000)).padStart(2, '0');
+          el('hours').textContent = String(Math.floor((d % 86400000) / 3600000)).padStart(2, '0');
+          el('minutes').textContent = String(Math.floor((d % 3600000) / 60000)).padStart(2, '0');
+          el('seconds').textContent = String(Math.floor((d % 60000) / 1000)).padStart(2, '0');
+        }
+        update();
+        setInterval(update, 1000);
+      })();
+      </script>
       {% endif %}
       
       {% if page.email_capture %}

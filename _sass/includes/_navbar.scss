@@ -8,17 +8,11 @@
 
 // Navbar uses .navbar selectors — see _navbar.scss
 // This file documents the include–SCSS correspondence.
+// NOTE: genesis-synapse('navigate') is applied to .navbar__link in _navbar.scss
+// Do NOT apply synapse to .navbar__item (the li) — it conflicts with flex layout
 .navbar {
-  .navbar__item {
-    @include genesis-synapse('navigate');         // Nav item link
-  }
-
   .navbar__dropdown {
     @include genesis-entity('aggregate');         // Dropdown panel
     @include genesis-atmosphere('neutral');        // Standard dropdown tone
-  }
-
-  .navbar__dropdown-item {
-    @include genesis-synapse('navigate');         // Dropdown link
   }
 }
