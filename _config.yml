@@ -5,7 +5,7 @@ theme:
 remote_theme: 
 
 include:
-  - _samples
+  - samples
 
 sass:
   load_paths:
@@ -22,7 +22,7 @@ exclude:
   - docs/
   - LICENSE
   - README.md
-  - _samples/README.md
+  - samples/README.md
   - CHANGELOG.md
   - website_structure.json
   - node_modules/
