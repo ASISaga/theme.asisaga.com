@@ -1,30 +1,71 @@
 /**
  * PROJECT GENESIS: ONTOLOGY SYSTEM INDEX
  * --------------------------------------------------------------------------
- * This is the main entry point for the semantic SCSS engine.
- * Import this file to gain access to the complete ontological interface.
- * 
+ * The complete base theme — the single @import that subdomains need.
+ *
+ * This file is intentionally the universal core. It covers:
+ *   - Fonts, icons, fontawesome
+ *   - All design tokens (colors, spacing, typography, dimensions)
+ *   - All utility mixins and accessibility helpers
+ *   - Layout system (breakpoints, wrappers, responsive utilities)
+ *   - Visual effects (animations, glassmorphism, ambient layer)
+ *   - The full ontological engine (tokens → engines → interface)
+ *
+ * What it does NOT include (these are theme-specific, not universal):
+ *   - Layout templates (header, footer, navbar, cards) — in _default-bundle
+ *   - Page-layout SCSS (_layouts/*.scss) — in per-layout CSS entry points
+ *   - Includes SCSS (_includes/*.scss) — in per-layout CSS entry points
+ *
  * ARCHITECTURE:
- * 
- * Tier 1: Content (Subdomain HTML)
- *   - Defines WHAT the data is
- *   - No style attributes; 1 class per element
- * 
- * Tier 2: Interface (This system - _interface.scss)
- *   - Defines the ROLE of the content
- *   - Agnostic; no CSS properties allowed
- *   - Semantic API exposed to subdomains
- * 
- * Tier 3: Engine (_engines.scss)
- *   - Defines the LOOK (OKLCH, Bento)
- *   - The only place for raw CSS/Pixels
- *   - Physical manifestation layer
- * 
+ *   Tier 1: Content (Subdomain HTML) — defines WHAT the data is
+ *   Tier 2: Interface (this file) — defines the ROLE of the content
+ *   Tier 3: Engine (_engines.scss) — defines the LOOK
+ *
  * IMPORT ORDER:
- * 1. CSS Custom Properties (tokens) - Design token mappings
- * 2. Engine Layer (implementation) - Physical manifestation
- * 3. Interface Layer (API) - Semantic contracts
+ *   0. Base theme foundation (fonts, tokens, utilities, layout, effects)
+ *   1. CSS Custom Properties (ontology tokens)
+ *   2. Engine Layer (physical manifestation mixins)
+ *   3. Interface Layer (semantic API exposed to subdomains)
  */
+
+// ============================================================================
+// STEP 0: BASE THEME FOUNDATION
+// ============================================================================
+// Everything a subdomain needs before the ontological engine.
+// Subdomains @import "ontology/index" to get all of this in one line.
+
+// Fonts & Icons
+@import "../fontawesome/font-awesome";
+@import "../base/fonts";
+@import "../base/icons";
+
+// Design Foundation — The DNA
+@import "../base/design/colors";              // OKLCH + semantic color tokens
+@import "../base/design/design-tokens";       // Non-color design tokens and shadows
+@import "../base/design/variables";           // Theme-wide Sass variables
+@import "../base/design/dimensions";          // Spacing and sizing tokens
+
+// Utilities & Mixins
+@import "../base/utilities/mixins";           // Core Sass mixins
+@import "../base/utilities/semantic-mixins";  // Semantic mixins
+@import "../base/utilities/accessibility";    // WCAG compliance helpers
+@import "../base/utilities/common";           // Common utility styles
+
+// Typography & Theme
+@import "../base/design/typography";          // Font families and typographic scale
+@import "../base/design/semantic-typography"; // Fluid typography and material primitives
+@import "../base/design/theme";               // Theme-level configuration
+
+// Layout System
+@import "../base/layout/responsive-system";   // Modern breakpoints, container queries
+@import "../base/layout/responsive";          // Responsive utilities
+@import "../base/layout/layout-wrappers";     // Modern layout containers
+@import "../base/layout/layout";              // Base layout structures
+
+// Visual Effects
+@import "../base/effects/animations";         // Core animation library
+@import "../base/effects/futuristic-effects"; // Advanced glassmorphism, glows, gradients
+@import "../base/effects/ambient-layer";      // Sentient ambient atmosphere
 
 // ============================================================================
 // STEP 1: CSS CUSTOM PROPERTIES
@@ -42,15 +83,13 @@
 // STEP 3: INTERFACE LAYER (Public API)
 // ============================================================================
 // These mixins are the semantic API for subdomains.
-// They ONLY delegate to engines - no CSS properties.
+// They ONLY delegate to engines — no CSS properties.
 @import "interface";
 
-// ============================================================================
-// STEP 4: THEME LAYOUTS & COMPONENTS (Theme-specific ontology mappings)
-// ============================================================================
-// Ontology-based styling for all theme layouts and components.
-// This applies ontology mixins to theme HTML (layouts, includes).
-@import "theme-layouts";
+// NOTE: theme-layouts (header, footer, navbar, cards) is NOT imported here.
+// Those are theme-specific component implementations, not part of the
+// universal base.  They are imported by _default-bundle.scss which is used
+// by per-layout CSS entry points (assets/css/<layout>.scss).
 
 // ============================================================================
 // EXPORT NOTICE

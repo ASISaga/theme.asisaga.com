@@ -1,16 +1,20 @@
 /**
  * SASS TEST COMPILATION FILE
  * ============================================================================
- * This file imports all theme SCSS to test compilation and catch errors
- * that stylelint cannot detect (undefined mixins, functions, variables).
- * 
- * This file should NOT be used in production - it's for testing only.
- * 
- * Usage: npm run test:scss
+ * Validates that ALL theme SCSS compiles without errors (undefined mixins,
+ * undefined variables, syntax errors).  Run via `npm run test:scss`.
+ * Stylelint cannot catch Sass compilation errors, so this file is essential.
+ *
+ * This file is NOT used in production — it is a compile-only test harness.
+ *
+ * Compilation chain tested mirrors assets/css/style.scss:
+ *   1. ontology/index  (fonts, base/*, effects, ontology engine)
+ *   2. _main.scss      (all components + includes + all layouts + index-demo)
  */
 
-// Import the main common file which includes all theme SCSS
-@import "common";
+// Full compilation chain (mirrors production style.scss)
+@import "ontology/index";
+@import "main";
 
 // Test: ontology examples (imports ontology/index)
 // Create a test scope to avoid conflicts

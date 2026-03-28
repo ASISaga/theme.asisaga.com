@@ -2,7 +2,7 @@
 # Jekyll Front Matter
 # This SCSS file styles the ontology examples page using ONLY the Genesis Semantic Engine
 # Zero raw CSS properties - all styling via ontological mixins
-# NOTE: ontology/index is available via _common.scss - DO NOT import here to avoid code bloat
+# NOTE: ontology/index is already imported by assets/css/style.scss — DO NOT import here (causes code bloat)
 ---
 /**
  * Ontology System Examples - Demonstration SCSS

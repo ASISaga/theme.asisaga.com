@@ -81,8 +81,8 @@ Subdomain repositories are **content-only** with HTML pages and optional page-sp
 | JavaScript | ❌ | ✅ (`assets/js/script.js`, MANDATORY) |
 
 **Build Process**:
-- Theme's `assets/css/style.scss` imports `_sass/common.scss` (which includes ontology)
-- At build time, Jekyll merges theme's `style.scss` with subdomain's `_sass/main.scss`
+- Theme's `assets/css/style.scss` imports `ontology/index` directly (Layer 1: universal base)
+- At build time, Jekyll merges theme's `style.scss` (via `_main.scss`) with subdomain's `_sass/main.scss`
 - Theme layouts automatically load `assets/js/common.js` then `assets/js/script.js`
 
 ## Testing & Linting

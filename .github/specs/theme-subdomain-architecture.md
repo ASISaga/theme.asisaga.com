@@ -38,8 +38,8 @@ Generated Site
 - Ontological design system (`_sass/ontology/`)
 - Components (`_sass/components/`)
 - Layouts (`_sass/layouts/`)
-- Common imports (`_sass/_common.scss`)
-- Main stylesheet (`assets/css/style.scss`)
+- Main component bundle (`_sass/_main.scss`)
+- Main stylesheet entry (`assets/css/style.scss`)
 
 **3. Shared JavaScript**
 - `assets/js/common.js` - Shared utilities
@@ -53,12 +53,12 @@ Generated Site
 
 ### Import Pattern
 
-Single import point in `_sass/_common.scss` (line 64):
+Direct import in `assets/css/style.scss` (Layer 1):
 ```scss
 @import "ontology/index";
 ```
 
-All other SCSS files have ontology available automatically.
+All `_sass/` partials (Layer 2 via `_main.scss`) have ontology available automatically.
 
 ## Subdomain Repository Responsibilities
 
@@ -135,10 +135,10 @@ Example `_sass/main.scss`:
 
 ```
 Theme: assets/css/style.scss
-  ↓ imports
-Theme: _sass/_common.scss
-  ↓ imports (line 64)
+  ↓ imports (Layer 1)
 Theme: _sass/ontology/index.scss
+  ↓ imports (Layer 2)
+Theme: _sass/_main.scss (components + layouts)
   ↓ makes available
 Subdomain: _sass/main.scss (uses mixins)
 ```

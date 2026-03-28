@@ -433,7 +433,7 @@
 
 **Theme component/layout files** in `_sass/components/` or `_sass/layouts/`:
 ```scss
-// NO @import needed - ontology already available via _common.scss
+// NO @import needed - ontology already imported by assets/css/style.scss
 
 .my-component {
   @include genesis-environment('distributed');

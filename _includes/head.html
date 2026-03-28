@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#1a1a2e">
   <meta name="color-scheme" content="dark light">
 
-  <!-- Main stylesheet with cache busting -->
+  <!-- Main stylesheet (served once per site; cached across all pages) -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
 
   <!-- Favicon and device icons -->
