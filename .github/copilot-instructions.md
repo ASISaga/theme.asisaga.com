@@ -62,3 +62,6 @@ npm run dogfood         # Validate agent quality (audit + duplication + sync)
 | All specifications | `.github/specs/` and `/docs/specifications/` |
 | Agent guidelines | `/docs/specifications/github-copilot-agent-guidelines.md` |
 | Path-specific mechanism | `.github/docs/path-specific-instructions.md` |
+| Ontological design system | `.github/specs/ontological-design-system.md` |
+| Accessibility rules | `.github/specs/ontological-design-system.md` § Accessibility Compliance |
+| WCAG compliance | `/docs/specifications/accessibility.md` |

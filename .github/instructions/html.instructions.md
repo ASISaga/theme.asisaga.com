@@ -116,6 +116,79 @@ Each visual CSS concern maps from a semantic purpose through an owning ontologic
 <main id="skip-target" tabindex="-1">{{ content }}</main>
 ```
 
+### Web Component Landmark Rules
+
+Custom elements wrapping semantic landmarks must **not duplicate** the landmark role:
+- ❌ `<genesis-header role="banner">` — inner `<header>` already implies banner
+- ❌ `<genesis-footer role="contentinfo">` — inner `<footer>` already implies contentinfo
+- ❌ `<genesis-environment role="navigation">` when it contains `<nav>` — let the `<nav>` own the role
+- ✅ Custom elements should remove or avoid setting landmark roles when inner elements provide them
+
+### Secondary Footer/Header Elements
+
+Only the page-level `<footer>` (from `_includes/footer.html`) should be a `<footer>` element. All other "footer-like" sections must use `<div>`:
+- ✅ `<div class="post__footer-cta" role="group">` for CTA sections
+- ✅ `<div class="chatroom-input" role="group">` for input areas
+- ✅ `<div class="modal__footer">` for modal footers
+- ❌ `<footer class="post__footer-cta">` creates a duplicate contentinfo landmark
+- ❌ `<footer class="chatroom-input">` creates a duplicate contentinfo landmark
+
+Similarly, avoid `<main>` in page content — `default.html` already wraps `{{ content }}` in `<main>`:
+- ✅ `<div class="genesis-demo">` for content wrapper
+- ❌ `<main class="genesis-demo">` creates a duplicate/nested main landmark
+
+### ARIA Tab Pattern
+
+When using tab interfaces (via `genesis-navigation type="tabs"` or manual implementation):
+1. `role="tablist"` goes on the container of the tabs
+2. Every element between tablist and tab buttons must have `role="presentation"` (makes them transparent)
+3. ❌ Never use `role="group"` on tab wrappers — breaks the tablist→tab ownership chain
+4. Each `role="tab"` must be a direct ARIA child of `role="tablist"`
+
+```html
+<!-- ✅ Correct: tablist on ul, presentation on li -->
+<ul role="tablist" aria-label="Settings sections">
+  <li role="presentation">
+    <a role="tab" aria-selected="true" tabindex="0" href="#profile">Profile</a>
+  </li>
+  <li role="presentation">
+    <a role="tab" aria-selected="false" tabindex="-1" href="#security">Security</a>
+  </li>
+</ul>
+```
+
+### Heading Hierarchy
+
+- One `<h1>` per page (typically from `layout-header.html`)
+- Never skip heading levels: h1 → h2 → h3 (not h1 → h3)
+- Component headings must use the appropriate level for their context (h2 under h1, h3 under h2)
+- ❌ Don't hardcode `<h3>` in reusable components that appear directly under `<h1>` — use `<h2>` instead
+
+### Icon-Only Elements
+
+Spans with only icon content must have both `role` and `aria-label`:
+```html
+<!-- ✅ Correct: role="img" makes aria-label valid on span -->
+<span role="img" aria-label="Categories">
+  <i class="fas fa-folder" aria-hidden="true"></i>
+</span>
+
+<!-- ❌ Wrong: aria-label on plain span is prohibited -->
+<span aria-label="Categories">
+  <i class="fas fa-folder" aria-hidden="true"></i>
+</span>
+```
+
+### Scrollable Regions
+
+Scrollable containers must be keyboard-accessible:
+```html
+<!-- ✅ Correct: tabindex + role + aria-label -->
+<div class="chatroom-messages" tabindex="0" role="log" aria-label="Chat messages" aria-live="polite">
+  {{ content }}
+</div>
+```
+
 ### Images & Forms
 ```html
 <!-- Images require alt -->

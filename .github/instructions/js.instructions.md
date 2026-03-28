@@ -123,6 +123,70 @@ function updateContentState(element, dataState) {
 - Avoid inline JS in templates
 - Use feature detection and graceful fallback
 
+## Web Component Accessibility Patterns (CRITICAL)
+
+Genesis web components must follow these accessibility rules discovered through automated auditing:
+
+### Landmark Deduplication
+
+Custom elements wrapping semantic HTML landmarks must **not duplicate** the landmark role:
+
+```javascript
+// ✅ CORRECT: Remove role if inner element already provides it
+_setAriaRole() {
+  if (this.getAttribute('role') === 'banner') {
+    this.removeAttribute('role');  // Inner <header> already implies banner
+  }
+}
+
+// ❌ WRONG: Setting role that duplicates inner element's implicit landmark
+_setAriaRole() {
+  if (!this.hasAttribute('role')) {
+    this.setAttribute('role', 'banner');  // Duplicate of inner <header>!
+  }
+}
+```
+
+**Applies to**: `genesis-header`, `genesis-footer`, `genesis-environment`
+
+### Inner Landmark Detection
+
+For `genesis-environment`, check for inner semantic elements before setting landmark roles:
+
+```javascript
+// ✅ CORRECT: Skip landmark role when inner element provides it
+const landmarkSelectors = {
+  navigation: 'nav, [role="navigation"]',
+  form: 'form, [role="form"]',
+};
+const selector = landmarkSelectors[role];
+if (selector && this.querySelector(selector)) {
+  return;  // Inner landmark found — let it own the role
+}
+this.setAttribute('role', role);
+```
+
+### Tab Ownership Chain
+
+When `genesis-navigation` sets up tabs, intermediate wrappers must become transparent:
+
+```javascript
+// ✅ CORRECT: tablist on component, presentation on wrappers
+this.setAttribute('role', 'tablist');
+tabs.forEach(tab => {
+  tab.setAttribute('role', 'tab');
+  let parent = tab.parentElement;
+  while (parent && parent !== this) {
+    if (!parent.getAttribute('role') || parent.getAttribute('role') === 'group') {
+      parent.setAttribute('role', 'presentation');
+    }
+    parent = parent.parentElement;
+  }
+});
+```
+
+ARIA requires `role="tab"` to be owned by `role="tablist"`. Intermediate wrappers (`<div>`, `<ul>`, `<li>`, `role="group"`) break this chain. Setting them to `role="presentation"` makes them transparent in the accessibility tree.
+
 ## When to Propose New Synapse Variant
 
 If you implement a repeated interaction pattern without clear synapse mapping:

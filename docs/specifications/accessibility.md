@@ -747,6 +747,101 @@ class Modal {
 </div>
 ```
 
+## Ontology-Specific Accessibility Rules
+
+*Established through axe-core automated audit of all 16 theme pages (March 2026). See `tests/accessibility-audit-report.md`.*
+
+### OKLCH Color Contrast
+
+The Genesis design system uses OKLCH color space. WCAG AA contrast requirements translate to:
+
+| Surface Background | Text OKLCH L Value | Contrast Ratio |
+|---|---|---|
+| White (`oklch(0.99 …)`) | L ≤ 0.55 | ≥ 4.5:1 (normal text) |
+| White (`oklch(0.99 …)`) | L ≤ 0.65 | ≥ 3:1 (large text/UI) |
+| Dark/void (`oklch(0.08 …)`) | L ≥ 0.80 | ≥ 4.5:1 (normal text) |
+
+**Body text** must default to dark (`$text-primary`) — light backgrounds are the system default. Only `void`/`cosmic` atmosphere variants set white text on their dark backgrounds.
+
+### Web Component Landmark Deduplication
+
+Genesis web components that wrap semantic HTML elements must **not duplicate** the implicit landmark role:
+
+| Custom Element | Wraps | Implicit Landmark | Rule |
+|---|---|---|---|
+| `<genesis-header>` | `<header>` | `banner` | Must NOT set `role="banner"` |
+| `<genesis-footer>` | `<footer>` | `contentinfo` | Must NOT set `role="contentinfo"` |
+| `<genesis-environment logic="navigation-*">` | `<nav>` | `navigation` | Must NOT set `role="navigation"` when inner `<nav>` exists |
+
+### Secondary Structural Elements
+
+Only the single page-level `<footer>` (from `_includes/footer.html`) should use the `<footer>` element. All other footer-like sections (CTA areas, input sections, modal footers, widget footers) must use `<div>` to avoid creating duplicate `contentinfo` landmarks.
+
+Similarly, page content must never contain `<main>` — `default.html` already wraps `{{ content }}` in `<main>`.
+
+### ARIA Tab Ownership Chain
+
+ARIA requires `role="tab"` to be a direct child of `role="tablist"` in the accessibility tree. Intermediate wrapper elements break this chain:
+
+```html
+<!-- ❌ WRONG: role="group" breaks tablist → tab chain -->
+<div role="tablist">
+  <div role="group" aria-label="Category tabs">
+    <button role="tab">Tab 1</button>
+  </div>
+</div>
+
+<!-- ✅ CORRECT: presentation makes wrappers transparent -->
+<div role="tablist">
+  <div role="presentation">
+    <button role="tab">Tab 1</button>
+  </div>
+</div>
+```
+
+The `genesis-navigation` component handles this automatically by setting `role="presentation"` on all intermediate elements between `role="tablist"` and `role="tab"`.
+
+### Link Discoverability
+
+Links must be distinguishable from surrounding text without relying solely on color:
+- `genesis-synapse('navigate')` sets `text-decoration: underline` by default
+- Hover may change `text-decoration-thickness` but must retain the underline
+- Base `<a>` elements inherit underlines from typography base
+
+### Heading Hierarchy
+
+Every page must maintain sequential heading levels without skipping:
+- One `<h1>` per page (from `layout-header.html` or layout-specific heading)
+- Direct sub-sections use `<h2>`, not `<h3>`
+- Reusable components must use context-appropriate heading levels
+
+### Icon Elements
+
+Icon-only `<span>` elements require `role="img"` when using `aria-label`:
+```html
+<span role="img" aria-label="Categories">
+  <i class="fas fa-folder" aria-hidden="true"></i>
+</span>
+```
+
+### Scrollable Regions
+
+Scrollable content containers must be keyboard-accessible:
+```html
+<div class="messages" tabindex="0" role="log" aria-label="Chat messages" aria-live="polite">
+```
+
+### Automated Testing
+
+```bash
+npm run test:a11y        # Run axe-core audit on all pages (local Jekyll server)
+npm run test:a11y:live   # Run against live deployment
+```
+
+→ **Audit report**: `tests/accessibility-audit-report.md`
+→ **Audit script**: `tests/e2e/accessibility-audit.spec.js`
+→ **Ontology accessibility rules**: `.github/specs/ontological-design-system.md` § Accessibility Compliance
+
 ## Resources
 
 - [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)

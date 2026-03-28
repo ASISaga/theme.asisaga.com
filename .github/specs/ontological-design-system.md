@@ -263,7 +263,7 @@ Each visual CSS concern maps from a **semantic purpose** through an owning ontol
 | **Ambient depth and spatial layering** — glow, inset shadow, neon glow per atmosphere | Atmosphere | Shading / shadows | `box-shadow` |
 | **Lifecycle transitions and temporal signaling** — `evolving`=sweep gradient, `scroll-triggered`=fade-in-up | State | Animations | `animation`, `transition`, `@keyframes` |
 | **Content availability and lifecycle visibility** — `stable`=full, `deprecated`=50% + grayscale, `locked`=blur | State | Opacity / filters | `opacity`, `filter` |
-| **Action-specific interaction feedback** — `navigate`=hover underline, `execute`=neon glow, 44px touch targets | Synapse | Hover / focus states | `:hover`, `:focus`, `cursor`, `transition` |
+| **Action-specific interaction feedback** — `navigate`=persistent underline + accessible color, `execute`=neon glow, 44px touch targets | Synapse | Hover / focus states | `:hover`, `:focus`, `cursor`, `transition` |
 
 → **Full ownership table with CSS implementation details**: `docs/specifications/ontology-html-mapping.md`
 
@@ -327,12 +327,89 @@ Evolutionary mechanism for extending the ontology when subdomains encounter use 
 - ✅ Useful across multiple contexts/subdomains
 - ❌ Solves only one specific use case
 
+## Accessibility Compliance
+
+The ontology must produce WCAG 2.1 Level AA compliant output. These rules were established through a comprehensive automated accessibility audit (axe-core) across all theme pages.
+
+### OKLCH Color Contrast
+
+All text color tokens must achieve **4.5:1 contrast ratio** against their background. In OKLCH color space, this means:
+
+- **L ≤ 0.55** for text on white/light backgrounds (`oklch(0.99 …)`)
+- **L ≥ 0.80** for text on dark/void backgrounds (`oklch(0.08 …)`)
+
+**Accessible token reference** (verified WCAG AA on white):
+| Token | Value | Purpose |
+|-------|-------|---------|
+| `--text-link` | `oklch(0.45 0.20 230)` | Link text |
+| `--accent-neon` | `oklch(0.50 0.20 230)` | Interactive accent |
+| `--accent-gold` | `oklch(0.55 0.12 85)` | Gold accent |
+| `--text-accent` | `oklch(0.45 0.20 230)` | Accent text |
+| `--focus-ring` | `oklch(0.45 0.20 230 / 0.7)` | Focus indicator |
+
+### Link Discrimination
+
+Links must be distinguishable from surrounding text without relying solely on color:
+- Synapse `'navigate'` must include `text-decoration: underline` (not just `border-bottom: transparent`)
+- Base `<a>` elements must have visible underlines
+- Hover state may change thickness but must retain underline
+
+### Web Component Landmark Rules
+
+Custom elements wrapping semantic HTML landmarks must **not duplicate** the landmark role:
+
+| Custom Element | Inner Element | Rule |
+|---------------|---------------|------|
+| `<genesis-header>` | `<header>` | Must NOT set `role="banner"` — inner `<header>` already implies it |
+| `<genesis-footer>` | `<footer>` | Must NOT set `role="contentinfo"` — inner `<footer>` already implies it |
+| `<genesis-environment>` | `<nav>`, `<form>`, etc. | Must NOT set landmark role when inner semantic element already provides it |
+
+### ARIA Tab Pattern
+
+When `genesis-navigation` type="tabs" is used:
+1. `role="tablist"` goes on the component element itself
+2. Intermediate wrapper elements (`<div>`, `<ul>`, `<li>`) between tablist and tabs must get `role="presentation"`
+3. `role="group"` on wrappers is forbidden — it breaks the tablist→tab ownership chain
+4. Each `role="tab"` must be a direct ARIA child of `role="tablist"` (presentation wrappers are transparent)
+
+### Secondary Structural Elements
+
+Non-page-level `<footer>` elements inside layouts/components create duplicate `contentinfo` landmarks:
+- ✅ Use `<div>` with appropriate `role="group"` for CTA sections, input areas, widget footers
+- ❌ Never use `<footer>` except for the single page-level footer (`_includes/footer.html`)
+
+Nested `<main>` elements are forbidden:
+- ✅ Use `<div>` for content wrappers when `default.html` already provides `<main>`
+- ❌ Never have a `<main>` inside page content — `default.html` wraps `{{ content }}` in `<main>`
+
+### Heading Hierarchy
+
+Every page must maintain sequential heading levels without skipping:
+- One `<h1>` per page (typically from `layout-header.html`)
+- Direct children sections use `<h2>`, not `<h3>`
+- The heading level of a component must be appropriate to its context, not hardcoded
+
+### Body Text Color
+
+The body text color must be dark (`$text-primary`) by default — light backgrounds are the default surface. Only `void`/`cosmic` atmosphere variants set white text explicitly on their dark backgrounds.
+
+### Testing
+
+```bash
+npm test              # All tests (compilation + lint + units)
+npm run test:a11y     # Automated axe-core accessibility audit
+```
+
+→ **Audit report**: `tests/accessibility-audit-report.md`  
+→ **Audit script**: `tests/e2e/accessibility-audit.spec.js`
+
 ## Testing & Validation
 
 ```bash
 npm test              # All tests (compilation + lint)
 npm run test:scss     # SCSS compilation check
 npm run lint:scss     # Stylelint validation
+npm run test:a11y     # Accessibility audit (axe-core)
 ```
 
 ## Complete Reference

@@ -52,6 +52,19 @@ Activate when:
 - Visible focus indicators on interactive elements
 - Support `prefers-reduced-motion` and `prefers-contrast`
 
+### Accessibility Rules from Audit (MANDATORY)
+
+These rules were established through automated axe-core auditing:
+
+- **Web component landmark deduplication** — `<genesis-header>`, `<genesis-footer>`, `<genesis-environment>` must NOT set landmark roles that duplicate inner semantic elements
+- **Secondary footers** — Only the page-level `<footer>` should be a `<footer>` element. Use `<div role="group">` for CTA sections, modal footers, input areas
+- **No nested `<main>`** — Content pages must use `<div>` wrappers since `default.html` provides `<main>`
+- **Tab ownership chain** — `role="tablist"` containers must NOT have `role="group"` children; use `role="presentation"` on intermediate wrappers
+- **Heading order** — Sequential h1→h2→h3 without skipping; don't hardcode `<h3>` in components that appear under `<h1>`
+- **Icon-only spans** — Use `role="img"` when `aria-label` is needed on `<span>` elements
+- **Scrollable regions** — Add `tabindex="0"` and `role="log"` (or appropriate role) for keyboard accessibility
+- **Link discrimination** — Links must have `text-decoration: underline`, not just color difference
+
 ## Quick Example
 
 ### Semantic HTML5 Structure
