@@ -1,6 +1,6 @@
 {
   "_comment": "Style Dictionary v4 config reference. The full programmatic config lives in sd.config.mjs.",
-  "source": [".github/skills/style-dictionary/tokens.json"],
+  "source": ["_design/tokens.json"],
   "platforms": {
     "scss": {
       "transformGroup": "scss/genesis",

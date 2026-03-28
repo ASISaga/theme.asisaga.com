@@ -212,6 +212,6 @@ _design/ blueprints  ──(blueprint-sync.sh)──►  _data/design/  ──�
 → **Blueprint schema**: `_design/schema/blueprint.schema.json`  
 → **Recursive renderer**: `_includes/node.html`  
 → **Ontology system**: `docs/specifications/scss-ontology-system.md`  
-→ **Token DNA**: `.github/skills/style-dictionary/tokens.json`  
+→ **Token DNA**: `_design/tokens.json`  
 → **Motion physics**: `.github/skills/motion-physics/SKILL.md`  
 → **HTML hierarchy rules**: `docs/specifications/ontology-html-mapping.md`

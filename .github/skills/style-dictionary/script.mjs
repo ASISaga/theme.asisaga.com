@@ -2,7 +2,7 @@
 /**
  * Genesis Design Token Builder
  *
- * Bidirectional translation between tokens.json and _variables.scss.
+ * Bidirectional translation between _design/tokens.json and _variables.scss.
  * Forward translation is delegated to Style Dictionary v4 (sd.config.mjs),
  * which preserves OKLCH color values without hex coercion.
  *

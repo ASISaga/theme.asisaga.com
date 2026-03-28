@@ -2,13 +2,13 @@
 
 **Last Updated**: 2026-03-26  
 **Version**: 1.0  
-**Source**: `.github/skills/style-dictionary/tokens.json`
+**Source**: `_design/tokens.json`
 
 ## Overview
 
 Design tokens are the atomic values that define the Genesis Semantic Design System visual language. This guide documents every token category, its SCSS output variable name, and usage guidance.
 
-The tokens are stored in `tokens.json` using the **DTCG (Design Token Community Group) spec** format (`$value`, `$type`, `$description`). They are translated into SCSS variable declarations by Style Dictionary v4 via `sd.config.mjs`.
+The tokens are stored in `_design/tokens.json` using the **DTCG (Design Token Community Group) spec** format (`$value`, `$type`, `$description`). They are translated into SCSS variable declarations by Style Dictionary v4 via `sd.config.mjs`.
 
 ## Token Categories
 
@@ -123,7 +123,7 @@ Eight-point grid with Genesis-specific extensions:
 
 ## Adding New Tokens
 
-1. Add entry to `tokens.json` following the DTCG format (`$value`, `$type`, `$description`)
+1. Add entry to `_design/tokens.json` following the DTCG format (`$value`, `$type`, `$description`)
 2. Run `npm run tokens:build` (or `node .github/skills/style-dictionary/sd.config.mjs`)
 3. Review `_sass/base/design/_variables-generated.scss`
 4. Run `npm run test:scss` to confirm Sass compilation
@@ -132,7 +132,7 @@ Eight-point grid with Genesis-specific extensions:
 ## Bidirectional Sync Workflow
 
 ```
-tokens.json ──[Style Dictionary v4]──► _variables-generated.scss
+_design/tokens.json ──[Style Dictionary v4]──► _variables-generated.scss
 (DTCG format)    (sd.config.mjs)              │
                                        Review & --apply
                                               │
@@ -142,12 +142,12 @@ tokens.json ──[Style Dictionary v4]──► _variables-generated.scss
                                      [scss-to-tokens.sh]
                                               │
                                               ▼
-                               tokens-extracted.json ──► tokens.json
+                               tokens-extracted.json ──► _design/tokens.json
 ```
 
 ## Related Files
 
-- **Token source**: `.github/skills/style-dictionary/tokens.json` (DTCG format)
+- **Token source**: `_design/tokens.json` (DTCG format)
 - **Style Dictionary config**: `.github/skills/style-dictionary/sd.config.mjs`
 - **Legacy script (reverse only)**: `.github/skills/style-dictionary/script.mjs`
 - **Forward script**: `.github/skills/style-dictionary/scripts/tokens-to-scss.sh`

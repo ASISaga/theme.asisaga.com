@@ -2,8 +2,9 @@
 /**
  * Genesis Design Token Builder — Style Dictionary v4 Config
  *
- * Forward translation: tokens.json → _sass/base/design/_variables-generated.scss
+ * Forward translation: _design/tokens.json → _sass/base/design/_variables-generated.scss
  * Preserves OKLCH color values (no hex coercion).
+ * Resolves sys-layer aliases and identity-tier references transitively.
  *
  * Usage:
  *   node .github/skills/style-dictionary/sd.config.mjs
@@ -27,9 +28,9 @@ StyleDictionary.registerFormat({
   name: 'scss/genesis-variables',
   format: ({ dictionary }) => {
     const lines = [
-      '// Do not edit directly — generated from tokens.json',
+      '// Do not edit directly — generated from _design/tokens.json',
       '// Run: node .github/skills/style-dictionary/sd.config.mjs',
-      '// Source: .github/skills/style-dictionary/tokens.json',
+      '// Source: _design/tokens.json',
       '',
     ];
     for (const token of dictionary.allTokens) {
@@ -56,7 +57,7 @@ StyleDictionary.registerTransformGroup({
 // ---------------------------------------------------------------------------
 const sdConfig = {
   usesDtcg: true,
-  source: [join(__dirname, 'tokens.json')],
+  source: [join(repoRoot, '_design/tokens.json')],
   platforms: {
     scss: {
       transformGroup: 'scss/genesis',

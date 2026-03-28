@@ -42,7 +42,8 @@
 // Design Foundation — The DNA
 @import "../base/design/colors";              // OKLCH + semantic color tokens
 @import "../base/design/design-tokens";       // Non-color design tokens and shadows
-@import "../base/design/variables";           // Theme-wide Sass variables
+@import "../base/design/variables-generated"; // Generated from _design/tokens.json — identity tier, primitives, sys aliases (foundational layer)
+@import "../base/design/variables";           // Theme-wide Sass variables (extends and overrides generated)
 @import "../base/design/dimensions";          // Spacing and sizing tokens
 
 // Utilities & Mixins
