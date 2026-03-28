@@ -20,6 +20,46 @@ const __dirname = dirname(__filename);
 const repoRoot = resolve(__dirname, '../../..');
 
 // ---------------------------------------------------------------------------
+// Custom transform: value/fluid-clamp
+// Applies to tokens with $type === "fluid-typography".
+// Value must be an object: { min, max, minVP?, maxVP? } (all in rem strings).
+//
+// Computes a CSS clamp() using the UTOPIA linear-interpolation formula:
+//   slope     = (maxSize - minSize) / (maxVP - minVP)   [unitless rem/rem]
+//   intercept = minSize - slope × minVP                 [rem]
+//   clamp(min, calc(slope×100vw ± intercept·rem), max)
+//
+// This guarantees the font is exactly `min` at `minVP` viewport width and
+// exactly `max` at `maxVP` viewport width, scaling linearly in between.
+//
+// Default viewport range: 320px (20rem) → 1440px (90rem)
+// ---------------------------------------------------------------------------
+function fluidClamp({ min, max, minVP = '20rem', maxVP = '90rem' }) {
+  const minSize = parseFloat(min);
+  const maxSize = parseFloat(max);
+  const minViewport = parseFloat(minVP);
+  const maxViewport = parseFloat(maxVP);
+
+  const slope = (maxSize - minSize) / (maxViewport - minViewport);
+  const slopeVw = parseFloat((slope * 100).toFixed(4));
+  const intercept = parseFloat((minSize - slope * minViewport).toFixed(4));
+
+  const slopePart = `${slopeVw}vw`;
+  const preferred = intercept >= 0
+    ? `calc(${slopePart} + ${intercept}rem)`
+    : `calc(${slopePart} - ${Math.abs(intercept)}rem)`;
+
+  return `clamp(${min}, ${preferred}, ${max})`;
+}
+
+StyleDictionary.registerTransform({
+  name: 'value/fluid-clamp',
+  type: 'value',
+  filter: (token) => token.$type === 'fluid-typography',
+  transform: (token) => fluidClamp(token.$value),
+});
+
+// ---------------------------------------------------------------------------
 // Custom format: scss/genesis-variables
 // Outputs raw SCSS variable declarations without any color transformation,
 // preserving OKLCH values exactly as authored in tokens.json.
@@ -44,12 +84,13 @@ StyleDictionary.registerFormat({
 
 // ---------------------------------------------------------------------------
 // Custom transform group: scss/genesis
-// Only applies name/kebab (e.g. color.light.white → color-light-white).
+// Applies name/kebab (e.g. color.light.white → color-light-white).
+// Includes value/fluid-clamp for fluid-typography tokens.
 // Crucially excludes all color transforms — OKLCH values pass through unchanged.
 // ---------------------------------------------------------------------------
 StyleDictionary.registerTransformGroup({
   name: 'scss/genesis',
-  transforms: ['name/kebab'],
+  transforms: ['name/kebab', 'value/fluid-clamp'],
 });
 
 // ---------------------------------------------------------------------------

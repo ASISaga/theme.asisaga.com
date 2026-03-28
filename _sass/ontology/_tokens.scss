@@ -50,13 +50,13 @@
   --font-sacred: Montserrat, -apple-system, sans-serif;
   --font-mono: "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
   
-  --size-hero: clamp(2rem, 5vw, 3.5rem);
-  --size-title: clamp(1.5rem, 3.5vw, 2.5rem);
-  --size-body: clamp(1rem, 1.5vw, 1.125rem);
-  --size-small: clamp(0.8rem, 1vw, 0.875rem);
-  --size-tiny: clamp(0.75rem, 0.9vw, 0.8rem);
-  --size-data: clamp(0.875rem, 1vw, 0.95rem);
-  --size-button: clamp(0.95rem, 1.2vw, 1.05rem);
+  --size-hero: #{$font-fluid-hero};
+  --size-title: #{$font-fluid-title};
+  --size-body: #{$font-fluid-body};
+  --size-small: #{$font-fluid-small};
+  --size-tiny: #{$font-fluid-tiny};
+  --size-data: #{$font-fluid-data};
+  --size-button: #{$font-fluid-button};
   
   /* ============================================================================
      PADDING TOKENS
