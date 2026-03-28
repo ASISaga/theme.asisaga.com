@@ -5,6 +5,9 @@ layout: default
   <div class="search-layout">
     <genesis-entity nature="primary">
       <header class="search__header">
+        <genesis-cognition intent="axiom">
+          <h1 class="search__title">{{ page.title | default: "Search" }}</h1>
+        </genesis-cognition>
         <genesis-form layout="horizontal">
           <form class="search__form" role="search">
             <label for="search-input" class="sr-only">Search</label>

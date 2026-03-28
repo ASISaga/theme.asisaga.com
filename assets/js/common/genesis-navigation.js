@@ -43,10 +43,10 @@ export class GenesisNavigation extends GenesisElement {
     this.dataset.type = type;
     this.dataset.orientation = orientation;
 
-    // Set ARIA role if not present
+    // Avoid adding redundant role="navigation" to <nav> (it already has the implicit role)
     const nav = this.querySelector('nav');
-    if (nav && !nav.hasAttribute('role')) {
-      nav.setAttribute('role', 'navigation');
+    if (nav) {
+      nav.removeAttribute('role');
     }
 
     // Apply type-specific behavior

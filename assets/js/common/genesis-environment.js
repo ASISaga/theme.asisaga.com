@@ -100,11 +100,25 @@ export class GenesisEnvironment extends HTMLElement {
 
     const role = roleMap[this._logic];
     if (role && !this.hasAttribute('role')) {
-      this.setAttribute('role', role);
+      // Skip setting landmark role if an inner element already provides it.
+      // Duplicate landmarks confuse screen readers and violate axe-core rules.
+      const landmarkSelectors = {
+        navigation: 'nav, [role="navigation"]',
+        tablist: '[role="tablist"]',
+        form: 'form, [role="form"]',
+        feed: '[role="feed"]',
+        region: 'section[aria-label], section[aria-labelledby], [role="region"]',
+      };
+      const selector = landmarkSelectors[role];
+      if (selector && this.querySelector(selector)) {
+        // Inner landmark found — let it own the role
+      } else {
+        this.setAttribute('role', role);
+      }
     }
 
     // Add aria-label if navigation and not present
-    if (role === 'navigation' && !this.hasAttribute('aria-label')) {
+    if (this.getAttribute('role') === 'navigation' && !this.hasAttribute('aria-label')) {
       const labelMap = {
         'navigation-primary': 'Primary navigation',
         'navigation-secondary': 'Secondary navigation',
