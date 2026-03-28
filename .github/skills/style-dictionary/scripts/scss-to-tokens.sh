@@ -8,9 +8,9 @@
 #
 # Usage:
 #   .github/skills/style-dictionary/scripts/scss-to-tokens.sh           # extract to tokens-extracted.json
-#   .github/skills/style-dictionary/scripts/scss-to-tokens.sh --apply   # overwrite tokens.json
+#   .github/skills/style-dictionary/scripts/scss-to-tokens.sh --apply   # overwrite _design/tokens.json
 #
-# Review the extracted JSON before using --apply to replace tokens.json.
+# Review the extracted JSON before using --apply to replace _design/tokens.json.
 # ============================================================================
 
 set -euo pipefail
@@ -20,7 +20,7 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/../../../.." && pwd)"
 SKILL_DIR="$SCRIPT_DIR/.."
 
 EXTRACTED="$SKILL_DIR/tokens-extracted.json"
-TOKENS="$SKILL_DIR/tokens.json"
+TOKENS="$REPO_ROOT/_design/tokens.json"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -65,7 +65,7 @@ if [[ "${1:-}" == "--apply" ]]; then
   if [[ "$confirm" =~ ^[Yy]$ ]]; then
     cp "$EXTRACTED" "$TOKENS"
     rm -f "$EXTRACTED"
-    echo -e "${GREEN}✓ Applied extracted tokens to tokens.json.${NC}"
+    echo -e "${GREEN}✓ Applied extracted tokens to _design/tokens.json.${NC}"
   else
     echo -e "${YELLOW}Aborted. Extracted file preserved at: ${EXTRACTED}${NC}"
   fi
