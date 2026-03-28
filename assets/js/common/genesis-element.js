@@ -98,6 +98,22 @@ export class GenesisElement extends HTMLElement {
   }
 
   /**
+   * Alias for _prefersReducedMotion — genesis-card.js and genesis-media.js
+   * use this shorter name for motion checks
+   */
+  _reducedMotion() {
+    return this._prefersReducedMotion();
+  }
+
+  /**
+   * Check if animations should run (user has not requested reduced motion).
+   * Used by genesis-card.js and genesis-media.js for entrance animations.
+   */
+  _shouldAnimate() {
+    return !this._prefersReducedMotion();
+  }
+
+  /**
    * Apply animation preset with reduced motion support
    */
   _applyPreset(element, preset, customOptions = {}) {

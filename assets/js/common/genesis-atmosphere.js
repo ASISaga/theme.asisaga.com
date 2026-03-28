@@ -151,6 +151,14 @@ export class GenesisAtmosphere extends HTMLElement {
   }
 
   /**
+   * Apply neutral atmospheric context (default)
+   * @private
+   */
+  _applyNeutralContext() {
+    // Balanced, default atmosphere — no special behavior
+  }
+
+  /**
    * Apply ethereal atmospheric context
    * @private
    */

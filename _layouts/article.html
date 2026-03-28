@@ -9,7 +9,11 @@ layout: default
         <nav class="article-toc">
           <h2 class="article-toc-title">Table of Contents</h2>
           <div class="article-toc-content">
-            {{ page.toc }}
+            {% if page.toc_html %}
+              {{ page.toc_html }}
+            {% else %}
+              <!-- TOC auto-generated from headings -->
+            {% endif %}
           </div>
         </nav>
       </aside>
