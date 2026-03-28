@@ -1,7 +1,8 @@
 ---
 ---
-// gallery layout — per-layout CSS entry point
+// gallery layout — self-contained CSS entry point
 // Source: _sass/layouts/_gallery.scss  mirrors  _layouts/gallery.html
-@import "common";
-@import "layouts/default";
+@import "default-bundle";
 @import "layouts/gallery";
+@import "includes/layouts/layout-header";
+@import "includes/layouts/gallery/gallery-item";

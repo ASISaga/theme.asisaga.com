@@ -1,7 +1,10 @@
 ---
 ---
-// landing layout — per-layout CSS entry point
+// landing layout — self-contained CSS entry point
 // Source: _sass/layouts/_landing.scss  mirrors  _layouts/landing.html
-@import "common";
-@import "layouts/default";
+@import "default-bundle";
 @import "layouts/landing";
+@import "includes/hero";
+@import "includes/layouts/layout-header";
+@import "includes/layouts/layout-footer-cta";
+@import "includes/layouts/landing/landing-features";

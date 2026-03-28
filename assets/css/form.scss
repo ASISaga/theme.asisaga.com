@@ -1,7 +1,8 @@
 ---
 ---
-// form layout — per-layout CSS entry point
+// form layout — self-contained CSS entry point
 // Source: _sass/layouts/_form.scss  mirrors  _layouts/form.html
-@import "common";
-@import "layouts/default";
+@import "default-bundle";
 @import "layouts/form";
+@import "includes/layouts/layout-header";
+@import "includes/layouts/form/form-field";

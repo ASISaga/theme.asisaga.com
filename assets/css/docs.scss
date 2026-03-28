@@ -1,7 +1,6 @@
 ---
 ---
-// docs layout — per-layout CSS entry point
+// docs layout — self-contained CSS entry point
 // Source: _sass/layouts/_docs.scss  mirrors  _layouts/docs.html
-@import "common";
-@import "layouts/default";
+@import "default-bundle";
 @import "layouts/docs";

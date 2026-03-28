@@ -1,8 +1,13 @@
 ---
 ---
-// default layout — per-layout CSS entry point
+// default layout — self-contained CSS entry point
 // Source: _sass/layouts/_default.scss  mirrors  _layouts/default.html
-// Note: bento-engine and responsive-enhancements are in _main.scss and are
-// therefore already present in the globally-loaded assets/css/style.css.
-@import "common";
-@import "layouts/default";
+// Includes the full theme component bundle because the default layout serves
+// both the theme demo page and general-purpose rich-content pages.
+@import "default-bundle";
+
+// ----------------------------------------
+// FULL COMPONENT BUNDLE — for demo/rich-content pages
+// (all section, product, sacred, specialized components + web component templates)
+// ----------------------------------------
+@import "main";

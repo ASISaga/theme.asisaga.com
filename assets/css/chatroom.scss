@@ -1,7 +1,10 @@
 ---
 ---
-// chatroom layout — per-layout CSS entry point
+// chatroom layout — self-contained CSS entry point
 // Source: _sass/layouts/_chatroom.scss  mirrors  _layouts/chatroom.html
-@import "common";
-@import "layouts/default";
+@import "default-bundle";
 @import "layouts/chatroom";
+@import "includes/chatroom/header";
+@import "includes/chatroom/input";
+@import "includes/chatroom/messages";
+@import "includes/chatroom/template";

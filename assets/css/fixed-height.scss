@@ -1,7 +1,6 @@
 ---
 ---
-// fixed-height layout — per-layout CSS entry point
+// fixed-height layout — self-contained CSS entry point
 // Source: _sass/layouts/_fixed-height.scss  mirrors  _layouts/fixed-height.html
-@import "common";
-@import "layouts/default";
+@import "default-bundle";
 @import "layouts/fixed-height";

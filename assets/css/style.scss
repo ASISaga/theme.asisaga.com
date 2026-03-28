@@ -1,4 +1,14 @@
 ---
 ---
+// ============================================================================
+// GENESIS THEME BASE — served to every page
+// ============================================================================
+// Contains ONLY the universal base: fonts, design tokens, utility mixins,
+// responsive system, visual effects, and the full ontological engine.
+//
+// Layout-specific CSS (components, includes, layouts) is served via the
+// per-page entry point: assets/css/<layout>.css (see _includes/head.html).
+// Subdomains @import "ontology/index" in their _sass/main.scss to get this
+// same base without loading this compiled file.
+// ============================================================================
 @import "common";
-@import "main";

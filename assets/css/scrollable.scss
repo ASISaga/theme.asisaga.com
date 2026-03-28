@@ -1,7 +1,6 @@
 ---
 ---
-// scrollable layout — per-layout CSS entry point
+// scrollable layout — self-contained CSS entry point
 // Source: _sass/layouts/_scrollable.scss  mirrors  _layouts/scrollable.html
-@import "common";
-@import "layouts/default";
+@import "default-bundle";
 @import "layouts/scrollable";

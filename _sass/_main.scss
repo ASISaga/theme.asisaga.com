@@ -1,55 +1,23 @@
 // ============================================================================
 // SEMANTIC DESIGN SYSTEM - ASI Saga Theme v2.0
-// _main.scss — THEME-SPECIFIC IMPORTS (components, includes, layouts bundle)
+// _main.scss — FULL THEME COMPONENT BUNDLE
 // ============================================================================
-// Imported by assets/css/style.scss AFTER _common.scss.
-// Contains every HTML-facing SCSS file that is NOT a dedicated per-layout
-// entry point.  Files are organised to mirror Jekyll Liquid HTML organisation:
+// This file is imported by:
+//   1. assets/css/default.scss — to serve ALL components to the default
+//      layout (which hosts the theme demo and general-purpose rich content).
+//   2. _sass/_test-compile.scss — to validate all components compile cleanly.
 //
-//   _sass/components/   — reusable UI component styles (cards, buttons, forms…)
-//                         These provide styling for HTML patterns that may be
-//                         composed in _includes/ templates; NOT a direct 1:1
-//                         mirror — for the 1:1 mirror see _sass/includes/ below.
+// It is NOT imported by assets/css/style.scss.
+// Other per-layout entry points (landing, dashboard, etc.) do NOT import this
+// file — they only import the specific components their layout actually uses.
+//
+// Files are organised to mirror Jekyll Liquid HTML organisation:
+//
+//   _sass/components/   — reusable UI component styles (cards, sections, forms…)
 //   _sass/includes/     ↔  _includes/ one-to-one (index.scss aggregates them)
-//   _sass/layouts/      ↔  _layouts/ shared primitives only:
-//                          • bento-engine   (shared grid primitive, all layouts)
-//                          • responsive-enhancements (cross-layout refinements)
-//                          Individual layout files are loaded per-page via
-//                          the flat assets/css/<layout>.scss entry points.
+//   _sass/layouts/      shared primitives only (bento-engine, responsive-enhancements)
+//                       are already in _default-bundle.scss; not re-imported here.
 // ============================================================================
-
-// ----------------------------------------
-// LAYOUT UTILITIES — shared across all layouts
-// ----------------------------------------
-@import "layouts/bento-engine";            // Native CSS Grid system (shared grid primitive)
-
-// ----------------------------------------
-// COMPONENT MIXINS — load before implementations
-// ----------------------------------------
-@import "components/mixins/section-component";
-@import "components/mixins/layout-component";
-@import "components/mixins/header-component";
-@import "components/mixins/card-component";
-@import "components/mixins/image-card-component";
-@import "components/mixins/form-component";
-@import "components/mixins/team-component";
-@import "components/mixins/content-section-component";
-@import "components/mixins/hero-component";
-@import "components/mixins/products-grid-component";
-@import "components/mixins/cta-component";
-
-// ----------------------------------------
-// CORE COMPONENTS — appear on every page
-// ----------------------------------------
-@import "components/core/ui-components";   // Modal, Collapse, Tabs
-@import "components/core/genesis-core";    // body/main/skip-link/ambient
-@import "components/core/genesis-header";  // Glassmorphism header
-@import "components/core/genesis-footer";  // Grid footer
-@import "components/core/footer";
-@import "components/core/header";
-@import "components/core/navbar";
-@import "components/core/cards";
-@import "components/core/back-to-top";
 
 // ----------------------------------------
 // SECTION COMPONENTS
@@ -111,18 +79,67 @@
 @import "components/alert-card";
 
 // ----------------------------------------
-// INCLUDES STYLES — mirrors _includes/ hierarchy
+// REMAINING INCLUDES STYLES — all includes not already in _default-bundle
 // ----------------------------------------
-// One-to-one correspondence: each file in _includes/ has a unique SCSS file
-// in _sass/includes/, mirroring the same directory hierarchy.
-@import "includes/index";
+// _default-bundle already imports: head, header, footer, navbar, motion-library, node.
+// This imports the rest so the default layout and demo page have full include CSS.
+@import "includes/content-modal";
+@import "includes/cta";
+@import "includes/feature-grid";
+@import "includes/futuristic-effects";
+@import "includes/genesis-invitation";
+@import "includes/hero";
+@import "includes/interactive-module";
+@import "includes/linkedin";
+@import "includes/product";
+@import "includes/product-applications";
+@import "includes/product-benefits-list";
+@import "includes/product-card";
+@import "includes/product-code-example";
+@import "includes/product-feature-grid";
+@import "includes/product-section-container";
+@import "includes/product-visual";
+@import "includes/section-header";
+@import "includes/testimonial";
+@import "includes/timeline";
+@import "includes/transcendent-hero";
 
-// ----------------------------------------
-// RESPONSIVE ENHANCEMENTS — cross-layout refinements
-// ----------------------------------------
-// Supplementary responsive refinements shared across all layouts.
-// Per-layout layout-specific CSS is in assets/css/<layout>.scss entry points.
-@import "layouts/responsive-enhancements";
+// Component includes
+@import "includes/components/alert-card";
+@import "includes/components/alert";
+@import "includes/components/breadcrumb";
+@import "includes/components/card";
+@import "includes/components/pagination";
+@import "includes/components/product-card";
+@import "includes/components/stat";
+@import "includes/components/tag-list";
+@import "includes/components/template-loader";
+@import "includes/components/testimonial-card";
+
+// Layout includes (common shared ones used by many layouts)
+@import "includes/layouts/content-meta";
+@import "includes/layouts/layout-footer-cta";
+@import "includes/layouts/layout-header";
+@import "includes/layouts/tags-categories";
+
+// All layout-specific includes (for complete theme coverage in demo)
+@import "includes/layouts/archive/archive-item";
+@import "includes/layouts/article/article-toc";
+@import "includes/layouts/dashboard/dashboard-widget";
+@import "includes/layouts/faq/faq-item";
+@import "includes/layouts/form/form-field";
+@import "includes/layouts/gallery/gallery-item";
+@import "includes/layouts/landing/landing-features";
+@import "includes/layouts/post/post-meta";
+@import "includes/layouts/post/post-navigation";
+@import "includes/layouts/profile/profile-stats";
+@import "includes/layouts/splash/splash-countdown";
+
+// Chatroom includes
+@import "includes/chatroom/header";
+@import "includes/chatroom/input";
+@import "includes/chatroom/messages";
+@import "includes/chatroom/template";
 
 // ----------------------------------------
 // DEMO PAGE STYLES

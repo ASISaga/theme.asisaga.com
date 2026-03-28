@@ -1,7 +1,7 @@
 ---
 ---
-// profile layout — per-layout CSS entry point
+// profile layout — self-contained CSS entry point
 // Source: _sass/layouts/_profile.scss  mirrors  _layouts/profile.html
-@import "common";
-@import "layouts/default";
+@import "default-bundle";
 @import "layouts/profile";
+@import "includes/layouts/profile/profile-stats";

@@ -1,0 +1,77 @@
+// ============================================================================
+// DEFAULT LAYOUT BUNDLE
+// ============================================================================
+// The common base for ALL layout CSS entry points that inherit _layouts/default.html.
+// Imported by assets/css/<layout>.scss (all layouts except app.scss).
+//
+// Provides:
+//   • Base theme (= ontology/index via _common.scss)
+//   • All component mixins (loaded before implementations)
+//   • Universal UI components: genesis-core, header, footer, navbar, etc.
+//   • Shared layout utilities: bento-engine, responsive-enhancements
+//   • Universal includes: head, header, footer, navbar, motion-library
+//   • Default layout SCSS (_sass/layouts/_default.scss)
+//
+// Layout-specific SCSS (_sass/layouts/_<layout>.scss) and layout-specific
+// includes (_sass/includes/layouts/<layout>/*) are added by each entry point
+// AFTER importing this file.
+// ============================================================================
+
+// ----------------------------------------
+// BASE THEME
+// ----------------------------------------
+@import "common";                              // Full ontological base (fonts, tokens, effects, engine)
+
+// ----------------------------------------
+// COMPONENT MIXINS — must load before implementations
+// ----------------------------------------
+@import "components/mixins/section-component";
+@import "components/mixins/layout-component";
+@import "components/mixins/header-component";
+@import "components/mixins/card-component";
+@import "components/mixins/image-card-component";
+@import "components/mixins/form-component";
+@import "components/mixins/team-component";
+@import "components/mixins/content-section-component";
+@import "components/mixins/hero-component";
+@import "components/mixins/products-grid-component";
+@import "components/mixins/cta-component";
+
+// ----------------------------------------
+// CORE COMPONENTS — present on every default-layout page
+// ----------------------------------------
+@import "components/core/ui-components";   // Modal, Collapse, Tabs
+@import "components/core/genesis-core";    // body/main/skip-link/ambient
+@import "components/core/genesis-header";  // Glassmorphism header
+@import "components/core/genesis-footer";  // Grid footer
+@import "components/core/header";
+@import "components/core/footer";
+@import "components/core/navbar";
+@import "components/core/cards";
+@import "components/core/back-to-top";
+
+// ----------------------------------------
+// SHARED LAYOUT UTILITIES
+// ----------------------------------------
+@import "layouts/bento-engine";            // Native CSS Grid system (shared grid primitive)
+@import "layouts/responsive-enhancements"; // Cross-layout responsive refinements
+
+// ----------------------------------------
+// UNIVERSAL INCLUDES — mirror _includes/ for includes used by every default-layout page
+// ----------------------------------------
+// These correspond to the includes in _layouts/default.html and _includes/head.html:
+//   head.html → _sass/includes/_head.scss
+//   header.html → _sass/includes/_header.scss + _sass/includes/_navbar.scss
+//   footer.html → _sass/includes/_footer.scss
+//   motion-library.html → _sass/includes/_motion-library.scss
+@import "includes/head";
+@import "includes/header";
+@import "includes/footer";
+@import "includes/navbar";
+@import "includes/motion-library";
+@import "includes/node";                   // node.html — ontology node assembly engine
+
+// ----------------------------------------
+// DEFAULT LAYOUT SCSS — mirrors _layouts/default.html
+// ----------------------------------------
+@import "layouts/default";

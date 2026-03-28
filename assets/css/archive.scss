@@ -1,7 +1,8 @@
 ---
 ---
-// archive layout — per-layout CSS entry point
+// archive layout — self-contained CSS entry point
 // Source: _sass/layouts/_archive.scss  mirrors  _layouts/archive.html
-@import "common";
-@import "layouts/default";
+@import "default-bundle";
 @import "layouts/archive";
+@import "includes/layouts/layout-header";
+@import "includes/layouts/archive/archive-item";

@@ -1,7 +1,6 @@
 ---
 ---
-// minimal-base layout — per-layout CSS entry point
+// minimal-base layout — self-contained CSS entry point
 // Source: _sass/layouts/_minimal-base.scss  mirrors  _layouts/minimal-base.html
-@import "common";
-@import "layouts/default";
+@import "default-bundle";
 @import "layouts/minimal-base";

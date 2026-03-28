@@ -1,7 +1,9 @@
 ---
 ---
-// article layout — per-layout CSS entry point
+// article layout — self-contained CSS entry point
 // Source: _sass/layouts/_article.scss  mirrors  _layouts/article.html
-@import "common";
-@import "layouts/default";
+@import "default-bundle";
 @import "layouts/article";
+@import "includes/layouts/layout-header";
+@import "includes/layouts/content-meta";
+@import "includes/layouts/article/article-toc";

@@ -6,12 +6,21 @@
  * Stylelint cannot catch Sass compilation errors, so this file is essential.
  *
  * This file is NOT used in production — it is a compile-only test harness.
+ *
+ * Compilation chain tested:
+ *   1. _common.scss  (= ontology/index: fonts, base/*, effects, ontology engine)
+ *   2. _default-bundle.scss  (= common + core components + universal includes + default layout)
+ *   3. _main.scss  (= all remaining components + includes + index-demo)
+ *   4. Each layout SCSS compiled individually (they each import default-bundle in production)
  */
 
-// Import the shared base + ontology
+// Step 1: base theme (absorbs fontawesome + base/* + ontology)
 @import "common";
 
-// Import the theme-specific bundle (components, includes, etc.)
+// Step 2: default layout bundle (core components + universal includes)
+@import "default-bundle";
+
+// Step 3: full component bundle (section, product, sacred, specialized + all includes)
 @import "main";
 
 // Test: layout compilation — each layout SCSS imported directly since they are

@@ -1,67 +1,22 @@
 // ============================================================================
 // SEMANTIC DESIGN SYSTEM - ASI Saga Theme v2.0
-// _common.scss — SHARED BASE + ONTOLOGY ONLY
+// _common.scss — THIN ALIAS FOR THE GENESIS BASE THEME
 // ============================================================================
-// Imported by assets/css/style.scss (full theme) AND by per-layout CSS entry
-// points (assets/css/<layout>.scss) to provide mixin access during Sass
-// compilation.  Contains NO layout, component, or include CSS — those belong
-// in _main.scss (theme bundle) or per-layout entry points respectively.
+// This file is the single entry point for the universal base theme.
+// Subdomains @import "ontology/index" directly; this alias exists for
+// backward compatibility within the theme's own compilation chain.
+//
+// What this provides (via ontology/index):
+//   • Fonts, icons, Font Awesome
+//   • All design tokens (colors, spacing, typography, dimensions)
+//   • Utility mixins, semantic-mixins, accessibility helpers
+//   • Layout system (breakpoints, responsive utilities, layout wrappers)
+//   • Visual effects (animations, glassmorphism, ambient layer)
+//   • Full ontological engine: tokens → engines → interface
+//
+// What this does NOT provide (loaded per-layout):
+//   • UI components (header, footer, navbar, cards)
+//   • Page layout SCSS (_sass/layouts/*.scss)
+//   • Includes SCSS (_sass/includes/*.scss)
 // ============================================================================
-
-// Font Awesome v4 - Load this first to make variables available globally
-@import "fontawesome/font-awesome";
-
-// ----------------------------------------
-// FOUNDATION - Fonts & Icons
-// ----------------------------------------
-@import "base/fonts";
-@import "base/icons";
-
-// ----------------------------------------
-// DESIGN FOUNDATION - The DNA
-// ----------------------------------------
-@import "base/design/colors";             // Centralized color definitions (OKLCH + semantic tokens)
-@import "base/design/design-tokens";      // Non-color design tokens and shadows
-@import "base/design/variables";          // Theme-wide Sass variables (non-color)
-@import "base/design/dimensions";         // Spacing and sizing tokens
-
-// ----------------------------------------
-// UTILITIES & MIXINS
-// ----------------------------------------
-@import "base/utilities/mixins";           // Core Sass mixins and utilities
-@import "base/utilities/semantic-mixins";  // Semantic mixins replacing Bootstrap
-@import "base/utilities/accessibility";    // Accessibility features and WCAG compliance
-@import "base/utilities/common";           // Common utility styles
-
-// ----------------------------------------
-// TYPOGRAPHY & THEME
-// ----------------------------------------
-@import "base/design/typography";          // Font families and typographic scale
-@import "base/design/semantic-typography"; // Fluid typography and material primitives
-@import "base/design/theme";               // Theme-level configuration
-
-// ----------------------------------------
-// LAYOUT SYSTEM
-// ----------------------------------------
-@import "base/layout/responsive-system";   // Modern breakpoints, container queries
-@import "base/layout/responsive";          // Responsive utilities
-@import "base/layout/layout-wrappers";     // Modern layout containers
-@import "base/layout/layout";              // Base layout structures
-
-// ----------------------------------------
-// VISUAL EFFECTS
-// ----------------------------------------
-@import "base/effects/animations";         // Core animation library
-@import "base/effects/futuristic-effects"; // Advanced glassmorphism, glows, gradients
-@import "base/effects/ambient-layer";      // Sentient ambient atmosphere
-
-// ----------------------------------------
-// ONTOLOGY SYSTEM - Genesis Semantic Engine
-// ----------------------------------------
-// Three-tier architecture for subdomain integration.
-// Imported here so all ontological mixins are available to _main.scss and to
-// per-layout SCSS entry points that @import "common".
-@import "ontology/index";                  // Single import point for the ontology system.
-                                           // Provides all genesis-* mixin definitions to _main.scss
-                                           // and to per-layout entry points (assets/css/<layout>.scss)
-                                           // without requiring each consumer to import it independently.
+@import "ontology/index";

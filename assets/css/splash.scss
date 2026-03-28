@@ -1,8 +1,8 @@
 ---
 ---
-// splash layout — per-layout CSS entry point
+// splash layout — self-contained CSS entry point
 // Source: _sass/layouts/_splash.scss  mirrors  _layouts/splash.html
-@import "common";
-@import "layouts/default";
+@import "default-bundle";
 @import "layouts/minimal-base";
 @import "layouts/splash";
+@import "includes/layouts/splash/splash-countdown";
