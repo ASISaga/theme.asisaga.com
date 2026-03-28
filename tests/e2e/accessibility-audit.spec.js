@@ -1,317 +1,365 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import fs from 'fs';
-import path from 'path';
 
 /**
- * Accessibility Audit using axe-core/playwright
+ * Accessibility Audit for Genesis Theme
  *
- * Audits index.html and all sample pages linked from it.
- * Results are written to tests/accessibility-audit-report.md
+ * Uses axe-core to audit index.html and all sample pages linked from it.
+ * Each test captures full axe results; a summary attachment is saved for
+ * every page so the Playwright HTML report contains a detailed breakdown.
  *
  * Pages audited:
- *   /                                   (index.html)
- *   /samples/application/chatroom.html
- *   /samples/application/dashboard.html
- *   /samples/application/search.html
- *   /samples/application/settings.html
- *   /samples/content-driven/archive.html
- *   /samples/content-driven/article.html
- *   /samples/content-driven/post.html
- *   /samples/content-driven/profile.html
- *   /samples/knowledge/docs.html
- *   /samples/knowledge/faq.html
- *   /samples/marketing/landing.html
- *   /samples/marketing/gallery.html
- *   /samples/marketing/form.html
- *   /samples/utility/404.html
- *   /samples/utility/splash.html
- *
- * Design:
- *   - Each test writes its result as a JSON file under tests/.audit-results/
- *   - afterAll aggregates all JSON files and writes the markdown report
- *   - Tests never fail (audit mode) — violations are documented, not gated
- *   - CI/CD gate on violations can be added separately via the report
+ *   - / (index.html)
+ *   - /samples/application/chatroom.html
+ *   - /samples/application/dashboard.html
+ *   - /samples/application/search.html
+ *   - /samples/application/settings.html
+ *   - /samples/content-driven/archive.html
+ *   - /samples/content-driven/article.html
+ *   - /samples/content-driven/post.html
+ *   - /samples/content-driven/profile.html
+ *   - /samples/knowledge/docs.html
+ *   - /samples/knowledge/faq.html
+ *   - /samples/marketing/landing.html
+ *   - /samples/marketing/gallery.html
+ *   - /samples/marketing/form.html
+ *   - /samples/utility/404.html
+ *   - /samples/utility/splash.html
  */
 
-// All pages to audit (path relative to baseURL)
-const PAGES = [
-  { path: '/',                                       label: 'Home (index.html)' },
-  { path: '/samples/application/chatroom.html',      label: 'Application – Chatroom' },
-  { path: '/samples/application/dashboard.html',     label: 'Application – Dashboard' },
-  { path: '/samples/application/search.html',        label: 'Application – Search' },
-  { path: '/samples/application/settings.html',      label: 'Application – Settings' },
-  { path: '/samples/content-driven/archive.html',    label: 'Content-Driven – Archive' },
-  { path: '/samples/content-driven/article.html',    label: 'Content-Driven – Article' },
-  { path: '/samples/content-driven/post.html',       label: 'Content-Driven – Post' },
-  { path: '/samples/content-driven/profile.html',    label: 'Content-Driven – Profile' },
-  { path: '/samples/knowledge/docs.html',            label: 'Knowledge – Docs' },
-  { path: '/samples/knowledge/faq.html',             label: 'Knowledge – FAQ' },
-  { path: '/samples/marketing/landing.html',         label: 'Marketing – Landing' },
-  { path: '/samples/marketing/gallery.html',         label: 'Marketing – Gallery' },
-  { path: '/samples/marketing/form.html',            label: 'Marketing – Form' },
-  { path: '/samples/utility/404.html',               label: 'Utility – 404' },
-  { path: '/samples/utility/splash.html',            label: 'Utility – Splash' },
+/** Max characters to show for an HTML snippet in text and Markdown reports */
+const HTML_SNIPPET_LENGTH_TEXT = 120;
+const HTML_SNIPPET_LENGTH_MARKDOWN = 200;
+
+/** All pages to audit — path relative to baseURL */
+const AUDIT_PAGES = [
+  { name: 'index', path: '/' },
+  { name: 'application/chatroom', path: '/samples/application/chatroom.html' },
+  { name: 'application/dashboard', path: '/samples/application/dashboard.html' },
+  { name: 'application/search', path: '/samples/application/search.html' },
+  { name: 'application/settings', path: '/samples/application/settings.html' },
+  { name: 'content-driven/archive', path: '/samples/content-driven/archive.html' },
+  { name: 'content-driven/article', path: '/samples/content-driven/article.html' },
+  { name: 'content-driven/post', path: '/samples/content-driven/post.html' },
+  { name: 'content-driven/profile', path: '/samples/content-driven/profile.html' },
+  { name: 'knowledge/docs', path: '/samples/knowledge/docs.html' },
+  { name: 'knowledge/faq', path: '/samples/knowledge/faq.html' },
+  { name: 'marketing/landing', path: '/samples/marketing/landing.html' },
+  { name: 'marketing/gallery', path: '/samples/marketing/gallery.html' },
+  { name: 'marketing/form', path: '/samples/marketing/form.html' },
+  { name: 'utility/404', path: '/samples/utility/404.html' },
+  { name: 'utility/splash', path: '/samples/utility/splash.html' },
 ];
 
-// Temporary directory where each test writes its JSON result
-const AUDIT_TMP_DIR = path.resolve('tests/.audit-results');
-
-// ─── Setup: clear previous partial results before the suite begins ────────────
-
-test.beforeAll(async () => {
-  fs.rmSync(AUDIT_TMP_DIR, { recursive: true, force: true });
-  fs.mkdirSync(AUDIT_TMP_DIR, { recursive: true });
-});
-
-// ─── Teardown: aggregate JSON files and write the markdown report ─────────────
-
-test.afterAll(async () => {
-  const jsonFiles = fs.readdirSync(AUDIT_TMP_DIR)
-    .filter((f) => f.endsWith('.json'))
-    .sort(); // sort ensures consistent report order
-
-  const results = jsonFiles.map((f) =>
-    JSON.parse(fs.readFileSync(path.join(AUDIT_TMP_DIR, f), 'utf8'))
-  );
-
-  const reportPath = path.resolve('tests/accessibility-audit-report.md');
-  writeMarkdownReport(reportPath, results);
-  console.log(`\n✅ Accessibility audit report written to: ${reportPath}\n`);
-  console.log(`   Pages audited: ${results.length}`);
-  const totalViolations = results.reduce((n, r) => n + r.violations.length, 0);
-  console.log(`   Total violations: ${totalViolations}\n`);
-});
-
-// ─── Helper: safe slug for filenames ─────────────────────────────────────────
-
-function toSlug(label) {
-  return label
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
-}
-
-// ─── Helper: format a single violation for markdown ──────────────────────────
-
+/**
+ * Format a single axe violation into a readable string.
+ * @param {import('axe-core').Result} v
+ * @returns {string}
+ */
 function formatViolation(v) {
-  const nodes = v.nodes
-    .map((n) => {
-      const target = n.target.join(', ');
-      const html = n.html.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-      const fix = n.failureSummary
-        ? n.failureSummary.replace(/\n/g, ' ')
-        : '–';
-      return `    - \`${target}\`  \n      HTML: \`${html}\`  \n      Fix: ${fix}`;
-    })
-    .join('\n');
-
-  return (
-    `- **[${v.impact?.toUpperCase() ?? 'UNKNOWN'}]** \`${v.id}\` – ${v.description}  \n` +
-    `  Help: <${v.helpUrl}>  \n` +
-    `  Affected nodes (${v.nodes.length}):\n${nodes}`
-  );
+  const nodeLines = v.nodes.map((n, i) => {
+    const selector = n.target?.join(', ') ?? '(unknown)';
+    const html = n.html?.substring(0, HTML_SNIPPET_LENGTH_TEXT) ?? '';
+    const failureSummary = n.failureSummary ?? '';
+    return `    Node ${i + 1}: ${selector}\n      HTML: ${html}\n      Fix: ${failureSummary}`;
+  });
+  return [
+    `  [${v.impact?.toUpperCase() ?? 'UNKNOWN'}] ${v.id}: ${v.help}`,
+    `  Description: ${v.description}`,
+    `  Help URL: ${v.helpUrl}`,
+    `  Affected nodes (${v.nodes.length}):`,
+    ...nodeLines,
+  ].join('\n');
 }
 
-// ─── Helper: write full markdown report ───────────────────────────────────────
+/**
+ * Build a full report string for one page's axe results.
+ * @param {string} pageLabel
+ * @param {string} url
+ * @param {import('axe-core').AxeResults} results
+ * @returns {string}
+ */
+function buildPageReport(pageLabel, url, results) {
+  const lines = [];
+  lines.push(`${'='.repeat(80)}`);
+  lines.push(`PAGE: ${pageLabel}`);
+  lines.push(`URL:  ${url}`);
+  lines.push(`${'='.repeat(80)}`);
 
-function writeMarkdownReport(reportPath, results) {
-  const now = new Date().toISOString();
+  // Summary counts
+  const critical = results.violations.filter(v => v.impact === 'critical');
+  const serious  = results.violations.filter(v => v.impact === 'serious');
+  const moderate = results.violations.filter(v => v.impact === 'moderate');
+  const minor    = results.violations.filter(v => v.impact === 'minor');
 
-  // Aggregate totals
-  let totalViolations = 0;
-  let totalPasses = 0;
-  let totalIncomplete = 0;
-  const violationsByImpact = { critical: 0, serious: 0, moderate: 0, minor: 0 };
-
-  for (const r of results) {
-    totalViolations += r.violations.length;
-    totalPasses += r.passes.length;
-    totalIncomplete += r.incomplete.length;
-    for (const v of r.violations) {
-      const impact = v.impact ?? 'minor';
-      violationsByImpact[impact] = (violationsByImpact[impact] ?? 0) + 1;
-    }
-  }
-
-  const lines = [
-    '# Accessibility Audit Report',
-    '',
-    `> **Generated**: ${now}  `,
-    `> **Tool**: axe-core / @axe-core/playwright  `,
-    `> **Standard**: WCAG 2.1 Level AA  `,
-    `> **Pages audited**: ${results.length}`,
-    '',
-    '## Executive Summary',
-    '',
-    '| Metric | Count |',
-    '|--------|-------|',
-    `| Pages audited | ${results.length} |`,
-    `| Total violations | ${totalViolations} |`,
-    `| ├─ Critical | ${violationsByImpact.critical} |`,
-    `| ├─ Serious  | ${violationsByImpact.serious} |`,
-    `| ├─ Moderate | ${violationsByImpact.moderate} |`,
-    `| └─ Minor    | ${violationsByImpact.minor} |`,
-    `| Passes (rules that passed) | ${totalPasses} |`,
-    `| Incomplete (needs manual review) | ${totalIncomplete} |`,
-    '',
-    '---',
-    '',
-    '## Page-by-Page Results',
-    '',
-  ];
-
-  for (const r of results) {
-    lines.push(`### ${r.label}`);
-    lines.push('');
-    lines.push(`**URL**: \`${r.url}\`  `);
-    lines.push(`**Violations**: ${r.violations.length}  `);
-    lines.push(`**Passes**: ${r.passes.length}  `);
-    lines.push(`**Incomplete**: ${r.incomplete.length}`);
-    lines.push('');
-
-    if (r.error) {
-      lines.push(`> ⚠️ **Page load error**: ${r.error}`);
-      lines.push('');
-    } else if (r.violations.length === 0) {
-      lines.push('✅ **No violations found.**');
-      lines.push('');
-    } else {
-      lines.push('#### Violations');
-      lines.push('');
-      for (const v of r.violations) {
-        lines.push(formatViolation(v));
-        lines.push('');
-      }
-    }
-
-    if (r.incomplete.length > 0) {
-      lines.push('#### Incomplete (needs manual review)');
-      lines.push('');
-      for (const i of r.incomplete) {
-        lines.push(
-          `- \`${i.id}\` – ${i.description}  \n  Help: <${i.helpUrl}>  \n  Nodes: ${i.nodes.length}`
-        );
-        lines.push('');
-      }
-    }
-
-    lines.push('---');
-    lines.push('');
-  }
-
-  // Unique violations across all pages
-  const allViolationIds = new Map();
-  for (const r of results) {
-    for (const v of r.violations) {
-      if (!allViolationIds.has(v.id)) {
-        allViolationIds.set(v.id, { ...v, pages: [] });
-      }
-      allViolationIds.get(v.id).pages.push(r.label);
-    }
-  }
-
-  if (allViolationIds.size > 0) {
-    lines.push('## Unique Violations (Deduplicated)');
-    lines.push('');
-    lines.push('| Rule | Impact | Affected Pages | Description |');
-    lines.push('|------|--------|----------------|-------------|');
-    for (const [id, v] of [...allViolationIds.entries()].sort((a, b) => {
-      const order = { critical: 0, serious: 1, moderate: 2, minor: 3 };
-      return (order[a[1].impact] ?? 4) - (order[b[1].impact] ?? 4);
-    })) {
-      lines.push(
-        `| \`${id}\` | ${v.impact ?? '–'} | ${v.pages.join(', ')} | ${v.description} |`
-      );
-    }
-    lines.push('');
-  }
-
-  lines.push('## Recommendations');
   lines.push('');
-  lines.push(
-    'Address violations in impact order: **critical → serious → moderate → minor**.'
-  );
-  lines.push('');
-  lines.push(
-    'Each violation entry links to the axe-core help URL for remediation guidance.'
-  );
-  lines.push('');
-  lines.push(
-    '> Incomplete results require manual inspection with assistive technologies (e.g., VoiceOver, NVDA).'
-  );
+  lines.push('SUMMARY');
+  lines.push('-------');
+  lines.push(`  Total violations : ${results.violations.length}`);
+  lines.push(`  Critical         : ${critical.length}`);
+  lines.push(`  Serious          : ${serious.length}`);
+  lines.push(`  Moderate         : ${moderate.length}`);
+  lines.push(`  Minor            : ${minor.length}`);
+  lines.push(`  Passes           : ${results.passes.length}`);
+  lines.push(`  Incomplete       : ${results.incomplete.length}`);
   lines.push('');
 
-  fs.mkdirSync(path.dirname(reportPath), { recursive: true });
-  fs.writeFileSync(reportPath, lines.join('\n'), 'utf8');
+  if (results.violations.length === 0) {
+    lines.push('✅ No violations found.');
+  } else {
+    lines.push('VIOLATIONS');
+    lines.push('----------');
+    results.violations.forEach((v, i) => {
+      lines.push(`\n${i + 1}. ${formatViolation(v)}`);
+    });
+  }
+
+  if (results.incomplete.length > 0) {
+    lines.push('');
+    lines.push('INCOMPLETE (Needs Manual Review)');
+    lines.push('--------------------------------');
+    results.incomplete.forEach((v, i) => {
+      lines.push(`\n${i + 1}. [${v.impact?.toUpperCase() ?? 'UNKNOWN'}] ${v.id}: ${v.help}`);
+      lines.push(`   ${v.description}`);
+    });
+  }
+
+  lines.push('');
+  return lines.join('\n');
 }
 
-// ─── Tests ────────────────────────────────────────────────────────────────────
+// ---------------------------------------------------------------------------
+// Tests
+// ---------------------------------------------------------------------------
 
-for (let pageIndex = 0; pageIndex < PAGES.length; pageIndex++) {
-  const pageInfo = PAGES[pageIndex];
-  // Zero-pad so filenames sort in PAGES declaration order (00-, 01-, …, 15-)
-  const paddedIndex = String(pageIndex).padStart(2, '0');
+test.describe('Accessibility Audit — axe-core', () => {
 
-  test(`Accessibility audit: ${pageInfo.label}`, async ({ page }, testInfo) => {
-    const result = {
-      label: pageInfo.label,
-      url: pageInfo.path,
-      violations: [],
-      passes: [],
-      incomplete: [],
-      error: null,
-    };
+  for (const { name, path } of AUDIT_PAGES) {
+    test(`[a11y] ${name}`, async ({ page }, testInfo) => {
+      await page.goto(path);
+      // Wait for the page to be fully loaded
+      await page.waitForLoadState('networkidle');
 
-    try {
-      const response = await page.goto(pageInfo.path, { waitUntil: 'domcontentloaded' });
-
-      // Tolerate the intentional 404 sample page; hard-fail any unexpected HTTP error
-      if (response && !response.ok() && pageInfo.path !== '/samples/utility/404.html') {
-        result.error = `HTTP ${response.status()}`;
-        return;
-      }
-
-      const axeResults = await new AxeBuilder({ page })
+      const results = await new AxeBuilder({ page })
+        // Audit the full page
         .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice'])
         .analyze();
 
-      result.violations = axeResults.violations;
-      result.passes = axeResults.passes;
-      result.incomplete = axeResults.incomplete;
-      result.url = page.url();
+      // Build human-readable report for this page
+      const pageReport = buildPageReport(name, page.url(), results);
 
-      // Attach the raw axe results to the Playwright HTML report
-      await testInfo.attach('axe-results', {
-        body: JSON.stringify(axeResults, null, 2),
-        contentType: 'application/json',
+      // Attach report to the Playwright test result so it appears in the HTML report
+      await testInfo.attach(`a11y-report-${name.replace(/\//g, '-')}`, {
+        contentType: 'text/plain',
+        body: pageReport,
       });
 
-      // Annotate the test with violation count for easy scanning in Playwright UI
-      const criticalCount = axeResults.violations.filter((v) => v.impact === 'critical').length;
-      const seriousCount  = axeResults.violations.filter((v) => v.impact === 'serious').length;
-      const moderateCount = axeResults.violations.filter((v) => v.impact === 'moderate').length;
-      const minorCount    = axeResults.violations.filter((v) => v.impact === 'minor').length;
+      // Attach raw JSON results for machine-readable consumption
+      await testInfo.attach(`a11y-results-${name.replace(/\//g, '-')}.json`, {
+        contentType: 'application/json',
+        body: JSON.stringify(results, null, 2),
+      });
 
-      if (axeResults.violations.length > 0) {
-        testInfo.annotations.push({
-          type: 'violations',
-          description: `critical:${criticalCount} serious:${seriousCount} moderate:${moderateCount} minor:${minorCount}`,
-        });
-      }
-    } catch (err) {
-      result.error = err.message;
-      // Re-throw so Playwright marks the test as failed (page was unreachable)
-      throw err;
-    } finally {
-      // Persist result to a per-page JSON file so afterAll can aggregate
-      // regardless of worker count or retry behaviour
-      const filename = `${paddedIndex}-${toSlug(pageInfo.label)}.json`;
-      fs.writeFileSync(
-        path.join(AUDIT_TMP_DIR, filename),
-        JSON.stringify(result, null, 2),
-        'utf8'
+      // Fail the test if there are critical or serious violations
+      const blocking = results.violations.filter(v =>
+        v.impact === 'critical' || v.impact === 'serious'
       );
+
+      if (blocking.length > 0) {
+        const summary = blocking.map(v =>
+          `[${v.impact?.toUpperCase()}] ${v.id}: ${v.help} (${v.nodes.length} node(s))`
+        ).join('\n');
+        // Use a soft assertion so all pages are still audited even when one fails
+        expect.soft(blocking.length, `Critical/serious a11y violations on ${name}:\n${summary}`).toBe(0);
+      }
+    });
+  }
+
+  // -----------------------------------------------------------------------
+  // Consolidated report test — runs last, writes docs/accessibility-audit-report.md
+  //
+  // Note: This test re-audits all pages in a single browser session to collect
+  // all results into one coherent Markdown document. The individual per-page
+  // tests above serve a different purpose: isolated Playwright reporting with
+  // retries and soft assertions. The duplication is intentional — individual
+  // tests catch regressions page-by-page, while this test produces the
+  // human-readable audit report artifact.
+  // -----------------------------------------------------------------------
+  test('generate consolidated audit report', async ({ page }, testInfo) => {
+    const fs = await import('fs');
+    const path = await import('path');
+
+    const allPageResults = [];
+
+    for (const pageSpec of AUDIT_PAGES) {
+      await page.goto(pageSpec.path);
+      await page.waitForLoadState('networkidle');
+
+      const results = await new AxeBuilder({ page })
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice'])
+        .analyze();
+
+      allPageResults.push({ ...pageSpec, url: page.url(), results });
+    }
+
+    // Build consolidated markdown report
+    const reportLines = [];
+    const now = new Date().toISOString();
+
+    reportLines.push('# Accessibility Audit Report');
+    reportLines.push('');
+    reportLines.push('**Tool**: [axe-core](https://github.com/dequelabs/axe-core) via [@axe-core/playwright](https://github.com/dequelabs/axe-core-packages/tree/develop/packages/playwright)');
+    reportLines.push(`**Standards**: WCAG 2.0 A/AA, WCAG 2.1 A/AA, Best Practices`);
+    reportLines.push(`**Generated**: ${now}`);
+    reportLines.push(`**Base URL**: ${process.env.TEST_LOCAL ? 'http://localhost:4000' : 'https://asisaga.github.io/theme.asisaga.com'}`);
+    reportLines.push('');
+    reportLines.push('---');
+    reportLines.push('');
+
+    // Executive summary table
+    reportLines.push('## Executive Summary');
+    reportLines.push('');
+    reportLines.push('| Page | Critical | Serious | Moderate | Minor | Total Violations | Passes |');
+    reportLines.push('|------|----------|---------|----------|-------|-----------------|--------|');
+
+    let grandTotal = 0;
+    let grandCritical = 0;
+    let grandSerious = 0;
+
+    for (const { name, url, results } of allPageResults) {
+      const critical = results.violations.filter(v => v.impact === 'critical').length;
+      const serious  = results.violations.filter(v => v.impact === 'serious').length;
+      const moderate = results.violations.filter(v => v.impact === 'moderate').length;
+      const minor    = results.violations.filter(v => v.impact === 'minor').length;
+      const total    = results.violations.length;
+      const passes   = results.passes.length;
+
+      grandTotal    += total;
+      grandCritical += critical;
+      grandSerious  += serious;
+
+      const critCell = critical > 0 ? `🔴 ${critical}` : '✅ 0';
+      const seriCell = serious  > 0 ? `🟠 ${serious}`  : '✅ 0';
+      const modCell  = moderate > 0 ? `🟡 ${moderate}` : '✅ 0';
+      const minCell  = minor    > 0 ? `🔵 ${minor}`    : '✅ 0';
+      const totCell  = total    > 0 ? `**${total}**`   : '✅ 0';
+
+      // Anchor link to detail section
+      const anchor = name.replace(/\//g, '-').replace(/\s+/g, '-').toLowerCase();
+      reportLines.push(`| [${name}](#${anchor}) | ${critCell} | ${seriCell} | ${modCell} | ${minCell} | ${totCell} | ${passes} |`);
+    }
+
+    reportLines.push('');
+    reportLines.push(`**Grand total violations**: ${grandTotal} (${grandCritical} critical, ${grandSerious} serious)`);
+    reportLines.push('');
+    reportLines.push('---');
+    reportLines.push('');
+
+    // Detailed section per page
+    reportLines.push('## Detailed Results');
+    reportLines.push('');
+
+    for (const { name, url, results } of allPageResults) {
+      reportLines.push(`### ${name}`);
+      reportLines.push('');
+      reportLines.push(`**URL**: ${url}`);
+      reportLines.push('');
+
+      if (results.violations.length === 0) {
+        reportLines.push('✅ **No violations found.**');
+        reportLines.push('');
+        reportLines.push(`- Passes: ${results.passes.length}`);
+        reportLines.push(`- Incomplete (manual review): ${results.incomplete.length}`);
+        reportLines.push('');
+      } else {
+        const critical = results.violations.filter(v => v.impact === 'critical');
+        const serious  = results.violations.filter(v => v.impact === 'serious');
+        const moderate = results.violations.filter(v => v.impact === 'moderate');
+        const minor    = results.violations.filter(v => v.impact === 'minor');
+
+        reportLines.push('**Violation Counts**');
+        reportLines.push('');
+        reportLines.push(`| Severity | Count |`);
+        reportLines.push(`|----------|-------|`);
+        if (critical.length > 0) reportLines.push(`| 🔴 Critical | ${critical.length} |`);
+        if (serious.length  > 0) reportLines.push(`| 🟠 Serious  | ${serious.length} |`);
+        if (moderate.length > 0) reportLines.push(`| 🟡 Moderate | ${moderate.length} |`);
+        if (minor.length    > 0) reportLines.push(`| 🔵 Minor    | ${minor.length} |`);
+        reportLines.push('');
+
+        reportLines.push('**Violations**');
+        reportLines.push('');
+
+        for (const v of results.violations) {
+          const impact = v.impact?.toUpperCase() ?? 'UNKNOWN';
+          const emoji = { CRITICAL: '🔴', SERIOUS: '🟠', MODERATE: '🟡', MINOR: '🔵' }[impact] ?? '⚪';
+          reportLines.push(`#### ${emoji} \`${v.id}\` — ${v.help}`);
+          reportLines.push('');
+          reportLines.push(`- **Impact**: ${impact}`);
+          reportLines.push(`- **Description**: ${v.description}`);
+          reportLines.push(`- **Help**: [${v.helpUrl}](${v.helpUrl})`);
+          reportLines.push(`- **Affected nodes**: ${v.nodes.length}`);
+          reportLines.push('');
+          reportLines.push('<details>');
+          reportLines.push(`<summary>Affected nodes (${v.nodes.length})</summary>`);
+          reportLines.push('');
+          for (const [i, node] of v.nodes.entries()) {
+            const selector = node.target?.join(', ') ?? '(unknown)';
+            const html = (node.html ?? '').substring(0, HTML_SNIPPET_LENGTH_MARKDOWN);
+            const fix = (node.failureSummary ?? '').split('\n').map(l => `  ${l}`).join('\n');
+            reportLines.push(`**Node ${i + 1}**`);
+            reportLines.push('');
+            reportLines.push(`Selector: \`${selector}\``);
+            reportLines.push('');
+            reportLines.push('```html');
+            reportLines.push(html);
+            reportLines.push('```');
+            reportLines.push('');
+            reportLines.push(`Fix: ${fix}`);
+            reportLines.push('');
+          }
+          reportLines.push('</details>');
+          reportLines.push('');
+        }
+
+        if (results.incomplete.length > 0) {
+          reportLines.push('**Incomplete — Needs Manual Review**');
+          reportLines.push('');
+          for (const v of results.incomplete) {
+            const impact = v.impact?.toUpperCase() ?? 'UNKNOWN';
+            reportLines.push(`- \`${v.id}\` [${impact}]: ${v.help}`);
+          }
+          reportLines.push('');
+        }
+      }
+
+      reportLines.push('---');
+      reportLines.push('');
+    }
+
+    // Write report to docs/
+    const reportPath = path.resolve(
+      process.cwd(),
+      'docs',
+      'accessibility-audit-report.md'
+    );
+    fs.mkdirSync(path.dirname(reportPath), { recursive: true });
+    fs.writeFileSync(reportPath, reportLines.join('\n'), 'utf8');
+
+    // Also attach as a Playwright artifact
+    await testInfo.attach('accessibility-audit-report.md', {
+      contentType: 'text/markdown',
+      body: reportLines.join('\n'),
+    });
+
+    console.log(`\nAccessibility audit report written to: ${reportPath}`);
+
+    // Soft-fail summary: fail test if any critical/serious violations exist across all pages
+    if (grandCritical + grandSerious > 0) {
+      expect.soft(
+        grandCritical + grandSerious,
+        `Found ${grandCritical} critical and ${grandSerious} serious violations across all pages. See docs/accessibility-audit-report.md`
+      ).toBe(0);
     }
   });
-}
+});
