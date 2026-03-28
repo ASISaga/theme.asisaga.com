@@ -234,8 +234,9 @@ export class GenesisNavbar extends GenesisElement {
             parentItem.classList.add('navbar__item--active');
           }
         }
-      } catch {
-        // Skip links with invalid URLs (e.g., empty href, javascript:, etc.)
+      } catch (e) {
+        // Skip links with invalid URLs (e.g., empty href, javascript: protocol)
+        console.debug('genesis-navbar: skipping link with invalid URL', link.href, e);
       }
     });
   }

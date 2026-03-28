@@ -8,8 +8,10 @@
 
 // Navbar uses .navbar selectors — see _navbar.scss
 // This file documents the include–SCSS correspondence.
-// NOTE: genesis-synapse('navigate') is applied to .navbar__link in _navbar.scss
-// Do NOT apply synapse to .navbar__item (the li) — it conflicts with flex layout
+// NOTE: Do NOT apply genesis-synapse('navigate') to .navbar__item (the <li>).
+// The mixin sets display: inline-block and mobile padding which conflicts
+// with the flex layout of .navbar__list, breaking desktop horizontal nav.
+// Synapse is correctly applied to .navbar__link in _navbar.scss instead.
 .navbar {
   .navbar__dropdown {
     @include genesis-entity('aggregate');         // Dropdown panel
