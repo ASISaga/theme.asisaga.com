@@ -81,8 +81,10 @@ export class GenesisNavigation extends GenesisElement {
                         tab.getAttribute('aria-current') === 'page';
       tab.setAttribute('aria-selected', isSelected ? 'true' : 'false');
 
-      // Mark every element between tablist and tab as presentation
-      // so the required tablist → tab parent chain is satisfied
+      // ARIA requires role="tab" to be owned by role="tablist".
+      // Intermediate wrappers (divs, role="group") break this ownership chain.
+      // Setting them to "presentation" makes them transparent in the
+      // accessibility tree, satisfying the tablist → tab parent relationship.
       let parent = tab.parentElement;
       while (parent && parent !== this) {
         const existingRole = parent.getAttribute('role');
