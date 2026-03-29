@@ -2,8 +2,8 @@
 // Third-party font imports for the site
 // Only import font-face or @import rules here
 
-// Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Merriweather:wght@300;400&display=swap');
+// Google Fonts — Inter (consciousness), Crimson Text (wisdom), Montserrat (sacred)
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@400;500;600;700&display=swap');
 // Google Fonts preconnect (for reference, not used in SCSS but documented)
 // <link rel="preconnect" href="https://fonts.googleapis.com">
 // <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,8 +20,8 @@
 // --------------------------------------------
 
 // Sacred font families for consciousness embedding
-$font-family-consciousness: 'Montserrat', sans-serif;
-$font-family-wisdom: 'Merriweather', serif;
+$font-family-consciousness: 'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif;
+$font-family-wisdom: 'Crimson Text', 'Times New Roman', Georgia, serif;
 $font-family-headings: $font-family-consciousness;
 $font-family-body: $font-family-wisdom;
 $font-family-interface: $font-family-consciousness;
