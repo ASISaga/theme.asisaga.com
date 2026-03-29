@@ -7,7 +7,7 @@
 
 
 .docs-layout {
-  @include genesis-environment('navigation-sidebar'); // Sidebar navigation
+  @include genesis-environment('convergent'); // Two-column: 280px sidebar + 1fr content
   @include genesis-atmosphere('neutral');              // Standard vibe
   .docs-sidebar {
     // Structural sidebar: transparent, layout-only

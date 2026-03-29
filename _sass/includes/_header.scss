@@ -8,32 +8,5 @@
 
 // Header uses .genesis-header selectors — see _genesis-header.scss
 // This file documents the include–SCSS correspondence.
-.genesis-header {
-  .genesis-header__container {
-    @include genesis-environment('associative'); // Horizontal nav row
-  }
-
-  .genesis-header__brand {
-    @include genesis-synapse('navigate');        // Brand link
-  }
-
-  .genesis-header__logo {
-    @include genesis-entity('avatar');           // Logo image
-  }
-
-  .genesis-header__title {
-    @include genesis-cognition('motive');        // Site name
-  }
-
-  .genesis-header__tagline {
-    @include genesis-cognition('gloss');         // Site tagline
-  }
-
-  .genesis-header__nav {
-    @include genesis-environment('associative'); // Horizontal nav list
-  }
-
-  .genesis-header__toggle {
-    @include genesis-synapse('execute');         // Mobile menu toggle
-  }
-}
+// All styles are defined in _sass/components/core/_genesis-header.scss.
+// DO NOT add styles here — they would override the carefully crafted header styles.

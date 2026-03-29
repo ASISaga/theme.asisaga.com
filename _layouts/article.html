@@ -1,8 +1,7 @@
 ---
 layout: default
 ---
-<genesis-environment logic="{% if page.toc %}convergent{% else %}focused{% endif %}">
-  <article class="article-layout">
+<article class="article-layout">
     {% if page.toc %}
     <genesis-navigation type="sidebar" orientation="vertical">
       <aside class="article-toc-sidebar" aria-label="Table of contents">
@@ -53,5 +52,4 @@ layout: default
         {% endif %}
       </div>
     </genesis-entity>
-  </article>
-</genesis-environment>
+</article>

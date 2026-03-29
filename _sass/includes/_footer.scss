@@ -8,32 +8,5 @@
 
 // Footer uses .genesis-footer selectors — see _genesis-footer.scss and _footer.scss
 // This file documents the include–SCSS correspondence.
-.genesis-footer {
-  .genesis-footer__container {
-    // Footer inner container
-  }
-
-  .genesis-footer__grid {
-    @include genesis-environment('distributed'); // Multi-column grid
-  }
-
-  .genesis-footer__brand {
-    @include genesis-entity('ancestral');        // Brand identity section
-  }
-
-  .genesis-footer__nav {
-    @include genesis-environment('chronological'); // Vertical nav list
-  }
-
-  .genesis-footer__nav-item {
-    @include genesis-synapse('navigate');          // Nav link
-  }
-
-  .genesis-footer__copyright {
-    @include genesis-cognition('gloss');           // Small copyright text
-  }
-}
-
-.genesis-back-to-top {
-  @include genesis-synapse('navigate');            // Back to top action
-}
+// All styles are defined in _sass/components/core/_genesis-footer.scss.
+// DO NOT add styles here — they would override the carefully crafted footer styles.
