@@ -23,6 +23,12 @@
   @include genesis-atmosphere('neutral');      // Standard vibe
   
   height: 100%;
+  
+  // All direct children span the full 12-column grid by default.
+  // Individual widgets may override to span fewer columns for bento layouts.
+  > * {
+    grid-column: 1 / -1;
+  }
 }
 
 // Header section from layout-header.html include (Level 2: section)

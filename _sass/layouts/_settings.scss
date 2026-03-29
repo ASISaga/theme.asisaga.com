@@ -7,11 +7,10 @@
 
 
 .settings-layout {
-  @include genesis-environment('navigation-sidebar'); // Sidebar navigation
+  @include genesis-environment('convergent'); // Two-column: 280px sidebar + 1fr content
   @include genesis-atmosphere('neutral');              // Standard vibe
   
   height: 100%;
-  display: flex;
   
   .settings-sidebar {
     // Structural sidebar: transparent, layout-only

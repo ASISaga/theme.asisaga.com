@@ -16,6 +16,11 @@
   // Explicit grid rows: header / content / footer
   grid-template-rows: auto 1fr auto;
   
+  // Override the row gap from genesis-environment('chronological') to zero so
+  // header, main and footer are flush — the dark body background must not show
+  // through as a visible strip between rows.
+  gap: 0;
+  
   // The body's background recedes behind the ambient layer
   background: oklch(0.04 0.01 260);
   color: oklch(0.90 0.005 90);
@@ -228,9 +233,11 @@ genesis-form {
   @include genesis-environment('interaction-form');
 }
 
-genesis-dashboard {
-  @include genesis-environment('manifest');
-}
+// genesis-dashboard intentionally has no layout mixin applied here.
+// Applying genesis-environment('manifest') here AND in .dashboard-layout
+// would create nested 12-column grids: the outer grid would place
+// .dashboard-layout in column 1 (~120px wide), breaking the dashboard.
+// The manifest grid is applied once in _sass/layouts/_dashboard.scss.
 
 genesis-accordion {
   @include genesis-environment('navigation-accordion');
