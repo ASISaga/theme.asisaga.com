@@ -8,9 +8,8 @@
 // <link rel="preconnect" href="https://fonts.googleapis.com">
 // <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-// Font Awesome
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
-// Font Awesome CDN: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
+// Font Awesome is loaded via _sass/base/_fontawesome.scss (npm package)
+// which is imported in _sass/ontology/_index.scss
 
 // gstatic (for Google Fonts, preconnect reference)
 // <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

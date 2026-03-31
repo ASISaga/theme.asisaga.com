@@ -3,8 +3,8 @@
 // Only import icon font-face or @import rules here
 
 // Font Awesome
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
-// Font Awesome CDN: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
+// Icons are loaded from the npm package via _sass/base/_fontawesome.scss
+// which is imported by _sass/ontology/_index.scss
 
 // --------------------------------------------
 // Icon Size Variables (from dimensions)

@@ -11,6 +11,7 @@ sass:
   load_paths:
     - _sass
     - assets/css
+    - node_modules
 
 plugins:
   - jekyll-seo-tag
