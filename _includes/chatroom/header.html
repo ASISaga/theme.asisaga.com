@@ -2,11 +2,11 @@
 <header class="chatroom-header">
     <div class="chatroom-header-content">
         <div class="chatroom-header-left">
-            <h1 class="chatroom-title">{{ include.title | default: page.title | default: "Chat" }}</h1>
+            <h1 class="chatroom-title">{{ include.title | default: page.title | default: "Executive Boardroom" }}</h1>
             <div class="chatroom-header-info">
                 {% if include.participants or page.participants %}
                 <span class="chatroom-participants">{{ include.participants | default: page.participants }}
-                    participants</span>
+                    agents in session</span>
                 {% endif %}
                 {% if include.typing_indicator %}
                 <div class="chatroom-typing-indicator" id="typing-indicator">
@@ -28,11 +28,11 @@
                 {{ include.extra_actions }}
                 {% endif %}
                 {% if include.mcp_apps and include.mcp_apps.size > 0 %}
-                <button type="button" class="chatroom-mcp-apps-toggle" aria-label="MCP Apps" aria-expanded="false" aria-controls="chatroom-mcp-apps-panel" title="MCP Apps">
-                    <i class="fas fa-plug" aria-hidden="true"></i>
+                <button type="button" class="chatroom-mcp-apps-toggle" aria-label="AI Agent Tools" aria-expanded="false" aria-controls="chatroom-mcp-apps-panel" title="AI Agent Tools">
+                    <i class="fas fa-robot" aria-hidden="true"></i>
                 </button>
                 {% endif %}
-                <button type="button" class="chatroom-settings-btn" aria-label="Settings">
+                <button type="button" class="chatroom-settings-btn" aria-label="Boardroom Settings">
                     <i class="fas fa-cog" aria-hidden="true"></i>
                 </button>
             </div>
