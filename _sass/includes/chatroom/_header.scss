@@ -1,7 +1,7 @@
 /**
  * Chatroom Header Include Styles
  * ============================================================================
- * Header bar for the chatroom interface.
+ * Header bar for the executive boardroom interface.
  * Corresponds to: _includes/chatroom/header.html
  * Base styles: _sass/layouts/_chatroom.scss
  * MCP apps button: _sass/includes/chatroom/_mcp-apps.scss
@@ -15,11 +15,11 @@
   }
 
   .chatroom-title {
-    @include genesis-cognition('axiom');         // Chat room title
+    @include genesis-cognition('axiom');         // Boardroom title
   }
 
   .chatroom-participants {
-    @include genesis-cognition('gloss');         // Participant count metadata
+    @include genesis-cognition('gloss');         // Agent count metadata
   }
 
   .chatroom-status {
