@@ -2,6 +2,20 @@
 layout: chatroom
 title: "Development Team"
 participants: 12
+show_toolbar: true
+mcp_apps:
+  - name: "erp"
+    label: "ERP Search"
+    icon: "fas fa-database"
+    description: "Search products, orders and inventory"
+  - name: "docs"
+    label: "Docs Agent"
+    icon: "fas fa-book"
+    description: "Find answers in the knowledge base"
+  - name: "code"
+    label: "Code Review"
+    icon: "fas fa-code-branch"
+    description: "Review pull requests and suggest improvements"
 ---
 
 <div class="message-list">
@@ -70,6 +84,53 @@ participants: 12
           <time class="chatroom__time">10:30 AM</time>
         </header>
         <p class="chatroom__text">Just saw the docs update. Very thorough 📚</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sample: user invokes the ERP MCP app via slash command -->
+  <div class="chatroom__message chatroom__message--own">
+    <div class="chatroom__message-row">
+      <div class="chatroom__message-body">
+        <header class="chatroom__message-meta">
+          <time class="chatroom__time">10:31 AM</time>
+          <strong class="chatroom__author">You</strong>
+        </header>
+        <p class="chatroom__text">/erp search layout components</p>
+      </div>
+      <span class="chatroom__avatar chatroom__avatar--you" aria-hidden="true">Y</span>
+    </div>
+  </div>
+
+  <!-- Sample: AI agent response from the ERP MCP app -->
+  <div class="chatroom__message chatroom__message--ai">
+    <div class="chatroom__message-row">
+      <span class="chatroom__avatar chatroom__avatar--ai" aria-hidden="true">
+        <i class="fas fa-database" aria-hidden="true"></i>
+      </span>
+      <div class="chatroom__message-body">
+        <header class="chatroom__message-meta">
+          <strong class="chatroom__author">ERP Search</strong>
+          <time class="chatroom__time">10:31 AM</time>
+          <span class="chatroom__tool-badge" title="Tool used">
+            <i class="fas fa-wrench" aria-hidden="true"></i> erp-search
+          </span>
+        </header>
+        <p class="chatroom__text">Found 3 results for "layout components":</p>
+        <ul class="chatroom__tool-results" aria-label="Tool results">
+          <li class="chatroom__tool-result-item">
+            <strong class="chatroom__tool-result-label">Dashboard Layout Kit</strong>
+            <span class="chatroom__tool-result-detail">Responsive dashboard with sidebar and widget grid.</span>
+          </li>
+          <li class="chatroom__tool-result-item">
+            <strong class="chatroom__tool-result-label">Chatroom Layout</strong>
+            <span class="chatroom__tool-result-detail">Full-height chat interface with fixed header and input.</span>
+          </li>
+          <li class="chatroom__tool-result-item">
+            <strong class="chatroom__tool-result-label">Settings Layout</strong>
+            <span class="chatroom__tool-result-detail">Two-column settings page with navigation sidebar.</span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

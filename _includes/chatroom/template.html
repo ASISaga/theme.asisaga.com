@@ -7,7 +7,11 @@
     typing_indicator=page.typing_indicator
     connection_status=page.connection_status
     extra_actions=page.extra_actions
+    mcp_apps=page.mcp_apps
     %}
+
+    <!-- MCP Apps Panel (only rendered when mcp_apps configured) -->
+    {% include chatroom/mcp-apps.html mcp_apps=page.mcp_apps %}
 
     <!-- Chatroom Messages Area -->
     {% include chatroom/messages.html %}
@@ -23,5 +27,6 @@
     extra_input_actions=page.extra_input_actions
     toolbar_left=page.toolbar_left
     toolbar_right=page.toolbar_right
+    mcp_apps=page.mcp_apps
     %}
 </div>

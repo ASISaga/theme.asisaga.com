@@ -27,6 +27,11 @@
                 {% if include.extra_actions %}
                 {{ include.extra_actions }}
                 {% endif %}
+                {% if include.mcp_apps and include.mcp_apps.size > 0 %}
+                <button type="button" class="chatroom-mcp-apps-toggle" aria-label="MCP Apps" aria-expanded="false" aria-controls="chatroom-mcp-apps-panel" title="MCP Apps">
+                    <i class="fas fa-plug" aria-hidden="true"></i>
+                </button>
+                {% endif %}
                 <button type="button" class="chatroom-settings-btn" aria-label="Settings">
                     <i class="fas fa-cog" aria-hidden="true"></i>
                 </button>

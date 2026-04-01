@@ -23,6 +23,12 @@
             <div class="chatroom-input-toolbar">
                 <div class="chatroom-input-toolbar-left">
                     {{ include.toolbar_left }}
+                    {% if include.mcp_apps and include.mcp_apps.size > 0 %}
+                    <button type="button" class="chatroom-mcp-apps-toggle chatroom-input-format-btn"
+                        aria-label="MCP Apps" aria-expanded="false" title="MCP Apps">
+                        <i class="fas fa-plug" aria-hidden="true"></i>
+                    </button>
+                    {% endif %}
                 </div>
                 <div class="chatroom-input-toolbar-right">
                     {{ include.toolbar_right }}
@@ -33,9 +39,18 @@
                 </div>
             </div>
             {% else %}
-            <button class="chatroom-input-send-btn" type="button" title="Send Message" aria-label="Send Message">
-                <i class="fas fa-paper-plane" aria-hidden="true"></i>
-            </button>
+            <div class="chatroom-input-toolbar chatroom-input-toolbar--minimal">
+                {% if include.mcp_apps and include.mcp_apps.size > 0 %}
+                <button type="button" class="chatroom-mcp-apps-toggle chatroom-input-format-btn"
+                    aria-label="MCP Apps" aria-expanded="false"
+                    aria-controls="chatroom-mcp-apps-panel" title="MCP Apps">
+                    <i class="fas fa-plug" aria-hidden="true"></i>
+                </button>
+                {% endif %}
+                <button class="chatroom-input-send-btn" type="button" title="Send Message" aria-label="Send Message">
+                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                </button>
+            </div>
             {% endif %}
         </div>
     </div>
