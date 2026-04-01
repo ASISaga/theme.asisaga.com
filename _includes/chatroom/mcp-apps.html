@@ -1,13 +1,13 @@
 {% comment %}
   _includes/chatroom/mcp-apps.html
-  MCP (Model Context Protocol) apps panel for the chatroom.
-  Displays available AI agent tools and lets users invoke them via click or /slash commands.
+  AI Agent Tools panel for the executive boardroom.
+  Displays available AI agent tools and lets board members invoke them via click or /slash commands.
 
   Parameters (passed from template.html via page front matter):
     include.mcp_apps  – array of MCP app objects, each with:
-                          name:     identifier used in slash commands (e.g. "erp")
-                          label:    display name (e.g. "ERP Search")
-                          icon:     Font Awesome class (e.g. "fas fa-database")
+                          name:     identifier used in slash commands (e.g. "financials")
+                          label:    display name (e.g. "Financial Intelligence")
+                          icon:     Font Awesome class (e.g. "fas fa-chart-line")
                           endpoint: HTTP endpoint for this app (optional, overrides mcp_endpoint)
                           description: short description shown in the panel
     include.mcp_endpoint – fallback HTTP endpoint for all apps (optional)
@@ -20,10 +20,10 @@
 <div class="chatroom-mcp-apps" aria-hidden="true" id="chatroom-mcp-apps-panel">
   <div class="chatroom-mcp-apps__header">
     <h2 class="chatroom-mcp-apps__title">
-      <i class="fas fa-plug" aria-hidden="true"></i> MCP Apps
+      <i class="fas fa-robot" aria-hidden="true"></i> AI Agent Tools
     </h2>
     <p class="chatroom-mcp-apps__hint">
-      Click an app to activate, or type <code>/app-name query</code> in the chat.
+      Select an agent tool or type <code>/tool-name query</code> in the input field.
     </p>
   </div>
   <ul class="chatroom-mcp-apps__list" role="list">
@@ -34,7 +34,7 @@
         type="button"
         data-mcp-app="{{ app.name | escape }}"
         {% if app.endpoint %}data-mcp-endpoint="{{ app.endpoint | escape }}"{% endif %}
-        aria-label="Use {{ app.label | default: app.name | escape }}">
+        aria-label="Invoke {{ app.label | default: app.name | escape }}">
         <span class="chatroom-mcp-apps__btn-icon" aria-hidden="true">
           <i class="{{ app.icon | default: 'fas fa-robot' }}" aria-hidden="true"></i>
         </span>
