@@ -5,7 +5,7 @@ This directory contains the visual design foundation - colors, typography, token
 ## Source of Truth
 
 - `_design/tokens.json` - canonical design token source in DTCG JSON
-- `_variables-generated.scss` - generated mirror of `_design/tokens.json`
+- `_variables-generated.scss` - generated mirror of `_design/tokens.json` via `npm run tokens:build` (Style Dictionary)
 - Other SCSS files in this directory group those tokens by concern (colors, dimensions, typography, theme) and provide curated compatibility aliases where needed
 
 ## Files
