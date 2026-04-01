@@ -53,7 +53,7 @@ class ChatroomApp extends HTMLElement {
             // Fallback: comma-separated "name:endpoint" or just "name" list
             return raw.split(',').map(token => {
                 const [name, endpoint = ''] = token.trim().split(':');
-                return { name: name.trim(), label: name.trim(), endpoint: endpoint.trim(), icon: 'fa-robot' };
+                return { name: name.trim(), label: name.trim(), endpoint: endpoint.trim(), icon: 'fas fa-robot' };
             }).filter(app => app.name);
         }
     }
@@ -243,7 +243,9 @@ class ChatroomApp extends HTMLElement {
             });
 
             if (!response.ok) {
-                throw new Error(`MCP app responded with status ${response.status}`);
+                let detail = '';
+                try { detail = await response.text(); } catch { /* ignore */ }
+                throw new Error(`MCP app responded with status ${response.status}${detail ? `: ${detail.slice(0, 120)}` : ''}`);
             }
 
             const data = await response.json();
@@ -423,21 +425,37 @@ class ChatroomApp extends HTMLElement {
         const panel = this.elements.mcpAppsPanel;
         if (!panel) return;
         const isOpen = panel.getAttribute('aria-hidden') !== 'true';
-        panel.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
-        panel.classList.toggle('chatroom-mcp-apps--open', !isOpen);
-        if (this.elements.mcpAppsToggle) {
-            this.elements.mcpAppsToggle.setAttribute('aria-expanded', String(!isOpen));
-        }
+        this._setPanelOpen(panel, !isOpen);
     }
 
     /** Close the MCP apps panel. */
     closeMcpAppsPanel() {
         const panel = this.elements.mcpAppsPanel;
         if (!panel) return;
-        panel.setAttribute('aria-hidden', 'true');
-        panel.classList.remove('chatroom-mcp-apps--open');
+        this._setPanelOpen(panel, false);
+    }
+
+    /**
+     * Set the open state of the MCP apps panel and synchronise ARIA attributes.
+     * When open:  role=region and aria-label are present so screen readers know
+     *             they are inside the "MCP Apps" landmark.
+     * When closed: role and aria-label are removed to avoid conflicting semantics
+     *              on an aria-hidden element.
+     * @param {HTMLElement} panel
+     * @param {boolean} open
+     */
+    _setPanelOpen(panel, open) {
+        panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+        panel.classList.toggle('chatroom-mcp-apps--open', open);
+        if (open) {
+            panel.setAttribute('role', 'region');
+            panel.setAttribute('aria-label', 'MCP Apps');
+        } else {
+            panel.removeAttribute('role');
+            panel.removeAttribute('aria-label');
+        }
         if (this.elements.mcpAppsToggle) {
-            this.elements.mcpAppsToggle.setAttribute('aria-expanded', 'false');
+            this.elements.mcpAppsToggle.setAttribute('aria-expanded', String(open));
         }
     }
 
@@ -506,7 +524,7 @@ class ChatroomApp extends HTMLElement {
             this._appendUserMessage(text);
             this.elements.inputField.value = '';
             this._resetPlaceholder();
-            await this.callMcpApp(slashCmd.app, slashCmd.query || text);
+            await this.callMcpApp(slashCmd.app, slashCmd.query);
             return;
         }
 
