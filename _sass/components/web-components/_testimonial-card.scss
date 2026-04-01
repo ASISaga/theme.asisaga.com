@@ -46,8 +46,8 @@
   }
   
   .wc-testimonial-card__avatar {
-    width: 48px;
-    height: 48px;
+    width: $size-avatar-testimonial;
+    height: $size-avatar-testimonial;
     border-radius: 50%;
     overflow: hidden;
     flex-shrink: 0;

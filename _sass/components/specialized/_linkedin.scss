@@ -9,8 +9,8 @@
     &-header {
     }
       &-image {
-      width: $linkedin-avatar-size; // Using centralized dimension variable
-      height: $linkedin-avatar-size; // Using centralized dimension variable
+      width: $size-avatar-linkedin;
+      height: $size-avatar-linkedin;
     }
     
     &-info {
@@ -27,10 +27,10 @@
   }
   
   .linkedin-button {
-    background-color: #0077b5; // LinkedIn brand color - keep as is
+    background-color: $color-brand-linkedin;
     
     &:hover {
-  background-color: #00568a; // Keep this hover effect
+      background-color: $color-brand-linkedin-hover;
     }
   }
 }

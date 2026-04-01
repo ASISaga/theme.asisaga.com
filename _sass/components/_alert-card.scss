@@ -21,11 +21,11 @@
   padding: var(--space-narrative, 1rem);
   
   // Default (info) styling
-  border-left: 4px solid oklch(0.65 0.25 230);  // Neon blue
+  border-left: $border-width-accent solid $color-status-info;
   
   .wc-alert-card__icon {
     flex-shrink: 0;
-    color: oklch(0.65 0.25 230);  // Neon blue
+    color: $color-status-info;
   }
   
   .wc-alert-card__icon-svg {
@@ -51,12 +51,12 @@
     @include genesis-synapse('destructive');
     background: transparent;
     border: none;
-    padding: 0.25rem;
+    padding: $spacing-xs;
     cursor: pointer;
     flex-shrink: 0;
     color: currentColor;
     opacity: 0.5;
-    transition: opacity var(--motion-fluid, 0.2s ease);
+    transition: opacity $transition-fast;
     
     &:hover {
       opacity: 1;
@@ -69,27 +69,27 @@
   
   // Type variants
   &--success {
-    border-left-color: oklch(0.60 0.20 145);  // Green
+    border-left-color: $color-status-success;
     
     .wc-alert-card__icon {
-      color: oklch(0.60 0.20 145);
+      color: $color-status-success;
     }
   }
   
   &--warning {
-    border-left-color: oklch(0.70 0.18 80);  // Amber/Gold
+    border-left-color: $color-status-warning;
     
     .wc-alert-card__icon {
-      color: oklch(0.70 0.18 80);
+      color: $color-status-warning;
     }
   }
   
   &--error {
     @include genesis-entity('imperative');
-    border-left-color: oklch(0.55 0.25 25);  // Red
+    border-left-color: $color-status-error;
     
     .wc-alert-card__icon {
-      color: oklch(0.55 0.25 25);
+      color: $color-status-error;
     }
   }
   
@@ -105,7 +105,7 @@
     }
   }
   
-  animation: slideInRight 0.3s ease-out;
+  animation: slideInRight $transition-normal;
   
   // Respect reduced motion preference
   @media (prefers-reduced-motion: reduce) {
