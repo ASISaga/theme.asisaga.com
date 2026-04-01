@@ -14,7 +14,9 @@ layout: default
     {% if page.show_connection_status %}show-connection-status{% endif %}
     {% if page.api_endpoint %}api-endpoint="{{ page.api_endpoint }}"{% endif %}
     {% if page.auto_refresh %}auto-refresh{% endif %}
-    {% if page.refresh_interval %}refresh-interval="{{ page.refresh_interval }}"{% endif %}>
+    {% if page.refresh_interval %}refresh-interval="{{ page.refresh_interval }}"{% endif %}
+    {% if page.mcp_apps %}mcp-apps="{{ page.mcp_apps | jsonify | escape }}"{% endif %}
+    {% if page.mcp_endpoint %}mcp-endpoint="{{ page.mcp_endpoint }}"{% endif %}>
     {% include chatroom/template.html %}
   </chatroom-app>
 </genesis-chat>
