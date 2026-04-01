@@ -314,6 +314,61 @@
   font-style: italic;
 }
 
+// Light sample variant for demo pages that need a standard light message treatment
+.message-list--light {
+  --font-wisdom: var(--font-consciousness, 'Inter', 'SF Pro Display', system-ui, -apple-system, "Segoe UI", sans-serif);
+
+  font-family: var(--font-consciousness, 'Inter', 'SF Pro Display', system-ui, -apple-system, "Segoe UI", sans-serif);
+
+  .chatroom__message-body {
+    background: $surface-primary;
+    border: 1px solid $border-primary;
+  }
+
+  .chatroom__message--own .chatroom__message-body {
+    background: $surface-elevated;
+    border-color: $border-accent;
+  }
+
+  .chatroom__message--ai .chatroom__message-body {
+    background: $surface-primary;
+    border-color: $border-primary;
+    border-left-color: $luminous-gold-accessible;
+  }
+
+  .chatroom__author,
+  .chatroom__time,
+  .chatroom__text,
+  .chatroom__tool-result-label,
+  .chatroom__tool-result-detail,
+  .chatroom__tool-badge,
+  .chatroom__agent-role,
+  .chatroom__typing-text {
+    color: $text-primary;
+  }
+
+  .chatroom__time,
+  .chatroom__tool-result-detail,
+  .chatroom__typing-text {
+    color: $text-secondary;
+  }
+
+  .chatroom__agent-role,
+  .chatroom__tool-badge {
+    background: $surface-elevated;
+    color: $luminous-gold-accessible;
+  }
+
+  .chatroom__tool-results {
+    border-top-color: $border-primary;
+  }
+
+  .chatroom__tool-result-item {
+    background: $surface-elevated;
+    border-color: $border-primary;
+  }
+}
+
 // Deliberating/thinking animation dots — gold pulse
 .chatroom__thinking-dots {
   display: inline-flex;
@@ -500,5 +555,3 @@
 .chatroom-mcp-apps-toggle {
   position: relative;
 }
-
-
