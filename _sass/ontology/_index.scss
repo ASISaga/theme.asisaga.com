@@ -35,7 +35,7 @@
 // Subdomains @import "ontology/index" to get all of this in one line.
 
 // Fonts & Icons
-@import "../base/fontawesome";             // Font Awesome 6 Free (npm package)
+@import "../base/fontawesome";             // Font Awesome 6 Free (vendored in _sass/vendor/fontawesome/)
 @import "../base/fonts";
 @import "../base/icons";
 

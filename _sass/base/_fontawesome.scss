@@ -1,20 +1,22 @@
 // _fontawesome.scss
-// Font Awesome 6 Free — loaded from npm package (@fortawesome/fontawesome-free)
+// Font Awesome 6 Free — SCSS vendored in _sass/vendor/fontawesome/
 //
 // Font files are self-hosted in assets/webfonts/ (woff2 + ttf).
 // The default $fa-font-path of "../webfonts" resolves correctly to
 // /assets/webfonts/ when CSS is served from /assets/css/style.css.
 //
-// To upgrade: npm install --save-dev @fortawesome/fontawesome-free@latest
-// then run: npm run fonts:copy
+// To upgrade Font Awesome:
+//   1. npm install --save-dev @fortawesome/fontawesome-free@latest
+//   2. npm run fonts:copy   (copies webfonts to assets/webfonts/)
+//   3. npm run fa:vendor    (copies SCSS to _sass/vendor/fontawesome/)
 
 // Core styles, sizing helpers, animation, and stacking
-@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "vendor/fontawesome/fontawesome";
 
 // Individual icon style sets (solid, regular, brands)
-@import "@fortawesome/fontawesome-free/scss/solid";
-@import "@fortawesome/fontawesome-free/scss/regular";
-@import "@fortawesome/fontawesome-free/scss/brands";
+@import "vendor/fontawesome/solid";
+@import "vendor/fontawesome/regular";
+@import "vendor/fontawesome/brands";
 
 // v4 backwards-compatibility shims (fa fa-* → fas/far/fab fa-*)
-@import "@fortawesome/fontawesome-free/scss/v4-shims";
+@import "vendor/fontawesome/v4-shims";
