@@ -316,10 +316,13 @@
 
 // Light sample variant for demo pages that need a standard light message treatment
 .message-list--light {
+  --font-wisdom: var(--font-consciousness, 'Inter', 'SF Pro Display', system-ui, -apple-system, "Segoe UI", sans-serif);
+
+  font-family: var(--font-consciousness, 'Inter', 'SF Pro Display', system-ui, -apple-system, "Segoe UI", sans-serif);
+
   .chatroom__message-body {
     background: $surface-primary;
     border: 1px solid $border-primary;
-    box-shadow: 0 10px 30px oklch(0.80 0.01 220 / 0.16);
   }
 
   .chatroom__message--own .chatroom__message-body {
@@ -342,7 +345,6 @@
   .chatroom__agent-role,
   .chatroom__typing-text {
     color: $text-primary;
-    font-family: var(--font-consciousness, 'Inter', 'SF Pro Display', system-ui, -apple-system, "Segoe UI", sans-serif);
   }
 
   .chatroom__time,
@@ -353,7 +355,7 @@
 
   .chatroom__agent-role,
   .chatroom__tool-badge {
-    background: oklch(0.95 0.01 90);
+    background: $surface-elevated;
     color: $luminous-gold-accessible;
   }
 
@@ -553,4 +555,3 @@
 .chatroom-mcp-apps-toggle {
   position: relative;
 }
-
