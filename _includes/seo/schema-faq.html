@@ -1,0 +1,32 @@
+{% comment %}
+Schema.org FAQPage JSON-LD
+Include in _layouts/faq.html inside <head>.
+Reference: https://schema.org/FAQPage
+
+Front matter example:
+  faqs:
+    - question: "What is ASI Saga?"
+      answer: "A consciousness-focused design system."
+    - question: "How do I get started?"
+      answer: "Follow the Quick Start guide."
+{% endcomment %}
+{% if page.faqs %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for faq in page.faqs %}
+    {
+      "@type": "Question",
+      "name": {{ faq.question | jsonify }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ faq.answer | jsonify }}
+      }
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}

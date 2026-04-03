@@ -39,6 +39,9 @@ These specifications serve as:
 15. [**SCSS Ontology System**](./scss-ontology-system.md) - Genesis Semantic Engine: 6 categories, 31 variants
 16. [**Ontology-to-HTML Mapping**](./ontology-html-mapping.md) - Formal hierarchy rules for applying ontological mixins to HTML elements
 
+### Cross-Cutting Methodologies
+17. [**Atomic Design, State-to-UI Mapping, XDM & Schema.org**](./atomic-design-state-xdm-schema.md) - How Atomic Design, State-to-UI Mapping, Experience Data Models, and Schema.org integrate with the Genesis Design System
+
 ## How to Use These Specifications
 
 ### For New Contributors

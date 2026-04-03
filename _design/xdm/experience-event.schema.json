@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ns.adobe.com/xdm/context/experienceevent",
+  "title": "XDM ExperienceEvent",
+  "description": "Base schema for Adobe Experience Platform ExperienceEvent. Used by assets/js/common/xdm.js to validate event payloads before sending via Adobe Web SDK (alloy).",
+  "type": "object",
+  "required": ["_schema", "timestamp", "eventType"],
+  "properties": {
+    "_schema": {
+      "type": "string",
+      "description": "XDM schema identifier",
+      "const": "https://ns.adobe.com/xdm/context/experienceevent"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of when the event occurred"
+    },
+    "eventType": {
+      "type": "string",
+      "description": "Primary event classification",
+      "examples": [
+        "web.webpagedetails.pageViews",
+        "web.webinteraction.linkClicks"
+      ]
+    },
+    "web": {
+      "type": "object",
+      "properties": {
+        "webPageDetails": {
+          "type": "object",
+          "properties": {
+            "URL":        { "type": "string", "format": "uri" },
+            "name":       { "type": "string" },
+            "isHomePage": { "type": "boolean" },
+            "pageViews":  {
+              "type": "object",
+              "properties": { "value": { "type": "integer", "minimum": 1 } }
+            }
+          }
+        },
+        "webReferrer": {
+          "type": "object",
+          "properties": {
+            "URL": { "type": "string" }
+          }
+        },
+        "webInteraction": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "URL":  { "type": "string", "format": "uri" },
+            "type": {
+              "type": "string",
+              "enum": ["other", "download", "exit", "call-to-action"]
+            },
+            "linkClicks": {
+              "type": "object",
+              "properties": { "value": { "type": "integer", "minimum": 1 } }
+            }
+          }
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["browser", "application", "iot"] },
+        "browserDetails": {
+          "type": "object",
+          "properties": {
+            "userAgent":      { "type": "string" },
+            "cookiesEnabled": { "type": "boolean" },
+            "viewportWidth":  { "type": "integer" },
+            "viewportHeight": { "type": "integer" }
+          }
+        }
+      }
+    }
+  }
+}

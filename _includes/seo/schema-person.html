@@ -1,0 +1,35 @@
+{% comment %}
+Schema.org Person JSON-LD
+Include in _layouts/profile.html inside <head>.
+Reference: https://schema.org/Person
+
+Front matter example:
+  profile_name: "Dr. A. Kumar"
+  bio: "AI researcher and consciousness theorist."
+  avatar: /assets/images/avatar-akumar.jpg
+  profile_url: /team/akumar/
+  social_links:
+    - url: https://github.com/akumar
+    - url: https://linkedin.com/in/akumar
+{% endcomment %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ page.profile_name | default: page.title | jsonify }},
+  "description": {{ page.bio | default: page.description | jsonify }}
+  {% if page.avatar %},
+  "image": "{{ site.url }}{{ page.avatar }}"
+  {% endif %}
+  {% if page.profile_url %},
+  "url": "{{ site.url }}{{ page.profile_url }}"
+  {% endif %}
+  {% if page.social_links %},
+  "sameAs": [
+    {% for link in page.social_links %}
+    {{ link.url | jsonify }}{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+  {% endif %}
+}
+</script>

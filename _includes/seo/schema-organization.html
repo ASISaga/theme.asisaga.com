@@ -1,0 +1,22 @@
+{% comment %}
+Schema.org Organization JSON-LD
+Include in _layouts/default.html inside <head>.
+Reference: https://schema.org/Organization
+{% endcomment %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": {{ site.title | jsonify }},
+  "url": {{ site.url | jsonify }},
+  "logo": {
+    "@type": "ImageObject",
+    "url": "{{ site.url }}/assets/images/logo.png"
+  }
+  {% if site.github_username %},
+  "sameAs": [
+    "https://github.com/{{ site.github_username }}"
+  ]
+  {% endif %}
+}
+</script>
