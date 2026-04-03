@@ -98,6 +98,7 @@ Historical records organized by type (50+ files):
 - **Understand the architecture** → [Main README](../README.md)
 - **Use ontology mixins** → [Ontology Integration Guide](systems/ontology/INTEGRATION-GUIDE.md)
 - **Learn ontology basics** → [Ontology Quick Start](systems/ontology/ONTOLOGY-QUICK-START.md)
+- **Implement Atomic Design, XDM & Schema.org** → [Atomic Design, State-to-UI, XDM & Schema.org](specifications/atomic-design-state-xdm-schema.md)
 - **Find SCSS files** → [SASS Reorganization Guide](references/SASS-REORGANIZATION-GUIDE.md)
 - **Work with layouts** → [Layout System](systems/layout/)
 - **Add animations** → [Motion System](systems/motion/)

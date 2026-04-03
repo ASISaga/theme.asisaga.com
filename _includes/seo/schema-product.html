@@ -1,0 +1,38 @@
+{% comment %}
+Schema.org Product JSON-LD
+Include in landing and product page layouts inside <head>.
+Reference: https://schema.org/Product
+
+Front matter example:
+  product:
+    name: "Genesis Design System"
+    description: "A semantic design system for consciousness-focused web experiences."
+    image: /assets/images/genesis-product.png
+    price: "0"
+    currency: "USD"
+{% endcomment %}
+{% if page.product %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ page.product.name | jsonify }},
+  "description": {{ page.product.description | jsonify }},
+  "brand": {
+    "@type": "Brand",
+    "name": {{ site.title | jsonify }}
+  }
+  {% if page.product.image %},
+  "image": "{{ site.url }}{{ page.product.image }}"
+  {% endif %}
+  {% if page.product.price %},
+  "offers": {
+    "@type": "Offer",
+    "price": "{{ page.product.price }}",
+    "priceCurrency": "{{ page.product.currency | default: 'USD' }}",
+    "availability": "https://schema.org/InStock"
+  }
+  {% endif %}
+}
+</script>
+{% endif %}

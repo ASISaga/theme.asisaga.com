@@ -1,0 +1,43 @@
+{% comment %}
+Schema.org Article / BlogPosting JSON-LD
+Include in _layouts/post.html and _layouts/article.html inside <head>.
+Override schema type per page with front matter: schema_type: TechArticle
+Reference: https://schema.org/Article
+{% endcomment %}
+{% assign author_name = page.author | default: site.author %}
+{% assign word_count = content | number_of_words %}
+{% assign reading_minutes = word_count | divided_by: 200 | plus: 1 %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": {{ page.schema_type | default: "BlogPosting" | jsonify }},
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.description | default: page.excerpt | strip_html | truncate: 160 | jsonify }},
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+  "author": {
+    "@type": "Person",
+    "name": {{ author_name | jsonify }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ site.title | jsonify }},
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}/assets/images/logo.png"
+    }
+  },
+  "url": "{{ site.url }}{{ page.url }}",
+  "wordCount": {{ word_count }},
+  "timeRequired": "PT{{ reading_minutes }}M"
+  {% if page.image %},
+  "image": {
+    "@type": "ImageObject",
+    "url": "{{ site.url }}{{ page.image }}"
+  }
+  {% endif %}
+  {% if page.tags %},
+  "keywords": {{ page.tags | join: ", " | jsonify }}
+  {% endif %}
+}
+</script>

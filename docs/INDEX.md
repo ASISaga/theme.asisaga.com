@@ -87,6 +87,7 @@ Complete searchable index of all documentation in the ASI Saga Genesis theme.
 - [HTML/Liquid](specifications/html-liquid.md) - Template system
 - [JavaScript](specifications/javascript.md) - JS architecture
 - [Build & Deployment](specifications/build-deployment.md) - Build system
+- [Atomic Design, State-to-UI Mapping, XDM & Schema.org](specifications/atomic-design-state-xdm-schema.md) - Cross-cutting methodologies
 
 ### References & Lookups
 

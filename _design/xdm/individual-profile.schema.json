@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ns.adobe.com/xdm/context/profile",
+  "title": "XDM Individual Profile",
+  "description": "Represents an identified or partially-identified individual. Used as the data contract for _layouts/profile.html and _layouts/settings.html.",
+  "type": "object",
+  "properties": {
+    "person": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "object",
+          "properties": {
+            "firstName": { "type": "string" },
+            "lastName":  { "type": "string" },
+            "fullName":  { "type": "string" }
+          }
+        },
+        "birthYear": { "type": "integer", "minimum": 1900 },
+        "gender": {
+          "type": "string",
+          "enum": ["male", "female", "not_specified", "non_specific"]
+        }
+      }
+    },
+    "personalEmail": {
+      "type": "object",
+      "properties": {
+        "address": { "type": "string", "format": "email" },
+        "primary": { "type": "boolean" }
+      }
+    },
+    "mobilePhone": {
+      "type": "object",
+      "properties": {
+        "number":  { "type": "string" },
+        "primary": { "type": "boolean" }
+      }
+    },
+    "preferences": {
+      "type": "object",
+      "description": "User UI preferences surfaced via the settings layout",
+      "properties": {
+        "theme": {
+          "type": "string",
+          "enum": ["light", "dark", "system"],
+          "description": "Preferred color scheme. Maps to atmosphere variant selection."
+        },
+        "language": {
+          "type": "string",
+          "description": "BCP-47 language tag, e.g. 'en-GB'"
+        },
+        "reducedMotion": {
+          "type": "boolean",
+          "description": "When true, suppress genesis-state('evolving') animations. Mirrors prefers-reduced-motion."
+        }
+      }
+    },
+    "identityMap": {
+      "type": "object",
+      "description": "Map of identity namespace to identity values (ECID, email hash, etc.)",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id":      { "type": "string" },
+            "primary": { "type": "boolean" }
+          },
+          "required": ["id"]
+        }
+      }
+    }
+  }
+}
