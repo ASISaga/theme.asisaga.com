@@ -38,4 +38,7 @@
   {% if page.custom_js %}
   <script src="{{ '/assets/js/' | append: page.custom_js | relative_url }}" defer></script>
   {% endif %}
+  {% if page.module_js %}
+  <script type="module" src="{{ '/assets/js/' | append: page.module_js | escape | relative_url }}"></script>
+  {% endif %}
 </head>
