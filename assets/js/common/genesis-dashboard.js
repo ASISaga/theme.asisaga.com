@@ -3,6 +3,8 @@
  * 
  * Dashboard layout with widgets and responsive grid.
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * 
  * @example
  * <genesis-dashboard layout="grid" columns="3">
  *   <!-- dashboard widgets -->
@@ -12,9 +14,13 @@
 import { GenesisElement } from './genesis-element.js';
 
 export class GenesisDashboard extends GenesisElement {
-  static get observedAttributes() {
-    return ['layout', 'columns'];
-  }
+  /**
+   * Lit reactive properties — replaces static get observedAttributes()
+   */
+  static properties = {
+    layout: { type: String },
+    columns: { type: String },
+  };
 
   connectedCallback() {
     super.connectedCallback();
@@ -57,16 +63,18 @@ export class GenesisDashboard extends GenesisElement {
     });
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (oldValue === newValue) return;
-    
-    switch(name) {
-      case 'layout':
-        this.setAttribute('data-layout', newValue);
-        break;
-      case 'columns':
-        this.style.setProperty('--dashboard-columns', newValue);
-        break;
+  /**
+   * Lit lifecycle: called after property changes.
+   * Replaces attributeChangedCallback for reactive property updates.
+   */
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // Only react to changes after initial setup (oldValue !== undefined)
+    if (changedProperties.has('layout') && changedProperties.get('layout') !== undefined) {
+      this.setAttribute('data-layout', this.layout);
+    }
+    if (changedProperties.has('columns') && changedProperties.get('columns') !== undefined) {
+      this.style.setProperty('--dashboard-columns', this.columns);
     }
   }
 }

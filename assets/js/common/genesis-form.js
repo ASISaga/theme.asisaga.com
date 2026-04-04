@@ -3,6 +3,8 @@
  * 
  * Enhanced form component with validation and accessibility.
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * 
  * Usage:
  *   <genesis-form layout="vertical|horizontal|inline" validate="true">
  *     <form>
@@ -21,17 +23,30 @@
 import { GenesisElement } from './genesis-element.js';
 
 export class GenesisForm extends GenesisElement {
-  static get observedAttributes() {
-    return ['layout', 'validate'];
-  }
+  /**
+   * Lit reactive properties — replaces static get observedAttributes()
+   */
+  static properties = {
+    layout: { type: String },
+    validate: { type: String },
+  };
 
   connectedCallback() {
     super.connectedCallback();
     this._applyFormBehavior();
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (oldValue !== newValue) {
+  /**
+   * Lit lifecycle: called after property changes.
+   * Replaces attributeChangedCallback for reactive property updates.
+   */
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // Only react to changes after initial setup (oldValue !== undefined)
+    const hasChange = ['layout', 'validate'].some(
+      p => changedProperties.has(p) && changedProperties.get(p) !== undefined
+    );
+    if (hasChange) {
       this._applyFormBehavior();
     }
   }

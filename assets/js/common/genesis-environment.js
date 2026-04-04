@@ -4,6 +4,9 @@
  * Represents ontological spatial organization and layout logic.
  * This component handles layout behavior without animations.
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * Transparent light-DOM container — no shadow DOM, no template rendering.
+ * 
  * Usage:
  *   <genesis-environment logic="distributed">
  *     <genesis-entity nature="primary">Content</genesis-entity>
@@ -29,20 +32,37 @@
  *   - Natural HTML extension
  */
 
-import { GenesisElement } from './genesis-element.js';
+import { LitElement, nothing } from 'lit';
 
-export class GenesisEnvironment extends HTMLElement {
-  static get observedAttributes() {
-    return ['logic'];
+export class GenesisEnvironment extends LitElement {
+  /**
+   * Lit reactive properties — replaces static get observedAttributes()
+   */
+  static properties = {
+    logic: { type: String },
+  };
+
+  /**
+   * Disable shadow DOM — transparent light-DOM container
+   */
+  createRenderRoot() {
+    return this;
+  }
+
+  /**
+   * No template rendering — behavior only
+   */
+  render() {
+    return nothing;
   }
 
   constructor() {
     super();
-    this._logic = 'distributed';
     this._initialized = false;
   }
 
   connectedCallback() {
+    super.connectedCallback();
     if (!this._initialized) {
       this._initialize();
       this._initialized = true;
@@ -50,12 +70,19 @@ export class GenesisEnvironment extends HTMLElement {
   }
 
   disconnectedCallback() {
+    super.disconnectedCallback();
     this._cleanup();
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (name === 'logic' && oldValue !== newValue && this._initialized) {
-      this._logic = newValue || 'distributed';
+  /**
+   * Lit lifecycle: called after property changes.
+   * Replaces attributeChangedCallback for reactive property updates.
+   */
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // Only react to changes after initial setup (oldValue !== undefined)
+    if (changedProperties.has('logic') && changedProperties.get('logic') !== undefined) {
+      this._logic = this.logic || 'distributed';
       this._applyLogic();
     }
   }

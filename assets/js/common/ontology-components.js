@@ -4,6 +4,9 @@
  * This module registers all Genesis Ontological Web Components.
  * Import this once in your application to enable all ontology components.
  * 
+ * Built on Lit (https://lit.dev) — reactive properties and lifecycle management.
+ * All components use light DOM (no shadow root) as transparent enhancers.
+ * 
  * Core Ontological Components (6):
  *   - <genesis-environment logic="distributed|focused|associative|chronological|manifest|...">
  *   - <genesis-entity nature="primary|secondary|imperative|latent|aggregate|ancestral">
@@ -48,13 +51,14 @@
  *   }
  * 
  * Benefits:
+ *   - Built on Lit for reactive properties and standardized lifecycle
  *   - Complete ontological coverage (all 6 categories + 11 specialized)
  *   - Natural HTML extension (feels like native elements)
- *   - Lifecycle-driven behavior (connectedCallback, disconnectedCallback)
+ *   - Lifecycle-driven behavior (connectedCallback, disconnectedCallback, updated)
  *   - Declarative attributes (nature="primary" vs programmatic detection)
  *   - No inline HTML/SCSS in JavaScript (triad philosophy)
  *   - Automatic behavior on mount
- *   - Responsive to attribute changes
+ *   - Reactive to attribute changes via Lit static properties + updated()
  */
 
 // Import all component definitions
@@ -84,7 +88,7 @@ function initOntologyComponents() {
   // Components register themselves when imported
   // This function can be used for any additional initialization if needed
   
-  console.log('Genesis Ontology Web Components initialized (all 17 components):', {
+  console.log('Genesis Ontology Web Components (Lit-based) initialized — all 17 components:', {
     // Core ontological (6)
     'genesis-environment': customElements.get('genesis-environment') !== undefined,
     'genesis-entity': customElements.get('genesis-entity') !== undefined,

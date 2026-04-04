@@ -1,6 +1,8 @@
 /**
  * GenesisSynapse - Web Component for ontological interactions
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * 
  * Usage:
  *   <genesis-synapse vector="execute">
  *     <button>Click Me</button>
@@ -54,11 +56,11 @@ const SYNAPSE_ANIMATIONS = {
  */
 export class GenesisSynapse extends GenesisElement {
   /**
-   * Observed attributes
+   * Lit reactive properties — replaces static get observedAttributes()
    */
-  static get observedAttributes() {
-    return ['vector'];
-  }
+  static properties = {
+    vector: { type: String },
+  };
 
   /**
    * Synapses typically don't have entrance animations
@@ -120,11 +122,13 @@ export class GenesisSynapse extends GenesisElement {
   }
 
   /**
-   * Handle attribute changes
+   * Lit lifecycle: called after property changes.
+   * Replaces attributeChangedCallback + _handleAttributeChange pattern.
    */
-  _handleAttributeChange(name, oldValue, newValue) {
-    if (name === 'vector' && oldValue !== newValue) {
-      // Re-setup interaction handlers when vector changes
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // Only react to changes after initial setup (oldValue !== undefined)
+    if (changedProperties.has('vector') && changedProperties.get('vector') !== undefined) {
       this._cleanup();
       this._setupInteractionHandlers();
     }

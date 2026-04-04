@@ -3,6 +3,8 @@
  * 
  * Specialized component for navigation elements with keyboard support.
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * 
  * Usage:
  *   <genesis-navigation type="primary|secondary|breadcrumb|tabs|sidebar">
  *     <nav>
@@ -20,17 +22,30 @@
 import { GenesisElement } from './genesis-element.js';
 
 export class GenesisNavigation extends GenesisElement {
-  static get observedAttributes() {
-    return ['type', 'orientation'];
-  }
+  /**
+   * Lit reactive properties — replaces static get observedAttributes()
+   */
+  static properties = {
+    type: { type: String },
+    orientation: { type: String },
+  };
 
   connectedCallback() {
     super.connectedCallback();
     this._applyNavigationBehavior();
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (oldValue !== newValue) {
+  /**
+   * Lit lifecycle: called after property changes.
+   * Replaces attributeChangedCallback for reactive property updates.
+   */
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // Only react to changes after initial setup (oldValue !== undefined)
+    const hasChange = ['type', 'orientation'].some(
+      p => changedProperties.has(p) && changedProperties.get(p) !== undefined
+    );
+    if (hasChange) {
       this._applyNavigationBehavior();
     }
   }

@@ -1,6 +1,8 @@
 /**
  * GenesisCognition - Web Component for ontological information types
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * 
  * Usage:
  *   <genesis-cognition intent="axiom">
  *     <h1>Headline</h1>
@@ -57,11 +59,11 @@ const COGNITION_ANIMATIONS = {
  */
 export class GenesisCognition extends GenesisElement {
   /**
-   * Observed attributes
+   * Lit reactive properties — replaces static get observedAttributes()
    */
-  static get observedAttributes() {
-    return ['intent'];
-  }
+  static properties = {
+    intent: { type: String },
+  };
 
   /**
    * Apply entrance animation based on intent
@@ -101,11 +103,13 @@ export class GenesisCognition extends GenesisElement {
   }
 
   /**
-   * Handle attribute changes
+   * Lit lifecycle: called after property changes.
+   * Replaces attributeChangedCallback + _handleAttributeChange pattern.
    */
-  _handleAttributeChange(name, oldValue, newValue) {
-    if (name === 'intent' && oldValue !== newValue) {
-      // Re-apply animations when intent changes
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // Only react to changes after initial setup (oldValue !== undefined)
+    if (changedProperties.has('intent') && changedProperties.get('intent') !== undefined) {
       this._cleanup();
       this._applyEntranceAnimation();
       this._setupInteractionHandlers();

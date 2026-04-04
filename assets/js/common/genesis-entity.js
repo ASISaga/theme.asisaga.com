@@ -1,6 +1,8 @@
 /**
  * GenesisEntity - Web Component for ontological entities
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * 
  * Usage:
  *   <genesis-entity nature="primary">
  *     <h2>My Content</h2>
@@ -58,11 +60,12 @@ const ENTITY_ANIMATIONS = {
  */
 export class GenesisEntity extends GenesisElement {
   /**
-   * Observed attributes
+   * Lit reactive properties — replaces static get observedAttributes()
    */
-  static get observedAttributes() {
-    return ['nature', 'scroll-reveal'];
-  }
+  static properties = {
+    nature: { type: String },
+    scrollReveal: { type: String, attribute: 'scroll-reveal' },
+  };
 
   /**
    * Apply entrance animation based on nature
@@ -110,11 +113,13 @@ export class GenesisEntity extends GenesisElement {
   }
 
   /**
-   * Handle attribute changes
+   * Lit lifecycle: called after property changes.
+   * Replaces attributeChangedCallback + _handleAttributeChange pattern.
    */
-  _handleAttributeChange(name, oldValue, newValue) {
-    if (name === 'nature' && oldValue !== newValue) {
-      // Re-apply animations when nature changes
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // Only react to changes after initial setup (oldValue !== undefined)
+    if (changedProperties.has('nature') && changedProperties.get('nature') !== undefined) {
       this._cleanup();
       this._applyEntranceAnimation();
       this._setupInteractionHandlers();

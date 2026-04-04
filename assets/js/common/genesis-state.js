@@ -1,6 +1,8 @@
 /**
  * GenesisState - Web Component for ontological temporal states
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * 
  * Usage:
  *   <genesis-state condition="evolving">
  *     <div>Updating content...</div>
@@ -53,11 +55,11 @@ const STATE_ANIMATIONS = {
  */
 export class GenesisState extends GenesisElement {
   /**
-   * Observed attributes
+   * Lit reactive properties — replaces static get observedAttributes()
    */
-  static get observedAttributes() {
-    return ['condition'];
-  }
+  static properties = {
+    condition: { type: String },
+  };
 
   /**
    * Apply entrance animation based on condition
@@ -103,11 +105,13 @@ export class GenesisState extends GenesisElement {
   }
 
   /**
-   * Handle attribute changes
+   * Lit lifecycle: called after property changes.
+   * Replaces attributeChangedCallback + _handleAttributeChange pattern.
    */
-  _handleAttributeChange(name, oldValue, newValue) {
-    if (name === 'condition' && oldValue !== newValue) {
-      // Re-apply animations when condition changes
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // Only react to changes after initial setup (oldValue !== undefined)
+    if (changedProperties.has('condition') && changedProperties.get('condition') !== undefined) {
       this._cleanup();
       this._applyEntranceAnimation();
       this._setupScrollObserver();

@@ -3,6 +3,8 @@
  * 
  * Accessible accordion/FAQ component with keyboard support.
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * 
  * @example
  * <genesis-accordion allow-multiple="false" animate="true">
  *   <!-- accordion items -->
@@ -12,9 +14,13 @@
 import { GenesisElement } from './genesis-element.js';
 
 export class GenesisAccordion extends GenesisElement {
-  static get observedAttributes() {
-    return ['allow-multiple', 'animate'];
-  }
+  /**
+   * Lit reactive properties — replaces static get observedAttributes()
+   */
+  static properties = {
+    allowMultiple: { type: String, attribute: 'allow-multiple' },
+    animate: { type: String },
+  };
 
   constructor() {
     super();
