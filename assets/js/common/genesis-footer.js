@@ -4,6 +4,8 @@
  * Site footer with navigation links, social links, and copyright info.
  * Includes back-to-top button functionality.
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * 
  * @example
  * <genesis-footer show-back-to-top="true">
  *   <!-- Footer content -->
@@ -13,9 +15,12 @@
 import { GenesisElement } from './genesis-element.js';
 
 export class GenesisFooter extends GenesisElement {
-  static get observedAttributes() {
-    return ['show-back-to-top'];
-  }
+  /**
+   * Lit reactive properties — replaces static get observedAttributes()
+   */
+  static properties = {
+    showBackToTop: { type: String, attribute: 'show-back-to-top' },
+  };
 
   connectedCallback() {
     super.connectedCallback();
@@ -111,19 +116,21 @@ export class GenesisFooter extends GenesisElement {
     }
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (oldValue === newValue) return;
-    
-    switch(name) {
-      case 'show-back-to-top':
-        if (this._backToTopButton) {
-          if (newValue === 'false') {
-            this._backToTopButton.style.display = 'none';
-          } else {
-            this._backToTopButton.style.display = '';
-          }
+  /**
+   * Lit lifecycle: called after property changes.
+   * Replaces attributeChangedCallback for reactive property updates.
+   */
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // Only react to changes after initial setup (oldValue !== undefined)
+    if (changedProperties.has('showBackToTop') && changedProperties.get('showBackToTop') !== undefined) {
+      if (this._backToTopButton) {
+        if (this.showBackToTop === 'false') {
+          this._backToTopButton.style.display = 'none';
+        } else {
+          this._backToTopButton.style.display = '';
         }
-        break;
+      }
     }
   }
 }

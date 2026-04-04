@@ -1,14 +1,25 @@
 # Genesis Web Components - Complete Guide
 
-**Version**: 2.0  
-**Date**: 2026-02-03  
-**Architecture**: Ontological Web Components
+**Version**: 3.0  
+**Date**: 2026-04-04  
+**Architecture**: Lit-based Ontological Web Components
 
 ---
 
 ## Overview
 
-Genesis Web Components provide a **natural HTML extension** approach to the ontological design system. Instead of JavaScript scanning the DOM for class patterns, components extend HTML with built-in animation behavior through Web Components lifecycle methods.
+Genesis Web Components provide a **natural HTML extension** approach to the ontological design system. All 17 components are built on **[Lit](https://lit.dev)** — using `LitElement` as the base class with reactive properties and standardized lifecycle management.
+
+Components are **transparent light-DOM containers**: no shadow DOM, no template rendering. They enhance existing HTML/SCSS with animation behavior, ARIA attributes, and interactive features.
+
+### Why Lit?
+
+**Lit v3 provides over vanilla Custom Elements:**
+- **Reactive properties** — `static properties = { ... }` replaces manual `observedAttributes` + `attributeChangedCallback`
+- **Standardized lifecycle** — `updated(changedProperties)` fires cleanly after each property change
+- **Type-safe attributes** — Automatic attribute↔property reflection with type coercion
+- **Ecosystem alignment** — First-class developer tooling, TypeScript support, DevTools integration
+- **Future-proof** — Decorators, directives, and server-side rendering ready
 
 ### Why Web Components?
 
@@ -18,11 +29,11 @@ Genesis Web Components provide a **natural HTML extension** approach to the onto
 - Single point in time - scanned once on DOMContentLoaded
 - Difficult to debug - animations applied via side effects
 
-**Solution with v2.0** (Web Components):
+**Solution with v2.0/v3.0** (Web Components + Lit):
 - **Natural** - `<genesis-entity>` feels like native HTML
 - **Explicit** - `nature="primary"` declares intent directly
 - **Lifecycle-driven** - Animations tied to component lifecycle (mount/unmount)
-- **Reactive** - Responds to attribute changes automatically
+- **Reactive** - `updated(changedProperties)` responds to property changes
 
 ---
 
@@ -31,11 +42,31 @@ Genesis Web Components provide a **natural HTML extension** approach to the onto
 ### Component Hierarchy
 
 ```
-GenesisElement (base class)
-├── GenesisEntity (content blocks)
-├── GenesisSynapse (interactions)
-├── GenesisCognition (typography)
-└── GenesisState (temporal states)
+LitElement (Lit base class)
+└── GenesisElement (genesis base — light DOM, no render)
+    ├── GenesisEntity (content blocks)
+    ├── GenesisSynapse (interactions)
+    ├── GenesisCognition (typography)
+    ├── GenesisState (temporal states)
+    └── ... all other genesis-* components
+
+LitElement (Lit base class)
+├── GenesisEnvironment (spatial layout — standalone)
+└── GenesisAtmosphere (atmospheric context — standalone)
+```
+
+### Light DOM Configuration
+
+All components disable shadow DOM and render nothing:
+
+```js
+createRenderRoot() {
+  return this; // Light DOM — no shadow root
+}
+
+render() {
+  return nothing; // No template — behavior only
+}
 ```
 
 ### Separation of Concerns
@@ -47,6 +78,45 @@ GenesisElement (base class)
 | **Web Component** | Animation behavior (entrance, hover, emphasis) | `.js` modules |
 
 **Key Principle**: No inline HTML/SCSS in JavaScript. Components are transparent containers.
+
+---
+
+## Reactive Properties
+
+All components use Lit's `static properties` instead of `observedAttributes`:
+
+```js
+// ✅ Lit (v3.0+)
+static properties = {
+  nature: { type: String },
+  scrollReveal: { type: Boolean, attribute: 'scroll-reveal' },
+};
+
+// ❌ Vanilla CE (v2.0)
+static get observedAttributes() {
+  return ['nature', 'scroll-reveal'];
+}
+```
+
+And `updated(changedProperties)` instead of `attributeChangedCallback`:
+
+```js
+// ✅ Lit (v3.0+)
+updated(changedProperties) {
+  super.updated(changedProperties);
+  if (changedProperties.has('nature') && changedProperties.get('nature') !== undefined) {
+    this._cleanup();
+    this._applyEntranceAnimation();
+  }
+}
+
+// ❌ Vanilla CE (v2.0)
+attributeChangedCallback(name, oldValue, newValue) {
+  if (name === 'nature' && oldValue !== newValue) { ... }
+}
+```
+
+The `changedProperties.get(propName) !== undefined` guard ensures the handler only fires on **subsequent changes**, not during initial setup (which is handled by `connectedCallback`).
 
 ---
 
@@ -230,14 +300,20 @@ Called when component is removed from the DOM.
 2. Disconnect intersection observers
 3. Clean up event listeners
 
-### `attributeChangedCallback(name, oldValue, newValue)`
+### `updated(changedProperties)`
 
-Called when observed attributes change.
+Called by Lit after each reactive property change. Replaces the vanilla Custom Element `attributeChangedCallback`.
 
-**Actions**:
-1. Clean up existing animations
-2. Re-apply animations with new attribute values
-3. Update interaction handlers
+**Pattern**:
+```js
+updated(changedProperties) {
+  super.updated(changedProperties);
+  // Guard: only react to subsequent changes (not initial setup)
+  if (changedProperties.has('propName') && changedProperties.get('propName') !== undefined) {
+    // handle change
+  }
+}
+```
 
 ---
 
@@ -495,13 +571,13 @@ Animations use Motion presets. To customize:
 
 ### Benchmarks
 
-| Metric | v1.0 (DOM Scan) | v2.0 (Web Components) |
-|--------|----------------|----------------------|
-| **Initial Setup** | 50ms (DOM scan) | 0ms (lazy on mount) |
-| **Animation Start** | DOMContentLoaded | connectedCallback |
-| **Memory Overhead** | Global observers | Per-component cleanup |
-| **Reactivity** | Manual re-scan | attributeChangedCallback |
-| **Bundle Size** | 15KB | 18KB (+3KB) |
+| Metric | v1.0 (DOM Scan) | v2.0 (Web Components) | v3.0 (Lit) |
+|--------|----------------|----------------------|-----------|
+| **Initial Setup** | 50ms (DOM scan) | 0ms (lazy on mount) | 0ms (lazy on mount) |
+| **Animation Start** | DOMContentLoaded | connectedCallback | connectedCallback |
+| **Memory Overhead** | Global observers | Per-component cleanup | Per-component cleanup |
+| **Reactivity** | Manual re-scan | attributeChangedCallback | Lit reactive properties |
+| **Bundle Size** | 15KB | 18KB (+3KB) | ~20KB (+Lit 5KB min) |
 
 ### Optimization Tips
 

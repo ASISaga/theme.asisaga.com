@@ -3,6 +3,8 @@
  * 
  * Search interface with filters, results, and accessibility.
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * 
  * @example
  * <genesis-search live-search="true" min-chars="3">
  *   <form><!-- search form --></form>
@@ -12,9 +14,14 @@
 import { GenesisElement } from './genesis-element.js';
 
 export class GenesisSearch extends GenesisElement {
-  static get observedAttributes() {
-    return ['live-search', 'min-chars', 'debounce'];
-  }
+  /**
+   * Lit reactive properties — replaces static get observedAttributes()
+   */
+  static properties = {
+    liveSearch: { type: String, attribute: 'live-search' },
+    minChars: { type: String, attribute: 'min-chars' },
+    debounce: { type: String },
+  };
 
   constructor() {
     super();

@@ -4,6 +4,8 @@
  * Main navigation bar with dropdown menus and keyboard support.
  * Extends genesis-navigation with additional navbar-specific features.
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * 
  * @example
  * <genesis-navbar orientation="horizontal">
  *   <nav><!-- navigation items --></nav>
@@ -13,9 +15,13 @@
 import { GenesisElement } from './genesis-element.js';
 
 export class GenesisNavbar extends GenesisElement {
-  static get observedAttributes() {
-    return ['orientation', 'mobile-breakpoint'];
-  }
+  /**
+   * Lit reactive properties — replaces static get observedAttributes()
+   */
+  static properties = {
+    orientation: { type: String },
+    mobileBreakpoint: { type: String, attribute: 'mobile-breakpoint' },
+  };
 
   constructor() {
     super();
@@ -261,13 +267,15 @@ export class GenesisNavbar extends GenesisElement {
     window.addEventListener('resize', handleResize);
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (oldValue === newValue) return;
-    
-    switch(name) {
-      case 'orientation':
-        this.setAttribute('data-orientation', newValue);
-        break;
+  /**
+   * Lit lifecycle: called after property changes.
+   * Replaces attributeChangedCallback for reactive property updates.
+   */
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // Only react to changes after initial setup (oldValue !== undefined)
+    if (changedProperties.has('orientation') && changedProperties.get('orientation') !== undefined) {
+      this.setAttribute('data-orientation', this.orientation);
     }
   }
 }

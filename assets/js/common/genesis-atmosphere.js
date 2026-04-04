@@ -4,6 +4,9 @@
  * Represents ontological sensory texture and "vibe" without describing visuals.
  * This component applies atmospheric context through CSS custom properties.
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * Transparent light-DOM container — no shadow DOM, no template rendering.
+ * 
  * Usage:
  *   <genesis-atmosphere vibe="ethereal">
  *     <div class="content">Content here</div>
@@ -24,9 +27,28 @@
  *   - Uses CSS custom properties for communication
  */
 
-export class GenesisAtmosphere extends HTMLElement {
-  static get observedAttributes() {
-    return ['vibe'];
+import { LitElement, nothing } from 'lit';
+
+export class GenesisAtmosphere extends LitElement {
+  /**
+   * Lit reactive properties — replaces static get observedAttributes()
+   */
+  static properties = {
+    vibe: { type: String },
+  };
+
+  /**
+   * Disable shadow DOM — transparent light-DOM container
+   */
+  createRenderRoot() {
+    return this;
+  }
+
+  /**
+   * No template rendering — behavior only
+   */
+  render() {
+    return nothing;
   }
 
   constructor() {
@@ -36,6 +58,7 @@ export class GenesisAtmosphere extends HTMLElement {
   }
 
   connectedCallback() {
+    super.connectedCallback();
     if (!this._initialized) {
       this._initialize();
       this._initialized = true;
@@ -43,12 +66,19 @@ export class GenesisAtmosphere extends HTMLElement {
   }
 
   disconnectedCallback() {
+    super.disconnectedCallback();
     this._cleanup();
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (name === 'vibe' && oldValue !== newValue && this._initialized) {
-      this._vibe = newValue || 'neutral';
+  /**
+   * Lit lifecycle: called after property changes.
+   * Replaces attributeChangedCallback for reactive property updates.
+   */
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // Only react to changes after initial setup (oldValue !== undefined)
+    if (changedProperties.has('vibe') && changedProperties.get('vibe') !== undefined) {
+      this._vibe = this.vibe || 'neutral';
       this._applyVibe();
     }
   }

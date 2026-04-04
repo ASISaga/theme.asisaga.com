@@ -4,6 +4,8 @@
  * A specialized entity component for card-based content.
  * Extends GenesisEntity with card-specific behaviors.
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * 
  * Usage:
  *   <genesis-card variant="default|featured|compact|media">
  *     <h3>Card Title</h3>
@@ -22,17 +24,31 @@
 import { GenesisElement } from './genesis-element.js';
 
 export class GenesisCard extends GenesisElement {
-  static get observedAttributes() {
-    return ['variant', 'clickable', 'hover-lift'];
-  }
+  /**
+   * Lit reactive properties — replaces static get observedAttributes()
+   */
+  static properties = {
+    variant: { type: String },
+    clickable: { type: String },
+    hoverLift: { type: String, attribute: 'hover-lift' },
+  };
 
   connectedCallback() {
     super.connectedCallback();
     this._applyCardBehavior();
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (oldValue !== newValue) {
+  /**
+   * Lit lifecycle: called after property changes.
+   * Replaces attributeChangedCallback for reactive property updates.
+   */
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // Only react to changes after initial setup (oldValue !== undefined)
+    const hasChange = ['variant', 'clickable', 'hoverLift'].some(
+      p => changedProperties.has(p) && changedProperties.get(p) !== undefined
+    );
+    if (hasChange) {
       this._applyCardBehavior();
     }
   }

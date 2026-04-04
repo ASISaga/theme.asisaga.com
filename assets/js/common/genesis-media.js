@@ -3,6 +3,8 @@
  * 
  * Enhanced media container with lazy loading and aspect ratio support.
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * 
  * Usage:
  *   <genesis-media ratio="16:9|4:3|1:1|21:9" lazy="true">
  *     <img src="image.jpg" alt="Description">
@@ -17,17 +19,31 @@
 import { GenesisElement } from './genesis-element.js';
 
 export class GenesisMedia extends GenesisElement {
-  static get observedAttributes() {
-    return ['ratio', 'lazy', 'caption'];
-  }
+  /**
+   * Lit reactive properties — replaces static get observedAttributes()
+   */
+  static properties = {
+    ratio: { type: String },
+    lazy: { type: String },
+    caption: { type: String },
+  };
 
   connectedCallback() {
     super.connectedCallback();
     this._applyMediaBehavior();
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (oldValue !== newValue) {
+  /**
+   * Lit lifecycle: called after property changes.
+   * Replaces attributeChangedCallback for reactive property updates.
+   */
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // Only react to changes after initial setup (oldValue !== undefined)
+    const hasChange = ['ratio', 'lazy', 'caption'].some(
+      p => changedProperties.has(p) && changedProperties.get(p) !== undefined
+    );
+    if (hasChange) {
       this._applyMediaBehavior();
     }
   }

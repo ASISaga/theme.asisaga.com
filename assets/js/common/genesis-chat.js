@@ -3,6 +3,8 @@
  * 
  * Chat/messaging interface with real-time updates.
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * 
  * @example
  * <genesis-chat auto-scroll="true" show-timestamps="true">
  *   <!-- chat messages -->
@@ -12,9 +14,13 @@
 import { GenesisElement } from './genesis-element.js';
 
 export class GenesisChat extends GenesisElement {
-  static get observedAttributes() {
-    return ['auto-scroll', 'show-timestamps'];
-  }
+  /**
+   * Lit reactive properties — replaces static get observedAttributes()
+   */
+  static properties = {
+    autoScroll: { type: String, attribute: 'auto-scroll' },
+    showTimestamps: { type: String, attribute: 'show-timestamps' },
+  };
 
   constructor() {
     super();

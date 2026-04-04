@@ -4,6 +4,8 @@
  * Site header with branding, logo, and navigation integration.
  * Handles mobile menu toggle and sticky behavior.
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * 
  * @example
  * <genesis-header brand-url="/" logo-src="/logo.png" sticky="true">
  *   <genesis-navbar></genesis-navbar>
@@ -17,9 +19,16 @@ const NAV_CLOSE_DELAY_MS = 300;
 const NAV_RESIZE_DEBOUNCE_MS = 250;
 
 export class GenesisHeader extends GenesisElement {
-  static get observedAttributes() {
-    return ['brand-url', 'logo-src', 'brand-text', 'tagline', 'sticky'];
-  }
+  /**
+   * Lit reactive properties — replaces static get observedAttributes()
+   */
+  static properties = {
+    brandUrl: { type: String, attribute: 'brand-url' },
+    logoSrc: { type: String, attribute: 'logo-src' },
+    brandText: { type: String, attribute: 'brand-text' },
+    tagline: { type: String },
+    sticky: { type: String },
+  };
 
   static overlayElement = null;
   static overlayCount = 0;
@@ -257,19 +266,21 @@ export class GenesisHeader extends GenesisElement {
     this._scrollY = currentScrollY;
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (oldValue === newValue) return;
-    
-    switch(name) {
-      case 'sticky':
-        if (newValue === 'true') {
-          this.classList.add('sticky');
-          window.addEventListener('scroll', this._handleScroll, { passive: true });
-        } else {
-          this.classList.remove('sticky');
-          window.removeEventListener('scroll', this._handleScroll);
-        }
-        break;
+  /**
+   * Lit lifecycle: called after property changes.
+   * Replaces attributeChangedCallback for reactive property updates.
+   */
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // Only react to changes after initial setup (oldValue !== undefined)
+    if (changedProperties.has('sticky') && changedProperties.get('sticky') !== undefined) {
+      if (this.sticky === 'true') {
+        this.classList.add('sticky');
+        window.addEventListener('scroll', this._handleScroll, { passive: true });
+      } else {
+        this.classList.remove('sticky');
+        window.removeEventListener('scroll', this._handleScroll);
+      }
     }
   }
 }

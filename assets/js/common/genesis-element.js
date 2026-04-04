@@ -5,19 +5,38 @@
  * - Animation lifecycle management
  * - Motion library integration
  * - Reduced motion support
- * - Attribute observation
+ * - Reactive property observation (via Lit)
  * - Event handling
  * 
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * Components are transparent light-DOM containers that enhance existing HTML/SCSS.
  * NO INLINE HTML OR SCSS - Components are transparent containers
  * that enhance existing HTML/SCSS with animation behavior
  */
 
+import { LitElement, nothing } from 'lit';
 import { presets } from './motion-presets.js';
 
 /**
  * Base class for Genesis ontological components
  */
-export class GenesisElement extends HTMLElement {
+export class GenesisElement extends LitElement {
+  /**
+   * Disable shadow DOM — all Genesis components are transparent light-DOM containers.
+   * They enhance existing HTML/SCSS rather than rendering their own templates.
+   */
+  createRenderRoot() {
+    return this;
+  }
+
+  /**
+   * No template rendering — behavior only.
+   * Components act as transparent wrappers around existing HTML content.
+   */
+  render() {
+    return nothing;
+  }
+
   constructor() {
     super();
     this._animations = [];
@@ -29,6 +48,7 @@ export class GenesisElement extends HTMLElement {
    * Override in subclasses to add entrance animations
    */
   connectedCallback() {
+    super.connectedCallback();
     // Wait for Motion library to be available
     this._waitForMotion(() => {
       this._applyEntranceAnimation();
@@ -42,17 +62,18 @@ export class GenesisElement extends HTMLElement {
    * Cleanup animations and observers
    */
   disconnectedCallback() {
+    super.disconnectedCallback();
     this._cleanup();
   }
 
   /**
-   * Lifecycle: Attribute changed
-   * Override in subclasses to handle attribute changes
+   * Lifecycle: Called after each Lit render update.
+   * Subclasses override this to react to reactive property changes.
+   * Only reacts to changes after initial setup (oldValue !== undefined).
    */
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (oldValue !== newValue) {
-      this._handleAttributeChange(name, oldValue, newValue);
-    }
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    // Subclasses override to handle specific property changes
   }
 
   /**
@@ -169,7 +190,8 @@ export class GenesisElement extends HTMLElement {
   }
 
   /**
-   * Handle attribute changes (override in subclasses)
+   * Handle property/attribute changes (override in subclasses).
+   * @deprecated Subclasses should override updated(changedProperties) directly.
    */
   _handleAttributeChange(name, oldValue, newValue) {
     // To be implemented by subclasses
