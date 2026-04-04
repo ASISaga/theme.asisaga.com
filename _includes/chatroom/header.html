@@ -2,10 +2,6 @@
 <header class="chatroom-header">
     <div class="chatroom-header-content">
         <div class="chatroom-header-left">
-            <a href="/" class="chatroom-back-link" aria-label="Back to {{ site.title | default: 'Home' }}">
-                <i class="fas fa-arrow-left" aria-hidden="true"></i>
-                <span class="chatroom-back-label">{{ site.title | default: 'Home' }}</span>
-            </a>
             <h1 class="chatroom-title">{{ include.title | default: page.title | default: "Executive Boardroom" }}</h1>
             <div class="chatroom-header-info">
                 {% if include.participants or page.participants %}
