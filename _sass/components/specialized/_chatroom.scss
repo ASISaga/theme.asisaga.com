@@ -7,16 +7,24 @@
 // Boardroom palette — single source of truth in _chatroom-tokens.scss
 @import "layouts/chatroom-tokens";
 
-// Full-viewport chatroom body (standalone layout — no site header)
+// Full-viewport chatroom body (includes site header — chatroom fills remaining space)
+// Raw CSS: body-level flex column is an architectural container, not an ontological layout entity.
+// genesis-environment() targets content containers within pages; the body wrapper is outside that scope.
 .chatroom-body {
   margin: 0;
   padding: 0;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 
-// Full-viewport main container for chatroom
+// Chatroom main fills all remaining viewport height after the site header
+// Raw CSS: flex child growth/shrink constraint is an architectural concern, not an ontological layout.
+// genesis-environment() inside chatroom-layout already handles the internal layout (chronological/void).
 .chatroom-main {
-  height: 100dvh;
+  flex: 1;
+  min-height: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -91,44 +99,6 @@
     align-items: center;
     gap: 0.75rem;
   }
-}
-
-// Back-to-site link — compact navigation anchor in chatroom header
-.chatroom-back-link {
-  @include genesis-synapse('navigate');
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  color: $boardroom-muted;
-  text-decoration: none;
-  font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  border: 1px solid $boardroom-border;
-  white-space: nowrap;
-  transition: color 0.15s, border-color 0.15s;
-  flex-shrink: 0;
-
-  &:hover,
-  &:focus-visible {
-    color: $boardroom-gold-accessible;
-    border-color: $boardroom-gold-accessible;
-    text-decoration: none;
-  }
-
-  i {
-    font-size: 0.65rem;
-  }
-}
-
-.chatroom-back-label {
-  @include genesis-cognition('gloss');
-  color: inherit;
-  font-size: 0.75rem;
-  max-width: 8rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .chatroom-title {
@@ -539,8 +509,31 @@
 
 // Responsive
 @media (max-width: 768px) {
+  // Compact site header in chatroom context — maximize message area on mobile.
+  // Raw CSS overrides are required here because genesis-header is a web component whose
+  // internal subpart sizing cannot be expressed through ontological mixins.
+  // Reduces vertical chrome from ~64px → ~48px; tagline is hidden; logo is smaller.
+  .chatroom-body {
+    .genesis-header {
+      min-height: 48px;
+
+      &__container {
+        padding: 0.4rem 1rem;
+      }
+
+      &__tagline {
+        display: none; // Hide tagline — save vertical space on mobile
+      }
+
+      &__logo {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
   .chatroom-header {
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 1rem;
 
     &-right {
       gap: 0.5rem;
