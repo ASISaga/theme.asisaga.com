@@ -2,7 +2,7 @@
 <html lang="{{ site.lang | default: 'en-US' }}">
   {% include head.html %}
   
-  <body class="genesis-body">
+  <body class="genesis-body{% if page.body_class %} {{ page.body_class | escape }}{% endif %}">
     <!-- Skip link (REQUIRED - WCAG AA) -->
     <a href="#skip-target" class="skip-link sr-only focus-visible">Skip to main content</a>
     
@@ -11,7 +11,7 @@
     
     <!-- Main Content Area (REQUIRED landmark) -->
     
-      <main id="skip-target" tabindex="-1" class="genesis-main">
+      <main id="skip-target" tabindex="-1" class="genesis-main{% if page.main_class %} {{ page.main_class | escape }}{% endif %}">
         {{ content }}
       </main>
     
