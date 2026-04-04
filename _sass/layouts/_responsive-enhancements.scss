@@ -295,7 +295,7 @@
 }
 
 // Chatroom — supplementary viewport sizing
-// .chatroom-main handles the full-viewport constraint; .chatroom-layout fills its parent
+// .chatroom-body is full-viewport flex column; site header is flex child; .chatroom-main fills remaining space
 .chatroom-layout {
   height: 100%;
   min-height: 0; // Critical for nested flex children to shrink/scroll correctly

@@ -6,7 +6,10 @@
     <!-- Skip link (REQUIRED - WCAG AA) -->
     <a href="#skip-target" class="skip-link sr-only focus-visible">Skip to main content</a>
 
-    <!-- Full-viewport chatroom application (no site header — chatroom header provides room context) -->
+    <!-- Site Header -->
+    {% include header.html %}
+
+    <!-- Chatroom application — fills remaining viewport after site header -->
     <main id="skip-target" tabindex="-1" class="genesis-main chatroom-main">
       <genesis-chat auto-scroll="true" show-timestamps="true">
         <chatroom-app
