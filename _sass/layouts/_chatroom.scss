@@ -20,6 +20,7 @@
   @include genesis-atmosphere('void');             // Professional dark boardroom vibe
   
   height: 100%;
+  min-height: 0; // Critical: allows flex child to shrink below content size
   display: flex;
   flex-direction: column;
   
@@ -44,6 +45,7 @@
     @include genesis-environment('chronological'); // Message stream
     
     flex: 1;
+    min-height: 0; // Critical: allows overflow-y: auto to work in flex children
     overflow: auto;
   }
   
