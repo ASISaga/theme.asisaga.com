@@ -10,44 +10,25 @@
 // ----------------------------------------
 // Sacred Typography System
 // ----------------------------------------
-// Consciousness-supporting font families
-$font-family-consciousness: 'Inter', 'SF Pro Display', system-ui, -apple-system, "Segoe UI", sans-serif;
-$font-family-wisdom: 'Crimson Text', 'Times New Roman', Georgia, serif;
-$font-family-sacred: 'Montserrat', $font-family-consciousness;
-$font-family-primary: $font-family-consciousness;
+// Core font families, sizes, and weights are generated from _design/tokens/3-typography.json
+// and available via _variables-generated.scss. Only sacred aliases and overrides live here.
 
-// Sacred font families by purpose
+// Sacred font family override — adds full consciousness stack as fallback
+$font-family-sacred: 'Montserrat', $font-family-consciousness;
+
+// Semantic font family aliases (not in tokens)
+$font-family-primary: $font-family-consciousness;
 $font-family-headings: $font-family-sacred;
 $font-family-body: $font-family-wisdom;
 $font-family-interface: $font-family-consciousness;
 
-// Sacred font weights
-$font-weight-light: 300;
-$font-weight-normal: 400;
-$font-weight-medium: 500;
-$font-weight-semibold: 600;
-$font-weight-bold: 700;
-$font-weight-sacred: 800;
+// Sacred font size aliases (unique — not in tokens)
+$font-size-consciousness: 1.125rem;    // Optimal for consciousness absorption (= font-size-lg)
+$font-size-wisdom: 1rem;              // Base wisdom text size (= font-size-base)
+$font-size-sacred-sm: 0.875rem;       // Sacred small text (= font-size-sm)
 
-// Sacred font sizes following golden ratio
-$font-size-sacred-xl: 2.618rem;       // Golden ratio scaling for transcendent headers
-$font-size-sacred-lg: 1.618rem;       // Golden ratio for sacred content
-$font-size-consciousness: 1.125rem;    // Optimal for consciousness absorption
-$font-size-wisdom: 1rem;              // Base wisdom text size
-$font-size-sacred-sm: 0.875rem;       // Sacred small text
-
-// Sacred line heights (heartbeat rhythm)
-$line-height-sacred: 1.618;           // Golden ratio for sacred content
-$line-height-consciousness: 1.75;     // Spacious for contemplation
-$line-height-wisdom: 1.6;             // Optimal for sustained reading
+// Sacred line height (unique)
 $line-height-interface: 1.4;          // Compact for interface elements
-
-// ----------------------------------------
-// Sacred Border Radius - Use as appropriate for best appearance
-// ----------------------------------------
-$border-radius-sacred: 0.75rem;
-$border-radius-consciousness: 1rem;
-$border-radius: 0.5rem;             // Base border radius (8px) - default for components
 
 // ----------------------------------------
 // Sacred Spacing System
@@ -60,11 +41,8 @@ $spacing-sacred-lg: 1.5rem;
 $spacing-sacred-xl: 2rem;
 $spacing-sacred-xxl: 3rem;
 
-// ----------------------------------------
-// Sacred Animation Timing
-// ----------------------------------------
+// Sacred Animation Timing (unique — generated transition tokens use cubic-bezier values)
 $transition-sacred: all 0.3s ease;
-$transition-consciousness: all 0.5s ease;
 $animation-sacred-slow: 3s;
 $animation-sacred-medium: 2s;
 $animation-sacred-fast: 1s;
@@ -80,34 +58,8 @@ $essence-weave-opacity-1: 0.7;
 $essence-weave-opacity-2: 0.85;
 $essence-weave-opacity-3: 1;
 
-// Font Sizes - Conscious Scale System
-$font-size-xs: 0.75rem;    // 12px
-$font-size-sm: 0.875rem;   // 14px
-$font-size-base: 1rem;     // 16px
-$font-size-lg: 1.125rem;   // 18px
-$font-size-xl: 1.25rem;    // 20px
-$font-size-xxl: 1.5rem;    // 24px
-$font-size-3xl: 1.875rem;  // 30px
-$font-size-4xl: 2.25rem;   // 36px
-$font-size-5xl: 3rem;      // 48px
-$font-size-genesis: 4rem;  // 64px - For hero Genesis headlines
-
-// Line Heights for Consciousness Flow
-$line-height-tight: 1.25;
-$line-height-normal: 1.5;
-$line-height-relaxed: 1.75;
-$line-height-transcendent: 2;     // For meditative, flowing content
-
-// Spacing - Sacred Geometry for Layout Harmony
-$spacing-xs: 0.25rem;    // 4px
-$spacing-sm: 0.5rem;     // 8px
-$spacing-md: 1rem;       // 16px
-$spacing-lg: 1.5rem;     // 24px
-$spacing-xl: 2rem;       // 32px
-$spacing-2xl: 3rem;      // 48px
-$spacing-3xl: 4rem;      // 64px
-$spacing-4xl: 6rem;      // 96px
-$spacing-genesis: 8rem;  // 128px - For major section spacing
+// Font sizes, line-heights, spacing, border-radius, z-index, and transition tokens
+// are generated from _design/tokens/*.json — do not re-declare them here.
 
 // Genesis Spacing Scale (for Genesis/Transcendent pages)
 $genesis-spacing-xs: 0.5rem;
@@ -129,13 +81,9 @@ $breakpoint-xl: 1200px;
 $breakpoint-xxl: 1400px;
 $breakpoint-transcendent: 1600px;  // Ultra-wide transcendent displays
 
-// Border Radius - Use as appropriate for best appearance
-$border-radius-sm: 0.25rem;    // 4px
-$border-radius-md: 0.5rem;     // 8px
-$border-radius-lg: 1rem;       // 16px
-$border-radius-xl: 1.5rem;     // 24px
-$border-radius-consciousness: 2rem;  // 32px - For transcendent elements
-$border-radius-infinite: 50%;   // Perfect circles for consciousness symbols
+// Border Radius - unique sacred value only (sm, md, lg, xl, consciousness, infinite are generated)
+$border-radius-sacred: 0.75rem;
+$border-radius: 0.5rem;             // Base border radius (8px) - default for components
 
 // Shadows - Transcendent Depth & Consciousness Layers
 $shadow-sm: 0 1px 3px oklch(0.08 0.01 250 / 0.20);
@@ -153,22 +101,7 @@ $consciousness-depth: 0 0.25rem 2rem oklch(0.08 0.01 250 / 0.4);
 $shadow-consciousness: 0 30px 60px oklch(0.70 0.15 85 / 0.2);
 $shadow-transcendent: 0 40px 80px oklch(0.65 0.25 230 / 0.3);
 
-// Z-Index Layers - Consciousness Hierarchy  
-// Use CSS custom properties (--z-*) for runtime control
-// These Sass variables are for backward compatibility
-$z-index-background: -1;
-$z-index-content: 1;
-$z-index-overlay: 10;
-$z-index-consciousness: 100;
-$z-index-transcendent: 1000;
-$z-index-genesis: 9999;
-
-// Transition Timing - Consciousness Flow Dynamics
-$transition-fast: 0.2s ease;
-$transition-normal: 0.3s ease;
-$transition-slow: 0.5s ease;
-$transition-consciousness: 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-$transition-transcendent: 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+// Z-index and transition tokens are generated from _design/tokens/4-spacing.json.
 
 // Consciousness Animation Curves
 $ease-consciousness: cubic-bezier(0.25, 0.46, 0.45, 0.94);

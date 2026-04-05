@@ -27,15 +27,9 @@ $border-width-separator: 1px;
 // --------------------------------------------
 // Font sizes
 // --------------------------------------------
-$font-size-xs: 0.75rem; // 12px
-$font-size-sm: 0.875rem; // 14px
-$font-size-base: 1rem; // 16px
-$font-size-md: 1.125rem; // 18px
-$font-size-lg: 1.25rem; // 20px
-$font-size-xl: 1.5rem; // 24px
-$font-size-2xl: 2rem; // 32px
-$font-size-3xl: 2.5rem; // 40px
-$font-size-4xl: 3rem; // 48px
+// xs, sm, base, md, lg, xl, xxl, 2xl, 3xl, 4xl, 5xl, genesis, sacred-lg, sacred-xl
+// are generated from _design/tokens/3-typography.json — do not re-declare them here.
+// Only file-specific overrides or truly unique aliases belong below.
 
 // --------------------------------------------
 // Icon dimensions

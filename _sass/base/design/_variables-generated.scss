@@ -37,9 +37,11 @@ $font-weight-sacred: 800; // Extra-bold for sacred headings
 $font-size-xs: 0.75rem; // 12px — 3× identity.grid
 $font-size-sm: 0.875rem; // 14px
 $font-size-base: 1rem; // 16px — 4× identity.grid (root reference)
+$font-size-md: 1.125rem; // 18px — 4.5× identity.grid (alias used by font utility mixins)
 $font-size-lg: 1.125rem; // 18px — 4.5× identity.grid
 $font-size-xl: 1.25rem; // 20px — 5× identity.grid
 $font-size-xxl: 1.5rem; // 24px — 6× identity.grid
+$font-size-2xl: 2rem; // 32px — 8× identity.grid (between xxl and 3xl)
 $font-size-3xl: 1.875rem; // 30px — 7.5× identity.grid
 $font-size-4xl: 2.25rem; // 36px — 9× identity.grid
 $font-size-5xl: 3rem; // 48px — 12× identity.grid

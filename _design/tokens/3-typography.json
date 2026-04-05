@@ -65,6 +65,11 @@
         "$value": "1rem",
         "$description": "16px — 4× identity.grid (root reference)"
       },
+      "md": {
+        "$type": "dimension",
+        "$value": "1.125rem",
+        "$description": "18px — 4.5× identity.grid (alias used by font utility mixins)"
+      },
       "lg": {
         "$type": "dimension",
         "$value": "1.125rem",
@@ -79,6 +84,11 @@
         "$type": "dimension",
         "$value": "1.5rem",
         "$description": "24px — 6× identity.grid"
+      },
+      "2xl": {
+        "$type": "dimension",
+        "$value": "2rem",
+        "$description": "32px — 8× identity.grid (between xxl and 3xl)"
       },
       "3xl": {
         "$type": "dimension",
