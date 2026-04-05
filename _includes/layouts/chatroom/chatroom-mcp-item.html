@@ -1,0 +1,25 @@
+{% comment %}
+MCP App List Item Template
+Single button item inside the MCP apps panel list.
+JS sets data-mcp-app, data-mcp-endpoint, icon class, label, description, command.
+
+Namespace:
+  HTML:  _includes/layouts/chatroom/chatroom-mcp-item.html
+  SCSS:  _sass/layouts/_chatroom.scss
+  JS:    assets/js/chatroom-app.js
+{% endcomment %}
+
+<template id="template-chatroom-mcp-item">
+  <li class="chatroom-mcp-apps__item">
+    <button class="chatroom-mcp-apps__btn" type="button">
+      <span class="chatroom-mcp-apps__btn-icon" aria-hidden="true">
+        <i class="fas fa-robot" aria-hidden="true"></i>
+      </span>
+      <span class="chatroom-mcp-apps__btn-content">
+        <strong class="chatroom-mcp-apps__btn-label"></strong>
+        <span class="chatroom-mcp-apps__btn-desc" hidden></span>
+        <code class="chatroom-mcp-apps__btn-command"></code>
+      </span>
+    </button>
+  </li>
+</template>

@@ -10,6 +10,12 @@
  * Extends GenesisElement (LitElement, light DOM) — the same base as all other
  * Genesis web components.
  *
+ * HTML templates are defined as <template> elements in:
+ *   _includes/layouts/chatroom/
+ * and loaded into the page by _layouts/chatroom.html before this component is
+ * instantiated. The JS clones and populates those templates; no HTML strings are
+ * built inline.
+ *
  * Attributes / Lit reactive properties:
  *   title            — Boardroom title (default: "Chat")
  *   participants     — Agent count shown in the header
@@ -132,7 +138,9 @@ export class ChatroomApp extends GenesisElement {
     }
 
     // =========================================================================
-    // Rendering — component builds its own DOM from attributes
+    // Rendering — component builds its own DOM from HTML templates
+    // Templates live in _includes/layouts/chatroom/ and are loaded into the
+    // page as <template id="template-chatroom-*"> elements by _layouts/chatroom.html.
     // =========================================================================
 
     /**
@@ -154,174 +162,394 @@ export class ChatroomApp extends GenesisElement {
     }
 
     /**
-     * Render the complete chatroom HTML into this element.
-     * Called once at the start of connectedCallback before event wiring.
+     * Clone an HTML <template> element by ID and return its first child element.
+     * @param {string} id  Template element ID (without leading '#')
+     * @returns {Element|null}
+     */
+    _cloneTemplate(id) {
+        const tpl = document.getElementById(id);
+        if (!tpl) return null;
+        return tpl.content.firstElementChild.cloneNode(true);
+    }
+
+    /**
+     * Build the complete chatroom DOM from the layout template and insert it
+     * into this element.  Called once from connectedCallback before event wiring.
      */
     _render() {
         const { title, participants, placeholder, showToolbar, showConnectionStatus, mcpApps, chatMessages } = this.config;
 
-        this.innerHTML = `
-<div class="chatroom-layout">
-  <header class="chatroom-header">
-    <div class="chatroom-header-content">
-      <div class="chatroom-header-left">
-        <h1 class="chatroom-title">${this._escape(title)}</h1>
-        <div class="chatroom-header-info">
-          ${participants ? `<span class="chatroom-participants">${this._escape(participants)} agents in session</span>` : ''}
-          <span class="chatroom-typing-indicator" aria-live="polite" hidden></span>
-        </div>
-      </div>
-      <div class="chatroom-header-right">
-        ${showConnectionStatus ? `<div class="chatroom-status-container"><span class="chatroom-status" id="connection-status"></span></div>` : ''}
-        <div class="chatroom-actions">
-          ${mcpApps.length > 0 ? `<button type="button" class="chatroom-mcp-apps-toggle" aria-label="AI Agent Tools" aria-expanded="false" aria-controls="chatroom-mcp-apps-panel" title="AI Agent Tools"><i class="fas fa-robot" aria-hidden="true"></i></button>` : ''}
-          <button type="button" class="chatroom-settings-btn" aria-label="Boardroom Settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
-        </div>
-      </div>
-    </div>
-  </header>
+        const layout = this._cloneTemplate('template-chatroom-layout');
+        if (!layout) return;
 
-  ${this._renderMcpPanel(mcpApps)}
+        // Populate title
+        const titleEl = layout.querySelector('.chatroom-title');
+        if (titleEl) titleEl.textContent = title;
 
-  <div class="chatroom-messages" tabindex="0" role="log" aria-label="Chat messages" aria-live="polite" aria-atomic="false">
-    ${chatMessages.length ? chatMessages.map(m => this._renderMessage(m)).join('') : '<div class="chatroom-empty-state">No messages yet. Start the conversation!</div>'}
-  </div>
+        // Conditionally show participants count
+        const participantsEl = layout.querySelector('.chatroom-participants');
+        if (participantsEl && participants) {
+            participantsEl.textContent = `${participants} agents in session`;
+            participantsEl.hidden = false;
+        }
 
-  ${this._renderInput(placeholder, showToolbar, mcpApps)}
-</div>`;
+        // Conditionally show connection status badge
+        const statusContainer = layout.querySelector('.chatroom-status-container');
+        if (statusContainer && showConnectionStatus) {
+            statusContainer.hidden = false;
+        }
+
+        // Conditionally show MCP apps toggle button in the header
+        const mcpToggle = layout.querySelector('.chatroom-mcp-apps-toggle');
+        if (mcpToggle && mcpApps.length > 0) {
+            mcpToggle.hidden = false;
+        }
+
+        // Insert MCP apps panel before the messages container
+        if (mcpApps.length > 0) {
+            const panel = this._buildMcpPanel(mcpApps);
+            if (panel) {
+                const messagesEl = layout.querySelector('.chatroom-messages');
+                if (messagesEl) layout.insertBefore(panel, messagesEl);
+            }
+        }
+
+        // Populate messages container
+        const messagesEl = layout.querySelector('.chatroom-messages');
+        if (messagesEl && chatMessages.length > 0) {
+            messagesEl.replaceChildren();
+            chatMessages.forEach(m => {
+                const el = this._buildMessage(m);
+                if (el) messagesEl.appendChild(el);
+            });
+        }
+
+        // Insert input area at the end of the layout
+        const inputEl = this._buildInput(placeholder, showToolbar, mcpApps);
+        if (inputEl) layout.appendChild(inputEl);
+
+        this.replaceChildren(layout);
 
         // Scroll to bottom of the pre-loaded message list
-        const msgs = this.querySelector('.chatroom-messages');
-        if (msgs) msgs.scrollTop = msgs.scrollHeight;
+        if (messagesEl) messagesEl.scrollTop = messagesEl.scrollHeight;
     }
 
-    /** Dispatch a single message to its type-specific renderer. */
-    _renderMessage(msg) {
+    /**
+     * Build and return a DOM element for a single message.
+     * @param {object} msg
+     * @returns {Element|null}
+     */
+    _buildMessage(msg) {
         switch (msg.type) {
-            case 'system':  return this._renderSystemMsg(msg);
-            case 'ai':      return this._renderAiMsg(msg);
-            case 'own':     return this._renderOwnMsg(msg);
-            case 'typing':  return this._renderTypingMsg(msg);
-            default:        return '';
+            case 'system':  return this._buildSystemMsg(msg);
+            case 'ai':      return this._buildAiMsg(msg);
+            case 'own':     return this._buildOwnMsg(msg);
+            case 'typing':  return this._buildTypingMsg(msg);
+            default:        return null;
         }
     }
 
-    _renderSystemMsg(msg) {
-        const kind = this._escape(msg.kind || 'default');
-        return `<div class="chatroom__system-message chatroom__system-message--${kind}">
-  ${msg.label ? `<span class="chatroom__agenda-label">${this._escape(msg.label)}</span>` : ''}
-  ${msg.title ? `<span class="chatroom__agenda-title">${this._escape(msg.title)}</span>` : ''}
-</div>`;
+    /**
+     * Build a system/agenda divider message element.
+     * @param {object} msg
+     * @returns {Element|null}
+     */
+    _buildSystemMsg(msg) {
+        const el = this._cloneTemplate('template-chatroom-message-system');
+        if (!el) return null;
+
+        // Replace the default kind modifier with the actual message kind
+        const kind = this._safeClass(msg.kind || 'default');
+        el.classList.remove('chatroom__system-message--default');
+        el.classList.add(`chatroom__system-message--${kind}`);
+
+        const labelEl = el.querySelector('.chatroom__agenda-label');
+        if (labelEl && msg.label) {
+            labelEl.textContent = msg.label;
+            labelEl.hidden = false;
+        }
+
+        const titleEl = el.querySelector('.chatroom__agenda-title');
+        if (titleEl && msg.title) {
+            titleEl.textContent = msg.title;
+            titleEl.hidden = false;
+        }
+
+        return el;
     }
 
-    _renderAiMsg(msg) {
-        const avatar = this._escape(msg.avatar || 'ai');
-        const avatarContent = avatar === 'ai'
-            ? `<i class="${this._safeIcon(msg.icon || 'fas fa-robot')}" aria-hidden="true"></i>`
-            : avatar.toUpperCase();
-        const toolResults = Array.isArray(msg.tool_results) && msg.tool_results.length
-            ? `<ul class="chatroom__tool-results" aria-label="${this._escape(msg.author || '')} results">
-  ${msg.tool_results.map(r => `  <li class="chatroom__tool-result-item">
-    ${r.label ? `<strong class="chatroom__tool-result-label">${this._escape(r.label)}</strong>` : ''}
-    ${r.detail ? `<span class="chatroom__tool-result-detail">${this._escape(r.detail)}</span>` : ''}
-  </li>`).join('')}
-</ul>` : '';
+    /**
+     * Build an AI agent message element.
+     * @param {object} msg
+     * @returns {Element|null}
+     */
+    _buildAiMsg(msg) {
+        const el = this._cloneTemplate('template-chatroom-message-ai');
+        if (!el) return null;
 
-        return `<div class="chatroom__message chatroom__message--ai">
-  <div class="chatroom__message-row">
-    <span class="chatroom__avatar chatroom__avatar--${avatar}" aria-hidden="true">${avatarContent}</span>
-    <div class="chatroom__message-body">
-      <header class="chatroom__message-meta">
-        ${msg.author ? `<strong class="chatroom__author">${this._escape(msg.author)}</strong>` : ''}
-        ${msg.role ? `<span class="chatroom__agent-role">${this._escape(msg.role)}</span>` : ''}
-        ${msg.time ? `<time class="chatroom__time">${this._escape(msg.time)}</time>` : ''}
-        ${msg.tool_badge ? `<span class="chatroom__tool-badge" title="Tool invoked"><i class="${this._safeIcon(msg.tool_badge_icon || 'fas fa-wrench')}" aria-hidden="true"></i> ${this._escape(msg.tool_badge)}</span>` : ''}
-      </header>
-      <p class="chatroom__text">${this._escape(msg.text || '')}</p>
-      ${toolResults}
-    </div>
-  </div>
-</div>`;
+        // Avatar — icon or initials
+        const avatar = msg.avatar || 'ai';
+        const avatarEl = el.querySelector('.chatroom__avatar');
+        if (avatarEl) {
+            avatarEl.classList.add(`chatroom__avatar--${this._safeClass(avatar)}`);
+            if (avatar === 'ai') {
+                const iconEl = avatarEl.querySelector('i');
+                if (iconEl) {
+                    iconEl.className = this._safeIcon(msg.icon || 'fas fa-robot');
+                    iconEl.setAttribute('aria-hidden', 'true');
+                }
+            } else {
+                // Replace icon with initials text
+                avatarEl.textContent = avatar.toUpperCase();
+            }
+        }
+
+        // Author
+        const authorEl = el.querySelector('.chatroom__author');
+        if (authorEl && msg.author) {
+            authorEl.textContent = msg.author;
+            authorEl.hidden = false;
+        }
+
+        // Agent role
+        const roleEl = el.querySelector('.chatroom__agent-role');
+        if (roleEl && msg.role) {
+            roleEl.textContent = msg.role;
+            roleEl.hidden = false;
+        }
+
+        // Timestamp
+        const timeEl = el.querySelector('.chatroom__time');
+        if (timeEl && msg.time) {
+            timeEl.textContent = msg.time;
+            timeEl.hidden = false;
+        }
+
+        // Tool badge
+        const badgeEl = el.querySelector('.chatroom__tool-badge');
+        if (badgeEl && msg.tool_badge) {
+            const iconEl = badgeEl.querySelector('i');
+            if (iconEl) {
+                iconEl.className = this._safeIcon(msg.tool_badge_icon || 'fas fa-wrench');
+                iconEl.setAttribute('aria-hidden', 'true');
+            }
+            const textEl = badgeEl.querySelector('.chatroom__tool-badge-text');
+            if (textEl) textEl.textContent = msg.tool_badge;
+            badgeEl.hidden = false;
+        }
+
+        // Message text
+        const textEl = el.querySelector('.chatroom__text');
+        if (textEl) textEl.textContent = msg.text || '';
+
+        // Tool results
+        if (Array.isArray(msg.tool_results) && msg.tool_results.length) {
+            const listEl = el.querySelector('.chatroom__tool-results');
+            if (listEl) {
+                listEl.setAttribute('aria-label', `${msg.author || ''} results`);
+                msg.tool_results.forEach(r => {
+                    const item = this._buildToolResultItem(r.label, r.detail);
+                    if (item) listEl.appendChild(item);
+                });
+                listEl.hidden = false;
+            }
+        }
+
+        return el;
     }
 
-    _renderOwnMsg(msg) {
-        return `<div class="chatroom__message chatroom__message--own">
-  <div class="chatroom__message-row">
-    <div class="chatroom__message-body">
-      <header class="chatroom__message-meta">
-        ${msg.time ? `<time class="chatroom__time">${this._escape(msg.time)}</time>` : ''}
-        ${msg.author ? `<strong class="chatroom__author">${this._escape(msg.author)}</strong>` : ''}
-      </header>
-      <p class="chatroom__text">${this._escape(msg.text || '')}</p>
-    </div>
-    <span class="chatroom__avatar chatroom__avatar--you" aria-hidden="true">${this._escape(msg.initials || 'Y')}</span>
-  </div>
-</div>`;
+    /**
+     * Build a user's own message element.
+     * @param {object} msg
+     * @returns {Element|null}
+     */
+    _buildOwnMsg(msg) {
+        const el = this._cloneTemplate('template-chatroom-message-own');
+        if (!el) return null;
+
+        const timeEl = el.querySelector('.chatroom__time');
+        if (timeEl && msg.time) {
+            timeEl.textContent = msg.time;
+            timeEl.hidden = false;
+        }
+
+        const authorEl = el.querySelector('.chatroom__author');
+        if (authorEl && msg.author) {
+            authorEl.textContent = msg.author;
+            authorEl.hidden = false;
+        }
+
+        const textEl = el.querySelector('.chatroom__text');
+        if (textEl) textEl.textContent = msg.text || '';
+
+        const avatarEl = el.querySelector('.chatroom__avatar');
+        if (avatarEl) avatarEl.textContent = msg.initials || 'Y';
+
+        return el;
     }
 
-    _renderTypingMsg(msg) {
-        const avatar = this._escape(msg.avatar || 'ai');
-        return `<div class="chatroom__typing">
-  <span class="chatroom__avatar chatroom__avatar--${avatar}" aria-hidden="true">${avatar.toUpperCase()}</span>
-  <em class="chatroom__typing-text">${this._escape(msg.text || '')}</em>
-</div>`;
+    /**
+     * Build a typing/deliberating indicator element.
+     * @param {object} msg
+     * @returns {Element|null}
+     */
+    _buildTypingMsg(msg) {
+        const el = this._cloneTemplate('template-chatroom-message-typing');
+        if (!el) return null;
+
+        const avatar = msg.avatar || 'ai';
+        const avatarEl = el.querySelector('.chatroom__avatar');
+        if (avatarEl) {
+            avatarEl.classList.add(`chatroom__avatar--${this._safeClass(avatar)}`);
+            avatarEl.textContent = avatar.toUpperCase();
+        }
+
+        const textEl = el.querySelector('.chatroom__typing-text');
+        if (textEl) textEl.textContent = msg.text || '';
+
+        return el;
     }
 
-    _renderMcpPanel(apps) {
-        if (!apps.length) return '';
-        const items = apps.map(app => `  <li class="chatroom-mcp-apps__item">
-    <button class="chatroom-mcp-apps__btn" type="button"
-      data-mcp-app="${this._escape(app.name)}"
-      ${app.endpoint ? `data-mcp-endpoint="${this._escape(app.endpoint)}"` : ''}
-      aria-label="Invoke ${this._escape(app.label || app.name)}">
-      <span class="chatroom-mcp-apps__btn-icon" aria-hidden="true"><i class="${this._safeIcon(app.icon || 'fas fa-robot')}" aria-hidden="true"></i></span>
-      <span class="chatroom-mcp-apps__btn-content">
-        <strong class="chatroom-mcp-apps__btn-label">${this._escape(app.label || app.name)}</strong>
-        ${app.description ? `<span class="chatroom-mcp-apps__btn-desc">${this._escape(app.description)}</span>` : ''}
-        <code class="chatroom-mcp-apps__btn-command">/${this._escape(app.name)}</code>
-      </span>
-    </button>
-  </li>`).join('');
+    /**
+     * Build the MCP apps panel element populated with app buttons.
+     * @param {Array} apps
+     * @returns {Element|null}
+     */
+    _buildMcpPanel(apps) {
+        if (!apps.length) return null;
 
-        return `<div class="chatroom-mcp-apps" aria-hidden="true" id="chatroom-mcp-apps-panel">
-  <div class="chatroom-mcp-apps__header">
-    <h2 class="chatroom-mcp-apps__title"><i class="fas fa-robot" aria-hidden="true"></i> AI Agent Tools</h2>
-    <p class="chatroom-mcp-apps__hint">Select an agent tool or type <code>/tool-name query</code> in the input field.</p>
-  </div>
-  <ul class="chatroom-mcp-apps__list" role="list">${items}</ul>
-</div>`;
+        const panel = this._cloneTemplate('template-chatroom-mcp-panel');
+        if (!panel) return null;
+
+        const list = panel.querySelector('.chatroom-mcp-apps__list');
+        if (list) {
+            apps.forEach(app => {
+                const item = this._buildMcpItem(app);
+                if (item) list.appendChild(item);
+            });
+        }
+
+        return panel;
     }
 
-    _renderInput(placeholder, showToolbar, apps) {
-        const mcpBtn = apps.length ? `<button type="button" class="chatroom-mcp-apps-toggle chatroom-input-format-btn" aria-label="MCP Apps" aria-expanded="false" aria-controls="chatroom-mcp-apps-panel" title="MCP Apps"><i class="fas fa-plug" aria-hidden="true"></i></button>` : '';
+    /**
+     * Build a single MCP app list item element.
+     * @param {object} app  { name, label, endpoint, icon, description }
+     * @returns {Element|null}
+     */
+    _buildMcpItem(app) {
+        const item = this._cloneTemplate('template-chatroom-mcp-item');
+        if (!item) return null;
 
-        const toolbar = showToolbar
-            ? `<div class="chatroom-input-toolbar">
-    <div class="chatroom-input-toolbar-left">${mcpBtn}</div>
-    <div class="chatroom-input-toolbar-right">
-      <span class="chatroom-char-count" aria-live="polite"></span>
-      <button class="chatroom-input-send-btn" type="button" title="Send Message" aria-label="Send Message"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
-    </div>
-  </div>`
-            : `<div class="chatroom-input-toolbar chatroom-input-toolbar--minimal">
-    ${mcpBtn}
-    <button class="chatroom-input-send-btn" type="button" title="Send Message" aria-label="Send Message"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
-  </div>`;
+        const btn = item.querySelector('.chatroom-mcp-apps__btn');
+        if (btn) {
+            btn.setAttribute('data-mcp-app', app.name);
+            if (app.endpoint) btn.setAttribute('data-mcp-endpoint', app.endpoint);
+            btn.setAttribute('aria-label', `Invoke ${app.label || app.name}`);
+        }
 
-        return `<div class="chatroom-input" role="group" aria-label="Message input area">
-  <div class="chatroom-input-container">
-    <div class="chatroom-input-content">
-      <div class="chatroom-input-field-container">
-        <textarea class="chatroom-input-field" id="chatroom-input-control"
-          placeholder="${this._escape(placeholder)}"
-          aria-label="Message input"
-          rows="1"
-          maxlength="${this.config.maxLength}"></textarea>
-      </div>
-      ${toolbar}
-    </div>
-  </div>
-</div>`;
+        const iconEl = item.querySelector('.chatroom-mcp-apps__btn-icon i');
+        if (iconEl) {
+            iconEl.className = this._safeIcon(app.icon || 'fas fa-robot');
+            iconEl.setAttribute('aria-hidden', 'true');
+        }
+
+        const labelEl = item.querySelector('.chatroom-mcp-apps__btn-label');
+        if (labelEl) labelEl.textContent = app.label || app.name;
+
+        const descEl = item.querySelector('.chatroom-mcp-apps__btn-desc');
+        if (descEl && app.description) {
+            descEl.textContent = app.description;
+            descEl.hidden = false;
+        }
+
+        const cmdEl = item.querySelector('.chatroom-mcp-apps__btn-command');
+        if (cmdEl) cmdEl.textContent = `/${app.name}`;
+
+        return item;
+    }
+
+    /**
+     * Build the input area element, selecting the correct toolbar variant.
+     * @param {string}  placeholder
+     * @param {boolean} showToolbar
+     * @param {Array}   apps
+     * @returns {Element|null}
+     */
+    _buildInput(placeholder, showToolbar, apps) {
+        const wrapper = this._cloneTemplate('template-chatroom-input');
+        if (!wrapper) return null;
+
+        const textarea = wrapper.querySelector('.chatroom-input-field');
+        if (textarea) {
+            textarea.setAttribute('placeholder', placeholder);
+            textarea.setAttribute('maxlength', String(this.config.maxLength));
+        }
+
+        // Build and append the correct toolbar variant
+        const toolbarTplId = showToolbar
+            ? 'template-chatroom-toolbar-full'
+            : 'template-chatroom-toolbar-minimal';
+        const toolbar = this._cloneTemplate(toolbarTplId);
+
+        if (toolbar && apps.length > 0) {
+            // Build MCP toggle button and insert into the toolbar
+            const mcpToggle = document.createElement('button');
+            mcpToggle.type = 'button';
+            mcpToggle.className = 'chatroom-mcp-apps-toggle chatroom-input-format-btn';
+            mcpToggle.setAttribute('aria-label', 'MCP Apps');
+            mcpToggle.setAttribute('aria-expanded', 'false');
+            mcpToggle.setAttribute('aria-controls', 'chatroom-mcp-apps-panel');
+            mcpToggle.title = 'MCP Apps';
+            const plugIcon = document.createElement('i');
+            plugIcon.className = 'fas fa-plug';
+            plugIcon.setAttribute('aria-hidden', 'true');
+            mcpToggle.appendChild(plugIcon);
+
+            if (showToolbar) {
+                const leftDiv = toolbar.querySelector('.chatroom-input-toolbar-left');
+                if (leftDiv) leftDiv.appendChild(mcpToggle);
+            } else {
+                // Minimal toolbar: insert before the send button
+                const sendBtn = toolbar.querySelector('.chatroom-input-send-btn');
+                if (sendBtn) toolbar.insertBefore(mcpToggle, sendBtn);
+            }
+        }
+
+        if (toolbar) {
+            const content = wrapper.querySelector('.chatroom-input-content');
+            if (content) content.appendChild(toolbar);
+        }
+
+        return wrapper;
+    }
+
+    /**
+     * Build a single tool result list item element.
+     * @param {string} label
+     * @param {string} detail
+     * @returns {Element|null}
+     */
+    _buildToolResultItem(label, detail) {
+        const item = this._cloneTemplate('template-chatroom-tool-result-item');
+        if (!item) return null;
+
+        const labelEl = item.querySelector('.chatroom__tool-result-label');
+        if (labelEl && label) {
+            labelEl.textContent = label;
+            labelEl.hidden = false;
+        }
+
+        const detailEl = item.querySelector('.chatroom__tool-result-detail');
+        if (detailEl && detail !== undefined && detail !== null && detail !== '') {
+            const detailText = typeof detail === 'object'
+                ? JSON.stringify(detail, null, 2)
+                : String(detail);
+            detailEl.textContent = detailText;
+            detailEl.hidden = false;
+        }
+
+        return item;
     }
 
     initializeElements() {
@@ -524,25 +752,40 @@ export class ChatroomApp extends GenesisElement {
         const container = this.elements.messagesContainer;
         if (!container) return document.createElement('div');
 
-        const el = document.createElement('div');
-        el.className = 'chatroom__message chatroom__message--ai chatroom__message--thinking';
+        const el = this._cloneTemplate('template-chatroom-message-ai');
+        if (!el) return document.createElement('div');
+
+        el.classList.add('chatroom__message--thinking');
         el.setAttribute('aria-live', 'polite');
-        el.innerHTML = `
-            <div class="chatroom__message-row">
-                <span class="chatroom__avatar chatroom__avatar--ai" aria-hidden="true">
-                    <i class="${this._safeIcon(app.icon)}" aria-hidden="true"></i>
-                </span>
-                <div class="chatroom__message-body">
-                    <header class="chatroom__message-meta">
-                        <strong class="chatroom__author">${this._escape(app.label || app.name)}</strong>
-                    </header>
-                    <p class="chatroom__text chatroom__thinking-dots">
-                        <span aria-label="Thinking"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </p>
-                </div>
-            </div>`;
+
+        const avatarEl = el.querySelector('.chatroom__avatar');
+        if (avatarEl) {
+            const iconEl = avatarEl.querySelector('i');
+            if (iconEl) {
+                iconEl.className = this._safeIcon(app.icon || 'fas fa-robot');
+                iconEl.setAttribute('aria-hidden', 'true');
+            }
+        }
+
+        const authorEl = el.querySelector('.chatroom__author');
+        if (authorEl) {
+            authorEl.textContent = app.label || app.name;
+            authorEl.hidden = false;
+        }
+
+        // Replace the text paragraph with animated thinking dots
+        const textEl = el.querySelector('.chatroom__text');
+        if (textEl) {
+            textEl.classList.add('chatroom__thinking-dots');
+            const dot1 = document.createElement('span');
+            dot1.setAttribute('aria-label', 'Thinking');
+            const dot2 = document.createElement('span');
+            dot2.setAttribute('aria-hidden', 'true');
+            const dot3 = document.createElement('span');
+            dot3.setAttribute('aria-hidden', 'true');
+            textEl.replaceChildren(dot1, dot2, dot3);
+        }
+
         container.appendChild(el);
         container.scrollTop = container.scrollHeight;
         return el;
@@ -565,23 +808,50 @@ export class ChatroomApp extends GenesisElement {
         const hasToolCall = data.tool_used || data.tool || data.tool_name;
         const toolName = hasToolCall ? (data.tool_used || data.tool || data.tool_name) : null;
 
-        const el = document.createElement('div');
-        el.className = 'chatroom__message chatroom__message--ai';
-        el.innerHTML = `
-            <div class="chatroom__message-row">
-                <span class="chatroom__avatar chatroom__avatar--ai" aria-hidden="true">
-                    <i class="${this._safeIcon(app.icon)}" aria-hidden="true"></i>
-                </span>
-                <div class="chatroom__message-body">
-                    <header class="chatroom__message-meta">
-                        <strong class="chatroom__author">${this._escape(app.label || app.name)}</strong>
-                        <time class="chatroom__time">${this._formatNow()}</time>
-                        ${toolName ? `<span class="chatroom__tool-badge" title="Tool used"><i class="fas fa-wrench" aria-hidden="true"></i> ${this._escape(toolName)}</span>` : ''}
-                    </header>
-                    <p class="chatroom__text">${this._escape(text)}</p>
-                    ${this._renderToolResult(data)}
-                </div>
-            </div>`;
+        const el = this._cloneTemplate('template-chatroom-message-ai');
+        if (!el) return;
+
+        const avatarEl = el.querySelector('.chatroom__avatar');
+        if (avatarEl) {
+            const iconEl = avatarEl.querySelector('i');
+            if (iconEl) {
+                iconEl.className = this._safeIcon(app.icon || 'fas fa-robot');
+                iconEl.setAttribute('aria-hidden', 'true');
+            }
+        }
+
+        const authorEl = el.querySelector('.chatroom__author');
+        if (authorEl) {
+            authorEl.textContent = app.label || app.name;
+            authorEl.hidden = false;
+        }
+
+        const timeEl = el.querySelector('.chatroom__time');
+        if (timeEl) {
+            timeEl.textContent = this._formatNow();
+            timeEl.hidden = false;
+        }
+
+        if (toolName) {
+            const badgeEl = el.querySelector('.chatroom__tool-badge');
+            if (badgeEl) {
+                const iconEl = badgeEl.querySelector('i');
+                if (iconEl) {
+                    iconEl.className = 'fas fa-wrench';
+                    iconEl.setAttribute('aria-hidden', 'true');
+                }
+                const textSpan = badgeEl.querySelector('.chatroom__tool-badge-text');
+                if (textSpan) textSpan.textContent = toolName;
+                badgeEl.title = 'Tool used';
+                badgeEl.hidden = false;
+            }
+        }
+
+        const textEl = el.querySelector('.chatroom__text');
+        if (textEl) textEl.textContent = text;
+
+        this._appendToolResults(el, data);
+
         container.appendChild(el);
         container.scrollTop = container.scrollHeight;
     }
@@ -595,53 +865,83 @@ export class ChatroomApp extends GenesisElement {
         const container = this.elements.messagesContainer;
         if (!container) return;
 
-        const el = document.createElement('div');
-        el.className = 'chatroom__message chatroom__message--ai chatroom__message--ai-error';
-        el.innerHTML = `
-            <div class="chatroom__message-row">
-                <span class="chatroom__avatar chatroom__avatar--ai chatroom__avatar--ai-error" aria-hidden="true">
-                    <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
-                </span>
-                <div class="chatroom__message-body">
-                    <header class="chatroom__message-meta">
-                        <strong class="chatroom__author">${this._escape(app.label || app.name)}</strong>
-                        <time class="chatroom__time">${this._formatNow()}</time>
-                    </header>
-                    <p class="chatroom__text chatroom__text--error">
-                        <i class="fas fa-circle-xmark" aria-hidden="true"></i> ${this._escape(errorText)}
-                    </p>
-                </div>
-            </div>`;
+        const el = this._cloneTemplate('template-chatroom-message-ai');
+        if (!el) return;
+
+        el.classList.add('chatroom__message--ai-error');
+
+        const avatarEl = el.querySelector('.chatroom__avatar');
+        if (avatarEl) {
+            avatarEl.classList.add('chatroom__avatar--ai-error');
+            const iconEl = avatarEl.querySelector('i');
+            if (iconEl) {
+                iconEl.className = 'fas fa-exclamation-triangle';
+                iconEl.setAttribute('aria-hidden', 'true');
+            }
+        }
+
+        const authorEl = el.querySelector('.chatroom__author');
+        if (authorEl) {
+            authorEl.textContent = app.label || app.name;
+            authorEl.hidden = false;
+        }
+
+        const timeEl = el.querySelector('.chatroom__time');
+        if (timeEl) {
+            timeEl.textContent = this._formatNow();
+            timeEl.hidden = false;
+        }
+
+        const textEl = el.querySelector('.chatroom__text');
+        if (textEl) {
+            textEl.classList.add('chatroom__text--error');
+            const xIcon = document.createElement('i');
+            xIcon.className = 'fas fa-circle-xmark';
+            xIcon.setAttribute('aria-hidden', 'true');
+            textEl.replaceChildren(xIcon, document.createTextNode(` ${errorText}`));
+        }
+
         container.appendChild(el);
         container.scrollTop = container.scrollHeight;
     }
 
     /**
-     * Render a structured tool-result card if the response data has a
-     * `tool_result` or `results` field with an array.
-     * @param {object} data
-     * @returns {string} HTML string or empty string
+     * Append structured tool-result items to an AI message element when the
+     * response data contains a `tool_result`, `results`, `documents`, or `items`
+     * array field.
+     * @param {Element} msgEl  AI message element (cloned from template)
+     * @param {object}  data   MCP response data
      */
-    _renderToolResult(data) {
+    _appendToolResults(msgEl, data) {
         const results = data.tool_result || data.results || data.documents || data.items;
-        if (!Array.isArray(results) || results.length === 0) return '';
+        if (!Array.isArray(results) || results.length === 0) return;
 
-        const rows = results.slice(0, 5).map(item => {
+        const listEl = msgEl.querySelector('.chatroom__tool-results');
+        if (!listEl) return;
+
+        listEl.setAttribute('aria-label', 'Tool results');
+
+        results.slice(0, 5).forEach(item => {
+            let label = '';
+            let detail = '';
             if (typeof item === 'string') {
-                return `<li class="chatroom__tool-result-item">${this._escape(item)}</li>`;
+                label = item;
+            } else {
+                label = item.title || item.name || item.label || item.id || '';
+                detail = item.content || item.description || item.value || '';
             }
-            const label = item.title || item.name || item.label || item.id || '';
-            const detail = item.content || item.description || item.value || '';
-            return `<li class="chatroom__tool-result-item">
-                        <strong class="chatroom__tool-result-label">${this._escape(label)}</strong>
-                        ${detail ? `<span class="chatroom__tool-result-detail">${this._escape(String(detail))}</span>` : ''}
-                    </li>`;
-        }).join('');
+            const row = this._buildToolResultItem(label, detail);
+            if (row) listEl.appendChild(row);
+        });
 
-        const more = results.length > 5
-            ? `<li class="chatroom__tool-result-more">+${results.length - 5} more</li>` : '';
+        if (results.length > 5) {
+            const more = document.createElement('li');
+            more.className = 'chatroom__tool-result-more';
+            more.textContent = `+${results.length - 5} more`;
+            listEl.appendChild(more);
+        }
 
-        return `<ul class="chatroom__tool-results" aria-label="Tool results">${rows}${more}</ul>`;
+        listEl.hidden = false;
     }
 
     /**
@@ -810,12 +1110,13 @@ export class ChatroomApp extends GenesisElement {
             // No API endpoint — append directly
             const container = this.elements.messagesContainer;
             if (container) {
-                container.insertAdjacentHTML('beforeend', this._renderOwnMsg({
+                const el = this._buildOwnMsg({
                     text,
                     time: this._formatNow(),
                     author: 'You',
                     initials: 'Y',
-                }));
+                });
+                if (el) container.appendChild(el);
                 container.scrollTop = container.scrollHeight;
             }
             this.elements.inputField.value = '';
@@ -831,20 +1132,13 @@ export class ChatroomApp extends GenesisElement {
     _appendUserMessage(text) {
         const container = this.elements.messagesContainer;
         if (!container) return;
-        const el = document.createElement('div');
-        el.className = 'chatroom__message chatroom__message--own';
-        el.innerHTML = `
-            <div class="chatroom__message-row">
-                <div class="chatroom__message-body">
-                    <header class="chatroom__message-meta">
-                        <time class="chatroom__time">${this._formatNow()}</time>
-                        <strong class="chatroom__author">You</strong>
-                    </header>
-                    <p class="chatroom__text">${this._escape(text)}</p>
-                </div>
-                <span class="chatroom__avatar chatroom__avatar--you" aria-hidden="true">Y</span>
-            </div>`;
-        container.appendChild(el);
+        const el = this._buildOwnMsg({
+            time: this._formatNow(),
+            author: 'You',
+            text,
+            initials: 'Y',
+        });
+        if (el) container.appendChild(el);
         container.scrollTop = container.scrollHeight;
     }
 
@@ -863,9 +1157,18 @@ export class ChatroomApp extends GenesisElement {
                 const messages = await response.json();
                 const container = this.elements.messagesContainer;
                 if (!container) return;
-                container.innerHTML = Array.isArray(messages) && messages.length
-                    ? messages.map(m => this._renderMessage(m)).join('')
-                    : '<div class="chatroom-empty-state">No messages yet. Start the conversation!</div>';
+                container.replaceChildren();
+                if (Array.isArray(messages) && messages.length) {
+                    messages.forEach(m => {
+                        const el = this._buildMessage(m);
+                        if (el) container.appendChild(el);
+                    });
+                } else {
+                    const empty = document.createElement('div');
+                    empty.className = 'chatroom-empty-state';
+                    empty.textContent = 'No messages yet. Start the conversation!';
+                    container.appendChild(empty);
+                }
                 container.scrollTop = container.scrollHeight;
             }
         } catch (error) {
@@ -928,21 +1231,21 @@ export class ChatroomApp extends GenesisElement {
     // Helpers
     // =========================================================================
 
-    /** Safely escape HTML for text content. */
-    _escape(str) {
-        return String(str)
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#39;');
-    }
-
     /** Validate and return a safe Font Awesome class string. */
     _safeIcon(icon) {
         if (!icon) return 'fas fa-robot';
         // Allow only alphanumeric, hyphens, spaces — no injection vectors
         return /^[\w\s-]+$/.test(icon) ? icon : 'fas fa-robot';
+    }
+
+    /** Sanitise a string for use as a CSS class name modifier. */
+    _safeClass(value) {
+        if (!value) return 'default';
+        return String(value)
+            .replace(/[^a-z0-9-]/gi, '-')
+            .replace(/-+/g, '-')
+            .replace(/^-+|-+$/g, '')
+            .toLowerCase() || 'default';
     }
 
     /** Format the current time as HH:MM AM/PM. */
