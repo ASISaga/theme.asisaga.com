@@ -1,73 +1,283 @@
 /**
- * Chatroom Layout Styles - Ontology-Based
+ * Chatroom Layout Styles
  * ============================================================================
- * Executive boardroom interface layout.
- * Mirrors HTML structure and uses Genesis Semantic Design System internally.
+ * Executive boardroom interface — professional dark theme with gold accents.
  *
- * Visual identity: professional dark boardroom with gold executive accents.
- * 
- * Note: This layout uses a custom <chatroom-app> web component.
- * SCSS targets the internal structure within the component.
+ * This is the single SCSS file for the entire chatroom:
+ *   - Page-level viewport constraints (.chatroom-body, .chatroom-main)
+ *   - chatroom-app web component wrapper
+ *   - .chatroom-layout container and all sub-regions (header, messages, input)
+ *   - Message bubble variants (ai, own, system/agenda, typing)
+ *   - MCP Apps panel + toggle badge
+ *   - Loading overlay, animations, and responsive overrides
+ *
+ * Color tokens: _chatroom-tokens.scss
+ * JavaScript:   assets/js/chatroom-app.js
+ * Data:         _data/chatroom/<name>.yml
  */
 
-// Boardroom color constants — single source of truth in _chatroom-tokens.scss
 @import "chatroom-tokens";
 
+// ============================================================================
+// PAGE-LEVEL VIEWPORT
+// ============================================================================
 
-// Chatroom layout container - full height flex column
-.chatroom-layout {
-  @include genesis-environment('chronological');  // Vertical flow
-  @include genesis-atmosphere('void');             // Professional dark boardroom vibe
-  
-  height: 100%;
-  min-height: 0; // Critical: allows flex child to shrink below content size
+// Full-viewport body — chatroom uses all available height after the site header.
+// Raw CSS: architectural body-level flex column; outside ontological scope.
+.chatroom-body {
+  margin: 0;
+  padding: 0;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
-  
-  .chatroom-header {
-    // Structural header: transparent, layout-only
-    flex-shrink: 0;
-  }
-  
-  .chatroom-title {
-    @include genesis-cognition('axiom');      // Headline
-    color: $boardroom-text;
-  }
-  
-  .chatroom-participants {
-    @include genesis-cognition('gloss');      // Small metadata
-    color: $boardroom-muted;
-  }
-  
-  .chatroom-messages {
-    // Structural message viewport: transparent, layout-only
-    // Individual messages are the leaf entities
-    @include genesis-environment('chronological'); // Message stream
-    
+  overflow: hidden;
+}
+
+// Main fills remaining height after the site header.
+// Raw CSS: flex-child growth/shrink constraint; architectural concern.
+.chatroom-main {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+
+  chatroom-app {
     flex: 1;
-    min-height: 0; // Critical: allows overflow-y: auto to work in flex children
-    overflow: auto;
-  }
-  
-  .chatroom-input {
-    // Structural input bar: transparent, layout-only
-    flex-shrink: 0;
-  }
-  
-  .chatroom-input-form {
-    @include genesis-environment('associative'); // Horizontal flex
-    
     display: flex;
-    gap: 0.5rem;
-  }
-  
-  .chatroom-send-btn {
-    @include genesis-synapse('execute');      // Action button
+    flex-direction: column;
+    min-height: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 
 // ============================================================================
-// Sample content classes (used by sample-chatroom.html and subdomain pages)
+// LAYOUT CONTAINER
+// ============================================================================
+
+.chatroom-layout {
+  @include genesis-environment('chronological'); // Vertical flow
+  @include genesis-atmosphere('void');           // Professional dark boardroom
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+// ============================================================================
+// HEADER
+// ============================================================================
+
+.chatroom-header {
+  display: flex;
+  align-items: center;
+  padding: 0.625rem 1.25rem;
+  border-bottom: 1px solid $boardroom-border;
+  background: $boardroom-surface;
+  z-index: 10;
+  flex-shrink: 0;
+  position: relative;
+
+  // Gold top accent line — signals executive authority
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, $boardroom-gold-accessible, transparent 80%);
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.875rem;
+  }
+
+  &-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+}
+
+.chatroom-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $boardroom-gold-accessible;
+}
+
+.chatroom-participants {
+  @include genesis-cognition('gloss');
+  color: $boardroom-muted;
+}
+
+.chatroom-typing-indicator {
+  font-size: 0.75rem;
+  color: $boardroom-gold-accessible;
+  font-style: italic;
+  min-height: 1rem;
+}
+
+.chatroom-status-container {
+  display: flex;
+  align-items: center;
+}
+
+.chatroom-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: $boardroom-muted;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  background: $boardroom-bg;
+  border: 1px solid $boardroom-border;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: $boardroom-muted;
+  }
+
+  &.chatroom-status-online::before    { background: oklch(0.55 0.15 145); }
+  &.chatroom-status-connecting::before { background: $boardroom-gold-accessible; animation: chatroom-pulse 1.5s ease-in-out infinite; }
+  &.chatroom-status-error::before,
+  &.chatroom-status-offline::before   { background: oklch(0.55 0.2 25); }
+}
+
+.chatroom-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chatroom-settings-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: $boardroom-muted;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover { background: $boardroom-bg; color: $boardroom-gold-accessible; }
+  &:focus { outline: 2px solid $boardroom-gold-accessible; outline-offset: 2px; }
+
+  i { font-size: 1rem; }
+}
+
+// MCP apps toggle (relative positioning for the pending badge)
+.chatroom-mcp-apps-toggle {
+  @include genesis-synapse('execute');
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: $boardroom-gold-accessible;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover,
+  &:focus-visible { background: $boardroom-gold-dim; }
+
+  &[aria-expanded="true"] { background: oklch(0.55 0.12 85 / 0.18); }
+
+  i { font-size: 1rem; }
+}
+
+// Pending-request count badge on the MCP toggle button
+.chatroom-mcp-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 1rem;
+  height: 1rem;
+  padding: 0 0.25rem;
+  border-radius: 999px;
+  background: $boardroom-gold-accessible;
+  color: $boardroom-bg;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  pointer-events: none;
+}
+
+// ============================================================================
+// MESSAGES AREA
+// ============================================================================
+
+.chatroom-messages {
+  @include genesis-environment('chronological'); // Vertical message stream
+
+  flex: 1;
+  min-height: 0; // Critical: allows overflow-y: auto to work inside flex parent
+  overflow-y: auto;
+  padding: 1.5rem;
+  background: $boardroom-bg;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  scrollbar-width: thin;
+  scrollbar-color: $boardroom-gold-dim transparent;
+
+  &::-webkit-scrollbar       { width: 4px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb { background: $boardroom-gold-dim; border-radius: 2px; }
+}
+
+.chatroom-empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: $boardroom-muted;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+// ============================================================================
+// MESSAGE BUBBLES
 // ============================================================================
 
 .chatroom__message {
@@ -83,53 +293,23 @@
   gap: 0.75rem;
 }
 
-.chatroom__message--own .chatroom__message-row {
-  flex-direction: row-reverse;
+.chatroom__message--own {
+  .chatroom__message-row { flex-direction: row-reverse; }
+
+  .chatroom__message-body {
+    @include genesis-entity('imperative');
+    background: $boardroom-own-bg;
+    border: 1px solid $boardroom-gold-dim;
+    text-align: right;
+  }
 }
 
-.chatroom__message--own .chatroom__message-body {
-  @include genesis-entity('imperative');
-  background: $boardroom-own-bg;
-  border: 1px solid $boardroom-gold-dim;
-  text-align: right;
-}
-
-.chatroom__avatar {
-  flex-shrink: 0;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: oklch(1 0 0);
-
-  // CXO avatar palette — distinct hue/lightness per executive role
-  &--ceo { background: oklch(0.50 0.12 85);  box-shadow: 0 0 0 2px $boardroom-gold-ring; }  // gold
-  &--cfo { background: oklch(0.40 0.14 160); }  // emerald
-  &--cto { background: oklch(0.42 0.16 230); }  // sapphire
-  &--cmo { background: oklch(0.42 0.18 300); }  // violet
-  &--coo { background: oklch(0.38 0.06 250); }  // slate
-
-  // Board Chair (human input)
-  &--you { background: oklch(0.40 0.12 200); }  // teal
-
-  // AI tool agent avatar — gold ring to signal automated intelligence
-  &--ai {
-    background: oklch(0.20 0.025 250);
-    border: 1.5px solid $boardroom-gold-accessible;
-    color: $boardroom-gold-accessible;
-    font-size: 0.875rem;
-  }
-
-  &--ai-error {
-    background: oklch(0.20 0.025 25);
-    border: 1.5px solid oklch(0.55 0.2 25);
-    color: oklch(0.55 0.2 25);
-  }
+.chatroom__message--ai .chatroom__message-body {
+  @include genesis-entity('secondary');
+  background: $boardroom-surface;
+  border: 1px solid $boardroom-border;
+  border-left: 2px solid $boardroom-gold-accessible;
+  padding-left: 0.875rem;
 }
 
 .chatroom__message-body {
@@ -145,6 +325,42 @@
   align-items: baseline;
   gap: 0.5rem;
   flex-wrap: wrap;
+}
+
+.chatroom__avatar {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: oklch(1 0 0);
+
+  // CXO palette — distinct hue per executive role
+  &--ceo { background: oklch(0.50 0.12 85);  box-shadow: 0 0 0 2px $boardroom-gold-ring; } // gold
+  &--cfo { background: oklch(0.40 0.14 160); }  // emerald
+  &--cto { background: oklch(0.42 0.16 230); }  // sapphire
+  &--cmo { background: oklch(0.42 0.18 300); }  // violet
+  &--coo { background: oklch(0.38 0.06 250); }  // slate
+  &--you { background: oklch(0.40 0.12 200); }  // teal — Board Chair
+
+  // AI tool agent — gold ring signals automated intelligence
+  &--ai {
+    background: oklch(0.20 0.025 250);
+    border: 1.5px solid $boardroom-gold-accessible;
+    color: $boardroom-gold-accessible;
+    font-size: 0.875rem;
+  }
+
+  &--ai-error {
+    background: oklch(0.20 0.025 25);
+    border: 1.5px solid oklch(0.55 0.2 25);
+    color: oklch(0.55 0.2 25);
+  }
 }
 
 .chatroom__author {
@@ -178,12 +394,10 @@
   margin: 0;
   color: $boardroom-text;
 
-  &--error {
-    color: oklch(0.65 0.2 25);
-  }
+  &--error { color: oklch(0.65 0.2 25); }
 }
 
-// Agenda-item system dividers — replaces casual "user joined" notices
+// Agenda dividers — executive system messages
 .chatroom__system-message {
   @include genesis-cognition('gloss');
   text-align: center;
@@ -209,10 +423,7 @@
       margin-bottom: 0.25rem;
     }
 
-    &::after {
-      margin-top: 0.25rem;
-      margin-bottom: 0;
-    }
+    &::after { margin-top: 0.25rem; margin-bottom: 0; }
   }
 }
 
@@ -232,7 +443,7 @@
   font-size: 0.85rem;
 }
 
-// "Is deliberating..." indicator — replaces casual "is typing..."
+// "Is deliberating…" typing indicator
 .chatroom__typing {
   display: flex;
   align-items: center;
@@ -247,21 +458,7 @@
   font-style: italic;
 }
 
-// ============================================================================
-// AI / MCP message variants
-// ============================================================================
-
-.chatroom__message--ai {
-  .chatroom__message-body {
-    @include genesis-entity('secondary');
-    background: $boardroom-surface;
-    border: 1px solid $boardroom-border;
-    border-left: 2px solid $boardroom-gold-accessible;
-    padding-left: 0.875rem;
-  }
-}
-
-// Tool badge shown next to the agent name
+// Tool badge shown next to the agent name in AI messages
 .chatroom__tool-badge {
   @include genesis-cognition('quantum');
   display: inline-flex;
@@ -273,11 +470,9 @@
   color: $boardroom-gold-accessible;
   font-size: 0.65rem;
   font-weight: 600;
-  text-transform: none;
-  letter-spacing: 0;
 }
 
-// Structured tool results list
+// Structured tool result list
 .chatroom__tool-results {
   list-style: none;
   padding: 0.5rem 0 0;
@@ -316,62 +511,7 @@
   font-style: italic;
 }
 
-// Light sample variant for demo pages that need a standard light message treatment
-.message-list--light {
-  --font-wisdom: var(--font-consciousness, 'Inter', 'SF Pro Display', system-ui, -apple-system, "Segoe UI", sans-serif);
-
-  font-family: var(--font-consciousness, 'Inter', 'SF Pro Display', system-ui, -apple-system, "Segoe UI", sans-serif);
-
-  .chatroom__message-body {
-    background: $surface-primary;
-    border: 1px solid $border-primary;
-  }
-
-  .chatroom__message--own .chatroom__message-body {
-    background: $surface-elevated;
-    border-color: $border-accent;
-  }
-
-  .chatroom__message--ai .chatroom__message-body {
-    background: $surface-primary;
-    border-color: $border-primary;
-    border-left-color: $luminous-gold-accessible;
-  }
-
-  .chatroom__author,
-  .chatroom__time,
-  .chatroom__text,
-  .chatroom__tool-result-label,
-  .chatroom__tool-result-detail,
-  .chatroom__tool-badge,
-  .chatroom__agent-role,
-  .chatroom__typing-text {
-    color: $text-primary;
-  }
-
-  .chatroom__time,
-  .chatroom__tool-result-detail,
-  .chatroom__typing-text {
-    color: $text-secondary;
-  }
-
-  .chatroom__agent-role,
-  .chatroom__tool-badge {
-    background: $surface-elevated;
-    color: $luminous-gold-accessible;
-  }
-
-  .chatroom__tool-results {
-    border-top-color: $border-primary;
-  }
-
-  .chatroom__tool-result-item {
-    background: $surface-elevated;
-    border-color: $border-primary;
-  }
-}
-
-// Deliberating/thinking animation dots — gold pulse
+// Deliberating / thinking animation dots
 .chatroom__thinking-dots {
   display: inline-flex;
   align-items: center;
@@ -391,13 +531,131 @@
   }
 }
 
-@keyframes chatroom-thinking {
-  0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); }
-  40% { opacity: 1; transform: scale(1); }
+// ============================================================================
+// INPUT AREA
+// ============================================================================
+
+.chatroom-input {
+  border-top: 1px solid $boardroom-border;
+  background: $boardroom-surface;
+  padding: 1rem 1.5rem;
+  flex-shrink: 0;
+
+  &-container {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  &-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &-field-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border: 1px solid $boardroom-border;
+    border-radius: 0.25rem;
+    background: $boardroom-bg;
+
+    &:focus-within {
+      border-color: $boardroom-gold-accessible;
+      box-shadow: 0 0 0 1px $boardroom-gold-dim;
+    }
+  }
+
+  &-field {
+    flex: 1;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    font-family: inherit;
+    background: transparent;
+    color: $boardroom-text;
+    max-height: 120px;
+    overflow-y: auto;
+
+    &::placeholder { color: $boardroom-muted; }
+  }
+
+  &-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+
+    &-left,
+    &-right {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    &--minimal { justify-content: flex-end; }
+  }
+
+  &-format-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: $boardroom-muted;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover { background: $boardroom-bg; color: $boardroom-gold-accessible; }
+  }
+
+  &-send-btn {
+    @include genesis-synapse('execute');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    background: $boardroom-gold-accessible;
+    color: $boardroom-bg;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+
+    &:hover { background: $boardroom-gold; color: oklch(0.08 0.01 250); }
+    &:focus { outline: 2px solid $boardroom-gold-accessible; outline-offset: 2px; }
+
+    &:disabled {
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list */
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    i { font-size: 1rem; }
+  }
+
+  &-char-count {
+    font-size: 0.72rem;
+    color: $boardroom-muted;
+    white-space: nowrap;
+  }
 }
 
 // ============================================================================
-// MCP Apps Panel — dark boardroom theme
+// MCP APPS PANEL
 // ============================================================================
 
 .chatroom-mcp-apps {
@@ -417,9 +675,7 @@
   transform: translateX(100%);
   transition: transform 0.2s ease;
 
-  &--open {
-    transform: translateX(0);
-  }
+  &--open { transform: translateX(0); }
 
   &__header {
     padding: 0.875rem 1rem 0.5rem;
@@ -460,9 +716,7 @@
     gap: 0.125rem;
   }
 
-  &__item {
-    padding: 0 0.5rem;
-  }
+  &__item { padding: 0 0.5rem; }
 
   &__btn {
     @include genesis-synapse('navigate');
@@ -533,27 +787,83 @@
   }
 }
 
-// MCP pending badge on the toggle button
-.chatroom-mcp-badge {
+// ============================================================================
+// LOADING OVERLAY (API mode)
+// ============================================================================
+
+.chatroom-loading-overlay {
   position: absolute;
-  top: -4px;
-  right: -4px;
-  min-width: 1rem;
-  height: 1rem;
-  padding: 0 0.25rem;
-  border-radius: 999px;
-  background: $boardroom-gold-accessible;
-  color: $boardroom-bg;
-  font-size: 0.65rem;
-  font-weight: 700;
+  inset: 0;
+  background: oklch(0.08 0.015 250 / 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
-  pointer-events: none;
+  z-index: 1000;
+
+  &-content { text-align: center; }
+
+  &-spinner {
+    width: 3rem;
+    height: 3rem;
+    border: 0.3rem solid $boardroom-border;
+    border-top-color: $boardroom-gold-accessible;
+    border-radius: 50%;
+    animation: chatroom-spin 1s linear infinite;
+    margin: 0 auto 1rem;
+  }
+
+  &-text { color: $boardroom-muted; margin: 0; }
 }
 
-// MCP apps toggle button (relative positioning for badge)
-.chatroom-mcp-apps-toggle {
-  position: relative;
+// ============================================================================
+// ANIMATIONS
+// ============================================================================
+
+@keyframes chatroom-pulse {
+  0%, 100% { opacity: 1; }
+  50% {
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list */
+    opacity: 0.5;
+  }
 }
+
+@keyframes chatroom-thinking {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes chatroom-spin {
+  to { transform: rotate(360deg); }
+}
+
+// ============================================================================
+// RESPONSIVE
+// ============================================================================
+
+@media (max-width: 768px) {
+  // Compact site header in chatroom context — maximise message area on mobile.
+  // Raw CSS overrides: genesis-header is a web component whose internal subpart
+  // sizing cannot be expressed through ontological mixins.
+  .chatroom-body {
+    .genesis-header {
+      min-height: 48px;
+
+      &__container { padding: 0.4rem 1rem; }
+      &__tagline   { display: none; }
+      &__logo      { width: 24px; height: 24px; }
+    }
+  }
+
+  .chatroom-header {
+    padding: 0.5rem 1rem;
+
+    &-right { gap: 0.5rem; }
+  }
+
+  .chatroom-title { font-size: 0.9rem; }
+
+  .chatroom-messages { padding: 1rem; }
+
+  .chatroom-input { padding: 0.75rem 1rem; }
+}
+
