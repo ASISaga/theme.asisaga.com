@@ -1,6 +1,6 @@
 ---
-applyTo: "**/*.{scss,sass,css},_sass/**,assets/css/**"
-description: "SCSS coding instructions for Genesis Semantic Design System v2.0"
+applyTo: "**/*.{scss,sass,css},assets/css/**"
+description: "Universal SCSS coding standards for Genesis Semantic Design System v2.0"
 ---
 
 # SCSS Instructions
@@ -60,39 +60,55 @@ description: "SCSS coding instructions for Genesis Semantic Design System v2.0"
 - `genesis-state($condition)` - State: `'stable'`, `'evolving'`, `'deprecated'`, `'locked'`, `'simulated'`
 - `genesis-atmosphere($vibe)` - Atmosphere: `'neutral'`, `'ethereal'`, `'void'`, `'vibrant'`
 
+## `_sass/` Directory Architecture
+
+Each subdirectory has a single canonical purpose:
+
+| Directory | Purpose | Path-Specific Instructions |
+|-----------|---------|---------------------------|
+| **`ontology/`** | Ontological Design System engine (Layer 1) | `scss-ontology.instructions.md` |
+| **`base/`** | Foundation: tokens, fonts, utilities, effects | `scss-base.instructions.md` |
+| **`components/`** | Reusable UI components (visual elements) | `scss-components.instructions.md` |
+| **`includes/`** | Include-specific styles mirroring `_includes/` | `scss-includes.instructions.md` |
+| **`layouts/`** | Page layout styles mirroring `_layouts/` | `scss-layouts.instructions.md` |
+| **`demo/`** | Demo-only styles (not for subdomains) | — |
+| **`samples/`** | Example SCSS (not compiled) | — |
+| **`vendor/`** | Vendored third-party (Font Awesome) | — |
+
+**Boundary rules:**
+- **Layout code** (page containers, flex columns, grids) → `layouts/`
+- **Utility classes** (`.sr-only`, `.container`, legacy) → `base/utilities/`
+- **Component code** (cards, buttons, heroes, modals) → `components/`
+- **Design tokens** (colors, spacing, typography) → `base/design/`
+
+→ **Full architecture**: `_sass/README.md`
+
 ## Visual Design Element Ownership (CRITICAL)
 
 Each visual CSS concern maps from a **semantic purpose** through an owning ontological category to its implementation. Never set a property outside its owner.
 
 | Semantic Purpose | Owner | Visual Design Element | CSS Properties |
 |-----------------|-------|---------------------|---------------|
-| **Responsive spatial rhythm** — larger gaps signal section boundaries, tighter gaps group related items | `environment` | White space | `gap`, `margin` (via grid/flex) |
-| **Component breathing room** — `primary` cards get generous padding, `secondary`/`badge` get compact padding | `entity` | Spacing (internal) | `padding` |
-| **Content flow architecture** — `distributed`=auto-fit grids, `focused`=70ch, `manifest`=12-col dashboard | `environment` | Layout / grid | `display`, `grid-*`, `flex-*`, `place-*`, `max-width` |
-| **Page mood and component surface** — atmosphere OKLCH (`void`=black, `ethereal`=translucent); entity surface (`primary`=white card, `surface-glass`=glassmorphism) | `atmosphere` + `entity` | Color palette | `background`, `color` (via tokens) |
-| **Information voice and reading intent** — `axiom`=2–3.5rem bold headlines, `discourse`=serif body at 1.6 line-height, `protocol`=monospace code, `quantum`=tiny uppercase pills | `cognition` | Typography | `font-size`, `font-weight`, `font-family`, `line-height`, `letter-spacing`, `text-transform` |
-| **Spatial containment and text scale** — Container: `focused`=70ch, `manifest`=full 12-col. Text: `axiom`=clamp(2rem,5vw,3.5rem) to `gloss`=clamp(0.875rem) | `environment` + `cognition` | Sizes | `max-width`, `min-height` (env); `font-size` (cog) |
-| **Component edge treatment** — `primary`=subtle 1px, `imperative`=2px neon accent, `badge`=999px pill, radii use `--radius-bento` tokens | `entity` | Borders | `border`, `border-radius` |
-| **Ambient depth and spatial layering** — `ethereal`=subtle outer glow, `void`=inset depth shadow, `vibrant`=neon blue glow, `sacred`=gold accent line | `atmosphere` | Shading / shadows | `box-shadow` |
-| **Emotional backdrop and mood** — `sacred`=blue-to-indigo gradient, `void`=solid black; entity `transcendent`=surface gradient overlay | `atmosphere` | Gradients | `background-image` (gradient) |
-| **Visual transparency and glass** — entity `surface-glass`=blur 20px at 15% opacity; atmosphere `ethereal`=blur 10px, `vibrant`=blur 8px with glow | `atmosphere` + `entity` | Backdrop effects | `backdrop-filter` |
-| **Lifecycle transitions and temporal signaling** — `evolving`=sweeping gradient for progress, `scroll-triggered`=fade-in-up on intersection, `mentioned`=pulse highlight | `state` | Animations | `animation`, `transition`, `@keyframes` |
-| **Content availability and lifecycle** — `stable`=full visibility, `deprecated`=50% opacity + grayscale, `locked`=2px blur + disabled interaction | `state` | Opacity / filters | `opacity`, `filter` |
-| **Action-specific interaction feedback** — `navigate`=permanent underline with accessible color, `execute`=neon glow, `destructive`=red warning glow, all enforce 44px WCAG touch targets | `synapse` | Hover / focus | `:hover`, `:focus`, `cursor`, `transition` |
-| **Content deprecation and link discoverability** — `deprecated`=line-through for outdated; `navigate`=persistent underline that thickens on hover | `state` + `synapse` | Text decoration | `text-decoration` |
+| **Responsive spatial rhythm** | `environment` | White space | `gap`, `margin` (via grid/flex) |
+| **Component breathing room** | `entity` | Spacing (internal) | `padding` |
+| **Content flow architecture** | `environment` | Layout / grid | `display`, `grid-*`, `flex-*`, `place-*`, `max-width` |
+| **Page mood and component surface** | `atmosphere` + `entity` | Color palette | `background`, `color` (via tokens) |
+| **Information voice and reading intent** | `cognition` | Typography | `font-size`, `font-weight`, `font-family`, `line-height` |
+| **Component edge treatment** | `entity` | Borders | `border`, `border-radius` |
+| **Ambient depth and spatial layering** | `atmosphere` | Shading / shadows | `box-shadow` |
+| **Lifecycle transitions** | `state` | Animations | `animation`, `transition`, `@keyframes` |
+| **Action-specific interaction feedback** | `synapse` | Hover / focus | `:hover`, `:focus`, `cursor`, `transition` |
 
 → **Full specification**: `/docs/specifications/ontology-html-mapping.md`
 
 ## Hierarchy-Level Rules (CRITICAL)
-
-→ **Full specification**: `/docs/specifications/ontology-html-mapping.md`
 
 Each HTML element falls into a hierarchy level that determines which mixins are permitted:
 
 | Level | Element type | Required | Optional | Forbidden |
 |-------|-------------|----------|----------|-----------|
 | **1 — Page Layout** | Outermost wrapper | `environment` + `atmosphere` | — | `entity`, `cognition`, `synapse` |
-| **2 — Section** | `<header>`, `<footer>`, `<nav>`, `<aside>` | `environment` | `atmosphere`, `state` | `entity`, `cognition` |
+| **2 — Section** | `<header>`, `<footer>`, `<nav>` | `environment` | `atmosphere`, `state` | `entity`, `cognition` |
 | **3 — Component** | Cards, widgets, alerts | `entity` | `environment`, `state`, `atmosphere` | — |
 | **4 — Leaf** | `<h1>`–`<h6>`, `<p>`, `<a>`, `<button>` | `cognition` or `synapse` | `state` | `environment`, `atmosphere`, `entity` |
 
@@ -100,10 +116,8 @@ Each HTML element falls into a hierarchy level that determines which mixins are 
 - ❌ `genesis-entity()` on structural containers (Level 1/2) — entity is for visual objects only
 - ❌ `genesis-cognition()` on containers — cognition is for text elements only
 - ❌ `genesis-atmosphere()` on leaf elements — atmosphere is for containers only
-- ❌ Stacking `environment` + `entity` on Level 1/2 wrappers
-- ❌ Setting `border` or `padding` in any mixin other than `entity`
-- ❌ Setting `font-*` properties in any mixin other than `cognition`
-- ❌ Setting `background` in any mixin other than `atmosphere` (or entity surface tokens)
+
+→ **Full specification**: `/docs/specifications/ontology-html-mapping.md`
 
 ## WCAG AA Color Accessibility (CRITICAL)
 
@@ -113,24 +127,12 @@ All OKLCH color tokens used for text must meet **4.5:1 contrast ratio** against 
 - **L ≤ 0.55** for text on white/light surfaces (`oklch(0.99 …)`)
 - **L ≥ 0.80** for text on dark/void surfaces (`oklch(0.08 …)`)
 
-**Verified accessible tokens:**
-```scss
-// ✅ WCAG AA on white backgrounds
---text-link: oklch(0.45 0.20 230);       // Links
---accent-neon: oklch(0.50 0.20 230);     // Interactive accent
---accent-gold: oklch(0.55 0.12 85);      // Gold accent
---text-accent: oklch(0.45 0.20 230);     // Accent text
---focus-ring: oklch(0.45 0.20 230 / 0.7); // Focus indicator
-```
-
 **Link underline requirement:**
 - Synapse `'navigate'` uses `text-decoration: underline` (not `border-bottom: transparent`)
 - Links must be distinguishable from surrounding text without relying solely on color
-- Hover may change `text-decoration-thickness` but must retain underline
 
 **Body text color:**
 - Body defaults to `$text-primary` (dark) — light backgrounds are the default surface
-- Only `void`/`cosmic` atmosphere variants set white text explicitly on their dark backgrounds
 - ❌ NEVER set body color to `$text-inverse` — causes invisible text on all light sections
 
 → **Full accessibility specification**: `.github/specs/ontological-design-system.md` § Accessibility Compliance
@@ -161,20 +163,15 @@ All OKLCH color tokens used for text must meet **4.5:1 contrast ratio** against 
 - ❌ Subdomain's `_sass/main.scss` (ontology already available from theme)
 - ❌ `_sass/components/` partials (ontology already imported by `assets/css/style.scss`)
 - ❌ `_sass/layouts/` partials (ontology already imported by `assets/css/style.scss`)
-- ❌ `_sass/samples/` files (ontology already imported by `assets/css/style.scss`)
 - ❌ Any file inside `_sass/` directory (creates 22MB bloat)
 
-**Why**: `assets/css/style.scss` imports `ontology/index` as Layer 1. All `_sass/` partials imported after this (via `_main.scss`) have ontology available without re-importing. Theme's `assets/css/style.scss` also imports subdomain's `_sass/main.scss` at build time. Duplicate imports cause massive CSS bloat (22MB vs 1.1MB).
+**Why**: `assets/css/style.scss` imports `ontology/index` as Layer 1. All `_sass/` partials imported after this (via `_main.scss`) have ontology available without re-importing. Duplicate imports cause massive CSS bloat (22MB vs 1.1MB).
 
 ## Testing & Linting
 
 ### CRITICAL: Pre-Commit Validation
 
-**ALWAYS run `npm test` before committing SCSS changes.** This prevents build failures like:
-```
-Conversion error: Jekyll::Converters::Scss encountered an error while converting 'assets/css/style.scss':
-Incompatible units: 'vw' and 'rem'. on line 81
-```
+**ALWAYS run `npm test` before committing SCSS changes.**
 
 **Required workflow:**
 ```bash
@@ -192,91 +189,42 @@ npm run lint:scss           # Code style and best practices
 
 **❌ Incompatible units error:**
 ```scss
-// WRONG - Direct arithmetic with incompatible units
 .component {
   margin: 5vw + 1rem;        // ❌ Sass compilation error
-  padding: 2rem + 3vw;       // ❌ Incompatible units
 }
 ```
 
 **✅ Correct approach:**
 ```scss
-// CORRECT - Use calc() or clamp() for mixing units
 .component {
   margin: calc(5vw + 1rem);           // ✅ Browser calculates at runtime
   padding: clamp(1rem, 2vw + 0.5rem, 3rem);  // ✅ Fluid with constraints
 }
 ```
 
-### What Each Tool Catches
-
-**Sass compilation (`npm run test:scss`):**
-- Undefined variables (`$gray-100`)
-- Undefined mixins (`@include non-existent`)
-- Missing mixin parameters
-- Syntax errors
-
-**Unit validator (`npm run validate:scss:units`):**
-- ⚠️ **Incompatible unit mixing** outside calc()/clamp() (e.g., `5vw + 1rem`)
-- Invalid fluid design patterns
-- Direct arithmetic with viewport units (vw, vh, vmin, vmax) and root units (rem, em)
-
-**Stylelint (`npm run lint:scss`):**
-- `@extend` usage (forbidden in Jekyll)
-- Nesting depth > 3 levels
-- Code style violations
-- Best practice enforcement
-
-### Pre-Commit Hook (Recommended)
-
-Add to `.git/hooks/pre-commit`:
-```bash
-#!/bin/bash
-# Validate SCSS before allowing commit
-npm test || {
-  echo "❌ SCSS validation failed. Fix errors before committing."
-  exit 1
-}
-```
-
-Make executable: `chmod +x .git/hooks/pre-commit`
-
 → **Unit compatibility**: `/docs/specifications/fluid-design-unit-compatibility.md`  
-→ **Stylelint guide**: `/docs/guides/STYLELINT.md`, `/docs/guides/STYLELINT-LIMITATIONS.md`  
+→ **Stylelint guide**: `/docs/guides/STYLELINT.md`  
 → **Unit validator skill**: `.github/skills/scss-unit-validator/SKILL.md`
-
-## Ontology Evolution
-
-**Found a semantic gap?**
-1. Review existing 31 variants: `/docs/specifications/scss-ontology-system.md`
-2. Check combination possibilities
-3. Submit Ontological Proposition if genuine gap
-
-→ **Process guide**: `.github/.github/docs/agent-philosophy.md`, `.github/prompts/subdomain-evolution-agent.prompt.md`
 
 ## Documentation References
 
+**Path-specific instructions** (auto-loaded when editing files in these directories):
+- `.github/instructions/scss-ontology.instructions.md` — `_sass/ontology/**`
+- `.github/instructions/scss-base.instructions.md` — `_sass/base/**`
+- `.github/instructions/scss-components.instructions.md` — `_sass/components/**`
+- `.github/instructions/scss-layouts.instructions.md` — `_sass/layouts/**`
+- `.github/instructions/scss-includes.instructions.md` — `_sass/includes/**`
+
 **Complete ontology system:**
 - `/docs/specifications/ontology-html-mapping.md` - **Formal hierarchy rules for mixin-to-HTML mapping**
-- `/docs/specifications/scss-ontology-system.md` - All 31 variants, OKLCH colors, design tokens, complete examples
+- `/docs/specifications/scss-ontology-system.md` - All variants, OKLCH colors, design tokens
 - `_sass/ontology/INTEGRATION-GUIDE.md` - Comprehensive API guide
-- `_sass/ontology/_sample.scss` - Working code examples
-- `_sass/ontology/Readme.md` - Three-tier architecture
 - `GENOME.md` - Variant history and evolution
-- `tests/ontology/ontology-animations-demo.html` - Visual demonstrations
 
 **Style guidelines:**
-- `/docs/specifications/fluid-design-unit-compatibility.md` - Unit mixing rules, calc/clamp patterns
+- `/docs/specifications/fluid-design-unit-compatibility.md` - Unit mixing rules
 - `/docs/guides/STYLELINT.md` - Linting setup and rules
-- `/docs/guides/STYLELINT-LIMITATIONS.md` - Why Sass compilation is needed
 
-**Test pages** (organized in `/tests/`):
-- `/tests/responsive/` - Responsive design tests
-- `/tests/mobile/` - Mobile-specific tests
-- `/tests/motion/` - Motion library tests
-- `/tests/ontology/` - Ontology system demos
-- See `/tests/README.md` for complete catalog
-
-**Migration resources:**
-- `_sass/ontology/refactor-agent.md` - Automated SCSS migration
-- `.github/prompts/scss-refactor-agent.prompt.md` - AI refactoring guide
+**Architecture:**
+- `_sass/README.md` - Complete SCSS architecture
+- `.github/specs/genesis-theme-repository.md` - Repository specification
