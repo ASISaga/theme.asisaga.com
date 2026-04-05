@@ -1,0 +1,51 @@
+{% comment %}
+Chatroom Layout Template
+Main chatroom structure: header, messages container (input area injected by JS).
+Conditional elements use [hidden] and are shown by chatroom-app.js based on config.
+
+Namespace:
+  HTML:  _includes/layouts/chatroom/chatroom-layout.html
+  SCSS:  _sass/layouts/_chatroom.scss
+  JS:    assets/js/chatroom-app.js
+{% endcomment %}
+
+<template id="template-chatroom-layout">
+  <div class="chatroom-layout">
+    <header class="chatroom-header">
+      <div class="chatroom-header-content">
+        <div class="chatroom-header-left">
+          <h1 class="chatroom-title"></h1>
+          <div class="chatroom-header-info">
+            <span class="chatroom-participants" hidden></span>
+            <span class="chatroom-typing-indicator" aria-live="polite" hidden></span>
+          </div>
+        </div>
+        <div class="chatroom-header-right">
+          <div class="chatroom-status-container" hidden>
+            <span class="chatroom-status" id="connection-status"></span>
+          </div>
+          <div class="chatroom-actions">
+            <button type="button" class="chatroom-mcp-apps-toggle"
+              aria-label="AI Agent Tools" aria-expanded="false"
+              aria-controls="chatroom-mcp-apps-panel"
+              title="AI Agent Tools" hidden>
+              <i class="fas fa-robot" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="chatroom-settings-btn" aria-label="Boardroom Settings">
+              <i class="fas fa-cog" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MCP apps panel injected here by JS when mcpApps are configured -->
+
+    <div class="chatroom-messages" tabindex="0" role="log"
+      aria-label="Chat messages" aria-live="polite" aria-atomic="false">
+      <div class="chatroom-empty-state">No messages yet. Start the conversation!</div>
+    </div>
+
+    <!-- Input area injected here by JS -->
+  </div>
+</template>

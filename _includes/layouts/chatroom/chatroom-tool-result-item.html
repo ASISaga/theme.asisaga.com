@@ -1,0 +1,17 @@
+{% comment %}
+Tool Result List Item Template
+Single item inside a chatroom__tool-results list.
+JS populates label and detail; hides detail when absent.
+
+Namespace:
+  HTML:  _includes/layouts/chatroom/chatroom-tool-result-item.html
+  SCSS:  _sass/layouts/_chatroom.scss
+  JS:    assets/js/chatroom-app.js
+{% endcomment %}
+
+<template id="template-chatroom-tool-result-item">
+  <li class="chatroom__tool-result-item">
+    <strong class="chatroom__tool-result-label" hidden></strong>
+    <span class="chatroom__tool-result-detail" hidden></span>
+  </li>
+</template>

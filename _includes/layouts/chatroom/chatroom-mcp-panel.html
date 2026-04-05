@@ -1,0 +1,22 @@
+{% comment %}
+MCP Apps Panel Template
+Slide-in panel listing available MCP app tools.
+JS populates the list by cloning chatroom-mcp-item templates.
+
+Namespace:
+  HTML:  _includes/layouts/chatroom/chatroom-mcp-panel.html
+  SCSS:  _sass/layouts/_chatroom.scss
+  JS:    assets/js/chatroom-app.js
+{% endcomment %}
+
+<template id="template-chatroom-mcp-panel">
+  <div class="chatroom-mcp-apps" aria-hidden="true" id="chatroom-mcp-apps-panel">
+    <div class="chatroom-mcp-apps__header">
+      <h2 class="chatroom-mcp-apps__title">
+        <i class="fas fa-robot" aria-hidden="true"></i> AI Agent Tools
+      </h2>
+      <p class="chatroom-mcp-apps__hint">Select an agent tool or type <code>/tool-name query</code> in the input field.</p>
+    </div>
+    <ul class="chatroom-mcp-apps__list" role="list"></ul>
+  </div>
+</template>

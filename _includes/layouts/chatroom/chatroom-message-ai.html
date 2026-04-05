@@ -1,0 +1,33 @@
+{% comment %}
+AI Message Template
+Renders a message bubble for an AI agent.
+JS populates author, role, time, text; shows/hides conditional elements.
+
+Namespace:
+  HTML:  _includes/layouts/chatroom/chatroom-message-ai.html
+  SCSS:  _sass/layouts/_chatroom.scss
+  JS:    assets/js/chatroom-app.js
+{% endcomment %}
+
+<template id="template-chatroom-message-ai">
+  <div class="chatroom__message chatroom__message--ai">
+    <div class="chatroom__message-row">
+      <span class="chatroom__avatar chatroom__avatar--ai" aria-hidden="true">
+        <i class="fas fa-robot" aria-hidden="true"></i>
+      </span>
+      <div class="chatroom__message-body">
+        <header class="chatroom__message-meta">
+          <strong class="chatroom__author" hidden></strong>
+          <span class="chatroom__agent-role" hidden></span>
+          <time class="chatroom__time" hidden></time>
+          <span class="chatroom__tool-badge" title="Tool invoked" hidden>
+            <i class="fas fa-wrench" aria-hidden="true"></i>
+            <span class="chatroom__tool-badge-text"></span>
+          </span>
+        </header>
+        <p class="chatroom__text"></p>
+        <ul class="chatroom__tool-results" hidden></ul>
+      </div>
+    </div>
+  </div>
+</template>
