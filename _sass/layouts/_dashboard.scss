@@ -111,7 +111,7 @@
   padding-block: 0.5rem;
 
   &:not(:last-child) {
-    border-bottom: 1px solid oklch(0.5 0 0 / 0.1);
+    border-bottom: 1px solid $color-neutral-alpha-light;
   }
 }
 
@@ -150,16 +150,16 @@
 
   th {
     @include genesis-cognition('gloss');
-    border-bottom: 2px solid oklch(0.5 0 0 / 0.15);
+    border-bottom: 2px solid $color-neutral-alpha-medium;
   }
 
   td {
     @include genesis-cognition('gloss');
-    border-bottom: 1px solid oklch(0.5 0 0 / 0.08);
+    border-bottom: 1px solid $color-neutral-alpha-faint;
   }
 
   tbody tr:hover {
-    background: oklch(0.5 0 0 / 0.03);
+    background: $color-neutral-alpha-subtle;
   }
 }
 
@@ -168,10 +168,10 @@
   display: inline-block;
 
   &--success {
-    color: oklch(0.6 0.15 145);
+    color: $color-status-success-text;
   }
 
   &--error {
-    color: oklch(0.6 0.2 25);
+    color: $color-status-error-text;
   }
 }

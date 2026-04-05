@@ -224,6 +224,14 @@ rules:
   # All Sass $variables must be declared in _sass/base/design/; every other
   # file (layouts, components, includes, ontology engines, utilities, effects)
   # must only consume variables — never define them.
+  #
+  # WHY raw colour values are NOT flagged globally by this rule:
+  # scss/no-dollar-variables prevents *declaring* $vars outside the design dir,
+  # but it cannot detect *inline colour literals* (e.g. oklch(), #hex, rgb())
+  # used instead of $variables. Stylelint-scss has no built-in rule for this.
+  # The gap is closed by the `declaration-property-value-disallowed-list`
+  # override in the layout/component/include override block below, which flags
+  # any raw colour function calls or hex literals in those files.
   scss/no-dollar-variables: true
 
 # Path-based overrides — allow $variable declarations only in the design token directory.
@@ -233,6 +241,25 @@ overrides:
       - "_sass/base/design/**/*.scss"
     rules:
       scss/no-dollar-variables: null
+
+  # Enforce design-token usage for colour values in layout SCSS.
+  # Raw oklch() calls (and hex / rgb() / hsl()) in layout files indicate a missing token.
+  # All colour values must be referenced via $variable defined in _sass/base/design/_colors.scss.
+  # This is the inverse complement of scss/no-dollar-variables: that rule prevents $var
+  # declarations outside the design directory; this rule ensures colour values IN layout files
+  # are always expressed through $variables rather than as inline colour literals.
+  # NOTE: component/ and include/ files have pre-existing violations being tracked separately.
+  - files:
+      - "_sass/layouts/**/*.scss"
+    rules:
+      declaration-property-value-disallowed-list:
+        - "/^(color|background-color|background|border|border-top|border-right|border-bottom|border-left|border-color|outline|outline-color|box-shadow|fill|stroke|text-decoration-color|column-rule-color|caret-color|accent-color)$/":
+            - "/oklch\\s*\\(/"
+            - "/#[0-9a-fA-F]{3,8}/"
+            - "/^rgb\\s*\\(/"
+            - "/^hsl\\s*\\(/"
+        - message: "Use a $variable from _sass/base/design/_colors.scss instead of a raw colour literal. Raw oklch/hex/rgb/hsl values in layout files bypass the design-token system."
+          severity: error
 
 # Ignore patterns
 ignoreFiles:

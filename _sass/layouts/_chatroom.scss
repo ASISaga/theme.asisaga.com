@@ -83,7 +83,7 @@
   padding: 0.625rem 1.25rem;
   border-bottom: 1px solid $boardroom-border;
   background: $boardroom-surface;
-  z-index: 10;
+  z-index: $z-index-overlay;
   flex-shrink: 0;
   position: relative;
 
@@ -127,7 +127,7 @@
 
 .chatroom-title {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: $font-size-lg;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -140,7 +140,7 @@
 }
 
 .chatroom-typing-indicator {
-  font-size: 0.75rem;
+  font-size: $font-size-xs;
   color: $boardroom-gold-accessible;
   font-style: italic;
   min-height: 1rem;
@@ -154,11 +154,11 @@
 .chatroom-status {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: $spacing-sm;
   font-size: 0.8rem;
   color: $boardroom-muted;
   padding: 0.25rem 0.75rem;
-  border-radius: 0.25rem;
+  border-radius: $border-radius-sm;
   background: $boardroom-bg;
   border: 1px solid $boardroom-border;
 
@@ -167,14 +167,14 @@
     display: inline-block;
     width: 7px;
     height: 7px;
-    border-radius: 50%;
+    border-radius: $border-radius-infinite;
     background: $boardroom-muted;
   }
 
-  &.chatroom-status-online::before    { background: oklch(0.55 0.15 145); }
+  &.chatroom-status-online::before    { background: $boardroom-status-online; }
   &.chatroom-status-connecting::before { background: $boardroom-gold-accessible; animation: chatroom-pulse 1.5s ease-in-out infinite; }
   &.chatroom-status-error::before,
-  &.chatroom-status-offline::before   { background: oklch(0.55 0.2 25); }
+  &.chatroom-status-offline::before   { background: $boardroom-status-error; }
 }
 
 .chatroom-actions {
@@ -193,14 +193,14 @@
   border: none;
   background: transparent;
   color: $boardroom-muted;
-  border-radius: 0.25rem;
+  border-radius: $border-radius-sm;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all $transition-fast;
 
   &:hover { background: $boardroom-bg; color: $boardroom-gold-accessible; }
   &:focus { outline: 2px solid $boardroom-gold-accessible; outline-offset: 2px; }
 
-  i { font-size: 1rem; }
+  i { font-size: $font-size-base; }
 }
 
 // MCP apps toggle (relative positioning for the pending badge)
@@ -216,16 +216,16 @@
   border: none;
   background: transparent;
   color: $boardroom-gold-accessible;
-  border-radius: 0.25rem;
+  border-radius: $border-radius-sm;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background $transition-fast;
 
   &:hover,
   &:focus-visible { background: $boardroom-gold-dim; }
 
-  &[aria-expanded="true"] { background: oklch(0.55 0.12 85 / 0.18); }
+  &[aria-expanded="true"] { background: $boardroom-gold-active; }
 
-  i { font-size: 1rem; }
+  i { font-size: $font-size-base; }
 }
 
 // Pending-request count badge on the MCP toggle button
@@ -239,7 +239,7 @@
   border-radius: 999px;
   background: $boardroom-gold-accessible;
   color: $boardroom-bg;
-  font-size: 0.65rem;
+  font-size: $font-size-tiny;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -258,7 +258,7 @@
   flex: 1;
   min-height: 0; // Critical: allows overflow-y: auto to work inside flex parent
   overflow-y: auto;
-  padding: 1.5rem;
+  padding: $spacing-lg;
   background: $boardroom-bg;
   display: flex;
   flex-direction: column;
@@ -278,7 +278,7 @@
   justify-content: center;
   height: 100%;
   color: $boardroom-muted;
-  font-size: 0.875rem;
+  font-size: $font-size-sm;
   text-align: center;
 }
 
@@ -337,35 +337,35 @@
   flex-shrink: 0;
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: 50%;
+  border-radius: $border-radius-infinite;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.65rem;
+  font-size: $font-size-tiny;
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: oklch(1 0 0);
+  color: $text-inverse;
 
   // CXO palette — distinct hue per executive role
-  &--ceo { background: oklch(0.50 0.12 85);  box-shadow: 0 0 0 2px $boardroom-gold-ring; } // gold
-  &--cfo { background: oklch(0.40 0.14 160); }  // emerald
-  &--cto { background: oklch(0.42 0.16 230); }  // sapphire
-  &--cmo { background: oklch(0.42 0.18 300); }  // violet
-  &--coo { background: oklch(0.38 0.06 250); }  // slate
-  &--you { background: oklch(0.40 0.12 200); }  // teal — Board Chair
+  &--ceo { background: $boardroom-avatar-ceo;  box-shadow: 0 0 0 2px $boardroom-gold-ring; } // gold
+  &--cfo { background: $boardroom-avatar-cfo; }  // emerald
+  &--cto { background: $boardroom-avatar-cto; }  // sapphire
+  &--cmo { background: $boardroom-avatar-cmo; }  // violet
+  &--coo { background: $boardroom-avatar-coo; }  // slate
+  &--you { background: $boardroom-avatar-you; }  // teal — Board Chair
 
   // AI tool agent — gold ring signals automated intelligence
   &--ai {
-    background: oklch(0.20 0.025 250);
+    background: $boardroom-avatar-ai-bg;
     border: 1.5px solid $boardroom-gold-accessible;
     color: $boardroom-gold-accessible;
-    font-size: 0.875rem;
+    font-size: $font-size-sm;
   }
 
   &--ai-error {
-    background: oklch(0.20 0.025 25);
-    border: 1.5px solid oklch(0.55 0.2 25);
-    color: oklch(0.55 0.2 25);
+    background: $boardroom-avatar-ai-error-bg;
+    border: 1.5px solid $boardroom-status-error;
+    color: $boardroom-status-error;
   }
 }
 
@@ -383,7 +383,7 @@
   border-radius: 999px;
   background: $boardroom-gold-dim;
   color: $boardroom-gold-accessible;
-  font-size: 0.65rem;
+  font-size: $font-size-tiny;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -400,7 +400,7 @@
   margin: 0;
   color: $boardroom-text;
 
-  &--error { color: oklch(0.65 0.2 25); }
+  &--error { color: $boardroom-error-text; }
 }
 
 // Agenda dividers — executive system messages
@@ -435,7 +435,7 @@
 
 .chatroom__agenda-label {
   @include genesis-cognition('quantum');
-  font-size: 0.65rem;
+  font-size: $font-size-tiny;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -446,7 +446,7 @@
   @include genesis-cognition('gloss');
   font-weight: 600;
   color: $boardroom-text;
-  font-size: 0.85rem;
+  font-size: $font-size-sm;
 }
 
 // "Is deliberating…" typing indicator
@@ -474,7 +474,7 @@
   border-radius: 999px;
   background: $boardroom-gold-dim;
   color: $boardroom-gold-accessible;
-  font-size: 0.65rem;
+  font-size: $font-size-tiny;
   font-weight: 600;
 }
 
@@ -494,8 +494,8 @@
   flex-direction: column;
   gap: 0.125rem;
   padding: 0.375rem 0.625rem;
-  border-radius: 0.25rem;
-  background: oklch(0.08 0.01 250 / 0.6);
+  border-radius: $border-radius-sm;
+  background: $boardroom-bg-overlay;
   border: 1px solid $boardroom-border;
 }
 
@@ -528,7 +528,7 @@
     display: inline-block;
     width: 0.375rem;
     height: 0.375rem;
-    border-radius: 50%;
+    border-radius: $border-radius-infinite;
     background: $boardroom-gold-accessible;
     animation: chatroom-thinking 1.2s ease-in-out infinite;
 
@@ -544,12 +544,12 @@
 .chatroom-input {
   border-top: 1px solid $boardroom-border;
   background: $boardroom-surface;
-  padding: 1rem 1.5rem;
+  padding: $spacing-md $spacing-lg;
   flex-shrink: 0;
 
   &-container {
     display: flex;
-    gap: 1rem;
+    gap: $spacing-md;
     align-items: flex-start;
   }
 
@@ -557,16 +557,16 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: $spacing-sm;
   }
 
   &-field-container {
     display: flex;
     align-items: flex-end;
-    gap: 0.5rem;
+    gap: $spacing-sm;
     padding: 0.75rem;
     border: 1px solid $boardroom-border;
-    border-radius: 0.25rem;
+    border-radius: $border-radius-sm;
     background: $boardroom-bg;
 
     &:focus-within {
@@ -580,7 +580,7 @@
     border: none;
     outline: none;
     resize: none;
-    font-size: 0.875rem;
+    font-size: $font-size-sm;
     line-height: 1.5;
     font-family: inherit;
     background: transparent;
@@ -595,8 +595,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.5rem;
-    padding: 0 0.5rem;
+    gap: $spacing-sm;
+    padding: 0 $spacing-sm;
 
     &-left,
     &-right {
@@ -618,9 +618,9 @@
     border: none;
     background: transparent;
     color: $boardroom-muted;
-    border-radius: 0.25rem;
+    border-radius: $border-radius-sm;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all $transition-fast;
 
     &:hover { background: $boardroom-bg; color: $boardroom-gold-accessible; }
   }
@@ -636,12 +636,12 @@
     border: none;
     background: $boardroom-gold-accessible;
     color: $boardroom-bg;
-    border-radius: 0.25rem;
+    border-radius: $border-radius-sm;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all $transition-fast;
     flex-shrink: 0;
 
-    &:hover { background: $boardroom-gold; color: oklch(0.08 0.01 250); }
+    &:hover { background: $boardroom-gold; color: $color-dark-profound-black; }
     &:focus { outline: 2px solid $boardroom-gold-accessible; outline-offset: 2px; }
 
     &:disabled {
@@ -650,7 +650,7 @@
       cursor: not-allowed;
     }
 
-    i { font-size: 1rem; }
+    i { font-size: $font-size-base; }
   }
 
   &-char-count {
@@ -675,11 +675,11 @@
   max-width: 90vw;
   max-height: 70%;
   overflow-y: auto;
-  z-index: 20;
-  border-radius: 0 0 0 0.5rem;
-  box-shadow: 0 8px 24px oklch(0.04 0.01 250 / 0.6);
+  z-index: $z-index-chatroom-panel;
+  border-radius: 0 0 0 $border-radius-md;
+  box-shadow: 0 8px 24px $boardroom-shadow-deep;
   transform: translateX(100%);
-  transition: transform 0.2s ease;
+  transition: transform $transition-fast;
 
   &--open { transform: translateX(0); }
 
@@ -702,14 +702,14 @@
     @include genesis-cognition('gloss');
     color: $boardroom-muted;
     margin: 0;
-    font-size: 0.75rem;
+    font-size: $font-size-xs;
 
     code {
       font-family: monospace;
       background: $boardroom-bg;
       color: $boardroom-gold-accessible;
       padding: 0.1em 0.3em;
-      border-radius: 0.25rem;
+      border-radius: $border-radius-sm;
     }
   }
 
@@ -732,11 +732,11 @@
     width: 100%;
     padding: 0.625rem 0.75rem;
     border: none;
-    border-radius: 0.25rem;
+    border-radius: $border-radius-sm;
     background: transparent;
     cursor: pointer;
     text-align: left;
-    transition: background 0.15s;
+    transition: background $transition-fast;
 
     &:hover,
     &:focus-visible {
@@ -750,13 +750,13 @@
     flex-shrink: 0;
     width: 2rem;
     height: 2rem;
-    border-radius: 50%;
+    border-radius: $border-radius-infinite;
     display: flex;
     align-items: center;
     justify-content: center;
     background: $boardroom-gold-dim;
     color: $boardroom-gold-accessible;
-    font-size: 0.875rem;
+    font-size: $font-size-sm;
   }
 
   &__btn-content {
@@ -788,7 +788,7 @@
     background: $boardroom-bg;
     color: $boardroom-gold-accessible;
     padding: 0.1em 0.35em;
-    border-radius: 0.25rem;
+    border-radius: $border-radius-sm;
     align-self: flex-start;
   }
 }
@@ -800,11 +800,11 @@
 .chatroom-loading-overlay {
   position: absolute;
   inset: 0;
-  background: oklch(0.08 0.015 250 / 0.9);
+  background: $boardroom-overlay-bg;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: $z-index-transcendent;
 
   &-content { text-align: center; }
 
@@ -813,9 +813,9 @@
     height: 3rem;
     border: 0.3rem solid $boardroom-border;
     border-top-color: $boardroom-gold-accessible;
-    border-radius: 50%;
+    border-radius: $border-radius-infinite;
     animation: chatroom-spin 1s linear infinite;
-    margin: 0 auto 1rem;
+    margin: 0 auto $spacing-md;
   }
 
   &-text { color: $boardroom-muted; margin: 0; }
@@ -866,10 +866,10 @@
     &-right { gap: 0.5rem; }
   }
 
-  .chatroom-title { font-size: 0.9rem; }
+  .chatroom-title { font-size: $font-size-sm; }
 
-  .chatroom-messages { padding: 1rem; }
+  .chatroom-messages { padding: $spacing-md; }
 
-  .chatroom-input { padding: 0.75rem 1rem; }
+  .chatroom-input { padding: 0.75rem $spacing-md; }
 }
 

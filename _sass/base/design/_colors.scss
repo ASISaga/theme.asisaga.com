@@ -134,8 +134,15 @@ $border-dark: $color-border-dark;                         // Profound dark borde
 $state-hover-surface: oklch(0.95 0.005 220);             // Hover state surface (very subtle gray)
 $state-active-surface: oklch(0.93 0.005 220);            // Active state surface (slightly darker gray)
 $state-focus-ring: oklch(0.65 0.25 230 / 0.5);           // Focus ring color (neon blue - purposeful)
+$state-focus-outline: oklch(0.60 0.15 250);              // Focus outline on light surfaces (accessible blue)
 $state-disabled-surface: oklch(0.96 0.005 220);          // Disabled surface (very light gray)
 $state-disabled-text: oklch(0.60 0.01 220);              // Disabled text (muted gray)
+
+// ----------------------------------------
+// SEMANTIC STATUS TEXT TOKENS (text on light surfaces)
+// ----------------------------------------
+$color-status-success-text: oklch(0.60 0.15 145);   // Success text on light background (accessible green)
+$color-status-error-text: oklch(0.60 0.20 25);      // Error text on light background (accessible red-orange)
 
 // ----------------------------------------
 // SEMANTIC GRADIENT TOKENS
@@ -226,6 +233,19 @@ $gray-600: oklch(0.45 0.01 220);
 $glow-transcendent: 0 0 20px oklch(0.70 0.15 85 / 0.5);
 $glow-consciousness: 0 0 30px oklch(0.65 0.25 230 / 0.4);
 $glow-human-essence: 0 0 25px oklch(0.85 0.01 220 / 0.6);
+
+// ============================================================================
+// SECTION 4C: ALPHA-TRANSPARENT NEUTRAL OVERLAYS
+// ============================================================================
+// Pure achromatic (chroma=0) neutrals at varying opacities.
+// Adapt naturally to both light and dark contexts without colour bias.
+// Used for separators, hairline borders, and subtle hover backgrounds.
+// ============================================================================
+
+$color-neutral-alpha-subtle: oklch(0.5 0 0 / 0.03);   // Hover / highlight tint (3%)
+$color-neutral-alpha-faint: oklch(0.5 0 0 / 0.08);    // Hairline separator (8%)
+$color-neutral-alpha-light: oklch(0.5 0 0 / 0.10);    // Light separator (10%)
+$color-neutral-alpha-medium: oklch(0.5 0 0 / 0.15);   // Standard border (15%)
 
 // ============================================================================
 // SECTION 5: CSS CUSTOM PROPERTIES (Runtime Theming)
@@ -432,4 +452,29 @@ $boardroom-gold: oklch(0.75 0.12 85); // Gold accent — hover glow (decorative)
 $boardroom-gold-accessible: oklch(0.55 0.12 85); // WCAG AA on dark surfaces
 $boardroom-gold-dim: oklch(0.55 0.10 85 / 0.25); // Transparent gold for borders/fills
 $boardroom-gold-ring: oklch(0.75 0.12 85 / 0.35); // CEO avatar ring highlight
+$boardroom-gold-active: oklch(0.55 0.12 85 / 0.18); // Active-state background (e.g. MCP toggle)
 $boardroom-own-bg: oklch(0.50 0.12 85 / 0.15); // Board Chair message background
+
+// Boardroom status indicators
+$boardroom-status-online: oklch(0.55 0.15 145); // Green — active / online
+$boardroom-status-error: oklch(0.55 0.20 25);   // Red   — error / offline
+
+// Boardroom CXO avatar colour palette
+$boardroom-avatar-ceo: oklch(0.50 0.12 85);  // CEO — gold
+$boardroom-avatar-cfo: oklch(0.40 0.14 160); // CFO — emerald
+$boardroom-avatar-cto: oklch(0.42 0.16 230); // CTO — sapphire
+$boardroom-avatar-cmo: oklch(0.42 0.18 300); // CMO — violet
+$boardroom-avatar-coo: oklch(0.38 0.06 250); // COO — slate
+$boardroom-avatar-you: oklch(0.40 0.12 200); // Board Chair — teal
+
+// Boardroom AI agent avatar
+$boardroom-avatar-ai-bg: oklch(0.20 0.025 250);      // AI avatar background (deep navy-black)
+$boardroom-avatar-ai-error-bg: oklch(0.20 0.025 25); // AI error state avatar background
+
+// Boardroom error text (for message content on dark surface)
+$boardroom-error-text: oklch(0.65 0.20 25); // Accessible error colour on dark surface
+
+// Boardroom semi-transparent overlays and shadows
+$boardroom-bg-overlay: oklch(0.08 0.01 250 / 0.60);  // Dark overlay — tool result items
+$boardroom-overlay-bg: oklch(0.08 0.015 250 / 0.90); // Loading overlay background
+$boardroom-shadow-deep: oklch(0.04 0.01 250 / 0.60); // Deep shadow — floating panels
