@@ -26,7 +26,7 @@
 // ----------------------------------------
 // LAYOUT UTILITIES — shared across all layouts
 // ----------------------------------------
-@import "layouts/bento-engine";            // Native CSS Grid system (shared grid primitive)
+@import "components/core/bento-engine";    // Native CSS Grid system (shared grid primitive)
 
 // ----------------------------------------
 // BASE UTILITIES — legacy compatibility & utility classes
@@ -125,9 +125,9 @@
 // LAYOUT STYLES — all page layouts
 // ----------------------------------------
 // Shared layout utilities (bento-engine already imported above).
-@import "layouts/base-structure";          // Fundamental page layout containers
-@import "layouts/layout-ontology";         // Ontology-mapped layout classes
-@import "layouts/responsive-enhancements"; // Cross-layout responsive refinements
+@import "base/layout/base-structure";          // Fundamental page layout containers
+@import "base/layout/layout-ontology";         // Ontology-mapped layout classes
+@import "base/layout/responsive-enhancements"; // Cross-layout responsive refinements
 
 @import "layouts/app";
 @import "layouts/default";

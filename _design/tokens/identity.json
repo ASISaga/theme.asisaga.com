@@ -1,0 +1,14 @@
+{
+  "identity": {
+    "scale": {
+      "$type": "number",
+      "$value": 1.618,
+      "$description": "Golden Ratio φ — base harmonic multiplier for all derived scales (sacred-lg, sacred-xl)"
+    },
+    "grid": {
+      "$type": "dimension",
+      "$value": "0.25rem",
+      "$description": "4px base grid unit — all spacing tokens are integer multiples of this value"
+    }
+  }
+}

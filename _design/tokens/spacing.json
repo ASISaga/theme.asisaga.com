@@ -1,0 +1,165 @@
+{
+  "spacing": {
+    "xs": {
+      "$type": "spacing",
+      "$value": "{identity.grid}",
+      "$description": "1× identity.grid (0.25rem / 4px)"
+    },
+    "sm": {
+      "$type": "spacing",
+      "$value": "0.5rem",
+      "$description": "2× identity.grid (0.5rem / 8px)"
+    },
+    "md": {
+      "$type": "spacing",
+      "$value": "1rem",
+      "$description": "4× identity.grid (1rem / 16px)"
+    },
+    "lg": {
+      "$type": "spacing",
+      "$value": "1.5rem",
+      "$description": "6× identity.grid (1.5rem / 24px)"
+    },
+    "xl": {
+      "$type": "spacing",
+      "$value": "2rem",
+      "$description": "8× identity.grid (2rem / 32px)"
+    },
+    "2xl": {
+      "$type": "spacing",
+      "$value": "3rem",
+      "$description": "12× identity.grid (3rem / 48px)"
+    },
+    "3xl": {
+      "$type": "spacing",
+      "$value": "4rem",
+      "$description": "16× identity.grid (4rem / 64px)"
+    },
+    "4xl": {
+      "$type": "spacing",
+      "$value": "6rem",
+      "$description": "24× identity.grid (6rem / 96px)"
+    },
+    "genesis": {
+      "$type": "spacing",
+      "$value": "8rem",
+      "$description": "32× identity.grid (8rem / 128px) — Major section spacing"
+    }
+  },
+  "border-radius": {
+    "sm": {
+      "$type": "borderRadius",
+      "$value": "0.25rem",
+      "$description": "1× identity.grid (4px)"
+    },
+    "md": {
+      "$type": "borderRadius",
+      "$value": "0.5rem",
+      "$description": "2× identity.grid (8px)"
+    },
+    "lg": {
+      "$type": "borderRadius",
+      "$value": "1rem",
+      "$description": "4× identity.grid (16px)"
+    },
+    "xl": {
+      "$type": "borderRadius",
+      "$value": "1.5rem",
+      "$description": "6× identity.grid (24px)"
+    },
+    "consciousness": {
+      "$type": "borderRadius",
+      "$value": "2rem",
+      "$description": "8× identity.grid (32px) — Transcendent elements"
+    },
+    "infinite": {
+      "$type": "borderRadius",
+      "$value": "50%",
+      "$description": "Perfect circles for consciousness symbols"
+    }
+  },
+  "border-width": {
+    "default": {
+      "$type": "dimension",
+      "$value": "1px",
+      "$description": "Default border width"
+    },
+    "thick": {
+      "$type": "dimension",
+      "$value": "2px",
+      "$description": "Thick border width"
+    },
+    "accent": {
+      "$type": "dimension",
+      "$value": "4px",
+      "$description": "Accent border width for highlighted edges"
+    },
+    "separator": {
+      "$type": "dimension",
+      "$value": "1px",
+      "$description": "Hairline separator width"
+    }
+  },
+  "size": {
+    "avatar": {
+      "testimonial": {
+        "$type": "dimension",
+        "$value": "3rem",
+        "$description": "Testimonial avatar size"
+      },
+      "linkedin": {
+        "$type": "dimension",
+        "$value": "3.75rem",
+        "$description": "LinkedIn profile avatar size"
+      }
+    }
+  },
+  "transition": {
+    "fast": {
+      "$type": "transition",
+      "$value": "0.2s ease"
+    },
+    "normal": {
+      "$type": "transition",
+      "$value": "0.3s ease"
+    },
+    "slow": {
+      "$type": "transition",
+      "$value": "0.5s ease"
+    },
+    "consciousness": {
+      "$type": "transition",
+      "$value": "0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)"
+    },
+    "transcendent": {
+      "$type": "transition",
+      "$value": "1.2s cubic-bezier(0.165, 0.84, 0.44, 1)"
+    }
+  },
+  "z-index": {
+    "background": {
+      "$type": "other",
+      "$value": "-1"
+    },
+    "content": {
+      "$type": "other",
+      "$value": "1"
+    },
+    "overlay": {
+      "$type": "other",
+      "$value": "10"
+    },
+    "consciousness": {
+      "$type": "other",
+      "$value": "100"
+    },
+    "transcendent": {
+      "$type": "other",
+      "$value": "1000"
+    },
+    "genesis": {
+      "$type": "other",
+      "$value": "9999"
+    }
+  }
+}

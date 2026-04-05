@@ -46,7 +46,7 @@ _sass/
 │   ├── _icons.scss              # Icon system configuration
 │   ├── design/                  # Design tokens & visual foundation
 │   │   ├── _colors.scss              # OKLCH + semantic color tokens (centralized)
-│   │   ├── _variables-generated.scss # Generated from _design/tokens.json — DO NOT EDIT
+│   │   ├── _variables-generated.scss # Generated from _design/tokens/*.json — DO NOT EDIT
 │   │   ├── _variables.scss           # Theme-wide Sass variables (shadows, opacity, spacing, breakpoints)
 │   │   ├── _dimensions.scss          # Spacing and sizing tokens
 │   │   ├── _typography.scss          # Unified: fluid scale + sacred families + material primitives

@@ -1,0 +1,162 @@
+{
+  "sys": {
+    "color": {
+      "action": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color.accent.neon-blue}",
+          "$description": "Primary action color — resolves to color.accent.neon-blue"
+        },
+        "primary-hover": {
+          "$type": "color",
+          "$value": "{color.accent.neon-blue-bright}",
+          "$description": "Primary action hover — resolves to color.accent.neon-blue-bright"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color.accent.gold}",
+          "$description": "Secondary action color — resolves to color.accent.gold"
+        },
+        "secondary-hover": {
+          "$type": "color",
+          "$value": "{color.accent.gold-bright}",
+          "$description": "Secondary action hover — resolves to color.accent.gold-bright"
+        }
+      },
+      "surface": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.light.white}",
+          "$description": "Default page surface — resolves to color.light.white"
+        },
+        "elevated": {
+          "$type": "color",
+          "$value": "{color.light.surface}",
+          "$description": "Elevated card surface — resolves to color.light.surface"
+        },
+        "dark": {
+          "$type": "color",
+          "$value": "{color.dark.profound-black}",
+          "$description": "Dark/void surface — resolves to color.dark.profound-black"
+        }
+      },
+      "text": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color.text.primary}",
+          "$description": "Primary body text — resolves to color.text.primary"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color.text.secondary}",
+          "$description": "Secondary text — resolves to color.text.secondary"
+        },
+        "muted": {
+          "$type": "color",
+          "$value": "{color.text.muted}",
+          "$description": "Muted/caption text — resolves to color.text.muted"
+        }
+      },
+      "border": {
+        "light": {
+          "$type": "color",
+          "$value": "{color.border.light}",
+          "$description": "Light border — resolves to color.border.light"
+        },
+        "dark": {
+          "$type": "color",
+          "$value": "{color.border.dark}",
+          "$description": "Dark border — resolves to color.border.dark"
+        }
+      }
+    },
+    "spacing": {
+      "xs": {
+        "$type": "spacing",
+        "$value": "{spacing.xs}",
+        "$description": "Maps to spacing.xs (0.25rem — 4px)"
+      },
+      "sm": {
+        "$type": "spacing",
+        "$value": "{spacing.sm}",
+        "$description": "Maps to spacing.sm (2× identity.grid — 8px)"
+      },
+      "md": {
+        "$type": "spacing",
+        "$value": "{spacing.md}",
+        "$description": "Maps to spacing.md (4× identity.grid — 16px)"
+      },
+      "lg": {
+        "$type": "spacing",
+        "$value": "{spacing.lg}",
+        "$description": "Maps to spacing.lg (6× identity.grid — 24px)"
+      },
+      "xl": {
+        "$type": "spacing",
+        "$value": "{spacing.xl}",
+        "$description": "Maps to spacing.xl (8× identity.grid — 32px)"
+      },
+      "2xl": {
+        "$type": "spacing",
+        "$value": "{spacing.2xl}",
+        "$description": "Maps to spacing.2xl (12× identity.grid — 48px)"
+      },
+      "3xl": {
+        "$type": "spacing",
+        "$value": "{spacing.3xl}",
+        "$description": "Maps to spacing.3xl (16× identity.grid — 64px)"
+      }
+    },
+    "font": {
+      "family": {
+        "primary": {
+          "$type": "fontFamily",
+          "$value": "{font.family.consciousness}",
+          "$description": "Primary UI font — resolves to font.family.consciousness"
+        },
+        "editorial": {
+          "$type": "fontFamily",
+          "$value": "{font.family.wisdom}",
+          "$description": "Editorial/narrative font — resolves to font.family.wisdom"
+        },
+        "display": {
+          "$type": "fontFamily",
+          "$value": "{font.family.sacred}",
+          "$description": "Display/heading font — resolves to font.family.sacred"
+        },
+        "code": {
+          "$type": "fontFamily",
+          "$value": "{font.family.mono}",
+          "$description": "Code/terminal font — resolves to font.family.mono"
+        }
+      },
+      "size": {
+        "body": {
+          "$type": "dimension",
+          "$value": "{font.size.base}",
+          "$description": "Body text size — resolves to font.size.base (1rem)"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "{font.size.sm}",
+          "$description": "Small text — resolves to font.size.sm"
+        },
+        "heading-lg": {
+          "$type": "dimension",
+          "$value": "{font.size.4xl}",
+          "$description": "Large heading — resolves to font.size.4xl"
+        },
+        "sacred-lg": {
+          "$type": "dimension",
+          "$value": "{font.size.sacred-lg}",
+          "$description": "Sacred heading — resolves to font.size.sacred-lg (φ¹ × base)"
+        },
+        "sacred-xl": {
+          "$type": "dimension",
+          "$value": "{font.size.sacred-xl}",
+          "$description": "Transcendent heading — resolves to font.size.sacred-xl (φ² × base)"
+        }
+      }
+    }
+  }
+}
