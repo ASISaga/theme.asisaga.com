@@ -71,6 +71,11 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
+  // Override body's serif (wisdom) font — chatroom is a UI app, not editorial prose.
+  // This ensures all descendant text elements (title, status bar, toolbar, input)
+  // inherit the consciousness (Inter/SF Pro Display) stack, covering elements that
+  // do not receive an explicit genesis-cognition() mixin.
+  font-family: $font-family-interface;
 }
 
 // ============================================================================
@@ -396,7 +401,11 @@
 }
 
 .chatroom__text {
-  @include genesis-cognition('discourse');
+  // oracle = consciousness (sans-serif) font, body size — modern chat message text.
+  // Override italic (oracle default) to upright; tighten line-height for compact chat feel.
+  @include genesis-cognition('oracle');
+  font-style: normal;
+  line-height: 1.5;
   margin: 0;
   color: $boardroom-text;
 
