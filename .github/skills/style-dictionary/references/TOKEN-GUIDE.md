@@ -10,6 +10,19 @@ Design tokens are the atomic values that define the Genesis Semantic Design Syst
 
 The tokens are split across `_design/tokens/*.json` files using the **DTCG (Design Token Community Group) spec** format (`$value`, `$type`, `$description`). They are translated into SCSS variable declarations by Style Dictionary v4 via `sd.config.mjs`.
 
+## Token File Structure
+
+Files are numbered to enforce tier-ordered loading:
+
+| File | Tier | Contents |
+|------|------|----------|
+| `1-identity.json` | Tier 1 | Scale (φ) + base grid unit |
+| `2-color.json` | Tier 2 | All OKLCH color primitives |
+| `3-typography.json` | Tier 2 | Font families, weights, static + fluid sizes, line-heights |
+| `4-spacing.json` | Tier 2 | Spacing, border-radius, border-width, sizes, transitions, z-index |
+| `5-sys.json` | Tier 3 | Semantic system aliases (resolved at build time) |
+| `6-ontology.json` | Tier 4 | Ontological tokens mapping each SCSS engine variant |
+
 ## Token Categories
 
 ### 1. Color Tokens

@@ -70,7 +70,6 @@ StyleDictionary.registerFormat({
     const lines = [
       '// Do not edit directly — generated from _design/tokens/*.json',
       '// Run: node .github/skills/style-dictionary/sd.config.mjs',
-      '// Source: _design/tokens/*.json',
       '',
     ];
     for (const token of dictionary.allTokens) {
