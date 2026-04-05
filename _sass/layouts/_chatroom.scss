@@ -312,6 +312,10 @@
     background: $boardroom-own-bg;
     border: 1px solid $boardroom-gold-dim;
     text-align: right;
+    // imperative sets a blue neon box-shadow and pulsing animation — reset both
+    // to keep the Board Chair bubble on-theme (gold accent, no sci-fi pulse).
+    box-shadow: none;
+    animation: none;
   }
 }
 
@@ -392,6 +396,7 @@
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  border: none; // quantum sets a light-gray border — remove for dark boardroom theme
 }
 
 .chatroom__time {
@@ -449,6 +454,8 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: $boardroom-gold-accessible;
+  background: $boardroom-gold-dim; // quantum sets a near-white background — use dark gold tint
+  border: none;                     // quantum sets a light-gray border — remove for dark boardroom theme
 }
 
 .chatroom__agenda-title {
@@ -485,6 +492,7 @@
   color: $boardroom-gold-accessible;
   font-size: $font-size-tiny;
   font-weight: 600;
+  border: none; // quantum sets a light-gray border — remove for dark boardroom theme
 }
 
 // Structured tool result list
@@ -799,6 +807,7 @@
     padding: 0.1em 0.35em;
     border-radius: $border-radius-sm;
     align-self: flex-start;
+    border: 1px solid $boardroom-border; // quantum sets a light-gray border — use boardroom border
   }
 }
 
