@@ -27,15 +27,15 @@ $border-width-separator: 1px;
 // --------------------------------------------
 // Font sizes
 // --------------------------------------------
-$font-size-xs: 0.75rem; // 12px
-$font-size-sm: 0.875rem; // 14px
-$font-size-base: 1rem; // 16px
-$font-size-md: 1.125rem; // 18px
-$font-size-lg: 1.25rem; // 20px
-$font-size-xl: 1.5rem; // 24px
-$font-size-2xl: 2rem; // 32px
-$font-size-3xl: 2.5rem; // 40px
-$font-size-4xl: 3rem; // 48px
+// xs, sm, base, lg, xl, xxl, 3xl, 4xl, 5xl, genesis, sacred-lg, sacred-xl
+// are generated from _design/tokens/3-typography.json — do not re-declare them here.
+
+// Component-scoped aliases used by font utility mixins and sacred components.
+// $font-size-md is a semantic alias for 18px (= $font-size-lg) from the dimensions naming convention.
+// $font-size-2xl provides a 32px step between xxl (24px) and 3xl (30px) for display contexts.
+$font-size-md: $font-size-lg;   // 18px — alias (= font-size-lg) for legacy dimensions naming
+$font-size-2xl: 2rem;           // 32px — display step between xxl and 3xl
+
 
 // --------------------------------------------
 // Icon dimensions
