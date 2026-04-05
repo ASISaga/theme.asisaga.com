@@ -1,0 +1,88 @@
+# Executive Boardroom Chat Data
+# Used by samples/application/chatroom.html via chat_data: boardroom
+# Each message has a type: ai | own | system | typing
+#
+# ai messages:    avatar (ceo|cfo|cto|cmo|coo|ai), author, role, time, text
+#                 Optional: icon (Font Awesome class for avatar=ai),
+#                           tool_badge, tool_badge_icon, tool_results[]
+# own messages:   initials, author, time, text
+# system messages: kind (agenda), label, title
+# typing messages: avatar, text
+
+messages:
+  - type: system
+    kind: agenda
+    label: "Agenda Item 1 of 3"
+    title: "Q3 Revenue Targets & Financial Outlook"
+
+  - type: ai
+    avatar: ceo
+    author: "Chief Executive Officer"
+    role: "CEO"
+    time: "09:00 AM"
+    text: "We are tracking 8% below our Q3 revenue target. Before we determine corrective actions I require formal assessments from Finance and Marketing. CFO, please present your analysis."
+
+  - type: ai
+    avatar: cfo
+    author: "Chief Financial Officer"
+    role: "CFO"
+    time: "09:02 AM"
+    text: "EBITDA margin has contracted 2.3 percentage points, driven primarily by elevated customer acquisition costs in the mid-market segment. I recommend a spend reallocation of $4.2M from brand awareness to conversion-stage activities."
+
+  - type: own
+    initials: "BC"
+    author: "Board Chair"
+    time: "09:03 AM"
+    text: "/financials Q3 revenue breakdown by segment"
+
+  - type: ai
+    avatar: ai
+    icon: "fas fa-chart-line"
+    author: "Financial Intelligence"
+    time: "09:03 AM"
+    tool_badge: "financials"
+    tool_badge_icon: "fas fa-chart-line"
+    text: "Q3 revenue breakdown by business segment:"
+    tool_results:
+      - label: "Enterprise — $18.4M"
+        detail: "+12% YoY. Strong renewal rate at 94%. Three strategic accounts pending expansion."
+      - label: "Mid-Market — $9.1M"
+        detail: "-6% YoY. CAC increased 34%. Conversion funnel efficiency at 2.1%, below 3.5% target."
+      - label: "SMB — $4.7M"
+        detail: "-14% YoY. Churn accelerated to 18% annualised. Requires strategic review."
+
+  - type: ai
+    avatar: cmo
+    author: "Chief Marketing Officer"
+    role: "CMO"
+    time: "09:05 AM"
+    text: "Market intelligence confirms a 15% shift in buyer intent toward our premium enterprise tier. A targeted repositioning campaign focused on enterprise accounts could recover an estimated $3.8M in Q3 and accelerate Q4 pipeline by 22%."
+
+  - type: system
+    kind: agenda
+    label: "Agenda Item 2 of 3"
+    title: "Technology Investment Priorities"
+
+  - type: ai
+    avatar: cto
+    author: "Chief Technology Officer"
+    role: "CTO"
+    time: "09:08 AM"
+    text: "Platform migration is on schedule for Q4 delivery. I recommend prioritising the API gateway upgrade — it will unblock three enterprise partnerships currently pending technical review, with a combined contract value of $6.2M."
+
+  - type: ai
+    avatar: coo
+    author: "Chief Operating Officer"
+    role: "COO"
+    time: "09:10 AM"
+    text: "Operational capacity is a binding constraint. Before committing to additional enterprise contracts we must resolve the fulfilment bottleneck in APAC. I am proposing a 45-day remediation plan with clearly defined escalation thresholds."
+
+  - type: own
+    initials: "BC"
+    author: "Board Chair"
+    time: "09:12 AM"
+    text: "What is the regulatory exposure if we proceed with the APAC expansion before the bottleneck is resolved?"
+
+  - type: typing
+    avatar: ceo
+    text: "Chief Executive Officer is deliberating..."

@@ -6,7 +6,6 @@
  *
  * Directory structure mirrors _includes/:
  * - Root-level includes
- * - chatroom/
  * - components/
  * - layouts/archive/, layouts/article/, layouts/dashboard/, layouts/faq/,
  *   layouts/form/, layouts/gallery/, layouts/landing/, layouts/post/,
@@ -42,15 +41,6 @@
 @import "testimonial";
 @import "timeline";
 @import "transcendent-hero";
-
-// ----------------------------------------
-// CHATROOM INCLUDES
-// ----------------------------------------
-@import "chatroom/header";
-@import "chatroom/input";
-@import "chatroom/mcp-apps";
-@import "chatroom/messages";
-@import "chatroom/template";
 
 // ----------------------------------------
 // COMPONENT INCLUDES

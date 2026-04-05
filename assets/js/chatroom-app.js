@@ -1,41 +1,31 @@
 /**
  * Chatroom Web Component
- * Generic chatroom interface that can be extended for specific applications.
- * Supports MCP (Model Context Protocol) apps for AI agent integration.
- * Integrates with Jekyll liquid templates and external SCSS.
+ *
+ * Renders the complete executive boardroom chat interface and manages
+ * all interactive behaviour. Receives all configuration and initial
+ * chat content as HTML attributes, builds its own DOM, then wires up
+ * event handlers.
+ *
+ * Attributes:
+ *   title            — Boardroom title (default: "Chat")
+ *   participants     — Agent count shown in the header
+ *   placeholder      — Textarea placeholder text
+ *   show-toolbar     — Boolean; show formatting toolbar in the input bar
+ *   show-connection-status — Boolean; render the live-connection badge
+ *   mcp-apps         — JSON array of MCP app descriptors
+ *   mcp-endpoint     — Fallback HTTP endpoint for all MCP apps
+ *   chat-data        — JSON { messages: [...] } from _data/chatroom/<name>.yml
+ *   api-endpoint     — Live API base URL for sending/receiving messages
+ *   auto-refresh     — Boolean; poll api-endpoint for new messages
+ *   refresh-interval — Polling interval in ms (default: 3000)
  */
 
 class ChatroomApp extends HTMLElement {
     constructor() {
         super();
-        // Don't use shadow DOM to allow Jekyll liquid to work
-        // and external SCSS to style the component
-
-        // Configuration from attributes
-        this.config = {
-            title: this.getAttribute('title') || 'Chat',
-            participants: this.getAttribute('participants') || null,
-            showAvatar: this.hasAttribute('show-avatar'),
-            avatarUrl: this.getAttribute('avatar-url') || '/assets/images/default-avatar.png',
-            placeholder: this.getAttribute('placeholder') || 'Type a message...',
-            maxLength: parseInt(this.getAttribute('max-length')) || 1000,
-            showToolbar: this.hasAttribute('show-toolbar'),
-            showTypingIndicator: this.hasAttribute('show-typing-indicator'),
-            showConnectionStatus: this.hasAttribute('show-connection-status'),
-            apiEndpoint: this.getAttribute('api-endpoint') || null,
-            autoRefresh: this.hasAttribute('auto-refresh'),
-            refreshInterval: parseInt(this.getAttribute('refresh-interval')) || 3000,
-            // MCP app support
-            mcpApps: this._parseMcpApps(this.getAttribute('mcp-apps')),
-            mcpEndpoint: this.getAttribute('mcp-endpoint') || null
-        };
-
-        // State
-        this.messages = [];
-        this.isConnected = false;
-        this.typingUsers = [];
-        this.refreshIntervalId = null;
+        this.config = null;   // populated in connectedCallback
         this._mcpPendingCount = 0;
+        this.refreshIntervalId = null;
     }
 
     /**
@@ -59,8 +49,22 @@ class ChatroomApp extends HTMLElement {
     }
 
     connectedCallback() {
-        // The HTML structure is provided by Jekyll template
-        // We just need to attach event handlers and initialize
+        this.config = {
+            title: this.getAttribute('title') || 'Chat',
+            participants: this.getAttribute('participants') || null,
+            placeholder: this.getAttribute('placeholder') || 'Type a message...',
+            maxLength: parseInt(this.getAttribute('max-length')) || 1000,
+            showToolbar: this.hasAttribute('show-toolbar'),
+            showConnectionStatus: this.hasAttribute('show-connection-status'),
+            apiEndpoint: this.getAttribute('api-endpoint') || null,
+            autoRefresh: this.hasAttribute('auto-refresh'),
+            refreshInterval: parseInt(this.getAttribute('refresh-interval')) || 3000,
+            mcpApps: this._parseMcpApps(this.getAttribute('mcp-apps')),
+            mcpEndpoint: this.getAttribute('mcp-endpoint') || null,
+            chatMessages: this._parseChatData(this.getAttribute('chat-data')),
+        };
+
+        this._render();
         this.initializeElements();
         this.attachEventHandlers();
         this._setupMcpAppsPanel();
@@ -68,16 +72,207 @@ class ChatroomApp extends HTMLElement {
         if (this.config.apiEndpoint) {
             this.connect();
         }
-
         if (this.config.autoRefresh && this.config.apiEndpoint) {
             this.startAutoRefresh();
         }
 
-        // Emit ready event
         this.dispatchEvent(new CustomEvent('chatroom-ready', {
             bubbles: true,
             detail: { config: this.config }
         }));
+    }
+
+    // =========================================================================
+    // Rendering — component builds its own DOM from attributes
+    // =========================================================================
+
+    /**
+     * Parse the chat-data attribute into a messages array.
+     * Accepts { messages: [...] } or a plain array.
+     * @param {string|null} raw
+     * @returns {Array<object>}
+     */
+    _parseChatData(raw) {
+        if (!raw) return [];
+        try {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed.messages)) return parsed.messages;
+            if (Array.isArray(parsed)) return parsed;
+            return [];
+        } catch {
+            return [];
+        }
+    }
+
+    /**
+     * Render the complete chatroom HTML into this element.
+     * Called once at the start of connectedCallback before event wiring.
+     */
+    _render() {
+        const { title, participants, placeholder, showToolbar, showConnectionStatus, mcpApps, chatMessages } = this.config;
+
+        this.innerHTML = `
+<div class="chatroom-layout">
+  <header class="chatroom-header">
+    <div class="chatroom-header-content">
+      <div class="chatroom-header-left">
+        <h1 class="chatroom-title">${this._escape(title)}</h1>
+        <div class="chatroom-header-info">
+          ${participants ? `<span class="chatroom-participants">${this._escape(participants)} agents in session</span>` : ''}
+          <span class="chatroom-typing-indicator" aria-live="polite" hidden></span>
+        </div>
+      </div>
+      <div class="chatroom-header-right">
+        ${showConnectionStatus ? `<div class="chatroom-status-container"><span class="chatroom-status" id="connection-status"></span></div>` : ''}
+        <div class="chatroom-actions">
+          ${mcpApps.length > 0 ? `<button type="button" class="chatroom-mcp-apps-toggle" aria-label="AI Agent Tools" aria-expanded="false" aria-controls="chatroom-mcp-apps-panel" title="AI Agent Tools"><i class="fas fa-robot" aria-hidden="true"></i></button>` : ''}
+          <button type="button" class="chatroom-settings-btn" aria-label="Boardroom Settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  ${this._renderMcpPanel(mcpApps)}
+
+  <div class="chatroom-messages" tabindex="0" role="log" aria-label="Chat messages" aria-live="polite" aria-atomic="false">
+    ${chatMessages.length ? chatMessages.map(m => this._renderMessage(m)).join('') : '<div class="chatroom-empty-state">No messages yet. Start the conversation!</div>'}
+  </div>
+
+  ${this._renderInput(placeholder, showToolbar, mcpApps)}
+</div>`;
+
+        // Scroll to bottom of the pre-loaded message list
+        const msgs = this.querySelector('.chatroom-messages');
+        if (msgs) msgs.scrollTop = msgs.scrollHeight;
+    }
+
+    /** Dispatch a single message to its type-specific renderer. */
+    _renderMessage(msg) {
+        switch (msg.type) {
+            case 'system':  return this._renderSystemMsg(msg);
+            case 'ai':      return this._renderAiMsg(msg);
+            case 'own':     return this._renderOwnMsg(msg);
+            case 'typing':  return this._renderTypingMsg(msg);
+            default:        return '';
+        }
+    }
+
+    _renderSystemMsg(msg) {
+        const kind = this._escape(msg.kind || 'default');
+        return `<div class="chatroom__system-message chatroom__system-message--${kind}">
+  ${msg.label ? `<span class="chatroom__agenda-label">${this._escape(msg.label)}</span>` : ''}
+  ${msg.title ? `<span class="chatroom__agenda-title">${this._escape(msg.title)}</span>` : ''}
+</div>`;
+    }
+
+    _renderAiMsg(msg) {
+        const avatar = this._escape(msg.avatar || 'ai');
+        const avatarContent = avatar === 'ai'
+            ? `<i class="${this._safeIcon(msg.icon || 'fas fa-robot')}" aria-hidden="true"></i>`
+            : avatar.toUpperCase();
+        const toolResults = Array.isArray(msg.tool_results) && msg.tool_results.length
+            ? `<ul class="chatroom__tool-results" aria-label="${this._escape(msg.author || '')} results">
+  ${msg.tool_results.map(r => `  <li class="chatroom__tool-result-item">
+    ${r.label ? `<strong class="chatroom__tool-result-label">${this._escape(r.label)}</strong>` : ''}
+    ${r.detail ? `<span class="chatroom__tool-result-detail">${this._escape(r.detail)}</span>` : ''}
+  </li>`).join('')}
+</ul>` : '';
+
+        return `<div class="chatroom__message chatroom__message--ai">
+  <div class="chatroom__message-row">
+    <span class="chatroom__avatar chatroom__avatar--${avatar}" aria-hidden="true">${avatarContent}</span>
+    <div class="chatroom__message-body">
+      <header class="chatroom__message-meta">
+        ${msg.author ? `<strong class="chatroom__author">${this._escape(msg.author)}</strong>` : ''}
+        ${msg.role ? `<span class="chatroom__agent-role">${this._escape(msg.role)}</span>` : ''}
+        ${msg.time ? `<time class="chatroom__time">${this._escape(msg.time)}</time>` : ''}
+        ${msg.tool_badge ? `<span class="chatroom__tool-badge" title="Tool invoked"><i class="${this._safeIcon(msg.tool_badge_icon || 'fas fa-wrench')}" aria-hidden="true"></i> ${this._escape(msg.tool_badge)}</span>` : ''}
+      </header>
+      <p class="chatroom__text">${this._escape(msg.text || '')}</p>
+      ${toolResults}
+    </div>
+  </div>
+</div>`;
+    }
+
+    _renderOwnMsg(msg) {
+        return `<div class="chatroom__message chatroom__message--own">
+  <div class="chatroom__message-row">
+    <div class="chatroom__message-body">
+      <header class="chatroom__message-meta">
+        ${msg.time ? `<time class="chatroom__time">${this._escape(msg.time)}</time>` : ''}
+        ${msg.author ? `<strong class="chatroom__author">${this._escape(msg.author)}</strong>` : ''}
+      </header>
+      <p class="chatroom__text">${this._escape(msg.text || '')}</p>
+    </div>
+    <span class="chatroom__avatar chatroom__avatar--you" aria-hidden="true">${this._escape(msg.initials || 'Y')}</span>
+  </div>
+</div>`;
+    }
+
+    _renderTypingMsg(msg) {
+        const avatar = this._escape(msg.avatar || 'ai');
+        return `<div class="chatroom__typing">
+  <span class="chatroom__avatar chatroom__avatar--${avatar}" aria-hidden="true">${avatar.toUpperCase()}</span>
+  <em class="chatroom__typing-text">${this._escape(msg.text || '')}</em>
+</div>`;
+    }
+
+    _renderMcpPanel(apps) {
+        if (!apps.length) return '';
+        const items = apps.map(app => `  <li class="chatroom-mcp-apps__item">
+    <button class="chatroom-mcp-apps__btn" type="button"
+      data-mcp-app="${this._escape(app.name)}"
+      ${app.endpoint ? `data-mcp-endpoint="${this._escape(app.endpoint)}"` : ''}
+      aria-label="Invoke ${this._escape(app.label || app.name)}">
+      <span class="chatroom-mcp-apps__btn-icon" aria-hidden="true"><i class="${this._safeIcon(app.icon || 'fas fa-robot')}" aria-hidden="true"></i></span>
+      <span class="chatroom-mcp-apps__btn-content">
+        <strong class="chatroom-mcp-apps__btn-label">${this._escape(app.label || app.name)}</strong>
+        ${app.description ? `<span class="chatroom-mcp-apps__btn-desc">${this._escape(app.description)}</span>` : ''}
+        <code class="chatroom-mcp-apps__btn-command">/${this._escape(app.name)}</code>
+      </span>
+    </button>
+  </li>`).join('');
+
+        return `<div class="chatroom-mcp-apps" aria-hidden="true" id="chatroom-mcp-apps-panel">
+  <div class="chatroom-mcp-apps__header">
+    <h2 class="chatroom-mcp-apps__title"><i class="fas fa-robot" aria-hidden="true"></i> AI Agent Tools</h2>
+    <p class="chatroom-mcp-apps__hint">Select an agent tool or type <code>/tool-name query</code> in the input field.</p>
+  </div>
+  <ul class="chatroom-mcp-apps__list" role="list">${items}</ul>
+</div>`;
+    }
+
+    _renderInput(placeholder, showToolbar, apps) {
+        const mcpBtn = apps.length ? `<button type="button" class="chatroom-mcp-apps-toggle chatroom-input-format-btn" aria-label="MCP Apps" aria-expanded="false" aria-controls="chatroom-mcp-apps-panel" title="MCP Apps"><i class="fas fa-plug" aria-hidden="true"></i></button>` : '';
+
+        const toolbar = showToolbar
+            ? `<div class="chatroom-input-toolbar">
+    <div class="chatroom-input-toolbar-left">${mcpBtn}</div>
+    <div class="chatroom-input-toolbar-right">
+      <span class="chatroom-char-count" aria-live="polite"></span>
+      <button class="chatroom-input-send-btn" type="button" title="Send Message" aria-label="Send Message"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+    </div>
+  </div>`
+            : `<div class="chatroom-input-toolbar chatroom-input-toolbar--minimal">
+    ${mcpBtn}
+    <button class="chatroom-input-send-btn" type="button" title="Send Message" aria-label="Send Message"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+  </div>`;
+
+        return `<div class="chatroom-input" role="group" aria-label="Message input area">
+  <div class="chatroom-input-container">
+    <div class="chatroom-input-content">
+      <div class="chatroom-input-field-container">
+        <textarea class="chatroom-input-field" id="chatroom-input-control"
+          placeholder="${this._escape(placeholder)}"
+          aria-label="Message input"
+          rows="1"
+          maxlength="${this.config.maxLength}"></textarea>
+      </div>
+      ${toolbar}
+    </div>
+  </div>
+</div>`;
     }
 
     initializeElements() {
@@ -563,8 +758,17 @@ class ChatroomApp extends HTMLElement {
                 }));
             }
         } else {
-            // No API endpoint, just add to local messages
-            this.addMessage(message);
+            // No API endpoint — append directly
+            const container = this.elements.messagesContainer;
+            if (container) {
+                container.insertAdjacentHTML('beforeend', this._renderOwnMsg({
+                    text,
+                    time: this._formatNow(),
+                    author: 'You',
+                    initials: 'Y',
+                }));
+                container.scrollTop = container.scrollHeight;
+            }
             this.elements.inputField.value = '';
             this._resetPlaceholder();
         }
@@ -607,69 +811,17 @@ class ChatroomApp extends HTMLElement {
         try {
             const response = await fetch(`${this.config.apiEndpoint}/messages`);
             if (response.ok) {
-                this.messages = await response.json();
-                this.renderMessages();
+                const messages = await response.json();
+                const container = this.elements.messagesContainer;
+                if (!container) return;
+                container.innerHTML = Array.isArray(messages) && messages.length
+                    ? messages.map(m => this._renderMessage(m)).join('')
+                    : '<div class="chatroom-empty-state">No messages yet. Start the conversation!</div>';
+                container.scrollTop = container.scrollHeight;
             }
         } catch (error) {
             console.error('Error loading messages:', error);
         }
-    }
-
-    renderMessages() {
-        if (!this.elements.messagesContainer) return;
-
-        this.elements.messagesContainer.innerHTML = '';
-
-        if (this.messages.length === 0) {
-            this.elements.messagesContainer.innerHTML = '<div class="chatroom-empty-state">No messages yet. Start the conversation!</div>';
-            return;
-        }
-
-        this.messages.forEach(message => {
-            const messageEl = this.createMessageElement(message);
-            this.elements.messagesContainer.appendChild(messageEl);
-        });
-
-        // Scroll to bottom
-        this.elements.messagesContainer.scrollTop = this.elements.messagesContainer.scrollHeight;
-    }
-
-    createMessageElement(message) {
-        const div = document.createElement('div');
-        div.className = `chatroom-message ${message.sender === 'user' ? 'chatroom-message-sent' : 'chatroom-message-received'}`;
-
-        const avatar = document.createElement('img');
-        avatar.src = message.avatar || this.config.avatarUrl;
-        avatar.alt = message.sender;
-        avatar.className = 'chatroom-message-avatar';
-
-        const content = document.createElement('div');
-        content.className = 'chatroom-message-content';
-
-        const text = document.createElement('div');
-        text.className = 'chatroom-message-text';
-        text.textContent = message.text;
-
-        const time = document.createElement('div');
-        time.className = 'chatroom-message-time';
-        time.textContent = this.formatTime(message.timestamp);
-
-        content.appendChild(text);
-        content.appendChild(time);
-        div.appendChild(avatar);
-        div.appendChild(content);
-
-        return div;
-    }
-
-    addMessage(message) {
-        this.messages.push(message);
-        this.renderMessages();
-    }
-
-    formatTime(timestamp) {
-        const date = new Date(timestamp);
-        return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
     }
 
     emitTyping(isTyping) {
