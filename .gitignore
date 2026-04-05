@@ -39,3 +39,4 @@ tests/.audit-results/
 
 # Style Dictionary staged output (review before applying)
 .github/skills/style-dictionary/tokens-extracted.json
+node_modules/

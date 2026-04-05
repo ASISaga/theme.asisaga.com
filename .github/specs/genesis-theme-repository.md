@@ -48,10 +48,14 @@ theme.asisaga.com/
 ├── _includes/          # 27+ reusable includes (head, header, footer, components/)
 │   └── components/     # 3 web component templates + loader
 ├── _sass/              # Complete SCSS system
-│   ├── ontology/       # Ontological design system (89 variants, 6 categories)
-│   ├── components/     # 62+ component files (core, sections, products, sacred, web)
-│   ├── layouts/        # Layout-specific SCSS
-│   ├── base/           # Base styles and design tokens
+│   ├── ontology/       # Ontological Design System engine (Layer 1 universal base)
+│   ├── base/           # Foundation: design tokens, fonts, utilities, effects
+│   ├── components/     # Reusable UI components (core, sections, products, sacred, web)
+│   ├── includes/       # Include-specific styles mirroring _includes/ hierarchy
+│   ├── layouts/        # Page layout styles mirroring _layouts/ (+ grid primitives)
+│   ├── demo/           # Demo-only styles (not for subdomains)
+│   ├── samples/        # Example/reference SCSS (not compiled)
+│   ├── vendor/         # Vendored third-party (Font Awesome)
 │   └── _main.scss      # Component bundle (all layouts + includes + components)
 ├── assets/
 │   ├── css/            # Compiled stylesheets
@@ -123,12 +127,11 @@ All layouts are defined in `_layouts/` and documented in `_layouts/README.md`:
 
 | Category | Files | Examples |
 |----------|-------|---------|
-| **Core** | 5 | cards, footer, header, navbar, back-to-top |
+| **Core** | 7 | cards, footer, header, navbar, back-to-top, LinkedIn, specialized |
 | **Sections** | 8 | hero, CTA, feature-grid, testimonial, timeline |
 | **Products** | 10 | product-page, product-card, product-benefits, product-layout |
 | **Sacred** | 12 | consciousness-cards, genesis-blocks, transcendent-hero |
 | **Mixins** | 11 | card, hero, form, team, content-section component mixins |
-| **Specialized** | 6 | chatroom, linkedin, layout-styles |
 | **Web Components** | 4 | alert-card, product-card, testimonial-card (+ index) |
 
 ### Web Components (3 working components)
@@ -144,6 +147,42 @@ Each web component follows a trinity namespace pattern:
 → **Component library specification**: `docs/specifications/component-library.md`  
 → **Web component guide**: `_includes/components/README.md`  
 → **Web component system docs**: `docs/systems/components/`
+
+## SCSS Architecture (`_sass/`)
+
+### Canonical Subdirectory Purposes
+
+Each `_sass/` subdirectory has a single, well-defined responsibility:
+
+| Directory | Canonical Purpose |
+|-----------|------------------|
+| **`ontology/`** | Ontological Design System engine (Layer 1) — 6 semantic engines, public API, CSS tokens |
+| **`base/`** | Foundation — design tokens, fonts, utilities, effects, layout primitives |
+| **`components/`** | Reusable UI components — visual elements (cards, headers, heroes, modals, forms) |
+| **`includes/`** | Include-specific styles — one-to-one SCSS for `_includes/` HTML templates |
+| **`layouts/`** | Page layout styles — page-level structures mirroring `_layouts/` HTML |
+| **`demo/`** | Demo-only styles — not for subdomains or production |
+| **`samples/`** | Example/reference SCSS — not compiled to production |
+| **`vendor/`** | Vendored third-party SCSS — Font Awesome, RFS |
+
+### Boundary Rules
+
+- **Layout code** (page-level containers, flex columns, grid systems) → `layouts/`
+- **Utility classes** (`.sr-only`, `.container`, legacy compatibility) → `base/utilities/`
+- **Component code** (visual UI elements: cards, buttons, heroes, modals) → `components/`
+- **Design tokens** (colors, spacing, typography scales) → `base/design/`
+- **Ontology engines and API** → `ontology/` only
+
+### Two-Layer Architecture
+
+```
+assets/css/style.scss          ← Jekyll compilation entry point
+├── Layer 1: ontology/index    ← Universal base (fonts, tokens, mixins, effects, ontological API)
+└── Layer 2: _main.scss        ← Theme bundle (components, includes, layouts, demo styles)
+```
+
+→ **Full SCSS architecture**: `_sass/README.md`  
+→ **Path-specific SCSS instructions**: `.github/instructions/scss-*.instructions.md`
 
 ## JavaScript Architecture (50+ modules)
 
