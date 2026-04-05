@@ -31,6 +31,14 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+
+  // Chatroom is a full-screen app interface — hide the site footer so the
+  // chatroom-main flex child can fill the entire remaining viewport height.
+  // Without this, the footer consumes 300-400 px of the 100dvh flex container,
+  // leaving an extremely small area for the message stream.
+  genesis-footer {
+    display: none;
+  }
 }
 
 // Main fills remaining height after the site header.
