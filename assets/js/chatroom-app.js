@@ -6,10 +6,15 @@
  * chat content as HTML attributes, builds its own DOM, then wires up
  * event handlers.
  *
- * Attributes:
+ * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
+ * Extends GenesisElement (LitElement, light DOM) — the same base as all other
+ * Genesis web components.
+ *
+ * Attributes / Lit reactive properties:
  *   title            — Boardroom title (default: "Chat")
  *   participants     — Agent count shown in the header
  *   placeholder      — Textarea placeholder text
+ *   max-length       — Maximum input length (default: 1000)
  *   show-toolbar     — Boolean; show formatting toolbar in the input bar
  *   show-connection-status — Boolean; render the live-connection badge
  *   mcp-apps         — JSON array of MCP app descriptors
@@ -20,12 +25,38 @@
  *   refresh-interval — Polling interval in ms (default: 3000)
  */
 
-class ChatroomApp extends HTMLElement {
+import { GenesisElement } from './common/genesis-element.js';
+
+export class ChatroomApp extends GenesisElement {
+    /**
+     * Lit reactive properties — replaces manual getAttribute() reads.
+     * Lit maps each kebab-case attribute to the camelCase property name
+     * automatically when the `attribute` option is given.
+     */
+    static properties = {
+        title:                { type: String },
+        participants:         { type: String },
+        placeholder:          { type: String },
+        maxLength:            { type: Number,  attribute: 'max-length' },
+        showToolbar:          { type: Boolean, attribute: 'show-toolbar' },
+        showConnectionStatus: { type: Boolean, attribute: 'show-connection-status' },
+        mcpApps:              { type: String,  attribute: 'mcp-apps' },
+        mcpEndpoint:          { type: String,  attribute: 'mcp-endpoint' },
+        chatData:             { type: String,  attribute: 'chat-data' },
+        apiEndpoint:          { type: String,  attribute: 'api-endpoint' },
+        autoRefresh:          { type: Boolean, attribute: 'auto-refresh' },
+        refreshInterval:      { type: Number,  attribute: 'refresh-interval' },
+    };
+
     constructor() {
         super();
         this.config = null;   // populated in connectedCallback
         this._mcpPendingCount = 0;
         this.refreshIntervalId = null;
+        this._apiConnected = false;
+        // Default values for numeric properties (Lit leaves them undefined when absent)
+        this.maxLength = 1000;
+        this.refreshInterval = 3000;
     }
 
     /**
@@ -49,19 +80,20 @@ class ChatroomApp extends HTMLElement {
     }
 
     connectedCallback() {
+        super.connectedCallback();
         this.config = {
-            title: this.getAttribute('title') || 'Chat',
-            participants: this.getAttribute('participants') || null,
-            placeholder: this.getAttribute('placeholder') || 'Type a message...',
-            maxLength: parseInt(this.getAttribute('max-length')) || 1000,
-            showToolbar: this.hasAttribute('show-toolbar'),
-            showConnectionStatus: this.hasAttribute('show-connection-status'),
-            apiEndpoint: this.getAttribute('api-endpoint') || null,
-            autoRefresh: this.hasAttribute('auto-refresh'),
-            refreshInterval: parseInt(this.getAttribute('refresh-interval')) || 3000,
-            mcpApps: this._parseMcpApps(this.getAttribute('mcp-apps')),
-            mcpEndpoint: this.getAttribute('mcp-endpoint') || null,
-            chatMessages: this._parseChatData(this.getAttribute('chat-data')),
+            title: this.title || 'Chat',
+            participants: this.participants || null,
+            placeholder: this.placeholder || 'Type a message...',
+            maxLength: this.maxLength || 1000,
+            showToolbar: this.showToolbar,
+            showConnectionStatus: this.showConnectionStatus,
+            apiEndpoint: this.apiEndpoint || null,
+            autoRefresh: this.autoRefresh,
+            refreshInterval: this.refreshInterval || 3000,
+            mcpApps: this._parseMcpApps(this.mcpApps),
+            mcpEndpoint: this.mcpEndpoint || null,
+            chatMessages: this._parseChatData(this.chatData),
         };
 
         this._render();
@@ -80,6 +112,23 @@ class ChatroomApp extends HTMLElement {
             bubbles: true,
             detail: { config: this.config }
         }));
+    }
+
+    /**
+     * Lit lifecycle: called after reactive property changes.
+     * Replaces manual attribute observation for live title/participants updates.
+     * Uses `this.hasUpdated` to skip the initial render pass (Lit sets it true
+     * after the first complete update cycle).
+     */
+    updated(changedProperties) {
+        super.updated(changedProperties);
+        if (!this.hasUpdated || !this.config) return;
+        if (changedProperties.has('title')) {
+            this.updateTitle(this.title);
+        }
+        if (changedProperties.has('participants')) {
+            this.updateParticipants(this.participants);
+        }
     }
 
     // =========================================================================
@@ -668,7 +717,7 @@ class ChatroomApp extends HTMLElement {
             });
 
             if (response.ok) {
-                this.isConnected = true;
+                this._apiConnected = true;
                 this.updateConnectionStatus('connected');
                 await this.loadMessages();
             } else {
@@ -676,7 +725,7 @@ class ChatroomApp extends HTMLElement {
             }
         } catch (error) {
             console.error('Chatroom connection error:', error);
-            this.isConnected = false;
+            this._apiConnected = false;
             this.updateConnectionStatus('error');
         }
     }
@@ -833,7 +882,7 @@ class ChatroomApp extends HTMLElement {
 
     startAutoRefresh() {
         this.refreshIntervalId = setInterval(() => {
-            if (this.isConnected) {
+            if (this._apiConnected) {
                 this.loadMessages();
             }
         }, this.config.refreshInterval);
@@ -847,6 +896,7 @@ class ChatroomApp extends HTMLElement {
     }
 
     disconnectedCallback() {
+        super.disconnectedCallback();
         this.stopAutoRefresh();
         this.dispatchEvent(new CustomEvent('chatroom-disconnected', { bubbles: true }));
     }
@@ -902,6 +952,8 @@ class ChatroomApp extends HTMLElement {
 }
 
 // Register the custom element
-customElements.define('chatroom-app', ChatroomApp);
+if (!customElements.get('chatroom-app')) {
+    customElements.define('chatroom-app', ChatroomApp);
+}
 
 export default ChatroomApp;
