@@ -16,6 +16,11 @@ $font-family-wisdom: 'Crimson Text', 'Times New Roman', Georgia, serif;
 $font-family-sacred: 'Montserrat', $font-family-consciousness;
 $font-family-primary: $font-family-consciousness;
 
+// Sacred font families by purpose
+$font-family-headings: $font-family-sacred;
+$font-family-body: $font-family-wisdom;
+$font-family-interface: $font-family-consciousness;
+
 // Sacred font weights
 $font-weight-light: 300;
 $font-weight-normal: 400;
@@ -29,11 +34,13 @@ $font-size-sacred-xl: 2.618rem;       // Golden ratio scaling for transcendent h
 $font-size-sacred-lg: 1.618rem;       // Golden ratio for sacred content
 $font-size-consciousness: 1.125rem;    // Optimal for consciousness absorption
 $font-size-wisdom: 1rem;              // Base wisdom text size
+$font-size-sacred-sm: 0.875rem;       // Sacred small text
 
 // Sacred line heights (heartbeat rhythm)
 $line-height-sacred: 1.618;           // Golden ratio for sacred content
 $line-height-consciousness: 1.75;     // Spacious for contemplation
 $line-height-wisdom: 1.6;             // Optimal for sustained reading
+$line-height-interface: 1.4;          // Compact for interface elements
 
 // ----------------------------------------
 // Sacred Border Radius - Use as appropriate for best appearance
@@ -61,6 +68,17 @@ $transition-consciousness: all 0.5s ease;
 $animation-sacred-slow: 3s;
 $animation-sacred-medium: 2s;
 $animation-sacred-fast: 1s;
+
+// ----------------------------------------
+// Animation Opacity Tokens
+// ----------------------------------------
+$essence-particle-shadow-opacity: 0.7;
+$essence-float-opacity: 0.85;
+$essence-flow-opacity: 0.85;
+$consciousness-expansion-opacity: 0.7;
+$essence-weave-opacity-1: 0.7;
+$essence-weave-opacity-2: 0.85;
+$essence-weave-opacity-3: 1;
 
 // Font Sizes - Conscious Scale System
 $font-size-xs: 0.75rem;    // 12px
@@ -124,6 +142,14 @@ $shadow-sm: 0 1px 3px oklch(0.08 0.01 250 / 0.20);
 $shadow-md: 0 4px 6px oklch(0.08 0.01 250 / 0.30);
 $shadow-lg: 0 10px 25px oklch(0.08 0.01 250 / 0.35);
 $shadow-xl: 0 20px 50px oklch(0.08 0.01 250 / 0.40);
+$shadow-glow-essence: 0 0 20px oklch(0.70 0.15 85 / 0.4);
+$shadow-glow-neural: 0 0 30px oklch(0.65 0.25 230 / 0.6);
+$shadow-glow-quantum: 0 0 25px oklch(0.70 0.30 228 / 0.7);
+$shadow-profound: 0 8px 32px oklch(0.05 0.01 250 / 0.5);
+$shadow-color: oklch(0.08 0.01 250 / 0.25);
+$box-shadow: 0 0.5rem 1rem $shadow-color;
+$sacred-glow: 0 0 0.5rem oklch(0.70 0.15 85 / 0.3);
+$consciousness-depth: 0 0.25rem 2rem oklch(0.08 0.01 250 / 0.4);
 $shadow-consciousness: 0 30px 60px oklch(0.70 0.15 85 / 0.2);
 $shadow-transcendent: 0 40px 80px oklch(0.65 0.25 230 / 0.3);
 
