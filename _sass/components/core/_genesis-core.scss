@@ -97,61 +97,7 @@
 // ============================================================================
 // ONTOLOGY WEB COMPONENTS - Structural Display & Attribute Mapping
 // ============================================================================
-
-$genesis-environment-logics: (
-  'focused',
-  'distributed',
-  'associative',
-  'chronological',
-  'manifest',
-  'convergent',
-  'interaction-form',
-  'navigation-accordion',
-  'navigation-sidebar',
-  'navigation-breadcrumb',
-  'navigation-pagination',
-  'navigation-tabs'
-);
-
-$genesis-entity-natures: (
-  'primary',
-  'secondary',
-  'imperative',
-  'latent',
-  'aggregate',
-  'transcendent',
-  'image-adaptive'
-);
-
-$genesis-cognition-intents: (
-  'axiom',
-  'discourse',
-  'protocol',
-  'gloss',
-  'motive',
-  'quantum'
-);
-
-$genesis-synapse-vectors: (
-  'navigate',
-  'execute',
-  'inquiry',
-  'paginate',
-  'social',
-  'invoke'
-);
-
-$genesis-state-conditions: (
-  'stable',
-  'evolving'
-);
-
-$genesis-atmosphere-vibes: (
-  'neutral',
-  'ethereal',
-  'vibrant',
-  'sacred'
-);
+// Variant lists are defined in _sass/base/design/_variables.scss.
 
 genesis-environment {
   display: block;

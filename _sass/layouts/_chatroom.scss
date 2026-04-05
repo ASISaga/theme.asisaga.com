@@ -11,27 +11,10 @@
  *   - MCP Apps panel + toggle badge
  *   - Loading overlay, animations, and responsive overrides
  *
- * Color tokens: See boardroom color tokens section below
+ * Color tokens: _sass/base/design/_colors.scss § SECTION 8 ($boardroom-*)
  * JavaScript:   assets/js/chatroom-app.js
  * Data:         _data/chatroom/<name>.yml
  */
-
-// ============================================================================
-// Executive Boardroom — Shared Color Tokens
-// ============================================================================
-// Single source of truth for the boardroom dark theme palette.
-// All values use OKLCH. Gold hue ≈ 85, navy hue ≈ 250.
-
-$boardroom-bg: oklch(0.10 0.015 250); // Deep navy — layout background
-$boardroom-surface: oklch(0.13 0.015 250); // Raised surface — cards / header
-$boardroom-border: oklch(0.22 0.02 250); // Subtle separator
-$boardroom-text: oklch(0.92 0.005 90); // Primary text (passes 4.5:1 on surface)
-$boardroom-muted: oklch(0.60 0.01 250); // Secondary / metadata text
-$boardroom-gold: oklch(0.75 0.12 85); // Gold accent — hover glow (decorative)
-$boardroom-gold-accessible: oklch(0.55 0.12 85); // WCAG AA on dark surfaces
-$boardroom-gold-dim: oklch(0.55 0.10 85 / 0.25); // Transparent gold for borders/fills
-$boardroom-gold-ring: oklch(0.75 0.12 85 / 0.35); // CEO avatar ring highlight
-$boardroom-own-bg: oklch(0.50 0.12 85 / 0.15); // Board Chair message background
 
 // ============================================================================
 // PAGE-LEVEL VIEWPORT

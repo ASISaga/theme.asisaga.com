@@ -217,3 +217,65 @@ $particle-opacity-max: 0.8;
 $genesis-timeline-width: 4px;
 $genesis-marker-size: 20px;
 $genesis-content-offset: 50px;
+
+// ============================================================================
+// ONTOLOGY WEB COMPONENT VARIANT MAPS
+// ============================================================================
+// These lists enumerate the valid attribute values for each genesis-* web
+// component. _sass/components/core/_genesis-core.scss iterates over them to
+// auto-register [attribute="variant"] CSS rules.
+
+$genesis-environment-logics: (
+  'focused',
+  'distributed',
+  'associative',
+  'chronological',
+  'manifest',
+  'convergent',
+  'interaction-form',
+  'navigation-accordion',
+  'navigation-sidebar',
+  'navigation-breadcrumb',
+  'navigation-pagination',
+  'navigation-tabs'
+);
+
+$genesis-entity-natures: (
+  'primary',
+  'secondary',
+  'imperative',
+  'latent',
+  'aggregate',
+  'transcendent',
+  'image-adaptive'
+);
+
+$genesis-cognition-intents: (
+  'axiom',
+  'discourse',
+  'protocol',
+  'gloss',
+  'motive',
+  'quantum'
+);
+
+$genesis-synapse-vectors: (
+  'navigate',
+  'execute',
+  'inquiry',
+  'paginate',
+  'social',
+  'invoke'
+);
+
+$genesis-state-conditions: (
+  'stable',
+  'evolving'
+);
+
+$genesis-atmosphere-vibes: (
+  'neutral',
+  'ethereal',
+  'vibrant',
+  'sacred'
+);
