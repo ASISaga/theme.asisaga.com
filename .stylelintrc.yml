@@ -132,6 +132,7 @@ rules:
         - calc
         - var
         - percentage  # SCSS function for converting to percentage
+        - resolve-breakpoint  # Custom SCSS function in _responsive-system.scss
   
   # ========================================
   # ACCESSIBILITY REQUIREMENTS
@@ -227,6 +228,7 @@ ignoreFiles:
   - "assets/js/**"
   - "_sass/ontology/_test.scss"  # Test file with Jekyll front matter
   - "assets/css/style.scss"      # Jekyll front matter + @import only
+  - "_sass/samples/**"           # Sample SCSS files (may have Jekyll front matter)
 
 # Ignore Jekyll front matter
 ignorePatterns:
