@@ -130,6 +130,7 @@ All OKLCH color tokens used for text must meet **4.5:1 contrast ratio** against 
 **Link underline requirement:**
 - Synapse `'navigate'` uses `text-decoration: underline` (not `border-bottom: transparent`)
 - Links must be distinguishable from surrounding text without relying solely on color
+- Hover may change `text-decoration-thickness` but must retain underline
 
 **Body text color:**
 - Body defaults to `$text-primary` (dark) — light backgrounds are the default surface
