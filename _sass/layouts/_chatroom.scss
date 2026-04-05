@@ -71,6 +71,9 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
+  // Override body's serif (wisdom) font — chatroom is a UI application, not editorial prose.
+  // Using the consciousness (Inter/SF Pro Display) stack for a modern professional business feel.
+  font-family: $font-family-interface;
 }
 
 // ============================================================================
@@ -396,7 +399,10 @@
 }
 
 .chatroom__text {
-  @include genesis-cognition('discourse');
+  // Modern compact sans-serif — replaces discourse (serif wisdom font) for chat context
+  font-size: $font-size-sm;
+  font-weight: 400;
+  line-height: 1.5;
   margin: 0;
   color: $boardroom-text;
 
