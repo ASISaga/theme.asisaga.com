@@ -29,6 +29,11 @@
 @import "layouts/bento-engine";            // Native CSS Grid system (shared grid primitive)
 
 // ----------------------------------------
+// BASE UTILITIES — legacy compatibility & utility classes
+// ----------------------------------------
+@import "base/utilities/legacy-utilities";
+
+// ----------------------------------------
 // COMPONENT MIXINS — load before implementations
 // ----------------------------------------
 @import "components/mixins/section-component";
@@ -98,13 +103,10 @@
 @import "components/sacred/genesis-invitation";
 
 // ----------------------------------------
-// SPECIALIZED COMPONENTS
+// CORE INTEGRATIONS & SPECIALIZED COMPONENTS
 // ----------------------------------------
-@import "components/specialized/linkedin";
-@import "components/specialized/base-layout";
-@import "components/specialized/layout-styles";
-@import "components/specialized/specialized";
-@import "components/specialized/utilities";
+@import "components/core/linkedin";
+@import "components/core/specialized";
 
 // ----------------------------------------
 // WEB COMPONENT TEMPLATES
@@ -123,6 +125,8 @@
 // LAYOUT STYLES — all page layouts
 // ----------------------------------------
 // Shared layout utilities (bento-engine already imported above).
+@import "layouts/base-structure";          // Fundamental page layout containers
+@import "layouts/layout-ontology";         // Ontology-mapped layout classes
 @import "layouts/responsive-enhancements"; // Cross-layout responsive refinements
 
 @import "layouts/app";
