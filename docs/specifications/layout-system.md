@@ -78,7 +78,7 @@ default.html (Root)
 - Individual page layouts can apply their own width constraints via specific wrapper classes
 - This allows subdomain websites to use full viewport width without constraints
 
-**SCSS**: `_sass/layouts/_default.scss`, `_sass/ontology/_theme-layouts.scss`
+**SCSS**: `_sass/layouts/_default.scss`
 
 ## Base Templates
 

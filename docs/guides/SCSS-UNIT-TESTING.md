@@ -194,7 +194,7 @@ npm test  # Runs compilation + validation + linting
 
 ### Fluid Typography Scale
 
-From `_sass/base/design/_semantic-typography.scss`:
+From `_sass/base/design/_typography.scss`:
 
 ```scss
 // Heading scales that adapt to viewport

@@ -175,7 +175,7 @@ showError('An error occurred.', 'Error', {
 
 **Files**:
 - HTML: `_includes/components/product-card.html`
-- SCSS: `_sass/components/_product-card.scss`
+- SCSS: `_sass/components/web-components/_product-card.scss`
 - JS: `assets/js/components/product-card.js`
 
 **Data Structure**:
@@ -198,7 +198,7 @@ showError('An error occurred.', 'Error', {
 
 **Files**:
 - HTML: `_includes/components/testimonial-card.html`
-- SCSS: `_sass/components/_testimonial-card.scss`
+- SCSS: `_sass/components/web-components/_testimonial-card.scss`
 - JS: `assets/js/components/testimonial-card.js`
 
 **Data Structure**:
@@ -220,7 +220,7 @@ showError('An error occurred.', 'Error', {
 
 **Files**:
 - HTML: `_includes/components/alert-card.html`
-- SCSS: `_sass/components/_alert-card.scss`
+- SCSS: `_sass/components/web-components/_alert-card.scss`
 - JS: `assets/js/components/alert-card.js`
 
 **Data Structure**:

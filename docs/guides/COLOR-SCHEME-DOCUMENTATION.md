@@ -98,7 +98,7 @@ All colors are defined using OKLCH color space for:
 - Consistent luminance across hues
 
 ### File Locations
-- **OKLCH Tokens:** `_sass/base/_design-tokens.scss`
+- **OKLCH Tokens:** `_sass/base/design/_variables.scss`
 - **CSS Custom Properties:** `_sass/ontology/_tokens.scss`
 - **Legacy Hex Colors:** `_sass/base/_colors.scss`
 

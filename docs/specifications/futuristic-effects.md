@@ -425,7 +425,7 @@ Automatic fallbacks provided by ontology mixins:
 
 **Core Implementations:**
 - `_sass/ontology/_engines.scss` - Effect implementations
-- `_sass/base/_design-tokens.scss` - Effect color tokens
+- `_sass/base/design/_variables.scss` - Effect color tokens
 - `_sass/components/` - Component integrations
 
 **Helper Mixins:**

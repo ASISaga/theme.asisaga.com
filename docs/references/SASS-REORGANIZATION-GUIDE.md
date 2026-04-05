@@ -1,375 +1,167 @@
 # /_sass Directory Reorganization Guide
 
-**Date**: 2026-01-29  
-**Version**: 2.0 - Thorough Reorganization
+**Date**: 2026-04-05  
+**Version**: 3.0 - Separation of Concerns & Technical Debt Cleanup
 
 ## Overview
 
-The `/_sass` directory has been comprehensively reorganized for better maintainability, navigation, and scalability. All 70 SCSS files (51 components + 19 base files) have been organized into logical subdirectories.
+The `/_sass` directory has been thoroughly reorganized for clear separation of concerns, elimination of duplication, and removal of all technical debt. This is v3.0 — backward compatibility with deprecated patterns is not maintained.
 
-## New Structure
+## Current Structure
 
 ```
 _sass/
-├── _common.scss              # Main import file (updated paths)
-├── _test-compile.scss         # Test compilation file
-├── SACRED-THEME-IMPLEMENTATION.md
+├── _main.scss                   # Layer 2: Full theme bundle (reference implementation)
+├── _test-compile.scss           # SCSS compilation test entry point
 │
-├── base/                      # Foundation layer (19 files → 4 subdirectories)
-│   ├── README.md
-│   ├── _fonts.scss           # Font loading
-│   ├── _icons.scss           # Icon system
+├── base/                        # Foundation layer
+│   ├── _fontawesome.scss        # Font Awesome 6 (vendored in vendor/fontawesome/)
+│   ├── _fonts.scss              # @font-face declarations
+│   ├── _icons.scss              # Icon system configuration
 │   │
-│   ├── design/               # Visual design foundation (6 files)
-│   │   ├── README.md
-│   │   ├── _design-tokens.scss
-│   │   ├── _variables.scss
-│   │   ├── _dimensions.scss
-│   │   ├── _typography.scss
-│   │   ├── _semantic-typography.scss
-│   │   └── _theme.scss
+│   ├── design/                  # Design tokens & visual foundation
+│   │   ├── _colors.scss              # OKLCH + semantic color tokens (centralized)
+│   │   ├── _variables-generated.scss # Generated from _design/tokens.json — DO NOT EDIT
+│   │   ├── _variables.scss           # ALL Sass variables: shadows, opacity, spacing, breakpoints
+│   │   ├── _dimensions.scss          # Spacing and sizing tokens
+│   │   ├── _typography.scss          # Unified: fluid scale + sacred families + material primitives
+│   │   └── _theme.scss               # Theme-level configuration
 │   │
-│   ├── layout/               # Layout system (4 files)
-│   │   ├── README.md
-│   │   ├── _layout-wrappers.scss
-│   │   ├── _responsive-system.scss
-│   │   ├── _responsive.scss
-│   │   └── _layout.scss
+│   ├── layout/                  # Layout system
+│   │   ├── _responsive-system.scss   # Modern breakpoints, container queries, fluid spacing
+│   │   ├── _layout-wrappers.scss     # Layout containers
+│   │   └── _layout.scss              # Base layout structures
 │   │
-│   ├── utilities/            # Utilities & mixins (4 files)
-│   │   ├── README.md
-│   │   ├── _mixins.scss
-│   │   ├── _semantic-mixins.scss
-│   │   ├── _accessibility.scss
-│   │   └── _common.scss
+│   ├── utilities/               # Sass utilities
+│   │   ├── _mixins.scss              # Core Sass mixins
+│   │   ├── _semantic-mixins.scss     # Semantic mixins (buttons, gradients)
+│   │   ├── _accessibility.scss       # WCAG compliance helpers
+│   │   └── _common.scss              # Common utility styles
 │   │
-│   └── effects/              # Visual effects (3 files)
-│       ├── README.md
-│       ├── _animations.scss
-│       ├── _futuristic-effects.scss
-│       └── _ambient-layer.scss
+│   └── effects/                 # Visual effects
+│       ├── _animations.scss          # Core keyframe animations
+│       ├── _futuristic-effects.scss  # Glassmorphism, glows, gradients
+│       └── _ambient-layer.scss       # Sentient ambient atmosphere
 │
-├── components/                # UI components (51 files → 6 subdirectories)
-│   │
-│   ├── core/                 # Fundamental UI (5 files)
-│   │   ├── README.md
-│   │   ├── _cards.scss
-│   │   ├── _footer.scss
-│   │   ├── _header.scss
-│   │   ├── _navbar.scss
-│   │   └── _back-to-top.scss
-│   │
-│   ├── mixins/               # Reusable mixins (11 files)
-│   │   ├── README.md
-│   │   ├── _card-component.scss
-│   │   ├── _content-section-component.scss
-│   │   ├── _cta-component.scss
-│   │   ├── _form-component.scss
-│   │   ├── _header-component.scss
-│   │   ├── _hero-component.scss
-│   │   ├── _image-card-component.scss
-│   │   ├── _layout-component.scss
-│   │   ├── _products-grid-component.scss
-│   │   ├── _section-component.scss
-│   │   └── _team-component.scss
-│   │
-│   ├── sections/             # Major page sections (8 files)
-│   │   ├── README.md
-│   │   ├── _cta.scss
-│   │   ├── _feature-grid.scss
-│   │   ├── _hero.scss
-│   │   ├── _interactive-module.scss
-│   │   ├── _section-header.scss
-│   │   ├── _sections.scss
-│   │   ├── _testimonial.scss
-│   │   └── _timeline.scss
-│   │
-│   ├── products/             # Product components (9 files)
-│   │   ├── README.md
-│   │   ├── _product-applications.scss
-│   │   ├── _product-benefits-list.scss
-│   │   ├── _product-card.scss
-│   │   ├── _product-code-example.scss
-│   │   ├── _product-feature-grid.scss
-│   │   ├── _product-layout.scss
-│   │   ├── _product-page.scss
-│   │   ├── _product-section-container.scss
-│   │   └── _product-visual.scss
-│   │
-│   ├── sacred/               # Sacred/Genesis components (12 files)
-│   │   ├── README.md
-│   │   ├── _bridge-connections.scss
-│   │   ├── _consciousness-cards.scss
-│   │   ├── _genesis-blocks.scss
-│   │   ├── _genesis-invitation.scss
-│   │   ├── _genesis-timeline.scss
-│   │   ├── _sacred-buttons.scss
-│   │   ├── _sacred-elements.scss
-│   │   ├── _sacred-forms.scss
-│   │   ├── _sacred-modals.scss
-│   │   ├── _sacred-navigation.scss
-│   │   ├── _transcendent-hero.scss
-│   │   └── _transcendent-threshold.scss
-│   │
-│   └── specialized/          # Domain-specific (6 files)
-│       ├── README.md
-│       ├── _base-layout.scss
-│       ├── _chatroom.scss
-│       ├── _layout-styles.scss
-│       ├── _linkedin.scss
-│       ├── _specialized.scss
-│       └── _utilities.scss
+├── ontology/                    # Ontological Design System
+│   ├── _index.scss              # ⭐ Layer 1: Universal base import
+│   ├── _tokens.scss             # CSS custom properties
+│   ├── _engines.scss            # Engine layer dispatch
+│   ├── _interface.scss          # Public semantic API
+│   ├── engines/                 # 6 ontological engines
+│   │   ├── _atmosphere.scss, _cognition.scss, _entity.scss
+│   │   ├── _environment.scss, _state.scss, _synapse.scss
+│   │   └── _index.scss
+│   └── samples/                 # Usage examples (not compiled to production)
 │
-├── layouts/                   # Layout templates (21 files - unchanged)
-│   └── _bento-engine.scss, etc.
+├── components/                  # Reusable UI components
+│   ├── core/                    # Core UI: header, footer, navbar, cards
+│   ├── mixins/                  # Component mixins (loaded before implementations)
+│   ├── sections/                # Page sections: hero, CTA, testimonial, timeline
+│   ├── products/                # Product-specific components
+│   ├── sacred/                  # Sacred/consciousness-themed components
+│   ├── specialized/             # Specialized: LinkedIn, base-layout, layout-styles
+│   └── web-components/          # Web component template SCSS (canonical location)
+│       ├── _index.scss
+│       ├── _product-card.scss, _testimonial-card.scss, _alert-card.scss
 │
-├── ontology/                  # Ontology system (already organized)
-│   ├── engines/, samples/, theme-layouts/
-│   └── _engines.scss, _interface.scss, etc.
+├── includes/                    # Mirrors _includes/ HTML hierarchy
+│   ├── _index.scss              # Aggregates all include SCSS files
+│   ├── [root includes]          # One-to-one with _includes/*.html
+│   ├── components/              # One-to-one with _includes/components/*.html
+│   └── layouts/                 # Include-specific layout styles
 │
-├── fontawesome/               # Font Awesome v4 (13 files - vendor)
-│   └── font-awesome.scss, etc.
+├── layouts/                     # Page layout SCSS (mirrors _layouts/*.html)
+│   ├── _bento-engine.scss       # Native CSS Grid system
+│   ├── _responsive-enhancements.scss  # Cross-layout responsive refinements
+│   └── [20+ layout files]
 │
-└── vendor/                    # Third-party libraries
-    └── _rfs.scss
+├── demo/                        # Demo-only styles (not for subdomains)
+│   ├── _index-demo.scss
+│   └── _ontology-demo.scss
+│
+├── samples/                     # Sample SCSS (not compiled)
+│
+└── vendor/                      # Vendored third-party
+    ├── _rfs.scss
+    └── fontawesome/
 ```
 
-## Migration Guide
+## v3.0 Changes (Separation of Concerns)
 
-### For Theme Developers
+### Files Removed
 
-No changes needed! The reorganization is internal. All imports work through `_common.scss`.
+| File | Reason |
+|------|--------|
+| `base/layout/_responsive.scss` | Deprecated legacy responsive (replaced by `_responsive-system.scss`) |
+| `ontology/_theme-layouts.scss` | Orphaned compatibility shim; imports were already in `_main.scss` |
+| `base/design/_design-tokens.scss` | Merged into `_variables.scss` (single source for all tokens) |
+| `base/design/_semantic-typography.scss` | Merged into `_typography.scss` (unified typography) |
+| `components/_product-card.scss` | Duplicate of `web-components/_product-card.scss` |
+| `components/_testimonial-card.scss` | Duplicate of `web-components/_testimonial-card.scss` |
+| `components/_alert-card.scss` | Duplicate of `web-components/_alert-card.scss` |
+| `includes/_futuristic-effects.scss` | Empty stub (comments only, no CSS output) |
+| `includes/_motion-library.scss` | Empty stub (comments only, no CSS output) |
+| `includes/_transcendent-hero.scss` | Empty stub (comments only, no CSS output) |
+| `includes/components/_template-loader.scss` | Empty stub (comments only, no CSS output) |
 
-### For Subdomain Developers
+### Files Consolidated
 
-No changes needed! Import paths remain the same:
+| Before | After |
+|--------|-------|
+| `_design-tokens.scss` + `_variables.scss` | Single `_variables.scss` with all tokens |
+| `_typography.scss` + `_semantic-typography.scss` | Single `_typography.scss` with fluid scale + sacred families |
+| 3 root-level card files + `web-components/` | Single canonical location in `web-components/` |
 
-```scss
----
----
-@import "ontology/index";  # Still works as before
+### Files Moved
 
-.my-component {
-  @include genesis-entity('primary');
-}
+| Before | After |
+|--------|-------|
+| `_sass/_index-demo.scss` | `_sass/demo/_index-demo.scss` |
+| `_sass/_ontology-demo.scss` | `_sass/demo/_ontology-demo.scss` |
+
+## Two-Layer Architecture
+
 ```
-
-## Benefits of New Structure
-
-### 1. Improved Navigation
-
-**Before**: 51 files in flat `components/` directory
-**After**: 6 organized subdirectories with 5-12 files each
-
-Finding a specific component is now easy:
-- Product component? → `components/products/`
-- Sacred component? → `components/sacred/`
-- Need a mixin? → `components/mixins/`
-
-### 2. Better Organization
-
-Files are grouped by **purpose and domain**:
-- **Design tokens** together in `base/design/`
-- **Layout system** in `base/layout/`
-- **Visual effects** in `base/effects/`
-- **Sacred components** in `components/sacred/`
-
-### 3. Clear Documentation
-
-Every subdirectory has a README explaining:
-- What files it contains
-- Purpose of the directory
-- How files relate to each other
-
-### 4. Scalability
-
-Easy to add new files:
-- New product component? → Put in `components/products/`
-- New animation? → Put in `base/effects/`
-- Clear place for everything
-
-### 5. Optimized Import Order
-
-`_common.scss` now has a logical import order:
-1. Fonts & icons (foundation)
-2. Design tokens & variables
-3. Utilities & mixins
-4. Typography (uses mixins)
-5. Layout system
-6. Effects & animations
-7. Ontology system
-8. Components (use all above)
-
-This ensures dependencies are available when needed.
+assets/css/style.scss
+├── Layer 1: ontology/index    ← Universal base (all subdomains)
+└── Layer 2: _main.scss        ← Theme bundle (components, includes, layouts)
+```
 
 ## File Location Quick Reference
 
-### Need to Find...
-
-**Design tokens?** → `base/design/_design-tokens.scss`  
+**Sass variables?** → `base/design/_variables.scss`  
+**Generated tokens?** → `base/design/_variables-generated.scss` (DO NOT EDIT)  
+**Colors?** → `base/design/_colors.scss`  
 **Typography?** → `base/design/_typography.scss`  
 **Animations?** → `base/effects/_animations.scss`  
 **Glassmorphism?** → `base/effects/_futuristic-effects.scss`  
 **Layout containers?** → `base/layout/_layout-wrappers.scss`  
 **Responsive mixins?** → `base/layout/_responsive-system.scss`  
 **Core mixins?** → `base/utilities/_mixins.scss`  
-**Semantic mixins?** → `base/utilities/_semantic-mixins.scss`  
-**Card components?** → `components/core/_cards.scss`  
-**Header?** → `components/core/_header.scss`  
-**Footer?** → `components/core/_footer.scss`  
-**Hero section?** → `components/sections/_hero.scss`  
-**CTA?** → `components/sections/_cta.scss`  
-**Product page?** → `components/products/_product-page.scss`  
-**Sacred buttons?** → `components/sacred/_sacred-buttons.scss`  
-**Genesis blocks?** → `components/sacred/_genesis-blocks.scss`
+**Web component cards?** → `components/web-components/`  
+**Demo styles?** → `demo/`
 
-## Updated Import Paths in _common.scss
-
-The main `_common.scss` file has been updated with clear sections:
-
-```scss
-// Foundation
-@import "base/fonts";
-@import "base/icons";
-
-// Design Foundation
-@import "base/design/design-tokens";
-@import "base/design/variables";
-@import "base/design/dimensions";
-
-// Utilities & Mixins
-@import "base/utilities/mixins";
-@import "base/utilities/semantic-mixins";
-@import "base/utilities/accessibility";
-@import "base/utilities/common";
-
-// Typography & Theme
-@import "base/design/typography";
-@import "base/design/semantic-typography";
-@import "base/design/theme";
-
-// Layout System
-@import "base/layout/responsive-system";
-@import "base/layout/responsive";
-@import "base/layout/layout-wrappers";
-@import "base/layout/layout";
-
-// Visual Effects
-@import "base/effects/animations";
-@import "base/effects/futuristic-effects";
-@import "base/effects/ambient-layer";
-
-// Ontology System
-@import "ontology/index";
-
-// Bento Engine
-@import "layouts/bento-engine";
-
-// Component Mixins (loaded first)
-@import "components/mixins/section-component";
-@import "components/mixins/layout-component";
-// ... all mixins ...
-
-// Core Components
-@import "components/core/footer";
-@import "components/core/header";
-// ... all core ...
-
-// Section Components
-@import "components/sections/hero";
-@import "components/sections/cta";
-// ... all sections ...
-
-// Product Components
-@import "components/products/product-card";
-@import "components/products/product-page";
-// ... all products ...
-
-// Sacred Components
-@import "components/sacred/sacred-elements";
-@import "components/sacred/genesis-blocks";
-// ... all sacred ...
-
-// Specialized Components
-@import "components/specialized/chatroom";
-@import "components/specialized/linkedin";
-// ... all specialized ...
-
-// Layouts
-@import "layouts/app";
-@import "layouts/default";
-// ... all layouts ...
-```
-
-## Testing & Validation
-
-### All Tests Pass
-
-✅ **SCSS Compilation**: SUCCESS  
-✅ **Stylelint**: SUCCESS (0 errors)  
-✅ **No Breaking Changes**: All imports working  
-✅ **Build Time**: Same as before
-
-### How to Test Locally
+## Testing
 
 ```bash
-# Test SCSS compilation
-npm run test:scss
-
-# Run linter
-npm run lint:scss
-
-# Both should pass with no errors
+npm test                        # Run all checks
+npm run test:scss               # Sass compilation
+npm run validate:scss:units     # Unit compatibility
+npm run lint:scss               # Stylelint
+npm run tokens:build            # Regenerate variables from tokens.json
 ```
 
-## Metrics
+## Adding New Files
 
-**Files Reorganized**: 70 total
-- Components: 51 files → 6 subdirectories
-- Base: 19 files → 4 subdirectories + 2 root files
-
-**Subdirectories Created**: 10  
-**README Files Added**: 11  
-**Import Files Updated**: 2 (_common.scss, ontology/_theme-layouts.scss)  
-**Breaking Changes**: 0  
-**Build Status**: All tests passing ✅
-
-## Future Maintenance
-
-### Adding New Files
-
-**New product component?**
-1. Create file in `_sass/components/products/`
-2. Add import to `_common.scss` in the "Product Components" section
-3. Update `components/products/README.md` if needed
-
-**New animation?**
-1. Create in `_sass/base/effects/`
-2. Add import to `_common.scss` in the "Visual Effects" section
-3. Update `base/effects/README.md` if needed
-
-**New design token?**
-1. Add to `_sass/base/design/_design-tokens.scss`
-2. Document in comments
-
-### General Guidelines
-
-- Keep READMEs updated when adding/removing files
-- Maintain alphabetical order within sections
-- Follow existing naming patterns
-- Add comments explaining file purpose
-- Test compilation after any changes
+**New component?** → Create in appropriate `components/` subdirectory, add import to `_main.scss`  
+**New design token?** → Add to `base/design/_variables.scss`  
+**New animation?** → Add to `base/effects/`  
+**New layout?** → Create in `layouts/`, add import to `_main.scss`
 
 ## Related Documentation
 
-- `.github/instructions/scss.instructions.md` - SCSS coding standards
-- `_sass/ontology/INTEGRATION-GUIDE.md` - Ontology system guide
-- `_sass/base/README.md` - Base directory overview
-- `_sass/components/*/README.md` - Component subdirectory guides
-- `REFACTORING-SUMMARY.md` - Previous refactoring work
-
----
-
-**Version**: 2.0  
-**Status**: ✅ COMPLETE  
-**Last Updated**: 2026-01-29
+- `_sass/README.md` — Architecture overview
+- `_sass/ontology/INTEGRATION-GUIDE.md` — Ontology system guide
+- `.github/instructions/scss.instructions.md` — SCSS coding standards
+- `/docs/specifications/scss-ontology-system.md` — All ontological variants

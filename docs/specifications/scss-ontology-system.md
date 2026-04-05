@@ -185,7 +185,7 @@ The ontology engine uses 150+ CSS custom properties defined in `_sass/ontology/_
 
 ### Legacy Sass Variables (Theme Internal Use)
 
-For legacy components: `_sass/base/_design-tokens.scss`
+For legacy components: `_sass/base/design/_variables.scss`
 - Surface tokens: `$surface-primary`, `$surface-elevated`, `$surface-glass`
 - Text tokens: `$text-primary`, `$text-secondary`, `$text-accent`
 - Accent tokens: `$accent-glow`, `$accent-neural`, `$accent-essence`

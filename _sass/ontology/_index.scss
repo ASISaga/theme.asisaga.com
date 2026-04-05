@@ -84,10 +84,8 @@
 // They ONLY delegate to engines — no CSS properties.
 @import "interface";
 
-// NOTE: theme-layouts (header, footer, navbar, cards) is NOT imported here.
-// Those are theme-specific component implementations, not part of the
-// universal base.  They are imported by _default-bundle.scss which is used
-// by per-layout CSS entry points (assets/css/<layout>.scss).
+// NOTE: Theme-specific components (header, footer, navbar, cards, layouts)
+// are NOT imported here. They are imported by _main.scss (Layer 2).
 
 // ============================================================================
 // EXPORT NOTICE
