@@ -51,12 +51,28 @@ fi
 
 # Find direct arithmetic mixing (INVALID - outside calc/clamp)
 TEMP_INVALID=$(mktemp)
+TEMP_CANDIDATES=$(mktemp)
+
+# Stage 1: Find all lines with viewport units
 grep -rn -E '[0-9.]+v[wh]|vmin|vmax' _sass --include="*.scss" 2>/dev/null | \
   grep -v '^\s*//' | \
   grep -v '^\s*/\*' | \
-  grep -v '///' | \
-  grep -E '[\+\-\*\/].*[0-9.]+r?em|r?em.*[\+\-\*\/]' 2>/dev/null | \
-  grep -v 'calc\|clamp' > "$TEMP_INVALID" 2>/dev/null || true
+  grep -v '///' > "$TEMP_CANDIDATES" 2>/dev/null || true
+
+# Stage 2: Check only the CONTENT portion (after filename:lineno:) for mixed units
+if [ -s "$TEMP_CANDIDATES" ]; then
+  while IFS= read -r full_line; do
+    # Extract content after filename:lineno:
+    content="${full_line#*:*:}"
+    # Check if content (not path) has arithmetic unit mixing outside calc/clamp
+    if echo "$content" | grep -qE '[\+\-\*\/].*[0-9.]+r?em|r?em.*[\+\-\*\/]' 2>/dev/null; then
+      if ! echo "$content" | grep -q 'calc\|clamp' 2>/dev/null; then
+        echo "$full_line" >> "$TEMP_INVALID"
+      fi
+    fi
+  done < "$TEMP_CANDIDATES"
+fi
+rm -f "$TEMP_CANDIDATES"
 
 if [ -s "$TEMP_INVALID" ]; then
   while IFS=: read -r file line content; do

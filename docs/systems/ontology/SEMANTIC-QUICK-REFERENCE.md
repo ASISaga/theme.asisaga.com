@@ -350,7 +350,7 @@ $font-body-xs: clamp(0.75rem, 0.25vw + 0.5rem, 0.875rem);
 - **Full Documentation**: `docs/SEMANTIC-REFACTOR.md`
 - **SCSS Instructions**: `.github/instructions/scss.instructions.md`
 - **HTML Instructions**: `.github/instructions/html.instructions.md`
-- **Design Tokens**: `_sass/base/_design-tokens.scss`
+- **Design Tokens**: `_sass/base/design/_variables.scss`
 - **Mixins**: `_sass/base/_semantic-mixins.scss`
 - **Bento Engine**: `_sass/layouts/_bento-engine.scss`
 

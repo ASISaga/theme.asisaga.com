@@ -171,7 +171,7 @@ npm run test:scss
 
 1. **Run `npm run test:scss` frequently** during SCSS development for fast feedback
 
-2. **Centralize Definitions**: Keep all mixins in dedicated files like `_sass/base/_semantic-mixins.scss` and variables in `_sass/base/_design-tokens.scss`
+2. **Centralize Definitions**: Keep all mixins in dedicated files like `_sass/base/_semantic-mixins.scss` and variables in `_sass/base/design/_variables.scss`
 
 3. **Import Order Matters**: Ensure mixin and variable files are imported before they are used:
    ```scss
@@ -185,7 +185,7 @@ npm run test:scss
    // From _sass/base/_semantic-mixins.scss
    @include background-cover;
    
-   // From _sass/base/_design-tokens.scss
+   // From _sass/base/design/_variables.scss
    color: $text-primary;
    ```
 

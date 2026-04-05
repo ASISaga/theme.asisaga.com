@@ -110,9 +110,7 @@
 // WEB COMPONENT TEMPLATES
 // ----------------------------------------
 // Dynamically instantiated from _includes/web-component-templates/ via JS
-@import "components/product-card";
-@import "components/testimonial-card";
-@import "components/alert-card";
+@import "components/web-components/index";
 
 // ----------------------------------------
 // INCLUDES STYLES — mirrors _includes/ hierarchy
@@ -151,4 +149,4 @@
 // ----------------------------------------
 // DEMO PAGE STYLES
 // ----------------------------------------
-@import "index-demo";                      // Genesis theme demo page (index.html)
+@import "demo/index-demo";                   // Genesis theme demo page (index.html)

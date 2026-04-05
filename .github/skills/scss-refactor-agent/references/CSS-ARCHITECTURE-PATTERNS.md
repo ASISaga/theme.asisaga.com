@@ -356,7 +356,7 @@ Utilities   → (Avoided - use mixins instead)
 _sass/
 ├── base/                    # Foundation
 │   ├── _reset.scss         # CSS reset
-│   ├── _design-tokens.scss # Sass variables
+│   ├── _variables.scss # ALL Sass variables (shadows, spacing, opacity, tokens)
 │   └── _typography.scss    # Base type styles
 ├── ontology/               # Three-tier system
 │   ├── _index.scss         # Public import

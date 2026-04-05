@@ -41,9 +41,8 @@
 
 // Design Foundation — The DNA
 @import "../base/design/colors";              // OKLCH + semantic color tokens
-@import "../base/design/design-tokens";       // Non-color design tokens and shadows
 @import "../base/design/variables-generated"; // Generated from _design/tokens.json (imported first to allow overrides)
-@import "../base/design/variables";           // Theme-wide Sass variables (extends and overrides generated)
+@import "../base/design/variables";           // Theme-wide Sass variables (includes shadows, opacity, animation tokens)
 @import "../base/design/dimensions";          // Spacing and sizing tokens
 
 // Utilities & Mixins
@@ -53,13 +52,11 @@
 @import "../base/utilities/common";           // Common utility styles
 
 // Typography & Theme
-@import "../base/design/typography";          // Font families and typographic scale
-@import "../base/design/semantic-typography"; // Fluid typography and material primitives
+@import "../base/design/typography";          // Unified typography: fluid scale, sacred families, material primitives
 @import "../base/design/theme";               // Theme-level configuration
 
 // Layout System
 @import "../base/layout/responsive-system";   // Modern breakpoints, container queries
-@import "../base/layout/responsive";          // Responsive utilities
 @import "../base/layout/layout-wrappers";     // Modern layout containers
 @import "../base/layout/layout";              // Base layout structures
 
@@ -87,10 +84,8 @@
 // They ONLY delegate to engines — no CSS properties.
 @import "interface";
 
-// NOTE: theme-layouts (header, footer, navbar, cards) is NOT imported here.
-// Those are theme-specific component implementations, not part of the
-// universal base.  They are imported by _default-bundle.scss which is used
-// by per-layout CSS entry points (assets/css/<layout>.scss).
+// NOTE: Theme-specific components (header, footer, navbar, cards, layouts)
+// are NOT imported here. They are imported by _main.scss (Layer 2).
 
 // ============================================================================
 // EXPORT NOTICE

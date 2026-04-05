@@ -146,4 +146,4 @@ To improve the validator:
 For issues or questions:
 - Check: `/docs/guides/SCSS-UNIT-TESTING.md`
 - Review: `/docs/specifications/fluid-design-unit-compatibility.md`
-- See examples: `_sass/base/design/_semantic-typography.scss`
+- See examples: `_sass/base/design/_typography.scss`

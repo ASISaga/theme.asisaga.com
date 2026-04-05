@@ -8,7 +8,7 @@ This document describes the transformation of the ASI Saga Jekyll Theme into a *
 
 ### 1. Design Tokenization (The DNA)
 
-**File**: `_sass/base/_design-tokens.scss`
+**File**: `_sass/base/design/_variables.scss`
 
 #### OKLCH Primitives
 Replaced HEX/RGB colors with perceptually uniform OKLCH values:
@@ -154,7 +154,7 @@ Components adapt to container size, not viewport:
 
 ### 4. Semantic Typography & Materiality
 
-**File**: `_sass/base/_semantic-typography.scss`
+**File**: `_sass/base/design/_typography.scss`
 
 #### Fluid Typography
 All font sizes use `clamp()` for perfect responsiveness:
@@ -258,7 +258,7 @@ Removed Bootstrap imports:
 // AFTER
 @import "base/design-tokens";      // OKLCH primitives
 @import "base/semantic-mixins";    // Semantic mixins
-@import "base/semantic-typography"; // Fluid typography
+@import "base/design/typography"; // Unified typography (fluid + sacred)
 @import "base/ambient-layer";      // Sentient atmosphere
 @import "layouts/bento-engine";    // Native CSS Grid
 @import "base/bootstrap-compat";   // Temporary compatibility
@@ -378,7 +378,7 @@ Use fluid classes and semantic colors:
 - `.bento-card--elevated` instead of `.card-shadow-lg`
 
 ### 2. Tokens Over Raw Values
-- Always use semantic tokens from `_design-tokens.scss`
+- Always use semantic tokens from `_variables.scss`
 - Never hardcode OKLCH values in components
 - Enables easy theme switching in the future
 

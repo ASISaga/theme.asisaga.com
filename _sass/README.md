@@ -1,100 +1,152 @@
-# SCSS Component System Documentation
+# SCSS Architecture — ASI Saga Design System v2.0
 
-This document provides an overview of the reusable SCSS component system for the ASI Saga website. The component system is designed to reduce duplication, improve maintainability, and leverage Bootstrap's functionality more effectively.
+## Two-Layer Architecture
 
-## Overview
-
-The component system is organized into reusable mixins that generate class-based styles when included in page-specific SCSS files. Components are prefixed by default but allow for custom prefixing when needed.
-
-## How to Use Components
-
-To use a component in a page-specific SCSS file:
-
-```scss
-// Include the component with the default prefix
-@include card-component();
-
-// Or include with a custom prefix
-@include card-component('custom-prefix');
+```
+assets/css/style.scss          ← Jekyll compilation entry point
+├── Layer 1: ontology/index    ← Universal base (fonts, tokens, mixins, effects, ontological API)
+└── Layer 2: _main.scss        ← Theme bundle (components, includes, layouts, demo styles)
 ```
 
-## Available Components
+**Subdomains** import `ontology/index` + a minimal `_main.scss` with only the layouts they need.
 
-### Card Components
-**File:** `_components/_card-component.scss`
+## Directory Structure
 
-- `card-component($prefix: 'card')`: Basic card layout
-- `accent-card-component($prefix: 'card', $border-width, $border-color)`: Card with accent border
-- `featured-card-component($prefix: 'card', $bg-color)`: Card with highlighted styling
+```
+_sass/
+├── _main.scss                   # Layer 2: Full theme bundle (reference implementation)
+├── _test-compile.scss           # SCSS compilation test entry point
+│
+├── base/                        # Foundation layer
+│   ├── _fontawesome.scss        # Font Awesome 6 (vendored in vendor/fontawesome/)
+│   ├── _fonts.scss              # @font-face declarations
+│   ├── _icons.scss              # Icon system configuration
+│   ├── design/                  # Design tokens & visual foundation
+│   │   ├── _colors.scss              # OKLCH + semantic color tokens (centralized)
+│   │   ├── _variables-generated.scss # Generated from _design/tokens.json — DO NOT EDIT
+│   │   ├── _variables.scss           # Theme-wide Sass variables (shadows, opacity, spacing, breakpoints)
+│   │   ├── _dimensions.scss          # Spacing and sizing tokens
+│   │   ├── _typography.scss          # Unified: fluid scale + sacred families + material primitives
+│   │   └── _theme.scss               # Theme-level configuration
+│   ├── effects/                 # Visual effects
+│   │   ├── _animations.scss          # Core keyframe animations
+│   │   ├── _futuristic-effects.scss  # Glassmorphism, glows, gradients
+│   │   └── _ambient-layer.scss       # Sentient ambient atmosphere
+│   ├── layout/                  # Layout system
+│   │   ├── _responsive-system.scss   # Modern breakpoints, container queries, fluid spacing
+│   │   ├── _layout-wrappers.scss     # Layout containers
+│   │   └── _layout.scss              # Base layout structures
+│   └── utilities/               # Sass utilities
+│       ├── _mixins.scss              # Core Sass mixins
+│       ├── _semantic-mixins.scss     # Semantic mixins (buttons, gradients)
+│       ├── _accessibility.scss       # WCAG compliance helpers
+│       └── _common.scss              # Common utility styles
+│
+├── ontology/                    # Ontological Design System
+│   ├── _index.scss              # ⭐ Universal base import
+│   ├── _tokens.scss             # CSS custom properties
+│   ├── _engines.scss            # Engine layer dispatch
+│   ├── _interface.scss          # Public semantic API
+│   ├── engines/                 # 6 ontological engines
+│   │   ├── _atmosphere.scss     # Sensory texture & emotional tone
+│   │   ├── _cognition.scss      # Typography & information intent
+│   │   ├── _entity.scss         # Visual presence & material properties
+│   │   ├── _environment.scss    # Spatial organization & layout
+│   │   ├── _state.scss          # Temporal conditions & system status
+│   │   └── _synapse.scss        # Interactions & navigation
+│   └── samples/                 # Usage examples (not compiled to production)
+│
+├── components/                  # Reusable UI components
+│   ├── core/                    # Core UI: header, footer, navbar, cards
+│   ├── mixins/                  # Component mixins (loaded before implementations)
+│   ├── sections/                # Page sections: hero, CTA, testimonial, timeline
+│   ├── products/                # Product-specific components
+│   ├── sacred/                  # Sacred/consciousness-themed components
+│   ├── specialized/             # Specialized: LinkedIn, base-layout, layout-styles
+│   └── web-components/          # Web component template SCSS (canonical location)
+│       ├── _index.scss          # Aggregates: product-card, testimonial-card, alert-card
+│       ├── _product-card.scss
+│       ├── _testimonial-card.scss
+│       └── _alert-card.scss
+│
+├── includes/                    # Mirrors _includes/ HTML hierarchy
+│   ├── _index.scss              # Aggregates all include SCSS files
+│   ├── [root includes]          # One-to-one with _includes/*.html
+│   ├── components/              # One-to-one with _includes/components/*.html
+│   └── layouts/                 # Include-specific layout styles
+│
+├── layouts/                     # Page layout SCSS (mirrors _layouts/*.html)
+│   ├── _bento-engine.scss       # Native CSS Grid system
+│   ├── _responsive-enhancements.scss  # Cross-layout responsive refinements
+│   └── [20+ layout files]      # app, default, post, article, dashboard, etc.
+│
+├── demo/                        # Demo-only styles (not for subdomains)
+│   ├── _index-demo.scss         # Genesis theme demo page
+│   └── _ontology-demo.scss      # Ontology animations demo
+│
+├── samples/                     # Sample/example SCSS (not compiled)
+│
+└── vendor/                      # Vendored third-party
+    ├── _rfs.scss                # Responsive Font Sizing
+    └── fontawesome/             # Font Awesome 6 Free SCSS
+```
 
-### Image Card Components
-**File:** `_components/_image-card-component.scss`
+## Import Chain
 
-- `image-card-component($prefix: 'card', $img-height)`: Card with image
-- `featured-image-card-component($prefix: 'card', $img-height, $border-color)`: Featured card with image and border
+```
+ontology/_index.scss (Layer 1):
+  0. Base Foundation:  fonts, icons, colors, variables, dimensions
+  1. Utilities:        mixins, semantic-mixins, accessibility, common
+  2. Typography:       unified fluid + sacred typography
+  3. Layout:           responsive-system, layout-wrappers, layout
+  4. Effects:          animations, futuristic-effects, ambient-layer
+  5. Ontology Tokens:  CSS custom properties
+  6. Ontology Engines: atmosphere, cognition, entity, environment, state, synapse
+  7. Ontology API:     public semantic interface
 
-### Section Components
-**File:** `_components/_section-component.scss`
+_main.scss (Layer 2):
+  1. Layout utilities:  bento-engine
+  2. Component mixins:  load before implementations
+  3. Core components:   header, footer, navbar, cards, etc.
+  4. Section components
+  5. Product components
+  6. Sacred components
+  7. Specialized components
+  8. Web components:    web-components/_index.scss
+  9. Includes:          includes/_index.scss (mirrors _includes/)
+  10. Layouts:           all 20+ page layout files
+  11. Demo styles:       demo/_index-demo.scss
+```
 
-- `section-component($prefix: 'section')`: Content section layout
-- `alt-section-component($prefix: 'section', $bg-color)`: Alternate section with background
-- `header-section-component($prefix: 'section')`: Section with header and divider
+## Ontological API
 
-### Layout Components
-**File:** `_components/_layout-component.scss`
+Six semantic categories available after importing `ontology/index`:
 
-- `page-layout($prefix: 'page')`: Basic page layout structure
-- `sidebar-layout($prefix: 'page', $sidebar-width)`: Two-column layout with sidebar
-- `grid-layout($prefix: 'grid', $cols)`: Multi-column grid system
+```scss
+@include genesis-environment($logic);    // Layout: 'distributed', 'focused', 'associative', etc.
+@include genesis-entity($nature);        // Visual: 'primary', 'secondary', 'imperative', etc.
+@include genesis-cognition($intent);     // Typography: 'axiom', 'discourse', 'protocol', etc.
+@include genesis-synapse($vector);       // Interaction: 'navigate', 'execute', 'inquiry', etc.
+@include genesis-state($condition);      // State: 'stable', 'evolving', 'deprecated', etc.
+@include genesis-atmosphere($vibe);      // Atmosphere: 'neutral', 'ethereal', 'void', etc.
+```
 
-### Form Components
-**File:** `_components/_form-component.scss`
+## Testing
 
-- `form-component($prefix: 'form')`: Basic form layout and styling
-- `contact-form-component($prefix: 'contact-form')`: Contact form variation
+```bash
+npm test                        # Run all checks (compilation + units + lint)
+npm run test:scss               # Sass compilation check
+npm run validate:scss:units     # Unit compatibility validation
+npm run lint:scss               # Stylelint code quality
+npm run tokens:build            # Regenerate _variables-generated.scss from tokens.json
+```
 
-### Team Components
-**File:** `_components/_team-component.scss`
+## Key Rules
 
-- `team-component($prefix: 'team')`: Team member profiles grid
-- `alt-team-component($prefix: 'team')`: Alternative team styling with gradient
-
-### Header Components
-**File:** `_components/_header-component.scss`
-
-- `header-component($prefix: 'header')`: Basic page header
-- `gradient-header-component($prefix: 'header', $start-color, $end-color)`: Header with gradient background
-
-### Content Section Components
-**File:** `_components/_content-section-component.scss`
-
-- `content-section-component($prefix: 'content')`: Text-focused content sections
-- `divider-content-section-component($prefix: 'content')`: Content with divider styling
-
-### Hero Components
-**File:** `_components/_hero-component.scss`
-
-- `hero-component($prefix: 'hero')`: Basic hero/banner section
-- `gradient-hero-component($prefix: 'hero', $start-color, $end-color)`: Hero with gradient background
-
-### Products Grid Components
-**File:** `_components/_products-grid-component.scss`
-
-- `products-grid-component($prefix: 'products')`: Products displayed in a grid
-- `featured-products-grid-component($prefix: 'products', $accent-color)`: Products with accent styling
-
-### CTA Components
-**File:** `_components/_cta-component.scss`
-
-- `cta-component($prefix: 'cta')`: Basic call-to-action section
-- `light-cta-component($prefix: 'cta')`: CTA with light gradient background
-- `dark-cta-component($prefix: 'cta')`: CTA with dark background and inverted colors
-
-## Best Practices
-
-1. Use component mixins instead of writing custom CSS wherever possible
-2. Keep page-specific SCSS files minimal by leveraging components
-3. Follow Bootstrap's approach of extending utilities rather than writing custom CSS
-4. Use semantic prefixes that match the content (e.g., 'team', 'product', etc.)
-5. When customizing components, prefer mixin parameters over additional CSS
-6. Maintain consistent naming patterns across components for predictability
+1. **`ontology/index`** imported ONLY in `assets/css/style.scss` — never in `_sass/` partials
+2. **Variables in `_variables.scss`**, generated tokens in `_variables-generated.scss` — no other variable files
+3. **Typography unified in `_typography.scss`** — fluid scale + sacred families + material primitives
+4. **Web component SCSS in `components/web-components/`** — canonical location, no duplicates
+5. **Demo styles in `demo/`** — separated from production code
+6. **No `@extend`** — causes Jekyll build errors
+7. **Max 3 nesting levels**
