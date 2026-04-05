@@ -526,25 +526,7 @@
 // @import url('https://unpkg.com/aos@next/dist/aos.css');
 // AOS CDN: https://unpkg.com/aos@next/dist/aos.css
 
-// --------------------------------------------
-// Animation Duration Variables
-// --------------------------------------------
-$animation-duration-fast: 0.2s;
-$animation-duration-normal: 0.3s;
-$animation-duration-slow: 0.5s;
-$animation-duration-slower: 0.8s;
-$animation-duration-slowest: 1.2s;
-
-// Sacred animation durations
-$animation-duration-sacred: 2s;
-$animation-duration-consciousness: 3s;
-$animation-duration-transcendent: 4s;
-
-// Animation easing variables
-$ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-$ease-out: cubic-bezier(0, 0, 0.2, 1);
-$ease-in: cubic-bezier(0.4, 0, 1, 1);
-$ease-sacred: cubic-bezier(0.23, 1, 0.32, 1);
+// All animation timing token variables are defined in _sass/base/design/_variables.scss.
 
 // --------------------------------------------
 // Animation Mixins - Standardized animations

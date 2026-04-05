@@ -1,0 +1,341 @@
+{
+  "font": {
+    "family": {
+      "consciousness": {
+        "$type": "fontFamily",
+        "$value": "'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif",
+        "$description": "Primary sans-serif for UI and body"
+      },
+      "wisdom": {
+        "$type": "fontFamily",
+        "$value": "'Crimson Text', 'Times New Roman', Georgia, serif",
+        "$description": "Serif for narrative and wisdom text"
+      },
+      "sacred": {
+        "$type": "fontFamily",
+        "$value": "'Montserrat', sans-serif",
+        "$description": "Display font for sacred headings"
+      },
+      "mono": {
+        "$type": "fontFamily",
+        "$value": "'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace",
+        "$description": "Monospace font for code, terminals, and data"
+      }
+    },
+    "weight": {
+      "light": {
+        "$type": "fontWeight",
+        "$value": "300"
+      },
+      "normal": {
+        "$type": "fontWeight",
+        "$value": "400"
+      },
+      "medium": {
+        "$type": "fontWeight",
+        "$value": "500"
+      },
+      "semibold": {
+        "$type": "fontWeight",
+        "$value": "600"
+      },
+      "bold": {
+        "$type": "fontWeight",
+        "$value": "700"
+      },
+      "sacred": {
+        "$type": "fontWeight",
+        "$value": "800",
+        "$description": "Extra-bold for sacred headings"
+      }
+    },
+    "size": {
+      "xs": {
+        "$type": "dimension",
+        "$value": "0.75rem",
+        "$description": "12px — 3× identity.grid"
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "0.875rem",
+        "$description": "14px"
+      },
+      "base": {
+        "$type": "dimension",
+        "$value": "1rem",
+        "$description": "16px — 4× identity.grid (root reference)"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "1.125rem",
+        "$description": "18px — 4.5× identity.grid"
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "1.25rem",
+        "$description": "20px — 5× identity.grid"
+      },
+      "xxl": {
+        "$type": "dimension",
+        "$value": "1.5rem",
+        "$description": "24px — 6× identity.grid"
+      },
+      "3xl": {
+        "$type": "dimension",
+        "$value": "1.875rem",
+        "$description": "30px — 7.5× identity.grid"
+      },
+      "4xl": {
+        "$type": "dimension",
+        "$value": "2.25rem",
+        "$description": "36px — 9× identity.grid"
+      },
+      "5xl": {
+        "$type": "dimension",
+        "$value": "3rem",
+        "$description": "48px — 12× identity.grid"
+      },
+      "genesis": {
+        "$type": "dimension",
+        "$value": "4rem",
+        "$description": "64px — 16× identity.grid — Hero Genesis headlines"
+      },
+      "sacred-lg": {
+        "$type": "dimension",
+        "$value": "1.618rem",
+        "$description": "φ¹ × base — identity.scale × 1rem (Golden Ratio sacred content)"
+      },
+      "sacred-xl": {
+        "$type": "dimension",
+        "$value": "2.618rem",
+        "$description": "φ² × base — identity.scale² × 1rem (Golden Ratio² transcendent headers)"
+      }
+    },
+    "fluid": {
+      "hero": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "2rem",
+          "max": "3.5rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "Hero size — maps to --size-hero CSS custom property"
+      },
+      "title": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "1.5rem",
+          "max": "2.5rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "Section title — maps to --size-title CSS custom property"
+      },
+      "body": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "1rem",
+          "max": "1.125rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "Body prose — maps to --size-body CSS custom property"
+      },
+      "small": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "0.8rem",
+          "max": "0.875rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "Small annotations — maps to --size-small CSS custom property"
+      },
+      "tiny": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "0.75rem",
+          "max": "0.8rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "Tiny labels, chips — maps to --size-tiny CSS custom property"
+      },
+      "data": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "0.875rem",
+          "max": "0.95rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "Code / data fragments — maps to --size-data CSS custom property"
+      },
+      "button": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "0.95rem",
+          "max": "1.05rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "Button labels — maps to --size-button CSS custom property"
+      },
+      "h1": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "2.5rem",
+          "max": "4rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "h1 — top-level heading (40–64px)"
+      },
+      "h2": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "2rem",
+          "max": "3rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "h2 — section heading (32–48px)"
+      },
+      "h3": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "1.5rem",
+          "max": "2.25rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "h3 — subsection heading (24–36px)"
+      },
+      "h4": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "1.25rem",
+          "max": "1.875rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "h4 — card heading (20–30px)"
+      },
+      "h5": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "1.125rem",
+          "max": "1.5rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "h5 — sidebar heading (18–24px)"
+      },
+      "h6": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "1rem",
+          "max": "1.25rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "h6 — label heading (16–20px)"
+      },
+      "body-lg": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "1.125rem",
+          "max": "1.25rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "Large body text (18–20px)"
+      },
+      "body-sm": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "0.875rem",
+          "max": "1rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "Small body text (14–16px)"
+      },
+      "body-xs": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "0.75rem",
+          "max": "0.875rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "Extra-small body text (12–14px)"
+      },
+      "display-xl": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "3.5rem",
+          "max": "6rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "Display XL — genesis hero (56–96px)"
+      },
+      "display-lg": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "3rem",
+          "max": "5rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "Display LG — landing hero (48–80px)"
+      },
+      "display-md": {
+        "$type": "fluid-typography",
+        "$value": {
+          "min": "2.5rem",
+          "max": "4rem",
+          "minVP": "20rem",
+          "maxVP": "90rem"
+        },
+        "$description": "Display MD — section hero (40–64px)"
+      }
+    }
+  },
+  "line-height": {
+    "tight": {
+      "$type": "lineHeight",
+      "$value": "1.25"
+    },
+    "normal": {
+      "$type": "lineHeight",
+      "$value": "1.5"
+    },
+    "relaxed": {
+      "$type": "lineHeight",
+      "$value": "1.75"
+    },
+    "transcendent": {
+      "$type": "lineHeight",
+      "$value": "2",
+      "$description": "Meditative, flowing content"
+    },
+    "sacred": {
+      "$type": "lineHeight",
+      "$value": "{identity.scale}",
+      "$description": "φ — identity.scale (Golden Ratio for sacred content)"
+    },
+    "consciousness": {
+      "$type": "lineHeight",
+      "$value": "1.75",
+      "$description": "Spacious for contemplation"
+    },
+    "wisdom": {
+      "$type": "lineHeight",
+      "$value": "1.6",
+      "$description": "Optimal for sustained reading"
+    }
+  }
+}

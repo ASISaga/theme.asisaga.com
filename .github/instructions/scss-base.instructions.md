@@ -18,7 +18,7 @@ base/
 ├── _icons.scss                # Icon system configuration
 ├── design/                    # Design tokens & visual foundation
 │   ├── _colors.scss           # OKLCH + semantic color tokens (centralized)
-│   ├── _variables-generated.scss  # ⚠️ Generated from _design/tokens.json — DO NOT EDIT
+│   ├── _variables-generated.scss  # ⚠️ Generated from _design/tokens/*.json — DO NOT EDIT
 │   ├── _variables.scss        # Theme-wide Sass variables
 │   ├── _dimensions.scss       # Spacing and sizing tokens
 │   ├── _typography.scss       # Unified: fluid scale + sacred families
@@ -77,7 +77,7 @@ base/
 - WCAG accessibility utilities in `utilities/_accessibility.scss`
 - Legacy Bootstrap-compatible classes in `utilities/_legacy-utilities.scss`
 
-→ **Token specification**: `_design/tokens.json`  
+→ **Token specification**: `_design/tokens/` (split files)  
 → **Token build**: `npm run tokens:build`  
 → **Color system**: `/docs/specifications/color-system.md`  
 → **Typography**: `/docs/specifications/typography.md`  

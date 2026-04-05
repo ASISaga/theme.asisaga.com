@@ -6,21 +6,7 @@
 // Icons are loaded from the npm package via _sass/base/_fontawesome.scss
 // which is imported by _sass/ontology/_index.scss
 
-// --------------------------------------------
-// Icon Size Variables (from dimensions)
-// --------------------------------------------
-$icon-size-xs: 0.75rem;
-$icon-size-sm: 1rem;
-$icon-size-md: 1.5rem;
-$icon-size-lg: 2rem;
-$icon-size-xl: 3rem;
-$icon-size-2xl: 4rem;
-$icon-size-3xl: 5rem;
-
-// Sacred icon sizes
-$icon-size-hero: 6rem;
-$icon-size-feature: 4rem;
-$icon-size-small: 2rem;
+// All icon-size token variables are defined in _sass/base/design/_dimensions.scss.
 
 // --------------------------------------------
 // Icon Mixins - Standardized icon styling

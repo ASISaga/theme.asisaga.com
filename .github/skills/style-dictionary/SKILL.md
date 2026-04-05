@@ -13,7 +13,7 @@ allowed-tools: Bash(node:*) Bash(npx:*) Read Edit
 # Style Dictionary Skill
 
 **Role**: Design Token Translation Specialist  
-**Scope**: Bidirectional translation between `_design/tokens.json` (DTCG format) and `_variables.scss`  
+**Scope**: Bidirectional translation between `_design/tokens/` (DTCG format, split files) and `_variables.scss`  
 **Version**: 2.2
 
 ## Purpose
@@ -48,7 +48,7 @@ The token source (`_design/tokens.json`) uses the **Design Token Community Group
 
 ### 1. Tokens → SCSS (Forward, via Style Dictionary)
 
-Update `_design/tokens.json` with new or changed values, then generate the SCSS output:
+Edit the appropriate file in `_design/tokens/` with new or changed values, then generate the SCSS output:
 
 ```bash
 # Generate _variables-generated.scss from _design/tokens.json (staged output for review)
@@ -177,7 +177,7 @@ npm test                   # Full suite
 ## Related Documentation
 
 → **Style Dictionary v4 config**: `.github/skills/style-dictionary/sd.config.mjs`  
-→ **Design token source**: `_design/tokens.json`  
+→ **Design token source**: `_design/tokens/` (split files)  
 → **Token guide**: `.github/skills/style-dictionary/references/TOKEN-GUIDE.md`  
 → **SCSS variables**: `_sass/base/design/_variables.scss`  
 → **Color definitions**: `_sass/base/design/_colors.scss`  

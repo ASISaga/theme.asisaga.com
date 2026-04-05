@@ -217,6 +217,23 @@ rules:
   import-notation: null  # Allow both url() and string notation for @import
   no-duplicate-selectors: null  # Allow duplicate selectors (may be intentional for specificity)
 
+  # ========================================
+  # DESIGN TOKEN ENFORCEMENT
+  # ========================================
+  # Disallow $variable declarations outside the designated design directories.
+  # Token variables must live in _sass/base/** (design, layout, effects) or
+  # _sass/ontology/** (engine internals).  All other files must only consume
+  # variables, never define them.
+  scss/no-dollar-variables: true
+
+# Path-based overrides — allow $variable declarations only in the design token directory.
+# All Sass variables must be declared in _sass/base/design/; all other files consume them.
+overrides:
+  - files:
+      - "_sass/base/design/**/*.scss"
+    rules:
+      scss/no-dollar-variables: null
+
 # Ignore patterns
 ignoreFiles:
   - "node_modules/**"

@@ -11,12 +11,10 @@
  *   - MCP Apps panel + toggle badge
  *   - Loading overlay, animations, and responsive overrides
  *
- * Color tokens: _chatroom-tokens.scss
+ * Color tokens: _sass/base/design/_colors.scss § SECTION 8 ($boardroom-*)
  * JavaScript:   assets/js/chatroom-app.js
  * Data:         _data/chatroom/<name>.yml
  */
-
-@import "chatroom-tokens";
 
 // ============================================================================
 // PAGE-LEVEL VIEWPORT
