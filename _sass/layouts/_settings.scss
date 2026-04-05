@@ -94,7 +94,7 @@
   padding-top: 0.5rem;
 
   &:not(:first-child) {
-    border-top: 1px solid oklch(0.5 0 0 / 0.08);
+    border-top: 1px solid $color-neutral-alpha-faint;
     padding-top: 1rem;
   }
 }
@@ -119,13 +119,13 @@
 .settings-form__input {
   @include genesis-entity('secondary');
   padding: 0.5rem 0.75rem;
-  border: 1px solid oklch(0.5 0 0 / 0.15);
+  border: 1px solid $color-neutral-alpha-medium;
   border-radius: 0.375rem;
   font: inherit;
   background: transparent;
 
   &:focus {
-    outline: 2px solid oklch(0.6 0.15 250);
+    outline: 2px solid $state-focus-outline;
     outline-offset: -1px;
   }
 }
@@ -184,7 +184,7 @@
   padding-block: 0.75rem;
 
   &:not(:last-child) {
-    border-bottom: 1px solid oklch(0.5 0 0 / 0.08);
+    border-bottom: 1px solid $color-neutral-alpha-faint;
   }
 }
 
@@ -208,7 +208,7 @@
   @include genesis-cognition('quantum');
 
   &--active {
-    color: oklch(0.6 0.15 145);
+    color: $color-status-success-text;
   }
 }
 

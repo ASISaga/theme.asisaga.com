@@ -87,7 +87,7 @@
   padding-block: clamp(1rem, 2vw, 1.5rem);
 
   &:not(:last-child) {
-    border-bottom: 1px solid oklch(0.5 0 0 / 0.1);
+    border-bottom: 1px solid $color-neutral-alpha-light;
   }
 }
 

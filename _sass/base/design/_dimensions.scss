@@ -35,6 +35,8 @@ $border-width-separator: 1px;
 // $font-size-2xl provides a 32px step between xxl (24px) and 3xl (30px) for display contexts.
 $font-size-md: $font-size-lg;   // 18px — alias (= font-size-lg) for legacy dimensions naming
 $font-size-2xl: 2rem;           // 32px — display step between xxl and 3xl
+$font-size-tiny: 0.65rem;       // 10.4px — micro labels, badge chips, and compact UI indicators only.
+                                // NOTE: 10.4px < 12px WCAG minimum — must NOT be used for body text or essential information.
 
 
 // --------------------------------------------
