@@ -7,26 +7,6 @@
  * MCP apps button: _sass/includes/chatroom/_mcp-apps.scss
  */
 
-// Chatroom header uses .chatroom-header selectors — see _chatroom.scss
-// This file documents the include–SCSS correspondence.
-.chatroom-header {
-  .chatroom-header-content {
-    @include genesis-environment('associative'); // Left + right row
-  }
-
-  .chatroom-title {
-    @include genesis-cognition('axiom');         // Boardroom title
-  }
-
-  .chatroom-participants {
-    @include genesis-cognition('gloss');         // Agent count metadata
-  }
-
-  .chatroom-status {
-    @include genesis-cognition('quantum');       // Connection status badge
-  }
-
-  .chatroom-settings-btn {
-    @include genesis-synapse('execute');         // Settings action
-  }
-}
+// All header styles live in _sass/layouts/_chatroom.scss and
+// _sass/components/specialized/_chatroom.scss.
+// This file exists as a correspondence marker.
