@@ -226,11 +226,11 @@ rules:
   # variables, never define them.
   scss/no-dollar-variables: true
 
-# Path-based overrides — allow $variable declarations inside designated design directories
+# Path-based overrides — allow $variable declarations only in the design token directory.
+# All Sass variables must be declared in _sass/base/design/; all other files consume them.
 overrides:
   - files:
-      - "_sass/base/**/*.scss"
-      - "_sass/ontology/**/*.scss"
+      - "_sass/base/design/**/*.scss"
     rules:
       scss/no-dollar-variables: null
 
