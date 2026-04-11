@@ -1,19 +1,2 @@
-/**
- * Minimal Base Layout Styles - Ontology-Based
- * ============================================================================
- * Utility or lightweight pages with minimal chrome.
- * Mirrors HTML structure and uses Genesis Semantic Design System internally.
- * 
- * This file matches the classes in _layouts/minimal-base.html:
- * - <div class="minimal-layout">
- */
-
-
-// Minimal layout container - lightweight wrapper
-// Applied to wrapper div in minimal-base.html
-.minimal-layout {
-  @include genesis-environment('focused');    // Single column reading
-  @include genesis-atmosphere('ethereal');    // Light, minimal vibe
-  
-  width: 100%;
-}
+// Canonical implementation: _sass/ontology/mixins/_layout-minor-components.scss
+@include layout-minimal-base-component;

@@ -64,6 +64,17 @@
 @import "ontology/mixins/sacred-components";
 @import "ontology/mixins/web-card-components";
 
+// Layout component mixins — extracted from _sass/layouts/
+@import "ontology/mixins/layout-chatroom-component";
+@import "ontology/mixins/layout-settings-component";
+@import "ontology/mixins/layout-search-component";
+@import "ontology/mixins/layout-dashboard-component";
+@import "ontology/mixins/layout-landing-component";
+@import "ontology/mixins/layout-splash-component";
+@import "ontology/mixins/layout-minimal-component";
+@import "ontology/mixins/layout-app-component";
+@import "ontology/mixins/layout-minor-components";
+
 // ----------------------------------------
 // CORE COMPONENTS — present on every page
 // ----------------------------------------

@@ -1,0 +1,72 @@
+// ============================================================================
+// LAYOUT SPLASH COMPONENT MIXIN
+// ============================================================================
+// Extracted from _sass/layouts/_splash.scss
+// Coming soon/launch page with countdown and email capture.
+// ============================================================================
+
+@mixin layout-splash-component {
+
+  .splash-layout-content {
+    @include genesis-environment('focused');
+    @include genesis-atmosphere('vibrant');
+    min-height: 75vh;
+    @include flex-center;
+    @include text-align-center;
+  }
+
+  .splash__logo {
+    @include genesis-entity('primary');
+    max-width: 200px;
+    @include margin-inline-auto;
+  }
+
+  .splash__title {
+    @include genesis-cognition('axiom');
+  }
+
+  .splash__subtitle {
+    @include genesis-cognition('discourse');
+  }
+
+  .splash__countdown {
+    @include genesis-environment('associative');
+  }
+
+  .splash__countdown-item {
+    @include genesis-state('evolving');
+    @include text-align-center;
+  }
+
+  .splash__countdown-value {
+    @include genesis-cognition('axiom');
+  }
+
+  .splash__countdown-label {
+    @include genesis-cognition('gloss');
+  }
+
+  .splash__email-form {
+    @include genesis-environment('associative');
+    @include genesis-synapse('input-primary');
+    max-width: 500px;
+    @include margin-inline-auto;
+    @include flex-row(0.5rem);
+  }
+
+  .splash__email-input {
+    @include genesis-synapse('input-primary');
+  }
+
+  .splash__email-button {
+    @include genesis-synapse('execute');
+  }
+
+  .splash__social {
+    @include genesis-environment('associative');
+  }
+
+  .splash__social-link {
+    @include genesis-synapse('social');
+  }
+}

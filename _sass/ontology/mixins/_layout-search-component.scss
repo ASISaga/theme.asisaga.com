@@ -1,0 +1,126 @@
+// ============================================================================
+// LAYOUT SEARCH COMPONENT MIXIN
+// ============================================================================
+// Extracted from _sass/layouts/_search.scss
+// Search interface with filters and results.
+// ============================================================================
+
+@mixin layout-search-component {
+
+  .search-layout {
+    @include genesis-environment('chronological');
+    @include genesis-atmosphere('neutral');
+    @include full-height;
+    @include flex-column;
+  }
+
+  .search__header {
+    // Structural section: transparent, layout-only
+  }
+
+  .search__form {
+    @include genesis-synapse('inquiry');
+    @include genesis-environment('associative');
+  }
+
+  .search__input-group {
+    @include genesis-environment('associative');
+  }
+
+  .search__input {
+    @include genesis-synapse('input-primary');
+  }
+
+  .search__submit {
+    @include genesis-synapse('execute');
+  }
+
+  .search__count {
+    @include genesis-cognition('gloss');
+  }
+
+  .search__sidebar {
+    @include genesis-environment('chronological');
+  }
+
+  .search__filters-title {
+    @include genesis-cognition('motive');
+  }
+
+  .search__filter-group {
+    @include genesis-environment('chronological');
+  }
+
+  .search__filter-title {
+    @include genesis-cognition('motive');
+  }
+
+  // ==========================================================================
+  // Sample content classes (used by sample-search.html and subdomain pages)
+  // ==========================================================================
+
+  .search-results-list {
+    @include flex-column;
+  }
+
+  .search-result {
+    padding-block: clamp(1rem, 2vw, 1.5rem);
+
+    &:not(:last-child) {
+      @include border-separator-bottom($color-neutral-alpha-light);
+    }
+  }
+
+  .search-result__title {
+    @include genesis-cognition('motive');
+    @include margin-reset;
+
+    a {
+      @include genesis-synapse('navigate');
+      @include text-decoration-none;
+    }
+  }
+
+  .search-result__meta {
+    @include genesis-cognition('gloss');
+    @include flex-row-wrap(1rem);
+    margin-top: 0.25rem;
+    opacity: 0.6;
+
+    i {
+      margin-right: 0.25rem;
+    }
+  }
+
+  .search-result__excerpt {
+    @include genesis-cognition('discourse');
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  // Pagination
+  .search-pagination {
+    @include flex-row(0.25rem);
+    justify-content: center;
+    padding-top: clamp(1rem, 3vw, 2rem);
+  }
+
+  .search-pagination__link {
+    @include genesis-synapse('navigate');
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    @include text-decoration-none;
+
+    &--active {
+      font-weight: 700;
+    }
+
+    &--disabled {
+      opacity: 0.4;
+      @include pointer-events-none;
+    }
+  }
+}

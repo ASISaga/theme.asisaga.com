@@ -1,0 +1,226 @@
+// ============================================================================
+// LAYOUT MINOR COMPONENTS MIXIN
+// ============================================================================
+// Combined mixin file for layouts with minimal raw CSS (1-6 properties).
+// Each layout gets its own mixin for clean @include usage.
+// ============================================================================
+
+// Article layout — 1 raw CSS property (align-items)
+@mixin layout-article-component {
+
+  .article-layout {
+    @include genesis-environment('associative');
+    @include genesis-atmosphere('neutral');
+    align-items: flex-start;
+  }
+
+  .article-toc-sidebar {
+    @include genesis-environment('chronological');
+  }
+
+  .article-toc-title {
+    @include genesis-cognition('motive');
+  }
+
+  .article-main-col {
+    @include genesis-environment('focused');
+  }
+
+  .article__header {
+    // Structural section: transparent, layout-only
+  }
+
+  .article__title {
+    @include genesis-cognition('axiom');
+  }
+
+  .article__subtitle {
+    @include genesis-cognition('discourse');
+  }
+
+  .article__meta {
+    @include genesis-environment('associative');
+  }
+
+  .article__meta-date,
+  .article__meta-author,
+  .article__meta-reading-time {
+    @include genesis-cognition('gloss');
+  }
+
+  .article__footer {
+    // Structural section: transparent, layout-only
+  }
+
+  .article__footer-title {
+    @include genesis-cognition('motive');
+  }
+}
+
+// Default layout — 6 raw CSS properties
+@mixin layout-default-component {
+
+  .layout-container {
+    @include genesis-atmosphere('neutral');
+    @include flex-column;
+    min-height: 100vh;
+    @include full-width;
+
+    &.high-contrast {
+      // High contrast mode styles if needed
+    }
+  }
+
+  .skip-link {
+    @include genesis-synapse('anchor');
+    @include genesis-state('stable');
+  }
+
+  .page-content {
+    flex: 1 0 auto;
+    @include full-width;
+  }
+}
+
+// Fixed-height layout — 4 raw CSS properties
+@mixin layout-fixed-height-component {
+
+  .fixed-height-layout {
+    @include genesis-environment('chronological');
+    @include genesis-atmosphere('neutral');
+    @include flex-column;
+    height: calc(100vh - 200px);
+    @include overflow-hidden;
+  }
+}
+
+// Gallery layout — 1 raw CSS property (text-align)
+@mixin layout-gallery-component {
+
+  .gallery-layout {
+    @include genesis-environment('chronological');
+    @include genesis-atmosphere('neutral');
+  }
+
+  .gallery__header {
+    @include text-align-center;
+  }
+
+  .gallery__title {
+    @include genesis-cognition('axiom');
+  }
+
+  .gallery__description {
+    @include genesis-cognition('discourse');
+  }
+
+  .gallery__filters {
+    @include genesis-environment('associative');
+  }
+
+  .gallery__filter {
+    @include genesis-synapse('toggle');
+    @include genesis-state('stable');
+
+    &--active {
+      @include genesis-state('active');
+    }
+  }
+}
+
+// Minimal-base layout — 1 raw CSS property (width)
+@mixin layout-minimal-base-component {
+
+  .minimal-layout {
+    @include genesis-environment('focused');
+    @include genesis-atmosphere('ethereal');
+    @include full-width;
+  }
+}
+
+// Profile layout — 1 raw CSS property (text-align)
+@mixin layout-profile-component {
+
+  .profile-layout {
+    @include genesis-environment('chronological');
+    @include genesis-atmosphere('neutral');
+  }
+
+  .profile__header {
+    @include text-align-center;
+  }
+
+  .profile__avatar {
+    @include genesis-entity('avatar');
+
+    &--placeholder {
+      @include genesis-state('latent');
+    }
+  }
+
+  .profile__info {
+    @include genesis-environment('chronological');
+  }
+
+  .profile__name {
+    @include genesis-cognition('axiom');
+  }
+
+  .profile__role {
+    @include genesis-cognition('discourse');
+  }
+
+  .profile__bio {
+    @include genesis-cognition('discourse');
+  }
+
+  .profile__social {
+    @include genesis-environment('associative');
+  }
+
+  .profile__social-link {
+    @include genesis-synapse('social');
+  }
+
+  .profile__main {
+    @include genesis-environment('associative');
+  }
+
+  .profile__sidebar {
+    // Structural sidebar: transparent, layout-only
+  }
+
+  .profile__stats {
+    @include genesis-environment('distributed');
+  }
+
+  .profile__stats-title {
+    @include genesis-cognition('motive');
+  }
+
+  .profile__skills {
+    @include genesis-environment('associative');
+  }
+
+  .profile__skills-title {
+    @include genesis-cognition('motive');
+  }
+
+  .profile__skills-list {
+    @include genesis-environment('associative');
+  }
+
+  .profile__skills-badge {
+    @include genesis-cognition('quantum');
+  }
+}
+
+// Scrollable layout — 1 raw CSS property (width)
+@mixin layout-scrollable-component {
+
+  .scrollable-layout {
+    @include genesis-environment('chronological');
+    @include genesis-atmosphere('neutral');
+    @include full-width;
+  }
+}
