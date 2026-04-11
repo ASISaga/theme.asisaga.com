@@ -3,7 +3,7 @@
  * 
  * Namespace:
  *   HTML:  _includes/web-component-templates/testimonial-card.html
- *   SCSS:  _sass/components/_testimonial-card.scss
+ *   SCSS:  _sass/includes/web-components/_testimonial-card.scss
  *   JS:    assets/js/components/testimonial-card.js
  * 
  * Usage:

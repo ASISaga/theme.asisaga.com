@@ -834,7 +834,7 @@ Specific page layouts can still apply their own width constraints when appropria
 **Wide Layouts** (max-width: 1600px):
 - `.settings-wrapper`, `.docs-wrapper`
 
-These constraints are defined in `_sass/base/_layout-wrappers.scss` and include:
+These constraints are defined in `_sass/ontology/foundation/_layout-wrappers.scss` and include:
 - Responsive padding: `clamp(1rem, 3vw, 2rem)`
 - Auto-centering: `margin-inline: auto`
 - Layout containment: `contain: layout style`
@@ -878,7 +878,7 @@ To create full-width content in a subdomain:
 - `.content-wrapper` has `width: 100%`
 - Result: Full viewport width unless layout-specific wrapper applies constraint
 
-Individual page layouts that need width constraints already have them through their specific wrapper classes in `_sass/base/_layout-wrappers.scss`.
+Individual page layouts that need width constraints already have them through their specific wrapper classes in `_sass/ontology/foundation/_layout-wrappers.scss`.
 
 ## Related Documentation
 

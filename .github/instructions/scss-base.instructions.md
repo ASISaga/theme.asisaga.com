@@ -1,13 +1,13 @@
 ---
-applyTo: "_sass/base/**"
-description: "Standards for the foundation layer in _sass/base/"
+applyTo: "_sass/ontology/foundation/**"
+description: "Standards for the foundation layer in _sass/ontology/foundation/"
 ---
 
 # Base Foundation Instructions
 
 ## Canonical Purpose
 
-`_sass/base/` is the **foundation layer** — design tokens, fonts, utilities, effects, and layout primitives. These files are imported by `ontology/_index.scss` as the universal base.
+`_sass/ontology/foundation/` is the **foundation layer** — design tokens, fonts, utilities, effects, and layout primitives. These files are imported by `ontology/_index.scss` as the universal base.
 
 ## Directory Structure
 

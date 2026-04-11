@@ -148,7 +148,7 @@ When refactoring color values to ontological tokens:
 - ✅ Standalone files with `---` frontmatter
 
 **DON'T import in:**
-- ❌ `_sass/components/` partials (ontology already imported by `assets/css/style.scss`)
+- ❌ `_sass/includes/` partials (ontology already imported by `assets/css/style.scss`)
 - ❌ `_sass/layouts/` partials (creates 22MB bloat)
 
 → **Import guide**: `.github/instructions/scss.instructions.md`

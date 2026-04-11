@@ -69,7 +69,7 @@ Error: Undefined variable.
 10 │   background-color: $gray-100;
    │                     ^^^^^^^^^
    ╵
-  _sass/components/_testimonial.scss 10:21
+  _sass/includes/sections/_testimonial.scss 10:21
 ```
 
 **Error (missing mixin parameter):**
@@ -102,7 +102,7 @@ npm test
 #### During Development
 ```bash
 # Make SCSS changes
-vim _sass/components/my-component.scss
+vim _sass/includes/core/my-component.scss
 
 # Test compilation (fast feedback)
 npm run test:scss
@@ -171,7 +171,7 @@ npm run test:scss
 
 1. **Run `npm run test:scss` frequently** during SCSS development for fast feedback
 
-2. **Centralize Definitions**: Keep all mixins in dedicated files like `_sass/base/_semantic-mixins.scss` and variables in `_sass/base/design/_variables.scss`
+2. **Centralize Definitions**: Keep all mixins in dedicated files like `_sass/ontology/foundation/utilities/_semantic-mixins.scss` and variables in `_sass/ontology/foundation/design/_variables.scss`
 
 3. **Import Order Matters**: Ensure mixin and variable files are imported before they are used:
    ```scss
@@ -182,10 +182,10 @@ npm run test:scss
 
 4. **Comment Complex Usage**: Add comments explaining which file defines mixins/variables:
    ```scss
-   // From _sass/base/_semantic-mixins.scss
+   // From _sass/ontology/foundation/utilities/_semantic-mixins.scss
    @include background-cover;
    
-   // From _sass/base/design/_variables.scss
+   // From _sass/ontology/foundation/design/_variables.scss
    color: $text-primary;
    ```
 

@@ -36,7 +36,7 @@ Generated Site
 
 **2. Complete SCSS System**
 - Ontological design system (`_sass/ontology/`)
-- Components (`_sass/components/`)
+- Components (`_sass/includes/`)
 - Layouts (`_sass/layouts/`)
 - Main component bundle (`_sass/_main.scss`)
 - Main stylesheet entry (`assets/css/style.scss`)

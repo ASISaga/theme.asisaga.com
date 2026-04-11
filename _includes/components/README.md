@@ -16,7 +16,7 @@ Each web component follows a consistent naming convention across all three techn
 
 ```
 HTML Template:  _includes/components/component-name.html
-SCSS Styling:   _sass/components/_component-name.scss
+SCSS Styling:   _sass/includes/_component-name.scss
 JavaScript:     assets/js/components/component-name.js
 ```
 
@@ -61,7 +61,7 @@ document.querySelector('.container').appendChild(instance);
 1. Create HTML template file in this directory
 2. Use `<template id="template-name">` wrapper
 3. Use semantic class names with BEM pattern
-4. Create matching SCSS in `_sass/components/`
+4. Create matching SCSS in `_sass/includes/`
 5. Create matching JavaScript helper in `assets/js/components/`
 6. Add to `template-loader.html` include
 7. Document in this README

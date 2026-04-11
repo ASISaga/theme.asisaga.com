@@ -123,9 +123,9 @@ _common.scss (entry point)
 
 #### File Organization
 
-- `_sass/base/`: Foundation styles, variables, mixins
+- `_sass/ontology/foundation/`: Foundation styles, variables, mixins
 - `_sass/bootstrap/`: Bootstrap source (imported as-is)
-- `_sass/components/`: UI component styles
+- `_sass/includes/`: UI component styles
 - `_sass/layouts/`: Layout-specific styles
 - `_sass/fontawesome/`: Font Awesome source
 
@@ -283,7 +283,7 @@ Features are layered:
 
 ### Adding New Components
 1. Create include file in `_includes/`
-2. Create SCSS partial in `_sass/components/`
+2. Create SCSS partial in `_sass/includes/`
 3. Import SCSS in `_common.scss`
 4. Document component API (parameters)
 5. Add usage examples

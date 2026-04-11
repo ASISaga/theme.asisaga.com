@@ -20,7 +20,7 @@
     
     &-grid {
       @include genesis-environment('distributed');
-      @include genesis-atmosphere('dense-desktop');
+      @include genesis-environment('dense-grid');
     }
     
     &-item {

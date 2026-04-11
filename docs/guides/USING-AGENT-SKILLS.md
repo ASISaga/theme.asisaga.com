@@ -75,19 +75,19 @@ The theme repository includes **6 specialized agent skills** for different aspec
 
 ### Files Refactored Using scss-refactor-agent
 
-#### ✅ _sass/components/core/_navbar.scss
+#### ✅ _sass/includes/core/_navbar.scss
 **Before**: 98 lines with raw CSS (display, flex, width, gap, margin, padding, list-style)
 **After**: 56 lines with ONLY ontological mixins
 **Removed**: All raw CSS properties
 **Compliance**: 100% zero-CSS compliant
 
-#### ✅ _sass/components/core/_cards.scss
+#### ✅ _sass/includes/core/_cards.scss
 **Before**: 64 lines with mixed ontology/raw CSS
 **After**: 60 lines with ONLY ontological mixins
 **Enhanced**: Better variant naming, clearer documentation
 **Compliance**: 100% zero-CSS compliant
 
-#### ✅ _sass/components/core/_back-to-top.scss
+#### ✅ _sass/includes/core/_back-to-top.scss
 **Before**: 17 lines (already mostly ontological)
 **After**: 20 lines with enhanced documentation
 **Compliance**: 100% zero-CSS compliant (was already good)
@@ -96,9 +96,9 @@ The theme repository includes **6 specialized agent skills** for different aspec
 
 These were created using agent methodology from the start:
 
-- ✅ `_sass/components/core/_genesis-core.scss` (3.8KB)
-- ✅ `_sass/components/core/_genesis-header.scss` (5.4KB)
-- ✅ `_sass/components/core/_genesis-footer.scss` (6.1KB)
+- ✅ `_sass/includes/core/_genesis-core.scss` (3.8KB)
+- ✅ `_sass/includes/core/_genesis-header.scss` (5.4KB)
+- ✅ `_sass/includes/core/_genesis-footer.scss` (6.1KB)
 
 ---
 

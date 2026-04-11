@@ -1,0 +1,249 @@
+---
+layout: default
+title: "Ontology Role Adherence Test"
+description: "Validates strict mixin role separation across all 6 ontology engines"
+---
+
+<!-- 
+  ONTOLOGY ROLE ADHERENCE TEST
+  ============================================================================
+  Tests each engine's output is confined to its declared role.
+  Validates no cross-role visual contribution at both desktop and mobile widths.
+  
+  Each section explicitly documents which engine owns which visual concern.
+-->
+
+<div class="role-adherence-test-container">
+
+  <!-- ================================================================== -->
+  <!-- TEST 1: Environment — Layout Only (no color, no typography) -->
+  <!-- ================================================================== -->
+  <section>
+    <h2>Test 1: Environment Variants (Layout Only)</h2>
+    <p>Environment should only set display, grid/flex, gap, max-width. No color, font, border, shadow.</p>
+
+    <h3>distributed</h3>
+    <div class="env-test-distributed">
+      <div class="env-child">A</div>
+      <div class="env-child">B</div>
+      <div class="env-child">C</div>
+      <div class="env-child">D</div>
+    </div>
+
+    <h3>focused</h3>
+    <div class="env-test-focused">
+      <div class="env-child">Focused single-column content area</div>
+    </div>
+
+    <h3>viewport-hero (promoted from atmosphere)</h3>
+    <div class="env-test-viewport-hero">
+      <div class="env-child">Centered flex content in full viewport height</div>
+    </div>
+
+    <h3>dense-grid (promoted from atmosphere)</h3>
+    <div class="env-test-dense-grid">
+      <div class="env-child">1</div>
+      <div class="env-child">2</div>
+      <div class="env-child">3</div>
+      <div class="env-child">4</div>
+      <div class="env-child">5</div>
+      <div class="env-child">6</div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- TEST 2: Entity — Surface Only (padding, border, border-radius) -->
+  <!-- ================================================================== -->
+  <section>
+    <h2>Test 2: Entity Variants (Surface Only)</h2>
+    <p>Entity should set padding, border, border-radius, background. No display/flex/grid, no font, no hover, no transition.</p>
+
+    <div class="entity-test-primary">
+      <span>primary: elevated surface with border and padding</span>
+    </div>
+    <div class="entity-test-secondary">
+      <span>secondary: supporting surface</span>
+    </div>
+    <div class="entity-test-imperative">
+      <span>imperative: urgent visual weight</span>
+    </div>
+    <div class="entity-test-editorial">
+      <span>editorial: content-focused surface (no hover — hover is synapse territory)</span>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- TEST 3: Cognition — Typography Only (font-size, weight, family) -->
+  <!-- ================================================================== -->
+  <section>
+    <h2>Test 3: Cognition Variants (Typography Only)</h2>
+    <p>Cognition should set font-size, font-weight, font-family, line-height, color. Protocol/quantum also set background/padding/border as self-contained Level 4 leaf elements.</p>
+
+    <div class="cog-test-axiom">Axiom — Bold headline statement</div>
+    <div class="cog-test-discourse">Discourse — Body prose for reading</div>
+    <div class="cog-test-protocol"><code>Protocol — Code/technical data</code></div>
+    <div class="cog-test-gloss">Gloss — Small supporting annotation</div>
+    <div class="cog-test-motive">Motive — Emphasized instruction</div>
+    <div class="cog-test-quantum"><span>Quantum — Compact tag/chip</span></div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- TEST 4: Synapse — Interaction Only (hover, focus, cursor) -->
+  <!-- ================================================================== -->
+  <section>
+    <h2>Test 4: Synapse Variants (Interaction — Self-Contained at Level 4)</h2>
+    <p>Synapse is self-contained at leaf level. Sets interaction feedback plus necessary visual context for interactive elements.</p>
+
+    <div class="synapse-test-row">
+      <a href="#" class="syn-test-navigate">navigate — Link</a>
+      <button class="syn-test-execute">execute — Action</button>
+      <button class="syn-test-inquiry">inquiry — Expand</button>
+      <button class="syn-test-destructive">destructive — Delete</button>
+      <a href="#" class="syn-test-social">social — Share</a>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- TEST 5: State — Temporal Only (opacity, filter, animation) -->
+  <!-- ================================================================== -->
+  <section>
+    <h2>Test 5: State Variants (Temporal Only)</h2>
+    <p>State should set opacity, filter, animation, transition. No color, no font-weight, no text-decoration (those are cognition).</p>
+
+    <div class="state-test-wrapper">
+      <div class="state-test-stable">stable — Verified, no visual change</div>
+      <div class="state-test-evolving">evolving — Actively updating</div>
+      <div class="state-test-deprecated">deprecated — No longer current (opacity + grayscale only, no text-decoration)</div>
+      <div class="state-test-active">active — Current item indicator (::after underline only, no color/font-weight)</div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- TEST 6: Atmosphere — Mood/Vibe Only (background, color, shadow) -->
+  <!-- ================================================================== -->
+  <section>
+    <h2>Test 6: Atmosphere Variants (Mood Only)</h2>
+    <p>Atmosphere should set background, color scheme, box-shadow. No display/grid/flex (layout is environment), no font properties.</p>
+
+    <div class="atmos-test-neutral">
+      <span>neutral — Standard appearance</span>
+    </div>
+    <div class="atmos-test-ethereal">
+      <span>ethereal — Light, translucent</span>
+    </div>
+    <div class="atmos-test-void">
+      <span>void — Deep space, minimal</span>
+    </div>
+    <div class="atmos-test-vibrant">
+      <span>vibrant — High-energy, data-rich</span>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- TEST 7: Composed Sample — Research Paper (from samples/_content.scss) -->
+  <!-- ================================================================== -->
+  <section>
+    <h2>Test 7: Composed — Research Paper</h2>
+    <p>Demonstrates correct mixin composition per hierarchy level.</p>
+
+    <article class="research-paper">
+      <header class="paper-header">
+        <h3 class="title">Research Paper Title</h3>
+        <div class="authors">Author A, Author B</div>
+        <div class="metadata"><span>Machine Learning</span> <span>NLP</span></div>
+      </header>
+
+      <div class="abstract">
+        This is the abstract section demonstrating entity('secondary') for surface
+        combined with cognition('discourse') for typography — no property conflicts.
+      </div>
+
+      <div class="content">
+        <p>Body content with discourse typography.</p>
+        <div class="code-block">
+          <code>const x = await model.predict(input);</code>
+        </div>
+        <p class="footnote">† This is a footnote with gloss cognition.</p>
+      </div>
+
+      <div class="actions">
+        <button class="download-pdf">Download PDF</button>
+        <a href="#" class="cite-link">Cite This Paper</a>
+        <a href="#" class="share-social">Share</a>
+      </div>
+
+      <div class="last-updated">Last updated: 2026-04-11</div>
+    </article>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- TEST 8: Composed — Dashboard (from samples/_dashboards.scss) -->
+  <!-- ================================================================== -->
+  <section>
+    <h2>Test 8: Composed — Dashboard</h2>
+
+    <div class="system-dashboard">
+      <div class="status-card">
+        <div class="metric-value">42,195</div>
+        <div class="metric-label">Active Users</div>
+      </div>
+      <div class="status-card">
+        <div class="metric-value">99.9%</div>
+        <div class="metric-label">Uptime</div>
+      </div>
+      <div class="alert-card">
+        <div class="alert-message">CPU usage above 90%</div>
+        <button class="dismiss-btn">Dismiss</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- TEST 9: Composed — Product Grid (from samples/_grids.scss) -->
+  <!-- ================================================================== -->
+  <section>
+    <h2>Test 9: Composed — Product Grid</h2>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-title">Product Alpha</div>
+        <div class="product-description">High-quality product description.</div>
+        <div class="product-price">$299</div>
+        <div class="product-tags"><span>Premium</span> <span>New</span></div>
+        <a href="#" class="view-details">View Details</a>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <div class="product-title">Product Beta</div>
+        <div class="product-description">Another great product.</div>
+        <div class="product-price">$199</div>
+        <a href="#" class="view-details">View Details</a>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- TEST 10: Navigation Patterns (from samples/_navigation.scss) -->
+  <!-- ================================================================== -->
+  <section>
+    <h2>Test 10: Navigation Patterns</h2>
+
+    <h3>Pagination</h3>
+    <nav class="blog-pagination" aria-label="Blog pages">
+      <a href="#" class="page-link disabled" aria-disabled="true">Prev</a>
+      <a href="#" class="page-link">1</a>
+      <a href="#" class="page-link active" aria-current="page">2</a>
+      <a href="#" class="page-link">3</a>
+      <a href="#" class="page-link">Next</a>
+    </nav>
+
+    <h3>Tab Navigation</h3>
+    <div class="product-tabs" role="tablist" aria-label="Product info">
+      <button class="tab-button" role="tab" aria-selected="true">Overview</button>
+      <button class="tab-button" role="tab" aria-selected="false">Specs</button>
+      <button class="tab-button" role="tab" aria-selected="false">Reviews</button>
+    </div>
+  </section>
+
+</div>

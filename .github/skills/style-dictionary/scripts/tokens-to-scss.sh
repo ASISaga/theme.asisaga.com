@@ -3,7 +3,7 @@
 # TOKENS → SCSS (Forward Translation via Style Dictionary v4)
 # ============================================================================
 # Converts _design/tokens.json into SCSS variable declarations at
-# _sass/base/design/_variables-generated.scss using Style Dictionary v4.
+# _sass/ontology/foundation/design/_variables-generated.scss using Style Dictionary v4.
 #
 # Usage:
 #   .github/skills/style-dictionary/scripts/tokens-to-scss.sh           # generate staged file
@@ -19,8 +19,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../../../.." && pwd)"
 SKILL_DIR="$SCRIPT_DIR/.."
 
-GENERATED="$REPO_ROOT/_sass/base/design/_variables-generated.scss"
-PRODUCTION="$REPO_ROOT/_sass/base/design/_variables.scss"
+GENERATED="$REPO_ROOT/_sass/ontology/foundation/design/_variables-generated.scss"
+PRODUCTION="$REPO_ROOT/_sass/ontology/foundation/design/_variables.scss"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'

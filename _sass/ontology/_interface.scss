@@ -16,7 +16,8 @@
   // convergent, panelled, editorial-feed, navigation-primary, navigation-secondary,
   // navigation-tabs, navigation-sidebar, navigation-footer, navigation-breadcrumb,
   // navigation-pagination, navigation-accordion, interaction-form,
-  // community-feed, comment-thread, notification-center, user-grid
+  // community-feed, comment-thread, notification-center, user-grid,
+  // viewport-hero, dense-grid
   @include _theme-engine-environment($logic);
 }
 

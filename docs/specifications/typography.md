@@ -60,7 +60,7 @@ $font-family-sacred: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
 ### Base Settings
 
 ```scss
-// _sass/base/_typography.scss
+// _sass/ontology/foundation/_typography.scss
 
 $font-size-base: 1rem;        // 16px
 $line-height-base: 1.6;       // 25.6px
@@ -122,7 +122,7 @@ $line-height-loose: 2.0;     // Special emphasis
 ### Styling
 
 ```scss
-// _sass/base/_typography.scss
+// _sass/ontology/foundation/_typography.scss
 
 h1, .h1 {
   font-family: $font-family-sacred;

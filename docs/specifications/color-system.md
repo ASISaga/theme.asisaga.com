@@ -9,7 +9,7 @@ The ASI Saga theme uses a **Sacred Color Palette** designed to evoke consciousne
 ### Primary Sacred Colors
 
 ```scss
-// _sass/base/_colors.scss
+// _sass/ontology/foundation/_colors.scss
 
 $cosmic-blue: #0B1426;        // Infinite potential and transcendent depth
 $luminous-gold: #FFD700;       // Human essence and embedded wisdom
@@ -33,7 +33,7 @@ $royal-purple: #6A0DAD;        // Sovereign consciousness and transformative pow
 ### Bootstrap Integration
 
 ```scss
-// _sass/base/_variables.scss
+// _sass/ontology/foundation/_variables.scss
 
 // Override Bootstrap color variables
 $primary: $luminous-gold;
@@ -350,7 +350,7 @@ Variables structured for future dark mode support:
 ### Complete Color Map
 
 ```scss
-// _sass/base/_colors.scss
+// _sass/ontology/foundation/_colors.scss
 
 // Sacred Palette
 $cosmic-blue: #0B1426;

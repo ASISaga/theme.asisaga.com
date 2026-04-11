@@ -25,7 +25,7 @@ description: "Universal SCSS coding standards for Genesis Semantic Design System
 }
 ```
 
-**Theme internal files** (`_sass/components/`, `_sass/layouts/`):
+**Theme internal files** (`_sass/includes/`, `_sass/layouts/`):
 ```scss
 // NO @import - ontology already imported by assets/css/style.scss
 .component {
@@ -66,10 +66,11 @@ Each subdirectory has a single canonical purpose:
 
 | Directory | Purpose | Path-Specific Instructions |
 |-----------|---------|---------------------------|
-| **`ontology/`** | Ontological Design System engine (Layer 1) | `scss-ontology.instructions.md` |
-| **`base/`** | Foundation: tokens, fonts, utilities, effects | `scss-base.instructions.md` |
-| **`components/`** | Reusable UI components (visual elements) | `scss-components.instructions.md` |
-| **`includes/`** | Include-specific styles mirroring `_includes/` | `scss-includes.instructions.md` |
+| **`ontology/`** | Ontological Design System engine + foundation (Layer 1) | `scss-ontology.instructions.md` |
+| **`ontology/foundation/`** | Foundation: tokens, fonts, utilities, effects | `scss-base.instructions.md` |
+| **`ontology/mixins/`** | Reusable component factory mixins | — |
+| **`includes/`** | Include-specific styles + reusable UI components mirroring `_includes/` | `scss-includes.instructions.md` |
+| **`includes/core/`** | Site-wide components (header, footer, navbar, cards) | `scss-components.instructions.md` |
 | **`layouts/`** | Page layout styles mirroring `_layouts/` | `scss-layouts.instructions.md` |
 | **`demo/`** | Demo-only styles (not for subdomains) | — |
 | **`samples/`** | Example SCSS (not compiled) | — |
@@ -77,9 +78,9 @@ Each subdirectory has a single canonical purpose:
 
 **Boundary rules:**
 - **Layout code** (page containers, flex columns, grids) → `layouts/`
-- **Utility classes** (`.sr-only`, `.container`, legacy) → `base/utilities/`
-- **Component code** (cards, buttons, heroes, modals) → `components/`
-- **Design tokens** (colors, spacing, typography) → `base/design/`
+- **Utility classes** (`.sr-only`, `.container`, legacy) → `ontology/foundation/utilities/`
+- **Component code** (cards, buttons, heroes, modals) → `includes/core/`
+- **Design tokens** (colors, spacing, typography) → `ontology/foundation/design/`
 
 → **Full architecture**: `_sass/README.md`
 
@@ -162,7 +163,7 @@ All OKLCH color tokens used for text must meet **4.5:1 contrast ratio** against 
 
 **NEVER import in:**
 - ❌ Subdomain's `_sass/main.scss` (ontology already available from theme)
-- ❌ `_sass/components/` partials (ontology already imported by `assets/css/style.scss`)
+- ❌ `_sass/includes/` partials (ontology already imported by `assets/css/style.scss`)
 - ❌ `_sass/layouts/` partials (ontology already imported by `assets/css/style.scss`)
 - ❌ Any file inside `_sass/` directory (creates 22MB bloat)
 
@@ -211,8 +212,8 @@ npm run lint:scss           # Code style and best practices
 
 **Path-specific instructions** (auto-loaded when editing files in these directories):
 - `.github/instructions/scss-ontology.instructions.md` — `_sass/ontology/**`
-- `.github/instructions/scss-base.instructions.md` — `_sass/base/**`
-- `.github/instructions/scss-components.instructions.md` — `_sass/components/**`
+- `.github/instructions/scss-base.instructions.md` — `_sass/ontology/foundation/**`
+- `.github/instructions/scss-components.instructions.md` — `_sass/includes/**`
 - `.github/instructions/scss-layouts.instructions.md` — `_sass/layouts/**`
 - `.github/instructions/scss-includes.instructions.md` — `_sass/includes/**`
 

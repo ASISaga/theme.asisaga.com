@@ -1,5 +1,5 @@
 // ============================================================================
-// SEMANTIC DESIGN SYSTEM - ASI Saga Theme v2.0
+// SEMANTIC DESIGN SYSTEM - ASI Saga Theme v3.0
 // _main.scss — THEME COMPONENT BUNDLE (site-level stylesheet, Layer 2)
 // ============================================================================
 // Imported by assets/css/style.scss AFTER ontology/index.
@@ -18,101 +18,103 @@
 //   Subdomains DO NOT copy this file — they write a minimal version.
 //
 // Files are organised to mirror Jekyll Liquid HTML organisation:
-//   _sass/components/   — reusable UI components (cards, sections, forms…)
-//   _sass/includes/     ↔  _includes/ one-to-one (_index.scss aggregates)
-//   _sass/layouts/      ↔  _layouts/ (shared primitives + all layout files)
+//   _sass/ontology/       — ontological engine + foundation (design, utils, effects, layout)
+//   _sass/ontology/mixins — reusable component factory mixins
+//   _sass/includes/       ↔  _includes/ one-to-one (_index.scss aggregates)
+//   _sass/includes/core/  — site-wide components (header, footer, navbar, cards…)
+//   _sass/layouts/        ↔  _layouts/ (all layout files)
 // ============================================================================
 
 // ----------------------------------------
 // LAYOUT UTILITIES — shared across all layouts
 // ----------------------------------------
-@import "components/core/bento-engine";    // Native CSS Grid system (shared grid primitive)
+@import "includes/core/bento-engine";    // Native CSS Grid system (shared grid primitive)
 
 // ----------------------------------------
 // BASE UTILITIES — legacy compatibility & utility classes
 // ----------------------------------------
-@import "base/utilities/legacy-utilities";
+@import "ontology/foundation/utilities/legacy-utilities";
 
 // ----------------------------------------
 // COMPONENT MIXINS — load before implementations
 // ----------------------------------------
-@import "components/mixins/section-component";
-@import "components/mixins/layout-component";
-@import "components/mixins/header-component";
-@import "components/mixins/card-component";
-@import "components/mixins/image-card-component";
-@import "components/mixins/form-component";
-@import "components/mixins/team-component";
-@import "components/mixins/content-section-component";
-@import "components/mixins/hero-component";
-@import "components/mixins/products-grid-component";
-@import "components/mixins/cta-component";
+@import "ontology/mixins/section-component";
+@import "ontology/mixins/layout-component";
+@import "ontology/mixins/header-component";
+@import "ontology/mixins/card-component";
+@import "ontology/mixins/image-card-component";
+@import "ontology/mixins/form-component";
+@import "ontology/mixins/team-component";
+@import "ontology/mixins/content-section-component";
+@import "ontology/mixins/hero-component";
+@import "ontology/mixins/products-grid-component";
+@import "ontology/mixins/cta-component";
 
 // ----------------------------------------
 // CORE COMPONENTS — present on every page
 // ----------------------------------------
-@import "components/core/ui-components";   // Modal, Collapse, Tabs
-@import "components/core/genesis-core";    // body/main/skip-link/ambient
-@import "components/core/genesis-header";  // Glassmorphism header
-@import "components/core/genesis-footer";  // Grid footer
-@import "components/core/footer";
-@import "components/core/header";
-@import "components/core/navbar";
-@import "components/core/cards";
-@import "components/core/back-to-top";
+@import "includes/core/ui-components";   // Modal, Collapse, Tabs
+@import "includes/core/genesis-core";    // body/main/skip-link/ambient
+@import "includes/core/genesis-header";  // Glassmorphism header
+@import "includes/core/genesis-footer";  // Grid footer
+@import "includes/core/footer";
+@import "includes/core/header";
+@import "includes/core/navbar";
+@import "includes/core/cards";
+@import "includes/core/back-to-top";
 
 // ----------------------------------------
 // SECTION COMPONENTS
 // ----------------------------------------
-@import "components/sections/section-header";
-@import "components/sections/cta";
-@import "components/sections/feature-grid";
-@import "components/sections/hero";
-@import "components/sections/testimonial";
-@import "components/sections/timeline";
-@import "components/sections/interactive-module";
-@import "components/sections/sections";
+@import "includes/sections/section-header";
+@import "includes/sections/cta";
+@import "includes/sections/feature-grid";
+@import "includes/sections/hero";
+@import "includes/sections/testimonial";
+@import "includes/sections/timeline";
+@import "includes/sections/interactive-module";
+@import "includes/sections/sections";
 
 // ----------------------------------------
 // PRODUCT COMPONENTS
 // ----------------------------------------
-@import "components/products/product-card";
-@import "components/products/product-layout";
-@import "components/products/product-page";
-@import "components/products/product-applications";
-@import "components/products/product-benefits-list";
-@import "components/products/product-code-example";
-@import "components/products/product-feature-grid";
-@import "components/products/product-section-container";
-@import "components/products/product-visual";
+@import "includes/products/product-card";
+@import "includes/products/product-layout";
+@import "includes/products/product-page";
+@import "includes/products/product-applications";
+@import "includes/products/product-benefits-list";
+@import "includes/products/product-code-example";
+@import "includes/products/product-feature-grid";
+@import "includes/products/product-section-container";
+@import "includes/products/product-visual";
 
 // ----------------------------------------
 // SACRED COMPONENTS
 // ----------------------------------------
-@import "components/sacred/sacred-elements";
-@import "components/sacred/sacred-navigation";
-@import "components/sacred/sacred-buttons";
-@import "components/sacred/sacred-forms";
-@import "components/sacred/consciousness-cards";
-@import "components/sacred/genesis-timeline";
-@import "components/sacred/bridge-connections";
-@import "components/sacred/sacred-modals";
-@import "components/sacred/transcendent-hero";
-@import "components/sacred/genesis-blocks";
-@import "components/sacred/transcendent-threshold";
-@import "components/sacred/genesis-invitation";
+@import "includes/sacred/sacred-elements";
+@import "includes/sacred/sacred-navigation";
+@import "includes/sacred/sacred-buttons";
+@import "includes/sacred/sacred-forms";
+@import "includes/sacred/consciousness-cards";
+@import "includes/sacred/genesis-timeline";
+@import "includes/sacred/bridge-connections";
+@import "includes/sacred/sacred-modals";
+@import "includes/sacred/transcendent-hero";
+@import "includes/sacred/genesis-blocks";
+@import "includes/sacred/transcendent-threshold";
+@import "includes/sacred/genesis-invitation";
 
 // ----------------------------------------
 // CORE INTEGRATIONS & SPECIALIZED COMPONENTS
 // ----------------------------------------
-@import "components/core/linkedin";
-@import "components/core/specialized";
+@import "includes/core/linkedin";
+@import "includes/core/specialized";
 
 // ----------------------------------------
 // WEB COMPONENT TEMPLATES
 // ----------------------------------------
 // Dynamically instantiated from _includes/web-component-templates/ via JS
-@import "components/web-components/index";
+@import "includes/web-components/index";
 
 // ----------------------------------------
 // INCLUDES STYLES — mirrors _includes/ hierarchy
@@ -125,9 +127,9 @@
 // LAYOUT STYLES — all page layouts
 // ----------------------------------------
 // Shared layout utilities (bento-engine already imported above).
-@import "base/layout/base-structure";          // Fundamental page layout containers
-@import "base/layout/layout-ontology";         // Ontology-mapped layout classes
-@import "base/layout/responsive-enhancements"; // Cross-layout responsive refinements
+@import "ontology/foundation/layout/base-structure";          // Fundamental page layout containers
+@import "ontology/foundation/layout/layout-ontology";         // Ontology-mapped layout classes
+@import "ontology/foundation/layout/responsive-enhancements"; // Cross-layout responsive refinements
 
 @import "layouts/app";
 @import "layouts/default";

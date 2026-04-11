@@ -25,7 +25,7 @@ Pure semantic mixins with zero implementation assumptions:
 - Only semantic variant names
 - Provides the vocabulary for design intent
 
-### 2. Theme Layer (`_sass/components/`, `_sass/layouts/`)
+### 2. Theme Layer (`_sass/includes/`, `_sass/layouts/`)
 
 Visual implementation using ontology:
 - Maps semantic mixins to actual CSS properties
@@ -277,7 +277,7 @@ Each visual CSS concern maps from a **semantic purpose** through an owning ontol
 ```
 
 **DO NOT import in**:
-- Component files (`_sass/components/*.scss`)
+- Component files (`_sass/includes/*.scss`)
 - Layout files (`_sass/layouts/*.scss`)
 - Any other `_sass/` file (ontology already available via style.scss)
 

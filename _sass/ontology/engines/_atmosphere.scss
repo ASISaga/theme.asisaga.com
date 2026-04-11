@@ -124,31 +124,14 @@
     // and genesis-environment('distributed') or 'focused' for item-level gap/spacing.
   }
   @else if $vibe == 'dense-desktop' {
-    // Content that benefits from high information density on large screens
-    @media (min-width: 768px) {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-      gap: 1.25rem;
-    }
+    // DEPRECATED: Layout properties moved to genesis-environment('dense-grid').
+    // Atmosphere must not set display, grid-template-columns, or gap — those are environment territory.
+    // Migration: replace genesis-atmosphere('dense-desktop') with genesis-environment('dense-grid').
   }
   @else if $vibe == 'viewport-aware' {
-    // Content sized relative to viewport (hero sections)
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    min-height: 100vh;
-    min-height: 100dvh;
-    
-    @media (max-width: 767px) {
-      min-height: 70vh;
-      min-height: 70dvh;
-    }
-    
-    @media (max-height: 600px) {
-      min-height: auto;
-    }
+    // DEPRECATED: Layout properties moved to genesis-environment('viewport-hero').
+    // Atmosphere must not set display, flex-direction, or min-height — those are environment territory.
+    // Migration: replace genesis-atmosphere('viewport-aware') with genesis-environment('viewport-hero').
   }
   @else if $vibe == 'sacred' {
     // Reverent, mission-critical tone

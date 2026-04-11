@@ -17,7 +17,7 @@ This document catalogs all reusable UI components in the ASI Saga theme, their A
 Each component consists of:
 
 - **HTML Include** (`_includes/component.html`)
-- **SCSS Partial** (`_sass/components/_component.scss`)
+- **SCSS Partial** (`_sass/includes/_component.scss`)
 - **JavaScript Module** (`assets/js/common/component.js`) - if interactive
 - **Documentation** (this file)
 
@@ -26,7 +26,7 @@ Each component consists of:
 ### Header
 
 **File**: `_includes/header.html`  
-**SCSS**: `_sass/components/_header.scss`  
+**SCSS**: `_sass/includes/_header.scss`  
 **JavaScript**: `assets/js/common/header-scroll.js`
 
 **Description**: Site header with logo, title, tagline, and navigation toggle.
@@ -59,7 +59,7 @@ Each component consists of:
 ### Footer
 
 **File**: `_includes/footer.html`  
-**SCSS**: `_sass/components/_footer.scss`  
+**SCSS**: `_sass/includes/_footer.scss`  
 **JavaScript**: `assets/js/common/footer.js`
 
 **Description**: Site footer with copyright, links, and back-to-top button.
@@ -81,7 +81,7 @@ Each component consists of:
 ### Hero
 
 **File**: `_includes/hero.html`  
-**SCSS**: `_sass/components/_hero.scss`
+**SCSS**: `_sass/includes/_hero.scss`
 
 **Description**: Large hero section with background image, title, subtitle, and CTA.
 
@@ -127,7 +127,7 @@ Each component consists of:
 ### Navbar
 
 **File**: `_includes/navbar.html`  
-**SCSS**: `_sass/components/_navbar.scss`  
+**SCSS**: `_sass/includes/_navbar.scss`  
 **JavaScript**: `assets/js/common/navbar-keyboard.js`
 
 **Description**: Main navigation menu with dropdown support.
@@ -165,7 +165,7 @@ Each component consists of:
 ### Card
 
 **File**: `_includes/product-card.html`  
-**SCSS**: `_sass/components/_card-component.scss`
+**SCSS**: `_sass/includes/_card-component.scss`
 
 **Description**: Flexible card component for displaying content.
 
@@ -220,7 +220,7 @@ Each component consists of:
 ### Feature Grid
 
 **File**: `_includes/feature-grid.html`  
-**SCSS**: `_sass/components/_feature-grid.scss`
+**SCSS**: `_sass/includes/_feature-grid.scss`
 
 **Description**: Responsive grid of feature items with icons.
 
@@ -283,7 +283,7 @@ Each component consists of:
 ### Timeline
 
 **File**: `_includes/timeline.html`  
-**SCSS**: `_sass/components/_genesis-timeline.scss`
+**SCSS**: `_sass/includes/_genesis-timeline.scss`
 
 **Description**: Vertical timeline for displaying events or milestones.
 
@@ -311,7 +311,7 @@ Each component consists of:
 ### Modal
 
 **File**: `_includes/content-modal.html`  
-**SCSS**: `_sass/components/_sacred-modals.scss`
+**SCSS**: `_sass/includes/_sacred-modals.scss`
 
 **Description**: Accessible modal dialog.
 
@@ -345,7 +345,7 @@ Each component consists of:
 ### CTA (Call-to-Action)
 
 **File**: `_includes/cta.html`  
-**SCSS**: `_sass/components/_cta.scss`
+**SCSS**: `_sass/includes/_cta.scss`
 
 **Description**: Prominent call-to-action section.
 
@@ -372,7 +372,7 @@ Each component consists of:
 ### Genesis Invitation
 
 **File**: `_includes/genesis-invitation.html`  
-**SCSS**: `_sass/components/_genesis-invitation.scss`
+**SCSS**: `_sass/includes/_genesis-invitation.scss`
 
 **Description**: Special invitation component for Genesis Architect program.
 
@@ -389,7 +389,7 @@ Each component consists of:
 ### Transcendent Hero
 
 **File**: `_includes/transcendent-hero.html`  
-**SCSS**: `_sass/components/_transcendent-hero.scss`
+**SCSS**: `_sass/includes/_transcendent-hero.scss`
 
 **Description**: Hero section with transcendent animations and sacred styling.
 
@@ -413,7 +413,7 @@ Each component consists of:
 ### Bridge Connections
 
 **File**: Various in `_includes/`  
-**SCSS**: `_sass/components/_bridge-connections.scss`
+**SCSS**: `_sass/includes/_bridge-connections.scss`
 
 **Description**: Visual representations of human-AI consciousness bridging.
 
@@ -437,7 +437,7 @@ Each component consists of:
 ### Form Component
 
 **File**: Multiple form includes  
-**SCSS**: `_sass/components/_form-component.scss`, `_sass/components/_sacred-forms.scss`
+**SCSS**: `_sass/includes/_form-component.scss`, `_sass/includes/_sacred-forms.scss`
 
 **Description**: Styled form elements with validation.
 
@@ -500,7 +500,7 @@ Each component consists of:
 
 ### Standard Buttons
 
-**SCSS**: `_sass/components/_sacred-buttons.scss`
+**SCSS**: `_sass/includes/_sacred-buttons.scss`
 
 **Variants**:
 ```html
@@ -620,7 +620,7 @@ Each component should have a single, clear purpose:
 - `_includes/chatroom/messages.html`
 - `_includes/chatroom/input.html`
 
-**SCSS**: `_sass/components/_chatroom.scss`, `_sass/layouts/_chatroom.scss`  
+**SCSS**: `_sass/includes/_chatroom.scss`, `_sass/layouts/_chatroom.scss`  
 **JavaScript**: `assets/js/chatroom-app.js`
 
 **Description**: Real-time chat interface components.
@@ -671,7 +671,7 @@ When creating or modifying components:
 ## Component Checklist
 
 - [ ] HTML include created in `_includes/`
-- [ ] SCSS partial created in `_sass/components/`
+- [ ] SCSS partial created in `_sass/includes/`
 - [ ] SCSS imported in `_common.scss`
 - [ ] Parameters documented with defaults
 - [ ] Accessibility verified (keyboard, screen reader)

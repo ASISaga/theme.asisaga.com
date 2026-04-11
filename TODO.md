@@ -13,7 +13,7 @@ The repository specification (`.github/specs/repository.md`) describes a W3C DTC
 - [ ] Create `tokens.json` in W3C DTCG format as the single source of truth for design tokens
 - [ ] Create `_data/tokens.yml` for Jekyll template access to token values
 - [ ] Integrate Style Dictionary v4 for automated token transformation (`tokens.json` → `_sass/_tokens.scss` + `_data/tokens.yml`)
-- [ ] Consolidate color tokens (currently split between `_sass/ontology/_tokens.scss` and `_sass/base/` files) into the DTCG source
+- [ ] Consolidate color tokens (currently split between `_sass/ontology/_tokens.scss` and `_sass/ontology/foundation/` files) into the DTCG source
 - [ ] Create `Token_DNA_Validator` agent skill to enforce zero hard-coded hex/pixel values
 - [ ] Create `Layout_Ontologist` agent skill for Figma JSON → semantic HTML mapping
 - [ ] Create `Jekyll_Architect` agent skill for recursive Liquid template assembly
@@ -45,10 +45,10 @@ The ontology has grown from 33 foundational variants to 89 total variants throug
 
 - [ ] Cross-reference `docs/specifications/component-library.md` from `.github/specs/genesis-theme-repository.md` (done)
 - [ ] Audit `docs/specifications/component-library.md` to ensure all 62+ SCSS component files are cataloged
-- [ ] Document the 12 sacred components (`_sass/components/sacred/`) — purpose, usage patterns, relationship to atmosphere
+- [ ] Document the 12 sacred components (`_sass/includes/sacred/`) — purpose, usage patterns, relationship to atmosphere
 - [ ] Document web component trinity pattern (HTML template + SCSS + JS) in a formal spec
 - [ ] Add architectural justification for web components vs. Liquid includes
-- [ ] Document component mixin patterns (`_sass/components/mixins/`) — when to use mixins vs. direct component files
+- [ ] Document component mixin patterns (`_sass/ontology/mixins/`) — when to use mixins vs. direct component files
 - [ ] Ensure `docs/systems/components/` guides are up to date with current component inventory
 
 → **Specification**: `.github/specs/genesis-theme-repository.md`, `docs/specifications/component-library.md`

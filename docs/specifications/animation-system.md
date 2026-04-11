@@ -265,7 +265,7 @@ The ASI Saga theme includes a **Sacred Animation System** designed to evoke cons
 ### Utility Classes
 
 ```scss
-// _sass/base/_animations.scss
+// _sass/ontology/foundation/_animations.scss
 
 // Animation delays
 .animation-delay-1 { animation-delay: 0.1s; }
@@ -492,7 +492,7 @@ Use for complex animations:
 **MUST support `prefers-reduced-motion` preference**:
 
 ```scss
-// _sass/base/_animations.scss
+// _sass/ontology/foundation/_animations.scss
 
 @media (prefers-reduced-motion: reduce) {
   *,

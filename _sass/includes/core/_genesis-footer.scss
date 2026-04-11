@@ -34,7 +34,7 @@
   
   // Container
   &__container {
-    max-width: 1440px;
+    max-width: min(1440px, 100%);
     margin: 0 auto;
     padding: 3rem 1.25rem 1.5rem;
     

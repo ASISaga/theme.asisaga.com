@@ -3,7 +3,7 @@
 #
 # Extracts every layout-variant value from all blueprints in _design/ and
 # checks whether the corresponding CSS attribute selector is present in
-# _sass/components/core/_genesis-core.scss.  Any variant that is referenced
+# _sass/includes/core/_genesis-core.scss.  Any variant that is referenced
 # by a blueprint but absent from the SCSS @each lists causes the Figma plugin
 # (and any node.html-rendered page) to display that node without visual styles.
 #
@@ -22,7 +22,7 @@ set -euo pipefail
 
 REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 DESIGN_DIR="$REPO_ROOT/_design"
-GENESIS_CORE="$REPO_ROOT/_sass/components/core/_genesis-core.scss"
+GENESIS_CORE="$REPO_ROOT/_sass/includes/core/_genesis-core.scss"
 
 FIX=false
 DRY_RUN=false

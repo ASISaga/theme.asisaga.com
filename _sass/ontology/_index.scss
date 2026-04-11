@@ -35,35 +35,35 @@
 // Subdomains @import "ontology/index" to get all of this in one line.
 
 // Fonts & Icons
-@import "../base/fontawesome";             // Font Awesome 6 Free (vendored in _sass/vendor/fontawesome/)
-@import "../base/fonts";
-@import "../base/icons";
+@import "foundation/fontawesome";             // Font Awesome 6 Free (vendored in _sass/vendor/fontawesome/)
+@import "foundation/fonts";
+@import "foundation/icons";
 
 // Design Foundation — The DNA
-@import "../base/design/colors";              // OKLCH + semantic color tokens
-@import "../base/design/variables-generated"; // Generated from _design/tokens.json (imported first to allow overrides)
-@import "../base/design/variables";           // Theme-wide Sass variables (includes shadows, opacity, animation tokens)
-@import "../base/design/dimensions";          // Spacing and sizing tokens
+@import "foundation/design/colors";              // OKLCH + semantic color tokens
+@import "foundation/design/variables-generated"; // Generated from _design/tokens.json (imported first to allow overrides)
+@import "foundation/design/variables";           // Theme-wide Sass variables (includes shadows, opacity, animation tokens)
+@import "foundation/design/dimensions";          // Spacing and sizing tokens
 
 // Utilities & Mixins
-@import "../base/utilities/mixins";           // Core Sass mixins
-@import "../base/utilities/semantic-mixins";  // Semantic mixins
-@import "../base/utilities/accessibility";    // WCAG compliance helpers
-@import "../base/utilities/common";           // Common utility styles
+@import "foundation/utilities/mixins";           // Core Sass mixins
+@import "foundation/utilities/semantic-mixins";  // Semantic mixins
+@import "foundation/utilities/accessibility";    // WCAG compliance helpers
+@import "foundation/utilities/common";           // Common utility styles
 
 // Typography & Theme
-@import "../base/design/typography";          // Unified typography: fluid scale, sacred families, material primitives
-@import "../base/design/theme";               // Theme-level configuration
+@import "foundation/design/typography";          // Unified typography: fluid scale, sacred families, material primitives
+@import "foundation/design/theme";               // Theme-level configuration
 
 // Layout System
-@import "../base/layout/responsive-system";   // Modern breakpoints, container queries
-@import "../base/layout/layout-wrappers";     // Modern layout containers
-@import "../base/layout/layout";              // Base layout structures
+@import "foundation/layout/responsive-system";   // Modern breakpoints, container queries
+@import "foundation/layout/layout-wrappers";     // Modern layout containers
+@import "foundation/layout/layout";              // Base layout structures
 
 // Visual Effects
-@import "../base/effects/animations";         // Core animation library
-@import "../base/effects/futuristic-effects"; // Advanced glassmorphism, glows, gradients
-@import "../base/effects/ambient-layer";      // Sentient ambient atmosphere
+@import "foundation/effects/animations";         // Core animation library
+@import "foundation/effects/futuristic-effects"; // Advanced glassmorphism, glows, gradients
+@import "foundation/effects/ambient-layer";      // Sentient ambient atmosphere
 
 // ============================================================================
 // STEP 1: CSS CUSTOM PROPERTIES

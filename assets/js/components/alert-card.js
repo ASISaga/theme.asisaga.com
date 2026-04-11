@@ -3,7 +3,7 @@
  * 
  * Namespace:
  *   HTML:  _includes/web-component-templates/alert-card.html
- *   SCSS:  _sass/components/_alert-card.scss
+ *   SCSS:  _sass/includes/web-components/_alert-card.scss
  *   JS:    assets/js/components/alert-card.js
  * 
  * Usage:
