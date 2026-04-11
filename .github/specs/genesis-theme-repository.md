@@ -123,7 +123,7 @@ All layouts are defined in `_layouts/` and documented in `_layouts/README.md`:
 
 ## Component Library
 
-### SCSS Components (62+ files in `_sass/components/`)
+### SCSS Components (62+ files in `_sass/includes/`)
 
 | Category | Files | Examples |
 |----------|-------|---------|
@@ -140,9 +140,9 @@ Each web component follows a trinity namespace pattern:
 
 | Component | HTML Template | SCSS | JavaScript |
 |-----------|--------------|------|------------|
-| `alert-card` | `_includes/components/alert-card.html` | `_sass/components/web-components/_alert-card.scss` | `assets/js/components/alert-card.js` |
-| `product-card` | `_includes/components/product-card.html` | `_sass/components/web-components/_product-card.scss` | `assets/js/components/product-card.js` |
-| `testimonial-card` | `_includes/components/testimonial-card.html` | `_sass/components/web-components/_testimonial-card.scss` | `assets/js/components/testimonial-card.js` |
+| `alert-card` | `_includes/components/alert-card.html` | `_sass/includes/web-components/_alert-card.scss` | `assets/js/components/alert-card.js` |
+| `product-card` | `_includes/components/product-card.html` | `_sass/includes/web-components/_product-card.scss` | `assets/js/components/product-card.js` |
+| `testimonial-card` | `_includes/components/testimonial-card.html` | `_sass/includes/web-components/_testimonial-card.scss` | `assets/js/components/testimonial-card.js` |
 
 → **Component library specification**: `docs/specifications/component-library.md`  
 → **Web component guide**: `_includes/components/README.md`  

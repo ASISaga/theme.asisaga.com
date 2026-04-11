@@ -146,7 +146,7 @@ All effects automatically handle:
 
 **Implementation**:
 - `_sass/ontology/_engines.scss` - Effect implementations
-- `_sass/base/design/_variables.scss` - Effect color tokens
+- `_sass/ontology/foundation/design/_variables.scss` - Effect color tokens
 
 **Related Skills**: responsive-design-agent, scss-refactor-agent
 

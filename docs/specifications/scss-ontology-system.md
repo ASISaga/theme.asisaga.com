@@ -185,7 +185,7 @@ The ontology engine uses 150+ CSS custom properties defined in `_sass/ontology/_
 
 ### Legacy Sass Variables (Theme Internal Use)
 
-For legacy components: `_sass/base/design/_variables.scss`
+For legacy components: `_sass/ontology/foundation/design/_variables.scss`
 - Surface tokens: `$surface-primary`, `$surface-elevated`, `$surface-glass`
 - Text tokens: `$text-primary`, `$text-secondary`, `$text-accent`
 - Accent tokens: `$accent-glow`, `$accent-neural`, `$accent-essence`
@@ -204,7 +204,7 @@ For legacy components: `_sass/base/design/_variables.scss`
 - ✅ Any SCSS file that is a **compilation entry point** (has Jekyll front matter `---`)
 
 **DO NOT import in theme internal files:**
-- ❌ Component partials in `_sass/components/` (already available via `_common.scss`)
+- ❌ Component partials in `_sass/includes/` (already available via `_common.scss`)
 - ❌ Layout partials in `_sass/layouts/` (already available via `_common.scss`)
 - ❌ Any file imported by `_common.scss` (creates duplication and CSS bloat)
 

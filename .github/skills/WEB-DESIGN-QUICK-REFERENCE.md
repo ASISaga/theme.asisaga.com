@@ -431,7 +431,7 @@
 }
 ```
 
-**Theme component/layout files** in `_sass/components/` or `_sass/layouts/`:
+**Theme component/layout files** in `_sass/includes/` or `_sass/layouts/`:
 ```scss
 // NO @import needed - ontology already imported by assets/css/style.scss
 

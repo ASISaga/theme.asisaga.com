@@ -194,7 +194,7 @@ npm run test:scss
 → **Blueprint designer**: `.github/skills/blueprint-designer/SKILL.md`  
 → **Token DNA**: `.github/skills/style-dictionary/SKILL.md`  
 → **Motion physics**: `.github/skills/motion-physics/SKILL.md`  
-→ **Genesis custom element selectors**: `_sass/components/core/_genesis-core.scss`  
+→ **Genesis custom element selectors**: `_sass/includes/core/_genesis-core.scss`  
 → **Blueprint2Code plugin**: https://github.com/ASISaga/Blueprint2Code
 
 ---

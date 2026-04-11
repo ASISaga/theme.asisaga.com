@@ -161,8 +161,8 @@
 ```
 Settings    → _sass/ontology/_tokens.scss
 Tools       → _sass/ontology/_interface.scss
-Generic     → _sass/base/_reset.scss
-Elements    → _sass/base/_typography.scss
+Generic     → _sass/ontology/foundation/_reset.scss
+Elements    → _sass/ontology/foundation/_typography.scss
 Objects     → genesis-environment() implementations
 Components  → genesis-entity() implementations
 Utilities   → (Avoided - use mixins instead)

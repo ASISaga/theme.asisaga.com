@@ -108,7 +108,7 @@ Added `transform: translate3d(0,0,0)` to static elements that will receive anima
 
 ## Files Modified
 
-### 1. _sass/base/_animations.scss
+### 1. _sass/ontology/foundation/effects/_animations.scss
 
 **Keyframes Updated (GPU-accelerated):**
 - `sacred-rhythm` - Uses `translate3d()` for scale animations
@@ -150,7 +150,7 @@ Added `transform: translate3d(0,0,0)` to static elements that will receive anima
 - `@mixin animate-reveal-on-scroll` - 3D transform with GPU hints
 - `@mixin animate-sacred-text-emergence` - 3D transform with GPU hints
 
-### 2. _sass/base/_futuristic-effects.scss
+### 2. _sass/ontology/foundation/effects/_futuristic-effects.scss
 
 **Keyframes Updated:**
 - `starfield-drift` - 3D translation with rotation

@@ -71,7 +71,7 @@ Many include SCSS files are **thin documentation layers** that reference the act
 
 ```scss
 // _sass/includes/_header.scss
-// All styles are defined in _sass/components/core/_genesis-header.scss.
+// All styles are defined in _sass/includes/core/_genesis-header.scss.
 // DO NOT add styles here — they would override the carefully crafted header styles.
 ```
 
@@ -94,5 +94,5 @@ All include files are aggregated by `_index.scss` and imported as a single unit 
 ```
 
 → **Include templates**: `_includes/README.md`  
-→ **Component styles**: `_sass/components/`  
+→ **Component styles**: `_sass/includes/`  
 → **Architecture**: `_sass/README.md`

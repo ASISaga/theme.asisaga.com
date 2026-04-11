@@ -1,13 +1,13 @@
 ---
-applyTo: "_sass/components/**"
-description: "Standards for reusable UI components in _sass/components/"
+applyTo: "_sass/includes/**"
+description: "Standards for reusable UI components in _sass/includes/"
 ---
 
 # Component SCSS Instructions
 
 ## Canonical Purpose
 
-`_sass/components/` contains **reusable UI components** — visual elements like cards, headers, heroes, modals, and forms. Components are self-contained visual units, NOT page-level layout structures.
+`_sass/includes/` contains **reusable UI components** — visual elements like cards, headers, heroes, modals, and forms. Components are self-contained visual units, NOT page-level layout structures.
 
 ## Directory Structure
 

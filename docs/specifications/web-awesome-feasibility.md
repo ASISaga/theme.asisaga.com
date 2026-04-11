@@ -270,7 +270,7 @@ A **Genesis → Web Awesome theme bridge** would map design tokens at build time
 | Risk | Impact | Mitigation |
 |------|--------|------------|
 | **Two component libraries** create cognitive overhead | Medium | Clear boundary: WA = interactive primitives, Genesis = ontological structure. Document the mapping in component-library.md. |
-| **Shadow DOM limits Genesis SCSS reach** | Medium | Use `--wa-*` custom properties and `::part()` for styling. Create a `_sass/base/_webawesome-bridge.scss` that maps Genesis tokens → WA tokens. |
+| **Shadow DOM limits Genesis SCSS reach** | Medium | Use `--wa-*` custom properties and `::part()` for styling. Create a `_sass/ontology/foundation/_webawesome-bridge.scss` that maps Genesis tokens → WA tokens. |
 | **Dependency weight increases** | Low–Medium | Tree-shake aggressively — import individual components, not the bundle. Lit shared across all WA components, amortized to ~16KB. |
 | **Version coupling with Font Awesome** | Low | WA has its own release cycle independent of FA. The `wa-icon` component can use FA icons but is optional. |
 | **Upgrade friction** | Low | WA follows semver. Pin to `^3.4.0`. Breaking changes only in major versions. |
@@ -284,7 +284,7 @@ A **Genesis → Web Awesome theme bridge** would map design tokens at build time
 
 **Install and create theme bridge:**
 1. `npm install @awesome.me/webawesome`
-2. Create `_sass/base/_webawesome-bridge.scss` — map Genesis design tokens to `--wa-*` properties
+2. Create `_sass/ontology/foundation/_webawesome-bridge.scss` — map Genesis design tokens to `--wa-*` properties
 3. Create `_includes/webawesome-loader.html` — conditional script loader for WA components
 4. Add WA base theme CSS to asset pipeline
 

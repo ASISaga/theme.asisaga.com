@@ -3,7 +3,7 @@
  * 
  * Namespace:
  *   HTML:  _includes/web-component-templates/product-card.html
- *   SCSS:  _sass/components/_product-card.scss
+ *   SCSS:  _sass/includes/web-components/_product-card.scss
  *   JS:    assets/js/components/product-card.js
  * 
  * Usage:

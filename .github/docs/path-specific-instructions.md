@@ -14,7 +14,7 @@ This document explains how GitHub Copilot's path-specific instruction mechanism 
 GitHub Copilot automatically loads instruction files when you edit files matching their `applyTo` glob patterns. This happens **transparently** - no manual action required.
 
 **Example flow:**
-1. Developer opens `_sass/components/button.scss`
+1. Developer opens `_sass/includes/button.scss`
 2. GitHub Copilot sees `.github/instructions/scss.instructions.md` with `applyTo: "**/*.{scss,sass,css},_sass/**,assets/css/**"`
 3. Pattern matches → Instructions automatically loaded into context
 4. Developer gets SCSS-specific guidance while editing
@@ -213,7 +213,7 @@ applyTo: "**/*"  # Matches everything
 
 **Too narrow** ❌
 ```yaml
-applyTo: "_sass/components/button.scss"  # One file only
+applyTo: "_sass/includes/button.scss"  # One file only
 ```
 
 **Just right** ✅

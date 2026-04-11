@@ -7,8 +7,8 @@
  * which preserves OKLCH color values without hex coercion.
  *
  * Usage:
- *   node script.mjs               -- tokens → _sass/base/design/_variables-generated.scss (via Style Dictionary)
- *   node script.mjs --reverse     -- _sass/base/design/ → tokens-extracted.json
+ *   node script.mjs               -- tokens → _sass/ontology/foundation/design/_variables-generated.scss (via Style Dictionary)
+ *   node script.mjs --reverse     -- _sass/ontology/foundation/design/ → tokens-extracted.json
  *   node script.mjs --diff        -- generate and show diff against production
  */
 
@@ -21,10 +21,10 @@ import StyleDictionary from 'style-dictionary';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, '../../..');
 
-const OUTPUT_STAGED   = join(repoRoot, '_sass/base/design/_variables-generated.scss');
+const OUTPUT_STAGED   = join(repoRoot, '_sass/ontology/foundation/design/_variables-generated.scss');
 const OUTPUT_TOKENS   = join(__dirname, 'tokens-extracted.json');
-const SCSS_VARIABLES  = join(repoRoot, '_sass/base/design/_variables.scss');
-const SCSS_COLORS     = join(repoRoot, '_sass/base/design/_colors.scss');
+const SCSS_VARIABLES  = join(repoRoot, '_sass/ontology/foundation/design/_variables.scss');
+const SCSS_COLORS     = join(repoRoot, '_sass/ontology/foundation/design/_colors.scss');
 
 // ============================================================================
 // FORWARD: tokens.json → _variables-generated.scss (via Style Dictionary v4)
@@ -41,11 +41,11 @@ async function buildTokensToScss() {
   const sd = new StyleDictionary(sdConfig);
   await sd.buildAllPlatforms();
   console.log(`✓ Generated ${OUTPUT_STAGED}`);
-  console.log('  Review diff: diff _sass/base/design/_variables.scss _sass/base/design/_variables-generated.scss');
+  console.log('  Review diff: diff _sass/ontology/foundation/design/_variables.scss _sass/ontology/foundation/design/_variables-generated.scss');
 }
 
 // ============================================================================
-// REVERSE: _sass/base/design/ → tokens-extracted.json
+// REVERSE: _sass/ontology/foundation/design/ → tokens-extracted.json
 // ============================================================================
 
 const CATEGORY_MAP = {
