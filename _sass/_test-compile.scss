@@ -37,6 +37,8 @@
   &.env-chronological { @include genesis-environment('chronological'); }
   &.env-manifest { @include genesis-environment('manifest'); }
   &.env-convergent { @include genesis-environment('convergent'); }
+  &.env-viewport-hero { @include genesis-environment('viewport-hero'); }
+  &.env-dense-grid { @include genesis-environment('dense-grid'); }
   
   // All entity variants
   &.entity-primary { @include genesis-entity('primary'); }
