@@ -1,0 +1,29 @@
+// ============================================================================
+// SECTION HEADER COMPONENT MIXIN
+// ============================================================================
+// Encapsulates the section header title/subtitle/description.
+// ============================================================================
+
+@mixin section-header-component {
+  .section-header {
+    @include genesis-environment('focused');
+    @include genesis-atmosphere('spacious-mobile');
+    padding-inline: 1.5rem;
+
+    .section-title {
+      @include genesis-cognition('axiom');
+    }
+
+    .section-subtitle {
+      @include genesis-cognition('motive');
+    }
+
+    .section-description {
+      @include genesis-cognition('discourse');
+    }
+
+    &.section-header--featured {
+      @include genesis-atmosphere('vibrant');
+    }
+  }
+}

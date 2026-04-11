@@ -1,0 +1,115 @@
+// ============================================================================
+// HEADER (GENERIC) COMPONENT MIXIN
+// ============================================================================
+// Encapsulates the site-header component with responsive mobile/desktop nav.
+// ============================================================================
+
+@mixin header-generic-component {
+  // Header wrapper
+  .header-wrapper {
+    @include genesis-entity('primary');
+    @include flex-shrink-none;
+  }
+
+  // Site Header - Sticky positioning with responsive design
+  .site-header {
+    @include sticky-top(1000);
+    @include full-width;
+    min-height: 70px;
+    @include genesis-entity('primary');
+    @include genesis-environment('associative');
+    @include genesis-atmosphere('void');
+    @include flex-shrink-none;
+    @include flex-row-wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-nav, clamp(1rem, 2vw, 2rem));
+    padding: var(--padding-nav, clamp(1rem, 2vw, 1.5rem));
+    @include gpu-accelerate;
+    @include transition-consciousness;
+
+    // Scrolled state
+    &.scrolled {
+      @include genesis-entity('imperative');
+    }
+
+    // Hidden state
+    &.header-hidden {
+      transform: translate3d(0, -100%, 0);
+    }
+
+    // Brand
+    &__brand {
+      @include genesis-synapse('navigate');
+      @include genesis-entity('secondary');
+    }
+
+    &__logo {
+      @include genesis-entity('image-adaptive');
+    }
+
+    &__text {
+      @include genesis-entity('secondary');
+    }
+
+    &__title {
+      @include genesis-cognition('axiom');
+    }
+
+    &__tagline {
+      @include genesis-cognition('gloss');
+    }
+
+    &__toggle {
+      @include genesis-synapse('execute');
+    }
+
+    &__toggle-icon {
+      @include genesis-entity('secondary');
+    }
+
+    &__nav {
+      @include genesis-environment('associative');
+
+      @media (max-width: 767px) {
+        @include full-width;
+        flex-basis: 100%;
+
+        &.collapse:not(.show) {
+          @include display-none;
+        }
+
+        &.collapse.show {
+          @include display-block;
+        }
+      }
+
+      @media (min-width: 768px) {
+        display: flex;
+        @include flex-grow-fill;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  // Additional header elements
+  .header-brand-row {
+    @include genesis-environment('associative');
+  }
+
+  .header-logo {
+    @include genesis-entity('secondary');
+  }
+
+  .header-title {
+    @include genesis-entity('secondary');
+  }
+
+  .site-header-toggler {
+    @include genesis-synapse('execute');
+  }
+
+  .site-header-nav {
+    @include genesis-environment('associative');
+  }
+}

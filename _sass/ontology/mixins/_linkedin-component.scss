@@ -1,0 +1,23 @@
+// ============================================================================
+// LINKEDIN COMPONENT MIXIN
+// ============================================================================
+// Encapsulates the LinkedIn badge component.
+// ============================================================================
+
+@mixin linkedin-component {
+  .linkedin-badge {
+    .linkedin-profile {
+      &-image {
+        @include size-square($size-avatar-linkedin);
+      }
+    }
+
+    .linkedin-button {
+      background-color: $color-brand-linkedin;
+
+      &:hover {
+        background-color: $color-brand-linkedin-hover;
+      }
+    }
+  }
+}

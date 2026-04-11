@@ -1,39 +1,7 @@
+// ============================================================================
+// SECTION HEADER COMPONENT
+// ============================================================================
+// Canonical implementation: _sass/ontology/mixins/_section-header-component.scss
+// ============================================================================
 
-// Section Header component - Using Genesis Ontological System
-// Reusable section title and description styling
-
-.section-header {
-  @include genesis-environment('focused');
-  @include genesis-atmosphere('spacious-mobile');
-  
-  // Safety gutter - prevents text from touching edges
-  padding-inline: 1.5rem;
-  
-  .section-title {
-    @include genesis-cognition('axiom');
-  }
-  
-  .section-subtitle {
-    @include genesis-cognition('motive');
-  }
-  
-  .section-description {
-    @include genesis-cognition('discourse');
-  }
-  
-  &.section-header-left {
-    
-    .section-description {
-    }
-  }
-  
-  &.section-header-alt {
-    .section-title {
-    }
-  }
-  
-  // Featured/highlighted section headers
-  &.section-header--featured {
-    @include genesis-atmosphere('vibrant');
-  }
-}
+@include section-header-component;

@@ -1,0 +1,171 @@
+// ============================================================================
+// PRODUCT COMPONENTS MIXIN
+// ============================================================================
+// Encapsulates all product page components:
+// - product-page (legacy container)
+// - product-applications
+// - product-benefits-list
+// - product-code-example
+// - product-section-container
+// - product-visual
+// ============================================================================
+
+// Common product container pattern
+@mixin product-container-base {
+  @include full-width;
+  padding-inline: $spacing-md;
+  @include margin-inline-auto;
+}
+
+// Product page legacy container
+@mixin product-page-component {
+  .product-container {
+    .product-section {
+      &.product-section-light,
+      &.product-section-primary,
+      &.product-section-accent { /* variants handled by HTML classes */ }
+    }
+
+    .product-grid {
+      @include product-container-base;
+      @include flex-row-wrap;
+
+      .product-card {
+        @include height-full;
+        @include transition(all, 0.3s, ease);
+
+        &:hover {
+          transform: translateY($product-item-hover-translate);
+        }
+
+        &.product-card-accent {
+          border-left: $product-border-accent-width solid var(--color-accent);
+        }
+
+        &.product-card-primary {
+          border-left: $product-border-accent-width solid var(--color-primary);
+        }
+      }
+    }
+
+    .product-visual-container {
+      @include product-container-base;
+    }
+
+    .product-code-container {
+      @include product-container-base;
+
+      .product-code-example {
+        .product-code-block {
+          max-height: $product-code-max-height;
+          overflow-y: auto;
+        }
+      }
+    }
+
+    .product-list-container {
+      @include product-container-base;
+    }
+  }
+}
+
+// Product applications section
+@mixin product-applications-component {
+  .product-applications-section {
+    .product-grid {
+      @include product-container-base;
+      @include flex-row-wrap;
+
+      .product-card {
+        @include height-full;
+        @include transition(all, 0.3s, ease);
+
+        &:hover {
+          transform: translateY($product-item-hover-translate);
+        }
+
+        &.product-card-accent {
+          border-left: $product-border-accent-width solid var(--color-accent);
+        }
+
+        &.product-card-primary {
+          border-left: $product-border-accent-width solid var(--color-primary);
+        }
+
+        .product-card-title {
+          color: var(--color-primary);
+        }
+      }
+    }
+  }
+}
+
+// Product benefits list section
+@mixin product-benefits-list-component {
+  .product-benefits-section {
+    .product-list-container {
+      @include product-container-base;
+
+      .product-list {
+        .product-list-item {
+          border-left: $product-border-accent-width solid var(--color-primary);
+        }
+      }
+    }
+
+    .product-list-highlight {
+      color: var(--color-primary);
+    }
+  }
+}
+
+// Product code example section
+@mixin product-code-example-component {
+  .product-code-example-section {
+    .product-code-container {
+      @include product-container-base;
+
+      .product-code-example {
+        .product-code-block {
+          max-height: $product-code-max-height;
+          overflow-y: auto;
+        }
+      }
+    }
+
+    .product-code-block code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: $product-code-font-size;
+      line-height: 1.5;
+    }
+  }
+}
+
+// Product section container
+@mixin product-section-container-component {
+  .product-section {
+    .product-section-content {
+      @include product-container-base;
+    }
+  }
+}
+
+// Product visual section
+@mixin product-visual-component {
+  .product-visual-section {
+    .product-visual-container {
+      @include product-container-base;
+
+      .product-image {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .additional-content-container {
+        h3 {
+          color: var(--color-primary);
+        }
+      }
+    }
+  }
+}

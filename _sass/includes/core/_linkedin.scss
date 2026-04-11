@@ -1,36 +1,8 @@
+// ============================================================================
+// LINKEDIN COMPONENT
+// ============================================================================
+// All raw CSS is encapsulated in the ontology mixin.
+// Canonical implementation: _sass/ontology/mixins/_linkedin-component.scss
+// ============================================================================
 
-// LinkedIn component styling - Using Bootstrap native classes
-// Matches linkedin.html component in _includes
-
-.linkedin-badge {
-  
-  .linkedin-profile {
-    
-    &-header {
-    }
-      &-image {
-      width: $size-avatar-linkedin;
-      height: $size-avatar-linkedin;
-    }
-    
-    &-info {
-    }
-    
-    &-name {
-    }
-    
-    &-title {
-    }
-    
-    &-company {
-    }
-  }
-  
-  .linkedin-button {
-    background-color: $color-brand-linkedin;
-    
-    &:hover {
-      background-color: $color-brand-linkedin-hover;
-    }
-  }
-}
+@include linkedin-component;

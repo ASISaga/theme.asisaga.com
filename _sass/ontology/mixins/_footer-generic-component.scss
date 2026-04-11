@@ -1,0 +1,81 @@
+// ============================================================================
+// FOOTER (GENERIC) COMPONENT MIXIN
+// ============================================================================
+// Encapsulates the site-footer component.
+// ============================================================================
+
+@mixin footer-generic-component {
+  .footer-wrapper {
+    @include genesis-entity('secondary');
+    @include flex-shrink-none;
+  }
+
+  .site-footer {
+    @include genesis-entity('primary');
+    @include genesis-environment('associative');
+    @include genesis-atmosphere('void');
+    @include flex-shrink-none;
+
+    &__container {
+      @include genesis-environment('focused');
+    }
+
+    &__row {
+      @include genesis-environment('associative');
+    }
+
+    &__copyright {
+      @include genesis-entity('secondary');
+
+      &-text {
+        @include genesis-cognition('gloss');
+      }
+
+      p {
+        @include genesis-cognition('gloss');
+      }
+    }
+
+    &__social {
+      @include genesis-environment('associative');
+
+      &-item {
+        @include genesis-entity('secondary');
+      }
+
+      &-link {
+        @include genesis-synapse('social');
+      }
+    }
+
+    &__links {
+      @include genesis-entity('secondary');
+    }
+
+    &__nav {
+      @include genesis-entity('secondary');
+    }
+
+    &__nav-list {
+      @include genesis-environment('associative');
+    }
+
+    &__nav-item {
+      @include genesis-entity('secondary');
+    }
+
+    &__nav-link {
+      @include genesis-synapse('navigate');
+      @include genesis-cognition('discourse');
+    }
+  }
+
+  .site-footer-fixed {
+    @include genesis-state('stable');
+  }
+
+  .back-to-top {
+    @include genesis-synapse('execute');
+    @include genesis-state('stable');
+  }
+}
