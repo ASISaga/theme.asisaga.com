@@ -180,7 +180,7 @@
 
 // Form — already uses genesis-environment('interaction-form') in _form.scss
 .form-layout {
-  max-width: 800px;
+  max-width: min(800px, 100%);
   margin-inline: auto;
 }
 
@@ -220,7 +220,7 @@
 
 // Search — supplementary constraints
 .search-layout {
-  max-width: 1200px;
+  max-width: min(1200px, 100%);
   margin-inline: auto;
 }
 
@@ -245,7 +245,7 @@
 
 // Profile — supplementary responsive column layout
 .profile-layout {
-  max-width: 1200px;
+  max-width: min(1200px, 100%);
   margin-inline: auto;
 
   @include from(lg) {
@@ -269,7 +269,7 @@
 
 // Settings — supplementary responsive column layout
 .settings-layout {
-  max-width: 1200px;
+  max-width: min(1200px, 100%);
   margin-inline: auto;
 
   @include from(lg) {
@@ -322,7 +322,7 @@
 
 // FAQ — supplementary constraints
 .faq-layout {
-  max-width: 900px;
+  max-width: min(900px, 100%);
   margin-inline: auto;
 }
 
@@ -337,7 +337,7 @@
 
 // Docs — supplementary responsive column layout
 .docs-layout {
-  max-width: 1400px;
+  max-width: min(1400px, 100%);
   margin-inline: auto;
 
   @include from(lg) {
@@ -389,7 +389,7 @@
 
 // Minimal layout — supplementary constraints
 .minimal-layout {
-  max-width: 800px;
+  max-width: min(800px, 100%);
   margin-inline: auto;
 }
 

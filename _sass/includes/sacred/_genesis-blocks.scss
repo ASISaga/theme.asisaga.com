@@ -51,7 +51,7 @@
   padding-inline: clamp(1rem, 3vw, 2rem);
   
   // Max width constraint for readability
-  max-width: 1200px;
+  max-width: min(1200px, 100%);
   margin-inline: auto;
   
   // Ensure full width usage within max-width
@@ -329,7 +329,7 @@
   .section-subtitle {
     @include body-text-large;
     color: oklch(0.99 0.005 90 / 0.8);
-    max-width: 600px;
+    max-width: min(600px, 100%);
     margin: 0 auto;
     font-style: italic;
   }

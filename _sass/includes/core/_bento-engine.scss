@@ -20,7 +20,7 @@
 .genesis-viewport {
   @include genesis-environment('distributed');   // Spatial layout (Level 1)
   @include genesis-atmosphere('neutral');         // Emotional tone (Level 1)
-  max-width: 1600px;
+  max-width: min(1600px, 100%);
   margin-inline: auto;
 }
 
@@ -28,7 +28,7 @@
 .consciousness-viewport {
   @include genesis-environment('focused');        // Constrained reading flow (Level 1)
   @include genesis-atmosphere('neutral');         // Emotional tone (Level 1)
-  max-width: 1200px;
+  max-width: min(1200px, 100%);
   margin-inline: auto;
 }
 
@@ -36,7 +36,7 @@
 .essence-viewport {
   @include genesis-environment('focused');        // Constrained reading flow (Level 1)
   @include genesis-atmosphere('ethereal');        // Light, airy tone (Level 1)
-  max-width: 800px;
+  max-width: min(800px, 100%);
   margin-inline: auto;
 }
 

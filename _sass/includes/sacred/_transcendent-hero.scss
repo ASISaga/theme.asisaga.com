@@ -209,7 +209,7 @@
 
 .transcendent-hero-description {
   @include body-text-large;
-  max-width: 600px;
+  max-width: min(600px, 100%);
   margin-left: auto;
   margin-right: auto;
   color: oklch(0.99 0.005 90 / 0.9);

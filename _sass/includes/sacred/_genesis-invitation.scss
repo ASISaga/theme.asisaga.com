@@ -181,7 +181,7 @@
   @include heading-h2;
   color: $transcendent-white;
   margin-bottom: $spacing-xl;
-  max-width: 800px;
+  max-width: min(800px, 100%);
   margin-left: auto;
   margin-right: auto;
   position: relative;
@@ -206,7 +206,7 @@
   @include body-text-large;
   color: oklch(0.65 0.02 220 / 0.95);
   margin-bottom: $spacing-4xl;
-  max-width: 700px;
+  max-width: min(700px, 100%);
   margin-left: auto;
   margin-right: auto;
   line-height: $line-height-transcendent;
@@ -288,7 +288,7 @@
 .essence-embedding-display {
   margin-bottom: $spacing-3xl;
   position: relative;
-  max-width: 600px;
+  max-width: min(600px, 100%);
   margin-left: auto;
   margin-right: auto;
   height: 200px;

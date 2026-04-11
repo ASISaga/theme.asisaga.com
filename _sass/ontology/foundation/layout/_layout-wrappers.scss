@@ -24,7 +24,7 @@
 .scrollable-wrapper,
 .fixed-height-wrapper {
   width: 100%;
-  max-width: 1200px;
+  max-width: min(1200px, 100%);
   margin-inline: auto;
   padding-inline: clamp(1rem, 3vw, 2rem);
 }
@@ -33,7 +33,7 @@
 .settings-wrapper,
 .docs-wrapper {
   width: 100%;
-  max-width: 1600px;
+  max-width: min(1600px, 100%);
   margin-inline: auto;
   padding-inline: clamp(1rem, 3vw, 2rem);
 }
@@ -121,7 +121,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: clamp(1.25rem, 2.5vw, 1.75rem);
-  max-width: 800px;
+  max-width: min(800px, 100%);
   margin-inline: auto;
 }
 
