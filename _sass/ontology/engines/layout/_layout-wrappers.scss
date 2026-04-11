@@ -24,7 +24,7 @@
 .scrollable-wrapper,
 .fixed-height-wrapper {
   width: 100%;
-  max-width: min(1200px, 100%);
+  max-width: 1200px; // Ruby Sass 3.7.4 compat
   margin-inline: auto;
   padding-inline: clamp(1rem, 3vw, 2rem);
 }
@@ -33,7 +33,7 @@
 .settings-wrapper,
 .docs-wrapper {
   width: 100%;
-  max-width: min(1600px, 100%);
+  max-width: 1600px; // Ruby Sass 3.7.4 compat
   margin-inline: auto;
   padding-inline: clamp(1rem, 3vw, 2rem);
 }
@@ -65,7 +65,7 @@
 .docs-nav-grid,
 .article-nav-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); // Ruby Sass 3.7.4 compat
   gap: clamp(1rem, 2vw, 1.5rem);
   
   width: 100%;
@@ -121,7 +121,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: clamp(1.25rem, 2.5vw, 1.75rem);
-  max-width: min(800px, 100%);
+  max-width: 800px; // Ruby Sass 3.7.4 compat
   margin-inline: auto;
 }
 

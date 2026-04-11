@@ -220,8 +220,8 @@ rules:
   # ========================================
   # DESIGN TOKEN ENFORCEMENT
   # ========================================
-  # Disallow $variable declarations everywhere except _sass/ontology/foundation/design/.
-  # All Sass $variables must be declared in _sass/ontology/foundation/design/; every other
+  # Disallow $variable declarations everywhere except _sass/design/.
+  # All Sass $variables must be declared in _sass/design/; every other
   # file (layouts, components, includes, ontology engines, utilities, effects)
   # must only consume variables — never define them.
   #
@@ -235,16 +235,16 @@ rules:
   scss/no-dollar-variables: true
 
 # Path-based overrides — allow $variable declarations only in the design token directory.
-# All Sass variables must be declared in _sass/ontology/foundation/design/; all other files consume them.
+# All Sass variables must be declared in _sass/design/; all other files consume them.
 overrides:
   - files:
-      - "_sass/ontology/foundation/design/**/*.scss"
+      - "_sass/design/**/*.scss"
     rules:
       scss/no-dollar-variables: null
 
   # Enforce design-token usage for colour values in layout SCSS.
   # Raw oklch() calls (and hex / rgb() / hsl()) in layout files indicate a missing token.
-  # All colour values must be referenced via $variable defined in _sass/ontology/foundation/design/_colors.scss.
+  # All colour values must be referenced via $variable defined in _sass/design/_colors.scss.
   # This is the inverse complement of scss/no-dollar-variables: that rule prevents $var
   # declarations outside the design directory; this rule ensures colour values IN layout files
   # are always expressed through $variables rather than as inline colour literals.
@@ -258,7 +258,7 @@ overrides:
             - "/#[0-9a-fA-F]{3,8}/"
             - "/^rgb\\s*\\(/"
             - "/^hsl\\s*\\(/"
-        - message: "Use a $variable from _sass/ontology/foundation/design/_colors.scss instead of a raw colour literal. Raw oklch/hex/rgb/hsl values in layout files bypass the design-token system."
+        - message: "Use a $variable from _sass/design/_colors.scss instead of a raw colour literal. Raw oklch/hex/rgb/hsl values in layout files bypass the design-token system."
           severity: error
 
 # Ignore patterns

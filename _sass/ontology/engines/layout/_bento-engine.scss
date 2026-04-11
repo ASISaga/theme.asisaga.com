@@ -20,7 +20,7 @@
 .genesis-viewport {
   @include genesis-environment('distributed');   // Spatial layout (Level 1)
   @include genesis-atmosphere('neutral');         // Emotional tone (Level 1)
-  max-width: min(1600px, 100%);
+  max-width: 1600px; // Ruby Sass 3.7.4 compat
   margin-inline: auto;
 }
 
@@ -28,7 +28,7 @@
 .consciousness-viewport {
   @include genesis-environment('focused');        // Constrained reading flow (Level 1)
   @include genesis-atmosphere('neutral');         // Emotional tone (Level 1)
-  max-width: min(1200px, 100%);
+  max-width: 1200px; // Ruby Sass 3.7.4 compat
   margin-inline: auto;
 }
 
@@ -36,7 +36,7 @@
 .essence-viewport {
   @include genesis-environment('focused');        // Constrained reading flow (Level 1)
   @include genesis-atmosphere('ethereal');        // Light, airy tone (Level 1)
-  max-width: min(800px, 100%);
+  max-width: 800px; // Ruby Sass 3.7.4 compat
   margin-inline: auto;
 }
 
@@ -60,7 +60,7 @@
     "sidebar main main"
     "sidebar main main";
 
-  grid-template-columns: minmax(min(250px, 100%), 1fr) 2fr 2fr;
+  grid-template-columns: minmax(250px, 1fr) 2fr 2fr;
   grid-template-rows: auto 1fr 1fr;
 
   @media (max-width: 768px) {
@@ -92,7 +92,7 @@
 
   // Gallery-specific column sizing override
   --card-min-width: clamp(200px, 30vw, 400px);
-  grid-template-columns: repeat(auto-fill, minmax(min(var(--card-min-width), 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-min-width), 1fr));
 }
 
 // Masonry Bento — Dense auto-flow layout
