@@ -40,7 +40,6 @@
     // Information is no longer verified
     opacity: 0.5;
     filter: grayscale(0.7);
-    text-decoration: line-through;
     position: relative;
     
     &::before {
@@ -121,8 +120,6 @@
   }
   @else if $condition == 'active' {
     // Current/active navigation item state
-    color: var(--accent-neon, oklch(0.88 0.18 95));
-    font-weight: 700;
     position: relative;
     
     // Visual indicator (underline, border, or highlight)
@@ -238,9 +235,6 @@
     &.unread-glow {
       box-shadow: inset 0 0 0 1px var(--unread-indicator, oklch(0.65 0.25 230 / 0.3));
     }
-    
-    // Font weight for emphasis
-    font-weight: 600;
   }
   @else if $condition == 'reacted' {
     // Content user has reacted to or engaged with

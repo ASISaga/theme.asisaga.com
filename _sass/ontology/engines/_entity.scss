@@ -12,7 +12,6 @@
 // ============================================================================
 @mixin _theme-engine-entity($nature) {
   border-radius: var(--radius-bento, 0.5rem);
-  transition: all var(--motion-fluid, 0.3s ease);
   
   @if $nature == 'primary' {
     // Fundamental object of current view
@@ -39,10 +38,6 @@
     &.editorial-featured {
       border-top: 2px solid oklch(0.70 0.15 85);
       padding-top: var(--padding-entity-aggregate, clamp(1.25rem, 2.5vw, 2rem));
-    }
-
-    &:hover {
-      border-top-color: oklch(0.75 0.10 85);
     }
   }
   @else if $nature == 'imperative' {

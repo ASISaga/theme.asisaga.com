@@ -10,7 +10,7 @@
 // Hero Section - Immersive with Futuristic Effects
 .hero {
   @include genesis-environment('focused');
-  @include genesis-atmosphere('viewport-aware');
+  @include genesis-environment('viewport-hero');
   @include genesis-atmosphere('void');  // Deep space immersive aesthetic
   
   // Quantum gradient background for depth
@@ -102,7 +102,7 @@
 // Card Components - Responsive Grid
 .card-grid {
   @include genesis-environment('distributed');  // Auto-responsive: 1 col mobile → auto-fit desktop
-  @include genesis-atmosphere('dense-desktop');  // High-density on desktop, comfortable on mobile
+  @include genesis-environment('dense-grid');   // High-density on desktop, comfortable on mobile
 }
 
 .blog-card {

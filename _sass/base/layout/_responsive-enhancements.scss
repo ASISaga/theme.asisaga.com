@@ -65,7 +65,7 @@
 
 // Landing hero — supplementary responsive split layout
 .landing__hero {
-  @include genesis-atmosphere('viewport-aware');  // Full-height hero (Level 1)
+  @include genesis-environment('viewport-hero');  // Full-height hero (Level 1)
 
   @include from(lg) {
     grid-template-columns: 1fr 1fr;
@@ -94,7 +94,7 @@
 
 // Splash layout — supplementary viewport sizing
 .splash-layout {
-  @include genesis-atmosphere('viewport-aware');  // Full-height (Level 1)
+  @include genesis-environment('viewport-hero');  // Full-height (Level 1)
 }
 
 // ============================================================================
@@ -140,7 +140,7 @@
 
 // Gallery — already uses genesis-environment('distributed') in _gallery.scss
 .gallery-layout {
-  @include genesis-atmosphere('dense-desktop');    // Responsive density (Level 1)
+  @include genesis-environment('dense-grid');      // Responsive density (Level 1)
 }
 
 .gallery__item {

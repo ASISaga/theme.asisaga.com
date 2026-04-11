@@ -65,30 +65,8 @@
   @else if $logic == 'editorial-feed' {
     // Editorial stream with promoted lead item and compact supporting entries
     display: grid;
-    --color-editorial-separator: oklch(0.75 0.10 85 / 0.5);
     grid-template-columns: 1fr;
     gap: var(--space-editorial, clamp(0.75rem, 1.5vw, 1rem));
-
-    > :first-child {
-      padding-bottom: clamp(1.5rem, 3vw, 2rem);
-      margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
-      position: relative;
-
-      &::after {
-        content: '';
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--color-editorial-separator),
-          transparent
-        );
-      }
-    }
   }
   @else if $logic == 'manifest' {
     // High-density dashboard for system oversight - responsive grid
@@ -171,12 +149,6 @@
     @media (min-width: 768px) {
       grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
       gap: 1.5rem 1.25rem;
-    }
-    
-    label {
-      display: block;
-      margin-bottom: 0.375rem;
-      font-weight: 500;
     }
     
     .form-full-width {
@@ -294,19 +266,6 @@
     max-height: var(--notification-max-height, 400px);
     overflow-y: auto;
     gap: var(--space-notifications, 0.375rem);
-    
-    .notification-group {
-      padding: 0.5rem 0;
-    }
-    
-    .notification-group-header {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.375rem;
-      padding: 0 0.5rem;
-    }
   }
   @else if $logic == 'user-grid' {
     // User/member grid display layout
@@ -408,6 +367,44 @@
         flex: 1 1 auto;
         width: 100%;
       }
+    }
+  }
+  @else if $logic == 'viewport-hero' {
+    // Full-viewport centered flex container for hero sections
+    // Promoted from atmosphere('viewport-aware') — layout is environment territory
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    @media (max-width: 767px) {
+      min-height: 70vh;
+      min-height: 70dvh;
+    }
+
+    @media (max-height: 600px) {
+      min-height: auto;
+    }
+  }
+  @else if $logic == 'dense-grid' {
+    // Dense auto-fit grid for high-density content on desktop
+    // Promoted from atmosphere('dense-desktop') — layout is environment territory
+    display: grid;
+    width: 100%;
+    max-width: 100%;
+    justify-items: stretch;
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      gap: var(--space-tight, clamp(0.5rem, 1vw, 0.75rem));
+    }
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+      gap: 1.25rem;
     }
   }
 }

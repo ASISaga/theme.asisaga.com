@@ -13,7 +13,7 @@
   @include genesis-entity('primary');       // Elevated hero
   @include genesis-environment('focused');  // Centered layout
   @include genesis-atmosphere('vibrant');   // High-energy
-  @include genesis-atmosphere('viewport-aware');
+  @include genesis-environment('viewport-hero');
   @include genesis-atmosphere('spacious-mobile');
   
   &-sm {

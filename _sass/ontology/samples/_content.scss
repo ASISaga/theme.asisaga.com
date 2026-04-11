@@ -37,8 +37,7 @@
     @include genesis-cognition('discourse'); // Body prose
     
     .code-block {
-      @include genesis-entity('secondary');
-      @include genesis-cognition('protocol'); // Code/technical data
+      @include genesis-cognition('protocol'); // Code/technical data (self-contained at Level 4)
     }
     
     .footnote {
