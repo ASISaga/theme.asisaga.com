@@ -32,11 +32,13 @@ export class GenesisNavbar extends GenesisElement {
     this._hoverTimers = new Map();
     this._boundDocumentClick = null;
     this._boundResize = null;
+    this._desktopBreakpoint = DESKTOP_BREAKPOINT;
   }
 
   connectedCallback() {
     super.connectedCallback();
     
+    this._desktopBreakpoint = parseInt(this.getAttribute('mobile-breakpoint')) || DESKTOP_BREAKPOINT;
     this._setAriaRole();
     this._setupDropdowns();
     this._setupKeyboardNavigation();
@@ -60,8 +62,7 @@ export class GenesisNavbar extends GenesisElement {
    * Whether we are in desktop mode (inline nav, hover dropdowns)
    */
   _isDesktop() {
-    const bp = parseInt(this.getAttribute('mobile-breakpoint')) || DESKTOP_BREAKPOINT;
-    return window.innerWidth >= bp;
+    return window.innerWidth >= this._desktopBreakpoint;
   }
 
   /**
