@@ -148,13 +148,13 @@
       }
     }
 
-    // Toggle icon X-state (when menu expanded)
-    &__toggle[aria-expanded="true"] &__toggle-icon {
-      @include hamburger-icon-open;
-    }
-
     &__toggle-icon {
       @include hamburger-icon;
+    }
+
+    // Toggle icon X-state (when menu expanded)
+    &__toggle[aria-expanded="true"] .genesis-header__toggle-icon {
+      @include hamburger-icon-open;
     }
 
     // Primary Navigation — off-canvas drawer (mobile) / inline (desktop)

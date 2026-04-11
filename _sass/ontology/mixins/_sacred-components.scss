@@ -2708,10 +2708,10 @@
       background: linear-gradient(to right, $luminous-gold, transparent, $luminous-gold);
       transition: width 0.4s ease;
     }
+  }
 
-    .genesis-block:hover &::after {
-      width: 80%;
-    }
+  .genesis-block:hover .genesis-block-title::after {
+    width: 80%;
   }
 
   .genesis-block-text {

@@ -29,11 +29,11 @@
 @mixin fixed-position($top: null, $right: null, $bottom: null, $left: null, $z-index: null) {
   position: fixed;
 
-  @if $top != null { top: $top; }
-  @if $right != null { right: $right; }
-  @if $bottom != null { bottom: $bottom; }
-  @if $left != null { left: $left; }
-  @if $z-index != null { z-index: $z-index; }
+  @if $top { top: $top; }
+  @if $right { right: $right; }
+  @if $bottom { bottom: $bottom; }
+  @if $left { left: $left; }
+  @if $z-index { z-index: $z-index; }
 }
 
 @mixin absolute-fill {
@@ -44,10 +44,10 @@
 @mixin absolute-position($top: null, $right: null, $bottom: null, $left: null) {
   position: absolute;
 
-  @if $top != null { top: $top; }
-  @if $right != null { right: $right; }
-  @if $bottom != null { bottom: $bottom; }
-  @if $left != null { left: $left; }
+  @if $top { top: $top; }
+  @if $right { right: $right; }
+  @if $bottom { bottom: $bottom; }
+  @if $left { left: $left; }
 }
 
 @mixin overlay-fullscreen($z-index: 999) {
@@ -123,7 +123,7 @@
   display: flex;
   flex-direction: column;
 
-  @if $gap != null {
+  @if $gap {
     gap: $gap;
   }
 }
@@ -131,7 +131,7 @@
 @mixin flex-row($gap: null) {
   display: flex;
 
-  @if $gap != null {
+  @if $gap {
     gap: $gap;
   }
 }
@@ -140,7 +140,7 @@
   display: flex;
   flex-wrap: wrap;
 
-  @if $gap != null {
+  @if $gap {
     gap: $gap;
   }
 }

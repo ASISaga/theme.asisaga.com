@@ -40,10 +40,10 @@
     @include margin-inline-auto;
     transform: translateY(-50px);
     @include transition-smooth(transform);
+  }
 
-    .modal--show & {
-      transform: translateY(0);
-    }
+  .modal--show .modal__dialog {
+    transform: translateY(0);
   }
 
   .modal__content {
