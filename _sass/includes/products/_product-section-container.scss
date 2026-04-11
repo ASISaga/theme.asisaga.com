@@ -1,2 +1,2 @@
-// Canonical implementation: _sass/ontology/mixins/_product-components.scss
-@include product_section_container_component;
+// Routed via interface
+@include genesis-component('product-section-container');

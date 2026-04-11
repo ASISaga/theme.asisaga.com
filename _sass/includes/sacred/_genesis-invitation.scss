@@ -1,2 +1,2 @@
-// Canonical implementation: _sass/ontology/mixins/_sacred-components.scss
-@include genesis-invitation-component;
+// Routed via interface
+@include genesis-component('genesis-invitation');

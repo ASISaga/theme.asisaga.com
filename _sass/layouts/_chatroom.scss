@@ -1,3 +1,2 @@
-// Canonical implementation: _sass/ontology/mixins/_layout-chatroom-component.scss
-@include layout-chatroom-component;
-
+// Routed via interface
+@include genesis-component('layout-chatroom');

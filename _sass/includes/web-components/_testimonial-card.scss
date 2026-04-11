@@ -1,2 +1,2 @@
-// Canonical implementation: _sass/ontology/mixins/_web-card-components.scss
-@include wc-testimonial-card-component;
+// Routed via interface
+@include genesis-component('wc-testimonial-card');

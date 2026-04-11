@@ -1,8 +1,2 @@
-// ============================================================================
-// LINKEDIN COMPONENT
-// ============================================================================
-// All raw CSS is encapsulated in the ontology mixin.
-// Canonical implementation: _sass/ontology/mixins/_linkedin-component.scss
-// ============================================================================
-
-@include linkedin-component;
+// Routed via interface: genesis-component('linkedin')
+@include genesis-component('linkedin');

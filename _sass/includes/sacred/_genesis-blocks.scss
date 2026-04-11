@@ -1,2 +1,2 @@
-// Canonical implementation: _sass/ontology/mixins/_sacred-components.scss
-@include genesis-blocks-component;
+// Routed via interface
+@include genesis-component('genesis-blocks');

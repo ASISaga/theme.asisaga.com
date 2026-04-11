@@ -1,8 +1,2 @@
-// ============================================================================
-// HEADER COMPONENT (Generic)
-// ============================================================================
-// All raw CSS is encapsulated in the ontology mixin.
-// Canonical implementation: _sass/ontology/mixins/_header-generic-component.scss
-// ============================================================================
-
-@include header-generic-component;
+// Routed via interface: genesis-component('header-generic')
+@include genesis-component('header-generic');

@@ -1,7 +1,2 @@
-// ============================================================================
-// SECTION HEADER COMPONENT
-// ============================================================================
-// Canonical implementation: _sass/ontology/mixins/_section-header-component.scss
-// ============================================================================
-
-@include section-header-component;
+// Routed via interface
+@include genesis-component('section-header');

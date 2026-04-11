@@ -1,0 +1,68 @@
+/**
+ * COMPONENT ENGINE INDEX
+ * --------------------------------------------------------------------------
+ * Aggregates all component engine implementations.
+ * These are class-emitting mixins that produce full component CSS.
+ * They are the 7th engine category, exposed via genesis-component() interface.
+ *
+ * ARCHITECTURE:
+ *   Interface: genesis-component($name) → Engine: _theme-engine-component($name)
+ *   Each component mixin emits its complete class hierarchy with selectors.
+ */
+
+// Core site-wide components
+@import "genesis-core-component";
+@import "genesis-header-component";
+@import "genesis-footer-component";
+@import "navbar-component";
+@import "ui-component";
+@import "header-generic-component";
+@import "footer-generic-component";
+
+// Section components
+@import "section-component";
+@import "section-header-component";
+@import "hero-component";
+@import "hero-section-component";
+@import "cta-component";
+@import "content-section-component";
+@import "interactive-module-component";
+
+// Card & entity components
+@import "card-component";
+@import "image-card-component";
+@import "team-component";
+
+// Form components
+@import "form-component";
+
+// Layout components
+@import "layout-component";
+@import "header-component";
+
+// Product components
+@import "product-components";
+@import "products-grid-component";
+
+// Sacred components
+@import "sacred-components";
+
+// Web card components
+@import "web-card-components";
+
+// Integration components
+@import "linkedin-component";
+
+// Layout-specific components
+@import "layout-chatroom-component";
+@import "layout-settings-component";
+@import "layout-search-component";
+@import "layout-dashboard-component";
+@import "layout-landing-component";
+@import "layout-splash-component";
+@import "layout-minimal-component";
+@import "layout-app-component";
+@import "layout-minor-components";
+
+// Demo components
+@import "demo-component";

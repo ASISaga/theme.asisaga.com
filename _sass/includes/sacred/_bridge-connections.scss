@@ -1,2 +1,2 @@
-// Canonical implementation: _sass/ontology/mixins/_sacred-components.scss
-@include bridge-connections-component;
+// Routed via interface
+@include genesis-component('bridge-connections');

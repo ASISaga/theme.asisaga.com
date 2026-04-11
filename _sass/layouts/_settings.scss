@@ -1,2 +1,2 @@
-// Canonical implementation: _sass/ontology/mixins/_layout-settings-component.scss
-@include layout-settings-component;
+// Routed via interface
+@include genesis-component('layout-settings');

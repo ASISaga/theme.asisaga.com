@@ -1,7 +1,2 @@
-// ============================================================================
-// INDEX DEMO PAGE STYLES
-// ============================================================================
-// Canonical implementation: _sass/ontology/mixins/_demo-component.scss
-// ============================================================================
-
-@include demo-index-component;
+// Routed via interface
+@include genesis-component('demo-index');

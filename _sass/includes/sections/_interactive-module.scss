@@ -1,7 +1,2 @@
-// ============================================================================
-// INTERACTIVE MODULE COMPONENT
-// ============================================================================
-// Canonical implementation: _sass/ontology/mixins/_interactive-module-component.scss
-// ============================================================================
-
-@include interactive-module-component;
+// Routed via interface
+@include genesis-component('interactive-module');

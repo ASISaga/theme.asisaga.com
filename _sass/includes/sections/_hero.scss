@@ -1,7 +1,2 @@
-// ============================================================================
-// HERO COMPONENT
-// ============================================================================
-// Canonical implementation: _sass/ontology/mixins/_hero-section-component.scss
-// ============================================================================
-
-@include hero-section-component;
+// Routed via interface
+@include genesis-component('hero-section');

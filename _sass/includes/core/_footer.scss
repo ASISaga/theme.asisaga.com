@@ -1,8 +1,2 @@
-// ============================================================================
-// FOOTER COMPONENT (Generic)
-// ============================================================================
-// All raw CSS is encapsulated in the ontology mixin.
-// Canonical implementation: _sass/ontology/mixins/_footer-generic-component.scss
-// ============================================================================
-
-@include footer-generic-component;
+// Routed via interface: genesis-component('footer-generic')
+@include genesis-component('footer-generic');

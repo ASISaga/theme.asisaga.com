@@ -1,2 +1,2 @@
-// Canonical implementation: _sass/ontology/mixins/_layout-minor-components.scss
-@include layout-article-component;
+// Routed via interface
+@include genesis-component('layout-article');
