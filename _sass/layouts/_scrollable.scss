@@ -1,19 +1,2 @@
-/**
- * Scrollable Layout Styles - Ontology-Based
- * ============================================================================
- * Standard vertical flow pages with natural scrolling.
- * Mirrors HTML structure and uses Genesis Semantic Design System internally.
- * 
- * This file matches the classes in _layouts/scrollable.html:
- * - <div class="scrollable-layout">
- */
-
-
-// Scrollable layout container - standard vertical flow
-// Applied to wrapper div in scrollable.html
-.scrollable-layout {
-  @include genesis-environment('chronological');  // Vertical flow
-  @include genesis-atmosphere('neutral');          // Standard vibe
-  
-  width: 100%;
-}
+// Routed via interface
+@include genesis-component('layout-scrollable');

@@ -1,0 +1,239 @@
+// ============================================================================
+// NAVBAR COMPONENT MIXIN
+// ============================================================================
+// Encapsulates all raw CSS for the navbar/navigation component.
+// Responsive: vertical (mobile) → horizontal (desktop) with dropdowns.
+// ============================================================================
+
+@mixin navbar-component {
+  .navbar {
+    @include genesis-environment('associative');
+    @include full-width;
+
+    // Navigation list container
+    &__list {
+      @include flex-column(0.25rem);
+      @include list-reset;
+      @include full-width;
+
+      @include from(lg) {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0.25rem;
+        align-items: center;
+        width: auto;
+      }
+    }
+
+    // Individual navigation items
+    &__item {
+      @include touch-target-size;
+      @include flex-row;
+      align-items: center;
+      @include full-width;
+
+      @include from(lg) {
+        width: auto;
+        position: relative;
+      }
+
+      // Active state — neural pulse indicator
+      &--active {
+        .navbar__link {
+          @include color-text-light;
+          font-weight: 500;
+        }
+      }
+
+      // Dropdown variant
+      &--dropdown {
+        position: relative;
+      }
+    }
+
+    // Active item desktop indicator
+    @include from(lg) {
+      .navbar__item--active .navbar__link::after {
+        @include pseudo-base;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, oklch(0.65 0.25 230), transparent);
+        @include shadow-glow(oklch(0.65 0.25 230), 0.4, 8px);
+      }
+    }
+
+    // Navigation links — clean, precise interface typography
+    &__link {
+      @include genesis-synapse('navigate');
+      @include touch-target-size;
+      padding: 0.625rem 0.875rem;
+      @include flex-between;
+      gap: 0.5rem;
+      @include full-width;
+      color: oklch(0.70 0.01 230);
+      @include text-decoration-none;
+      font-family: $font-family-consciousness;
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      @include border-radius-rounded(8px);
+      position: relative;
+      border: 1px solid transparent;
+      @include transition-smooth(color background border-color);
+
+      @include from(lg) {
+        width: auto;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8125rem;
+        letter-spacing: 0.04em;
+        @include text-uppercase;
+        @include text-no-wrap;
+      }
+
+      &:hover,
+      &:focus {
+        @include color-text-light;
+        background: oklch(0.15 0.02 250);
+        border-color: oklch(0.25 0.04 250);
+      }
+
+      // Dropdown toggle variant
+      &--dropdown {
+        @include genesis-synapse('inquiry');
+
+        &::after {
+          content: '›';
+          font-size: 1rem;
+          font-weight: 300;
+          margin-left: 0.375rem;
+          @include transition-consciousness;
+          opacity: 0.5;
+        }
+
+        &[aria-expanded="true"]::after {
+          transform: rotate(90deg);
+          opacity: 1;
+        }
+      }
+    }
+
+    // Desktop-specific dropdown arrow rotation
+    @include from(lg) {
+      .navbar__link--dropdown::after {
+        transform: rotate(90deg);
+      }
+
+      .navbar__link--dropdown[aria-expanded="true"]::after {
+        transform: rotate(-90deg);
+      }
+    }
+
+    // Dropdown menu — quantum field container
+    &__dropdown {
+      @include genesis-entity('primary');
+      @include genesis-atmosphere('void');
+      backdrop-filter: blur(20px);
+      background: oklch(0.08 0.02 250 / 0.97);
+      @include border-subtle(oklch(0.22 0.04 250));
+      @include border-radius-rounded(12px);
+
+      box-shadow:
+        0 8px 32px oklch(0.03 0.02 250 / 0.5),
+        0 0 1px oklch(0.65 0.25 230 / 0.15),
+        inset 0 1px 0 oklch(0.20 0.03 250);
+
+      @include list-reset;
+      padding: 0.375rem;
+      @include full-width;
+      margin-top: 0.25rem;
+
+      @include from(lg) {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-8px);
+        margin-top: 0.5rem;
+        min-width: 200px;
+        width: auto;
+        z-index: 100;
+      }
+
+      // Hidden by default
+      @include display-none;
+      opacity: 0;
+
+      // Show when expanded
+      &[aria-hidden="false"] {
+        @include display-block;
+        opacity: 1;
+
+        @include from(lg) {
+          transform: translateX(-50%) translateY(0);
+        }
+
+        animation: dropdown-emerge 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    // Individual dropdown items
+    &__dropdown-item {
+      @include touch-target-size;
+      @include flex-row;
+      align-items: center;
+    }
+
+    // Dropdown links — precise, understated
+    &__dropdown-link {
+      @include genesis-synapse('navigate');
+      @include genesis-cognition('discourse');
+      @include touch-target-size;
+      @include full-width;
+      padding: 0.625rem 0.875rem;
+      @include flex-row;
+      align-items: center;
+      color: oklch(0.65 0.01 230);
+      @include text-decoration-none;
+      font-family: $font-family-consciousness;
+      font-size: 0.8125rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      @include border-radius-rounded(8px);
+      @include transition-smooth(color background padding-left);
+
+      &:hover,
+      &:focus {
+        @include color-text-light;
+        background: oklch(0.14 0.02 250);
+        padding-left: 1.125rem;
+      }
+
+      &[aria-current="page"] {
+        @include color-text-light;
+        background: oklch(0.12 0.03 250);
+        font-weight: 500;
+        border-left: 2px solid oklch(0.65 0.25 230);
+        padding-left: 0.75rem;
+      }
+    }
+  }
+
+  // Dropdown emergence animation
+  @keyframes dropdown-emerge {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+}

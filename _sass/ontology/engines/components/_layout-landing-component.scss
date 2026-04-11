@@ -1,0 +1,107 @@
+// ============================================================================
+// LAYOUT LANDING COMPONENT MIXIN
+// ============================================================================
+// Extracted from _sass/layouts/_landing.scss
+// Marketing landing page with hero and CTA sections.
+// ============================================================================
+
+@mixin layout-landing-component {
+
+  .landing-layout {
+    @include genesis-environment('chronological');
+    @include genesis-atmosphere('vibrant');
+  }
+
+  .landing__hero {
+    @include genesis-environment('distributed');
+  }
+
+  .landing__header {
+    // Structural section: transparent, layout-only
+  }
+
+  .landing__title {
+    @include genesis-cognition('axiom');
+  }
+
+  .landing__subtitle {
+    @include genesis-cognition('discourse');
+  }
+
+  .landing__hero-actions {
+    @include genesis-environment('associative');
+  }
+
+  .landing__hero-button {
+    @include genesis-synapse('execute');
+  }
+
+  .landing__hero-image {
+    @include genesis-entity('primary');
+  }
+
+  .landing__footer-cta {
+    // Structural section: transparent, layout-only
+  }
+
+  .landing__cta-title {
+    @include genesis-cognition('axiom');
+  }
+
+  .landing__cta-description {
+    @include genesis-cognition('discourse');
+  }
+
+  .landing__cta-button {
+    @include genesis-synapse('execute');
+  }
+
+  // ==========================================================================
+  // Sample content sections (used by sample-landing.html and subdomain pages)
+  // ==========================================================================
+
+  .landing__proof {
+    @include text-align-center;
+    max-width: 42rem;
+    @include margin-inline-auto;
+  }
+
+  .landing__proof-headline {
+    @include genesis-cognition('axiom');
+  }
+
+  .landing__proof-body {
+    @include genesis-cognition('discourse');
+  }
+
+  .landing__detail {
+    // Structural section: layout-only
+  }
+
+  .landing__pillars {
+    @include grid-auto-fit(16rem, clamp(1.25rem, 2vw, 2rem));
+  }
+
+  .landing__pillar {
+    // Each pillar is a lightweight article — no card wrapper
+  }
+
+  .landing__voices {
+    @include text-align-center;
+    max-width: 42rem;
+    @include margin-inline-auto;
+  }
+
+  .landing__voices-headline {
+    @include genesis-cognition('axiom');
+  }
+
+  .landing__quotes {
+    @include flex-column(clamp(1.25rem, 2vw, 2rem));
+  }
+
+  .landing__quote {
+    @include genesis-entity('secondary');
+    @include text-align-left;
+  }
+}

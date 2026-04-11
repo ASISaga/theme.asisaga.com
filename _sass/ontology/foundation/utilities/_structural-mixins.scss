@@ -1,0 +1,426 @@
+// ============================================================================
+// STRUCTURAL UTILITY MIXINS
+// ============================================================================
+// Low-level structural mixins for common CSS patterns not covered by the
+// 6 ontological engines. These handle positioning, sizing, overflow,
+// hardware acceleration, containers, and other structural concerns.
+//
+// These mixins live inside ontology/ so they are part of the foundation.
+// Files outside _sass/ontology/ should use ONLY:
+//   - genesis-* semantic mixins (6 engines)
+//   - Utility mixins from this file and other foundation utilities
+//   - Component mixins from ontology/mixins/
+//   - Sass variables from ontology/foundation/design/
+// ============================================================================
+
+// ----------------------------------------
+// POSITIONING
+// ----------------------------------------
+
+@mixin sticky-top($z-index: auto) {
+  position: sticky;
+  top: 0;
+
+  @if $z-index != auto {
+    z-index: $z-index;
+  }
+}
+
+@mixin fixed-position($top: null, $right: null, $bottom: null, $left: null, $z-index: null) {
+  position: fixed;
+
+  @if $top { top: $top; }
+  @if $right { right: $right; }
+  @if $bottom { bottom: $bottom; }
+  @if $left { left: $left; }
+  @if $z-index { z-index: $z-index; }
+}
+
+@mixin absolute-fill {
+  position: absolute;
+  inset: 0;
+}
+
+@mixin absolute-position($top: null, $right: null, $bottom: null, $left: null) {
+  position: absolute;
+
+  @if $top { top: $top; }
+  @if $right { right: $right; }
+  @if $bottom { bottom: $bottom; }
+  @if $left { left: $left; }
+}
+
+@mixin overlay-fullscreen($z-index: 999) {
+  position: fixed;
+  inset: 0;
+  z-index: $z-index;
+}
+
+// ----------------------------------------
+// HARDWARE ACCELERATION & PERFORMANCE
+// ----------------------------------------
+
+@mixin gpu-accelerate {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin touch-scroll {
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+// ----------------------------------------
+// CONTAINER PATTERNS
+// ----------------------------------------
+
+@mixin container-constrained($max-width: 1440px, $padding-inline: 1.25rem) {
+  max-width: min($max-width, 100%);
+  margin-inline: auto;
+  padding-inline: $padding-inline;
+}
+
+// ----------------------------------------
+// SIZING
+// ----------------------------------------
+
+@mixin size-square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin touch-target-size($size: 44px) {
+  min-height: $size;
+  min-width: $size;
+}
+
+// ----------------------------------------
+// DISPLAY PATTERNS
+// ----------------------------------------
+
+@mixin display-block { display: block; }
+@mixin display-none { display: none; }
+@mixin display-inline-block { display: inline-block; }
+
+// ----------------------------------------
+// FLEX PATTERNS
+// ----------------------------------------
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column($gap: null) {
+  display: flex;
+  flex-direction: column;
+
+  @if $gap {
+    gap: $gap;
+  }
+}
+
+@mixin flex-row($gap: null) {
+  display: flex;
+
+  @if $gap {
+    gap: $gap;
+  }
+}
+
+@mixin flex-row-wrap($gap: null) {
+  display: flex;
+  flex-wrap: wrap;
+
+  @if $gap {
+    gap: $gap;
+  }
+}
+
+@mixin flex-shrink-none {
+  flex-shrink: 0;
+}
+
+@mixin flex-grow-fill {
+  flex: 1;
+}
+
+// ----------------------------------------
+// GRID PATTERNS
+// ----------------------------------------
+
+@mixin grid-auto-fit($min-col-width: 280px, $gap: 2rem) {
+  display: grid;
+  gap: $gap;
+  grid-template-columns: repeat(auto-fit, minmax(min(#{$min-col-width}, 100%), 1fr));
+}
+
+@mixin grid-columns($cols: 1, $gap: 2rem) {
+  display: grid;
+  gap: $gap;
+  grid-template-columns: repeat($cols, 1fr);
+}
+
+// ----------------------------------------
+// OVERFLOW
+// ----------------------------------------
+
+@mixin overflow-hidden { overflow: hidden; }
+@mixin overflow-auto { overflow: auto; }
+@mixin overflow-visible { overflow: visible; }
+@mixin overflow-visible-important { overflow: visible !important; }
+
+@mixin overflow-scroll-y {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+// ----------------------------------------
+// INTERACTION
+// ----------------------------------------
+
+@mixin cursor-pointer { cursor: pointer; }
+@mixin pointer-events-none { pointer-events: none; }
+@mixin pointer-events-auto { pointer-events: auto; }
+@mixin user-select-none { user-select: none; }
+
+// ----------------------------------------
+// TEXT UTILITIES
+// ----------------------------------------
+
+@mixin text-uppercase { text-transform: uppercase; }
+@mixin text-decoration-none { text-decoration: none; }
+@mixin text-align-center { text-align: center; }
+@mixin text-align-left { text-align: left; }
+@mixin text-no-wrap { white-space: nowrap; }
+
+// ----------------------------------------
+// SPACING RESET
+// ----------------------------------------
+
+@mixin margin-reset { margin: 0; }
+@mixin padding-reset { padding: 0; }
+@mixin list-reset {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin margin-top-auto { margin-top: auto; }
+@mixin margin-inline-auto { margin-inline: auto; }
+
+// ----------------------------------------
+// BORDER UTILITIES
+// ----------------------------------------
+
+@mixin border-separator-bottom($color: oklch(0.20 0.04 250)) {
+  border-bottom: 1px solid $color;
+}
+
+@mixin border-separator-top($color: oklch(0.20 0.04 250)) {
+  border-top: 1px solid $color;
+}
+
+@mixin border-separator-left($color: oklch(0.20 0.04 250)) {
+  border-left: 1px solid $color;
+}
+
+@mixin border-subtle($color: oklch(0.25 0.03 250), $width: 1px) {
+  border: $width solid $color;
+}
+
+@mixin border-radius-pill { border-radius: 999px; }
+
+@mixin border-radius-rounded($radius: 10px) {
+  border-radius: $radius;
+}
+
+// ----------------------------------------
+// SHADOW UTILITIES
+// ----------------------------------------
+
+@mixin shadow-glow($color: oklch(0.65 0.25 230), $intensity: 0.15, $spread: 16px) {
+  box-shadow: 0 0 #{$spread} oklch(from #{$color} l c h / #{$intensity});
+}
+
+@mixin shadow-depth($opacity: 0.4) {
+  box-shadow: 0 4px 24px oklch(0.05 0.02 250 / #{$opacity});
+}
+
+@mixin shadow-none { box-shadow: none; }
+
+// ----------------------------------------
+// BACKGROUND UTILITIES
+// ----------------------------------------
+
+@mixin bg-transparent { background: transparent; }
+
+@mixin bg-glass($opacity: 0.9, $blur: 20px) {
+  background: oklch(0.06 0.015 250 / $opacity);
+  backdrop-filter: blur($blur);
+}
+
+// ----------------------------------------
+// COLOR UTILITIES (ontological tokens)
+// ----------------------------------------
+
+@mixin color-text-light { color: oklch(0.95 0.005 90); }
+@mixin color-text-muted { color: oklch(0.55 0.02 230); }
+@mixin color-text-dim { color: oklch(0.40 0.01 230); }
+@mixin color-neon-accent { color: oklch(0.65 0.25 230); }
+
+// ----------------------------------------
+// TRANSITION UTILITIES
+// ----------------------------------------
+
+@mixin transition-smooth($properties: all, $duration: 0.3s, $easing: ease) {
+  transition: $properties $duration $easing;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+@mixin transition-consciousness($duration: 0.4s) {
+  transition: all $duration cubic-bezier(0.22, 1, 0.36, 1);
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+// ----------------------------------------
+// VISIBILITY STATES
+// ----------------------------------------
+
+@mixin hidden-state {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@mixin visible-state {
+  opacity: 1;
+  visibility: visible;
+}
+
+// ----------------------------------------
+// OFF-CANVAS DRAWER
+// ----------------------------------------
+
+@mixin off-canvas-drawer($width: 85%, $max-width: 340px, $z-index: 2000) {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  width: $width;
+  max-width: $max-width;
+  z-index: $z-index;
+  transform: translateX(100%);
+
+  @include transition-consciousness;
+
+  &[data-nav-open="true"] {
+    transform: translateX(0);
+  }
+}
+
+// ----------------------------------------
+// RESPONSIVE HELPERS
+// ----------------------------------------
+
+@mixin hide-below($breakpoint) {
+  @media (max-width: #{$breakpoint - 1px}) {
+    display: none;
+  }
+}
+
+@mixin show-below($breakpoint) {
+  @media (min-width: #{$breakpoint}) {
+    display: none;
+  }
+}
+
+// ----------------------------------------
+// PSEUDO-ELEMENT BASE
+// ----------------------------------------
+
+@mixin pseudo-base {
+  content: '';
+  position: absolute;
+}
+
+@mixin pseudo-overlay {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+// ----------------------------------------
+// ANIMATED UNDERLINE (for nav links)
+// ----------------------------------------
+
+@mixin animated-underline($color: oklch(0.65 0.25 230 / 0.5), $height: 1px) {
+  position: relative;
+
+  &::after {
+    @include pseudo-base;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: $height;
+    background: $color;
+
+    @include transition-consciousness;
+  }
+
+  &:hover::after,
+  &:focus::after {
+    width: 100%;
+  }
+}
+
+// ----------------------------------------
+// ICON TOGGLE (hamburger menu)
+// ----------------------------------------
+
+@mixin hamburger-icon($line-width: 18px, $line-height: 1.5px, $line-gap: 5px, $color: oklch(0.80 0.02 230)) {
+  position: relative;
+  width: $line-width;
+  height: $line-height;
+  background: $color;
+  border-radius: 1px;
+
+  @include transition-smooth;
+
+  &::before,
+  &::after {
+    @include pseudo-base;
+    left: 0;
+    width: 100%;
+    height: $line-height;
+    background: oklch(0.90 0.005 90);
+    border-radius: 1px;
+
+    @include transition-consciousness;
+  }
+
+  &::before { transform: translateY(-#{$line-gap}); }
+  &::after { transform: translateY(#{$line-gap}); }
+}
+
+@mixin hamburger-icon-open {
+  background: transparent;
+
+  &::before { transform: translateY(0) rotate(45deg); }
+  &::after { transform: translateY(0) rotate(-45deg); }
+}

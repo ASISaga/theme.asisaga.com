@@ -1,0 +1,243 @@
+// ============================================================================
+// WEB COMPONENT CARD MIXINS
+// ============================================================================
+// Encapsulates all web component card styles:
+// - alert-card, product-card, testimonial-card
+// ============================================================================
+
+@mixin wc-alert-card-component {
+  .wc-alert-card {
+    @include genesis-entity('primary');
+    @include genesis-state('stable');
+    @include genesis-environment('associative');
+    align-items: flex-start;
+    gap: var(--space-network, 0.75rem);
+    padding: var(--space-narrative, 1rem);
+    border-left: $border-width-accent solid $color-status-info;
+
+    .wc-alert-card__icon {
+      @include flex-shrink-none;
+      color: $color-status-info;
+    }
+
+    .wc-alert-card__icon-svg {
+      @include display-block;
+    }
+
+    .wc-alert-card__content {
+      @include flex-grow-fill;
+      @include genesis-environment('focused');
+    }
+
+    .wc-alert-card__title {
+      @include genesis-cognition('motive');
+      margin: 0 0 var(--space-network, 0.25rem) 0;
+    }
+
+    .wc-alert-card__message {
+      @include genesis-cognition('discourse');
+      @include margin-reset;
+    }
+
+    .wc-alert-card__dismiss {
+      @include genesis-synapse('destructive');
+      @include bg-transparent;
+      border: none;
+      padding: $spacing-xs;
+      @include cursor-pointer;
+      @include flex-shrink-none;
+      color: currentColor;
+      opacity: 0.5;
+      transition: opacity $transition-fast;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      svg {
+        @include display-block;
+      }
+    }
+
+    // Type variants
+    &--success {
+      border-left-color: $color-status-success;
+
+      .wc-alert-card__icon {
+        color: $color-status-success;
+      }
+    }
+
+    &--warning {
+      border-left-color: $color-status-warning;
+
+      .wc-alert-card__icon {
+        color: $color-status-warning;
+      }
+    }
+
+    &--error {
+      @include genesis-entity('imperative');
+      border-left-color: $color-status-error;
+
+      .wc-alert-card__icon {
+        color: $color-status-error;
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    animation: slideInRight $transition-normal;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+}
+
+@mixin wc-product-card-component {
+  .wc-product-card {
+    @include genesis-entity('primary');
+    @include genesis-state('stable');
+    @include genesis-environment('focused');
+
+    .wc-product-card__media {
+      @include genesis-entity('secondary');
+      position: relative;
+      aspect-ratio: 16 / 9;
+      @include overflow-hidden;
+      margin-bottom: var(--space-narrative, 1rem);
+    }
+
+    .wc-product-card__image {
+      @include full-width;
+      @include full-height;
+      object-fit: cover;
+      transition: transform $transition-normal;
+    }
+
+    .wc-product-card__placeholder {
+      @include genesis-entity('latent');
+      @include flex-center;
+      @include full-width;
+      @include full-height;
+    }
+
+    .wc-product-card__placeholder-text {
+      @include genesis-cognition('axiom');
+      opacity: 0.3;
+    }
+
+    .wc-product-card__content {
+      margin-bottom: var(--space-narrative, 1rem);
+    }
+
+    .wc-product-card__title {
+      @include genesis-cognition('axiom');
+      margin-bottom: var(--space-network, 0.5rem);
+    }
+
+    .wc-product-card__description {
+      @include genesis-cognition('discourse');
+    }
+
+    .wc-product-card__actions {
+      @include genesis-environment('associative');
+      gap: var(--space-network, 0.5rem);
+    }
+
+    .wc-product-card__button {
+      @include genesis-synapse('execute');
+
+      &--primary {
+        background: $sys-color-surface-dark;
+        color: $color-light-white;
+      }
+
+      &--secondary {
+        @include genesis-synapse('inquiry');
+      }
+    }
+
+    &:hover {
+      .wc-product-card__image {
+        transform: scale(1.05);
+      }
+    }
+
+    &--featured {
+      @include genesis-atmosphere('vibrant');
+    }
+  }
+}
+
+@mixin wc-testimonial-card-component {
+  .wc-testimonial-card {
+    @include genesis-entity('primary');
+    @include genesis-state('stable');
+    @include genesis-environment('focused');
+
+    .wc-testimonial-card__quote {
+      @include margin-reset;
+      margin-bottom: var(--space-narrative, 1rem);
+      padding: 0;
+      border: none;
+    }
+
+    .wc-testimonial-card__text {
+      @include genesis-cognition('discourse');
+      font-style: italic;
+      position: relative;
+
+      &::before {
+        content: '"';
+        @include absolute-position(-0.2em, null, null, -0.5em);
+        font-size: 2em;
+        opacity: 0.3;
+      }
+    }
+
+    .wc-testimonial-card__author {
+      @include genesis-environment('associative');
+      align-items: center;
+      gap: var(--space-network, 0.5rem);
+    }
+
+    .wc-testimonial-card__avatar {
+      @include size-square($size-avatar-testimonial);
+      @include border-radius-pill;
+      @include overflow-hidden;
+      @include flex-shrink-none;
+    }
+
+    .wc-testimonial-card__avatar-image {
+      @include full-width;
+      @include full-height;
+      object-fit: cover;
+    }
+
+    .wc-testimonial-card__author-info {
+      @include genesis-environment('focused');
+    }
+
+    .wc-testimonial-card__name {
+      @include genesis-cognition('motive');
+      font-style: normal;
+      @include display-block;
+    }
+
+    .wc-testimonial-card__company {
+      @include genesis-cognition('gloss');
+      @include display-block;
+    }
+  }
+}

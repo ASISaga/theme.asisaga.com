@@ -1,34 +1,25 @@
 // ============================================================================
-// SEMANTIC DESIGN SYSTEM - ASI Saga Theme v3.0
+// SEMANTIC DESIGN SYSTEM - ASI Saga Theme v4.0
 // _main.scss — THEME COMPONENT BUNDLE (site-level stylesheet, Layer 2)
 // ============================================================================
 // Imported by assets/css/style.scss AFTER ontology/index.
 //
-// ARCHITECTURE INTENT — subdomain model:
-//   This theme repository is the base for multiple subdomains.  Each subdomain
-//   supplies its OWN _main.scss that imports ONLY:
-//     • The layouts it actually uses (2–3 out of 20+)
-//     • The includes required by those layouts
-//     • Any subdomain-specific component styles
-//   This keeps each subdomain's style.css minimal — no unused layout CSS.
+// ARCHITECTURE:
+//   ALL component CSS flows through the interface:
+//     Consumer file → genesis-component($name) → _theme-engine-component($name)
+//                                               → engines/components/_*.scss
+//   This ensures _interface.scss remains the sole API between theme and consumers.
 //
 // THIS FILE (theme demo site):
 //   Imports everything so the theme's own demo pages and sample layouts all
-//   render correctly.  It is the "full bundle" reference implementation.
+//   render correctly. It is the "full bundle" reference implementation.
 //   Subdomains DO NOT copy this file — they write a minimal version.
-//
-// Files are organised to mirror Jekyll Liquid HTML organisation:
-//   _sass/ontology/       — ontological engine + foundation (design, utils, effects, layout)
-//   _sass/ontology/mixins — reusable component factory mixins
-//   _sass/includes/       ↔  _includes/ one-to-one (_index.scss aggregates)
-//   _sass/includes/core/  — site-wide components (header, footer, navbar, cards…)
-//   _sass/layouts/        ↔  _layouts/ (all layout files)
 // ============================================================================
 
 // ----------------------------------------
 // LAYOUT UTILITIES — shared across all layouts
 // ----------------------------------------
-@import "includes/core/bento-engine";    // Native CSS Grid system (shared grid primitive)
+@import "ontology/foundation/layout/bento-engine";
 
 // ----------------------------------------
 // BASE UTILITIES — legacy compatibility & utility classes
@@ -36,27 +27,13 @@
 @import "ontology/foundation/utilities/legacy-utilities";
 
 // ----------------------------------------
-// COMPONENT MIXINS — load before implementations
-// ----------------------------------------
-@import "ontology/mixins/section-component";
-@import "ontology/mixins/layout-component";
-@import "ontology/mixins/header-component";
-@import "ontology/mixins/card-component";
-@import "ontology/mixins/image-card-component";
-@import "ontology/mixins/form-component";
-@import "ontology/mixins/team-component";
-@import "ontology/mixins/content-section-component";
-@import "ontology/mixins/hero-component";
-@import "ontology/mixins/products-grid-component";
-@import "ontology/mixins/cta-component";
-
-// ----------------------------------------
 // CORE COMPONENTS — present on every page
+// (All routed through genesis-component interface)
 // ----------------------------------------
-@import "includes/core/ui-components";   // Modal, Collapse, Tabs
-@import "includes/core/genesis-core";    // body/main/skip-link/ambient
-@import "includes/core/genesis-header";  // Glassmorphism header
-@import "includes/core/genesis-footer";  // Grid footer
+@import "includes/core/ui-components";
+@import "includes/core/genesis-core";
+@import "includes/core/genesis-header";
+@import "includes/core/genesis-footer";
 @import "includes/core/footer";
 @import "includes/core/header";
 @import "includes/core/navbar";
@@ -113,23 +90,19 @@
 // ----------------------------------------
 // WEB COMPONENT TEMPLATES
 // ----------------------------------------
-// Dynamically instantiated from _includes/web-component-templates/ via JS
 @import "includes/web-components/index";
 
 // ----------------------------------------
 // INCLUDES STYLES — mirrors _includes/ hierarchy
 // ----------------------------------------
-// One-to-one correspondence: each file in _includes/ has a unique SCSS file
-// in _sass/includes/, mirroring the same directory hierarchy.
 @import "includes/index";
 
 // ----------------------------------------
 // LAYOUT STYLES — all page layouts
 // ----------------------------------------
-// Shared layout utilities (bento-engine already imported above).
-@import "ontology/foundation/layout/base-structure";          // Fundamental page layout containers
-@import "ontology/foundation/layout/layout-ontology";         // Ontology-mapped layout classes
-@import "ontology/foundation/layout/responsive-enhancements"; // Cross-layout responsive refinements
+@import "ontology/foundation/layout/base-structure";
+@import "ontology/foundation/layout/layout-ontology";
+@import "ontology/foundation/layout/responsive-enhancements";
 
 @import "layouts/app";
 @import "layouts/default";
@@ -155,4 +128,4 @@
 // ----------------------------------------
 // DEMO PAGE STYLES
 // ----------------------------------------
-@import "demo/index-demo";                   // Genesis theme demo page (index.html)
+@import "demo/index-demo";

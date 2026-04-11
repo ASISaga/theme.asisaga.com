@@ -7,13 +7,14 @@
  * ontological category. This is the ONLY layer where raw CSS properties
  * are allowed. All values MUST use CSS custom properties from the token system.
  * 
- * Each mixin corresponds to one of the six ontological categories:
+ * Each mixin corresponds to one of the seven ontological categories:
  * - Environment: Spatial organization and layout
  * - Entity: Visual presence and material properties
  * - Cognition: Typography and information intent
  * - Synapse: Interactions and navigation
  * - State: Temporal conditions and system status
  * - Atmosphere: Sensory texture and emotional tone
+ * - Component: Class-emitting manifestation (full component CSS blocks)
  */
 
 // Import all engine implementations
@@ -23,3 +24,4 @@
 @import "synapse";
 @import "state";
 @import "atmosphere";
+@import "component";

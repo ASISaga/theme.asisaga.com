@@ -1,0 +1,23 @@
+// ============================================================================
+// LAYOUT APP COMPONENT MIXIN
+// ============================================================================
+// Extracted from _sass/layouts/_app.scss
+// Lightweight shell for app-like pages.
+// ============================================================================
+
+@mixin layout-app-component {
+
+  .app-layout {
+    @include genesis-atmosphere('neutral');
+    @include flex-column;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  .app-content {
+    @include flex-grow-fill;
+    @include flex-column;
+    position: relative;
+    @include full-width;
+  }
+}

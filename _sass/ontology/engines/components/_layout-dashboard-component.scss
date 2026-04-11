@@ -1,0 +1,152 @@
+// ============================================================================
+// LAYOUT DASHBOARD COMPONENT MIXIN
+// ============================================================================
+// Extracted from _sass/layouts/_dashboard.scss
+// Dashboard interface with header and content area.
+// ============================================================================
+
+@mixin layout-dashboard-component {
+
+  .dashboard-layout {
+    @include genesis-environment('manifest');
+    @include genesis-atmosphere('neutral');
+    @include full-height;
+
+    > * {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .dashboard__header {
+    @include genesis-environment('associative');
+  }
+
+  .dashboard__title {
+    @include genesis-cognition('axiom');
+  }
+
+  .dashboard__actions {
+    @include genesis-environment('associative');
+  }
+
+  .dashboard__action-btn {
+    @include genesis-synapse('execute');
+  }
+
+  // ==========================================================================
+  // Sample content sections (used by sample-dashboard.html and subdomain pages)
+  // ==========================================================================
+
+  .dashboard__kpis {
+    @include grid-auto-fit(12rem, clamp(0.75rem, 1.5vw, 1.5rem));
+  }
+
+  .dashboard__workspace {
+    display: grid;
+    grid-template-columns: 1fr minmax(16rem, 20rem);
+    gap: clamp(1rem, 2vw, 1.5rem);
+
+    @media (max-width: 48rem) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .dashboard__main-panel,
+  .dashboard__side-panel {
+    // Panels are layout regions, not cards
+  }
+
+  .dashboard__panel-header {
+    @include genesis-environment('associative');
+  }
+
+  .dashboard__chart-area {
+    min-height: 16rem;
+  }
+
+  .dashboard__chart-placeholder {
+    @include flex-column;
+    align-items: center;
+    justify-content: center;
+    @include full-height;
+    opacity: 0.4;
+
+    i {
+      font-size: 2.5rem;
+    }
+  }
+
+  .dashboard__page-list {
+    @include list-reset;
+  }
+
+  .dashboard__page-item {
+    @include flex-row(0.75rem);
+    align-items: baseline;
+    padding-block: 0.5rem;
+
+    &:not(:last-child) {
+      @include border-separator-bottom($color-neutral-alpha-light);
+    }
+  }
+
+  .dashboard__page-path {
+    @include genesis-cognition('protocol');
+    @include flex-grow-fill;
+  }
+
+  .dashboard__page-meta {
+    @include genesis-cognition('gloss');
+  }
+
+  .dashboard__page-share {
+    @include genesis-cognition('quantum');
+  }
+
+  .dashboard__activity {
+    // Structural section
+  }
+
+  .dashboard__table-wrap {
+    overflow-x: auto;
+    @include touch-scroll;
+  }
+
+  .dashboard__table {
+    @include full-width;
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 0.5rem 0.75rem;
+      @include text-align-left;
+    }
+
+    th {
+      @include genesis-cognition('gloss');
+      border-bottom: 2px solid $color-neutral-alpha-medium;
+    }
+
+    td {
+      @include genesis-cognition('gloss');
+      @include border-separator-bottom($color-neutral-alpha-faint);
+    }
+
+    tbody tr:hover {
+      background: $color-neutral-alpha-subtle;
+    }
+  }
+
+  .dashboard__status {
+    @include genesis-cognition('quantum');
+    @include display-inline-block;
+
+    &--success {
+      color: $color-status-success-text;
+    }
+
+    &--error {
+      color: $color-status-error-text;
+    }
+  }
+}

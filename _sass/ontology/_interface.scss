@@ -4,7 +4,10 @@
  * The Absolute Authority for ASI Node Construction.
  * This contract is immutable. Visual manifestation is delegated to the Theme Engine.
  *
- * VERSION: 4.0.0 — Ontological Transcendence
+ * VERSION: 5.0.0 — Component Transcendence
+ *
+ * ALL theme consumption MUST route through this interface.
+ * Consumer files call genesis-* mixins; these delegate to the engine layer.
  */
 
 /**
@@ -71,4 +74,19 @@
   // Variants: neutral, ethereal, void, vibrant, cosmic, sacred,
   // spacious-mobile, dense-desktop, viewport-aware
   @include _theme-engine-atmosphere($vibe);
+}
+
+/**
+ * 7. THE COMPONENT MANIFESTATION (Component)
+ * --------------------------------------------------------------------------
+ * Class-emitting engine. Unlike the 6 property-emitting engines above,
+ * genesis-component() emits complete class hierarchies with selectors.
+ *
+ * Usage in consumer files:
+ *   @include genesis-component('genesis-header');
+ *   @include genesis-component('navbar');
+ *   @include genesis-component('layout-chatroom');
+ */
+@mixin genesis-component($name) {
+  @include _theme-engine-component($name);
 }

@@ -1,0 +1,45 @@
+// ============================================================================
+// LAYOUT MINIMAL COMPONENT MIXIN
+// ============================================================================
+// Extracted from _sass/layouts/_minimal.scss
+// Error pages and lightweight content with minimal chrome.
+// ============================================================================
+
+@mixin layout-minimal-component {
+
+  .minimal-layout-content {
+    @include genesis-environment('focused');
+    @include genesis-atmosphere('ethereal');
+    @include text-align-center;
+
+    .minimal-error-code {
+      @include genesis-cognition('axiom');
+      font-size: clamp(4rem, 10vw, 6rem);
+      font-weight: 700;
+    }
+
+    .minimal-title {
+      @include genesis-cognition('axiom');
+      font-size: clamp(2rem, 5vw, 2.5rem);
+    }
+
+    .minimal-description {
+      @include genesis-cognition('discourse');
+      @include genesis-state('stable');
+    }
+
+    .minimal-content {
+      @include genesis-entity('secondary');
+    }
+
+    .minimal-home-link {
+      @include genesis-synapse('navigate');
+      @include display-inline-block;
+    }
+
+    .minimal-nav {
+      @include flex-row-wrap(1rem);
+      justify-content: center;
+    }
+  }
+}

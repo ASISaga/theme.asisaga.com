@@ -1,0 +1,211 @@
+// ============================================================================
+// BENTO ENGINE - Ontological Grid Layout System
+// ============================================================================
+// Modular grid system using Genesis Semantic Design System.
+// Provides "Sentient Dashboard" feel with named grid areas and glassmorphism.
+//
+// Hierarchy levels:
+//   Level 1 (viewport wrappers): environment + atmosphere
+//   Level 2 (grid sections): environment
+//   Level 3 (cards): entity
+//   Level 4 (card internals): cognition / synapse
+// ============================================================================
+
+// ----------------------------------------
+// VIEWPORT CONTAINERS — Level 1: Page Layout
+// Required: genesis-environment() + genesis-atmosphere()
+// ----------------------------------------
+
+// Genesis viewport — Primary full-width container
+.genesis-viewport {
+  @include genesis-environment('distributed');   // Spatial layout (Level 1)
+  @include genesis-atmosphere('neutral');         // Emotional tone (Level 1)
+  max-width: min(1600px, 100%);
+  margin-inline: auto;
+}
+
+// Consciousness viewport — Content-focused container
+.consciousness-viewport {
+  @include genesis-environment('focused');        // Constrained reading flow (Level 1)
+  @include genesis-atmosphere('neutral');         // Emotional tone (Level 1)
+  max-width: min(1200px, 100%);
+  margin-inline: auto;
+}
+
+// Essence viewport — Narrow content container
+.essence-viewport {
+  @include genesis-environment('focused');        // Constrained reading flow (Level 1)
+  @include genesis-atmosphere('ethereal');        // Light, airy tone (Level 1)
+  max-width: min(800px, 100%);
+  margin-inline: auto;
+}
+
+// ----------------------------------------
+// BENTO LAYOUTS — Level 2: Section
+// Required: genesis-environment()
+// ----------------------------------------
+
+// Primary Bento layout — Responsive auto-fit grid
+.bento-layout {
+  @include genesis-environment('distributed');    // Bento grid (Level 2)
+}
+
+// Dashboard Bento — Named areas for sentient dashboard feel
+.bento-dashboard {
+  @include genesis-environment('manifest');       // 12-column dashboard (Level 2)
+
+  // Named grid area overrides for dashboard-specific layout
+  grid-template-areas:
+    "header header header"
+    "sidebar main main"
+    "sidebar main main";
+
+  grid-template-columns: minmax(min(250px, 100%), 1fr) 2fr 2fr;
+  grid-template-rows: auto 1fr 1fr;
+
+  @media (max-width: 768px) {
+    grid-template-areas:
+      "header"
+      "main"
+      "sidebar";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
+}
+
+// Named area assignments for dashboard (Level 2: structural sections)
+.bento-dashboard__header {
+  grid-area: header;
+}
+
+.bento-dashboard__sidebar {
+  grid-area: sidebar;
+}
+
+.bento-dashboard__main {
+  grid-area: main;
+}
+
+// Gallery Bento — Image-optimized grid
+.bento-gallery {
+  @include genesis-environment('distributed');    // Auto-fit image grid (Level 2)
+
+  // Gallery-specific column sizing override
+  --card-min-width: clamp(200px, 30vw, 400px);
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--card-min-width), 100%), 1fr));
+}
+
+// Masonry Bento — Dense auto-flow layout
+.bento-masonry {
+  @include genesis-environment('distributed');    // Auto-fit grid base (Level 2)
+
+  // Masonry-specific dense packing overrides
+  grid-auto-rows: minmax(100px, auto);
+  grid-auto-flow: dense;
+}
+
+// ----------------------------------------
+// BENTO CARD — Level 3: Component
+// Required: genesis-entity()
+// ----------------------------------------
+
+.bento-card {
+  @include genesis-entity('primary');             // Visual surface (Level 3)
+
+  // Structural flex for card content flow
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+// Bento Card Variants — Level 3 entity variants
+.bento-card--elevated {
+  @include genesis-entity('secondary');           // Elevated surface (Level 3)
+}
+
+.bento-card--accent {
+  @include genesis-entity('imperative');          // Urgency/accent surface (Level 3)
+}
+
+.bento-card--neural {
+  @include genesis-entity('transcendent');        // Sacred/neural prominence (Level 3)
+}
+
+// ----------------------------------------
+// BENTO CARD COMPONENTS — Level 4: Leaf Elements
+// Required: genesis-cognition() or genesis-synapse()
+// ----------------------------------------
+
+.bento-card__header {
+  @include genesis-environment('associative');    // Horizontal flex layout (Level 2 internal)
+}
+
+.bento-card__title {
+  @include genesis-cognition('axiom');            // Headline text (Level 4)
+  margin: 0;
+}
+
+.bento-card__subtitle {
+  @include genesis-cognition('gloss');            // Annotation text (Level 4)
+}
+
+.bento-card__body {
+  @include genesis-cognition('discourse');        // Body prose (Level 4)
+  flex: 1;
+}
+
+.bento-card__footer {
+  @include genesis-environment('associative');    // Horizontal layout (Level 2 internal)
+  margin-top: auto;
+}
+
+// ----------------------------------------
+// RESPONSIVE UTILITIES
+// ----------------------------------------
+
+// Stack items vertically on mobile
+.bento-stack-mobile {
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Hide on mobile
+.bento-hide-mobile {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+// Show only on mobile
+.bento-show-mobile {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+// ----------------------------------------
+// ACCESSIBILITY
+// ----------------------------------------
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .bento-card {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .bento-card {
+    border-width: 2px;
+    backdrop-filter: none;
+  }
+}

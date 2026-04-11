@@ -1,0 +1,102 @@
+/**
+ * COMPONENT ENGINE - Class-Emitting Manifestation Layer
+ * --------------------------------------------------------------------------
+ * The 7th engine category. Unlike the 6 ontological engines (which emit
+ * CSS properties into the current selector), this engine emits complete
+ * class hierarchies with their own selectors.
+ *
+ * Invoked exclusively via the interface: genesis-component($name)
+ *
+ * ARCHITECTURE:
+ *   _interface.scss  →  genesis-component($name)
+ *                    →  _theme-engine-component($name)
+ *                    →  engines/components/_*.scss (actual CSS)
+ */
+
+// Import all component implementations
+@import "components/index";
+
+// ============================================================================
+// COMPONENT ENGINE DISPATCHER
+// ============================================================================
+@mixin _theme-engine-component($name) {
+  // ---- Core site-wide ----
+  @if $name == 'genesis-core' { @include genesis-core-component; }
+  @else if $name == 'genesis-header' { @include genesis-header-component; }
+  @else if $name == 'genesis-footer' { @include genesis-footer-component; }
+  @else if $name == 'navbar' { @include navbar-component; }
+  @else if $name == 'ui' { @include ui-components; }
+  @else if $name == 'header-generic' { @include header-generic-component; }
+  @else if $name == 'footer-generic' { @include footer-generic-component; }
+
+  // ---- Section ----
+  @else if $name == 'section-header' { @include section-header-component; }
+  @else if $name == 'hero-section' { @include hero-section-component; }
+  @else if $name == 'interactive-module' { @include interactive-module-component; }
+
+  // ---- Product ----
+  @else if $name == 'product-page' { @include product-page-component; }
+  @else if $name == 'product-applications' { @include product-applications-component; }
+  @else if $name == 'product-benefits-list' { @include product-benefits-list-component; }
+  @else if $name == 'product-code-example' { @include product-code-example-component; }
+  @else if $name == 'product-section-container' { @include product-section-container-component; }
+  @else if $name == 'product-visual' { @include product-visual-component; }
+
+  // ---- Sacred ----
+  @else if $name == 'sacred-elements' { @include sacred-elements-component; }
+  @else if $name == 'sacred-navigation' { @include sacred-navigation-component; }
+  @else if $name == 'sacred-buttons' { @include sacred-buttons-component; }
+  @else if $name == 'sacred-forms' { @include sacred-forms-component; }
+  @else if $name == 'consciousness-cards' { @include consciousness-cards-component; }
+  @else if $name == 'genesis-timeline' { @include genesis-timeline-component; }
+  @else if $name == 'bridge-connections' { @include bridge-connections-component; }
+  @else if $name == 'sacred-modals' { @include sacred-modals-component; }
+  @else if $name == 'transcendent-hero' { @include transcendent-hero-component; }
+  @else if $name == 'genesis-blocks' { @include genesis-blocks-component; }
+  @else if $name == 'transcendent-threshold' { @include transcendent-threshold-component; }
+  @else if $name == 'genesis-invitation' { @include genesis-invitation-component; }
+
+  // ---- Web card components ----
+  @else if $name == 'wc-alert-card' { @include wc-alert-card-component; }
+  @else if $name == 'wc-product-card' { @include wc-product-card-component; }
+  @else if $name == 'wc-testimonial-card' { @include wc-testimonial-card-component; }
+
+  // ---- Integration ----
+  @else if $name == 'linkedin' { @include linkedin-component; }
+
+  // ---- Layout-specific components ----
+  @else if $name == 'layout-chatroom' { @include layout-chatroom-component; }
+  @else if $name == 'layout-settings' { @include layout-settings-component; }
+  @else if $name == 'layout-search' { @include layout-search-component; }
+  @else if $name == 'layout-dashboard' { @include layout-dashboard-component; }
+  @else if $name == 'layout-landing' { @include layout-landing-component; }
+  @else if $name == 'layout-splash' { @include layout-splash-component; }
+  @else if $name == 'layout-minimal' { @include layout-minimal-component; }
+  @else if $name == 'layout-app' { @include layout-app-component; }
+  @else if $name == 'layout-default' { @include layout-default-component; }
+  @else if $name == 'layout-scrollable' { @include layout-scrollable-component; }
+  @else if $name == 'layout-fixed-height' { @include layout-fixed-height-component; }
+  @else if $name == 'layout-minimal-base' { @include layout-minimal-base-component; }
+  @else if $name == 'layout-article' { @include layout-article-component; }
+  @else if $name == 'layout-profile' { @include layout-profile-component; }
+  @else if $name == 'layout-gallery' { @include layout-gallery-component; }
+
+  // ---- Demo ----
+  @else if $name == 'demo-index' { @include demo-index-component; }
+
+  // ---- Parametric mixins (invoked with default params) ----
+  @else if $name == 'section' { @include section-component; }
+  @else if $name == 'layout' { @include page-layout; }
+  @else if $name == 'header' { @include header-component; }
+  @else if $name == 'card' { @include card-component; }
+  @else if $name == 'image-card' { @include image-card-component; }
+  @else if $name == 'form' { @include form-component; }
+  @else if $name == 'team' { @include team-component; }
+  @else if $name == 'content-section' { @include content-section-component; }
+  @else if $name == 'hero' { @include hero-component; }
+  @else if $name == 'products-grid' { @include products-grid-component; }
+  @else if $name == 'cta' { @include cta-component; }
+  @else {
+    @warn "genesis-component: unknown component '#{$name}'";
+  }
+}

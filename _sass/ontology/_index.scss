@@ -48,6 +48,7 @@
 // Utilities & Mixins
 @import "foundation/utilities/mixins";           // Core Sass mixins
 @import "foundation/utilities/semantic-mixins";  // Semantic mixins
+@import "foundation/utilities/structural-mixins"; // Structural utility mixins (positioning, flex, grid, etc.)
 @import "foundation/utilities/accessibility";    // WCAG compliance helpers
 @import "foundation/utilities/common";           // Common utility styles
 

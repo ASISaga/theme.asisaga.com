@@ -1,0 +1,280 @@
+// ============================================================================
+// GENESIS FOOTER COMPONENT MIXIN
+// ============================================================================
+// Encapsulates all raw CSS for the genesis footer component.
+// The consumer file (includes/core/_genesis-footer.scss) uses ONLY this mixin.
+// ============================================================================
+
+@mixin genesis-footer-component {
+  .genesis-footer {
+    @include genesis-entity('secondary');
+    @include genesis-atmosphere('void');
+    @include display-block;
+    @include full-width;
+    @include margin-top-auto;
+
+    // Deep void background
+    backdrop-filter: blur(20px);
+    background: oklch(0.06 0.015 250 / 0.97);
+    @include border-separator-top(oklch(0.20 0.04 250));
+
+    // Subtle upward glow
+    box-shadow:
+      0 -1px 0 oklch(0.65 0.25 230 / 0.06),
+      0 -4px 24px oklch(0.03 0.02 250 / 0.3);
+
+    @media (prefers-contrast: high) {
+      background: oklch(0.05 0 0);
+      border-top: 2px solid oklch(0.30 0 0);
+      backdrop-filter: none;
+    }
+
+    // Container
+    &__container {
+      @include container-constrained(1440px, 1.25rem);
+      padding-block: 3rem 1.5rem;
+
+      @include from(lg) {
+        padding-inline: 2.5rem;
+        padding-block: 3.5rem 1.5rem;
+      }
+    }
+
+    // Footer Grid
+    &__grid {
+      @include grid-columns(1, 2rem);
+      margin-bottom: 2rem;
+
+      @include from(md) {
+        @include grid-columns(2, 2.5rem);
+      }
+
+      @include from(lg) {
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 2.5rem;
+      }
+
+      @include from(xl) {
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 4rem;
+      }
+    }
+
+    // Brand Section
+    &__brand {
+      @include flex-column(0.625rem);
+    }
+
+    &__title {
+      @include genesis-cognition('axiom');
+      font-family: $font-family-consciousness;
+      font-size: clamp(1.125rem, calc(1rem + 0.75vw), 1.5rem);
+      @include color-text-light;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      @include text-uppercase;
+    }
+
+    &__tagline {
+      @include genesis-cognition('discourse');
+      @include color-text-muted;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      max-width: 40ch;
+    }
+
+    // Navigation Section
+    &__nav {
+      @include flex-column(0.875rem);
+    }
+
+    &__nav-title {
+      @include genesis-cognition('motive');
+      font-family: $font-family-consciousness;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      @include color-text-muted;
+      letter-spacing: 0.12em;
+      @include text-uppercase;
+      @include margin-reset;
+    }
+
+    &__nav-list {
+      @include list-reset;
+      @include flex-column(0.25rem);
+    }
+
+    &__nav-item {
+      @include touch-target-size;
+      @include flex-row;
+      align-items: center;
+    }
+
+    &__nav-link {
+      @include genesis-synapse('navigate');
+      color: oklch(0.60 0.01 230);
+      @include text-decoration-none;
+      font-family: $font-family-consciousness;
+      font-size: 0.8125rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      padding: 0.375rem 0;
+      @include display-inline-block;
+      @include animated-underline;
+      @include transition-smooth(color);
+
+      &:hover,
+      &:focus {
+        color: oklch(0.90 0.005 90);
+      }
+    }
+
+    // Social Links Section
+    &__social {
+      @include flex-column(0.875rem);
+    }
+
+    &__social-title {
+      @include genesis-cognition('motive');
+      font-family: $font-family-consciousness;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      @include color-text-muted;
+      letter-spacing: 0.12em;
+      @include text-uppercase;
+      @include margin-reset;
+    }
+
+    &__social-links {
+      @include flex-row-wrap(0.625rem);
+
+      @include from(md) {
+        gap: 0.75rem;
+      }
+    }
+
+    &__social-link {
+      @include genesis-synapse('execute');
+      @include size-square(40px);
+      @include flex-center;
+      background: oklch(0.12 0.02 250);
+      @include border-subtle(oklch(0.22 0.03 250));
+      @include border-radius-rounded;
+      @include color-text-muted;
+      font-size: 1rem;
+
+      @include transition-smooth(color background border-color box-shadow);
+
+      &:hover,
+      &:focus {
+        background: oklch(0.16 0.03 250);
+        border-color: oklch(0.65 0.25 230 / 0.5);
+        color: oklch(0.90 0.005 90);
+        @include shadow-glow(oklch(0.65 0.25 230), 0.15);
+      }
+
+      &:active {
+        background: oklch(0.20 0.04 250);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        @include transition-smooth(background color, 0.15s);
+      }
+    }
+
+    // Copyright Bar — the final anchor
+    &__copyright {
+      padding: 1.25rem 0 0;
+      @include border-separator-top(oklch(0.15 0.02 250));
+      @include text-align-center;
+
+      p {
+        @include genesis-cognition('gloss');
+        font-family: $font-family-consciousness;
+        @include color-text-dim;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        @include margin-reset;
+      }
+    }
+  }
+
+  // Back to Top Button — consciousness elevator
+  .genesis-back-to-top {
+    @include genesis-synapse('execute');
+    @include fixed-position(null, 1.5rem, 1.5rem, null, 999);
+    @include size-square(44px);
+    @include flex-center;
+    background: oklch(0.12 0.03 250 / 0.9);
+    @include border-subtle(oklch(0.25 0.04 250));
+    @include border-radius-rounded(12px);
+    color: oklch(0.65 0.02 230);
+    font-size: 1rem;
+    @include cursor-pointer;
+    backdrop-filter: blur(12px);
+    @include hidden-state;
+    transform: translateY(12px);
+
+    @include transition-smooth(opacity visibility transform background border-color color box-shadow);
+
+    // Show when scrolled
+    &.is-visible {
+      @include visible-state;
+      transform: translateY(0);
+    }
+
+    &:hover,
+    &:focus {
+      background: oklch(0.18 0.04 250 / 0.95);
+      border-color: oklch(0.65 0.25 230 / 0.5);
+      color: oklch(0.90 0.005 90);
+      @include shadow-glow(oklch(0.65 0.25 230), 0.2, 20px);
+      transform: translateY(-2px);
+    }
+
+    &.is-visible:hover,
+    &.is-visible:focus {
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      @include transition-smooth(opacity visibility, 0.1s);
+
+      &:hover,
+      &:focus,
+      &:active,
+      &.is-visible:hover,
+      &.is-visible:focus {
+        transform: none;
+      }
+    }
+
+    @media (prefers-contrast: high) {
+      background: oklch(0.15 0 0);
+      border: 2px solid oklch(0.70 0 0);
+      backdrop-filter: none;
+
+      &:hover,
+      &:focus {
+        background: oklch(0.25 0 0);
+        border-color: oklch(0.85 0 0);
+        @include shadow-none;
+      }
+    }
+  }
+
+  // Responsive back-to-top scaling
+  @include from(md) {
+    .genesis-back-to-top {
+      bottom: 2rem;
+      right: 2rem;
+      @include size-square(48px);
+      font-size: 1.125rem;
+    }
+  }
+}

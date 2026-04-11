@@ -1,0 +1,201 @@
+// ============================================================================
+// LAYOUT SETTINGS COMPONENT MIXIN
+// ============================================================================
+// Extracted from _sass/layouts/_settings.scss
+// Settings/preferences interface with sidebar navigation.
+// ============================================================================
+
+@mixin layout-settings-component {
+
+  .settings-layout {
+    @include genesis-environment('convergent');
+    @include genesis-atmosphere('neutral');
+    @include full-height;
+
+    .settings-sidebar {
+      @include genesis-environment('navigation-tabs');
+    }
+
+    .settings-sidebar-title {
+      @include genesis-cognition('motive');
+    }
+
+    .settings-nav {
+      @include genesis-environment('chronological');
+    }
+
+    .settings-nav-link {
+      @include genesis-synapse('tab');
+
+      &--active {
+        @include genesis-state('active');
+      }
+    }
+
+    .settings-main {
+      @include flex-grow-fill;
+    }
+
+    .settings-title {
+      @include genesis-cognition('axiom');
+    }
+
+    .settings-actions {
+      @include genesis-environment('associative');
+    }
+
+    .settings-button {
+      @include genesis-synapse('execute');
+
+      &--primary {
+        @include genesis-entity('imperative');
+      }
+    }
+  }
+
+  // ==========================================================================
+  // Sample content classes (used by sample-settings.html and subdomain pages)
+  // ==========================================================================
+
+  .settings-pane {
+    @include display-none;
+
+    &--active {
+      @include display-block;
+    }
+  }
+
+  .settings-pane__heading {
+    @include genesis-cognition('motive');
+  }
+
+  .settings-form {
+    @include flex-column(1rem);
+  }
+
+  .settings-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    @media (max-width: 36rem) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .settings-form__section {
+    @include flex-column(0.5rem);
+    padding-top: 0.5rem;
+
+    &:not(:first-child) {
+      @include border-separator-top($color-neutral-alpha-faint);
+      padding-top: 1rem;
+    }
+  }
+
+  .settings-form__subheading {
+    @include genesis-cognition('gloss');
+    font-weight: 600;
+    @include margin-reset;
+  }
+
+  .settings-form__field {
+    @include flex-column(0.25rem);
+  }
+
+  .settings-form__label {
+    @include genesis-cognition('gloss');
+    font-weight: 500;
+  }
+
+  .settings-form__input {
+    @include genesis-entity('secondary');
+    padding: 0.5rem 0.75rem;
+    @include border-subtle($color-neutral-alpha-medium);
+    @include border-radius-rounded(0.375rem);
+    font: inherit;
+    @include bg-transparent;
+
+    &:focus {
+      outline: 2px solid $state-focus-outline;
+      outline-offset: -1px;
+    }
+  }
+
+  .settings-form__textarea {
+    resize: vertical;
+  }
+
+  .settings-form__toggle,
+  .settings-form__radio {
+    @include flex-row(0.5rem);
+    align-items: center;
+    @include cursor-pointer;
+
+    input {
+      @include flex-shrink-none;
+    }
+
+    span {
+      @include genesis-cognition('gloss');
+    }
+  }
+
+  .settings-form__hint {
+    @include genesis-cognition('gloss');
+    opacity: 0.6;
+    @include margin-reset;
+  }
+
+  .settings-form__actions {
+    @include flex-row-wrap(0.75rem);
+  }
+
+  .settings-form__btn {
+    @include genesis-synapse('execute');
+
+    &--danger {
+      @include genesis-synapse('destructive');
+    }
+  }
+
+  // Sessions list
+  .settings-sessions {
+    @include flex-column;
+  }
+
+  .settings-sessions__item {
+    @include flex-between;
+    padding-block: 0.75rem;
+
+    &:not(:last-child) {
+      @include border-separator-bottom($color-neutral-alpha-faint);
+    }
+  }
+
+  .settings-sessions__info {
+    @include flex-column(0.125rem);
+
+    strong {
+      @include genesis-cognition('gloss');
+      font-weight: 600;
+    }
+
+    span {
+      @include genesis-cognition('gloss');
+      opacity: 0.6;
+    }
+  }
+
+  .settings-sessions__status {
+    @include genesis-cognition('quantum');
+
+    &--active {
+      color: $color-status-success-text;
+    }
+  }
+
+  .settings-sessions__revoke {
+    @include genesis-synapse('destructive');
+  }
+}

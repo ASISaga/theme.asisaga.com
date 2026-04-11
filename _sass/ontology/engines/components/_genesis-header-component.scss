@@ -1,0 +1,216 @@
+// ============================================================================
+// GENESIS HEADER COMPONENT MIXIN
+// ============================================================================
+// Encapsulates all raw CSS for the genesis header component.
+// The consumer file (includes/core/_genesis-header.scss) uses ONLY this mixin.
+// ============================================================================
+
+@mixin genesis-header-component {
+  .genesis-header {
+    @include genesis-entity('surface-glass');
+    @include genesis-state('stable');
+    @include display-block;
+    @include full-width;
+    @include overflow-visible-important;
+    @include sticky-top(1000);
+    @include gpu-accelerate;
+    @include touch-scroll;
+
+    min-height: 64px;
+    @include border-separator-bottom(oklch(0.25 0.04 250));
+
+    box-shadow:
+      0 1px 0 oklch(0.65 0.25 230 / 0.08),
+      0 4px 24px oklch(0.05 0.02 250 / 0.4);
+
+    @include transition-consciousness;
+
+    // Scrolled state — condensed, more opaque, stronger presence
+    &.scrolled {
+      @include bg-glass(0.96);
+      border-bottom-color: oklch(0.20 0.06 230);
+      box-shadow:
+        0 1px 0 oklch(0.65 0.25 230 / 0.15),
+        0 8px 32px oklch(0.03 0.02 250 / 0.6);
+      min-height: 56px;
+    }
+
+    // Hidden state
+    &.header-hidden {
+      transform: translate3d(0, -100%, 0);
+    }
+
+    // Container
+    &__container {
+      @include container-constrained(1440px, 1.25rem);
+      @include flex-between;
+      padding-block: 0.75rem;
+      gap: 1.5rem;
+      @include full-height;
+      @include overflow-visible-important;
+
+      @include from(lg) {
+        padding-inline: 2.5rem;
+        padding-block: 0.875rem;
+      }
+    }
+
+    // Brand — the identity anchor
+    &__brand {
+      @include genesis-synapse('navigate');
+      @include flex-row(0.875rem);
+      align-items: center;
+      @include text-decoration-none;
+      @include flex-shrink-none;
+      @include touch-target-size;
+      position: relative;
+
+      &:hover,
+      &:focus {
+        .genesis-header__title {
+          @include color-text-light;
+          text-shadow: 0 0 20px oklch(0.65 0.25 230 / 0.4);
+        }
+
+        .genesis-header__logo {
+          @include shadow-glow(oklch(0.65 0.25 230), 0.3);
+        }
+      }
+    }
+
+    &__logo {
+      @include size-square(36px);
+      @include border-radius-rounded;
+      @include border-subtle(oklch(0.30 0.04 250));
+      @include transition-smooth(box-shadow border-color);
+
+      @include from(md) {
+        @include size-square(40px);
+      }
+    }
+
+    &__text {
+      @include flex-column(0.125rem);
+    }
+
+    &__title {
+      @include genesis-cognition('motive');
+      font-family: $font-family-consciousness;
+      font-size: clamp(0.9375rem, calc(0.875rem + 0.4vw), 1.125rem);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      @include text-uppercase;
+      color: oklch(0.95 0.005 90);
+      @include transition-smooth(color text-shadow);
+    }
+
+    &__tagline {
+      @include genesis-cognition('gloss');
+      font-family: $font-family-consciousness;
+      @include color-text-muted;
+      font-size: 0.6875rem;
+      letter-spacing: 0.08em;
+      @include text-uppercase;
+      @include display-none;
+
+      @include from(md) {
+        @include display-block;
+      }
+    }
+
+    // Mobile Menu Toggle — geometric precision
+    &__toggle {
+      @include genesis-synapse('execute');
+      @include flex-center;
+      @include size-square(44px);
+      @include padding-reset;
+      background: oklch(0.12 0.02 250);
+      @include border-subtle(oklch(0.25 0.03 250));
+      @include border-radius-rounded;
+      @include cursor-pointer;
+      @include transition-consciousness;
+
+      &:hover,
+      &:focus {
+        background: oklch(0.18 0.03 250);
+        border-color: oklch(0.65 0.25 230);
+        @include shadow-glow(oklch(0.65 0.25 230), 0.2);
+      }
+
+      &[aria-expanded="true"] {
+        background: oklch(0.20 0.04 230);
+        border-color: oklch(0.65 0.25 230);
+        @include shadow-glow(oklch(0.65 0.25 230), 0.25, 20px);
+      }
+
+      @include from(lg) {
+        @include display-none;
+      }
+    }
+
+    &__toggle-icon {
+      @include hamburger-icon;
+    }
+
+    // Toggle icon X-state (when menu expanded)
+    &__toggle[aria-expanded="true"] .genesis-header__toggle-icon {
+      @include hamburger-icon-open;
+    }
+
+    // Primary Navigation — off-canvas drawer (mobile) / inline (desktop)
+    &__nav {
+      @include off-canvas-drawer(85%, 340px, 2000);
+      @include genesis-entity('primary');
+      @include genesis-atmosphere('void');
+
+      // Deep void background
+      background: oklch(0.08 0.015 250 / 0.98) !important;
+      @include border-separator-left(oklch(0.20 0.06 230));
+      padding: 5rem 1.5rem 2rem;
+      @include overflow-scroll-y;
+      -webkit-overflow-scrolling: touch;
+
+      box-shadow: -16px 0 64px oklch(0 0 0 / 0);
+
+      &[data-nav-open="true"] {
+        box-shadow: -16px 0 64px oklch(0 0 0 / 0.7);
+      }
+
+      // Desktop: Inline navigation
+      @include from(lg) {
+        position: static !important;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        @include padding-reset;
+        overflow-y: visible;
+        overflow-x: hidden;
+        transform: none;
+        @include bg-transparent;
+        backdrop-filter: none;
+        @include shadow-none;
+        border-left: none;
+        transition: none;
+        z-index: auto;
+      }
+    }
+  }
+
+  // Navigation overlay for mobile — void curtain
+  .genesis-nav-overlay {
+    @include overlay-fullscreen(999);
+    @include bg-glass(0.85, 8px);
+    @include hidden-state;
+    @include pointer-events-none;
+    @include transition-smooth(opacity);
+
+    &[data-nav-open="true"] {
+      @include visible-state;
+      @include pointer-events-auto;
+    }
+
+    @include from(lg) {
+      @include display-none;
+    }
+  }
+}
