@@ -14,6 +14,9 @@
 
 import { GenesisElement } from './genesis-element.js';
 
+const DESKTOP_BREAKPOINT = 1024;
+const HOVER_CLOSE_DELAY_MS = 150;
+
 export class GenesisNavbar extends GenesisElement {
   /**
    * Lit reactive properties — replaces static get observedAttributes()
@@ -26,6 +29,9 @@ export class GenesisNavbar extends GenesisElement {
   constructor() {
     super();
     this._dropdownStates = new Map();
+    this._hoverTimers = new Map();
+    this._boundDocumentClick = null;
+    this._boundResize = null;
   }
 
   connectedCallback() {
@@ -35,12 +41,27 @@ export class GenesisNavbar extends GenesisElement {
     this._setupDropdowns();
     this._setupKeyboardNavigation();
     this._setupCurrentPageIndicator();
-    this._setupMobileResponsive();
+    this._setupResponsive();
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    // Cleanup event listeners
+    if (this._boundDocumentClick) {
+      document.removeEventListener('click', this._boundDocumentClick);
+    }
+    if (this._boundResize) {
+      window.removeEventListener('resize', this._boundResize);
+    }
+    this._hoverTimers.forEach(timer => clearTimeout(timer));
+    this._hoverTimers.clear();
+  }
+
+  /**
+   * Whether we are in desktop mode (inline nav, hover dropdowns)
+   */
+  _isDesktop() {
+    const bp = parseInt(this.getAttribute('mobile-breakpoint')) || DESKTOP_BREAKPOINT;
+    return window.innerWidth >= bp;
   }
 
   /**
@@ -53,9 +74,7 @@ export class GenesisNavbar extends GenesisElement {
     }
     
     const menubar = this.querySelector('[role="menubar"]');
-    if (menubar) {
-      // Already has proper role
-    } else {
+    if (!menubar) {
       const list = this.querySelector('ul');
       if (list) {
         list.setAttribute('role', 'menubar');
@@ -64,7 +83,7 @@ export class GenesisNavbar extends GenesisElement {
   }
 
   /**
-   * Setup dropdown menu functionality
+   * Setup dropdown menu functionality with responsive hover/click
    */
   _setupDropdowns() {
     const dropdownToggles = this.querySelectorAll('[data-dropdown-toggle], .navbar__link--dropdown');
@@ -73,38 +92,43 @@ export class GenesisNavbar extends GenesisElement {
       const dropdownId = toggle.getAttribute('aria-controls') || `dropdown-${index}`;
       const dropdown = this.querySelector(`#${dropdownId}`) || toggle.nextElementSibling;
       
-      if (dropdown) {
-        this._dropdownStates.set(dropdownId, false);
-        
-        // Click handler
-        toggle.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          this._toggleDropdown(toggle, dropdown, dropdownId);
+      if (!dropdown) return;
+
+      this._dropdownStates.set(dropdownId, false);
+      
+      // Click handler — works at all viewport sizes
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this._toggleDropdown(toggle, dropdown, dropdownId);
+      });
+      
+      // Hover handlers — always bound, but only fire on desktop
+      const parent = toggle.closest('li');
+      if (parent) {
+        parent.addEventListener('mouseenter', () => {
+          if (!this._isDesktop()) return;
+          clearTimeout(this._hoverTimers.get(dropdownId));
+          this._openDropdown(toggle, dropdown, dropdownId);
         });
         
-        // Hover support for desktop
-        if (window.innerWidth > 768) {
-          const parent = toggle.closest('li');
-          if (parent) {
-            parent.addEventListener('mouseenter', () => {
-              this._openDropdown(toggle, dropdown, dropdownId);
-            });
-            
-            parent.addEventListener('mouseleave', () => {
-              this._closeDropdown(toggle, dropdown, dropdownId);
-            });
-          }
-        }
+        parent.addEventListener('mouseleave', () => {
+          if (!this._isDesktop()) return;
+          const timer = setTimeout(() => {
+            this._closeDropdown(toggle, dropdown, dropdownId);
+          }, HOVER_CLOSE_DELAY_MS);
+          this._hoverTimers.set(dropdownId, timer);
+        });
       }
     });
     
     // Close dropdowns when clicking outside
-    document.addEventListener('click', (e) => {
+    this._boundDocumentClick = (e) => {
       if (!this.contains(e.target)) {
         this._closeAllDropdowns();
       }
-    });
+    };
+    document.addEventListener('click', this._boundDocumentClick);
   }
 
   /**
@@ -177,32 +201,32 @@ export class GenesisNavbar extends GenesisElement {
     menuItems.forEach((item, index) => {
       item.addEventListener('keydown', (e) => {
         switch(e.key) {
-          case 'ArrowRight':
+          case 'ArrowRight': {
             e.preventDefault();
             const nextItem = menuItems[index + 1] || menuItems[0];
             nextItem.focus();
             break;
-            
-          case 'ArrowLeft':
+          }
+          case 'ArrowLeft': {
             e.preventDefault();
             const prevItem = menuItems[index - 1] || menuItems[menuItems.length - 1];
             prevItem.focus();
             break;
-            
-          case 'ArrowDown':
-            // Open dropdown if present
+          }
+          case 'ArrowDown': {
             const dropdown = item.nextElementSibling;
             if (dropdown && dropdown.matches('[role="menu"]')) {
               e.preventDefault();
+              const dropdownId = item.getAttribute('aria-controls');
+              this._openDropdown(item, dropdown, dropdownId);
               const firstLink = dropdown.querySelector('a, button');
               if (firstLink) {
                 firstLink.focus();
               }
             }
             break;
-            
-          case 'Escape':
-            // Close dropdown and return focus to toggle
+          }
+          case 'Escape': {
             const parentDropdown = item.closest('[role="menu"]');
             if (parentDropdown) {
               e.preventDefault();
@@ -214,6 +238,7 @@ export class GenesisNavbar extends GenesisElement {
               }
             }
             break;
+          }
         }
       });
     });
@@ -234,46 +259,43 @@ export class GenesisNavbar extends GenesisElement {
           link.setAttribute('aria-current', 'page');
           link.classList.add('active', 'navbar__link--active');
           
-          // Also mark parent item if in dropdown
           const parentItem = link.closest('.navbar__item');
           if (parentItem) {
             parentItem.classList.add('navbar__item--active');
           }
         }
       } catch (e) {
-        // Skip links with invalid URLs (e.g., empty href, javascript: protocol)
         console.debug('genesis-navbar: skipping link with invalid URL', link.href, e);
       }
     });
   }
 
   /**
-   * Setup mobile responsive behavior
+   * Setup responsive behavior — aligned with CSS breakpoint (lg = 1024px)
    */
-  _setupMobileResponsive() {
-    const breakpoint = parseInt(this.getAttribute('mobile-breakpoint')) || 768;
-    
+  _setupResponsive() {
     const handleResize = () => {
-      if (window.innerWidth <= breakpoint) {
-        this.classList.add('mobile');
-        this.classList.remove('desktop');
-      } else {
+      if (this._isDesktop()) {
         this.classList.add('desktop');
         this.classList.remove('mobile');
+        // Close any open mobile dropdowns on resize to desktop
+        this._closeAllDropdowns();
+      } else {
+        this.classList.add('mobile');
+        this.classList.remove('desktop');
       }
     };
     
     handleResize();
-    window.addEventListener('resize', handleResize);
+    this._boundResize = handleResize;
+    window.addEventListener('resize', this._boundResize);
   }
 
   /**
    * Lit lifecycle: called after property changes.
-   * Replaces attributeChangedCallback for reactive property updates.
    */
   updated(changedProperties) {
     super.updated(changedProperties);
-    // Only react to changes after initial setup (oldValue !== undefined)
     if (changedProperties.has('orientation') && changedProperties.get('orientation') !== undefined) {
       this.setAttribute('data-orientation', this.orientation);
     }

@@ -797,24 +797,6 @@
     }
   }
 
-  // Consciousness Button (Deep Blue)
-  .btn-consciousness {
-    @include bg-cosmic-deep-blue;
-    @include border-cosmic-deep-blue(2px);
-    @include text-transcendent-white;
-
-    &:hover {
-      @include bg-primary-dark;
-      @include border-primary-dark;
-      @include animate-hover-lift;
-      @include shadow-consciousness-depth;
-    }
-
-    &:focus {
-      @include shadow-focus-cosmic-deep-blue;
-    }
-  }
-
   // Transcendent Button (White with Gold Accent)
   .btn-transcendent {
     @include bg-transcendent-white;
