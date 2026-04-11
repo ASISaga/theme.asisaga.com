@@ -28,7 +28,7 @@
 // ----------------------------------------
 // LAYOUT UTILITIES — shared across all layouts
 // ----------------------------------------
-@import "includes/core/bento-engine";    // Native CSS Grid system (shared grid primitive)
+@import "ontology/foundation/layout/bento-engine";    // Native CSS Grid system (shared grid primitive)
 
 // ----------------------------------------
 // BASE UTILITIES — legacy compatibility & utility classes
@@ -49,6 +49,11 @@
 @import "ontology/mixins/hero-component";
 @import "ontology/mixins/products-grid-component";
 @import "ontology/mixins/cta-component";
+@import "ontology/mixins/genesis-header-component";
+@import "ontology/mixins/genesis-footer-component";
+@import "ontology/mixins/genesis-core-component";
+@import "ontology/mixins/navbar-component";
+@import "ontology/mixins/ui-component";
 
 // ----------------------------------------
 // CORE COMPONENTS — present on every page
