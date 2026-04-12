@@ -13,8 +13,9 @@ $color-dark-profound-black: oklch(0.08 0.01 250); // Deep profound black
 $color-accent-neon-blue: oklch(0.65 0.25 230); // Electric neon blue — primary accent. L=0.65 (luminance-parity anchor)
 $color-accent-neon-blue-bright: oklch(0.75 0.28 225); // Bright electric blue — hover/active state
 $color-accent-neon-blue-glow: oklch(0.70 0.30 228); // Glowing neon blue effect
-$color-accent-gold: oklch(0.65 0.15 85); // Sacred gold accent — secondary accent. L=0.65 matches neon-blue for luminance parity
+$color-accent-gold: oklch(0.70 0.15 85); // Sacred gold accent — subtle secondary accent
 $color-accent-gold-bright: oklch(0.75 0.18 82); // Bright gold — hover state
+$color-accent-gold-muted: oklch(0.60 0.10 88); // Very muted gold — minimal emphasis
 $color-border-light: oklch(0.85 0.01 220); // Light borders on white
 $color-border-dark: oklch(0.15 0.01 220); // Dark borders for contrast
 $color-border-silver: oklch(0.65 0.02 220); // Neutral gray borders
@@ -106,7 +107,7 @@ $z-index-transcendent: 1000;
 $z-index-genesis: 9999;
 $sys-color-action-primary: oklch(0.65 0.25 230); // Primary action color — resolves to color.accent.neon-blue
 $sys-color-action-primary-hover: oklch(0.75 0.28 225); // Primary action hover — resolves to color.accent.neon-blue-bright
-$sys-color-action-secondary: oklch(0.65 0.15 85); // Secondary action color — resolves to color.accent.gold
+$sys-color-action-secondary: oklch(0.70 0.15 85); // Secondary action color — resolves to color.accent.gold
 $sys-color-action-secondary-hover: oklch(0.75 0.18 82); // Secondary action hover — resolves to color.accent.gold-bright
 $sys-color-surface-default: oklch(0.99 0.005 90); // Default page surface — resolves to color.light.white
 $sys-color-surface-elevated: oklch(0.96 0.01 90); // Elevated card surface — resolves to color.light.surface
@@ -141,7 +142,7 @@ $ontology-atmosphere-vibrant-background: oklch(0.99 0.005 90); // vibrant — hi
 $ontology-atmosphere-vibrant-glow-color: oklch(0.65 0.25 230); // vibrant — neon blue ambient glow
 $ontology-atmosphere-cosmic-text-color: oklch(0.93 0.01 220); // cosmic — soft white text on deep-space gradient
 $ontology-atmosphere-sacred-text-color: oklch(0.99 0.005 90); // sacred — inverted text on dark gradient
-$ontology-atmosphere-sacred-accent-line: oklch(0.65 0.15 85); // sacred — gold accent line at top edge
+$ontology-atmosphere-sacred-accent-line: oklch(0.70 0.15 85); // sacred — gold accent line at top edge
 $ontology-entity-primary-background: oklch(0.99 0.005 90); // primary — white card surface
 $ontology-entity-primary-border-color: oklch(0.85 0.01 220); // primary — subtle light border
 $ontology-entity-primary-border-radius: 0.5rem; // primary — standard card radius
@@ -163,7 +164,7 @@ $ontology-entity-badge-border-radius: 50%; // badge — pill (infinite) border-r
 $ontology-entity-badge-padding: 0.25rem; // badge — tight pill inner spacing
 $ontology-entity-surface-glass-border-color: oklch(0.65 0.02 220); // surface-glass — semi-transparent glass border
 $ontology-entity-surface-glass-border-radius: 1rem; // surface-glass — generous glass radius
-$ontology-entity-transcendent-border-color: oklch(0.65 0.15 85); // transcendent — gold accent border for elevated content
+$ontology-entity-transcendent-border-color: oklch(0.70 0.15 85); // transcendent — gold accent border for elevated content
 $ontology-entity-transcendent-border-radius: 1.5rem; // transcendent — extra-large radius for premium feel
 $ontology-cognition-axiom-font-size: clamp(2rem, calc(2.1429vw + 1.5714rem), 3.5rem); // axiom — fluid hero headline scale
 $ontology-cognition-axiom-font-weight: 800; // axiom — extra-bold (800) for foundational headlines
@@ -193,7 +194,7 @@ $ontology-cognition-oracle-font-weight: 400; // oracle — normal weight for AI 
 $ontology-cognition-oracle-font-family: 'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif; // oracle — primary sans-serif (rendered italic via CSS)
 $ontology-cognition-testimony-font-size: clamp(1.125rem, calc(0.1786vw + 1.0893rem), 1.25rem); // testimony — fluid quote/testimonial scale
 $ontology-cognition-testimony-font-family: 'Crimson Text', 'Times New Roman', Georgia, serif; // testimony — serif for attributed speech
-$ontology-cognition-testimony-accent-color: oklch(0.65 0.15 85); // testimony — gold quotation mark accent
+$ontology-cognition-testimony-accent-color: oklch(0.70 0.15 85); // testimony — gold quotation mark accent
 $ontology-cognition-testimony-line-height: 1.6; // testimony — relaxed reading line-height
 $ontology-environment-distributed-gap: 1rem; // distributed — auto-fit grid item gap
 $ontology-environment-focused-max-width: 70ch; // focused — optimal reading line length (70 characters)
@@ -217,7 +218,7 @@ $ontology-synapse-inquiry-touch-target: 44px; // inquiry — minimum input heigh
 $ontology-synapse-destructive-color: oklch(0.55 0.20 25); // destructive — danger/warning red (L=0.55 accessible on white)
 $ontology-synapse-destructive-border-color: oklch(0.55 0.20 25); // destructive — danger border accent
 $ontology-synapse-destructive-touch-target: 44px; // destructive — WCAG minimum target size
-$ontology-synapse-social-color: oklch(0.65 0.15 85); // social — secondary/gold interaction color
+$ontology-synapse-social-color: oklch(0.70 0.15 85); // social — secondary/gold interaction color
 $ontology-synapse-social-color-hover: oklch(0.75 0.18 82); // social — secondary hover color
 $ontology-synapse-toggle-border-color: oklch(0.85 0.01 220); // toggle — default off-state border
 $ontology-synapse-toggle-active-background: oklch(0.65 0.25 230); // toggle — on-state background
@@ -225,7 +226,7 @@ $ontology-state-stable-opacity: 1; // stable — full visibility; system at equi
 $ontology-state-evolving-animation-color: oklch(0.65 0.25 230); // evolving — sweep animation accent (content being updated)
 $ontology-state-evolving-animation-duration: 2s; // evolving — sweep cycle period
 $ontology-state-deprecated-opacity: 0.5; // deprecated — halved opacity for outdated content
-$ontology-state-deprecated-warning-color: oklch(0.65 0.15 85); // deprecated — warning indicator accent color
+$ontology-state-deprecated-warning-color: oklch(0.70 0.15 85); // deprecated — warning indicator accent color
 $ontology-state-locked-opacity: 0.7; // locked — reduced opacity for clearance-required content
 $ontology-state-simulated-border-color: oklch(0.75 0.15 210 / 0.5); // simulated — dashed outline color for projected/simulated data
 $ontology-state-scroll-triggered-animation-duration: 0.3s ease; // scroll-triggered — entrance animation duration (from transition.normal)

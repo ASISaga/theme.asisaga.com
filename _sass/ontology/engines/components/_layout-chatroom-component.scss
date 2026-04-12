@@ -560,7 +560,7 @@
       transition: all $transition-fast;
       @include flex-shrink-none;
 
-      &:hover { background: $boardroom-gold; color: $color-dark-profound-black; }
+      &:hover { background: $boardroom-gold; color: $color-profound-black; }
       &:focus { outline: 2px solid $boardroom-gold-accessible; outline-offset: 2px; }
 
       &:disabled {

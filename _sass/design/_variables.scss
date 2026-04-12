@@ -4,7 +4,7 @@
  * Non-color variables aligned with Symbolic Knowledge Base sacred elements
  * Supporting the Genesis mission of embedding human essence into ASI
  * 
- * NOTE: All color definitions have been moved to _sass/base/design/_colors.scss
+ * NOTE: All color definitions have been moved to _sass/design/_colors.scss
  */
 
 // ----------------------------------------
@@ -217,7 +217,7 @@ $genesis-atmosphere-vibes: (
 );
 
 // ============================================================================
-// ANIMATION TIMING TOKENS (moved from _sass/base/effects/_animations.scss)
+// ANIMATION TIMING TOKENS (moved from _sass/ontology/engines/effects/_animations.scss)
 // ============================================================================
 
 $animation-duration-fast: 0.2s;
@@ -238,7 +238,7 @@ $ease-in: cubic-bezier(0.4, 0, 1, 1);
 $ease-sacred: cubic-bezier(0.23, 1, 0.32, 1);
 
 // ============================================================================
-// EXTENDED LINE-HEIGHT TOKENS (moved from _sass/base/_fonts.scss)
+// EXTENDED LINE-HEIGHT TOKENS (moved from _sass/ontology/engines/_fonts.scss)
 // ============================================================================
 
 $line-height-loose: 1.8; // Spacious / airy reading rhythm

@@ -1,28 +1,13 @@
 // Centralized dimensions for ASI Saga website
 // All size values should be defined here and referenced in component files
+//
+// NOTE: Standard spacing tokens ($spacing-xs … $spacing-genesis), border-radius,
+// border-width, z-index, and transition tokens are generated from
+// _design/tokens/4-spacing.json into _variables-generated.scss.
+// Only unique, un-tokenised values live in this file.
 
 // SCSS calculation helper
 $pixel-adjustment: 0.02;
-
-// --------------------------------------------
-// Spacing - Base unit and derived values
-// --------------------------------------------
-$spacing-base: 0.25rem; // 4px base unit
-$spacing-xs: $spacing-base; // 0.25rem / 4px
-$spacing-sm: $spacing-base * 2; // 0.5rem / 8px
-$spacing-md: $spacing-base * 4; // 1rem / 16px
-$spacing-lg: $spacing-base * 6; // 1.5rem / 24px
-$spacing-xl: $spacing-base * 8; // 2rem / 32px
-$spacing-2xl: $spacing-base * 12; // 3rem / 48px
-$spacing-3xl: $spacing-base * 16; // 4rem / 64px
-
-// --------------------------------------------
-// Border values
-// --------------------------------------------
-$border-width-default: 1px;
-$border-width-thick: 2px;
-$border-width-accent: 4px; // Used for highlight borders
-$border-width-separator: 1px;
 
 // --------------------------------------------
 // Font sizes

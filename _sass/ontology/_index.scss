@@ -49,9 +49,9 @@
 @import "engines/icons";
 
 // Design Foundation — The DNA (from _sass/design/ — maps directly to _design/tokens/*.json)
-@import "design/colors";              // OKLCH + semantic color tokens
-@import "design/variables-generated"; // Generated from _design/tokens.json (imported first to allow overrides)
-@import "design/variables";           // Theme-wide Sass variables (includes shadows, opacity, animation tokens)
+@import "design/variables-generated"; // Generated primitives — imported first so colors.scss can alias them
+@import "design/colors";              // Semantic color aliases + additional tokens (references generated vars)
+@import "design/variables";           // Theme-wide Sass variables (sacred aliases, component tokens)
 @import "design/dimensions";          // Spacing and sizing tokens
 
 // Utilities & Mixins (in engines/utilities/ — infrastructure)

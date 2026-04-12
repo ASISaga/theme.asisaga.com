@@ -59,13 +59,18 @@
       },
       "gold": {
         "$type": "color",
-        "$value": "oklch(0.65 0.15 85)",
-        "$description": "Sacred gold accent — secondary accent. L=0.65 matches neon-blue for luminance parity"
+        "$value": "oklch(0.70 0.15 85)",
+        "$description": "Sacred gold accent — subtle secondary accent"
       },
       "gold-bright": {
         "$type": "color",
         "$value": "oklch(0.75 0.18 82)",
         "$description": "Bright gold — hover state"
+      },
+      "gold-muted": {
+        "$type": "color",
+        "$value": "oklch(0.60 0.10 88)",
+        "$description": "Very muted gold — minimal emphasis"
       }
     },
     "border": {

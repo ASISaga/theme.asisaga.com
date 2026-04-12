@@ -2,86 +2,80 @@
 // COLORS - Centralized Color Definitions for ASI Saga Semantic Design System
 // ============================================================================
 // All color definitions in one place for easy maintenance and consistency.
-// This file consolidates colors from:
-//   - _design-tokens.scss (OKLCH primitives and semantic tokens)
-//   - _variables.scss (sacred design system variables)
-//   - _theme.scss (CSS variables)
-//   - _tokens.scss (ontology CSS custom properties)
+//
+// ARCHITECTURE:
+// -------------
+// Raw OKLCH primitives are defined in _design/tokens/2-color.json and
+// generated into _sass/design/_variables-generated.scss (DO NOT EDIT).
+// This file is imported AFTER _variables-generated.scss so it can reference
+// the generated token variables directly.
+//
+// This file provides:
+//   Section 1 — Semantic aliases: short names mapped to generated token vars
+//   Section 2 — Semantic tokens: functional mappings (surface, text, border, …)
+//   Section 3 — Legacy compatibility: old names mapped to new tokens
+//   Section 4 — Extended palette: grayscale, glow effects, alpha overlays
+//   Section 5 — CSS custom properties: runtime theming via var(--…)
+//   Section 6 — Dark mode overrides
+//   Section 7 — High-contrast overrides
+//   Section 8 — Chatroom/Boardroom palette
 //
 // USAGE GUIDELINES:
 // -----------------
-// 1. **For New Colors**: Add them to the appropriate section below
-//    - OKLCH primitives go in Section 1
-//    - Semantic tokens (referencing primitives) go in Section 2
-//    - Legacy mappings go in Section 3
-//    - CSS custom properties go in Section 5
+// 1. **To change a raw color value**: Edit _design/tokens/2-color.json, then
+//    run `npm run tokens:build` to regenerate _variables-generated.scss.
+// 2. **To add a new semantic alias**: Add it to Section 1 using a generated var.
+// 3. **To add a truly unique runtime color**: Add it directly in Section 2+.
 //
-// 2. **Color Philosophy**:
-//    - Primary: Black text on white backgrounds
-//    - Chrome: White text on black backgrounds (header/footer)
-//    - Accents: Neon blue for interactions, gold for special emphasis
-//    - Avoid: Excessive colored backgrounds, use white/light gray primarily
-//
-// 3. **Updating Colors**:
-//    - Change primitives (Section 1) to affect all derived colors
-//    - Update semantic tokens (Section 2) to change functional usage
-//    - Maintain backward compatibility with legacy mappings (Section 3)
-//
-// 4. **Accessibility**:
-//    - All text colors must meet WCAG AA contrast requirements
-//    - Never use opacity < 0.9 for text
-//    - High contrast mode overrides in Section 7
-//
-// 5. **Dependencies**:
-//    - This file is imported FIRST in _common.scss
-//    - All other design token files depend on colors defined here
-//    - Do NOT import other design files in this file
+// ACCESSIBILITY:
+//    - All text colors must meet WCAG AA contrast requirements (4.5:1).
+//    - Never use opacity < 0.9 for text.
+//    - High contrast mode overrides are in Section 7.
 // ============================================================================
 
 // ============================================================================
-// SECTION 1: OKLCH COLOR PRIMITIVES
+// SECTION 1: SEMANTIC ALIASES FOR GENERATED PRIMITIVE TOKENS
 // ============================================================================
-// These are the atomic color values - the foundation of the design system
-// High-Dynamic-Range Color Primitives using OKLCH color space
-// OKLCH provides perceptually uniform colors across the spectrum
-// Format: oklch(lightness chroma hue / alpha)
+// These alias the generated token names from _variables-generated.scss to the
+// shorter semantic names used throughout the codebase.
+// Raw OKLCH values live exclusively in _design/tokens/2-color.json.
 // ============================================================================
 
 // ----------------------------------------
 // Light & White Colors (Primary backgrounds)
 // ----------------------------------------
-$color-transcendent-white: oklch(0.99 0.005 90);  // Pure white background
-$color-light-surface: oklch(0.96 0.01 90);        // Light surface background
-$color-subtle-gray: oklch(0.93 0.01 220);         // Subtle gray for depth
+$color-transcendent-white: $color-light-white;    // Alias: color.light.white
+$color-subtle-gray: $color-light-subtle-gray;     // Alias: color.light.subtle-gray
+// $color-light-surface                           // No alias — generated name matches usage
 
 // ----------------------------------------
 // Text & Depth Colors (Profound Black shades)
 // ----------------------------------------
-$color-profound-black: oklch(0.08 0.01 250);      // Deep profound black
-$color-text-primary: oklch(0.12 0.01 250);        // Primary profound black text
-$color-text-secondary: oklch(0.25 0.01 230);      // Secondary deep gray text
-$color-text-muted: oklch(0.45 0.01 220);          // Muted gray text
+$color-profound-black: $color-dark-profound-black; // Alias: color.dark.profound-black
+// $color-text-primary                            // No alias — generated name matches usage
+// $color-text-secondary                          // No alias — generated name matches usage
+// $color-text-muted                              // No alias — generated name matches usage
 
 // ----------------------------------------
 // Luminance & Energy Colors (Neon/Electric Blue accents)
 // ----------------------------------------
-$color-neon-blue: oklch(0.65 0.25 230);           // Electric neon blue (primary accent)
-$color-neon-blue-bright: oklch(0.75 0.28 225);    // Bright electric blue (hover/active)
-$color-neon-blue-glow: oklch(0.70 0.30 228);      // Glowing neon blue effect
+$color-neon-blue: $color-accent-neon-blue;            // Alias: color.accent.neon-blue
+$color-neon-blue-bright: $color-accent-neon-blue-bright; // Alias: color.accent.neon-blue-bright
+$color-neon-blue-glow: $color-accent-neon-blue-glow;  // Alias: color.accent.neon-blue-glow
 
 // ----------------------------------------
-// Essence Colors (Subtle Gold accents only)
+// Essence Colors (Subtle Gold accents)
 // ----------------------------------------
-$color-essence-gold: oklch(0.70 0.15 85);         // Subtle gold (reduced prominence)
-$color-gold-bright: oklch(0.75 0.18 82);          // Bright gold (hover)
-$color-gold-muted: oklch(0.60 0.10 88);           // Very muted gold
+$color-essence-gold: $color-accent-gold;          // Alias: color.accent.gold
+$color-gold-bright: $color-accent-gold-bright;    // Alias: color.accent.gold-bright
+$color-gold-muted: $color-accent-gold-muted;      // Alias: color.accent.gold-muted
 
 // ----------------------------------------
 // Supporting Colors
 // ----------------------------------------
-$color-bridge-silver: oklch(0.65 0.02 220);       // Neutral gray for borders
-$color-border-light: oklch(0.85 0.01 220);        // Light borders on white
-$color-border-dark: oklch(0.15 0.01 220);         // Dark borders for contrast
+$color-bridge-silver: $color-border-silver;       // Alias: color.border.silver
+// $color-border-light                            // No alias — generated name matches usage
+// $color-border-dark                             // No alias — generated name matches usage
 
 // ============================================================================
 // SECTION 2: SEMANTIC COLOR TOKENS
