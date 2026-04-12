@@ -14,8 +14,8 @@
 // gstatic (for Google Fonts, preconnect reference)
 // <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-// All font/typography token variables are defined in _sass/design/_variables.scss
-// and _sass/design/_dimensions.scss.
+// All font/typography token variables are generated from _design/tokens/*.json
+// into _sass/design/_typography-generated.scss.
 
 // --------------------------------------------
 // Font Mixins - Standardized typography
@@ -165,21 +165,21 @@
 }
 
 @mixin body-large {
-  @include font-wisdom;
+  @include font-body;
   @include font-lg;
   @include font-normal;
   @include line-height-relaxed;
 }
 
 @mixin body-normal {
-  @include font-wisdom;
+  @include font-body;
   @include font-base;
   @include font-normal;
   @include line-height-relaxed;
 }
 
 @mixin body-small {
-  @include font-wisdom;
+  @include font-body;
   @include font-sm;
   @include font-normal;
   @include line-height-normal;
