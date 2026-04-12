@@ -126,7 +126,7 @@ body::before {
       oklch(0.18 0.06 210 / 0.12) 0%, 
       transparent 50%
     ),
-    $surface-dark;  // Solid black background
+    $color-surface-dark;  // Solid black background
   
   // Hardware acceleration
   will-change: transform;
@@ -226,7 +226,7 @@ body.user-active::before {
 // Simplify ambient layer for high contrast
 @media (prefers-contrast: high) {
   body::before {
-    background: $surface-dark;  // Solid black background for high contrast
+    background: $color-surface-dark;  // Solid black background for high contrast
   }
   
   body::after {

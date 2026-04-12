@@ -1,0 +1,98 @@
+// ============================================================================
+// DIMENSION MIXINS — Standardized spacing, sizing, and layout patterns
+// ============================================================================
+// Moved from _sass/design/_dimensions.scss during token normalization.
+// All variable values come from generated tokens.
+// ============================================================================
+/* stylelint-disable scss/no-dollar-variables */
+
+// Breakpoint semantic aliases
+$mobile-max: #{$breakpoint-md - 1px};
+$tablet-min: $breakpoint-md;
+$tablet-max: #{$breakpoint-lg - 1px};
+$desktop-min: $breakpoint-lg;
+
+// Breakpoint map for resolve-breakpoint() in _responsive-system.scss
+$breakpoint-map: (
+  xs: $breakpoint-xs,
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  '2xl': $breakpoint-2xl
+);
+
+// Fluid spacing scale
+$space-3xs: clamp(0.25rem, 0.5vw, 0.375rem);
+$space-2xs: clamp(0.375rem, 0.75vw, 0.5rem);
+$space-xs: clamp(0.5rem, 1vw, 0.75rem);
+$space-sm: clamp(0.75rem, 1.5vw, 1rem);
+$space-md: clamp(1rem, 2vw, 1.5rem);
+$space-lg: clamp(1.5rem, 3vw, 2rem);
+$space-xl: clamp(2rem, 4vw, 3rem);
+$space-2xl: clamp(3rem, 6vw, 4rem);
+$space-3xl: clamp(4rem, 8vw, 6rem);
+
+// --------------------------------------------
+// Margin Mixins
+// --------------------------------------------
+@mixin margin($size) { margin: $size; }
+@mixin margin-top($size) { margin-top: $size; }
+@mixin margin-bottom($size) { margin-bottom: $size; }
+@mixin margin-left($size) { margin-left: $size; }
+@mixin margin-right($size) { margin-right: $size; }
+@mixin margin-horizontal($size) { margin-left: $size; margin-right: $size; }
+@mixin margin-vertical($size) { margin-top: $size; margin-bottom: $size; }
+@mixin margin-center { margin-left: auto; margin-right: auto; }
+@mixin margin-center-with-vertical($vertical-size) { margin: $vertical-size auto; }
+
+@mixin margin-section { @include margin-vertical($spacing-3xl); }
+@mixin margin-component { @include margin-bottom($spacing-2xl); }
+@mixin margin-element { @include margin-bottom($spacing-lg); }
+@mixin margin-content { @include margin-bottom($spacing-md); }
+
+// --------------------------------------------
+// Padding Mixins
+// --------------------------------------------
+@mixin padding($size) { padding: $size; }
+@mixin padding-top($size) { padding-top: $size; }
+@mixin padding-bottom($size) { padding-bottom: $size; }
+@mixin padding-left($size) { padding-left: $size; }
+@mixin padding-right($size) { padding-right: $size; }
+@mixin padding-horizontal($size) { padding-left: $size; padding-right: $size; }
+@mixin padding-vertical($size) { padding-top: $size; padding-bottom: $size; }
+@mixin padding-combined($vertical, $horizontal) { padding: $vertical $horizontal; }
+
+@mixin padding-section { @include padding-vertical($spacing-3xl); }
+@mixin padding-component { @include padding($spacing-2xl); }
+@mixin padding-element { @include padding($spacing-lg); }
+@mixin padding-content { @include padding($spacing-md); }
+@mixin padding-tight { @include padding($spacing-sm); }
+
+// --------------------------------------------
+// Width & Height Mixins
+// --------------------------------------------
+@mixin width($size) { width: $size; }
+@mixin min-width($size) { min-width: $size; }
+@mixin max-width($size) { max-width: $size; }
+@mixin width-full { @include width(100%); }
+@mixin width-half { @include width(50%); }
+@mixin width-content { @include max-width($size-content-width-default); }
+@mixin width-narrow { @include max-width($size-content-width-narrow); }
+
+@mixin height($size) { height: $size; }
+@mixin min-height($size) { min-height: $size; }
+@mixin max-height($size) { max-height: $size; }
+@mixin height-full { @include height(100%); }
+@mixin height-screen { @include height(100vh); }
+@mixin min-height-screen { @include min-height(100vh); }
+
+@mixin size($dimension) { @include width($dimension); @include height($dimension); }
+@mixin size-icon-sm { @include size($size-icon-sm); }
+@mixin size-icon-md { @include size($size-icon-md); }
+@mixin size-icon-lg { @include size($size-icon-lg); }
+@mixin size-icon-xl { @include size($size-icon-xl); }
+@mixin size-icon-2xl { @include size(3.5rem); }
+@mixin size-hero-icon { @include size(6rem); }
+@mixin size-feature-icon { @include size(4rem); }
+@mixin size-small-icon { @include size(2rem); }

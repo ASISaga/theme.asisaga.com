@@ -1,33 +1,28 @@
 // ============================================================================
-// UNIFIED TYPOGRAPHY SYSTEM - ASI Saga Design System
+// TYPOGRAPHY RULES — Unified heading, body, link, button, and form styles
 // ============================================================================
-// Combines fluid responsive typography (clamp-based from design tokens) with
-// sacred/consciousness typography styles and material primitives.
-//
-// Variables are defined in _variables.scss and _variables-generated.scss.
-// This file contains CSS rules only (no variable declarations).
+// Moved from _sass/design/_typography.scss during token normalization.
+// All values reference generated token variables.
 // ============================================================================
 
 // ============================================================================
-// HEADING STYLES (Fluid + Sacred Families)
+// HEADING STYLES
 // ============================================================================
 
-// Common heading styles
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: $font-family-headings;
   line-height: $line-height-sacred;
-  @include color($color-dark-profound-black);
+  @include color($color-text-primary);
   font-weight: $font-weight-semibold;
 }
 
-// Individual heading sizes using fluid scale
 h1, .h1 {
   font-size: $font-fluid-h1;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  color: $text-primary;
+  color: $color-text-primary;
   margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 
@@ -36,7 +31,7 @@ h2, .h2 {
   font-weight: 600;
   line-height: 1.3;
   letter-spacing: -0.01em;
-  color: $text-primary;
+  color: $color-text-primary;
   margin-bottom: clamp(0.875rem, 1.75vw, 1.25rem);
 }
 
@@ -44,7 +39,7 @@ h3, .h3 {
   font-size: $font-fluid-h3;
   font-weight: 600;
   line-height: 1.4;
-  color: $text-primary;
+  color: $color-text-primary;
   margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
 }
 
@@ -52,7 +47,7 @@ h4, .h4 {
   font-size: $font-fluid-h4;
   font-weight: 600;
   line-height: 1.5;
-  color: $text-primary;
+  color: $color-text-primary;
   margin-bottom: clamp(0.625rem, 1.25vw, 0.875rem);
 }
 
@@ -60,7 +55,7 @@ h5, .h5 {
   font-size: $font-fluid-h5;
   font-weight: 500;
   line-height: 1.5;
-  color: $text-primary;
+  color: $color-text-primary;
   margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
 }
 
@@ -68,7 +63,7 @@ h6, .h6 {
   font-size: $font-fluid-h6;
   font-weight: 500;
   line-height: 1.6;
-  color: $text-primary;
+  color: $color-text-primary;
   margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
 }
 
@@ -80,7 +75,7 @@ body {
   font-family: $font-family-body;
   font-size: $font-size-base;
   line-height: $line-height-wisdom;
-  @include color($text-primary);  // Dark text – light backgrounds are the default; void/cosmic atmospheres set white text explicitly
+  @include color($color-text-primary);
   @include margin(0);
   @include padding(0);
 }
@@ -88,7 +83,7 @@ body {
 p, .body-text {
   font-size: $font-fluid-body;
   line-height: 1.6;
-  color: $text-primary;
+  color: $color-text-primary;
   margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
 
   &:last-child {
@@ -96,7 +91,6 @@ p, .body-text {
   }
 }
 
-// Interface elements use consciousness font
 .nav, .btn, .form-control, .card-title {
   font-family: $font-family-interface;
   line-height: $line-height-interface;
@@ -111,7 +105,7 @@ p, .body-text {
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.03em;
-  color: $text-primary;
+  color: $color-text-primary;
 }
 
 .display-lg {
@@ -119,7 +113,7 @@ p, .body-text {
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.025em;
-  color: $text-primary;
+  color: $color-text-primary;
 }
 
 .display-md {
@@ -127,29 +121,17 @@ p, .body-text {
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  color: $text-primary;
+  color: $color-text-primary;
 }
 
 // ============================================================================
 // TEXT STYLE & UTILITY CLASSES
 // ============================================================================
 
-.text-lg {
-  font-size: $font-fluid-body-lg;
-  line-height: 1.6;
-}
+.text-lg { font-size: $font-fluid-body-lg; line-height: 1.6; }
+.text-sm { font-size: $font-fluid-body-sm; line-height: 1.5; }
+.text-xs { font-size: $font-fluid-body-xs; line-height: 1.4; }
 
-.text-sm {
-  font-size: $font-fluid-body-sm;
-  line-height: 1.5;
-}
-
-.text-xs {
-  font-size: $font-fluid-body-xs;
-  line-height: 1.4;
-}
-
-// Weight utilities
 .font-light { font-weight: 300; }
 .font-normal { font-weight: 400; }
 .font-medium { font-weight: 500; }
@@ -157,15 +139,11 @@ p, .body-text {
 .font-bold { font-weight: 700; }
 .font-extrabold { font-weight: 800; }
 
-// Color utilities
-.text-primary { color: $text-primary; }
-.text-secondary { color: $text-secondary; }
-.text-accent { color: $text-accent; }
-// DEPRECATED: Use .text-primary instead. Kept for backward compatibility.
-.text-consciousness { color: $text-primary; }
-.text-inverse { color: $text-inverse; }
+.text-primary { color: $color-text-primary; }
+.text-secondary { color: $color-text-secondary; }
+.text-accent { color: $color-semantic-text-accent; }
+.text-inverse { color: $color-semantic-text-inverse; }
 
-// Sacred text styles
 .text-sacred {
   @include color($color-accent-gold);
   font-weight: $font-weight-medium;
@@ -186,7 +164,6 @@ p, .body-text {
   font-weight: $font-weight-semibold;
 }
 
-// Sacred emphasis styles
 .sacred-emphasis {
   @include color($color-accent-gold);
   font-weight: $font-weight-semibold;
@@ -259,7 +236,7 @@ a {
 }
 
 .nav-link {
-  @include color($color-dark-profound-black);
+  @include color($color-text-primary);
   font-weight: $font-weight-medium;
   transition: all 0.3s ease;
 
@@ -327,7 +304,7 @@ a {
 }
 
 .form-label {
-  color: $color-dark-profound-black;
+  color: $color-text-primary;
   font-weight: $font-weight-medium;
   margin-bottom: 0.5rem;
 }
@@ -343,57 +320,57 @@ a {
 
 .material-glass {
   background: oklch(0.20 0.04 245 / 0.75);
-  backdrop-filter: blur(12px) saturate(1.5);
-  -webkit-backdrop-filter: blur(12px) saturate(1.5);
+  backdrop-filter: $effect-blur-glass-md;
+  -webkit-backdrop-filter: $effect-blur-glass-md;
   border: 1px solid oklch(0.35 0.05 248 / 0.4);
 }
 
 .material-glass-elevated {
   background: oklch(0.24 0.05 244 / 0.85);
-  backdrop-filter: blur(16px) saturate(1.8);
-  -webkit-backdrop-filter: blur(16px) saturate(1.8);
+  backdrop-filter: $effect-blur-glass-md;
+  -webkit-backdrop-filter: $effect-blur-glass-md;
   border: 1px solid oklch(0.35 0.05 248 / 0.6);
 }
 
 .material-glass-subtle {
   background: oklch(0.18 0.03 246 / 0.6);
-  backdrop-filter: blur(8px) saturate(1.2);
-  -webkit-backdrop-filter: blur(8px) saturate(1.2);
+  backdrop-filter: $effect-blur-glass-sm;
+  -webkit-backdrop-filter: $effect-blur-glass-sm;
   border: 1px solid oklch(0.35 0.05 248 / 0.3);
 }
 
 .material-glass-accent {
   background: oklch(0.22 0.06 85 / 0.7);
-  backdrop-filter: blur(12px) saturate(1.5);
-  -webkit-backdrop-filter: blur(12px) saturate(1.5);
+  backdrop-filter: $effect-blur-glass-md;
+  -webkit-backdrop-filter: $effect-blur-glass-md;
   border: 1px solid oklch(0.85 0.16 85 / 0.4);
 }
 
 .material-header {
   background: oklch(0.18 0.03 248 / 0.95);
-  backdrop-filter: blur(20px) saturate(1.8);
-  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  backdrop-filter: $effect-blur-glass-lg;
+  -webkit-backdrop-filter: $effect-blur-glass-lg;
   border-bottom: 1px solid oklch(0.35 0.05 248 / 0.3);
-  box-shadow: 0 4px 6px oklch(0.15 0.03 250 / 0.1);
+  box-shadow: $effect-shadow-ambient;
 }
 
 .material-footer {
   background: oklch(0.16 0.03 252 / 0.95);
-  backdrop-filter: blur(20px) saturate(1.8);
-  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  backdrop-filter: $effect-blur-glass-lg;
+  -webkit-backdrop-filter: $effect-blur-glass-lg;
   border-top: 1px solid oklch(0.35 0.05 248 / 0.3);
 }
 
 .material-overlay {
   background: oklch(0.15 0.03 250 / 0.85);
-  backdrop-filter: blur(24px) saturate(2);
-  -webkit-backdrop-filter: blur(24px) saturate(2);
+  backdrop-filter: $effect-blur-glass-xl;
+  -webkit-backdrop-filter: $effect-blur-glass-xl;
 }
 
 .material-modal {
   background: oklch(0.18 0.03 248 / 0.95);
-  backdrop-filter: blur(20px) saturate(1.8);
-  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  backdrop-filter: $effect-blur-glass-lg;
+  -webkit-backdrop-filter: $effect-blur-glass-lg;
   border: 1px solid oklch(0.35 0.05 248 / 0.5);
   box-shadow:
     0 20px 50px oklch(0.15 0.03 250 / 0.35),
@@ -453,7 +430,7 @@ a {
   .material-modal {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    background: $surface-primary;
+    background: $color-surface-primary;
     border-width: 2px;
   }
 }

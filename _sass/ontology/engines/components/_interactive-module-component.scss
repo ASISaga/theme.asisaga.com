@@ -12,7 +12,7 @@
     @include cursor-pointer;
     border-radius: $border-radius-md;
     @include overflow-hidden;
-    box-shadow: $box-shadow;
+    box-shadow: $effect-shadow-card;
     @include full-height;
     @include transition-smooth(transform box-shadow);
 

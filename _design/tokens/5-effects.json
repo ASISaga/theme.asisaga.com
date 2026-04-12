@@ -35,6 +35,11 @@
         "$type": "other",
         "$value": "0 8px 32px oklch(0.05 0.01 250 / 0.5)",
         "$description": "Profound void-level depth shadow"
+      },
+      "card": {
+        "$type": "other",
+        "$value": "0 0.5rem 1rem oklch(0.08 0.01 250 / 0.25)",
+        "$description": "Standard card/box shadow"
       }
     },
     "glass": {

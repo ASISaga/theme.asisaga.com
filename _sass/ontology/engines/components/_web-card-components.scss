@@ -159,7 +159,7 @@
       @include genesis-synapse('execute');
 
       &--primary {
-        background: $surface-dark;
+        background: $color-surface-dark;
         color: $color-light-white;
       }
 

@@ -8,7 +8,7 @@
 // Based on life force integration patterns from Symbolic Knowledge Base
 @keyframes sacred-rhythm {
   0%, 100% { 
-    opacity: $essence-flow-opacity; 
+    opacity: $opacity-essence-flow; 
     transform: translate3d(0, 0, 0) scale(1); 
   }
   50% { 
@@ -34,10 +34,10 @@
 @keyframes transcendence-spiral {
   0% { 
     transform: translate3d(0, 0, 0) rotate(0deg) scale(0.8); 
-    opacity: $consciousness-expansion-opacity; 
+    opacity: $opacity-consciousness-expansion; 
   }
   50% {
-    opacity: $essence-flow-opacity;
+    opacity: $opacity-essence-flow;
   }
   100% { 
     transform: translate3d(0, 0, 0) rotate(360deg) scale(1.2); 
@@ -75,17 +75,17 @@
 @keyframes essence-weave {
   0% { 
     background-position: 0% 0%; 
-    opacity: $essence-weave-opacity-1;
+    opacity: $opacity-essence-weave-1;
   }
   33% {
-    opacity: $essence-weave-opacity-2;
+    opacity: $opacity-essence-weave-2;
   }
   66% {
-    opacity: $essence-weave-opacity-3;
+    opacity: $opacity-essence-weave-3;
   }
   100% { 
     background-position: 100% 100%; 
-    opacity: $essence-weave-opacity-1;
+    opacity: $opacity-essence-weave-1;
   }
 }
 
@@ -103,7 +103,7 @@
   }
   100% {
     width: 100%;
-    opacity: $essence-flow-opacity;
+    opacity: $opacity-essence-flow;
   }
 }
 
@@ -489,7 +489,7 @@
     box-shadow: 0 0 0 0 oklch(0.65 0.25 230 / 0);
   }
   40% {
-    opacity: $consciousness-expansion-opacity;
+    opacity: $opacity-consciousness-expansion;
     filter: blur(2px) brightness(1.1);
     box-shadow: 0 0 24px 8px oklch(0.65 0.25 230 / 0.15);
   }

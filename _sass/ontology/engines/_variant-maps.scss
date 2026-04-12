@@ -1,0 +1,42 @@
+// ============================================================================
+// ONTOLOGY VARIANT MAPS
+// ============================================================================
+// Lists of valid variant names for each ontological category.
+// Used by genesis-core-component to generate utility classes.
+// ============================================================================
+/* stylelint-disable scss/no-dollar-variables */
+
+$genesis-environment-logics: (
+  'distributed', 'focused', 'associative', 'chronological', 'manifest',
+  'convergent', 'panelled', 'editorial-feed',
+  'navigation-primary', 'navigation-secondary', 'navigation-tabs',
+  'navigation-sidebar', 'navigation-footer', 'navigation-breadcrumb',
+  'navigation-pagination', 'navigation-accordion',
+  'interaction-form', 'community-feed', 'comment-thread',
+  'notification-center', 'user-grid', 'viewport-hero', 'dense-grid'
+);
+
+$genesis-entity-natures: (
+  'primary', 'secondary', 'imperative', 'latent', 'aggregate', 'ancestral',
+  'narrative', 'reflective', 'ceremonial',
+  'testimony', 'interactive-module', 'mentor-card'
+);
+
+$genesis-cognition-intents: (
+  'axiom', 'discourse', 'protocol', 'gloss', 'motive', 'quantum',
+  'chronicle', 'interface-label'
+);
+
+$genesis-synapse-vectors: (
+  'navigate', 'execute', 'inquiry', 'destructive', 'social',
+  'toggle', 'dismiss', 'invoke', 'reveal', 'reorder'
+);
+
+$genesis-state-conditions: (
+  'stable', 'evolving', 'deprecated', 'locked', 'simulated'
+);
+
+$genesis-atmosphere-vibes: (
+  'neutral', 'ethereal', 'void', 'vibrant',
+  'sacred', 'quantum', 'ceremonial'
+);

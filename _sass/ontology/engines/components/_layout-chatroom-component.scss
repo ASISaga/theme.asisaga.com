@@ -60,8 +60,8 @@
     @include flex-row;
     align-items: center;
     padding: 0.625rem 1.25rem;
-    @include border-separator-bottom($boardroom-border);
-    background: $boardroom-surface;
+    @include border-separator-bottom($color-boardroom-border);
+    background: $color-boardroom-surface;
     z-index: $z-index-overlay;
     @include flex-shrink-none;
     position: relative;
@@ -72,7 +72,7 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: linear-gradient(90deg, $boardroom-gold-accessible, transparent 80%);
+      background: linear-gradient(90deg, $color-boardroom-gold-accessible, transparent 80%);
     }
 
     &-content {
@@ -102,17 +102,17 @@
     font-weight: 600;
     letter-spacing: 0.04em;
     @include text-uppercase;
-    color: $boardroom-gold-accessible;
+    color: $color-boardroom-gold-accessible;
   }
 
   .chatroom-participants {
     @include genesis-cognition('gloss');
-    color: $boardroom-muted;
+    color: $color-boardroom-muted;
   }
 
   .chatroom-typing-indicator {
     font-size: $font-size-xs;
-    color: $boardroom-gold-accessible;
+    color: $color-boardroom-gold-accessible;
     font-style: italic;
     min-height: 1rem;
   }
@@ -126,24 +126,24 @@
     @include flex-row($spacing-sm);
     align-items: center;
     font-size: 0.8rem;
-    color: $boardroom-muted;
+    color: $color-boardroom-muted;
     padding: 0.25rem 0.75rem;
     @include border-radius-rounded($border-radius-sm);
-    background: $boardroom-bg;
-    @include border-subtle($boardroom-border);
+    background: $color-boardroom-bg;
+    @include border-subtle($color-boardroom-border);
 
     &::before {
       content: '';
       @include display-inline-block;
       @include size-square(7px);
       @include border-radius-pill;
-      background: $boardroom-muted;
+      background: $color-boardroom-muted;
     }
 
-    &.chatroom-status-online::before    { background: $boardroom-status-online; }
-    &.chatroom-status-connecting::before { background: $boardroom-gold-accessible; animation: chatroom-pulse 1.5s ease-in-out infinite; }
+    &.chatroom-status-online::before    { background: $color-boardroom-status-online; }
+    &.chatroom-status-connecting::before { background: $color-boardroom-gold-accessible; animation: chatroom-pulse 1.5s ease-in-out infinite; }
     &.chatroom-status-error::before,
-    &.chatroom-status-offline::before   { background: $boardroom-status-error; }
+    &.chatroom-status-offline::before   { background: $color-boardroom-status-error; }
   }
 
   .chatroom-actions {
@@ -157,13 +157,13 @@
     @include padding-reset;
     border: none;
     @include bg-transparent;
-    color: $boardroom-muted;
+    color: $color-boardroom-muted;
     @include border-radius-rounded($border-radius-sm);
     @include cursor-pointer;
     transition: all $transition-fast;
 
-    &:hover { background: $boardroom-bg; color: $boardroom-gold-accessible; }
-    &:focus { outline: 2px solid $boardroom-gold-accessible; outline-offset: 2px; }
+    &:hover { background: $color-boardroom-bg; color: $color-boardroom-gold-accessible; }
+    &:focus { outline: 2px solid $color-boardroom-gold-accessible; outline-offset: 2px; }
 
     i { font-size: $font-size-base; }
   }
@@ -176,15 +176,15 @@
     @include padding-reset;
     border: none;
     @include bg-transparent;
-    color: $boardroom-gold-accessible;
+    color: $color-boardroom-gold-accessible;
     @include border-radius-rounded($border-radius-sm);
     @include cursor-pointer;
     transition: background $transition-fast;
 
     &:hover,
-    &:focus-visible { background: $boardroom-gold-dim; }
+    &:focus-visible { background: $color-boardroom-gold-dim; }
 
-    &[aria-expanded="true"] { background: $boardroom-gold-active; }
+    &[aria-expanded="true"] { background: $color-boardroom-gold-active; }
 
     i { font-size: $font-size-base; }
   }
@@ -197,8 +197,8 @@
     height: 1rem;
     padding: 0 0.25rem;
     @include border-radius-pill;
-    background: $boardroom-gold-accessible;
-    color: $boardroom-bg;
+    background: $color-boardroom-gold-accessible;
+    color: $color-boardroom-bg;
     font-size: $font-size-tiny;
     font-weight: 700;
     @include flex-center;
@@ -216,20 +216,20 @@
     min-height: 0;
     overflow-y: auto;
     padding: $spacing-lg;
-    background: $boardroom-bg;
+    background: $color-boardroom-bg;
     @include flex-column(0.75rem);
     scrollbar-width: thin;
-    scrollbar-color: $boardroom-gold-dim transparent;
+    scrollbar-color: $color-boardroom-gold-dim transparent;
 
     &::-webkit-scrollbar       { width: 4px; }
     &::-webkit-scrollbar-track { background: transparent; }
-    &::-webkit-scrollbar-thumb { background: $boardroom-gold-dim; border-radius: 2px; }
+    &::-webkit-scrollbar-thumb { background: $color-boardroom-gold-dim; border-radius: 2px; }
   }
 
   .chatroom-empty-state {
     @include flex-center;
     @include full-height;
-    color: $boardroom-muted;
+    color: $color-boardroom-muted;
     font-size: $font-size-sm;
     @include text-align-center;
   }
@@ -253,24 +253,24 @@
 
     .chatroom__message-body {
       @include genesis-entity('imperative');
-      background: $boardroom-own-bg;
-      @include border-subtle($boardroom-gold-dim);
+      background: $color-boardroom-own-bg;
+      @include border-subtle($color-boardroom-gold-dim);
       text-align: right;
     }
   }
 
   .chatroom__message--ai .chatroom__message-body {
     @include genesis-entity('secondary');
-    background: $boardroom-surface;
-    @include border-subtle($boardroom-border);
-    border-left: 2px solid $boardroom-gold-accessible;
+    background: $color-boardroom-surface;
+    @include border-subtle($color-boardroom-border);
+    border-left: 2px solid $color-boardroom-gold-accessible;
     padding-left: 0.875rem;
   }
 
   .chatroom__message-body {
     @include genesis-entity('secondary');
-    background: $boardroom-surface;
-    @include border-subtle($boardroom-border);
+    background: $color-boardroom-surface;
+    @include border-subtle($color-boardroom-border);
     @include flex-grow-fill;
     min-width: 0;
   }
@@ -289,33 +289,33 @@
     font-size: $font-size-tiny;
     font-weight: 700;
     letter-spacing: 0.02em;
-    color: $text-inverse;
+    color: $color-semantic-text-inverse;
 
-    &--ceo { background: $boardroom-avatar-ceo;  box-shadow: 0 0 0 2px $boardroom-gold-ring; }
-    &--cfo { background: $boardroom-avatar-cfo; }
-    &--cto { background: $boardroom-avatar-cto; }
-    &--cmo { background: $boardroom-avatar-cmo; }
-    &--coo { background: $boardroom-avatar-coo; }
-    &--you { background: $boardroom-avatar-you; }
+    &--ceo { background: $color-boardroom-avatar-ceo;  box-shadow: 0 0 0 2px $color-boardroom-gold-ring; }
+    &--cfo { background: $color-boardroom-avatar-cfo; }
+    &--cto { background: $color-boardroom-avatar-cto; }
+    &--cmo { background: $color-boardroom-avatar-cmo; }
+    &--coo { background: $color-boardroom-avatar-coo; }
+    &--you { background: $color-boardroom-avatar-you; }
 
     &--ai {
-      background: $boardroom-avatar-ai-bg;
-      @include border-subtle($boardroom-gold-accessible, 1.5px);
-      color: $boardroom-gold-accessible;
+      background: $color-boardroom-avatar-ai-bg;
+      @include border-subtle($color-boardroom-gold-accessible, 1.5px);
+      color: $color-boardroom-gold-accessible;
       font-size: $font-size-sm;
     }
 
     &--ai-error {
-      background: $boardroom-avatar-ai-error-bg;
-      @include border-subtle($boardroom-status-error, 1.5px);
-      color: $boardroom-status-error;
+      background: $color-boardroom-avatar-ai-error-bg;
+      @include border-subtle($color-boardroom-status-error, 1.5px);
+      color: $color-boardroom-status-error;
     }
   }
 
   .chatroom__author {
     @include genesis-cognition('gloss');
     font-weight: 600;
-    color: $boardroom-text;
+    color: $color-boardroom-text;
   }
 
   .chatroom__agent-role {
@@ -324,8 +324,8 @@
     align-items: center;
     padding: 0.1rem 0.45rem;
     @include border-radius-pill;
-    background: $boardroom-gold-dim;
-    color: $boardroom-gold-accessible;
+    background: $color-boardroom-gold-dim;
+    color: $color-boardroom-gold-accessible;
     font-size: $font-size-tiny;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -334,7 +334,7 @@
 
   .chatroom__time {
     @include genesis-cognition('gloss');
-    color: $boardroom-muted;
+    color: $color-boardroom-muted;
     opacity: 0.8;
   }
 
@@ -343,16 +343,16 @@
     font-style: normal;
     line-height: 1.5;
     @include margin-reset;
-    color: $boardroom-text;
+    color: $color-boardroom-text;
 
-    &--error { color: $boardroom-error-text; }
+    &--error { color: $color-boardroom-error-text; }
   }
 
   .chatroom__system-message {
     @include genesis-cognition('gloss');
     @include text-align-center;
     padding-block: 0.75rem;
-    color: $boardroom-muted;
+    color: $color-boardroom-muted;
     opacity: 0.8;
 
     &--agenda {
@@ -367,7 +367,7 @@
         @include display-block;
         width: 3rem;
         height: 1px;
-        background: $boardroom-gold-accessible;
+        background: $color-boardroom-gold-accessible;
         margin-bottom: 0.25rem;
       }
 
@@ -381,13 +381,13 @@
     font-weight: 700;
     letter-spacing: 0.1em;
     @include text-uppercase;
-    color: $boardroom-gold-accessible;
+    color: $color-boardroom-gold-accessible;
   }
 
   .chatroom__agenda-title {
     @include genesis-cognition('gloss');
     font-weight: 600;
-    color: $boardroom-text;
+    color: $color-boardroom-text;
     font-size: $font-size-sm;
   }
 
@@ -400,7 +400,7 @@
 
   .chatroom__typing-text {
     @include genesis-cognition('gloss');
-    color: $boardroom-muted;
+    color: $color-boardroom-muted;
     font-style: italic;
   }
 
@@ -411,8 +411,8 @@
     gap: 0.25rem;
     padding: 0.125rem 0.5rem;
     @include border-radius-pill;
-    background: $boardroom-gold-dim;
-    color: $boardroom-gold-accessible;
+    background: $color-boardroom-gold-dim;
+    color: $color-boardroom-gold-accessible;
     font-size: $font-size-tiny;
     font-weight: 600;
   }
@@ -422,31 +422,31 @@
     padding: 0.5rem 0 0;
     margin: 0.5rem 0 0;
     @include flex-column(0.375rem);
-    @include border-separator-top($boardroom-gold-dim);
+    @include border-separator-top($color-boardroom-gold-dim);
   }
 
   .chatroom__tool-result-item {
     @include flex-column(0.125rem);
     padding: 0.375rem 0.625rem;
     @include border-radius-rounded($border-radius-sm);
-    background: $boardroom-bg-overlay;
-    @include border-subtle($boardroom-border);
+    background: $color-boardroom-bg-overlay;
+    @include border-subtle($color-boardroom-border);
   }
 
   .chatroom__tool-result-label {
     @include genesis-cognition('gloss');
     font-weight: 600;
-    color: $boardroom-text;
+    color: $color-boardroom-text;
   }
 
   .chatroom__tool-result-detail {
     @include genesis-cognition('gloss');
-    color: $boardroom-muted;
+    color: $color-boardroom-muted;
   }
 
   .chatroom__tool-result-more {
     @include genesis-cognition('gloss');
-    color: $boardroom-muted;
+    color: $color-boardroom-muted;
     padding: 0.25rem 0.625rem;
     font-style: italic;
   }
@@ -461,7 +461,7 @@
       @include display-inline-block;
       @include size-square(0.375rem);
       @include border-radius-pill;
-      background: $boardroom-gold-accessible;
+      background: $color-boardroom-gold-accessible;
       animation: chatroom-thinking 1.2s ease-in-out infinite;
 
       &:nth-child(2) { animation-delay: 0.2s; }
@@ -474,8 +474,8 @@
   // ==========================================================================
 
   .chatroom-input {
-    @include border-separator-top($boardroom-border);
-    background: $boardroom-surface;
+    @include border-separator-top($color-boardroom-border);
+    background: $color-boardroom-surface;
     padding: $spacing-md $spacing-lg;
     @include flex-shrink-none;
 
@@ -493,13 +493,13 @@
       @include flex-row($spacing-sm);
       align-items: flex-end;
       padding: 0.75rem;
-      @include border-subtle($boardroom-border);
+      @include border-subtle($color-boardroom-border);
       @include border-radius-rounded($border-radius-sm);
-      background: $boardroom-bg;
+      background: $color-boardroom-bg;
 
       &:focus-within {
-        border-color: $boardroom-gold-accessible;
-        box-shadow: 0 0 0 1px $boardroom-gold-dim;
+        border-color: $color-boardroom-gold-accessible;
+        box-shadow: 0 0 0 1px $color-boardroom-gold-dim;
       }
     }
 
@@ -512,11 +512,11 @@
       line-height: 1.5;
       font-family: inherit;
       @include bg-transparent;
-      color: $boardroom-text;
+      color: $color-boardroom-text;
       max-height: 120px;
       overflow-y: auto;
 
-      &::placeholder { color: $boardroom-muted; }
+      &::placeholder { color: $color-boardroom-muted; }
     }
 
     &-toolbar {
@@ -539,12 +539,12 @@
       @include padding-reset;
       border: none;
       @include bg-transparent;
-      color: $boardroom-muted;
+      color: $color-boardroom-muted;
       @include border-radius-rounded($border-radius-sm);
       @include cursor-pointer;
       transition: all $transition-fast;
 
-      &:hover { background: $boardroom-bg; color: $boardroom-gold-accessible; }
+      &:hover { background: $color-boardroom-bg; color: $color-boardroom-gold-accessible; }
     }
 
     &-send-btn {
@@ -553,15 +553,15 @@
       @include size-square(32px);
       @include padding-reset;
       border: none;
-      background: $boardroom-gold-accessible;
-      color: $boardroom-bg;
+      background: $color-boardroom-gold-accessible;
+      color: $color-boardroom-bg;
       @include border-radius-rounded($border-radius-sm);
       @include cursor-pointer;
       transition: all $transition-fast;
       @include flex-shrink-none;
 
-      &:hover { background: $boardroom-gold; color: $color-dark-profound-black; }
-      &:focus { outline: 2px solid $boardroom-gold-accessible; outline-offset: 2px; }
+      &:hover { background: $color-boardroom-gold; color: $color-dark-profound-black; }
+      &:focus { outline: 2px solid $color-boardroom-gold-accessible; outline-offset: 2px; }
 
       &:disabled {
         /* stylelint-disable-next-line declaration-property-value-disallowed-list */
@@ -574,7 +574,7 @@
 
     &-char-count {
       font-size: 0.72rem;
-      color: $boardroom-muted;
+      color: $color-boardroom-muted;
       @include text-no-wrap;
     }
   }
@@ -585,8 +585,8 @@
 
   .chatroom-mcp-apps {
     @include genesis-entity('secondary');
-    background: $boardroom-surface;
-    @include border-subtle($boardroom-border);
+    background: $color-boardroom-surface;
+    @include border-subtle($color-boardroom-border);
     position: absolute;
     top: 0;
     right: 0;
@@ -596,7 +596,7 @@
     overflow-y: auto;
     z-index: $z-index-chatroom-panel;
     border-radius: 0 0 0 $border-radius-md;
-    box-shadow: 0 8px 24px $boardroom-shadow-deep;
+    box-shadow: 0 8px 24px $color-boardroom-shadow-deep;
     transform: translateX(100%);
     transition: transform $transition-fast;
 
@@ -604,7 +604,7 @@
 
     &__header {
       padding: 0.875rem 1rem 0.5rem;
-      @include border-separator-bottom($boardroom-border);
+      @include border-separator-bottom($color-boardroom-border);
     }
 
     &__title {
@@ -613,19 +613,19 @@
       margin: 0 0 0.25rem;
       @include flex-row(0.375rem);
       align-items: center;
-      color: $boardroom-gold-accessible;
+      color: $color-boardroom-gold-accessible;
     }
 
     &__hint {
       @include genesis-cognition('gloss');
-      color: $boardroom-muted;
+      color: $color-boardroom-muted;
       @include margin-reset;
       font-size: $font-size-xs;
 
       code {
         font-family: monospace;
-        background: $boardroom-bg;
-        color: $boardroom-gold-accessible;
+        background: $color-boardroom-bg;
+        color: $color-boardroom-gold-accessible;
         padding: 0.1em 0.3em;
         @include border-radius-rounded($border-radius-sm);
       }
@@ -654,8 +654,8 @@
 
       &:hover,
       &:focus-visible {
-        background: $boardroom-gold-dim;
-        outline: 1px solid $boardroom-gold-accessible;
+        background: $color-boardroom-gold-dim;
+        outline: 1px solid $color-boardroom-gold-accessible;
         outline-offset: -1px;
       }
     }
@@ -665,8 +665,8 @@
       @include size-square(2rem);
       @include border-radius-pill;
       @include flex-center;
-      background: $boardroom-gold-dim;
-      color: $boardroom-gold-accessible;
+      background: $color-boardroom-gold-dim;
+      color: $color-boardroom-gold-accessible;
       font-size: $font-size-sm;
     }
 
@@ -678,12 +678,12 @@
     &__btn-label {
       @include genesis-cognition('gloss');
       font-weight: 600;
-      color: $boardroom-text;
+      color: $color-boardroom-text;
     }
 
     &__btn-desc {
       @include genesis-cognition('gloss');
-      color: $boardroom-muted;
+      color: $color-boardroom-muted;
       font-size: 0.72rem;
       @include text-no-wrap;
       @include overflow-hidden;
@@ -694,8 +694,8 @@
       @include genesis-cognition('quantum');
       font-family: monospace;
       font-size: 0.7rem;
-      background: $boardroom-bg;
-      color: $boardroom-gold-accessible;
+      background: $color-boardroom-bg;
+      color: $color-boardroom-gold-accessible;
       padding: 0.1em 0.35em;
       @include border-radius-rounded($border-radius-sm);
       align-self: flex-start;
@@ -708,7 +708,7 @@
 
   .chatroom-loading-overlay {
     @include absolute-fill;
-    background: $boardroom-overlay-bg;
+    background: $color-boardroom-overlay-bg;
     @include flex-center;
     z-index: $z-index-transcendent;
 
@@ -716,14 +716,14 @@
 
     &-spinner {
       @include size-square(3rem);
-      border: 0.3rem solid $boardroom-border;
-      border-top-color: $boardroom-gold-accessible;
+      border: 0.3rem solid $color-boardroom-border;
+      border-top-color: $color-boardroom-gold-accessible;
       @include border-radius-pill;
       animation: chatroom-spin 1s linear infinite;
       margin: 0 auto $spacing-md;
     }
 
-    &-text { color: $boardroom-muted; @include margin-reset; }
+    &-text { color: $color-boardroom-muted; @include margin-reset; }
   }
 
   // ==========================================================================

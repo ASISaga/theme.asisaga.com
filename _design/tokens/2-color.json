@@ -103,6 +103,55 @@
         "$type": "color",
         "$value": "oklch(0.65 0.02 220)",
         "$description": "Neutral gray borders"
+      },
+      "elevated": {
+        "$type": "color",
+        "$value": "oklch(0.75 0.02 220)",
+        "$description": "Elevated medium-gray border"
+      }
+    },
+    "surface": {
+      "primary": {
+        "$type": "color",
+        "$value": "{color.light.white}",
+        "$description": "Primary white background"
+      },
+      "elevated": {
+        "$type": "color",
+        "$value": "{color.light.surface}",
+        "$description": "Elevated cards/sections (slight tint)"
+      },
+      "dark": {
+        "$type": "color",
+        "$value": "{color.dark.profound-black}",
+        "$description": "Dark/void backgrounds"
+      },
+      "hover": {
+        "$type": "color",
+        "$value": "oklch(0.95 0.005 220)",
+        "$description": "Hover surface tint"
+      }
+    },
+    "semantic": {
+      "text-accent": {
+        "$type": "color",
+        "$value": "{color.accent.neon-blue}",
+        "$description": "Neon blue accent text"
+      },
+      "text-inverse": {
+        "$type": "color",
+        "$value": "{color.light.white}",
+        "$description": "White text on dark backgrounds"
+      },
+      "focus-ring": {
+        "$type": "color",
+        "$value": "oklch(0.65 0.25 230 / 0.5)",
+        "$description": "Focus ring (neon blue 50%)"
+      },
+      "focus-outline": {
+        "$type": "color",
+        "$value": "oklch(0.60 0.15 250)",
+        "$description": "Focus outline on light surfaces"
       }
     },
     "status": {
@@ -116,6 +165,11 @@
         "$value": "oklch(0.60 0.20 145)",
         "$description": "Success UI state accent"
       },
+      "success-text": {
+        "$type": "color",
+        "$value": "oklch(0.60 0.15 145)",
+        "$description": "Green for success text on light backgrounds"
+      },
       "warning": {
         "$type": "color",
         "$value": "oklch(0.70 0.18 80)",
@@ -125,6 +179,165 @@
         "$type": "color",
         "$value": "oklch(0.55 0.25 25)",
         "$description": "Error UI state accent"
+      },
+      "error-text": {
+        "$type": "color",
+        "$value": "oklch(0.60 0.20 25)",
+        "$description": "Red-orange for error text on light backgrounds"
+      }
+    },
+    "neutral": {
+      "gray-300": {
+        "$type": "color",
+        "$value": "oklch(0.85 0.01 220)",
+        "$description": "Gray-300 utility color"
+      },
+      "alpha-subtle": {
+        "$type": "color",
+        "$value": "oklch(0.5 0 0 / 0.03)",
+        "$description": "Hover tint overlay (3%)"
+      },
+      "alpha-faint": {
+        "$type": "color",
+        "$value": "oklch(0.5 0 0 / 0.08)",
+        "$description": "Hairline separator overlay (8%)"
+      },
+      "alpha-light": {
+        "$type": "color",
+        "$value": "oklch(0.5 0 0 / 0.10)",
+        "$description": "Light separator overlay (10%)"
+      },
+      "alpha-medium": {
+        "$type": "color",
+        "$value": "oklch(0.5 0 0 / 0.15)",
+        "$description": "Standard border overlay (15%)"
+      }
+    },
+    "boardroom": {
+      "bg": {
+        "$type": "color",
+        "$value": "oklch(0.10 0.015 250)",
+        "$description": "Executive boardroom background"
+      },
+      "surface": {
+        "$type": "color",
+        "$value": "oklch(0.13 0.015 250)",
+        "$description": "Boardroom surface"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "oklch(0.22 0.02 250)",
+        "$description": "Boardroom border"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "oklch(0.92 0.005 90)",
+        "$description": "Boardroom text"
+      },
+      "muted": {
+        "$type": "color",
+        "$value": "oklch(0.60 0.01 250)",
+        "$description": "Boardroom muted text"
+      },
+      "gold": {
+        "$type": "color",
+        "$value": "oklch(0.75 0.12 85)",
+        "$description": "Boardroom gold"
+      },
+      "gold-accessible": {
+        "$type": "color",
+        "$value": "oklch(0.55 0.12 85)",
+        "$description": "Boardroom WCAG AA gold"
+      },
+      "gold-dim": {
+        "$type": "color",
+        "$value": "oklch(0.55 0.10 85 / 0.25)",
+        "$description": "Boardroom dim gold"
+      },
+      "gold-ring": {
+        "$type": "color",
+        "$value": "oklch(0.75 0.12 85 / 0.35)",
+        "$description": "Boardroom gold ring"
+      },
+      "gold-active": {
+        "$type": "color",
+        "$value": "oklch(0.55 0.12 85 / 0.18)",
+        "$description": "Boardroom active gold"
+      },
+      "own-bg": {
+        "$type": "color",
+        "$value": "oklch(0.50 0.12 85 / 0.15)",
+        "$description": "Boardroom own message background"
+      },
+      "status-online": {
+        "$type": "color",
+        "$value": "oklch(0.55 0.15 145)",
+        "$description": "Boardroom online status"
+      },
+      "status-error": {
+        "$type": "color",
+        "$value": "oklch(0.55 0.20 25)",
+        "$description": "Boardroom error status"
+      },
+      "avatar-ceo": {
+        "$type": "color",
+        "$value": "oklch(0.50 0.12 85)",
+        "$description": "CEO avatar background"
+      },
+      "avatar-cfo": {
+        "$type": "color",
+        "$value": "oklch(0.40 0.14 160)",
+        "$description": "CFO avatar background"
+      },
+      "avatar-cto": {
+        "$type": "color",
+        "$value": "oklch(0.42 0.16 230)",
+        "$description": "CTO avatar background"
+      },
+      "avatar-cmo": {
+        "$type": "color",
+        "$value": "oklch(0.42 0.18 300)",
+        "$description": "CMO avatar background"
+      },
+      "avatar-coo": {
+        "$type": "color",
+        "$value": "oklch(0.38 0.06 250)",
+        "$description": "COO avatar background"
+      },
+      "avatar-you": {
+        "$type": "color",
+        "$value": "oklch(0.40 0.12 200)",
+        "$description": "You avatar background"
+      },
+      "avatar-ai-bg": {
+        "$type": "color",
+        "$value": "oklch(0.20 0.025 250)",
+        "$description": "AI agent avatar background"
+      },
+      "avatar-ai-error-bg": {
+        "$type": "color",
+        "$value": "oklch(0.20 0.025 25)",
+        "$description": "AI agent error avatar background"
+      },
+      "error-text": {
+        "$type": "color",
+        "$value": "oklch(0.65 0.20 25)",
+        "$description": "Boardroom error text"
+      },
+      "bg-overlay": {
+        "$type": "color",
+        "$value": "oklch(0.08 0.01 250 / 0.60)",
+        "$description": "Boardroom overlay"
+      },
+      "overlay-bg": {
+        "$type": "color",
+        "$value": "oklch(0.08 0.015 250 / 0.90)",
+        "$description": "Boardroom modal overlay"
+      },
+      "shadow-deep": {
+        "$type": "color",
+        "$value": "oklch(0.04 0.01 250 / 0.60)",
+        "$description": "Boardroom deep shadow"
       }
     },
     "brand": {
