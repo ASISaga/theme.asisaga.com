@@ -204,22 +204,18 @@ $color-neutral-alpha-medium: oklch(0.5 0 0 / 0.15);   // Standard border (15%)
   // Primary color 
   // ----------------------------------------
   --color-primary: #{$primary};
-  --color-primary-light: #{$primary-light};
-  --color-primary-dark: #{$primary-dark};
   
   // ----------------------------------------
-  // Secondary and Accent colors
+  // Accent color
   // ----------------------------------------
-  --color-secondary: #{$secondary};
   --color-accent: #{$accent};
   
   // ----------------------------------------
   // Neutral colors
   // ----------------------------------------
   --color-light: #{$light};
-  --color-light-rgb: 248, 249, 250; // RGB values of $light for rgba() usage
   --color-dark: #{$dark};
-  --color-text: #{$text-color}; // For consistent text color
+  --color-text: #{$text-color};
   
   // ----------------------------------------
   // Section backgrounds
@@ -230,51 +226,28 @@ $color-neutral-alpha-medium: oklch(0.5 0 0 / 0.15);   // Standard border (15%)
   // ----------------------------------------
   // SURFACE TOKENS - White/Light Gray primarily, minimal blue tints
   // ----------------------------------------
-  --glass-heavy: oklch(0.96 0.005 220 / 0.95);     /* White with subtle opacity */
   --glass-light: oklch(0.98 0.003 220 / 0.85);     /* Very light, minimal tint */
-  --glass-alert: oklch(0.92 0.05 25 / 0.85);       /* Alert remains distinct */
-  --glass-dormant: oklch(0.96 0.003 220 / 0.70);   /* Muted, minimal tint */
-  --glass-container: oklch(0.98 0.003 220 / 0.90); /* Container white */
-  --glass-archive: oklch(0.95 0.003 220 / 0.75);   /* Archive muted */
   --glass-hover: oklch(0.94 0.005 220);            /* Hover subtle gray */
   
   // ----------------------------------------
   // ACCENT TOKENS - Use purposefully
   // ----------------------------------------
   --accent-neon: oklch(0.50 0.20 230);             /* Purposeful neon blue – WCAG AA */
-  --accent-neon-hover: oklch(0.55 0.22 225);       /* Slightly brighter on hover */
-  --accent-neural: oklch(0.65 0.25 230);           /* For AI/tech elements */
   --accent-low: oklch(0.65 0.25 230 / 0.10);       /* Very subtle tint */
-  --accent-gold: oklch(0.55 0.12 85);              /* Gold accent – WCAG AA on white */
   
   // ----------------------------------------
   // TEXT TOKENS - Black on white primarily
   // ----------------------------------------
-  --text-vibrant: oklch(0.10 0.01 250);            /* Deep black */
   --text-primary: oklch(0.12 0.01 250);            /* Primary black text */
   --text-secondary: oklch(0.30 0.01 230);          /* Gray text */
-  --text-accent: oklch(0.45 0.20 230);             /* Neon blue accent – WCAG AA */
   --text-inverse: oklch(0.99 0.005 90);            /* White on dark bg */
   --text-link: oklch(0.45 0.20 230);               /* Links – WCAG AA on white */
-  --text-code: oklch(0.20 0.01 250);               /* Code black */
-  --text-chip: oklch(0.15 0.01 250);               /* Chip text black */
-  --text-void: oklch(0.99 0.005 90);               /* White on black void */
   
   // ----------------------------------------
-  // BORDER TOKENS - Subtle grays, minimal blue
+  // BORDER TOKENS - Subtle grays
   // ----------------------------------------
   --border-subtle: oklch(0.85 0.005 220);          /* Light gray border */
-  --border-dormant: oklch(0.90 0.003 220);         /* Very light */
-  --border-container: oklch(0.80 0.01 220);        /* Container border */
-  --border-archive: oklch(0.88 0.005 220);         /* Archive border */
-  --border-code: oklch(0.75 0.01 220);             /* Code border gray */
   --border-simulation: oklch(0.65 0.25 230 / 0.3); /* Purposeful blue */
-  
-  // ----------------------------------------
-  // BACKGROUND TOKENS - White/Light gray primarily
-  // ----------------------------------------
-  --bg-code-shield: oklch(0.96 0.003 220);         /* Light gray for code */
-  --bg-chip: oklch(0.95 0.005 220);                /* Light gray for chips */
   
   // ----------------------------------------
   // FOCUS TOKENS
@@ -303,43 +276,14 @@ $color-neutral-alpha-medium: oklch(0.5 0 0 / 0.15);   // Standard border (15%)
   --warning-color: oklch(0.65 0.18 65);
   
   // ----------------------------------------
-  // ATMOSPHERE TOKENS
-  // ----------------------------------------
-  --atmosphere-ethereal: oklch(0.96 0.01 220 / 0.5);
-  --glow-ethereal: oklch(0.65 0.25 230 / 0.15);
-  --atmosphere-void: oklch(0.05 0.01 250);  /* Profound black for headers/footers */
-  --atmosphere-vibrant: oklch(0.94 0.03 230 / 0.8);
-  
-  // ----------------------------------------
-  // NEURAL NETWORK COLORS
-  // ----------------------------------------
-  --neural-primary: oklch(0.65 0.25 230);
-  --neural-secondary: oklch(0.70 0.22 225);
-  --neural-tertiary: oklch(0.75 0.28 228);
-
-  // ----------------------------------------
-  // QUANTUM FIELD COLORS
-  // ----------------------------------------
-  --quantum-cyan: oklch(0.65 0.25 230);
-  --quantum-magenta: oklch(0.65 0.25 300);
-  --quantum-gold: oklch(0.75 0.18 85);
-
-  // ----------------------------------------
   // CONSCIOUSNESS DEPTH (Void colors)
   // ----------------------------------------
   --void-deep: oklch(0.03 0.01 260);      /* Deepest profound black */
-  --void-medium: oklch(0.05 0.01 255);    /* Medium profound black */
-  --void-surface: oklch(0.08 0.01 250);   /* Surface profound black */
 
   // ----------------------------------------
   // Z-INDEX LAYERS - Consciousness Hierarchy
   // ----------------------------------------
-  --z-background: -1;           /* Background elements */
-  --z-content: 1;               /* Default content layer */
-  --z-overlay: 10;              /* Overlays and dropdowns */
-  --z-consciousness: 100;       /* Consciousness UI elements */
   --z-transcendent: 1000;       /* Headers, navigation, modals */
-  --z-genesis: 9999;            /* Top-level alerts, toasts */
 }
 
 // ============================================================================
@@ -365,19 +309,11 @@ $color-neutral-alpha-medium: oklch(0.5 0 0 / 0.15);   // Standard border (15%)
 
 @media (prefers-contrast: high) {
   :root {
-    /* Enhance glassmorphism visibility in high contrast mode */
-    --glass-heavy: oklch(0.92 0.02 220);
+    /* Enhance visibility in high contrast mode */
     --glass-light: oklch(0.94 0.01 220);
-    --glass-alert: oklch(0.90 0.08 25);
-    --glass-dormant: oklch(0.93 0.01 220);
-    --glass-container: oklch(0.95 0.01 220);
-    --glass-archive: oklch(0.92 0.01 220);
-    
+
     /* Increase border visibility */
     --border-subtle: oklch(0.60 0.02 220);
-    --border-dormant: oklch(0.70 0.01 220);
-    --border-container: oklch(0.55 0.03 220);
-    --border-archive: oklch(0.65 0.02 220);
   }
 }
 
