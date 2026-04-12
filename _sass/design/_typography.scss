@@ -101,7 +101,7 @@ h6, .h6 {
 
 body {
   font-family: $font-family-body;
-  font-size: $font-size-wisdom;
+  font-size: $font-size-base;
   line-height: $line-height-wisdom;
   @include color($text-primary);  // Dark text – light backgrounds are the default; void/cosmic atmospheres set white text explicitly
   @include margin(0);
