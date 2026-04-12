@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: $font-family-headings;
   line-height: $line-height-sacred;
-  @include color($cosmic-deep-blue);
+  @include color($color-dark-profound-black);
   font-weight: $font-weight-semibold;
 }
 
@@ -167,33 +167,33 @@ p, .body-text {
 
 // Sacred text styles
 .text-sacred {
-  @include color($luminous-gold);
+  @include color($color-accent-gold);
   font-weight: $font-weight-medium;
 }
 
 .text-wisdom {
-  @include color($text-color);
+  @include color($color-text-primary);
   font-family: $font-family-wisdom;
   line-height: $line-height-wisdom;
 }
 
 .text-transcendent {
-  @include color($transcendent-white);
+  @include color($color-light-white);
 }
 
 .text-intelligence {
-  @include color($color-neon-blue);
+  @include color($color-accent-neon-blue);
   font-weight: $font-weight-semibold;
 }
 
 // Sacred emphasis styles
 .sacred-emphasis {
-  @include color($luminous-gold);
+  @include color($color-accent-gold);
   font-weight: $font-weight-semibold;
 }
 
 .consciousness-emphasis {
-  background: linear-gradient(135deg, $cosmic-deep-blue, $color-neon-blue);
+  background: linear-gradient(135deg, $color-dark-profound-black, $color-accent-neon-blue);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -206,7 +206,7 @@ p, .body-text {
 
 blockquote {
   padding: 1.5rem;
-  @include border-color($luminous-gold);
+  @include border-color($color-accent-gold);
   background: oklch(0.70 0.15 85 / 0.05);
   font-style: italic;
   font-family: $font-family-wisdom;
@@ -226,13 +226,13 @@ blockquote {
 
   footer {
     font-style: normal;
-    @include color($text-muted);
+    @include color($color-text-muted);
     margin-top: 1rem;
     font-family: $font-family-interface;
 
     &::before {
       content: "— ";
-      @include color($luminous-gold);
+      @include color($color-accent-gold);
     }
   }
 }
@@ -242,34 +242,34 @@ blockquote {
 // ============================================================================
 
 a {
-  @include color($luminous-gold-accessible);
+  @include color($color-accent-gold-accessible);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.15em;
   transition: all 0.3s ease;
 
   &:hover {
-    @include color($sacred-gold-dark);
+    @include color($color-accent-gold-dark);
   }
 
   &:focus {
-    outline: 2px solid $luminous-gold-accessible;
+    outline: 2px solid $color-accent-gold-accessible;
     outline-offset: 2px;
   }
 }
 
 .nav-link {
-  @include color($cosmic-deep-blue);
+  @include color($color-dark-profound-black);
   font-weight: $font-weight-medium;
   transition: all 0.3s ease;
 
   &:hover {
-    @include color($luminous-gold);
+    @include color($color-accent-gold);
     transform: translateY(-1px);
   }
 
   &.active {
-    @include color($luminous-gold);
+    @include color($color-accent-gold);
     font-weight: $font-weight-semibold;
   }
 }
@@ -286,29 +286,29 @@ a {
 }
 
 .btn-primary {
-  @include background-color($luminous-gold);
-  @include border-color($luminous-gold);
-  @include color($cosmic-deep-blue);
+  @include background-color($color-accent-gold);
+  @include border-color($color-accent-gold);
+  @include color($color-dark-profound-black);
   font-weight: $font-weight-semibold;
 
   &:hover {
-    @include background-color($sacred-gold-dark);
-    @include border-color($sacred-gold-dark);
+    @include background-color($color-accent-gold-dark);
+    @include border-color($color-accent-gold-dark);
     transform: translateY(-2px);
-    box-shadow: $sacred-glow;
+    box-shadow: $effect-shadow-sacred-glow;
   }
 }
 
 .btn-sacred {
-  @include background-color($cosmic-deep-blue);
-  @include border-color($cosmic-deep-blue);
-  @include color($transcendent-white);
+  @include background-color($color-dark-profound-black);
+  @include border-color($color-dark-profound-black);
+  @include color($color-light-white);
   font-weight: $font-weight-semibold;
 
   &:hover {
-    @include background-color($primary-dark);
-    @include border-color($primary-dark);
-    box-shadow: $consciousness-depth;
+    @include background-color($color-dark-profound-black);
+    @include border-color($color-dark-profound-black);
+    box-shadow: $effect-shadow-consciousness-depth;
   }
 }
 
@@ -318,22 +318,22 @@ a {
 
 .form-control {
   font-family: $font-family-interface;
-  @include border-color($ethereal-silver);
+  @include border-color($color-border-silver);
 
   &:focus {
-    border-color: $luminous-gold;
+    border-color: $color-accent-gold;
     box-shadow: 0 0 0 0.2rem oklch(0.70 0.15 85 / 0.25);
   }
 }
 
 .form-label {
-  color: $cosmic-deep-blue;
+  color: $color-dark-profound-black;
   font-weight: $font-weight-medium;
   margin-bottom: 0.5rem;
 }
 
 ::placeholder {
-  color: $text-muted;
+  color: $color-text-muted;
   font-style: italic;
 }
 
@@ -428,15 +428,15 @@ a {
 @media (prefers-contrast: high) {
   h1, h2, h3, h4, h5, h6,
   .h1, .h2, .h3, .h4, .h5, .h6 {
-    color: $cosmic-deep-blue-accessible;
+    color: $color-dark-profound-black;
   }
 
   .text-sacred {
-    color: $luminous-gold-accessible !important;
+    color: $color-accent-gold-accessible !important;
   }
 
   a {
-    color: $luminous-gold;
+    color: $color-accent-gold;
 
     &:hover {
       color: oklch(0.65 0.13 88);
@@ -460,11 +460,11 @@ a {
 
 @media (prefers-reduced-motion: reduce) {
   .consciousness-emphasis {
-    background: $cosmic-deep-blue;
+    background: $color-dark-profound-black;
     background-clip: initial;
     -webkit-background-clip: initial;
     -webkit-text-fill-color: initial;
-    color: $cosmic-deep-blue;
+    color: $color-dark-profound-black;
   }
 }
 

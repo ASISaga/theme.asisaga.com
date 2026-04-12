@@ -475,7 +475,7 @@
 }
 
 @mixin text-consciousness {
-  color: $color-neon-blue;
+  color: $color-accent-neon-blue;
 }
 
 @mixin text-primary {
@@ -670,15 +670,15 @@
 // Use: background-color: oklch(0.55 0.22 228);
 
 @mixin bg-luminous-gold-accessible {
-  background-color: $luminous-gold;
+  background-color: $color-accent-gold;
 }
 
 @mixin bg-neon-blue-accessible {
-  background-color: $color-neon-blue;
+  background-color: $color-accent-neon-blue;
 }
 
 @mixin bg-gradient-consciousness-royal {
-  background: linear-gradient(135deg, $cosmic-deep-blue 0%, $color-neon-blue 50%, $luminous-gold 100%);
+  background: linear-gradient(135deg, $color-dark-profound-black 0%, $color-accent-neon-blue 50%, $color-accent-gold 100%);
 }
 
 @mixin bg-gradient-transcendent-overlay {
@@ -690,7 +690,7 @@
 // Use: border-color: oklch(0.55 0.22 228);
 
 @mixin border-luminous-gold-accessible {
-  border: 2px solid $luminous-gold;
+  border: 2px solid $color-accent-gold;
 }
 
 // Shadow mixins
@@ -760,7 +760,7 @@
   height: 3rem;
   border-radius: 50%;
   background: radial-gradient(circle, oklch(0.70 0.15 85 / 0.2), transparent);
-  color: $luminous-gold;
+  color: $color-accent-gold;
   font-size: 1.5rem;
 }
 

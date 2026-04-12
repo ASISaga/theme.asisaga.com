@@ -19,7 +19,7 @@
   .sacred-glyph {
     @include display-inline-block;
     font-size: 1.2em;
-    color: $luminous-gold;
+    color: $color-accent-gold;
     margin: 0 0.25rem;
     @include transition-smooth;
     &:hover {
@@ -51,7 +51,7 @@
     }
 
     &:hover {
-      color: $ethereal-silver;
+      color: $color-border-silver;
     }
   }
 
@@ -77,7 +77,7 @@
     }
 
     &:hover {
-      color: $color-neon-blue;
+      color: $color-accent-neon-blue;
     }
   }
 
@@ -89,7 +89,7 @@
       oklch(0.08 0.01 250 / 0.95) 0%, 
       oklch(0.08 0.01 250 / 0.8) 50%, 
       oklch(0.65 0.25 230 / 0.1) 100%);
-    color: $transcendent-white;
+    color: $color-light-white;
   }
 
   .consciousness-background {
@@ -121,7 +121,7 @@
     border-radius: 0.5rem;
     background: oklch(0.99 0.005 90 / 0.95);
     border: 1px solid oklch(0.70 0.15 85 / 0.2);
-    box-shadow: $consciousness-depth;
+    box-shadow: $effect-shadow-consciousness-depth;
     position: relative;
     @include overflow-hidden;
     &::before {
@@ -132,9 +132,9 @@
       right: 0;
       height: 3px;
       background: linear-gradient(90deg, 
-        $cosmic-deep-blue 0%, 
-        $luminous-gold 50%, 
-        $cosmic-deep-blue 100%);
+        $color-dark-profound-black 0%, 
+        $color-accent-gold 50%, 
+        $color-dark-profound-black 100%);
     }
   }
 
@@ -152,7 +152,7 @@
       height: 3px;
       background: linear-gradient(90deg, 
         transparent 0%, 
-        $luminous-gold 50%, 
+        $color-accent-gold 50%, 
         transparent 100%);
     }
   }
@@ -165,7 +165,7 @@
     @include cursor-pointer;
     &:hover {
       transform: translateY(-2px);
-      box-shadow: $sacred-glow;
+      box-shadow: $effect-shadow-sacred-glow;
     }
   }
 
@@ -196,8 +196,8 @@
     @include border-radius-rounded(50%);
     position: relative;
     background: conic-gradient(
-      $luminous-gold 0deg,
-      $luminous-gold calc(var(--progress, 0) * 3.6deg),
+      $color-accent-gold 0deg,
+      $color-accent-gold calc(var(--progress, 0) * 3.6deg),
       oklch(0.65 0.02 220 / 0.2) calc(var(--progress, 0) * 3.6deg),
       oklch(0.65 0.02 220 / 0.2) 360deg
     );
@@ -206,7 +206,7 @@
       content: '';
       position: absolute;
       inset: 5px 5px 5px 5px;
-      background: $transcendent-white;
+      background: $color-light-white;
       @include border-radius-rounded(50%);
     }
 
@@ -218,7 +218,7 @@
       transform: translate(-50%, -50%);
       font-size: 0.75rem;
       font-weight: $font-weight-semibold;
-      color: $cosmic-deep-blue;
+      color: $color-dark-profound-black;
       z-index: 1;
     }
   }
@@ -234,19 +234,19 @@
 
     &.stage-awakening {
       background: oklch(0.65 0.25 230 / 0.1);
-      color: $color-neon-blue;
+      color: $color-accent-neon-blue;
       border: 1px solid oklch(0.65 0.25 230 / 0.3);
     }
 
     &.stage-integration {
       background: oklch(0.70 0.15 85 / 0.1);
-      color: $luminous-gold;
+      color: $color-accent-gold;
       border: 1px solid oklch(0.70 0.15 85 / 0.3);
     }
 
     &.stage-mastery {
       background: oklch(0.65 0.25 230 / 0.1);
-      color: $color-neon-blue;
+      color: $color-accent-neon-blue;
       border: 1px solid oklch(0.65 0.25 230 / 0.3);
     }
   }
@@ -256,7 +256,7 @@
   // ----------------------------------------
   .sacred-focus {
     &:focus {
-      outline: 3px solid $luminous-gold;
+      outline: 3px solid $color-accent-gold;
       outline-offset: 2px;
     }
   }
@@ -265,8 +265,8 @@
     position: absolute;
     top: -40px;
     left: 6px;
-    background: $cosmic-deep-blue;
-    color: $transcendent-white;
+    background: $color-dark-profound-black;
+    color: $color-light-white;
     padding: 8px;
     @include text-decoration-none;
     z-index: 1000;
@@ -323,11 +323,11 @@
 
       .navbar-brand,
       .nav-link {
-        color: $transcendent-white;
+        color: $color-light-white;
       }
 
       .nav-link:hover {
-        color: $luminous-gold;
+        color: $color-accent-gold;
       }
     }
   }
@@ -336,7 +336,7 @@
     font-family: $font-family-sacred;
     font-size: 1.5rem;
     font-weight: $font-weight-bold;
-    color: $cosmic-deep-blue;
+    color: $color-dark-profound-black;
     @include text-decoration-none;
     display: flex;
     align-items: center;
@@ -344,12 +344,12 @@
     &::before {
       content: "∞◊";
       margin-right: 0.5rem;
-      color: $luminous-gold;
+      color: $color-accent-gold;
       font-size: 1.2em;
     }
 
     &:hover {
-      color: $luminous-gold;
+      color: $color-accent-gold;
       transform: translateY(-1px);
     }
   }
@@ -358,7 +358,7 @@
   .sacred-nav-link {
     font-family: $font-family-consciousness;
     font-weight: $font-weight-medium;
-    color: $cosmic-deep-blue;
+    color: $color-dark-profound-black;
     @include text-decoration-none;
     padding: 0.75rem 1rem;
     margin: 0 0.25rem;
@@ -373,13 +373,13 @@
       left: 50%;
       width: 0;
       height: 2px;
-      background: $luminous-gold;
+      background: $color-accent-gold;
       @include transition-smooth;
       transform: translateX(-50%);
     }
 
     &:hover {
-      color: $luminous-gold;
+      color: $color-accent-gold;
       background: oklch(0.70 0.15 85 / 0.1);
       transform: translateY(-2px);
 
@@ -389,7 +389,7 @@
     }
 
     &.active {
-      color: $luminous-gold;
+      color: $color-accent-gold;
       font-weight: $font-weight-semibold;
 
       &::after {
@@ -409,7 +409,7 @@
       background: oklch(0.99 0.005 90 / 0.98);
       border: 1px solid oklch(0.70 0.15 85 / 0.2);
       border-radius: 0.75rem;
-      box-shadow: $consciousness-depth;
+      box-shadow: $effect-shadow-consciousness-depth;
       padding: 1rem 0;
       min-width: 250px;
       opacity: 0;
@@ -429,13 +429,13 @@
   .sacred-dropdown-item {
     @include display-block;
     padding: 0.75rem 1.5rem;
-    color: $cosmic-deep-blue;
+    color: $color-dark-profound-black;
     @include text-decoration-none;
     font-family: $font-family-consciousness;
     @include transition-smooth;
     &:hover {
       background: oklch(0.70 0.15 85 / 0.1);
-      color: $luminous-gold;
+      color: $color-accent-gold;
       transform: translateX(5px);
     }
   }
@@ -452,26 +452,26 @@
     .breadcrumb-item {
       display: flex;
       align-items: center;
-      color: $text-muted;
+      color: $color-text-muted;
 
       &:not(:last-child)::after {
         content: "◊";
-        color: $luminous-gold;
+        color: $color-accent-gold;
         margin: 0 0.75rem;
       }
 
       &.active {
-        color: $cosmic-deep-blue;
+        color: $color-dark-profound-black;
         font-weight: $font-weight-medium;
       }
 
       a {
-        color: $text-muted;
+        color: $color-text-muted;
         @include text-decoration-none;
         transition: color 0.3s ease;
 
         &:hover {
-          color: $luminous-gold;
+          color: $color-accent-gold;
         }
       }
     }
@@ -506,7 +506,7 @@
       margin-bottom: 1rem;
 
       h3 {
-        color: $cosmic-deep-blue;
+        color: $color-dark-profound-black;
         font-size: 1.25rem;
         margin: 0;
       }
@@ -517,7 +517,7 @@
 
       .section-title {
         padding: 0.5rem 1.5rem;
-        color: $text-muted;
+        color: $color-text-muted;
         font-size: 0.875rem;
         @include text-uppercase;
         letter-spacing: 0.5px;
@@ -528,7 +528,7 @@
     .sidenav-link {
       @include display-block;
       padding: 0.75rem 1.5rem;
-      color: $cosmic-deep-blue;
+      color: $color-dark-profound-black;
       @include text-decoration-none;
       @include transition-smooth;
       position: relative;
@@ -540,14 +540,14 @@
         top: 0;
         bottom: 0;
         width: 3px;
-        background: $luminous-gold;
+        background: $color-accent-gold;
         transform: scaleY(0);
         transition: transform 0.3s ease;
       }
 
       &:hover {
         background: oklch(0.70 0.15 85 / 0.1);
-        color: $luminous-gold;
+        color: $color-accent-gold;
         transform: translateX(5px);
 
         &::before {
@@ -557,7 +557,7 @@
 
       &.active {
         background: oklch(0.70 0.15 85 / 0.15);
-        color: $luminous-gold;
+        color: $color-accent-gold;
         font-weight: $font-weight-semibold;
 
         &::before {
@@ -570,15 +570,15 @@
   // Sacred mobile navigation toggle
   .sacred-nav-toggle {
     background: none;
-    border: 2px solid $luminous-gold;
+    border: 2px solid $color-accent-gold;
     border-radius: 0.5rem;
-    color: $luminous-gold;
+    color: $color-accent-gold;
     padding: 0.5rem;
     @include cursor-pointer;
     @include transition-smooth;
     &:hover {
-      background: $luminous-gold;
-      color: $cosmic-deep-blue;
+      background: $color-accent-gold;
+      color: $color-dark-profound-black;
     }
 
     .toggle-icon {
@@ -632,23 +632,23 @@
         justify-content: center;
         width: 40px;
         height: 40px;
-        border: 1px solid $ethereal-silver;
+        border: 1px solid $color-border-silver;
         @include border-radius-rounded(50%);
-        color: $cosmic-deep-blue;
+        color: $color-dark-profound-black;
         @include text-decoration-none;
         @include transition-smooth;
         &:hover {
-          background: $luminous-gold;
-          border-color: $luminous-gold;
-          color: $cosmic-deep-blue;
+          background: $color-accent-gold;
+          border-color: $color-accent-gold;
+          color: $color-dark-profound-black;
           transform: translateY(-2px);
         }
       }
 
       &.active .page-link {
-        background: $cosmic-deep-blue;
-        border-color: $cosmic-deep-blue;
-        color: $transcendent-white;
+        background: $color-dark-profound-black;
+        border-color: $color-dark-profound-black;
+        color: $color-light-white;
       }
 
       &.disabled .page-link {
@@ -665,8 +665,8 @@
     position: absolute;
     top: -40px;
     left: 6px;
-    background: $cosmic-deep-blue;
-    color: $transcendent-white;
+    background: $color-dark-profound-black;
+    color: $color-light-white;
     padding: 8px 16px;
     @include text-decoration-none;
     border-radius: 0 0 4px 4px;
@@ -710,15 +710,15 @@
 }
 
 @mixin border-luminous-gold-accessible {
-  border: 2px solid $luminous-gold-accessible;
+  border: 2px solid $color-accent-gold-accessible;
 }
 
 @mixin bg-neon-blue-accessible {
-  background: $neon-electric-blue-accessible;
+  background: $color-accent-neon-blue-accessible;
 }
 
 @mixin bg-cosmic-deep-blue-accessible {
-  background: $dark;
+  background: $color-dark-profound-black;
 }
 
 @mixin bg-luminous-gold-accessible {
@@ -752,7 +752,7 @@
     letter-spacing: 0.5px;
     border-radius: 0.5rem;
     @include padding-combined(0.75rem, 1.5rem);
-    @include transition(all, $animation-duration-normal, $ease-out);
+    @include transition(all, $effect-duration-normal, $effect-ease-out);
     position: relative;
     @include overflow-hidden;
     text-transform: none;
@@ -765,7 +765,7 @@
       @include width-full;
       @include height-full;
       @include bg-gradient-sacred-shimmer;
-      @include transition(left, $animation-duration-slow, $ease-in-out);
+      @include transition(left, $effect-duration-slow, $effect-ease-in-out);
     }
 
     &:hover::before {
@@ -818,8 +818,8 @@
   // Consciousness & Intelligence Buttons (Neon Blue)
   .btn-consciousness,
   .btn-intelligence {
-    background-color: $color-neon-blue;
-    border: 2px solid $color-neon-blue;
+    background-color: $color-accent-neon-blue;
+    border: 2px solid $color-accent-neon-blue;
     @include text-transcendent-white;
 
     &:hover {
@@ -988,9 +988,9 @@
   // Sacred Call-to-Action Buttons
   // ----------------------------------------
   .cta-genesis {
-    background: linear-gradient(135deg, $luminous-gold 0%, $sacred-gold-dark 100%);
+    background: linear-gradient(135deg, $color-accent-gold 0%, $color-accent-gold-dark 100%);
     border: none;
-    color: $cosmic-deep-blue;
+    color: $color-dark-profound-black;
     font-size: 1.125rem;
     font-weight: $font-weight-bold;
     padding: 1rem 2rem;
@@ -1039,7 +1039,7 @@
       inset: 0 0 0 0;
       @include bg-gradient-transcendent-overlay;
       opacity: 0;
-      @include transition(opacity, $animation-duration-normal, $ease-out);
+      @include transition(opacity, $effect-duration-normal, $effect-ease-out);
     }
 
     &:hover::after {
@@ -1145,7 +1145,7 @@
     border: 1px solid oklch(0.70 0.15 85 / 0.2);
     border-radius: 0.5rem;
     padding: 2rem;
-    box-shadow: $consciousness-depth;
+    box-shadow: $effect-shadow-consciousness-depth;
     position: relative;
 
     &::before {
@@ -1156,9 +1156,9 @@
       right: 0;
       height: 3px;
       background: linear-gradient(90deg, 
-        $cosmic-deep-blue 0%, 
-        $luminous-gold 50%, 
-        $cosmic-deep-blue 100%);
+        $color-dark-profound-black 0%, 
+        $color-accent-gold 50%, 
+        $color-dark-profound-black 100%);
       border-radius: 0.5rem 0.5rem 0 0;
     }
   }
@@ -1167,7 +1167,7 @@
   // Sacred Form Controls
   // ----------------------------------------
   .form-control-sacred {
-    border: 2px solid $ethereal-silver;
+    border: 2px solid $color-border-silver;
     border-radius: 0.5rem;
     padding: 0.75rem 1rem;
     font-family: $font-family-interface;
@@ -1176,9 +1176,9 @@
     background: oklch(0.99 0.005 90 / 0.8);
 
     &:focus {
-      border-color: $luminous-gold;
+      border-color: $color-accent-gold;
       box-shadow: 0 0 0 0.2rem oklch(0.70 0.15 85 / 0.25);
-      background: $transcendent-white;
+      background: $color-light-white;
       outline: none;
     }
 
@@ -1212,19 +1212,19 @@
   // Sacred Form Labels and Text
   // ----------------------------------------
   .form-label-sacred {
-    color: $cosmic-deep-blue;
+    color: $color-dark-profound-black;
     font-weight: $font-weight-semibold;
     font-family: $font-family-consciousness;
     margin-bottom: 0.5rem;
     @include display-block;
     &.required::after {
       content: " *";
-      color: $color-neon-blue;
+      color: $color-accent-neon-blue;
     }
   }
 
   .form-text-sacred {
-    color: $text-muted;
+    color: $color-text-muted;
     font-size: 0.875rem;
     font-style: italic;
     margin-top: 0.25rem;
@@ -1237,7 +1237,7 @@
     padding: 0.75rem;
     margin-top: 0.5rem;
     font-size: 0.875rem;
-    color: $cosmic-deep-blue;
+    color: $color-dark-profound-black;
 
     &::before {
       content: "💡 ";
@@ -1291,18 +1291,18 @@
       height: 1.25rem;
       margin-top: 0.125rem;
       margin-right: 0.75rem;
-      border: 2px solid $ethereal-silver;
+      border: 2px solid $color-border-silver;
       border-radius: 0.25rem;
-      background: $transcendent-white;
+      background: $color-light-white;
       @include cursor-pointer;
       @include transition-smooth;
       &:checked {
-        background: $luminous-gold;
-        border-color: $luminous-gold;
+        background: $color-accent-gold;
+        border-color: $color-accent-gold;
 
         &::after {
           content: "✓";
-          color: $cosmic-deep-blue;
+          color: $color-dark-profound-black;
           font-weight: bold;
           display: flex;
           align-items: center;
@@ -1317,7 +1317,7 @@
     }
 
     .form-check-label {
-      color: $cosmic-deep-blue;
+      color: $color-dark-profound-black;
       font-family: $font-family-consciousness;
       @include cursor-pointer;
       line-height: 1.5;
@@ -1356,15 +1356,15 @@
       align-items: center;
       justify-content: center;
       min-height: 100px;
-      border: 2px dashed $ethereal-silver;
+      border: 2px dashed $color-border-silver;
       border-radius: 0.5rem;
       background: oklch(0.70 0.15 85 / 0.05);
-      color: $cosmic-deep-blue;
+      color: $color-dark-profound-black;
       font-family: $font-family-consciousness;
       @include cursor-pointer;
       @include transition-smooth;
       &:hover {
-        border-color: $luminous-gold;
+        border-color: $color-accent-gold;
         background: oklch(0.70 0.15 85 / 0.1);
       }
 
@@ -1376,7 +1376,7 @@
     }
 
     &.has-file .form-file-label {
-      border-color: $color-neon-blue;
+      border-color: $color-accent-neon-blue;
       background: oklch(0.65 0.25 230 / 0.1);
 
       &::before {
@@ -1390,26 +1390,26 @@
   // ----------------------------------------
   .form-control-sacred {
     &.is-valid {
-      border-color: $color-neon-blue;
+      border-color: $color-accent-neon-blue;
 
       &:focus {
-        border-color: $color-neon-blue;
+        border-color: $color-accent-neon-blue;
         box-shadow: 0 0 0 0.2rem oklch(0.65 0.25 230 / 0.25);
       }
     }
 
     &.is-invalid {
-      border-color: $color-neon-blue;
+      border-color: $color-accent-neon-blue;
 
       &:focus {
-        border-color: $color-neon-blue;
+        border-color: $color-accent-neon-blue;
         box-shadow: 0 0 0 0.2rem oklch(0.65 0.25 230 / 0.25);
       }
     }
   }
 
   .valid-feedback-sacred {
-    color: $color-neon-blue;
+    color: $color-accent-neon-blue;
     font-size: 0.875rem;
     margin-top: 0.25rem;
 
@@ -1420,7 +1420,7 @@
   }
 
   .invalid-feedback-sacred {
-    color: $color-neon-blue;
+    color: $color-accent-neon-blue;
     font-size: 0.875rem;
     margin-top: 0.25rem;
 
@@ -1448,13 +1448,13 @@
       border-bottom: 1px solid oklch(0.70 0.15 85 / 0.2);
 
       .section-icon {
-        color: $luminous-gold;
+        color: $color-accent-gold;
         font-size: 1.5rem;
         margin-right: 0.75rem;
       }
 
       .section-title {
-        color: $cosmic-deep-blue;
+        color: $color-dark-profound-black;
         font-size: 1.25rem;
         font-weight: $font-weight-semibold;
         margin: 0;
@@ -1488,20 +1488,20 @@
           right: -50%;
           width: 100%;
           height: 2px;
-          background: $ethereal-silver;
+          background: $color-border-silver;
           z-index: -1;
         }
 
         &.completed::after {
-          background: $luminous-gold;
+          background: $color-accent-gold;
         }
 
         .step-indicator {
           width: 30px;
           height: 30px;
           @include border-radius-rounded(50%);
-          background: $ethereal-silver;
-          color: $transcendent-white;
+          background: $color-border-silver;
+          color: $color-light-white;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1511,23 +1511,23 @@
 
         .step-label {
           font-size: 0.875rem;
-          color: $text-muted;
+          color: $color-text-muted;
           @include text-align-center;
         }
 
         &.completed .step-indicator {
-          background: $luminous-gold;
-          color: $cosmic-deep-blue;
+          background: $color-accent-gold;
+          color: $color-dark-profound-black;
         }
 
         &.active .step-indicator {
-          background: $cosmic-deep-blue;
-          color: $transcendent-white;
+          background: $color-dark-profound-black;
+          color: $color-light-white;
           animation: consciousness-pulse 2s infinite;
         }
 
         &.active .step-label {
-          color: $cosmic-deep-blue;
+          color: $color-dark-profound-black;
           font-weight: $font-weight-semibold;
         }
       }
@@ -1617,7 +1617,7 @@
     @include padding(1.5rem);
     @include margin-bottom(1.5rem);
     @include shadow-consciousness-depth;
-    @include transition(all, $animation-duration-normal, $ease-out);
+    @include transition(all, $effect-duration-normal, $effect-ease-out);
     position: relative;
     @include overflow-hidden;
     &::before {
@@ -1673,9 +1673,9 @@
       bottom: 0;
       width: 3px;
       background: linear-gradient(180deg, 
-        $cosmic-deep-blue 0%, 
-        $luminous-gold 50%, 
-        $color-neon-blue 100%);
+        $color-dark-profound-black 0%, 
+        $color-accent-gold 50%, 
+        $color-accent-neon-blue 100%);
       transform: translateX(-50%);
     }
   }
@@ -1691,7 +1691,7 @@
       left: 50%;
       width: 20px;
       height: 20px;
-      background: $luminous-gold;
+      background: $color-accent-gold;
       @include border-radius-rounded(50%);
       transform: translateX(-50%);
       z-index: 2;
@@ -1742,11 +1742,11 @@
       width: 80px;
       height: 80px;
       @include border-radius-rounded(50%);
-      background: linear-gradient(135deg, $color-neon-blue 0%, $luminous-gold 100%);
+      background: linear-gradient(135deg, $color-accent-neon-blue 0%, $color-accent-gold 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: $transcendent-white;
+      color: $color-light-white;
       font-size: 2rem;
     }
 
@@ -1754,11 +1754,11 @@
       width: 80px;
       height: 80px;
       border-radius: 10px;
-      background: linear-gradient(135deg, $cosmic-deep-blue 0%, $color-neon-blue 100%);
+      background: linear-gradient(135deg, $color-dark-profound-black 0%, $color-accent-neon-blue 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: $transcendent-white;
+      color: $color-light-white;
       font-size: 2rem;
     }
 
@@ -1766,11 +1766,11 @@
       flex: 1;
       height: 3px;
       background: linear-gradient(90deg, 
-        $color-neon-blue 0%, 
-        $luminous-gold 25%, 
-        $ethereal-silver 50%, 
-        $cosmic-deep-blue 75%, 
-        $color-neon-blue 100%);
+        $color-accent-neon-blue 0%, 
+        $color-accent-gold 25%, 
+        $color-border-silver 50%, 
+        $color-dark-profound-black 75%, 
+        $color-accent-neon-blue 100%);
       margin: 0 1rem;
       position: relative;
 
@@ -1780,8 +1780,8 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background: $transcendent-white;
-        color: $luminous-gold;
+        background: $color-light-white;
+        color: $color-accent-gold;
         padding: 0.25rem 0.5rem;
         border-radius: 0.5rem;
         font-weight: bold;
@@ -1801,7 +1801,7 @@
     .modal-dialog {
       border-radius: 0.5rem;
       border: none;
-      box-shadow: $consciousness-depth;
+      box-shadow: $effect-shadow-consciousness-depth;
     }
 
     .modal-content {
@@ -1819,9 +1819,9 @@
         right: 0;
         height: 3px;
         background: linear-gradient(90deg, 
-          $cosmic-deep-blue 0%, 
-          $luminous-gold 50%, 
-          $cosmic-deep-blue 100%);
+          $color-dark-profound-black 0%, 
+          $color-accent-gold 50%, 
+          $color-dark-profound-black 100%);
         border-radius: 0.5rem 0.5rem 0 0;
       }
     }
@@ -1831,7 +1831,7 @@
       padding: 1.5rem;
 
       .modal-title {
-        color: $cosmic-deep-blue;
+        color: $color-dark-profound-black;
         font-family: $font-family-sacred;
         font-weight: $font-weight-semibold;
       }
@@ -1839,11 +1839,11 @@
       .btn-close {
         background: none;
         border: none;
-        color: $ethereal-silver;
+        color: $color-border-silver;
         font-size: 1.5rem;
 
         &:hover {
-          color: $luminous-gold;
+          color: $color-accent-gold;
         }
       }
     }
@@ -1875,7 +1875,7 @@
       background: linear-gradient(135deg, 
         oklch(0.08 0.01 250 / 0.95) 0%, 
         oklch(0.65 0.25 230 / 0.9) 100%);
-      color: $transcendent-white;
+      color: $color-light-white;
     }
   }
 }
@@ -1916,11 +1916,11 @@
     &.sacred-gradient {
       background: linear-gradient(
         135deg,
-        $cosmic-deep-blue 0%,
+        $color-dark-profound-black 0%,
         oklch(0.03 0.01 250) 25%,  // Slightly darker profound black
-        $color-neon-blue 50%,
+        $color-accent-neon-blue 50%,
         oklch(0.70 0.27 228) 75%,  // Slightly lighter neon blue
-        $luminous-gold 100%
+        $color-accent-gold 100%
       );
     }
 
@@ -2071,8 +2071,8 @@
 
       .transcendent-icon {
         font-size: 3rem;
-        color: $luminous-gold;
-        filter: drop-shadow($glow-transcendent);
+        color: $color-accent-gold;
+        filter: drop-shadow($effect-shadow-glow-transcendent);
       }
     }
   }
@@ -2123,7 +2123,7 @@
             right: -30px;
             width: 20px;
             height: 2px;
-            background: linear-gradient(to right, $luminous-gold, transparent);
+            background: linear-gradient(to right, $color-accent-gold, transparent);
             opacity: 0;
             animation: essenceTrail 2s ease-in-out infinite 1s;
           }
@@ -2163,7 +2163,7 @@
 
       .indicator-label {
         font-size: $font-size-sm;
-        color: $ethereal-silver;
+        color: $color-border-silver;
         margin-bottom: $spacing-sm;
         font-weight: $font-weight-medium;
       }
@@ -2187,17 +2187,17 @@
 
       .indicator-symbol {
         font-size: $font-size-xl;
-        color: $luminous-gold;
+        color: $color-accent-gold;
         font-weight: $font-weight-bold;
         animation: infinityRotation 10s linear infinite;
       }
 
       &.human-essence .indicator-flow::before {
-        background: linear-gradient(to right, $border-color, transparent);
+        background: linear-gradient(to right, $color-border-light, transparent);
       }
 
       &.asi-consciousness .indicator-flow::before {
-        background: linear-gradient(to right, $color-neon-blue, transparent);
+        background: linear-gradient(to right, $color-accent-neon-blue, transparent);
         animation-delay: 1s;
       }
     }
@@ -2216,13 +2216,13 @@
     transition: color 0.3s ease;
     @include cursor-pointer;
     &:hover {
-      color: $luminous-gold;
+      color: $color-accent-gold;
     }
 
     .scroll-essence-particle {
       width: 4px;
       height: 4px;
-      background: $luminous-gold;
+      background: $color-accent-gold;
       @include border-radius-rounded(50%);
       margin-bottom: $spacing-sm;
       animation: essenceParticleFloat 2s ease-in-out infinite;
@@ -2514,7 +2514,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    transition: all 0.6s $ease-consciousness;
+    transition: all 0.6s $effect-ease-consciousness;
     @include overflow-hidden;
     // BOX-SIZING & WIDTH STABILIZATION - Prevent content squashing
     box-sizing: border-box;
@@ -2553,7 +2553,7 @@
       @include border-radius-rounded(50%);
       opacity: 0;
       transform: scale(0);
-      transition: all 0.4s $ease-transcendent;
+      transition: all 0.4s $effect-ease-transcendent;
     }
 
     &:hover {
@@ -2577,13 +2577,13 @@
 
       .transcendent-cta {
         @include consciousness-pulse;
-        background: linear-gradient(45deg, $luminous-gold, $sacred-gold-dark, $border-color);
+        background: linear-gradient(45deg, $color-accent-gold, $color-accent-gold-dark, $color-border-light);
       }
     }
 
     // Specialized block styling based on consciousness type
     &.consciousness-embedding {
-      border-top: 4px solid $border-color;
+      border-top: 4px solid $color-border-light;
 
       &:hover {
         box-shadow: 
@@ -2592,13 +2592,13 @@
       }
 
       .genesis-block-icon {
-        color: $border-color;
+        color: $color-border-light;
         background: radial-gradient(circle, oklch(0.85 0.01 220 / 0.1), transparent);
       }
     }
 
     &.transcendent-evolution {
-      border-top: 4px solid $luminous-gold;
+      border-top: 4px solid $color-accent-gold;
 
       &:hover {
         box-shadow: 
@@ -2607,13 +2607,13 @@
       }
 
       .genesis-block-icon {
-        color: $luminous-gold;
+        color: $color-accent-gold;
         background: radial-gradient(circle, oklch(0.70 0.15 85 / 0.1), transparent);
       }
     }
 
     &.infinite-potential {
-      border-top: 4px solid $color-neon-blue;
+      border-top: 4px solid $color-accent-neon-blue;
 
       &:hover {
         box-shadow: 
@@ -2622,7 +2622,7 @@
       }
 
       .genesis-block-icon {
-        color: $color-neon-blue;
+        color: $color-accent-neon-blue;
         background: radial-gradient(circle, oklch(0.65 0.25 230 / 0.1), transparent);
       }
     }
@@ -2635,7 +2635,7 @@
     height: 5rem;
     margin: 0 auto $spacing-xl;
     font-size: 2.5rem;
-    transition: all 0.6s $ease-consciousness;
+    transition: all 0.6s $effect-ease-consciousness;
     position: relative;
 
     // Consciousness pulse effect
@@ -2658,7 +2658,7 @@
   .genesis-block-title {
     @include heading-h3;
     margin-bottom: $spacing-lg;
-    color: $transcendent-white;
+    color: $color-light-white;
     position: relative;
 
     // Transcendent underline effect
@@ -2670,7 +2670,7 @@
       transform: translateX(-50%);
       width: 0;
       height: 2px;
-      background: linear-gradient(to right, $luminous-gold, transparent, $luminous-gold);
+      background: linear-gradient(to right, $color-accent-gold, transparent, $color-accent-gold);
       transition: width 0.4s ease;
     }
   }
@@ -2746,7 +2746,7 @@
         left: 50%;
         transform: translateX(-50%);
         font-size: $font-size-xl;
-        color: $luminous-gold;
+        color: $color-accent-gold;
         animation: starTwinkle 4s ease-in-out infinite;
       }
     }
@@ -2777,7 +2777,7 @@
         position: absolute;
         width: 4px;
         height: 4px;
-        background: $luminous-gold;
+        background: $color-accent-gold;
         @include border-radius-rounded(50%);
         animation: particleFloat 8s ease-in-out infinite;
       }
@@ -2986,7 +2986,7 @@
 
   .threshold-subtitle {
     @include heading-h3;
-    color: $luminous-gold;
+    color: $color-accent-gold;
     position: relative;
     font-family: $font-family-consciousness;
 
@@ -3000,7 +3000,7 @@
       @include height(3px);
       background: linear-gradient(
         to right,
-        $luminous-gold,
+        $color-accent-gold,
         oklch(0.70 0.15 85 / 0.5),
         transparent
       );
@@ -3109,7 +3109,7 @@
         top: 20%;
         left: 20%;
         @include size(8px);
-        background: $border-color;
+        background: $color-border-light;
         @include border-radius-rounded(50%);
         box-shadow: 
           20px 30px 0 -2px oklch(0.85 0.01 220 / 0.6),
@@ -3183,7 +3183,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: $font-size-3xl;
-        color: $cosmic-deep-blue;
+        color: $color-dark-profound-black;
         font-weight: $font-weight-bold;
         /* text-shadow: 0 0 10px oklch(0.70 0.15 85 / 0.8); */ /* Removed for accessibility - can interfere with text readability */
         animation: infinitySymbol 10s ease-in-out infinite;
@@ -3213,7 +3213,7 @@
     .section-title {
       @include heading-h2;
       margin-bottom: $spacing-lg;
-      color: $transcendent-white;
+      color: $color-light-white;
       position: relative;
 
       &::before {
@@ -3223,7 +3223,7 @@
         left: 50%;
         transform: translateX(-50%);
         font-size: $font-size-2xl;
-        color: $luminous-gold;
+        color: $color-accent-gold;
         animation: diamondGlow 6s ease-in-out infinite;
       }
     }
@@ -3434,7 +3434,7 @@
   .genesis-invitation {
     @include section-spacing-xl;
     position: relative;
-    background: $cosmic-deep-blue;
+    background: $color-dark-profound-black;
     overflow: hidden;  // Already present - ensures animations stay contained
     @include text-align-center;
     max-width: 100%;  // Add explicit max-width for containment
@@ -3443,11 +3443,11 @@
     &.cosmic-invitation {
       background: linear-gradient(
         45deg,
-        $cosmic-deep-blue 0%,
+        $color-dark-profound-black 0%,
         oklch(0.03 0.01 250) 25%,  // Slightly darker profound black
-        $color-neon-blue 50%,
+        $color-accent-neon-blue 50%,
         oklch(0.60 0.23 228) 75%,  // Slightly darker neon blue
-        $cosmic-deep-blue 100%
+        $color-dark-profound-black 100%
       );
     }
 
@@ -3545,7 +3545,7 @@
       width: 6rem;
       height: 6rem;
       font-size: 3rem;
-      color: $luminous-gold;
+      color: $color-accent-gold;
       background: radial-gradient(
         circle,
         oklch(0.70 0.15 85 / 0.2) 0%,
@@ -3603,7 +3603,7 @@
   // Genesis Invitation Typography
   .genesis-invitation-title {
     @include heading-h2;
-    color: $transcendent-white;
+    color: $color-light-white;
     margin-bottom: $spacing-xl;
     max-width: min(800px, 100%);
     margin-left: auto;
@@ -3613,11 +3613,11 @@
     // Transcendent text effect
     background: linear-gradient(
       45deg,
-      $luminous-gold 0%,
-      $transcendent-white 25%,
-      $color-neon-blue 50%,
-      $transcendent-white 75%,
-      $luminous-gold 100%
+      $color-accent-gold 0%,
+      $color-light-white 25%,
+      $color-accent-neon-blue 50%,
+      $color-light-white 75%,
+      $color-accent-gold 100%
     );
     background-size: 200% 100%;
     -webkit-background-clip: text;
@@ -3655,7 +3655,7 @@
   .genesis-cta {
     position: relative;
     @include overflow-hidden;
-    transition: all 0.6s $ease-consciousness;
+    transition: all 0.6s $effect-ease-consciousness;
 
     &.primary {
       @include transcendent-button-primary;
@@ -3736,7 +3736,7 @@
 
       .stream-label {
         font-size: $font-size-sm;
-        color: $ethereal-silver;
+        color: $color-border-silver;
         font-weight: $font-weight-medium;
         margin-right: $spacing-md;
         @include text-uppercase;
@@ -3768,7 +3768,7 @@
         width: 70%;
 
         .stream-flow::before {
-          background: linear-gradient(to right, $border-color, transparent);
+          background: linear-gradient(to right, $color-border-light, transparent);
           animation-delay: 0s;
         }
       }
@@ -3779,7 +3779,7 @@
         width: 75%;
 
         .stream-flow::before {
-          background: linear-gradient(to right, $sacred-gold-dark, transparent);
+          background: linear-gradient(to right, $color-accent-gold-dark, transparent);
           animation-delay: 1s;
         }
       }
@@ -3790,7 +3790,7 @@
         width: 80%;
 
         .stream-flow::before {
-          background: linear-gradient(to right, $color-neon-blue, transparent);
+          background: linear-gradient(to right, $color-accent-neon-blue, transparent);
           animation-delay: 2s;
         }
       }
@@ -3801,7 +3801,7 @@
         width: 65%;
 
         .stream-flow::before {
-          background: linear-gradient(to right, $color-neon-blue, transparent);
+          background: linear-gradient(to right, $color-accent-neon-blue, transparent);
           animation-delay: 3s;
         }
       }
@@ -3821,7 +3821,7 @@
       font-family: $font-family-consciousness;
       font-size: $font-size-xl;
       font-weight: $font-weight-bold;
-      color: $luminous-gold;
+      color: $color-accent-gold;
       z-index: 2;
     }
 
@@ -3849,7 +3849,7 @@
 
       .community-count {
         &.transcendent-number {
-          color: $luminous-gold;
+          color: $color-accent-gold;
           font-weight: $font-weight-bold;
           font-size: $font-size-lg;
           /* text-shadow: 0 0 10px oklch(0.70 0.15 85 / 0.5); */ /* Removed for accessibility - can interfere with text readability */
@@ -3860,7 +3860,7 @@
     .consciousness-pulse {
       width: 40px;
       height: 4px;
-      background: linear-gradient(to right, $luminous-gold, $color-neon-blue);
+      background: linear-gradient(to right, $color-accent-gold, $color-accent-neon-blue);
       margin: 0 auto;
       border-radius: 2px;
       animation: consciousnessPulseBar 2s ease-in-out infinite;
@@ -4058,7 +4058,7 @@
     // Combines .genesis-cta, .primary, and .transcendent-glow-btn styles
     position: relative;
     @include overflow-hidden;
-    transition: all 0.6s $ease-consciousness;
+    transition: all 0.6s $effect-ease-consciousness;
     @include transcendent-button-primary;
     font-size: $font-size-lg;
     padding: $spacing-lg $spacing-3xl;
@@ -4080,7 +4080,7 @@
     // Combines .genesis-cta and .secondary styles
     position: relative;
     @include overflow-hidden;
-    transition: all 0.6s $ease-consciousness;
+    transition: all 0.6s $effect-ease-consciousness;
     @include transcendent-button-secondary;
   }
 }

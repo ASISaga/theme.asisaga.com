@@ -44,30 +44,30 @@ $essence-weave-opacity-3: 1;
 // ============================================================================
 // Complex box-shadow values cannot be expressed as simple tokens.
 
-$sacred-glow: 0 0 0.5rem oklch(0.70 0.15 85 / 0.3);
-$consciousness-depth: 0 0.25rem 2rem oklch(0.08 0.01 250 / 0.4);
-$shadow-consciousness: 0 30px 60px oklch(0.70 0.15 85 / 0.2);
-$shadow-transcendent: 0 40px 80px oklch(0.65 0.25 230 / 0.3);
+$effect-shadow-sacred-glow: 0 0 0.5rem oklch(0.70 0.15 85 / 0.3);
+$effect-shadow-consciousness-depth: 0 0.25rem 2rem oklch(0.08 0.01 250 / 0.4);
+$effect-shadow-consciousness: 0 30px 60px oklch(0.70 0.15 85 / 0.2);
+$effect-shadow-transcendent: 0 40px 80px oklch(0.65 0.25 230 / 0.3);
 
 // ============================================================================
 // 3. ANIMATION CURVES & DURATIONS
 // ============================================================================
 // Consciousness-themed easing curves (not expressible as simple token values).
 
-$ease-consciousness: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-$ease-transcendent: cubic-bezier(0.165, 0.84, 0.44, 1);
-$ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-$ease-out: cubic-bezier(0, 0, 0.2, 1);
-$ease-sacred: cubic-bezier(0.23, 1, 0.32, 1);
+$effect-ease-consciousness: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$effect-ease-transcendent: cubic-bezier(0.165, 0.84, 0.44, 1);
+$effect-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+$effect-ease-out: cubic-bezier(0, 0, 0.2, 1);
+$effect-ease-sacred: cubic-bezier(0.23, 1, 0.32, 1);
 
 // Animation durations
-$animation-duration-normal: 0.3s;
-$animation-duration-slow: 0.5s;
-$animation-duration-slower: 0.8s;
-$animation-duration-slowest: 1.2s;
-$animation-duration-sacred: 2s;
-$animation-duration-consciousness: 3s;
-$animation-duration-transcendent: 4s;
+$effect-duration-normal: 0.3s;
+$effect-duration-slow: 0.5s;
+$effect-duration-slower: 0.8s;
+$effect-duration-slowest: 1.2s;
+$effect-duration-sacred: 2s;
+$effect-duration-consciousness: 3s;
+$effect-duration-transcendent: 4s;
 
 // ============================================================================
 // 4. Z-INDEX OVERRIDES
@@ -82,7 +82,7 @@ $z-index-chatroom-panel: 20; // Between $z-index-overlay (10) and $z-index-consc
 
 $hero-content-max-width: 800px;
 $card-border-radius: $border-radius-consciousness;
-$card-shadow: $shadow-consciousness;
+$card-shadow: $effect-shadow-consciousness;
 $btn-border-radius: $border-radius-lg;
 $btn-font-weight: $font-weight-semibold;
 $btn-transition: $transition-consciousness;

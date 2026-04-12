@@ -27,7 +27,7 @@
 }
 
 // Gradient header component
-@mixin gradient-header-component($prefix: 'header', $start-color: lighten($primary, 40%), $end-color: $white) {
+@mixin gradient-header-component($prefix: 'header', $start-color: lighten($color-accent-neon-blue, 40%), $end-color: $color-light-white) {
   @include header-component($prefix);
   
   .#{$prefix} {
@@ -36,7 +36,7 @@
     }
     
     &-title {
-      color: $primary;
+      color: $color-accent-neon-blue;
     }
   }
 }

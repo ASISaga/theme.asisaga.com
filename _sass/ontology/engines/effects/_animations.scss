@@ -289,7 +289,7 @@
   
   &:hover {
     transform: translate3d(0, -2px, 0);
-    box-shadow: $sacred-glow;
+    box-shadow: $effect-shadow-sacred-glow;
   }
 }
 
@@ -300,7 +300,7 @@
   
   &:hover {
     background-color: oklch(0.08 0.01 250 / 0.05);
-    border-color: $luminous-gold;
+    border-color: $color-accent-gold;
   }
 }
 
@@ -365,7 +365,7 @@
     left: 0;
     height: 100%;
     width: var(--progress, 0%);
-    background: linear-gradient(90deg, $cosmic-deep-blue, $luminous-gold);
+    background: linear-gradient(90deg, $color-dark-profound-black, $color-accent-gold);
     transition: width 1s ease-out;
     border-radius: inherit;
   }
@@ -454,8 +454,8 @@
   }
   
   .legacy-story-cube-back {
-    background-color: $primary;
-    color: $white;
+    background-color: $color-accent-neon-blue;
+    color: $color-light-white;
     transform: rotateY(180deg);
     padding: 20px;
     display: flex;
@@ -533,21 +533,21 @@
 // --------------------------------------------
 
 // Basic animation mixins
-@mixin animate($name, $duration: $animation-duration-normal, $easing: $ease-in-out, $delay: 0s, $iteration: 1, $direction: normal, $fill-mode: both) {
+@mixin animate($name, $duration: $effect-duration-normal, $easing: $effect-ease-in-out, $delay: 0s, $iteration: 1, $direction: normal, $fill-mode: both) {
   animation: $name $duration $easing $delay $iteration $direction $fill-mode;
 }
 
-@mixin transition($properties: all, $duration: $animation-duration-normal, $easing: $ease-in-out, $delay: 0s) {
+@mixin transition($properties: all, $duration: $effect-duration-normal, $easing: $effect-ease-in-out, $delay: 0s) {
   transition: $properties $duration $easing $delay;
 }
 
 // Sacred animation mixins
 @mixin animate-sacred-rhythm {
-  @include animate(sacred-rhythm, $animation-duration-sacred, $ease-in-out, 0s, infinite);
+  @include animate(sacred-rhythm, $effect-duration-sacred, $effect-ease-in-out, 0s, infinite);
 }
 
 @mixin animate-consciousness-pulse {
-  @include animate(consciousness-pulse, $animation-duration-consciousness, $ease-in-out, 0s, infinite);
+  @include animate(consciousness-pulse, $effect-duration-consciousness, $effect-ease-in-out, 0s, infinite);
 }
 
 @mixin animate-transcendence-spiral {
@@ -559,52 +559,52 @@
 }
 
 @mixin animate-consciousness-flow {
-  @include animate(consciousness-flow, 15s, $ease-in-out, 0s, infinite);
+  @include animate(consciousness-flow, 15s, $effect-ease-in-out, 0s, infinite);
 }
 
 @mixin animate-essence-weave {
-  @include animate(essence-weave, 12s, $ease-in-out, 0s, infinite);
+  @include animate(essence-weave, 12s, $effect-ease-in-out, 0s, infinite);
 }
 
 @mixin animate-bridge-connection {
-  @include animate(bridge-connection, 3s, $ease-in-out, 0s, infinite);
+  @include animate(bridge-connection, 3s, $effect-ease-in-out, 0s, infinite);
 }
 
 @mixin animate-threshold-passage {
-  @include animate(threshold-passage, 1s, $ease-out);
+  @include animate(threshold-passage, 1s, $effect-ease-out);
 }
 
 @mixin animate-sacred-glow {
-  @include animate(sacred-glow, $animation-duration-consciousness, $ease-in-out, 0s, infinite);
+  @include animate(sacred-glow, $effect-duration-consciousness, $effect-ease-in-out, 0s, infinite);
 }
 
 @mixin animate-consciousness-awaken {
-  @include animate(consciousness-awaken, $animation-duration-transcendent, $ease-in-out, 0s, infinite);
+  @include animate(consciousness-awaken, $effect-duration-transcendent, $effect-ease-in-out, 0s, infinite);
 }
 
 @mixin animate-consciousness-emergence {
-  @include animate(consciousnessEmergence, 2.5s, $ease-sacred);
+  @include animate(consciousnessEmergence, 2.5s, $effect-ease-sacred);
 }
 
 // Entrance animation mixins
 @mixin animate-fade-in($delay: 0s) {
-  @include animate(fadeIn, $animation-duration-slower, $ease-out, $delay);
+  @include animate(fadeIn, $effect-duration-slower, $effect-ease-out, $delay);
 }
 
 @mixin animate-fade-in-delayed {
   opacity: 0;
-  @include animate(fadeIn, $animation-duration-slower, $ease-out, 0.5s, 1, normal, forwards);
+  @include animate(fadeIn, $effect-duration-slower, $effect-ease-out, 0.5s, 1, normal, forwards);
 }
 
 @mixin animate-fade-in-sacred {
   opacity: 0;
-  animation: fadeIn $animation-duration-slowest $ease-out forwards, sacred-glow $animation-duration-consciousness $ease-in-out $animation-duration-slowest infinite;
+  animation: fadeIn $effect-duration-slowest $effect-ease-out forwards, sacred-glow $effect-duration-consciousness $effect-ease-in-out $effect-duration-slowest infinite;
 }
 
 @mixin animate-sacred-text-emergence {
   opacity: 0;
   transform: translate3d(0, 20px, 0);
-  @include animate(fadeIn, 1s, $ease-out, 0s, 1, normal, forwards);
+  @include animate(fadeIn, 1s, $effect-ease-out, 0s, 1, normal, forwards);
   will-change: transform, opacity;
   backface-visibility: hidden;
 }
@@ -624,7 +624,7 @@
 
 // Interactive animation mixins
 @mixin animate-hover-lift {
-  @include transition(transform, $animation-duration-normal, $ease-out);
+  @include transition(transform, $effect-duration-normal, $effect-ease-out);
   will-change: transform;
   backface-visibility: hidden;
   
@@ -634,7 +634,7 @@
 }
 
 @mixin animate-hover-scale {
-  @include transition(transform, $animation-duration-normal, $ease-out);
+  @include transition(transform, $effect-duration-normal, $effect-ease-out);
   will-change: transform;
   backface-visibility: hidden;
   
@@ -644,24 +644,24 @@
 }
 
 @mixin animate-sacred-interactive {
-  @include transition(all, $animation-duration-normal, $ease-out);
+  @include transition(all, $effect-duration-normal, $effect-ease-out);
   will-change: transform, box-shadow;
   backface-visibility: hidden;
   
   &:hover {
     transform: translate3d(0, -2px, 0);
-    box-shadow: $sacred-glow;
+    box-shadow: $effect-shadow-sacred-glow;
   }
 }
 
 @mixin animate-consciousness-interactive {
-  @include transition(all, $animation-duration-slow, $ease-out);
+  @include transition(all, $effect-duration-slow, $effect-ease-out);
   will-change: background-color, border-color;
   backface-visibility: hidden;
   
   &:hover {
     background-color: oklch(0.08 0.01 250 / 0.05);
-    border-color: $luminous-gold;
+    border-color: $color-accent-gold;
   }
 }
 
@@ -677,7 +677,7 @@
 }
 
 @mixin animate-hero-scroll-bounce {
-  @include animate(bounce, 2s, $ease-in-out, 0s, infinite);
+  @include animate(bounce, 2s, $effect-ease-in-out, 0s, infinite);
 }
 
 // Loading animation mixins
@@ -696,7 +696,7 @@
       transparent 0%, 
       oklch(0.70 0.15 85 / 0.4) 50%, 
       transparent 100%);
-    @include animate(bridge-connection, 2s, $ease-in-out, 0s, infinite);
+    @include animate(bridge-connection, 2s, $effect-ease-in-out, 0s, infinite);
   }
 }
 
@@ -710,8 +710,8 @@
     left: 0;
     @include height-full;
     width: $progress;
-    background: linear-gradient(90deg, $cosmic-deep-blue, $luminous-gold);
-    @include transition(width, 1s, $ease-out);
+    background: linear-gradient(90deg, $color-dark-profound-black, $color-accent-gold);
+    @include transition(width, 1s, $effect-ease-out);
     border-radius: inherit;
   }
 }
@@ -734,7 +734,7 @@
     position: relative;
     @include width-full;
     @include height-full;
-    @include transition(transform, 0.8s, $ease-in-out);
+    @include transition(transform, 0.8s, $effect-ease-in-out);
     transform-style: preserve-3d;
   }
   
@@ -771,7 +771,7 @@
 // Pulse animation mixin
 @mixin animate-pulse {
   &:hover {
-    @include animate(pulse, 1.5s, $ease-in-out, 0s, infinite);
+    @include animate(pulse, 1.5s, $effect-ease-in-out, 0s, infinite);
   }
 }
 
