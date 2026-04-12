@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'en-US' }}">
+<html lang="{{ site.data.site.identity.lang | default: site.lang | default: 'en-US' }}">
   {% include head.html %}
   
   {% assign _body_class = page.body_class | default: layout.body_class %}
   <body class="genesis-body{% if _body_class %} {{ _body_class | escape }}{% endif %}">
     <!-- Skip link (REQUIRED - WCAG AA) -->
-    <a href="#skip-target" class="skip-link sr-only focus-visible">Skip to main content</a>
+    <a href="#skip-target" class="skip-link sr-only focus-visible">{{ site.data.ui.a11y.skip_link }}</a>
     
     <!-- Site Header -->
     {% include header.html %}

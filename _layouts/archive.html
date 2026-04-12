@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+{% assign _ui = site.data.ui %}
 <genesis-environment logic="distributed">
   <div class="archive-layout">
     <genesis-entity nature="primary">
@@ -19,7 +20,7 @@ layout: default
           <label for="archive-filter" class="sr-only">Filter items</label>
           <genesis-synapse vector="inquiry">
             <select id="archive-filter" class="archive__select">
-              <option selected>All Categories</option>
+              <option selected>{{ _ui.archive.all_categories }}</option>
             </select>
           </genesis-synapse>
         </div>
@@ -30,9 +31,9 @@ layout: default
           <label for="archive-sort" class="sr-only">Sort items</label>
           <genesis-synapse vector="inquiry">
             <select id="archive-sort" class="archive__select">
-              <option selected>Latest First</option>
-              <option>Oldest First</option>
-              <option>Title A-Z</option>
+              <option selected>{{ _ui.archive.latest_first }}</option>
+              <option>{{ _ui.archive.oldest_first }}</option>
+              <option>{{ _ui.archive.title_az }}</option>
             </select>
           </genesis-synapse>
         </div>
@@ -41,12 +42,12 @@ layout: default
         {% if page.show_view_toggle %}
         <div class="archive__view-toggle" role="group" aria-label="View mode">
           <genesis-synapse vector="execute">
-            <button type="button" class="archive__view-btn archive__view-btn--active" aria-label="Grid view" aria-pressed="true">
+            <button type="button" class="archive__view-btn archive__view-btn--active" aria-label="{{ _ui.archive.grid_view }}" aria-pressed="true">
               <i class="fas fa-th" aria-hidden="true"></i>
             </button>
           </genesis-synapse>
           <genesis-synapse vector="execute">
-            <button type="button" class="archive__view-btn" aria-label="List view" aria-pressed="false">
+            <button type="button" class="archive__view-btn" aria-label="{{ _ui.archive.list_view }}" aria-pressed="false">
               <i class="fas fa-list" aria-hidden="true"></i>
             </button>
           </genesis-synapse>

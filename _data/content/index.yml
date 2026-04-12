@@ -1,0 +1,232 @@
+# =============================================================================
+# Index / Demo Page Content — Ontological Knowledge Base
+# =============================================================================
+# Purpose: All editorial copy for the theme's index.html demo page.
+# The index page showcases the Genesis Design System's capabilities.
+#
+# Ontological Context:
+#   Page Intent  → Demonstrate the full design system in one page
+#   Atmosphere   → vibrant (cosmic, futuristic)
+#   Environment  → distributed (multi-section showcase)
+# =============================================================================
+
+meta:
+  title: "Genesis Theme Demo - Futuristic Design System"
+  description: "Comprehensive showcase of the ASI Saga Futuristic Design System"
+
+# --- Samples Section ---------------------------------------------------------
+samples:
+  heading: "Samples"
+  description: "Quick links to example pages in this theme."
+  categories:
+    - label: "Application"
+      items:
+        - title: "Chatroom"
+          url: "/samples/application/chatroom.html"
+        - title: "Dashboard"
+          url: "/samples/application/dashboard.html"
+        - title: "Search"
+          url: "/samples/application/search.html"
+        - title: "Settings"
+          url: "/samples/application/settings.html"
+    - label: "Content-driven"
+      items:
+        - title: "Archive"
+          url: "/samples/content-driven/archive.html"
+        - title: "Article"
+          url: "/samples/content-driven/article.html"
+        - title: "Post"
+          url: "/samples/content-driven/post.html"
+        - title: "Profile"
+          url: "/samples/content-driven/profile.html"
+    - label: "Knowledge"
+      items:
+        - title: "Docs"
+          url: "/samples/knowledge/docs.html"
+        - title: "FAQ"
+          url: "/samples/knowledge/faq.html"
+    - label: "Marketing"
+      items:
+        - title: "Landing"
+          url: "/samples/marketing/landing.html"
+        - title: "Gallery"
+          url: "/samples/marketing/gallery.html"
+        - title: "Form"
+          url: "/samples/marketing/form.html"
+    - label: "Utility"
+      items:
+        - title: "404"
+          url: "/samples/utility/404.html"
+        - title: "Splash"
+          url: "/samples/utility/splash.html"
+
+# --- Hero Section ------------------------------------------------------------
+hero:
+  title: "Genesis Design System"
+  subtitle: "A futuristic, consciousness-expanding design language for the age of Artificial Superintelligence"
+  primary_action:
+    text: "Explore Components"
+    url: "#components"
+  secondary_action:
+    text: "View Responsive"
+    url: "#responsive"
+
+# --- Responsive Grid Section -------------------------------------------------
+grid:
+  heading: "Responsive Grid System"
+  description: "Container query-aware layouts that adapt intelligently across all devices"
+  cards:
+    - title: "Distributed Environment"
+      description: "Auto-fit grid that places autonomous entities in a non-linear, responsive layout. Uses container queries for intelligent sizing."
+      code: "@include genesis-environment('distributed')"
+      badge: "Featured"
+      variant: "featured"
+    - title: "Primary Entity"
+      description: "Fundamental objects with glassmorphism, depth shadows, and neural glow effects."
+      code: "@include genesis-entity('primary')"
+    - title: "Neural Cognition"
+      description: "AI consciousness aesthetic with quantum gradients and pulse animations."
+      code: "@include genesis-atmosphere('vibrant')"
+      variant: "neural"
+    - title: "Axiom Typography"
+      description: "Foundational headlines with fluid scaling from 2rem to 3.5rem across viewports."
+      code: "@include genesis-cognition('axiom')"
+    - title: "Execute Synapse"
+      description: "Action buttons with WCAG 2.1 compliant 44px touch targets on mobile."
+      code: "@include genesis-synapse('execute')"
+    - title: "Transcendent State"
+      description: "Scroll-triggered animations with reduced motion support."
+      code: "@include genesis-state('scroll-triggered')"
+      variant: "accent"
+
+# --- Typography Section ------------------------------------------------------
+typography:
+  heading: "Fluid Typography Scale"
+  description: "Responsive type that flows naturally from mobile to ultrawide"
+  specimens:
+    - label: "Display"
+      sample: "Genesis"
+      value: "clamp(3.5rem, 2rem + 7.5vw, 7rem)"
+      class: "type-display"
+    - label: "5XL (Axiom)"
+      sample: "Consciousness"
+      value: "clamp(3rem, 2rem + 5vw, 5rem)"
+      class: "type-5xl"
+    - label: "4XL (Title)"
+      sample: "Transcendence"
+      value: "clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem)"
+      class: "type-4xl"
+    - label: "3XL (Heading)"
+      sample: "Infinite Possibilities"
+      value: "clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem)"
+      class: "type-3xl"
+    - label: "Base (Discourse)"
+      sample: "Standard prose for extended reading with optimal line height and measure for sustained comprehension."
+      value: "clamp(1rem, 0.9rem + 0.5vw, 1.125rem)"
+      class: "type-base"
+    - label: "Small (Gloss)"
+      sample: "Annotations and metadata with accessibility-safe minimum sizing"
+      value: "clamp(0.875rem, 0.8rem + 0.35vw, 0.95rem)"
+      class: "type-sm"
+
+# --- Interactive Components Section ------------------------------------------
+components:
+  heading: "Interactive Components"
+  description: "Touch-optimized controls with quantum hover effects"
+  buttons:
+    heading: "Synapse Actions"
+    items:
+      - label: "Execute"
+        class: "btn-genesis-primary"
+      - label: "Inquiry"
+        class: "btn-genesis-secondary"
+      - label: "Neural Link"
+        class: "btn-genesis-neural"
+      - label: "Destructive"
+        class: "btn-genesis-destructive"
+  forms:
+    heading: "Form Inputs"
+    fields:
+      - label: "Neural Input"
+        id: "demo-input"
+        type: "text"
+        placeholder: "Enter consciousness stream..."
+      - label: "Quantum State"
+        id: "demo-select"
+        type: "select"
+        options:
+          - "Superposition"
+          - "Entangled"
+          - "Collapsed"
+      - label: "Consciousness Log"
+        id: "demo-textarea"
+        type: "textarea"
+        rows: 3
+        placeholder: "Document neural patterns..."
+  effects:
+    heading: "Entity Cards with Effects"
+    cards:
+      - title: "Glassmorphism"
+        description: "Deep consciousness depth with blur and saturation"
+        variant: "glass"
+      - title: "Neural Glow"
+        description: "AI consciousness aesthetic with pulse animation"
+        variant: "neural"
+      - title: "Ethereal"
+        description: "Light-based transcendent transparency"
+        variant: "ethereal"
+      - title: "Quantum Gradient"
+        description: "Animated mesh-like background effect"
+        variant: "gradient"
+
+# --- Navigation Section ------------------------------------------------------
+navigation:
+  heading: "Navigation Patterns"
+  description: "Responsive navigation that transforms from mobile drawer to desktop horizontal"
+  instruction:
+    mobile: "Off-canvas drawer with glassmorphism overlay"
+    mobile_breakpoint: "< 768px"
+    desktop: "Horizontal sticky header with dropdowns"
+    desktop_breakpoint: "≥ 768px"
+  demo_links:
+    - label: "Home"
+      active: true
+    - label: "Genesis"
+    - label: "Products"
+    - label: "Research"
+    - label: "Contact"
+
+# --- Accessibility Section ---------------------------------------------------
+accessibility:
+  heading: "Accessibility Features"
+  description: "WCAG 2.1 AA compliant with enhanced keyboard and screen reader support"
+  features:
+    - title: "Reduced Motion"
+      description: "Animations automatically disabled when <code>prefers-reduced-motion: reduce</code> is set"
+    - title: "High Contrast"
+      description: "Enhanced borders and disabled glassmorphism in <code>prefers-contrast: more</code> mode"
+    - title: "Touch Targets"
+      description: "Minimum 44×44px touch targets on mobile (WCAG 2.5.5)"
+    - title: "Focus Indicators"
+      description: "Visible focus rings with 2px offset for keyboard navigation"
+    - title: "Safe Area Insets"
+      description: "Padding for notched devices using <code>env(safe-area-inset-*)</code>"
+    - title: "Dynamic Viewport"
+      description: "Using <code>100dvh</code> to account for mobile browser chrome"
+
+# --- Viewport Info -----------------------------------------------------------
+viewport:
+  label: "Current Viewport:"
+  breakpoints:
+    - label: "XS (< 480px)"
+      class: "viewport-value--xs"
+    - label: "SM (480px – 767px)"
+      class: "viewport-value--sm"
+    - label: "MD (768px – 1023px)"
+      class: "viewport-value--md"
+    - label: "LG (1024px – 1439px)"
+      class: "viewport-value--lg"
+    - label: "XL (1440px – 1919px)"
+      class: "viewport-value--xl"
+    - label: "2XL (≥ 1920px)"
+      class: "viewport-value--2xl"

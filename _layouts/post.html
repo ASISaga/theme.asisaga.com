@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+{% assign _ui = site.data.ui %}
 {% assign post_image = page.image | default: "" %}
 
 {% if post_image != "" %}
@@ -44,8 +45,8 @@ layout: default
       <genesis-synapse vector="social">
         {% include layouts/layout-footer-cta.html
            class_prefix="post"
-           title="Share this post"
-           button_text="Share"
+           title=_ui.post.share_heading
+           button_text=_ui.post.share_button
            button_url="#share"
         %}
       </genesis-synapse>

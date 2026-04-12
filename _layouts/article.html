@@ -1,12 +1,13 @@
 ---
 layout: default
 ---
+{% assign _ui = site.data.ui %}
 <article class="article-layout">
     {% if page.toc %}
     <genesis-navigation type="sidebar" orientation="vertical">
-      <aside class="article-toc-sidebar" aria-label="Table of contents">
+      <aside class="article-toc-sidebar" aria-label="{{ _ui.article.toc_heading }}">
         <nav class="article-toc">
-          <h2 class="article-toc-title">Table of Contents</h2>
+          <h2 class="article-toc-title">{{ _ui.article.toc_heading }}</h2>
           <div class="article-toc-content">
             {% if page.toc_html %}
               {{ page.toc_html }}

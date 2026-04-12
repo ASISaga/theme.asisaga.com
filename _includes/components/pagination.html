@@ -10,8 +10,9 @@ Parameters:
 {% endcomment %}
 
 {% assign pager = include.paginator | default: paginator %}
-{% assign prev_label = include.prev_text | default: "← Previous" %}
-{% assign next_label = include.next_text | default: "Next →" %}
+{% assign _pg = site.data.ui.pagination %}
+{% assign prev_label = include.prev_text | default: _pg.previous %}
+{% assign next_label = include.next_text | default: _pg.next %}
 
 {% if pager.total_pages > 1 %}
 <genesis-environment logic="navigation-pagination">
@@ -29,7 +30,7 @@ Parameters:
     {% endif %}
     
     <span class="genesis-pagination__info">
-      Page {{ pager.page }} of {{ pager.total_pages }}
+      {{ _pg.page }} {{ pager.page }} {{ _pg.of }} {{ pager.total_pages }}
     </span>
     
     {% if pager.next_page %}

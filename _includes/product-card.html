@@ -6,6 +6,8 @@ Parameters:
 - product: Product object with title, image, description, url, demo_url
 {% endcomment %}
 
+{% assign _ui = site.data.ui %}
+
 <article class="product-card">
   <div class="product-card__media">
     {% if product.image %}
@@ -25,9 +27,9 @@ Parameters:
   </div>
   
   <div class="product-card__actions">
-    <a href="{{ product.url | relative_url }}" class="product-card__button product-card__button--primary">Learn More</a>
+    <a href="{{ product.url | relative_url }}" class="product-card__button product-card__button--primary">{{ _ui.actions.learn_more }}</a>
     {% if product.demo_url %}
-    <a href="{{ product.demo_url }}" class="product-card__button product-card__button--secondary" target="_blank" rel="noopener noreferrer">View Demo</a>
+    <a href="{{ product.demo_url }}" class="product-card__button product-card__button--secondary" target="_blank" rel="noopener noreferrer">{{ _ui.actions.view_demo }}</a>
     {% endif %}
   </div>
 </article>

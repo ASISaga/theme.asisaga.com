@@ -1,20 +1,21 @@
 ---
 layout: default
 ---
+{% assign _ui = site.data.ui %}
 <genesis-search live-search="true" min-chars="2" debounce="300">
   <div class="search-layout">
     <genesis-entity nature="primary">
       <header class="search__header">
         <genesis-cognition intent="axiom">
-          <h1 class="search__title">{{ page.title | default: "Search" }}</h1>
+          <h1 class="search__title">{{ page.title | default: _ui.search.default_title }}</h1>
         </genesis-cognition>
         <genesis-form layout="horizontal">
           <form class="search__form" role="search">
-            <label for="search-input" class="sr-only">Search</label>
+            <label for="search-input" class="sr-only">{{ _ui.search.default_title }}</label>
             <div class="search__input-group">
-              <input type="search" id="search-input" class="search__input" placeholder="Search..." value="{{ page.query }}">
+              <input type="search" id="search-input" class="search__input" placeholder="{{ _ui.search.placeholder }}" value="{{ page.query }}">
               <genesis-synapse vector="execute">
-                <button type="submit" class="search__submit" aria-label="Submit search">
+                <button type="submit" class="search__submit" aria-label="{{ _ui.search.submit_label }}">
                   <i class="fas fa-search" aria-hidden="true"></i>
                 </button>
               </genesis-synapse>
@@ -23,15 +24,15 @@ layout: default
         </genesis-form>
         
         {% if page.results_count %}
-        <p class="search__count" aria-live="polite" data-results-count>{{ page.results_count }} results found</p>
+        <p class="search__count" aria-live="polite" data-results-count>{{ page.results_count }} {{ _ui.search.results_suffix }}</p>
         {% endif %}
       </header>
     </genesis-entity>
     
     {% if page.filters %}
     <genesis-environment logic="interaction-form">
-      <aside class="search__sidebar" aria-label="Search filters">
-        <h2 class="search__filters-title">Filters</h2>
+      <aside class="search__sidebar" aria-label="{{ _ui.search.filters_heading }}">
+        <h2 class="search__filters-title">{{ _ui.search.filters_heading }}</h2>
         {% for filter in page.filters %}
         <section class="search__filter-group">
           <h3 class="search__filter-title">{{ filter.name }}</h3>

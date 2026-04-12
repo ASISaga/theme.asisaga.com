@@ -1,0 +1,146 @@
+# =============================================================================
+# UI Chrome — Ontological Knowledge Base (Tier 2)
+# =============================================================================
+# Purpose: Canonical source for all user-interface chrome strings — labels,
+# buttons, accessibility text, navigation headings, and form placeholders.
+# Templates MUST reference site.data.ui.* for every visible UI string.
+#
+# Ontological Context:
+#   Category  → synapse (interaction), cognition (labels), state (feedback)
+#   Intent    → Guide the user through the interface with clarity and purpose
+# =============================================================================
+
+# --- Accessibility (a11y) ----------------------------------------------------
+# Screen-reader text, skip links, ARIA labels — invisible but essential.
+a11y:
+  skip_link: "Skip to main content"
+  toggle_nav: "Toggle navigation menu"
+  menu: "Menu"
+  back_to_top: "Back to top"
+  scroll_to_content: "Scroll to content"
+  primary_nav: "Primary navigation"
+  footer_nav: "Footer navigation"
+  social_heading: "Connect"
+  dismiss_alert: "Dismiss alert"
+
+# --- Navigation Chrome -------------------------------------------------------
+nav:
+  footer_heading: "Navigate"
+  social_heading: "Connect"
+
+# --- Buttons & Actions -------------------------------------------------------
+actions:
+  learn_more: "Learn More"
+  view_demo: "View Demo"
+  get_started: "Get Started"
+  explore_components: "Explore Components"
+  view_responsive: "View Responsive"
+  send_message: "Send Message"
+  clear_form: "Clear Form"
+  add_to_cart: "Add to Cart"
+  close: "Close"
+  join_genesis: "Join the Genesis"
+  contact_support: "Contact Support"
+
+# --- Pagination --------------------------------------------------------------
+pagination:
+  previous: "← Previous"
+  next: "Next →"
+  page: "Page"
+  of: "of"
+
+# --- Form Labels & Placeholders ----------------------------------------------
+forms:
+  name: "Name"
+  email: "Email"
+  subject: "Subject"
+  message: "Message"
+  subscribe: "Subscribe to newsletter"
+  placeholder:
+    consciousness_stream: "Enter consciousness stream..."
+    neural_patterns: "Document neural patterns..."
+    choose_topic: "Choose a topic"
+
+# --- Content States & Feedback ------------------------------------------------
+states:
+  loading: "Loading..."
+  empty_chat: "No messages yet. Start the conversation!"
+  success: "Success!"
+  info: "Information"
+  warning: "Warning"
+  error: "Error"
+
+# --- Archive & Filtering ------------------------------------------------------
+archive:
+  all_categories: "All Categories"
+  latest_first: "Latest First"
+  oldest_first: "Oldest First"
+  title_az: "Title A-Z"
+  grid_view: "Grid view"
+  list_view: "List view"
+  all_filter: "All"
+
+# --- Article Chrome -----------------------------------------------------------
+article:
+  toc_heading: "Table of Contents"
+  related_heading: "Related Articles"
+
+# --- Docs Chrome --------------------------------------------------------------
+docs:
+  search_placeholder: "Search docs..."
+  search_label: "Search documentation"
+  on_this_page: "On this page"
+  previous: "← Previous"
+  next: "Next →"
+
+# --- FAQ Chrome ---------------------------------------------------------------
+faq:
+  search_placeholder: "Search FAQ..."
+  search_label: "Search frequently asked questions"
+  all_filter: "All"
+  still_have_questions: "Still have questions?"
+
+# --- Post Chrome --------------------------------------------------------------
+post:
+  share_heading: "Share this post"
+  share_button: "Share"
+
+# --- Search Chrome ------------------------------------------------------------
+search:
+  default_title: "Search"
+  placeholder: "Search..."
+  submit_label: "Submit search"
+  filters_heading: "Filters"
+  results_suffix: "results found"
+
+# --- Form Chrome --------------------------------------------------------------
+form:
+  privacy_link_text: "Privacy Policy"
+
+# --- Gallery Chrome -----------------------------------------------------------
+gallery:
+  all_filter: "All"
+
+# --- Settings Chrome ----------------------------------------------------------
+settings:
+  sidebar_title: "Settings"
+  save: "Save Changes"
+  cancel: "Cancel"
+
+# --- Profile Chrome -----------------------------------------------------------
+profile:
+  statistics: "Statistics"
+  skills: "Skills"
+
+# --- Splash Chrome ------------------------------------------------------------
+splash:
+  days: "Days"
+  hours: "Hours"
+  minutes: "Minutes"
+  seconds: "Seconds"
+  email_placeholder: "Enter your email"
+  notify_me: "Notify Me"
+
+# --- Minimal / Error Chrome ---------------------------------------------------
+minimal:
+  go_home: "Go to Homepage"

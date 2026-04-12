@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+{% assign _ui = site.data.ui %}
 <genesis-environment logic="distributed">
   <div class="gallery-layout">
     <genesis-entity nature="primary">
@@ -14,7 +15,7 @@ layout: default
     {% if page.categories %}
     <genesis-navigation type="tabs">
       <div class="gallery__filters" aria-label="Filter gallery items">
-        <button class="gallery__filter gallery__filter--active" data-filter="all">All</button>
+        <button class="gallery__filter gallery__filter--active" data-filter="all">{{ _ui.gallery.all_filter }}</button>
         {% for category in page.categories %}
         <button class="gallery__filter" data-filter="{{ category.slug }}">{{ category.name }}</button>
         {% endfor %}

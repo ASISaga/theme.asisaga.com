@@ -1,10 +1,11 @@
 ---
 layout: default
 ---
+{% assign _ui = site.data.ui %}
 <div class="settings-layout">
     <genesis-navigation type="sidebar" orientation="vertical">
       <aside class="settings-sidebar" aria-label="Settings navigation">
-        <h2 class="settings-sidebar-title">Settings</h2>
+        <h2 class="settings-sidebar-title">{{ _ui.settings.sidebar_title }}</h2>
         {% if page.tabs %}
         <nav class="settings-nav">
           <ul class="settings-nav-list" role="tablist" aria-label="Settings sections">
@@ -37,10 +38,10 @@ layout: default
         <genesis-environment logic="interaction-form">
           <div class="settings-actions">
             <genesis-synapse vector="execute">
-              <button type="button" class="settings-button settings-button--primary">Save Changes</button>
+              <button type="button" class="settings-button settings-button--primary">{{ _ui.settings.save }}</button>
             </genesis-synapse>
             <genesis-synapse vector="navigate">
-              <button type="button" class="settings-button settings-button--secondary">Cancel</button>
+              <button type="button" class="settings-button settings-button--secondary">{{ _ui.settings.cancel }}</button>
             </genesis-synapse>
           </div>
         </genesis-environment>
