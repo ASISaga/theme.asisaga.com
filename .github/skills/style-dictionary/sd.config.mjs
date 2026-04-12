@@ -2,9 +2,15 @@
 /**
  * Genesis Design Token Builder — Style Dictionary v4 Config
  *
- * Forward translation: _design/tokens/*.json → _sass/design/_variables-generated.scss
+ * Forward translation: _design/tokens/*.json → _sass/design/_*-generated.scss
+ * Generates separate files per concern:
+ *   - _colors-generated.scss   (from 2-color.json)
+ *   - _typography-generated.scss (from 3-typography.json)
+ *   - _spacing-generated.scss  (from 4-spacing.json — spacing, borders, sizes, transitions, z-index)
+ *   - _effects-generated.scss  (from 5-effects.json — shadows, glass, glows, easing, durations)
+ *
  * Preserves OKLCH color values (no hex coercion).
- * Resolves sys-layer aliases and identity-tier references transitively.
+ * Resolves identity-tier references transitively.
  *
  * Usage:
  *   node .github/skills/style-dictionary/sd.config.mjs
@@ -64,12 +70,12 @@ StyleDictionary.registerTransform({
 // Outputs raw SCSS variable declarations without any color transformation,
 // preserving OKLCH values exactly as authored in tokens.json.
 // ---------------------------------------------------------------------------
-StyleDictionary.registerFormat({
-  name: 'scss/genesis-variables',
-  format: ({ dictionary }) => {
+function genesisFormat(headerComment) {
+  return ({ dictionary }) => {
     const lines = [
-      '// Do not edit directly — generated from _design/tokens/*.json',
-      '// Run: node .github/skills/style-dictionary/sd.config.mjs',
+      `// Do not edit directly — generated from _design/tokens/*.json`,
+      `// Run: node .github/skills/style-dictionary/sd.config.mjs`,
+      `// ${headerComment}`,
       '',
     ];
     for (const token of dictionary.allTokens) {
@@ -78,7 +84,27 @@ StyleDictionary.registerFormat({
       lines.push(`$${token.name}: ${value};${description ? ` // ${description}` : ''}`);
     }
     return lines.join('\n') + '\n';
-  },
+  };
+}
+
+StyleDictionary.registerFormat({
+  name: 'scss/genesis-colors',
+  format: genesisFormat('Color tokens — OKLCH palette primitives'),
+});
+
+StyleDictionary.registerFormat({
+  name: 'scss/genesis-typography',
+  format: genesisFormat('Typography tokens — families, weights, sizes, fluid scales, line-heights'),
+});
+
+StyleDictionary.registerFormat({
+  name: 'scss/genesis-spacing',
+  format: genesisFormat('Spacing tokens — spacing, border-radius, border-width, sizes, transitions, z-index'),
+});
+
+StyleDictionary.registerFormat({
+  name: 'scss/genesis-effects',
+  format: genesisFormat('Effects tokens — shadows, glass surfaces, glows, blur, easing, durations'),
 });
 
 // ---------------------------------------------------------------------------
@@ -93,6 +119,14 @@ StyleDictionary.registerTransformGroup({
 });
 
 // ---------------------------------------------------------------------------
+// Token filters — categorize tokens into their output files
+// ---------------------------------------------------------------------------
+const isColor = (token) => token.path[0] === 'color' || token.path[0] === 'brand';
+const isTypography = (token) => token.path[0] === 'font' || token.path[0] === 'line-height';
+const isEffect = (token) => token.path[0] === 'effect';
+const isSpacing = (token) => !isColor(token) && !isTypography(token) && !isEffect(token);
+
+// ---------------------------------------------------------------------------
 // Style Dictionary configuration
 // ---------------------------------------------------------------------------
 const sdConfig = {
@@ -104,8 +138,24 @@ const sdConfig = {
       buildPath: join(repoRoot, '_sass/design') + '/',
       files: [
         {
-          destination: '_variables-generated.scss',
-          format: 'scss/genesis-variables',
+          destination: '_colors-generated.scss',
+          format: 'scss/genesis-colors',
+          filter: isColor,
+        },
+        {
+          destination: '_typography-generated.scss',
+          format: 'scss/genesis-typography',
+          filter: isTypography,
+        },
+        {
+          destination: '_spacing-generated.scss',
+          format: 'scss/genesis-spacing',
+          filter: isSpacing,
+        },
+        {
+          destination: '_effects-generated.scss',
+          format: 'scss/genesis-effects',
+          filter: isEffect,
         },
       ],
     },

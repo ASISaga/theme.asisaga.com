@@ -49,10 +49,15 @@
 @import "engines/icons";
 
 // Design Foundation — The DNA (from _sass/design/ — maps directly to _design/tokens/*.json)
-@import "design/variables-generated"; // Generated primitives — imported first so colors.scss can alias them
-@import "design/colors";              // Semantic color aliases + additional tokens (references generated vars)
-@import "design/variables";           // Theme-wide Sass variables (sacred aliases, component tokens)
-@import "design/dimensions";          // Spacing and sizing tokens
+// Generated files — one per concern (do not edit, run `npm run tokens:build`)
+@import "design/colors-generated";     // OKLCH palette primitives
+@import "design/typography-generated"; // Families, weights, sizes, fluid scales, line-heights
+@import "design/spacing-generated";    // Spacing, border-radius, border-width, sizes, transitions, z-index
+@import "design/effects-generated";    // Shadows, glass surfaces, glows, blur, easing, durations
+// Hand-authored design files (extend the generated tokens)
+@import "design/colors";              // Semantic color tokens + boardroom palette + CSS custom properties
+@import "design/variables";           // Component defaults, variant maps
+@import "design/dimensions";          // Breakpoints, icon sizes, component dimensions
 
 // Utilities & Mixins (in engines/utilities/ — infrastructure)
 @import "engines/utilities/mixins";           // Core Sass mixins

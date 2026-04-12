@@ -1,30 +1,7 @@
 // Do not edit directly — generated from _design/tokens/*.json
 // Run: node .github/skills/style-dictionary/sd.config.mjs
+// Typography tokens — families, weights, sizes, fluid scales, line-heights
 
-$identity-scale: 1.618; // Golden Ratio φ — base harmonic multiplier for all derived scales (sacred-lg, sacred-xl)
-$identity-grid: 0.25rem; // 4px base grid unit — all spacing tokens are integer multiples of this value
-$color-light-white: oklch(0.99 0.005 90); // Pure white background
-$color-light-surface: oklch(0.96 0.01 90); // Light surface background
-$color-light-subtle-gray: oklch(0.93 0.01 220); // Subtle gray for depth
-$color-text-primary: oklch(0.12 0.01 250); // Primary profound black text
-$color-text-secondary: oklch(0.25 0.01 230); // Secondary deep gray text
-$color-text-muted: oklch(0.45 0.01 220); // Muted gray text
-$color-dark-profound-black: oklch(0.08 0.01 250); // Deep profound black
-$color-accent-neon-blue: oklch(0.65 0.25 230); // Electric neon blue — primary accent. L=0.65 (luminance-parity anchor)
-$color-accent-neon-blue-bright: oklch(0.75 0.28 225); // Bright electric blue — hover/active state
-$color-accent-neon-blue-glow: oklch(0.70 0.30 228); // Glowing neon blue effect
-$color-accent-gold: oklch(0.70 0.15 85); // Sacred gold accent — subtle secondary accent
-$color-accent-gold-bright: oklch(0.75 0.18 82); // Bright gold — hover state
-$color-accent-gold-muted: oklch(0.60 0.10 88); // Very muted gold — minimal emphasis
-$color-border-light: oklch(0.85 0.01 220); // Light borders on white
-$color-border-dark: oklch(0.15 0.01 220); // Dark borders for contrast
-$color-border-silver: oklch(0.65 0.02 220); // Neutral gray borders
-$color-status-info: oklch(0.65 0.25 230); // Informational UI state accent
-$color-status-success: oklch(0.60 0.20 145); // Success UI state accent
-$color-status-warning: oklch(0.70 0.18 80); // Warning UI state accent
-$color-status-error: oklch(0.55 0.25 25); // Error UI state accent
-$color-brand-linkedin: #0077b5; // LinkedIn brand blue
-$color-brand-linkedin-hover: #00568a; // LinkedIn brand blue hover state
 $font-family-consciousness: 'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif; // Primary sans-serif for UI and body
 $font-family-wisdom: 'Crimson Text', 'Times New Roman', Georgia, serif; // Serif for narrative and wisdom text
 $font-family-sacred: 'Montserrat', sans-serif; // Display font for sacred headings
@@ -73,35 +50,3 @@ $line-height-transcendent: 2; // Meditative, flowing content
 $line-height-sacred: 1.618; // φ — identity.scale (Golden Ratio for sacred content)
 $line-height-consciousness: 1.75; // Spacious for contemplation
 $line-height-wisdom: 1.6; // Optimal for sustained reading
-$spacing-xs: 0.25rem; // 1× identity.grid (0.25rem / 4px)
-$spacing-sm: 0.5rem; // 2× identity.grid (0.5rem / 8px)
-$spacing-md: 1rem; // 4× identity.grid (1rem / 16px)
-$spacing-lg: 1.5rem; // 6× identity.grid (1.5rem / 24px)
-$spacing-xl: 2rem; // 8× identity.grid (2rem / 32px)
-$spacing-2xl: 3rem; // 12× identity.grid (3rem / 48px)
-$spacing-3xl: 4rem; // 16× identity.grid (4rem / 64px)
-$spacing-4xl: 6rem; // 24× identity.grid (6rem / 96px)
-$spacing-genesis: 8rem; // 32× identity.grid (8rem / 128px) — Major section spacing
-$border-radius-sm: 0.25rem; // 1× identity.grid (4px)
-$border-radius-md: 0.5rem; // 2× identity.grid (8px)
-$border-radius-lg: 1rem; // 4× identity.grid (16px)
-$border-radius-xl: 1.5rem; // 6× identity.grid (24px)
-$border-radius-consciousness: 2rem; // 8× identity.grid (32px) — Transcendent elements
-$border-radius-infinite: 50%; // Perfect circles for consciousness symbols
-$border-width-default: 1px; // Default border width
-$border-width-thick: 2px; // Thick border width
-$border-width-accent: 4px; // Accent border width for highlighted edges
-$border-width-separator: 1px; // Hairline separator width
-$size-avatar-testimonial: 3rem; // Testimonial avatar size
-$size-avatar-linkedin: 3.75rem; // LinkedIn profile avatar size
-$transition-fast: 0.2s ease;
-$transition-normal: 0.3s ease;
-$transition-slow: 0.5s ease;
-$transition-consciousness: 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-$transition-transcendent: 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
-$z-index-background: -1;
-$z-index-content: 1;
-$z-index-overlay: 10;
-$z-index-consciousness: 100;
-$z-index-transcendent: 1000;
-$z-index-genesis: 9999;

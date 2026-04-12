@@ -1,0 +1,181 @@
+{
+  "effect": {
+    "shadow": {
+      "sacred-glow": {
+        "$type": "other",
+        "$value": "0 0 0.5rem oklch(0.70 0.15 85 / 0.3)",
+        "$description": "Subtle gold sacred glow around transcendent elements"
+      },
+      "consciousness-depth": {
+        "$type": "other",
+        "$value": "0 0.25rem 2rem oklch(0.08 0.01 250 / 0.4)",
+        "$description": "Deep depth shadow for elevated consciousness elements"
+      },
+      "consciousness": {
+        "$type": "other",
+        "$value": "0 30px 60px oklch(0.70 0.15 85 / 0.2)",
+        "$description": "Large gold-tinted consciousness shadow for cards"
+      },
+      "transcendent": {
+        "$type": "other",
+        "$value": "0 40px 80px oklch(0.65 0.25 230 / 0.3)",
+        "$description": "Expansive neon-blue transcendent shadow for hero elements"
+      },
+      "glow-transcendent": {
+        "$type": "other",
+        "$value": "0 0 20px oklch(0.70 0.15 85 / 0.5)",
+        "$description": "Gold glow halo for transcendent elements"
+      },
+      "ambient": {
+        "$type": "other",
+        "$value": "0 4px 12px oklch(0.08 0.01 250 / 0.30)",
+        "$description": "Ambient depth shadow for floating elements"
+      },
+      "profound": {
+        "$type": "other",
+        "$value": "0 8px 32px oklch(0.05 0.01 250 / 0.5)",
+        "$description": "Profound void-level depth shadow"
+      }
+    },
+    "glass": {
+      "light": {
+        "$type": "other",
+        "$value": "oklch(0.98 0.003 220 / 0.85)",
+        "$description": "Light glass surface — very subtle frosted"
+      },
+      "hover": {
+        "$type": "other",
+        "$value": "oklch(0.94 0.005 220)",
+        "$description": "Glass hover state — subtle gray"
+      },
+      "consciousness": {
+        "$type": "other",
+        "$value": "oklch(0.16 0.03 252 / 0.75)",
+        "$description": "Deep consciousness glass surface"
+      },
+      "elevated": {
+        "$type": "other",
+        "$value": "oklch(0.20 0.04 248 / 0.85)",
+        "$description": "Elevated glass surface for interactive elements"
+      },
+      "subtle": {
+        "$type": "other",
+        "$value": "oklch(0.18 0.03 246 / 0.6)",
+        "$description": "Subtle glass surface — low opacity"
+      },
+      "void": {
+        "$type": "other",
+        "$value": "oklch(0.08 0.02 260 / 0.90)",
+        "$description": "Void-level deep glass for overlays"
+      }
+    },
+    "glow": {
+      "neon-blue": {
+        "$type": "other",
+        "$value": "0 0 20px oklch(0.65 0.25 230 / 0.4)",
+        "$description": "Neon blue glow for interactive accents"
+      },
+      "neon-blue-intense": {
+        "$type": "other",
+        "$value": "0 0 40px oklch(0.70 0.30 228 / 0.6)",
+        "$description": "Intense neon blue glow for focused elements"
+      },
+      "gold": {
+        "$type": "other",
+        "$value": "0 0 15px oklch(0.70 0.15 85 / 0.35)",
+        "$description": "Subtle sacred gold glow"
+      },
+      "gold-intense": {
+        "$type": "other",
+        "$value": "0 0 30px oklch(0.75 0.18 82 / 0.5)",
+        "$description": "Intense sacred gold glow for hover states"
+      }
+    },
+    "blur": {
+      "glass-sm": {
+        "$type": "other",
+        "$value": "blur(8px) saturate(1.2)",
+        "$description": "Small glass blur — subtle depth"
+      },
+      "glass-md": {
+        "$type": "other",
+        "$value": "blur(16px) saturate(1.5)",
+        "$description": "Medium glass blur — standard glassmorphism"
+      },
+      "glass-lg": {
+        "$type": "other",
+        "$value": "blur(24px) saturate(1.8)",
+        "$description": "Large glass blur — deep glassmorphism"
+      },
+      "glass-xl": {
+        "$type": "other",
+        "$value": "blur(32px) saturate(2.0)",
+        "$description": "Extra-large glass blur — consciousness depth"
+      }
+    },
+    "ease": {
+      "consciousness": {
+        "$type": "other",
+        "$value": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "$description": "Consciousness-level easing — organic deceleration"
+      },
+      "transcendent": {
+        "$type": "other",
+        "$value": "cubic-bezier(0.165, 0.84, 0.44, 1)",
+        "$description": "Transcendent easing — expansive exit"
+      },
+      "sacred": {
+        "$type": "other",
+        "$value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "$description": "Sacred easing — reverent deceleration"
+      },
+      "in-out": {
+        "$type": "other",
+        "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "$description": "Standard in-out easing — Material-inspired"
+      },
+      "out": {
+        "$type": "other",
+        "$value": "cubic-bezier(0, 0, 0.2, 1)",
+        "$description": "Out easing — exit deceleration"
+      }
+    },
+    "duration": {
+      "normal": {
+        "$type": "other",
+        "$value": "0.3s",
+        "$description": "Normal animation duration"
+      },
+      "slow": {
+        "$type": "other",
+        "$value": "0.5s",
+        "$description": "Slow animation for emphasis"
+      },
+      "slower": {
+        "$type": "other",
+        "$value": "0.8s",
+        "$description": "Slower animation for consciousness transitions"
+      },
+      "slowest": {
+        "$type": "other",
+        "$value": "1.2s",
+        "$description": "Slowest animation for transcendent reveals"
+      },
+      "sacred": {
+        "$type": "other",
+        "$value": "2s",
+        "$description": "Sacred animation — meditative pace"
+      },
+      "consciousness": {
+        "$type": "other",
+        "$value": "3s",
+        "$description": "Consciousness animation — contemplative flow"
+      },
+      "transcendent": {
+        "$type": "other",
+        "$value": "4s",
+        "$description": "Transcendent animation — cosmic timescale"
+      }
+    }
+  }
+}
