@@ -80,7 +80,8 @@ $color-bridge-silver: $color-border-silver;       // Alias: color.border.silver
 // ============================================================================
 // SECTION 2: SEMANTIC COLOR TOKENS
 // ============================================================================
-// Map raw primitives to functional purposes throughout the design system
+// Map raw primitives to functional purposes throughout the design system.
+// Only tokens that are actually consumed by SCSS files belong here.
 // ============================================================================
 
 // ----------------------------------------
@@ -88,9 +89,6 @@ $color-bridge-silver: $color-border-silver;       // Alias: color.border.silver
 // ----------------------------------------
 $surface-primary: $color-transcendent-white;             // Primary white backgrounds
 $surface-elevated: $color-light-surface;                 // Elevated cards/sections (slight tint)
-$surface-overlay: oklch(0.98 0.005 90 / 0.95);          // Modal/overlay backgrounds
-$surface-glass: oklch(0.96 0.01 220 / 0.85);            // Glassmorphism surfaces (subtle)
-$surface-transcendent: $color-transcendent-white;        // Light mode surfaces
 $surface-dark: $color-profound-black;                    // Dark/black backgrounds
 
 // ----------------------------------------
@@ -99,38 +97,25 @@ $surface-dark: $color-profound-black;                    // Dark/black backgroun
 $text-primary: $color-text-primary;                       // Profound black text on light
 $text-secondary: $color-text-secondary;                   // Deep gray text
 $text-accent: $color-neon-blue;                           // Neon blue accent text
-$text-consciousness: $color-text-primary;                 // Consciousness-related text
 $text-inverse: $color-transcendent-white;                 // White text on dark backgrounds
-$text-gold: $color-essence-gold;                          // Subtle gold text for highlights
 
 // ----------------------------------------
 // SEMANTIC ACCENT TOKENS
 // ----------------------------------------
 $accent-glow: $color-neon-blue;                          // Primary neon blue glow/highlights
-$accent-neural: $color-neon-blue-bright;                 // Neural/AI accents (bright blue)
-$accent-quantum: $color-neon-blue-glow;                  // Quantum/tech accents (glowing blue)
-$accent-essence: $color-essence-gold;                    // Subtle gold accents (reduced)
 
 // ----------------------------------------
 // SEMANTIC BORDER TOKENS
 // ----------------------------------------
 $border-primary: $color-border-light;                     // Primary borders (light gray)
 $border-elevated: oklch(0.75 0.02 220);                   // Elevated borders (medium gray)
-$border-accent: $color-neon-blue;                         // Neon blue accent borders
-$border-glow: oklch(0.65 0.25 230 / 0.4);                // Glowing neon blue borders
-$border-neural: oklch(0.65 0.25 230 / 0.5);              // Neural borders (blue)
-$border-gold: $color-essence-gold;                        // Subtle gold borders
-$border-dark: $color-border-dark;                         // Profound dark borders for headers/footers
 
 // ----------------------------------------
 // SEMANTIC STATE TOKENS
 // ----------------------------------------
 $state-hover-surface: oklch(0.95 0.005 220);             // Hover state surface (very subtle gray)
-$state-active-surface: oklch(0.93 0.005 220);            // Active state surface (slightly darker gray)
-$state-focus-ring: oklch(0.65 0.25 230 / 0.5);           // Focus ring color (neon blue - purposeful)
+$state-focus-ring: oklch(0.65 0.25 230 / 0.5);           // Focus ring color (neon blue)
 $state-focus-outline: oklch(0.60 0.15 250);              // Focus outline on light surfaces (accessible blue)
-$state-disabled-surface: oklch(0.96 0.005 220);          // Disabled surface (very light gray)
-$state-disabled-text: oklch(0.60 0.01 220);              // Disabled text (muted gray)
 
 // ----------------------------------------
 // SEMANTIC STATUS TEXT TOKENS (text on light surfaces)
@@ -138,98 +123,64 @@ $state-disabled-text: oklch(0.60 0.01 220);              // Disabled text (muted
 $color-status-success-text: oklch(0.60 0.15 145);   // Success text on light background (accessible green)
 $color-status-error-text: oklch(0.60 0.20 25);      // Error text on light background (accessible red-orange)
 
-// ----------------------------------------
-// SEMANTIC GRADIENT TOKENS
-// ----------------------------------------
-$gradient-consciousness: linear-gradient(135deg, $color-neon-blue 0%, $color-neon-blue-bright 100%);
-$gradient-transcendent: linear-gradient(135deg, $color-transcendent-white 0%, $color-light-surface 100%);
-$gradient-essence: linear-gradient(135deg, $color-neon-blue 0%, $color-neon-blue-glow 100%);
-$gradient-quantum: linear-gradient(135deg, $color-neon-blue 0%, $color-neon-blue-glow 100%);
-$gradient-profound: linear-gradient(135deg, $color-profound-black 0%, $color-text-primary 100%);
-
 // ============================================================================
 // SECTION 3: LEGACY COMPATIBILITY LAYER
 // ============================================================================
-// Map new tokens to old variable names for gradual migration
+// Map semantic names to old variable names still used across the codebase.
+// Migrate consumers to Section 2 names over time.
 // ============================================================================
 
-$cosmic-deep-blue: $color-profound-black;          // Now maps to profound black
-$luminous-gold: $color-essence-gold;
-$transcendent-white: $color-transcendent-white;
-$ethereal-silver: $color-bridge-silver;
+$cosmic-deep-blue: $color-profound-black;          // → use $text-primary or $surface-dark
+$luminous-gold: $color-essence-gold;               // → use $color-essence-gold
+$transcendent-white: $color-transcendent-white;    // → use $color-transcendent-white
+$ethereal-silver: $color-bridge-silver;            // → use $color-bridge-silver
 
-$primary: $color-neon-blue;                         // Neon blue primary
-$secondary: $text-secondary;
-$accent: $accent-essence;
-$light: oklch(0.95 0.01 220);           // Light gray
-$dark: $color-profound-black;
+$primary: $color-neon-blue;                        // → use $color-neon-blue
+$secondary: $text-secondary;                       // → use $text-secondary
+$accent: $color-essence-gold;                      // → use $color-essence-gold
+$light: oklch(0.95 0.01 220);                      // Light gray
+$dark: $color-profound-black;                      // → use $surface-dark
 
-// Sacred Semantic Colors
-$text-color: $color-profound-black;
-$text-muted: $ethereal-silver;
-$text-sacred: $luminous-gold;
-$text-wisdom: $color-neon-blue;         // Neon blue for wisdom/AI
-$text-light: $text-inverse;             // White text for dark backgrounds
+$text-color: $color-profound-black;                // → use $text-primary
+$text-muted: $ethereal-silver;                     // → use $color-bridge-silver
 
-// Background colors
-$bg-dark: $color-profound-black;                    // Profound black for headers/footers
-$bg-light: $surface-transcendent;
-$bg-consciousness: $surface-overlay;
-$bg-transcendent: $surface-transcendent;
+// Section background colors
+$section-bg-primary: $color-transcendent-white;    // Pure white (default)
+$section-bg-secondary: oklch(0.96 0.005 220);      // Very subtle gray
 
-// Section background colors - Purposeful, minimal tints
-$section-bg-primary: $color-transcendent-white;      // Pure white (default)
-$section-bg-secondary: oklch(0.96 0.005 220);        // Very subtle gray (purposeful cards)
-$section-bg-sacred: oklch(0.98 0.005 85 / 0.5);     // Extremely subtle gold (rare use only)
-
-// Dark mode variables (if needed)
+// Dark mode variables
 $dark-mode-bg: $color-profound-black;
 $dark-mode-text: $color-transcendent-white;
 $dark-mode-border: oklch(0.35 0.01 220);
 
 // Border colors
-$border-color: $border-primary;
-$border-sacred: $border-gold;
+$border-color: $border-primary;                    // → use $border-primary
 
 // Component-specific legacy mappings
-$white: $color-transcendent-white;
+$white: $color-transcendent-white;                 // → use $color-transcendent-white
 
 // State colors for legacy compatibility
-$primary-light: oklch(0.95 0.005 220);                   // Very subtle gray (not blue)
-$primary-dark: $color-profound-black;                    // Profound black
-$sacred-gold-light: oklch(0.75 0.18 82);
+$primary-light: oklch(0.95 0.005 220);             // Very subtle gray
+$primary-dark: $color-profound-black;              // → use $surface-dark
 $sacred-gold-dark: oklch(0.50 0.12 88);
 
 // Accessible color variants
 $cosmic-deep-blue-accessible: $color-profound-black;
 $luminous-gold-accessible: oklch(0.50 0.12 85);
-$ethereal-silver-accessible: oklch(0.55 0.01 220);
-$neon-electric-blue-accessible: oklch(0.50 0.20 230);  // Darker neon blue for better contrast
+$neon-electric-blue-accessible: oklch(0.50 0.20 230); // Darker neon blue for better contrast
 
 // ============================================================================
-// SECTION 4: GRAYSCALE PALETTE
-// ============================================================================
-// Neutral grays for various UI elements
+// SECTION 4: EXTENDED PALETTE
 // ============================================================================
 
-$gray-100: oklch(0.97 0.005 220);
-$gray-200: oklch(0.92 0.01 220);
+// Grayscale (only $gray-300 is actively referenced)
 $gray-300: oklch(0.85 0.01 220);
-$gray-400: oklch(0.70 0.01 220);
-$gray-600: oklch(0.45 0.01 220);
 
-// ============================================================================
-// SECTION 4B: GLOW EFFECTS
-// ============================================================================
-// Glow effects for transcendent and consciousness elements
-// ============================================================================
-
+// Glow effects for transcendent elements
 $glow-transcendent: 0 0 20px oklch(0.70 0.15 85 / 0.5);
-$glow-consciousness: 0 0 30px oklch(0.65 0.25 230 / 0.4);
-$glow-human-essence: 0 0 25px oklch(0.85 0.01 220 / 0.6);
 
 // ============================================================================
-// SECTION 4C: ALPHA-TRANSPARENT NEUTRAL OVERLAYS
+// SECTION 4B: ALPHA-TRANSPARENT NEUTRAL OVERLAYS
 // ============================================================================
 // Pure achromatic (chroma=0) neutrals at varying opacities.
 // Adapt naturally to both light and dark contexts without colour bias.
