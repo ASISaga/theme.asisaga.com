@@ -9,7 +9,9 @@
     "asi-saga": {
       "semantic-tag": "header",
       "motion-intent": "entry/slide-down",
-      "layout-variant": "environment/distributed"
+      "layout-variant": "environment/distributed",
+      "contentRef": "site.data.site.identity, site.data.ui.a11y, site.data.nav",
+      "intent": "Provide persistent brand identity and primary navigation for all pages"
     }
   },
   "layoutMode": "HORIZONTAL",

@@ -1,16 +1,19 @@
 {% comment %}
 Call to Action Component
 Creates a semantic CTA section with primary and optional secondary buttons
+Content sourced from: include parameters with _data/ui.yml defaults
 
 Parameters:
 - title: Main CTA heading (required)
 - description: Supporting description text
-- button_text: Primary button text (required)
+- button_text: Primary button text (default: site.data.ui.actions.get_started)
 - button_url: Primary button URL (required)
 - secondary_button_text: Secondary button text
 - secondary_button_url: Secondary button URL
 - style: Style variant (secondary, accent)
 {% endcomment %}
+
+{% assign _ui = site.data.ui %}
 
 <section class="cta-section{% if include.style == 'secondary' %} cta-section--secondary{% elsif include.style == 'accent' %} cta-section--accent{% endif %}">
   <div class="cta-section__content">
@@ -23,8 +26,9 @@ Parameters:
     {% endif %}
     
     <div class="cta-section__actions">
-      {% if include.button_text and include.button_url %}
-      <a href="{{ include.button_url }}" class="cta-section__button cta-section__button--primary">{{ include.button_text }}</a>
+      {% assign _btn_text = include.button_text | default: _ui.actions.get_started %}
+      {% if _btn_text and include.button_url %}
+      <a href="{{ include.button_url }}" class="cta-section__button cta-section__button--primary">{{ _btn_text }}</a>
       {% endif %}
       
       {% if include.secondary_button_text and include.secondary_button_url %}

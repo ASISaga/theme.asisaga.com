@@ -9,7 +9,9 @@
     "asi-saga": {
       "semantic-tag": "div",
       "motion-intent": "entry/fade-in",
-      "layout-variant": "environment/convergent"
+      "layout-variant": "environment/convergent",
+      "contentRef": "site.data.ui.docs",
+      "intent": "Provide a three-column documentation layout with sidebar navigation and table of contents"
     }
   },
   "layoutMode": "HORIZONTAL",
@@ -529,7 +531,7 @@
                 "href": "{{ page.prev.url }}",
                 "data-conditional": "page.prev"
               },
-              "content": "← {{ page.prev.title }}",
+              "content": "\u2190 {{ page.prev.title }}",
               "figmaStyles": {
                 "fills": [],
                 "strokes": [
@@ -578,7 +580,7 @@
                 "href": "{{ page.next.url }}",
                 "data-conditional": "page.next"
               },
-              "content": "{{ page.next.title }} →",
+              "content": "{{ page.next.title }} \u2192",
               "figmaStyles": {
                 "fills": [],
                 "strokes": [

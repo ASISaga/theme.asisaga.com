@@ -9,7 +9,9 @@
     "asi-saga": {
       "semantic-tag": "div",
       "motion-intent": "entry/fade-in",
-      "layout-variant": "environment/focused"
+      "layout-variant": "environment/focused",
+      "contentRef": "site.data.ui.search",
+      "intent": "Enable users to search and filter content with a prominent search form and results area"
     }
   },
   "layoutMode": "VERTICAL",

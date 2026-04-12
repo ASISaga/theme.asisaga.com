@@ -9,7 +9,9 @@
     "asi-saga": {
       "semantic-tag": "div",
       "motion-intent": "entry/fade-in",
-      "layout-variant": "environment/focused"
+      "layout-variant": "environment/focused",
+      "contentRef": "page content (caller-provided)",
+      "intent": "Constrain content to viewport height for maps, editors, and full-screen experiences"
     }
   },
   "layoutMode": "VERTICAL",

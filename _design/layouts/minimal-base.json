@@ -9,7 +9,9 @@
     "asi-saga": {
       "semantic-tag": "body",
       "motion-intent": "entry/fade-in",
-      "layout-variant": "atmosphere/neutral"
+      "layout-variant": "atmosphere/neutral",
+      "contentRef": "site.data.site.identity",
+      "intent": "Provide a bare-bones full-page shell without header or footer for standalone screens"
     }
   },
   "layoutMode": "VERTICAL",

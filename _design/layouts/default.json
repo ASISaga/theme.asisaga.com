@@ -9,7 +9,9 @@
     "asi-saga": {
       "semantic-tag": "body",
       "motion-intent": "entry/fade-in",
-      "layout-variant": "atmosphere/neutral"
+      "layout-variant": "atmosphere/neutral",
+      "contentRef": "site.data.site, site.data.ui.a11y",
+      "intent": "Assemble the base page skeleton shared by all content pages"
     }
   },
   "layoutMode": "VERTICAL",

@@ -68,6 +68,14 @@
             "layout-variant": {
               "type": "string",
               "pattern": "^(environment|entity|cognition|synapse|state|atmosphere)/[a-z][a-z0-9-]*$"
+            },
+            "contentRef": {
+              "type": "string",
+              "description": "Dot-path reference to the _data/ YAML key that supplies this node's editorial content (e.g., 'site.data.content.index.hero')."
+            },
+            "intent": {
+              "type": "string",
+              "description": "One-sentence statement of the node's semantic purpose — what it communicates, not how it looks."
             }
           }
         }

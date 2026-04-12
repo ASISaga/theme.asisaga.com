@@ -84,6 +84,14 @@
                 "atmosphere/void",
                 "atmosphere/neutral"
               ]
+            },
+            "contentRef": {
+              "type": "string",
+              "description": "Dot-path reference to the _data/ YAML key that supplies this node's editorial content (e.g., 'site.data.content.index.hero'). Connects the structural blueprint to the ontological knowledge base."
+            },
+            "intent": {
+              "type": "string",
+              "description": "One-sentence statement of the node's semantic purpose — what it communicates to the user, not how it looks."
             }
           }
         }

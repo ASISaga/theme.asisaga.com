@@ -9,7 +9,9 @@
     "asi-saga": {
       "semantic-tag": "div",
       "motion-intent": "entry/fade-in",
-      "layout-variant": "environment/distributed"
+      "layout-variant": "environment/distributed",
+      "contentRef": "site.data.ui.archive",
+      "intent": "Present a filterable, sortable listing of content items"
     }
   },
   "layoutMode": "VERTICAL",

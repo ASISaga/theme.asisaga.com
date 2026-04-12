@@ -3,55 +3,30 @@ layout: default
 title: Genesis Theme Demo - Futuristic Design System
 ---
 
-<!-- 
+{% assign _idx = site.data.content.index %}
+<!--
 Genesis Theme Demo - Comprehensive showcase of the ASI Saga Futuristic Design System
 This page demonstrates responsive behavior, futuristic aesthetics, and the ontological SCSS engine
-Resize the viewport to test responsive breakpoints and container queries
+Content sourced from: _data/content/index.yml
 -->
 <div class="genesis-demo">
 	<!-- Samples Links -->
 	<section id="samples-links" class="demo-section demo-section--compact">
 		<header class="section-header">
-			<h2>Samples</h2>
-			<p>Quick links to example pages in this theme.</p>
+			<h2>{{ _idx.samples.heading }}</h2>
+			<p>{{ _idx.samples.description }}</p>
 		</header>
 		<div class="samples-list">
 			<ul>
-				<li><strong>Application:</strong>
+				{% for category in _idx.samples.categories %}
+				<li><strong>{{ category.label }}:</strong>
 					<ul>
-						<li><a href="/samples/application/chatroom.html">Chatroom</a></li>
-						<li><a href="/samples/application/dashboard.html">Dashboard</a></li>
-						<li><a href="/samples/application/search.html">Search</a></li>
-						<li><a href="/samples/application/settings.html">Settings</a></li>
+						{% for item in category.items %}
+						<li><a href="{{ item.url }}">{{ item.title }}</a></li>
+						{% endfor %}
 					</ul>
 				</li>
-				<li><strong>Content-driven:</strong>
-					<ul>
-						<li><a href="/samples/content-driven/archive.html">Archive</a></li>
-						<li><a href="/samples/content-driven/article.html">Article</a></li>
-						<li><a href="/samples/content-driven/post.html">Post</a></li>
-						<li><a href="/samples/content-driven/profile.html">Profile</a></li>
-					</ul>
-				</li>
-				<li><strong>Knowledge:</strong>
-					<ul>
-						<li><a href="/samples/knowledge/docs.html">Docs</a></li>
-						<li><a href="/samples/knowledge/faq.html">FAQ</a></li>
-					</ul>
-				</li>
-				<li><strong>Marketing:</strong>
-					<ul>
-						<li><a href="/samples/marketing/landing.html">Landing</a></li>
-						<li><a href="/samples/marketing/gallery.html">Gallery</a></li>
-						<li><a href="/samples/marketing/form.html">Form</a></li>
-					</ul>
-				</li>
-				<li><strong>Utility:</strong>
-					<ul>
-						<li><a href="/samples/utility/404.html">404</a></li>
-						<li><a href="/samples/utility/splash.html">Splash</a></li>
-					</ul>
-				</li>
+				{% endfor %}
 			</ul>
 		</div>
 	</section>
@@ -63,13 +38,11 @@ Resize the viewport to test responsive breakpoints and container queries
 			<div class="consciousness-glow"></div>
 		</div>
 		<div class="hero-content genesis-viewport">
-			<h1 class="hero-title">Genesis Design System</h1>
-			<p class="hero-subtitle">
-				A futuristic, consciousness-expanding design language for the age of Artificial Superintelligence
-			</p>
+			<h1 class="hero-title">{{ _idx.hero.title }}</h1>
+			<p class="hero-subtitle">{{ _idx.hero.subtitle }}</p>
 			<div class="hero-actions">
-				<a href="#components" class="btn-genesis-primary">Explore Components</a>
-				<a href="#responsive" class="btn-genesis-secondary">View Responsive</a>
+				<a href="{{ _idx.hero.primary_action.url }}" class="btn-genesis-primary">{{ _idx.hero.primary_action.text }}</a>
+				<a href="{{ _idx.hero.secondary_action.url }}" class="btn-genesis-secondary">{{ _idx.hero.secondary_action.text }}</a>
 			</div>
 		</div>
 		<div class="scroll-indicator" aria-hidden="true">
@@ -81,48 +54,19 @@ Resize the viewport to test responsive breakpoints and container queries
 	<section id="responsive" class="demo-section">
 		<div class="consciousness-viewport">
 			<header class="section-header">
-				<h2>Responsive Grid System</h2>
-				<p>Container query-aware layouts that adapt intelligently across all devices</p>
+				<h2>{{ _idx.grid.heading }}</h2>
+				<p>{{ _idx.grid.description }}</p>
 			</header>
 
 			<div class="bento-layout demo-grid">
-				<article class="bento-card bento-card--featured">
-					<span class="card-badge">Featured</span>
-					<h3>Distributed Environment</h3>
-					<p>Auto-fit grid that places autonomous entities in a non-linear, responsive layout. Uses container
-						queries for intelligent sizing.</p>
-					<code>@include genesis-environment('distributed')</code>
+				{% for card in _idx.grid.cards %}
+				<article class="bento-card{% if card.variant %} bento-card--{{ card.variant }}{% endif %}">
+					{% if card.badge %}<span class="card-badge">{{ card.badge }}</span>{% endif %}
+					<h3>{{ card.title }}</h3>
+					<p>{{ card.description }}</p>
+					<code>{{ card.code }}</code>
 				</article>
-
-				<article class="bento-card">
-					<h3>Primary Entity</h3>
-					<p>Fundamental objects with glassmorphism, depth shadows, and neural glow effects.</p>
-					<code>@include genesis-entity('primary')</code>
-				</article>
-
-				<article class="bento-card bento-card--neural">
-					<h3>Neural Cognition</h3>
-					<p>AI consciousness aesthetic with quantum gradients and pulse animations.</p>
-					<code>@include genesis-atmosphere('vibrant')</code>
-				</article>
-
-				<article class="bento-card">
-					<h3>Axiom Typography</h3>
-					<p>Foundational headlines with fluid scaling from 2rem to 3.5rem across viewports.</p>
-					<code>@include genesis-cognition('axiom')</code>
-				</article>
-
-				<article class="bento-card">
-					<h3>Execute Synapse</h3>
-					<p>Action buttons with WCAG 2.1 compliant 44px touch targets on mobile.</p>
-					<code>@include genesis-synapse('execute')</code>
-				</article>
-
-				<article class="bento-card bento-card--accent">
-					<h3>Transcendent State</h3>
-					<p>Scroll-triggered animations with reduced motion support.</p>
-					<code>@include genesis-state('scroll-triggered')</code>
-				</article>
+				{% endfor %}
 			</div>
 		</div>
 	</section>
@@ -131,47 +75,18 @@ Resize the viewport to test responsive breakpoints and container queries
 	<section id="typography" class="demo-section demo-section--void">
 		<div class="essence-viewport">
 			<header class="section-header">
-				<h2>Fluid Typography Scale</h2>
-				<p>Responsive type that flows naturally from mobile to ultrawide</p>
+				<h2>{{ _idx.typography.heading }}</h2>
+				<p>{{ _idx.typography.description }}</p>
 			</header>
 
 			<div class="typography-showcase">
-				<div class="type-specimen type-display">
-					<span class="type-label">Display</span>
-					<span class="type-sample">Genesis</span>
-					<span class="type-value">clamp(3.5rem, 2rem + 7.5vw, 7rem)</span>
+				{% for specimen in _idx.typography.specimens %}
+				<div class="type-specimen {{ specimen.class }}">
+					<span class="type-label">{{ specimen.label }}</span>
+					<span class="type-sample">{{ specimen.sample }}</span>
+					<span class="type-value">{{ specimen.value }}</span>
 				</div>
-
-				<div class="type-specimen type-5xl">
-					<span class="type-label">5XL (Axiom)</span>
-					<span class="type-sample">Consciousness</span>
-					<span class="type-value">clamp(3rem, 2rem + 5vw, 5rem)</span>
-				</div>
-
-				<div class="type-specimen type-4xl">
-					<span class="type-label">4XL (Title)</span>
-					<span class="type-sample">Transcendence</span>
-					<span class="type-value">clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem)</span>
-				</div>
-
-				<div class="type-specimen type-3xl">
-					<span class="type-label">3XL (Heading)</span>
-					<span class="type-sample">Infinite Possibilities</span>
-					<span class="type-value">clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem)</span>
-				</div>
-
-				<div class="type-specimen type-base">
-					<span class="type-label">Base (Discourse)</span>
-					<span class="type-sample">Standard prose for extended reading with optimal line height and measure
-						for sustained comprehension.</span>
-					<span class="type-value">clamp(1rem, 0.9rem + 0.5vw, 1.125rem)</span>
-				</div>
-
-				<div class="type-specimen type-sm">
-					<span class="type-label">Small (Gloss)</span>
-					<span class="type-sample">Annotations and metadata with accessibility-safe minimum sizing</span>
-					<span class="type-value">clamp(0.875rem, 0.8rem + 0.35vw, 0.95rem)</span>
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</section>
@@ -180,65 +95,54 @@ Resize the viewport to test responsive breakpoints and container queries
 	<section id="components" class="demo-section">
 		<div class="consciousness-viewport">
 			<header class="section-header">
-				<h2>Interactive Components</h2>
-				<p>Touch-optimized controls with quantum hover effects</p>
+				<h2>{{ _idx.components.heading }}</h2>
+				<p>{{ _idx.components.description }}</p>
 			</header>
 
 			<div class="components-grid">
 				<!-- Buttons -->
 				<div class="component-group">
-					<h3>Synapse Actions</h3>
+					<h3>{{ _idx.components.buttons.heading }}</h3>
 					<div class="button-showcase">
-						<button class="btn-genesis-primary">Execute</button>
-						<button class="btn-genesis-secondary">Inquiry</button>
-						<button class="btn-genesis-neural">Neural Link</button>
-						<button class="btn-genesis-destructive">Destructive</button>
+						{% for btn in _idx.components.buttons.items %}
+						<button class="{{ btn.class }}">{{ btn.label }}</button>
+						{% endfor %}
 					</div>
 				</div>
 
 				<!-- Form Inputs -->
 				<div class="component-group">
-					<h3>Form Inputs</h3>
+					<h3>{{ _idx.components.forms.heading }}</h3>
 					<form class="demo-form" onsubmit="return false;">
+						{% for field in _idx.components.forms.fields %}
 						<div class="form-field">
-							<label for="demo-input">Neural Input</label>
-							<input type="text" id="demo-input" placeholder="Enter consciousness stream...">
-						</div>
-						<div class="form-field">
-							<label for="demo-select">Quantum State</label>
-							<select id="demo-select">
-								<option>Superposition</option>
-								<option>Entangled</option>
-								<option>Collapsed</option>
+							<label for="{{ field.id }}">{{ field.label }}</label>
+							{% if field.type == "select" %}
+							<select id="{{ field.id }}">
+								{% for option in field.options %}
+								<option>{{ option }}</option>
+								{% endfor %}
 							</select>
+							{% elsif field.type == "textarea" %}
+							<textarea id="{{ field.id }}" rows="{{ field.rows }}" placeholder="{{ field.placeholder }}"></textarea>
+							{% else %}
+							<input type="{{ field.type }}" id="{{ field.id }}" placeholder="{{ field.placeholder }}">
+							{% endif %}
 						</div>
-						<div class="form-field">
-							<label for="demo-textarea">Consciousness Log</label>
-							<textarea id="demo-textarea" rows="3" placeholder="Document neural patterns..."></textarea>
-						</div>
+						{% endfor %}
 					</form>
 				</div>
 
 				<!-- Cards with Effects -->
 				<div class="component-group component-group--wide">
-					<h3>Entity Cards with Effects</h3>
+					<h3>{{ _idx.components.effects.heading }}</h3>
 					<div class="cards-showcase">
-						<div class="effect-card effect-card--glass">
-							<h4>Glassmorphism</h4>
-							<p>Deep consciousness depth with blur and saturation</p>
+						{% for card in _idx.components.effects.cards %}
+						<div class="effect-card effect-card--{{ card.variant }}">
+							<h4>{{ card.title }}</h4>
+							<p>{{ card.description }}</p>
 						</div>
-						<div class="effect-card effect-card--neural">
-							<h4>Neural Glow</h4>
-							<p>AI consciousness aesthetic with pulse animation</p>
-						</div>
-						<div class="effect-card effect-card--ethereal">
-							<h4>Ethereal</h4>
-							<p>Light-based transcendent transparency</p>
-						</div>
-						<div class="effect-card effect-card--gradient">
-							<h4>Quantum Gradient</h4>
-							<p>Animated mesh-like background effect</p>
-						</div>
+						{% endfor %}
 					</div>
 				</div>
 			</div>
@@ -249,22 +153,20 @@ Resize the viewport to test responsive breakpoints and container queries
 	<section id="navigation" class="demo-section demo-section--vibrant">
 		<div class="consciousness-viewport">
 			<header class="section-header">
-				<h2>Navigation Patterns</h2>
-				<p>Responsive navigation that transforms from mobile drawer to desktop horizontal</p>
+				<h2>{{ _idx.navigation.heading }}</h2>
+				<p>{{ _idx.navigation.description }}</p>
 			</header>
 
 			<div class="nav-demo">
 				<p class="demo-instruction">
-					<strong>Mobile (< 768px):</strong> Off-canvas drawer with glassmorphism overlay<br>
-							<strong>Desktop (≥ 768px):</strong> Horizontal sticky header with dropdowns
+					<strong>Mobile ({{ _idx.navigation.instruction.mobile_breakpoint }}):</strong> {{ _idx.navigation.instruction.mobile }}<br>
+					<strong>Desktop ({{ _idx.navigation.instruction.desktop_breakpoint }}):</strong> {{ _idx.navigation.instruction.desktop }}
 				</p>
 
 				<nav class="demo-nav" aria-label="Demo navigation">
-					<a href="#" class="nav-link nav-link--active">Home</a>
-					<a href="#" class="nav-link">Genesis</a>
-					<a href="#" class="nav-link">Products</a>
-					<a href="#" class="nav-link">Research</a>
-					<a href="#" class="nav-link">Contact</a>
+					{% for link in _idx.navigation.demo_links %}
+					<a href="#" class="nav-link{% if link.active %} nav-link--active{% endif %}">{{ link.label }}</a>
+					{% endfor %}
 				</nav>
 			</div>
 		</div>
@@ -274,35 +176,17 @@ Resize the viewport to test responsive breakpoints and container queries
 	<section id="accessibility" class="demo-section">
 		<div class="essence-viewport">
 			<header class="section-header">
-				<h2>Accessibility Features</h2>
-				<p>WCAG 2.1 AA compliant with enhanced keyboard and screen reader support</p>
+				<h2>{{ _idx.accessibility.heading }}</h2>
+				<p>{{ _idx.accessibility.description }}</p>
 			</header>
 
 			<ul class="accessibility-list">
+				{% for feature in _idx.accessibility.features %}
 				<li>
-					<strong>Reduced Motion:</strong>
-					Animations automatically disabled when <code>prefers-reduced-motion: reduce</code> is set
+					<strong>{{ feature.title }}:</strong>
+					{{ feature.description }}
 				</li>
-				<li>
-					<strong>High Contrast:</strong>
-					Enhanced borders and disabled glassmorphism in <code>prefers-contrast: more</code> mode
-				</li>
-				<li>
-					<strong>Touch Targets:</strong>
-					Minimum 44×44px touch targets on mobile (WCAG 2.5.5)
-				</li>
-				<li>
-					<strong>Focus Indicators:</strong>
-					Visible focus rings with 2px offset for keyboard navigation
-				</li>
-				<li>
-					<strong>Safe Area Insets:</strong>
-					Padding for notched devices using <code>env(safe-area-inset-*)</code>
-				</li>
-				<li>
-					<strong>Dynamic Viewport:</strong>
-					Using <code>100dvh</code> to account for mobile browser chrome
-				</li>
+				{% endfor %}
 			</ul>
 		</div>
 	</section>
@@ -311,13 +195,10 @@ Resize the viewport to test responsive breakpoints and container queries
 	<section id="viewport-info" class="demo-section demo-section--compact">
 		<div class="consciousness-viewport">
 			<div class="viewport-display">
-				<span class="viewport-label">Current Viewport:</span>
-				<span class="viewport-value viewport-value--xs">XS (< 480px)</span>
-						<span class="viewport-value viewport-value--sm">SM (480px – 767px)</span>
-						<span class="viewport-value viewport-value--md">MD (768px – 1023px)</span>
-						<span class="viewport-value viewport-value--lg">LG (1024px – 1439px)</span>
-						<span class="viewport-value viewport-value--xl">XL (1440px – 1919px)</span>
-						<span class="viewport-value viewport-value--2xl">2XL (≥ 1920px)</span>
+				<span class="viewport-label">{{ _idx.viewport.label }}</span>
+				{% for bp in _idx.viewport.breakpoints %}
+				<span class="viewport-value {{ bp.class }}">{{ bp.label }}</span>
+				{% endfor %}
 			</div>
 		</div>
 	</section>
