@@ -1,0 +1,190 @@
+# =============================================================================
+# Ontology Metadata — Ontological Knowledge Base (Tier 3)
+# =============================================================================
+# Purpose: Canonical descriptions of the six ontological categories that
+# structure every design and content decision in the Genesis Design System.
+# Used by demo pages, documentation, and design blueprints alike.
+#
+# Ontological Context:
+#   This file IS the ontology describing itself — the meta-layer.
+#   Each category maps to a SCSS engine in _sass/ontology/engines/.
+# =============================================================================
+
+categories:
+  environment:
+    name: "Environment"
+    icon: "fas fa-th-large"
+    emoji: "🌐"
+    intent: "Spatial organisation and layout"
+    description: "Defines how elements occupy space — grids, flex flows, reading measures."
+    scss_mixin: "genesis-environment($logic)"
+    variants:
+      - id: distributed
+        label: "Distributed"
+        description: "Auto-fit grid that places autonomous entities in a non-linear, responsive layout. Uses container queries for intelligent sizing."
+        scss: "@include genesis-environment('distributed')"
+      - id: focused
+        label: "Focused"
+        description: "Single-column reading optimised at 70ch measure."
+        scss: "@include genesis-environment('focused')"
+      - id: associative
+        label: "Associative"
+        description: "Horizontal flex layout for related items."
+        scss: "@include genesis-environment('associative')"
+      - id: chronological
+        label: "Chronological"
+        description: "Vertical timeline flow for ordered events."
+        scss: "@include genesis-environment('chronological')"
+      - id: manifest
+        label: "Manifest"
+        description: "Full-bleed container breaking out of parent constraints."
+        scss: "@include genesis-environment('manifest')"
+
+  entity:
+    name: "Entity"
+    icon: "fas fa-cube"
+    emoji: "🔷"
+    intent: "Visual presence and material properties"
+    description: "Controls the surface appearance of self-contained visual objects — cards, panels, alerts."
+    scss_mixin: "genesis-entity($nature)"
+    variants:
+      - id: primary
+        label: "Primary"
+        description: "Fundamental objects with glassmorphism, depth shadows, and neural glow effects."
+        scss: "@include genesis-entity('primary')"
+      - id: secondary
+        label: "Secondary"
+        description: "Supporting visual elements with lighter treatment."
+        scss: "@include genesis-entity('secondary')"
+      - id: imperative
+        label: "Imperative"
+        description: "High-emphasis objects demanding immediate attention."
+        scss: "@include genesis-entity('imperative')"
+      - id: latent
+        label: "Latent"
+        description: "Subtle, understated visual presence."
+        scss: "@include genesis-entity('latent')"
+      - id: aggregate
+        label: "Aggregate"
+        description: "Container for a collection of child entities."
+        scss: "@include genesis-entity('aggregate')"
+      - id: ancestral
+        label: "Ancestral"
+        description: "Heritage elements connecting to the brand foundation."
+        scss: "@include genesis-entity('ancestral')"
+
+  cognition:
+    name: "Cognition"
+    icon: "fas fa-brain"
+    emoji: "🧠"
+    intent: "Typography and information voice"
+    description: "Maps text to its communicative intent — headlines, body prose, metadata, code."
+    scss_mixin: "genesis-cognition($intent)"
+    variants:
+      - id: axiom
+        label: "Axiom"
+        description: "Foundational headlines with fluid scaling from 2rem to 3.5rem across viewports."
+        scss: "@include genesis-cognition('axiom')"
+      - id: discourse
+        label: "Discourse"
+        description: "Standard prose for extended reading with optimal line height and measure."
+        scss: "@include genesis-cognition('discourse')"
+      - id: protocol
+        label: "Protocol"
+        description: "Monospaced technical content — code, commands, API references."
+        scss: "@include genesis-cognition('protocol')"
+      - id: gloss
+        label: "Gloss"
+        description: "Annotations, metadata, and secondary information."
+        scss: "@include genesis-cognition('gloss')"
+      - id: motive
+        label: "Motive"
+        description: "Motivational, persuasive text — subtitles, taglines."
+        scss: "@include genesis-cognition('motive')"
+      - id: quantum
+        label: "Quantum"
+        description: "Tags, labels, chips — small categorical markers."
+        scss: "@include genesis-cognition('quantum')"
+
+  synapse:
+    name: "Synapse"
+    icon: "fas fa-bolt"
+    emoji: "⚡"
+    intent: "Interaction and navigation"
+    description: "Defines how elements respond to user intent — clicks, hovers, navigation."
+    scss_mixin: "genesis-synapse($vector)"
+    variants:
+      - id: navigate
+        label: "Navigate"
+        description: "Links and wayfinding elements with hover underlines."
+        scss: "@include genesis-synapse('navigate')"
+      - id: execute
+        label: "Execute"
+        description: "Action buttons with WCAG 2.1 compliant 44px touch targets on mobile."
+        scss: "@include genesis-synapse('execute')"
+      - id: inquiry
+        label: "Inquiry"
+        description: "Form inputs and search — elements that collect user input."
+        scss: "@include genesis-synapse('inquiry')"
+      - id: destructive
+        label: "Destructive"
+        description: "Irreversible actions requiring confirmation."
+        scss: "@include genesis-synapse('destructive')"
+      - id: social
+        label: "Social"
+        description: "Social sharing and community connection points."
+        scss: "@include genesis-synapse('social')"
+
+  state:
+    name: "State"
+    icon: "fas fa-clock"
+    emoji: "⏳"
+    intent: "Temporal conditions and lifecycle"
+    description: "Communicates where an element sits in its lifecycle — loading, verified, archived."
+    scss_mixin: "genesis-state($condition)"
+    variants:
+      - id: stable
+        label: "Stable"
+        description: "Verified, production-ready state."
+        scss: "@include genesis-state('stable')"
+      - id: evolving
+        label: "Evolving"
+        description: "In-progress, loading, or transitional state."
+        scss: "@include genesis-state('evolving')"
+      - id: deprecated
+        label: "Deprecated"
+        description: "Retired or superseded — visually de-emphasised."
+        scss: "@include genesis-state('deprecated')"
+      - id: locked
+        label: "Locked"
+        description: "Immutable, read-only state."
+        scss: "@include genesis-state('locked')"
+      - id: simulated
+        label: "Simulated"
+        description: "Preview or sandbox state."
+        scss: "@include genesis-state('simulated')"
+
+  atmosphere:
+    name: "Atmosphere"
+    icon: "fas fa-cloud"
+    emoji: "🌌"
+    intent: "Sensory texture and emotional tone"
+    description: "Sets the mood of a container — neutral clarity, cosmic depth, transcendent glow."
+    scss_mixin: "genesis-atmosphere($vibe)"
+    variants:
+      - id: neutral
+        label: "Neutral"
+        description: "Clean, light surface — the default reading environment."
+        scss: "@include genesis-atmosphere('neutral')"
+      - id: ethereal
+        label: "Ethereal"
+        description: "Light-based transcendent transparency."
+        scss: "@include genesis-atmosphere('ethereal')"
+      - id: void
+        label: "Void"
+        description: "Deep dark surface — cosmic depth."
+        scss: "@include genesis-atmosphere('void')"
+      - id: vibrant
+        label: "Vibrant"
+        description: "AI consciousness aesthetic with quantum gradients and pulse animations."
+        scss: "@include genesis-atmosphere('vibrant')"

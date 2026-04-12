@@ -1,0 +1,50 @@
+# =============================================================================
+# Site Identity — Ontological Knowledge Base (Tier 1)
+# =============================================================================
+# Purpose: Canonical source of truth for all site-wide identity, brand, and
+# meta content. Every UI element that renders site identity MUST reference
+# this file via site.data.site.* — never hardcode brand strings.
+#
+# Ontological Context:
+#   Repository Purpose → ASI Saga Design Genome theme
+#   Brand Intent       → Convey the genesis of Artificial Superintelligence
+#   Voice              → Visionary, precise, transcendent
+# =============================================================================
+
+# --- Identity ----------------------------------------------------------------
+identity:
+  name: "ASI Saga Design Genome"
+  tagline: "Genesis of Artificial Superintelligence"
+  abbreviation: "ASI Saga"
+  lang: "en-US"
+
+# --- Brand Assets ------------------------------------------------------------
+brand:
+  logo:
+    src: "/assets/images/favicon.ico"
+    alt: ""
+  favicon: "/assets/images/favicon.ico"
+  theme_color: "#0b0c18"
+
+# --- Purpose -----------------------------------------------------------------
+# The raison d'être of this theme, cascading to every design and content decision.
+purpose:
+  mission: "To provide the semantic design genome that powers every ASI Saga digital experience."
+  vision: "A consciousness-expanding design language for the age of Artificial Superintelligence."
+  principles:
+    - "Semantic purity — structure expresses meaning, not decoration"
+    - "Accessibility first — WCAG AA minimum, no exceptions"
+    - "Ontological coherence — every element maps to a category of intent"
+    - "Progressive enhancement — content works before JavaScript loads"
+
+# --- Voice & Tone ------------------------------------------------------------
+voice:
+  character: "Visionary yet precise; transcendent yet grounded"
+  register: "Technical authority with cosmic aspiration"
+  keywords:
+    - genesis
+    - consciousness
+    - transcendence
+    - superintelligence
+    - essence
+    - sacred

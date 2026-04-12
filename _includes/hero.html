@@ -12,6 +12,8 @@ Parameters:
 - video_url: Background video URL
 {% endcomment %}
 
+{% assign _ui = site.data.ui %}
+
 <section class="hero-section{% if include.size == 'sm' %} hero-section--sm{% elsif include.size == 'full' %} hero-section--full{% endif %}" aria-labelledby="hero-heading">
   {% if include.video_url or include.background_image %}
   <div class="hero-section__background" aria-hidden="true">
@@ -41,7 +43,7 @@ Parameters:
     {% endif %}
     
     {% if include.size == 'full' %}
-    <a href="#content" class="hero-section__scroll" aria-label="Scroll to content">
+    <a href="#content" class="hero-section__scroll" aria-label="{{ _ui.a11y.scroll_to_content }}">
       <i class="fas fa-chevron-down" aria-hidden="true"></i>
     </a>
     {% endif %}
