@@ -242,6 +242,71 @@ overrides:
     rules:
       scss/no-dollar-variables: null
 
+  # ============================================================
+  # CONCERN-SEPARATION RULES FOR _sass/design/ FILES
+  # ============================================================
+  # Each design file is restricted to a specific variable-name prefix so that
+  # tokens can never "leak" into the wrong concern file.  This prevents, for
+  # example, a colour token accidentally being declared in the typography file.
+  #
+  # The rules complement scss/no-dollar-variables (which forbids $var declarations
+  # everywhere OUTSIDE _sass/design/).  Together they enforce:
+  #   • where variables are declared  (no-dollar-variables)
+  #   • which variables belong in each file (dollar-variable-pattern per file)
+  #
+  # Generated files (run `npm run tokens:build` to regenerate):
+  #   _colors-generated.scss    → $color-*
+  #   _typography-generated.scss → $font-* | $line-height-*
+  #   _spacing-generated.scss   → $spacing-* | $border-* | $size-* | $breakpoint-*
+  #                               $transition-* | $z-index-* | $opacity-* | $component-* | $identity-*
+  #   _effects-generated.scss   → $effect-*
+  #
+  # Hand-authored files (add new variables here, never in generated files):
+  #   _dimensions.scss          → $breakpoint-* | $mobile-* | $tablet-* | $desktop-* | $space-*
+  #   _variant-maps.scss        → $genesis-*
+
+  - files:
+      - "_sass/design/_colors-generated.scss"
+    rules:
+      scss/dollar-variable-pattern:
+        - "^color-"
+        - message: "Variables in _colors-generated.scss must start with 'color-'. Move other token types to the appropriate design file."
+
+  - files:
+      - "_sass/design/_typography-generated.scss"
+    rules:
+      scss/dollar-variable-pattern:
+        - "^(font|line-height)-"
+        - message: "Variables in _typography-generated.scss must start with 'font-' or 'line-height-'. Move other token types to the appropriate design file."
+
+  - files:
+      - "_sass/design/_spacing-generated.scss"
+    rules:
+      scss/dollar-variable-pattern:
+        - "^(spacing|border|size|breakpoint|transition|z-index|opacity|component|identity)-"
+        - message: "Variables in _spacing-generated.scss must start with a spacing prefix (spacing-, border-, size-, breakpoint-, transition-, z-index-, opacity-, component-, identity-). Move other token types to the appropriate design file."
+
+  - files:
+      - "_sass/design/_effects-generated.scss"
+    rules:
+      scss/dollar-variable-pattern:
+        - "^effect-"
+        - message: "Variables in _effects-generated.scss must start with 'effect-'. Move other token types to the appropriate design file."
+
+  - files:
+      - "_sass/design/_dimensions.scss"
+    rules:
+      scss/dollar-variable-pattern:
+        - "^(breakpoint|mobile|tablet|desktop|space)-"
+        - message: "Variables in _dimensions.scss must start with a dimension prefix (breakpoint-, mobile-, tablet-, desktop-, space-). Move other token types to the appropriate design file."
+
+  - files:
+      - "_sass/design/_variant-maps.scss"
+    rules:
+      scss/dollar-variable-pattern:
+        - "^genesis-"
+        - message: "Variables in _variant-maps.scss must start with 'genesis-'. Move other token types to the appropriate design file."
+
   # Enforce design-token usage for colour values in layout SCSS.
   # Raw oklch() calls (and hex / rgb() / hsl()) in layout files indicate a missing token.
   # All colour values must be referenced via $variable defined in _sass/design/_colors.scss.

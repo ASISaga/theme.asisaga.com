@@ -55,6 +55,10 @@
 @import "design/spacing-generated";    // Spacing, border-radius, border-width, sizes, transitions, z-index, opacity, components
 @import "design/effects-generated";    // Shadows, glass surfaces, glows, blur, easing, durations
 
+// Non-tokenisable design variables (hand-authored, depend on generated tokens above)
+@import "design/dimensions";           // Breakpoint aliases, $breakpoint-map, fluid $space-* (clamp-based)
+@import "design/variant-maps";         // $genesis-* ontology variant maps (used by component engine)
+
 // Utilities & Mixins (in engines/utilities/ — infrastructure)
 @import "engines/utilities/mixins";           // Core Sass mixins
 @import "engines/utilities/semantic-mixins";  // Semantic mixins
@@ -63,8 +67,7 @@
 @import "engines/utilities/dimension-mixins"; // Dimension, spacing, padding/margin mixins
 @import "engines/utilities/common";           // Common utility styles
 
-// Variant Maps (must come before engines that reference them)
-@import "engines/variant-maps";
+// Variant Maps (moved to design/variant-maps — import above in the design block)
 
 // Typography & Theme CSS Rules
 @import "engines/typography-rules";    // Heading, body, link, button, form styles
