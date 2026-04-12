@@ -526,7 +526,9 @@
 // @import url('https://unpkg.com/aos@next/dist/aos.css');
 // AOS CDN: https://unpkg.com/aos@next/dist/aos.css
 
-// All animation timing token variables are defined in _sass/design/_spacing-generated.scss (via _design/tokens/*.json).
+// All animation opacity tokens ($opacity-essence-flow, etc.) and timing
+// tokens ($transition-fast, $transition-consciousness, etc.) are generated in
+// _sass/design/_spacing-generated.scss (via _design/tokens/4-spacing.json).
 
 // --------------------------------------------
 // Animation Mixins - Standardized animations
