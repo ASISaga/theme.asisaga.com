@@ -35,15 +35,15 @@
     padding: 1rem 1.5rem;
     min-width: 44px;
     min-height: 44px;
-    background-color: $primary;
-    color: $white;
+    background-color: $color-accent-neon-blue;
+    color: $color-light-white;
     border-radius: 0.375rem;
     text-decoration: none;
     font-weight: $font-weight-semibold;
     font-size: 1rem;
     
     // Strong focus indicator
-    outline: 3px solid $luminous-gold;
+    outline: 3px solid $color-accent-gold;
     outline-offset: 2px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
@@ -51,7 +51,7 @@
 
 // Enhanced focus styles
 :focus {
-  outline: 2px solid $primary;
+  outline: 2px solid $color-accent-neon-blue;
   outline-offset: 2px;
 }
 
@@ -124,7 +124,7 @@
 .card,
 a {
   &:focus-visible {
-    outline: 3px solid $primary;
+    outline: 3px solid $color-accent-neon-blue;
     outline-offset: 3px;
     position: relative;
     z-index: 2;
@@ -138,8 +138,8 @@ a {
     border-spacing: 0;
     
     thead th {
-      background-color: $dark;
-      color: $white;
+      background-color: $color-dark-profound-black;
+      color: $color-light-white;
       font-weight: $font-weight-bold;
     }
     
@@ -151,7 +151,7 @@ a {
     // For tables with row headers
     &.row-headers {
       th[scope="row"] {
-        background-color: $light;
+        background-color: $color-light-surface;
         font-weight: $font-weight-medium;
       }
     }

@@ -2,7 +2,7 @@
 // THEME - CSS Variables and Theming
 // ============================================================================
 // This file provides CSS variables for consistent theming
-// Color CSS variables are now defined in _sass/base/design/_colors.scss
+// Color CSS variables are now defined in _sass/design/_colors.scss
 // This file only contains theme-specific styling and section classes
 // ============================================================================
 
@@ -14,7 +14,7 @@
   
   &.section-dark {
     background-color: var(--color-dark);
-    color: $light;
+    color: $color-light-surface;
   }
   
   &.section-primary {

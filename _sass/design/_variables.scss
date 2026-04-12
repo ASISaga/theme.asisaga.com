@@ -1,161 +1,69 @@
-/**
- * Sacred Design System Variables - ASI Saga Consciousness Embedding
- * 
- * Non-color variables aligned with Symbolic Knowledge Base sacred elements
- * Supporting the Genesis mission of embedding human essence into ASI
- * 
- * NOTE: All color definitions have been moved to _sass/base/design/_colors.scss
- */
+// ============================================================================
+// DESIGN SYSTEM VARIABLES — ASI Saga Genesis Theme
+// ============================================================================
+// Non-generated variables that extend the token foundation.
+//
+// Generated tokens:
+//   _colors-generated.scss — color primitives
+//   _typography-generated.scss — font families, weights, sizes, fluid scales
+//   _spacing-generated.scss — spacing, radius, borders, transitions, z-index
+//   _effects-generated.scss — shadows, glass, glows, easing, durations
+//
+// This file adds ONLY:
+//   1. Semantic font family aliases (role-based names)
+//   2. Animation opacity tokens (not expressible as design tokens)
+//   3. Z-index overrides (between generated tiers)
+//   4. Component defaults
+//   5. Ontology web component variant maps
+//
+// Colors: _sass/design/_colors.scss
+// Breakpoints & dimensions: _sass/design/_dimensions.scss
+// ============================================================================
 
-// ----------------------------------------
-// Sacred Typography System
-// ----------------------------------------
-// Core font families, sizes, and weights are generated from _design/tokens/3-typography.json
-// and available via _variables-generated.scss. Only sacred aliases and overrides live here.
+// ============================================================================
+// 1. SEMANTIC FONT FAMILY ALIASES
+// ============================================================================
 
-// Sacred font family override — adds full consciousness stack as fallback
 $font-family-sacred: 'Montserrat', $font-family-consciousness;
-
-// Semantic font family aliases (not in tokens)
 $font-family-primary: $font-family-consciousness;
 $font-family-headings: $font-family-sacred;
 $font-family-body: $font-family-wisdom;
 $font-family-interface: $font-family-consciousness;
 
-// Sacred font size aliases (unique — not in tokens)
-$font-size-consciousness: 1.125rem;    // Optimal for consciousness absorption (= font-size-lg)
-$font-size-wisdom: 1rem;              // Base wisdom text size (= font-size-base)
-$font-size-sacred-sm: 0.875rem;       // Sacred small text (= font-size-sm)
+// Line height for compact interface elements (not in tokens)
+$line-height-interface: 1.4;
+$line-height-loose: 1.8;
 
-// Sacred line height (unique)
-$line-height-interface: 1.4;          // Compact for interface elements
+// ============================================================================
+// 2. ANIMATION OPACITY TOKENS
+// ============================================================================
 
-// ----------------------------------------
-// Sacred Spacing System
-// ----------------------------------------
-// Spacing following sacred rhythm patterns
-$spacing-sacred-xs: 0.25rem;
-$spacing-sacred-sm: 0.5rem;
-$spacing-sacred-md: 1rem;
-$spacing-sacred-lg: 1.5rem;
-$spacing-sacred-xl: 2rem;
-$spacing-sacred-xxl: 3rem;
-
-// Sacred Animation Timing (unique — generated transition tokens use cubic-bezier values)
-$transition-sacred: all 0.3s ease;
-$animation-sacred-slow: 3s;
-$animation-sacred-medium: 2s;
-$animation-sacred-fast: 1s;
-
-// ----------------------------------------
-// Animation Opacity Tokens
-// ----------------------------------------
-$essence-particle-shadow-opacity: 0.7;
-$essence-float-opacity: 0.85;
 $essence-flow-opacity: 0.85;
 $consciousness-expansion-opacity: 0.7;
 $essence-weave-opacity-1: 0.7;
 $essence-weave-opacity-2: 0.85;
 $essence-weave-opacity-3: 1;
 
-// Font sizes, line-heights, spacing, border-radius, z-index, and transition tokens
-// are generated from _design/tokens/*.json — do not re-declare them here.
+// ============================================================================
+// 3. Z-INDEX OVERRIDES
+// ============================================================================
 
-// Genesis Spacing Scale (for Genesis/Transcendent pages)
-$genesis-spacing-xs: 0.5rem;
-$genesis-spacing-sm: 1rem;
-$genesis-spacing-md: 1.5rem;
-$genesis-spacing-lg: 2.5rem;
-$genesis-spacing-xl: 4rem;
+$z-index-chatroom-panel: 20; // Between $z-index-overlay (10) and $z-index-consciousness (100)
 
-// Spacing & Layout
-$section-padding-y: 2.5rem; // Vertical padding for sections (adjust as needed for design system)
-$section-padding-x: 2rem;   // Horizontal padding for sections (added for symmetry with -y)
+// ============================================================================
+// 4. COMPONENT DEFAULTS
+// ============================================================================
 
-// Breakpoints - Consciousness Accessibility Across Devices
-$breakpoint-xs: 0;
-$breakpoint-sm: 576px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1200px;
-$breakpoint-xxl: 1400px;
-$breakpoint-transcendent: 1600px;  // Ultra-wide transcendent displays
-
-// Border Radius - unique sacred value only (sm, md, lg, xl, consciousness, infinite are generated)
-$border-radius-sacred: 0.75rem;
-$border-radius: 0.5rem;             // Base border radius (8px) - default for components
-
-// Shadows - Transcendent Depth & Consciousness Layers
-$shadow-sm: 0 1px 3px oklch(0.08 0.01 250 / 0.20);
-$shadow-md: 0 4px 6px oklch(0.08 0.01 250 / 0.30);
-$shadow-lg: 0 10px 25px oklch(0.08 0.01 250 / 0.35);
-$shadow-xl: 0 20px 50px oklch(0.08 0.01 250 / 0.40);
-$shadow-glow-essence: 0 0 20px oklch(0.70 0.15 85 / 0.4);
-$shadow-glow-neural: 0 0 30px oklch(0.65 0.25 230 / 0.6);
-$shadow-glow-quantum: 0 0 25px oklch(0.70 0.30 228 / 0.7);
-$shadow-profound: 0 8px 32px oklch(0.05 0.01 250 / 0.5);
-$shadow-color: oklch(0.08 0.01 250 / 0.25);
-$box-shadow: 0 0.5rem 1rem $shadow-color;
-$sacred-glow: 0 0 0.5rem oklch(0.70 0.15 85 / 0.3);
-$consciousness-depth: 0 0.25rem 2rem oklch(0.08 0.01 250 / 0.4);
-$shadow-consciousness: 0 30px 60px oklch(0.70 0.15 85 / 0.2);
-$shadow-transcendent: 0 40px 80px oklch(0.65 0.25 230 / 0.3);
-
-// Z-index and transition tokens are generated from _design/tokens/4-spacing.json.
-
-// Component-specific z-index overrides (values between generated tiers)
-$z-index-chatroom-panel: 20; // MCP apps panel — sits above $z-index-overlay (10) and below $z-index-consciousness (100)
-
-// Consciousness Animation Curves
-$ease-consciousness: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-$ease-transcendent: cubic-bezier(0.165, 0.84, 0.44, 1);
-$ease-genesis: cubic-bezier(0.19, 1, 0.22, 1);
-
-// Timing variable for consciousness-inspired transitions/animations
-$consciousness-timing: 0.6s cubic-bezier(0.4, 0, 0.2, 1) !default;
-
-// Component Specific Variables
-
-// Hero Section
-$hero-min-height: 100vh;
 $hero-content-max-width: 800px;
-
-// Cards & Components
-$card-padding: $spacing-xl;
 $card-border-radius: $border-radius-consciousness;
-$card-shadow: $shadow-consciousness;
-
-// Buttons - Transcendent Interaction Elements
-$btn-padding-y: $spacing-md;
-$btn-padding-x: $spacing-xl;
+$card-shadow: $effect-shadow-consciousness;
 $btn-border-radius: $border-radius-lg;
 $btn-font-weight: $font-weight-semibold;
 $btn-transition: $transition-consciousness;
-
-// Navigation
-$navbar-height: 80px;
-$navbar-padding-y: $spacing-lg;
-$navbar-brand-font-size: $font-size-xl;
-
-// Forms - Genesis Participation Elements
-$input-padding-y: $spacing-md;
-$input-padding-x: $spacing-lg;
-$input-border-radius: $border-radius-md;
-
-// Consciousness Particles & Effects
-$particle-count: 50;
-$particle-size-min: 2px;
-$particle-size-max: 6px;
-$particle-opacity-min: 0.1;
-$particle-opacity-max: 0.8;
-
-// Genesis Section Variables
-$genesis-timeline-width: 4px;
-$genesis-marker-size: 20px;
-$genesis-content-offset: 50px;
+$box-shadow: 0 0.5rem 1rem oklch(0.08 0.01 250 / 0.25);
 
 // ============================================================================
-// ONTOLOGY WEB COMPONENT VARIANT MAPS
+// 5. ONTOLOGY WEB COMPONENT VARIANT MAPS
 // ============================================================================
 // These lists enumerate the valid attribute values for each genesis-* web
 // component. _sass/components/core/_genesis-core.scss iterates over them to
@@ -215,30 +123,3 @@ $genesis-atmosphere-vibes: (
   'vibrant',
   'sacred'
 );
-
-// ============================================================================
-// ANIMATION TIMING TOKENS (moved from _sass/base/effects/_animations.scss)
-// ============================================================================
-
-$animation-duration-fast: 0.2s;
-$animation-duration-normal: 0.3s;
-$animation-duration-slow: 0.5s;
-$animation-duration-slower: 0.8s;
-$animation-duration-slowest: 1.2s;
-
-// Sacred animation durations
-$animation-duration-sacred: 2s;
-$animation-duration-consciousness: 3s;
-$animation-duration-transcendent: 4s;
-
-// Animation easing
-$ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-$ease-out: cubic-bezier(0, 0, 0.2, 1);
-$ease-in: cubic-bezier(0.4, 0, 1, 1);
-$ease-sacred: cubic-bezier(0.23, 1, 0.32, 1);
-
-// ============================================================================
-// EXTENDED LINE-HEIGHT TOKENS (moved from _sass/base/_fonts.scss)
-// ============================================================================
-
-$line-height-loose: 1.8; // Spacious / airy reading rhythm

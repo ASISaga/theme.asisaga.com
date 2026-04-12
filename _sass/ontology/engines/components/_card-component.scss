@@ -34,7 +34,7 @@
 }
 
 // Card with accent border on left side
-@mixin accent-card-component($prefix: 'card', $border-width: 4px, $border-color: $primary) {
+@mixin accent-card-component($prefix: 'card', $border-width: 4px, $border-color: $color-accent-neon-blue) {
   @include card-component($prefix);
   
   .#{$prefix} {

@@ -98,9 +98,10 @@ All colors are defined using OKLCH color space for:
 - Consistent luminance across hues
 
 ### File Locations
-- **OKLCH Tokens:** `_sass/base/design/_variables.scss`
+- **OKLCH Token Source:** `_design/tokens/2-color.json` (edit here, then run `npm run tokens:build`)
+- **Generated Tokens:** `_sass/design/_variables-generated.scss` (DO NOT EDIT)
+- **Semantic Aliases:** `_sass/design/_colors.scss`
 - **CSS Custom Properties:** `_sass/ontology/_tokens.scss`
-- **Legacy Hex Colors:** `_sass/base/_colors.scss`
 
 ### Semantic Token Mapping
 

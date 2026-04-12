@@ -10,7 +10,7 @@
     @include genesis-state('scroll-triggered');
     position: relative;
     @include cursor-pointer;
-    border-radius: $border-radius;
+    border-radius: $border-radius-md;
     @include overflow-hidden;
     box-shadow: $box-shadow;
     @include full-height;
@@ -57,7 +57,7 @@
       @include flex-column;
       justify-content: space-between;
       padding: $spacing-md;
-      color: $white;
+      color: $color-light-white;
       opacity: 0.9;
       @include transition-smooth(opacity);
 
@@ -76,7 +76,7 @@
 
         blockquote {
           font-style: italic;
-          border-left: 3px solid $accent;
+          border-left: 3px solid $color-accent-gold;
           padding-left: $spacing-sm;
           font-size: 0.9rem;
         }
@@ -97,7 +97,7 @@
         }
 
         i {
-          color: $accent;
+          color: $color-accent-gold;
           font-size: 1.5rem;
         }
       }
@@ -108,17 +108,17 @@
   .modal-content {
     @include genesis-entity('primary');
     @include genesis-atmosphere('ethereal');
-    background-color: $light;
+    background-color: $color-light-surface;
     border: none;
-    border-radius: $border-radius;
+    border-radius: $border-radius-md;
     @include shadow-depth(0.2);
 
     .modal-header {
-      @include border-separator-bottom($border-color);
+      @include border-separator-bottom($color-border-light);
 
       .modal-title {
         @include genesis-cognition('axiom');
-        color: $primary;
+        color: $color-accent-neon-blue;
         font-weight: $font-weight-semibold;
       }
     }
@@ -129,7 +129,7 @@
     }
 
     .modal-footer {
-      @include border-separator-top($border-color);
+      @include border-separator-top($color-border-light);
     }
   }
 

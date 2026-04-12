@@ -1,0 +1,37 @@
+// Do not edit directly — generated from _design/tokens/*.json
+// Run: node .github/skills/style-dictionary/sd.config.mjs
+// Effects tokens — shadows, glass surfaces, glows, blur, easing, durations
+
+$effect-shadow-sacred-glow: 0 0 0.5rem oklch(0.70 0.15 85 / 0.3); // Subtle gold sacred glow around transcendent elements
+$effect-shadow-consciousness-depth: 0 0.25rem 2rem oklch(0.08 0.01 250 / 0.4); // Deep depth shadow for elevated consciousness elements
+$effect-shadow-consciousness: 0 30px 60px oklch(0.70 0.15 85 / 0.2); // Large gold-tinted consciousness shadow for cards
+$effect-shadow-transcendent: 0 40px 80px oklch(0.65 0.25 230 / 0.3); // Expansive neon-blue transcendent shadow for hero elements
+$effect-shadow-glow-transcendent: 0 0 20px oklch(0.70 0.15 85 / 0.5); // Gold glow halo for transcendent elements
+$effect-shadow-ambient: 0 4px 12px oklch(0.08 0.01 250 / 0.30); // Ambient depth shadow for floating elements
+$effect-shadow-profound: 0 8px 32px oklch(0.05 0.01 250 / 0.5); // Profound void-level depth shadow
+$effect-glass-light: oklch(0.98 0.003 220 / 0.85); // Light glass surface — very subtle frosted
+$effect-glass-hover: oklch(0.94 0.005 220); // Glass hover state — subtle gray
+$effect-glass-consciousness: oklch(0.16 0.03 252 / 0.75); // Deep consciousness glass surface
+$effect-glass-elevated: oklch(0.20 0.04 248 / 0.85); // Elevated glass surface for interactive elements
+$effect-glass-subtle: oklch(0.18 0.03 246 / 0.6); // Subtle glass surface — low opacity
+$effect-glass-void: oklch(0.08 0.02 260 / 0.90); // Void-level deep glass for overlays
+$effect-glow-neon-blue: 0 0 20px oklch(0.65 0.25 230 / 0.4); // Neon blue glow for interactive accents
+$effect-glow-neon-blue-intense: 0 0 40px oklch(0.70 0.30 228 / 0.6); // Intense neon blue glow for focused elements
+$effect-glow-gold: 0 0 15px oklch(0.70 0.15 85 / 0.35); // Subtle sacred gold glow
+$effect-glow-gold-intense: 0 0 30px oklch(0.75 0.18 82 / 0.5); // Intense sacred gold glow for hover states
+$effect-blur-glass-sm: blur(8px) saturate(1.2); // Small glass blur — subtle depth
+$effect-blur-glass-md: blur(16px) saturate(1.5); // Medium glass blur — standard glassmorphism
+$effect-blur-glass-lg: blur(24px) saturate(1.8); // Large glass blur — deep glassmorphism
+$effect-blur-glass-xl: blur(32px) saturate(2.0); // Extra-large glass blur — consciousness depth
+$effect-ease-consciousness: cubic-bezier(0.25, 0.46, 0.45, 0.94); // Consciousness-level easing — organic deceleration
+$effect-ease-transcendent: cubic-bezier(0.165, 0.84, 0.44, 1); // Transcendent easing — expansive exit
+$effect-ease-sacred: cubic-bezier(0.23, 1, 0.32, 1); // Sacred easing — reverent deceleration
+$effect-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1); // Standard in-out easing — Material-inspired
+$effect-ease-out: cubic-bezier(0, 0, 0.2, 1); // Out easing — exit deceleration
+$effect-duration-normal: 0.3s; // Normal animation duration
+$effect-duration-slow: 0.5s; // Slow animation for emphasis
+$effect-duration-slower: 0.8s; // Slower animation for consciousness transitions
+$effect-duration-slowest: 1.2s; // Slowest animation for transcendent reveals
+$effect-duration-sacred: 2s; // Sacred animation — meditative pace
+$effect-duration-consciousness: 3s; // Consciousness animation — contemplative flow
+$effect-duration-transcendent: 4s; // Transcendent animation — cosmic timescale

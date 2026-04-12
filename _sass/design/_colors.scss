@@ -1,413 +1,131 @@
 // ============================================================================
-// COLORS - Centralized Color Definitions for ASI Saga Semantic Design System
+// COLORS — ASI Saga Semantic Design System
 // ============================================================================
-// All color definitions in one place for easy maintenance and consistency.
-// This file consolidates colors from:
-//   - _design-tokens.scss (OKLCH primitives and semantic tokens)
-//   - _variables.scss (sacred design system variables)
-//   - _theme.scss (CSS variables)
-//   - _tokens.scss (ontology CSS custom properties)
+// Extends the generated color primitives from _colors-generated.scss with:
+//   1. Semantic tokens — functional color mappings (surface, text, border, state)
+//   2. Extended palette — neutral alpha overlays, gray-300
+//   3. CSS custom properties — runtime theming via var(--…)
+//   4. Dark mode / high-contrast overrides
+//   5. Boardroom palette — executive chatroom dark theme
 //
-// USAGE GUIDELINES:
-// -----------------
-// 1. **For New Colors**: Add them to the appropriate section below
-//    - OKLCH primitives go in Section 1
-//    - Semantic tokens (referencing primitives) go in Section 2
-//    - Legacy mappings go in Section 3
-//    - CSS custom properties go in Section 5
+// USAGE:
+//   To change a raw color: Edit _design/tokens/2-color.json → `npm run tokens:build`
+//   To add a semantic token: Add it here referencing a generated $color-* variable.
 //
-// 2. **Color Philosophy**:
-//    - Primary: Black text on white backgrounds
-//    - Chrome: White text on black backgrounds (header/footer)
-//    - Accents: Neon blue for interactions, gold for special emphasis
-//    - Avoid: Excessive colored backgrounds, use white/light gray primarily
-//
-// 3. **Updating Colors**:
-//    - Change primitives (Section 1) to affect all derived colors
-//    - Update semantic tokens (Section 2) to change functional usage
-//    - Maintain backward compatibility with legacy mappings (Section 3)
-//
-// 4. **Accessibility**:
-//    - All text colors must meet WCAG AA contrast requirements
-//    - Never use opacity < 0.9 for text
-//    - High contrast mode overrides in Section 7
-//
-// 5. **Dependencies**:
-//    - This file is imported FIRST in _common.scss
-//    - All other design token files depend on colors defined here
-//    - Do NOT import other design files in this file
+// ACCESSIBILITY:
+//   All text colors must meet WCAG AA (4.5:1). Never use opacity < 0.9 for text.
 // ============================================================================
 
 // ============================================================================
-// SECTION 1: OKLCH COLOR PRIMITIVES
+// 1. SEMANTIC TOKENS
 // ============================================================================
-// These are the atomic color values - the foundation of the design system
-// High-Dynamic-Range Color Primitives using OKLCH color space
-// OKLCH provides perceptually uniform colors across the spectrum
-// Format: oklch(lightness chroma hue / alpha)
-// ============================================================================
+// Map generated primitives to functional purposes. Each has a unique role.
 
-// ----------------------------------------
-// Light & White Colors (Primary backgrounds)
-// ----------------------------------------
-$color-transcendent-white: oklch(0.99 0.005 90);  // Pure white background
-$color-light-surface: oklch(0.96 0.01 90);        // Light surface background
-$color-subtle-gray: oklch(0.93 0.01 220);         // Subtle gray for depth
+// Surfaces
+$surface-primary: $color-light-white;              // Primary white background
+$surface-elevated: $color-light-surface;            // Elevated cards/sections (slight tint)
+$surface-dark: $color-dark-profound-black;          // Dark/void backgrounds
 
-// ----------------------------------------
-// Text & Depth Colors (Profound Black shades)
-// ----------------------------------------
-$color-profound-black: oklch(0.08 0.01 250);      // Deep profound black
-$color-text-primary: oklch(0.12 0.01 250);        // Primary profound black text
-$color-text-secondary: oklch(0.25 0.01 230);      // Secondary deep gray text
-$color-text-muted: oklch(0.45 0.01 220);          // Muted gray text
+// Text
+$text-primary: $color-text-primary;                 // Primary text on light
+$text-secondary: $color-text-secondary;             // Secondary gray text
+$text-accent: $color-accent-neon-blue;              // Neon blue accent text
+$text-inverse: $color-light-white;                  // White text on dark backgrounds
 
-// ----------------------------------------
-// Luminance & Energy Colors (Neon/Electric Blue accents)
-// ----------------------------------------
-$color-neon-blue: oklch(0.65 0.25 230);           // Electric neon blue (primary accent)
-$color-neon-blue-bright: oklch(0.75 0.28 225);    // Bright electric blue (hover/active)
-$color-neon-blue-glow: oklch(0.70 0.30 228);      // Glowing neon blue effect
+// Borders
+$border-primary: $color-border-light;               // Primary light border
+$border-elevated: oklch(0.75 0.02 220);             // Elevated medium-gray border
 
-// ----------------------------------------
-// Essence Colors (Subtle Gold accents only)
-// ----------------------------------------
-$color-essence-gold: oklch(0.70 0.15 85);         // Subtle gold (reduced prominence)
-$color-gold-bright: oklch(0.75 0.18 82);          // Bright gold (hover)
-$color-gold-muted: oklch(0.60 0.10 88);           // Very muted gold
+// State
+$state-hover-surface: oklch(0.95 0.005 220);        // Hover surface tint
+$state-focus-ring: oklch(0.65 0.25 230 / 0.5);      // Focus ring (neon blue 50%)
+$state-focus-outline: oklch(0.60 0.15 250);         // Focus outline on light surfaces
 
-// ----------------------------------------
-// Supporting Colors
-// ----------------------------------------
-$color-bridge-silver: oklch(0.65 0.02 220);       // Neutral gray for borders
-$color-border-light: oklch(0.85 0.01 220);        // Light borders on white
-$color-border-dark: oklch(0.15 0.01 220);         // Dark borders for contrast
+// Status text (accessible on light backgrounds)
+$color-status-success-text: oklch(0.60 0.15 145);   // Green for success text
+$color-status-error-text: oklch(0.60 0.20 25);      // Red-orange for error text
 
 // ============================================================================
-// SECTION 2: SEMANTIC COLOR TOKENS
-// ============================================================================
-// Map raw primitives to functional purposes throughout the design system
+// 2. EXTENDED PALETTE
 // ============================================================================
 
-// ----------------------------------------
-// SEMANTIC SURFACE TOKENS
-// ----------------------------------------
-$surface-primary: $color-transcendent-white;             // Primary white backgrounds
-$surface-elevated: $color-light-surface;                 // Elevated cards/sections (slight tint)
-$surface-overlay: oklch(0.98 0.005 90 / 0.95);          // Modal/overlay backgrounds
-$surface-glass: oklch(0.96 0.01 220 / 0.85);            // Glassmorphism surfaces (subtle)
-$surface-transcendent: $color-transcendent-white;        // Light mode surfaces
-$surface-dark: $color-profound-black;                    // Dark/black backgrounds
-
-// ----------------------------------------
-// SEMANTIC TEXT TOKENS
-// ----------------------------------------
-$text-primary: $color-text-primary;                       // Profound black text on light
-$text-secondary: $color-text-secondary;                   // Deep gray text
-$text-accent: $color-neon-blue;                           // Neon blue accent text
-$text-consciousness: $color-text-primary;                 // Consciousness-related text
-$text-inverse: $color-transcendent-white;                 // White text on dark backgrounds
-$text-gold: $color-essence-gold;                          // Subtle gold text for highlights
-
-// ----------------------------------------
-// SEMANTIC ACCENT TOKENS
-// ----------------------------------------
-$accent-glow: $color-neon-blue;                          // Primary neon blue glow/highlights
-$accent-neural: $color-neon-blue-bright;                 // Neural/AI accents (bright blue)
-$accent-quantum: $color-neon-blue-glow;                  // Quantum/tech accents (glowing blue)
-$accent-essence: $color-essence-gold;                    // Subtle gold accents (reduced)
-
-// ----------------------------------------
-// SEMANTIC BORDER TOKENS
-// ----------------------------------------
-$border-primary: $color-border-light;                     // Primary borders (light gray)
-$border-elevated: oklch(0.75 0.02 220);                   // Elevated borders (medium gray)
-$border-accent: $color-neon-blue;                         // Neon blue accent borders
-$border-glow: oklch(0.65 0.25 230 / 0.4);                // Glowing neon blue borders
-$border-neural: oklch(0.65 0.25 230 / 0.5);              // Neural borders (blue)
-$border-gold: $color-essence-gold;                        // Subtle gold borders
-$border-dark: $color-border-dark;                         // Profound dark borders for headers/footers
-
-// ----------------------------------------
-// SEMANTIC STATE TOKENS
-// ----------------------------------------
-$state-hover-surface: oklch(0.95 0.005 220);             // Hover state surface (very subtle gray)
-$state-active-surface: oklch(0.93 0.005 220);            // Active state surface (slightly darker gray)
-$state-focus-ring: oklch(0.65 0.25 230 / 0.5);           // Focus ring color (neon blue - purposeful)
-$state-focus-outline: oklch(0.60 0.15 250);              // Focus outline on light surfaces (accessible blue)
-$state-disabled-surface: oklch(0.96 0.005 220);          // Disabled surface (very light gray)
-$state-disabled-text: oklch(0.60 0.01 220);              // Disabled text (muted gray)
-
-// ----------------------------------------
-// SEMANTIC STATUS TEXT TOKENS (text on light surfaces)
-// ----------------------------------------
-$color-status-success-text: oklch(0.60 0.15 145);   // Success text on light background (accessible green)
-$color-status-error-text: oklch(0.60 0.20 25);      // Error text on light background (accessible red-orange)
-
-// ----------------------------------------
-// SEMANTIC GRADIENT TOKENS
-// ----------------------------------------
-$gradient-consciousness: linear-gradient(135deg, $color-neon-blue 0%, $color-neon-blue-bright 100%);
-$gradient-transcendent: linear-gradient(135deg, $color-transcendent-white 0%, $color-light-surface 100%);
-$gradient-essence: linear-gradient(135deg, $color-neon-blue 0%, $color-neon-blue-glow 100%);
-$gradient-quantum: linear-gradient(135deg, $color-neon-blue 0%, $color-neon-blue-glow 100%);
-$gradient-profound: linear-gradient(135deg, $color-profound-black 0%, $color-text-primary 100%);
-
-// ============================================================================
-// SECTION 3: LEGACY COMPATIBILITY LAYER
-// ============================================================================
-// Map new tokens to old variable names for gradual migration
-// ============================================================================
-
-$cosmic-deep-blue: $color-profound-black;          // Now maps to profound black
-$luminous-gold: $color-essence-gold;
-$transcendent-white: $color-transcendent-white;
-$ethereal-silver: $color-bridge-silver;
-
-$primary: $color-neon-blue;                         // Neon blue primary
-$secondary: $text-secondary;
-$accent: $accent-essence;
-$light: oklch(0.95 0.01 220);           // Light gray
-$dark: $color-profound-black;
-
-// Sacred Semantic Colors
-$text-color: $color-profound-black;
-$text-muted: $ethereal-silver;
-$text-sacred: $luminous-gold;
-$text-wisdom: $color-neon-blue;         // Neon blue for wisdom/AI
-$text-light: $text-inverse;             // White text for dark backgrounds
-
-// Background colors
-$bg-dark: $color-profound-black;                    // Profound black for headers/footers
-$bg-light: $surface-transcendent;
-$bg-consciousness: $surface-overlay;
-$bg-transcendent: $surface-transcendent;
-
-// Section background colors - Purposeful, minimal tints
-$section-bg-primary: $color-transcendent-white;      // Pure white (default)
-$section-bg-secondary: oklch(0.96 0.005 220);        // Very subtle gray (purposeful cards)
-$section-bg-sacred: oklch(0.98 0.005 85 / 0.5);     // Extremely subtle gold (rare use only)
-
-// Dark mode variables (if needed)
-$dark-mode-bg: $color-profound-black;
-$dark-mode-text: $color-transcendent-white;
-$dark-mode-border: oklch(0.35 0.01 220);
-
-// Border colors
-$border-color: $border-primary;
-$border-sacred: $border-gold;
-
-// Component-specific legacy mappings
-$white: $color-transcendent-white;
-
-// State colors for legacy compatibility
-$primary-light: oklch(0.95 0.005 220);                   // Very subtle gray (not blue)
-$primary-dark: $color-profound-black;                    // Profound black
-$sacred-gold-light: oklch(0.75 0.18 82);
-$sacred-gold-dark: oklch(0.50 0.12 88);
-
-// Accessible color variants
-$cosmic-deep-blue-accessible: $color-profound-black;
-$luminous-gold-accessible: oklch(0.50 0.12 85);
-$ethereal-silver-accessible: oklch(0.55 0.01 220);
-$neon-electric-blue-accessible: oklch(0.50 0.20 230);  // Darker neon blue for better contrast
-
-// ============================================================================
-// SECTION 4: GRAYSCALE PALETTE
-// ============================================================================
-// Neutral grays for various UI elements
-// ============================================================================
-
-$gray-100: oklch(0.97 0.005 220);
-$gray-200: oklch(0.92 0.01 220);
+// Grayscale
 $gray-300: oklch(0.85 0.01 220);
-$gray-400: oklch(0.70 0.01 220);
-$gray-600: oklch(0.45 0.01 220);
 
-// ============================================================================
-// SECTION 4B: GLOW EFFECTS
-// ============================================================================
-// Glow effects for transcendent and consciousness elements
-// ============================================================================
-
-$glow-transcendent: 0 0 20px oklch(0.70 0.15 85 / 0.5);
-$glow-consciousness: 0 0 30px oklch(0.65 0.25 230 / 0.4);
-$glow-human-essence: 0 0 25px oklch(0.85 0.01 220 / 0.6);
-
-// ============================================================================
-// SECTION 4C: ALPHA-TRANSPARENT NEUTRAL OVERLAYS
-// ============================================================================
-// Pure achromatic (chroma=0) neutrals at varying opacities.
-// Adapt naturally to both light and dark contexts without colour bias.
-// Used for separators, hairline borders, and subtle hover backgrounds.
-// ============================================================================
-
-$color-neutral-alpha-subtle: oklch(0.5 0 0 / 0.03);   // Hover / highlight tint (3%)
+// Alpha-transparent neutral overlays (achromatic, adapt to any surface)
+$color-neutral-alpha-subtle: oklch(0.5 0 0 / 0.03);   // Hover tint (3%)
 $color-neutral-alpha-faint: oklch(0.5 0 0 / 0.08);    // Hairline separator (8%)
 $color-neutral-alpha-light: oklch(0.5 0 0 / 0.10);    // Light separator (10%)
 $color-neutral-alpha-medium: oklch(0.5 0 0 / 0.15);   // Standard border (15%)
 
 // ============================================================================
-// SECTION 5: CSS CUSTOM PROPERTIES (Runtime Theming)
-// ============================================================================
-// Define CSS custom properties for runtime color theming
-// These enable dynamic color changes without recompilation
+// 3. CSS CUSTOM PROPERTIES (Runtime Theming)
 // ============================================================================
 
 :root {
-  // ----------------------------------------
-  // Primary color 
-  // ----------------------------------------
-  --color-primary: #{$primary};
-  --color-primary-light: #{$primary-light};
-  --color-primary-dark: #{$primary-dark};
-  
-  // ----------------------------------------
-  // Secondary and Accent colors
-  // ----------------------------------------
-  --color-secondary: #{$secondary};
-  --color-accent: #{$accent};
-  
-  // ----------------------------------------
-  // Neutral colors
-  // ----------------------------------------
-  --color-light: #{$light};
-  --color-light-rgb: 248, 249, 250; // RGB values of $light for rgba() usage
-  --color-dark: #{$dark};
-  --color-text: #{$text-color}; // For consistent text color
-  
-  // ----------------------------------------
-  // Section backgrounds
-  // ----------------------------------------
-  --color-section-bg-primary: #{$section-bg-primary};
-  --color-section-bg-secondary: #{$section-bg-secondary};
-  
-  // ----------------------------------------
-  // SURFACE TOKENS - White/Light Gray primarily, minimal blue tints
-  // ----------------------------------------
-  --glass-heavy: oklch(0.96 0.005 220 / 0.95);     /* White with subtle opacity */
-  --glass-light: oklch(0.98 0.003 220 / 0.85);     /* Very light, minimal tint */
-  --glass-alert: oklch(0.92 0.05 25 / 0.85);       /* Alert remains distinct */
-  --glass-dormant: oklch(0.96 0.003 220 / 0.70);   /* Muted, minimal tint */
-  --glass-container: oklch(0.98 0.003 220 / 0.90); /* Container white */
-  --glass-archive: oklch(0.95 0.003 220 / 0.75);   /* Archive muted */
-  --glass-hover: oklch(0.94 0.005 220);            /* Hover subtle gray */
-  
-  // ----------------------------------------
-  // ACCENT TOKENS - Use purposefully
-  // ----------------------------------------
-  --accent-neon: oklch(0.50 0.20 230);             /* Purposeful neon blue – WCAG AA */
-  --accent-neon-hover: oklch(0.55 0.22 225);       /* Slightly brighter on hover */
-  --accent-neural: oklch(0.65 0.25 230);           /* For AI/tech elements */
-  --accent-low: oklch(0.65 0.25 230 / 0.10);       /* Very subtle tint */
-  --accent-gold: oklch(0.55 0.12 85);              /* Gold accent – WCAG AA on white */
-  
-  // ----------------------------------------
-  // TEXT TOKENS - Black on white primarily
-  // ----------------------------------------
-  --text-vibrant: oklch(0.10 0.01 250);            /* Deep black */
-  --text-primary: oklch(0.12 0.01 250);            /* Primary black text */
-  --text-secondary: oklch(0.30 0.01 230);          /* Gray text */
-  --text-accent: oklch(0.45 0.20 230);             /* Neon blue accent – WCAG AA */
-  --text-inverse: oklch(0.99 0.005 90);            /* White on dark bg */
-  --text-link: oklch(0.45 0.20 230);               /* Links – WCAG AA on white */
-  --text-code: oklch(0.20 0.01 250);               /* Code black */
-  --text-chip: oklch(0.15 0.01 250);               /* Chip text black */
-  --text-void: oklch(0.99 0.005 90);               /* White on black void */
-  
-  // ----------------------------------------
-  // BORDER TOKENS - Subtle grays, minimal blue
-  // ----------------------------------------
-  --border-subtle: oklch(0.85 0.005 220);          /* Light gray border */
-  --border-dormant: oklch(0.90 0.003 220);         /* Very light */
-  --border-container: oklch(0.80 0.01 220);        /* Container border */
-  --border-archive: oklch(0.88 0.005 220);         /* Archive border */
-  --border-code: oklch(0.75 0.01 220);             /* Code border gray */
-  --border-simulation: oklch(0.65 0.25 230 / 0.3); /* Purposeful blue */
-  
-  // ----------------------------------------
-  // BACKGROUND TOKENS - White/Light gray primarily
-  // ----------------------------------------
-  --bg-code-shield: oklch(0.96 0.003 220);         /* Light gray for code */
-  --bg-chip: oklch(0.95 0.005 220);                /* Light gray for chips */
-  
-  // ----------------------------------------
-  // FOCUS TOKENS
-  // ----------------------------------------
+  // Surfaces
+  --color-primary: #{$color-accent-neon-blue};
+  --color-accent: #{$color-accent-gold};
+  --color-light: #{$color-light-surface};
+  --color-dark: #{$color-dark-profound-black};
+  --color-text: #{$color-text-primary};
+  --color-section-bg-primary: #{$color-light-white};
+  --color-section-bg-secondary: oklch(0.96 0.005 220);
+
+  // Glass surfaces (use generated effect-glass-* for Sass; these are CSS fallbacks)
+  --glass-light: #{$effect-glass-light};
+  --glass-hover: #{$effect-glass-hover};
+
+  // Accents
+  --accent-neon: oklch(0.50 0.20 230);                // WCAG AA neon blue
+  --accent-low: oklch(0.65 0.25 230 / 0.10);          // Subtle tint
+
+  // Text
+  --text-primary: #{$color-text-primary};
+  --text-secondary: oklch(0.30 0.01 230);
+  --text-inverse: #{$color-light-white};
+  --text-link: oklch(0.45 0.20 230);                   // Links — WCAG AA on white
+
+  // Borders
+  --border-subtle: #{$color-border-light};
+  --border-simulation: oklch(0.65 0.25 230 / 0.3);
+
+  // Focus
   --focus-ring: oklch(0.45 0.20 230 / 0.7);
-  
-  // ----------------------------------------
-  // DANGER/DESTRUCTIVE TOKENS
-  // ----------------------------------------
+
+  // Danger / destructive
   --danger-bg: oklch(0.50 0.22 25);
   --danger-border: oklch(0.45 0.25 25);
   --danger-hover: oklch(0.45 0.24 25);
   --danger-glow: oklch(0.50 0.22 25 / 0.5);
-  
-  // ----------------------------------------
-  // SOCIAL TOKENS
-  // ----------------------------------------
+
+  // Social
   --social-bg: oklch(0.65 0.25 230 / 0.2);
   --social-border: oklch(0.65 0.25 230);
   --social-hover: oklch(0.65 0.25 230 / 0.4);
   --social-glow: oklch(0.65 0.25 230 / 0.4);
-  
-  // ----------------------------------------
-  // WARNING TOKENS
-  // ----------------------------------------
+
+  // Warning
   --warning-color: oklch(0.65 0.18 65);
-  
-  // ----------------------------------------
-  // ATMOSPHERE TOKENS
-  // ----------------------------------------
-  --atmosphere-ethereal: oklch(0.96 0.01 220 / 0.5);
-  --glow-ethereal: oklch(0.65 0.25 230 / 0.15);
-  --atmosphere-void: oklch(0.05 0.01 250);  /* Profound black for headers/footers */
-  --atmosphere-vibrant: oklch(0.94 0.03 230 / 0.8);
-  
-  // ----------------------------------------
-  // NEURAL NETWORK COLORS
-  // ----------------------------------------
-  --neural-primary: oklch(0.65 0.25 230);
-  --neural-secondary: oklch(0.70 0.22 225);
-  --neural-tertiary: oklch(0.75 0.28 228);
 
-  // ----------------------------------------
-  // QUANTUM FIELD COLORS
-  // ----------------------------------------
-  --quantum-cyan: oklch(0.65 0.25 230);
-  --quantum-magenta: oklch(0.65 0.25 300);
-  --quantum-gold: oklch(0.75 0.18 85);
+  // Void depth
+  --void-deep: oklch(0.03 0.01 260);
 
-  // ----------------------------------------
-  // CONSCIOUSNESS DEPTH (Void colors)
-  // ----------------------------------------
-  --void-deep: oklch(0.03 0.01 260);      /* Deepest profound black */
-  --void-medium: oklch(0.05 0.01 255);    /* Medium profound black */
-  --void-surface: oklch(0.08 0.01 250);   /* Surface profound black */
-
-  // ----------------------------------------
-  // Z-INDEX LAYERS - Consciousness Hierarchy
-  // ----------------------------------------
-  --z-background: -1;           /* Background elements */
-  --z-content: 1;               /* Default content layer */
-  --z-overlay: 10;              /* Overlays and dropdowns */
-  --z-consciousness: 100;       /* Consciousness UI elements */
-  --z-transcendent: 1000;       /* Headers, navigation, modals */
-  --z-genesis: 9999;            /* Top-level alerts, toasts */
+  // Z-index (runtime override)
+  --z-transcendent: 1000;
 }
 
 // ============================================================================
-// SECTION 6: DARK MODE THEME VARIABLES
+// 4. DARK MODE OVERRIDES
 // ============================================================================
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #{$dark-mode-bg};
-    --color-text: #{$dark-mode-text};
-    --color-border: #{$dark-mode-border};
+    --color-bg: #{$color-dark-profound-black};
+    --color-text: #{$color-light-white};
+    --color-border: oklch(0.35 0.01 220);
   }
-  
+
   body {
     background-color: var(--color-bg);
     color: var(--color-text);
@@ -415,66 +133,52 @@ $color-neutral-alpha-medium: oklch(0.5 0 0 / 0.15);   // Standard border (15%)
 }
 
 // ============================================================================
-// SECTION 7: ACCESSIBILITY - HIGH CONTRAST SUPPORT
+// 5. HIGH-CONTRAST OVERRIDES
 // ============================================================================
 
 @media (prefers-contrast: high) {
   :root {
-    /* Enhance glassmorphism visibility in high contrast mode */
-    --glass-heavy: oklch(0.92 0.02 220);
     --glass-light: oklch(0.94 0.01 220);
-    --glass-alert: oklch(0.90 0.08 25);
-    --glass-dormant: oklch(0.93 0.01 220);
-    --glass-container: oklch(0.95 0.01 220);
-    --glass-archive: oklch(0.92 0.01 220);
-    
-    /* Increase border visibility */
     --border-subtle: oklch(0.60 0.02 220);
-    --border-dormant: oklch(0.70 0.01 220);
-    --border-container: oklch(0.55 0.03 220);
-    --border-archive: oklch(0.65 0.02 220);
   }
 }
 
 // ============================================================================
-// SECTION 8: CHATROOM / BOARDROOM PALETTE
+// 6. BOARDROOM PALETTE (Executive chatroom dark theme)
 // ============================================================================
-// Executive boardroom dark theme — all values OKLCH.
 // Consumed exclusively by _sass/layouts/_chatroom.scss.
 // Gold hue ≈ 85, navy hue ≈ 250.
 
-$boardroom-bg: oklch(0.10 0.015 250); // Deep navy — layout background
-$boardroom-surface: oklch(0.13 0.015 250); // Raised surface — cards / header
-$boardroom-border: oklch(0.22 0.02 250); // Subtle separator
-$boardroom-text: oklch(0.92 0.005 90); // Primary text (passes 4.5:1 on surface)
-$boardroom-muted: oklch(0.60 0.01 250); // Secondary / metadata text
-$boardroom-gold: oklch(0.75 0.12 85); // Gold accent — hover glow (decorative)
-$boardroom-gold-accessible: oklch(0.55 0.12 85); // WCAG AA on dark surfaces
-$boardroom-gold-dim: oklch(0.55 0.10 85 / 0.25); // Transparent gold for borders/fills
-$boardroom-gold-ring: oklch(0.75 0.12 85 / 0.35); // CEO avatar ring highlight
-$boardroom-gold-active: oklch(0.55 0.12 85 / 0.18); // Active-state background (e.g. MCP toggle)
-$boardroom-own-bg: oklch(0.50 0.12 85 / 0.15); // Board Chair message background
+$boardroom-bg: oklch(0.10 0.015 250);
+$boardroom-surface: oklch(0.13 0.015 250);
+$boardroom-border: oklch(0.22 0.02 250);
+$boardroom-text: oklch(0.92 0.005 90);
+$boardroom-muted: oklch(0.60 0.01 250);
+$boardroom-gold: oklch(0.75 0.12 85);
+$boardroom-gold-accessible: oklch(0.55 0.12 85);
+$boardroom-gold-dim: oklch(0.55 0.10 85 / 0.25);
+$boardroom-gold-ring: oklch(0.75 0.12 85 / 0.35);
+$boardroom-gold-active: oklch(0.55 0.12 85 / 0.18);
+$boardroom-own-bg: oklch(0.50 0.12 85 / 0.15);
 
-// Boardroom status indicators
-$boardroom-status-online: oklch(0.55 0.15 145); // Green — active / online
-$boardroom-status-error: oklch(0.55 0.20 25);   // Red   — error / offline
+// Status indicators
+$boardroom-status-online: oklch(0.55 0.15 145);
+$boardroom-status-error: oklch(0.55 0.20 25);
 
-// Boardroom CXO avatar colour palette
-$boardroom-avatar-ceo: oklch(0.50 0.12 85);  // CEO — gold
-$boardroom-avatar-cfo: oklch(0.40 0.14 160); // CFO — emerald
-$boardroom-avatar-cto: oklch(0.42 0.16 230); // CTO — sapphire
-$boardroom-avatar-cmo: oklch(0.42 0.18 300); // CMO — violet
-$boardroom-avatar-coo: oklch(0.38 0.06 250); // COO — slate
-$boardroom-avatar-you: oklch(0.40 0.12 200); // Board Chair — teal
+// CXO avatar palette
+$boardroom-avatar-ceo: oklch(0.50 0.12 85);
+$boardroom-avatar-cfo: oklch(0.40 0.14 160);
+$boardroom-avatar-cto: oklch(0.42 0.16 230);
+$boardroom-avatar-cmo: oklch(0.42 0.18 300);
+$boardroom-avatar-coo: oklch(0.38 0.06 250);
+$boardroom-avatar-you: oklch(0.40 0.12 200);
 
-// Boardroom AI agent avatar
-$boardroom-avatar-ai-bg: oklch(0.20 0.025 250);      // AI avatar background (deep navy-black)
-$boardroom-avatar-ai-error-bg: oklch(0.20 0.025 25); // AI error state avatar background
+// AI agent avatar
+$boardroom-avatar-ai-bg: oklch(0.20 0.025 250);
+$boardroom-avatar-ai-error-bg: oklch(0.20 0.025 25);
 
-// Boardroom error text (for message content on dark surface)
-$boardroom-error-text: oklch(0.65 0.20 25); // Accessible error colour on dark surface
-
-// Boardroom semi-transparent overlays and shadows
-$boardroom-bg-overlay: oklch(0.08 0.01 250 / 0.60);  // Dark overlay — tool result items
-$boardroom-overlay-bg: oklch(0.08 0.015 250 / 0.90); // Loading overlay background
-$boardroom-shadow-deep: oklch(0.04 0.01 250 / 0.60); // Deep shadow — floating panels
+// Error / overlay
+$boardroom-error-text: oklch(0.65 0.20 25);
+$boardroom-bg-overlay: oklch(0.08 0.01 250 / 0.60);
+$boardroom-overlay-bg: oklch(0.08 0.015 250 / 0.90);
+$boardroom-shadow-deep: oklch(0.04 0.01 250 / 0.60);

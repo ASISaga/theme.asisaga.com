@@ -1,0 +1,52 @@
+// Do not edit directly — generated from _design/tokens/*.json
+// Run: node .github/skills/style-dictionary/sd.config.mjs
+// Typography tokens — families, weights, sizes, fluid scales, line-heights
+
+$font-family-consciousness: 'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif; // Primary sans-serif for UI and body
+$font-family-wisdom: 'Crimson Text', 'Times New Roman', Georgia, serif; // Serif for narrative and wisdom text
+$font-family-sacred: 'Montserrat', sans-serif; // Display font for sacred headings
+$font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace; // Monospace font for code, terminals, and data
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-sacred: 800; // Extra-bold for sacred headings
+$font-size-xs: 0.75rem; // 12px — 3× identity.grid
+$font-size-sm: 0.875rem; // 14px
+$font-size-base: 1rem; // 16px — 4× identity.grid (root reference)
+$font-size-lg: 1.125rem; // 18px — 4.5× identity.grid
+$font-size-xl: 1.25rem; // 20px — 5× identity.grid
+$font-size-xxl: 1.5rem; // 24px — 6× identity.grid
+$font-size-3xl: 1.875rem; // 30px — 7.5× identity.grid
+$font-size-4xl: 2.25rem; // 36px — 9× identity.grid
+$font-size-5xl: 3rem; // 48px — 12× identity.grid
+$font-size-genesis: 4rem; // 64px — 16× identity.grid — Hero Genesis headlines
+$font-size-sacred-lg: 1.618rem; // φ¹ × base — identity.scale × 1rem (Golden Ratio sacred content)
+$font-size-sacred-xl: 2.618rem; // φ² × base — identity.scale² × 1rem (Golden Ratio² transcendent headers)
+$font-fluid-hero: clamp(2rem, calc(2.1429vw + 1.5714rem), 3.5rem); // Hero size — maps to --size-hero CSS custom property
+$font-fluid-title: clamp(1.5rem, calc(1.4286vw + 1.2143rem), 2.5rem); // Section title — maps to --size-title CSS custom property
+$font-fluid-body: clamp(1rem, calc(0.1786vw + 0.9643rem), 1.125rem); // Body prose — maps to --size-body CSS custom property
+$font-fluid-small: clamp(0.8rem, calc(0.1071vw + 0.7786rem), 0.875rem); // Small annotations — maps to --size-small CSS custom property
+$font-fluid-tiny: clamp(0.75rem, calc(0.0714vw + 0.7357rem), 0.8rem); // Tiny labels, chips — maps to --size-tiny CSS custom property
+$font-fluid-data: clamp(0.875rem, calc(0.1071vw + 0.8536rem), 0.95rem); // Code / data fragments — maps to --size-data CSS custom property
+$font-fluid-button: clamp(0.95rem, calc(0.1429vw + 0.9214rem), 1.05rem); // Button labels — maps to --size-button CSS custom property
+$font-fluid-h1: clamp(2.5rem, calc(2.1429vw + 2.0714rem), 4rem); // h1 — top-level heading (40–64px)
+$font-fluid-h2: clamp(2rem, calc(1.4286vw + 1.7143rem), 3rem); // h2 — section heading (32–48px)
+$font-fluid-h3: clamp(1.5rem, calc(1.0714vw + 1.2857rem), 2.25rem); // h3 — subsection heading (24–36px)
+$font-fluid-h4: clamp(1.25rem, calc(0.8929vw + 1.0714rem), 1.875rem); // h4 — card heading (20–30px)
+$font-fluid-h5: clamp(1.125rem, calc(0.5357vw + 1.0179rem), 1.5rem); // h5 — sidebar heading (18–24px)
+$font-fluid-h6: clamp(1rem, calc(0.3571vw + 0.9286rem), 1.25rem); // h6 — label heading (16–20px)
+$font-fluid-body-lg: clamp(1.125rem, calc(0.1786vw + 1.0893rem), 1.25rem); // Large body text (18–20px)
+$font-fluid-body-sm: clamp(0.875rem, calc(0.1786vw + 0.8393rem), 1rem); // Small body text (14–16px)
+$font-fluid-body-xs: clamp(0.75rem, calc(0.1786vw + 0.7143rem), 0.875rem); // Extra-small body text (12–14px)
+$font-fluid-display-xl: clamp(3.5rem, calc(3.5714vw + 2.7857rem), 6rem); // Display XL — genesis hero (56–96px)
+$font-fluid-display-lg: clamp(3rem, calc(2.8571vw + 2.4286rem), 5rem); // Display LG — landing hero (48–80px)
+$font-fluid-display-md: clamp(2.5rem, calc(2.1429vw + 2.0714rem), 4rem); // Display MD — section hero (40–64px)
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+$line-height-transcendent: 2; // Meditative, flowing content
+$line-height-sacred: 1.618; // φ — identity.scale (Golden Ratio for sacred content)
+$line-height-consciousness: 1.75; // Spacious for contemplation
+$line-height-wisdom: 1.6; // Optimal for sustained reading

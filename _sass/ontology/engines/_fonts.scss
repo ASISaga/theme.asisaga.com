@@ -8,14 +8,14 @@
 // <link rel="preconnect" href="https://fonts.googleapis.com">
 // <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-// Font Awesome is loaded via _sass/base/_fontawesome.scss (npm package)
+// Font Awesome is loaded via _sass/ontology/engines/_fontawesome.scss
 // which is imported in _sass/ontology/_index.scss
 
 // gstatic (for Google Fonts, preconnect reference)
 // <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-// All font/typography token variables are defined in _sass/base/design/_variables.scss
-// and _sass/base/design/_dimensions.scss.
+// All font/typography token variables are defined in _sass/design/_variables.scss
+// and _sass/design/_dimensions.scss.
 
 // --------------------------------------------
 // Font Mixins - Standardized typography
@@ -63,10 +63,6 @@
 
 @mixin font-base {
   @include font-size($font-size-base);
-}
-
-@mixin font-md {
-  @include font-size($font-size-md);
 }
 
 @mixin font-lg {

@@ -57,15 +57,35 @@
         "$value": "oklch(0.70 0.30 228)",
         "$description": "Glowing neon blue effect"
       },
+      "neon-blue-accessible": {
+        "$type": "color",
+        "$value": "oklch(0.50 0.20 230)",
+        "$description": "Darker neon blue — WCAG AA on white (4.5:1)"
+      },
       "gold": {
         "$type": "color",
-        "$value": "oklch(0.65 0.15 85)",
-        "$description": "Sacred gold accent — secondary accent. L=0.65 matches neon-blue for luminance parity"
+        "$value": "oklch(0.70 0.15 85)",
+        "$description": "Sacred gold accent — subtle secondary accent"
       },
       "gold-bright": {
         "$type": "color",
         "$value": "oklch(0.75 0.18 82)",
         "$description": "Bright gold — hover state"
+      },
+      "gold-muted": {
+        "$type": "color",
+        "$value": "oklch(0.60 0.10 88)",
+        "$description": "Very muted gold — minimal emphasis"
+      },
+      "gold-accessible": {
+        "$type": "color",
+        "$value": "oklch(0.50 0.12 85)",
+        "$description": "WCAG AA gold on light surfaces (4.5:1)"
+      },
+      "gold-dark": {
+        "$type": "color",
+        "$value": "oklch(0.50 0.12 88)",
+        "$description": "Dark gold for hover and contrast contexts"
       }
     },
     "border": {

@@ -6,13 +6,13 @@
 
 // Accessible focus indicator
 :focus-visible {
-  outline: 2px solid $accent;
+  outline: 2px solid $color-accent-gold;
   outline-offset: 2px;
 }
 
-// Section spacing (custom to the project)
+// Section spacing
 .section {
-  padding: $section-padding-y $section-padding-x;
+  padding: $spacing-xl $spacing-xl;
 }
 
 // --------------------------------------------

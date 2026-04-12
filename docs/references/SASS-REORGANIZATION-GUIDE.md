@@ -1,11 +1,11 @@
 # /_sass Directory Reorganization Guide
 
-**Date**: 2026-04-05  
-**Version**: 3.0 - Separation of Concerns & Technical Debt Cleanup
+**Date**: 2026-04-12  
+**Version**: 4.0 - Design Token Alignment & Architecture Clarity
 
 ## Overview
 
-The `/_sass` directory has been thoroughly reorganized for clear separation of concerns, elimination of duplication, and removal of all technical debt. This is v3.0 — backward compatibility with deprecated patterns is not maintained.
+The `/_sass` directory uses a two-layer architecture with a clear separation between generated design tokens and hand-authored semantic mappings. v4.0 aligns `_sass/design/` directly with `_design/tokens/` as the single source of truth for all raw OKLCH color values.
 
 ## Current Structure
 
@@ -14,56 +14,30 @@ _sass/
 ├── _main.scss                   # Layer 2: Full theme bundle (reference implementation)
 ├── _test-compile.scss           # SCSS compilation test entry point
 │
-├── base/                        # Foundation layer
-│   ├── _fontawesome.scss        # Font Awesome 6 (vendored in vendor/fontawesome/)
-│   ├── _fonts.scss              # @font-face declarations
-│   ├── _icons.scss              # Icon system configuration
-│   │
-│   ├── design/                  # Design tokens & visual foundation
-│   │   ├── _colors.scss              # OKLCH + semantic color tokens (centralized)
-│   │   ├── _variables-generated.scss # Generated from _design/tokens.json — DO NOT EDIT
-│   │   ├── _variables.scss           # ALL Sass variables: shadows, opacity, spacing, breakpoints
-│   │   ├── _dimensions.scss          # Spacing and sizing tokens
-│   │   ├── _typography.scss          # Unified: fluid scale + sacred families + material primitives
-│   │   └── _theme.scss               # Theme-level configuration
-│   │
-│   ├── layout/                  # Layout system
-│   │   ├── _responsive-system.scss   # Modern breakpoints, container queries, fluid spacing
-│   │   ├── _layout-wrappers.scss     # Layout containers
-│   │   └── _layout.scss              # Base layout structures
-│   │
-│   ├── utilities/               # Sass utilities
-│   │   ├── _mixins.scss              # Core Sass mixins
-│   │   ├── _semantic-mixins.scss     # Semantic mixins (buttons, gradients)
-│   │   ├── _accessibility.scss       # WCAG compliance helpers
-│   │   └── _common.scss              # Common utility styles
-│   │
-│   └── effects/                 # Visual effects
-│       ├── _animations.scss          # Core keyframe animations
-│       ├── _futuristic-effects.scss  # Glassmorphism, glows, gradients
-│       └── _ambient-layer.scss       # Sentient ambient atmosphere
+├── design/                      # Design token layer (maps to _design/tokens/*.json)
+│   ├── _colors.scss              # Semantic color aliases + extended tokens
+│   ├── _variables-generated.scss # ⚠️ Generated from _design/tokens/*.json — DO NOT EDIT
+│   ├── _variables.scss           # Sacred aliases, component tokens (unique vars only)
+│   ├── _dimensions.scss          # Breakpoints, fluid spacing, icon sizes, component dims
+│   ├── _typography.scss          # Unified: fluid scale + sacred families + material primitives
+│   └── _theme.scss               # Theme-level section classes
 │
-├── ontology/                    # Ontological Design System
-│   ├── _index.scss              # ⭐ Layer 1: Universal base import
+├── ontology/                    # Ontological Design System (Layer 1)
+│   ├── _index.scss              # ⭐ Universal base import (subdomains @import this)
 │   ├── _tokens.scss             # CSS custom properties
 │   ├── _engines.scss            # Engine layer dispatch
-│   ├── _interface.scss          # Public semantic API
-│   ├── engines/                 # 6 ontological engines
-│   │   ├── _atmosphere.scss, _cognition.scss, _entity.scss
-│   │   ├── _environment.scss, _state.scss, _synapse.scss
-│   │   └── _index.scss
-│   └── samples/                 # Usage examples (not compiled to production)
-│
-├── components/                  # Reusable UI components
-│   ├── core/                    # Core UI: header, footer, navbar, cards
-│   ├── mixins/                  # Component mixins (loaded before implementations)
-│   ├── sections/                # Page sections: hero, CTA, testimonial, timeline
-│   ├── products/                # Product-specific components
-│   ├── sacred/                  # Sacred/consciousness-themed components
-│   ├── specialized/             # Specialized: LinkedIn, base-layout, layout-styles
-│   └── web-components/          # Web component template SCSS (canonical location)
-│       ├── _index.scss
-│       ├── _product-card.scss, _testimonial-card.scss, _alert-card.scss
+│   ├── _interface.scss          # Public semantic API (genesis-* mixins)
+│   └── engines/                 # 6 engines + infrastructure
+│       ├── _atmosphere.scss, _cognition.scss, _entity.scss
+│       ├── _environment.scss, _state.scss, _synapse.scss
+│       ├── _component.scss      # Component engine dispatch
+│       ├── _fontawesome.scss    # Font Awesome 6 (vendored)
+│       ├── _fonts.scss          # @font-face + font mixins
+│       ├── _icons.scss          # Icon system
+│       ├── components/          # Component engine implementations
+│       ├── effects/             # Animations, glassmorphism, ambient layer
+│       ├── layout/              # Responsive system, layout wrappers
+│       └── utilities/           # Core mixins, semantic mixins, accessibility, common
 │
 ├── includes/                    # Mirrors _includes/ HTML hierarchy
 │   ├── _index.scss              # Aggregates all include SCSS files
@@ -71,75 +45,104 @@ _sass/
 │   ├── components/              # One-to-one with _includes/components/*.html
 │   └── layouts/                 # Include-specific layout styles
 │
-├── layouts/                     # Page layout SCSS (mirrors _layouts/*.html)
-│   ├── _bento-engine.scss       # Native CSS Grid system
-│   ├── _responsive-enhancements.scss  # Cross-layout responsive refinements
-│   └── [20+ layout files]
+├── layouts/                     # Page layout SCSS (mirrors _layouts/*.html, 20 files)
 │
 ├── demo/                        # Demo-only styles (not for subdomains)
-│   ├── _index-demo.scss
-│   └── _ontology-demo.scss
 │
 ├── samples/                     # Sample SCSS (not compiled)
 │
 └── vendor/                      # Vendored third-party
-    ├── _rfs.scss
     └── fontawesome/
 ```
 
+## Design Token Architecture (_design/ ↔ _sass/design/)
+
+```
+_design/tokens/          ──generates──▶  _sass/design/
+1-identity.json          ┐
+2-color.json             │              _variables-generated.scss
+3-typography.json        ├──────────▶   (npm run tokens:build)
+4-spacing.json           │
+5-sys.json               │
+6-ontology.json          ┘
+
+_sass/design/_colors.scss  ──aliases──▶  $color-transcendent-white: $color-light-white
+                                          $color-neon-blue: $color-accent-neon-blue
+                                          (semantic short-names → generated token names)
+```
+
+### Token Tiers
+
+| Tier | Files | Description |
+|------|-------|-------------|
+| 1 — Identity | `1-identity.json` | Golden ratio, base grid unit |
+| 2 — Primitive | `2-color.json`, `3-typography.json`, `4-spacing.json` | Raw OKLCH values, font families, spacing |
+| 3 — System | `5-sys.json` | Semantic cross-references (action, surface, text, border) |
+| 4 — Ontology | `6-ontology.json` | Atmosphere / entity / cognition / synapse mappings |
+
+### Layering in `_sass/design/`
+
+1. **`_variables-generated.scss`** — Raw primitives (auto-generated, do not edit)
+2. **`_colors.scss`** — Semantic aliases + extended color tokens (imports generated first)
+3. **`_variables.scss`** — Sacred aliases + unique component tokens
+4. **`_dimensions.scss`** — Breakpoints, fluid spacing, icon sizes (unique, un-tokenised)
+
+## v4.0 Changes (Design Token Alignment)
+
+### Import Order Fixed
+`_variables-generated.scss` is now imported before `_colors.scss` so that `_colors.scss`
+can reference generated token variables as the source of truth.
+
+### Color Primitives Moved to JSON
+Raw OKLCH color values that used to live in `_colors.scss` Section 1 are now exclusively
+defined in `_design/tokens/2-color.json`. `_colors.scss` only defines **semantic aliases**
+on top of the generated token names — no raw OKLCH duplicates.
+
+### Duplicate Declarations Removed
+- Spacing tokens `$spacing-xs` … `$spacing-3xl` removed from `_dimensions.scss` (already generated)
+- Border-width tokens `$border-width-*` removed from `_dimensions.scss` (already generated)
+- `$spacing-base` helper variable removed (was only used to compute the now-generated spacing vars)
+
+### Token Value Fix
+`color.accent.gold` updated from `oklch(0.65 …)` to `oklch(0.70 …)` to match the
+`$color-essence-gold` value used throughout the codebase.
+
+### `color.accent.gold-muted` Added
+New token `$color-accent-gold-muted: oklch(0.60 0.10 88)` added to `2-color.json`
+and aliased as `$color-gold-muted` in `_colors.scss`.
+
 ## v3.0 Changes (Separation of Concerns)
 
-### Files Removed
-
-| File | Reason |
+| File Removed | Reason |
 |------|--------|
-| `base/layout/_responsive.scss` | Deprecated legacy responsive (replaced by `_responsive-system.scss`) |
-| `ontology/_theme-layouts.scss` | Orphaned compatibility shim; imports were already in `_main.scss` |
-| `base/design/_design-tokens.scss` | Merged into `_variables.scss` (single source for all tokens) |
-| `base/design/_semantic-typography.scss` | Merged into `_typography.scss` (unified typography) |
-| `components/_product-card.scss` | Duplicate of `web-components/_product-card.scss` |
-| `components/_testimonial-card.scss` | Duplicate of `web-components/_testimonial-card.scss` |
-| `components/_alert-card.scss` | Duplicate of `web-components/_alert-card.scss` |
-| `includes/_futuristic-effects.scss` | Empty stub (comments only, no CSS output) |
-| `includes/_motion-library.scss` | Empty stub (comments only, no CSS output) |
-| `includes/_transcendent-hero.scss` | Empty stub (comments only, no CSS output) |
-| `includes/components/_template-loader.scss` | Empty stub (comments only, no CSS output) |
-
-### Files Consolidated
-
-| Before | After |
-|--------|-------|
-| `_design-tokens.scss` + `_variables.scss` | Single `_variables.scss` with all tokens |
-| `_typography.scss` + `_semantic-typography.scss` | Single `_typography.scss` with fluid scale + sacred families |
-| 3 root-level card files + `web-components/` | Single canonical location in `web-components/` |
-
-### Files Moved
-
-| Before | After |
-|--------|-------|
-| `_sass/_index-demo.scss` | `_sass/demo/_index-demo.scss` |
-| `_sass/_ontology-demo.scss` | `_sass/demo/_ontology-demo.scss` |
+| `base/design/_design-tokens.scss` | Merged into `_variables.scss` |
+| `base/design/_semantic-typography.scss` | Merged into `_typography.scss` |
+| `ontology/_theme-layouts.scss` | Orphaned compatibility shim |
+| `base/layout/_responsive.scss` | Replaced by `_responsive-system.scss` |
+| Duplicate card files in `components/` | Canonical location is `components/web-components/` |
 
 ## Two-Layer Architecture
 
 ```
 assets/css/style.scss
-├── Layer 1: ontology/index    ← Universal base (all subdomains)
+├── Layer 1: ontology/index    ← Universal base (all subdomains import this)
 └── Layer 2: _main.scss        ← Theme bundle (components, includes, layouts)
 ```
 
 ## File Location Quick Reference
 
-**Sass variables?** → `base/design/_variables.scss`  
-**Generated tokens?** → `base/design/_variables-generated.scss` (DO NOT EDIT)  
-**Colors?** → `base/design/_colors.scss`  
-**Typography?** → `base/design/_typography.scss`  
-**Animations?** → `base/effects/_animations.scss`  
-**Glassmorphism?** → `base/effects/_futuristic-effects.scss`  
-**Layout containers?** → `base/layout/_layout-wrappers.scss`  
-**Responsive mixins?** → `base/layout/_responsive-system.scss`  
-**Core mixins?** → `base/utilities/_mixins.scss`  
-**Web component cards?** → `components/web-components/`  
+**Raw color values?** → Edit `_design/tokens/2-color.json`, run `npm run tokens:build`  
+**Semantic color aliases?** → `design/_colors.scss` (Section 1)  
+**Generated tokens?** → `design/_variables-generated.scss` (⚠️ DO NOT EDIT)  
+**Sacred aliases + component vars?** → `design/_variables.scss`  
+**Breakpoints + fluid spacing?** → `design/_dimensions.scss`  
+**Typography?** → `design/_typography.scss`  
+**Animations?** → `ontology/engines/effects/_animations.scss`  
+**Glassmorphism?** → `ontology/engines/effects/_futuristic-effects.scss`  
+**Layout containers?** → `ontology/engines/layout/_layout-wrappers.scss`  
+**Responsive mixins?** → `ontology/engines/layout/_responsive-system.scss`  
+**Core mixins?** → `ontology/engines/utilities/_mixins.scss`  
+**Web component cards?** → `includes/components/web-components/`  
 **Demo styles?** → `demo/`
 
 ## Testing
@@ -149,14 +152,16 @@ npm test                        # Run all checks
 npm run test:scss               # Sass compilation
 npm run validate:scss:units     # Unit compatibility
 npm run lint:scss               # Stylelint
-npm run tokens:build            # Regenerate variables from tokens.json
+npm run tokens:build            # Regenerate _variables-generated.scss from _design/tokens/*.json
 ```
 
 ## Adding New Files
 
-**New component?** → Create in appropriate `components/` subdirectory, add import to `_main.scss`  
-**New design token?** → Add to `base/design/_variables.scss`  
-**New animation?** → Add to `base/effects/`  
+**New component?** → Create in appropriate subdirectory, add import to `_main.scss`  
+**New raw color value?** → Add to `_design/tokens/2-color.json`, run `npm run tokens:build`  
+**New semantic color alias?** → Add to `design/_colors.scss` Section 1 or 2  
+**New design token (non-color)?** → Add to `design/_variables.scss`  
+**New animation?** → Add to `ontology/engines/effects/`  
 **New layout?** → Create in `layouts/`, add import to `_main.scss`
 
 ## Related Documentation
@@ -165,3 +170,4 @@ npm run tokens:build            # Regenerate variables from tokens.json
 - `_sass/ontology/INTEGRATION-GUIDE.md` — Ontology system guide
 - `.github/instructions/scss.instructions.md` — SCSS coding standards
 - `/docs/specifications/scss-ontology-system.md` — All ontological variants
+- `_design/tokens/` — Design token source files

@@ -3,10 +3,10 @@
 // Only import icon font-face or @import rules here
 
 // Font Awesome
-// Icons are loaded from the npm package via _sass/base/_fontawesome.scss
+// Icons are loaded from the npm package via _sass/ontology/engines/_fontawesome.scss
 // which is imported by _sass/ontology/_index.scss
 
-// All icon-size token variables are defined in _sass/base/design/_dimensions.scss.
+// All icon-size token variables are defined in _sass/design/_dimensions.scss.
 
 // --------------------------------------------
 // Icon Mixins - Standardized icon styling
@@ -57,10 +57,6 @@
   @include icon-size($icon-size-feature);
 }
 
-@mixin icon-small {
-  @include icon-size($icon-size-small);
-}
-
 // Icon styling mixins
 @mixin icon-base {
   display: inline-block;
@@ -70,22 +66,22 @@
 
 @mixin icon-sacred {
   @include icon-base;
-  color: $luminous-gold;
+  color: $color-accent-gold;
 }
 
 @mixin icon-transcendent {
   @include icon-base;
-  color: $transcendent-white;
+  color: $color-light-white;
 }
 
 @mixin icon-consciousness {
   @include icon-base;
-  color: $color-neon-blue;
+  color: $color-accent-neon-blue;
 }
 
 @mixin icon-intelligence {
   @include icon-base;
-  color: $color-neon-blue;
+  color: $color-accent-neon-blue;
 }
 
 // Icon container mixins
@@ -114,7 +110,7 @@
 @mixin icon-container-transcendent($size: $icon-size-md) {
   @include icon-container($size);
   @include bg-transcendent;
-  border: 1px solid $ethereal-silver;
+  border: 1px solid $color-border-silver;
 }
 
 // Interactive icon mixins
@@ -131,7 +127,7 @@
   @include icon-interactive;
   
   &:hover {
-    color: $sacred-gold-dark;
+    color: $color-accent-gold-dark;
     filter: drop-shadow(0 0 8px oklch(0.70 0.15 85 / 0.5));
   }
 }
@@ -140,7 +136,7 @@
   @include icon-interactive;
   
   &:hover {
-    color: $primary-light;
+    color: $color-light-surface;
     filter: drop-shadow(0 0 8px oklch(0.08 0.01 250 / 0.3));
   }
 }
@@ -158,8 +154,8 @@
   @include icon-consciousness-interactive;
 }
 
-@mixin icon-small-transcendent {
-  @include icon-small;
+@mixin icon-lg-transcendent {
+  @include icon-lg;
   @include icon-transcendent;
   @include icon-interactive;
 }
