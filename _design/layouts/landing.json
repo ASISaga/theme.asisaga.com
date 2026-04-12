@@ -9,7 +9,9 @@
     "asi-saga": {
       "semantic-tag": "div",
       "motion-intent": "entry/fade-in",
-      "layout-variant": "atmosphere/vibrant"
+      "layout-variant": "atmosphere/vibrant",
+      "contentRef": "page content (caller-provided)",
+      "intent": "Convert visitors with a full-bleed hero, content sections, and final conversion CTA"
     }
   },
   "layoutMode": "VERTICAL",

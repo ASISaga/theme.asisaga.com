@@ -9,7 +9,9 @@
     "asi-saga": {
       "semantic-tag": "div",
       "motion-intent": "entry/fade-in",
-      "layout-variant": "environment/chronological"
+      "layout-variant": "environment/chronological",
+      "contentRef": "page content (caller-provided)",
+      "intent": "Present chronologically-ordered content in an infinite-scroll feed"
     }
   },
   "layoutMode": "VERTICAL",

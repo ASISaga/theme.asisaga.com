@@ -9,7 +9,9 @@
     "asi-saga": {
       "semantic-tag": "ul",
       "motion-intent": "entry/fade-in",
-      "layout-variant": "environment/associative"
+      "layout-variant": "environment/associative",
+      "contentRef": "site.data.nav.navigation",
+      "intent": "Present the primary site navigation links in a responsive horizontal list"
     }
   },
   "layoutMode": "HORIZONTAL",

@@ -9,7 +9,9 @@
     "asi-saga": {
       "semantic-tag": "div",
       "motion-intent": "entry/fade-in",
-      "layout-variant": "atmosphere/neutral"
+      "layout-variant": "atmosphere/neutral",
+      "contentRef": "site.data.ui.minimal",
+      "intent": "Display a simple error or utility page with optional error code and home link"
     }
   },
   "layoutMode": "VERTICAL",

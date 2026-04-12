@@ -9,7 +9,9 @@
     "asi-saga": {
       "semantic-tag": "div",
       "motion-intent": "entry/fade-in",
-      "layout-variant": "environment/convergent"
+      "layout-variant": "environment/convergent",
+      "contentRef": "site.data.ui.settings",
+      "intent": "Provide a tabbed settings interface with sidebar navigation and save/cancel actions"
     }
   },
   "layoutMode": "HORIZONTAL",

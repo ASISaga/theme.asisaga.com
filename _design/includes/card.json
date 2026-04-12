@@ -9,7 +9,9 @@
     "asi-saga": {
       "semantic-tag": "article",
       "motion-intent": "scroll/reveal",
-      "layout-variant": "entity/primary"
+      "layout-variant": "entity/primary",
+      "contentRef": "include.product (or caller-provided data)",
+      "intent": "Surface a content entity (post, product, feature) as a clickable card with optional image and CTA"
     }
   },
   "layoutMode": "VERTICAL",

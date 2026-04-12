@@ -9,7 +9,9 @@
     "asi-saga": {
       "semantic-tag": "div",
       "motion-intent": "entry/fade-in",
-      "layout-variant": "atmosphere/vibrant"
+      "layout-variant": "atmosphere/vibrant",
+      "contentRef": "site.data.ui.splash",
+      "intent": "Create a full-viewport splash or coming-soon page with optional countdown and email capture"
     }
   },
   "layoutMode": "VERTICAL",

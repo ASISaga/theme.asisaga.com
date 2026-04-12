@@ -9,7 +9,9 @@
     "asi-saga": {
       "semantic-tag": "div",
       "motion-intent": "entry/fade-in",
-      "layout-variant": "environment/focused"
+      "layout-variant": "environment/focused",
+      "contentRef": "site.data.ui.form, site.data.ui.forms",
+      "intent": "Guide users through a focused form submission with optional multi-step progress"
     }
   },
   "layoutMode": "VERTICAL",

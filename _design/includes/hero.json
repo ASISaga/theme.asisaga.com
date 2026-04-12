@@ -9,7 +9,9 @@
     "asi-saga": {
       "semantic-tag": "section",
       "motion-intent": "entry/fade-in",
-      "layout-variant": "entity/imperative"
+      "layout-variant": "entity/imperative",
+      "contentRef": "include.title, include.description, include.button_text",
+      "intent": "Deliver the page's primary value proposition with a headline, description, and call-to-action"
     }
   },
   "layoutMode": "VERTICAL",
