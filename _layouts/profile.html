@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+{% assign _ui = site.data.ui %}
 <genesis-environment logic="focused">
   <div class="profile-layout">
     <genesis-entity nature="primary">
@@ -63,7 +64,7 @@ layout: default
           {% if page.stats %}
           <section class="profile__stats">
             <genesis-cognition intent="axiom">
-              <h2 class="profile__stats-title">Statistics</h2>
+              <h2 class="profile__stats-title">{{ _ui.profile.statistics }}</h2>
             </genesis-cognition>
             <!-- Stats content -->
           </section>
@@ -72,7 +73,7 @@ layout: default
           {% if page.skills %}
           <section class="profile__skills">
             <genesis-cognition intent="axiom">
-              <h2 class="profile__skills-title">Skills</h2>
+              <h2 class="profile__skills-title">{{ _ui.profile.skills }}</h2>
             </genesis-cognition>
             <div class="profile__skills-list">
               {% for skill in page.skills %}

@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+{% assign _ui = site.data.ui %}
 <genesis-environment logic="focused">
   <genesis-form layout="vertical" validate="true">
     <div class="form-layout">
@@ -39,7 +40,7 @@ layout: default
           {% endif %}
           {% if page.privacy_link %}
           <genesis-synapse vector="navigate">
-            <a href="{{ page.privacy_link }}" class="form__privacy">Privacy Policy</a>
+            <a href="{{ page.privacy_link }}" class="form__privacy">{{ _ui.form.privacy_link_text }}</a>
           </genesis-synapse>
           {% endif %}
         </footer>

@@ -1,14 +1,15 @@
 ---
 layout: default
 ---
+{% assign _ui = site.data.ui %}
 <div class="docs-layout">
     <genesis-navigation type="sidebar" orientation="vertical">
       <aside class="docs-sidebar" aria-label="Documentation navigation">
         {% if page.search %}
         <genesis-search live-search="true" min-chars="2">
           <div class="docs-search">
-            <label for="docs-search" class="sr-only">Search documentation</label>
-            <input type="search" id="docs-search" class="docs-search-input" placeholder="Search docs...">
+            <label for="docs-search" class="sr-only">{{ _ui.docs.search_label }}</label>
+            <input type="search" id="docs-search" class="docs-search-input" placeholder="{{ _ui.docs.search_placeholder }}">
           </div>
         </genesis-search>
         {% endif %}
@@ -78,7 +79,7 @@ layout: default
             {% if page.prev %}
             <genesis-synapse vector="navigate">
               <a href="{{ page.prev.url }}" class="docs-pagination-link docs-pagination-link--prev">
-                <span class="docs-pagination-label">← Previous</span>
+                <span class="docs-pagination-label">{{ _ui.docs.previous }}</span>
                 <span class="docs-pagination-title">{{ page.prev.title }}</span>
               </a>
             </genesis-synapse>
@@ -87,7 +88,7 @@ layout: default
             {% if page.next %}
             <genesis-synapse vector="navigate">
               <a href="{{ page.next.url }}" class="docs-pagination-link docs-pagination-link--next">
-                <span class="docs-pagination-label">Next →</span>
+                <span class="docs-pagination-label">{{ _ui.docs.next }}</span>
                 <span class="docs-pagination-title">{{ page.next.title }}</span>
               </a>
             </genesis-synapse>
@@ -100,8 +101,8 @@ layout: default
     
     {% if page.toc %}
     <genesis-navigation type="sidebar" orientation="vertical">
-      <aside class="docs-toc" aria-label="Table of contents">
-        <h2 class="docs-toc-title">On this page</h2>
+      <aside class="docs-toc" aria-label="{{ _ui.article.toc_heading }}">
+        <h2 class="docs-toc-title">{{ _ui.docs.on_this_page }}</h2>
         <nav class="docs-toc-nav">
           {{ page.toc }}
         </nav>

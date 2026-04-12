@@ -1,6 +1,7 @@
 ---
 layout: minimal-base
 ---
+{% assign _ui = site.data.ui %}
 <genesis-atmosphere vibe="neutral">
   <genesis-entity nature="secondary">
     <div class="minimal-layout-content">
@@ -28,7 +29,7 @@ layout: minimal-base
       
       {% if page.show_home_link %}
       <genesis-synapse vector="navigate">
-        <a href="/" class="minimal-home-link">Go to Homepage</a>
+        <a href="/" class="minimal-home-link">{{ _ui.minimal.go_home }}</a>
       </genesis-synapse>
       {% endif %}
     </div>

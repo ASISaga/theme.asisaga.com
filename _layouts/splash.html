@@ -1,6 +1,7 @@
 ---
-layout: minimal-base
+layout: default
 ---
+{% assign _ui = site.data.ui %}
 <genesis-atmosphere vibe="vibrant">
   <genesis-entity nature="imperative">
     <div class="splash-layout-content">
@@ -28,20 +29,20 @@ layout: minimal-base
       <genesis-state condition="evolving">
         <div class="splash__countdown" aria-label="Countdown timer">
           <div class="splash__countdown-item">
-            <span class="splash__countdown-value" id="days" aria-label="Days">00</span>
-            <span class="splash__countdown-label">Days</span>
+            <span class="splash__countdown-value" id="days" aria-label="{{ _ui.splash.days }}">00</span>
+            <span class="splash__countdown-label">{{ _ui.splash.days }}</span>
           </div>
           <div class="splash__countdown-item">
-            <span class="splash__countdown-value" id="hours" aria-label="Hours">00</span>
-            <span class="splash__countdown-label">Hours</span>
+            <span class="splash__countdown-value" id="hours" aria-label="{{ _ui.splash.hours }}">00</span>
+            <span class="splash__countdown-label">{{ _ui.splash.hours }}</span>
           </div>
           <div class="splash__countdown-item">
-            <span class="splash__countdown-value" id="minutes" aria-label="Minutes">00</span>
-            <span class="splash__countdown-label">Minutes</span>
+            <span class="splash__countdown-value" id="minutes" aria-label="{{ _ui.splash.minutes }}">00</span>
+            <span class="splash__countdown-label">{{ _ui.splash.minutes }}</span>
           </div>
           <div class="splash__countdown-item">
-            <span class="splash__countdown-value" id="seconds" aria-label="Seconds">00</span>
-            <span class="splash__countdown-label">Seconds</span>
+            <span class="splash__countdown-value" id="seconds" aria-label="{{ _ui.splash.seconds }}">00</span>
+            <span class="splash__countdown-label">{{ _ui.splash.seconds }}</span>
           </div>
         </div>
       </genesis-state>
@@ -69,10 +70,10 @@ layout: minimal-base
       {% if page.email_capture %}
       <genesis-form layout="inline" validate="true">
         <form class="splash__email-form">
-          <label for="splash-email" class="sr-only">Email address</label>
-          <input type="email" id="splash-email" class="splash__email-input" placeholder="Enter your email" required>
+          <label for="splash-email" class="sr-only">{{ _ui.forms.email }}</label>
+          <input type="email" id="splash-email" class="splash__email-input" placeholder="{{ _ui.splash.email_placeholder }}" required>
           <genesis-synapse vector="execute">
-            <button type="submit" class="splash__email-button">{{ page.email_capture.button_text | default: "Notify Me" }}</button>
+            <button type="submit" class="splash__email-button">{{ page.email_capture.button_text | default: _ui.splash.notify_me }}</button>
           </genesis-synapse>
         </form>
       </genesis-form>

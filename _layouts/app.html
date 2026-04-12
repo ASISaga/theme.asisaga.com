@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'en-US' }}">
+<html lang="{{ site.data.site.identity.lang | default: site.lang | default: 'en-US' }}">
   {% include head.html %}
   
   <body class="app-layout">
-    <a href="#skip-target" class="skip-link">Skip to main content</a>
+    <a href="#skip-target" class="skip-link">{{ site.data.ui.a11y.skip_link }}</a>
     
     {% include header.html %}
     

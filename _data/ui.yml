@@ -84,3 +84,63 @@ archive:
 article:
   toc_heading: "Table of Contents"
   related_heading: "Related Articles"
+
+# --- Docs Chrome --------------------------------------------------------------
+docs:
+  search_placeholder: "Search docs..."
+  search_label: "Search documentation"
+  on_this_page: "On this page"
+  previous: "← Previous"
+  next: "Next →"
+
+# --- FAQ Chrome ---------------------------------------------------------------
+faq:
+  search_placeholder: "Search FAQ..."
+  search_label: "Search frequently asked questions"
+  all_filter: "All"
+  still_have_questions: "Still have questions?"
+
+# --- Post Chrome --------------------------------------------------------------
+post:
+  share_heading: "Share this post"
+  share_button: "Share"
+
+# --- Search Chrome ------------------------------------------------------------
+search:
+  default_title: "Search"
+  placeholder: "Search..."
+  submit_label: "Submit search"
+  filters_heading: "Filters"
+  results_suffix: "results found"
+
+# --- Form Chrome --------------------------------------------------------------
+form:
+  privacy_link_text: "Privacy Policy"
+
+# --- Gallery Chrome -----------------------------------------------------------
+gallery:
+  all_filter: "All"
+
+# --- Settings Chrome ----------------------------------------------------------
+settings:
+  sidebar_title: "Settings"
+  save: "Save Changes"
+  cancel: "Cancel"
+
+# --- Profile Chrome -----------------------------------------------------------
+profile:
+  statistics: "Statistics"
+  skills: "Skills"
+
+# --- Splash Chrome ------------------------------------------------------------
+splash:
+  days: "Days"
+  hours: "Hours"
+  minutes: "Minutes"
+  seconds: "Seconds"
+  email_placeholder: "Enter your email"
+  notify_me: "Notify Me"
+
+# --- Minimal / Error Chrome ---------------------------------------------------
+minimal:
+  go_home: "Go to Homepage"
