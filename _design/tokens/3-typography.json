@@ -333,49 +333,5 @@
         "$description": "Display MD — section hero (40–64px)"
       }
     }
-  },
-  "line-height": {
-    "tight": {
-      "$type": "lineHeight",
-      "$value": "1.25"
-    },
-    "normal": {
-      "$type": "lineHeight",
-      "$value": "1.5"
-    },
-    "relaxed": {
-      "$type": "lineHeight",
-      "$value": "1.75"
-    },
-    "transcendent": {
-      "$type": "lineHeight",
-      "$value": "2",
-      "$description": "Meditative, flowing content"
-    },
-    "sacred": {
-      "$type": "lineHeight",
-      "$value": "{identity.scale}",
-      "$description": "φ — identity.scale (Golden Ratio for sacred content)"
-    },
-    "consciousness": {
-      "$type": "lineHeight",
-      "$value": "1.75",
-      "$description": "Spacious for contemplation"
-    },
-    "wisdom": {
-      "$type": "lineHeight",
-      "$value": "1.6",
-      "$description": "Optimal for sustained reading"
-    },
-    "interface": {
-      "$type": "lineHeight",
-      "$value": "1.4",
-      "$description": "Compact line-height for interface elements"
-    },
-    "loose": {
-      "$type": "lineHeight",
-      "$value": "1.8",
-      "$description": "Loose line-height for spacious reading"
-    }
   }
 }

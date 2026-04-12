@@ -94,12 +94,12 @@ StyleDictionary.registerFormat({
 
 StyleDictionary.registerFormat({
   name: 'scss/genesis-typography',
-  format: genesisFormat('Typography tokens — families, weights, sizes, fluid scales, line-heights'),
+  format: genesisFormat('Typography tokens — families, weights, sizes, fluid scales'),
 });
 
 StyleDictionary.registerFormat({
   name: 'scss/genesis-spacing',
-  format: genesisFormat('Spacing tokens — spacing, border-radius, border-width, sizes, transitions, z-index'),
+  format: genesisFormat('Spacing tokens — spacing, border-radius, border-width, sizes, transitions, z-index, line-heights'),
 });
 
 StyleDictionary.registerFormat({
@@ -122,8 +122,10 @@ StyleDictionary.registerTransformGroup({
 // Token filters — categorize tokens into their output files
 // ---------------------------------------------------------------------------
 const isColor = (token) => token.path[0] === 'color' || token.path[0] === 'brand';
-const isTypography = (token) => token.path[0] === 'font' || token.path[0] === 'line-height';
+const isTypography = (token) => token.path[0] === 'font';
 const isEffect = (token) => token.path[0] === 'effect';
+// line-height is a dimension concern — it lives in _spacing-generated.scss alongside
+// spacing, border-radius, sizes, breakpoints, transitions, z-index, and line-heights.
 const isSpacing = (token) => !isColor(token) && !isTypography(token) && !isEffect(token);
 
 // ---------------------------------------------------------------------------

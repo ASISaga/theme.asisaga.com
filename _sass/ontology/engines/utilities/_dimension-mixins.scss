@@ -1,38 +1,10 @@
 // ============================================================================
 // DIMENSION MIXINS — Standardized spacing, sizing, and layout patterns
 // ============================================================================
-// Moved from _sass/design/_dimensions.scss during token normalization.
-// All variable values come from generated tokens.
+// $variable declarations (breakpoint aliases, $breakpoint-map, fluid $space-*)
+// live in _sass/design/_dimensions.scss, imported by ontology/_index.scss
+// before this file.  Only mixin definitions belong here.
 // ============================================================================
-/* stylelint-disable scss/no-dollar-variables */
-
-// Breakpoint semantic aliases (computed from generated tokens)
-$mobile-max: #{$breakpoint-md - 1px};
-$tablet-min: #{$breakpoint-md};
-$tablet-max: #{$breakpoint-lg - 1px};
-$desktop-min: #{$breakpoint-lg};
-
-// Breakpoint map for resolve-breakpoint() in _responsive-system.scss
-$breakpoint-map: (
-  xs: $breakpoint-xs,
-  sm: $breakpoint-sm,
-  md: $breakpoint-md,
-  lg: $breakpoint-lg,
-  xl: $breakpoint-xl,
-  '2xl': $breakpoint-2xl
-);
-
-// Fluid spacing scale — uses clamp() which cannot be expressed in JSON tokens
-// (tokens must be static values; clamp() requires browser-evaluated viewport units)
-$space-3xs: clamp(0.25rem, 0.5vw, 0.375rem);
-$space-2xs: clamp(0.375rem, 0.75vw, 0.5rem);
-$space-xs: clamp(0.5rem, 1vw, 0.75rem);
-$space-sm: clamp(0.75rem, 1.5vw, 1rem);
-$space-md: clamp(1rem, 2vw, 1.5rem);
-$space-lg: clamp(1.5rem, 3vw, 2rem);
-$space-xl: clamp(2rem, 4vw, 3rem);
-$space-2xl: clamp(3rem, 6vw, 4rem);
-$space-3xl: clamp(4rem, 8vw, 6rem);
 
 // --------------------------------------------
 // Margin Mixins

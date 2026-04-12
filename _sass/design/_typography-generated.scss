@@ -1,6 +1,6 @@
 // Do not edit directly — generated from _design/tokens/*.json
 // Run: node .github/skills/style-dictionary/sd.config.mjs
-// Typography tokens — families, weights, sizes, fluid scales, line-heights
+// Typography tokens — families, weights, sizes, fluid scales
 
 $font-family-consciousness: 'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif; // Primary sans-serif for UI and body
 $font-family-wisdom: 'Crimson Text', 'Times New Roman', Georgia, serif; // Serif for narrative and wisdom text
@@ -49,12 +49,3 @@ $font-fluid-body-xs: clamp(0.75rem, calc(0.1786vw + 0.7143rem), 0.875rem); // Ex
 $font-fluid-display-xl: clamp(3.5rem, calc(3.5714vw + 2.7857rem), 6rem); // Display XL — genesis hero (56–96px)
 $font-fluid-display-lg: clamp(3rem, calc(2.8571vw + 2.4286rem), 5rem); // Display LG — landing hero (48–80px)
 $font-fluid-display-md: clamp(2.5rem, calc(2.1429vw + 2.0714rem), 4rem); // Display MD — section hero (40–64px)
-$line-height-tight: 1.25;
-$line-height-normal: 1.5;
-$line-height-relaxed: 1.75;
-$line-height-transcendent: 2; // Meditative, flowing content
-$line-height-sacred: 1.618; // φ — identity.scale (Golden Ratio for sacred content)
-$line-height-consciousness: 1.75; // Spacious for contemplation
-$line-height-wisdom: 1.6; // Optimal for sustained reading
-$line-height-interface: 1.4; // Compact line-height for interface elements
-$line-height-loose: 1.8; // Loose line-height for spacious reading

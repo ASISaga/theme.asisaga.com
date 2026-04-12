@@ -1,0 +1,49 @@
+// ============================================================================
+// DESIGN DIMENSIONS — Non-tokenisable dimension variables
+// ============================================================================
+// Breakpoint aliases and fluid spacing that cannot be expressed as static JSON
+// tokens because they either reference other variables or use clamp() with
+// viewport-unit arithmetic that must be evaluated at browser runtime.
+//
+// All values are derived from the generated tokens in _spacing-generated.scss
+// which must be imported first.
+//
+// Variable naming convention (enforced by stylelint):
+//   $breakpoint-* — semantic breakpoint aliases and maps
+//   $mobile-*     — mobile-range aliases
+//   $tablet-*     — tablet-range aliases
+//   $desktop-*    — desktop-range aliases
+//   $space-*      — fluid spacing values (clamp-based)
+// ============================================================================
+
+// --------------------------------------------
+// Breakpoint semantic aliases
+// Derived from the generated $breakpoint-* token values.
+// --------------------------------------------
+$breakpoint-map: (
+  xs: $breakpoint-xs,
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  '2xl': $breakpoint-2xl
+);
+
+$mobile-max: #{$breakpoint-md - 1px};
+$tablet-min: #{$breakpoint-md};
+$tablet-max: #{$breakpoint-lg - 1px};
+$desktop-min: #{$breakpoint-lg};
+
+// --------------------------------------------
+// Fluid spacing scale
+// Uses clamp() with viewport units — cannot be expressed as static JSON tokens.
+// --------------------------------------------
+$space-3xs: clamp(0.25rem, 0.5vw, 0.375rem);
+$space-2xs: clamp(0.375rem, 0.75vw, 0.5rem);
+$space-xs: clamp(0.5rem, 1vw, 0.75rem);
+$space-sm: clamp(0.75rem, 1.5vw, 1rem);
+$space-md: clamp(1rem, 2vw, 1.5rem);
+$space-lg: clamp(1.5rem, 3vw, 2rem);
+$space-xl: clamp(2rem, 4vw, 3rem);
+$space-2xl: clamp(3rem, 6vw, 4rem);
+$space-3xl: clamp(4rem, 8vw, 6rem);
