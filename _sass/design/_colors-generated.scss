@@ -21,9 +21,50 @@ $color-accent-gold-dark: oklch(0.50 0.12 88); // Dark gold for hover and contras
 $color-border-light: oklch(0.85 0.01 220); // Light borders on white
 $color-border-dark: oklch(0.15 0.01 220); // Dark borders for contrast
 $color-border-silver: oklch(0.65 0.02 220); // Neutral gray borders
+$color-border-elevated: oklch(0.75 0.02 220); // Elevated medium-gray border
+$color-surface-primary: oklch(0.99 0.005 90); // Primary white background
+$color-surface-elevated: oklch(0.96 0.01 90); // Elevated cards/sections (slight tint)
+$color-surface-dark: oklch(0.08 0.01 250); // Dark/void backgrounds
+$color-surface-hover: oklch(0.95 0.005 220); // Hover surface tint
+$color-semantic-text-accent: oklch(0.65 0.25 230); // Neon blue accent text
+$color-semantic-text-inverse: oklch(0.99 0.005 90); // White text on dark backgrounds
+$color-semantic-focus-ring: oklch(0.65 0.25 230 / 0.5); // Focus ring (neon blue 50%)
+$color-semantic-focus-outline: oklch(0.60 0.15 250); // Focus outline on light surfaces
 $color-status-info: oklch(0.65 0.25 230); // Informational UI state accent
 $color-status-success: oklch(0.60 0.20 145); // Success UI state accent
+$color-status-success-text: oklch(0.60 0.15 145); // Green for success text on light backgrounds
 $color-status-warning: oklch(0.70 0.18 80); // Warning UI state accent
 $color-status-error: oklch(0.55 0.25 25); // Error UI state accent
+$color-status-error-text: oklch(0.60 0.20 25); // Red-orange for error text on light backgrounds
+$color-neutral-gray-300: oklch(0.85 0.01 220); // Gray-300 utility color
+$color-neutral-alpha-subtle: oklch(0.5 0 0 / 0.03); // Hover tint overlay (3%)
+$color-neutral-alpha-faint: oklch(0.5 0 0 / 0.08); // Hairline separator overlay (8%)
+$color-neutral-alpha-light: oklch(0.5 0 0 / 0.10); // Light separator overlay (10%)
+$color-neutral-alpha-medium: oklch(0.5 0 0 / 0.15); // Standard border overlay (15%)
+$color-boardroom-bg: oklch(0.10 0.015 250); // Executive boardroom background
+$color-boardroom-surface: oklch(0.13 0.015 250); // Boardroom surface
+$color-boardroom-border: oklch(0.22 0.02 250); // Boardroom border
+$color-boardroom-text: oklch(0.92 0.005 90); // Boardroom text
+$color-boardroom-muted: oklch(0.60 0.01 250); // Boardroom muted text
+$color-boardroom-gold: oklch(0.75 0.12 85); // Boardroom gold
+$color-boardroom-gold-accessible: oklch(0.55 0.12 85); // Boardroom WCAG AA gold
+$color-boardroom-gold-dim: oklch(0.55 0.10 85 / 0.25); // Boardroom dim gold
+$color-boardroom-gold-ring: oklch(0.75 0.12 85 / 0.35); // Boardroom gold ring
+$color-boardroom-gold-active: oklch(0.55 0.12 85 / 0.18); // Boardroom active gold
+$color-boardroom-own-bg: oklch(0.50 0.12 85 / 0.15); // Boardroom own message background
+$color-boardroom-status-online: oklch(0.55 0.15 145); // Boardroom online status
+$color-boardroom-status-error: oklch(0.55 0.20 25); // Boardroom error status
+$color-boardroom-avatar-ceo: oklch(0.50 0.12 85); // CEO avatar background
+$color-boardroom-avatar-cfo: oklch(0.40 0.14 160); // CFO avatar background
+$color-boardroom-avatar-cto: oklch(0.42 0.16 230); // CTO avatar background
+$color-boardroom-avatar-cmo: oklch(0.42 0.18 300); // CMO avatar background
+$color-boardroom-avatar-coo: oklch(0.38 0.06 250); // COO avatar background
+$color-boardroom-avatar-you: oklch(0.40 0.12 200); // You avatar background
+$color-boardroom-avatar-ai-bg: oklch(0.20 0.025 250); // AI agent avatar background
+$color-boardroom-avatar-ai-error-bg: oklch(0.20 0.025 25); // AI agent error avatar background
+$color-boardroom-error-text: oklch(0.65 0.20 25); // Boardroom error text
+$color-boardroom-bg-overlay: oklch(0.08 0.01 250 / 0.60); // Boardroom overlay
+$color-boardroom-overlay-bg: oklch(0.08 0.015 250 / 0.90); // Boardroom modal overlay
+$color-boardroom-shadow-deep: oklch(0.04 0.01 250 / 0.60); // Boardroom deep shadow
 $color-brand-linkedin: #0077b5; // LinkedIn brand blue
 $color-brand-linkedin-hover: #00568a; // LinkedIn brand blue hover state

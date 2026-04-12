@@ -112,6 +112,107 @@
         "$value": "3.75rem",
         "$description": "LinkedIn profile avatar size"
       }
+    },
+    "icon": {
+      "xs": {
+        "$type": "dimension",
+        "$value": "0.75rem",
+        "$description": "12px icon"
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "1rem",
+        "$description": "16px icon"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "1.5rem",
+        "$description": "24px icon"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "2rem",
+        "$description": "32px icon"
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "3rem",
+        "$description": "48px icon"
+      },
+      "2xl": {
+        "$type": "dimension",
+        "$value": "4rem",
+        "$description": "64px icon"
+      },
+      "3xl": {
+        "$type": "dimension",
+        "$value": "5rem",
+        "$description": "80px icon"
+      },
+      "hero": {
+        "$type": "dimension",
+        "$value": "6rem",
+        "$description": "96px hero icon"
+      },
+      "feature": {
+        "$type": "dimension",
+        "$value": "4rem",
+        "$description": "64px feature icon"
+      }
+    },
+    "content-width": {
+      "narrow": {
+        "$type": "dimension",
+        "$value": "48rem",
+        "$description": "768px narrow content"
+      },
+      "default": {
+        "$type": "dimension",
+        "$value": "50rem",
+        "$description": "800px default content"
+      },
+      "hero": {
+        "$type": "dimension",
+        "$value": "800px",
+        "$description": "Hero content max-width"
+      }
+    },
+    "header-logo": {
+      "$type": "dimension",
+      "$value": "2.5rem",
+      "$description": "40px header logo height"
+    }
+  },
+  "breakpoint": {
+    "xs": {
+      "$type": "dimension",
+      "$value": "0px",
+      "$description": "Extra-small — mobile baseline"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "480px",
+      "$description": "Small phones → large phones"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "768px",
+      "$description": "Phones → tablets"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "1024px",
+      "$description": "Tablets → laptops"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "1440px",
+      "$description": "Laptops → desktops"
+    },
+    "2xl": {
+      "$type": "dimension",
+      "$value": "1920px",
+      "$description": "Desktops → ultrawides"
     }
   },
   "transition": {
@@ -149,6 +250,11 @@
       "$type": "other",
       "$value": "10"
     },
+    "chatroom-panel": {
+      "$type": "other",
+      "$value": "20",
+      "$description": "Between overlay (10) and consciousness (100)"
+    },
     "consciousness": {
       "$type": "other",
       "$value": "100"
@@ -160,6 +266,55 @@
     "genesis": {
       "$type": "other",
       "$value": "9999"
+    }
+  },
+  "opacity": {
+    "essence-flow": {
+      "$type": "other",
+      "$value": "0.85",
+      "$description": "Essence flow animation opacity"
+    },
+    "consciousness-expansion": {
+      "$type": "other",
+      "$value": "0.7",
+      "$description": "Consciousness expansion animation opacity"
+    },
+    "essence-weave-1": {
+      "$type": "other",
+      "$value": "0.7",
+      "$description": "Essence weave first keyframe opacity"
+    },
+    "essence-weave-2": {
+      "$type": "other",
+      "$value": "0.85",
+      "$description": "Essence weave second keyframe opacity"
+    },
+    "essence-weave-3": {
+      "$type": "other",
+      "$value": "1",
+      "$description": "Essence weave third keyframe opacity"
+    }
+  },
+  "component": {
+    "card-border-radius": {
+      "$type": "borderRadius",
+      "$value": "{border-radius.consciousness}",
+      "$description": "Card border radius"
+    },
+    "btn-border-radius": {
+      "$type": "borderRadius",
+      "$value": "{border-radius.lg}",
+      "$description": "Button border radius"
+    },
+    "product-border-accent-width": {
+      "$type": "dimension",
+      "$value": "4px",
+      "$description": "Product accent border width"
+    },
+    "product-code-max-height": {
+      "$type": "dimension",
+      "$value": "31.25rem",
+      "$description": "500px — max height for product code blocks"
     }
   }
 }

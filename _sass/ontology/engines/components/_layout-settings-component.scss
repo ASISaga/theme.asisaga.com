@@ -117,7 +117,7 @@
     @include bg-transparent;
 
     &:focus {
-      outline: 2px solid $state-focus-outline;
+      outline: 2px solid $color-semantic-focus-outline;
       outline-offset: -1px;
     }
   }

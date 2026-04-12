@@ -2056,7 +2056,7 @@
     width: 100%;
     @include text-align-center;
     .container {
-      max-width: $hero-content-max-width;
+      max-width: $size-content-width-hero;
     }
   }
 

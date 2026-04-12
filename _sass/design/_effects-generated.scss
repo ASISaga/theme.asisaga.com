@@ -9,6 +9,7 @@ $effect-shadow-transcendent: 0 40px 80px oklch(0.65 0.25 230 / 0.3); // Expansiv
 $effect-shadow-glow-transcendent: 0 0 20px oklch(0.70 0.15 85 / 0.5); // Gold glow halo for transcendent elements
 $effect-shadow-ambient: 0 4px 12px oklch(0.08 0.01 250 / 0.30); // Ambient depth shadow for floating elements
 $effect-shadow-profound: 0 8px 32px oklch(0.05 0.01 250 / 0.5); // Profound void-level depth shadow
+$effect-shadow-card: 0 0.5rem 1rem oklch(0.08 0.01 250 / 0.25); // Standard card/box shadow
 $effect-glass-light: oklch(0.98 0.003 220 / 0.85); // Light glass surface — very subtle frosted
 $effect-glass-hover: oklch(0.94 0.005 220); // Glass hover state — subtle gray
 $effect-glass-consciousness: oklch(0.16 0.03 252 / 0.75); // Deep consciousness glass surface

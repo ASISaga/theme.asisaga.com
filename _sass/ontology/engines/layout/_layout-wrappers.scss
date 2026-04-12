@@ -203,17 +203,17 @@
 
 .modal-close-btn {
   background: transparent;
-  border: 2px solid $border-primary;
-  color: $text-primary;
+  border: 2px solid $color-border-light;
+  color: $color-text-primary;
   
   &:hover {
-    background: $state-hover-surface;
-    border-color: $border-elevated;
+    background: $color-surface-hover;
+    border-color: $color-border-elevated;
   }
 }
 
 .modal-action-btn {
-  @include button-variant($surface-elevated, $border-primary, $text-primary);
+  @include button-variant($color-surface-elevated, $color-border-light, $color-text-primary);
 }
 
 // ----------------------------------------

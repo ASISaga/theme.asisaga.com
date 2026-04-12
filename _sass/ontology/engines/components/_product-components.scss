@@ -35,15 +35,15 @@
         @include transition(all, 0.3s, ease);
 
         &:hover {
-          transform: translateY($product-item-hover-translate);
+          transform: translateY(-5px);
         }
 
         &.product-card-accent {
-          border-left: $product-border-accent-width solid var(--color-accent);
+          border-left: $component-product-border-accent-width solid var(--color-accent);
         }
 
         &.product-card-primary {
-          border-left: $product-border-accent-width solid var(--color-primary);
+          border-left: $component-product-border-accent-width solid var(--color-primary);
         }
       }
     }
@@ -57,7 +57,7 @@
 
       .product-code-example {
         .product-code-block {
-          max-height: $product-code-max-height;
+          max-height: $component-product-code-max-height;
           overflow-y: auto;
         }
       }
@@ -81,15 +81,15 @@
         @include transition(all, 0.3s, ease);
 
         &:hover {
-          transform: translateY($product-item-hover-translate);
+          transform: translateY(-5px);
         }
 
         &.product-card-accent {
-          border-left: $product-border-accent-width solid var(--color-accent);
+          border-left: $component-product-border-accent-width solid var(--color-accent);
         }
 
         &.product-card-primary {
-          border-left: $product-border-accent-width solid var(--color-primary);
+          border-left: $component-product-border-accent-width solid var(--color-primary);
         }
 
         .product-card-title {
@@ -108,7 +108,7 @@
 
       .product-list {
         .product-list-item {
-          border-left: $product-border-accent-width solid var(--color-primary);
+          border-left: $component-product-border-accent-width solid var(--color-primary);
         }
       }
     }
@@ -127,7 +127,7 @@
 
       .product-code-example {
         .product-code-block {
-          max-height: $product-code-max-height;
+          max-height: $component-product-code-max-height;
           overflow-y: auto;
         }
       }
@@ -135,7 +135,7 @@
 
     .product-code-block code {
       font-family: 'Courier New', Courier, monospace;
-      font-size: $product-code-font-size;
+      font-size: $font-size-sm;
       line-height: 1.5;
     }
   }

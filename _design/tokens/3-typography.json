@@ -20,6 +20,26 @@
         "$type": "fontFamily",
         "$value": "'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace",
         "$description": "Monospace font for code, terminals, and data"
+      },
+      "primary": {
+        "$type": "fontFamily",
+        "$value": "{font.family.consciousness}",
+        "$description": "Primary font — alias for consciousness (Inter)"
+      },
+      "headings": {
+        "$type": "fontFamily",
+        "$value": "{font.family.consciousness}",
+        "$description": "Headings font — Inter for visual consistency across all pages"
+      },
+      "body": {
+        "$type": "fontFamily",
+        "$value": "{font.family.consciousness}",
+        "$description": "Body font — Inter for consistent reading across all pages"
+      },
+      "interface": {
+        "$type": "fontFamily",
+        "$value": "{font.family.consciousness}",
+        "$description": "Interface elements font — Inter for buttons, navs, forms"
       }
     },
     "weight": {
@@ -80,6 +100,11 @@
         "$value": "1.5rem",
         "$description": "24px — 6× identity.grid"
       },
+      "2xl": {
+        "$type": "dimension",
+        "$value": "2rem",
+        "$description": "32px — 8× identity.grid (display step)"
+      },
       "3xl": {
         "$type": "dimension",
         "$value": "1.875rem",
@@ -109,6 +134,11 @@
         "$type": "dimension",
         "$value": "2.618rem",
         "$description": "φ² × base — identity.scale² × 1rem (Golden Ratio² transcendent headers)"
+      },
+      "tiny": {
+        "$type": "dimension",
+        "$value": "0.65rem",
+        "$description": "10.4px — micro labels, badge chips only. Below WCAG minimum, not for body text."
       }
     },
     "fluid": {
@@ -336,6 +366,16 @@
       "$type": "lineHeight",
       "$value": "1.6",
       "$description": "Optimal for sustained reading"
+    },
+    "interface": {
+      "$type": "lineHeight",
+      "$value": "1.4",
+      "$description": "Compact line-height for interface elements"
+    },
+    "loose": {
+      "$type": "lineHeight",
+      "$value": "1.8",
+      "$description": "Loose line-height for spacious reading"
     }
   }
 }

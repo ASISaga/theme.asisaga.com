@@ -130,11 +130,11 @@
   align-items: center;
   justify-content: center;
   padding: $spacing-md $spacing-xl;
-  border-radius: $btn-border-radius;
+  border-radius: $component-btn-border-radius;
   font-family: $font-family-primary;
-  font-weight: $btn-font-weight;
+  font-weight: $font-weight-semibold;
   text-decoration: none;
-  transition: $btn-transition;
+  transition: $transition-consciousness;
   cursor: pointer;
   border: none;
   position: relative;
@@ -213,8 +213,8 @@
   background: oklch(0.08 0.01 250 / 0.8);
   backdrop-filter: blur(20px);
   border: 1px solid oklch(0.70 0.15 85 / 0.2);
-  border-radius: $card-border-radius;
-  box-shadow: $card-shadow;
+  border-radius: $component-card-border-radius;
+  box-shadow: $effect-shadow-consciousness;
   transition: $transition-consciousness;
 }
 

@@ -6,7 +6,7 @@
 // Icons are loaded from the npm package via _sass/ontology/engines/_fontawesome.scss
 // which is imported by _sass/ontology/_index.scss
 
-// All icon-size token variables are defined in _sass/design/_dimensions.scss.
+// All icon-size token variables are defined in _sass/design/_spacing-generated.scss (via _design/tokens/*.json).
 
 // --------------------------------------------
 // Icon Mixins - Standardized icon styling
@@ -21,40 +21,40 @@
 }
 
 @mixin icon-xs {
-  @include icon-size($icon-size-xs);
+  @include icon-size($size-icon-xs);
 }
 
 @mixin icon-sm {
-  @include icon-size($icon-size-sm);
+  @include icon-size($size-icon-sm);
 }
 
 @mixin icon-md {
-  @include icon-size($icon-size-md);
+  @include icon-size($size-icon-md);
 }
 
 @mixin icon-lg {
-  @include icon-size($icon-size-lg);
+  @include icon-size($size-icon-lg);
 }
 
 @mixin icon-xl {
-  @include icon-size($icon-size-xl);
+  @include icon-size($size-icon-xl);
 }
 
 @mixin icon-2xl {
-  @include icon-size($icon-size-2xl);
+  @include icon-size($size-icon-2xl);
 }
 
 @mixin icon-3xl {
-  @include icon-size($icon-size-3xl);
+  @include icon-size($size-icon-3xl);
 }
 
 // Sacred icon size mixins
 @mixin icon-hero {
-  @include icon-size($icon-size-hero);
+  @include icon-size($size-icon-hero);
 }
 
 @mixin icon-feature {
-  @include icon-size($icon-size-feature);
+  @include icon-size($size-icon-feature);
 }
 
 // Icon styling mixins
@@ -85,7 +85,7 @@
 }
 
 // Icon container mixins
-@mixin icon-container($size: $icon-size-md) {
+@mixin icon-container($size: $size-icon-md) {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,7 +93,7 @@
   border-radius: 50%;
 }
 
-@mixin icon-container-sacred($size: $icon-size-md) {
+@mixin icon-container-sacred($size: $size-icon-md) {
   @include icon-container($size);
   @include bg-sacred;
   @include border-sacred;
@@ -101,13 +101,13 @@
   border-style: solid;
 }
 
-@mixin icon-container-consciousness($size: $icon-size-md) {
+@mixin icon-container-consciousness($size: $size-icon-md) {
   @include icon-container($size);
   @include bg-consciousness;
   @include shadow-consciousness;
 }
 
-@mixin icon-container-transcendent($size: $icon-size-md) {
+@mixin icon-container-transcendent($size: $size-icon-md) {
   @include icon-container($size);
   @include bg-transcendent;
   border: 1px solid $color-border-silver;

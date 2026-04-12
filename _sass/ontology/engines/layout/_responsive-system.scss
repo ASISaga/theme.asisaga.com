@@ -6,7 +6,10 @@
 // dependencies while providing superior responsive behavior.
 //
 // All token variables ($breakpoint-*, $space-*, $mobile-max, $tablet-*,
-// $desktop-min, $breakpoint-map) are defined in _sass/design/_dimensions.scss.
+// Breakpoint tokens ($breakpoint-xs through $breakpoint-2xl) are generated in
+// _sass/design/_spacing-generated.scss (via _design/tokens/*.json).
+// Semantic aliases ($mobile-max, $tablet-min, etc.) are computed in
+// _sass/ontology/engines/utilities/_dimension-mixins.scss.
 // ============================================================================
 
 @function resolve-breakpoint($breakpoint) {

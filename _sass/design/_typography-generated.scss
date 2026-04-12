@@ -6,6 +6,10 @@ $font-family-consciousness: 'Inter', 'SF Pro Display', system-ui, -apple-system,
 $font-family-wisdom: 'Crimson Text', 'Times New Roman', Georgia, serif; // Serif for narrative and wisdom text
 $font-family-sacred: 'Montserrat', sans-serif; // Display font for sacred headings
 $font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace; // Monospace font for code, terminals, and data
+$font-family-primary: 'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif; // Primary font — alias for consciousness (Inter)
+$font-family-headings: 'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif; // Headings font — Inter for visual consistency across all pages
+$font-family-body: 'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif; // Body font — Inter for consistent reading across all pages
+$font-family-interface: 'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif; // Interface elements font — Inter for buttons, navs, forms
 $font-weight-light: 300;
 $font-weight-normal: 400;
 $font-weight-medium: 500;
@@ -18,12 +22,14 @@ $font-size-base: 1rem; // 16px — 4× identity.grid (root reference)
 $font-size-lg: 1.125rem; // 18px — 4.5× identity.grid
 $font-size-xl: 1.25rem; // 20px — 5× identity.grid
 $font-size-xxl: 1.5rem; // 24px — 6× identity.grid
+$font-size-2xl: 2rem; // 32px — 8× identity.grid (display step)
 $font-size-3xl: 1.875rem; // 30px — 7.5× identity.grid
 $font-size-4xl: 2.25rem; // 36px — 9× identity.grid
 $font-size-5xl: 3rem; // 48px — 12× identity.grid
 $font-size-genesis: 4rem; // 64px — 16× identity.grid — Hero Genesis headlines
 $font-size-sacred-lg: 1.618rem; // φ¹ × base — identity.scale × 1rem (Golden Ratio sacred content)
 $font-size-sacred-xl: 2.618rem; // φ² × base — identity.scale² × 1rem (Golden Ratio² transcendent headers)
+$font-size-tiny: 0.65rem; // 10.4px — micro labels, badge chips only. Below WCAG minimum, not for body text.
 $font-fluid-hero: clamp(2rem, calc(2.1429vw + 1.5714rem), 3.5rem); // Hero size — maps to --size-hero CSS custom property
 $font-fluid-title: clamp(1.5rem, calc(1.4286vw + 1.2143rem), 2.5rem); // Section title — maps to --size-title CSS custom property
 $font-fluid-body: clamp(1rem, calc(0.1786vw + 0.9643rem), 1.125rem); // Body prose — maps to --size-body CSS custom property
@@ -50,3 +56,5 @@ $line-height-transcendent: 2; // Meditative, flowing content
 $line-height-sacred: 1.618; // φ — identity.scale (Golden Ratio for sacred content)
 $line-height-consciousness: 1.75; // Spacious for contemplation
 $line-height-wisdom: 1.6; // Optimal for sustained reading
+$line-height-interface: 1.4; // Compact line-height for interface elements
+$line-height-loose: 1.8; // Loose line-height for spacious reading

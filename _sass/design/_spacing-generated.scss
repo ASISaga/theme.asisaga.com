@@ -25,6 +25,25 @@ $border-width-accent: 4px; // Accent border width for highlighted edges
 $border-width-separator: 1px; // Hairline separator width
 $size-avatar-testimonial: 3rem; // Testimonial avatar size
 $size-avatar-linkedin: 3.75rem; // LinkedIn profile avatar size
+$size-icon-xs: 0.75rem; // 12px icon
+$size-icon-sm: 1rem; // 16px icon
+$size-icon-md: 1.5rem; // 24px icon
+$size-icon-lg: 2rem; // 32px icon
+$size-icon-xl: 3rem; // 48px icon
+$size-icon-2xl: 4rem; // 64px icon
+$size-icon-3xl: 5rem; // 80px icon
+$size-icon-hero: 6rem; // 96px hero icon
+$size-icon-feature: 4rem; // 64px feature icon
+$size-content-width-narrow: 48rem; // 768px narrow content
+$size-content-width-default: 50rem; // 800px default content
+$size-content-width-hero: 800px; // Hero content max-width
+$size-header-logo: 2.5rem; // 40px header logo height
+$breakpoint-xs: 0px; // Extra-small — mobile baseline
+$breakpoint-sm: 480px; // Small phones → large phones
+$breakpoint-md: 768px; // Phones → tablets
+$breakpoint-lg: 1024px; // Tablets → laptops
+$breakpoint-xl: 1440px; // Laptops → desktops
+$breakpoint-2xl: 1920px; // Desktops → ultrawides
 $transition-fast: 0.2s ease;
 $transition-normal: 0.3s ease;
 $transition-slow: 0.5s ease;
@@ -33,6 +52,16 @@ $transition-transcendent: 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
 $z-index-background: -1;
 $z-index-content: 1;
 $z-index-overlay: 10;
+$z-index-chatroom-panel: 20; // Between overlay (10) and consciousness (100)
 $z-index-consciousness: 100;
 $z-index-transcendent: 1000;
 $z-index-genesis: 9999;
+$opacity-essence-flow: 0.85; // Essence flow animation opacity
+$opacity-consciousness-expansion: 0.7; // Consciousness expansion animation opacity
+$opacity-essence-weave-1: 0.7; // Essence weave first keyframe opacity
+$opacity-essence-weave-2: 0.85; // Essence weave second keyframe opacity
+$opacity-essence-weave-3: 1; // Essence weave third keyframe opacity
+$component-card-border-radius: 2rem; // Card border radius
+$component-btn-border-radius: 1rem; // Button border radius
+$component-product-border-accent-width: 4px; // Product accent border width
+$component-product-code-max-height: 31.25rem; // 500px — max height for product code blocks

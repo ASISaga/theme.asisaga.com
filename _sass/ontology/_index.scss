@@ -50,25 +50,25 @@
 
 // Design Foundation — The DNA (from _sass/design/ — maps directly to _design/tokens/*.json)
 // Generated files — one per concern (do not edit, run `npm run tokens:build`)
-@import "design/colors-generated";     // OKLCH palette primitives
+@import "design/colors-generated";     // OKLCH palette primitives + semantic + boardroom
 @import "design/typography-generated"; // Families, weights, sizes, fluid scales, line-heights
-@import "design/spacing-generated";    // Spacing, border-radius, border-width, sizes, transitions, z-index
+@import "design/spacing-generated";    // Spacing, border-radius, border-width, sizes, transitions, z-index, opacity, components
 @import "design/effects-generated";    // Shadows, glass surfaces, glows, blur, easing, durations
-// Hand-authored design files (extend the generated tokens)
-@import "design/colors";              // Semantic color tokens + boardroom palette + CSS custom properties
-@import "design/variables";           // Component defaults, variant maps
-@import "design/dimensions";          // Breakpoints, icon sizes, component dimensions
 
 // Utilities & Mixins (in engines/utilities/ — infrastructure)
 @import "engines/utilities/mixins";           // Core Sass mixins
 @import "engines/utilities/semantic-mixins";  // Semantic mixins
 @import "engines/utilities/structural-mixins"; // Structural utility mixins (positioning, flex, grid, etc.)
 @import "engines/utilities/accessibility";    // WCAG compliance helpers
+@import "engines/utilities/dimension-mixins"; // Dimension, spacing, padding/margin mixins
 @import "engines/utilities/common";           // Common utility styles
 
-// Typography & Theme (from _sass/design/ — design tokens)
-@import "design/typography";          // Unified typography: fluid scale, sacred families, material primitives
-@import "design/theme";               // Theme-level configuration
+// Variant Maps (must come before engines that reference them)
+@import "engines/variant-maps";
+
+// Typography & Theme CSS Rules
+@import "engines/typography-rules";    // Heading, body, link, button, form styles
+@import "engines/theme-properties";    // CSS custom properties, dark mode, high contrast
 
 // Layout System (in engines/layout/ — infrastructure)
 @import "engines/layout/responsive-system";   // Modern breakpoints, container queries
