@@ -9,29 +9,6 @@
 // ============================================================================
 
 // ============================================================================
-// FLUID TYPOGRAPHY SCALE (from _design/tokens.json via Style Dictionary)
-// ============================================================================
-
-// Heading Scales — generated from _design/tokens.json font.fluid.* via Style Dictionary
-$font-h1: $font-fluid-h1;
-$font-h2: $font-fluid-h2;
-$font-h3: $font-fluid-h3;
-$font-h4: $font-fluid-h4;
-$font-h5: $font-fluid-h5;
-$font-h6: $font-fluid-h6;
-
-// Body Text Scales — generated from _design/tokens.json font.fluid.* via Style Dictionary
-$font-body-lg: $font-fluid-body-lg;
-$font-body: $font-fluid-body;
-$font-body-sm: $font-fluid-body-sm;
-$font-body-xs: $font-fluid-body-xs;
-
-// Display Scales - Hero/Landing — generated from _design/tokens.json font.fluid.* via Style Dictionary
-$font-display-xl: $font-fluid-display-xl;
-$font-display-lg: $font-fluid-display-lg;
-$font-display-md: $font-fluid-display-md;
-
-// ============================================================================
 // HEADING STYLES (Fluid + Sacred Families)
 // ============================================================================
 
@@ -46,7 +23,7 @@ h1, h2, h3, h4, h5, h6,
 
 // Individual heading sizes using fluid scale
 h1, .h1 {
-  font-size: $font-h1;
+  font-size: $font-fluid-h1;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -55,7 +32,7 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  font-size: $font-h2;
+  font-size: $font-fluid-h2;
   font-weight: 600;
   line-height: 1.3;
   letter-spacing: -0.01em;
@@ -64,7 +41,7 @@ h2, .h2 {
 }
 
 h3, .h3 {
-  font-size: $font-h3;
+  font-size: $font-fluid-h3;
   font-weight: 600;
   line-height: 1.4;
   color: $text-primary;
@@ -72,7 +49,7 @@ h3, .h3 {
 }
 
 h4, .h4 {
-  font-size: $font-h4;
+  font-size: $font-fluid-h4;
   font-weight: 600;
   line-height: 1.5;
   color: $text-primary;
@@ -80,7 +57,7 @@ h4, .h4 {
 }
 
 h5, .h5 {
-  font-size: $font-h5;
+  font-size: $font-fluid-h5;
   font-weight: 500;
   line-height: 1.5;
   color: $text-primary;
@@ -88,7 +65,7 @@ h5, .h5 {
 }
 
 h6, .h6 {
-  font-size: $font-h6;
+  font-size: $font-fluid-h6;
   font-weight: 500;
   line-height: 1.6;
   color: $text-primary;
@@ -109,7 +86,7 @@ body {
 }
 
 p, .body-text {
-  font-size: $font-body;
+  font-size: $font-fluid-body;
   line-height: 1.6;
   color: $text-primary;
   margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
@@ -130,7 +107,7 @@ p, .body-text {
 // ============================================================================
 
 .display-xl {
-  font-size: $font-display-xl;
+  font-size: $font-fluid-display-xl;
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.03em;
@@ -138,7 +115,7 @@ p, .body-text {
 }
 
 .display-lg {
-  font-size: $font-display-lg;
+  font-size: $font-fluid-display-lg;
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.025em;
@@ -146,7 +123,7 @@ p, .body-text {
 }
 
 .display-md {
-  font-size: $font-display-md;
+  font-size: $font-fluid-display-md;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -158,17 +135,17 @@ p, .body-text {
 // ============================================================================
 
 .text-lg {
-  font-size: $font-body-lg;
+  font-size: $font-fluid-body-lg;
   line-height: 1.6;
 }
 
 .text-sm {
-  font-size: $font-body-sm;
+  font-size: $font-fluid-body-sm;
   line-height: 1.5;
 }
 
 .text-xs {
-  font-size: $font-body-xs;
+  font-size: $font-fluid-body-xs;
   line-height: 1.4;
 }
 

@@ -6,9 +6,6 @@
 // _design/tokens/4-spacing.json into _variables-generated.scss.
 // Only unique, un-tokenised values live in this file.
 
-// SCSS calculation helper
-$pixel-adjustment: 0.02;
-
 // --------------------------------------------
 // Font sizes
 // --------------------------------------------
@@ -324,39 +321,6 @@ $space-3xl: clamp(4rem, 8vw, 6rem);
 // Common sizing patterns
 @mixin size-hero-icon {
   @include size(6rem);
-}
-
-// --- Auto-generated spacing and layout mixins ---
-@mixin pad-y($value: 1rem) {
-  padding-top: $value;
-  padding-bottom: $value;
-}
-@mixin pad-x($value: 1rem) {
-  padding-left: $value;
-  padding-right: $value;
-}
-@mixin pad($value: 1rem) {
-  padding: $value;
-}
-@mixin pad-t($value: 1rem) {
-  padding-top: $value;
-}
-@mixin mar($value: 1rem) {
-  margin: $value;
-}
-@mixin mar-x($value: 1rem) {
-  margin-left: $value;
-  margin-right: $value;
-}
-@mixin mar-y($value: 1rem) {
-  margin-top: $value;
-  margin-bottom: $value;
-}
-@mixin mar-t($value: 1rem) {
-  margin-top: $value;
-}
-@mixin mar-b($value: 1rem) {
-  margin-bottom: $value;
 }
 
 @mixin size-feature-icon {
