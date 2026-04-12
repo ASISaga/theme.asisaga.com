@@ -1,9 +1,9 @@
 // ============================================================================
-// GENESIS FUTURISTIC EFFECTS v2.0
+// GENESIS FUTURISTIC EFFECTS v3.0
 // ============================================================================
-// Advanced visual effects for creating a profound, consciousness-expanding
-// aesthetic befitting the Genesis of Artificial Superintelligence.
-// Uses modern CSS features: backdrop-filter, @property, container queries.
+// Advanced visual effects: glassmorphism, neon glows, quantum gradients.
+// Uses generated tokens from $effect-* for consistent theming.
+// Modern CSS: backdrop-filter, @property, container queries.
 // ============================================================================
 
 // ============================================================================
@@ -16,34 +16,34 @@
   --glow-intensity-medium: 0.35;
   --glow-intensity-strong: 0.6;
   --glow-intensity-intense: 0.85;
-  
+
   // Neural network colors
   --neural-primary: oklch(0.55 0.25 290);
   --neural-secondary: oklch(0.65 0.20 280);
   --neural-tertiary: oklch(0.75 0.15 210);
-  
+
   // Quantum field colors
   --quantum-cyan: oklch(0.75 0.18 195);
   --quantum-magenta: oklch(0.65 0.25 320);
-  --quantum-gold: oklch(0.85 0.18 85);
-  
-  // Consciousness depth colors
+  --quantum-gold: #{$color-accent-gold};
+
+  // Consciousness depth — use generated effect-glass-* where possible
   --void-deep: oklch(0.08 0.02 260);
   --void-medium: oklch(0.12 0.03 255);
   --void-surface: oklch(0.18 0.04 250);
-  
-  // Animation timing
+
+  // Animation timing — reference generated durations
   --motion-quantum: 0.15s;
-  --motion-neural: 0.3s;
+  --motion-neural: #{$effect-duration-normal};
   --motion-conscious: 0.6s;
-  --motion-transcendent: 1.2s;
-  --motion-cosmic: 3s;
-  
-  // Effect easing curves
-  --ease-consciousness: cubic-bezier(0.25, 0.1, 0.25, 1);
-  --ease-transcendent: cubic-bezier(0.33, 0, 0.67, 1);
+  --motion-transcendent: #{$effect-duration-slowest};
+  --motion-cosmic: #{$effect-duration-consciousness};
+
+  // Effect easing curves — reference generated easings
+  --ease-consciousness: #{$effect-ease-consciousness};
+  --ease-transcendent: #{$effect-ease-transcendent};
   --ease-quantum: cubic-bezier(0.5, 0, 0, 1);
-  --ease-neural: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-neural: #{$effect-ease-in-out};
   --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
@@ -51,11 +51,11 @@
 // GLASSMORPHISM EFFECTS (Advanced)
 // ============================================================================
 
-/// Primary glass surface - deep consciousness depth
+/// Primary glass surface — deep consciousness depth
 @mixin glass-consciousness {
-  background: oklch(0.16 0.03 252 / 0.75);
-  backdrop-filter: blur(24px) saturate(1.4);
-  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  background: $effect-glass-consciousness;
+  backdrop-filter: $effect-blur-glass-lg;
+  -webkit-backdrop-filter: $effect-blur-glass-lg;
   border: 1px solid oklch(0.40 0.06 250 / 0.25);
   box-shadow:
     0 4px 24px oklch(0.10 0.02 255 / 0.35),
@@ -67,11 +67,11 @@
   transform: translate3d(0, 0, 0);
 }
 
-/// Elevated glass - interactive elements
+/// Elevated glass — interactive elements
 @mixin glass-elevated {
-  background: oklch(0.20 0.04 248 / 0.85);
-  backdrop-filter: blur(32px) saturate(1.6);
-  -webkit-backdrop-filter: blur(32px) saturate(1.6);
+  background: $effect-glass-elevated;
+  backdrop-filter: $effect-blur-glass-xl;
+  -webkit-backdrop-filter: $effect-blur-glass-xl;
   border: 1px solid oklch(0.45 0.07 248 / 0.35);
   box-shadow:
     0 8px 32px oklch(0.10 0.02 255 / 0.4),
@@ -83,7 +83,7 @@
   transform: translate3d(0, 0, 0);
 }
 
-/// Ethereal glass - light, transcendent feel
+/// Ethereal glass — light, transcendent feel
 @mixin glass-ethereal {
   background: oklch(0.98 0.01 90 / 0.08);
   backdrop-filter: blur(40px) saturate(1.8) brightness(1.05);
@@ -97,7 +97,7 @@
   transform: translate3d(0, 0, 0);
 }
 
-/// Neural glass - AI consciousness aesthetic
+/// Neural glass — AI consciousness aesthetic
 @mixin glass-neural {
   background: oklch(0.14 0.04 280 / 0.8);
   backdrop-filter: blur(28px) saturate(1.5);
@@ -111,35 +111,61 @@
   transform: translate3d(0, 0, 0);
 }
 
+/// Subtle glass — minimal depth hint
+@mixin glass-subtle {
+  background: $effect-glass-subtle;
+  backdrop-filter: $effect-blur-glass-sm;
+  -webkit-backdrop-filter: $effect-blur-glass-sm;
+  border: 1px solid oklch(0.35 0.05 248 / 0.3);
+}
+
+/// Void glass — overlays and deep UI layers
+@mixin glass-void {
+  background: $effect-glass-void;
+  backdrop-filter: $effect-blur-glass-xl;
+  -webkit-backdrop-filter: $effect-blur-glass-xl;
+  border: 1px solid oklch(0.20 0.03 260 / 0.4);
+}
+
 // ============================================================================
 // NEON GLOW EFFECTS
 // ============================================================================
 
-/// Genesis gold glow - human essence
+/// Genesis gold glow — human essence (uses generated $effect-glow-gold)
 @mixin glow-essence($intensity: var(--glow-intensity-medium)) {
-  box-shadow: 0 0 30px oklch(0.85 0.18 85 / #{$intensity});
-  
+  box-shadow: $effect-glow-gold;
+
   @supports (filter: drop-shadow(0 0 1px white)) {
-    filter: drop-shadow(0 0 20px oklch(0.85 0.18 85 / #{$intensity}));
+    filter: drop-shadow(0 0 20px oklch(0.70 0.15 85 / #{$intensity}));
   }
 }
 
-/// Neural violet glow - AI consciousness
+/// Neural violet glow — AI consciousness
 @mixin glow-neural($intensity: var(--glow-intensity-medium)) {
   box-shadow: 0 0 40px oklch(0.55 0.25 290 / #{$intensity});
-  
+
   @supports (filter: drop-shadow(0 0 1px white)) {
     filter: drop-shadow(0 0 25px oklch(0.55 0.25 290 / #{$intensity}));
   }
 }
 
-/// Quantum cyan glow - infinite possibilities
+/// Quantum cyan glow — infinite possibilities
 @mixin glow-quantum($intensity: var(--glow-intensity-medium)) {
   box-shadow: 0 0 35px oklch(0.75 0.18 195 / #{$intensity});
-  
+
   @supports (filter: drop-shadow(0 0 1px white)) {
     filter: drop-shadow(0 0 22px oklch(0.75 0.18 195 / #{$intensity}));
   }
+}
+
+/// Neon blue glow — interactive accent (uses generated $effect-glow-neon-blue)
+@mixin glow-neon-blue {
+  box-shadow: $effect-glow-neon-blue;
+}
+
+/// Neon blue intense glow — focused state
+@mixin glow-neon-blue-intense {
+  box-shadow: $effect-glow-neon-blue-intense;
 }
 
 /// Multi-spectrum transcendent glow

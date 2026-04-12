@@ -58,7 +58,7 @@
 }
 
 @mixin icon-small {
-  @include icon-size($icon-size-small);
+  @include icon-size($icon-size-lg);
 }
 
 // Icon styling mixins

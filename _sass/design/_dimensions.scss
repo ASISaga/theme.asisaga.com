@@ -1,25 +1,20 @@
-// Centralized dimensions for ASI Saga website
-// All size values should be defined here and referenced in component files
-//
-// NOTE: Standard spacing tokens ($spacing-xs … $spacing-genesis), border-radius,
-// border-width, z-index, and transition tokens are generated from
-// _design/tokens/4-spacing.json into _variables-generated.scss.
-// Only unique, un-tokenised values live in this file.
+// ============================================================================
+// DIMENSIONS — Component-specific sizes, breakpoints, fluid spacing
+// ============================================================================
+// Standard spacing, border-radius, z-index, and transition tokens are
+// generated from _design/tokens/*.json into _spacing-generated.scss.
+// Icon sizes, breakpoints, fluid spacing, and component dimensions live here.
+// ============================================================================
 
 // --------------------------------------------
-// Font sizes
+// Font sizes (component aliases)
 // --------------------------------------------
 // xs, sm, base, lg, xl, xxl, 3xl, 4xl, 5xl, genesis, sacred-lg, sacred-xl
-// are generated from _design/tokens/3-typography.json — do not re-declare them here.
+// are generated from _design/tokens/3-typography.json — do not re-declare here.
 
-// Component-scoped aliases used by font utility mixins and sacred components.
-// $font-size-md is a semantic alias for 18px (= $font-size-lg) from the dimensions naming convention.
-// $font-size-2xl provides a 32px step between xxl (24px) and 3xl (30px) for display contexts.
-$font-size-md: $font-size-lg;   // 18px — alias (= font-size-lg) for legacy dimensions naming
 $font-size-2xl: 2rem;           // 32px — display step between xxl and 3xl
-$font-size-tiny: 0.65rem;       // 10.4px — micro labels, badge chips, and compact UI indicators only.
-                                // NOTE: 10.4px < 12px WCAG minimum — must NOT be used for body text or essential information.
-
+$font-size-tiny: 0.65rem;       // 10.4px — micro labels, badge chips only.
+                                // NOTE: 10.4px < 12px WCAG minimum — must NOT be used for body text.
 
 // --------------------------------------------
 // Icon dimensions
@@ -31,22 +26,14 @@ $icon-size-lg: 2rem; // 32px
 $icon-size-xl: 3rem; // 48px
 $icon-size-2xl: 4rem; // 64px
 $icon-size-3xl: 5rem; // 80px
-
-// Sacred icon sizes
 $icon-size-hero: 6rem; // 96px
 $icon-size-feature: 4rem; // 64px
-$icon-size-small: 2rem; // 32px
 
 // --------------------------------------------
 // Component-specific dimensions
 // --------------------------------------------
-// Header
 $header-logo-height: 2.5rem; // 40px
 
-// LinkedIn component
-$linkedin-avatar-size: $size-avatar-linkedin; // 60px
-
-// Product components
 $product-border-accent-width: 4px;
 $product-item-hover-translate: -5px;
 $product-code-max-height: 31.25rem; // 500px

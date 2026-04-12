@@ -66,7 +66,7 @@
 }
 
 @mixin font-md {
-  @include font-size($font-size-md);
+  @include font-size($font-size-lg);
 }
 
 @mixin font-lg {

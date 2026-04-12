@@ -3,24 +3,26 @@
 // ============================================================================
 // Non-generated variables that extend the token foundation.
 //
-// Core font families, sizes, weights, spacing, border-radius, z-index, and
-// transition tokens are generated from _design/tokens/*.json into
-// _variables-generated.scss. This file adds ONLY:
+// Generated tokens:
+//   _colors-generated.scss — color primitives
+//   _typography-generated.scss — font families, weights, sizes, fluid scales
+//   _spacing-generated.scss — spacing, radius, borders, transitions, z-index
+//   _effects-generated.scss — shadows, glass, glows, easing, durations
+//
+// This file adds ONLY:
 //   1. Semantic font family aliases (role-based names)
-//   2. Shadows & depth effects (complex values, not simple tokens)
-//   3. Animation curves & durations
-//   4. Z-index overrides (between generated tiers)
+//   2. Animation opacity tokens (not expressible as design tokens)
+//   3. Z-index overrides (between generated tiers)
+//   4. Component defaults
 //   5. Ontology web component variant maps
 //
-// Color definitions are in _sass/design/_colors.scss.
-// Breakpoints & dimensions are in _sass/design/_dimensions.scss.
+// Colors: _sass/design/_colors.scss
+// Breakpoints & dimensions: _sass/design/_dimensions.scss
 // ============================================================================
 
 // ============================================================================
 // 1. SEMANTIC FONT FAMILY ALIASES
 // ============================================================================
-// Role-based names that map to generated token font families.
-// $font-family-sacred override adds full consciousness stack as fallback.
 
 $font-family-sacred: 'Montserrat', $font-family-consciousness;
 $font-family-primary: $font-family-consciousness;
@@ -32,7 +34,10 @@ $font-family-interface: $font-family-consciousness;
 $line-height-interface: 1.4;
 $line-height-loose: 1.8;
 
-// Animation opacity tokens (used by effects/_animations.scss keyframes)
+// ============================================================================
+// 2. ANIMATION OPACITY TOKENS
+// ============================================================================
+
 $essence-flow-opacity: 0.85;
 $consciousness-expansion-opacity: 0.7;
 $essence-weave-opacity-1: 0.7;
@@ -40,45 +45,14 @@ $essence-weave-opacity-2: 0.85;
 $essence-weave-opacity-3: 1;
 
 // ============================================================================
-// 2. SHADOWS & DEPTH EFFECTS
-// ============================================================================
-// Complex box-shadow values cannot be expressed as simple tokens.
-
-$effect-shadow-sacred-glow: 0 0 0.5rem oklch(0.70 0.15 85 / 0.3);
-$effect-shadow-consciousness-depth: 0 0.25rem 2rem oklch(0.08 0.01 250 / 0.4);
-$effect-shadow-consciousness: 0 30px 60px oklch(0.70 0.15 85 / 0.2);
-$effect-shadow-transcendent: 0 40px 80px oklch(0.65 0.25 230 / 0.3);
-
-// ============================================================================
-// 3. ANIMATION CURVES & DURATIONS
-// ============================================================================
-// Consciousness-themed easing curves (not expressible as simple token values).
-
-$effect-ease-consciousness: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-$effect-ease-transcendent: cubic-bezier(0.165, 0.84, 0.44, 1);
-$effect-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-$effect-ease-out: cubic-bezier(0, 0, 0.2, 1);
-$effect-ease-sacred: cubic-bezier(0.23, 1, 0.32, 1);
-
-// Animation durations
-$effect-duration-normal: 0.3s;
-$effect-duration-slow: 0.5s;
-$effect-duration-slower: 0.8s;
-$effect-duration-slowest: 1.2s;
-$effect-duration-sacred: 2s;
-$effect-duration-consciousness: 3s;
-$effect-duration-transcendent: 4s;
-
-// ============================================================================
-// 4. Z-INDEX OVERRIDES
+// 3. Z-INDEX OVERRIDES
 // ============================================================================
 
 $z-index-chatroom-panel: 20; // Between $z-index-overlay (10) and $z-index-consciousness (100)
 
 // ============================================================================
-// 5. COMPONENT DEFAULTS
+// 4. COMPONENT DEFAULTS
 // ============================================================================
-// Variables consumed by specific components; derived from generated tokens.
 
 $hero-content-max-width: 800px;
 $card-border-radius: $border-radius-consciousness;
@@ -89,7 +63,7 @@ $btn-transition: $transition-consciousness;
 $box-shadow: 0 0.5rem 1rem oklch(0.08 0.01 250 / 0.25);
 
 // ============================================================================
-// 6. ONTOLOGY WEB COMPONENT VARIANT MAPS
+// 5. ONTOLOGY WEB COMPONENT VARIANT MAPS
 // ============================================================================
 // These lists enumerate the valid attribute values for each genesis-* web
 // component. _sass/components/core/_genesis-core.scss iterates over them to
