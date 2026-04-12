@@ -57,10 +57,6 @@
   @include icon-size($icon-size-feature);
 }
 
-@mixin icon-small {
-  @include icon-size($icon-size-lg);
-}
-
 // Icon styling mixins
 @mixin icon-base {
   display: inline-block;
@@ -158,8 +154,8 @@
   @include icon-consciousness-interactive;
 }
 
-@mixin icon-small-transcendent {
-  @include icon-small;
+@mixin icon-lg-transcendent {
+  @include icon-lg;
   @include icon-transcendent;
   @include icon-interactive;
 }

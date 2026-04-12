@@ -303,13 +303,6 @@
   transition: $transition-normal;
 }
 
-@mixin icon-small() {
-  @include icon-base;
-  width: 2rem;
-  height: 2rem;
-  font-size: 1rem;
-}
-
 @mixin icon-medium() {
   @include icon-base;
   width: 3rem;

@@ -51,7 +51,7 @@
 }
 
 // Featured image card with border
-@mixin featured-image-card-component($prefix: 'card', $img-height: 200px, $color-border-light: $color-accent-neon-blue) {
+@mixin featured-image-card-component($prefix: 'card', $img-height: 200px, $border-color: $color-accent-neon-blue) {
   @include image-card-component($prefix, $img-height);
   
   .#{$prefix} {
