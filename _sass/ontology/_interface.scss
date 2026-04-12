@@ -60,7 +60,7 @@
  * Defines the "Time-Sense" of the content.
  */
 @mixin genesis-state($condition: 'stable') {
-  // Variants: stable, evolving, deprecated, locked, simulated, emerging,
+  // Variants: stable, latent, evolving, deprecated, locked, simulated, emerging,
   // transcending, scroll-triggered, active, expanded, collapsed,
   // mentioned, unread, reacted
   @include _theme-engine-state($condition);

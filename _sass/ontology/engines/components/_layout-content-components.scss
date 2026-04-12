@@ -1,0 +1,253 @@
+// ============================================================================
+// LAYOUT CONTENT COMPONENTS MIXIN
+// ============================================================================
+// Component mixins for content-oriented layouts: archive, faq, form, post,
+// docs. Each layout gets its own mixin for clean @include usage via the
+// genesis-component() interface.
+// ============================================================================
+
+// Archive layout — collection listing with filtering, sorting, and views
+@mixin layout-archive-component {
+
+  .archive-layout {
+    @include genesis-environment('chronological');
+    @include genesis-atmosphere('neutral');
+  }
+
+  .archive__title {
+    @include genesis-cognition('axiom');
+  }
+
+  .archive__description {
+    @include genesis-cognition('discourse');
+  }
+
+  .archive__controls {
+    @include genesis-environment('associative');
+  }
+
+  .archive__filters,
+  .archive__sort {
+    @include genesis-environment('associative');
+  }
+
+  .archive__select {
+    @include genesis-synapse('input-primary');
+  }
+
+  .archive__view-toggle {
+    @include genesis-environment('associative');
+  }
+
+  .archive__view-btn {
+    @include genesis-synapse('toggle');
+    @include genesis-state('stable');
+
+    &--active {
+      @include genesis-state('active');
+    }
+  }
+
+  .archive__pagination {
+    @include genesis-environment('associative');
+  }
+
+  .pagination-list {
+    @include genesis-environment('associative');
+  }
+}
+
+// FAQ layout — accordion questions and answers with search and categories
+@mixin layout-faq-component {
+
+  .faq-layout {
+    @include genesis-environment('focused');
+    @include genesis-atmosphere('neutral');
+  }
+
+  .faq__title {
+    @include genesis-cognition('axiom');
+  }
+
+  .faq__description {
+    @include genesis-cognition('discourse');
+  }
+
+  .faq__search {
+    @include genesis-environment('focused');
+  }
+
+  .faq__search-input {
+    @include genesis-synapse('inquiry');
+  }
+
+  .faq__categories {
+    @include genesis-environment('associative');
+  }
+
+  .faq__category {
+    @include genesis-synapse('inquiry');
+
+    &--active {
+      @include genesis-state('stable');
+    }
+  }
+
+  .faq__cta-title {
+    @include genesis-cognition('motive');
+  }
+
+  .faq__cta-description {
+    @include genesis-cognition('discourse');
+  }
+
+  .faq__cta-button {
+    @include genesis-synapse('execute');
+  }
+}
+
+// Form layout — multi-step form with progress indicator
+@mixin layout-form-component {
+
+  .form-layout {
+    @include genesis-environment('interaction-form');
+    @include genesis-atmosphere('neutral');
+  }
+
+  .form__title {
+    @include genesis-cognition('axiom');
+  }
+
+  .form__description {
+    @include genesis-cognition('discourse');
+  }
+
+  .form__progress {
+    @include genesis-state('evolving');
+  }
+
+  .form__progress-bar {
+    @include genesis-entity('imperative');
+  }
+
+  .form__steps {
+    @include genesis-environment('associative');
+  }
+
+  .form__step {
+    @include genesis-cognition('gloss');
+  }
+
+  .form__help {
+    @include genesis-cognition('gloss');
+  }
+
+  .form__privacy {
+    @include genesis-synapse('navigate');
+    @include genesis-cognition('gloss');
+  }
+}
+
+// Post layout — blog post article with metadata, taxonomy, and footer CTA
+@mixin layout-post-component {
+
+  .post-layout {
+    @include genesis-environment('focused');
+    @include genesis-atmosphere('neutral');
+  }
+
+  .post__title {
+    @include genesis-cognition('axiom');
+  }
+
+  .post__subtitle {
+    @include genesis-cognition('discourse');
+  }
+
+  .post__meta {
+    @include genesis-environment('associative');
+  }
+
+  .post__meta-date,
+  .post__meta-author,
+  .post__meta-reading-time {
+    @include genesis-cognition('gloss');
+  }
+
+  .post__taxonomy {
+    @include genesis-environment('associative');
+  }
+
+  .post__tags,
+  .post__categories {
+    @include genesis-environment('associative');
+  }
+
+  .post__tag {
+    @include genesis-cognition('quantum');
+    @include genesis-entity('secondary');
+  }
+
+  .post__category {
+    @include genesis-cognition('quantum');
+    @include genesis-entity('imperative');
+  }
+
+  .post__cta-title {
+    @include genesis-cognition('motive');
+  }
+
+  .post__cta-button {
+    @include genesis-synapse('execute');
+  }
+}
+
+// Docs layout — documentation with sidebar navigation, TOC, and breadcrumb
+@mixin layout-docs-component {
+
+  .docs-layout {
+    @include genesis-environment('convergent');
+    @include genesis-atmosphere('neutral');
+  }
+
+  .docs-sidebar {
+    @include genesis-environment('navigation-sidebar');
+  }
+
+  .docs-nav {
+    @include genesis-environment('chronological');
+  }
+
+  .docs-nav-link {
+    @include genesis-synapse('navigate');
+
+    &--active {
+      @include genesis-state('active');
+    }
+  }
+
+  .docs-content {
+    @include genesis-environment('focused');
+  }
+
+  .docs-breadcrumb {
+    @include genesis-environment('navigation-breadcrumb');
+  }
+
+  .docs-title {
+    @include genesis-cognition('axiom');
+  }
+
+  .docs-pagination {
+    @include genesis-synapse('paginate');
+    @include genesis-environment('associative');
+  }
+
+  .docs-toc {
+    @include genesis-environment('navigation-sidebar');
+  }
+
+  .docs-toc-title {
+    @include genesis-cognition('motive');
+  }
+}

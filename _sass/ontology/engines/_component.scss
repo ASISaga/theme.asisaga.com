@@ -80,6 +80,11 @@
   @else if $name == 'layout-article' { @include layout-article-component; }
   @else if $name == 'layout-profile' { @include layout-profile-component; }
   @else if $name == 'layout-gallery' { @include layout-gallery-component; }
+  @else if $name == 'layout-archive' { @include layout-archive-component; }
+  @else if $name == 'layout-faq' { @include layout-faq-component; }
+  @else if $name == 'layout-form' { @include layout-form-component; }
+  @else if $name == 'layout-post' { @include layout-post-component; }
+  @else if $name == 'layout-docs' { @include layout-docs-component; }
 
   // ---- Demo ----
   @else if $name == 'demo-index' { @include demo-index-component; }
