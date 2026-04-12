@@ -10,7 +10,7 @@ The repository follows a tri-layer stack architecture: Data (Figma & DTCG JSON),
 
 ## Implementation Status
 
-> **Note**: The W3C DTCG JSON pipeline described below is the **aspirational target architecture**. The current implementation uses CSS custom properties defined directly in `_sass/ontology/_tokens.scss` and `_sass/ontology/foundation/` files. See [`TODO.md`](../../TODO.md) for the gap analysis and planned work.
+> **Note**: The W3C DTCG JSON pipeline described below is the **aspirational target architecture**. The current implementation uses CSS custom properties defined directly in `_sass/ontology/_tokens.scss` and `_sass/ontology/engines/` files. See [`TODO.md`](../../TODO.md) for the gap analysis and planned work.
 
 **Currently implemented:**
 - ✅ CSS custom properties in `_sass/ontology/_tokens.scss` (spacing, sizing, border-radius, motion, typography tokens)

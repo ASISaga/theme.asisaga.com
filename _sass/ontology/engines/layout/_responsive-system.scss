@@ -181,7 +181,7 @@
 /// Flexible grid that adapts to container size
 @mixin responsive-grid($min-column-width: 300px, $gap: var(--gutter)) {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(#{$min-column-width}, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(#{$min-column-width}, 1fr));
   gap: $gap;
   
   // EXTRINSIC WIDTH ENFORCEMENT - Force full width behavior

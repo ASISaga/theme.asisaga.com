@@ -138,9 +138,9 @@ Eight-point grid with Genesis-specific extensions:
 
 1. Add entry to the appropriate `_design/tokens/*.json` file following the DTCG format (`$value`, `$type`, `$description`)
 2. Run `npm run tokens:build` (or `node .github/skills/style-dictionary/sd.config.mjs`)
-3. Review `_sass/ontology/foundation/design/_variables-generated.scss`
+3. Review `_sass/design/_variables-generated.scss`
 4. Run `npm run test:scss` to confirm Sass compilation
-5. Copy relevant variables into `_sass/ontology/foundation/design/_variables.scss` or apply with `--apply`
+5. Copy relevant variables into `_sass/design/_variables.scss` or apply with `--apply`
 
 ## Bidirectional Sync Workflow
 
@@ -165,8 +165,8 @@ _design/tokens/*.json ──[Style Dictionary v4]──► _variables-generated.
 - **Legacy script (reverse only)**: `.github/skills/style-dictionary/script.mjs`
 - **Forward script**: `.github/skills/style-dictionary/scripts/tokens-to-scss.sh`
 - **Reverse script**: `.github/skills/style-dictionary/scripts/scss-to-tokens.sh`
-- **Production variables**: `_sass/ontology/foundation/design/_variables.scss`
-- **Production colors**: `_sass/ontology/foundation/design/_colors.scss`
+- **Production variables**: `_sass/design/_variables.scss`
+- **Production colors**: `_sass/design/_colors.scss`
 - **Sample output**: `.github/skills/style-dictionary/_variables.scss`
 
 ## References

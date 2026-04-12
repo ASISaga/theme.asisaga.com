@@ -21,50 +21,59 @@
  *   Tier 2: Interface (this file) — defines the ROLE of the content
  *   Tier 3: Engine (_engines.scss) — defines the LOOK
  *
+ * DIRECTORY STRUCTURE:
+ *   _sass/design/      — Pure design tokens (SCSS mapped from _design/tokens/*.json)
+ *   _sass/ontology/    — Ontological engine, utilities, layout, effects
+ *     engines/         — All engine implementations + infrastructure
+ *       utilities/     — Sass mixins, accessibility, common utilities
+ *       layout/        — Responsive system, layout wrappers, base structure
+ *       effects/       — Animations, glassmorphism, ambient atmosphere
+ *       components/    — Sacred & themed component implementations
+ *
  * IMPORT ORDER:
- *   0. Base theme foundation (fonts, tokens, utilities, layout, effects)
+ *   0. Base theme infrastructure (fonts, design tokens, utilities, layout, effects)
  *   1. CSS Custom Properties (ontology tokens)
  *   2. Engine Layer (physical manifestation mixins)
  *   3. Interface Layer (semantic API exposed to subdomains)
  */
 
 // ============================================================================
-// STEP 0: BASE THEME FOUNDATION
+// STEP 0: BASE THEME INFRASTRUCTURE
 // ============================================================================
 // Everything a subdomain needs before the ontological engine.
 // Subdomains @import "ontology/index" to get all of this in one line.
 
-// Fonts & Icons
-@import "foundation/fontawesome";             // Font Awesome 6 Free (vendored in _sass/vendor/fontawesome/)
-@import "foundation/fonts";
-@import "foundation/icons";
+// Fonts & Icons (in engines/ — infrastructure, not design tokens)
+@import "engines/fontawesome";             // Font Awesome 6 Free (vendored in _sass/vendor/fontawesome/)
+@import "engines/fonts";
+@import "engines/icons";
 
-// Design Foundation — The DNA
-@import "foundation/design/colors";              // OKLCH + semantic color tokens
-@import "foundation/design/variables-generated"; // Generated from _design/tokens.json (imported first to allow overrides)
-@import "foundation/design/variables";           // Theme-wide Sass variables (includes shadows, opacity, animation tokens)
-@import "foundation/design/dimensions";          // Spacing and sizing tokens
+// Design Foundation — The DNA (from _sass/design/ — maps directly to _design/tokens/*.json)
+@import "design/colors";              // OKLCH + semantic color tokens
+@import "design/variables-generated"; // Generated from _design/tokens.json (imported first to allow overrides)
+@import "design/variables";           // Theme-wide Sass variables (includes shadows, opacity, animation tokens)
+@import "design/dimensions";          // Spacing and sizing tokens
 
-// Utilities & Mixins
-@import "foundation/utilities/mixins";           // Core Sass mixins
-@import "foundation/utilities/semantic-mixins";  // Semantic mixins
-@import "foundation/utilities/structural-mixins"; // Structural utility mixins (positioning, flex, grid, etc.)
-@import "foundation/utilities/accessibility";    // WCAG compliance helpers
-@import "foundation/utilities/common";           // Common utility styles
+// Utilities & Mixins (in engines/utilities/ — infrastructure)
+@import "engines/utilities/mixins";           // Core Sass mixins
+@import "engines/utilities/semantic-mixins";  // Semantic mixins
+@import "engines/utilities/structural-mixins"; // Structural utility mixins (positioning, flex, grid, etc.)
+@import "engines/utilities/accessibility";    // WCAG compliance helpers
+@import "engines/utilities/common";           // Common utility styles
 
-// Typography & Theme
-@import "foundation/design/typography";          // Unified typography: fluid scale, sacred families, material primitives
-@import "foundation/design/theme";               // Theme-level configuration
+// Typography & Theme (from _sass/design/ — design tokens)
+@import "design/typography";          // Unified typography: fluid scale, sacred families, material primitives
+@import "design/theme";               // Theme-level configuration
 
-// Layout System
-@import "foundation/layout/responsive-system";   // Modern breakpoints, container queries
-@import "foundation/layout/layout-wrappers";     // Modern layout containers
-@import "foundation/layout/layout";              // Base layout structures
+// Layout System (in engines/layout/ — infrastructure)
+@import "engines/layout/responsive-system";   // Modern breakpoints, container queries
+@import "engines/layout/layout-wrappers";     // Modern layout containers
+@import "engines/layout/layout";              // Base layout structures
 
-// Visual Effects
-@import "foundation/effects/animations";         // Core animation library
-@import "foundation/effects/futuristic-effects"; // Advanced glassmorphism, glows, gradients
-@import "foundation/effects/ambient-layer";      // Sentient ambient atmosphere
+// Visual Effects (in engines/effects/ — infrastructure)
+@import "engines/effects/animations";         // Core animation library
+@import "engines/effects/futuristic-effects"; // Advanced glassmorphism, glows, gradients
+@import "engines/effects/ambient-layer";      // Sentient ambient atmosphere
 
 // ============================================================================
 // STEP 1: CSS CUSTOM PROPERTIES

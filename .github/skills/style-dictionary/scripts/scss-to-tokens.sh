@@ -2,8 +2,8 @@
 # ============================================================================
 # SCSS → TOKENS (Reverse Translation)
 # ============================================================================
-# Parses SCSS variable declarations from _sass/ontology/foundation/design/_variables.scss
-# and _sass/ontology/foundation/design/_colors.scss, then writes a structured tokens.json to
+# Parses SCSS variable declarations from _sass/design/_variables.scss
+# and _sass/design/_colors.scss, then writes a structured tokens.json to
 # .github/skills/style-dictionary/tokens-extracted.json.
 #
 # Usage:
@@ -36,8 +36,8 @@ echo -e "${BLUE}└────────────────────�
 echo ""
 
 # Verify source files
-SCSS_COLORS="$REPO_ROOT/_sass/ontology/foundation/design/_colors.scss"
-SCSS_VARS="$REPO_ROOT/_sass/ontology/foundation/design/_variables.scss"
+SCSS_COLORS="$REPO_ROOT/_sass/design/_colors.scss"
+SCSS_VARS="$REPO_ROOT/_sass/design/_variables.scss"
 
 for f in "$SCSS_COLORS" "$SCSS_VARS"; do
   if [[ ! -f "$f" ]]; then

@@ -19,12 +19,12 @@
 // ----------------------------------------
 // LAYOUT UTILITIES — shared across all layouts
 // ----------------------------------------
-@import "ontology/foundation/layout/bento-engine";
+@import "ontology/engines/layout/bento-engine";
 
 // ----------------------------------------
 // BASE UTILITIES — legacy compatibility & utility classes
 // ----------------------------------------
-@import "ontology/foundation/utilities/legacy-utilities";
+@import "ontology/engines/utilities/legacy-utilities";
 
 // ----------------------------------------
 // CORE COMPONENTS — present on every page
@@ -100,9 +100,9 @@
 // ----------------------------------------
 // LAYOUT STYLES — all page layouts
 // ----------------------------------------
-@import "ontology/foundation/layout/base-structure";
-@import "ontology/foundation/layout/layout-ontology";
-@import "ontology/foundation/layout/responsive-enhancements";
+@import "ontology/engines/layout/base-structure";
+@import "ontology/engines/layout/layout-ontology";
+@import "ontology/engines/layout/responsive-enhancements";
 
 @import "layouts/app";
 @import "layouts/default";

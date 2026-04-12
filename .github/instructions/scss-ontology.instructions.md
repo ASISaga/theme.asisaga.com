@@ -17,33 +17,40 @@ ontology/
 ├── _tokens.scss         # CSS custom properties (spacing, sizing, motion, z-index, radius)
 ├── _engines.scss        # Engine layer dispatch
 ├── _interface.scss      # Public semantic API (genesis-* mixins)
-├── engines/             # 6 ontological engines (internal implementation)
-│   ├── _atmosphere.scss # Sensory texture & emotional tone
-│   ├── _cognition.scss  # Typography & information intent
-│   ├── _entity.scss     # Visual presence & material properties
-│   ├── _environment.scss# Spatial organization & layout
-│   ├── _state.scss      # Temporal conditions & system status
-│   └── _synapse.scss    # Interactions & navigation
-└── samples/             # Usage examples (not compiled to production)
+└── engines/             # Engine implementations + infrastructure
+    ├── _atmosphere.scss # Sensory texture & emotional tone
+    ├── _cognition.scss  # Typography & information intent
+    ├── _entity.scss     # Visual presence & material properties
+    ├── _environment.scss# Spatial organization & layout
+    ├── _state.scss      # Temporal conditions & system status
+    ├── _synapse.scss    # Interactions & navigation
+    ├── _fontawesome.scss# Font Awesome 6 Free (vendored)
+    ├── _fonts.scss      # @font-face declarations
+    ├── _icons.scss      # Icon system configuration
+    ├── components/      # Component engine implementations
+    ├── effects/         # Visual effects (animations, glassmorphism, ambient)
+    ├── layout/          # Layout primitives (responsive system, wrappers)
+    └── utilities/       # Sass mixins, accessibility, common utilities
 ```
+
+Design tokens live at `_sass/design/` (separate from `ontology/`) — see `scss-base.instructions.md`.
 
 ## What Belongs Here
 
-- ✅ Ontological engine implementations (6 categories)
+- ✅ Ontological engine implementations (6 categories + component engine)
 - ✅ Public semantic API (`_interface.scss`)
 - ✅ CSS custom properties (`_tokens.scss`)
-- ✅ Usage examples and samples
+- ✅ Infrastructure: fonts, icons, Font Awesome, effects, layout, utilities
 
 ## What Does NOT Belong
 
-- ❌ Component-specific styles (→ `components/`)
-- ❌ Layout-specific styles (→ `layouts/`)
-- ❌ Design tokens / variables (→ `base/design/`)
-- ❌ Font declarations (→ `base/`)
+- ❌ Design tokens / variables (→ `_sass/design/`)
+- ❌ Component-specific include styles (→ `includes/`)
+- ❌ Layout-specific page styles (→ `layouts/`)
 
 ## Import Rules
 
-- `_index.scss` imports foundation from `base/` (fonts, tokens, utilities, effects)
+- `_index.scss` imports design tokens from `../design/` and infrastructure from `engines/`
 - `_index.scss` is imported ONLY by `assets/css/style.scss` — never by other `_sass/` partials
 - Engine files (`engines/*.scss`) are internal — never import individually
 

@@ -4,7 +4,7 @@
 
 ```
 assets/css/style.scss          ← Jekyll compilation entry point
-├── Layer 1: ontology/index    ← Universal base (foundation + ontological API)
+├── Layer 1: ontology/index    ← Universal base (design tokens + ontological API)
 └── Layer 2: _main.scss        ← Theme bundle (includes, layouts, demo styles)
 ```
 
@@ -16,9 +16,9 @@ Each subdirectory of `_sass/` has a single, well-defined responsibility:
 
 | Directory | Canonical Purpose | What Belongs Here | What Does NOT Belong |
 |-----------|------------------|-------------------|---------------------|
-| **`ontology/`** | Ontological Design System engine + foundation (Layer 1) | 6 semantic engines, public API, CSS tokens, foundation, mixins | Layout-specific styles |
-| **`ontology/foundation/`** | Foundation layer — design tokens, fonts, utilities, effects | Colors, variables, typography, animations, mixins, accessibility helpers | Component-specific styles |
-| **`ontology/mixins/`** | Reusable component factory mixins | Card, hero, form, CTA, section mixins | Component implementations |
+| **`design/`** | Design tokens only — SCSS mappings to `_design/tokens/*.json` | Colors, variables, typography, dimensions — all `$variable` declarations | Fonts, effects, utilities, component styles |
+| **`ontology/`** | Ontological Design System engine (Layer 1) | 6 semantic engines, public API, CSS tokens, infrastructure | Layout-specific styles |
+| **`ontology/engines/`** | Engine infrastructure — fonts, utilities, layout, effects | Fonts, icon config, layout primitives, effects, utility mixins, component engines | Design token `$variables` |
 | **`includes/`** | Include-specific styles + reusable UI components | One-to-one SCSS for `_includes/*.html`, core components, sections, products, sacred, web-components | Page layout structures, design tokens |
 | **`layouts/`** | Page layout styles mirroring `_layouts/` HTML | Layout structures, grid systems, page-type-specific styles | Reusable component styles, design tokens |
 | **`demo/`** | Demo-only styles for the theme's showcase pages | Index page demo, ontology animation demos | Production styles needed by subdomains |
@@ -28,9 +28,10 @@ Each subdirectory of `_sass/` has a single, well-defined responsibility:
 ### Boundary Rules
 
 - **Layout code** (page-level containers, flex columns, grid systems) → `layouts/`
-- **Utility classes** (`.sr-only`, `.container`, legacy compatibility) → `ontology/foundation/utilities/`
+- **Utility classes** (`.sr-only`, `.container`, legacy compatibility) → `ontology/engines/utilities/`
 - **Component code** (visual UI elements: cards, buttons, heroes, modals) → `includes/core/`
-- **Design tokens** (colors, spacing, typography scales) → `ontology/foundation/design/`
+- **Design tokens** (`$variables`, colors, spacing, typography scales) → `design/`
+- **Infrastructure** (fonts, icons, effects, layout primitives) → `ontology/engines/`
 - **Ontology engines and API** → `ontology/` only
 
 ## Directory Structure
@@ -40,64 +41,49 @@ _sass/
 ├── _main.scss                   # Layer 2: Full theme bundle (reference implementation)
 ├── _test-compile.scss           # SCSS compilation test entry point
 │
-├── ontology/                    # Ontological Design System + Foundation (Layer 1)
+├── design/                      # Design Tokens — maps to _design/tokens/*.json
+│   ├── _colors.scss             # OKLCH + semantic color tokens (centralized)
+│   ├── _variables-generated.scss# Generated from _design/tokens/*.json — DO NOT EDIT
+│   ├── _variables.scss          # Theme-wide Sass variables (sacred aliases, component tokens)
+│   ├── _dimensions.scss         # Spacing and sizing tokens
+│   ├── _typography.scss         # Unified: fluid scale + sacred families
+│   └── _theme.scss              # Theme-level configuration
+│
+├── ontology/                    # Ontological Design System (Layer 1)
 │   ├── _index.scss              # ⭐ Universal base import (the ONLY import subdomains need)
 │   ├── _tokens.scss             # CSS custom properties (spacing, sizing, motion, z-index, radius)
 │   ├── _engines.scss            # Engine layer dispatch
 │   ├── _interface.scss          # Public semantic API (genesis-* mixins)
-│   ├── engines/                 # 6 ontological engines
-│   │   ├── _atmosphere.scss     # Sensory texture & emotional tone
-│   │   ├── _cognition.scss      # Typography & information intent
-│   │   ├── _entity.scss         # Visual presence & material properties
-│   │   ├── _environment.scss    # Spatial organization & layout
-│   │   ├── _state.scss          # Temporal conditions & system status
-│   │   └── _synapse.scss        # Interactions & navigation
-│   ├── foundation/              # Foundation: design tokens, fonts, utilities, effects
-│   │   ├── _fontawesome.scss    # Font Awesome 6 (vendored in vendor/fontawesome/)
-│   │   ├── _fonts.scss          # @font-face declarations
-│   │   ├── _icons.scss          # Icon system configuration
-│   │   ├── design/              # Design tokens & visual foundation
-│   │   │   ├── _colors.scss              # OKLCH + semantic color tokens (centralized)
-│   │   │   ├── _variables-generated.scss # Generated from _design/tokens/*.json — DO NOT EDIT
-│   │   │   ├── _variables.scss           # Theme-wide Sass variables
-│   │   │   ├── _dimensions.scss          # Spacing and sizing tokens
-│   │   │   ├── _typography.scss          # Unified: fluid scale + sacred families
-│   │   │   └── _theme.scss               # Theme-level configuration
-│   │   ├── effects/             # Visual effects
-│   │   │   ├── _animations.scss          # Core keyframe animations
-│   │   │   ├── _futuristic-effects.scss  # Glassmorphism, glows, gradients
-│   │   │   └── _ambient-layer.scss       # Sentient ambient atmosphere
-│   │   ├── layout/              # Layout primitives
-│   │   │   ├── _responsive-system.scss   # Modern breakpoints, container queries
-│   │   │   ├── _layout-wrappers.scss     # Layout containers
-│   │   │   ├── _layout.scss              # Base layout structures
-│   │   │   ├── _base-structure.scss      # Fundamental page layout containers
-│   │   │   ├── _layout-ontology.scss     # Ontology-mapped layout classes
-│   │   │   └── _responsive-enhancements.scss # Cross-layout responsive refinements
-│   │   └── utilities/           # Sass utilities and legacy compatibility
-│   │       ├── _mixins.scss              # Core Sass mixins
-│   │       ├── _semantic-mixins.scss     # Semantic mixins (buttons, gradients)
-│   │       ├── _accessibility.scss       # WCAG compliance helpers
-│   │       ├── _common.scss              # Common utility styles
-│   │       └── _legacy-utilities.scss    # Legacy compatibility (.sr-only, .container, .row)
-│   ├── mixins/                  # Component factory mixins (loaded before implementations)
-│   │   ├── _card-component.scss
-│   │   ├── _hero-component.scss
-│   │   ├── _form-component.scss
-│   │   └── [8 more mixin files]
-│   └── samples/                 # Usage examples (not compiled to production)
+│   └── engines/                 # Engine implementations + infrastructure
+│       ├── _atmosphere.scss     # Sensory texture & emotional tone
+│       ├── _cognition.scss      # Typography & information intent
+│       ├── _entity.scss         # Visual presence & material properties
+│       ├── _environment.scss    # Spatial organization & layout
+│       ├── _state.scss          # Temporal conditions & system status
+│       ├── _synapse.scss        # Interactions & navigation
+│       ├── _fontawesome.scss    # Font Awesome 6 (vendored in vendor/fontawesome/)
+│       ├── _fonts.scss          # @font-face declarations
+│       ├── _icons.scss          # Icon system configuration
+│       ├── components/          # Component engine implementations
+│       ├── effects/             # Visual effects
+│       │   ├── _animations.scss          # Core keyframe animations
+│       │   ├── _futuristic-effects.scss  # Glassmorphism, glows, gradients
+│       │   └── _ambient-layer.scss       # Sentient ambient atmosphere
+│       ├── layout/              # Layout primitives
+│       │   ├── _responsive-system.scss   # Modern breakpoints, container queries
+│       │   ├── _layout-wrappers.scss     # Layout containers
+│       │   ├── _layout.scss              # Base layout structures
+│       │   ├── _base-structure.scss      # Fundamental page layout containers
+│       │   ├── _layout-ontology.scss     # Ontology-mapped layout classes
+│       │   └── _responsive-enhancements.scss # Cross-layout responsive refinements
+│       └── utilities/           # Sass utilities and legacy compatibility
+│           ├── _mixins.scss              # Core Sass mixins
+│           ├── _semantic-mixins.scss     # Semantic mixins (buttons, gradients)
+│           ├── _structural-mixins.scss   # Structural utility mixins (positioning, flex, grid)
+│           ├── _accessibility.scss       # WCAG compliance helpers
+│           ├── _common.scss              # Common utility styles
+│           └── _legacy-utilities.scss    # Legacy compatibility (.sr-only, .container, .row)
 │
-├── includes/                    # Include-specific styles + reusable UI components
-│   ├── _index.scss              # Aggregates all include SCSS files
-│   ├── [root includes]          # One-to-one with _includes/*.html
-│   ├── core/                    # Site-wide components: header, footer, navbar, cards, UI
-│   │   ├── _genesis-core.scss   # body, main, skip-link, ambient layer
-│   │   ├── _genesis-header.scss # Glassmorphism sticky header
-│   │   ├── _genesis-footer.scss # Grid footer with deep void aesthetic
-│   │   ├── _navbar.scss         # Navigation with off-canvas drawer
-│   │   ├── _cards.scss          # Card variants (elevated, accent)
-│   │   ├── _ui-components.scss  # Modal, collapse/accordion, tabs
-│   │   ├── _bento-engine.scss   # Native CSS Grid system (shared grid primitive)
 │   │   └── [more core files]
 │   ├── sections/                # Page sections: hero, CTA, testimonial, timeline
 │   ├── products/                # Product-specific display components
@@ -168,11 +154,11 @@ npm run tokens:build            # Regenerate _variables-generated.scss from toke
 ## Key Rules
 
 1. **`ontology/index`** imported ONLY in `assets/css/style.scss` — never in `_sass/` partials
-2. **Variables in `ontology/foundation/design/`** — never declare `$variables` elsewhere
-3. **Typography unified in `_typography.scss`** — fluid scale + sacred families + material primitives
+2. **Variables in `design/`** — never declare `$variables` elsewhere; design/ is the ONLY exempt directory
+3. **Typography unified in `design/_typography.scss`** — fluid scale + sacred families + material primitives
 4. **Web component SCSS in `includes/web-components/`** — canonical location, no duplicates
 5. **Demo styles in `demo/`** — separated from production code
 6. **No `@extend`** — causes Jekyll build errors
 7. **Max 3 nesting levels**
 8. **Layout code in `layouts/`** — never in `includes/`
-9. **Utility classes in `ontology/foundation/utilities/`** — never in `includes/`
+9. **Utility classes in `ontology/engines/utilities/`** — never in `includes/`

@@ -156,21 +156,22 @@ Each `_sass/` subdirectory has a single, well-defined responsibility:
 
 | Directory | Canonical Purpose |
 |-----------|------------------|
-| **`ontology/`** | Ontological Design System engine (Layer 1) — 6 semantic engines, public API, CSS tokens |
-| **`base/`** | Foundation — design tokens, fonts, utilities, effects, layout primitives |
-| **`components/`** | Reusable UI components — visual elements (cards, headers, heroes, modals, forms) |
+| **`design/`** | Design tokens only — pure SCSS mappings to `_design/tokens/*.json`; the only place for `$variable` declarations |
+| **`ontology/`** | Ontological Design System engine (Layer 1) — 6 semantic engines, public API, CSS tokens, infrastructure |
+| **`ontology/engines/`** | Engine infrastructure — fonts, utilities, layout, effects (non-token foundation files) |
 | **`includes/`** | Include-specific styles — one-to-one SCSS for `_includes/` HTML templates |
 | **`layouts/`** | Page layout styles — page-level structures mirroring `_layouts/` HTML |
 | **`demo/`** | Demo-only styles — not for subdomains or production |
 | **`samples/`** | Example/reference SCSS — not compiled to production |
-| **`vendor/`** | Vendored third-party SCSS — Font Awesome, RFS |
+| **`vendor/`** | Vendored third-party SCSS — Font Awesome |
 
 ### Boundary Rules
 
 - **Layout code** (page-level containers, flex columns, grid systems) → `layouts/`
-- **Utility classes** (`.sr-only`, `.container`, legacy compatibility) → `base/utilities/`
-- **Component code** (visual UI elements: cards, buttons, heroes, modals) → `components/`
-- **Design tokens** (colors, spacing, typography scales) → `base/design/`
+- **Utility classes** (`.sr-only`, `.container`, legacy compatibility) → `ontology/engines/utilities/`
+- **Component code** (visual UI elements: cards, buttons, heroes, modals) → `includes/core/`
+- **Design tokens** (colors, spacing, typography scales) → `design/`
+- **Non-token infrastructure** (fonts, effects, utilities, layout primitives) → `ontology/engines/`
 - **Ontology engines and API** → `ontology/` only
 
 ### Two-Layer Architecture

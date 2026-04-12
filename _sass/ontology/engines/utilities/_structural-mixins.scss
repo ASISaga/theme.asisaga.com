@@ -10,7 +10,7 @@
 //   - genesis-* semantic mixins (6 engines)
 //   - Utility mixins from this file and other foundation utilities
 //   - Component mixins from ontology/mixins/
-//   - Sass variables from ontology/foundation/design/
+//   - Sass variables from _sass/design/
 // ============================================================================
 
 // ----------------------------------------
@@ -76,7 +76,7 @@
 // ----------------------------------------
 
 @mixin container-constrained($max-width: 1440px, $padding-inline: 1.25rem) {
-  max-width: min($max-width, 100%);
+  max-width: $max-width; // Ruby Sass 3.7.4 compat: avoid min() with incompatible units
   margin-inline: auto;
   padding-inline: $padding-inline;
 }
@@ -160,7 +160,7 @@
 @mixin grid-auto-fit($min-col-width: 280px, $gap: 2rem) {
   display: grid;
   gap: $gap;
-  grid-template-columns: repeat(auto-fit, minmax(min(#{$min-col-width}, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(#{$min-col-width}, 1fr)); // Ruby Sass 3.7.4 compat: avoid min() with mixed units
 }
 
 @mixin grid-columns($cols: 1, $gap: 2rem) {

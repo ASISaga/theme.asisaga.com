@@ -21,7 +21,7 @@ allowed-tools: Bash(node:*) Bash(npx:*) Read Edit
 Maintains a single source of truth for the Genesis Semantic Design System design tokens using the **[Style Dictionary v4](https://amzn.github.io/style-dictionary/) npm package**. Translates between two representations:
 
 - **Tokens → SCSS**: Build structured `_design/tokens.json` (DTCG) → SCSS `$variable: value;` declarations via Style Dictionary  
-- **SCSS → Tokens**: Parse existing `_sass/ontology/foundation/design/_variables.scss` → structured DTCG `_design/tokens.json`
+- **SCSS → Tokens**: Parse existing `_sass/design/_variables.scss` → structured DTCG `_design/tokens.json`
 
 The token source (`_design/tokens.json`) uses the **Design Token Community Group (DTCG) spec** (`$value`, `$type`, `$description`) with a **4-tier architecture**:
 - **Tier 1 (Identity)**: Core scale (Golden Ratio 1.618) and grid (0.25rem) — the mathematical roots
@@ -31,7 +31,7 @@ The token source (`_design/tokens.json`) uses the **Design Token Community Group
 
 ## When to Use This Skill
 
-- Synchronising `_sass/ontology/foundation/design/_variables.scss` after updating `_design/tokens.json`
+- Synchronising `_sass/design/_variables.scss` after updating `_design/tokens.json`
 - Extracting design tokens from SCSS into DTCG JSON for tooling, design tools, or documentation
 - Onboarding a new subdomain by exporting the current token set as JSON
 - Auditing design token drift between the JSON source and generated SCSS
@@ -61,11 +61,11 @@ node .github/skills/style-dictionary/sd.config.mjs
 npx style-dictionary build --config .github/skills/style-dictionary/sd.config.mjs
 ```
 
-The script writes `_sass/ontology/foundation/design/_variables-generated.scss`. Review the diff, then run with `--apply` to overwrite the production `_variables.scss`.
+The script writes `_sass/design/_variables-generated.scss`. Review the diff, then run with `--apply` to overwrite the production `_variables.scss`.
 
 ### 2. SCSS → Tokens (Reverse)
 
-Parse existing `_sass/ontology/foundation/design/` SCSS variables back into DTCG `_design/tokens.json` format:
+Parse existing `_sass/design/` SCSS variables back into DTCG `_design/tokens.json` format:
 
 ```bash
 # Extract SCSS variables into tokens-extracted.json (staged output for review)
@@ -179,8 +179,8 @@ npm test                   # Full suite
 → **Style Dictionary v4 config**: `.github/skills/style-dictionary/sd.config.mjs`  
 → **Design token source**: `_design/tokens/` (split files)  
 → **Token guide**: `.github/skills/style-dictionary/references/TOKEN-GUIDE.md`  
-→ **SCSS variables**: `_sass/ontology/foundation/design/_variables.scss`  
-→ **Color definitions**: `_sass/ontology/foundation/design/_colors.scss`  
+→ **SCSS variables**: `_sass/design/_variables.scss`  
+→ **Color definitions**: `_sass/design/_colors.scss`  
 → **SCSS instructions**: `.github/instructions/scss.instructions.md`  
 → **Ontology system**: `/docs/specifications/scss-ontology-system.md`  
 → **Fluid design units**: `/docs/specifications/fluid-design-unit-compatibility.md`

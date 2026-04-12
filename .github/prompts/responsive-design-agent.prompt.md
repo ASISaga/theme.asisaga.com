@@ -169,5 +169,5 @@ Glassmorphism must degrade gracefully — the ontology system handles this autom
 - `/docs/specifications/scss-ontology-system.md` — All ontological variants
 - `/docs/specifications/accessibility.md` — WCAG compliance and touch targets
 - `.github/skills/responsive-design-agent/references/RESPONSIVE-GUIDE.md` — Detailed patterns and tokens
-- `_sass/ontology/foundation/_responsive-system.scss` — Implementation reference
+- `_sass/ontology/engines/_responsive-system.scss` — Implementation reference
 

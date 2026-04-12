@@ -66,8 +66,9 @@ Each subdirectory has a single canonical purpose:
 
 | Directory | Purpose | Path-Specific Instructions |
 |-----------|---------|---------------------------|
-| **`ontology/`** | Ontological Design System engine + foundation (Layer 1) | `scss-ontology.instructions.md` |
-| **`ontology/foundation/`** | Foundation: tokens, fonts, utilities, effects | `scss-base.instructions.md` |
+| **`ontology/`** | Ontological Design System engine (Layer 1) | `scss-ontology.instructions.md` |
+| **`ontology/engines/`** | Engine infrastructure: fonts, utilities, layout, effects | — |
+| **`design/`** | Design tokens only — pure SCSS mappings to `_design/tokens/*.json` | `scss-base.instructions.md` |
 | **`ontology/mixins/`** | Reusable component factory mixins | — |
 | **`includes/`** | Include-specific styles + reusable UI components mirroring `_includes/` | `scss-includes.instructions.md` |
 | **`includes/core/`** | Site-wide components (header, footer, navbar, cards) | `scss-components.instructions.md` |
@@ -78,9 +79,9 @@ Each subdirectory has a single canonical purpose:
 
 **Boundary rules:**
 - **Layout code** (page containers, flex columns, grids) → `layouts/`
-- **Utility classes** (`.sr-only`, `.container`, legacy) → `ontology/foundation/utilities/`
+- **Utility classes** (`.sr-only`, `.container`, legacy) → `ontology/engines/utilities/`
 - **Component code** (cards, buttons, heroes, modals) → `includes/core/`
-- **Design tokens** (colors, spacing, typography) → `ontology/foundation/design/`
+- **Design tokens** (colors, spacing, typography) → `design/`
 
 → **Full architecture**: `_sass/README.md`
 
@@ -212,7 +213,7 @@ npm run lint:scss           # Code style and best practices
 
 **Path-specific instructions** (auto-loaded when editing files in these directories):
 - `.github/instructions/scss-ontology.instructions.md` — `_sass/ontology/**`
-- `.github/instructions/scss-base.instructions.md` — `_sass/ontology/foundation/**`
+- `.github/instructions/scss-base.instructions.md` — `_sass/design/**`
 - `.github/instructions/scss-components.instructions.md` — `_sass/includes/**`
 - `.github/instructions/scss-layouts.instructions.md` — `_sass/layouts/**`
 - `.github/instructions/scss-includes.instructions.md` — `_sass/includes/**`

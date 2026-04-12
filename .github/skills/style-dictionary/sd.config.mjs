@@ -2,7 +2,7 @@
 /**
  * Genesis Design Token Builder — Style Dictionary v4 Config
  *
- * Forward translation: _design/tokens/*.json → _sass/ontology/foundation/design/_variables-generated.scss
+ * Forward translation: _design/tokens/*.json → _sass/design/_variables-generated.scss
  * Preserves OKLCH color values (no hex coercion).
  * Resolves sys-layer aliases and identity-tier references transitively.
  *
@@ -101,7 +101,7 @@ const sdConfig = {
   platforms: {
     scss: {
       transformGroup: 'scss/genesis',
-      buildPath: join(repoRoot, '_sass/ontology/foundation/design') + '/',
+      buildPath: join(repoRoot, '_sass/design') + '/',
       files: [
         {
           destination: '_variables-generated.scss',
