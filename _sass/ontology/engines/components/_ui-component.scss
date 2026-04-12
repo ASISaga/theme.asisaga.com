@@ -87,7 +87,7 @@
     @include flex-center;
     @include cursor-pointer;
     color: oklch(0.45 0.01 220);
-    border-radius: $border-radius;
+    border-radius: $border-radius-md;
     @include transition-smooth;
     @include flex-shrink-none;
 
@@ -197,7 +197,7 @@
     padding: $spacing-md $spacing-lg;
     @include text-decoration-none;
     color: oklch(0.30 0.01 230);
-    border-radius: $border-radius;
+    border-radius: $border-radius-md;
     @include transition-smooth;
 
     &:hover,

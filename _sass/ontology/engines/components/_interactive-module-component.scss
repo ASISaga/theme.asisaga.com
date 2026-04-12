@@ -10,7 +10,7 @@
     @include genesis-state('scroll-triggered');
     position: relative;
     @include cursor-pointer;
-    border-radius: $border-radius;
+    border-radius: $border-radius-md;
     @include overflow-hidden;
     box-shadow: $box-shadow;
     @include full-height;
@@ -110,7 +110,7 @@
     @include genesis-atmosphere('ethereal');
     background-color: $light;
     border: none;
-    border-radius: $border-radius;
+    border-radius: $border-radius-md;
     @include shadow-depth(0.2);
 
     .modal-header {

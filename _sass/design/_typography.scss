@@ -161,6 +161,7 @@ p, .body-text {
 .text-primary { color: $text-primary; }
 .text-secondary { color: $text-secondary; }
 .text-accent { color: $text-accent; }
+// DEPRECATED: Use .text-primary instead. Kept for backward compatibility.
 .text-consciousness { color: $text-primary; }
 .text-inverse { color: $text-inverse; }
 

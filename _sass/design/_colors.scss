@@ -127,7 +127,8 @@ $color-status-error-text: oklch(0.60 0.20 25);      // Error text on light backg
 // SECTION 3: LEGACY COMPATIBILITY LAYER
 // ============================================================================
 // Map semantic names to old variable names still used across the codebase.
-// Migrate consumers to Section 2 names over time.
+// Raw OKLCH values here are one-off legacy aliases that haven't been
+// promoted to design tokens. Migrate consumers to Section 2 names over time.
 // ============================================================================
 
 $cosmic-deep-blue: $color-profound-black;          // → use $text-primary or $surface-dark
