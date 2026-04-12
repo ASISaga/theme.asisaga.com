@@ -1,6 +1,6 @@
 // Do not edit directly — generated from _design/tokens/*.json
 // Run: node .github/skills/style-dictionary/sd.config.mjs
-// Spacing tokens — spacing, border-radius, border-width, sizes, transitions, z-index
+// Spacing tokens — spacing, border-radius, border-width, sizes, transitions, z-index, line-heights
 
 $identity-scale: 1.618; // Golden Ratio φ — base harmonic multiplier for all derived scales (sacred-lg, sacred-xl)
 $identity-grid: 0.25rem; // 4px base grid unit — all spacing tokens are integer multiples of this value
@@ -65,3 +65,12 @@ $component-card-border-radius: 2rem; // Card border radius
 $component-btn-border-radius: 1rem; // Button border radius
 $component-product-border-accent-width: 4px; // Product accent border width
 $component-product-code-max-height: 31.25rem; // 500px — max height for product code blocks
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+$line-height-transcendent: 2; // Meditative, flowing content
+$line-height-sacred: 1.618; // φ — identity.scale (Golden Ratio for sacred content)
+$line-height-consciousness: 1.75; // Spacious for contemplation
+$line-height-wisdom: 1.6; // Optimal for sustained reading
+$line-height-interface: 1.4; // Compact line-height for interface elements
+$line-height-loose: 1.8; // Loose line-height for spacious reading
