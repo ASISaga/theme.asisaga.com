@@ -150,6 +150,12 @@ export class ChatroomApp extends GenesisElement {
         if (changedProperties.has('participants')) {
             this.updateParticipants(this.participants);
         }
+        // Sync theme variant class when the theme attribute changes at runtime.
+        if (changedProperties.has('theme')) {
+            const prev = changedProperties.get('theme');
+            if (prev) this.classList.remove(`chatroom--theme-${prev}`);
+            if (this.theme) this.classList.add(`chatroom--theme-${this.theme}`);
+        }
     }
 
     // =========================================================================
@@ -211,7 +217,8 @@ export class ChatroomApp extends GenesisElement {
         // Conditionally show step progress (Readme.md req 5)
         const stepEl = layout.querySelector('.chatroom-step-progress');
         if (stepEl && stepId && totalSteps) {
-            stepEl.textContent = `${stepId} of ${totalSteps}`;
+            stepEl.textContent = `Step ${stepId} of ${totalSteps}`;
+            stepEl.setAttribute('aria-label', `Step ${stepId} of ${totalSteps}`);
             stepEl.hidden = false;
         }
 
