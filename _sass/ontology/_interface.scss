@@ -31,7 +31,7 @@
 @mixin genesis-entity($nature: 'primary') {
   // Variants: primary, secondary, editorial, imperative, latent, aggregate, ancestral,
   // transcendent, ephemeral, image-adaptive, embed-responsive, avatar, badge,
-  // notification, reaction-picker, user-card, surface-glass
+  // notification, reaction-picker, user-card, surface-glass, nested
   @include _theme-engine-entity($nature);
 }
 

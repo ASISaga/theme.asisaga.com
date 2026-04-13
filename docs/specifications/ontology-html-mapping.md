@@ -159,6 +159,7 @@ The Genesis system recognizes four hierarchy levels. Each level has permitted an
 | Disabled card, inactive widget | `'latent'` | Dimmed, grayscale, de-emphasized |
 | Wrapper around multiple child items | `'aggregate'` | Larger padding, subtle border |
 | Archived/historical content | `'ancestral'` | Muted, legacy appearance |
+| Structural wrapper inside a parent entity | `'nested'` | Chrome-free pass-through (see [Nesting](#nesting-deeply-hierarchical-markup)) |
 
 ### Level 4 — Leaf Element (text, links, buttons, images)
 
@@ -215,6 +216,89 @@ An element may receive **at most one mixin from each category**, and only from c
 2. **Never apply `genesis-cognition()` to a container**. Cognition is for text elements, not their wrappers.
 3. **Never stack `genesis-environment()` and `genesis-entity()` on the same element** except at Level 3 when a component both needs internal layout and visual surface.
 4. **Never apply `genesis-atmosphere()` to leaf elements**. Atmosphere is for containers (Level 1–3).
+
+## Nesting — Deeply Hierarchical Markup
+
+HTML markup is often deeply nested. When an intermediate wrapper sits between a parent entity and a child entity, both may receive visual chrome (background, border, box-shadow), producing visible "double-boxing."
+
+### The Problem
+
+```
+.parent-entity   → genesis-entity('primary')   ← background + border + shadow
+  .wrapper       → (no entity)                 ← theme may accidentally style this
+    .child-entity → genesis-entity('secondary') ← background + border + shadow
+```
+
+If a theme variant adds `background`/`border` to `.wrapper`, the visual chrome stacks — the parent's border encloses the wrapper's border, which encloses the child's border.
+
+### The Solution: `genesis-entity('nested')`
+
+Apply `genesis-entity('nested')` to intermediate wrappers that live inside an entity context but must not carry their own visual surface:
+
+```scss
+.parent-entity {
+  @include genesis-entity('primary');        // visual surface
+
+  .wrapper {
+    @include genesis-entity('nested');       // chrome-free structural pass-through
+    @include genesis-environment('associative');
+  }
+
+  .child-entity {
+    @include genesis-entity('secondary');    // its own visual surface
+  }
+}
+```
+
+**Properties set by `'nested'`:**
+
+| Property | Value | Rationale |
+|----------|-------|-----------|
+| `background` | `transparent` | No competing background layer |
+| `border` | `none` | No double borders |
+| `box-shadow` | `none` | No stacked shadows |
+| `border-radius` | `inherit` | Inherits parent's shape context |
+| `padding` | `0` | No double padding |
+
+### When to Use `'nested'`
+
+| Scenario | Use `'nested'`? | Reasoning |
+|----------|:---------------:|-----------|
+| Flex row between card and card body | ✅ Yes | Structural wrapper — no visual role |
+| Accordion container with panel children | ✅ Yes | Shell has no surface of its own |
+| Card inside a card | ❌ No | Both cards are independent visual entities |
+| Section wrapper at Level 2 | ❌ No | Use `genesis-environment()` instead |
+
+### Real-World Example: Chatroom Messages
+
+The chatroom message hierarchy demonstrates `'nested'` in action:
+
+```scss
+.chatroom-messages {
+  @include genesis-environment('chronological');
+
+  .chatroom__message {
+    // Layout-only spacer — flex-column with padding-block.
+    // 'nested' prevents theme variants from accidentally giving it chrome.
+  }
+
+  .chatroom__message-row {
+    @include genesis-environment('associative');  // flex row: avatar + body
+  }
+
+  .chatroom__message-body {
+    @include genesis-entity('secondary');         // THE visual bubble
+  }
+}
+
+// Theme override — only the terminal element gets styled
+.chatroom--theme-party {
+  .chatroom__message-body {
+    @include genesis-entity('nested');            // strip boardroom chrome
+    background: oklch(0.13 0.04 280);             // party-specific surface
+  }
+}
+```
 
 ## Layout Reference
 

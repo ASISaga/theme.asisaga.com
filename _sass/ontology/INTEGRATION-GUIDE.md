@@ -270,6 +270,7 @@ Place this before loading the theme's common.js.
 - `'ancestral'` - Archived or historical data (muted, legacy appearance)
 - `'image-adaptive'` ⭐ **NEW v2.1.0** - Responsive image that maintains aspect ratio
 - `'embed-responsive'` ⭐ **NEW v2.1.0** - Embedded content (iframe, video) with aspect ratio
+- `'nested'` ⭐ **NEW v5.1.0** - Structural wrapper inside a parent entity — resets visual chrome (see [Nesting](#nesting-deeply-hierarchical-markup))
 
 **Example:**
 ```scss
@@ -283,6 +284,15 @@ Place this before loading the theme's common.js.
 
 .critical-alert {
   @include genesis-entity('imperative');   // Urgent notification
+}
+
+// New in v5.1.0: Nesting support for hierarchical markup
+.message-wrapper {
+  @include genesis-entity('nested');       // No chrome — structural wrapper only
+}
+
+.message-body {
+  @include genesis-entity('secondary');    // The actual visual bubble
 }
 
 // New in v2.1.0: Media responsiveness
@@ -620,6 +630,45 @@ Apply one primary mixin from each category as needed:
 - One `genesis-cognition` per text element
 - One `genesis-synapse` per interactive element
 - Optional `genesis-state` and `genesis-atmosphere` modifiers
+
+### 6. Nesting — Deeply Hierarchical Markup
+
+HTML markup is often deeply nested. When multiple entity levels overlap, the
+parent's `background`, `border`, and `box-shadow` compete with the child's,
+producing visual "double-boxing." Use `genesis-entity('nested')` on
+intermediate wrappers to strip their chrome while preserving the parent's
+shape context.
+
+**When to use `'nested'`:**
+- The element sits **between** a parent entity and a child entity
+- The element is a structural wrapper (flex row, grid container) not a visual surface
+- A theme override would otherwise need manual `border: none` / `background: transparent`
+
+**Example — chat message with nested wrapper:**
+```scss
+// ❌ Without 'nested': .message-row inherits parent chrome → double border
+.message-list {
+  .message { @include genesis-entity('primary'); }          // parent surface
+  .message__row { /* no entity — but theme may style it */ }
+  .message__body { @include genesis-entity('secondary'); }  // child surface
+}
+
+// ✅ With 'nested': .message-row is explicitly chrome-free
+.message-list {
+  .message { @include genesis-entity('nested'); }           // resets chrome
+  .message__row { @include genesis-environment('associative'); }
+  .message__body { @include genesis-entity('secondary'); }  // sole visual surface
+}
+```
+
+**Properties set by `'nested'`:**
+| Property | Value | Rationale |
+|----------|-------|-----------|
+| `background` | `transparent` | No competing background layer |
+| `border` | `none` | No double borders |
+| `box-shadow` | `none` | No stacked shadows |
+| `border-radius` | `inherit` | Inherits parent's shape context |
+| `padding` | `0` | No double padding |
 
 ---
 

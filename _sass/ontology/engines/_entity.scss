@@ -551,4 +551,21 @@
       }
     }
   }
+  @else if $nature == 'nested' {
+    // Nested child within a parent entity — resets visual chrome so only the
+    // terminal element carries the component surface.  Use on intermediate
+    // wrappers or inner elements that live inside another entity context but
+    // must not duplicate the parent's border/background/shadow.
+    //
+    // Typical HTML hierarchy where 'nested' solves box-model redundancy:
+    //   .card          → genesis-entity('primary')      ← parent surface
+    //     .card__row   → genesis-entity('nested')       ← structural wrapper (no chrome)
+    //       .card__body → genesis-entity('secondary')   ← child surface
+    //
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: inherit;  // flow with parent's shape
+    padding: 0;
+  }
 }

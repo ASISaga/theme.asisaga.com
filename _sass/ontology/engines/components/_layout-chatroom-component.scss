@@ -867,6 +867,15 @@
       }
     }
 
+    // Reset boardroom-specific chrome using ontology nesting — the party theme
+    // delegates the full bubble visual to .chatroom__message-body as a single
+    // terminal element.  genesis-entity('nested') strips the inherited boardroom
+    // border/background/shadow so each theme only needs to add its own surface.
+    .chatroom__message-body {
+      @include genesis-entity('nested');
+      background: oklch(0.13 0.04 280);
+    }
+
     // Host (DJ Bot) messages
     .chatroom__message--host {
       .chatroom__message-body {

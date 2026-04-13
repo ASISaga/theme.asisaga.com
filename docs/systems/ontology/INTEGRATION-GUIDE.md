@@ -1,5 +1,15 @@
 # Ontology System Integration Guide
 
+> **📚 Documentation Location**: This file has been copied to [`/docs/systems/ontology/INTEGRATION-GUIDE.md`](../../docs/systems/ontology/INTEGRATION-GUIDE.md) for easier access. Both versions are kept in sync.
+> 
+> **See also**:
+> - [Ontology System Overview](../../docs/systems/ontology/README.md) - System introduction
+> - [Quick Start](../../docs/systems/ontology/ONTOLOGY-QUICK-START.md) - Getting started
+> - [Migration Guide](../../docs/systems/ontology/ONTOLOGY-MIGRATION-GUIDE.md) - Legacy migration
+> - [Ontology-to-HTML Mapping](../../docs/specifications/ontology-html-mapping.md) - **Formal hierarchy rules for which mixins to apply at each HTML level**
+
+---
+
 ## Overview
 
 The **Genesis Semantic SCSS Engine** is a three-tier architecture that enables subdomain repositories to remain "style-blind" while the theme repository acts as the "visual brain." This creates a clean separation between content semantics and visual presentation.
@@ -180,6 +190,8 @@ Place this before loading the theme's common.js.
 - `'navigation-primary'` ⭐ **NEW v2.2.0** - Main site navigation (horizontal desktop → mobile drawer)
 - `'navigation-secondary'` ⭐ **NEW v2.2.0** - Contextual navigation (breadcrumbs, footer nav)
 - `'interaction-form'` ⭐ **NEW v2.2.0** - Form layout optimized for data entry
+- `'convergent'` ⭐ **NEW v4.0.0** - Sidebar + main content layout (article TOC, docs sidebar)
+- `'panelled'` ⭐ **NEW v5.0.0** - Multi-panel app shell (rigid non-wrapping row, fixed panels + fluid main)
 
 **Example:**
 ```scss
@@ -225,6 +237,24 @@ Place this before loading the theme's common.js.
   @include genesis-environment('navigation-accordion');  // Accordion layout
 }
 
+// New in v4.0.0: Sidebar + main reading layout
+.article-layout {
+  @include genesis-environment('convergent');  // Sticky sidebar + main content
+}
+
+// New in v5.0.0: Multi-panel app shell (default panel width: 280px)
+.app-shell {
+  @include genesis-environment('panelled');  // Rigid row: panels + fluid main
+}
+
+// Custom panel width (e.g. narrow strip panel):
+.app-shell--narrow-panel {
+  @include genesis-environment('panelled');
+  --panel-width: 220px;
+  --panel-width-tablet: 180px;
+  --space-panel-gap: 1px;  // hairline divider between panels and main
+}
+
 ```
 
 ---
@@ -240,6 +270,7 @@ Place this before loading the theme's common.js.
 - `'ancestral'` - Archived or historical data (muted, legacy appearance)
 - `'image-adaptive'` ⭐ **NEW v2.1.0** - Responsive image that maintains aspect ratio
 - `'embed-responsive'` ⭐ **NEW v2.1.0** - Embedded content (iframe, video) with aspect ratio
+- `'nested'` ⭐ **NEW v5.1.0** - Structural wrapper inside a parent entity — resets visual chrome (see [Nesting](#nesting-deeply-hierarchical-markup))
 
 **Example:**
 ```scss
@@ -253,6 +284,15 @@ Place this before loading the theme's common.js.
 
 .critical-alert {
   @include genesis-entity('imperative');   // Urgent notification
+}
+
+// New in v5.1.0: Nesting support for hierarchical markup
+.message-wrapper {
+  @include genesis-entity('nested');       // No chrome — structural wrapper only
+}
+
+.message-body {
+  @include genesis-entity('secondary');    // The actual visual bubble
 }
 
 // New in v2.1.0: Media responsiveness
@@ -557,7 +597,7 @@ Your SCSS nesting should perfectly mirror your HTML DOM hierarchy.
   @include genesis-environment('focused');
   
   .intro-section {
-    @include genesis-entity('primary');
+    @include genesis-environment('associative'); // Section: environment only
     
     .hub-title {
       @include genesis-cognition('axiom');
@@ -566,13 +606,69 @@ Your SCSS nesting should perfectly mirror your HTML DOM hierarchy.
 }
 ```
 
-### 4. Single Responsibility
+### 4. Hierarchy-Level Rules
+
+Each element has a hierarchy level that determines which mixins are permitted.
+→ **Full specification**: `docs/specifications/ontology-html-mapping.md`
+
+| Level | Element type | Required | Forbidden |
+|-------|-------------|----------|-----------|
+| **1 — Page Layout** | Outermost wrapper | `environment` + `atmosphere` | `entity`, `cognition`, `synapse` |
+| **2 — Section** | `<header>`, `<footer>`, `<nav>`, `<aside>` | `environment` | `entity`, `cognition` |
+| **3 — Component** | Cards, widgets, alerts | `entity` | — |
+| **4 — Leaf** | `<h1>`–`<h6>`, `<p>`, `<a>`, `<button>` | `cognition` or `synapse` | `environment`, `atmosphere`, `entity` |
+
+**Critical violations:**
+- ❌ `genesis-entity()` on structural containers (Level 1/2) — entity is for visual objects only
+- ❌ `genesis-cognition()` on containers — cognition is for text elements only
+- ❌ `genesis-atmosphere()` on leaf elements — atmosphere is for containers only
+
+### 5. Single Responsibility
 Apply one primary mixin from each category as needed:
 - One `genesis-environment` per layout container
 - One `genesis-entity` per content block
 - One `genesis-cognition` per text element
 - One `genesis-synapse` per interactive element
 - Optional `genesis-state` and `genesis-atmosphere` modifiers
+
+### 6. Nesting — Deeply Hierarchical Markup
+
+HTML markup is often deeply nested. When multiple entity levels overlap, the
+parent's `background`, `border`, and `box-shadow` compete with the child's,
+producing visual "double-boxing." Use `genesis-entity('nested')` on
+intermediate wrappers to strip their chrome while preserving the parent's
+shape context.
+
+**When to use `'nested'`:**
+- The element sits **between** a parent entity and a child entity
+- The element is a structural wrapper (flex row, grid container) not a visual surface
+- A theme override would otherwise need manual `border: none` / `background: transparent`
+
+**Example — chat message with nested wrapper:**
+```scss
+// ❌ Without 'nested': .message-row inherits parent chrome → double border
+.message-list {
+  .message { @include genesis-entity('primary'); }          // parent surface
+  .message__row { /* no entity — but theme may style it */ }
+  .message__body { @include genesis-entity('secondary'); }  // child surface
+}
+
+// ✅ With 'nested': .message-row is explicitly chrome-free
+.message-list {
+  .message { @include genesis-entity('nested'); }           // resets chrome
+  .message__row { @include genesis-environment('associative'); }
+  .message__body { @include genesis-entity('secondary'); }  // sole visual surface
+}
+```
+
+**Properties set by `'nested'`:**
+| Property | Value | Rationale |
+|----------|-------|-----------|
+| `background` | `transparent` | No competing background layer |
+| `border` | `none` | No double borders |
+| `box-shadow` | `none` | No stacked shadows |
+| `border-radius` | `inherit` | Inherits parent's shape context |
+| `padding` | `0` | No double padding |
 
 ---
 
@@ -583,6 +679,7 @@ Before committing subdomain SCSS, verify:
 - [ ] **Semantic Purity**: HTML uses semantic tags (`<article>`, `<section>`, etc.) correctly
 - [ ] **Property Isolation**: SCSS contains NO raw CSS properties (no `px`, `rem`, `color`, `display`, etc.)
 - [ ] **Role Alignment**: Buttons mapped to `synapse`, titles to `axiom`, etc.
+- [ ] **Hierarchy Compliance**: Level 1/2 containers use `environment` only — never `entity` or `cognition`
 - [ ] **Theme Inheritance**: Subdomain relies entirely on `_engines.scss` for visual weight
 - [ ] **Mirrored Structure**: SCSS nesting matches HTML DOM hierarchy exactly
 

@@ -44,4 +44,18 @@
     @include genesis-environment('manifest');
     @include genesis-atmosphere('vibrant');
   }
+
+  // Test nesting support (v5.1.0)
+  .test-nested-parent {
+    @include genesis-entity('primary');
+
+    .test-nested-wrapper {
+      @include genesis-entity('nested');
+      @include genesis-environment('associative');
+    }
+
+    .test-nested-child {
+      @include genesis-entity('secondary');
+    }
+  }
 }
