@@ -377,7 +377,10 @@
   }
   
   &__message {
-    @include genesis-entity('primary');
+    // Structural row wrapper — visual chrome belongs on .chatroom__message-body,
+    // not on this container.  Using 'nested' strips background/border/shadow so
+    // the chatroom-component's per-variant body styling is the only visual layer.
+    @include genesis-entity('nested');
     
     &-author {
       @include genesis-cognition('motive');
