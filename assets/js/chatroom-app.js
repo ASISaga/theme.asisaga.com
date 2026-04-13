@@ -567,7 +567,6 @@ export class ChatroomApp extends GenesisElement {
         };
         return this._buildFromJsonLd(msg);
     }
-    }
 
 
     /**
