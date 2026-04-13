@@ -922,6 +922,226 @@
   }
 
   // ==========================================================================
+  // LIGHT THEME  (chatroom--theme-light)
+  // ==========================================================================
+  // Applied by chatroom-sample.js via chatroom.theme = 'light', which adds the
+  // chatroom--theme-light class to the chatroom-app element.
+
+  [data-chatroom-component].chatroom--theme-light {
+    .chatroom-layout {
+      background: $color-light-white;
+    }
+
+    .chatroom-header {
+      background: $color-light-surface;
+      @include border-separator-bottom($color-border-light);
+
+      &::before {
+        background: linear-gradient(90deg, $color-accent-gold-accessible, transparent 80%);
+      }
+    }
+
+    .chatroom-domain-switcher {
+      background: $color-light-surface;
+      @include border-separator-bottom($color-border-light);
+    }
+
+    .chatroom-domain-btn[aria-checked="true"] {
+      background: $color-accent-gold-accessible;
+      color: $color-light-white;
+      border-color: $color-accent-gold-accessible;
+    }
+
+    .chatroom-title         { color: $color-accent-gold-accessible; }
+    .chatroom-owner         { color: $color-accent-gold-accessible; }
+    .chatroom-participants  { color: $color-text-muted; }
+    .chatroom-step-progress { color: $color-text-muted; }
+
+    .chatroom-typing-indicator {
+      color: $color-accent-gold-accessible;
+    }
+
+    .chatroom-status {
+      background: $color-light-subtle-gray;
+      @include border-subtle($color-border-light);
+      color: $color-text-muted;
+
+      &::before                            { background: $color-text-muted; }
+      &.chatroom-status-online::before     { background: $color-boardroom-status-online; }
+      &.chatroom-status-connecting::before { background: $color-accent-gold-accessible; animation: chatroom-pulse 1.5s ease-in-out infinite; }
+      &.chatroom-status-error::before,
+      &.chatroom-status-offline::before    { background: $color-boardroom-status-error; }
+    }
+
+    .chatroom-settings-btn {
+      color: $color-text-muted;
+
+      &:hover { background: $color-light-subtle-gray; color: $color-accent-gold-accessible; }
+      &:focus { outline: 2px solid $color-accent-gold-accessible; outline-offset: 2px; }
+    }
+
+    .chatroom-mcp-apps-toggle {
+      color: $color-accent-gold-accessible;
+
+      &:hover,
+      &:focus-visible { background: $color-light-subtle-gray; }
+
+      &[aria-expanded="true"] { background: $color-neutral-alpha-light; }
+    }
+
+    .chatroom-mcp-badge {
+      background: $color-accent-gold-accessible;
+      color: $color-light-white;
+    }
+
+    // Messages area
+    .chatroom-messages {
+      background: $color-light-white;
+      scrollbar-color: $color-border-light transparent;
+
+      &::-webkit-scrollbar-thumb { background: $color-border-light; }
+    }
+
+    .chatroom-empty-state { color: $color-text-muted; }
+
+    // Message bubbles — colour overrides only; structural chrome from base rules
+    .chatroom__message--own {
+      .chatroom__message-body {
+        background: $color-light-surface;
+        @include border-subtle($color-border-light);
+      }
+    }
+
+    .chatroom__message--ai .chatroom__message-body {
+      background: $color-light-surface;
+      @include border-subtle($color-border-light);
+      border-left: 2px solid $color-accent-gold-accessible;
+    }
+
+    .chatroom__author        { color: $color-text-primary; }
+    .chatroom__time          { color: $color-text-muted; }
+
+    .chatroom__agent-role {
+      background: $color-neutral-alpha-light;
+      color: $color-accent-gold-accessible;
+    }
+
+    .chatroom__text {
+      color: $color-text-primary;
+      &--error { color: $color-status-error-text; }
+    }
+
+    .chatroom__system-message { color: $color-text-muted; }
+    .chatroom__agenda-label   { color: $color-accent-gold-accessible; }
+    .chatroom__agenda-title   { color: $color-text-primary; }
+    .chatroom__typing-text    { color: $color-text-muted; }
+
+    .chatroom__tool-badge {
+      background: $color-neutral-alpha-light;
+      color: $color-accent-gold-accessible;
+    }
+
+    .chatroom__tool-results {
+      @include border-separator-top($color-border-light);
+    }
+
+    .chatroom__tool-result-item {
+      background: $color-light-subtle-gray;
+      @include border-subtle($color-border-light);
+    }
+
+    .chatroom__tool-result-label  { color: $color-text-primary; }
+    .chatroom__tool-result-detail { color: $color-text-muted; }
+    .chatroom__tool-result-more   { color: $color-text-muted; }
+
+    .chatroom__thinking-dots span { background: $color-accent-gold-accessible; }
+
+    // Input area
+    .chatroom-input {
+      background: $color-light-surface;
+      @include border-separator-top($color-border-light);
+
+      &-field-container {
+        @include border-subtle($color-border-light);
+        background: $color-light-white;
+
+        &:focus-within {
+          border-color: $color-accent-gold-accessible;
+          box-shadow: 0 0 0 1px $color-neutral-alpha-light;
+        }
+      }
+
+      &-field {
+        color: $color-text-primary;
+        &::placeholder { color: $color-text-muted; }
+      }
+
+      &-format-btn {
+        color: $color-text-muted;
+        &:hover { background: $color-light-subtle-gray; color: $color-accent-gold-accessible; }
+      }
+
+      &-send-btn {
+        background: $color-accent-gold-accessible;
+        color: $color-light-white;
+        &:hover { background: $color-accent-gold-dark; color: $color-light-white; }
+        &:focus { outline: 2px solid $color-accent-gold-accessible; outline-offset: 2px; }
+      }
+
+      &-char-count { color: $color-text-muted; }
+    }
+
+    // MCP Apps panel
+    .chatroom-mcp-apps {
+      background: $color-light-surface;
+      @include border-subtle($color-border-light);
+      box-shadow: 0 8px 24px $color-neutral-alpha-medium;
+
+      &__header { @include border-separator-bottom($color-border-light); }
+      &__title  { color: $color-accent-gold-accessible; }
+
+      &__hint {
+        color: $color-text-muted;
+
+        code {
+          background: $color-light-subtle-gray;
+          color: $color-accent-gold-accessible;
+        }
+      }
+
+      &__btn {
+        &:hover,
+        &:focus-visible {
+          background: $color-light-subtle-gray;
+          outline: 1px solid $color-border-light;
+          outline-offset: -1px;
+        }
+      }
+
+      &__btn-icon {
+        background: $color-neutral-alpha-light;
+        color: $color-accent-gold-accessible;
+      }
+
+      &__btn-label   { color: $color-text-primary; }
+      &__btn-desc    { color: $color-text-muted; }
+      &__btn-command { background: $color-light-subtle-gray; color: $color-accent-gold-accessible; }
+    }
+
+    // Loading overlay
+    .chatroom-loading-overlay {
+      background: $color-surface-primary;
+
+      &-spinner {
+        border-color: $color-border-light;
+        border-top-color: $color-accent-gold-accessible;
+      }
+
+      &-text { color: $color-text-muted; }
+    }
+  }
+
+  // ==========================================================================
   // RESPONSIVE
   // ==========================================================================
 
