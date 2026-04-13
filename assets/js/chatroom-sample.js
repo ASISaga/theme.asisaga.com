@@ -67,6 +67,21 @@ const DOMAINS = {
             '__user_message':    'UserMessage',
         },
     },
+    light: {
+        theme: 'light',
+        // Reuse the business JSON-LD data and templates in the light theme.
+        // dataSource tells activateDomain which key to read from domainData.
+        dataSource: 'business',
+        templates: {
+            'ScheduleAction':    'template-business-agenda',
+            'AgentMessage':      'template-business-agent-msg',
+            'UserMessage':       'template-business-user-msg',
+            'CommunicateAction': 'template-business-typing',
+            'AcknowledgeAction': 'template-business-decision',
+            '__agent_message':   'AgentMessage',
+            '__user_message':    'UserMessage',
+        },
+    },
     party: {
         theme: 'party',
         templates: {
@@ -115,8 +130,9 @@ function activateDomain(chatroom, domainId, domainData) {
     // Apply / remove theme variant CSS class
     chatroom.theme = domain.theme ?? null;
 
-    // Load the domain's JSON-LD @graph array
-    const messages = domainData[domainId];
+    // Support dataSource for domains that share data with another domain
+    const dataKey = domain.dataSource ?? domainId;
+    const messages = domainData[dataKey];
     if (Array.isArray(messages)) {
         chatroom.loadDomain(messages);
     }
