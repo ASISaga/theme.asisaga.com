@@ -1,0 +1,49 @@
+---
+layout: post
+title: "OKLCH: The Color Space Your Eyes Were Waiting For"
+date: 2026-02-28
+author: "ASI Saga"
+tags: ["OKLCH", "Color Science", "Perceptual Uniformity", "HDR", "Design Tokens"]
+categories: ["Color Science"]
+share: true
+---
+
+{% assign oklch = site.data.samples.oklch_colors %}
+
+{{ oklch.articleBody | split: "\n\n" | first }}
+
+## The Lie of Equal Intensity
+
+{{ oklch.articleBody | split: "\n\n" | slice: 1, 2 | join: "
+
+" }}
+
+## Perceptual Uniformity in Practice
+
+{{ oklch.articleBody | split: "\n\n" | slice: 3, 2 | join: "
+
+" }}
+
+## Chroma and Hue Independence
+
+{{ oklch.articleBody | split: "\n\n" | slice: 5, 2 | join: "
+
+" }}
+
+## The Practical Result
+
+{{ oklch.articleBody | split: "\n\n" | slice: 7, 2 | join: "
+
+" }}
+
+## What This Means for You
+
+The Genesis palette is built on a foundation that respects human perception. Every token has been validated for contrast. Every combination works. Dark mode is not a separate palette — it is the same tokens with physics-correct inversion.
+
+**Related reading:**
+- [The Void and the Ethereal](/samples/content-driven/atmosphere.html) — how atmosphere variants use OKLCH
+- [Accessibility Is Not a Feature](/samples/content-driven/accessibility.html) — how OKLCH enables contrast by construction
+
+<script type="application/ld+json">
+{{ oklch | jsonify }}
+</script>

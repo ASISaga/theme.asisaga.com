@@ -1,0 +1,42 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ASI Saga",
+  "url": "https://asisaga.com",
+  "description": "The architects of the Genesis Semantic Design System — the first design system where every aesthetic decision has an origin story, every CSS property has exactly one owner, and AI agents evolve the genome in real time.",
+  "foundingDate": "2024",
+  "knowsAbout": [
+    "Ontological CSS Architecture",
+    "AI-Driven Design System Evolution",
+    "Perceptual Color Science (OKLCH)",
+    "Accessibility-First Engineering",
+    "Progressive Web Components (Lit)",
+    "Jekyll Theme Engineering"
+  ],
+  "member": [
+    {
+      "@type": "Person",
+      "name": "Genesis Theme Collective",
+      "jobTitle": "Design Systems Architects",
+      "description": "We believe design systems should have memory. That CSS properties should have owners. That accessibility should be architectural, not aspirational. That a single word — void, ethereal, sacred — should be enough to set the emotional tone of an entire page region.",
+      "knowsAbout": [
+        "Ontological SCSS Engine Design",
+        "Living Genome Architecture",
+        "OKLCH Color Science",
+        "WCAG AA Structural Compliance",
+        "Lit Web Components",
+        "Jekyll Remote Themes"
+      ],
+      "memberOf": {
+        "@type": "Organization",
+        "name": "ASI Saga"
+      }
+    }
+  ],
+  "project": {
+    "@type": "SoftwareSourceCode",
+    "name": "Genesis Semantic Design System",
+    "description": "Six categories. 89 variants. 20+ layouts. 17 web components. One genome. Zero raw CSS in subdomains.",
+    "url": "https://github.com/ASISaga/theme.asisaga.com"
+  }
+}

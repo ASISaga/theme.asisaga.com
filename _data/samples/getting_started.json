@@ -1,0 +1,76 @@
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Getting Started with the Genesis Design System",
+  "description": "From clone to first page in under ten minutes. Install the theme, pick a layout, and let the ontological engine handle typography, spacing, color, and responsive behavior.",
+  "totalTime": "PT10M",
+  "tool": [
+    {
+      "@type": "HowToTool",
+      "name": "Jekyll 4.0+"
+    },
+    {
+      "@type": "HowToTool",
+      "name": "Ruby 2.7+"
+    },
+    {
+      "@type": "HowToTool",
+      "name": "Node.js (for SCSS linting)"
+    }
+  ],
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Clone the Repository",
+      "text": "Clone the theme repository from GitHub to your local machine.",
+      "url": "https://github.com/ASISaga/theme.asisaga.com",
+      "itemListElement": {
+        "@type": "HowToDirection",
+        "text": "git clone https://github.com/ASISaga/theme.asisaga.com.git && cd theme.asisaga.com"
+      }
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Install Dependencies",
+      "text": "Install Ruby gems required by Jekyll and the theme.",
+      "itemListElement": {
+        "@type": "HowToDirection",
+        "text": "bundle install"
+      }
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Serve Locally",
+      "text": "Start the Jekyll development server to preview the theme.",
+      "itemListElement": {
+        "@type": "HowToDirection",
+        "text": "bundle exec jekyll serve"
+      }
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Create Your First Page",
+      "text": "Create a new file with YAML front matter specifying the layout you want to use.",
+      "itemListElement": {
+        "@type": "HowToDirection",
+        "text": "Create a file with front matter: layout: post, title: 'Hello World'. Write your content below the front matter block. The layout handles typography, spacing, and responsive behavior."
+      }
+    },
+    {
+      "@type": "HowToStep",
+      "position": 5,
+      "name": "Choose a Layout",
+      "text": "Select from 20+ production layouts: post, article, landing, dashboard, docs, gallery, chatroom, and more. Each layout is responsive and accessible out of the box."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 6,
+      "name": "Customize with Ontology",
+      "text": "For advanced styling, use ontological SCSS mixins. Map your HTML elements to semantic categories: genesis-environment for layout, genesis-entity for surfaces, genesis-cognition for typography, genesis-synapse for interactions."
+    }
+  ]
+}

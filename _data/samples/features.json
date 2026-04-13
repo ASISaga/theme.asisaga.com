@@ -1,0 +1,69 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Why Genesis Exists",
+  "description": "The innovations that make the Genesis Semantic Design System unlike anything else in the Jekyll ecosystem",
+  "numberOfItems": 6,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Thing",
+        "name": "Zero-CSS Subdomains",
+        "description": "Subdomain developers write ZERO raw CSS properties. No padding. No margin. No color. No font-size. They describe what their content IS — genesis-entity('primary'), genesis-cognition('axiom') — and the engine resolves the rest. Change the engine, and every subdomain updates instantly.",
+        "identifier": "zero-css"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Thing",
+        "name": "Property Ownership",
+        "description": "Every CSS property belongs to exactly one ontological category. Padding to entity. Font-size to cognition. Grid to environment. Box-shadow to atmosphere. Hover to synapse. Animation to state. Two mixins on the same element can never compete for the same property. Specificity conflicts are architecturally impossible.",
+        "identifier": "property-ownership"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Thing",
+        "name": "The Living Genome",
+        "description": "Design systems are usually dictionaries — static lists of components. Genesis is a genome. New variants are proposed through formal ontological propositions, reviewed by AI agents for semantic purity, and documented in GENOME.md with their complete origin story. This is design with memory.",
+        "identifier": "living-genome"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Thing",
+        "name": "OKLCH Color Science",
+        "description": "Zero hex codes. Zero RGB. The entire palette is OKLCH — perceptually uniform, HDR-ready, and contrast-safe. Set L ≤ 0.55 for text on light surfaces and the physics of human vision guarantees readability. Dark mode is the same tokens with lightness inverted because OKLCH inversion actually works.",
+        "identifier": "oklch-colors"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Thing",
+        "name": "Accessibility by Architecture",
+        "description": "Not tested in. Built in. 44px touch targets enforced by every synapse variant. Contrast guaranteed by OKLCH lightness constraints. Landmarks required by the hierarchy system. Reduced motion respected in the one category (state) that owns all animation. You cannot build inaccessible pages without fighting the system.",
+        "identifier": "accessibility"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Thing",
+        "name": "17 Web Components, Zero Framework Tax",
+        "description": "Lit 3, light DOM, no Shadow DOM, no build step, no virtual DOM. Components enhance semantic HTML with progressive behavior — scroll detection, keyboard navigation, form validation — without replacing structure. Disable JavaScript and every page still works.",
+        "identifier": "web-components"
+      }
+    }
+  ]
+}

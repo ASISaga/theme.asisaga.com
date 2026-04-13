@@ -11,81 +11,85 @@ breadcrumbs:
 nav_items:
   - title: "Getting Started"
     url: "/docs/getting-started"
-  - title: "Layouts"
-    url: "/docs/layouts"
+  - title: "The Articles"
+    url: "/samples/content-driven/archive.html"
     children:
-      - title: "Base Templates"
-        url: "/docs/layouts/base"
-      - title: "Specialized"
-        url: "/docs/layouts/specialized"
-  - title: "Components"
-    url: "/docs/components"
+      - title: "The Manifesto"
+        url: "/samples/content-driven/article.html"
+      - title: "Living Genome"
+        url: "/samples/content-driven/post.html"
+      - title: "OKLCH Colors"
+        url: "/samples/content-driven/oklch.html"
+  - title: "Ontology"
+    url: "/docs/ontology"
   - title: "Customization"
     url: "/docs/customization"
 prev:
   title: "Introduction"
   url: "/docs/introduction"
 next:
-  title: "Layout Basics"
-  url: "/docs/layout-basics"
+  title: "The Death of Utility Classes"
+  url: "/samples/content-driven/article.html"
 ---
 
-This page walks you through installing the theme and building your first page.
+{% assign howto = site.data.samples.getting_started %}
+{% assign theme_data = site.data.samples.theme %}
+
+{{ howto.description }}
 
 ## Prerequisites
 
-- Jekyll 4.0+
-- Ruby 2.7+
-- Familiarity with YAML front matter
+{% for tool in howto.tool %}
+- {{ tool.name }}
+{% endfor %}
 
 ## Installation
 
-### 1. Clone
+{% for step in howto.step limit: 3 %}
+### {{ step.position }}. {{ step.name }}
 
+{{ step.text }}
+
+{% if step.itemListElement %}
 ```bash
-git clone https://github.com/ASISaga/theme.asisaga.com.git
-cd theme.asisaga.com
+{{ step.itemListElement.text }}
 ```
+{% endif %}
 
-### 2. Install dependencies
-
-```bash
-bundle install
-```
-
-### 3. Serve locally
-
-```bash
-bundle exec jekyll serve
-```
+{% endfor %}
 
 Open `http://localhost:4000`.
 
-## Your first page
+## {{ howto.step[3].name }}
 
-Create a file with front matter specifying the layout:
+{{ howto.step[3].text }}
 
-```yaml
----
-layout: post
-title: "Hello World"
----
-```
+{% if howto.step[3].itemListElement %}
+{{ howto.step[3].itemListElement.text }}
+{% endif %}
 
-Write your content below the front matter block. The layout handles typography, spacing, and responsive behavior.
+## What Makes This Different
 
-## Available layouts
+Before diving into layouts and categories, understand what sets Genesis apart. These articles explain the philosophy:
 
-| Category | Layouts |
-|----------|---------|
-| Content | post, article, archive, profile |
-| Marketing | landing, gallery, form |
-| Knowledge | docs, faq |
-| Application | dashboard, chatroom, search, settings |
-| Utility | minimal, splash |
+| Article | What You'll Learn |
+|---------|-------------------|
+{% for item in site.data.samples.archive.hasPart limit: 4 %}| [{{ item.headline | truncate: 45 }}]({{ item.url }}) | {{ item.keywords | join: ", " }} |
+{% endfor %}
 
-## Next steps
+## The Six Ontological Categories
 
-- Read [Layout Basics](/docs/layout-basics) to understand the hierarchy
-- Browse [Components](/docs/components) for reusable includes
-- Check [Customization](/docs/customization) for token overrides
+{% for term in site.data.samples.ontology.hasDefinedTerm %}
+- **{{ term.name }}** (`{{ term.termCode }}`) — {{ term.description | truncate: 80 }}
+{% endfor %}
+
+## Next Steps
+
+- Read [The Death of Utility Classes](/samples/content-driven/article.html) to understand the architectural philosophy
+- Explore [OKLCH Color Science](/samples/content-driven/oklch.html) to see how the palette works
+- Browse the [Chronicle](/samples/content-driven/archive.html) for all articles and deep dives
+- Check the [FAQ](/samples/knowledge/faq.html) for quick answers to common questions
+
+<script type="application/ld+json">
+{{ howto | jsonify }}
+</script>

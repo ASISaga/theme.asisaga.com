@@ -1,0 +1,65 @@
+---
+layout: post
+title: "Web Components Without the Framework Tax"
+date: 2026-03-25
+author: "ASI Saga"
+tags: ["Web Components", "Lit", "Light DOM", "Progressive Enhancement", "No Framework"]
+categories: ["Engineering"]
+share: true
+---
+
+{% assign wc = site.data.samples.web_components %}
+
+{{ wc.articleBody | split: "\n\n" | first }}
+
+## The 5KB Alternative
+
+{{ wc.articleBody | split: "\n\n" | slice: 1, 2 | join: "
+
+" }}
+
+## Light DOM: The Controversial Choice
+
+{{ wc.articleBody | split: "\n\n" | slice: 3, 2 | join: "
+
+" }}
+
+## The Ontological Six
+
+{{ wc.articleBody | split: "\n\n" | slice: 5, 2 | join: "
+
+" }}
+
+## Progressive Enhancement, Not Progressive Replacement
+
+{{ wc.articleBody | split: "\n\n" | slice: 7, 2 | join: "
+
+" }}
+
+## The Components
+
+The 17 genesis web components fall into three tiers:
+
+**Ontological** (behavioral enhancers for the six categories):
+
+{% for term in site.data.samples.ontology.hasDefinedTerm %}
+- `<genesis-{{ term.name | downcase }}>` — {{ term.description | truncate: 80 }}
+{% endfor %}
+
+**Domain** (interactive behavior for specific page elements):
+- `<genesis-header>` — Scroll detection, sticky behavior, theme toggle
+- `<genesis-navbar>` — Off-canvas drawer, keyboard navigation
+- `<genesis-accordion>` — Expand/collapse with ARIA support
+- `<genesis-form>` — Validation, ARIA live regions
+- `<genesis-dashboard>` — Layout management, widget lifecycle
+- `<genesis-search>` — Real-time filtering, result highlighting
+
+## Further Reading
+
+- [The Death of Utility Classes](/samples/content-driven/article.html) — the three-tier architecture that web components enhance
+- [Accessibility Is Not a Feature](/samples/content-driven/accessibility.html) — how components enforce WCAG compliance
+- View the [component showcase](/enhanced-showcase/) for interactive demonstrations
+
+<script type="application/ld+json">
+{{ wc | jsonify }}
+</script>

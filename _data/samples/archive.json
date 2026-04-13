@@ -1,0 +1,64 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "The Genesis Chronicle",
+  "description": "Every article, manifesto, and deep dive into the Genesis Semantic Design System — from color science to AI-driven design evolution.",
+  "hasPart": [
+    {
+      "@type": "Article",
+      "headline": "The Death of Utility Classes: Why Ontological CSS Changes Everything",
+      "datePublished": "2026-03-20",
+      "description": "A manifesto against the utility-class revolution and a case for ontological CSS — where you describe what content IS, not how it should look.",
+      "url": "/samples/content-driven/article.html",
+      "keywords": ["Manifesto", "Utility Classes", "Architecture"]
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Web Components Without the Framework Tax",
+      "datePublished": "2026-03-25",
+      "description": "17 Lit-based custom elements that enhance semantic HTML without a build step, a virtual DOM, or a runtime framework.",
+      "url": "/samples/content-driven/web-components.html",
+      "keywords": ["Web Components", "Lit", "Progressive Enhancement"]
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Design With Memory: How AI Agents Evolve a Living Design Genome",
+      "datePublished": "2026-03-15",
+      "description": "Inside the system where every design decision has an origin story and AI reviewers enforce semantic purity.",
+      "url": "/samples/content-driven/post.html",
+      "keywords": ["Living Genome", "AI Agents", "Evolution"]
+    },
+    {
+      "@type": "Article",
+      "headline": "Accessibility Is Not a Feature — It Is the Architecture",
+      "datePublished": "2026-03-10",
+      "description": "How the Genesis ontology makes WCAG compliance a structural guarantee instead of a checklist item.",
+      "url": "/samples/content-driven/accessibility.html",
+      "keywords": ["Accessibility", "WCAG", "Inclusive Design"]
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The Void and the Ethereal: Crafting Atmosphere in Code",
+      "datePublished": "2026-03-05",
+      "description": "How a single word — void, ethereal, sacred, vibrant — sets the emotional tone of an entire page region.",
+      "url": "/samples/content-driven/atmosphere.html",
+      "keywords": ["Atmosphere", "Dark Mode", "Glassmorphism"]
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "OKLCH: The Color Space Your Eyes Were Waiting For",
+      "datePublished": "2026-02-28",
+      "description": "Why hex codes lie to your brain and how perceptual uniformity changes everything about design systems.",
+      "url": "/samples/content-driven/oklch.html",
+      "keywords": ["OKLCH", "Color Science", "HDR"]
+    },
+    {
+      "@type": "HowTo",
+      "headline": "Getting Started with the Genesis Design System",
+      "datePublished": "2026-02-15",
+      "description": "From clone to first page in under ten minutes — installation, layout selection, and ontological customization.",
+      "url": "/samples/knowledge/docs.html",
+      "keywords": ["Getting Started", "Installation", "Tutorial"]
+    }
+  ]
+}

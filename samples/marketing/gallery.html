@@ -1,60 +1,32 @@
 ---
 layout: gallery
-title: "Project Gallery"
-description: "Selected work across web, mobile, and brand."
+title: "The Visual Language of Intent"
+description: "Each image represents a distinct ontological category — the visual output of describing WHAT content is rather than HOW it should look."
 categories:
-  - name: "Web"
-    slug: "web"
-  - name: "Mobile"
-    slug: "mobile"
-  - name: "Brand"
-    slug: "brand"
+  - name: "Environment"
+    slug: "environment"
+  - name: "Entity"
+    slug: "entity"
+  - name: "Cognition"
+    slug: "cognition"
+  - name: "Atmosphere"
+    slug: "atmosphere"
+  - name: "Synapse"
+    slug: "synapse"
 ---
 
-{% include layouts/gallery/gallery-item.html
-  thumbnail="/assets/images/gallery/web-ecommerce.svg"
-  full_image="/assets/images/gallery/web-ecommerce.svg"
-  title="E-commerce Platform"
-  description="End-to-end shopping experience"
-  category="web"
-%}
+{% assign gallery_data = site.data.samples.gallery %}
 
+{% for img in gallery_data.image %}
 {% include layouts/gallery/gallery-item.html
-  thumbnail="/assets/images/gallery/mobile-banking.svg"
-  full_image="/assets/images/gallery/mobile-banking.svg"
-  title="Mobile Banking"
-  description="Secure, fast financial tools"
-  category="mobile"
+  thumbnail=img.thumbnailUrl
+  full_image=img.contentUrl
+  title=img.name
+  description=img.caption
+  category=img.category
 %}
+{% endfor %}
 
-{% include layouts/gallery/gallery-item.html
-  thumbnail="/assets/images/gallery/brand-identity.svg"
-  full_image="/assets/images/gallery/brand-identity.svg"
-  title="Corporate Identity"
-  description="Complete brand system"
-  category="brand"
-%}
-
-{% include layouts/gallery/gallery-item.html
-  thumbnail="/assets/images/gallery/web-portfolio.svg"
-  full_image="/assets/images/gallery/web-portfolio.svg"
-  title="Portfolio"
-  description="Curated creative showcase"
-  category="web"
-%}
-
-{% include layouts/gallery/gallery-item.html
-  thumbnail="/assets/images/gallery/mobile-fitness.svg"
-  full_image="/assets/images/gallery/mobile-fitness.svg"
-  title="Fitness Tracker"
-  description="Health metrics at a glance"
-  category="mobile"
-%}
-
-{% include layouts/gallery/gallery-item.html
-  thumbnail="/assets/images/gallery/brand-startup.svg"
-  full_image="/assets/images/gallery/brand-startup.svg"
-  title="Startup Brand"
-  description="Tech identity from zero"
-  category="brand"
-%}
+<script type="application/ld+json">
+{{ gallery_data | jsonify }}
+</script>

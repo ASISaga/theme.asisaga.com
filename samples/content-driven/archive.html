@@ -1,51 +1,32 @@
 ---
 layout: archive
-title: "Archive"
-description: "All posts and articles, newest first."
+title: "The Genesis Chronicle"
+description: "Every article, manifesto, and deep dive — from color science to AI-driven design evolution."
 show_filters: true
 show_sort: true
 show_view_toggle: true
 show_pagination: true
 ---
 
-<article class="archive-item">
-  <div class="archive-item__content">
-    <h3 class="archive-item__title">
-      <a href="/samples/content-driven/sample-post.html" class="archive-item__link">Getting Started with Jekyll Layouts</a>
-    </h3>
-    <time datetime="2024-01-15" class="archive-item__date">January 15, 2024</time>
-    <p class="archive-item__excerpt">The layout system that ships with every page type and how to use it.</p>
-    <div class="archive-item__tags">
-      <span class="archive-item__tag">Jekyll</span>
-      <span class="archive-item__tag">Tutorial</span>
-    </div>
-  </div>
-</article>
+{% assign archive_data = site.data.samples.archive %}
 
+{% for item in archive_data.hasPart %}
 <article class="archive-item">
   <div class="archive-item__content">
     <h3 class="archive-item__title">
-      <a href="/samples/content-driven/sample-article.html" class="archive-item__link">The Architecture of Modern Web Layouts</a>
+      <a href="{{ item.url }}" class="archive-item__link">{{ item.headline }}</a>
     </h3>
-    <time datetime="2024-01-20" class="archive-item__date">January 20, 2024</time>
-    <p class="archive-item__excerpt">From table hacks to CSS Grid, a history of layout on the web.</p>
+    <time datetime="{{ item.datePublished }}" class="archive-item__date">{{ item.datePublished | date: "%B %d, %Y" }}</time>
+    <p class="archive-item__excerpt">{{ item.description }}</p>
     <div class="archive-item__tags">
-      <span class="archive-item__tag">CSS</span>
-      <span class="archive-item__tag">Architecture</span>
+      {% for keyword in item.keywords %}
+      <span class="archive-item__tag">{{ keyword }}</span>
+      {% endfor %}
     </div>
   </div>
 </article>
+{% endfor %}
 
-<article class="archive-item">
-  <div class="archive-item__content">
-    <h3 class="archive-item__title">
-      <a href="#" class="archive-item__link">Building Responsive Galleries</a>
-    </h3>
-    <time datetime="2024-01-10" class="archive-item__date">January 10, 2024</time>
-    <p class="archive-item__excerpt">Image-led grids that reflow gracefully from phone to ultrawide.</p>
-    <div class="archive-item__tags">
-      <span class="archive-item__tag">Gallery</span>
-      <span class="archive-item__tag">Responsive</span>
-    </div>
-  </div>
-</article>
+<script type="application/ld+json">
+{{ archive_data | jsonify }}
+</script>

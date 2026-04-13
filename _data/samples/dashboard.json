@@ -1,0 +1,86 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "The Pulse of the Genome",
+  "description": "The vital signs of a living design system — variants that evolved, layouts that adapt, tokens that guarantee contrast, and accessibility that cannot be bypassed.",
+  "creator": {
+    "@type": "Organization",
+    "name": "ASI Saga"
+  },
+  "distribution": [
+    {
+      "@type": "PropertyValue",
+      "name": "Ontological Variants",
+      "value": "89",
+      "unitText": "variants",
+      "description": "33 foundational + 56 evolved — each with an origin story in GENOME.md",
+      "additionalProperty": {
+        "@type": "PropertyValue",
+        "name": "trend",
+        "value": "+15"
+      }
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Production Layouts",
+      "value": "20",
+      "unitText": "layouts",
+      "description": "Responsive, accessible page templates — posts, dashboards, galleries, chatrooms, docs, and more",
+      "additionalProperty": {
+        "@type": "PropertyValue",
+        "name": "trend",
+        "value": "+4"
+      }
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "CSS Custom Properties",
+      "value": "150+",
+      "unitText": "properties",
+      "description": "All OKLCH — zero hex codes, zero RGB, perceptually uniform and HDR-ready",
+      "additionalProperty": {
+        "@type": "PropertyValue",
+        "name": "trend",
+        "value": "+25"
+      }
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "WCAG Compliance",
+      "value": "AA",
+      "unitText": "level",
+      "description": "By architecture, not by audit — 44px touch targets, OKLCH contrast, landmarks, reduced motion",
+      "additionalProperty": {
+        "@type": "PropertyValue",
+        "name": "trend",
+        "value": "0"
+      }
+    }
+  ],
+  "hasPart": [
+    {
+      "@type": "PropertyValue",
+      "name": "/samples/content-driven/article.html",
+      "value": "The Manifesto",
+      "description": "The Death of Utility Classes — why ontological CSS changes everything"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "/samples/content-driven/post.html",
+      "value": "Design With Memory",
+      "description": "How AI agents evolve a living design genome"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "/samples/content-driven/oklch.html",
+      "value": "OKLCH Color Science",
+      "description": "The color space your eyes were waiting for"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "/samples/content-driven/accessibility.html",
+      "value": "Accessibility Architecture",
+      "description": "WCAG compliance as a structural guarantee"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Web Components Without the Framework Tax",
+  "alternativeHeadline": "17 Lit-based custom elements that enhance semantic HTML without a build step, a virtual DOM, or a runtime framework",
+  "description": "Genesis ships 17 web components built on Lit 3 with light DOM rendering — no Shadow DOM isolation, no framework runtime, no build pipeline. They enhance semantic HTML with progressive behavior: environment, entity, cognition, synapse, state, atmosphere, plus domain components for headers, footers, navigation, forms, dashboards, and more.",
+  "datePublished": "2026-03-25",
+  "dateModified": "2026-04-13",
+  "author": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  },
+  "keywords": ["web components", "Lit", "custom elements", "light DOM", "progressive enhancement", "no framework"],
+  "articleSection": "Engineering",
+  "wordCount": 1100,
+  "articleBody": "There is a tax you pay every time you choose a JavaScript framework. React charges you a virtual DOM, a build pipeline, JSX compilation, and a 42KB runtime before your first component renders. Vue charges you a reactivity system, a template compiler, and opinions about state management. Svelte charges you a compiler and a commitment to do everything its way.\n\nGenesis charges you nothing.\n\nThe 17 web components in this design system are built on Lit 3 — a 5KB wrapper around the Web Components standard that adds reactive properties and lifecycle management without a virtual DOM, without a build step, and without a framework runtime. They are loaded via an ES module importmap in the HTML head, resolved from a CDN, and registered as custom elements.\n\nBut here is the part that makes most framework developers uncomfortable: these components use light DOM. No Shadow DOM. No scoped styles. No slot projection. The component's children are regular DOM nodes, styled by the theme's global SCSS, inspectable in the browser's element panel, and targetable by any CSS selector.\n\nWhy would you give up Shadow DOM encapsulation? Because the Genesis ontological SCSS engine IS the styling system. Shadow DOM would create a boundary that prevents the theme engine from reaching component internals. Light DOM means genesis-entity('primary') applied in the global stylesheet works on content inside a <genesis-card> element exactly as it works outside. There is one styling system, one source of truth, and no style boundary to debug.\n\nThe six ontological components — genesis-environment, genesis-entity, genesis-cognition, genesis-synapse, genesis-state, genesis-atmosphere — are behavioral enhancers. They read their variant attribute (e.g., <genesis-environment logic=\"distributed\">) and apply the corresponding CSS class or ARIA role. They do not render anything. They do not create shadow trees. They enhance the semantic HTML they wrap.\n\nThe domain components — genesis-header, genesis-footer, genesis-navbar, genesis-navigation, genesis-form, genesis-dashboard, genesis-search, genesis-accordion, genesis-card — add interactive behavior: scroll detection for sticky headers, off-canvas drawer management for navigation, keyboard accessibility for accordions, form validation with ARIA live regions. All of them extend a shared GenesisElement base class that handles property declaration, update lifecycle, and connection callbacks.\n\nThe progressive enhancement pattern means every page works without JavaScript. The HTML is semantic. The SCSS ontology styles it. The web components, when they load, add interactivity on top. Disable JavaScript and the header still displays, the cards still render, the forms still submit. Enable JavaScript and the header detects scroll position, the accordion opens and closes, the navigation handles keyboard events.\n\nThis is the opposite of a framework-first architecture, where the JavaScript IS the page and the HTML is an empty div waiting to be hydrated. In Genesis, the HTML is the page. The SCSS is the design system. The web components are a progressive enhancement layer that adds behavior without replacing structure.\n\nNo build step. No virtual DOM. No framework tax. Just custom elements that enhance semantic HTML with the behavior it was always meant to have."
+}

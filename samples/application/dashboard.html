@@ -1,54 +1,37 @@
 ---
 layout: dashboard
-title: "Analytics"
+title: "The Pulse of the Genome"
 actions: ["Export", "Refresh"]
 ---
 
-<!-- KPI row — no cards, just metrics -->
+{% assign dashboard_data = site.data.samples.dashboard %}
+
+<!-- KPI row — the vital signs -->
 <section class="dashboard__kpis">
+  {% for metric in dashboard_data.distribution %}
   {% include layouts/dashboard/dashboard-widget.html
-    title="Users"
-    value="12,543"
-    change=12.5
-    icon="fas fa-users"
-    columns="3"
-  %}
-  {% include layouts/dashboard/dashboard-widget.html
-    title="Revenue"
-    value="$45,678"
-    change=8.3
-    icon="fas fa-dollar-sign"
-    columns="3"
-  %}
-  {% include layouts/dashboard/dashboard-widget.html
-    title="Conversion"
-    value="3.24%"
-    change=-2.1
+    title=metric.name
+    value=metric.value
+    change=metric.additionalProperty.value
     icon="fas fa-chart-line"
     columns="3"
   %}
-  {% include layouts/dashboard/dashboard-widget.html
-    title="Avg. Session"
-    value="4m 32s"
-    change=5.7
-    icon="fas fa-clock"
-    columns="3"
-  %}
+  {% endfor %}
 </section>
 
-<!-- Primary workspace: chart + sidebar -->
+<!-- Primary workspace: articles + reading list -->
 <section class="dashboard__workspace">
   <div class="dashboard__main-panel">
     <header class="dashboard__panel-header">
       <genesis-cognition intent="motive">
-        <h2>Traffic Overview</h2>
+        <h2>Latest from the Chronicle</h2>
       </genesis-cognition>
     </header>
     <div class="dashboard__chart-area">
-      <div class="dashboard__chart-placeholder" aria-label="Traffic chart">
-        <i class="fas fa-chart-area" aria-hidden="true"></i>
+      <div class="dashboard__chart-placeholder" aria-label="Content timeline">
+        <i class="fas fa-newspaper" aria-hidden="true"></i>
         <genesis-cognition intent="gloss">
-          <span>Chart renders here</span>
+          <span>{{ site.data.samples.archive.hasPart | size }} articles across color science, architecture, accessibility, and engineering</span>
         </genesis-cognition>
       </div>
     </div>
@@ -57,82 +40,51 @@ actions: ["Export", "Refresh"]
   <aside class="dashboard__side-panel">
     <header class="dashboard__panel-header">
       <genesis-cognition intent="motive">
-        <h2>Top Pages</h2>
+        <h2>Essential Reading</h2>
       </genesis-cognition>
     </header>
     <ul class="dashboard__page-list">
+      {% for item in site.data.samples.archive.hasPart limit: 4 %}
       <li class="dashboard__page-item">
-        <span class="dashboard__page-path">/home</span>
-        <span class="dashboard__page-meta">15,432 views</span>
-        <span class="dashboard__page-share">45%</span>
+        <span class="dashboard__page-path"><a href="{{ item.url }}">{{ item.headline | truncate: 40 }}</a></span>
+        <span class="dashboard__page-meta">{{ item.datePublished | date: "%b %Y" }}</span>
       </li>
-      <li class="dashboard__page-item">
-        <span class="dashboard__page-path">/products</span>
-        <span class="dashboard__page-meta">8,234 views</span>
-        <span class="dashboard__page-share">24%</span>
-      </li>
-      <li class="dashboard__page-item">
-        <span class="dashboard__page-path">/about</span>
-        <span class="dashboard__page-meta">5,123 views</span>
-        <span class="dashboard__page-share">15%</span>
-      </li>
-      <li class="dashboard__page-item">
-        <span class="dashboard__page-path">/contact</span>
-        <span class="dashboard__page-meta">3,456 views</span>
-        <span class="dashboard__page-share">10%</span>
-      </li>
+      {% endfor %}
     </ul>
   </aside>
 </section>
 
-<!-- Activity table — dense, readable, no card wrapper -->
+<!-- Ontology categories — the DNA strands -->
 <section class="dashboard__activity">
   <header class="dashboard__panel-header">
     <genesis-cognition intent="motive">
-      <h2>Recent Activity</h2>
+      <h2>The Six DNA Strands</h2>
     </genesis-cognition>
   </header>
   <div class="dashboard__table-wrap">
     <table class="dashboard__table">
       <thead>
         <tr>
-          <th>Time</th>
-          <th>User</th>
-          <th>Action</th>
-          <th>Page</th>
-          <th>Status</th>
+          <th>Category</th>
+          <th>Semantic Domain</th>
+          <th>Mixin</th>
+          <th>Variants</th>
         </tr>
       </thead>
       <tbody>
+        {% for term in site.data.samples.ontology.hasDefinedTerm %}
         <tr>
-          <td>10:23 AM</td>
-          <td>john@example.com</td>
-          <td>Page View</td>
-          <td>/products/item-123</td>
-          <td><span class="dashboard__status dashboard__status--success">OK</span></td>
+          <td>{{ term.name }}</td>
+          <td>{{ term.description | truncate: 60 }}</td>
+          <td><code>{{ term.termCode }}</code></td>
+          <td><span class="dashboard__status dashboard__status--success">{{ term.additionalProperty | size }}</span></td>
         </tr>
-        <tr>
-          <td>10:21 AM</td>
-          <td>sarah@example.com</td>
-          <td>Purchase</td>
-          <td>/checkout</td>
-          <td><span class="dashboard__status dashboard__status--success">OK</span></td>
-        </tr>
-        <tr>
-          <td>10:18 AM</td>
-          <td>mike@example.com</td>
-          <td>Sign Up</td>
-          <td>/register</td>
-          <td><span class="dashboard__status dashboard__status--success">OK</span></td>
-        </tr>
-        <tr>
-          <td>10:15 AM</td>
-          <td>emma@example.com</td>
-          <td>Login Failed</td>
-          <td>/login</td>
-          <td><span class="dashboard__status dashboard__status--error">Failed</span></td>
-        </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>
 </section>
+
+<script type="application/ld+json">
+{{ dashboard_data | jsonify }}
+</script>

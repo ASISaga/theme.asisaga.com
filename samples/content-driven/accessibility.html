@@ -1,0 +1,60 @@
+---
+layout: article
+title: "Accessibility Is Not a Feature — It Is the Architecture"
+subtitle: "How the Genesis ontology makes WCAG compliance a structural guarantee instead of a checklist"
+author: "ASI Saga"
+date: 2026-03-10
+reading_time: 10
+toc: true
+related_articles: true
+---
+
+{% assign a11y = site.data.samples.accessibility_conscience %}
+
+{{ a11y.articleBody | split: "\n\n" | first }}
+
+## Touch Targets That Cannot Shrink
+
+{{ a11y.about[0].description }}
+
+{{ a11y.articleBody | split: "\n\n" | slice: 1, 2 | join: "
+
+" }}
+
+## Contrast Ratios by Physics, Not by Testing
+
+{{ a11y.about[1].description }}
+
+{{ a11y.articleBody | split: "\n\n" | slice: 3, 2 | join: "
+
+" }}
+
+## Landmarks Built Into the Hierarchy
+
+{{ a11y.about[2].description }}
+
+{{ a11y.articleBody | split: "\n\n" | slice: 5, 2 | join: "
+
+" }}
+
+## Reduced Motion Without Remembering
+
+{{ a11y.about[3].description }}
+
+{{ a11y.articleBody | split: "\n\n" | slice: 7, 2 | join: "
+
+" }}
+
+## The Structural Guarantee
+
+{{ a11y.articleBody | split: "\n\n" | last }}
+
+## Related Articles
+
+- [OKLCH: The Color Space Your Eyes Were Waiting For](/samples/content-driven/oklch.html) — the perceptual science behind contrast guarantees
+- [The Void and the Ethereal](/samples/content-driven/atmosphere.html) — how atmosphere variants enforce surface lightness
+- [The Death of Utility Classes](/samples/content-driven/article.html) — the architectural philosophy behind it all
+
+<script type="application/ld+json">
+{{ a11y | jsonify }}
+</script>

@@ -1,0 +1,45 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Accessibility Is Not a Feature — It Is the Architecture",
+  "alternativeHeadline": "How the Genesis ontology makes WCAG compliance a structural guarantee instead of a checklist",
+  "description": "Most design systems treat accessibility as a feature to be tested. Genesis treats it as an architectural constraint baked into the ontological engine itself — 44px touch targets enforced by synapse, contrast ratios guaranteed by OKLCH lightness constraints, landmarks built into the layout hierarchy, and reduced motion that does not need a developer to remember it.",
+  "datePublished": "2026-03-10",
+  "dateModified": "2026-04-13",
+  "author": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  },
+  "keywords": ["accessibility", "WCAG AA", "inclusive design", "touch targets", "reduced motion", "color contrast", "landmarks"],
+  "articleSection": "Accessibility",
+  "wordCount": 1500,
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Touch Targets That Cannot Shrink",
+      "description": "Every synapse variant — navigate, execute, inquiry, destructive, social — includes a min-height and min-width of 44px on viewports below 768px. This is not a utility class you can forget to add. It is built into the interaction engine. You write genesis-synapse('execute') and the button is WCAG 2.5.5 compliant on every mobile device, every time, with zero additional effort."
+    },
+    {
+      "@type": "Thing",
+      "name": "Contrast Ratios by Physics, Not by Testing",
+      "description": "Because the entire palette is OKLCH, contrast is determined by perceptual lightness, not by mathematical formulas applied to arbitrary color spaces. Text tokens are constrained to L ≤ 0.55 on light surfaces and L ≥ 0.80 on dark surfaces. The atmosphere engine enforces surface lightness ranges. The result: every foreground-background pair meets 4.5:1 by construction, not by spot-checking."
+    },
+    {
+      "@type": "Thing",
+      "name": "Landmarks Built Into the Hierarchy",
+      "description": "The four-level HTML hierarchy is not just an SCSS concern — it maps directly to HTML5 landmark elements. Level 1 maps to main. Level 2 maps to header, footer, nav, section, aside. Components and leaves live inside these landmarks naturally. Skip links target the main landmark. Screen readers navigate the document structure that the ontology demands."
+    },
+    {
+      "@type": "Thing",
+      "name": "Reduced Motion Without Remembering",
+      "description": "The state engine handles all animation and transition properties. Every animated variant — evolving, scroll-triggered, mentioned — includes a prefers-reduced-motion media query that reduces or eliminates motion. Because animation is owned exclusively by state, there is no rogue transition in an entity or atmosphere variant that escapes the motion preference. One category owns motion. One category respects the preference."
+    }
+  ],
+  "articleBody": "There is a dirty secret in web development: we treat accessibility like testing. First, build the thing. Then, run an audit. Then, fix the failures. Then, ship — knowing that the next sprint will introduce new violations because accessibility lives in a checklist, not in the architecture.\n\nGenesis inverts this. Accessibility is not tested into the system. It is built into the ontological engine. When you use a synapse mixin, WCAG compliance comes with it. When you use an atmosphere mixin, contrast compliance comes with it. When you follow the hierarchy levels, landmark compliance comes with it. You cannot build an inaccessible page without actively fighting the system.\n\nStart with touch targets. WCAG 2.5.5 requires interactive elements to be at least 44x44 CSS pixels on touch devices. In most frameworks, this is a guideline — you add a utility class, or you remember to set min-height in your button styles, or you rely on QA to catch it. In Genesis, every synapse variant — navigate, execute, inquiry, destructive, social — includes a media query for viewports below 768px that enforces min-height: 44px and min-width: 44px. You write @include genesis-synapse('execute') and the touch target is guaranteed. You cannot create a synapse-styled element that violates the minimum size because the engine does not produce one.\n\nNow consider color contrast. WCAG requires 4.5:1 contrast for normal text and 3:1 for large text and UI components. In a system with 150+ color tokens, testing every pair is a combinatorial nightmare. Genesis sidesteps this by building the constraint into the color space itself. Every color token is defined in OKLCH with explicit lightness values. Text tokens on light surfaces are constrained to L ≤ 0.55. Text tokens on dark surfaces are constrained to L ≥ 0.80. Surface tokens in the atmosphere engine have their own lightness ranges: void at L = 0.08, ethereal at L = 0.99. The contrast ratio is not tested after the fact — it is guaranteed by the physics of perceptual lightness.\n\nLandmarks are another dimension. Screen reader users navigate by landmarks — they jump from header to main to nav to footer. If your HTML does not have proper landmark structure, the page is a flat wall of content with no navigational handholds. The Genesis hierarchy system maps directly to landmark elements. Level 1 wrappers live inside main. Level 2 sections map to header, nav, footer, section, and aside. The default layout template provides a skip link as the first focusable element, targeting main with id='skip-target' and tabindex='-1'. These are not optional patterns — they are structural requirements of the hierarchy.\n\nFocus visibility is enforced globally. The synapse engine ensures that every interactive element has a visible focus indicator — not just on keyboard navigation, but using :focus-visible to avoid visual noise on mouse interactions. The focus ring uses a 3px outline offset with the theme accent color, ensuring it meets the 3:1 contrast requirement for non-text content.\n\nReduced motion is perhaps the most elegant integration. In most systems, respecting prefers-reduced-motion requires every developer to remember to add a media query to every animation. In Genesis, all animation and transition properties are exclusively owned by the state category. The state engine includes prefers-reduced-motion checks in every animated variant: evolving (the progress sweep), scroll-triggered (the fade-in-up), mentioned (the highlight pulse), and simulated (the loading skeleton). Because no other category can produce animation — entity cannot animate, atmosphere cannot transition, cognition cannot keyframe — there is exactly one place where motion exists, and that one place respects the user preference.\n\nThe result is a system where accessibility is not a feature flag or a compliance checkbox. It is a structural property of the architecture, as fundamental as the six ontological categories themselves."
+}

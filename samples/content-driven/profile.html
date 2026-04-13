@@ -1,40 +1,57 @@
 ---
 layout: profile
-name: "Sarah Johnson"
-role: "Design Systems Engineer"
-bio: "Building the bridge between design intent and production CSS. Ten years of shipping interfaces that scale."
+name: "Genesis Theme Collective"
+role: "The Architects of Intent"
+bio: "We believe design systems should have memory. That CSS properties should have owners. That accessibility should be architectural, not aspirational. That a single word — void, ethereal, sacred — should be enough to set the emotional tone of an entire page."
 social_links:
   - platform: "github"
-    url: "https://github.com/example"
-  - platform: "linkedin"
-    url: "https://linkedin.com/in/example"
-  - platform: "twitter"
-    url: "https://twitter.com/example"
+    url: "https://github.com/ASISaga/theme.asisaga.com"
 stats: true
-skills: ["Design Systems", "CSS Architecture", "Accessibility", "React", "Jekyll", "OKLCH Color"]
+skills: ["Ontological SCSS Engine", "Living Genome Architecture", "OKLCH Color Science", "WCAG AA by Construction", "Lit Web Components", "Zero-CSS Subdomains"]
 ---
 
-## Background
+{% assign org_data = site.data.samples.organization %}
+{% assign theme_data = site.data.samples.theme %}
 
-I lead front-end architecture at a design-tooling startup, where my team owns the component library, token pipeline, and responsive infrastructure.
+## The Philosophy
 
-### Current work
-- Maintain a 200-component design system serving 12 product teams
-- Architect the migration from utility-first CSS to semantic ontological patterns
-- Run weekly office hours for engineers adopting the system
+Most design systems ask: *what components do we need?* Genesis asks a different question: *what does this content want to be?*
 
-### Previous roles
-- **Senior Developer** — TechCorp (2018–2022)
-- **Front-end Developer** — WebSolutions (2015–2018)
+The difference sounds subtle but it changes everything. A component library gives you pre-built pieces. An ontological system gives you a language for describing intent — and an engine that translates intent into visual output.
 
-## Selected projects
+{{ org_data.description }}
 
-### Ontological SCSS Migration
-Replaced 14,000 lines of utility classes with 31 ontological mixins. Build output dropped from 22 MB to 1.1 MB.
+## What We Built
 
-### Accessible Documentation System
-Built a Jekyll-based docs platform now used by 50+ teams. WCAG AA across every page.
+**{{ site.data.samples.dashboard.distribution[0].value }} ontological variants** across six semantic categories — {{ site.data.samples.dashboard.distribution[0].description }}
 
-## Contact
+**{{ site.data.samples.dashboard.distribution[1].value }} production layouts** — {{ site.data.samples.dashboard.distribution[1].description }}
 
-Reach me through any linked profile, or email sarah@example.com.
+**{{ site.data.samples.dashboard.distribution[2].value }} CSS custom properties** — {{ site.data.samples.dashboard.distribution[2].description }}
+
+**{{ site.data.samples.dashboard.distribution[3].value }} WCAG compliance** — {{ site.data.samples.dashboard.distribution[3].description }}
+
+## The Innovations That Define Us
+
+{% for feature in site.data.samples.features.itemListElement %}
+### {{ feature.item.name }}
+
+{{ feature.item.description }}
+
+{% endfor %}
+
+## Read Our Thinking
+
+{% for item in site.data.samples.archive.hasPart limit: 4 %}
+- [{{ item.headline }}]({{ item.url }}) — {{ item.description | truncate: 100 }}
+{% endfor %}
+
+## Join the Evolution
+
+The genome is open source under MIT. Fork it, propose new variants, let the AI agents review your ontological propositions. Every origin story you contribute becomes part of the permanent record.
+
+[View on GitHub]({{ theme_data.codeRepository }}) · [Browse the Samples](/samples/) · [Read the Manifesto](/samples/content-driven/article.html)
+
+<script type="application/ld+json">
+{{ org_data | jsonify }}
+</script>

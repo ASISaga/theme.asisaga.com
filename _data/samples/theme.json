@@ -1,0 +1,44 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://github.com/ASISaga/theme.asisaga.com",
+  "name": "Genesis Semantic Design System",
+  "alternateName": "ASI Saga Theme",
+  "description": "A design system that knows why it looks the way it does. Six ontological categories replace raw CSS with semantic intent. AI agents evolve the genome. Every variant has an origin story. Zero-CSS subdomains. OKLCH throughout. Accessibility by architecture, not by audit.",
+  "url": "https://theme.asisaga.com",
+  "codeRepository": "https://github.com/ASISaga/theme.asisaga.com",
+  "programmingLanguage": ["SCSS", "HTML", "JavaScript", "Liquid"],
+  "runtimePlatform": "Jekyll",
+  "license": "https://opensource.org/licenses/MIT",
+  "version": "3.0",
+  "dateCreated": "2024-01-01",
+  "dateModified": "2026-04-13",
+  "author": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  },
+  "keywords": [
+    "ontological design",
+    "semantic SCSS",
+    "living genome",
+    "AI-driven evolution",
+    "zero-CSS subdomains",
+    "property ownership",
+    "OKLCH color science",
+    "glassmorphism",
+    "WCAG AA by architecture",
+    "Lit web components",
+    "progressive enhancement",
+    "fluid typography",
+    "Jekyll remote theme"
+  ],
+  "applicationCategory": "Design System",
+  "operatingSystem": "Cross-platform",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  }
+}

@@ -1,35 +1,58 @@
 ---
 layout: post
-title: "Getting Started with Jekyll Layouts"
-date: 2024-01-15
-author: "John Doe"
-tags: ["Jekyll", "Layouts", "Tutorial"]
-categories: ["Web Development"]
+title: "Design With Memory: How AI Agents Evolve a Living Design Genome"
+date: 2026-03-15
+author: "ASI Saga"
+tags: ["Living Genome", "AI Agents", "Ontological Propositions", "Design Evolution", "GENOME.md"]
+categories: ["Innovation"]
 share: true
 ---
 
-Every static site needs structure. Jekyll's layout system gives you that structure — a way to define the bones of each page type once, then fill in the content.
+{% assign post_data = site.data.samples.post %}
 
-## What the post layout does
+{{ post_data.articleBody | split: "\n\n" | first }}
 
-This layout handles blog posts and news entries. It ships with:
+## The Dictionary Problem
 
-- Publication date, author, and estimated reading time
-- Tag and category display
-- Social sharing controls
-- Previous / next navigation
+{{ post_data.articleBody | split: "\n\n" | slice: 1, 2 | join: "
 
-## How it works
+" }}
 
-### Metadata
-The layout reads your front matter and renders date, author, and reading time at the top. No configuration beyond the YAML block.
+## The Ontological Proposition
 
-### Tags
-Tags and categories render as compact labels. Readers can scan them to find related writing.
+{{ post_data.articleBody | split: "\n\n" | slice: 3, 3 | join: "
 
-### Responsive
-The reading column is constrained for comfortable line lengths. Images, code blocks, and tables reflow on smaller screens.
+" }}
 
-## Next steps
+## The AI Review
 
-Copy this file, change the front matter, and start writing. The layout handles the rest.
+{{ post_data.articleBody | split: "\n\n" | slice: 6, 2 | join: "
+
+" }}
+
+## Design With Memory
+
+{{ post_data.articleBody | split: "\n\n" | slice: 8, 2 | join: "
+
+" }}
+
+## The Genome Today
+
+The genome has grown from 33 foundational variants to {{ site.data.samples.dashboard.distribution[0].value }} across six categories:
+
+{% for term in site.data.samples.ontology.hasDefinedTerm %}
+- **{{ term.name }}** (`{{ term.termCode }}`) — {{ term.additionalProperty | size }} variants: {% for prop in term.additionalProperty %}`{{ prop.value }}`{% unless forloop.last %}, {% endunless %}{% endfor %}
+{% endfor %}
+
+Every one of those 56 evolved variants has an origin story in GENOME.md.
+
+## Keep Reading
+
+- [The Death of Utility Classes](/samples/content-driven/article.html) — the architectural philosophy that makes the genome possible
+- [OKLCH: The Color Space Your Eyes Were Waiting For](/samples/content-driven/oklch.html) — how perceptual color science powers the engine
+- [The Void and the Ethereal](/samples/content-driven/atmosphere.html) — atmosphere variants born from the genome
+- Browse the complete [archive](/samples/content-driven/archive.html) for all articles
+
+<script type="application/ld+json">
+{{ post_data | jsonify }}
+</script>

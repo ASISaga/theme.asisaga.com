@@ -1,0 +1,189 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Genesis Theme Layout Library",
+  "description": "Complete catalog of production-ready page layouts included in the Genesis Semantic Design System.",
+  "numberOfItems": 15,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "WebPageElement",
+        "name": "Post Layout",
+        "description": "Blog posts with publication date, author, reading time, tag display, social sharing, and previous/next navigation. Uses focused environment for optimal line lengths.",
+        "identifier": "post",
+        "category": "Content-Driven",
+        "url": "/samples/content-driven/post.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "WebPageElement",
+        "name": "Article Layout",
+        "description": "Long-form articles with auto-generated table of contents, reading time estimates, related content, and a constrained reading column for sustained comprehension.",
+        "identifier": "article",
+        "category": "Content-Driven",
+        "url": "/samples/content-driven/article.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "WebPageElement",
+        "name": "Archive Layout",
+        "description": "Filterable, sortable content lists with category tabs, date-range filters, grid/list view toggle, and paginated navigation.",
+        "identifier": "archive",
+        "category": "Content-Driven",
+        "url": "/samples/content-driven/archive.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "WebPageElement",
+        "name": "Profile Layout",
+        "description": "User or contributor profiles with avatar, bio, social links, skill tags, and activity statistics.",
+        "identifier": "profile",
+        "category": "Content-Driven",
+        "url": "/samples/content-driven/profile.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "WebPageElement",
+        "name": "Landing Layout",
+        "description": "Marketing pages with hero sections, feature pillars, social proof, and call-to-action blocks. Supports sacred and vibrant atmosphere variants.",
+        "identifier": "landing",
+        "category": "Marketing",
+        "url": "/samples/marketing/landing.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "WebPageElement",
+        "name": "Gallery Layout",
+        "description": "Filterable image galleries with category tabs, lightbox preview, and responsive masonry-style grid powered by distributed environment.",
+        "identifier": "gallery",
+        "category": "Marketing",
+        "url": "/samples/marketing/gallery.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "WebPageElement",
+        "name": "Form Layout",
+        "description": "Contact and data-entry forms with field validation, progress indicators, privacy controls, and accessible label associations.",
+        "identifier": "form",
+        "category": "Marketing",
+        "url": "/samples/marketing/form.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+        "@type": "WebPageElement",
+        "name": "Docs Layout",
+        "description": "Documentation pages with sidebar navigation, breadcrumbs, search, on-this-page anchors, and previous/next pagination.",
+        "identifier": "docs",
+        "category": "Knowledge",
+        "url": "/samples/knowledge/docs.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "item": {
+        "@type": "WebPageElement",
+        "name": "FAQ Layout",
+        "description": "Frequently asked questions with searchable accordion interface, category filtering, and contact call-to-action.",
+        "identifier": "faq",
+        "category": "Knowledge",
+        "url": "/samples/knowledge/faq.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "item": {
+        "@type": "WebPageElement",
+        "name": "Dashboard Layout",
+        "description": "Analytics dashboards with KPI widgets, chart areas, data tables, and sidebar panels. Uses manifest environment for dense 12-column grids.",
+        "identifier": "dashboard",
+        "category": "Application",
+        "url": "/samples/application/dashboard.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "item": {
+        "@type": "WebPageElement",
+        "name": "Chatroom Layout",
+        "description": "Real-time chat interface with message threading, participant avatars, MCP domain integration, typing indicators, and domain-switching controls.",
+        "identifier": "chatroom",
+        "category": "Application",
+        "url": "/samples/application/chatroom.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "item": {
+        "@type": "WebPageElement",
+        "name": "Search Layout",
+        "description": "Search results with highlighted matches, faceted filters, result metadata, and paginated navigation.",
+        "identifier": "search",
+        "category": "Application",
+        "url": "/samples/application/search.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "item": {
+        "@type": "WebPageElement",
+        "name": "Settings Layout",
+        "description": "User preferences with tabbed interface covering profile, security, notifications, privacy, and appearance settings.",
+        "identifier": "settings",
+        "category": "Application",
+        "url": "/samples/application/settings.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 14,
+      "item": {
+        "@type": "WebPageElement",
+        "name": "Splash Layout",
+        "description": "Coming-soon or launch pages with countdown timer, email capture, social links, and minimal branding.",
+        "identifier": "splash",
+        "category": "Utility",
+        "url": "/samples/utility/splash.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 15,
+      "item": {
+        "@type": "WebPageElement",
+        "name": "404 Layout",
+        "description": "Error pages with clear messaging, helpful navigation links, and minimal visual noise.",
+        "identifier": "404",
+        "category": "Utility",
+        "url": "/samples/utility/404.html"
+      }
+    }
+  ]
+}

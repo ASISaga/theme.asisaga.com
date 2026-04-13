@@ -1,57 +1,72 @@
 ---
 layout: article
-title: "The Architecture of Modern Web Layouts"
-subtitle: "From table hacks to semantic grids — a practitioner's guide"
-author: "Jane Smith"
-date: 2024-01-20
-reading_time: 12
+title: "The Death of Utility Classes"
+subtitle: "Your div is wearing 47 classes and none of them say what it is"
+author: "ASI Saga"
+date: 2026-03-20
+reading_time: 15
 toc: true
 related_articles: true
 ---
 
-Web layouts have always reflected the tools available. Tables gave way to floats, floats to flexbox, flexbox to grid. Each generation removed a hack and replaced it with intent.
+{% assign article_data = site.data.samples.article %}
 
-## The table era
+{{ article_data.articleBody | split: "\n\n" | first }}
 
-Early layouts were built from `<table>` elements. They worked, barely:
+## The Utility-Class Bargain
 
-- Inflexible at every breakpoint
-- Impossible to maintain at scale
-- Semantically meaningless
+{{ article_data.about[0].description }}
 
-The web outgrew them in under a decade.
+{{ article_data.articleBody | split: "\n\n" | slice: 1, 3 | join: "
 
-## The modern toolkit
+" }}
 
-Today four primitives handle virtually every layout need:
+## The Ontological Alternative
 
-1. **CSS Grid** — two-dimensional placement with named areas and tracks
-2. **Flexbox** — single-axis distribution with automatic wrapping
-3. **Custom Properties** — runtime-variable tokens that cascade through components
-4. **Container Queries** — responsive rules scoped to the component, not the viewport
+{{ article_data.about[1].description }}
 
-Together they make external grid frameworks unnecessary.
+{{ article_data.articleBody | split: "\n\n" | slice: 4, 3 | join: "
 
-## Layout patterns in practice
+" }}
 
-### The reading column
+## Property Ownership — The End of CSS Conflicts
 
-A single centered column, 60–75 characters wide. Ideal for long-form content like this article. The `focused` environment mixin produces it with one line of SCSS.
+{{ article_data.about[2].description }}
 
-### The dashboard grid
+{{ article_data.articleBody | split: "\n\n" | slice: 7, 2 | join: "
 
-A dense, auto-fitting grid of metric panels. The `distributed` environment mixin handles column count, gap, and reflow. No media queries required.
+" }}
 
-### The sidebar + content pair
+## The Hierarchy That Governs Everything
 
-Documentation pages, settings panels, and admin tools all share this shape. The `convergent` environment mixin sets the ratio and collapse behavior.
+{{ article_data.about[3].description }}
 
-## Where the ontology fits
+{{ article_data.articleBody | split: "\n\n" | slice: 9, 3 | join: "
 
-In the Genesis design system, each CSS concern belongs to exactly one ontological category. Layout is owned by `environment`. Typography by `cognition`. Surface treatment by `entity`. Mood by `atmosphere`.
+" }}
 
-This separation means a component's visual properties never conflict with its spatial properties. Refactoring one layer cannot break another.
+## The Six Categories in Detail
 
-## Conclusion
+{% for term in site.data.samples.ontology.hasDefinedTerm %}
+### {{ term.name }} — `{{ term.termCode }}`
 
-The best layout systems disappear. You describe what a region *is*, and the system determines how it looks. That's the direction modern CSS is heading — and it's where ontological design already lives.
+{{ term.description }}
+
+**Variants:** {% for prop in term.additionalProperty %}`{{ prop.value }}`{% unless forloop.last %}, {% endunless %}{% endfor %}
+
+{% endfor %}
+
+## Freedom From CSS Itself
+
+{{ article_data.articleBody | split: "\n\n" | last }}
+
+## Further Reading
+
+- [Design With Memory](/samples/content-driven/post.html) — how AI agents evolve the genome
+- [OKLCH: The Color Space Your Eyes Were Waiting For](/samples/content-driven/oklch.html) — the perceptual color science
+- [Accessibility Is Not a Feature](/samples/content-driven/accessibility.html) — WCAG compliance as architecture
+- [Web Components Without the Framework Tax](/samples/content-driven/web-components.html) — 17 Lit elements, zero runtime
+
+<script type="application/ld+json">
+{{ article_data | jsonify }}
+</script>

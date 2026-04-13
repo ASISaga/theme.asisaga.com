@@ -1,0 +1,47 @@
+---
+layout: post
+title: "The Void and the Ethereal: Crafting Atmosphere in Code"
+date: 2026-03-05
+author: "ASI Saga"
+tags: ["Atmosphere", "Dark Mode", "Glassmorphism", "Void", "Ethereal", "Sacred"]
+categories: ["Design Philosophy"]
+share: true
+---
+
+{% assign atmo = site.data.samples.atmosphere_void %}
+
+{{ atmo.articleBody | split: "\n\n" | first }}
+
+## Void: The Dark That Has Depth
+
+{{ atmo.articleBody | split: "\n\n" | slice: 1, 2 | join: "
+
+" }}
+
+## Sacred and Vibrant
+
+{{ atmo.articleBody | split: "\n\n" | slice: 3, 2 | join: "
+
+" }}
+
+## Architecture, Not Decoration
+
+{{ atmo.articleBody | split: "\n\n" | slice: 5, 2 | join: "
+
+" }}
+
+## One Word Changes Everything
+
+{{ atmo.articleBody | split: "\n\n" | slice: 7, 2 | join: "
+
+" }}
+
+## Further Reading
+
+- [OKLCH: The Color Space Behind It All](/samples/content-driven/oklch.html) — the perceptual science powering atmosphere tokens
+- [The Death of Utility Classes](/samples/content-driven/article.html) — why semantic intent beats visual description
+- Browse the [gallery](/samples/marketing/gallery.html) to see atmosphere variants in action
+
+<script type="application/ld+json">
+{{ atmo | jsonify }}
+</script>

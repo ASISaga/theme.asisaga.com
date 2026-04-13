@@ -1,0 +1,23 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OKLCH: The Color Space Your Eyes Were Waiting For",
+  "alternativeHeadline": "Why hex codes lie to your brain and how perceptual uniformity changes everything",
+  "description": "A deep dive into the OKLCH color system at the heart of the Genesis theme — why perceptually uniform color spaces produce better design, how lightness actually works, and why the entire palette is HDR-ready without a single hex code.",
+  "datePublished": "2026-02-28",
+  "dateModified": "2026-04-13",
+  "author": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  },
+  "keywords": ["OKLCH", "color science", "perceptual uniformity", "HDR", "accessibility", "color contrast"],
+  "articleSection": "Color Science",
+  "wordCount": 1200,
+  "articleBody": "Here is a trick that will ruin hex colors for you forever.\n\nOpen any design tool. Create two swatches: #0000FF (pure blue) and #00FF00 (pure green). Both are 'full saturation' in RGB. Now convert them to grayscale. The blue turns almost black. The green turns almost white. Two colors that your monitor treats as equally intense look wildly different to your brain. This is the fundamental lie of RGB: the math says they are equal, but your visual cortex disagrees.\n\nThis is not a minor aesthetic quibble. It is the reason your dark mode looks muddy, your accessible color pairs keep failing contrast checks, and your carefully selected palette feels inconsistent despite having mathematically harmonious hue relationships.\n\nThe Genesis Design System uses OKLCH — Oklab Lightness Chroma Hue — for every single color token. Not as a nice-to-have. As the foundation. There are zero hex codes in the design token layer. Zero RGB values. Zero HSL. Everything is OKLCH.\n\nOKLCH is perceptually uniform. When you set two colors to the same L (lightness) value, they actually appear equally bright to a human eye. This sounds simple but it changes everything about how you build color systems.\n\nConsider accessibility. WCAG requires a 4.5:1 contrast ratio for normal text. In RGB or HSL, checking contrast is a mathematical exercise divorced from perception — you can pass the ratio test and still produce text that feels hard to read because the color space lies about lightness. In OKLCH, lightness IS perceptual lightness. Setting text to L ≤ 0.55 on a white background (L = 0.99) guarantees readability by the physics of human vision, not just by the math of a standard.\n\nThe Genesis color system uses this property structurally. Every semantic color token — accent, warning, success, surface, text — is defined with explicit lightness constraints. The atmosphere engine uses lightness ranges to enforce contrast: void surfaces sit at L = 0.08 (deep dark), ethereal surfaces at L = 0.99 (bright light), and text colors are automatically constrained to the opposite end of the lightness axis.\n\nChroma in OKLCH controls saturation independent of lightness. In HSL, increasing saturation also shifts perceived brightness — a fully saturated yellow looks blinding while a fully saturated blue looks dark. OKLCH decouples these. You can increase chroma (vibrancy) without touching lightness, which means your accessible contrast ratios survive palette adjustments.\n\nHue is the third axis, and OKLCH distributes it uniformly across the spectrum. In HSL, the perceptual distance between hue 60° (yellow) and hue 120° (green) is not the same as between hue 240° (blue) and hue 300° (magenta), even though the numerical distance is identical. OKLCH corrects this, making hue rotation produce aesthetically even intervals.\n\nThe practical result: the Genesis palette contains 150+ CSS custom properties, every one defined in OKLCH, and every combination of foreground and background has been validated for perceptual contrast. Dark mode is not a separate palette — it is the same tokens with lightness inverted, because OKLCH inversion actually works perceptually.\n\nThere is one more quiet advantage: HDR readiness. OKLCH values can exceed the sRGB gamut, meaning the same token definition will take advantage of wide-color displays (P3, Rec. 2020) when the hardware supports it. Your colors are future-proof without a single line of additional code.\n\nHex codes are convenient. They are also a 1990s encoding of a color space that was designed for cathode ray tubes. Your eyes deserve better."
+}

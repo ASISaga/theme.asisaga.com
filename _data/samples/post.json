@@ -1,0 +1,23 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Design With Memory: How AI Agents Evolve a Living Design Genome",
+  "alternativeHeadline": "Inside the system where every design decision has an origin story and AI reviewers enforce semantic purity",
+  "description": "Most design systems are dictionaries — static lists of components someone decided on in a meeting. Genesis is a genome: a living, evolving organism where new design variants are proposed by subdomain developers, reviewed by AI agents for semantic purity, and documented with their complete origin story. This is design with memory.",
+  "datePublished": "2026-03-15",
+  "dateModified": "2026-04-13",
+  "author": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  },
+  "keywords": ["living genome", "AI agents", "ontological propositions", "design evolution", "semantic purity", "GENOME.md"],
+  "articleSection": "Innovation",
+  "wordCount": 1400,
+  "articleBody": "There is a file at the root of this repository called GENOME.md. It is not a changelog. It is not a style guide. It is the living memory of a design system that knows why it looks the way it does.\n\nEvery design system begins the same way: a small team makes aesthetic choices, documents them in a Figma library, and ships a component kit. Tailwind gives you utility classes. Material gives you spec sheets. Bootstrap gives you a grid and some opinions. But none of them remember. None of them can tell you why a particular spacing value exists, which product needed it, or what gap in the system it was born to fill.\n\nGenesis works differently. The system starts with 33 foundational variants across six semantic categories — environment for layout, entity for surfaces, cognition for typography, synapse for interactions, state for lifecycle, and atmosphere for mood. These are the genome's original DNA.\n\nBut genomes evolve. When a subdomain developer encounters a pattern that the existing 33 variants cannot express — say, a chatroom needs a message-bubble surface that is neither 'primary' nor 'secondary' — they write an ontological proposition. This is a formal document that describes the semantic gap, proposes a new variant name, specifies which CSS properties it would own, and argues for its universal applicability.\n\nHere is where it gets interesting: AI agents review the proposition. Not human reviewers scrolling through a pull request on a Friday afternoon. Dedicated AI agents trained on the ontological specification evaluate whether the proposed variant maintains semantic purity — does it truly represent a new kind of intent, or is it just a visual tweak that existing variants can handle? Does it respect property ownership — or does it try to smuggle typography into an entity variant? Is it universally applicable — would other subdomains benefit, or is this a one-off?\n\nApproved variants are merged into the engine and documented in GENOME.md with their complete origin story: which subdomain proposed it, what gap it filled, when it was approved, and how it integrates with existing variants. The genome now has 89 variants — 33 foundational plus 56 that evolved through use.\n\nThis is what we mean by design with memory. Six months from now, when a new developer asks 'why does entity have an ancestral variant?', GENOME.md answers: it was proposed by the heritage subdomain to represent content inherited from a parent context, reviewed by the theme-genome-agent on this date, and approved because three other subdomains had independently worked around its absence.\n\nThe practical result is a design system that grows from the edges, not from the center. No design committee meets quarterly to approve component requests. The system evolves continuously, reviewed by agents that never tire, never miss a property-ownership violation, and never approve a variant that breaks semantic purity.\n\nYou can fork this repository and the genome comes with it — every origin story, every evolution, every decision. Your design system will not just have components. It will have a history. And history, unlike documentation, rarely goes stale."
+}
