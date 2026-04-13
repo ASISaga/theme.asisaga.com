@@ -1,0 +1,4 @@
+// Routed via interface — boardroom app shell extends the chatroom layout.
+// The chatroom-body/chatroom-main/boardroom-app viewport chain is wired in
+// layout-chatroom-component alongside chatroom-app.
+@include genesis-component('layout-boardroom');

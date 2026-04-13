@@ -52,6 +52,14 @@ export class ChatroomApp extends GenesisElement {
         apiEndpoint:          { type: String,  attribute: 'api-endpoint' },
         autoRefresh:          { type: Boolean, attribute: 'auto-refresh' },
         refreshInterval:      { type: Number,  attribute: 'refresh-interval' },
+        // Boardroom Theme Variant (Readme.md req 8): applies a CSS class for
+        // boardroom-specific styling without requiring a separate component.
+        theme:                { type: String },
+        // Owner Agent Display (Readme.md req 6): workflow owner shown in header.
+        owner:                { type: String },
+        // Step Progress Indicator (Readme.md req 5): current step / total steps.
+        stepId:               { type: String,  attribute: 'step-id' },
+        totalSteps:           { type: Number,  attribute: 'total-steps' },
     };
 
     constructor() {
@@ -87,6 +95,10 @@ export class ChatroomApp extends GenesisElement {
 
     connectedCallback() {
         super.connectedCallback();
+
+        // Apply theme variant CSS class when the theme attribute is set.
+        if (this.theme) this.classList.add(`chatroom--theme-${this.theme}`);
+
         this.config = {
             title: this.title || 'Chat',
             participants: this.participants || null,
@@ -100,6 +112,9 @@ export class ChatroomApp extends GenesisElement {
             mcpApps: this._parseMcpApps(this.mcpApps),
             mcpEndpoint: this.mcpEndpoint || null,
             chatMessages: this._parseChatData(this.chatData),
+            owner: this.owner || null,
+            stepId: this.stepId || null,
+            totalSteps: this.totalSteps || null,
         };
 
         this._render();
@@ -177,7 +192,7 @@ export class ChatroomApp extends GenesisElement {
      * into this element.  Called once from connectedCallback before event wiring.
      */
     _render() {
-        const { title, participants, placeholder, showToolbar, showConnectionStatus, mcpApps, chatMessages } = this.config;
+        const { title, participants, placeholder, showToolbar, showConnectionStatus, mcpApps, chatMessages, owner, stepId, totalSteps } = this.config;
 
         const layout = this._cloneTemplate('template-chatroom-layout');
         if (!layout) return;
@@ -185,6 +200,20 @@ export class ChatroomApp extends GenesisElement {
         // Populate title
         const titleEl = layout.querySelector('.chatroom-title');
         if (titleEl) titleEl.textContent = title;
+
+        // Conditionally show owner label (Readme.md req 6)
+        const ownerEl = layout.querySelector('.chatroom-owner');
+        if (ownerEl && owner) {
+            ownerEl.textContent = owner;
+            ownerEl.hidden = false;
+        }
+
+        // Conditionally show step progress (Readme.md req 5)
+        const stepEl = layout.querySelector('.chatroom-step-progress');
+        if (stepEl && stepId && totalSteps) {
+            stepEl.textContent = `${stepId} of ${totalSteps}`;
+            stepEl.hidden = false;
+        }
 
         // Conditionally show participants count
         const participantsEl = layout.querySelector('.chatroom-participants');

@@ -1,0 +1,101 @@
+---
+layout: default
+body_class: chatroom-body
+main_class: chatroom-main
+---
+{% comment %}
+Boardroom Layout
+================
+Multi-panel app-shell variant of the chatroom layout.
+BoardroomApp (assets/js/boardroom-app.js) extends ChatroomApp and renders
+the chat interface into #chatArea via the shared chatroom templates below.
+
+Front-matter attributes (add to your page as needed):
+  title                   — Boardroom title
+  participants            — Agent count in header
+  placeholder             — Textarea placeholder
+  show_toolbar            — Boolean: show formatting toolbar
+  show_connection_status  — Boolean: show live-connection badge
+  show_toggle_strip       — Boolean: render toggle-strip (injected via content)
+  show_members_sidebar    — Boolean: render members sidebar (injected via content)
+  show_agent_profiles     — Boolean: load agent profiles
+  enable_screen_share     — Boolean: screen share button
+  enable_video_call       — Boolean: video call button
+  enable_file_attach      — Boolean: file attach button
+  enable_formatting       — Boolean: rich-text formatting buttons
+  boardroom.api_base      — Boardroom REST API base URL
+  boardroom.copilotkit_runtime_url — CopilotKit runtime URL (AG-UI/HTTP)
+  api_endpoint            — Generic live API base URL
+  mcp_apps                — Array of MCP app descriptors
+  mcp_endpoint            — Fallback MCP endpoint
+  auto_refresh            — Boolean: poll api_endpoint
+  refresh_interval        — Polling interval ms (default 3000)
+
+Page content ({{ content }}) is injected before #chatArea inside boardroom-app,
+so subdomain includes such as toggle-strip and members-sidebar can be declared
+directly in the page body:
+
+  ---
+  layout: boardroom
+  title: AI Boardroom
+  ---
+  {% include boardroom/toggle-strip.html %}
+  {% include boardroom/members-sidebar.html %}
+{% endcomment %}
+
+{% comment %}Chatroom HTML templates — not rendered, cloned at runtime by boardroom-app.js{% endcomment %}
+<div id="chatroom-templates" hidden aria-hidden="true">
+  {% include layouts/chatroom/chatroom-layout.html %}
+  {% include layouts/chatroom/chatroom-message-ai.html %}
+  {% include layouts/chatroom/chatroom-message-own.html %}
+  {% include layouts/chatroom/chatroom-message-system.html %}
+  {% include layouts/chatroom/chatroom-message-typing.html %}
+  {% include layouts/chatroom/chatroom-mcp-panel.html %}
+  {% include layouts/chatroom/chatroom-mcp-item.html %}
+  {% include layouts/chatroom/chatroom-input.html %}
+  {% include layouts/chatroom/chatroom-tool-result-item.html %}
+</div>
+
+<boardroom-app
+  {% if page.title %}title="{{ page.title }}"{% endif %}
+  {% if page.participants %}participants="{{ page.participants }}"{% endif %}
+  {% if page.placeholder %}placeholder="{{ page.placeholder }}"{% endif %}
+  {% if page.max_length %}max-length="{{ page.max_length }}"{% endif %}
+  {% if page.show_toolbar %}show-toolbar{% endif %}
+  {% if page.show_connection_status %}show-connection-status{% endif %}
+  {% if page.show_toggle_strip %}show-toggle-strip{% endif %}
+  {% if page.show_members_sidebar %}show-members-sidebar{% endif %}
+  {% if page.show_agent_profiles %}show-agent-profiles{% endif %}
+  {% if page.enable_screen_share %}enable-screen-share{% endif %}
+  {% if page.enable_video_call %}enable-video-call{% endif %}
+  {% if page.enable_file_attach %}enable-file-attach{% endif %}
+  {% if page.enable_formatting %}enable-formatting{% endif %}
+  {% if page.boardroom.api_base %}api-base="{{ page.boardroom.api_base }}"{% endif %}
+  {% if page.boardroom.copilotkit_runtime_url %}copilotkit-runtime-url="{{ page.boardroom.copilotkit_runtime_url }}"{% endif %}
+  {% if page.api_endpoint %}api-endpoint="{{ page.api_endpoint }}"{% endif %}
+  {% if page.mcp_apps %}mcp-apps="{{ page.mcp_apps | jsonify | escape }}"{% endif %}
+  {% if page.mcp_endpoint %}mcp-endpoint="{{ page.mcp_endpoint }}"{% endif %}
+  {% if page.auto_refresh %}auto-refresh{% endif %}
+  {% if page.refresh_interval %}refresh-interval="{{ page.refresh_interval }}"{% endif %}
+  {% if page.owner %}owner="{{ page.owner }}"{% endif %}
+  {% if page.step_id %}step-id="{{ page.step_id }}"{% endif %}
+  {% if page.total_steps %}total-steps="{{ page.total_steps }}"{% endif %}
+  {% if page.theme %}theme="{{ page.theme }}"{% endif %}
+>
+  {{ content }}
+
+  <section id="chatArea" class="boardroom-chat-area" data-panel="main"
+    role="region" aria-label="Chat Area">
+  </section>
+
+  <div class="boardroom-loading-overlay" id="boardroom-loading"
+    role="status" aria-live="polite" aria-label="Connecting" hidden>
+    <div class="boardroom-loading-content">
+      <div class="boardroom-loading-spinner"></div>
+      <p class="boardroom-loading-text">Connecting to boardroom&#8230;</p>
+    </div>
+  </div>
+
+  <div class="boardroom-toast-container" id="boardroom-toasts"
+    aria-live="polite" aria-atomic="true"></div>
+</boardroom-app>

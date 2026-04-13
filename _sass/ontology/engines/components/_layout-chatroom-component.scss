@@ -30,7 +30,10 @@
     @include flex-column;
     @include padding-reset;
 
-    chatroom-app {
+    // boardroom-app also uses this layout in its own _layouts/boardroom layout;
+    // both elements must fill the chatroom-main column identically.
+    chatroom-app,
+    boardroom-app {
       @include flex-grow-fill;
       @include flex-column;
       min-height: 0;
@@ -105,7 +108,18 @@
     color: $color-boardroom-gold-accessible;
   }
 
+  .chatroom-owner {
+    @include genesis-cognition('gloss');
+    color: $color-boardroom-gold-accessible;
+    font-weight: 600;
+  }
+
   .chatroom-participants {
+    @include genesis-cognition('gloss');
+    color: $color-boardroom-muted;
+  }
+
+  .chatroom-step-progress {
     @include genesis-cognition('gloss');
     color: $color-boardroom-muted;
   }
