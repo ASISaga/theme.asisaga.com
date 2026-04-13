@@ -5,12 +5,18 @@
   in the party / social gathering context.  Register in chatroom-sample.js:
 
     chatroom.registerDomain({
-      'schema:SocialEvent':  'template-party-event',
-      'schema:HostMessage':  'template-party-host-msg',
-      'schema:GuestMessage': 'template-party-guest-msg',
-      '__agent_message':     'schema:HostMessage',
-      '__user_message':      'schema:GuestMessage',
+      'SocialEvent':  'template-party-event',
+      'HostMessage':  'template-party-host-msg',
+      'GuestMessage': 'template-party-guest-msg',
+      '__agent_message': 'AgentMessage',  // falls back to shared template
+      '__user_message':  'GuestMessage',
     });
+
+  @type values match the JSON-LD data file (_data/chatroom/domain/party.json)
+  where @context is declared at the document level.
+
+  'AgentMessage' and 'UserMessage' / 'CommunicateAction' are NOT overridden here
+  — they fall through to the shared templates so MCP responses render generically.
 
   Uses the same chatroom CSS classes as the business domain templates, with
   additional party-specific BEM modifiers styled under .chatroom--theme-party.

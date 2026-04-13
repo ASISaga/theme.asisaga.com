@@ -20,21 +20,32 @@ mcp_apps:
     description: "Review contracts, compliance and regulatory risk"
 ---
 {% comment %}
-  Business and party domain templates.
-  <template> elements are invisible by default — they supply the rendering
-  blueprints for JSON-LD messages rendered by chatroom-app._buildFromJsonLd().
+  Shared cross-domain MCP / infrastructure templates.
+  These <template> elements are registered via chatroom.registerSharedTemplates()
+  and act as fallback renderers for all domains.
+{% endcomment %}
+{% include_relative templates/shared.html %}
+
+{% comment %}
+  Domain-specific templates — each domain may override any shared @type.
 {% endcomment %}
 {% include_relative templates/business.html %}
 {% include_relative templates/party.html %}
 
 {% comment %}
   Inline JSON-LD domain data consumed by chatroom-sample.js.
-  Jekyll renders the YAML arrays from _data/chatroom/domain/*.yml into JSON.
+  Jekyll reads each _data/chatroom/domain/*.json file and makes it available as
+  site.data.chatroom.domain.<name>.  We extract the JSON-LD @graph array from
+  each document and pass the arrays into the <script> block.
+
+  Note: Liquid does not support dot-notation on keys starting with '@', so we
+  use the variable-based bracket form:  site.data.chatroom.domain.<name>[graph_key]
 {% endcomment %}
+{% assign graph_key = "@graph" %}
 <script id="chatroom-domain-data" type="application/json">
 {
-  "business": {{ site.data.chatroom.domain.business.messages | jsonify }},
-  "party": {{ site.data.chatroom.domain.party.messages | jsonify }}
+  "business": {{ site.data.chatroom.domain.business[graph_key] | jsonify }},
+  "party": {{ site.data.chatroom.domain.party[graph_key] | jsonify }}
 }
 </script>
 

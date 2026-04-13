@@ -1,41 +1,31 @@
 {% comment %}
-  Business domain chatroom templates
-  ====================================
-  Provides HTML <template> elements for rendering Schema.org JSON-LD messages
-  in the executive boardroom context.  Register in chatroom-sample.js:
+  Shared chatroom templates — cross-domain MCP / infrastructure
+  ==============================================================
+  These <template> elements provide generic rendering for Schema.org types that
+  are reused across multiple domains.  They are registered via:
 
-    chatroom.registerDomain({
-      'ScheduleAction':    'template-business-agenda',
-      'AgentMessage':      'template-business-agent-msg',
-      'UserMessage':       'template-business-user-msg',
-      'CommunicateAction': 'template-business-typing',
+    chatroom.registerSharedTemplates({
+      'AgentMessage':      'template-shared-agent-msg',
+      'UserMessage':       'template-shared-user-msg',
+      'CommunicateAction': 'template-shared-typing',
       '__agent_message':   'AgentMessage',
       '__user_message':    'UserMessage',
     });
 
-  @type values match the JSON-LD data file (_data/chatroom/domain/business.json)
-  where @context is declared at the document level, so individual items omit it.
-
-  These templates override the corresponding shared templates (shared.html) with
-  business/boardroom-specific styling and layout.
+  Domain-specific templates take priority; shared templates act as the fallback.
+  This means a domain may override any shared type simply by registering its own
+  template for that type via registerDomain() — no extra wiring required.
 
   data-schema="path.to.value"      — fills element.textContent + removes [hidden]
-  data-schema-avatar="id.path"     — adds chatroom__avatar--<id> CSS class + sets initials/icon
-  data-schema-avatar-icon="path"   — overrides avatar with Font Awesome icon class from data
-  data-schema-list="path"          — renders array as tool-result-item list
-  data-schema-parent-show="path"   — removes [hidden] from this element when path has a value;
-                                     used on .chatroom__tool-badge below (visible only when
+  data-schema-avatar="id.path"     — adds chatroom__avatar--<id> CSS class
+  data-schema-avatar-icon="path"   — sets a Font Awesome <i> icon inside the avatar
+  data-schema-list="path"          — renders an array as tool-result-item rows
+  data-schema-parent-show="path"   — removes [hidden] when the path resolves to a value
+                                     (used on .chatroom__tool-badge — visible only when
                                      the JSON-LD message includes a "tool" property)
 {% endcomment %}
 
-<template id="template-business-agenda">
-  <div class="chatroom__system-message chatroom__system-message--agenda">
-    <span class="chatroom__agenda-label" data-schema="description" hidden></span>
-    <span class="chatroom__agenda-title" data-schema="name" hidden></span>
-  </div>
-</template>
-
-<template id="template-business-agent-msg">
+<template id="template-shared-agent-msg">
   <div class="chatroom__message chatroom__message--ai">
     <div class="chatroom__message-row">
       <span class="chatroom__avatar"
@@ -59,7 +49,7 @@
   </div>
 </template>
 
-<template id="template-business-user-msg">
+<template id="template-shared-user-msg">
   <div class="chatroom__message chatroom__message--own">
     <div class="chatroom__message-row">
       <div class="chatroom__message-body">
@@ -74,7 +64,7 @@
   </div>
 </template>
 
-<template id="template-business-typing">
+<template id="template-shared-typing">
   <div class="chatroom__typing">
     <span class="chatroom__avatar"
           data-schema-avatar="agent.identifier"

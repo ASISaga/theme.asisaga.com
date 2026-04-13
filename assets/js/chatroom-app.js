@@ -78,8 +78,14 @@ export class ChatroomApp extends GenesisElement {
         this.refreshIntervalId = null;
         this._apiConnected = false;
         // Domain template registry — maps JSON-LD @type → template element ID.
+        // Domain-specific templates take priority over shared templates.
         // Null until registerDomain() is called by the consuming page.
         this._domainTemplates = null;
+        // Shared template registry — cross-domain fallback templates.
+        // Maps JSON-LD @type → template element ID.
+        // Applied when no domain-specific template is found for a @type.
+        // Null until registerSharedTemplates() is called by the consuming page.
+        this._sharedTemplates = null;
         // Default values for numeric properties (Lit leaves them undefined when absent)
         this.maxLength = 1000;
         this.refreshInterval = 3000;
@@ -345,6 +351,7 @@ export class ChatroomApp extends GenesisElement {
     /**
      * Register domain-specific HTML templates mapped by JSON-LD @type.
      * Must be called before loadDomain() or at any time to swap the domain.
+     * Domain templates take priority over shared templates.
      *
      * @param {Object} typeToTemplateMap
      *   Keys are JSON-LD @type values; values are HTML <template> element IDs.
@@ -365,8 +372,32 @@ export class ChatroomApp extends GenesisElement {
     }
 
     /**
+     * Register shared (cross-domain) HTML templates mapped by JSON-LD @type.
+     * Shared templates act as fallback when no domain-specific template is found.
+     * Call once at startup before activating any domain.
+     *
+     * @param {Object} typeToTemplateMap
+     *   Keys are JSON-LD @type values; values are HTML <template> element IDs.
+     *   Reserved keys (same as registerDomain):
+     *     '__agent_message' — @type for MCP/AI agent responses (used as MCP fallback).
+     *     '__user_message'  — @type for user-sent messages.
+     *
+     * @example
+     *   chatroom.registerSharedTemplates({
+     *     'AgentMessage':      'template-shared-agent-msg',
+     *     'UserMessage':       'template-shared-user-msg',
+     *     'CommunicateAction': 'template-shared-typing',
+     *     '__agent_message':   'AgentMessage',
+     *     '__user_message':    'UserMessage',
+     *   });
+     */
+    registerSharedTemplates(typeToTemplateMap) {
+        this._sharedTemplates = Object.assign({}, typeToTemplateMap);
+    }
+
+    /**
      * Clear the current messages and re-render from a JSON-LD message array.
-     * Requires registerDomain() to have been called first.
+     * Requires registerDomain() or registerSharedTemplates() to have been called.
      *
      * @param {Array<Object>} messages  Array of Schema.org JSON-LD objects.
      */
@@ -383,17 +414,19 @@ export class ChatroomApp extends GenesisElement {
     }
 
     /**
-     * Build a DOM element from a JSON-LD item using the registered domain
-     * templates.  Returns null if no matching template is registered.
+     * Build a DOM element from a JSON-LD item using the registered templates.
+     * Checks domain-specific templates first, then falls back to shared templates.
+     * Returns null if no matching template is found in either registry.
      *
      * @param {Object} item  JSON-LD object with an '@type' field.
      * @returns {Element|null}
      */
     _buildFromJsonLd(item) {
-        if (!item || !this._domainTemplates) return null;
+        if (!item || (!this._domainTemplates && !this._sharedTemplates)) return null;
         const type = item['@type'];
         if (!type) return null;
-        const templateId = this._domainTemplates[type];
+        // Domain-specific template takes priority over shared template
+        const templateId = this._domainTemplates?.[type] ?? this._sharedTemplates?.[type];
         if (!templateId) return null;
         const el = this._cloneTemplate(templateId);
         if (!el) return null;
@@ -483,41 +516,63 @@ export class ChatroomApp extends GenesisElement {
     }
 
     /**
-     * Clone the domain's registered agent message template.
-     * Used by MCP methods to render agent responses using domain styling.
-     * Falls back to 'template-chatroom-message-ai' for backward compatibility;
-     * returns null when neither is available.
+     * Clone the registered agent message template for MCP/AI responses.
+     * Resolution order:
+     *   1. Domain-specific template (registered via registerDomain)
+     *   2. Shared template (registered via registerSharedTemplates)
+     *   3. Legacy 'template-chatroom-message-ai' (no longer shipped — logs warning)
      * @returns {Element|null}
      */
     _cloneDomainAgentTemplate() {
+        // 1. Domain-specific agent template
         const agentType = this._domainTemplates?.['__agent_message'];
         if (agentType) {
             const id = this._domainTemplates[agentType];
             if (id) return this._cloneTemplate(id);
         }
-        // Legacy fallback (template no longer shipped in chatroom-templates.js).
-        // Returns null when no domain is registered; callers must handle null gracefully.
+        // 2. Shared template fallback
+        const sharedType = this._sharedTemplates?.['__agent_message'];
+        if (sharedType) {
+            const id = this._sharedTemplates[sharedType];
+            if (id) return this._cloneTemplate(id);
+        }
+        // 3. Legacy fallback (template no longer shipped — log to help developers)
         // eslint-disable-next-line no-console
-        console.warn('[ChatroomApp] No domain registered — call registerDomain() before using MCP or rendering messages.');
+        console.warn('[ChatroomApp] No agent message template found. Call registerSharedTemplates() or registerDomain() first.');
         return this._cloneTemplate('template-chatroom-message-ai');
     }
 
     /**
-     * Build a user message element using the domain's registered user template.
-     * Returns null when no user message template is registered.
+     * Build a user message element using the registered user template.
+     * Resolution order:
+     *   1. Domain-specific user template (via registerDomain)
+     *   2. Shared user template (via registerSharedTemplates)
+     *   3. Returns null — caller falls back to legacy _buildOwnMsg()
      * @param {string} text  Message text.
      * @returns {Element|null}
      */
     _buildDomainUserMsg(text) {
+        // 1. Domain-specific user template
         const userType = this._domainTemplates?.['__user_message'];
-        if (!userType || !this._domainTemplates[userType]) return null;
-        return this._buildFromJsonLd({
-            '@context': 'https://schema.org',
-            '@type': userType,
-            sender: { '@type': 'schema:Person', name: 'You', identifier: 'you' },
-            text,
-            dateSent: this._formatNow(),
-        });
+        if (userType && (this._domainTemplates[userType] || this._sharedTemplates?.[userType])) {
+            return this._buildFromJsonLd({
+                '@type': userType,
+                sender: { '@type': 'Person', name: 'You', identifier: 'you' },
+                text,
+                dateSent: this._formatNow(),
+            });
+        }
+        // 2. Shared user template fallback
+        const sharedUserType = this._sharedTemplates?.['__user_message'];
+        if (sharedUserType && this._sharedTemplates[sharedUserType]) {
+            return this._buildFromJsonLd({
+                '@type': sharedUserType,
+                sender: { '@type': 'Person', name: 'You', identifier: 'you' },
+                text,
+                dateSent: this._formatNow(),
+            });
+        }
+        return null;
     }
 
 
@@ -529,8 +584,8 @@ export class ChatroomApp extends GenesisElement {
      * @returns {Element|null}
      */
     _buildMessage(msg) {
-        // JSON-LD path: dispatch by @type using registered domain templates
-        if (msg['@type'] && this._domainTemplates) {
+        // JSON-LD path: dispatch by @type, checking domain then shared templates
+        if (msg['@type'] && (this._domainTemplates || this._sharedTemplates)) {
             const el = this._buildFromJsonLd(msg);
             if (el) return el;
         }
