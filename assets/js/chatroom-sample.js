@@ -82,7 +82,9 @@ function loadDomainData() {
     if (!el) return {};
     try {
         return JSON.parse(el.textContent);
-    } catch {
+    } catch (err) {
+        // eslint-disable-next-line no-console
+        console.warn('[ChatroomSample] Failed to parse #chatroom-domain-data JSON:', err.message);
         return {};
     }
 }
@@ -117,7 +119,7 @@ function setupDomainSwitcher(chatroom, domainData) {
     btns.forEach(btn => {
         btn.addEventListener('click', () => {
             const domainId = btn.getAttribute('data-domain-switch');
-            btns.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+            btns.forEach(b => b.setAttribute('aria-checked', String(b === btn)));
             activateDomain(chatroom, domainId, domainData);
         });
     });

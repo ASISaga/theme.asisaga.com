@@ -55,12 +55,12 @@ mcp_apps:
   chatroom-app element as a flex sibling — the chatroom-body fills the
   remaining vertical space via flex-grow.
 {% endcomment %}
-<div class="chatroom-domain-switcher" role="group" aria-label="Switch conversation domain">
-  <button class="chatroom-domain-btn" data-domain-switch="business" aria-pressed="true">
+<div class="chatroom-domain-switcher" role="radiogroup" aria-label="Switch conversation domain">
+  <button class="chatroom-domain-btn" role="radio" data-domain-switch="business" aria-checked="true">
     <i class="fas fa-briefcase" aria-hidden="true"></i>
     <span>Business</span>
   </button>
-  <button class="chatroom-domain-btn" data-domain-switch="party" aria-pressed="false">
+  <button class="chatroom-domain-btn" role="radio" data-domain-switch="party" aria-checked="false">
     <i class="fas fa-champagne-glasses" aria-hidden="true"></i>
     <span>Party</span>
   </button>

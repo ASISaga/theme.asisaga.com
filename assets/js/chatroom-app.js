@@ -552,27 +552,21 @@ export class ChatroomApp extends GenesisElement {
      * @returns {Element|null}
      */
     _buildDomainUserMsg(text) {
-        // 1. Domain-specific user template
-        const userType = this._domainTemplates?.['__user_message'];
-        if (userType && (this._domainTemplates[userType] || this._sharedTemplates?.[userType])) {
-            return this._buildFromJsonLd({
-                '@type': userType,
-                sender: { '@type': 'Person', name: 'You', identifier: 'you' },
-                text,
-                dateSent: this._formatNow(),
-            });
-        }
-        // 2. Shared user template fallback
-        const sharedUserType = this._sharedTemplates?.['__user_message'];
-        if (sharedUserType && this._sharedTemplates[sharedUserType]) {
-            return this._buildFromJsonLd({
-                '@type': sharedUserType,
-                sender: { '@type': 'Person', name: 'You', identifier: 'you' },
-                text,
-                dateSent: this._formatNow(),
-            });
-        }
-        return null;
+        // Build a synthetic user message JSON-LD object and route through
+        // _buildFromJsonLd(), which handles domain → shared lookup internally.
+        // Try domain-specific __user_message type first, then shared.
+        const userType =
+            this._domainTemplates?.['__user_message'] ??
+            this._sharedTemplates?.['__user_message'];
+        if (!userType) return null;
+        const msg = {
+            '@type': userType,
+            sender: { '@type': 'Person', name: 'You', identifier: 'you' },
+            text,
+            dateSent: this._formatNow(),
+        };
+        return this._buildFromJsonLd(msg);
+    }
     }
 
 
