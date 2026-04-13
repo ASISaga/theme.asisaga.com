@@ -2,17 +2,17 @@
 layout: landing
 title: "Genesis Semantic Design System"
 hero:
-  title: "The Ontological Design System"
-  subtitle: "Ship interfaces that feel deliberate, premium, and unmistakably yours."
+  title: "Your CSS Should Know Why It Exists"
+  subtitle: "Six ontological categories. Zero raw CSS in subdomains. AI agents that evolve the design genome. Welcome to the end of utility-class soup."
   cta:
-    text: "Explore the Genome"
-    url: "#features"
+    text: "Read the Manifesto"
+    url: "/samples/content-driven/article.html"
     invoke: true
   image: "/assets/images/genesis-hero.svg"
 sacred: true
 final_cta:
-  title: "Start Building"
-  description: "One theme. Every layout. Zero compromise."
+  title: "The Genome Is Open"
+  description: "MIT licensed. Fork it. Every origin story comes with it."
   text: "View on GitHub"
   url: "https://github.com/ASISaga/theme.asisaga.com"
 ---
@@ -20,22 +20,24 @@ final_cta:
 {% assign theme_data = site.data.samples.theme %}
 {% assign features = site.data.samples.features %}
 
-<!-- Proof point driven by data -->
+<!-- The provocation -->
 <section class="landing__proof" id="features">
   <genesis-environment logic="focused">
     <genesis-cognition intent="axiom">
-      <h2 class="landing__proof-headline">{{ site.data.samples.layouts.numberOfItems }} layouts. {{ site.data.samples.ontology.hasDefinedTerm | size }} semantic categories.</h2>
+      <h2 class="landing__proof-headline">What if CSS properties had owners?</h2>
     </genesis-cognition>
     <genesis-cognition intent="discourse">
       <p class="landing__proof-body">
-        Posts, dashboards, galleries, documentation, chat — each layout inherits the same ontological foundation.
-        No utility-class soup. No framework lock-in. Just meaning mapped to markup.
+        Padding belongs to entity. Font-size belongs to cognition. Grid belongs to environment.
+        Box-shadow belongs to atmosphere. Hover belongs to synapse. Animation belongs to state.
+        Two mixins on the same element <em>can never compete for the same property</em>.
+        Specificity conflicts are not discouraged — they are architecturally impossible.
       </p>
     </genesis-cognition>
   </genesis-environment>
 </section>
 
-<!-- Feature pillars from data -->
+<!-- The innovations -->
 <section class="landing__detail">
   <genesis-environment logic="distributed">
     <div class="landing__pillars">
@@ -45,7 +47,7 @@ final_cta:
           <h3>{{ feature.item.name }}</h3>
         </genesis-cognition>
         <genesis-cognition intent="gloss">
-          <p>{{ feature.item.description | truncate: 120 }}</p>
+          <p>{{ feature.item.description }}</p>
         </genesis-cognition>
       </article>
       {% endfor %}
@@ -53,17 +55,17 @@ final_cta:
   </genesis-environment>
 </section>
 
-<!-- Ontological categories from data -->
+<!-- More innovations -->
 <section class="landing__detail">
   <genesis-environment logic="distributed">
     <div class="landing__pillars">
-      {% for term in site.data.samples.ontology.hasDefinedTerm limit: 3 %}
+      {% for feature in features.itemListElement offset: 3 limit: 3 %}
       <article class="landing__pillar">
         <genesis-cognition intent="motive">
-          <h3>{{ term.name }}</h3>
+          <h3>{{ feature.item.name }}</h3>
         </genesis-cognition>
         <genesis-cognition intent="gloss">
-          <p>{{ term.description | truncate: 120 }}</p>
+          <p>{{ feature.item.description }}</p>
         </genesis-cognition>
       </article>
       {% endfor %}
@@ -71,20 +73,20 @@ final_cta:
   </genesis-environment>
 </section>
 
-<!-- Capabilities summary -->
+<!-- The articles -->
 <section class="landing__voices">
   <genesis-environment logic="focused">
     <genesis-cognition intent="axiom">
-      <h2 class="landing__voices-headline">Built for builders</h2>
+      <h2 class="landing__voices-headline">Go Deeper</h2>
     </genesis-cognition>
     <div class="landing__quotes">
-      {% for feature in features.itemListElement offset: 3 limit: 3 %}
+      {% for item in site.data.samples.archive.hasPart limit: 3 %}
       <blockquote class="landing__quote">
         <genesis-cognition intent="discourse">
-          <p>"{{ feature.item.description }}"</p>
+          <p>"{{ item.description }}"</p>
         </genesis-cognition>
         <genesis-cognition intent="gloss">
-          <cite>— {{ feature.item.name }}</cite>
+          <cite>— <a href="{{ item.url }}">{{ item.headline }}</a></cite>
         </genesis-cognition>
       </blockquote>
       {% endfor %}

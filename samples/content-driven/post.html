@@ -1,32 +1,57 @@
 ---
 layout: post
-title: "The Ontological Approach to CSS Architecture"
+title: "Design With Memory: How AI Agents Evolve a Living Design Genome"
 date: 2026-03-15
 author: "ASI Saga"
-tags: ["Ontological Design", "SCSS Architecture", "Semantic CSS", "Design Systems"]
-categories: ["Design Systems"]
+tags: ["Living Genome", "AI Agents", "Ontological Propositions", "Design Evolution", "GENOME.md"]
+categories: ["Innovation"]
 share: true
 ---
 
 {% assign post_data = site.data.samples.post %}
 
-{{ post_data.articleBody }}
+{{ post_data.articleBody | split: "\n\n" | first }}
 
-## The Six Categories
+## The Dictionary Problem
 
-The Genesis ontological engine divides all CSS concerns into six categories, each owning a distinct set of properties:
+{{ post_data.articleBody | split: "\n\n" | slice: 1, 2 | join: "
+
+" }}
+
+## The Ontological Proposition
+
+{{ post_data.articleBody | split: "\n\n" | slice: 3, 3 | join: "
+
+" }}
+
+## The AI Review
+
+{{ post_data.articleBody | split: "\n\n" | slice: 6, 2 | join: "
+
+" }}
+
+## Design With Memory
+
+{{ post_data.articleBody | split: "\n\n" | slice: 8, 2 | join: "
+
+" }}
+
+## The Genome Today
+
+The genome has grown from 33 foundational variants to {{ site.data.samples.dashboard.distribution[0].value }} across six categories:
 
 {% for term in site.data.samples.ontology.hasDefinedTerm %}
-1. **{{ term.name }}** — {{ term.description | truncate: 120 }}
+- **{{ term.name }}** (`{{ term.termCode }}`) — {{ term.additionalProperty | size }} variants: {% for prop in term.additionalProperty %}`{{ prop.value }}`{% unless forloop.last %}, {% endunless %}{% endfor %}
 {% endfor %}
 
-## Why This Matters
+Every one of those 56 evolved variants has an origin story in GENOME.md.
 
-When two mixins affect the same element, they never compete for the same CSS properties. Refactoring one layer cannot break another. A dashboard widget and a blog card can share the same `entity('primary')` surface treatment while living in completely different `environment` layouts.
+## Keep Reading
 
-## Try It Yourself
-
-The theme ships with {{ site.data.samples.layouts.numberOfItems }} production layouts, each built on this ontological foundation. Browse them all in the [sample pages index](/samples/).
+- [The Death of Utility Classes](/samples/content-driven/article.html) — the architectural philosophy that makes the genome possible
+- [OKLCH: The Color Space Your Eyes Were Waiting For](/samples/content-driven/oklch.html) — how perceptual color science powers the engine
+- [The Void and the Ethereal](/samples/content-driven/atmosphere.html) — atmosphere variants born from the genome
+- Browse the complete [archive](/samples/content-driven/archive.html) for all articles
 
 <script type="application/ld+json">
 {{ post_data | jsonify }}

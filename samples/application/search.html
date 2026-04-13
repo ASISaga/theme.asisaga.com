@@ -1,6 +1,6 @@
 ---
 layout: search
-title: "Search"
+title: "Explore the Genome"
 query: "ontological design"
 results_count: 47
 filters:
@@ -10,22 +10,21 @@ filters:
 ---
 
 {% assign theme_data = site.data.samples.theme %}
-{% assign layouts_data = site.data.samples.layouts %}
+{% assign archive_data = site.data.samples.archive %}
 
 <div class="search-results-list">
 
-  {% for layout_item in layouts_data.itemListElement limit: 5 %}
-  {% assign layout = layout_item.item %}
+  {% for item in archive_data.hasPart %}
   <article class="search-result">
     <h3 class="search-result__title">
-      <a href="{{ layout.url }}">{{ layout.name }} — <mark>{{ layout.category }}</mark></a>
+      <a href="{{ item.url }}">{{ item.headline }}</a>
     </h3>
     <div class="search-result__meta">
-      <span><i class="far fa-folder" aria-hidden="true"></i> {{ layout.category }}</span>
-      <span><i class="far fa-layer-group" aria-hidden="true"></i> Layout</span>
+      <span><i class="far fa-calendar" aria-hidden="true"></i> {{ item.datePublished | date: "%B %Y" }}</span>
+      <span><i class="far fa-folder" aria-hidden="true"></i> {% for keyword in item.keywords limit: 1 %}{{ keyword }}{% endfor %}</span>
     </div>
     <p class="search-result__excerpt">
-      {{ layout.description }}
+      {{ item.description }}
     </p>
   </article>
   {% endfor %}
@@ -36,7 +35,6 @@ filters:
   <span class="search-pagination__link search-pagination__link--disabled" aria-disabled="true">Previous</span>
   <a href="#" class="search-pagination__link search-pagination__link--active" aria-current="page">1</a>
   <a href="#" class="search-pagination__link">2</a>
-  <a href="#" class="search-pagination__link">3</a>
   <a href="#" class="search-pagination__link">Next</a>
 </nav>
 
@@ -44,7 +42,7 @@ filters:
 {
   "@context": "https://schema.org",
   "@type": "SearchResultsPage",
-  "name": "Search Results — Genesis Design System",
+  "name": "Explore the Genome — Genesis Design System",
   "about": {
     "@type": "SoftwareSourceCode",
     "name": {{ theme_data.name | jsonify }},

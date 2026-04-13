@@ -1,8 +1,8 @@
 {
   "@context": "https://schema.org",
   "@type": "ImageGallery",
-  "name": "Genesis Design System Showcase",
-  "description": "Visual demonstrations of the six ontological categories and their application across different layout types.",
+  "name": "The Visual Language of Intent",
+  "description": "Each image represents a distinct ontological category — the visual output of describing WHAT content is rather than HOW it should look. Six categories, six visual languages, one semantic engine.",
   "about": {
     "@type": "SoftwareSourceCode",
     "name": "Genesis Semantic Design System"
@@ -10,9 +10,9 @@
   "image": [
     {
       "@type": "ImageObject",
-      "name": "Environment — Distributed Grid",
-      "description": "Auto-fit responsive grid using genesis-environment('distributed'). Cards reflow from single column on mobile to multi-column on desktop without media queries.",
-      "caption": "Distributed environment: auto-fit grid with container queries",
+      "name": "Environment — The Geometry of Content Flow",
+      "description": "When you write genesis-environment('distributed'), the engine produces an auto-fit CSS Grid that reflows from single column on mobile to multi-column on desktop — without a single media query. The grid is not responsive by configuration. It is responsive by nature.",
+      "caption": "Distributed environment: auto-fit grid that breathes",
       "encodingFormat": "image/svg+xml",
       "contentUrl": "/assets/images/gallery/web-ecommerce.svg",
       "thumbnailUrl": "/assets/images/gallery/web-ecommerce.svg",
@@ -20,9 +20,9 @@
     },
     {
       "@type": "ImageObject",
-      "name": "Environment — Focused Reading",
-      "description": "Single-column reading layout using genesis-environment('focused'). Content constrained to 60–75 characters for optimal readability.",
-      "caption": "Focused environment: reading-optimized column width",
+      "name": "Environment — The Reading Corridor",
+      "description": "genesis-environment('focused') constrains content to 60–75 characters per line — the range where the human eye can track from line ending to line beginning without losing its place. No width values. No max-width. Just the word 'focused' and the engine produces a reading corridor.",
+      "caption": "Focused environment: a corridor for sustained reading",
       "encodingFormat": "image/svg+xml",
       "contentUrl": "/assets/images/gallery/web-portfolio.svg",
       "thumbnailUrl": "/assets/images/gallery/web-portfolio.svg",
@@ -30,9 +30,9 @@
     },
     {
       "@type": "ImageObject",
-      "name": "Entity — Glassmorphism Surface",
-      "description": "Component surface using genesis-entity('primary'). Frosted glass effect with backdrop-filter blur, subtle borders, and depth shadows.",
-      "caption": "Primary entity: glassmorphism card with depth",
+      "name": "Entity — The Frosted Glass Surface",
+      "description": "genesis-entity('primary') produces a glassmorphism surface: backdrop-filter blur, a subtle brightness lift, barely-there borders, and depth shadows that float the card above the page. The surface treatment is an identity — primary, secondary, imperative — not a set of visual instructions.",
+      "caption": "Primary entity: glassmorphism card with depth and identity",
       "encodingFormat": "image/svg+xml",
       "contentUrl": "/assets/images/gallery/mobile-banking.svg",
       "thumbnailUrl": "/assets/images/gallery/mobile-banking.svg",
@@ -40,9 +40,9 @@
     },
     {
       "@type": "ImageObject",
-      "name": "Cognition — Fluid Typography",
-      "description": "Fluid type scale using genesis-cognition variants. Headlines scale from mobile to ultrawide using clamp() with no breakpoints.",
-      "caption": "Cognition system: fluid type scale across viewports",
+      "name": "Cognition — Voices in the Type Scale",
+      "description": "Each cognition variant is a distinct voice: axiom speaks in bold headlines, discourse reads in comfortable serif, protocol narrates in monospace precision, gloss whispers in small metadata, motive declares in uppercase authority, and quantum chips in badge-sized fragments. One mixin. One word. The voice changes.",
+      "caption": "Cognition system: every variant is a distinct voice",
       "encodingFormat": "image/svg+xml",
       "contentUrl": "/assets/images/gallery/brand-identity.svg",
       "thumbnailUrl": "/assets/images/gallery/brand-identity.svg",
@@ -50,9 +50,9 @@
     },
     {
       "@type": "ImageObject",
-      "name": "Atmosphere — Void Dark Mode",
-      "description": "Deep dark surfaces using genesis-atmosphere('void'). OKLCH colors ensure consistent contrast ratios in dark mode.",
-      "caption": "Void atmosphere: deep dark surfaces with OKLCH",
+      "name": "Atmosphere — Where Light Meets Dark",
+      "description": "genesis-atmosphere('void') is not dark mode. It is depth — OKLCH lightness 0.08, inset shadows, inverted text, the feeling of looking into deep water. 'Ethereal' is its opposite — frosted glass translucence at L = 0.99. A page can contain both. The atmosphere paints regions, not pages.",
+      "caption": "Void atmosphere: depth, not merely darkness",
       "encodingFormat": "image/svg+xml",
       "contentUrl": "/assets/images/gallery/mobile-fitness.svg",
       "thumbnailUrl": "/assets/images/gallery/mobile-fitness.svg",
@@ -60,9 +60,9 @@
     },
     {
       "@type": "ImageObject",
-      "name": "Synapse — Interactive States",
-      "description": "Interaction feedback using genesis-synapse variants. Navigate, execute, inquiry, and destructive actions each produce distinct hover and focus states.",
-      "caption": "Synapse system: semantic interaction feedback",
+      "name": "Synapse — The Feel of Every Action",
+      "description": "Navigate lifts with a gentle underline. Execute glows with neon confidence. Inquiry fades in with curiosity. Destructive warns with caution red. Social warmly invites. Every interaction type in the system maps to a synapse variant, each producing distinct hover, focus, and touch feedback — with guaranteed 44px targets on mobile.",
+      "caption": "Synapse system: every action has its own tactile signature",
       "encodingFormat": "image/svg+xml",
       "contentUrl": "/assets/images/gallery/brand-startup.svg",
       "thumbnailUrl": "/assets/images/gallery/brand-startup.svg",

@@ -1,12 +1,12 @@
 ---
 layout: dashboard
-title: "Genesis Theme Metrics"
+title: "The Pulse of the Genome"
 actions: ["Export", "Refresh"]
 ---
 
 {% assign dashboard_data = site.data.samples.dashboard %}
 
-<!-- KPI row driven by data -->
+<!-- KPI row — the vital signs -->
 <section class="dashboard__kpis">
   {% for metric in dashboard_data.distribution %}
   {% include layouts/dashboard/dashboard-widget.html
@@ -19,19 +19,19 @@ actions: ["Export", "Refresh"]
   {% endfor %}
 </section>
 
-<!-- Primary workspace: layouts + sidebar -->
+<!-- Primary workspace: articles + reading list -->
 <section class="dashboard__workspace">
   <div class="dashboard__main-panel">
     <header class="dashboard__panel-header">
       <genesis-cognition intent="motive">
-        <h2>Layout Library</h2>
+        <h2>Latest from the Chronicle</h2>
       </genesis-cognition>
     </header>
     <div class="dashboard__chart-area">
-      <div class="dashboard__chart-placeholder" aria-label="Layout distribution chart">
-        <i class="fas fa-chart-area" aria-hidden="true"></i>
+      <div class="dashboard__chart-placeholder" aria-label="Content timeline">
+        <i class="fas fa-newspaper" aria-hidden="true"></i>
         <genesis-cognition intent="gloss">
-          <span>{{ site.data.samples.layouts.numberOfItems }} production layouts across {{ site.data.samples.ontology.hasDefinedTerm | size }} ontological categories</span>
+          <span>{{ site.data.samples.archive.hasPart | size }} articles across color science, architecture, accessibility, and engineering</span>
         </genesis-cognition>
       </div>
     </div>
@@ -40,25 +40,25 @@ actions: ["Export", "Refresh"]
   <aside class="dashboard__side-panel">
     <header class="dashboard__panel-header">
       <genesis-cognition intent="motive">
-        <h2>Top Pages</h2>
+        <h2>Essential Reading</h2>
       </genesis-cognition>
     </header>
     <ul class="dashboard__page-list">
-      {% for page_item in dashboard_data.hasPart %}
+      {% for item in site.data.samples.archive.hasPart limit: 4 %}
       <li class="dashboard__page-item">
-        <span class="dashboard__page-path">{{ page_item.name }}</span>
-        <span class="dashboard__page-meta">{{ page_item.value }}</span>
+        <span class="dashboard__page-path"><a href="{{ item.url }}">{{ item.headline | truncate: 40 }}</a></span>
+        <span class="dashboard__page-meta">{{ item.datePublished | date: "%b %Y" }}</span>
       </li>
       {% endfor %}
     </ul>
   </aside>
 </section>
 
-<!-- Ontology categories table -->
+<!-- Ontology categories — the DNA strands -->
 <section class="dashboard__activity">
   <header class="dashboard__panel-header">
     <genesis-cognition intent="motive">
-      <h2>Ontological Categories</h2>
+      <h2>The Six DNA Strands</h2>
     </genesis-cognition>
   </header>
   <div class="dashboard__table-wrap">
@@ -66,7 +66,7 @@ actions: ["Export", "Refresh"]
       <thead>
         <tr>
           <th>Category</th>
-          <th>Purpose</th>
+          <th>Semantic Domain</th>
           <th>Mixin</th>
           <th>Variants</th>
         </tr>

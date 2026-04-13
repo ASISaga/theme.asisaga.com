@@ -11,13 +11,15 @@ breadcrumbs:
 nav_items:
   - title: "Getting Started"
     url: "/docs/getting-started"
-  - title: "Layouts"
-    url: "/docs/layouts"
+  - title: "The Articles"
+    url: "/samples/content-driven/archive.html"
     children:
-      - title: "Content-Driven"
-        url: "/docs/layouts/content"
-      - title: "Application"
-        url: "/docs/layouts/application"
+      - title: "The Manifesto"
+        url: "/samples/content-driven/article.html"
+      - title: "Living Genome"
+        url: "/samples/content-driven/post.html"
+      - title: "OKLCH Colors"
+        url: "/samples/content-driven/oklch.html"
   - title: "Ontology"
     url: "/docs/ontology"
   - title: "Customization"
@@ -26,8 +28,8 @@ prev:
   title: "Introduction"
   url: "/docs/introduction"
 next:
-  title: "Ontological Categories"
-  url: "/docs/ontology"
+  title: "The Death of Utility Classes"
+  url: "/samples/content-driven/article.html"
 ---
 
 {% assign howto = site.data.samples.getting_started %}
@@ -66,22 +68,16 @@ Open `http://localhost:4000`.
 {{ howto.step[3].itemListElement.text }}
 {% endif %}
 
-## Available Layouts
+## What Makes This Different
 
-{% assign categories = "" | split: "" %}
-{% for layout_item in site.data.samples.layouts.itemListElement %}
-{% assign cat = layout_item.item.category %}
-{% unless categories contains cat %}
-{% assign categories = categories | push: cat %}
-{% endunless %}
+Before diving into layouts and categories, understand what sets Genesis apart. These articles explain the philosophy:
+
+| Article | What You'll Learn |
+|---------|-------------------|
+{% for item in site.data.samples.archive.hasPart limit: 4 %}| [{{ item.headline | truncate: 45 }}]({{ item.url }}) | {{ item.keywords | join: ", " }} |
 {% endfor %}
 
-| Category | Layouts |
-|----------|---------|
-{% for cat in categories %}| {{ cat }} | {% for layout_item in site.data.samples.layouts.itemListElement %}{% if layout_item.item.category == cat %}{{ layout_item.item.identifier }}{% unless forloop.last %}, {% endunless %}{% endif %}{% endfor %} |
-{% endfor %}
-
-## Ontological Categories
+## The Six Ontological Categories
 
 {% for term in site.data.samples.ontology.hasDefinedTerm %}
 - **{{ term.name }}** (`{{ term.termCode }}`) — {{ term.description | truncate: 80 }}
@@ -89,9 +85,10 @@ Open `http://localhost:4000`.
 
 ## Next Steps
 
-- Browse [{{ site.data.samples.layouts.numberOfItems }} sample layouts](/samples/) to see every layout in action
-- Read the [FAQ](/samples/knowledge/faq.html) for common questions
-- Explore the [ontological categories](/samples/content-driven/article.html) in depth
+- Read [The Death of Utility Classes](/samples/content-driven/article.html) to understand the architectural philosophy
+- Explore [OKLCH Color Science](/samples/content-driven/oklch.html) to see how the palette works
+- Browse the [Chronicle](/samples/content-driven/archive.html) for all articles and deep dives
+- Check the [FAQ](/samples/knowledge/faq.html) for quick answers to common questions
 
 <script type="application/ld+json">
 {{ howto | jsonify }}

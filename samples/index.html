@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Sample Pages — Genesis Theme"
+title: "The Genesis Chronicle — Sample Pages"
 ---
 
 {% assign theme_data = site.data.samples.theme %}
@@ -39,74 +39,247 @@ title: "Sample Pages — Genesis Theme"
        Page Header
   ======================================================== -->
   <header class="samples-index__header">
-    <h1 class="samples-index__title">{{ theme_data.name }} · Sample Pages</h1>
+    <h1 class="samples-index__title">The Genesis Chronicle</h1>
     <p class="samples-index__subtitle">
-      {{ layouts_data.numberOfItems }} production layouts showcasing the ontological design system.
-      Use the toggle above to preview each sample in dark or light mode.
+      A design system that knows why it looks the way it does. Explore the philosophy through articles, the
+      innovations through interactive layouts, and the architecture through living demonstrations.
     </p>
   </header>
 
   <!-- ======================================================
-       Sample Grid — driven by _data/samples/layouts.json
+       Featured Articles — the intellectual center
   ======================================================== -->
-  <main class="samples-index__grid" id="skip-samples">
+  <section class="samples-index__category">
+    <h2 class="samples-index__category-heading">
+      <i class="fas fa-feather-alt" aria-hidden="true"></i>
+      The Thinking
+    </h2>
+    <ul class="samples-index__list">
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/content-driven/article.html">
+          <i class="fas fa-scroll samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>The Death of Utility Classes</strong>
+            <span>A manifesto: why ontological CSS changes everything about how we build interfaces.</span>
+          </span>
+        </a>
+      </li>
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/content-driven/post.html">
+          <i class="fas fa-dna samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>Design With Memory</strong>
+            <span>How AI agents evolve a living design genome where every variant has an origin story.</span>
+          </span>
+        </a>
+      </li>
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/content-driven/oklch.html">
+          <i class="fas fa-eye samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>OKLCH: The Color Space Your Eyes Were Waiting For</strong>
+            <span>Why hex codes lie to your brain and how perceptual uniformity changes everything.</span>
+          </span>
+        </a>
+      </li>
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/content-driven/atmosphere.html">
+          <i class="fas fa-cloud-moon samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>The Void and the Ethereal</strong>
+            <span>How a single word — void, ethereal, sacred — sets the emotional tone of an entire page.</span>
+          </span>
+        </a>
+      </li>
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/content-driven/accessibility.html">
+          <i class="fas fa-universal-access samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>Accessibility Is Not a Feature — It Is the Architecture</strong>
+            <span>WCAG compliance as a structural guarantee. Touch targets that cannot shrink.</span>
+          </span>
+        </a>
+      </li>
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/content-driven/web-components.html">
+          <i class="fas fa-puzzle-piece samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>Web Components Without the Framework Tax</strong>
+            <span>17 Lit-based custom elements. No Shadow DOM. No build step. No framework runtime.</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </section>
 
-    {% assign categories = "" | split: "" %}
-    {% for layout_item in layouts_data.itemListElement %}
-    {% assign cat = layout_item.item.category %}
-    {% unless categories contains cat %}
-    {% assign categories = categories | push: cat %}
-    {% endunless %}
-    {% endfor %}
+  <!-- ======================================================
+       Content Hub
+  ======================================================== -->
+  <section class="samples-index__category">
+    <h2 class="samples-index__category-heading">
+      <i class="fas fa-book-open" aria-hidden="true"></i>
+      The Content Hub
+    </h2>
+    <ul class="samples-index__list">
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/content-driven/archive.html">
+          <i class="fas fa-list samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>The Chronicle Archive</strong>
+            <span>Every article, filterable by date and topic. All real links, all real content.</span>
+          </span>
+        </a>
+      </li>
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/content-driven/profile.html">
+          <i class="fas fa-users samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>The Architects of Intent</strong>
+            <span>Meet the collective and the philosophy behind the genome.</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </section>
 
-    {% for cat in categories %}
-    <section class="samples-index__category">
-      <h2 class="samples-index__category-heading">
-        {% case cat %}
-          {% when "Content-Driven" %}<i class="fas fa-file-alt" aria-hidden="true"></i>
-          {% when "Marketing" %}<i class="fas fa-bullhorn" aria-hidden="true"></i>
-          {% when "Knowledge" %}<i class="fas fa-graduation-cap" aria-hidden="true"></i>
-          {% when "Application" %}<i class="fas fa-laptop-code" aria-hidden="true"></i>
-          {% when "Utility" %}<i class="fas fa-tools" aria-hidden="true"></i>
-        {% endcase %}
-        {{ cat }}
-      </h2>
-      <ul class="samples-index__list">
-        {% for layout_item in layouts_data.itemListElement %}
-        {% assign layout = layout_item.item %}
-        {% if layout.category == cat %}
-        <li class="samples-index__item">
-          <a class="samples-index__link" href="{{ layout.url }}">
-            {% case layout.identifier %}
-              {% when "post" %}<i class="fas fa-newspaper samples-index__link-icon" aria-hidden="true"></i>
-              {% when "article" %}<i class="fas fa-book-open samples-index__link-icon" aria-hidden="true"></i>
-              {% when "archive" %}<i class="fas fa-list samples-index__link-icon" aria-hidden="true"></i>
-              {% when "profile" %}<i class="fas fa-user samples-index__link-icon" aria-hidden="true"></i>
-              {% when "landing" %}<i class="fas fa-rocket samples-index__link-icon" aria-hidden="true"></i>
-              {% when "gallery" %}<i class="fas fa-images samples-index__link-icon" aria-hidden="true"></i>
-              {% when "form" %}<i class="fas fa-envelope samples-index__link-icon" aria-hidden="true"></i>
-              {% when "docs" %}<i class="fas fa-book samples-index__link-icon" aria-hidden="true"></i>
-              {% when "faq" %}<i class="fas fa-question-circle samples-index__link-icon" aria-hidden="true"></i>
-              {% when "dashboard" %}<i class="fas fa-chart-bar samples-index__link-icon" aria-hidden="true"></i>
-              {% when "chatroom" %}<i class="fas fa-comments samples-index__link-icon" aria-hidden="true"></i>
-              {% when "search" %}<i class="fas fa-search samples-index__link-icon" aria-hidden="true"></i>
-              {% when "settings" %}<i class="fas fa-cog samples-index__link-icon" aria-hidden="true"></i>
-              {% when "splash" %}<i class="fas fa-star samples-index__link-icon" aria-hidden="true"></i>
-              {% when "404" %}<i class="fas fa-exclamation-triangle samples-index__link-icon" aria-hidden="true"></i>
-            {% endcase %}
-            <span class="samples-index__link-body">
-              <strong>{{ layout.name | remove: " Layout" }}</strong>
-              <span>{{ layout.description | truncate: 80 }}</span>
-            </span>
-          </a>
-        </li>
-        {% endif %}
-        {% endfor %}
-      </ul>
-    </section>
-    {% endfor %}
+  <!-- ======================================================
+       Marketing / Stage
+  ======================================================== -->
+  <section class="samples-index__category">
+    <h2 class="samples-index__category-heading">
+      <i class="fas fa-bullhorn" aria-hidden="true"></i>
+      The Stage
+    </h2>
+    <ul class="samples-index__list">
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/marketing/landing.html">
+          <i class="fas fa-rocket samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>Your CSS Should Know Why It Exists</strong>
+            <span>The landing page that makes the case for ontological design.</span>
+          </span>
+        </a>
+      </li>
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/marketing/gallery.html">
+          <i class="fas fa-images samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>The Visual Language of Intent</strong>
+            <span>Each image represents an ontological category in visual form.</span>
+          </span>
+        </a>
+      </li>
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/marketing/form.html">
+          <i class="fas fa-flask samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>Propose a Variant</strong>
+            <span>The ontological proposition form — how the genome grows from the edges.</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </section>
 
-  </main>
+  <!-- ======================================================
+       Knowledge Base
+  ======================================================== -->
+  <section class="samples-index__category">
+    <h2 class="samples-index__category-heading">
+      <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+      The Knowledge Base
+    </h2>
+    <ul class="samples-index__list">
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/knowledge/docs.html">
+          <i class="fas fa-book samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>Getting Started</strong>
+            <span>From clone to first page in under ten minutes.</span>
+          </span>
+        </a>
+      </li>
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/knowledge/faq.html">
+          <i class="fas fa-question-circle samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>Questions People Actually Ask</strong>
+            <span>The real questions — about utility classes, AI reviewers, and hex code absence.</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ======================================================
+       Application / Control Room
+  ======================================================== -->
+  <section class="samples-index__category">
+    <h2 class="samples-index__category-heading">
+      <i class="fas fa-laptop-code" aria-hidden="true"></i>
+      The Control Room
+    </h2>
+    <ul class="samples-index__list">
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/application/dashboard.html">
+          <i class="fas fa-heartbeat samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>The Pulse of the Genome</strong>
+            <span>Metrics that tell the story of system evolution — variants, layouts, tokens.</span>
+          </span>
+        </a>
+      </li>
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/application/search.html">
+          <i class="fas fa-search samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>Explore the Genome</strong>
+            <span>Search across articles, variants, and architectural concepts.</span>
+          </span>
+        </a>
+      </li>
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/application/settings.html">
+          <i class="fas fa-cog samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>Theme Configuration</strong>
+            <span>Identity, ontology, layouts, accessibility, and preferences.</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ======================================================
+       Utility / The Edges
+  ======================================================== -->
+  <section class="samples-index__category">
+    <h2 class="samples-index__category-heading">
+      <i class="fas fa-satellite" aria-hidden="true"></i>
+      The Edges
+    </h2>
+    <ul class="samples-index__list">
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/utility/splash.html">
+          <i class="fas fa-star samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>Genesis 4.0 — The Genome Evolves</strong>
+            <span>Countdown to the next major evolution of the design system.</span>
+          </span>
+        </a>
+      </li>
+      <li class="samples-index__item">
+        <a class="samples-index__link" href="/samples/utility/404.html">
+          <i class="fas fa-ghost samples-index__link-icon" aria-hidden="true"></i>
+          <span class="samples-index__link-body">
+            <strong>Lost in the Void</strong>
+            <span>Even 404 pages deserve ontological care and creative voice.</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
 </div>
 
 <script type="application/ld+json">
