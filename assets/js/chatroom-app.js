@@ -52,12 +52,12 @@ export class ChatroomApp extends GenesisElement {
         apiEndpoint:          { type: String,  attribute: 'api-endpoint' },
         autoRefresh:          { type: Boolean, attribute: 'auto-refresh' },
         refreshInterval:      { type: Number,  attribute: 'refresh-interval' },
-        // Boardroom Theme Variant (Readme.md req 8): applies a CSS class for
-        // boardroom-specific styling without requiring a separate component.
+        // Theme variant: applying chatroom--theme-<value> as a CSS class allows
+        // subclasses to style the component differently without a new layout file.
         theme:                { type: String },
-        // Owner Agent Display (Readme.md req 6): workflow owner shown in header.
+        // Workflow owner shown in the chatroom header info bar.
         owner:                { type: String },
-        // Step Progress Indicator (Readme.md req 5): current step / total steps.
+        // Step / total-steps pair for a progress indicator in the header.
         stepId:               { type: String,  attribute: 'step-id' },
         totalSteps:           { type: Number,  attribute: 'total-steps' },
     };
