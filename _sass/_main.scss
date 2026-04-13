@@ -119,8 +119,7 @@
 @import "layouts/docs";
 @import "layouts/faq";
 @import "layouts/dashboard";
-@import "layouts/chatroom";
-@import "layouts/boardroom";
+@import "layouts/chatroom"; // covers both chatroom-app and boardroom-app (layout: chatroom)
 @import "layouts/search";
 @import "layouts/settings";
 @import "layouts/minimal";

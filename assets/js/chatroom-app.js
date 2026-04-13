@@ -196,6 +196,20 @@ export class ChatroomApp extends GenesisElement {
     /**
      * Build the complete chatroom DOM from the layout template and insert it
      * into this element.  Called once from connectedCallback before event wiring.
+     *
+     * Render target resolution:
+     *   1. If a `#chatArea` child element exists (placed by the layout when page
+     *      content/panels are present), the chat UI is rendered into it — leaving
+     *      sibling panels (sidebar, toggle strip, overlay, toasts) untouched.
+     *   2. Otherwise the chat UI replaces all children of this element (original
+     *      behaviour for plain chatroom pages with no panels).
+     *
+     * Extension hooks for subclasses (override instead of _render):
+     *   _onInputBuilt(inputEl)  — called after the input bar is built; add
+     *                             toolbar buttons, file-attach, etc.
+     *   _onLayoutBuilt(layout)  — called after input is appended to layout and
+     *                             before the layout is inserted into the DOM; add
+     *                             header action buttons, badges, etc.
      */
     _render() {
         const { title, participants, placeholder, showToolbar, showConnectionStatus, mcpApps, chatMessages, owner, stepId, totalSteps } = this.config;
@@ -207,14 +221,14 @@ export class ChatroomApp extends GenesisElement {
         const titleEl = layout.querySelector('.chatroom-title');
         if (titleEl) titleEl.textContent = title;
 
-        // Conditionally show owner label (Readme.md req 6)
+        // Conditionally show owner label
         const ownerEl = layout.querySelector('.chatroom-owner');
         if (ownerEl && owner) {
             ownerEl.textContent = owner;
             ownerEl.hidden = false;
         }
 
-        // Conditionally show step progress (Readme.md req 5)
+        // Conditionally show step progress
         const stepEl = layout.querySelector('.chatroom-step-progress');
         if (stepEl && stepId && totalSteps) {
             stepEl.textContent = `Step ${stepId} of ${totalSteps}`;
@@ -259,15 +273,45 @@ export class ChatroomApp extends GenesisElement {
             });
         }
 
-        // Insert input area at the end of the layout
+        // Build input area and call the subclass hook before appending
         const inputEl = this._buildInput(placeholder, showToolbar, mcpApps);
-        if (inputEl) layout.appendChild(inputEl);
+        if (inputEl) {
+            this._onInputBuilt(inputEl);
+            layout.appendChild(inputEl);
+        }
 
-        this.replaceChildren(layout);
+        // Call the subclass hook before inserting the layout into the DOM
+        this._onLayoutBuilt(layout);
+
+        // Render into #chatArea when panel siblings exist; otherwise own all children
+        const chatArea = this.querySelector('#chatArea');
+        if (chatArea) {
+            chatArea.replaceChildren(layout);
+        } else {
+            this.replaceChildren(layout);
+        }
 
         // Scroll to bottom of the pre-loaded message list
         if (messagesEl) messagesEl.scrollTop = messagesEl.scrollHeight;
     }
+
+    /**
+     * Extension hook — called after the input bar element is built and before
+     * it is appended to the layout.  Override in subclasses to add toolbar
+     * buttons, file-attach controls, or other input-area customisations.
+     * @param {Element} _inputEl  The cloned chatroom-input element.
+     */
+    // eslint-disable-next-line no-unused-vars
+    _onInputBuilt(_inputEl) { /* override in subclasses */ }
+
+    /**
+     * Extension hook — called after the full chatroom layout is assembled and
+     * before it is inserted into the DOM.  Override in subclasses to add header
+     * action buttons, inject extra markup, or modify the layout tree.
+     * @param {Element} _layout  The assembled chatroom-layout element.
+     */
+    // eslint-disable-next-line no-unused-vars
+    _onLayoutBuilt(_layout) { /* override in subclasses */ }
 
     /**
      * Build and return a DOM element for a single message.

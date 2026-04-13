@@ -30,8 +30,10 @@
     @include flex-column;
     @include padding-reset;
 
-    // boardroom-app also uses this layout in its own _layouts/boardroom layout;
-    // both elements must fill the chatroom-main column identically.
+    // chatroom-app and any subclass element (e.g. boardroom-app) must fill the
+    // chatroom-main column.  The element tag is configurable via the `component`
+    // front-matter key in _layouts/chatroom.html; new subclasses get the correct
+    // flex behaviour automatically when they use layout: chatroom.
     chatroom-app,
     boardroom-app {
       @include flex-grow-fill;
@@ -40,6 +42,20 @@
       @include full-width;
       @include full-height;
     }
+  }
+
+  // ==========================================================================
+  // CHAT AREA RENDER TARGET
+  // ==========================================================================
+  // .chatroom-chat-area (#chatArea) is the flex-fill container that the JS
+  // renders the chatroom UI into when the page has panel siblings (sidebar,
+  // toggle strip, etc.).  It must fill the remaining space of the panelled row.
+
+  .chatroom-chat-area {
+    @include flex-grow-fill;
+    @include flex-column;
+    min-height: 0;
+    overflow: hidden; // structural: inner .chatroom-messages handles scroll
   }
 
   // ==========================================================================

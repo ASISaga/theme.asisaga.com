@@ -4,19 +4,20 @@
 // Boardroom page layout — wraps the theme's chatroom in a multi-panel app
 // shell with a toggle strip, members sidebar, and a dedicated chat area.
 //
-// HTML structure (via _layouts/boardroom.html):
+// HTML structure (via layout: chatroom, component: boardroom-app):
 //
 //   .chatroom-body                           ← viewport (from layout-chatroom-component)
 //     .chatroom-main                         ← flex-grow-fill (from layout-chatroom-component)
 //       boardroom-app                        ← panelled flex row
 //         .boardroom-toggle-strip            ← fixed panel (panel-width token)
 //         .boardroom-members-sidebar         ← fixed panel (panel-width token)
-//         #chatArea[data-panel="main"]       ← fluid chat column
+//         .chatroom-chat-area#chatArea       ← fluid chat column (render target)
 //           .chatroom-layout                 ← full chatroom (from chatroom-app.js)
 //         .boardroom-loading-overlay         ← absolute, covers boardroom-app
 //
-// The chatroom-body/chatroom-main/boardroom-app viewport chain is wired in
-// _layout-chatroom-component (boardroom-app listed alongside chatroom-app).
+// The chatroom-body/chatroom-main/boardroom-app viewport chain and the
+// .chatroom-chat-area flex styles are wired in _layout-chatroom-component.
+// This mixin adds boardroom-specific structural overrides and UI elements.
 // ============================================================================
 
 @mixin layout-boardroom-component {
@@ -31,19 +32,6 @@
   boardroom-app {
     @include genesis-environment('panelled');
     position: relative; // structural: stacking context for .boardroom-loading-overlay
-  }
-
-  // ==========================================================================
-  // CHAT PANEL OVERRIDE
-  // ==========================================================================
-  // The panelled environment sets overflow:auto on [data-panel="main"] so that
-  // the panel itself scrolls.  The chat area must instead be overflow:hidden
-  // because .chatroom-messages (inside .chatroom-layout) owns the scroll.
-
-  [data-panel="main"].boardroom-chat-area {
-    overflow: hidden; // structural: inner .chatroom-messages handles scroll
-    @include flex-column;
-    min-height: 0;
   }
 
   // ==========================================================================

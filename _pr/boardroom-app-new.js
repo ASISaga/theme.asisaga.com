@@ -41,93 +41,28 @@ class BoardroomApp extends ChatroomApp {
     }
 
     /**
-     * Override _render() from ChatroomApp to inject the chatroom layout into the
-     * boardroom's `#chatArea` container instead of replacing all children of this
-     * element.  This preserves the boardroom-specific wrappers (toggle strip,
-     * members sidebar, loading overlay, toast container) that live alongside the
-     * chat area in the static HTML.
-     *
-     * Boardroom-specific header actions (Screen Share, Video Call, etc.) are
-     * appended to the chatroom header's actions container after the template is
-     * cloned and populated.
+     * Extension hook: add toolbar buttons (formatting, file attach) to the
+     * chatroom input bar before it is appended to the layout.
+     * Called by ChatroomApp._render() — no need to override _render() itself.
+     * @param {Element} inputEl  Cloned chatroom-input element
      */
-    _render() {
-        const { title, participants, placeholder, showToolbar, showConnectionStatus, mcpApps, chatMessages = [] } = this.config;
-
-        const layout = this._cloneTemplate('template-chatroom-layout');
-        if (!layout) return;
-
-        // Populate title
-        const titleEl = layout.querySelector('.chatroom-title');
-        if (titleEl) titleEl.textContent = title;
-
-        // Conditionally show participants count
-        const participantsEl = layout.querySelector('.chatroom-participants');
-        if (participantsEl && participants) {
-            participantsEl.textContent = `${participants} agents in session`;
-            participantsEl.hidden = false;
+    _onInputBuilt(inputEl) {
+        if (this.boardroomConfig.enableFormatting) {
+            this._addBoardroomToolbarButtons(inputEl);
         }
-
-        // Conditionally show connection status badge
-        const statusContainer = layout.querySelector('.chatroom-status-container');
-        if (statusContainer && showConnectionStatus) {
-            statusContainer.hidden = false;
+        if (this.boardroomConfig.enableFileAttach) {
+            this._addFileAttachButton(inputEl);
         }
+    }
 
-        // Conditionally show MCP apps toggle button in the header
-        const mcpToggle = layout.querySelector('.chatroom-mcp-apps-toggle');
-        if (mcpToggle && mcpApps.length > 0) {
-            mcpToggle.hidden = false;
-        }
-
-        // Insert MCP apps panel before the messages container
-        if (mcpApps.length > 0) {
-            const panel = this._buildMcpPanel(mcpApps);
-            if (panel) {
-                const messagesEl = layout.querySelector('.chatroom-messages');
-                if (messagesEl) layout.insertBefore(panel, messagesEl);
-            }
-        }
-
-        // Populate messages container with pre-loaded data
-        const messagesEl = layout.querySelector('.chatroom-messages');
-        if (messagesEl && chatMessages.length > 0) {
-            messagesEl.replaceChildren();
-            chatMessages.forEach(m => {
-                const el = this._buildMessage(m);
-                if (el) messagesEl.appendChild(el);
-            });
-        }
-
-        // Add boardroom-specific header actions (Screen Share, Video Call, etc.)
+    /**
+     * Extension hook: add header action buttons (Screen Share, Video Call, etc.)
+     * to the assembled layout before it is inserted into the DOM.
+     * Called by ChatroomApp._render() — no need to override _render() itself.
+     * @param {Element} layout  Assembled chatroom-layout element
+     */
+    _onLayoutBuilt(layout) {
         this._addBoardroomHeaderActions(layout);
-
-        // Insert input area at the end of the layout
-        const inputEl = this._buildInput(placeholder, showToolbar, mcpApps);
-        if (inputEl) {
-            // Add boardroom-specific toolbar buttons when formatting is enabled
-            if (this.boardroomConfig.enableFormatting) {
-                this._addBoardroomToolbarButtons(inputEl);
-            }
-            // Add file attach button to the toolbar
-            if (this.boardroomConfig.enableFileAttach) {
-                this._addFileAttachButton(inputEl);
-            }
-            layout.appendChild(inputEl);
-        }
-
-        // Inject into the boardroom chat area container only, preserving the
-        // surrounding boardroom layout (toggle strip, members sidebar, etc.)
-        const chatArea = this.querySelector('#chatArea');
-        if (chatArea) {
-            chatArea.replaceChildren(layout);
-        } else {
-            // Fallback: replace all children (same as ChatroomApp default)
-            this.replaceChildren(layout);
-        }
-
-        // Scroll to bottom of any pre-loaded messages
-        if (messagesEl) messagesEl.scrollTop = messagesEl.scrollHeight;
     }
 
     /**
@@ -327,7 +262,7 @@ class BoardroomApp extends ChatroomApp {
             membersSidebar: this.querySelector('.boardroom-members-sidebar'),
             // Members list container provided by Jekyll partials
             agentList: this.querySelector('#membersListContainer'),
-            chatArea: this.querySelector('.boardroom-chat-area'),
+            chatArea: this.querySelector('#chatArea') || this.querySelector('.chatroom-chat-area'),
             // Optional profile detail section; tolerate absence
             profileDetail: this.querySelector('[data-boardroom-region="profile"]') || this.querySelector('#profile-detail'),
             loadingOverlay: this.querySelector('.boardroom-loading-overlay'),
