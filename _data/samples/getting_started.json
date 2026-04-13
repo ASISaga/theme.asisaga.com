@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "Getting Started with the Genesis Design System",
-  "description": "Step-by-step guide to installing the Genesis Semantic Design System theme and building your first page.",
+  "description": "From clone to first page in under ten minutes. Install the theme, pick a layout, and let the ontological engine handle typography, spacing, color, and responsive behavior.",
   "totalTime": "PT10M",
   "tool": [
     {

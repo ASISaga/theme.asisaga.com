@@ -1,8 +1,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Dataset",
-  "name": "Genesis Theme Metrics",
-  "description": "Key performance and capability metrics for the Genesis Semantic Design System.",
+  "name": "The Pulse of the Genome",
+  "description": "The vital signs of a living design system — variants that evolved, layouts that adapt, tokens that guarantee contrast, and accessibility that cannot be bypassed.",
   "creator": {
     "@type": "Organization",
     "name": "ASI Saga"
@@ -13,7 +13,7 @@
       "name": "Ontological Variants",
       "value": "89",
       "unitText": "variants",
-      "description": "33 foundational + 56 evolved semantic variants across six categories",
+      "description": "33 foundational + 56 evolved — each with an origin story in GENOME.md",
       "additionalProperty": {
         "@type": "PropertyValue",
         "name": "trend",
@@ -25,7 +25,7 @@
       "name": "Production Layouts",
       "value": "20",
       "unitText": "layouts",
-      "description": "Responsive, accessible page templates for every content type",
+      "description": "Responsive, accessible page templates — posts, dashboards, galleries, chatrooms, docs, and more",
       "additionalProperty": {
         "@type": "PropertyValue",
         "name": "trend",
@@ -37,7 +37,7 @@
       "name": "CSS Custom Properties",
       "value": "150+",
       "unitText": "properties",
-      "description": "Design tokens for colors, spacing, typography, effects, and more",
+      "description": "All OKLCH — zero hex codes, zero RGB, perceptually uniform and HDR-ready",
       "additionalProperty": {
         "@type": "PropertyValue",
         "name": "trend",
@@ -49,7 +49,7 @@
       "name": "WCAG Compliance",
       "value": "AA",
       "unitText": "level",
-      "description": "4.5:1 text contrast, 44px touch targets, landmarks, skip links, focus states",
+      "description": "By architecture, not by audit — 44px touch targets, OKLCH contrast, landmarks, reduced motion",
       "additionalProperty": {
         "@type": "PropertyValue",
         "name": "trend",
@@ -60,27 +60,27 @@
   "hasPart": [
     {
       "@type": "PropertyValue",
-      "name": "/samples/",
-      "value": "Sample Pages Index",
-      "description": "Browse all 15 sample pages demonstrating every layout"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "/samples/marketing/landing.html",
-      "value": "Landing Page",
-      "description": "Marketing page with hero, feature pillars, and social proof"
-    },
-    {
-      "@type": "PropertyValue",
       "name": "/samples/content-driven/article.html",
-      "value": "Article Layout",
-      "description": "Long-form article with table of contents and related content"
+      "value": "The Manifesto",
+      "description": "The Death of Utility Classes — why ontological CSS changes everything"
     },
     {
       "@type": "PropertyValue",
-      "name": "/samples/knowledge/docs.html",
-      "value": "Documentation",
-      "description": "Documentation with sidebar nav, breadcrumbs, and search"
+      "name": "/samples/content-driven/post.html",
+      "value": "Design With Memory",
+      "description": "How AI agents evolve a living design genome"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "/samples/content-driven/oklch.html",
+      "value": "OKLCH Color Science",
+      "description": "The color space your eyes were waiting for"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "/samples/content-driven/accessibility.html",
+      "value": "Accessibility Architecture",
+      "description": "WCAG compliance as a structural guarantee"
     }
   ]
 }
