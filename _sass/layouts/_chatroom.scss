@@ -1,2 +1,9 @@
-// Routed via interface
+// Chatroom layout styles — covers both chatroom-app (plain chatroom) and any
+// component-based extension (e.g. boardroom-app) that uses layout: chatroom.
 @include genesis-component('layout-chatroom');
+
+// Boardroom app-shell overlay and loading overlay styles.
+// boardroom-app is a chatroom subclass served via layout: chatroom + component:
+// boardroom-app.  Its SCSS lives here rather than in a separate _boardroom.scss
+// because there is no corresponding _layouts/boardroom.html.
+@include genesis-component('layout-boardroom');

@@ -10,14 +10,22 @@
  * Extends GenesisElement (LitElement, light DOM) — the same base as all other
  * Genesis web components.
  *
- * HTML templates are defined as <template> elements in:
- *   _includes/layouts/chatroom/
- * and loaded into the page by _layouts/chatroom.html before this component is
- * instantiated. The JS clones and populates those templates; no HTML strings are
- * built inline.
+ * The component is fully self-contained:
+ *   - HTML templates are defined in chatroom-templates.js and injected into the
+ *     DOM by the component itself on first use (no Jekyll layout required).
+ *   - Viewport CSS classes (chatroom-body / chatroom-main) are applied to
+ *     document.body / the nearest <main> in connectedCallback and removed in
+ *     disconnectedCallback.
+ *
+ * Usage — drop into any layout without any special layout configuration:
+ *   <chatroom-app title="My Chat" api-endpoint="/api/chat"></chatroom-app>
+ *
+ * Usage — via the convenience chatroom layout (maps front-matter → attributes):
+ *   layout: chatroom
+ *   title: My Chat
  *
  * Attributes / Lit reactive properties:
- *   title            — Boardroom title (default: "Chat")
+ *   title            — Chatroom title (default: "Chat")
  *   participants     — Agent count shown in the header
  *   placeholder      — Textarea placeholder text
  *   max-length       — Maximum input length (default: 1000)
@@ -32,6 +40,7 @@
  */
 
 import { GenesisElement } from './common/genesis-element.js';
+import { ensureChatroomTemplates } from './chatroom-templates.js';
 
 export class ChatroomApp extends GenesisElement {
     /**
@@ -52,6 +61,14 @@ export class ChatroomApp extends GenesisElement {
         apiEndpoint:          { type: String,  attribute: 'api-endpoint' },
         autoRefresh:          { type: Boolean, attribute: 'auto-refresh' },
         refreshInterval:      { type: Number,  attribute: 'refresh-interval' },
+        // Theme variant: applying chatroom--theme-<value> as a CSS class allows
+        // subclasses to style the component differently without a new layout file.
+        theme:                { type: String },
+        // Workflow owner shown in the chatroom header info bar.
+        owner:                { type: String },
+        // Step / total-steps pair for a progress indicator in the header.
+        stepId:               { type: String,  attribute: 'step-id' },
+        totalSteps:           { type: Number,  attribute: 'total-steps' },
     };
 
     constructor() {
@@ -60,6 +77,15 @@ export class ChatroomApp extends GenesisElement {
         this._mcpPendingCount = 0;
         this.refreshIntervalId = null;
         this._apiConnected = false;
+        // Domain template registry — maps JSON-LD @type → template element ID.
+        // Domain-specific templates take priority over shared templates.
+        // Null until registerDomain() is called by the consuming page.
+        this._domainTemplates = null;
+        // Shared template registry — cross-domain fallback templates.
+        // Maps JSON-LD @type → template element ID.
+        // Applied when no domain-specific template is found for a @type.
+        // Null until registerSharedTemplates() is called by the consuming page.
+        this._sharedTemplates = null;
         // Default values for numeric properties (Lit leaves them undefined when absent)
         this.maxLength = 1000;
         this.refreshInterval = 3000;
@@ -87,6 +113,23 @@ export class ChatroomApp extends GenesisElement {
 
     connectedCallback() {
         super.connectedCallback();
+
+        // Ensure the HTML <template> elements are in the DOM (self-provision if
+        // the page does not use layout: chatroom to inject them via Jekyll).
+        ensureChatroomTemplates();
+
+        // Mark this element as a chatroom component so CSS selectors can target
+        // any subclass without hardcoding element names in the stylesheet.
+        this.setAttribute('data-chatroom-component', '');
+
+        // Apply viewport classes so the component fills the full screen when used
+        // in any layout — no body_class / main_class front-matter required.
+        document.body.classList.add('chatroom-body');
+        this.closest('main')?.classList.add('chatroom-main');
+
+        // Apply theme variant CSS class when the theme attribute is set.
+        if (this.theme) this.classList.add(`chatroom--theme-${this.theme}`);
+
         this.config = {
             title: this.title || 'Chat',
             participants: this.participants || null,
@@ -100,6 +143,9 @@ export class ChatroomApp extends GenesisElement {
             mcpApps: this._parseMcpApps(this.mcpApps),
             mcpEndpoint: this.mcpEndpoint || null,
             chatMessages: this._parseChatData(this.chatData),
+            owner: this.owner || null,
+            stepId: this.stepId || null,
+            totalSteps: this.totalSteps || null,
         };
 
         this._render();
@@ -135,12 +181,18 @@ export class ChatroomApp extends GenesisElement {
         if (changedProperties.has('participants')) {
             this.updateParticipants(this.participants);
         }
+        // Sync theme variant class when the theme attribute changes at runtime.
+        if (changedProperties.has('theme')) {
+            const prev = changedProperties.get('theme');
+            if (prev) this.classList.remove(`chatroom--theme-${prev}`);
+            if (this.theme) this.classList.add(`chatroom--theme-${this.theme}`);
+        }
     }
 
     // =========================================================================
     // Rendering — component builds its own DOM from HTML templates
-    // Templates live in _includes/layouts/chatroom/ and are loaded into the
-    // page as <template id="template-chatroom-*"> elements by _layouts/chatroom.html.
+    // Templates are defined in chatroom-templates.js and injected into the DOM
+    // by ensureChatroomTemplates() (called in connectedCallback).
     // =========================================================================
 
     /**
@@ -175,9 +227,23 @@ export class ChatroomApp extends GenesisElement {
     /**
      * Build the complete chatroom DOM from the layout template and insert it
      * into this element.  Called once from connectedCallback before event wiring.
+     *
+     * Render target resolution:
+     *   1. If a `#chatArea` child element exists (placed by the layout when page
+     *      content/panels are present), the chat UI is rendered into it — leaving
+     *      sibling panels (sidebar, toggle strip, overlay, toasts) untouched.
+     *   2. Otherwise the chat UI replaces all children of this element (original
+     *      behaviour for plain chatroom pages with no panels).
+     *
+     * Extension hooks for subclasses (override instead of _render):
+     *   _onInputBuilt(inputEl)  — called after the input bar is built; add
+     *                             toolbar buttons, file-attach, etc.
+     *   _onLayoutBuilt(layout)  — called after input is appended to layout and
+     *                             before the layout is inserted into the DOM; add
+     *                             header action buttons, badges, etc.
      */
     _render() {
-        const { title, participants, placeholder, showToolbar, showConnectionStatus, mcpApps, chatMessages } = this.config;
+        const { title, participants, placeholder, showToolbar, showConnectionStatus, mcpApps, chatMessages, owner, stepId, totalSteps } = this.config;
 
         const layout = this._cloneTemplate('template-chatroom-layout');
         if (!layout) return;
@@ -185,6 +251,20 @@ export class ChatroomApp extends GenesisElement {
         // Populate title
         const titleEl = layout.querySelector('.chatroom-title');
         if (titleEl) titleEl.textContent = title;
+
+        // Conditionally show owner label
+        const ownerEl = layout.querySelector('.chatroom-owner');
+        if (ownerEl && owner) {
+            ownerEl.textContent = owner;
+            ownerEl.hidden = false;
+        }
+
+        // Conditionally show step progress
+        const stepEl = layout.querySelector('.chatroom-step-progress');
+        if (stepEl && stepId && totalSteps) {
+            stepEl.textContent = `Step ${stepId} of ${totalSteps}`;
+            stepEl.hidden = false;
+        }
 
         // Conditionally show participants count
         const participantsEl = layout.querySelector('.chatroom-participants');
@@ -224,22 +304,286 @@ export class ChatroomApp extends GenesisElement {
             });
         }
 
-        // Insert input area at the end of the layout
+        // Build input area and call the subclass hook before appending
         const inputEl = this._buildInput(placeholder, showToolbar, mcpApps);
-        if (inputEl) layout.appendChild(inputEl);
+        if (inputEl) {
+            this._onInputBuilt(inputEl);
+            layout.appendChild(inputEl);
+        }
 
-        this.replaceChildren(layout);
+        // Call the subclass hook before inserting the layout into the DOM
+        this._onLayoutBuilt(layout);
+
+        // Render into #chatArea when panel siblings exist; otherwise own all children
+        const chatArea = this.querySelector('#chatArea');
+        if (chatArea) {
+            chatArea.replaceChildren(layout);
+        } else {
+            this.replaceChildren(layout);
+        }
 
         // Scroll to bottom of the pre-loaded message list
         if (messagesEl) messagesEl.scrollTop = messagesEl.scrollHeight;
     }
 
     /**
+     * Extension hook — called after the input bar element is built and before
+     * it is appended to the layout.  Override in subclasses to add toolbar
+     * buttons, file-attach controls, or other input-area customisations.
+     * @param {Element} _inputEl  The cloned chatroom-input element.
+     */
+    // eslint-disable-next-line no-unused-vars
+    _onInputBuilt(_inputEl) { /* override in subclasses */ }
+
+    /**
+     * Extension hook — called after the full chatroom layout is assembled and
+     * before it is inserted into the DOM.  Override in subclasses to add header
+     * action buttons, inject extra markup, or modify the layout tree.
+     * @param {Element} _layout  The assembled chatroom-layout element.
+     */
+    // eslint-disable-next-line no-unused-vars
+    _onLayoutBuilt(_layout) { /* override in subclasses */ }
+
+    // =========================================================================
+    // JSON-LD Domain API
+    // =========================================================================
+
+    /**
+     * Register domain-specific HTML templates mapped by JSON-LD @type.
+     * Must be called before loadDomain() or at any time to swap the domain.
+     * Domain templates take priority over shared templates.
+     *
+     * @param {Object} typeToTemplateMap
+     *   Keys are JSON-LD @type values; values are HTML <template> element IDs.
+     *   Reserved keys:
+     *     '__agent_message' — @type whose template is used for MCP agent responses.
+     *     '__user_message'  — @type whose template is used when the user sends a msg.
+     *
+     * @example
+     *   chatroom.registerDomain({
+     *     'schema:AgentMessage': 'template-business-agent-msg',
+     *     'schema:UserMessage':  'template-business-user-msg',
+     *     '__agent_message':     'schema:AgentMessage',
+     *     '__user_message':      'schema:UserMessage',
+     *   });
+     */
+    registerDomain(typeToTemplateMap) {
+        this._domainTemplates = Object.assign({}, typeToTemplateMap);
+    }
+
+    /**
+     * Register shared (cross-domain) HTML templates mapped by JSON-LD @type.
+     * Shared templates act as fallback when no domain-specific template is found.
+     * Call once at startup before activating any domain.
+     *
+     * @param {Object} typeToTemplateMap
+     *   Keys are JSON-LD @type values; values are HTML <template> element IDs.
+     *   Reserved keys (same as registerDomain):
+     *     '__agent_message' — @type for MCP/AI agent responses (used as MCP fallback).
+     *     '__user_message'  — @type for user-sent messages.
+     *
+     * @example
+     *   chatroom.registerSharedTemplates({
+     *     'AgentMessage':      'template-shared-agent-msg',
+     *     'UserMessage':       'template-shared-user-msg',
+     *     'CommunicateAction': 'template-shared-typing',
+     *     '__agent_message':   'AgentMessage',
+     *     '__user_message':    'UserMessage',
+     *   });
+     */
+    registerSharedTemplates(typeToTemplateMap) {
+        this._sharedTemplates = Object.assign({}, typeToTemplateMap);
+    }
+
+    /**
+     * Clear the current messages and re-render from a JSON-LD message array.
+     * Requires registerDomain() or registerSharedTemplates() to have been called.
+     *
+     * @param {Array<Object>} messages  Array of Schema.org JSON-LD objects.
+     */
+    loadDomain(messages) {
+        if (!Array.isArray(messages)) return;
+        const container = this.elements?.messagesContainer;
+        if (!container) return;
+        container.replaceChildren();
+        messages.forEach(item => {
+            const el = this._buildFromJsonLd(item);
+            if (el) container.appendChild(el);
+        });
+        container.scrollTop = container.scrollHeight;
+    }
+
+    /**
+     * Build a DOM element from a JSON-LD item using the registered templates.
+     * Checks domain-specific templates first, then falls back to shared templates.
+     * Returns null if no matching template is found in either registry.
+     *
+     * @param {Object} item  JSON-LD object with an '@type' field.
+     * @returns {Element|null}
+     */
+    _buildFromJsonLd(item) {
+        if (!item || (!this._domainTemplates && !this._sharedTemplates)) return null;
+        const type = item['@type'];
+        if (!type) return null;
+        // Domain-specific template takes priority over shared template
+        const templateId = this._domainTemplates?.[type] ?? this._sharedTemplates?.[type];
+        if (!templateId) return null;
+        const el = this._cloneTemplate(templateId);
+        if (!el) return null;
+        this._fillFromSchema(el, item);
+        return el;
+    }
+
+    /**
+     * Fill a cloned template element's data-schema* slots from a JSON-LD object.
+     *
+     * Supported attributes on descendant elements:
+     *   data-schema="path.to.value"
+     *     Fills textContent from the dot-notation path; removes [hidden].
+     *   data-schema-avatar="id.path"
+     *     Adds chatroom__avatar--<id> CSS class; sets initials or, if
+     *     data-schema-avatar-icon="icon.path" resolves, a Font Awesome <i> icon.
+     *   data-schema-list="path"
+     *     Renders an array of { name, description } objects as tool-result-item
+     *     list rows (using template-chatroom-tool-result-item); removes [hidden].
+     *   data-schema-parent-show="path"
+     *     Removes [hidden] from this element when the path resolves to a value.
+     *
+     * @param {Element} el    Cloned template element to fill.
+     * @param {Object}  data  JSON-LD source object.
+     */
+    _fillFromSchema(el, data) {
+        // Text content fill
+        el.querySelectorAll('[data-schema]').forEach(field => {
+            const value = this._getJsonLdValue(data, field.getAttribute('data-schema'));
+            if (value !== null && value !== undefined && value !== '') {
+                field.textContent = String(value);
+                field.removeAttribute('hidden');
+            }
+        });
+
+        // Avatar fill: CSS class modifier + initials or Font Awesome icon
+        el.querySelectorAll('[data-schema-avatar]').forEach(avatarEl => {
+            const id = this._getJsonLdValue(data, avatarEl.getAttribute('data-schema-avatar'));
+            if (!id) return;
+            const safeId = this._safeClass(String(id));
+            avatarEl.classList.add(`chatroom__avatar--${safeId}`);
+
+            const iconPath = avatarEl.getAttribute('data-schema-avatar-icon');
+            const iconClass = iconPath ? this._getJsonLdValue(data, iconPath) : null;
+            if (iconClass) {
+                const i = document.createElement('i');
+                i.className = this._safeIcon(String(iconClass));
+                i.setAttribute('aria-hidden', 'true');
+                avatarEl.replaceChildren(i);
+            } else {
+                avatarEl.textContent = String(id).toUpperCase().slice(0, 3);
+            }
+        });
+
+        // List fill: render array as tool-result-item rows
+        el.querySelectorAll('[data-schema-list]').forEach(listEl => {
+            const items = this._getJsonLdValue(data, listEl.getAttribute('data-schema-list'));
+            if (!Array.isArray(items) || !items.length) return;
+            listEl.replaceChildren();
+            items.forEach(item => {
+                const label = item.name || item.label || '';
+                const detail = item.description || item.detail || '';
+                const row = this._buildToolResultItem(label, detail);
+                if (row) listEl.appendChild(row);
+            });
+            listEl.removeAttribute('hidden');
+        });
+
+        // Parent-show: reveal a container when a referenced path has a value
+        el.querySelectorAll('[data-schema-parent-show]').forEach(parentEl => {
+            const value = this._getJsonLdValue(data, parentEl.getAttribute('data-schema-parent-show'));
+            if (value !== null && value !== undefined && value !== '') {
+                parentEl.removeAttribute('hidden');
+            }
+        });
+    }
+
+    /**
+     * Resolve a dot-notation path within a JSON-LD object.
+     * @param {Object} data  Source data.
+     * @param {string} path  Dot-notation path, e.g. "sender.name".
+     * @returns {*}  Resolved value or null if the path does not exist.
+     */
+    _getJsonLdValue(data, path) {
+        if (!path) return null;
+        return path.split('.').reduce((obj, key) => obj?.[key] ?? null, data) ?? null;
+    }
+
+    /**
+     * Clone the registered agent message template for MCP/AI responses.
+     * Resolution order:
+     *   1. Domain-specific template (registered via registerDomain)
+     *   2. Shared template (registered via registerSharedTemplates)
+     *   3. Legacy 'template-chatroom-message-ai' (no longer shipped — logs warning)
+     * @returns {Element|null}
+     */
+    _cloneDomainAgentTemplate() {
+        // 1. Domain-specific agent template
+        const agentType = this._domainTemplates?.['__agent_message'];
+        if (agentType) {
+            const id = this._domainTemplates[agentType];
+            if (id) return this._cloneTemplate(id);
+        }
+        // 2. Shared template fallback
+        const sharedType = this._sharedTemplates?.['__agent_message'];
+        if (sharedType) {
+            const id = this._sharedTemplates[sharedType];
+            if (id) return this._cloneTemplate(id);
+        }
+        // 3. Legacy fallback (template no longer shipped — log to help developers)
+        // eslint-disable-next-line no-console
+        console.warn('[ChatroomApp] No agent message template found. Call registerSharedTemplates() or registerDomain() first.');
+        return this._cloneTemplate('template-chatroom-message-ai');
+    }
+
+    /**
+     * Build a user message element using the registered user template.
+     * Resolution order:
+     *   1. Domain-specific user template (via registerDomain)
+     *   2. Shared user template (via registerSharedTemplates)
+     *   3. Returns null — caller falls back to legacy _buildOwnMsg()
+     * @param {string} text  Message text.
+     * @returns {Element|null}
+     */
+    _buildDomainUserMsg(text) {
+        // Build a synthetic user message JSON-LD object and route through
+        // _buildFromJsonLd(), which handles domain → shared lookup internally.
+        // Try domain-specific __user_message type first, then shared.
+        const userType =
+            this._domainTemplates?.['__user_message'] ??
+            this._sharedTemplates?.['__user_message'];
+        if (!userType) return null;
+        const msg = {
+            '@type': userType,
+            sender: { '@type': 'Person', name: 'You', identifier: 'you' },
+            text,
+            dateSent: this._formatNow(),
+        };
+        return this._buildFromJsonLd(msg);
+    }
+    }
+
+
+    /**
      * Build and return a DOM element for a single message.
+     * Tries the JSON-LD domain path first, then falls back to legacy type
+     * dispatch for backward compatibility with old-style message objects.
      * @param {object} msg
      * @returns {Element|null}
      */
     _buildMessage(msg) {
+        // JSON-LD path: dispatch by @type, checking domain then shared templates
+        if (msg['@type'] && (this._domainTemplates || this._sharedTemplates)) {
+            const el = this._buildFromJsonLd(msg);
+            if (el) return el;
+        }
+        // Legacy path: dispatch by msg.type for backward compatibility
         switch (msg.type) {
             case 'system':  return this._buildSystemMsg(msg);
             case 'ai':      return this._buildAiMsg(msg);
@@ -752,7 +1096,7 @@ export class ChatroomApp extends GenesisElement {
         const container = this.elements.messagesContainer;
         if (!container) return document.createElement('div');
 
-        const el = this._cloneTemplate('template-chatroom-message-ai');
+        const el = this._cloneDomainAgentTemplate();
         if (!el) return document.createElement('div');
 
         el.classList.add('chatroom__message--thinking');
@@ -760,10 +1104,16 @@ export class ChatroomApp extends GenesisElement {
 
         const avatarEl = el.querySelector('.chatroom__avatar');
         if (avatarEl) {
+            avatarEl.classList.add('chatroom__avatar--ai');
             const iconEl = avatarEl.querySelector('i');
             if (iconEl) {
                 iconEl.className = this._safeIcon(app.icon || 'fas fa-robot');
                 iconEl.setAttribute('aria-hidden', 'true');
+            } else {
+                const i = document.createElement('i');
+                i.className = this._safeIcon(app.icon || 'fas fa-robot');
+                i.setAttribute('aria-hidden', 'true');
+                avatarEl.replaceChildren(i);
             }
         }
 
@@ -808,15 +1158,21 @@ export class ChatroomApp extends GenesisElement {
         const hasToolCall = data.tool_used || data.tool || data.tool_name;
         const toolName = hasToolCall ? (data.tool_used || data.tool || data.tool_name) : null;
 
-        const el = this._cloneTemplate('template-chatroom-message-ai');
+        const el = this._cloneDomainAgentTemplate();
         if (!el) return;
 
         const avatarEl = el.querySelector('.chatroom__avatar');
         if (avatarEl) {
+            avatarEl.classList.add('chatroom__avatar--ai');
             const iconEl = avatarEl.querySelector('i');
             if (iconEl) {
                 iconEl.className = this._safeIcon(app.icon || 'fas fa-robot');
                 iconEl.setAttribute('aria-hidden', 'true');
+            } else {
+                const i = document.createElement('i');
+                i.className = this._safeIcon(app.icon || 'fas fa-robot');
+                i.setAttribute('aria-hidden', 'true');
+                avatarEl.replaceChildren(i);
             }
         }
 
@@ -865,7 +1221,7 @@ export class ChatroomApp extends GenesisElement {
         const container = this.elements.messagesContainer;
         if (!container) return;
 
-        const el = this._cloneTemplate('template-chatroom-message-ai');
+        const el = this._cloneDomainAgentTemplate();
         if (!el) return;
 
         el.classList.add('chatroom__message--ai-error');
@@ -877,6 +1233,11 @@ export class ChatroomApp extends GenesisElement {
             if (iconEl) {
                 iconEl.className = 'fas fa-exclamation-triangle';
                 iconEl.setAttribute('aria-hidden', 'true');
+            } else {
+                const i = document.createElement('i');
+                i.className = 'fas fa-exclamation-triangle';
+                i.setAttribute('aria-hidden', 'true');
+                avatarEl.replaceChildren(i);
             }
         }
 
@@ -1110,7 +1471,7 @@ export class ChatroomApp extends GenesisElement {
             // No API endpoint — append directly
             const container = this.elements.messagesContainer;
             if (container) {
-                const el = this._buildOwnMsg({
+                const el = this._buildDomainUserMsg(text) ?? this._buildOwnMsg({
                     text,
                     time: this._formatNow(),
                     author: 'You',
@@ -1132,7 +1493,7 @@ export class ChatroomApp extends GenesisElement {
     _appendUserMessage(text) {
         const container = this.elements.messagesContainer;
         if (!container) return;
-        const el = this._buildOwnMsg({
+        const el = this._buildDomainUserMsg(text) ?? this._buildOwnMsg({
             time: this._formatNow(),
             author: 'You',
             text,
@@ -1201,6 +1562,16 @@ export class ChatroomApp extends GenesisElement {
     disconnectedCallback() {
         super.disconnectedCallback();
         this.stopAutoRefresh();
+
+        // Remove viewport classes when the last chatroom component leaves the DOM.
+        if (!document.querySelector('[data-chatroom-component]')) {
+            document.body.classList.remove('chatroom-body');
+        }
+        const mainEl = this.closest('main') ?? document.querySelector('main');
+        if (mainEl && !mainEl.querySelector('[data-chatroom-component]')) {
+            mainEl.classList.remove('chatroom-main');
+        }
+
         this.dispatchEvent(new CustomEvent('chatroom-disconnected', { bubbles: true }));
     }
 

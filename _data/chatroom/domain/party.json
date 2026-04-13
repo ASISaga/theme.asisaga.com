@@ -1,0 +1,292 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Message",
+      "text": "Saturday Night Party Chat 🎉 — Live Room",
+      "dateSent": "7:55 PM"
+    },
+    {
+      "@type": "JoinAction",
+      "agent": {
+        "@type": "Person",
+        "name": "Alice",
+        "identifier": "guest-alice"
+      },
+      "dateSent": "7:58 PM"
+    },
+    {
+      "@type": "JoinAction",
+      "agent": {
+        "@type": "Person",
+        "name": "Bob",
+        "identifier": "guest-bob"
+      },
+      "dateSent": "7:59 PM"
+    },
+    {
+      "@type": "JoinAction",
+      "agent": {
+        "@type": "Person",
+        "name": "Charlie",
+        "identifier": "guest-charlie"
+      },
+      "dateSent": "8:00 PM"
+    },
+    {
+      "@type": "SocialEvent",
+      "name": "Welcome to the Party! 🎉",
+      "description": "The celebration has started!"
+    },
+    {
+      "@type": "HostMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "DJ Bot",
+        "identifier": "host",
+        "icon": "fas fa-music"
+      },
+      "text": "Welcome everyone! Tonight's playlist is curated just for you. Let's get this party started! 🎵",
+      "dateSent": "8:00 PM"
+    },
+    {
+      "@type": "GuestMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "Alice",
+        "identifier": "guest-alice"
+      },
+      "text": "This playlist is amazing! Can't wait for the night ahead! 🙌",
+      "dateSent": "8:01 PM"
+    },
+    {
+      "@type": "ReactAction",
+      "agent": {
+        "@type": "Person",
+        "name": "Bob",
+        "identifier": "guest-bob"
+      },
+      "emoji": "🔥",
+      "dateSent": "8:01 PM"
+    },
+    {
+      "@type": "GuestMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "Bob",
+        "identifier": "guest-bob"
+      },
+      "text": "Just arrived! Love the vibe in here. Who's ready to dance? 💃🕺",
+      "dateSent": "8:03 PM"
+    },
+    {
+      "@type": "GuestMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "Charlie",
+        "identifier": "guest-charlie"
+      },
+      "text": "Hey everyone! Ready to party! Let's make tonight unforgettable 🥳",
+      "dateSent": "8:04 PM"
+    },
+    {
+      "@type": "ReactAction",
+      "agent": {
+        "@type": "Person",
+        "name": "Alice",
+        "identifier": "guest-alice"
+      },
+      "emoji": "🎉",
+      "dateSent": "8:04 PM"
+    },
+    {
+      "@type": "SocialEvent",
+      "name": "🎯 Game Time: Truth or Dare!",
+      "description": "Up next"
+    },
+    {
+      "@type": "HostMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "DJ Bot",
+        "identifier": "host",
+        "icon": "fas fa-gamepad"
+      },
+      "text": "Time for Truth or Dare! First up — Alice, Truth or Dare? 🎯",
+      "dateSent": "8:15 PM"
+    },
+    {
+      "@type": "GuestMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "Alice",
+        "identifier": "guest-alice"
+      },
+      "text": "Truth! But nothing too embarrassing please 😅",
+      "dateSent": "8:16 PM"
+    },
+    {
+      "@type": "HostMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "DJ Bot",
+        "identifier": "host",
+        "icon": "fas fa-star"
+      },
+      "text": "Ha! OK — what's the most embarrassing song you know every word to? 🎤",
+      "dateSent": "8:16 PM"
+    },
+    {
+      "@type": "GuestMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "Alice",
+        "identifier": "guest-alice"
+      },
+      "text": "...Baby One More Time by Britney Spears. Every. Single. Word. 🫣",
+      "dateSent": "8:17 PM"
+    },
+    {
+      "@type": "GuestMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "Bob",
+        "identifier": "guest-bob"
+      },
+      "text": "NO SHAME IN THAT 🎶😂 Best answer ever!",
+      "dateSent": "8:18 PM"
+    },
+    {
+      "@type": "ReactAction",
+      "agent": {
+        "@type": "Person",
+        "name": "Charlie",
+        "identifier": "guest-charlie"
+      },
+      "emoji": "😂",
+      "dateSent": "8:18 PM"
+    },
+    {
+      "@type": "SocialEvent",
+      "name": "🎵 Music Quiz!",
+      "description": "Test your knowledge"
+    },
+    {
+      "@type": "HostMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "DJ Bot",
+        "identifier": "host",
+        "icon": "fas fa-question-circle"
+      },
+      "text": "Music quiz time! Who recorded the most Billboard Hot 100 #1 hits in the 2000s? 🎶",
+      "dateSent": "8:25 PM"
+    },
+    {
+      "@type": "GuestMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "Charlie",
+        "identifier": "guest-charlie"
+      },
+      "text": "Has to be Beyoncé! 🎤",
+      "dateSent": "8:25 PM"
+    },
+    {
+      "@type": "GuestMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "Bob",
+        "identifier": "guest-bob"
+      },
+      "text": "I'd say Eminem for sheer dominance… or maybe Usher? 🤔",
+      "dateSent": "8:26 PM"
+    },
+    {
+      "@type": "GuestMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "Alice",
+        "identifier": "guest-alice"
+      },
+      "text": "It's Mariah Carey — 18 #1 hits! She literally wrote the Christmas chart too 🎄",
+      "dateSent": "8:26 PM"
+    },
+    {
+      "@type": "HostMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "DJ Bot",
+        "identifier": "host",
+        "icon": "fas fa-check-circle"
+      },
+      "text": "Alice is correct! 🎉 Mariah Carey with 18 #1 hits. The queen of Christmas and apparently of trivia too! +10 points Alice 🏆",
+      "dateSent": "8:27 PM"
+    },
+    {
+      "@type": "ReactAction",
+      "agent": {
+        "@type": "Person",
+        "name": "Bob",
+        "identifier": "guest-bob"
+      },
+      "emoji": "🤯",
+      "dateSent": "8:27 PM"
+    },
+    {
+      "@type": "ReactAction",
+      "agent": {
+        "@type": "Person",
+        "name": "Charlie",
+        "identifier": "guest-charlie"
+      },
+      "emoji": "👏",
+      "dateSent": "8:27 PM"
+    },
+    {
+      "@type": "LeaveAction",
+      "agent": {
+        "@type": "Person",
+        "name": "Charlie",
+        "identifier": "guest-charlie"
+      },
+      "dateSent": "9:00 PM"
+    },
+    {
+      "@type": "SocialEvent",
+      "name": "🥂 Toast Time!",
+      "description": "Raise your glasses"
+    },
+    {
+      "@type": "HostMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "DJ Bot",
+        "identifier": "host",
+        "icon": "fas fa-champagne-glasses"
+      },
+      "text": "Let's raise a glass to great company, great music, and even greater memories. Cheers! 🥂✨",
+      "dateSent": "9:02 PM"
+    },
+    {
+      "@type": "GuestMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "Alice",
+        "identifier": "guest-alice"
+      },
+      "text": "Cheers! Best party ever 🥂",
+      "dateSent": "9:02 PM"
+    },
+    {
+      "@type": "ReactAction",
+      "agent": {
+        "@type": "Person",
+        "name": "Bob",
+        "identifier": "guest-bob"
+      },
+      "emoji": "🥂",
+      "dateSent": "9:02 PM"
+    }
+  ]
+}

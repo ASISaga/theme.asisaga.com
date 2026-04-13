@@ -66,6 +66,7 @@
 
   // ---- Layout-specific components ----
   @else if $name == 'layout-chatroom' { @include layout-chatroom-component; }
+  @else if $name == 'layout-boardroom' { @include layout-boardroom-component; }
   @else if $name == 'layout-settings' { @include layout-settings-component; }
   @else if $name == 'layout-search' { @include layout-search-component; }
   @else if $name == 'layout-dashboard' { @include layout-dashboard-component; }

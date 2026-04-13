@@ -1,0 +1,18 @@
+{% comment %}
+  Message — shared template (channel-level system notification)
+  ==============================================================
+  Renders a centred channel-level notification such as a date separator,
+  meeting title banner, or system announcement.  No sender avatar.
+  Registered as:
+    'Message': 'template-shared-system-msg'
+
+  Slot attributes:
+    data-schema="text"      notification / banner text
+    data-schema="dateSent"  optional timestamp (e.g. "09:00 AM")
+{% endcomment %}
+<template id="template-shared-system-msg">
+  <div class="chatroom__system-message" role="status" aria-live="polite">
+    <span class="chatroom__system-text" data-schema="text" hidden></span>
+    <time class="chatroom__time chatroom__system-time" data-schema="dateSent" hidden></time>
+  </div>
+</template>

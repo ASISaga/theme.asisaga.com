@@ -1,0 +1,90 @@
+// ============================================================================
+// LAYOUT BOARDROOM COMPONENT MIXIN
+// ============================================================================
+// Boardroom page layout — wraps the theme's chatroom in a multi-panel app
+// shell with a toggle strip, members sidebar, and a dedicated chat area.
+//
+// HTML structure (via layout: chatroom, component: boardroom-app):
+//
+//   .chatroom-body                           ← viewport (from layout-chatroom-component)
+//     .chatroom-main                         ← flex-grow-fill (from layout-chatroom-component)
+//       boardroom-app                        ← panelled flex row
+//         .boardroom-toggle-strip            ← fixed panel (panel-width token)
+//         .boardroom-members-sidebar         ← fixed panel (panel-width token)
+//         .chatroom-chat-area#chatArea       ← fluid chat column (render target)
+//           .chatroom-layout                 ← full chatroom (from chatroom-app.js)
+//         .boardroom-loading-overlay         ← absolute, covers boardroom-app
+//
+// The chatroom-body/chatroom-main/boardroom-app viewport chain and the
+// .chatroom-chat-area flex styles are wired in _layout-chatroom-component.
+// This mixin adds boardroom-specific structural overrides and UI elements.
+// ============================================================================
+
+@mixin layout-boardroom-component {
+
+  // ==========================================================================
+  // APP SHELL
+  // ==========================================================================
+  // boardroom-app is the panelled flex row that holds all panels and the chat
+  // area.  position:relative is structural — it creates the stacking context
+  // for the absolute loading overlay.
+
+  boardroom-app {
+    @include genesis-environment('panelled');
+    position: relative; // structural: stacking context for .boardroom-loading-overlay
+  }
+
+  // ==========================================================================
+  // LOADING OVERLAY
+  // ==========================================================================
+  // Absolute overlay that covers the full boardroom-app during connection.
+  // position:absolute/inset:0 has no ontological equivalent — overlay
+  // positioning is purely structural.
+
+  .boardroom-loading-overlay {
+    position: absolute; // structural: overlay covers boardroom-app
+    inset: 0;
+    z-index: $z-index-chatroom-panel;
+    @include genesis-atmosphere('void');
+    @include flex-center;
+
+    &[hidden] { display: none; }
+  }
+
+  .boardroom-loading-content {
+    @include flex-column(1rem);
+    align-items: center;
+  }
+
+  .boardroom-loading-spinner {
+    @include size-square(2.5rem);
+    @include border-radius-pill;
+    // Structural: spinner ring — base ring + top accent for spin animation.
+    // @keyframes chatroom-spin is defined in the ANIMATIONS section at the end of
+    // _sass/ontology/engines/components/_layout-chatroom-component.scss.
+    @include border-subtle($color-boardroom-border, 3px);
+    border-top-color: $color-boardroom-gold-accessible;
+    animation: chatroom-spin 0.8s linear infinite;
+  }
+
+  .boardroom-loading-text {
+    @include genesis-cognition('gloss');
+    color: $color-boardroom-muted;
+    @include margin-reset;
+  }
+
+  // ==========================================================================
+  // TOAST CONTAINER
+  // ==========================================================================
+
+  .boardroom-toast-container {
+    position: absolute; // structural: toast stack in top-right of app shell
+    top: 1rem;
+    right: 1rem;
+    z-index: $z-index-chatroom-panel;
+    @include flex-column(0.5rem);
+    align-items: flex-end;
+    pointer-events: none;
+  }
+
+}

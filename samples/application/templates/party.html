@@ -1,0 +1,92 @@
+{% comment %}
+  Party domain chatroom templates
+  =================================
+  Provides HTML <template> elements for rendering Schema.org JSON-LD messages
+  in the party / social gathering context.  Register in chatroom-sample.js:
+
+    chatroom.registerDomain({
+      'SocialEvent':  'template-party-event',
+      'HostMessage':  'template-party-host-msg',
+      'GuestMessage': 'template-party-guest-msg',
+      'ReactAction':  'template-party-reaction',
+      '__agent_message': 'AgentMessage',  // falls back to shared template
+      '__user_message':  'GuestMessage',
+    });
+
+  @type values match the JSON-LD data file (_data/chatroom/domain/party.json)
+  where @context is declared at the document level.
+
+  Types not overridden here fall through to shared templates automatically:
+  Message, JoinAction, LeaveAction, AcknowledgeAction, InformAction,
+  AgentMessage, UserMessage, CommunicateAction.
+
+  ReactAction IS overridden with template-party-reaction for a more playful
+  emoji-bubble style suited to the social context.
+
+  Uses the same chatroom CSS classes as the business domain templates, with
+  additional party-specific BEM modifiers styled under .chatroom--theme-party.
+
+  data-schema="path"             — fills element.textContent + removes [hidden]
+  data-schema-avatar="id.path"   — adds chatroom__avatar--<id> CSS class + sets initials/icon
+  data-schema-avatar-icon="path" — overrides avatar with Font Awesome icon class from data
+{% endcomment %}
+
+<template id="template-party-event">
+  <div class="chatroom__system-message chatroom__system-message--party">
+    <span class="chatroom__agenda-label" data-schema="description" hidden></span>
+    <span class="chatroom__agenda-title" data-schema="name" hidden></span>
+  </div>
+</template>
+
+<template id="template-party-host-msg">
+  <div class="chatroom__message chatroom__message--host">
+    <div class="chatroom__message-row">
+      <span class="chatroom__avatar chatroom__avatar--host"
+            data-schema-avatar="sender.identifier"
+            data-schema-avatar-icon="sender.icon"
+            aria-hidden="true"></span>
+      <div class="chatroom__message-body">
+        <header class="chatroom__message-meta">
+          <strong class="chatroom__author" data-schema="sender.name" hidden></strong>
+          <time class="chatroom__time" data-schema="dateSent" hidden></time>
+        </header>
+        <p class="chatroom__text" data-schema="text"></p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="template-party-guest-msg">
+  <div class="chatroom__message chatroom__message--guest">
+    <div class="chatroom__message-row">
+      <span class="chatroom__avatar"
+            data-schema-avatar="sender.identifier"
+            aria-hidden="true"></span>
+      <div class="chatroom__message-body">
+        <header class="chatroom__message-meta">
+          <strong class="chatroom__author" data-schema="sender.name" hidden></strong>
+          <time class="chatroom__time" data-schema="dateSent" hidden></time>
+        </header>
+        <p class="chatroom__text" data-schema="text"></p>
+      </div>
+    </div>
+  </div>
+</template>
+
+{% comment %} ── ReactAction override → template-party-reaction ─────────────────
+  Party-domain override for ReactAction.  Renders a playful emoji-bubble with
+  the reactor's avatar and their name (for screen readers).  The shared
+  template-shared-reaction uses a plain inline layout; this party version
+  applies the chatroom--theme-party bubble modifier for a colourful pill style.
+  Maps: agent.identifier → avatar CSS class, agent.name → accessible label,
+        emoji → the emoji character.
+{% endcomment %}
+<template id="template-party-reaction">
+  <div class="chatroom__reaction chatroom__reaction--party">
+    <span class="chatroom__avatar chatroom__avatar--xs"
+          data-schema-avatar="agent.identifier"
+          aria-hidden="true"></span>
+    <span class="chatroom__reaction-emoji" data-schema="emoji" hidden></span>
+    <span class="chatroom__reaction-author chatroom__sr-only" data-schema="agent.name" hidden></span>
+  </div>
+</template>

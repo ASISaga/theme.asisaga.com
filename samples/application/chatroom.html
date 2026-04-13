@@ -1,10 +1,10 @@
 ---
 layout: chatroom
-title: "Executive Boardroom"
-chat_data: boardroom
+title: "MCP Domain Chatroom Demo"
+module_js: chatroom-sample.js
 participants: 5
 show_toolbar: true
-placeholder: "Submit your strategic input to the board..."
+placeholder: "Send a message..."
 mcp_apps:
   - name: "financials"
     label: "Financial Intelligence"
@@ -19,3 +19,44 @@ mcp_apps:
     icon: "fas fa-balance-scale"
     description: "Review contracts, compliance and regulatory risk"
 ---
+{% comment %}
+  Domain-specific templates — each domain may override any shared @type.
+{% endcomment %}
+{% include_relative templates/business.html %}
+{% include_relative templates/party.html %}
+
+{% comment %}
+  Inline JSON-LD domain data consumed by chatroom-sample.js.
+  Jekyll reads each _data/chatroom/domain/*.json file and makes it available as
+  site.data.chatroom.domain.<name>.  We extract the JSON-LD @graph array from
+  each document and pass the arrays into the <script> block.
+
+  Note: Liquid does not support dot-notation on keys starting with '@', so we
+  use the variable-based bracket form:  site.data.chatroom.domain.<name>[graph_key]
+{% endcomment %}
+{% assign graph_key = "@graph" %}
+<script id="chatroom-domain-data" type="application/json">
+{
+  "business": {{ site.data.chatroom.domain.business[graph_key] | jsonify }},
+  "party": {{ site.data.chatroom.domain.party[graph_key] | jsonify }}
+}
+</script>
+
+{% comment %}
+  Domain-switcher button bar.
+  Sits between the domain templates and the #chatArea section inside the
+  chatroom-app element as a flex sibling — the chatroom-body fills the
+  remaining vertical space via flex-grow.
+{% endcomment %}
+<div class="chatroom-domain-switcher" role="radiogroup" aria-label="Switch conversation domain">
+  <button class="chatroom-domain-btn" role="radio" data-domain-switch="business"
+          aria-checked="true" tabindex="0">
+    <i class="fas fa-briefcase" aria-hidden="true"></i>
+    <span>Business</span>
+  </button>
+  <button class="chatroom-domain-btn" role="radio" data-domain-switch="party"
+          aria-checked="false" tabindex="-1">
+    <i class="fas fa-champagne-glasses" aria-hidden="true"></i>
+    <span>Party</span>
+  </button>
+</div>

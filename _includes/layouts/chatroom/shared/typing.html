@@ -1,0 +1,23 @@
+{% comment %}
+  CommunicateAction — shared template (typing indicator)
+  ========================================================
+  Renders a typing / deliberating indicator for a named agent.
+  Registered as:
+    'CommunicateAction': 'template-shared-typing'
+
+  Uses data-schema-avatar to apply the agent's identifier CSS class.
+  The description field provides the visible status text, e.g.:
+    "Chief Executive Officer is deliberating…"
+
+  Slot attributes:
+    data-schema-avatar="agent.identifier"  avatar CSS class + initials
+    data-schema="description"              status text shown next to the avatar
+{% endcomment %}
+<template id="template-shared-typing">
+  <div class="chatroom__typing">
+    <span class="chatroom__avatar"
+          data-schema-avatar="agent.identifier"
+          aria-hidden="true"></span>
+    <em class="chatroom__typing-text" data-schema="description"></em>
+  </div>
+</template>

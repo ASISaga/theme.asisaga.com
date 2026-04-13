@@ -1,23 +1,55 @@
 ---
 layout: default
-body_class: chatroom-body
-main_class: chatroom-main
 module_js: chatroom-app.js
 ---
-{% comment %}Chatroom HTML templates — not rendered, cloned by chatroom-app.js{% endcomment %}
-<div id="chatroom-templates" hidden aria-hidden="true">
-  {% include layouts/chatroom/chatroom-layout.html %}
-  {% include layouts/chatroom/chatroom-message-ai.html %}
-  {% include layouts/chatroom/chatroom-message-own.html %}
-  {% include layouts/chatroom/chatroom-message-system.html %}
-  {% include layouts/chatroom/chatroom-message-typing.html %}
-  {% include layouts/chatroom/chatroom-mcp-panel.html %}
-  {% include layouts/chatroom/chatroom-mcp-item.html %}
-  {% include layouts/chatroom/chatroom-input.html %}
-  {% include layouts/chatroom/chatroom-tool-result-item.html %}
-</div>
+{% comment %}
+Chatroom Layout — convenience wrapper for chat-based subdomains
+===============================================================
+Maps Jekyll front-matter → chatroom-app component attributes via Liquid.
+The component itself handles all viewport CSS (chatroom-body / chatroom-main)
+and HTML templates; this layout adds no required infrastructure.
 
-<chatroom-app
+A subdomain can use this layout for clean front-matter configuration, or skip
+it entirely and drop <chatroom-app> directly into any other layout.
+
+Front-matter reference:
+  component     - Custom-element tag (default: chatroom-app). Set to your
+                  subclass, e.g. `component: boardroom-app`.
+  module_js     - JS module to load (default: chatroom-app.js from this layout).
+                  Set to your module, e.g. `module_js: boardroom-app.js`.
+  title         - Chatroom title shown in the header.
+  participants  - Agent count badge.
+  placeholder   - Textarea placeholder.
+  max_length    - Maximum input length (default: 1000).
+  show_toolbar  - Boolean: show formatting toolbar.
+  show_connection_status - Boolean: render live-connection badge.
+  mcp_apps      - JSON array of MCP app descriptors.
+  mcp_endpoint  - Fallback HTTP endpoint for all MCP apps.
+  chat_data     - Key into _data/chatroom/<name>.yml for pre-loaded messages.
+  api_endpoint  - Live API base URL.
+  auto_refresh  - Boolean: poll api_endpoint.
+  refresh_interval - Polling interval ms (default: 3000).
+  owner         - Workflow owner shown in header.
+  step_id       - Current step identifier.
+  total_steps   - Total steps for progress indicator.
+  theme         - Applies chatroom--theme-<value> CSS class.
+  show_toggle_strip    - Boolean: set show-toggle-strip attribute.
+  show_members_sidebar - Boolean: set show-members-sidebar attribute.
+  show_agent_profiles  - Boolean: set show-agent-profiles attribute.
+  enable_screen_share  - Boolean: set enable-screen-share attribute.
+  enable_video_call    - Boolean: set enable-video-call attribute.
+  enable_file_attach   - Boolean: set enable-file-attach attribute.
+  enable_formatting    - Boolean: set enable-formatting attribute.
+  boardroom.api_base             - Boardroom REST API base URL.
+  boardroom.copilotkit_runtime_url - CopilotKit AG-UI runtime URL.
+
+Subdomain panels ({{ content }}) are injected as children of the component
+element, alongside the #chatArea render target that the JS writes into.
+{% endcomment %}
+
+{% assign _component = page.component | default: 'chatroom-app' %}
+
+<{{ _component }}
   {% if page.title %}title="{{ page.title }}"{% endif %}
   {% if page.participants %}participants="{{ page.participants }}"{% endif %}
   {% if page.placeholder %}placeholder="{{ page.placeholder }}"{% endif %}
@@ -30,4 +62,46 @@ module_js: chatroom-app.js
   {% if page.api_endpoint %}api-endpoint="{{ page.api_endpoint }}"{% endif %}
   {% if page.auto_refresh %}auto-refresh{% endif %}
   {% if page.refresh_interval %}refresh-interval="{{ page.refresh_interval }}"{% endif %}
-></chatroom-app>
+  {% if page.owner %}owner="{{ page.owner }}"{% endif %}
+  {% if page.step_id %}step-id="{{ page.step_id }}"{% endif %}
+  {% if page.total_steps %}total-steps="{{ page.total_steps }}"{% endif %}
+  {% if page.theme %}theme="{{ page.theme }}"{% endif %}
+  {% if page.show_toggle_strip %}show-toggle-strip{% endif %}
+  {% if page.show_members_sidebar %}show-members-sidebar{% endif %}
+  {% if page.show_agent_profiles %}show-agent-profiles{% endif %}
+  {% if page.enable_screen_share %}enable-screen-share{% endif %}
+  {% if page.enable_video_call %}enable-video-call{% endif %}
+  {% if page.enable_file_attach %}enable-file-attach{% endif %}
+  {% if page.enable_formatting %}enable-formatting{% endif %}
+  {% if page.boardroom.api_base %}api-base="{{ page.boardroom.api_base }}"{% endif %}
+  {% if page.boardroom.copilotkit_runtime_url %}copilotkit-runtime-url="{{ page.boardroom.copilotkit_runtime_url }}"{% endif %}
+>
+  {% comment %}
+  Shared cross-domain templates — included once here so every page using the
+  chatroom layout has the full set of infrastructure <template> elements
+  available without needing to include them manually.  Domain-specific pages
+  may override any type by registering their own template via registerDomain().
+
+  Each file corresponds to one Schema.org @type and one <template> element:
+    agent-message.html  → AgentMessage      (template-shared-agent-msg)
+    user-message.html   → UserMessage       (template-shared-user-msg)
+    typing.html         → CommunicateAction (template-shared-typing)
+    system-message.html → Message           (template-shared-system-msg)
+    join.html           → JoinAction        (template-shared-join)
+    leave.html          → LeaveAction       (template-shared-leave)
+    acknowledge.html    → AcknowledgeAction (template-shared-acknowledge)
+    inform.html         → InformAction      (template-shared-inform)
+    reaction.html       → ReactAction       (template-shared-reaction)
+  {% endcomment %}
+  {% include layouts/chatroom/shared/agent-message.html %}
+  {% include layouts/chatroom/shared/user-message.html %}
+  {% include layouts/chatroom/shared/typing.html %}
+  {% include layouts/chatroom/shared/system-message.html %}
+  {% include layouts/chatroom/shared/join.html %}
+  {% include layouts/chatroom/shared/leave.html %}
+  {% include layouts/chatroom/shared/acknowledge.html %}
+  {% include layouts/chatroom/shared/inform.html %}
+  {% include layouts/chatroom/shared/reaction.html %}
+  {{ content }}
+  <section class="chatroom-chat-area" id="chatArea" aria-label="Chat Area"></section>
+</{{ _component }}>

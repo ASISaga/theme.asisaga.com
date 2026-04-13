@@ -10,6 +10,10 @@
   // ==========================================================================
   // PAGE-LEVEL VIEWPORT
   // ==========================================================================
+  // These classes are applied to document.body / the nearest <main> by
+  // ChatroomApp.connectedCallback() — no body_class / main_class front-matter
+  // is required.  They are removed in disconnectedCallback when the last
+  // chatroom component leaves the DOM.
 
   .chatroom-body {
     @include margin-reset;
@@ -30,13 +34,30 @@
     @include flex-column;
     @include padding-reset;
 
-    chatroom-app {
+    // Any chatroom-app subclass marks itself with data-chatroom-component in
+    // connectedCallback.  Using an attribute selector means new subclasses work
+    // automatically without adding their element names to this stylesheet.
+    [data-chatroom-component] {
       @include flex-grow-fill;
       @include flex-column;
       min-height: 0;
       @include full-width;
       @include full-height;
     }
+  }
+
+  // ==========================================================================
+  // CHAT AREA RENDER TARGET
+  // ==========================================================================
+  // .chatroom-chat-area (#chatArea) is the flex-fill container that the JS
+  // renders the chatroom UI into when the page has panel siblings (sidebar,
+  // toggle strip, etc.).  It must fill the remaining space of the panelled row.
+
+  .chatroom-chat-area {
+    @include flex-grow-fill;
+    @include flex-column;
+    min-height: 0;
+    overflow: hidden; // structural: inner .chatroom-messages handles scroll
   }
 
   // ==========================================================================
@@ -105,7 +126,18 @@
     color: $color-boardroom-gold-accessible;
   }
 
+  .chatroom-owner {
+    @include genesis-cognition('gloss');
+    color: $color-boardroom-gold-accessible;
+    font-weight: 600;
+  }
+
   .chatroom-participants {
+    @include genesis-cognition('gloss');
+    color: $color-boardroom-muted;
+  }
+
+  .chatroom-step-progress {
     @include genesis-cognition('gloss');
     color: $color-boardroom-muted;
   }
@@ -745,6 +777,137 @@
 
   @keyframes chatroom-spin {
     to { transform: rotate(360deg); }
+  }
+
+  // ==========================================================================
+  // DOMAIN SWITCHER
+  // ==========================================================================
+  // Thin bar rendered above #chatArea inside the chatroom-app element.
+  // Provided as {{ content }} by the consuming page (e.g. samples/application/
+  // chatroom.html) — the chatroom component uses flex-column layout so the
+  // switcher takes natural height and the chat area fills the remainder.
+
+  .chatroom-domain-switcher {
+    @include flex-row;
+    gap: $spacing-xs;
+    padding: 0.375rem $spacing-md;
+    background: $color-boardroom-surface;
+    @include border-separator-bottom($color-boardroom-border);
+    @include flex-shrink-none;
+    flex-wrap: wrap;
+  }
+
+  .chatroom-domain-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid $color-boardroom-border;
+    @include border-radius-pill;
+    background: transparent;
+    color: $color-boardroom-muted;
+    cursor: pointer;
+    font-size: $font-size-sm;
+    @include transition-smooth;
+
+    &[aria-checked="true"] {
+      background: $color-boardroom-gold-active;
+      color: $color-boardroom-gold-accessible;
+      border-color: $color-boardroom-gold-accessible;
+    }
+
+    &:hover:not([aria-checked="true"]) {
+      border-color: $color-boardroom-muted;
+      color: $color-boardroom-text;
+    }
+  }
+
+  // ==========================================================================
+  // PARTY THEME  (chatroom--theme-party)
+  // ==========================================================================
+  // Applied by chatroom-sample.js via chatroom.theme = 'party', which adds the
+  // chatroom--theme-party class to the chatroom-app element.
+
+  [data-chatroom-component].chatroom--theme-party {
+    .chatroom-layout {
+      background: $color-dark-profound-black;
+    }
+
+    .chatroom-header {
+      background: oklch(0.12 0.04 280);
+      @include border-separator-bottom(oklch(0.25 0.06 280));
+
+      &::before {
+        background: linear-gradient(90deg, $color-accent-neon-blue, transparent 80%);
+      }
+    }
+
+    .chatroom-domain-switcher {
+      background: oklch(0.12 0.04 280);
+      @include border-separator-bottom(oklch(0.25 0.06 280));
+    }
+
+    .chatroom-domain-btn[aria-checked="true"] {
+      background: oklch(0.65 0.25 230 / 0.18);
+      color: $color-accent-neon-blue;
+      border-color: $color-accent-neon-blue;
+    }
+
+    // Party announcement banner
+    .chatroom__system-message--party {
+      background: oklch(0.18 0.06 280);
+      border: 1px solid oklch(0.30 0.08 280);
+
+      .chatroom__agenda-label {
+        color: $color-accent-neon-blue;
+      }
+
+      .chatroom__agenda-title {
+        color: $color-light-white;
+      }
+    }
+
+    // Host (DJ Bot) messages
+    .chatroom__message--host {
+      .chatroom__message-body {
+        background: oklch(0.16 0.05 280);
+        border-left: 2px solid $color-accent-neon-blue;
+      }
+
+      .chatroom__avatar--host {
+        background: oklch(0.30 0.15 280);
+        color: $color-light-white;
+      }
+    }
+
+    // Guest messages
+    .chatroom__message--guest {
+      .chatroom__message-body {
+        background: oklch(0.14 0.03 280);
+      }
+
+      // Per-guest avatar colours — added by _fillFromSchema via data-schema-avatar
+      .chatroom__avatar--guest-alice {
+        background: oklch(0.42 0.18 340);
+        color: $color-light-white;
+      }
+
+      .chatroom__avatar--guest-bob {
+        background: oklch(0.42 0.18 200);
+        color: $color-light-white;
+      }
+    }
+
+    // Messages container background
+    .chatroom-messages {
+      background: oklch(0.10 0.03 280);
+    }
+
+    // Input area
+    .chatroom-input {
+      background: oklch(0.12 0.04 280);
+      @include border-separator-top(oklch(0.25 0.06 280));
+    }
   }
 
   // ==========================================================================
