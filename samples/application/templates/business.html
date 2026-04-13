@@ -9,6 +9,7 @@
       'AgentMessage':      'template-business-agent-msg',
       'UserMessage':       'template-business-user-msg',
       'CommunicateAction': 'template-business-typing',
+      'AcknowledgeAction': 'template-business-decision',
       '__agent_message':   'AgentMessage',
       '__user_message':    'UserMessage',
     });
@@ -16,8 +17,10 @@
   @type values match the JSON-LD data file (_data/chatroom/domain/business.json)
   where @context is declared at the document level, so individual items omit it.
 
-  These templates override the corresponding shared templates (shared.html) with
-  business/boardroom-specific styling and layout.
+  These templates override shared templates (shared.html / layouts/chatroom/shared.html)
+  with business/boardroom-specific styling.  Types not listed here fall through to
+  the shared templates automatically (e.g. Message, JoinAction, LeaveAction,
+  InformAction, ReactAction).
 
   data-schema="path.to.value"      — fills element.textContent + removes [hidden]
   data-schema-avatar="id.path"     — adds chatroom__avatar--<id> CSS class + sets initials/icon
@@ -80,5 +83,28 @@
           data-schema-avatar="agent.identifier"
           aria-hidden="true"></span>
     <em class="chatroom__typing-text" data-schema="description"></em>
+  </div>
+</template>
+
+{% comment %} ── AcknowledgeAction override → template-business-decision ─────────
+  Business-domain override for AcknowledgeAction.  Renders a formal board-
+  resolution or confirmation box with a success icon, the agent's avatar,
+  the confirmation text, and an optional timestamp.
+  Maps: agent.identifier → avatar CSS class, agent.icon → Font Awesome icon,
+        description → confirmation text, dateSent → timestamp.
+{% endcomment %}
+<template id="template-business-decision">
+  <div class="chatroom__decision" role="status" aria-live="polite">
+    <div class="chatroom__decision-row">
+      <span class="chatroom__avatar chatroom__avatar--xs"
+            data-schema-avatar="agent.identifier"
+            data-schema-avatar-icon="agent.icon"
+            aria-hidden="true"></span>
+      <div class="chatroom__decision-body">
+        <i class="fas fa-check-circle chatroom__decision-icon" aria-hidden="true"></i>
+        <em class="chatroom__decision-text" data-schema="description" hidden></em>
+        <time class="chatroom__time" data-schema="dateSent" hidden></time>
+      </div>
+    </div>
   </div>
 </template>

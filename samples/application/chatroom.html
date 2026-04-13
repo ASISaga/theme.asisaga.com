@@ -20,13 +20,6 @@ mcp_apps:
     description: "Review contracts, compliance and regulatory risk"
 ---
 {% comment %}
-  Shared cross-domain MCP / infrastructure templates.
-  These <template> elements are registered via chatroom.registerSharedTemplates()
-  and act as fallback renderers for all domains.
-{% endcomment %}
-{% include_relative templates/shared.html %}
-
-{% comment %}
   Domain-specific templates — each domain may override any shared @type.
 {% endcomment %}
 {% include_relative templates/business.html %}
@@ -56,11 +49,13 @@ mcp_apps:
   remaining vertical space via flex-grow.
 {% endcomment %}
 <div class="chatroom-domain-switcher" role="radiogroup" aria-label="Switch conversation domain">
-  <button class="chatroom-domain-btn" role="radio" data-domain-switch="business" aria-checked="true">
+  <button class="chatroom-domain-btn" role="radio" data-domain-switch="business"
+          aria-checked="true" tabindex="0">
     <i class="fas fa-briefcase" aria-hidden="true"></i>
     <span>Business</span>
   </button>
-  <button class="chatroom-domain-btn" role="radio" data-domain-switch="party" aria-checked="false">
+  <button class="chatroom-domain-btn" role="radio" data-domain-switch="party"
+          aria-checked="false" tabindex="-1">
     <i class="fas fa-champagne-glasses" aria-hidden="true"></i>
     <span>Party</span>
   </button>

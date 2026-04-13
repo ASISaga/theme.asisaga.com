@@ -2,6 +2,56 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Message",
+      "text": "Board Meeting #2026-Q3 — Strategic Review",
+      "dateSent": "08:58 AM"
+    },
+    {
+      "@type": "JoinAction",
+      "agent": {
+        "@type": "Person",
+        "name": "Chief Executive Officer",
+        "identifier": "ceo"
+      },
+      "dateSent": "09:00 AM"
+    },
+    {
+      "@type": "JoinAction",
+      "agent": {
+        "@type": "Person",
+        "name": "Chief Financial Officer",
+        "identifier": "cfo"
+      },
+      "dateSent": "09:00 AM"
+    },
+    {
+      "@type": "JoinAction",
+      "agent": {
+        "@type": "Person",
+        "name": "Chief Marketing Officer",
+        "identifier": "cmo"
+      },
+      "dateSent": "09:01 AM"
+    },
+    {
+      "@type": "JoinAction",
+      "agent": {
+        "@type": "Person",
+        "name": "Chief Technology Officer",
+        "identifier": "cto"
+      },
+      "dateSent": "09:01 AM"
+    },
+    {
+      "@type": "JoinAction",
+      "agent": {
+        "@type": "Person",
+        "name": "Chief Operating Officer",
+        "identifier": "coo"
+      },
+      "dateSent": "09:01 AM"
+    },
+    {
       "@type": "ScheduleAction",
       "name": "Q3 Revenue Targets & Financial Outlook",
       "description": "Agenda Item 1 of 3"
@@ -15,7 +65,7 @@
         "identifier": "ceo"
       },
       "text": "We are tracking 8% below our Q3 revenue target. Before we determine corrective actions I require formal assessments from Finance and Marketing. CFO, please present your analysis.",
-      "dateSent": "09:00 AM"
+      "dateSent": "09:02 AM"
     },
     {
       "@type": "AgentMessage",
@@ -26,7 +76,7 @@
         "identifier": "cfo"
       },
       "text": "EBITDA margin has contracted 2.3 percentage points, driven primarily by elevated customer acquisition costs in the mid-market segment. I recommend a spend reallocation of $4.2M from brand awareness to conversion-stage activities.",
-      "dateSent": "09:02 AM"
+      "dateSent": "09:04 AM"
     },
     {
       "@type": "UserMessage",
@@ -36,7 +86,7 @@
         "identifier": "you"
       },
       "text": "/financials Q3 revenue breakdown by segment",
-      "dateSent": "09:03 AM"
+      "dateSent": "09:05 AM"
     },
     {
       "@type": "AgentMessage",
@@ -47,9 +97,8 @@
         "icon": "fas fa-chart-line"
       },
       "tool": "financials",
-      "toolIcon": "fas fa-chart-line",
       "text": "Q3 revenue breakdown by business segment:",
-      "dateSent": "09:03 AM",
+      "dateSent": "09:05 AM",
       "toolResults": [
         {
           "name": "Enterprise — $18.4M",
@@ -74,7 +123,43 @@
         "identifier": "cmo"
       },
       "text": "Market intelligence confirms a 15% shift in buyer intent toward our premium enterprise tier. A targeted repositioning campaign focused on enterprise accounts could recover an estimated $3.8M in Q3 and accelerate Q4 pipeline by 22%.",
-      "dateSent": "09:05 AM"
+      "dateSent": "09:07 AM"
+    },
+    {
+      "@type": "UserMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "Board Chair",
+        "identifier": "you"
+      },
+      "text": "/market competitor positioning in the enterprise tier",
+      "dateSent": "09:08 AM"
+    },
+    {
+      "@type": "AgentMessage",
+      "sender": {
+        "@type": "SoftwareApplication",
+        "name": "Market Intelligence",
+        "identifier": "ai",
+        "icon": "fas fa-globe"
+      },
+      "tool": "market",
+      "text": "Competitive landscape — enterprise tier:",
+      "dateSent": "09:08 AM",
+      "toolResults": [
+        {
+          "name": "Competitor A — 38% market share",
+          "description": "Dominant in regulated industries. Recent $120M Series D. Pricing 12% above market."
+        },
+        {
+          "name": "Competitor B — 24% market share",
+          "description": "Aggressive SMB expansion eroding mid-market base. New AI-native product launching Q4."
+        },
+        {
+          "name": "Our position — 18% market share",
+          "description": "Highest NPS in segment (72). Enterprise win rate 34% vs. industry avg. 28%."
+        }
+      ]
     },
     {
       "@type": "ScheduleAction",
@@ -90,7 +175,7 @@
         "identifier": "cto"
       },
       "text": "Platform migration is on schedule for Q4 delivery. I recommend prioritising the API gateway upgrade — it will unblock three enterprise partnerships currently pending technical review, with a combined contract value of $6.2M.",
-      "dateSent": "09:08 AM"
+      "dateSent": "09:11 AM"
     },
     {
       "@type": "AgentMessage",
@@ -101,7 +186,7 @@
         "identifier": "coo"
       },
       "text": "Operational capacity is a binding constraint. Before committing to additional enterprise contracts we must resolve the fulfilment bottleneck in APAC. I am proposing a 45-day remediation plan with clearly defined escalation thresholds.",
-      "dateSent": "09:10 AM"
+      "dateSent": "09:13 AM"
     },
     {
       "@type": "UserMessage",
@@ -110,16 +195,80 @@
         "name": "Board Chair",
         "identifier": "you"
       },
-      "text": "What is the regulatory exposure if we proceed with the APAC expansion before the bottleneck is resolved?",
-      "dateSent": "09:12 AM"
+      "text": "/legal regulatory exposure if APAC expansion proceeds before the bottleneck is resolved",
+      "dateSent": "09:14 AM"
+    },
+    {
+      "@type": "AgentMessage",
+      "sender": {
+        "@type": "SoftwareApplication",
+        "name": "Legal & Compliance",
+        "identifier": "ai",
+        "icon": "fas fa-balance-scale"
+      },
+      "tool": "legal",
+      "text": "Regulatory risk assessment — APAC expansion:",
+      "dateSent": "09:14 AM",
+      "toolResults": [
+        {
+          "name": "Data Residency — HIGH",
+          "description": "Singapore PDPA & Australian Privacy Act require local data processing. Non-compliance penalties up to $1M SGD / AUD 2.1M per breach."
+        },
+        {
+          "name": "Employment Law — MEDIUM",
+          "description": "Rapid headcount growth triggers local consultation obligations in Japan and South Korea. Estimated 60-day delay risk."
+        },
+        {
+          "name": "Contracts — LOW",
+          "description": "Existing master service agreements include APAC addendum clauses. No material gaps identified."
+        }
+      ]
+    },
+    {
+      "@type": "AgentMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "Chief Executive Officer",
+        "jobTitle": "CEO",
+        "identifier": "ceo"
+      },
+      "text": "The regulatory exposure in data residency is unacceptable without an infrastructure foundation. We proceed with the COO's remediation plan before any APAC customer commitments.",
+      "dateSent": "09:17 AM"
+    },
+    {
+      "@type": "ScheduleAction",
+      "name": "Resolution & Next Steps",
+      "description": "Agenda Item 3 of 3"
+    },
+    {
+      "@type": "AgentMessage",
+      "sender": {
+        "@type": "Person",
+        "name": "Chief Executive Officer",
+        "jobTitle": "CEO",
+        "identifier": "ceo"
+      },
+      "text": "Board resolution: defer APAC expansion pending completion of COO's 45-day remediation plan. CFO to reallocate $4.2M toward conversion-stage marketing. CTO to prioritise API gateway for Q4. CMO to launch enterprise repositioning campaign immediately.",
+      "dateSent": "09:20 AM"
+    },
+    {
+      "@type": "AcknowledgeAction",
+      "agent": {
+        "@type": "SoftwareApplication",
+        "name": "Meeting Secretary",
+        "identifier": "ai",
+        "icon": "fas fa-file-alt"
+      },
+      "description": "Board resolution recorded and distributed to all directors. Action items assigned in the task tracker.",
+      "dateSent": "09:20 AM"
     },
     {
       "@type": "CommunicateAction",
       "agent": {
         "@type": "Person",
-        "identifier": "ceo"
+        "identifier": "cfo"
       },
-      "description": "Chief Executive Officer is deliberating..."
+      "description": "Chief Financial Officer is reviewing action items..."
     }
   ]
 }

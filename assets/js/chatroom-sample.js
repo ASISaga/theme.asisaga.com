@@ -5,11 +5,12 @@
  *   - Reads Schema.org JSON-LD messages from the inline #chatroom-domain-data
  *     script element (injected by Jekyll from _data/chatroom/domain/*.json).
  *   - Registers shared (cross-domain) templates once at startup so any domain
- *     can fall back to them for common message types (AI responses, user messages,
- *     typing indicators).
+ *     can fall back to them for the full set of common message types (AI
+ *     responses, user messages, typing indicators, system notifications, join /
+ *     leave events, acknowledgements, alerts, and emoji reactions).
  *   - Registers domain-specific HTML templates so chatroom-app can render any
- *     JSON-LD object whose @type is declared in the domain map, overriding shared
- *     templates where domain styling is preferred.
+ *     JSON-LD object whose @type is declared in the domain map, overriding
+ *     shared templates where domain styling is preferred.
  *   - Wires up the domain-switcher buttons to hot-swap the full conversation.
  *
  * The chatroom-app element is already registered by importing chatroom-app.js.
@@ -29,6 +30,13 @@ const SHARED_TEMPLATES = {
     'AgentMessage':      'template-shared-agent-msg',
     'UserMessage':       'template-shared-user-msg',
     'CommunicateAction': 'template-shared-typing',
+    // Channel-level notifications — rendered as compact inline banners
+    'Message':           'template-shared-system-msg',
+    'JoinAction':        'template-shared-join',
+    'LeaveAction':       'template-shared-leave',
+    'AcknowledgeAction': 'template-shared-acknowledge',
+    'InformAction':      'template-shared-inform',
+    'ReactAction':       'template-shared-reaction',
     // Reserved keys: resolve which @type to use for live MCP rendering
     '__agent_message':   'AgentMessage',
     '__user_message':    'UserMessage',
@@ -53,6 +61,8 @@ const DOMAINS = {
             'AgentMessage':      'template-business-agent-msg',
             'UserMessage':       'template-business-user-msg',
             'CommunicateAction': 'template-business-typing',
+            // Formal board resolution box instead of the generic acknowledge banner
+            'AcknowledgeAction': 'template-business-decision',
             '__agent_message':   'AgentMessage',
             '__user_message':    'UserMessage',
         },
@@ -64,6 +74,8 @@ const DOMAINS = {
             'SocialEvent':  'template-party-event',
             'HostMessage':  'template-party-host-msg',
             'GuestMessage': 'template-party-guest-msg',
+            // Colourful emoji-bubble override for party reactions
+            'ReactAction':  'template-party-reaction',
             // Party: MCP responses use shared AgentMessage fallback;
             // user messages resolve to GuestMessage for domain styling.
             '__agent_message':  'AgentMessage',  // falls back to shared template
@@ -115,12 +127,35 @@ function activateDomain(chatroom, domainId, domainData) {
 // ---------------------------------------------------------------------------
 
 function setupDomainSwitcher(chatroom, domainData) {
-    const btns = document.querySelectorAll('[data-domain-switch]');
+    const btns = Array.from(document.querySelectorAll('[data-domain-switch]'));
+    if (!btns.length) return;
+
+    // Initialise tabIndex: only the checked button is in the tab sequence.
     btns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const domainId = btn.getAttribute('data-domain-switch');
-            btns.forEach(b => b.setAttribute('aria-checked', String(b === btn)));
-            activateDomain(chatroom, domainId, domainData);
+        btn.tabIndex = btn.getAttribute('aria-checked') === 'true' ? 0 : -1;
+    });
+
+    function activateBtn(btn) {
+        const domainId = btn.getAttribute('data-domain-switch');
+        btns.forEach(b => {
+            const checked = b === btn;
+            b.setAttribute('aria-checked', String(checked));
+            b.tabIndex = checked ? 0 : -1;
+        });
+        activateDomain(chatroom, domainId, domainData);
+        btn.focus();
+    }
+
+    btns.forEach((btn, index) => {
+        btn.addEventListener('click', () => activateBtn(btn));
+        btn.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                activateBtn(btns[(index + 1) % btns.length]);
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                activateBtn(btns[(index - 1 + btns.length) % btns.length]);
+            }
         });
     });
 }

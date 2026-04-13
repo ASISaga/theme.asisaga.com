@@ -810,13 +810,13 @@
     font-size: $font-size-sm;
     @include transition-smooth;
 
-    &[aria-pressed="true"] {
+    &[aria-checked="true"] {
       background: $color-boardroom-gold-active;
       color: $color-boardroom-gold-accessible;
       border-color: $color-boardroom-gold-accessible;
     }
 
-    &:hover:not([aria-pressed="true"]) {
+    &:hover:not([aria-checked="true"]) {
       border-color: $color-boardroom-muted;
       color: $color-boardroom-text;
     }
@@ -847,7 +847,7 @@
       @include border-separator-bottom(oklch(0.25 0.06 280));
     }
 
-    .chatroom-domain-btn[aria-pressed="true"] {
+    .chatroom-domain-btn[aria-checked="true"] {
       background: oklch(0.65 0.25 230 / 0.18);
       color: $color-accent-neon-blue;
       border-color: $color-accent-neon-blue;

@@ -76,6 +76,13 @@ element, alongside the #chatArea render target that the JS writes into.
   {% if page.boardroom.api_base %}api-base="{{ page.boardroom.api_base }}"{% endif %}
   {% if page.boardroom.copilotkit_runtime_url %}copilotkit-runtime-url="{{ page.boardroom.copilotkit_runtime_url }}"{% endif %}
 >
+  {% comment %}
+  Shared cross-domain templates — included once here so every page using the
+  chatroom layout has the full set of infrastructure <template> elements
+  available without needing to include them manually.  Domain-specific pages
+  may override any type by registering their own template via registerDomain().
+  {% endcomment %}
+  {% include layouts/chatroom/shared.html %}
   {{ content }}
   <section class="chatroom-chat-area" id="chatArea" aria-label="Chat Area"></section>
 </{{ _component }}>

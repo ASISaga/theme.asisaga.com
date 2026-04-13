@@ -8,6 +8,7 @@
       'SocialEvent':  'template-party-event',
       'HostMessage':  'template-party-host-msg',
       'GuestMessage': 'template-party-guest-msg',
+      'ReactAction':  'template-party-reaction',
       '__agent_message': 'AgentMessage',  // falls back to shared template
       '__user_message':  'GuestMessage',
     });
@@ -15,8 +16,12 @@
   @type values match the JSON-LD data file (_data/chatroom/domain/party.json)
   where @context is declared at the document level.
 
-  'AgentMessage' and 'UserMessage' / 'CommunicateAction' are NOT overridden here
-  — they fall through to the shared templates so MCP responses render generically.
+  Types not overridden here fall through to shared templates automatically:
+  Message, JoinAction, LeaveAction, AcknowledgeAction, InformAction,
+  AgentMessage, UserMessage, CommunicateAction.
+
+  ReactAction IS overridden with template-party-reaction for a more playful
+  emoji-bubble style suited to the social context.
 
   Uses the same chatroom CSS classes as the business domain templates, with
   additional party-specific BEM modifiers styled under .chatroom--theme-party.
@@ -65,5 +70,23 @@
         <p class="chatroom__text" data-schema="text"></p>
       </div>
     </div>
+  </div>
+</template>
+
+{% comment %} ── ReactAction override → template-party-reaction ─────────────────
+  Party-domain override for ReactAction.  Renders a playful emoji-bubble with
+  the reactor's avatar and their name (for screen readers).  The shared
+  template-shared-reaction uses a plain inline layout; this party version
+  applies the chatroom--theme-party bubble modifier for a colourful pill style.
+  Maps: agent.identifier → avatar CSS class, agent.name → accessible label,
+        emoji → the emoji character.
+{% endcomment %}
+<template id="template-party-reaction">
+  <div class="chatroom__reaction chatroom__reaction--party">
+    <span class="chatroom__avatar chatroom__avatar--xs"
+          data-schema-avatar="agent.identifier"
+          aria-hidden="true"></span>
+    <span class="chatroom__reaction-emoji" data-schema="emoji" hidden></span>
+    <span class="chatroom__reaction-author chatroom__sr-only" data-schema="agent.name" hidden></span>
   </div>
 </template>
