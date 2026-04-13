@@ -12,6 +12,11 @@ Parameters:
 {% endcomment %}
 
 {% assign heading_tag = include.heading_level | default: "h2" %}
+{% comment %} 
+  Cast 'change' to a number to prevent "comparison of String with 0 failed" 
+{% endcomment %}
+{% assign change_value = include.change | plus: 0 %}
+
 <article class="dashboard-widget" data-columns="{{ include.columns | default: '3' }}">
   <header class="dashboard-widget__header">
     <{{ heading_tag }} class="dashboard-widget__title">{{ include.title }}</{{ heading_tag }}>
@@ -23,9 +28,9 @@ Parameters:
   <div class="dashboard-widget__value">{{ include.value }}</div>
   
   {% if include.change %}
-  <div class="dashboard-widget__change dashboard-widget__change--{% if include.change > 0 %}positive{% else %}negative{% endif %}">
+  <div class="dashboard-widget__change dashboard-widget__change--{% if change_value >= 0 %}positive{% else %}negative{% endif %}">
     <span class="dashboard-widget__change-value">
-      {% if include.change > 0 %}+{% endif %}{{ include.change }}%
+      {% if change_value > 0 %}+{% endif %}{{ include.change }}%
     </span>
     <span class="dashboard-widget__change-label">vs last period</span>
   </div>
