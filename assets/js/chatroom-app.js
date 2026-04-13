@@ -479,7 +479,7 @@ export class ChatroomApp extends GenesisElement {
      */
     _getJsonLdValue(data, path) {
         if (!path) return null;
-        return path.split('.').reduce((obj, key) => (obj != null ? obj[key] : null), data) ?? null;
+        return path.split('.').reduce((obj, key) => obj?.[key] ?? null, data) ?? null;
     }
 
     /**
@@ -495,7 +495,10 @@ export class ChatroomApp extends GenesisElement {
             const id = this._domainTemplates[agentType];
             if (id) return this._cloneTemplate(id);
         }
-        // Legacy fallback (template no longer shipped in chatroom-templates.js)
+        // Legacy fallback (template no longer shipped in chatroom-templates.js).
+        // Returns null when no domain is registered; callers must handle null gracefully.
+        // eslint-disable-next-line no-console
+        console.warn('[ChatroomApp] No domain registered — call registerDomain() before using MCP or rendering messages.');
         return this._cloneTemplate('template-chatroom-message-ai');
     }
 
@@ -518,6 +521,14 @@ export class ChatroomApp extends GenesisElement {
     }
 
 
+    /**
+     * Build and return a DOM element for a single message.
+     * Tries the JSON-LD domain path first, then falls back to legacy type
+     * dispatch for backward compatibility with old-style message objects.
+     * @param {object} msg
+     * @returns {Element|null}
+     */
+    _buildMessage(msg) {
         // JSON-LD path: dispatch by @type using registered domain templates
         if (msg['@type'] && this._domainTemplates) {
             const el = this._buildFromJsonLd(msg);

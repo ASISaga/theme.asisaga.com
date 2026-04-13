@@ -17,7 +17,9 @@
   data-schema-avatar="id.path"     — adds chatroom__avatar--<id> CSS class + sets initials/icon
   data-schema-avatar-icon="path"   — overrides avatar with Font Awesome icon class from data
   data-schema-list="path"          — renders array as tool-result-item list
-  data-schema-parent-show="path"   — removes [hidden] from this element when path has a value
+  data-schema-parent-show="path"   — removes [hidden] from this element when path has a value;
+                                     used on .chatroom__tool-badge below (visible only when
+                                     the JSON-LD message includes a "tool" property)
 {% endcomment %}
 
 <template id="template-business-agenda">
