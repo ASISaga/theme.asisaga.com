@@ -10,6 +10,10 @@
   // ==========================================================================
   // PAGE-LEVEL VIEWPORT
   // ==========================================================================
+  // These classes are applied to document.body / the nearest <main> by
+  // ChatroomApp.connectedCallback() — no body_class / main_class front-matter
+  // is required.  They are removed in disconnectedCallback when the last
+  // chatroom component leaves the DOM.
 
   .chatroom-body {
     @include margin-reset;
@@ -30,10 +34,10 @@
     @include flex-column;
     @include padding-reset;
 
-    // chatroom-app and any subclass element (e.g. boardroom-app) must fill the
-    // chatroom-main column.  The element tag is configurable via the `component`
-    // front-matter key in _layouts/chatroom.html; new subclasses get the correct
-    // flex behaviour automatically when they use layout: chatroom.
+    // chatroom-app and any registered subclass element (e.g. boardroom-app) must
+    // fill the chatroom-main column.  When a new subclass tag is registered, add
+    // it here.  The `component` front-matter key is now irrelevant to this rule —
+    // styling is keyed on the element name, not the layout.
     chatroom-app,
     boardroom-app {
       @include flex-grow-fill;

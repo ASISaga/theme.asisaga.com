@@ -10,14 +10,22 @@
  * Extends GenesisElement (LitElement, light DOM) — the same base as all other
  * Genesis web components.
  *
- * HTML templates are defined as <template> elements in:
- *   _includes/layouts/chatroom/
- * and loaded into the page by _layouts/chatroom.html before this component is
- * instantiated. The JS clones and populates those templates; no HTML strings are
- * built inline.
+ * The component is fully self-contained:
+ *   - HTML templates are defined in chatroom-templates.js and injected into the
+ *     DOM by the component itself on first use (no Jekyll layout required).
+ *   - Viewport CSS classes (chatroom-body / chatroom-main) are applied to
+ *     document.body / the nearest <main> in connectedCallback and removed in
+ *     disconnectedCallback.
+ *
+ * Usage — drop into any layout without any special layout configuration:
+ *   <chatroom-app title="My Chat" api-endpoint="/api/chat"></chatroom-app>
+ *
+ * Usage — via the convenience chatroom layout (maps front-matter → attributes):
+ *   layout: chatroom
+ *   title: My Chat
  *
  * Attributes / Lit reactive properties:
- *   title            — Boardroom title (default: "Chat")
+ *   title            — Chatroom title (default: "Chat")
  *   participants     — Agent count shown in the header
  *   placeholder      — Textarea placeholder text
  *   max-length       — Maximum input length (default: 1000)
@@ -32,6 +40,7 @@
  */
 
 import { GenesisElement } from './common/genesis-element.js';
+import { ensureChatroomTemplates } from './chatroom-templates.js';
 
 export class ChatroomApp extends GenesisElement {
     /**
@@ -95,6 +104,15 @@ export class ChatroomApp extends GenesisElement {
 
     connectedCallback() {
         super.connectedCallback();
+
+        // Ensure the HTML <template> elements are in the DOM (self-provision if
+        // the page does not use layout: chatroom to inject them via Jekyll).
+        ensureChatroomTemplates();
+
+        // Apply viewport classes so the component fills the full screen when used
+        // in any layout — no body_class / main_class front-matter required.
+        document.body.classList.add('chatroom-body');
+        this.closest('main')?.classList.add('chatroom-main');
 
         // Apply theme variant CSS class when the theme attribute is set.
         if (this.theme) this.classList.add(`chatroom--theme-${this.theme}`);
@@ -160,8 +178,8 @@ export class ChatroomApp extends GenesisElement {
 
     // =========================================================================
     // Rendering — component builds its own DOM from HTML templates
-    // Templates live in _includes/layouts/chatroom/ and are loaded into the
-    // page as <template id="template-chatroom-*"> elements by _layouts/chatroom.html.
+    // Templates are defined in chatroom-templates.js and injected into the DOM
+    // by ensureChatroomTemplates() (called in connectedCallback).
     // =========================================================================
 
     /**
@@ -1280,6 +1298,16 @@ export class ChatroomApp extends GenesisElement {
     disconnectedCallback() {
         super.disconnectedCallback();
         this.stopAutoRefresh();
+
+        // Remove viewport classes when the last chatroom component leaves the DOM.
+        if (!document.querySelector('chatroom-app, [data-chatroom-component]')) {
+            document.body.classList.remove('chatroom-body');
+        }
+        const mainEl = this.closest('main') ?? document.querySelector('main');
+        if (mainEl && !mainEl.querySelector('chatroom-app, [data-chatroom-component]')) {
+            mainEl.classList.remove('chatroom-main');
+        }
+
         this.dispatchEvent(new CustomEvent('chatroom-disconnected', { bubbles: true }));
     }
 

@@ -1,20 +1,23 @@
 ---
 layout: default
-body_class: chatroom-body
-main_class: chatroom-main
 module_js: chatroom-app.js
 ---
 {% comment %}
-Chatroom Layout — extensible scaffolding for all chat-based subdomains
-======================================================================
-Use this layout for any page that hosts a chatroom or extends it.
+Chatroom Layout — convenience wrapper for chat-based subdomains
+===============================================================
+Maps Jekyll front-matter → chatroom-app component attributes via Liquid.
+The component itself handles all viewport CSS (chatroom-body / chatroom-main)
+and HTML templates; this layout adds no required infrastructure.
 
-Front-matter:
-  component     - Custom-element tag name (default: chatroom-app).
-                  Set to your subclass tag, e.g. `component: boardroom-app`.
-  module_js     - JS module to load (default: chatroom-app.js).
+A subdomain can use this layout for clean front-matter configuration, or skip
+it entirely and drop <chatroom-app> directly into any other layout.
+
+Front-matter reference:
+  component     - Custom-element tag (default: chatroom-app). Set to your
+                  subclass, e.g. `component: boardroom-app`.
+  module_js     - JS module to load (default: chatroom-app.js from this layout).
                   Set to your module, e.g. `module_js: boardroom-app.js`.
-  title         - Chatroom title (shown in header).
+  title         - Chatroom title shown in the header.
   participants  - Agent count badge.
   placeholder   - Textarea placeholder.
   max_length    - Maximum input length (default: 1000).
@@ -30,8 +33,6 @@ Front-matter:
   step_id       - Current step identifier.
   total_steps   - Total steps for progress indicator.
   theme         - Applies chatroom--theme-<value> CSS class.
-  boardroom.api_base             - Boardroom REST API base URL.
-  boardroom.copilotkit_runtime_url - CopilotKit AG-UI runtime URL.
   show_toggle_strip    - Boolean: set show-toggle-strip attribute.
   show_members_sidebar - Boolean: set show-members-sidebar attribute.
   show_agent_profiles  - Boolean: set show-agent-profiles attribute.
@@ -39,39 +40,14 @@ Front-matter:
   enable_video_call    - Boolean: set enable-video-call attribute.
   enable_file_attach   - Boolean: set enable-file-attach attribute.
   enable_formatting    - Boolean: set enable-formatting attribute.
+  boardroom.api_base             - Boardroom REST API base URL.
+  boardroom.copilotkit_runtime_url - CopilotKit AG-UI runtime URL.
 
-Page content ({{ content }}) is injected as the first children of the
-component element.  Subdomains place their UI panels there:
-
-  ---
-  layout: chatroom
-  component: my-chat-app
-  module_js: my-chat-app.js
-  title: My Chat
-  ---
-  <my-left-panel></my-left-panel>
-  <my-right-panel></my-right-panel>
-
-The theme provides a <div class="chatroom-chat-area" id="chatArea"> after
-the page content.  The chatroom-app JS renders the chat interface there.
-When there is no page content the element renders into itself directly
-(same as the original chatroom-app behaviour).
+Subdomain panels ({{ content }}) are injected as children of the component
+element, alongside the #chatArea render target that the JS writes into.
 {% endcomment %}
 
 {% assign _component = page.component | default: 'chatroom-app' %}
-
-{% comment %}Chatroom HTML templates — not rendered, cloned at runtime by JS{% endcomment %}
-<div id="chatroom-templates" hidden aria-hidden="true">
-  {% include layouts/chatroom/chatroom-layout.html %}
-  {% include layouts/chatroom/chatroom-message-ai.html %}
-  {% include layouts/chatroom/chatroom-message-own.html %}
-  {% include layouts/chatroom/chatroom-message-system.html %}
-  {% include layouts/chatroom/chatroom-message-typing.html %}
-  {% include layouts/chatroom/chatroom-mcp-panel.html %}
-  {% include layouts/chatroom/chatroom-mcp-item.html %}
-  {% include layouts/chatroom/chatroom-input.html %}
-  {% include layouts/chatroom/chatroom-tool-result-item.html %}
-</div>
 
 <{{ _component }}
   {% if page.title %}title="{{ page.title }}"{% endif %}
@@ -101,12 +77,5 @@ When there is no page content the element renders into itself directly
   {% if page.boardroom.copilotkit_runtime_url %}copilotkit-runtime-url="{{ page.boardroom.copilotkit_runtime_url }}"{% endif %}
 >
   {{ content }}
-
-  {% comment %}
-  Render target: the JS renders the chatroom UI here.
-  When page content (panels) is present this isolates the chat area from the
-  panels.  When there is no page content the JS falls back to rendering
-  directly into the component element (same pre-panel behaviour).
-  {% endcomment %}
   <div class="chatroom-chat-area" id="chatArea" role="region" aria-label="Chat Area"></div>
 </{{ _component }}>
