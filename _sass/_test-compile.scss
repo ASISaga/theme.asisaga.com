@@ -49,6 +49,7 @@
   &.entity-ancestral { @include genesis-entity('ancestral'); }
   &.entity-transcendent { @include genesis-entity('transcendent'); }
   &.entity-ephemeral { @include genesis-entity('ephemeral'); }
+  &.entity-nested { @include genesis-entity('nested'); }
   
   // All cognition variants
   &.cog-axiom { @include genesis-cognition('axiom'); }

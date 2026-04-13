@@ -1,0 +1,98 @@
+/**
+ * NESTING EXAMPLES
+ * ============================================================================
+ * Demonstrates genesis-entity('nested') for deeply hierarchical HTML markup.
+ *
+ * Problem: when multiple DOM layers sit between a parent entity and its child
+ * entity, the intermediate wrappers may inherit or be styled with competing
+ * background/border/shadow, producing visual "double-boxing."
+ *
+ * Solution: apply genesis-entity('nested') to intermediate wrappers that live
+ * inside an entity context but must not carry their own visual surface.
+ */
+
+// ============================================================================
+// EXAMPLE: Chat-style message bubble
+// ============================================================================
+// HTML hierarchy:
+//   .message            (outer wrapper — flex column spacer)
+//     .message__row     (flex row — avatar + body)
+//       .message__avatar
+//       .message__body  (the visual bubble — entity surface)
+//         .message__meta (section layout)
+//         .message__text (leaf text)
+//
+// Without 'nested': if a theme applies background/border to .message, it
+// competes visually with .message__body.  Using 'nested' on the wrapper
+// strips that chrome so only the terminal element owns the bubble surface.
+
+.example-message-list {
+  @include genesis-environment('chronological');
+  @include genesis-atmosphere('void');
+
+  .example-message {
+    @include genesis-entity('nested');        // ← strips parent-level chrome
+
+    .example-message__row {
+      @include genesis-environment('associative');
+    }
+
+    .example-message__body {
+      @include genesis-entity('secondary');   // ← sole visual surface
+    }
+
+    .example-message__author {
+      @include genesis-cognition('gloss');
+    }
+
+    .example-message__text {
+      @include genesis-cognition('discourse');
+    }
+  }
+}
+
+// ============================================================================
+// EXAMPLE: Nested card layout
+// ============================================================================
+// When a card contains inner cards, the wrapper should be 'nested' to avoid
+// doubling the parent's border and shadow on the outer container.
+
+.example-nested-cards {
+  @include genesis-environment('distributed');
+
+  .example-card-group {
+    @include genesis-entity('aggregate');     // outer container with its own surface
+
+    .example-card-group__inner {
+      @include genesis-entity('nested');      // structural wrapper — no chrome
+      @include genesis-environment('chronological');
+    }
+
+    .example-inner-card {
+      @include genesis-entity('primary');     // each child has its own surface
+    }
+  }
+}
+
+// ============================================================================
+// EXAMPLE: Accordion / collapsible panel
+// ============================================================================
+// The accordion wrapper is a layout container; each panel is the visual entity.
+// Without 'nested' on the wrapper, theme overrides may style both levels.
+
+.example-accordion {
+  @include genesis-environment('navigation-accordion');
+  @include genesis-entity('nested');          // no chrome on the accordion shell
+
+  .example-accordion__panel {
+    @include genesis-entity('secondary');     // each panel carries the visual surface
+
+    .example-accordion__header {
+      @include genesis-cognition('heading');
+    }
+
+    .example-accordion__body {
+      @include genesis-cognition('discourse');
+    }
+  }
+}
