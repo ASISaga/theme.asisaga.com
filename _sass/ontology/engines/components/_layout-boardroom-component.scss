@@ -60,8 +60,8 @@
     @include size-square(2.5rem);
     @include border-radius-pill;
     // Structural: spinner ring — base ring + top accent for spin animation.
-    // @keyframes chatroom-spin is defined near the end of layout-chatroom-component
-    // (same file as layout-chatroom-component mixin, in the ANIMATIONS section).
+    // @keyframes chatroom-spin is defined in the ANIMATIONS section at the end of
+    // _sass/ontology/engines/components/_layout-chatroom-component.scss.
     @include border-subtle($color-boardroom-border, 3px);
     border-top-color: $color-boardroom-gold-accessible;
     animation: chatroom-spin 0.8s linear infinite;

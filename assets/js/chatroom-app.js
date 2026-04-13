@@ -109,6 +109,10 @@ export class ChatroomApp extends GenesisElement {
         // the page does not use layout: chatroom to inject them via Jekyll).
         ensureChatroomTemplates();
 
+        // Mark this element as a chatroom component so CSS selectors can target
+        // any subclass without hardcoding element names in the stylesheet.
+        this.setAttribute('data-chatroom-component', '');
+
         // Apply viewport classes so the component fills the full screen when used
         // in any layout — no body_class / main_class front-matter required.
         document.body.classList.add('chatroom-body');
@@ -1300,11 +1304,11 @@ export class ChatroomApp extends GenesisElement {
         this.stopAutoRefresh();
 
         // Remove viewport classes when the last chatroom component leaves the DOM.
-        if (!document.querySelector('chatroom-app, [data-chatroom-component]')) {
+        if (!document.querySelector('[data-chatroom-component]')) {
             document.body.classList.remove('chatroom-body');
         }
         const mainEl = this.closest('main') ?? document.querySelector('main');
-        if (mainEl && !mainEl.querySelector('chatroom-app, [data-chatroom-component]')) {
+        if (mainEl && !mainEl.querySelector('[data-chatroom-component]')) {
             mainEl.classList.remove('chatroom-main');
         }
 

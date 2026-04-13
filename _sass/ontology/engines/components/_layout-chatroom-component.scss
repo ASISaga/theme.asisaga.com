@@ -34,12 +34,10 @@
     @include flex-column;
     @include padding-reset;
 
-    // chatroom-app and any registered subclass element (e.g. boardroom-app) must
-    // fill the chatroom-main column.  When a new subclass tag is registered, add
-    // it here.  The `component` front-matter key is now irrelevant to this rule —
-    // styling is keyed on the element name, not the layout.
-    chatroom-app,
-    boardroom-app {
+    // Any chatroom-app subclass marks itself with data-chatroom-component in
+    // connectedCallback.  Using an attribute selector means new subclasses work
+    // automatically without adding their element names to this stylesheet.
+    [data-chatroom-component] {
       @include flex-grow-fill;
       @include flex-column;
       min-height: 0;
