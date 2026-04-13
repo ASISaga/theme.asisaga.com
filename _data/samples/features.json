@@ -1,8 +1,8 @@
 {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "Genesis Design System Features",
-  "description": "Core capabilities of the Genesis Semantic Design System",
+  "name": "Why Genesis Exists",
+  "description": "The innovations that make the Genesis Semantic Design System unlike anything else in the Jekyll ecosystem",
   "numberOfItems": 6,
   "itemListElement": [
     {
@@ -10,9 +10,9 @@
       "position": 1,
       "item": {
         "@type": "Thing",
-        "name": "Ontological SCSS Engine",
-        "description": "Six semantic categories — environment, entity, cognition, synapse, state, and atmosphere — replace raw CSS with intent-driven mixins. Describe what a region is and the engine determines how it looks.",
-        "identifier": "ontology-engine"
+        "name": "Zero-CSS Subdomains",
+        "description": "Subdomain developers write ZERO raw CSS properties. No padding. No margin. No color. No font-size. They describe what their content IS — genesis-entity('primary'), genesis-cognition('axiom') — and the engine resolves the rest. Change the engine, and every subdomain updates instantly.",
+        "identifier": "zero-css"
       }
     },
     {
@@ -20,9 +20,9 @@
       "position": 2,
       "item": {
         "@type": "Thing",
-        "name": "20+ Production Layouts",
-        "description": "Blog posts, articles, dashboards, galleries, chatrooms, documentation, FAQ, landing pages, forms, search, settings, profiles, and more — each layout is responsive and WCAG AA compliant out of the box.",
-        "identifier": "layouts"
+        "name": "Property Ownership",
+        "description": "Every CSS property belongs to exactly one ontological category. Padding to entity. Font-size to cognition. Grid to environment. Box-shadow to atmosphere. Hover to synapse. Animation to state. Two mixins on the same element can never compete for the same property. Specificity conflicts are architecturally impossible.",
+        "identifier": "property-ownership"
       }
     },
     {
@@ -30,9 +30,9 @@
       "position": 3,
       "item": {
         "@type": "Thing",
-        "name": "OKLCH Color System",
-        "description": "Perceptually uniform OKLCH color space with HDR readiness. Every color token is defined in OKLCH for consistent lightness perception across the entire palette.",
-        "identifier": "oklch-colors"
+        "name": "The Living Genome",
+        "description": "Design systems are usually dictionaries — static lists of components. Genesis is a genome. New variants are proposed through formal ontological propositions, reviewed by AI agents for semantic purity, and documented in GENOME.md with their complete origin story. This is design with memory.",
+        "identifier": "living-genome"
       }
     },
     {
@@ -40,9 +40,9 @@
       "position": 4,
       "item": {
         "@type": "Thing",
-        "name": "Accessibility First",
-        "description": "WCAG AA compliant with proper landmarks, skip links, focus states, 44px touch targets, reduced-motion support, and high-contrast mode. Accessibility is built into the ontology, not bolted on.",
-        "identifier": "accessibility"
+        "name": "OKLCH Color Science",
+        "description": "Zero hex codes. Zero RGB. The entire palette is OKLCH — perceptually uniform, HDR-ready, and contrast-safe. Set L ≤ 0.55 for text on light surfaces and the physics of human vision guarantees readability. Dark mode is the same tokens with lightness inverted because OKLCH inversion actually works.",
+        "identifier": "oklch-colors"
       }
     },
     {
@@ -50,9 +50,9 @@
       "position": 5,
       "item": {
         "@type": "Thing",
-        "name": "Living Genome Architecture",
-        "description": "The design system evolves through ontological propositions reviewed by AI agents. Every variant has an origin story documented in GENOME.md, creating design with memory.",
-        "identifier": "living-genome"
+        "name": "Accessibility by Architecture",
+        "description": "Not tested in. Built in. 44px touch targets enforced by every synapse variant. Contrast guaranteed by OKLCH lightness constraints. Landmarks required by the hierarchy system. Reduced motion respected in the one category (state) that owns all animation. You cannot build inaccessible pages without fighting the system.",
+        "identifier": "accessibility"
       }
     },
     {
@@ -60,9 +60,9 @@
       "position": 6,
       "item": {
         "@type": "Thing",
-        "name": "Fluid Typography & Responsive Grids",
-        "description": "Fluid clamp()-based type scaling from mobile to ultrawide. Auto-fit CSS Grid layouts with container queries for component-level responsiveness. No media-query breakpoints needed.",
-        "identifier": "responsive"
+        "name": "17 Web Components, Zero Framework Tax",
+        "description": "Lit 3, light DOM, no Shadow DOM, no build step, no virtual DOM. Components enhance semantic HTML with progressive behavior — scroll detection, keyboard navigation, form validation — without replacing structure. Disable JavaScript and every page still works.",
+        "identifier": "web-components"
       }
     }
   ]

@@ -1,87 +1,87 @@
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "name": "Genesis Design System FAQ",
-  "description": "Frequently asked questions about the Genesis Semantic Design System, its ontological architecture, and how to use it.",
+  "name": "Questions People Actually Ask",
+  "description": "The questions that stop developers mid-scroll — about utility classes vs ontological design, about why there are no hex codes, about what happens when AI reviews your CSS.",
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What is the Genesis Semantic Design System?",
+      "name": "Wait — subdomain developers write ZERO raw CSS?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Genesis is an ontology-based SCSS engine that replaces raw CSS properties with six semantic categories: environment (layout), entity (surface), cognition (typography), synapse (interaction), state (lifecycle), and atmosphere (mood). You describe what a region is, and the engine produces the correct visual output."
+        "text": "Correct. Zero padding. Zero margin. Zero color values. Zero font-size declarations. A subdomain SCSS file contains only ontological mixin calls: @include genesis-entity('primary') for surface treatment, @include genesis-cognition('axiom') for headlines, @include genesis-environment('focused') for reading layout. The theme engine resolves these to the correct CSS output. If the engine changes, every subdomain updates automatically."
       }
     },
     {
       "@type": "Question",
-      "name": "How many layouts ship with the theme?",
+      "name": "How is this different from Tailwind / utility classes?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The theme includes 20+ production-ready layouts: post, article, archive, profile, landing, gallery, form, docs, FAQ, dashboard, chatroom, search, settings, splash, minimal, app, and more. Each layout is responsive and WCAG AA compliant."
+        "text": "Tailwind describes HOW content looks: 'p-4 bg-gray-800 rounded-lg text-white'. Genesis describes WHAT content IS: genesis-entity('primary'). Tailwind classes are visual instructions scattered across HTML. Genesis mixins are semantic roles declared in SCSS, resolved by an engine that enforces property ownership, hierarchy rules, and accessibility constraints. Change 'primary' in the engine and every entity-primary surface in every subdomain updates. Try that with a find-and-replace across ten thousand utility classes."
       }
     },
     {
       "@type": "Question",
-      "name": "Do I need to know SCSS to use the theme?",
+      "name": "What does 'property ownership' actually mean?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Basic HTML and YAML front matter are enough to build pages with any included layout. The ontological SCSS layer is available for theme customization, but standard content works without touching it."
+        "text": "Every CSS property belongs to exactly one ontological category. Padding belongs to entity — no other category can set it. Font-size belongs to cognition. Grid and flex belong to environment. Box-shadow belongs to atmosphere. Hover states belong to synapse. Animation belongs to state. When two mixins affect the same element, they NEVER compete for the same property. Specificity conflicts are architecturally impossible, not just discouraged."
       }
     },
     {
       "@type": "Question",
-      "name": "What is the ontological approach to CSS?",
+      "name": "Why OKLCH instead of hex/RGB/HSL?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Every CSS concern — layout, color, typography, interaction, state, mood — belongs to exactly one of six semantic categories. You use mixins like @include genesis-entity('primary') instead of writing raw padding, background, or border-radius. This prevents property conflicts and makes refactoring safe."
+        "text": "Hex and RGB lie about lightness. Pure blue (#0000FF) and pure green (#00FF00) have the same RGB 'intensity' but wildly different perceived brightness. OKLCH is perceptually uniform — when two colors have the same L (lightness) value, they actually look equally bright to human eyes. This means contrast ratios can be guaranteed by lightness constraints rather than tested after the fact. Plus: OKLCH values can exceed the sRGB gamut, making every token HDR-ready without additional code."
       }
     },
     {
       "@type": "Question",
-      "name": "Is the theme accessible?",
+      "name": "AI agents review design proposals?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Accessibility is built into the ontology, not bolted on. The theme enforces WCAG AA color contrast (4.5:1 for text), 44px minimum touch targets, proper landmark elements, skip links, visible focus indicators, and supports prefers-reduced-motion and prefers-contrast media queries."
+        "text": "Yes. When a subdomain developer needs a variant the system does not have, they write an ontological proposition — a formal document describing the semantic gap, proposing a variant name, specifying CSS properties, and arguing for universal applicability. Dedicated AI agents (theme-genome-agent) evaluate whether the proposal maintains semantic purity, respects property ownership, and benefits multiple subdomains. Approved variants are documented in GENOME.md with their complete origin story."
       }
     },
     {
       "@type": "Question",
-      "name": "How does the Living Genome work?",
+      "name": "What happens if I apply the wrong mixin to an element?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The design system evolves through ontological propositions — formal requests for new semantic variants. AI agents review each proposal for semantic purity and universal applicability. Approved variants are documented in GENOME.md with their origin story, creating a design system with memory."
+        "text": "The hierarchy system prevents this. Page wrappers (Level 1) REQUIRE environment + atmosphere and FORBID entity and cognition. Sections (Level 2) require environment. Components (Level 3) require entity. Leaf elements (Level 4) require cognition or synapse. You cannot apply entity to a layout wrapper or atmosphere to a heading — the rules are architectural constraints, not suggestions."
       }
     },
     {
       "@type": "Question",
-      "name": "What color system does the theme use?",
+      "name": "Why light DOM instead of Shadow DOM for the web components?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "All colors are defined in OKLCH (Oklab Lightness Chroma Hue), a perceptually uniform color space that produces consistent lightness perception across the palette. The theme includes 150+ CSS custom properties for colors, spacing, typography, and effects."
+        "text": "Because the ontological SCSS engine IS the styling system. Shadow DOM creates a boundary that prevents global stylesheets from reaching component internals. Light DOM means genesis-entity('primary') works identically inside a <genesis-card> and outside it. One styling system, one source of truth, zero style-boundary debugging. The Lit 3 base class provides reactive properties and lifecycle management without Shadow DOM isolation."
       }
     },
     {
       "@type": "Question",
-      "name": "Can I use the theme with dark mode?",
+      "name": "How do you handle dark mode with this system?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Dark mode is built in and responds to the user's system preference via prefers-color-scheme, with an optional manual toggle. The void atmosphere variant provides deep-dark surfaces, while ethereal provides light translucent surfaces."
+        "text": "Through atmosphere variants, not media queries. genesis-atmosphere('void') produces deep dark surfaces (OKLCH L = 0.08), inverted text, and inset shadows. genesis-atmosphere('ethereal') produces light translucent surfaces with glassmorphism. A page can contain BOTH — a void header above an ethereal body. The atmosphere engine resolves colors through OKLCH tokens that maintain contrast in any combination."
       }
     },
     {
       "@type": "Question",
-      "name": "How do I get theme updates?",
+      "name": "What is GENOME.md?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The theme is distributed as a Jekyll remote theme. Point your _config.yml at the repository and updates pull in automatically on build. No manual file copying needed."
+        "text": "The living memory of the design system. It records every ontological variant — 33 foundational plus 56 evolved — with its origin story: which subdomain proposed it, what semantic gap it filled, when the AI agent approved it, and how it integrates with existing variants. Six months from now, when someone asks 'why does entity have an ancestral variant?', GENOME.md answers with history, not just documentation."
       }
     },
     {
       "@type": "Question",
-      "name": "Can I use this theme commercially?",
+      "name": "Can I use this if I just want a nice Jekyll theme?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The theme is released under the MIT license, which permits both personal and commercial use, modification, and distribution."
+        "text": "Absolutely. The ontological engine powers the theme, but you do not need to understand it to use it. Write HTML with YAML front matter, pick a layout (post, article, landing, dashboard, docs, gallery — 20+ options), and the theme handles typography, spacing, color, responsive behavior, and accessibility. The ontology is there when you need customization, invisible when you do not."
       }
     }
   ]

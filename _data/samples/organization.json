@@ -3,28 +3,29 @@
   "@type": "Organization",
   "name": "ASI Saga",
   "url": "https://asisaga.com",
-  "description": "Building the semantic design genome that powers every ASI Saga digital experience. A consciousness-expanding design language for the age of Artificial Superintelligence.",
+  "description": "The architects of the Genesis Semantic Design System — the first design system where every aesthetic decision has an origin story, every CSS property has exactly one owner, and AI agents evolve the genome in real time.",
   "foundingDate": "2024",
   "knowsAbout": [
-    "Semantic Design Systems",
     "Ontological CSS Architecture",
-    "Accessible Web Development",
-    "Jekyll Theme Engineering",
-    "AI-Assisted Design Evolution"
+    "AI-Driven Design System Evolution",
+    "Perceptual Color Science (OKLCH)",
+    "Accessibility-First Engineering",
+    "Progressive Web Components (Lit)",
+    "Jekyll Theme Engineering"
   ],
   "member": [
     {
       "@type": "Person",
-      "name": "Genesis Theme Team",
-      "jobTitle": "Design Systems Engineering",
-      "description": "The collective behind the Genesis Semantic Design System — building the bridge between design intent and production CSS through ontological architecture.",
+      "name": "Genesis Theme Collective",
+      "jobTitle": "Design Systems Architects",
+      "description": "We believe design systems should have memory. That CSS properties should have owners. That accessibility should be architectural, not aspirational. That a single word — void, ethereal, sacred — should be enough to set the emotional tone of an entire page region.",
       "knowsAbout": [
-        "Ontological Design Systems",
-        "SCSS Architecture",
-        "Web Accessibility (WCAG AA)",
-        "Fluid Typography",
+        "Ontological SCSS Engine Design",
+        "Living Genome Architecture",
         "OKLCH Color Science",
-        "Jekyll Templating"
+        "WCAG AA Structural Compliance",
+        "Lit Web Components",
+        "Jekyll Remote Themes"
       ],
       "memberOf": {
         "@type": "Organization",
@@ -35,7 +36,7 @@
   "project": {
     "@type": "SoftwareSourceCode",
     "name": "Genesis Semantic Design System",
-    "description": "An ontology-based SCSS engine with 20+ production layouts, six semantic categories, and a living genome architecture.",
+    "description": "Six categories. 89 variants. 20+ layouts. 17 web components. One genome. Zero raw CSS in subdomains.",
     "url": "https://github.com/ASISaga/theme.asisaga.com"
   }
 }
