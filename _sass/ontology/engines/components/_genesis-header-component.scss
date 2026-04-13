@@ -17,21 +17,22 @@
     @include touch-scroll;
 
     min-height: 64px;
-    @include border-separator-bottom(oklch(0.25 0.04 250));
+    border-bottom: 1px solid var(--genesis-header-border, oklch(0.25 0.04 250));
+    background: var(--genesis-header-bg, oklch(0.06 0.015 255 / 0.85));
 
     box-shadow:
       0 1px 0 oklch(0.65 0.25 230 / 0.08),
-      0 4px 24px oklch(0.05 0.02 250 / 0.4);
+      0 4px 24px var(--genesis-header-shadow, oklch(0.05 0.02 250 / 0.4));
 
     @include transition-consciousness;
 
     // Scrolled state — condensed, more opaque, stronger presence
     &.scrolled {
       @include bg-glass(0.96);
-      border-bottom-color: oklch(0.20 0.06 230);
+      border-bottom-color: var(--genesis-header-border, oklch(0.20 0.06 230));
       box-shadow:
         0 1px 0 oklch(0.65 0.25 230 / 0.15),
-        0 8px 32px oklch(0.03 0.02 250 / 0.6);
+        0 8px 32px var(--genesis-header-shadow, oklch(0.03 0.02 250 / 0.6));
       min-height: 56px;
     }
 

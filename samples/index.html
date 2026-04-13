@@ -1,0 +1,236 @@
+---
+layout: default
+title: "Sample Pages — Genesis Theme"
+---
+
+<div class="samples-index">
+
+  <!-- ======================================================
+       Theme Toggle Bar
+       The button writes the preference to localStorage so every
+       sample page picks it up via the early-init script in head.html.
+  ======================================================== -->
+  <section class="samples-index__theme-bar" aria-label="Appearance controls">
+    <div class="samples-index__theme-bar-inner">
+      <span class="samples-index__theme-label">Appearance</span>
+
+      <button
+        class="samples-index__theme-toggle"
+        type="button"
+        data-theme-toggle
+        aria-pressed="true"
+        aria-label="Switch to light mode"
+        title="Switch to light mode"
+      >
+        <span class="samples-index__theme-toggle-track" aria-hidden="true">
+          <span class="samples-index__theme-toggle-thumb"></span>
+        </span>
+        <i class="fas fa-moon samples-index__theme-toggle-icon" data-theme-icon aria-hidden="true"></i>
+        <span class="samples-index__theme-toggle-text" data-theme-label>Dark</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       Page Header
+  ======================================================== -->
+  <header class="samples-index__header">
+    <h1 class="samples-index__title">Genesis Theme · Sample Pages</h1>
+    <p class="samples-index__subtitle">
+      Explore every layout in action. Use the toggle above to preview each sample
+      in dark or light mode.
+    </p>
+  </header>
+
+  <!-- ======================================================
+       Sample Grid
+  ======================================================== -->
+  <main class="samples-index__grid" id="skip-samples">
+
+    <!-- Content-Driven -->
+    <section class="samples-index__category">
+      <h2 class="samples-index__category-heading">
+        <i class="fas fa-file-alt" aria-hidden="true"></i>
+        Content-Driven
+      </h2>
+      <ul class="samples-index__list">
+        <li class="samples-index__item">
+          <a class="samples-index__link" href="/samples/content-driven/post.html">
+            <i class="fas fa-newspaper samples-index__link-icon" aria-hidden="true"></i>
+            <span class="samples-index__link-body">
+              <strong>Post</strong>
+              <span>Blog post with metadata, tags, and reading time</span>
+            </span>
+          </a>
+        </li>
+        <li class="samples-index__item">
+          <a class="samples-index__link" href="/samples/content-driven/article.html">
+            <i class="fas fa-book-open samples-index__link-icon" aria-hidden="true"></i>
+            <span class="samples-index__link-body">
+              <strong>Article</strong>
+              <span>Long-form article with table of contents</span>
+            </span>
+          </a>
+        </li>
+        <li class="samples-index__item">
+          <a class="samples-index__link" href="/samples/content-driven/archive.html">
+            <i class="fas fa-list samples-index__link-icon" aria-hidden="true"></i>
+            <span class="samples-index__link-body">
+              <strong>Archive</strong>
+              <span>List page with filtering and sorting</span>
+            </span>
+          </a>
+        </li>
+        <li class="samples-index__item">
+          <a class="samples-index__link" href="/samples/content-driven/profile.html">
+            <i class="fas fa-user samples-index__link-icon" aria-hidden="true"></i>
+            <span class="samples-index__link-body">
+              <strong>Profile</strong>
+              <span>User profile with bio and social links</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Marketing -->
+    <section class="samples-index__category">
+      <h2 class="samples-index__category-heading">
+        <i class="fas fa-bullhorn" aria-hidden="true"></i>
+        Marketing
+      </h2>
+      <ul class="samples-index__list">
+        <li class="samples-index__item">
+          <a class="samples-index__link" href="/samples/marketing/landing.html">
+            <i class="fas fa-rocket samples-index__link-icon" aria-hidden="true"></i>
+            <span class="samples-index__link-body">
+              <strong>Landing</strong>
+              <span>Marketing page with hero, features, and CTAs</span>
+            </span>
+          </a>
+        </li>
+        <li class="samples-index__item">
+          <a class="samples-index__link" href="/samples/marketing/gallery.html">
+            <i class="fas fa-images samples-index__link-icon" aria-hidden="true"></i>
+            <span class="samples-index__link-body">
+              <strong>Gallery</strong>
+              <span>Image gallery with categories and filtering</span>
+            </span>
+          </a>
+        </li>
+        <li class="samples-index__item">
+          <a class="samples-index__link" href="/samples/marketing/form.html">
+            <i class="fas fa-envelope samples-index__link-icon" aria-hidden="true"></i>
+            <span class="samples-index__link-body">
+              <strong>Form</strong>
+              <span>Contact form with validation and fields</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Knowledge -->
+    <section class="samples-index__category">
+      <h2 class="samples-index__category-heading">
+        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+        Knowledge
+      </h2>
+      <ul class="samples-index__list">
+        <li class="samples-index__item">
+          <a class="samples-index__link" href="/samples/knowledge/docs.html">
+            <i class="fas fa-book samples-index__link-icon" aria-hidden="true"></i>
+            <span class="samples-index__link-body">
+              <strong>Docs</strong>
+              <span>Documentation page with navigation and breadcrumbs</span>
+            </span>
+          </a>
+        </li>
+        <li class="samples-index__item">
+          <a class="samples-index__link" href="/samples/knowledge/faq.html">
+            <i class="fas fa-question-circle samples-index__link-icon" aria-hidden="true"></i>
+            <span class="samples-index__link-body">
+              <strong>FAQ</strong>
+              <span>FAQ page with accordion interface</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Application -->
+    <section class="samples-index__category">
+      <h2 class="samples-index__category-heading">
+        <i class="fas fa-laptop-code" aria-hidden="true"></i>
+        Application
+      </h2>
+      <ul class="samples-index__list">
+        <li class="samples-index__item">
+          <a class="samples-index__link" href="/samples/application/dashboard.html">
+            <i class="fas fa-chart-bar samples-index__link-icon" aria-hidden="true"></i>
+            <span class="samples-index__link-body">
+              <strong>Dashboard</strong>
+              <span>Analytics dashboard with widgets and metrics</span>
+            </span>
+          </a>
+        </li>
+        <li class="samples-index__item">
+          <a class="samples-index__link" href="/samples/application/chatroom.html">
+            <i class="fas fa-comments samples-index__link-icon" aria-hidden="true"></i>
+            <span class="samples-index__link-body">
+              <strong>Chatroom</strong>
+              <span>Real-time MCP domain chat interface</span>
+            </span>
+          </a>
+        </li>
+        <li class="samples-index__item">
+          <a class="samples-index__link" href="/samples/application/search.html">
+            <i class="fas fa-search samples-index__link-icon" aria-hidden="true"></i>
+            <span class="samples-index__link-body">
+              <strong>Search</strong>
+              <span>Search results page with filters</span>
+            </span>
+          </a>
+        </li>
+        <li class="samples-index__item">
+          <a class="samples-index__link" href="/samples/application/settings.html">
+            <i class="fas fa-cog samples-index__link-icon" aria-hidden="true"></i>
+            <span class="samples-index__link-body">
+              <strong>Settings</strong>
+              <span>User settings with tabbed interface</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Utility -->
+    <section class="samples-index__category">
+      <h2 class="samples-index__category-heading">
+        <i class="fas fa-tools" aria-hidden="true"></i>
+        Utility
+      </h2>
+      <ul class="samples-index__list">
+        <li class="samples-index__item">
+          <a class="samples-index__link" href="/samples/utility/404.html">
+            <i class="fas fa-exclamation-triangle samples-index__link-icon" aria-hidden="true"></i>
+            <span class="samples-index__link-body">
+              <strong>404</strong>
+              <span>Error page with navigation assistance</span>
+            </span>
+          </a>
+        </li>
+        <li class="samples-index__item">
+          <a class="samples-index__link" href="/samples/utility/splash.html">
+            <i class="fas fa-star samples-index__link-icon" aria-hidden="true"></i>
+            <span class="samples-index__link-body">
+              <strong>Splash</strong>
+              <span>Full-screen loading or intro screen</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+</div>
