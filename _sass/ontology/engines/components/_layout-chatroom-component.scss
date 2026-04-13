@@ -299,10 +299,12 @@
     padding-left: 0.875rem;
   }
 
+  // Structural wrapper — holds flex-grow and min-width only.
+  // Visual chrome (background, border, padding) is applied per message variant
+  // via the type-specific selectors below, keeping entity chrome applied exactly
+  // once per element and eliminating nested-chrome double-boxing.
   .chatroom__message-body {
-    @include genesis-entity('secondary');
-    background: $color-boardroom-surface;
-    @include border-subtle($color-boardroom-border);
+    @include genesis-entity('nested');
     @include flex-grow-fill;
     min-width: 0;
   }
