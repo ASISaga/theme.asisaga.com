@@ -1,10 +1,10 @@
 ---
 layout: chatroom
-title: "Executive Boardroom"
-chat_data: boardroom
+title: "MCP Domain Chatroom Demo"
+module_js: chatroom-sample.js
 participants: 5
 show_toolbar: true
-placeholder: "Submit your strategic input to the board..."
+placeholder: "Send a message..."
 mcp_apps:
   - name: "financials"
     label: "Financial Intelligence"
@@ -19,3 +19,38 @@ mcp_apps:
     icon: "fas fa-balance-scale"
     description: "Review contracts, compliance and regulatory risk"
 ---
+{% comment %}
+  Business and party domain templates.
+  <template> elements are invisible by default — they supply the rendering
+  blueprints for JSON-LD messages rendered by chatroom-app._buildFromJsonLd().
+{% endcomment %}
+{% include_relative templates/business.html %}
+{% include_relative templates/party.html %}
+
+{% comment %}
+  Inline JSON-LD domain data consumed by chatroom-sample.js.
+  Jekyll renders the YAML arrays from _data/chatroom/domain/*.yml into JSON.
+{% endcomment %}
+<script id="chatroom-domain-data" type="application/json">
+{
+  "business": {{ site.data.chatroom.domain.business.messages | jsonify }},
+  "party": {{ site.data.chatroom.domain.party.messages | jsonify }}
+}
+</script>
+
+{% comment %}
+  Domain-switcher button bar.
+  Sits between the domain templates and the #chatArea section inside the
+  chatroom-app element as a flex sibling — the chatroom-body fills the
+  remaining vertical space via flex-grow.
+{% endcomment %}
+<div class="chatroom-domain-switcher" role="group" aria-label="Switch conversation domain">
+  <button class="chatroom-domain-btn" data-domain-switch="business" aria-pressed="true">
+    <i class="fas fa-briefcase" aria-hidden="true"></i>
+    <span>Business</span>
+  </button>
+  <button class="chatroom-domain-btn" data-domain-switch="party" aria-pressed="false">
+    <i class="fas fa-champagne-glasses" aria-hidden="true"></i>
+    <span>Party</span>
+  </button>
+</div>

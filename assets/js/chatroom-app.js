@@ -77,6 +77,9 @@ export class ChatroomApp extends GenesisElement {
         this._mcpPendingCount = 0;
         this.refreshIntervalId = null;
         this._apiConnected = false;
+        // Domain template registry — maps JSON-LD @type → template element ID.
+        // Null until registerDomain() is called by the consuming page.
+        this._domainTemplates = null;
         // Default values for numeric properties (Lit leaves them undefined when absent)
         this.maxLength = 1000;
         this.refreshInterval = 3000;
@@ -335,12 +338,192 @@ export class ChatroomApp extends GenesisElement {
     // eslint-disable-next-line no-unused-vars
     _onLayoutBuilt(_layout) { /* override in subclasses */ }
 
+    // =========================================================================
+    // JSON-LD Domain API
+    // =========================================================================
+
     /**
-     * Build and return a DOM element for a single message.
-     * @param {object} msg
+     * Register domain-specific HTML templates mapped by JSON-LD @type.
+     * Must be called before loadDomain() or at any time to swap the domain.
+     *
+     * @param {Object} typeToTemplateMap
+     *   Keys are JSON-LD @type values; values are HTML <template> element IDs.
+     *   Reserved keys:
+     *     '__agent_message' — @type whose template is used for MCP agent responses.
+     *     '__user_message'  — @type whose template is used when the user sends a msg.
+     *
+     * @example
+     *   chatroom.registerDomain({
+     *     'schema:AgentMessage': 'template-business-agent-msg',
+     *     'schema:UserMessage':  'template-business-user-msg',
+     *     '__agent_message':     'schema:AgentMessage',
+     *     '__user_message':      'schema:UserMessage',
+     *   });
+     */
+    registerDomain(typeToTemplateMap) {
+        this._domainTemplates = Object.assign({}, typeToTemplateMap);
+    }
+
+    /**
+     * Clear the current messages and re-render from a JSON-LD message array.
+     * Requires registerDomain() to have been called first.
+     *
+     * @param {Array<Object>} messages  Array of Schema.org JSON-LD objects.
+     */
+    loadDomain(messages) {
+        if (!Array.isArray(messages)) return;
+        const container = this.elements?.messagesContainer;
+        if (!container) return;
+        container.replaceChildren();
+        messages.forEach(item => {
+            const el = this._buildFromJsonLd(item);
+            if (el) container.appendChild(el);
+        });
+        container.scrollTop = container.scrollHeight;
+    }
+
+    /**
+     * Build a DOM element from a JSON-LD item using the registered domain
+     * templates.  Returns null if no matching template is registered.
+     *
+     * @param {Object} item  JSON-LD object with an '@type' field.
      * @returns {Element|null}
      */
-    _buildMessage(msg) {
+    _buildFromJsonLd(item) {
+        if (!item || !this._domainTemplates) return null;
+        const type = item['@type'];
+        if (!type) return null;
+        const templateId = this._domainTemplates[type];
+        if (!templateId) return null;
+        const el = this._cloneTemplate(templateId);
+        if (!el) return null;
+        this._fillFromSchema(el, item);
+        return el;
+    }
+
+    /**
+     * Fill a cloned template element's data-schema* slots from a JSON-LD object.
+     *
+     * Supported attributes on descendant elements:
+     *   data-schema="path.to.value"
+     *     Fills textContent from the dot-notation path; removes [hidden].
+     *   data-schema-avatar="id.path"
+     *     Adds chatroom__avatar--<id> CSS class; sets initials or, if
+     *     data-schema-avatar-icon="icon.path" resolves, a Font Awesome <i> icon.
+     *   data-schema-list="path"
+     *     Renders an array of { name, description } objects as tool-result-item
+     *     list rows (using template-chatroom-tool-result-item); removes [hidden].
+     *   data-schema-parent-show="path"
+     *     Removes [hidden] from this element when the path resolves to a value.
+     *
+     * @param {Element} el    Cloned template element to fill.
+     * @param {Object}  data  JSON-LD source object.
+     */
+    _fillFromSchema(el, data) {
+        // Text content fill
+        el.querySelectorAll('[data-schema]').forEach(field => {
+            const value = this._getJsonLdValue(data, field.getAttribute('data-schema'));
+            if (value !== null && value !== undefined && value !== '') {
+                field.textContent = String(value);
+                field.removeAttribute('hidden');
+            }
+        });
+
+        // Avatar fill: CSS class modifier + initials or Font Awesome icon
+        el.querySelectorAll('[data-schema-avatar]').forEach(avatarEl => {
+            const id = this._getJsonLdValue(data, avatarEl.getAttribute('data-schema-avatar'));
+            if (!id) return;
+            const safeId = this._safeClass(String(id));
+            avatarEl.classList.add(`chatroom__avatar--${safeId}`);
+
+            const iconPath = avatarEl.getAttribute('data-schema-avatar-icon');
+            const iconClass = iconPath ? this._getJsonLdValue(data, iconPath) : null;
+            if (iconClass) {
+                const i = document.createElement('i');
+                i.className = this._safeIcon(String(iconClass));
+                i.setAttribute('aria-hidden', 'true');
+                avatarEl.replaceChildren(i);
+            } else {
+                avatarEl.textContent = String(id).toUpperCase().slice(0, 3);
+            }
+        });
+
+        // List fill: render array as tool-result-item rows
+        el.querySelectorAll('[data-schema-list]').forEach(listEl => {
+            const items = this._getJsonLdValue(data, listEl.getAttribute('data-schema-list'));
+            if (!Array.isArray(items) || !items.length) return;
+            listEl.replaceChildren();
+            items.forEach(item => {
+                const label = item.name || item.label || '';
+                const detail = item.description || item.detail || '';
+                const row = this._buildToolResultItem(label, detail);
+                if (row) listEl.appendChild(row);
+            });
+            listEl.removeAttribute('hidden');
+        });
+
+        // Parent-show: reveal a container when a referenced path has a value
+        el.querySelectorAll('[data-schema-parent-show]').forEach(parentEl => {
+            const value = this._getJsonLdValue(data, parentEl.getAttribute('data-schema-parent-show'));
+            if (value !== null && value !== undefined && value !== '') {
+                parentEl.removeAttribute('hidden');
+            }
+        });
+    }
+
+    /**
+     * Resolve a dot-notation path within a JSON-LD object.
+     * @param {Object} data  Source data.
+     * @param {string} path  Dot-notation path, e.g. "sender.name".
+     * @returns {*}  Resolved value or null if the path does not exist.
+     */
+    _getJsonLdValue(data, path) {
+        if (!path) return null;
+        return path.split('.').reduce((obj, key) => (obj != null ? obj[key] : null), data) ?? null;
+    }
+
+    /**
+     * Clone the domain's registered agent message template.
+     * Used by MCP methods to render agent responses using domain styling.
+     * Falls back to 'template-chatroom-message-ai' for backward compatibility;
+     * returns null when neither is available.
+     * @returns {Element|null}
+     */
+    _cloneDomainAgentTemplate() {
+        const agentType = this._domainTemplates?.['__agent_message'];
+        if (agentType) {
+            const id = this._domainTemplates[agentType];
+            if (id) return this._cloneTemplate(id);
+        }
+        // Legacy fallback (template no longer shipped in chatroom-templates.js)
+        return this._cloneTemplate('template-chatroom-message-ai');
+    }
+
+    /**
+     * Build a user message element using the domain's registered user template.
+     * Returns null when no user message template is registered.
+     * @param {string} text  Message text.
+     * @returns {Element|null}
+     */
+    _buildDomainUserMsg(text) {
+        const userType = this._domainTemplates?.['__user_message'];
+        if (!userType || !this._domainTemplates[userType]) return null;
+        return this._buildFromJsonLd({
+            '@context': 'https://schema.org',
+            '@type': userType,
+            sender: { '@type': 'schema:Person', name: 'You', identifier: 'you' },
+            text,
+            dateSent: this._formatNow(),
+        });
+    }
+
+
+        // JSON-LD path: dispatch by @type using registered domain templates
+        if (msg['@type'] && this._domainTemplates) {
+            const el = this._buildFromJsonLd(msg);
+            if (el) return el;
+        }
+        // Legacy path: dispatch by msg.type for backward compatibility
         switch (msg.type) {
             case 'system':  return this._buildSystemMsg(msg);
             case 'ai':      return this._buildAiMsg(msg);
@@ -853,7 +1036,7 @@ export class ChatroomApp extends GenesisElement {
         const container = this.elements.messagesContainer;
         if (!container) return document.createElement('div');
 
-        const el = this._cloneTemplate('template-chatroom-message-ai');
+        const el = this._cloneDomainAgentTemplate();
         if (!el) return document.createElement('div');
 
         el.classList.add('chatroom__message--thinking');
@@ -861,10 +1044,16 @@ export class ChatroomApp extends GenesisElement {
 
         const avatarEl = el.querySelector('.chatroom__avatar');
         if (avatarEl) {
+            avatarEl.classList.add('chatroom__avatar--ai');
             const iconEl = avatarEl.querySelector('i');
             if (iconEl) {
                 iconEl.className = this._safeIcon(app.icon || 'fas fa-robot');
                 iconEl.setAttribute('aria-hidden', 'true');
+            } else {
+                const i = document.createElement('i');
+                i.className = this._safeIcon(app.icon || 'fas fa-robot');
+                i.setAttribute('aria-hidden', 'true');
+                avatarEl.replaceChildren(i);
             }
         }
 
@@ -909,15 +1098,21 @@ export class ChatroomApp extends GenesisElement {
         const hasToolCall = data.tool_used || data.tool || data.tool_name;
         const toolName = hasToolCall ? (data.tool_used || data.tool || data.tool_name) : null;
 
-        const el = this._cloneTemplate('template-chatroom-message-ai');
+        const el = this._cloneDomainAgentTemplate();
         if (!el) return;
 
         const avatarEl = el.querySelector('.chatroom__avatar');
         if (avatarEl) {
+            avatarEl.classList.add('chatroom__avatar--ai');
             const iconEl = avatarEl.querySelector('i');
             if (iconEl) {
                 iconEl.className = this._safeIcon(app.icon || 'fas fa-robot');
                 iconEl.setAttribute('aria-hidden', 'true');
+            } else {
+                const i = document.createElement('i');
+                i.className = this._safeIcon(app.icon || 'fas fa-robot');
+                i.setAttribute('aria-hidden', 'true');
+                avatarEl.replaceChildren(i);
             }
         }
 
@@ -966,7 +1161,7 @@ export class ChatroomApp extends GenesisElement {
         const container = this.elements.messagesContainer;
         if (!container) return;
 
-        const el = this._cloneTemplate('template-chatroom-message-ai');
+        const el = this._cloneDomainAgentTemplate();
         if (!el) return;
 
         el.classList.add('chatroom__message--ai-error');
@@ -978,6 +1173,11 @@ export class ChatroomApp extends GenesisElement {
             if (iconEl) {
                 iconEl.className = 'fas fa-exclamation-triangle';
                 iconEl.setAttribute('aria-hidden', 'true');
+            } else {
+                const i = document.createElement('i');
+                i.className = 'fas fa-exclamation-triangle';
+                i.setAttribute('aria-hidden', 'true');
+                avatarEl.replaceChildren(i);
             }
         }
 
@@ -1211,7 +1411,7 @@ export class ChatroomApp extends GenesisElement {
             // No API endpoint — append directly
             const container = this.elements.messagesContainer;
             if (container) {
-                const el = this._buildOwnMsg({
+                const el = this._buildDomainUserMsg(text) ?? this._buildOwnMsg({
                     text,
                     time: this._formatNow(),
                     author: 'You',
@@ -1233,7 +1433,7 @@ export class ChatroomApp extends GenesisElement {
     _appendUserMessage(text) {
         const container = this.elements.messagesContainer;
         if (!container) return;
-        const el = this._buildOwnMsg({
+        const el = this._buildDomainUserMsg(text) ?? this._buildOwnMsg({
             time: this._formatNow(),
             author: 'You',
             text,

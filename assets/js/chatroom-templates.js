@@ -1,27 +1,27 @@
 /**
- * Chatroom HTML Templates
+ * Chatroom HTML Templates — Infrastructure Templates Only
  *
- * Defines all <template> elements used by the chatroom-app web component.
- * Templates are kept here as plain HTML strings so that chatroom-app (and any
- * subclass) is fully self-contained: it works with ANY Jekyll layout — not just
- * `layout: chatroom`.
+ * Defines the structural <template> elements used by the chatroom-app web
+ * component.  Only chatroom infrastructure templates live here; message-type
+ * templates are domain-specific and must be provided by the consuming page or
+ * subdomain (see samples/application/templates/ for examples).
  *
  * `ensureChatroomTemplates()` is idempotent — safe to call from multiple
  * components or subclasses. It checks whether the templates are already in the
  * DOM (e.g. injected by an older layout) before creating them.
  *
- * Template IDs (used via ChatroomApp._cloneTemplate):
- *   template-chatroom-layout
- *   template-chatroom-message-ai
- *   template-chatroom-message-own
- *   template-chatroom-message-system
- *   template-chatroom-message-typing
- *   template-chatroom-mcp-panel
- *   template-chatroom-mcp-item
- *   template-chatroom-input
- *   template-chatroom-toolbar-full
- *   template-chatroom-toolbar-minimal
- *   template-chatroom-tool-result-item
+ * Infrastructure template IDs (used via ChatroomApp._cloneTemplate):
+ *   template-chatroom-layout          — full chatroom chrome (header, messages, input)
+ *   template-chatroom-mcp-panel       — MCP apps slide-in panel
+ *   template-chatroom-mcp-item        — single MCP app button row
+ *   template-chatroom-input           — textarea message input
+ *   template-chatroom-toolbar-full    — full send toolbar
+ *   template-chatroom-toolbar-minimal — compact send button
+ *   template-chatroom-tool-result-item — single tool-result list row (MCP)
+ *
+ * Domain message templates are NOT included here.  Register them via
+ * ChatroomApp.registerDomain() using Schema.org JSON-LD @type keys mapped to
+ * <template> element IDs provided by the consuming page.
  */
 
 /** @type {Array<{id: string, html: string}>} */
@@ -62,58 +62,6 @@ const CHATROOM_TEMPLATES = [
     aria-label="Chat messages" aria-live="polite" aria-atomic="false">
     <div class="chatroom-empty-state">No messages yet. Start the conversation!</div>
   </div>
-</div>`,
-    },
-    {
-        id: 'template-chatroom-message-ai',
-        html: `<div class="chatroom__message chatroom__message--ai">
-  <div class="chatroom__message-row">
-    <span class="chatroom__avatar chatroom__avatar--ai" aria-hidden="true">
-      <i class="fas fa-robot" aria-hidden="true"></i>
-    </span>
-    <div class="chatroom__message-body">
-      <header class="chatroom__message-meta">
-        <strong class="chatroom__author" hidden></strong>
-        <span class="chatroom__agent-role" hidden></span>
-        <time class="chatroom__time" hidden></time>
-        <span class="chatroom__tool-badge" title="Tool invoked" hidden>
-          <i class="fas fa-wrench" aria-hidden="true"></i>
-          <span class="chatroom__tool-badge-text"></span>
-        </span>
-      </header>
-      <p class="chatroom__text"></p>
-      <ul class="chatroom__tool-results" hidden></ul>
-    </div>
-  </div>
-</div>`,
-    },
-    {
-        id: 'template-chatroom-message-own',
-        html: `<div class="chatroom__message chatroom__message--own">
-  <div class="chatroom__message-row">
-    <div class="chatroom__message-body">
-      <header class="chatroom__message-meta">
-        <time class="chatroom__time" hidden></time>
-        <strong class="chatroom__author" hidden></strong>
-      </header>
-      <p class="chatroom__text"></p>
-    </div>
-    <span class="chatroom__avatar chatroom__avatar--you" aria-hidden="true"></span>
-  </div>
-</div>`,
-    },
-    {
-        id: 'template-chatroom-message-system',
-        html: `<div class="chatroom__system-message chatroom__system-message--default">
-  <span class="chatroom__agenda-label" hidden></span>
-  <span class="chatroom__agenda-title" hidden></span>
-</div>`,
-    },
-    {
-        id: 'template-chatroom-message-typing',
-        html: `<div class="chatroom__typing">
-  <span class="chatroom__avatar chatroom__avatar--ai" aria-hidden="true"></span>
-  <em class="chatroom__typing-text"></em>
 </div>`,
     },
     {

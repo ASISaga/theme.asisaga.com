@@ -1,0 +1,76 @@
+{% comment %}
+  Business domain chatroom templates
+  ====================================
+  Provides HTML <template> elements for rendering Schema.org JSON-LD messages
+  in the executive boardroom context.  Register in chatroom-sample.js:
+
+    chatroom.registerDomain({
+      'schema:ScheduleAction':    'template-business-agenda',
+      'schema:AgentMessage':      'template-business-agent-msg',
+      'schema:UserMessage':       'template-business-user-msg',
+      'schema:CommunicateAction': 'template-business-typing',
+      '__agent_message':          'schema:AgentMessage',
+      '__user_message':           'schema:UserMessage',
+    });
+
+  data-schema="path.to.value"      — fills element.textContent + removes [hidden]
+  data-schema-avatar="id.path"     — adds chatroom__avatar--<id> CSS class + sets initials/icon
+  data-schema-avatar-icon="path"   — overrides avatar with Font Awesome icon class from data
+  data-schema-list="path"          — renders array as tool-result-item list
+  data-schema-parent-show="path"   — removes [hidden] from this element when path has a value
+{% endcomment %}
+
+<template id="template-business-agenda">
+  <div class="chatroom__system-message chatroom__system-message--agenda">
+    <span class="chatroom__agenda-label" data-schema="description" hidden></span>
+    <span class="chatroom__agenda-title" data-schema="name" hidden></span>
+  </div>
+</template>
+
+<template id="template-business-agent-msg">
+  <div class="chatroom__message chatroom__message--ai">
+    <div class="chatroom__message-row">
+      <span class="chatroom__avatar"
+            data-schema-avatar="sender.identifier"
+            data-schema-avatar-icon="sender.icon"
+            aria-hidden="true"></span>
+      <div class="chatroom__message-body">
+        <header class="chatroom__message-meta">
+          <strong class="chatroom__author" data-schema="sender.name" hidden></strong>
+          <span class="chatroom__agent-role" data-schema="sender.jobTitle" hidden></span>
+          <time class="chatroom__time" data-schema="dateSent" hidden></time>
+          <span class="chatroom__tool-badge" title="Tool invoked" data-schema-parent-show="tool" hidden>
+            <i class="fas fa-wrench" aria-hidden="true"></i>
+            <span class="chatroom__tool-badge-text" data-schema="tool"></span>
+          </span>
+        </header>
+        <p class="chatroom__text" data-schema="text"></p>
+        <ul class="chatroom__tool-results" data-schema-list="toolResults" hidden></ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="template-business-user-msg">
+  <div class="chatroom__message chatroom__message--own">
+    <div class="chatroom__message-row">
+      <div class="chatroom__message-body">
+        <header class="chatroom__message-meta">
+          <strong class="chatroom__author" data-schema="sender.name" hidden></strong>
+          <time class="chatroom__time" data-schema="dateSent" hidden></time>
+        </header>
+        <p class="chatroom__text" data-schema="text"></p>
+      </div>
+      <span class="chatroom__avatar chatroom__avatar--you" aria-hidden="true">You</span>
+    </div>
+  </div>
+</template>
+
+<template id="template-business-typing">
+  <div class="chatroom__typing">
+    <span class="chatroom__avatar"
+          data-schema-avatar="agent.identifier"
+          aria-hidden="true"></span>
+    <em class="chatroom__typing-text" data-schema="description"></em>
+  </div>
+</template>
