@@ -88,7 +88,7 @@
     @include genesis-entity('secondary');     // each panel carries the visual surface
 
     .example-accordion__header {
-      @include genesis-cognition('heading');
+      @include genesis-cognition('axiom');
     }
 
     .example-accordion__body {
