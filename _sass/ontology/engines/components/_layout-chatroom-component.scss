@@ -867,6 +867,14 @@
       }
     }
 
+    // Reset boardroom-specific chrome from the base .chatroom__message-body rule.
+    // The party theme delegates the full bubble visual to this single terminal
+    // element; the .chatroom__message wrapper remains a layout-only spacer.
+    .chatroom__message-body {
+      background: oklch(0.13 0.04 280);
+      border: none;
+    }
+
     // Host (DJ Bot) messages
     .chatroom__message--host {
       .chatroom__message-body {
