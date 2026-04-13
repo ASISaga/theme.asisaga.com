@@ -1,0 +1,93 @@
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "name": "Genesis Ontological Categories",
+  "description": "The six semantic categories that form the foundation of the Genesis Design System. Each category owns a distinct set of CSS concerns and maps intent to visual output.",
+  "hasDefinedTerm": [
+    {
+      "@type": "DefinedTerm",
+      "name": "Environment",
+      "description": "Spatial organization and layout. Owns grid, flex, gap, and max-width properties. Controls how content flows across the page.",
+      "termCode": "genesis-environment",
+      "inDefinedTermSet": "Genesis Ontology",
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "variant", "value": "distributed" },
+        { "@type": "PropertyValue", "name": "variant", "value": "focused" },
+        { "@type": "PropertyValue", "name": "variant", "value": "associative" },
+        { "@type": "PropertyValue", "name": "variant", "value": "chronological" },
+        { "@type": "PropertyValue", "name": "variant", "value": "manifest" }
+      ]
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Entity",
+      "description": "Visual presence and material properties. Owns padding, border, border-radius, and surface treatment. Defines how a component looks as a physical object.",
+      "termCode": "genesis-entity",
+      "inDefinedTermSet": "Genesis Ontology",
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "variant", "value": "primary" },
+        { "@type": "PropertyValue", "name": "variant", "value": "secondary" },
+        { "@type": "PropertyValue", "name": "variant", "value": "imperative" },
+        { "@type": "PropertyValue", "name": "variant", "value": "latent" },
+        { "@type": "PropertyValue", "name": "variant", "value": "aggregate" },
+        { "@type": "PropertyValue", "name": "variant", "value": "ancestral" }
+      ]
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Cognition",
+      "description": "Typography and information intent. Owns font-size, font-weight, font-family, and line-height. Each variant represents a distinct voice for content.",
+      "termCode": "genesis-cognition",
+      "inDefinedTermSet": "Genesis Ontology",
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "variant", "value": "axiom" },
+        { "@type": "PropertyValue", "name": "variant", "value": "discourse" },
+        { "@type": "PropertyValue", "name": "variant", "value": "protocol" },
+        { "@type": "PropertyValue", "name": "variant", "value": "gloss" },
+        { "@type": "PropertyValue", "name": "variant", "value": "motive" },
+        { "@type": "PropertyValue", "name": "variant", "value": "quantum" }
+      ]
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Synapse",
+      "description": "Interaction and navigation patterns. Owns hover, focus, cursor, and transition properties. Maps user actions to visual feedback.",
+      "termCode": "genesis-synapse",
+      "inDefinedTermSet": "Genesis Ontology",
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "variant", "value": "navigate" },
+        { "@type": "PropertyValue", "name": "variant", "value": "execute" },
+        { "@type": "PropertyValue", "name": "variant", "value": "inquiry" },
+        { "@type": "PropertyValue", "name": "variant", "value": "destructive" },
+        { "@type": "PropertyValue", "name": "variant", "value": "social" }
+      ]
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "State",
+      "description": "Temporal conditions and lifecycle. Owns animation, transition, opacity, and filter properties. Represents how content changes over time.",
+      "termCode": "genesis-state",
+      "inDefinedTermSet": "Genesis Ontology",
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "variant", "value": "stable" },
+        { "@type": "PropertyValue", "name": "variant", "value": "evolving" },
+        { "@type": "PropertyValue", "name": "variant", "value": "deprecated" },
+        { "@type": "PropertyValue", "name": "variant", "value": "locked" },
+        { "@type": "PropertyValue", "name": "variant", "value": "simulated" }
+      ]
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Atmosphere",
+      "description": "Sensory texture and emotional tone. Owns background, color, box-shadow, and ambient effects. Sets the mood of a page region.",
+      "termCode": "genesis-atmosphere",
+      "inDefinedTermSet": "Genesis Ontology",
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "variant", "value": "neutral" },
+        { "@type": "PropertyValue", "name": "variant", "value": "ethereal" },
+        { "@type": "PropertyValue", "name": "variant", "value": "void" },
+        { "@type": "PropertyValue", "name": "variant", "value": "vibrant" }
+      ]
+    }
+  ]
+}

@@ -1,57 +1,56 @@
 ---
 layout: article
-title: "The Architecture of Modern Web Layouts"
-subtitle: "From table hacks to semantic grids — a practitioner's guide"
-author: "Jane Smith"
-date: 2024-01-20
+title: "The Architecture of Ontological Design Systems"
+subtitle: "From utility classes to semantic intent — a three-tier approach to CSS architecture"
+author: "ASI Saga"
+date: 2026-03-20
 reading_time: 12
 toc: true
 related_articles: true
 ---
 
-Web layouts have always reflected the tools available. Tables gave way to floats, floats to flexbox, flexbox to grid. Each generation removed a hack and replaced it with intent.
+{% assign article_data = site.data.samples.article %}
 
-## The table era
+{{ article_data.articleBody }}
 
-Early layouts were built from `<table>` elements. They worked, barely:
+## The Three Tiers
 
-- Inflexible at every breakpoint
-- Impossible to maintain at scale
-- Semantically meaningless
+{% for topic in article_data.about %}
+### {{ topic.name }}
 
-The web outgrew them in under a decade.
+{{ topic.description }}
 
-## The modern toolkit
+{% endfor %}
 
-Today four primitives handle virtually every layout need:
+## The Six Ontological Categories
 
-1. **CSS Grid** — two-dimensional placement with named areas and tracks
-2. **Flexbox** — single-axis distribution with automatic wrapping
-3. **Custom Properties** — runtime-variable tokens that cascade through components
-4. **Container Queries** — responsive rules scoped to the component, not the viewport
+The engine implements six semantic categories, each owning a distinct slice of CSS:
 
-Together they make external grid frameworks unnecessary.
+{% for term in site.data.samples.ontology.hasDefinedTerm %}
+### {{ term.name }}
 
-## Layout patterns in practice
+{{ term.description }}
 
-### The reading column
+**Variants:**
+{% for prop in term.additionalProperty %}`{{ prop.value }}`{% unless forloop.last %}, {% endunless %}{% endfor %}
 
-A single centered column, 60–75 characters wide. Ideal for long-form content like this article. The `focused` environment mixin produces it with one line of SCSS.
+{% endfor %}
 
-### The dashboard grid
+## Production Layouts
 
-A dense, auto-fitting grid of metric panels. The `distributed` environment mixin handles column count, gap, and reflow. No media queries required.
+The theme ships with {{ site.data.samples.layouts.numberOfItems }} production-ready layouts:
 
-### The sidebar + content pair
+{% for layout_item in site.data.samples.layouts.itemListElement %}
+{% assign layout = layout_item.item %}
+- **{{ layout.name }}** — {{ layout.description | truncate: 80 }}
+{% endfor %}
 
-Documentation pages, settings panels, and admin tools all share this shape. The `convergent` environment mixin sets the ratio and collapse behavior.
+## Further Reading
 
-## Where the ontology fits
+- Browse the [sample pages](/samples/) to see every layout in action
+- Read the [FAQ](/samples/knowledge/faq.html) for common questions
+- View the [getting started guide](/samples/knowledge/docs.html) for installation steps
 
-In the Genesis design system, each CSS concern belongs to exactly one ontological category. Layout is owned by `environment`. Typography by `cognition`. Surface treatment by `entity`. Mood by `atmosphere`.
-
-This separation means a component's visual properties never conflict with its spatial properties. Refactoring one layer cannot break another.
-
-## Conclusion
-
-The best layout systems disappear. You describe what a region *is*, and the system determines how it looks. That's the direction modern CSS is heading — and it's where ontological design already lives.
+<script type="application/ld+json">
+{{ article_data | jsonify }}
+</script>

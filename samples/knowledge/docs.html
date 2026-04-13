@@ -14,78 +14,85 @@ nav_items:
   - title: "Layouts"
     url: "/docs/layouts"
     children:
-      - title: "Base Templates"
-        url: "/docs/layouts/base"
-      - title: "Specialized"
-        url: "/docs/layouts/specialized"
-  - title: "Components"
-    url: "/docs/components"
+      - title: "Content-Driven"
+        url: "/docs/layouts/content"
+      - title: "Application"
+        url: "/docs/layouts/application"
+  - title: "Ontology"
+    url: "/docs/ontology"
   - title: "Customization"
     url: "/docs/customization"
 prev:
   title: "Introduction"
   url: "/docs/introduction"
 next:
-  title: "Layout Basics"
-  url: "/docs/layout-basics"
+  title: "Ontological Categories"
+  url: "/docs/ontology"
 ---
 
-This page walks you through installing the theme and building your first page.
+{% assign howto = site.data.samples.getting_started %}
+{% assign theme_data = site.data.samples.theme %}
+
+{{ howto.description }}
 
 ## Prerequisites
 
-- Jekyll 4.0+
-- Ruby 2.7+
-- Familiarity with YAML front matter
+{% for tool in howto.tool %}
+- {{ tool.name }}
+{% endfor %}
 
 ## Installation
 
-### 1. Clone
+{% for step in howto.step limit: 3 %}
+### {{ step.position }}. {{ step.name }}
 
+{{ step.text }}
+
+{% if step.itemListElement %}
 ```bash
-git clone https://github.com/ASISaga/theme.asisaga.com.git
-cd theme.asisaga.com
+{{ step.itemListElement.text }}
 ```
+{% endif %}
 
-### 2. Install dependencies
-
-```bash
-bundle install
-```
-
-### 3. Serve locally
-
-```bash
-bundle exec jekyll serve
-```
+{% endfor %}
 
 Open `http://localhost:4000`.
 
-## Your first page
+## {{ howto.step[3].name }}
 
-Create a file with front matter specifying the layout:
+{{ howto.step[3].text }}
 
-```yaml
----
-layout: post
-title: "Hello World"
----
-```
+{% if howto.step[3].itemListElement %}
+{{ howto.step[3].itemListElement.text }}
+{% endif %}
 
-Write your content below the front matter block. The layout handles typography, spacing, and responsive behavior.
+## Available Layouts
 
-## Available layouts
+{% assign categories = "" | split: "" %}
+{% for layout_item in site.data.samples.layouts.itemListElement %}
+{% assign cat = layout_item.item.category %}
+{% unless categories contains cat %}
+{% assign categories = categories | push: cat %}
+{% endunless %}
+{% endfor %}
 
 | Category | Layouts |
 |----------|---------|
-| Content | post, article, archive, profile |
-| Marketing | landing, gallery, form |
-| Knowledge | docs, faq |
-| Application | dashboard, chatroom, search, settings |
-| Utility | minimal, splash |
+{% for cat in categories %}| {{ cat }} | {% for layout_item in site.data.samples.layouts.itemListElement %}{% if layout_item.item.category == cat %}{{ layout_item.item.identifier }}{% unless forloop.last %}, {% endunless %}{% endif %}{% endfor %} |
+{% endfor %}
 
-## Next steps
+## Ontological Categories
 
-- Read [Layout Basics](/docs/layout-basics) to understand the hierarchy
-- Browse [Components](/docs/components) for reusable includes
-- Check [Customization](/docs/customization) for token overrides
+{% for term in site.data.samples.ontology.hasDefinedTerm %}
+- **{{ term.name }}** (`{{ term.termCode }}`) — {{ term.description | truncate: 80 }}
+{% endfor %}
+
+## Next Steps
+
+- Browse [{{ site.data.samples.layouts.numberOfItems }} sample layouts](/samples/) to see every layout in action
+- Read the [FAQ](/samples/knowledge/faq.html) for common questions
+- Explore the [ontological categories](/samples/content-driven/article.html) in depth
+
+<script type="application/ld+json">
+{{ howto | jsonify }}
+</script>

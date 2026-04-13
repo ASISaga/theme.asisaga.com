@@ -1,14 +1,22 @@
 ---
 layout: splash
-title: "Something New"
-subtitle: "We're building the next evolution of the Genesis Design System. Be the first to know."
+title: "Genesis 4.0"
+subtitle: "The next evolution of the ontological design system. Deeper semantic categories. Smarter genome. Zero compromise."
 countdown: true
 countdown_target: "2027-01-01T00:00:00"
 email_capture:
   button_text: "Notify Me"
 social_links:
-  - platform: "twitter"
-    url: "https://twitter.com/ASISaga"
   - platform: "github"
-    url: "https://github.com/ASISaga"
+    url: "https://github.com/ASISaga/theme.asisaga.com"
 ---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Genesis 4.0 — Coming Soon",
+  "description": "The next evolution of the ontological design system.",
+  "about": {{ site.data.samples.theme | jsonify }}
+}
+</script>

@@ -3,6 +3,10 @@ layout: default
 title: "Sample Pages — Genesis Theme"
 ---
 
+{% assign theme_data = site.data.samples.theme %}
+{% assign features = site.data.samples.features %}
+{% assign layouts_data = site.data.samples.layouts %}
+
 <div class="samples-index">
 
   <!-- ======================================================
@@ -35,202 +39,76 @@ title: "Sample Pages — Genesis Theme"
        Page Header
   ======================================================== -->
   <header class="samples-index__header">
-    <h1 class="samples-index__title">Genesis Theme · Sample Pages</h1>
+    <h1 class="samples-index__title">{{ theme_data.name }} · Sample Pages</h1>
     <p class="samples-index__subtitle">
-      Explore every layout in action. Use the toggle above to preview each sample
-      in dark or light mode.
+      {{ layouts_data.numberOfItems }} production layouts showcasing the ontological design system.
+      Use the toggle above to preview each sample in dark or light mode.
     </p>
   </header>
 
   <!-- ======================================================
-       Sample Grid
+       Sample Grid — driven by _data/samples/layouts.json
   ======================================================== -->
   <main class="samples-index__grid" id="skip-samples">
 
-    <!-- Content-Driven -->
-    <section class="samples-index__category">
-      <h2 class="samples-index__category-heading">
-        <i class="fas fa-file-alt" aria-hidden="true"></i>
-        Content-Driven
-      </h2>
-      <ul class="samples-index__list">
-        <li class="samples-index__item">
-          <a class="samples-index__link" href="/samples/content-driven/post.html">
-            <i class="fas fa-newspaper samples-index__link-icon" aria-hidden="true"></i>
-            <span class="samples-index__link-body">
-              <strong>Post</strong>
-              <span>Blog post with metadata, tags, and reading time</span>
-            </span>
-          </a>
-        </li>
-        <li class="samples-index__item">
-          <a class="samples-index__link" href="/samples/content-driven/article.html">
-            <i class="fas fa-book-open samples-index__link-icon" aria-hidden="true"></i>
-            <span class="samples-index__link-body">
-              <strong>Article</strong>
-              <span>Long-form article with table of contents</span>
-            </span>
-          </a>
-        </li>
-        <li class="samples-index__item">
-          <a class="samples-index__link" href="/samples/content-driven/archive.html">
-            <i class="fas fa-list samples-index__link-icon" aria-hidden="true"></i>
-            <span class="samples-index__link-body">
-              <strong>Archive</strong>
-              <span>List page with filtering and sorting</span>
-            </span>
-          </a>
-        </li>
-        <li class="samples-index__item">
-          <a class="samples-index__link" href="/samples/content-driven/profile.html">
-            <i class="fas fa-user samples-index__link-icon" aria-hidden="true"></i>
-            <span class="samples-index__link-body">
-              <strong>Profile</strong>
-              <span>User profile with bio and social links</span>
-            </span>
-          </a>
-        </li>
-      </ul>
-    </section>
+    {% assign categories = "" | split: "" %}
+    {% for layout_item in layouts_data.itemListElement %}
+    {% assign cat = layout_item.item.category %}
+    {% unless categories contains cat %}
+    {% assign categories = categories | push: cat %}
+    {% endunless %}
+    {% endfor %}
 
-    <!-- Marketing -->
+    {% for cat in categories %}
     <section class="samples-index__category">
       <h2 class="samples-index__category-heading">
-        <i class="fas fa-bullhorn" aria-hidden="true"></i>
-        Marketing
+        {% case cat %}
+          {% when "Content-Driven" %}<i class="fas fa-file-alt" aria-hidden="true"></i>
+          {% when "Marketing" %}<i class="fas fa-bullhorn" aria-hidden="true"></i>
+          {% when "Knowledge" %}<i class="fas fa-graduation-cap" aria-hidden="true"></i>
+          {% when "Application" %}<i class="fas fa-laptop-code" aria-hidden="true"></i>
+          {% when "Utility" %}<i class="fas fa-tools" aria-hidden="true"></i>
+        {% endcase %}
+        {{ cat }}
       </h2>
       <ul class="samples-index__list">
+        {% for layout_item in layouts_data.itemListElement %}
+        {% assign layout = layout_item.item %}
+        {% if layout.category == cat %}
         <li class="samples-index__item">
-          <a class="samples-index__link" href="/samples/marketing/landing.html">
-            <i class="fas fa-rocket samples-index__link-icon" aria-hidden="true"></i>
+          <a class="samples-index__link" href="{{ layout.url }}">
+            {% case layout.identifier %}
+              {% when "post" %}<i class="fas fa-newspaper samples-index__link-icon" aria-hidden="true"></i>
+              {% when "article" %}<i class="fas fa-book-open samples-index__link-icon" aria-hidden="true"></i>
+              {% when "archive" %}<i class="fas fa-list samples-index__link-icon" aria-hidden="true"></i>
+              {% when "profile" %}<i class="fas fa-user samples-index__link-icon" aria-hidden="true"></i>
+              {% when "landing" %}<i class="fas fa-rocket samples-index__link-icon" aria-hidden="true"></i>
+              {% when "gallery" %}<i class="fas fa-images samples-index__link-icon" aria-hidden="true"></i>
+              {% when "form" %}<i class="fas fa-envelope samples-index__link-icon" aria-hidden="true"></i>
+              {% when "docs" %}<i class="fas fa-book samples-index__link-icon" aria-hidden="true"></i>
+              {% when "faq" %}<i class="fas fa-question-circle samples-index__link-icon" aria-hidden="true"></i>
+              {% when "dashboard" %}<i class="fas fa-chart-bar samples-index__link-icon" aria-hidden="true"></i>
+              {% when "chatroom" %}<i class="fas fa-comments samples-index__link-icon" aria-hidden="true"></i>
+              {% when "search" %}<i class="fas fa-search samples-index__link-icon" aria-hidden="true"></i>
+              {% when "settings" %}<i class="fas fa-cog samples-index__link-icon" aria-hidden="true"></i>
+              {% when "splash" %}<i class="fas fa-star samples-index__link-icon" aria-hidden="true"></i>
+              {% when "404" %}<i class="fas fa-exclamation-triangle samples-index__link-icon" aria-hidden="true"></i>
+            {% endcase %}
             <span class="samples-index__link-body">
-              <strong>Landing</strong>
-              <span>Marketing page with hero, features, and CTAs</span>
+              <strong>{{ layout.name | remove: " Layout" }}</strong>
+              <span>{{ layout.description | truncate: 80 }}</span>
             </span>
           </a>
         </li>
-        <li class="samples-index__item">
-          <a class="samples-index__link" href="/samples/marketing/gallery.html">
-            <i class="fas fa-images samples-index__link-icon" aria-hidden="true"></i>
-            <span class="samples-index__link-body">
-              <strong>Gallery</strong>
-              <span>Image gallery with categories and filtering</span>
-            </span>
-          </a>
-        </li>
-        <li class="samples-index__item">
-          <a class="samples-index__link" href="/samples/marketing/form.html">
-            <i class="fas fa-envelope samples-index__link-icon" aria-hidden="true"></i>
-            <span class="samples-index__link-body">
-              <strong>Form</strong>
-              <span>Contact form with validation and fields</span>
-            </span>
-          </a>
-        </li>
+        {% endif %}
+        {% endfor %}
       </ul>
     </section>
-
-    <!-- Knowledge -->
-    <section class="samples-index__category">
-      <h2 class="samples-index__category-heading">
-        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-        Knowledge
-      </h2>
-      <ul class="samples-index__list">
-        <li class="samples-index__item">
-          <a class="samples-index__link" href="/samples/knowledge/docs.html">
-            <i class="fas fa-book samples-index__link-icon" aria-hidden="true"></i>
-            <span class="samples-index__link-body">
-              <strong>Docs</strong>
-              <span>Documentation page with navigation and breadcrumbs</span>
-            </span>
-          </a>
-        </li>
-        <li class="samples-index__item">
-          <a class="samples-index__link" href="/samples/knowledge/faq.html">
-            <i class="fas fa-question-circle samples-index__link-icon" aria-hidden="true"></i>
-            <span class="samples-index__link-body">
-              <strong>FAQ</strong>
-              <span>FAQ page with accordion interface</span>
-            </span>
-          </a>
-        </li>
-      </ul>
-    </section>
-
-    <!-- Application -->
-    <section class="samples-index__category">
-      <h2 class="samples-index__category-heading">
-        <i class="fas fa-laptop-code" aria-hidden="true"></i>
-        Application
-      </h2>
-      <ul class="samples-index__list">
-        <li class="samples-index__item">
-          <a class="samples-index__link" href="/samples/application/dashboard.html">
-            <i class="fas fa-chart-bar samples-index__link-icon" aria-hidden="true"></i>
-            <span class="samples-index__link-body">
-              <strong>Dashboard</strong>
-              <span>Analytics dashboard with widgets and metrics</span>
-            </span>
-          </a>
-        </li>
-        <li class="samples-index__item">
-          <a class="samples-index__link" href="/samples/application/chatroom.html">
-            <i class="fas fa-comments samples-index__link-icon" aria-hidden="true"></i>
-            <span class="samples-index__link-body">
-              <strong>Chatroom</strong>
-              <span>Real-time MCP domain chat interface</span>
-            </span>
-          </a>
-        </li>
-        <li class="samples-index__item">
-          <a class="samples-index__link" href="/samples/application/search.html">
-            <i class="fas fa-search samples-index__link-icon" aria-hidden="true"></i>
-            <span class="samples-index__link-body">
-              <strong>Search</strong>
-              <span>Search results page with filters</span>
-            </span>
-          </a>
-        </li>
-        <li class="samples-index__item">
-          <a class="samples-index__link" href="/samples/application/settings.html">
-            <i class="fas fa-cog samples-index__link-icon" aria-hidden="true"></i>
-            <span class="samples-index__link-body">
-              <strong>Settings</strong>
-              <span>User settings with tabbed interface</span>
-            </span>
-          </a>
-        </li>
-      </ul>
-    </section>
-
-    <!-- Utility -->
-    <section class="samples-index__category">
-      <h2 class="samples-index__category-heading">
-        <i class="fas fa-tools" aria-hidden="true"></i>
-        Utility
-      </h2>
-      <ul class="samples-index__list">
-        <li class="samples-index__item">
-          <a class="samples-index__link" href="/samples/utility/404.html">
-            <i class="fas fa-exclamation-triangle samples-index__link-icon" aria-hidden="true"></i>
-            <span class="samples-index__link-body">
-              <strong>404</strong>
-              <span>Error page with navigation assistance</span>
-            </span>
-          </a>
-        </li>
-        <li class="samples-index__item">
-          <a class="samples-index__link" href="/samples/utility/splash.html">
-            <i class="fas fa-star samples-index__link-icon" aria-hidden="true"></i>
-            <span class="samples-index__link-body">
-              <strong>Splash</strong>
-              <span>Full-screen loading or intro screen</span>
-            </span>
-          </a>
-        </li>
-      </ul>
-    </section>
+    {% endfor %}
 
   </main>
 </div>
+
+<script type="application/ld+json">
+{{ theme_data | jsonify }}
+</script>

@@ -1,72 +1,31 @@
 ---
 layout: faq
 title: "FAQ"
-description: "Common questions about the Genesis Design System."
+description: "Common questions about the Genesis Semantic Design System."
 search: true
-categories: ["General", "Technical", "Licensing"]
+categories: ["General", "Technical", "Architecture"]
 contact_cta:
-  description: "Still stuck? We respond within one business day."
-  text: "Contact Support"
-  url: "/contact"
+  description: "Can't find what you need? Check the documentation or reach out."
+  text: "View Documentation"
+  url: "/samples/knowledge/docs.html"
 ---
+
+{% assign faq_data = site.data.samples.faq %}
 
 <div class="faq-list" id="faqAccordion">
 
+  {% for qa in faq_data.mainEntity %}
   {% include layouts/faq/faq-item.html
-    id="1"
-    question="What ships with the theme?"
-    answer="16 production layouts — blog, article, landing, gallery, form, docs, FAQ, dashboard, chatroom, search, settings, archive, profile, minimal, splash, and a default base. Each layout is responsive and WCAG AA compliant."
-    expanded=true
+    id=forloop.index
+    question=qa.name
+    answer=qa.acceptedAnswer.text
+    expanded=forloop.first
     parent="faqAccordion"
   %}
-
-  {% include layouts/faq/faq-item.html
-    id="2"
-    question="Do I need to know SCSS?"
-    answer="Basic HTML and YAML front matter are enough to build pages. The ontological SCSS layer is there for theme customization, but you don't need to touch it for standard content."
-    parent="faqAccordion"
-  %}
-
-  {% include layouts/faq/faq-item.html
-    id="3"
-    question="How does the ontological system work?"
-    answer="Every CSS concern — layout, color, typography, interaction, state — belongs to one of six semantic categories. You describe what a region is, and the mixins produce the correct styles."
-    parent="faqAccordion"
-  %}
-
-  {% include layouts/faq/faq-item.html
-    id="4"
-    question="Is the theme responsive?"
-    answer="Yes. Layouts use fluid typography, auto-fit grids, and container queries. No separate mobile stylesheet is needed."
-    parent="faqAccordion"
-  %}
-
-  {% include layouts/faq/faq-item.html
-    id="5"
-    question="Can I override design tokens?"
-    answer="All tokens — colors, spacing, radii, type scales — are defined as SCSS variables and CSS custom properties. Override them in your subdomain's _sass/main.scss."
-    parent="faqAccordion"
-  %}
-
-  {% include layouts/faq/faq-item.html
-    id="6"
-    question="Does it support dark mode?"
-    answer="Dark mode is built in. The theme responds to the user's system preference via prefers-color-scheme, with an optional manual toggle."
-    parent="faqAccordion"
-  %}
-
-  {% include layouts/faq/faq-item.html
-    id="7"
-    question="How do I get updates?"
-    answer="The theme is distributed as a Jekyll remote theme. Point your _config.yml at the repository and updates pull in automatically on build."
-    parent="faqAccordion"
-  %}
-
-  {% include layouts/faq/faq-item.html
-    id="8"
-    question="Can I use this commercially?"
-    answer="Yes. The theme ships under an open-source license that permits both personal and commercial use. See the LICENSE file for details."
-    parent="faqAccordion"
-  %}
+  {% endfor %}
 
 </div>
+
+<script type="application/ld+json">
+{{ faq_data | jsonify }}
+</script>

@@ -1,0 +1,69 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Genesis Design System Features",
+  "description": "Core capabilities of the Genesis Semantic Design System",
+  "numberOfItems": 6,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Thing",
+        "name": "Ontological SCSS Engine",
+        "description": "Six semantic categories — environment, entity, cognition, synapse, state, and atmosphere — replace raw CSS with intent-driven mixins. Describe what a region is and the engine determines how it looks.",
+        "identifier": "ontology-engine"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Thing",
+        "name": "20+ Production Layouts",
+        "description": "Blog posts, articles, dashboards, galleries, chatrooms, documentation, FAQ, landing pages, forms, search, settings, profiles, and more — each layout is responsive and WCAG AA compliant out of the box.",
+        "identifier": "layouts"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Thing",
+        "name": "OKLCH Color System",
+        "description": "Perceptually uniform OKLCH color space with HDR readiness. Every color token is defined in OKLCH for consistent lightness perception across the entire palette.",
+        "identifier": "oklch-colors"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Thing",
+        "name": "Accessibility First",
+        "description": "WCAG AA compliant with proper landmarks, skip links, focus states, 44px touch targets, reduced-motion support, and high-contrast mode. Accessibility is built into the ontology, not bolted on.",
+        "identifier": "accessibility"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Thing",
+        "name": "Living Genome Architecture",
+        "description": "The design system evolves through ontological propositions reviewed by AI agents. Every variant has an origin story documented in GENOME.md, creating design with memory.",
+        "identifier": "living-genome"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Thing",
+        "name": "Fluid Typography & Responsive Grids",
+        "description": "Fluid clamp()-based type scaling from mobile to ultrawide. Auto-fit CSS Grid layouts with container queries for component-level responsiveness. No media-query breakpoints needed.",
+        "identifier": "responsive"
+      }
+    }
+  ]
+}

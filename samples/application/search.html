@@ -1,83 +1,34 @@
 ---
 layout: search
 title: "Search"
-query: "jekyll layouts"
+query: "ontological design"
 results_count: 47
 filters:
   - name: "Content Type"
-  - name: "Date Range"
-  - name: "Author"
+  - name: "Category"
+  - name: "Topic"
 ---
+
+{% assign theme_data = site.data.samples.theme %}
+{% assign layouts_data = site.data.samples.layouts %}
 
 <div class="search-results-list">
 
+  {% for layout_item in layouts_data.itemListElement limit: 5 %}
+  {% assign layout = layout_item.item %}
   <article class="search-result">
     <h3 class="search-result__title">
-      <a href="/docs/layouts">Getting Started with <mark>Jekyll</mark> <mark>Layouts</mark></a>
+      <a href="{{ layout.url }}">{{ layout.name }} — <mark>{{ layout.category }}</mark></a>
     </h3>
     <div class="search-result__meta">
-      <span><i class="far fa-folder" aria-hidden="true"></i> Documentation</span>
-      <span><i class="far fa-calendar" aria-hidden="true"></i> Jan 15, 2024</span>
-      <span><i class="far fa-user" aria-hidden="true"></i> John Doe</span>
+      <span><i class="far fa-folder" aria-hidden="true"></i> {{ layout.category }}</span>
+      <span><i class="far fa-layer-group" aria-hidden="true"></i> Layout</span>
     </div>
     <p class="search-result__excerpt">
-      Covers all aspects of using <mark>Jekyll</mark> <mark>layouts</mark> — base templates, specialized layouts, and content structure.
+      {{ layout.description }}
     </p>
   </article>
-
-  <article class="search-result">
-    <h3 class="search-result__title">
-      <a href="/docs/layout-taxonomy"><mark>Layout</mark> Taxonomy</a>
-    </h3>
-    <div class="search-result__meta">
-      <span><i class="far fa-folder" aria-hidden="true"></i> Documentation</span>
-      <span><i class="far fa-calendar" aria-hidden="true"></i> Jan 12, 2024</span>
-      <span><i class="far fa-user" aria-hidden="true"></i> Sarah Johnson</span>
-    </div>
-    <p class="search-result__excerpt">
-      How <mark>layouts</mark> inherit from base templates and how to choose the right one for your content.
-    </p>
-  </article>
-
-  <article class="search-result">
-    <h3 class="search-result__title">
-      <a href="/samples/post">Sample Post Using <mark>Layout</mark></a>
-    </h3>
-    <div class="search-result__meta">
-      <span><i class="far fa-folder" aria-hidden="true"></i> Sample</span>
-      <span><i class="far fa-calendar" aria-hidden="true"></i> Jan 15, 2024</span>
-    </div>
-    <p class="search-result__excerpt">
-      A working blog post demonstrating the post <mark>layout</mark> with metadata, tags, and responsive typography.
-    </p>
-  </article>
-
-  <article class="search-result">
-    <h3 class="search-result__title">
-      <a href="/docs/quick-reference"><mark>Layout</mark> Quick Reference</a>
-    </h3>
-    <div class="search-result__meta">
-      <span><i class="far fa-folder" aria-hidden="true"></i> Documentation</span>
-      <span><i class="far fa-calendar" aria-hidden="true"></i> Jan 20, 2024</span>
-    </div>
-    <p class="search-result__excerpt">
-      Front matter examples, component usage, and common patterns for every <mark>layout</mark> in the system.
-    </p>
-  </article>
-
-  <article class="search-result">
-    <h3 class="search-result__title">
-      <a href="/docs/implementation-guide">Implementation Guide</a>
-    </h3>
-    <div class="search-result__meta">
-      <span><i class="far fa-folder" aria-hidden="true"></i> Documentation</span>
-      <span><i class="far fa-calendar" aria-hidden="true"></i> Jan 18, 2024</span>
-      <span><i class="far fa-user" aria-hidden="true"></i> Mike Park</span>
-    </div>
-    <p class="search-result__excerpt">
-      Comprehensive reference for all <mark>layouts</mark> — usage examples, customization, and best practices.
-    </p>
-  </article>
+  {% endfor %}
 
 </div>
 
@@ -88,3 +39,16 @@ filters:
   <a href="#" class="search-pagination__link">3</a>
   <a href="#" class="search-pagination__link">Next</a>
 </nav>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SearchResultsPage",
+  "name": "Search Results — Genesis Design System",
+  "about": {
+    "@type": "SoftwareSourceCode",
+    "name": "{{ theme_data.name }}",
+    "description": "{{ theme_data.description }}"
+  }
+}
+</script>

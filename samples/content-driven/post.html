@@ -1,35 +1,33 @@
 ---
 layout: post
-title: "Getting Started with Jekyll Layouts"
-date: 2024-01-15
-author: "John Doe"
-tags: ["Jekyll", "Layouts", "Tutorial"]
-categories: ["Web Development"]
+title: "The Ontological Approach to CSS Architecture"
+date: 2026-03-15
+author: "ASI Saga"
+tags: ["Ontological Design", "SCSS Architecture", "Semantic CSS", "Design Systems"]
+categories: ["Design Systems"]
 share: true
 ---
 
-Every static site needs structure. Jekyll's layout system gives you that structure — a way to define the bones of each page type once, then fill in the content.
+{% assign post_data = site.data.samples.post %}
 
-## What the post layout does
+{{ post_data.articleBody }}
 
-This layout handles blog posts and news entries. It ships with:
+## The Six Categories
 
-- Publication date, author, and estimated reading time
-- Tag and category display
-- Social sharing controls
-- Previous / next navigation
+The Genesis ontological engine divides all CSS concerns into six categories, each owning a distinct set of properties:
 
-## How it works
+{% for term in site.data.samples.ontology.hasDefinedTerm %}
+1. **{{ term.name }}** — {{ term.description | truncate: 120 }}
+{% endfor %}
 
-### Metadata
-The layout reads your front matter and renders date, author, and reading time at the top. No configuration beyond the YAML block.
+## Why This Matters
 
-### Tags
-Tags and categories render as compact labels. Readers can scan them to find related writing.
+When two mixins affect the same element, they never compete for the same CSS properties. Refactoring one layer cannot break another. A dashboard widget and a blog card can share the same `entity('primary')` surface treatment while living in completely different `environment` layouts.
 
-### Responsive
-The reading column is constrained for comfortable line lengths. Images, code blocks, and tables reflow on smaller screens.
+## Try It Yourself
 
-## Next steps
+The theme ships with {{ site.data.samples.layouts.numberOfItems }} production layouts, each built on this ontological foundation. Browse them all in the [sample pages index](/samples/).
 
-Copy this file, change the front matter, and start writing. The layout handles the rest.
+<script type="application/ld+json">
+{{ post_data | jsonify }}
+</script>

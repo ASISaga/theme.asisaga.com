@@ -1,0 +1,88 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Genesis Design System FAQ",
+  "description": "Frequently asked questions about the Genesis Semantic Design System, its ontological architecture, and how to use it.",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the Genesis Semantic Design System?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Genesis is an ontology-based SCSS engine that replaces raw CSS properties with six semantic categories: environment (layout), entity (surface), cognition (typography), synapse (interaction), state (lifecycle), and atmosphere (mood). You describe what a region is, and the engine produces the correct visual output."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many layouts ship with the theme?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The theme includes 20+ production-ready layouts: post, article, archive, profile, landing, gallery, form, docs, FAQ, dashboard, chatroom, search, settings, splash, minimal, app, and more. Each layout is responsive and WCAG AA compliant."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to know SCSS to use the theme?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Basic HTML and YAML front matter are enough to build pages with any included layout. The ontological SCSS layer is available for theme customization, but standard content works without touching it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the ontological approach to CSS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every CSS concern — layout, color, typography, interaction, state, mood — belongs to exactly one of six semantic categories. You use mixins like @include genesis-entity('primary') instead of writing raw padding, background, or border-radius. This prevents property conflicts and makes refactoring safe."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the theme accessible?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Accessibility is built into the ontology, not bolted on. The theme enforces WCAG AA color contrast (4.5:1 for text), 44px minimum touch targets, proper landmark elements, skip links, visible focus indicators, and supports prefers-reduced-motion and prefers-contrast media queries."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the Living Genome work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The design system evolves through ontological propositions — formal requests for new semantic variants. AI agents review each proposal for semantic purity and universal applicability. Approved variants are documented in GENOME.md with their origin story, creating a design system with memory."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What color system does the theme use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All colors are defined in OKLCH (Oklab Lightness Chroma Hue), a perceptually uniform color space that produces consistent lightness perception across the palette. The theme includes 150+ CSS custom properties for colors, spacing, typography, and effects."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the theme with dark mode?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Dark mode is built in and responds to the user's system preference via prefers-color-scheme, with an optional manual toggle. The void atmosphere variant provides deep-dark surfaces, while ethereal provides light translucent surfaces."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get theme updates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The theme is distributed as a Jekyll remote theme. Point your _config.yml at the repository and updates pull in automatically on build. No manual file copying needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this theme commercially?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The theme is released under the MIT license, which permits both personal and commercial use, modification, and distribution."
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 ---
 layout: landing
-title: "ASI Saga Design Genome"
+title: "Genesis Semantic Design System"
 hero:
   title: "The Ontological Design System"
   subtitle: "Ship interfaces that feel deliberate, premium, and unmistakably yours."
@@ -17,11 +17,14 @@ final_cta:
   url: "https://github.com/ASISaga/theme.asisaga.com"
 ---
 
-<!-- Support: one concrete proof point -->
+{% assign theme_data = site.data.samples.theme %}
+{% assign features = site.data.samples.features %}
+
+<!-- Proof point driven by data -->
 <section class="landing__proof" id="features">
   <genesis-environment logic="focused">
     <genesis-cognition intent="axiom">
-      <h2 class="landing__proof-headline">16 layouts. One semantic language.</h2>
+      <h2 class="landing__proof-headline">{{ site.data.samples.layouts.numberOfItems }} layouts. {{ site.data.samples.ontology.hasDefinedTerm | size }} semantic categories.</h2>
     </genesis-cognition>
     <genesis-cognition intent="discourse">
       <p class="landing__proof-body">
@@ -32,61 +35,63 @@ final_cta:
   </genesis-environment>
 </section>
 
-<!-- Detail: depth / atmosphere -->
+<!-- Feature pillars from data -->
 <section class="landing__detail">
   <genesis-environment logic="distributed">
     <div class="landing__pillars">
+      {% for feature in features.itemListElement limit: 3 %}
       <article class="landing__pillar">
         <genesis-cognition intent="motive">
-          <h3>Environment</h3>
+          <h3>{{ feature.item.name }}</h3>
         </genesis-cognition>
         <genesis-cognition intent="gloss">
-          <p>Spatial rhythm, grid architecture, and responsive flow — all from a single mixin.</p>
+          <p>{{ feature.item.description | truncate: 120 }}</p>
         </genesis-cognition>
       </article>
-      <article class="landing__pillar">
-        <genesis-cognition intent="motive">
-          <h3>Entity</h3>
-        </genesis-cognition>
-        <genesis-cognition intent="gloss">
-          <p>Visual identity for components — borders, padding, and surface treatment with semantic intent.</p>
-        </genesis-cognition>
-      </article>
-      <article class="landing__pillar">
-        <genesis-cognition intent="motive">
-          <h3>Cognition</h3>
-        </genesis-cognition>
-        <genesis-cognition intent="gloss">
-          <p>Typography with purpose. Headlines, body, captions, and code — each voice tuned to its role.</p>
-        </genesis-cognition>
-      </article>
+      {% endfor %}
     </div>
   </genesis-environment>
 </section>
 
-<!-- Social proof without cards -->
-<section class="landing__voices">
-  <genesis-environment logic="focused">
-    <genesis-cognition intent="axiom">
-      <h2 class="landing__voices-headline">Trusted by builders</h2>
-    </genesis-cognition>
-    <div class="landing__quotes">
-      <blockquote class="landing__quote">
-        <genesis-cognition intent="discourse">
-          <p>"The ontological approach changed how I think about CSS. Every property has a home."</p>
+<!-- Ontological categories from data -->
+<section class="landing__detail">
+  <genesis-environment logic="distributed">
+    <div class="landing__pillars">
+      {% for term in site.data.samples.ontology.hasDefinedTerm limit: 3 %}
+      <article class="landing__pillar">
+        <genesis-cognition intent="motive">
+          <h3>{{ term.name }}</h3>
         </genesis-cognition>
         <genesis-cognition intent="gloss">
-          <cite>— Alex Chen, Front-end Engineer</cite>
+          <p>{{ term.description | truncate: 120 }}</p>
         </genesis-cognition>
-      </blockquote>
-      <blockquote class="landing__quote">
-        <genesis-cognition intent="discourse">
-          <p>"Finally — a design system where the markup explains itself."</p>
-        </genesis-cognition>
-        <genesis-cognition intent="gloss">
-          <cite>— Maria Garcia, Design Systems Lead</cite>
-        </genesis-cognition>
-      </blockquote>
+      </article>
+      {% endfor %}
     </div>
   </genesis-environment>
 </section>
+
+<!-- Capabilities summary -->
+<section class="landing__voices">
+  <genesis-environment logic="focused">
+    <genesis-cognition intent="axiom">
+      <h2 class="landing__voices-headline">Built for builders</h2>
+    </genesis-cognition>
+    <div class="landing__quotes">
+      {% for feature in features.itemListElement offset: 3 limit: 3 %}
+      <blockquote class="landing__quote">
+        <genesis-cognition intent="discourse">
+          <p>"{{ feature.item.description }}"</p>
+        </genesis-cognition>
+        <genesis-cognition intent="gloss">
+          <cite>— {{ feature.item.name }}</cite>
+        </genesis-cognition>
+      </blockquote>
+      {% endfor %}
+    </div>
+  </genesis-environment>
+</section>
+
+<script type="application/ld+json">
+{{ theme_data | jsonify }}
+</script>

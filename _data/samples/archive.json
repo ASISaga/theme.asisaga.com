@@ -1,0 +1,48 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Genesis Design System Archive",
+  "description": "Complete content archive of articles, tutorials, and documentation about the Genesis Semantic Design System.",
+  "hasPart": [
+    {
+      "@type": "BlogPosting",
+      "headline": "The Ontological Approach to CSS Architecture",
+      "datePublished": "2026-03-15",
+      "description": "How six semantic categories replace raw CSS with intent-driven mixins.",
+      "url": "/samples/content-driven/post.html",
+      "keywords": ["Ontology", "SCSS", "Architecture"]
+    },
+    {
+      "@type": "Article",
+      "headline": "The Architecture of Ontological Design Systems",
+      "datePublished": "2026-03-20",
+      "description": "Three-tier architecture: content semantics, role mapping, and visual engine.",
+      "url": "/samples/content-driven/article.html",
+      "keywords": ["Architecture", "Three-Tier", "Engine"]
+    },
+    {
+      "@type": "TechArticle",
+      "headline": "OKLCH Color Science in Practice",
+      "datePublished": "2026-02-28",
+      "description": "How perceptually uniform OKLCH colors improve design consistency and accessibility.",
+      "url": "#",
+      "keywords": ["OKLCH", "Color", "Accessibility"]
+    },
+    {
+      "@type": "TechArticle",
+      "headline": "Fluid Typography Without Breakpoints",
+      "datePublished": "2026-02-15",
+      "description": "Using clamp() for responsive type that scales smoothly from mobile to ultrawide.",
+      "url": "#",
+      "keywords": ["Typography", "Fluid", "Responsive"]
+    },
+    {
+      "@type": "TechArticle",
+      "headline": "Living Genome: Evolving Design Through AI Collaboration",
+      "datePublished": "2026-01-30",
+      "description": "How AI agents review ontological propositions and grow the design system with memory.",
+      "url": "#",
+      "keywords": ["Genome", "AI", "Evolution"]
+    }
+  ]
+}

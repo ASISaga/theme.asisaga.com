@@ -1,0 +1,41 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ASI Saga",
+  "url": "https://asisaga.com",
+  "description": "Building the semantic design genome that powers every ASI Saga digital experience. A consciousness-expanding design language for the age of Artificial Superintelligence.",
+  "foundingDate": "2024",
+  "knowsAbout": [
+    "Semantic Design Systems",
+    "Ontological CSS Architecture",
+    "Accessible Web Development",
+    "Jekyll Theme Engineering",
+    "AI-Assisted Design Evolution"
+  ],
+  "member": [
+    {
+      "@type": "Person",
+      "name": "Genesis Theme Team",
+      "jobTitle": "Design Systems Engineering",
+      "description": "The collective behind the Genesis Semantic Design System — building the bridge between design intent and production CSS through ontological architecture.",
+      "knowsAbout": [
+        "Ontological Design Systems",
+        "SCSS Architecture",
+        "Web Accessibility (WCAG AA)",
+        "Fluid Typography",
+        "OKLCH Color Science",
+        "Jekyll Templating"
+      ],
+      "memberOf": {
+        "@type": "Organization",
+        "name": "ASI Saga"
+      }
+    }
+  ],
+  "project": {
+    "@type": "SoftwareSourceCode",
+    "name": "Genesis Semantic Design System",
+    "description": "An ontology-based SCSS engine with 20+ production layouts, six semantic categories, and a living genome architecture.",
+    "url": "https://github.com/ASISaga/theme.asisaga.com"
+  }
+}

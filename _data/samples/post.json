@@ -1,0 +1,23 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Ontological Approach to CSS Architecture",
+  "alternativeHeadline": "How the Genesis Design System replaces raw CSS with semantic intent",
+  "description": "Every CSS concern — layout, color, typography, interaction, state, mood — belongs to exactly one semantic category. This post explains how the Genesis ontological approach eliminates property conflicts, prevents specificity wars, and makes refactoring safe.",
+  "datePublished": "2026-03-15",
+  "dateModified": "2026-04-01",
+  "author": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  },
+  "keywords": ["ontological design", "SCSS architecture", "semantic CSS", "design systems", "Genesis theme"],
+  "articleSection": "Design Systems",
+  "wordCount": 850,
+  "articleBody": "Web layouts have always reflected the tools available. Tables gave way to floats, floats to flexbox, flexbox to grid. Each generation removed a hack and replaced it with intent. The Genesis Design System takes this evolution to its logical conclusion: instead of writing CSS properties directly, you describe what a region is. The engine determines how it looks.\n\nThe ontological approach assigns every CSS concern to one of six semantic categories. Layout belongs to environment. Typography belongs to cognition. Surface treatment belongs to entity. Mood belongs to atmosphere. Interactions belong to synapse. Lifecycle belongs to state.\n\nThis separation means a component's visual properties never conflict with its spatial properties. You can refactor one layer without breaking another. A dashboard widget and a blog card might share the same entity('primary') surface treatment while living in completely different environment layouts.\n\nThe practical result: subdomain SCSS files contain zero raw CSS properties. No padding, margin, color, or font-size declarations. Just semantic mixin calls that the theme engine resolves into the correct visual output.\n\nThe system evolves through ontological propositions — formal requests for new semantic variants. When a subdomain discovers a pattern that existing variants can't express, it proposes a new variant. AI agents review the proposal for semantic purity and universal applicability. Approved variants are documented in GENOME.md with their origin story.\n\nThis creates design with memory. Future developers understand not just what exists, but why it exists — which subdomain requested it, what gap it filled, and how the system grew to accommodate it."
+}

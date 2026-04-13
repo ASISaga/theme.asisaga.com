@@ -1,40 +1,48 @@
 ---
 layout: profile
-name: "Sarah Johnson"
-role: "Design Systems Engineer"
-bio: "Building the bridge between design intent and production CSS. Ten years of shipping interfaces that scale."
+name: "Genesis Theme Team"
+role: "Design Systems Engineering"
+bio: "The collective behind the Genesis Semantic Design System — building the bridge between design intent and production CSS through ontological architecture."
 social_links:
   - platform: "github"
-    url: "https://github.com/example"
-  - platform: "linkedin"
-    url: "https://linkedin.com/in/example"
-  - platform: "twitter"
-    url: "https://twitter.com/example"
+    url: "https://github.com/ASISaga/theme.asisaga.com"
 stats: true
-skills: ["Design Systems", "CSS Architecture", "Accessibility", "React", "Jekyll", "OKLCH Color"]
+skills: ["Ontological Design Systems", "SCSS Architecture", "Web Accessibility (WCAG AA)", "Fluid Typography", "OKLCH Color Science", "Jekyll Templating"]
 ---
 
-## Background
+{% assign org_data = site.data.samples.organization %}
+{% assign theme_data = site.data.samples.theme %}
 
-I lead front-end architecture at a design-tooling startup, where my team owns the component library, token pipeline, and responsive infrastructure.
+## About the Project
 
-### Current work
-- Maintain a 200-component design system serving 12 product teams
-- Architect the migration from utility-first CSS to semantic ontological patterns
-- Run weekly office hours for engineers adopting the system
+{{ org_data.description }}
 
-### Previous roles
-- **Senior Developer** — TechCorp (2018–2022)
-- **Front-end Developer** — WebSolutions (2015–2018)
+### Current Focus
 
-## Selected projects
+{% for feature in site.data.samples.features.itemListElement limit: 3 %}
+- **{{ feature.item.name }}** — {{ feature.item.description | truncate: 100 }}
+{% endfor %}
 
-### Ontological SCSS Migration
-Replaced 14,000 lines of utility classes with 31 ontological mixins. Build output dropped from 22 MB to 1.1 MB.
+### Technical Foundation
 
-### Accessible Documentation System
-Built a Jekyll-based docs platform now used by 50+ teams. WCAG AA across every page.
+- **Color Space**: OKLCH (perceptually uniform, HDR-ready)
+- **Layout Engine**: Native CSS Grid with container queries
+- **Typography**: Fluid clamp() scaling (mobile-first)
+- **Material Design**: Glassmorphism with backdrop-filter
+- **Accessibility**: WCAG AA, reduced motion, high contrast support
 
-## Contact
+## Selected Capabilities
 
-Reach me through any linked profile, or email sarah@example.com.
+### {{ site.data.samples.features.itemListElement[0].item.name }}
+{{ site.data.samples.features.itemListElement[0].item.description }}
+
+### {{ site.data.samples.features.itemListElement[4].item.name }}
+{{ site.data.samples.features.itemListElement[4].item.description }}
+
+## Get Involved
+
+Explore the project on [GitHub]({{ theme_data.codeRepository }}) or browse the [sample pages](/samples/) to see every layout in action.
+
+<script type="application/ld+json">
+{{ org_data | jsonify }}
+</script>

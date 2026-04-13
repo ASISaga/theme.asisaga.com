@@ -1,161 +1,124 @@
 ---
 layout: settings
-title: "Settings"
+title: "Theme Settings"
 tabs:
-  - title: "Profile"
-    id: "profile"
-    icon: "fas fa-user"
-  - title: "Security"
-    id: "security"
-    icon: "fas fa-lock"
-  - title: "Notifications"
-    id: "notifications"
-    icon: "fas fa-bell"
-  - title: "Privacy"
-    id: "privacy"
-    icon: "fas fa-shield-alt"
+  - title: "Identity"
+    id: "identity"
+    icon: "fas fa-palette"
+  - title: "Ontology"
+    id: "ontology"
+    icon: "fas fa-layer-group"
+  - title: "Layouts"
+    id: "layouts"
+    icon: "fas fa-columns"
+  - title: "Accessibility"
+    id: "accessibility"
+    icon: "fas fa-universal-access"
   - title: "Preferences"
     id: "preferences"
     icon: "fas fa-cog"
 ---
 
-<!-- Profile -->
-<div class="settings-pane settings-pane--active" id="profile" role="tabpanel">
-  <genesis-cognition intent="motive"><h3 class="settings-pane__heading">Profile</h3></genesis-cognition>
+{% assign theme_data = site.data.samples.theme %}
+{% assign site_identity = site.data.site %}
+
+<!-- Identity -->
+<div class="settings-pane settings-pane--active" id="identity" role="tabpanel">
+  <genesis-cognition intent="motive"><h3 class="settings-pane__heading">Theme Identity</h3></genesis-cognition>
 
   <form class="settings-form">
     <div class="settings-form__row">
       <div class="settings-form__field">
-        <label for="firstName" class="settings-form__label">First Name</label>
-        <input type="text" class="settings-form__input" id="firstName" value="John">
+        <label for="themeName" class="settings-form__label">Theme Name</label>
+        <input type="text" class="settings-form__input" id="themeName" value="{{ theme_data.name }}">
       </div>
       <div class="settings-form__field">
-        <label for="lastName" class="settings-form__label">Last Name</label>
-        <input type="text" class="settings-form__input" id="lastName" value="Doe">
+        <label for="version" class="settings-form__label">Version</label>
+        <input type="text" class="settings-form__input" id="version" value="{{ theme_data.version }}">
       </div>
     </div>
 
     <div class="settings-form__field">
-      <label for="email" class="settings-form__label">Email</label>
-      <input type="email" class="settings-form__input" id="email" value="john.doe@example.com">
+      <label for="description" class="settings-form__label">Description</label>
+      <textarea class="settings-form__input settings-form__textarea" id="description" rows="3">{{ theme_data.description }}</textarea>
     </div>
 
     <div class="settings-form__field">
-      <label for="bio" class="settings-form__label">Bio</label>
-      <textarea class="settings-form__input settings-form__textarea" id="bio" rows="3">Developer and designer building modern web applications.</textarea>
+      <label for="repository" class="settings-form__label">Repository</label>
+      <input type="url" class="settings-form__input" id="repository" value="{{ theme_data.codeRepository }}">
     </div>
 
     <div class="settings-form__field">
-      <label for="website" class="settings-form__label">Website</label>
-      <input type="url" class="settings-form__input" id="website" value="https://johndoe.com">
-    </div>
-
-    <div class="settings-form__field">
-      <label for="location" class="settings-form__label">Location</label>
-      <input type="text" class="settings-form__input" id="location" value="San Francisco, CA">
+      <label for="license" class="settings-form__label">License</label>
+      <input type="text" class="settings-form__input" id="license" value="MIT">
     </div>
   </form>
 </div>
 
-<!-- Security -->
-<div class="settings-pane" id="security" role="tabpanel">
-  <genesis-cognition intent="motive"><h3 class="settings-pane__heading">Security</h3></genesis-cognition>
+<!-- Ontology -->
+<div class="settings-pane" id="ontology" role="tabpanel">
+  <genesis-cognition intent="motive"><h3 class="settings-pane__heading">Ontological Categories</h3></genesis-cognition>
 
   <form class="settings-form">
+    {% for term in site.data.samples.ontology.hasDefinedTerm %}
     <section class="settings-form__section">
-      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">Change Password</h4></genesis-cognition>
-      <div class="settings-form__field">
-        <label for="currentPassword" class="settings-form__label">Current Password</label>
-        <input type="password" class="settings-form__input" id="currentPassword">
-      </div>
-      <div class="settings-form__field">
-        <label for="newPassword" class="settings-form__label">New Password</label>
-        <input type="password" class="settings-form__input" id="newPassword">
-      </div>
-      <div class="settings-form__field">
-        <label for="confirmPassword" class="settings-form__label">Confirm Password</label>
-        <input type="password" class="settings-form__input" id="confirmPassword">
-      </div>
-    </section>
-
-    <section class="settings-form__section">
-      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">Two-Factor Authentication</h4></genesis-cognition>
+      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">{{ term.name }}</h4></genesis-cognition>
+      <genesis-cognition intent="gloss"><p class="settings-form__hint">{{ term.description | truncate: 120 }}</p></genesis-cognition>
       <label class="settings-form__toggle">
-        <input type="checkbox" id="enable2fa">
-        <span>Enable 2FA</span>
+        <input type="checkbox" id="enable{{ term.name }}" checked>
+        <span>Enable {{ term.termCode }}</span>
       </label>
-      <genesis-cognition intent="gloss"><p class="settings-form__hint">Adds an extra layer of security to your account.</p></genesis-cognition>
     </section>
-
-    <section class="settings-form__section">
-      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">Active Sessions</h4></genesis-cognition>
-      <div class="settings-sessions">
-        <div class="settings-sessions__item">
-          <div class="settings-sessions__info">
-            <strong>Current Session</strong>
-            <genesis-cognition intent="gloss"><span>Chrome on macOS · San Francisco, CA</span></genesis-cognition>
-          </div>
-          <span class="settings-sessions__status settings-sessions__status--active">Active</span>
-        </div>
-        <div class="settings-sessions__item">
-          <div class="settings-sessions__info">
-            <strong>Mobile</strong>
-            <genesis-cognition intent="gloss"><span>Safari on iOS · 2 hours ago</span></genesis-cognition>
-          </div>
-          <genesis-synapse vector="destructive">
-            <button type="button" class="settings-sessions__revoke">Revoke</button>
-          </genesis-synapse>
-        </div>
-      </div>
-    </section>
+    {% endfor %}
   </form>
 </div>
 
-<!-- Notifications -->
-<div class="settings-pane" id="notifications" role="tabpanel">
-  <genesis-cognition intent="motive"><h3 class="settings-pane__heading">Notifications</h3></genesis-cognition>
+<!-- Layouts -->
+<div class="settings-pane" id="layouts" role="tabpanel">
+  <genesis-cognition intent="motive"><h3 class="settings-pane__heading">Layout Configuration</h3></genesis-cognition>
 
   <form class="settings-form">
-    <section class="settings-form__section">
-      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">Email</h4></genesis-cognition>
-      <label class="settings-form__toggle"><input type="checkbox" id="emailComments" checked><span>Comments on your posts</span></label>
-      <label class="settings-form__toggle"><input type="checkbox" id="emailMentions" checked><span>Mentions</span></label>
-      <label class="settings-form__toggle"><input type="checkbox" id="emailFollowers"><span>New followers</span></label>
-      <label class="settings-form__toggle"><input type="checkbox" id="emailNewsletter" checked><span>Weekly newsletter</span></label>
-    </section>
+    {% assign categories = "" | split: "" %}
+    {% for layout_item in site.data.samples.layouts.itemListElement %}
+    {% assign cat = layout_item.item.category %}
+    {% unless categories contains cat %}
+    {% assign categories = categories | push: cat %}
+    {% endunless %}
+    {% endfor %}
 
+    {% for cat in categories %}
     <section class="settings-form__section">
-      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">Push</h4></genesis-cognition>
-      <label class="settings-form__toggle"><input type="checkbox" id="pushMessages" checked><span>Direct messages</span></label>
-      <label class="settings-form__toggle"><input type="checkbox" id="pushMentions" checked><span>Mentions and replies</span></label>
+      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">{{ cat }}</h4></genesis-cognition>
+      {% for layout_item in site.data.samples.layouts.itemListElement %}
+      {% if layout_item.item.category == cat %}
+      <label class="settings-form__toggle">
+        <input type="checkbox" id="layout{{ layout_item.item.identifier }}" checked>
+        <span>{{ layout_item.item.name }}</span>
+      </label>
+      {% endif %}
+      {% endfor %}
     </section>
+    {% endfor %}
   </form>
 </div>
 
-<!-- Privacy -->
-<div class="settings-pane" id="privacy" role="tabpanel">
-  <genesis-cognition intent="motive"><h3 class="settings-pane__heading">Privacy</h3></genesis-cognition>
+<!-- Accessibility -->
+<div class="settings-pane" id="accessibility" role="tabpanel">
+  <genesis-cognition intent="motive"><h3 class="settings-pane__heading">Accessibility</h3></genesis-cognition>
 
   <form class="settings-form">
     <section class="settings-form__section">
-      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">Profile Visibility</h4></genesis-cognition>
-      <label class="settings-form__radio"><input type="radio" name="profileVisibility" id="profilePublic" checked><span>Public</span></label>
-      <label class="settings-form__radio"><input type="radio" name="profileVisibility" id="profilePrivate"><span>Private — approved followers only</span></label>
+      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">WCAG Compliance</h4></genesis-cognition>
+      <label class="settings-form__toggle"><input type="checkbox" id="wcagAA" checked><span>Enforce WCAG AA contrast (4.5:1)</span></label>
+      <label class="settings-form__toggle"><input type="checkbox" id="touchTargets" checked><span>44px minimum touch targets</span></label>
+      <label class="settings-form__toggle"><input type="checkbox" id="skipLinks" checked><span>Skip navigation links</span></label>
+      <label class="settings-form__toggle"><input type="checkbox" id="focusIndicators" checked><span>Visible focus indicators</span></label>
     </section>
 
     <section class="settings-form__section">
-      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">Data</h4></genesis-cognition>
-      <label class="settings-form__toggle"><input type="checkbox" id="showActivity" checked><span>Show activity status</span></label>
-      <label class="settings-form__toggle"><input type="checkbox" id="indexProfile"><span>Allow search engine indexing</span></label>
-      <label class="settings-form__toggle"><input type="checkbox" id="dataCollection"><span>Anonymous usage data</span></label>
-    </section>
-
-    <section class="settings-form__section">
-      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">Data Management</h4></genesis-cognition>
-      <div class="settings-form__actions">
-        <genesis-synapse vector="execute"><button type="button" class="settings-form__btn">Download Data</button></genesis-synapse>
-        <genesis-synapse vector="destructive"><button type="button" class="settings-form__btn settings-form__btn--danger">Delete Account</button></genesis-synapse>
-      </div>
+      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">Motion & Contrast</h4></genesis-cognition>
+      <label class="settings-form__toggle"><input type="checkbox" id="reducedMotion" checked><span>Respect prefers-reduced-motion</span></label>
+      <label class="settings-form__toggle"><input type="checkbox" id="highContrast" checked><span>Respect prefers-contrast: more</span></label>
     </section>
   </form>
 </div>
@@ -168,35 +131,30 @@ tabs:
     <section class="settings-form__section">
       <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">Appearance</h4></genesis-cognition>
       <div class="settings-form__field">
-        <label for="theme" class="settings-form__label">Theme</label>
-        <select class="settings-form__input settings-form__select" id="theme">
-          <option>Light</option>
-          <option>Dark</option>
-          <option selected>Auto</option>
+        <label for="atmosphere" class="settings-form__label">Default Atmosphere</label>
+        <select class="settings-form__input settings-form__select" id="atmosphere">
+          {% for term in site.data.samples.ontology.hasDefinedTerm %}
+          {% if term.name == "Atmosphere" %}
+          {% for prop in term.additionalProperty %}
+          <option{% if prop.value == "neutral" %} selected{% endif %}>{{ prop.value }}</option>
+          {% endfor %}
+          {% endif %}
+          {% endfor %}
         </select>
       </div>
       <div class="settings-form__field">
-        <label for="language" class="settings-form__label">Language</label>
-        <select class="settings-form__input settings-form__select" id="language">
-          <option selected>English</option>
-          <option>Spanish</option>
-          <option>French</option>
-          <option>German</option>
+        <label for="colorSpace" class="settings-form__label">Color Space</label>
+        <select class="settings-form__input settings-form__select" id="colorSpace">
+          <option selected>OKLCH</option>
+          <option>sRGB (fallback)</option>
         </select>
       </div>
     </section>
 
     <section class="settings-form__section">
-      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">Content</h4></genesis-cognition>
-      <div class="settings-form__field">
-        <label for="defaultView" class="settings-form__label">Default View</label>
-        <select class="settings-form__input settings-form__select" id="defaultView">
-          <option selected>Grid</option>
-          <option>List</option>
-          <option>Compact</option>
-        </select>
-      </div>
-      <label class="settings-form__toggle"><input type="checkbox" id="autoplay" checked><span>Autoplay videos</span></label>
+      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">Typography</h4></genesis-cognition>
+      <label class="settings-form__toggle"><input type="checkbox" id="fluidType" checked><span>Fluid clamp() typography</span></label>
+      <label class="settings-form__toggle"><input type="checkbox" id="containerQueries" checked><span>Container queries for components</span></label>
     </section>
   </form>
 </div>

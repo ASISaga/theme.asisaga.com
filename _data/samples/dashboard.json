@@ -1,0 +1,86 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Genesis Theme Metrics",
+  "description": "Key performance and capability metrics for the Genesis Semantic Design System.",
+  "creator": {
+    "@type": "Organization",
+    "name": "ASI Saga"
+  },
+  "distribution": [
+    {
+      "@type": "PropertyValue",
+      "name": "Ontological Variants",
+      "value": "89",
+      "unitText": "variants",
+      "description": "33 foundational + 56 evolved semantic variants across six categories",
+      "additionalProperty": {
+        "@type": "PropertyValue",
+        "name": "trend",
+        "value": "+15"
+      }
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Production Layouts",
+      "value": "20",
+      "unitText": "layouts",
+      "description": "Responsive, accessible page templates for every content type",
+      "additionalProperty": {
+        "@type": "PropertyValue",
+        "name": "trend",
+        "value": "+4"
+      }
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "CSS Custom Properties",
+      "value": "150+",
+      "unitText": "properties",
+      "description": "Design tokens for colors, spacing, typography, effects, and more",
+      "additionalProperty": {
+        "@type": "PropertyValue",
+        "name": "trend",
+        "value": "+25"
+      }
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "WCAG Compliance",
+      "value": "AA",
+      "unitText": "level",
+      "description": "4.5:1 text contrast, 44px touch targets, landmarks, skip links, focus states",
+      "additionalProperty": {
+        "@type": "PropertyValue",
+        "name": "trend",
+        "value": "0"
+      }
+    }
+  ],
+  "hasPart": [
+    {
+      "@type": "PropertyValue",
+      "name": "/samples/",
+      "value": "Sample Pages Index",
+      "description": "Browse all 15 sample pages demonstrating every layout"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "/samples/marketing/landing.html",
+      "value": "Landing Page",
+      "description": "Marketing page with hero, feature pillars, and social proof"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "/samples/content-driven/article.html",
+      "value": "Article Layout",
+      "description": "Long-form article with table of contents and related content"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "/samples/knowledge/docs.html",
+      "value": "Documentation",
+      "description": "Documentation with sidebar nav, breadcrumbs, and search"
+    }
+  ]
+}

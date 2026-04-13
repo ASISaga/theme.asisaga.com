@@ -1,0 +1,43 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://github.com/ASISaga/theme.asisaga.com",
+  "name": "Genesis Semantic Design System",
+  "alternateName": "ASI Saga Theme",
+  "description": "An ontology-based semantic SCSS engine with 20+ production layouts, six ontological categories, and a living genome architecture that evolves through AI-assisted collaboration.",
+  "url": "https://theme.asisaga.com",
+  "codeRepository": "https://github.com/ASISaga/theme.asisaga.com",
+  "programmingLanguage": ["SCSS", "HTML", "JavaScript", "Liquid"],
+  "runtimePlatform": "Jekyll",
+  "license": "https://opensource.org/licenses/MIT",
+  "version": "3.0",
+  "dateCreated": "2024-01-01",
+  "dateModified": "2026-04-13",
+  "author": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  },
+  "keywords": [
+    "design system",
+    "semantic SCSS",
+    "ontological design",
+    "Jekyll theme",
+    "OKLCH colors",
+    "glassmorphism",
+    "accessibility",
+    "WCAG AA",
+    "responsive design",
+    "fluid typography",
+    "CSS custom properties",
+    "web components"
+  ],
+  "applicationCategory": "Design System",
+  "operatingSystem": "Cross-platform",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  }
+}
