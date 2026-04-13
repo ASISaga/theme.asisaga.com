@@ -922,12 +922,13 @@
   }
 
   // ==========================================================================
-  // LIGHT THEME  (chatroom--theme-light)
+  // LIGHT THEME  (chatroom--theme-light | global [data-theme="light"])
   // ==========================================================================
-  // Applied by chatroom-sample.js via chatroom.theme = 'light', which adds the
-  // chatroom--theme-light class to the chatroom-app element.
+  // Triggered either by chatroom.theme = 'light' (component-level) or by the
+  // global data-theme="light" attribute set via the samples/index.html toggle.
 
-  [data-chatroom-component].chatroom--theme-light {
+  [data-chatroom-component].chatroom--theme-light,
+  [data-theme="light"] [data-chatroom-component] {
     .chatroom-layout {
       background: $color-light-white;
     }
