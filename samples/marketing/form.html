@@ -58,17 +58,18 @@ privacy_link: "/privacy"
   </genesis-synapse>
 </form>
 
+{% assign contact_ld = "" %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   "name": "Contact — Genesis Design System",
-  "description": "{{ theme_data.description }}",
-  "url": "{{ theme_data.url }}/contact",
+  "description": {{ theme_data.description | jsonify }},
+  "url": {{ theme_data.url | append: "/contact" | jsonify }},
   "mainEntity": {
     "@type": "Organization",
-    "name": "{{ theme_data.author.name }}",
-    "url": "{{ theme_data.author.url }}"
+    "name": {{ theme_data.author.name | jsonify }},
+    "url": {{ theme_data.author.url | jsonify }}
   }
 }
 </script>

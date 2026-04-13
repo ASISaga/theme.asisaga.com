@@ -3,7 +3,7 @@
   "@type": "ItemList",
   "name": "Genesis Theme Layout Library",
   "description": "Complete catalog of production-ready page layouts included in the Genesis Semantic Design System.",
-  "numberOfItems": 20,
+  "numberOfItems": 15,
   "itemListElement": [
     {
       "@type": "ListItem",

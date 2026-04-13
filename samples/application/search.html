@@ -47,8 +47,8 @@ filters:
   "name": "Search Results — Genesis Design System",
   "about": {
     "@type": "SoftwareSourceCode",
-    "name": "{{ theme_data.name }}",
-    "description": "{{ theme_data.description }}"
+    "name": {{ theme_data.name | jsonify }},
+    "description": {{ theme_data.description | jsonify }}
   }
 }
 </script>
