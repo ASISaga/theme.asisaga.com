@@ -218,7 +218,6 @@ export class ChatroomApp extends GenesisElement {
         const stepEl = layout.querySelector('.chatroom-step-progress');
         if (stepEl && stepId && totalSteps) {
             stepEl.textContent = `Step ${stepId} of ${totalSteps}`;
-            stepEl.setAttribute('aria-label', `Step ${stepId} of ${totalSteps}`);
             stepEl.hidden = false;
         }
 
