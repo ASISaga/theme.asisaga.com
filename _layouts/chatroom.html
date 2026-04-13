@@ -81,8 +81,27 @@ element, alongside the #chatArea render target that the JS writes into.
   chatroom layout has the full set of infrastructure <template> elements
   available without needing to include them manually.  Domain-specific pages
   may override any type by registering their own template via registerDomain().
+
+  Each file corresponds to one Schema.org @type and one <template> element:
+    agent-message.html  → AgentMessage      (template-shared-agent-msg)
+    user-message.html   → UserMessage       (template-shared-user-msg)
+    typing.html         → CommunicateAction (template-shared-typing)
+    system-message.html → Message           (template-shared-system-msg)
+    join.html           → JoinAction        (template-shared-join)
+    leave.html          → LeaveAction       (template-shared-leave)
+    acknowledge.html    → AcknowledgeAction (template-shared-acknowledge)
+    inform.html         → InformAction      (template-shared-inform)
+    reaction.html       → ReactAction       (template-shared-reaction)
   {% endcomment %}
-  {% include layouts/chatroom/shared.html %}
+  {% include layouts/chatroom/shared/agent-message.html %}
+  {% include layouts/chatroom/shared/user-message.html %}
+  {% include layouts/chatroom/shared/typing.html %}
+  {% include layouts/chatroom/shared/system-message.html %}
+  {% include layouts/chatroom/shared/join.html %}
+  {% include layouts/chatroom/shared/leave.html %}
+  {% include layouts/chatroom/shared/acknowledge.html %}
+  {% include layouts/chatroom/shared/inform.html %}
+  {% include layouts/chatroom/shared/reaction.html %}
   {{ content }}
   <section class="chatroom-chat-area" id="chatArea" aria-label="Chat Area"></section>
 </{{ _component }}>

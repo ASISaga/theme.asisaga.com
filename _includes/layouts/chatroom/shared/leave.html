@@ -1,0 +1,26 @@
+{% comment %}
+  LeaveAction — shared template
+  ===============================
+  Renders a compact inline notification when a participant leaves the
+  conversation.  The static " left the conversation" text is always visible;
+  only the participant name and timestamp are data-bound.
+  Registered as:
+    'LeaveAction': 'template-shared-leave'
+
+  Slot attributes:
+    data-schema-avatar="agent.identifier"  avatar CSS class + initials
+    data-schema="agent.name"               participant display name
+    data-schema="dateSent"                 optional timestamp
+{% endcomment %}
+<template id="template-shared-leave">
+  <div class="chatroom__notification chatroom__notification--leave" role="status"
+       aria-live="polite">
+    <span class="chatroom__avatar chatroom__avatar--xs"
+          data-schema-avatar="agent.identifier"
+          aria-hidden="true"></span>
+    <span class="chatroom__notification-name" data-schema="agent.name" hidden></span>
+    <span class="chatroom__notification-action"> left the conversation</span>
+    <time class="chatroom__time chatroom__notification-time"
+          data-schema="dateSent" hidden></time>
+  </div>
+</template>

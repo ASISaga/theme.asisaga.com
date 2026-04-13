@@ -1,0 +1,20 @@
+{% comment %}
+  InformAction — shared template (alert / important notification banner)
+  =======================================================================
+  Renders an important alert or information banner across the full message
+  stream width.  Use for MCP tool errors, connectivity warnings, or any
+  notice that requires immediate user attention.
+  Registered as:
+    'InformAction': 'template-shared-inform'
+
+  Slot attributes:
+    data-schema="description"  alert / notice text
+    data-schema="dateSent"     optional timestamp
+{% endcomment %}
+<template id="template-shared-inform">
+  <div class="chatroom__alert" role="alert" aria-live="assertive">
+    <i class="fas fa-circle-info chatroom__alert-icon" aria-hidden="true"></i>
+    <span class="chatroom__alert-text" data-schema="description" hidden></span>
+    <time class="chatroom__time chatroom__alert-time" data-schema="dateSent" hidden></time>
+  </div>
+</template>

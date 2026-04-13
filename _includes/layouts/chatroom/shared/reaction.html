@@ -1,0 +1,26 @@
+{% comment %}
+  ReactAction — shared template (emoji reaction bubble)
+  ======================================================
+  Renders an emoji reaction from a participant as a small inline bubble.
+  The author name is rendered with .chatroom__sr-only for screen-reader
+  accessibility without visible text duplication.
+  Registered as:
+    'ReactAction': 'template-shared-reaction'
+
+  Domain-specific templates may override this with more elaborate styling
+  (e.g. template-party-reaction) while keeping the same data-schema bindings.
+
+  Slot attributes:
+    data-schema-avatar="agent.identifier"  avatar CSS class + initials
+    data-schema="emoji"                    emoji character (e.g. "🔥")
+    data-schema="agent.name"               accessible author label (sr-only)
+{% endcomment %}
+<template id="template-shared-reaction">
+  <div class="chatroom__reaction">
+    <span class="chatroom__avatar chatroom__avatar--xs"
+          data-schema-avatar="agent.identifier"
+          aria-hidden="true"></span>
+    <span class="chatroom__reaction-emoji" data-schema="emoji" hidden></span>
+    <span class="chatroom__reaction-author chatroom__sr-only" data-schema="agent.name" hidden></span>
+  </div>
+</template>

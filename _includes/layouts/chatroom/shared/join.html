@@ -1,0 +1,26 @@
+{% comment %}
+  JoinAction — shared template
+  ==============================
+  Renders a compact inline notification when a participant joins the
+  conversation.  The static " joined" text is always visible; only the
+  participant name and timestamp are data-bound.
+  Registered as:
+    'JoinAction': 'template-shared-join'
+
+  Slot attributes:
+    data-schema-avatar="agent.identifier"  avatar CSS class + initials
+    data-schema="agent.name"               participant display name
+    data-schema="dateSent"                 optional timestamp
+{% endcomment %}
+<template id="template-shared-join">
+  <div class="chatroom__notification chatroom__notification--join" role="status"
+       aria-live="polite">
+    <span class="chatroom__avatar chatroom__avatar--xs"
+          data-schema-avatar="agent.identifier"
+          aria-hidden="true"></span>
+    <span class="chatroom__notification-name" data-schema="agent.name" hidden></span>
+    <span class="chatroom__notification-action"> joined</span>
+    <time class="chatroom__time chatroom__notification-time"
+          data-schema="dateSent" hidden></time>
+  </div>
+</template>

@@ -1,0 +1,28 @@
+{% comment %}
+  UserMessage — shared template
+  ================================
+  Renders an outgoing message from the local user, aligned to the right.
+  Registered as:
+    'UserMessage': 'template-shared-user-msg'
+
+  Shows sender name and timestamp in the meta header when present.
+
+  Slot attributes:
+    data-schema="sender.name"  display name of the sender
+    data-schema="dateSent"     timestamp string
+    data-schema="text"         message body
+{% endcomment %}
+<template id="template-shared-user-msg">
+  <div class="chatroom__message chatroom__message--own">
+    <div class="chatroom__message-row">
+      <div class="chatroom__message-body">
+        <header class="chatroom__message-meta">
+          <strong class="chatroom__author" data-schema="sender.name" hidden></strong>
+          <time class="chatroom__time" data-schema="dateSent" hidden></time>
+        </header>
+        <p class="chatroom__text" data-schema="text"></p>
+      </div>
+      <span class="chatroom__avatar chatroom__avatar--you" aria-hidden="true">You</span>
+    </div>
+  </div>
+</template>

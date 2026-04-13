@@ -1,0 +1,48 @@
+{% comment %}
+  AgentMessage — shared template
+  ================================
+  Renders an AI or named-agent response.  Registered as:
+    'AgentMessage': 'template-shared-agent-msg'
+
+  Supports:
+    • sender avatar (identifier → CSS class, icon → Font Awesome override)
+    • author name, job title, and timestamp in the message meta header
+    • optional tool badge — visible only when the JSON-LD includes a "tool" key
+    • body text paragraph
+    • optional MCP tool-result list — visible only when toolResults is non-empty
+
+  Slot attributes:
+    data-schema="sender.name"              author display name
+    data-schema="sender.jobTitle"          role label (e.g. "CEO")
+    data-schema="dateSent"                 timestamp string
+    data-schema="tool"                     MCP tool name (shows badge when present)
+    data-schema="text"                     message body
+    data-schema-avatar="sender.identifier" avatar CSS class + initials
+    data-schema-avatar-icon="sender.icon"  Font Awesome icon override
+    data-schema-list="toolResults"         renders tool-result rows
+    data-schema-parent-show="tool"         reveals tool badge when tool is present
+{% endcomment %}
+<template id="template-shared-agent-msg">
+  <div class="chatroom__message chatroom__message--ai">
+    <div class="chatroom__message-row">
+      <span class="chatroom__avatar"
+            data-schema-avatar="sender.identifier"
+            data-schema-avatar-icon="sender.icon"
+            aria-hidden="true"></span>
+      <div class="chatroom__message-body">
+        <header class="chatroom__message-meta">
+          <strong class="chatroom__author" data-schema="sender.name" hidden></strong>
+          <span class="chatroom__agent-role" data-schema="sender.jobTitle" hidden></span>
+          <time class="chatroom__time" data-schema="dateSent" hidden></time>
+          <span class="chatroom__tool-badge" title="Tool invoked"
+                data-schema-parent-show="tool" hidden>
+            <i class="fas fa-wrench" aria-hidden="true"></i>
+            <span class="chatroom__tool-badge-text" data-schema="tool"></span>
+          </span>
+        </header>
+        <p class="chatroom__text" data-schema="text"></p>
+        <ul class="chatroom__tool-results" data-schema-list="toolResults" hidden></ul>
+      </div>
+    </div>
+  </div>
+</template>

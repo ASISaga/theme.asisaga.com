@@ -1,0 +1,28 @@
+{% comment %}
+  AcknowledgeAction — shared template (confirmation / success notice)
+  ====================================================================
+  Renders a confirmation or success notice, e.g. "Minutes recorded" or
+  an MCP tool success acknowledgement.  Shows a small avatar for the agent
+  that confirmed the action, plus the description text and an optional
+  timestamp.
+  Registered as:
+    'AcknowledgeAction': 'template-shared-acknowledge'
+
+  Slot attributes:
+    data-schema-avatar="agent.identifier"  avatar CSS class + initials
+    data-schema-avatar-icon="agent.icon"   Font Awesome icon override
+    data-schema="description"              confirmation text
+    data-schema="dateSent"                 optional timestamp
+{% endcomment %}
+<template id="template-shared-acknowledge">
+  <div class="chatroom__notification chatroom__notification--success" role="status"
+       aria-live="polite">
+    <span class="chatroom__avatar chatroom__avatar--xs"
+          data-schema-avatar="agent.identifier"
+          data-schema-avatar-icon="agent.icon"
+          aria-hidden="true"></span>
+    <em class="chatroom__notification-text" data-schema="description" hidden></em>
+    <time class="chatroom__time chatroom__notification-time"
+          data-schema="dateSent" hidden></time>
+  </div>
+</template>
