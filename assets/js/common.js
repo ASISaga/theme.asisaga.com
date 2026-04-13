@@ -15,6 +15,10 @@
 // Header enhancements
 import "./common/header-scroll.js";   // Transparent header on scroll
 
+// Global dark / light mode toggle
+import { initThemeToggle } from "./common/theme-toggle.js";
+document.addEventListener('DOMContentLoaded', () => initThemeToggle());
+
 // Import custom animations and interactions (Motion-powered)
 import "./common/animations.js";        // Handles site-wide custom animations and effects using Motion library
 

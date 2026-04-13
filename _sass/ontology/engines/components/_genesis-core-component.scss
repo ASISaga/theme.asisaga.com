@@ -14,8 +14,8 @@
     scroll-behavior: auto;
     grid-template-rows: auto 1fr auto;
     gap: 0;
-    background: oklch(0.04 0.01 260);
-    color: oklch(0.90 0.005 90);
+    background: var(--genesis-bg, oklch(0.04 0.01 260));
+    color: var(--genesis-body-color, oklch(0.90 0.005 90));
   }
 
   // Main Content Area — transparent pass-through
@@ -195,10 +195,11 @@
 
     background: linear-gradient(
       175deg,
-      oklch(0.06 0.02 270) 0%,
-      oklch(0.04 0.01 260) 40%,
-      oklch(0.05 0.015 255) 100%
+      var(--genesis-ambient-from, oklch(0.06 0.02 270)) 0%,
+      var(--genesis-ambient-mid,  oklch(0.04 0.01 260)) 40%,
+      var(--genesis-ambient-to,   oklch(0.05 0.015 255)) 100%
     );
+    opacity: var(--genesis-ambient-opacity, 1);
 
     @media (prefers-contrast: high) {
       background: oklch(0.05 0 0);
