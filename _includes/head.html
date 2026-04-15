@@ -9,6 +9,7 @@
   <!-- Early theme init — prevents flash of wrong theme colour -->
   <script>
     (function () {
+      // Safe default — used when localStorage throws (e.g., Safari private mode)
       var t = 'light';
       try {
         t = localStorage.getItem('genesis-theme');

@@ -30,9 +30,22 @@ import path from 'path';
  * Design:
  *   - Each test writes its result as a JSON file under tests/.audit-results/
  *   - afterAll aggregates all JSON files and writes the markdown report
- *   - Tests never fail (audit mode) — violations are documented, not gated
- *   - CI/CD gate on violations can be added separately via the report
+ *   - Tests FAIL on critical/serious axe violations (including color-contrast)
+ *     so that regressions are caught in CI before they reach production.
+ *   - The full markdown report is always written for documentation purposes.
+ *
+ * Gating policy:
+ *   BLOCKED_RULES lists axe rule IDs that must have zero violations.
+ *   Any serious or critical violation outside that list also fails the test.
+ *   Moderate/minor violations are still recorded in the report but do not fail.
  */
+
+// Axe rule IDs that are hard-blocked regardless of impact level.
+// Add new rules here when a class of violations must be gated.
+const BLOCKED_RULES = [
+  'color-contrast',         // WCAG 1.4.3 — text must meet 4.5:1 on all surfaces
+  'color-contrast-enhanced', // WCAG 1.4.6 — enhanced (AAA) ratio
+];
 
 // All pages to audit (path relative to baseURL)
 const PAGES = [
@@ -298,6 +311,40 @@ for (let pageIndex = 0; pageIndex < PAGES.length; pageIndex++) {
           type: 'violations',
           description: `critical:${criticalCount} serious:${seriousCount} moderate:${moderateCount} minor:${minorCount}`,
         });
+      }
+
+      // ── Gate: fail on blocked rules and on any critical / serious violation ──
+      //
+      // BLOCKED_RULES (e.g. color-contrast) must have zero violations at any
+      // impact level.  Beyond that, any critical or serious axe violation also
+      // fails the test so regressions are caught in CI.
+      //
+      // The markdown report is still written (in afterAll) for full context.
+
+      const blockedViolations = axeResults.violations.filter((v) =>
+        BLOCKED_RULES.includes(v.id)
+      );
+      if (blockedViolations.length > 0) {
+        const msgs = blockedViolations.flatMap((v) =>
+          v.nodes.map((n) => `  [${v.id}] ${n.target.join(', ')}: ${n.failureSummary ?? ''}`)
+        );
+        expect(
+          blockedViolations,
+          `Blocked axe rule(s) have violations on "${pageInfo.label}":\n${msgs.join('\n')}`
+        ).toHaveLength(0);
+      }
+
+      const gatedViolations = axeResults.violations.filter(
+        (v) => !BLOCKED_RULES.includes(v.id) && (v.impact === 'critical' || v.impact === 'serious')
+      );
+      if (gatedViolations.length > 0) {
+        const msgs = gatedViolations.flatMap((v) =>
+          v.nodes.map((n) => `  [${v.impact}/${v.id}] ${n.target.join(', ')}: ${n.failureSummary ?? ''}`)
+        );
+        expect(
+          gatedViolations,
+          `Critical/serious axe violation(s) on "${pageInfo.label}":\n${msgs.join('\n')}`
+        ).toHaveLength(0);
       }
     } catch (err) {
       result.error = err.message;

@@ -154,7 +154,10 @@
   a:not([class]) {
     color: #{$color-accent-neon-blue-accessible};
 
-    &:hover { color: #{$color-accent-neon-blue-accessible}; }
+    &:hover {
+      color: #{$color-accent-neon-blue-accessible};
+      text-decoration-thickness: 2px; // Thicker underline signals hover without a colour change
+    }
   }
 }
 
