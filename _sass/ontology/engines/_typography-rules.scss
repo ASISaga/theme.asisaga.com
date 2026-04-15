@@ -226,7 +226,7 @@ a {
   transition: all 0.3s ease;
 
   &:hover {
-    color: var(--accent-neon, #{$color-accent-neon-blue});
+    color: var(--accent-neon, #{$color-accent-neon-blue-accessible});
   }
 
   &:focus {

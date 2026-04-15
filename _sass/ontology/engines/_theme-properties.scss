@@ -62,7 +62,7 @@
   // Z-index (runtime override)
   --z-transcendent: 1000;
 
-  // ─── Theme-aware tokens (dark defaults) ───────────────────────────────────
+  // ─── Theme-aware tokens (light-safe defaults) ─────────────────────────────
   // These are consumed by genesis-body, genesis-ambient, and the header so
   // that switching data-theme on <html> is sufficient to re-colour the page.
   --genesis-bg:              oklch(0.98 0.005 90);
@@ -154,7 +154,7 @@
   a:not([class]) {
     color: #{$color-accent-neon-blue-accessible};
 
-    &:hover { color: #{$color-accent-neon-blue}; }
+    &:hover { color: #{$color-accent-neon-blue-accessible}; }
   }
 }
 

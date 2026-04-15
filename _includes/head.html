@@ -9,13 +9,14 @@
   <!-- Early theme init — prevents flash of wrong theme colour -->
   <script>
     (function () {
+      var t = 'light';
       try {
-        var t = localStorage.getItem('genesis-theme');
+        t = localStorage.getItem('genesis-theme');
         if (t !== 'dark' && t !== 'light') {
-          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
         }
-        document.documentElement.setAttribute('data-theme', t);
       } catch (_) {}
+      document.documentElement.setAttribute('data-theme', t);
     })();
   </script>
 
