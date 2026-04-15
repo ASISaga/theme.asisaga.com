@@ -10,7 +10,10 @@
   <script>
     (function () {
       try {
-        var t = localStorage.getItem('genesis-theme') || 'dark';
+        var t = localStorage.getItem('genesis-theme');
+        if (t !== 'dark' && t !== 'light') {
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
         document.documentElement.setAttribute('data-theme', t);
       } catch (_) {}
     })();

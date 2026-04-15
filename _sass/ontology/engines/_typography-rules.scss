@@ -219,18 +219,18 @@ blockquote {
 // ============================================================================
 
 a {
-  @include color($color-accent-gold-accessible);
+  color: var(--text-link, #{$color-accent-neon-blue-accessible});
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.15em;
   transition: all 0.3s ease;
 
   &:hover {
-    @include color($color-accent-gold-dark);
+    color: var(--accent-neon, #{$color-accent-neon-blue});
   }
 
   &:focus {
-    outline: 2px solid $color-accent-gold-accessible;
+    outline: 2px solid var(--text-link, #{$color-accent-neon-blue-accessible});
     outline-offset: 2px;
   }
 }
