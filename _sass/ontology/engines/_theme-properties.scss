@@ -2,12 +2,15 @@
 // CSS CUSTOM PROPERTIES & THEME OVERRIDES
 // ============================================================================
 // Runtime theming variables and media query overrides.
-// Moved from _sass/design/_colors.scss and _sass/design/_theme.scss during
-// token normalization. All values reference generated token variables.
+// All values reference generated token variables from _design/tokens/2-color.json.
+// Zero hardcoded OKLCH literals — every colour traces back to a formal token.
+//
+// Token flow: _design/tokens/2-color.json → sd.config.mjs → _sass/design/_colors-generated.scss
+//             $color-theme-light-* / $color-theme-dark-* / $color-synapse-* used here.
 // ============================================================================
 
 // ============================================================================
-// 1. CSS CUSTOM PROPERTIES (Runtime Theming)
+// 1. CSS CUSTOM PROPERTIES (Runtime Theming — light-safe defaults)
 // ============================================================================
 
 :root {
@@ -17,66 +20,66 @@
   --color-light: #{$color-light-surface};
   --color-dark: #{$color-dark-profound-black};
   --color-text: #{$color-text-primary};
+  --color-bg: #{$color-light-white};
   --color-section-bg-primary: #{$color-light-white};
-  --color-section-bg-secondary: oklch(0.96 0.005 220);
+  --color-section-bg-secondary: #{$color-theme-light-section-bg};
 
   // Glass surfaces
   --glass-light: #{$effect-glass-light};
   --glass-hover: #{$effect-glass-hover};
 
   // Accents
-  --accent-neon: #{$color-accent-neon-blue-accessible};
-  --accent-low: oklch(0.65 0.25 230 / 0.10);
+  --accent-neon: #{$color-theme-light-accent};
+  --accent-low: #{$color-accent-neon-blue-subtle};
 
   // Text
   --text-primary: #{$color-text-primary};
-  --text-secondary: #{$color-text-secondary};
+  --text-secondary: #{$color-theme-light-text-secondary};
   --text-inverse: #{$color-light-white};
-  --text-link: #{$color-accent-neon-blue-accessible};
+  --text-link: #{$color-theme-light-link};
 
   // Borders
-  --border-subtle: #{$color-border-light};
-  --border-simulation: oklch(0.65 0.25 230 / 0.3);
+  --border-subtle: #{$color-theme-light-border-subtle};
+  --border-simulation: #{$color-accent-neon-blue-border};
+  --color-border: #{$color-border-light};
 
   // Focus
   --focus-ring: #{$color-semantic-focus-ring};
 
-  // Danger / destructive
-  --danger-bg: oklch(0.50 0.22 25);
-  --danger-border: oklch(0.45 0.25 25);
-  --danger-hover: oklch(0.45 0.24 25);
-  --danger-glow: oklch(0.50 0.22 25 / 0.5);
+  // Synapse — interaction pattern tokens (mode-independent)
+  --danger-bg: #{$color-synapse-danger-bg};
+  --danger-border: #{$color-synapse-danger-border};
+  --danger-hover: #{$color-synapse-danger-hover};
+  --danger-glow: #{$color-synapse-danger-glow};
 
-  // Social
-  --social-bg: oklch(0.65 0.25 230 / 0.2);
-  --social-border: oklch(0.65 0.25 230);
-  --social-hover: oklch(0.65 0.25 230 / 0.4);
-  --social-glow: oklch(0.65 0.25 230 / 0.4);
+  --social-bg: #{$color-synapse-social-bg};
+  --social-border: #{$color-accent-neon-blue};
+  --social-hover: #{$color-synapse-social-hover};
+  --social-glow: #{$color-synapse-social-hover};
 
-  // Warning
-  --warning-color: oklch(0.65 0.18 65);
+  --warning-color: #{$color-synapse-warning};
 
   // Void depth
-  --void-deep: oklch(0.03 0.01 260);
+  --void-deep: #{$color-void-deep};
 
   // Z-index (runtime override)
   --z-transcendent: 1000;
 
   // ─── Theme-aware tokens (light-safe defaults) ─────────────────────────────
-  // These are consumed by genesis-body, genesis-ambient, and the header so
-  // that switching data-theme on <html> is sufficient to re-colour the page.
-  --genesis-bg:              oklch(0.98 0.005 90);
-  --genesis-bg-surface:      oklch(0.95 0.008 85);
-  --genesis-body-color:      oklch(0.18 0.01 250);
-  --genesis-ambient-from:    oklch(0.95 0.015 90);
-  --genesis-ambient-mid:     oklch(0.97 0.008 85);
-  --genesis-ambient-to:      oklch(0.96 0.010 95);
+  // Consumed by genesis-body, genesis-ambient, and the header. Switching
+  // data-theme on <html> is sufficient to re-colour the entire page.
+  --genesis-bg:              #{$color-theme-light-bg};
+  --genesis-bg-surface:      #{$color-theme-light-bg-surface};
+  --genesis-body-color:      #{$color-theme-light-body-color};
+  --genesis-ambient-from:    #{$color-theme-light-ambient-from};
+  --genesis-ambient-mid:     #{$color-theme-light-ambient-mid};
+  --genesis-ambient-to:      #{$color-theme-light-ambient-to};
   --genesis-ambient-opacity: 0.6;
-  --genesis-header-bg:       oklch(0.99 0.005 90 / 0.92);
-  --genesis-header-border:   oklch(0.85 0.01 220);
-  --genesis-header-shadow:   oklch(0.70 0.01 220 / 0.12);
-  --genesis-card-bg:         oklch(0.99 0.005 90);
-  --genesis-card-border:     oklch(0.87 0.01 220);
+  --genesis-header-bg:       #{$color-theme-light-header-bg};
+  --genesis-header-border:   #{$color-theme-light-header-border};
+  --genesis-header-shadow:   #{$color-theme-light-header-shadow};
+  --genesis-card-bg:         #{$color-theme-light-card-bg};
+  --genesis-card-border:     #{$color-theme-light-card-border};
 }
 
 // ============================================================================
@@ -84,61 +87,75 @@
 // ============================================================================
 
 [data-theme="dark"] {
-  --genesis-bg:              oklch(0.04 0.01 260);
-  --genesis-bg-surface:      oklch(0.08 0.01 250);
-  --genesis-body-color:      oklch(0.90 0.005 90);
-  --genesis-ambient-from:    oklch(0.06 0.02 270);
-  --genesis-ambient-mid:     oklch(0.04 0.01 260);
-  --genesis-ambient-to:      oklch(0.05 0.015 255);
+  // Theme-aware tokens — dark palette
+  --genesis-bg:              #{$color-theme-dark-bg};
+  --genesis-bg-surface:      #{$color-theme-dark-bg-surface};
+  --genesis-body-color:      #{$color-theme-dark-body-color};
+  --genesis-ambient-from:    #{$color-theme-dark-ambient-from};
+  --genesis-ambient-mid:     #{$color-theme-dark-ambient-mid};
+  --genesis-ambient-to:      #{$color-theme-dark-ambient-to};
   --genesis-ambient-opacity: 1;
-  --genesis-header-bg:       oklch(0.06 0.015 255 / 0.85);
-  --genesis-header-border:   oklch(0.25 0.04 250);
-  --genesis-header-shadow:   oklch(0.05 0.02 250 / 0.40);
-  --genesis-card-bg:         oklch(0.10 0.01 250);
-  --genesis-card-border:     oklch(0.22 0.02 250);
+  --genesis-header-bg:       #{$color-theme-dark-header-bg};
+  --genesis-header-border:   #{$color-theme-dark-header-border};
+  --genesis-header-shadow:   #{$color-theme-dark-header-shadow};
+  --genesis-card-bg:         #{$color-theme-dark-card-bg};
+  --genesis-card-border:     #{$color-theme-dark-card-border};
 
   // General overrides
   --color-bg: #{$color-dark-profound-black};
   --color-text: #{$color-light-white};
-  --color-border: oklch(0.35 0.01 220);
-  --text-link: #{$color-accent-gold};
+  --color-border: #{$color-theme-dark-border};
+  --text-primary: #{$color-theme-dark-body-color};
+  --text-secondary: #{$color-theme-dark-text-secondary};
+  --text-link: #{$color-theme-dark-link};
+  --accent-neon: #{$color-theme-dark-accent};
+  --border-subtle: #{$color-theme-dark-border-subtle};
+  --glass-light: #{$color-theme-dark-glass-surface};
+  --glass-hover: #{$color-theme-dark-glass-hover};
 
   body {
     background-color: var(--genesis-bg);
     color: var(--genesis-body-color);
   }
+
+  // Headings — ensure they use light text in dark mode
+  h1, h2, h3, h4, h5, h6 {
+    color: #{$color-theme-dark-body-color};
+  }
 }
 
 // ============================================================================
 // 3. LIGHT MODE — manual override via data-theme="light"
-//    Pleasant, warm-white palette with gold accents.
+//    Explicit reset when user switches from dark→light. Same as :root values
+//    plus element-level overrides to reset headings and links.
 // ============================================================================
 
 [data-theme="light"] {
-  --genesis-bg:              oklch(0.98 0.005 90);
-  --genesis-bg-surface:      oklch(0.95 0.008 85);
-  --genesis-body-color:      oklch(0.18 0.01 250);
-  --genesis-ambient-from:    oklch(0.95 0.015 90);
-  --genesis-ambient-mid:     oklch(0.97 0.008 85);
-  --genesis-ambient-to:      oklch(0.96 0.010 95);
+  // Theme-aware tokens — light palette (same as :root)
+  --genesis-bg:              #{$color-theme-light-bg};
+  --genesis-bg-surface:      #{$color-theme-light-bg-surface};
+  --genesis-body-color:      #{$color-theme-light-body-color};
+  --genesis-ambient-from:    #{$color-theme-light-ambient-from};
+  --genesis-ambient-mid:     #{$color-theme-light-ambient-mid};
+  --genesis-ambient-to:      #{$color-theme-light-ambient-to};
   --genesis-ambient-opacity: 0.6;
-  --genesis-header-bg:       oklch(0.99 0.005 90 / 0.92);
-  --genesis-header-border:   oklch(0.85 0.01 220);
-  --genesis-header-shadow:   oklch(0.70 0.01 220 / 0.12);
-  --genesis-card-bg:         oklch(0.99 0.005 90);
-  --genesis-card-border:     oklch(0.87 0.01 220);
+  --genesis-header-bg:       #{$color-theme-light-header-bg};
+  --genesis-header-border:   #{$color-theme-light-header-border};
+  --genesis-header-shadow:   #{$color-theme-light-header-shadow};
+  --genesis-card-bg:         #{$color-theme-light-card-bg};
+  --genesis-card-border:     #{$color-theme-light-card-border};
 
   // General overrides — make text/border tokens light-appropriate
   --color-bg: #{$color-light-white};
   --color-text: #{$color-text-primary};
   --color-border: #{$color-border-light};
   --text-primary: #{$color-text-primary};
-  --text-secondary: #{$color-text-secondary};
-  --text-link: #{$color-accent-neon-blue-accessible};
-  --accent-neon: #{$color-accent-neon-blue-accessible};
-  --border-subtle: #{$color-border-light};
-  --glass-light: oklch(0.99 0.005 90 / 0.85);
-  --glass-hover: oklch(0.97 0.006 90 / 0.92);
+  --text-secondary: #{$color-theme-light-text-secondary};
+  --text-link: #{$color-theme-light-link};
+  --accent-neon: #{$color-theme-light-accent};
+  --border-subtle: #{$color-theme-light-border-subtle};
+  --glass-light: #{$color-theme-light-glass-surface};
+  --glass-hover: #{$color-theme-light-glass-hover};
 
   body {
     background-color: var(--genesis-bg);
@@ -152,10 +169,10 @@
 
   // Links on light background use accessible blue
   a:not([class]) {
-    color: #{$color-accent-neon-blue-accessible};
+    color: #{$color-theme-light-link};
 
     &:hover {
-      color: #{$color-accent-neon-blue-accessible};
+      color: #{$color-theme-light-link};
       text-decoration-thickness: 2px; // Thicker underline signals hover without a colour change
     }
   }
@@ -169,12 +186,40 @@
   :root:not([data-theme]) {
     --color-bg: #{$color-dark-profound-black};
     --color-text: #{$color-light-white};
-    --color-border: oklch(0.35 0.01 220);
+    --color-border: #{$color-theme-dark-border};
+    --text-link: #{$color-theme-dark-link};
+    --text-secondary: #{$color-theme-dark-text-secondary};
+    --accent-neon: #{$color-theme-dark-accent};
+    --border-subtle: #{$color-theme-dark-border-subtle};
+    --glass-light: #{$color-theme-dark-glass-surface};
+    --glass-hover: #{$color-theme-dark-glass-hover};
+
+    --genesis-bg:              #{$color-theme-dark-bg};
+    --genesis-bg-surface:      #{$color-theme-dark-bg-surface};
+    --genesis-body-color:      #{$color-theme-dark-body-color};
+    --genesis-ambient-from:    #{$color-theme-dark-ambient-from};
+    --genesis-ambient-mid:     #{$color-theme-dark-ambient-mid};
+    --genesis-ambient-to:      #{$color-theme-dark-ambient-to};
+    --genesis-ambient-opacity: 1;
+    --genesis-header-bg:       #{$color-theme-dark-header-bg};
+    --genesis-header-border:   #{$color-theme-dark-header-border};
+    --genesis-header-shadow:   #{$color-theme-dark-header-shadow};
+    --genesis-card-bg:         #{$color-theme-dark-card-bg};
+    --genesis-card-border:     #{$color-theme-dark-card-border};
   }
 
   :root:not([data-theme]) body {
     background-color: var(--genesis-bg);
     color: var(--genesis-body-color);
+  }
+
+  :root:not([data-theme]) h1,
+  :root:not([data-theme]) h2,
+  :root:not([data-theme]) h3,
+  :root:not([data-theme]) h4,
+  :root:not([data-theme]) h5,
+  :root:not([data-theme]) h6 {
+    color: #{$color-theme-dark-body-color};
   }
 }
 
@@ -184,8 +229,8 @@
 
 @media (prefers-contrast: high) {
   :root {
-    --glass-light: oklch(0.94 0.01 220);
-    --border-subtle: oklch(0.60 0.02 220);
+    --glass-light: #{$color-light-subtle-gray};
+    --border-subtle: #{$color-border-silver};
   }
 }
 

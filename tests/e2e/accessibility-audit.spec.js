@@ -290,6 +290,9 @@ const AXE_RULE_TO_TOKEN_MAP = {
     tokenFiles: ['_design/tokens/2-color.json'],
     guidance:
       'Search the failing foreground/background hex codes in `_design/tokens/2-color.json`. ' +
+      'Formal dark/light mode tokens live under `color.theme.light.*` and `color.theme.dark.*`. ' +
+      'CSS custom properties in `_sass/ontology/engines/_theme-properties.scss` reference ' +
+      'these tokens via `$color-theme-light-*` / `$color-theme-dark-*` variables. ' +
       'Adjust the lightness (L) component of the OKLCH value until the rendered pair meets 4.5:1. ' +
       'Use a contrast checker with OKLCH → sRGB conversion (e.g. oklch.com). ' +
       'Never patch contrast in SCSS directly — update the token so the fix propagates everywhere.',
@@ -299,7 +302,7 @@ const AXE_RULE_TO_TOKEN_MAP = {
     tokenFiles: ['_design/tokens/2-color.json'],
     guidance:
       'Same remediation path as `color-contrast` but targeting the stricter AAA ratio. ' +
-      'Increase OKLCH lightness separation between text and background tokens.',
+      'Increase OKLCH lightness separation between `color.theme.light.*` / `color.theme.dark.*` tokens.',
   },
   'link-in-text-block': {
     concern: 'Color – link distinguishability without relying solely on color',
@@ -384,6 +387,8 @@ function generateDesignSystemReview(results) {
     '> **Pipeline context**: ' +
     'Layer 1 (stylelint / `npm test`) enforces that all colour values originate from ' +
     '`_design/tokens/` via `$variables` in `_sass/design/`. ' +
+    'Formal dark/light mode tokens (`color.theme.light.*` / `color.theme.dark.*`) flow through ' +
+    '`$color-theme-*` variables into CSS custom properties in `_theme-properties.scss`. ' +
     'Layer 2 (this axe-core audit) observes rendered contrast and structure without blocking tests. ' +
     'This section (Layer 3) bridges the two: because every rendered colour traces back to a token, ' +
     'axe violations point to *token values* that need adjustment, not inline SCSS patches.'
