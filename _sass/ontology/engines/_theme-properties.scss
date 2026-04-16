@@ -173,7 +173,7 @@
 
     &:hover {
       color: #{$color-theme-light-link};
-      text-decoration-thickness: 2px; // Thicker underline signals hover without a colour change
+      text-decoration-thickness: 0.125em; // Scales with font size; signals hover without a colour change
     }
   }
 }
