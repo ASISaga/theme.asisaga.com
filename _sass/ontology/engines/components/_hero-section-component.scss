@@ -59,18 +59,12 @@
     @include genesis-environment('focused');
   }
 
-  .hero-title {
-    @include genesis-cognition('axiom');
-  }
-
+  .hero-title,
   .hero-section__title {
     @include genesis-cognition('axiom');
   }
 
-  .hero-description {
-    @include genesis-cognition('discourse');
-  }
-
+  .hero-description,
   .hero-section__description {
     @include genesis-cognition('discourse');
   }
@@ -79,10 +73,7 @@
     @include genesis-environment('associative');
   }
 
-  .hero-button {
-    @include genesis-synapse('execute');
-  }
-
+  .hero-button,
   .hero-section__button {
     @include genesis-synapse('execute');
   }
