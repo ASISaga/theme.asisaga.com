@@ -431,7 +431,7 @@
 // ----------------------------------------
 
 @mixin bg-gradient-sacred-shimmer {
-  background: linear-gradient(90deg, $color-accent-gold-bright 0%, $color-accent-gold 50%, $color-engine-gold-rich 100%);
+  background: linear-gradient(90deg, $color-accent-gold-bright 0%, $color-accent-gold 50%, $color-engine-gold-muted 100%);
 }
 
 @mixin bg-gradient-consciousness-accent {
@@ -495,7 +495,7 @@
 // ----------------------------------------
 
 @mixin bg-sacred-gold-dark {
-  background-color: $color-engine-gold-rich;
+  background-color: $color-engine-gold-muted;
 }
 
 @mixin bg-luminous-gold {
@@ -503,11 +503,11 @@
 }
 
 @mixin bg-sacred {
-  background-color: $color-engine-gold-light-a10;
+  background-color: $color-engine-gold-vivid-a10;
 }
 
 @mixin bg-consciousness {
-  background-color: $color-engine-blue-rich-a05;
+  background-color: $color-engine-blue-vivid-a05;
 }
 
 @mixin bg-transcendent {
@@ -531,7 +531,7 @@
 }
 
 @mixin bg-light {
-  background-color: $color-engine-neutral-luminous-2;
+  background-color: $color-engine-neutral-bright;
 }
 
 @mixin bg-dark {
@@ -543,7 +543,7 @@
 // ----------------------------------------
 
 @mixin border-sacred-gold-dark {
-  border-color: $color-engine-gold-rich;
+  border-color: $color-engine-gold-muted;
 }
 
 @mixin border-luminous-gold {
@@ -559,7 +559,7 @@
 }
 
 @mixin border-primary-dark {
-  border-color: $color-engine-blue-rich;
+  border-color: $color-engine-blue-vivid;
 }
 
 @mixin border-secondary {
@@ -591,7 +591,7 @@
 }
 
 @mixin bg-gradient-primary-dark {
-  background: linear-gradient(135deg, $color-engine-blue-rich 0%, $color-accent-neon-blue 100%);
+  background: linear-gradient(135deg, $color-engine-blue-vivid 0%, $color-accent-neon-blue 100%);
 }
 
 // ----------------------------------------
@@ -599,11 +599,11 @@
 // ----------------------------------------
 
 @mixin shadow-sacred-glow {
-  box-shadow: 0 0 0.5rem $color-engine-gold-light-a30;
+  box-shadow: 0 0 0.5rem $color-engine-gold-vivid-a30;
 }
 
 @mixin shadow-sacred {
-  box-shadow: 0 0 0.5rem $color-engine-gold-light-a30;
+  box-shadow: 0 0 0.5rem $color-engine-gold-vivid-a30;
 }
 
 @mixin shadow-consciousness {
@@ -611,7 +611,7 @@
 }
 
 @mixin shadow-focus-luminous-gold {
-  box-shadow: 0 0 0 0.2rem $color-engine-gold-light-a50;
+  box-shadow: 0 0 0 0.2rem $color-engine-gold-vivid-a50;
 }
 
 @mixin bg-cosmic-deep-blue {
@@ -635,7 +635,7 @@
 }
 
 @mixin shadow-soft-luminous-gold {
-  box-shadow: 0 2px 8px 0 $color-engine-gold-light-a15;
+  box-shadow: 0 2px 8px 0 $color-engine-gold-vivid-a15;
 }
 
 @mixin bg-luminous-gold-light {
@@ -650,7 +650,7 @@
 }
 
 @mixin bg-primary-dark {
-  background-color: $color-engine-blue-rich;
+  background-color: $color-engine-blue-vivid;
 }
 
 @mixin shadow-consciousness-depth {
@@ -667,7 +667,7 @@
 }
 
 // REMOVED: Legacy purple/green background mixins - use neon blue directly
-// Use: background-color: $color-engine-blue-rich;
+// Use: background-color: $color-engine-blue-vivid;
 
 @mixin bg-luminous-gold-accessible {
   background-color: $color-accent-gold;
@@ -682,12 +682,12 @@
 }
 
 @mixin bg-gradient-transcendent-overlay {
-  background: linear-gradient(135deg, $color-engine-gold-light-a20, $color-synapse-social-bg);
+  background: linear-gradient(135deg, $color-engine-gold-vivid-a20, $color-synapse-social-bg);
 }
 
 // Border mixins
 // REMOVED: Legacy purple/green border mixins - use neon blue directly
-// Use: border-color: $color-engine-blue-rich;
+// Use: border-color: $color-engine-blue-vivid;
 
 @mixin border-luminous-gold-accessible {
   border: 2px solid $color-accent-gold;
@@ -759,7 +759,7 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background: radial-gradient(circle, $color-engine-gold-light-a20, transparent);
+  background: radial-gradient(circle, $color-engine-gold-vivid-a20, transparent);
   color: $color-accent-gold;
   font-size: 1.5rem;
 }
@@ -797,10 +797,10 @@
   
   @keyframes consciousnessPulseBtn {
     0%, 100% {
-      box-shadow: 0 0 15px $color-engine-gold-light-a30;
+      box-shadow: 0 0 15px $color-engine-gold-vivid-a30;
     }
     50% {
-      box-shadow: 0 0 30px $color-engine-gold-light-a60;
+      box-shadow: 0 0 30px $color-engine-gold-vivid-a60;
     }
   }
 }
@@ -810,10 +810,10 @@
   
   @keyframes sacredGlow {
     0%, 100% {
-      filter: drop-shadow(0 0 10px $color-engine-gold-light-a50);
+      filter: drop-shadow(0 0 10px $color-engine-gold-vivid-a50);
     }
     50% {
-      filter: drop-shadow(0 0 20px $color-engine-gold-light-a80);
+      filter: drop-shadow(0 0 20px $color-engine-gold-vivid-a80);
     }
   }
 }

@@ -202,7 +202,7 @@
     opacity: var(--genesis-ambient-opacity, 1);
 
     @media (prefers-contrast: high) {
-      background: $color-engine-neutral-abyss-3;
+      background: $color-engine-neutral-space;
     }
 
     &__particles {
@@ -211,9 +211,9 @@
 
       background-image:
         radial-gradient(1px 1px at 15% 25%, $color-semantic-focus-ring 0%, transparent 100%),
-        radial-gradient(1px 1px at 75% 65%, $color-engine-gold-light-a30 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 65%, $color-engine-gold-vivid-a30 0%, transparent 100%),
         radial-gradient(1px 1px at 45% 85%, $color-synapse-social-hover 0%, transparent 100%),
-        radial-gradient(1px 1px at 90% 20%, $color-engine-gold-light-a30 0%, transparent 100%);
+        radial-gradient(1px 1px at 90% 20%, $color-engine-gold-vivid-a30 0%, transparent 100%);
       background-size: 100% 100%;
 
       @media (prefers-reduced-motion: no-preference) {
@@ -231,7 +231,7 @@
 
       background: radial-gradient(
         ellipse 60% 40% at 50% 0%,
-        $color-engine-indigo-dim-a25 0%,
+        $color-engine-indigo-dim-a30 0%,
         transparent 70%
       );
 

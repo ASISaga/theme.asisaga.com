@@ -117,320 +117,193 @@ $color-synapse-warning: oklch(0.65 0.18 65); // Warning accent color
 $color-void-deep: oklch(0.03 0.01 260); // Deepest void — near-absolute darkness
 $color-brand-linkedin: #0077b5; // LinkedIn brand blue
 $color-brand-linkedin-hover: #00568a; // LinkedIn brand blue hover state
-$color-engine-neutral-abyss-a00: oklch(0 0 0 / 0); // Neutral L=0.00 at 0% opacity
-$color-engine-neutral-abyss-a70: oklch(0 0 0 / 0.7); // Neutral L=0.00 at 70% opacity
-$color-engine-neutral-abyss: oklch(0.03 0.01 250); // Neutral L=0.03
-$color-engine-neutral-abyss-a30: oklch(0.03 0.02 250 / 0.3); // Neutral L=0.03 at 30% opacity
-$color-engine-neutral-abyss-a50: oklch(0.03 0.02 250 / 0.5); // Neutral L=0.03 at 50% opacity
-$color-engine-neutral-abyss-a60: oklch(0.03 0.02 250 / 0.6); // Neutral L=0.03 at 60% opacity
-$color-engine-neutral-abyss-2: oklch(0.04 0.01 250); // Neutral L=0.04
-$color-engine-neutral-abyss-3: oklch(0.05 0 0); // Neutral L=0.05
-$color-engine-neutral-abyss-a30-2: oklch(0.05 0.01 250 / 0.3); // Neutral L=0.05 at 30% opacity
-$color-engine-neutral-abyss-a30-3: oklch(0.05 0.01 260 / 0.3); // Neutral L=0.05 at 30% opacity
-$color-engine-neutral-abyss-a40: oklch(0.05 0.01 260 / 0.4); // Neutral L=0.05 at 40% opacity
-$color-engine-neutral-abyss-4: oklch(0.05 0.01 260); // Neutral L=0.05
-$color-engine-neutral-abyss-5: oklch(0.05 0.01 265); // Neutral L=0.05
-$color-engine-neutral-abyss-a40-2: oklch(0.05 0.02 250 / 0.4); // Neutral L=0.05 at 40% opacity
-$color-engine-neutral-abyss-a24: oklch(0.05 0.02 260 / 0.24); // Neutral L=0.05 at 24% opacity
-$color-engine-neutral-abyss-a58: oklch(0.05 0.02 260 / 0.58); // Neutral L=0.05 at 58% opacity
-$color-engine-neutral-abyss-a88: oklch(0.05 0.02 260 / 0.88); // Neutral L=0.05 at 88% opacity
-$color-engine-neutral-void-a97: oklch(0.06 0.015 250 / 0.97); // Neutral L=0.06 at 97% opacity
-$color-engine-neutral-void: oklch(0.06 0.02 260); // Neutral L=0.06
-$color-engine-neutral-void-2: oklch(0.08 0 0); // Neutral L=0.08
-$color-engine-neutral-void-a00: oklch(0.08 0.01 250 / 0); // Neutral L=0.08 at 0% opacity
-$color-engine-neutral-void-a02: oklch(0.08 0.01 250 / 0.02); // Neutral L=0.08 at 2% opacity
-$color-engine-neutral-void-a05: oklch(0.08 0.01 250 / 0.05); // Neutral L=0.08 at 5% opacity
-$color-engine-neutral-void-a06: oklch(0.08 0.01 250 / 0.06); // Neutral L=0.08 at 6% opacity
-$color-engine-neutral-void-a10: oklch(0.08 0.01 250 / 0.1); // Neutral L=0.08 at 10% opacity
-$color-engine-neutral-void-a12: oklch(0.08 0.01 250 / 0.125); // Neutral L=0.08 at 12% opacity
-$color-engine-neutral-void-a15: oklch(0.08 0.01 250 / 0.15); // Neutral L=0.08 at 15% opacity
-$color-engine-neutral-void-a30: oklch(0.08 0.01 250 / 0.3); // Neutral L=0.08 at 30% opacity
-$color-engine-neutral-void-a40: oklch(0.08 0.01 250 / 0.4); // Neutral L=0.08 at 40% opacity
-$color-engine-neutral-void-a50: oklch(0.08 0.01 250 / 0.5); // Neutral L=0.08 at 50% opacity
-$color-engine-neutral-void-a60: oklch(0.08 0.01 250 / 0.6); // Neutral L=0.08 at 60% opacity
-$color-engine-neutral-void-a80: oklch(0.08 0.01 250 / 0.8); // Neutral L=0.08 at 80% opacity
-$color-engine-neutral-void-a95: oklch(0.08 0.01 250 / 0.95); // Neutral L=0.08 at 95% opacity
-$color-engine-neutral-void-a15-2: oklch(0.08 0.01 260 / 0.15); // Neutral L=0.08 at 15% opacity
-$color-engine-neutral-void-a20: oklch(0.08 0.01 260 / 0.2); // Neutral L=0.08 at 20% opacity
-$color-engine-neutral-void-a98: oklch(0.08 0.015 250 / 0.98); // Neutral L=0.08 at 98% opacity
-$color-engine-neutral-void-a97-2: oklch(0.08 0.02 250 / 0.97); // Neutral L=0.08 at 97% opacity
-$color-engine-neutral-void-a30-2: oklch(0.08 0.02 260 / 0.3); // Neutral L=0.08 at 30% opacity
-$color-engine-neutral-void-3: oklch(0.08 0.02 260); // Neutral L=0.08
-$color-engine-neutral-void-4: oklch(0.09 0.02 255); // Neutral L=0.09
-$color-engine-neutral-void-a30-3: oklch(0.10 0.02 255 / 0.3); // Neutral L=0.10 at 30% opacity
-$color-engine-neutral-void-a35: oklch(0.10 0.02 255 / 0.35); // Neutral L=0.10 at 35% opacity
-$color-engine-neutral-void-a40-2: oklch(0.10 0.02 255 / 0.4); // Neutral L=0.10 at 40% opacity
-$color-engine-neutral-void-5: oklch(0.10 0.02 255); // Neutral L=0.10
-$color-engine-neutral-deep: oklch(0.12 0.02 250); // Neutral L=0.12
-$color-engine-neutral-deep-a80: oklch(0.14 0.02 250 / 0.8); // Neutral L=0.14 at 80% opacity
-$color-engine-neutral-deep-2: oklch(0.14 0.02 250); // Neutral L=0.14
-$color-engine-neutral-deep-3: oklch(0.15 0 0); // Neutral L=0.15
-$color-engine-neutral-deep-4: oklch(0.15 0.01 250); // Neutral L=0.15
-$color-engine-neutral-deep-a85: oklch(0.15 0.02 250 / 0.85); // Neutral L=0.15 at 85% opacity
-$color-engine-neutral-deep-5: oklch(0.15 0.02 250); // Neutral L=0.15
-$color-engine-neutral-deep-a40: oklch(0.16 0.02 248 / 0.4); // Neutral L=0.16 at 40% opacity
-$color-engine-neutral-deep-a40-2: oklch(0.16 0.02 250 / 0.4); // Neutral L=0.16 at 40% opacity
-$color-engine-neutral-dark: oklch(0.20 0.01 250); // Neutral L=0.20
-$color-engine-neutral-dark-2: oklch(0.20 0.02 250); // Neutral L=0.20
-$color-engine-neutral-dark-3: oklch(0.25 0 0); // Neutral L=0.25
-$color-engine-neutral-dark-4: oklch(0.25 0.02 250); // Neutral L=0.25
-$color-engine-neutral-dim: oklch(0.30 0 0); // Neutral L=0.30
-$color-engine-neutral-dim-2: oklch(0.30 0.01 230); // Neutral L=0.30
-$color-engine-neutral-dim-3: oklch(0.35 0.01 230); // Neutral L=0.35
-$color-engine-neutral-mid: oklch(0.40 0.01 230); // Neutral L=0.40
-$color-engine-neutral-mid-a70: oklch(0.45 0.01 220 / 0.7); // Neutral L=0.45 at 70% opacity
-$color-engine-neutral-mid-a20: oklch(0.50 0.02 220 / 0.2); // Neutral L=0.50 at 20% opacity
-$color-engine-neutral-mid-a50: oklch(0.50 0.02 220 / 0.5); // Neutral L=0.50 at 50% opacity
-$color-engine-neutral-mid-2: oklch(0.50 0.02 220); // Neutral L=0.50
-$color-engine-neutral-rich: oklch(0.55 0.02 230); // Neutral L=0.55
-$color-engine-neutral-rich-2: oklch(0.60 0.01 230); // Neutral L=0.60
-$color-engine-neutral-rich-3: oklch(0.65 0.01 230); // Neutral L=0.65
-$color-engine-neutral-rich-a05: oklch(0.65 0.02 220 / 0.05); // Neutral L=0.65 at 5% opacity
-$color-engine-neutral-rich-a10: oklch(0.65 0.02 220 / 0.1); // Neutral L=0.65 at 10% opacity
-$color-engine-neutral-rich-a20: oklch(0.65 0.02 220 / 0.2); // Neutral L=0.65 at 20% opacity
-$color-engine-neutral-rich-a30: oklch(0.65 0.02 220 / 0.3); // Neutral L=0.65 at 30% opacity
-$color-engine-neutral-rich-a80: oklch(0.65 0.02 220 / 0.8); // Neutral L=0.65 at 80% opacity
-$color-engine-neutral-rich-a90: oklch(0.65 0.02 220 / 0.9); // Neutral L=0.65 at 90% opacity
-$color-engine-neutral-rich-a95: oklch(0.65 0.02 220 / 0.95); // Neutral L=0.65 at 95% opacity
-$color-engine-neutral-rich-4: oklch(0.65 0.02 230); // Neutral L=0.65
-$color-engine-neutral-light: oklch(0.70 0 0); // Neutral L=0.70
-$color-engine-neutral-light-2: oklch(0.70 0.01 230); // Neutral L=0.70
-$color-engine-neutral-light-3: oklch(0.70 0.02 220); // Neutral L=0.70
-$color-engine-neutral-pale: oklch(0.80 0.02 230); // Neutral L=0.80
-$color-engine-neutral-pale-2: oklch(0.82 0.01 220); // Neutral L=0.82
-$color-engine-neutral-pale-3: oklch(0.85 0 0); // Neutral L=0.85
-$color-engine-neutral-pale-4: oklch(0.85 0.005 220); // Neutral L=0.85
-$color-engine-neutral-pale-a08: oklch(0.85 0.01 220 / 0.08); // Neutral L=0.85 at 8% opacity
-$color-engine-neutral-pale-a10: oklch(0.85 0.01 220 / 0.1); // Neutral L=0.85 at 10% opacity
-$color-engine-neutral-pale-a15: oklch(0.85 0.01 220 / 0.15); // Neutral L=0.85 at 15% opacity
-$color-engine-neutral-pale-a30: oklch(0.85 0.01 220 / 0.3); // Neutral L=0.85 at 30% opacity
-$color-engine-neutral-pale-a40: oklch(0.85 0.01 220 / 0.4); // Neutral L=0.85 at 40% opacity
-$color-engine-neutral-pale-a50: oklch(0.85 0.01 220 / 0.5); // Neutral L=0.85 at 50% opacity
-$color-engine-neutral-pale-a60: oklch(0.85 0.01 220 / 0.6); // Neutral L=0.85 at 60% opacity
-$color-engine-neutral-pale-a80: oklch(0.85 0.01 220 / 0.8); // Neutral L=0.85 at 80% opacity
-$color-engine-neutral-pale-5: oklch(0.85 0.02 220); // Neutral L=0.85
-$color-engine-neutral-pale-6: oklch(0.87 0.005 220); // Neutral L=0.87
-$color-engine-neutral-bright: oklch(0.88 0.005 220); // Neutral L=0.88
-$color-engine-neutral-bright-2: oklch(0.90 0.005 220); // Neutral L=0.90
-$color-engine-neutral-bright-3: oklch(0.94 0.005 220); // Neutral L=0.94
-$color-engine-neutral-luminous: oklch(0.95 0.005 90); // Neutral L=0.95
-$color-engine-neutral-luminous-2: oklch(0.95 0.01 220); // Neutral L=0.95
-$color-engine-neutral-luminous-a90: oklch(0.95 0.02 90 / 0.9); // Neutral L=0.95 at 90% opacity
-$color-engine-neutral-luminous-3: oklch(0.96 0.003 220); // Neutral L=0.96
-$color-engine-neutral-luminous-4: oklch(0.97 0.005 220); // Neutral L=0.97
-$color-engine-neutral-luminous-a06: oklch(0.98 0.01 90 / 0.06); // Neutral L=0.98 at 6% opacity
-$color-engine-neutral-luminous-a08: oklch(0.98 0.01 90 / 0.08); // Neutral L=0.98 at 8% opacity
-$color-engine-neutral-luminous-a10: oklch(0.98 0.01 90 / 0.1); // Neutral L=0.98 at 10% opacity
-$color-engine-neutral-luminous-a20: oklch(0.98 0.01 90 / 0.2); // Neutral L=0.98 at 20% opacity
-$color-engine-neutral-luminous-a30: oklch(0.98 0.01 90 / 0.3); // Neutral L=0.98 at 30% opacity
-$color-engine-neutral-luminous-5: oklch(0.98 0.01 90); // Neutral L=0.98
-$color-engine-neutral-luminous-a20-2: oklch(0.99 0 0 / 0.2); // Neutral L=0.99 at 20% opacity
-$color-engine-neutral-luminous-a25: oklch(0.99 0 0 / 0.25); // Neutral L=0.99 at 25% opacity
-$color-engine-neutral-luminous-a30-2: oklch(0.99 0 0 / 0.3); // Neutral L=0.99 at 30% opacity
-$color-engine-neutral-luminous-6: oklch(0.99 0 0); // Neutral L=0.99
-$color-engine-neutral-luminous-a20-3: oklch(0.99 0.005 90 / 0.2); // Neutral L=0.99 at 20% opacity
-$color-engine-neutral-luminous-a30-3: oklch(0.99 0.005 90 / 0.3); // Neutral L=0.99 at 30% opacity
-$color-engine-neutral-luminous-a40: oklch(0.99 0.005 90 / 0.4); // Neutral L=0.99 at 40% opacity
-$color-engine-neutral-luminous-a70: oklch(0.99 0.005 90 / 0.7); // Neutral L=0.99 at 70% opacity
-$color-engine-neutral-luminous-a80: oklch(0.99 0.005 90 / 0.8); // Neutral L=0.99 at 80% opacity
-$color-engine-neutral-luminous-a90-2: oklch(0.99 0.005 90 / 0.9); // Neutral L=0.99 at 90% opacity
-$color-engine-neutral-luminous-a95: oklch(0.99 0.005 90 / 0.95); // Neutral L=0.99 at 95% opacity
-$color-engine-neutral-luminous-a98: oklch(0.99 0.005 90 / 0.98); // Neutral L=0.99 at 98% opacity
-$color-engine-neutral-luminous-a100: oklch(0.99 0.005 90 / 1); // Neutral L=0.99 at 100% opacity
-$color-engine-indigo-void-a20: oklch(0.10 0.03 250 / 0.2); // Indigo L=0.10 at 20% opacity
-$color-engine-indigo-void-a40: oklch(0.10 0.03 250 / 0.4); // Indigo L=0.10 at 40% opacity
-$color-engine-indigo-void-a60: oklch(0.10 0.03 250 / 0.6); // Indigo L=0.10 at 60% opacity
-$color-engine-indigo-deep-a90: oklch(0.12 0.03 250 / 0.9); // Indigo L=0.12 at 90% opacity
-$color-engine-indigo-deep: oklch(0.12 0.03 250); // Indigo L=0.12
-$color-engine-indigo-deep-2: oklch(0.12 0.03 255); // Indigo L=0.12
-$color-engine-indigo-deep-3: oklch(0.12 0.03 260); // Indigo L=0.12
-$color-engine-indigo-deep-4: oklch(0.12 0.04 250); // Indigo L=0.12
-$color-engine-indigo-deep-a80: oklch(0.12 0.04 260 / 0.8); // Indigo L=0.12 at 80% opacity
-$color-engine-indigo-deep-a50: oklch(0.14 0.03 255 / 0.5); // Indigo L=0.14 at 50% opacity
-$color-engine-indigo-deep-a10: oklch(0.15 0.03 250 / 0.1); // Indigo L=0.15 at 10% opacity
-$color-engine-indigo-deep-a35: oklch(0.15 0.03 250 / 0.35); // Indigo L=0.15 at 35% opacity
-$color-engine-indigo-deep-a85: oklch(0.15 0.03 250 / 0.85); // Indigo L=0.15 at 85% opacity
-$color-engine-indigo-deep-5: oklch(0.15 0.03 250); // Indigo L=0.15
-$color-engine-indigo-deep-6: oklch(0.16 0.03 250); // Indigo L=0.16
-$color-engine-indigo-deep-a50-2: oklch(0.16 0.03 252 / 0.5); // Indigo L=0.16 at 50% opacity
-$color-engine-indigo-deep-a60: oklch(0.16 0.03 252 / 0.6); // Indigo L=0.16 at 60% opacity
-$color-engine-indigo-deep-a75: oklch(0.16 0.03 252 / 0.75); // Indigo L=0.16 at 75% opacity
-$color-engine-indigo-deep-a95: oklch(0.16 0.03 252 / 0.95); // Indigo L=0.16 at 95% opacity
-$color-engine-indigo-deep-a60-2: oklch(0.18 0.03 248 / 0.6); // Indigo L=0.18 at 60% opacity
-$color-engine-indigo-deep-a95-2: oklch(0.18 0.03 248 / 0.95); // Indigo L=0.18 at 95% opacity
-$color-engine-indigo-deep-7: oklch(0.18 0.03 250); // Indigo L=0.18
-$color-engine-indigo-deep-a95-3: oklch(0.18 0.04 250 / 0.95); // Indigo L=0.18 at 95% opacity
-$color-engine-indigo-deep-8: oklch(0.18 0.04 250); // Indigo L=0.18
-$color-engine-indigo-dark: oklch(0.20 0.03 250); // Indigo L=0.20
-$color-engine-indigo-dark-a40: oklch(0.20 0.03 260 / 0.4); // Indigo L=0.20 at 40% opacity
-$color-engine-indigo-dark-2: oklch(0.20 0.04 250); // Indigo L=0.20
-$color-engine-indigo-dark-a90: oklch(0.20 0.05 260 / 0.9); // Indigo L=0.20 at 90% opacity
-$color-engine-indigo-dark-3: oklch(0.22 0.03 250); // Indigo L=0.22
-$color-engine-indigo-dark-4: oklch(0.22 0.04 250); // Indigo L=0.22
-$color-engine-indigo-dark-5: oklch(0.22 0.06 260); // Indigo L=0.22
-$color-engine-indigo-dark-a30: oklch(0.25 0.03 250 / 0.3); // Indigo L=0.25 at 30% opacity
-$color-engine-indigo-dark-6: oklch(0.25 0.03 250); // Indigo L=0.25
-$color-engine-indigo-dark-7: oklch(0.25 0.08 250); // Indigo L=0.25
-$color-engine-indigo-dim-a30: oklch(0.30 0.04 250 / 0.3); // Indigo L=0.30 at 30% opacity
-$color-engine-indigo-dim-a50: oklch(0.30 0.04 250 / 0.5); // Indigo L=0.30 at 50% opacity
-$color-engine-indigo-dim: oklch(0.30 0.04 250); // Indigo L=0.30
-$color-engine-indigo-dim-a40: oklch(0.30 0.05 260 / 0.4); // Indigo L=0.30 at 40% opacity
-$color-engine-indigo-dim-a25: oklch(0.30 0.12 250 / 0.25); // Indigo L=0.30 at 25% opacity
-$color-engine-indigo-dim-a30-2: oklch(0.35 0.05 248 / 0.3); // Indigo L=0.35 at 30% opacity
-$color-engine-indigo-dim-a40-2: oklch(0.35 0.05 248 / 0.4); // Indigo L=0.35 at 40% opacity
-$color-engine-indigo-dim-a50-2: oklch(0.35 0.05 248 / 0.5); // Indigo L=0.35 at 50% opacity
-$color-engine-indigo-dim-a60: oklch(0.35 0.05 248 / 0.6); // Indigo L=0.35 at 60% opacity
-$color-engine-indigo-mid-a25: oklch(0.40 0.06 250 / 0.25); // Indigo L=0.40 at 25% opacity
-$color-engine-indigo-mid-a35: oklch(0.45 0.07 248 / 0.35); // Indigo L=0.45 at 35% opacity
-$color-engine-indigo-rich: oklch(0.65 0.20 260); // Indigo L=0.65
-$color-engine-violet-void: oklch(0.10 0.03 280); // Violet L=0.10
-$color-engine-violet-deep: oklch(0.12 0.04 280); // Violet L=0.12
-$color-engine-violet-deep-2: oklch(0.13 0.04 280); // Violet L=0.13
-$color-engine-violet-deep-3: oklch(0.14 0.03 280); // Violet L=0.14
-$color-engine-violet-deep-a80: oklch(0.14 0.04 280 / 0.8); // Violet L=0.14 at 80% opacity
-$color-engine-violet-deep-4: oklch(0.14 0.04 280); // Violet L=0.14
-$color-engine-violet-deep-5: oklch(0.14 0.05 270); // Violet L=0.14
-$color-engine-violet-deep-a95: oklch(0.14 0.05 280 / 0.95); // Violet L=0.14 at 95% opacity
-$color-engine-violet-deep-6: oklch(0.15 0.04 280); // Violet L=0.15
-$color-engine-violet-deep-a90: oklch(0.16 0.04 280 / 0.9); // Violet L=0.16 at 90% opacity
-$color-engine-violet-deep-7: oklch(0.16 0.05 280); // Violet L=0.16
-$color-engine-violet-deep-8: oklch(0.18 0.05 270); // Violet L=0.18
-$color-engine-violet-deep-9: oklch(0.18 0.06 280); // Violet L=0.18
-$color-engine-violet-dark-a15: oklch(0.20 0.08 290 / 0.15); // Violet L=0.20 at 15% opacity
-$color-engine-violet-dark: oklch(0.25 0.06 280); // Violet L=0.25
-$color-engine-violet-dim: oklch(0.30 0.08 280); // Violet L=0.30
-$color-engine-violet-dim-2: oklch(0.30 0.15 280); // Violet L=0.30
-$color-engine-violet-rich-a40: oklch(0.55 0.20 290 / 0.4); // Violet L=0.55 at 40% opacity
-$color-engine-violet-rich-a03: oklch(0.55 0.25 290 / 0.03); // Violet L=0.55 at 3% opacity
-$color-engine-violet-rich-a05: oklch(0.55 0.25 290 / 0.05); // Violet L=0.55 at 5% opacity
-$color-engine-violet-rich-a08: oklch(0.55 0.25 290 / 0.08); // Violet L=0.55 at 8% opacity
-$color-engine-violet-rich-a15: oklch(0.55 0.25 290 / 0.15); // Violet L=0.55 at 15% opacity
-$color-engine-violet-rich-a20: oklch(0.55 0.25 290 / 0.2); // Violet L=0.55 at 20% opacity
-$color-engine-violet-rich-a25: oklch(0.55 0.25 290 / 0.25); // Violet L=0.55 at 25% opacity
-$color-engine-violet-rich-a30: oklch(0.55 0.25 290 / 0.3); // Violet L=0.55 at 30% opacity
-$color-engine-violet-rich-a35: oklch(0.55 0.25 290 / 0.35); // Violet L=0.55 at 35% opacity
-$color-engine-violet-rich-a40-2: oklch(0.55 0.25 290 / 0.4); // Violet L=0.55 at 40% opacity
-$color-engine-violet-rich-a50: oklch(0.55 0.25 290 / 0.5); // Violet L=0.55 at 50% opacity
-$color-engine-violet-rich-a60: oklch(0.55 0.25 290 / 0.6); // Violet L=0.55 at 60% opacity
-$color-engine-violet-rich-a70: oklch(0.55 0.25 290 / 0.7); // Violet L=0.55 at 70% opacity
-$color-engine-violet-rich: oklch(0.55 0.25 290); // Violet L=0.55
-$color-engine-violet-rich-2: oklch(0.65 0.20 280); // Violet L=0.65
-$color-engine-blue-deep-a60: oklch(0.18 0.03 246 / 0.6); // Blue L=0.18 at 60% opacity
-$color-engine-blue-dark: oklch(0.20 0.04 230); // Blue L=0.20
-$color-engine-blue-dark-a75: oklch(0.20 0.04 245 / 0.75); // Blue L=0.20 at 75% opacity
-$color-engine-blue-dark-a80: oklch(0.20 0.04 245 / 0.8); // Blue L=0.20 at 80% opacity
-$color-engine-blue-dark-a95: oklch(0.20 0.04 245 / 0.95); // Blue L=0.20 at 95% opacity
-$color-engine-blue-dark-2: oklch(0.20 0.06 230); // Blue L=0.20
-$color-engine-blue-dark-a70: oklch(0.22 0.04 246 / 0.7); // Blue L=0.22 at 70% opacity
-$color-engine-blue-dark-3: oklch(0.22 0.04 246); // Blue L=0.22
-$color-engine-blue-dark-a85: oklch(0.24 0.05 244 / 0.85); // Blue L=0.24 at 85% opacity
-$color-engine-blue-mid-a70: oklch(0.45 0.20 230 / 0.7); // Blue L=0.45 at 70% opacity
-$color-engine-blue-mid: oklch(0.45 0.20 230); // Blue L=0.45
-$color-engine-blue-mid-2: oklch(0.50 0.25 230); // Blue L=0.50
-$color-engine-blue-rich-a90: oklch(0.55 0.22 228 / 0.9); // Blue L=0.55 at 90% opacity
-$color-engine-blue-rich: oklch(0.55 0.22 228); // Blue L=0.55
-$color-engine-blue-rich-2: oklch(0.55 0.25 220); // Blue L=0.55
-$color-engine-blue-rich-3: oklch(0.55 0.25 240); // Blue L=0.55
-$color-engine-blue-rich-4: oklch(0.60 0.23 228); // Blue L=0.60
-$color-engine-blue-rich-5: oklch(0.65 0.20 220); // Blue L=0.65
-$color-engine-blue-rich-6: oklch(0.65 0.25 220); // Blue L=0.65
-$color-engine-blue-rich-a00: oklch(0.65 0.25 230 / 0); // Blue L=0.65 at 0% opacity
-$color-engine-blue-rich-a05: oklch(0.65 0.25 230 / 0.05); // Blue L=0.65 at 5% opacity
-$color-engine-blue-rich-a06: oklch(0.65 0.25 230 / 0.06); // Blue L=0.65 at 6% opacity
-$color-engine-blue-rich-a08: oklch(0.65 0.25 230 / 0.08); // Blue L=0.65 at 8% opacity
-$color-engine-blue-rich-a10: oklch(0.65 0.25 230 / 0.1); // Blue L=0.65 at 10% opacity
-$color-engine-blue-rich-a12: oklch(0.65 0.25 230 / 0.12); // Blue L=0.65 at 12% opacity
-$color-engine-blue-rich-a15: oklch(0.65 0.25 230 / 0.15); // Blue L=0.65 at 15% opacity
-$color-engine-blue-rich-a18: oklch(0.65 0.25 230 / 0.18); // Blue L=0.65 at 18% opacity
-$color-engine-blue-rich-a25: oklch(0.65 0.25 230 / 0.25); // Blue L=0.65 at 25% opacity
-$color-engine-blue-rich-a60: oklch(0.65 0.25 230 / 0.6); // Blue L=0.65 at 60% opacity
-$color-engine-blue-rich-a90-2: oklch(0.65 0.25 230 / 0.9); // Blue L=0.65 at 90% opacity
-$color-engine-blue-rich-7: oklch(0.65 0.25 240); // Blue L=0.65
-$color-engine-blue-light: oklch(0.70 0.27 228); // Blue L=0.70
-$color-engine-blue-light-2: oklch(0.75 0.20 220); // Blue L=0.75
-$color-engine-blue-light-3: oklch(0.75 0.25 230); // Blue L=0.75
-$color-engine-blue-light-a50: oklch(0.75 0.28 225 / 0.5); // Blue L=0.75 at 50% opacity
-$color-engine-blue-bright: oklch(0.90 0.10 230); // Blue L=0.90
-$color-engine-blue-luminous: oklch(0.95 0.03 235); // Blue L=0.95
-$color-engine-cyan-deep-a12: oklch(0.18 0.06 210 / 0.12); // Cyan L=0.18 at 12% opacity
-$color-engine-cyan-mid: oklch(0.42 0.18 200); // Cyan L=0.42
-$color-engine-cyan-light-a05: oklch(0.75 0.15 210 / 0.05); // Cyan L=0.75 at 5% opacity
-$color-engine-cyan-light-a50: oklch(0.75 0.15 210 / 0.5); // Cyan L=0.75 at 50% opacity
-$color-engine-cyan-light: oklch(0.75 0.15 210); // Cyan L=0.75
-$color-engine-cyan-light-a15: oklch(0.75 0.18 195 / 0.15); // Cyan L=0.75 at 15% opacity
-$color-engine-cyan-light-2: oklch(0.75 0.18 195); // Cyan L=0.75
-$color-engine-gold-dark-a70: oklch(0.22 0.06 85 / 0.7); // Gold L=0.22 at 70% opacity
-$color-engine-gold-rich: oklch(0.60 0.12 88); // Gold L=0.60
-$color-engine-gold-rich-2: oklch(0.65 0.13 88); // Gold L=0.65
-$color-engine-gold-light-a00: oklch(0.70 0.15 85 / 0); // Gold L=0.70 at 0% opacity
-$color-engine-gold-light-a05: oklch(0.70 0.15 85 / 0.05); // Gold L=0.70 at 5% opacity
-$color-engine-gold-light-a10: oklch(0.70 0.15 85 / 0.1); // Gold L=0.70 at 10% opacity
-$color-engine-gold-light-a15: oklch(0.70 0.15 85 / 0.15); // Gold L=0.70 at 15% opacity
-$color-engine-gold-light-a20: oklch(0.70 0.15 85 / 0.2); // Gold L=0.70 at 20% opacity
-$color-engine-gold-light-a25: oklch(0.70 0.15 85 / 0.25); // Gold L=0.70 at 25% opacity
-$color-engine-gold-light-a30: oklch(0.70 0.15 85 / 0.3); // Gold L=0.70 at 30% opacity
-$color-engine-gold-light-a40: oklch(0.70 0.15 85 / 0.4); // Gold L=0.70 at 40% opacity
-$color-engine-gold-light-a50: oklch(0.70 0.15 85 / 0.5); // Gold L=0.70 at 50% opacity
-$color-engine-gold-light-a60: oklch(0.70 0.15 85 / 0.6); // Gold L=0.70 at 60% opacity
-$color-engine-gold-light-a70: oklch(0.70 0.15 85 / 0.7); // Gold L=0.70 at 70% opacity
-$color-engine-gold-light-a80: oklch(0.70 0.15 85 / 0.8); // Gold L=0.70 at 80% opacity
-$color-engine-gold-light-a90: oklch(0.70 0.15 85 / 0.9); // Gold L=0.70 at 90% opacity
-$color-engine-gold-light-a20-2: oklch(0.75 0.25 85 / 0.2); // Gold L=0.75 at 20% opacity
-$color-engine-gold-light-a50-2: oklch(0.75 0.25 85 / 0.5); // Gold L=0.75 at 50% opacity
-$color-engine-gold-light: oklch(0.75 0.25 85); // Gold L=0.75
-$color-engine-gold-pale: oklch(0.80 0.20 70); // Gold L=0.80
-$color-engine-gold-pale-a03: oklch(0.85 0.16 85 / 0.03); // Gold L=0.85 at 3% opacity
-$color-engine-gold-pale-a10: oklch(0.85 0.16 85 / 0.1); // Gold L=0.85 at 10% opacity
-$color-engine-gold-pale-a15: oklch(0.85 0.16 85 / 0.15); // Gold L=0.85 at 15% opacity
-$color-engine-gold-pale-a30: oklch(0.85 0.16 85 / 0.3); // Gold L=0.85 at 30% opacity
-$color-engine-gold-pale-a40: oklch(0.85 0.16 85 / 0.4); // Gold L=0.85 at 40% opacity
-$color-engine-gold-pale-a50: oklch(0.85 0.16 85 / 0.5); // Gold L=0.85 at 50% opacity
-$color-engine-gold-pale-a60: oklch(0.85 0.16 85 / 0.6); // Gold L=0.85 at 60% opacity
-$color-engine-gold-pale-a15-2: oklch(0.85 0.18 85 / 0.15); // Gold L=0.85 at 15% opacity
-$color-engine-gold-pale-a40-2: oklch(0.85 0.18 85 / 0.4); // Gold L=0.85 at 40% opacity
-$color-engine-gold-pale-a50-2: oklch(0.85 0.18 85 / 0.5); // Gold L=0.85 at 50% opacity
-$color-engine-gold-pale-a60-2: oklch(0.85 0.18 85 / 0.6); // Gold L=0.85 at 60% opacity
-$color-engine-gold-pale-2: oklch(0.85 0.18 85); // Gold L=0.85
-$color-engine-gold-pale-a10-2: oklch(0.85 0.18 95 / 0.1); // Gold L=0.85 at 10% opacity
-$color-engine-gold-pale-a50-3: oklch(0.85 0.18 95 / 0.5); // Gold L=0.85 at 50% opacity
-$color-engine-gold-pale-3: oklch(0.85 0.18 95); // Gold L=0.85
-$color-engine-gold-pale-4: oklch(0.85 0.25 85); // Gold L=0.85
-$color-engine-gold-bright-a08: oklch(0.88 0.18 95 / 0.08); // Gold L=0.88 at 8% opacity
-$color-engine-gold-bright-a10: oklch(0.88 0.18 95 / 0.1); // Gold L=0.88 at 10% opacity
-$color-engine-gold-bright-a15: oklch(0.88 0.18 95 / 0.15); // Gold L=0.88 at 15% opacity
-$color-engine-gold-bright-a20: oklch(0.88 0.18 95 / 0.2); // Gold L=0.88 at 20% opacity
-$color-engine-gold-bright-a25: oklch(0.88 0.18 95 / 0.25); // Gold L=0.88 at 25% opacity
-$color-engine-gold-bright-a40: oklch(0.88 0.18 95 / 0.4); // Gold L=0.88 at 40% opacity
-$color-engine-gold-bright-a50: oklch(0.88 0.18 95 / 0.5); // Gold L=0.88 at 50% opacity
-$color-engine-gold-bright: oklch(0.88 0.18 95); // Gold L=0.88
-$color-engine-gold-bright-a70: oklch(0.90 0.03 90 / 0.7); // Gold L=0.90 at 70% opacity
-$color-engine-gold-bright-2: oklch(0.90 0.16 85); // Gold L=0.90
-$color-engine-gold-bright-3: oklch(0.92 0.20 95); // Gold L=0.92
-$color-engine-rose-mid: oklch(0.42 0.18 340); // Rose L=0.42
-$color-engine-error-mid-a15: oklch(0.45 0.22 25 / 0.15); // Error L=0.45 at 15% opacity
-$color-engine-error-mid-a50: oklch(0.45 0.22 25 / 0.5); // Error L=0.45 at 50% opacity
-$color-engine-error-mid: oklch(0.45 0.22 25); // Error L=0.45
-$color-engine-error-mid-2: oklch(0.50 0.24 25); // Error L=0.50
-$color-engine-error-rich-a20: oklch(0.55 0.25 25 / 0.2); // Error L=0.55 at 20% opacity
-$color-engine-error-rich-a50: oklch(0.55 0.25 25 / 0.5); // Error L=0.55 at 50% opacity
-$color-engine-error-rich: oklch(0.65 0.25 25); // Error L=0.65
-$color-engine-purple-mid: oklch(0.45 0.25 300); // Purple L=0.45
-$color-engine-purple-rich: oklch(0.65 0.25 320); // Purple L=0.65
-$color-engine-green-rich-a20: oklch(0.65 0.25 150 / 0.2); // Green L=0.65 at 20% opacity
-$color-engine-green-rich-a30: oklch(0.65 0.25 150 / 0.3); // Green L=0.65 at 30% opacity
-$color-engine-green-rich-a50: oklch(0.65 0.25 150 / 0.5); // Green L=0.65 at 50% opacity
-$color-engine-green-rich-a60: oklch(0.65 0.25 150 / 0.6); // Green L=0.65 at 60% opacity
-$color-engine-green-rich: oklch(0.65 0.25 150); // Green L=0.65
-$color-engine-green-light-a05: oklch(0.75 0.25 150 / 0.05); // Green L=0.75 at 5% opacity
-$color-engine-green-light-a20: oklch(0.75 0.25 150 / 0.2); // Green L=0.75 at 20% opacity
-$color-engine-green-light: oklch(0.75 0.25 150); // Green L=0.75
-$color-engine-amber-light: oklch(0.70 0.22 50); // Amber L=0.70
-$color-engine-amber-light-2: oklch(0.75 0.18 65); // Amber L=0.75
-$color-engine-amber-pale: oklch(0.85 0.16 50); // Amber L=0.85
-$color-engine-amber-bright: oklch(0.88 0.18 50); // Amber L=0.88
-$color-engine-sacred-gold-pure: #FFD700; // Pure gold — used in luminous-gold-accessible gradient
-$color-engine-sacred-gold-lemon: #FFFACD; // Lemon chiffon — used in luminous-gold-accessible gradient
-$color-engine-sacred-purple-lavender: #e0c3fc; // Soft lavender purple — used in transcendent-overlay gradient
-$color-engine-sacred-blue-cornflower: #8ec5fc; // Cornflower blue — used in transcendent-overlay gradient
-$color-engine-sacred-blue-royal: #3a3ad6; // Royal blue — used in consciousness-royal gradient
-$color-engine-sacred-blue-royal-mid: #6e6ee6; // Medium royal blue — used in consciousness-royal gradient
+$color-engine-neutral-space: oklch(0.04 0.01 250); // Absolute void — deepest black for space scenes and star fields
+$color-engine-neutral-void: oklch(0.08 0.02 260); // Page background — primary dark-mode application surface
+$color-engine-neutral-deep: oklch(0.14 0.02 250); // Card surface — primary container on dark-mode background
+$color-engine-neutral-dark: oklch(0.20 0.02 250); // Elevated panel — secondary container, slightly lifted
+$color-engine-neutral-dim: oklch(0.30 0.01 230); // Chip surface — tertiary container, muted elevation
+$color-engine-neutral-mid: oklch(0.50 0.02 220); // Midpoint gray — separators, dividers, input field backgrounds
+$color-engine-neutral-light: oklch(0.70 0.01 230); // Secondary text — placeholder text, muted labels and captions
+$color-engine-neutral-pale: oklch(0.85 0.005 220); // Default border — hairline borders and light-mode card rims
+$color-engine-neutral-bright: oklch(0.94 0.005 220); // Light surface — hover states and subtle light backgrounds
+$color-engine-neutral-luminous: oklch(0.98 0.01 90); // Near-white — text on dark, star particles, high-contrast labels
+$color-engine-neutral-void-a00: oklch(0.08 0.02 260 / 0); // Page-bg transparent — gradient fade-to-transparent stop
+$color-engine-neutral-void-a05: oklch(0.08 0.02 260 / 0.05); // Page-bg 5% — barely-visible hairline shadow
+$color-engine-neutral-void-a10: oklch(0.08 0.02 260 / 0.10); // Page-bg 10% — subtle depth shadow on light surfaces
+$color-engine-neutral-void-a15: oklch(0.08 0.02 260 / 0.15); // Page-bg 15% — standard card drop-shadow
+$color-engine-neutral-void-a20: oklch(0.08 0.02 260 / 0.20); // Page-bg 20% — medium shadow, hover overlay
+$color-engine-neutral-void-a30: oklch(0.08 0.02 260 / 0.30); // Page-bg 30% — overlay backdrop, focus dimming
+$color-engine-neutral-void-a40: oklch(0.08 0.02 260 / 0.40); // Page-bg 40% — modal scrim, glassmorphism backing
+$color-engine-neutral-void-a50: oklch(0.08 0.02 260 / 0.50); // Page-bg 50% — half-opaque modal curtain
+$color-engine-neutral-void-a60: oklch(0.08 0.02 260 / 0.60); // Page-bg 60% — dense overlay for drawers and panels
+$color-engine-neutral-void-a70: oklch(0.08 0.02 260 / 0.70); // Page-bg 70% — dark overlay for tooltips and dropdowns
+$color-engine-neutral-void-a80: oklch(0.08 0.02 260 / 0.80); // Page-bg 80% — near-opaque dark panel tint
+$color-engine-neutral-void-a90: oklch(0.08 0.02 260 / 0.90); // Page-bg 90% — almost fully opaque dark surface
+$color-engine-neutral-void-a95: oklch(0.08 0.02 260 / 0.95); // Page-bg 95% — frosted glass with ghost of transparency
+$color-engine-neutral-void-a98: oklch(0.08 0.02 260 / 0.98); // Page-bg 98% — virtually opaque, glassmorphism cap
+$color-engine-neutral-deep-a40: oklch(0.14 0.02 250 / 0.40); // Card-glass 40% — glass input fields and subtle glass panels
+$color-engine-neutral-deep-a80: oklch(0.14 0.02 250 / 0.80); // Card-glass 80% — near-solid card glass with depth
+$color-engine-neutral-pale-a05: oklch(0.85 0.005 220 / 0.05); // Border-shimmer 5% — star-field particle, barely-visible dot
+$color-engine-neutral-pale-a10: oklch(0.85 0.005 220 / 0.10); // Border-shimmer 10% — gentle shimmer particle
+$color-engine-neutral-pale-a15: oklch(0.85 0.005 220 / 0.15); // Border-shimmer 15% — faint constellation point
+$color-engine-neutral-pale-a30: oklch(0.85 0.005 220 / 0.30); // Border-shimmer 30% — visible particle glow
+$color-engine-neutral-pale-a40: oklch(0.85 0.005 220 / 0.40); // Border-shimmer 40% — medium shimmer cluster
+$color-engine-neutral-pale-a50: oklch(0.85 0.005 220 / 0.50); // Border-shimmer 50% — half-opaque shimmer layer
+$color-engine-neutral-pale-a60: oklch(0.85 0.005 220 / 0.60); // Border-shimmer 60% — dense shimmer overlay
+$color-engine-neutral-pale-a80: oklch(0.85 0.005 220 / 0.80); // Border-shimmer 80% — near-solid light shimmer
+$color-engine-neutral-luminous-a05: oklch(0.98 0.01 90 / 0.05); // Near-white 5% — micro-glint star particle
+$color-engine-neutral-luminous-a10: oklch(0.98 0.01 90 / 0.10); // Near-white 10% — subtle white shine
+$color-engine-neutral-luminous-a20: oklch(0.98 0.01 90 / 0.20); // Near-white 20% — soft white glow particle
+$color-engine-neutral-luminous-a30: oklch(0.98 0.01 90 / 0.30); // Near-white 30% — visible star-field dot
+$color-engine-neutral-luminous-a40: oklch(0.98 0.01 90 / 0.40); // Near-white 40% — medium white shimmer
+$color-engine-neutral-luminous-a50: oklch(0.98 0.01 90 / 0.50); // Near-white 50% — half-opaque white glow
+$color-engine-neutral-luminous-a70: oklch(0.98 0.01 90 / 0.70); // Near-white 70% — high-brightness light ray
+$color-engine-neutral-luminous-a80: oklch(0.98 0.01 90 / 0.80); // Near-white 80% — strong white glow
+$color-engine-neutral-luminous-a90: oklch(0.98 0.01 90 / 0.90); // Near-white 90% — near-full white, frost glow
+$color-engine-neutral-luminous-a95: oklch(0.98 0.01 90 / 0.95); // Near-white 95% — glass-frosted white surface
+$color-engine-neutral-luminous-a98: oklch(0.98 0.01 90 / 0.98); // Near-white 98% — virtually solid white tint
+$color-engine-neutral-light-a05: oklch(0.70 0.01 230 / 0.05); // Secondary-text 5% — barely visible label ghost
+$color-engine-neutral-light-a10: oklch(0.70 0.01 230 / 0.10); // Secondary-text 10% — faint text overlay
+$color-engine-neutral-light-a20: oklch(0.70 0.01 230 / 0.20); // Secondary-text 20% — translucent label
+$color-engine-neutral-light-a30: oklch(0.70 0.01 230 / 0.30); // Secondary-text 30% — muted text tint
+$color-engine-neutral-light-a80: oklch(0.70 0.01 230 / 0.80); // Secondary-text 80% — near-solid muted text
+$color-engine-neutral-light-a90: oklch(0.70 0.01 230 / 0.90); // Secondary-text 90% — nearly opaque muted text
+$color-engine-neutral-light-a95: oklch(0.70 0.01 230 / 0.95); // Secondary-text 95% — almost-solid secondary color
+$color-engine-neutral-mid-a20: oklch(0.50 0.02 220 / 0.20); // Midgray 20% — badge background tint
+$color-engine-neutral-mid-a50: oklch(0.50 0.02 220 / 0.50); // Midgray 50% — badge border stroke
+$color-engine-neutral-mid-a70: oklch(0.50 0.02 220 / 0.70); // Midgray 70% — muted indicator color
+$color-engine-gold-muted: oklch(0.65 0.13 88); // Muted gold — low-saturation deep gold for backgrounds and gradients
+$color-engine-gold-vivid: oklch(0.75 0.25 85); // Vivid gold — primary gold glow overlay base
+$color-engine-gold-accent: oklch(0.85 0.18 95); // Accent gold — standard gold for text, borders and solid accents
+$color-engine-gold-bright: oklch(0.88 0.18 95); // Bright gold — high-luminance gold for highlights and active states
+$color-engine-gold-vivid-a00: oklch(0.75 0.25 85 / 0); // Gold-glow transparent — gradient fade-to-transparent stop
+$color-engine-gold-vivid-a05: oklch(0.75 0.25 85 / 0.05); // Gold-glow 5% — barely-visible gold shimmer
+$color-engine-gold-vivid-a10: oklch(0.75 0.25 85 / 0.10); // Gold-glow 10% — subtle gold aura
+$color-engine-gold-vivid-a15: oklch(0.75 0.25 85 / 0.15); // Gold-glow 15% — light gold glow background
+$color-engine-gold-vivid-a20: oklch(0.75 0.25 85 / 0.20); // Gold-glow 20% — visible gold overlay
+$color-engine-gold-vivid-a30: oklch(0.75 0.25 85 / 0.30); // Gold-glow 30% — medium gold tint panel
+$color-engine-gold-vivid-a40: oklch(0.75 0.25 85 / 0.40); // Gold-glow 40% — gold-tinted glass surface
+$color-engine-gold-vivid-a50: oklch(0.75 0.25 85 / 0.50); // Gold-glow 50% — half-opaque gold panel
+$color-engine-gold-vivid-a60: oklch(0.75 0.25 85 / 0.60); // Gold-glow 60% — saturated gold overlay
+$color-engine-gold-vivid-a70: oklch(0.75 0.25 85 / 0.70); // Gold-glow 70% — dense gold aura
+$color-engine-gold-vivid-a80: oklch(0.75 0.25 85 / 0.80); // Gold-glow 80% — near-solid gold tint
+$color-engine-gold-vivid-a90: oklch(0.75 0.25 85 / 0.90); // Gold-glow 90% — almost-solid gold highlight
+$color-engine-gold-accent-a05: oklch(0.85 0.18 95 / 0.05); // Accent-gold 5% — faintest gold hint
+$color-engine-gold-accent-a10: oklch(0.85 0.18 95 / 0.10); // Accent-gold 10% — subtle gold tint
+$color-engine-gold-accent-a15: oklch(0.85 0.18 95 / 0.15); // Accent-gold 15% — light gold indicator
+$color-engine-gold-accent-a20: oklch(0.85 0.18 95 / 0.20); // Accent-gold 20% — visible gold tint
+$color-engine-gold-accent-a30: oklch(0.85 0.18 95 / 0.30); // Accent-gold 30% — medium gold overlay
+$color-engine-gold-accent-a40: oklch(0.85 0.18 95 / 0.40); // Accent-gold 40% — medium gold background
+$color-engine-gold-accent-a50: oklch(0.85 0.18 95 / 0.50); // Accent-gold 50% — half-opaque gold surface
+$color-engine-gold-accent-a60: oklch(0.85 0.18 95 / 0.60); // Accent-gold 60% — dense gold overlay
+$color-engine-gold-bright-a10: oklch(0.88 0.18 95 / 0.10); // Bright-gold 10% — high-luminance gold glow hint
+$color-engine-gold-bright-a15: oklch(0.88 0.18 95 / 0.15); // Bright-gold 15% — bright gold aura ring
+$color-engine-gold-bright-a20: oklch(0.88 0.18 95 / 0.20); // Bright-gold 20% — bright gold sheen
+$color-engine-gold-bright-a40: oklch(0.88 0.18 95 / 0.40); // Bright-gold 40% — bright gold panel
+$color-engine-gold-bright-a50: oklch(0.88 0.18 95 / 0.50); // Bright-gold 50% — half-opaque bright gold
+$color-engine-gold-bright-a70: oklch(0.88 0.18 95 / 0.70); // Bright-gold 70% — prominent bright gold glow
+$color-engine-gold-muted-a70: oklch(0.65 0.13 88 / 0.70); // Muted-gold 70% — dark gold overlay for code/pre backgrounds
+$color-engine-indigo-void: oklch(0.10 0.03 260); // Indigo void — near-black indigo for cosmic scenes and space backdrops
+$color-engine-indigo-deep: oklch(0.16 0.03 250); // Indigo deep — dark indigo card surface
+$color-engine-indigo-dark: oklch(0.22 0.04 250); // Indigo dark — elevated dark indigo panel
+$color-engine-indigo-dim: oklch(0.30 0.04 250); // Indigo dim — mid-dark indigo container
+$color-engine-indigo-vivid: oklch(0.65 0.20 260); // Indigo vivid — saturated indigo accent color
+$color-engine-indigo-void-a20: oklch(0.10 0.03 260 / 0.20); // Indigo-void 20% — cosmic depth tint
+$color-engine-indigo-void-a40: oklch(0.10 0.03 260 / 0.40); // Indigo-void 40% — space backdrop overlay
+$color-engine-indigo-void-a60: oklch(0.10 0.03 260 / 0.60); // Indigo-void 60% — deep space atmosphere overlay
+$color-engine-indigo-deep-a10: oklch(0.16 0.03 250 / 0.10); // Indigo-deep 10% — faint dark indigo tint
+$color-engine-indigo-deep-a30: oklch(0.16 0.03 250 / 0.30); // Indigo-deep 30% — cosmic glow gradient start
+$color-engine-indigo-deep-a50: oklch(0.16 0.03 250 / 0.50); // Indigo-deep 50% — half-opaque dark indigo panel
+$color-engine-indigo-deep-a60: oklch(0.16 0.03 250 / 0.60); // Indigo-deep 60% — dense dark indigo overlay
+$color-engine-indigo-deep-a80: oklch(0.16 0.03 250 / 0.80); // Indigo-deep 80% — near-opaque indigo surface
+$color-engine-indigo-deep-a90: oklch(0.16 0.03 250 / 0.90); // Indigo-deep 90% — very dense indigo tint
+$color-engine-indigo-deep-a95: oklch(0.16 0.03 250 / 0.95); // Indigo-deep 95% — frosted-glass indigo panel
+$color-engine-indigo-dark-a30: oklch(0.22 0.04 250 / 0.30); // Indigo-dark 30% — mid-dark indigo overlay
+$color-engine-indigo-dark-a40: oklch(0.22 0.04 250 / 0.40); // Indigo-dark 40% — elevated dark indigo glass
+$color-engine-indigo-dark-a90: oklch(0.22 0.04 250 / 0.90); // Indigo-dark 90% — near-solid dark indigo
+$color-engine-indigo-dim-a30: oklch(0.30 0.04 250 / 0.30); // Indigo-dim 30% — mid-depth indigo overlay
+$color-engine-indigo-dim-a40: oklch(0.30 0.04 250 / 0.40); // Indigo-dim 40% — semi-transparent indigo panel
+$color-engine-indigo-dim-a50: oklch(0.30 0.04 250 / 0.50); // Indigo-dim 50% — half-opaque indigo surface
+$color-engine-blue-deep: oklch(0.22 0.05 230); // Neon-blue deep — dark blue surface for code blocks and glass panels
+$color-engine-blue-mid: oklch(0.45 0.20 230); // Neon-blue mid — vivid mid-range blue for state transitions
+$color-engine-blue-vivid: oklch(0.55 0.22 228); // Neon-blue vivid — primary electric blue accent
+$color-engine-blue-light: oklch(0.70 0.27 228); // Neon-blue light — lighter electric blue for hover and focus
+$color-engine-blue-bright: oklch(0.90 0.10 230); // Neon-blue bright — pale blue for subtle backgrounds
+$color-engine-blue-luminous: oklch(0.95 0.03 235); // Neon-blue luminous — near-white blue for links on dark surfaces
+$color-engine-blue-deep-a60: oklch(0.22 0.05 230 / 0.60); // Neon-blue-deep 60% — semi-opaque dark blue overlay
+$color-engine-blue-deep-a70: oklch(0.22 0.05 230 / 0.70); // Neon-blue-deep 70% — hover state on dark inputs
+$color-engine-blue-deep-a75: oklch(0.22 0.05 230 / 0.75); // Neon-blue-deep 75% — dark blue code block bg
+$color-engine-blue-deep-a80: oklch(0.22 0.05 230 / 0.80); // Neon-blue-deep 80% — focused input background
+$color-engine-blue-deep-a85: oklch(0.22 0.05 230 / 0.85); // Neon-blue-deep 85% — selected code highlight
+$color-engine-blue-deep-a95: oklch(0.22 0.05 230 / 0.95); // Neon-blue-deep 95% — glass-elevated blue panel
+$color-engine-blue-vivid-a00: oklch(0.55 0.22 228 / 0); // Neon-blue transparent — gradient fade-to-transparent
+$color-engine-blue-vivid-a05: oklch(0.55 0.22 228 / 0.05); // Neon-blue 5% — barely-visible blue shimmer
+$color-engine-blue-vivid-a10: oklch(0.55 0.22 228 / 0.10); // Neon-blue 10% — subtle neon blue aura
+$color-engine-blue-vivid-a15: oklch(0.55 0.22 228 / 0.15); // Neon-blue 15% — light blue glow
+$color-engine-blue-vivid-a20: oklch(0.55 0.22 228 / 0.20); // Neon-blue 20% — visible blue overlay
+$color-engine-blue-vivid-a25: oklch(0.55 0.22 228 / 0.25); // Neon-blue 25% — medium blue tint
+$color-engine-blue-vivid-a60: oklch(0.55 0.22 228 / 0.60); // Neon-blue 60% — dense neon glow layer
+$color-engine-blue-vivid-a90: oklch(0.55 0.22 228 / 0.90); // Neon-blue 90% — near-solid neon blue
+$color-engine-blue-mid-a70: oklch(0.45 0.20 230 / 0.70); // Neon-blue-mid 70% — deep blue selected state
+$color-engine-blue-light-a50: oklch(0.70 0.27 228 / 0.50); // Neon-blue-light 50% — half-opaque lighter blue
+$color-engine-violet-void: oklch(0.12 0.04 280); // Violet void — near-black violet for darkest surface contexts
+$color-engine-violet-deep: oklch(0.15 0.04 280); // Violet deep — dark violet card surface
+$color-engine-violet-dark: oklch(0.25 0.06 280); // Violet dark — elevated dark violet panel
+$color-engine-violet-dim: oklch(0.30 0.10 280); // Violet dim — mid-dark violet container
+$color-engine-violet-vivid: oklch(0.55 0.25 290); // Violet vivid — saturated violet accent
+$color-engine-violet-bright: oklch(0.65 0.20 280); // Violet bright — lighter vivid violet for highlights
+$color-engine-violet-deep-a80: oklch(0.15 0.04 280 / 0.80); // Violet-deep 80% — near-opaque dark violet panel
+$color-engine-violet-deep-a90: oklch(0.15 0.04 280 / 0.90); // Violet-deep 90% — dense dark violet overlay
+$color-engine-violet-deep-a95: oklch(0.15 0.04 280 / 0.95); // Violet-deep 95% — frosted violet glass surface
+$color-engine-violet-dark-a15: oklch(0.25 0.06 280 / 0.15); // Violet-dark 15% — subtle violet tint
+$color-engine-violet-vivid-a05: oklch(0.55 0.25 290 / 0.05); // Violet 5% — barely-visible violet shimmer
+$color-engine-violet-vivid-a10: oklch(0.55 0.25 290 / 0.10); // Violet 10% — faint violet aura
+$color-engine-violet-vivid-a15: oklch(0.55 0.25 290 / 0.15); // Violet 15% — light violet glow
+$color-engine-violet-vivid-a20: oklch(0.55 0.25 290 / 0.20); // Violet 20% — visible violet overlay
+$color-engine-violet-vivid-a30: oklch(0.55 0.25 290 / 0.30); // Violet 30% — medium violet tint panel
+$color-engine-violet-vivid-a40: oklch(0.55 0.25 290 / 0.40); // Violet 40% — violet glass surface
+$color-engine-violet-vivid-a50: oklch(0.55 0.25 290 / 0.50); // Violet 50% — half-opaque violet panel
+$color-engine-violet-vivid-a60: oklch(0.55 0.25 290 / 0.60); // Violet 60% — dense violet overlay
+$color-engine-violet-vivid-a70: oklch(0.55 0.25 290 / 0.70); // Violet 70% — prominent violet glow
+$color-engine-cyan-deep: oklch(0.42 0.15 200); // Cyan deep — dark teal for glass backgrounds
+$color-engine-cyan-vivid: oklch(0.75 0.15 195); // Cyan vivid — primary teal accent
+$color-engine-cyan-bright: oklch(0.85 0.10 195); // Cyan bright — light teal highlight
+$color-engine-cyan-deep-a60: oklch(0.42 0.15 200 / 0.60); // Cyan-deep 60% — teal glass overlay
+$color-engine-cyan-vivid-a05: oklch(0.75 0.15 195 / 0.05); // Cyan 5% — barely-visible teal shimmer
+$color-engine-cyan-vivid-a10: oklch(0.75 0.15 195 / 0.10); // Cyan 10% — subtle teal aura
+$color-engine-cyan-vivid-a15: oklch(0.75 0.15 195 / 0.15); // Cyan 15% — faint teal glow
+$color-engine-cyan-vivid-a30: oklch(0.75 0.15 195 / 0.30); // Cyan 30% — teal glow overlay
+$color-engine-cyan-vivid-a50: oklch(0.75 0.15 195 / 0.50); // Cyan 50% — half-opaque teal
+$color-engine-cyan-vivid-a90: oklch(0.75 0.15 195 / 0.90); // Cyan 90% — near-solid teal panel
+$color-engine-green-vivid: oklch(0.65 0.18 145); // Green vivid — primary success and nature accent
+$color-engine-green-bright: oklch(0.75 0.15 145); // Green bright — lighter success highlight
+$color-engine-green-vivid-a05: oklch(0.65 0.18 145 / 0.05); // Green 5% — barely-visible success tint
+$color-engine-green-vivid-a10: oklch(0.65 0.18 145 / 0.10); // Green 10% — subtle success tint
+$color-engine-green-vivid-a20: oklch(0.65 0.18 145 / 0.20); // Green 20% — visible success overlay
+$color-engine-green-vivid-a30: oklch(0.65 0.18 145 / 0.30); // Green 30% — medium success indicator
+$color-engine-green-vivid-a50: oklch(0.65 0.18 145 / 0.50); // Green 50% — half-opaque success panel
+$color-engine-green-vivid-a60: oklch(0.65 0.18 145 / 0.60); // Green 60% — dense success glow
+$color-engine-green-vivid-a90: oklch(0.65 0.18 145 / 0.90); // Green 90% — near-solid success tint
+$color-engine-error-deep: oklch(0.45 0.20 25); // Error deep — dark red for error backgrounds
+$color-engine-error-vivid: oklch(0.50 0.22 25); // Error vivid — primary error and danger accent
+$color-engine-error-bright: oklch(0.65 0.18 25); // Error bright — lighter error highlight
+$color-engine-error-vivid-a10: oklch(0.50 0.22 25 / 0.10); // Error 10% — faint error tint
+$color-engine-error-vivid-a15: oklch(0.50 0.22 25 / 0.15); // Error 15% — subtle error indicator
+$color-engine-error-vivid-a20: oklch(0.50 0.22 25 / 0.20); // Error 20% — light error overlay
+$color-engine-error-vivid-a30: oklch(0.50 0.22 25 / 0.30); // Error 30% — error overlay
+$color-engine-error-vivid-a50: oklch(0.50 0.22 25 / 0.50); // Error 50% — half-opaque error panel
+$color-engine-error-vivid-a80: oklch(0.50 0.22 25 / 0.80); // Error 80% — dense error background
+$color-engine-amber-deep: oklch(0.70 0.15 70); // Amber deep — dark amber for strong warnings
+$color-engine-amber-vivid: oklch(0.75 0.18 75); // Amber vivid — primary amber warning accent
+$color-engine-amber-bright: oklch(0.85 0.16 75); // Amber bright — light amber highlight
+$color-engine-amber-pale: oklch(0.88 0.14 75); // Amber pale — very light amber background tint
+$color-engine-purple-dark: oklch(0.45 0.22 305); // Purple dark — deeper purple for backgrounds
+$color-engine-purple-vivid: oklch(0.55 0.25 300); // Purple vivid — primary purple accent
+$color-engine-purple-bright: oklch(0.65 0.18 305); // Purple bright — lighter purple accent
+$color-engine-rose-vivid: oklch(0.42 0.18 350); // Rose vivid — primary rose and pink accent
+$color-engine-sacred-gold-pure: oklch(0.80 0.22 85); // Sacred pure gold — radiant gold for sacred UI themes
+$color-engine-sacred-gold-lemon: oklch(0.88 0.20 90); // Sacred lemon gold — bright warm gold for divine gradients
+$color-engine-sacred-blue-royal: oklch(0.45 0.20 255); // Sacred royal blue — deep royal blue for sacred themes
+$color-engine-sacred-blue-royal-mid: oklch(0.55 0.20 255); // Sacred royal blue mid — mid royal blue for gradient stops
+$color-engine-sacred-blue-cornflower: oklch(0.65 0.16 265); // Sacred cornflower — cornflower blue for divine palettes
+$color-engine-sacred-purple-lavender: oklch(0.65 0.18 295); // Sacred lavender — lavender purple for consciousness themes

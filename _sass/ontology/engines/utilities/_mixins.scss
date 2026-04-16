@@ -141,7 +141,7 @@
   overflow: hidden;
   
   &:focus {
-    outline: 2px solid $color-engine-gold-light-a50;
+    outline: 2px solid $color-engine-gold-vivid-a50;
     outline-offset: 2px;
   }
 }
@@ -159,7 +159,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, $color-engine-neutral-luminous-a20-3, transparent);
+    background: linear-gradient(90deg, transparent, $color-engine-neutral-luminous-a20, transparent);
     transition: left 0.6s ease;
   }
   
@@ -185,7 +185,7 @@
   border: 2px solid $color-accent-gold;
   
   &:hover {
-    background: $color-engine-gold-light-a10;
+    background: $color-engine-gold-vivid-a10;
     transform: translateY(-1px);
   }
 }
@@ -199,10 +199,10 @@
   
   @keyframes consciousnessPulse {
     0%, 100% {
-      box-shadow: 0 0 20px $color-engine-gold-light-a30;
+      box-shadow: 0 0 20px $color-engine-gold-vivid-a30;
     }
     50% {
-      box-shadow: 0 0 40px $color-engine-gold-light-a60;
+      box-shadow: 0 0 40px $color-engine-gold-vivid-a60;
     }
   }
 }
@@ -212,7 +212,7 @@
 @mixin transcendent-card() {
   background: $color-engine-neutral-void-a80;
   backdrop-filter: blur(20px);
-  border: 1px solid $color-engine-gold-light-a20;
+  border: 1px solid $color-engine-gold-vivid-a20;
   border-radius: $component-card-border-radius;
   box-shadow: $effect-shadow-consciousness;
   transition: $transition-consciousness;
@@ -242,7 +242,7 @@
   background: linear-gradient(
     135deg,
     $color-engine-neutral-void-a95,
-    $color-engine-blue-rich-a90-2,
+    $color-engine-blue-vivid-a90,
     $color-engine-neutral-void-a95
   );
   
@@ -319,7 +319,7 @@
 
 @mixin icon-transcendent() {
   @include icon-large;
-  background: radial-gradient(circle, $color-engine-gold-light-a20, transparent);
+  background: radial-gradient(circle, $color-engine-gold-vivid-a20, transparent);
   border-radius: $border-radius-infinite;
   color: $color-accent-gold;
 }
@@ -389,23 +389,23 @@
     opacity: 0;
     transform: scale(0.95) rotate(-1deg);
     filter: blur(6px) brightness(1.1);
-    box-shadow: 0 0 0 0 $color-engine-blue-rich-a00;
+    box-shadow: 0 0 0 0 $color-engine-blue-vivid-a00;
   }
   40% {
     opacity: 0.7;
     filter: blur(2px) brightness(1.05);
-    box-shadow: 0 0 18px 6px $color-engine-blue-rich-a12;
+    box-shadow: 0 0 18px 6px $color-engine-blue-vivid-a10;
   }
   70% {
     opacity: 1;
     filter: blur(0) brightness(1.01);
-    box-shadow: 0 0 32px 12px $color-engine-blue-rich-a18;
+    box-shadow: 0 0 32px 12px $color-engine-blue-vivid-a20;
   }
   100% {
     opacity: 1;
     transform: scale(1) rotate(0deg);
     filter: none;
-    box-shadow: 0 0 0 0 $color-engine-blue-rich-a00;
+    box-shadow: 0 0 0 0 $color-engine-blue-vivid-a00;
   }
 }
 
@@ -442,8 +442,8 @@
 
 @mixin consciousness-network-bg() {
   background-image: 
-    radial-gradient(circle at 20% 30%, $color-engine-gold-light-a10 1px, transparent 1px),
-    radial-gradient(circle at 80% 70%, $color-engine-blue-rich-a10 1px, transparent 1px),
+    radial-gradient(circle at 20% 30%, $color-engine-gold-vivid-a10 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, $color-engine-blue-vivid-a10 1px, transparent 1px),
     radial-gradient(circle at 40% 80%, $color-engine-neutral-pale-a10 1px, transparent 1px);
   background-size: 100px 100px, 150px 150px, 200px 200px;
   animation: networkFlow 30s linear infinite;
@@ -528,7 +528,7 @@
 @mixin consciousness-card {
   background: $color-engine-neutral-void-a80;
   backdrop-filter: blur(15px);
-  border: 1px solid $color-engine-gold-light-a20;
+  border: 1px solid $color-engine-gold-vivid-a20;
   border-radius: $border-radius-consciousness;
   box-shadow: $effect-shadow-consciousness;
   padding: $spacing-xl;
@@ -540,13 +540,13 @@
     content: '';
     position: absolute;
     inset: 0 0 0 0;
-    background: linear-gradient(135deg, $color-engine-gold-light-a05, transparent);
+    background: linear-gradient(135deg, $color-engine-gold-vivid-a05, transparent);
     pointer-events: none;
   }
   
   &:hover {
     transform: translateY(-5px);
-    border-color: $color-engine-gold-light-a40;
+    border-color: $color-engine-gold-vivid-a40;
     box-shadow: $effect-shadow-transcendent;
   }
 }
@@ -558,7 +558,7 @@
   width: 3rem;
   height: 3rem;
   border-radius: $border-radius-infinite;
-  background: radial-gradient(circle, $color-engine-gold-light-a20, transparent);
+  background: radial-gradient(circle, $color-engine-gold-vivid-a20, transparent);
   color: $color-accent-gold;
   font-size: 1.5rem;
   transition: all 0.3s $effect-ease-consciousness;
@@ -587,11 +587,11 @@
 @keyframes consciousnessPulse {
   0%, 100% {
     transform: scale(1);
-    box-shadow: 0 0 15px $color-engine-gold-light-a30;
+    box-shadow: 0 0 15px $color-engine-gold-vivid-a30;
   }
   50% {
     transform: scale(1.05);
-    box-shadow: 0 0 30px $color-engine-gold-light-a60;
+    box-shadow: 0 0 30px $color-engine-gold-vivid-a60;
   }
 }
 
@@ -684,7 +684,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, $color-engine-gold-light-a30, transparent);
+    background: linear-gradient(90deg, transparent, $color-engine-gold-vivid-a30, transparent);
     transition: left 0.6s ease;
   }
   
@@ -737,6 +737,6 @@
  // Use neon blue directly instead:
  // - background-color: $color-accent-neon-blue (or $color-accent-neon-blue)
  // - border-color: $color-accent-neon-blue
- // - For darker variant: $color-engine-blue-rich
- // - For glows: box-shadow: 0 0 20px $color-engine-blue-rich-a60
+ // - For darker variant: $color-engine-blue-vivid
+ // - For glows: box-shadow: 0 0 20px $color-engine-blue-vivid-a60
  // ============================================================================

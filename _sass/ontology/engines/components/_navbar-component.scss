@@ -40,7 +40,7 @@
       // Active state — neural pulse indicator
       &--active {
         .navbar__link {
-          color: var(--genesis-body-color, $color-engine-neutral-luminous);
+          color: var(--genesis-body-color, $color-engine-neutral-bright);
           font-weight: 500;
         }
       }
@@ -73,7 +73,7 @@
       @include flex-between;
       gap: 0.5rem;
       @include full-width;
-      color: var(--text-secondary, $color-engine-neutral-light-2);
+      color: var(--text-secondary, $color-engine-neutral-light);
       @include text-decoration-none;
       font-family: $font-family-consciousness;
       font-size: 0.875rem;
@@ -95,8 +95,8 @@
 
       &:hover,
       &:focus {
-        color: var(--genesis-body-color, $color-engine-neutral-luminous);
-        background: var(--glass-hover, $color-engine-neutral-deep-5);
+        color: var(--genesis-body-color, $color-engine-neutral-bright);
+        background: var(--glass-hover, $color-engine-neutral-deep);
         border-color: var(--genesis-card-border, $color-theme-dark-header-border);
       }
 
@@ -136,13 +136,13 @@
       @include genesis-entity('primary');
       @include genesis-atmosphere('void');
       backdrop-filter: blur(20px);
-      background: var(--genesis-bg-surface, $color-engine-neutral-void-a97-2);
-      @include border-subtle(var(--genesis-card-border, $color-engine-indigo-dark-4));
+      background: var(--genesis-bg-surface, $color-engine-neutral-void-a98);
+      @include border-subtle(var(--genesis-card-border, $color-engine-indigo-dark));
       @include border-radius-rounded(12px);
 
       box-shadow:
-        0 8px 32px $color-engine-neutral-abyss-a50,
-        0 0 1px $color-engine-blue-rich-a15,
+        0 8px 32px $color-engine-neutral-void-a50,
+        0 0 1px $color-engine-blue-vivid-a15,
         inset 0 1px 0 $color-engine-indigo-dark;
 
       @include list-reset;
@@ -199,7 +199,7 @@
       padding: 0.625rem 0.875rem;
       @include flex-row;
       align-items: center;
-      color: var(--text-secondary, $color-engine-neutral-rich-3);
+      color: var(--text-secondary, $color-engine-neutral-light);
       @include text-decoration-none;
       font-family: $font-family-consciousness;
       font-size: 0.8125rem;
@@ -210,14 +210,14 @@
 
       &:hover,
       &:focus {
-        color: var(--genesis-body-color, $color-engine-neutral-luminous);
-        background: var(--glass-hover, $color-engine-neutral-deep-2);
+        color: var(--genesis-body-color, $color-engine-neutral-bright);
+        background: var(--glass-hover, $color-engine-neutral-deep);
         padding-left: 1.125rem;
       }
 
       &[aria-current="page"] {
-        color: var(--genesis-body-color, $color-engine-neutral-luminous);
-        background: var(--glass-hover, $color-engine-indigo-deep);
+        color: var(--genesis-body-color, $color-engine-neutral-bright);
+        background: var(--glass-hover, $color-engine-indigo-void);
         font-weight: 500;
         border-left: 2px solid var(--accent-neon, $color-accent-neon-blue);
         padding-left: 0.75rem;

@@ -19,22 +19,22 @@
     // High-transparency, light-based focus
     backdrop-filter: blur(10px) brightness(1.02);
     background: $color-light-white;
-    box-shadow: 0 1px 4px $color-engine-neutral-void-a06;
+    box-shadow: 0 1px 4px $color-engine-neutral-void-a05;
   }
   @else if $vibe == 'void' {
     // Deep-space, profound black, ultra high-contrast
     background: var(--genesis-bg-surface, $color-dark-profound-black);
     color: var(--genesis-body-color, $color-light-white);
     box-shadow: 
-      inset 0 0 20px $color-engine-neutral-abyss-4,
-      0 1px 8px $color-engine-neutral-abyss-a40;
+      inset 0 0 20px $color-engine-neutral-space,
+      0 1px 8px $color-engine-neutral-void-a40;
   }
   @else if $vibe == 'vibrant' {
     // High-energy, data-saturated
     background: var(--genesis-bg-surface, $color-light-white);
     color: var(--genesis-body-color, $color-theme-dark-card-bg);
     box-shadow: 
-      0 0 12px $color-engine-blue-rich-a15,
+      0 0 12px $color-engine-blue-vivid-a15,
       0 2px 8px $color-engine-neutral-void-a10;
     backdrop-filter: blur(8px);
   }
@@ -51,7 +51,7 @@
         $color-engine-indigo-void-a60 0%,
         transparent 50%
       ),
-      $color-engine-neutral-void-4;
+      $color-engine-neutral-void;
     color: $color-boardroom-text;
     position: relative;
 
@@ -80,9 +80,9 @@
       position: absolute;
       inset: 0;
       background-image:
-        radial-gradient(1px 1px at 20% 30%, $color-engine-neutral-luminous-a30-2 0%, transparent 100%),
-        radial-gradient(1px 1px at 40% 70%, $color-engine-neutral-luminous-a20-2 0%, transparent 100%),
-        radial-gradient(1px 1px at 60% 15%, $color-engine-neutral-luminous-a25 0%, transparent 100%);
+        radial-gradient(1px 1px at 20% 30%, $color-engine-neutral-luminous-a30 0%, transparent 100%),
+        radial-gradient(1px 1px at 40% 70%, $color-engine-neutral-luminous-a20 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 15%, $color-engine-neutral-luminous-a20 0%, transparent 100%);
       pointer-events: none;
       z-index: 0;
     }
@@ -93,8 +93,8 @@
     }
 
     @media (prefers-contrast: high) {
-      background: $color-engine-neutral-abyss-3;
-      color: $color-engine-neutral-luminous-6;
+      background: $color-engine-neutral-space;
+      color: $color-engine-neutral-bright;
 
       h1,
       h2,
@@ -110,7 +110,7 @@
       time,
       span,
       a {
-        color: $color-engine-neutral-luminous-6;
+        color: $color-engine-neutral-bright;
       }
 
       &::before {
@@ -139,7 +139,7 @@
     background: linear-gradient(
       175deg,
       $color-engine-neutral-void 0%,
-      $color-engine-neutral-abyss-2 60%,
+      $color-engine-neutral-space 60%,
       $color-engine-neutral-void 100%
     );
     color: $color-light-white;
@@ -156,7 +156,7 @@
       background: linear-gradient(
         90deg,
         transparent,
-        $color-engine-gold-light-a60,
+        $color-engine-gold-vivid-a60,
         transparent
       );
     }

@@ -184,7 +184,7 @@ p, .body-text {
 blockquote {
   padding: 1.5rem;
   @include border-color($color-accent-gold);
-  background: $color-engine-gold-light-a05;
+  background: $color-engine-gold-vivid-a05;
   font-style: italic;
   font-family: $font-family-wisdom;
   line-height: $line-height-consciousness;
@@ -194,7 +194,7 @@ blockquote {
   &::before {
     content: '"';
     font-size: 3rem;
-    color: $color-engine-gold-light-a30;
+    color: $color-engine-gold-vivid-a30;
     position: absolute;
     top: -0.5rem;
     left: 1rem;
@@ -299,7 +299,7 @@ a {
 
   &:focus {
     border-color: $color-accent-gold;
-    box-shadow: 0 0 0 0.2rem $color-engine-gold-light-a25;
+    box-shadow: 0 0 0 0.2rem $color-engine-gold-vivid-a20;
   }
 }
 
@@ -319,38 +319,38 @@ a {
 // ============================================================================
 
 .material-glass {
-  background: $color-engine-blue-dark-a75;
+  background: $color-engine-blue-deep-a75;
   backdrop-filter: $effect-blur-glass-md;
   -webkit-backdrop-filter: $effect-blur-glass-md;
-  border: 1px solid $color-engine-indigo-dim-a40-2;
+  border: 1px solid $color-engine-indigo-dim-a40;
 }
 
 .material-glass-elevated {
-  background: $color-engine-blue-dark-a85;
+  background: $color-engine-blue-deep-a85;
   backdrop-filter: $effect-blur-glass-md;
   -webkit-backdrop-filter: $effect-blur-glass-md;
-  border: 1px solid $color-engine-indigo-dim-a60;
+  border: 1px solid $color-engine-indigo-dim-a50;
 }
 
 .material-glass-subtle {
   background: $color-engine-blue-deep-a60;
   backdrop-filter: $effect-blur-glass-sm;
   -webkit-backdrop-filter: $effect-blur-glass-sm;
-  border: 1px solid $color-engine-indigo-dim-a30-2;
+  border: 1px solid $color-engine-indigo-dim-a30;
 }
 
 .material-glass-accent {
-  background: $color-engine-gold-dark-a70;
+  background: $color-engine-gold-muted-a70;
   backdrop-filter: $effect-blur-glass-md;
   -webkit-backdrop-filter: $effect-blur-glass-md;
-  border: 1px solid $color-engine-gold-pale-a40;
+  border: 1px solid $color-engine-gold-accent-a40;
 }
 
 .material-header {
-  background: $color-engine-indigo-deep-a95-2;
+  background: $color-engine-indigo-deep-a95;
   backdrop-filter: $effect-blur-glass-lg;
   -webkit-backdrop-filter: $effect-blur-glass-lg;
-  border-bottom: 1px solid $color-engine-indigo-dim-a30-2;
+  border-bottom: 1px solid $color-engine-indigo-dim-a30;
   box-shadow: $effect-shadow-ambient;
 }
 
@@ -358,23 +358,23 @@ a {
   background: $color-engine-indigo-deep-a95;
   backdrop-filter: $effect-blur-glass-lg;
   -webkit-backdrop-filter: $effect-blur-glass-lg;
-  border-top: 1px solid $color-engine-indigo-dim-a30-2;
+  border-top: 1px solid $color-engine-indigo-dim-a30;
 }
 
 .material-overlay {
-  background: $color-engine-indigo-deep-a85;
+  background: $color-engine-indigo-deep-a80;
   backdrop-filter: $effect-blur-glass-xl;
   -webkit-backdrop-filter: $effect-blur-glass-xl;
 }
 
 .material-modal {
-  background: $color-engine-indigo-deep-a95-2;
+  background: $color-engine-indigo-deep-a95;
   backdrop-filter: $effect-blur-glass-lg;
   -webkit-backdrop-filter: $effect-blur-glass-lg;
-  border: 1px solid $color-engine-indigo-dim-a50-2;
+  border: 1px solid $color-engine-indigo-dim-a50;
   box-shadow:
-    0 20px 50px $color-engine-indigo-deep-a35,
-    0 0 20px $color-engine-gold-pale-a10;
+    0 20px 50px $color-engine-indigo-deep-a30,
+    0 0 20px $color-engine-gold-accent-a10;
 }
 
 // Gradient fade masks
@@ -416,7 +416,7 @@ a {
     color: $color-accent-gold;
 
     &:hover {
-      color: $color-engine-gold-rich-2;
+      color: $color-engine-gold-muted;
     }
   }
 

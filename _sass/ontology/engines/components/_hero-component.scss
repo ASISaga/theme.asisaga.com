@@ -32,7 +32,7 @@
 }
 
 // Gradient hero component
-@mixin gradient-hero-component($prefix: 'hero', $start-color: $color-engine-blue-rich-a10, $end-color: $color-engine-neutral-luminous-a100) {
+@mixin gradient-hero-component($prefix: 'hero', $start-color: $color-engine-blue-vivid-a10, $end-color: $color-engine-neutral-bright) {
   @include hero-component($prefix);
   
   .#{$prefix} {

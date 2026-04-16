@@ -18,19 +18,19 @@
   --glow-intensity-intense: 0.85;
 
   // Neural network colors
-  --neural-primary: #{$color-engine-violet-rich};
-  --neural-secondary: #{$color-engine-violet-rich-2};
-  --neural-tertiary: #{$color-engine-cyan-light};
+  --neural-primary: #{$color-engine-violet-vivid};
+  --neural-secondary: #{$color-engine-violet-bright};
+  --neural-tertiary: #{$color-engine-cyan-vivid};
 
   // Quantum field colors
-  --quantum-cyan: #{$color-engine-cyan-light-2};
-  --quantum-magenta: #{$color-engine-purple-rich};
+  --quantum-cyan: #{$color-engine-cyan-bright};
+  --quantum-magenta: #{$color-engine-purple-vivid};
   --quantum-gold: #{$color-accent-gold};
 
   // Consciousness depth — use generated effect-glass-* where possible
-  --void-deep: #{$color-engine-neutral-void-3};
-  --void-medium: #{$color-engine-indigo-deep-2};
-  --void-surface: #{$color-engine-indigo-deep-8};
+  --void-deep: #{$color-engine-neutral-void};
+  --void-medium: #{$color-engine-indigo-void};
+  --void-surface: #{$color-engine-indigo-void};
 
   // Animation timing — reference generated durations
   --motion-quantum: 0.15s;
@@ -56,12 +56,12 @@
   background: $effect-glass-consciousness;
   backdrop-filter: $effect-blur-glass-lg;
   -webkit-backdrop-filter: $effect-blur-glass-lg;
-  border: 1px solid $color-engine-indigo-mid-a25;
+  border: 1px solid $color-engine-indigo-dim-a30;
   box-shadow:
-    0 4px 24px $color-engine-neutral-void-a35,
-    0 1px 3px $color-engine-neutral-void-a15-2,
-    inset 0 1px 0 $color-engine-neutral-luminous-a06,
-    inset 0 0 80px $color-engine-violet-rich-a03;
+    0 4px 24px $color-engine-neutral-void-a30,
+    0 1px 3px $color-engine-neutral-void-a15,
+    inset 0 1px 0 $color-engine-neutral-luminous-a05,
+    inset 0 0 80px $color-engine-violet-vivid-a05;
   will-change: transform;
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
@@ -72,12 +72,12 @@
   background: $effect-glass-elevated;
   backdrop-filter: $effect-blur-glass-xl;
   -webkit-backdrop-filter: $effect-blur-glass-xl;
-  border: 1px solid $color-engine-indigo-mid-a35;
+  border: 1px solid $color-engine-indigo-dim-a30;
   box-shadow:
-    0 8px 32px $color-engine-neutral-void-a40-2,
+    0 8px 32px $color-engine-neutral-void-a40,
     0 2px 8px $color-engine-neutral-void-a20,
-    inset 0 1px 0 $color-engine-neutral-luminous-a08,
-    inset 0 0 60px $color-engine-gold-pale-a03;
+    inset 0 1px 0 $color-engine-neutral-luminous-a10,
+    inset 0 0 60px $color-engine-gold-accent-a05;
   will-change: transform, box-shadow;
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
@@ -85,7 +85,7 @@
 
 /// Ethereal glass — light, transcendent feel
 @mixin glass-ethereal {
-  background: $color-engine-neutral-luminous-a08;
+  background: $color-engine-neutral-luminous-a10;
   backdrop-filter: blur(40px) saturate(1.8) brightness(1.05);
   -webkit-backdrop-filter: blur(40px) saturate(1.8) brightness(1.05);
   border: 1px solid $color-engine-neutral-luminous-a20;
@@ -102,10 +102,10 @@
   background: $color-engine-violet-deep-a80;
   backdrop-filter: blur(28px) saturate(1.5);
   -webkit-backdrop-filter: blur(28px) saturate(1.5);
-  border: 1px solid $color-engine-violet-rich-a35;
+  border: 1px solid $color-engine-violet-vivid-a30;
   box-shadow:
-    0 0 40px $color-engine-violet-rich-a20,
-    inset 0 0 60px $color-engine-violet-rich-a05;
+    0 0 40px $color-engine-violet-vivid-a20,
+    inset 0 0 60px $color-engine-violet-vivid-a05;
   will-change: transform, box-shadow;
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
@@ -116,7 +116,7 @@
   background: $effect-glass-subtle;
   backdrop-filter: $effect-blur-glass-sm;
   -webkit-backdrop-filter: $effect-blur-glass-sm;
-  border: 1px solid $color-engine-indigo-dim-a30-2;
+  border: 1px solid $color-engine-indigo-dim-a30;
 }
 
 /// Void glass — overlays and deep UI layers
@@ -171,9 +171,9 @@
 /// Multi-spectrum transcendent glow
 @mixin glow-transcendent {
   box-shadow:
-    0 0 20px $color-engine-gold-pale-a40-2,
-    0 0 40px $color-engine-violet-rich-a25,
-    0 0 60px $color-engine-cyan-light-a15;
+    0 0 20px $color-engine-gold-accent-a40,
+    0 0 40px $color-engine-violet-vivid-a20,
+    0 0 60px $color-engine-cyan-vivid-a15;
 }
 
 // ============================================================================
@@ -184,11 +184,11 @@
 @mixin gradient-consciousness($angle: 135deg) {
   background: linear-gradient(
     #{$angle},
-    $color-engine-neutral-void-3 0%,
-    $color-engine-violet-deep-4 25%,
-    $color-engine-violet-deep-8 50%,
-    $color-engine-indigo-dark-5 75%,
-    $color-engine-indigo-dark-7 100%
+    $color-engine-neutral-void 0%,
+    $color-engine-violet-void 25%,
+    $color-engine-violet-void 50%,
+    $color-engine-indigo-dark 75%,
+    $color-engine-indigo-dark 100%
   );
 }
 
@@ -196,11 +196,11 @@
 @mixin gradient-genesis($angle: 135deg) {
   background: linear-gradient(
     #{$angle},
-    $color-engine-gold-pale-2 0%,
-    $color-engine-gold-pale 25%,
-    $color-engine-amber-light 50%,
-    $color-engine-purple-rich 75%,
-    $color-engine-cyan-light-2 100%
+    $color-engine-gold-accent 0%,
+    $color-engine-gold-accent 25%,
+    $color-engine-amber-pale 50%,
+    $color-engine-purple-vivid 75%,
+    $color-engine-cyan-bright 100%
   );
 }
 
@@ -208,10 +208,10 @@
 @mixin gradient-neural($angle: 135deg) {
   background: linear-gradient(
     #{$angle},
-    $color-engine-purple-mid 0%,
-    $color-engine-violet-rich 33%,
-    $color-engine-indigo-rich 66%,
-    $color-engine-cyan-light-2 100%
+    $color-engine-purple-dark 0%,
+    $color-engine-violet-vivid 33%,
+    $color-engine-indigo-vivid 66%,
+    $color-engine-cyan-bright 100%
   );
 }
 
@@ -219,10 +219,10 @@
 @mixin gradient-void($angle: 180deg) {
   background: linear-gradient(
     #{$angle},
-    $color-engine-neutral-abyss-5 0%,
-    $color-engine-neutral-void-3 30%,
-    $color-engine-neutral-void-5 60%,
-    $color-engine-indigo-deep 100%
+    $color-engine-neutral-space 0%,
+    $color-engine-neutral-void 30%,
+    $color-engine-neutral-void 60%,
+    $color-engine-indigo-void 100%
   );
 }
 
@@ -230,10 +230,10 @@
 @mixin gradient-mesh-animated {
   background: linear-gradient(
     -45deg,
-    $color-engine-indigo-deep-3,
-    $color-engine-violet-deep-6,
-    $color-engine-indigo-deep-4,
-    $color-engine-violet-deep-5
+    $color-engine-indigo-void,
+    $color-engine-violet-void,
+    $color-engine-indigo-void,
+    $color-engine-violet-void
   );
   background-size: 400% 400%;
   animation: gradient-shift 15s ease infinite;
@@ -256,9 +256,9 @@
     background-image:
       radial-gradient(1.5px 1.5px at 25% 35%, $color-engine-neutral-luminous-a90, transparent),
       radial-gradient(1px 1px at 75% 25%, $color-engine-gold-bright-a70, transparent),
-      radial-gradient(2px 2px at 45% 75%, $color-engine-gold-pale-a60-2, transparent),
-      radial-gradient(1px 1px at 85% 65%, $color-engine-cyan-light-a50, transparent),
-      radial-gradient(1.5px 1.5px at 15% 85%, $color-engine-violet-rich-a40, transparent);
+      radial-gradient(2px 2px at 45% 75%, $color-engine-gold-accent-a60, transparent),
+      radial-gradient(1px 1px at 85% 65%, $color-engine-cyan-vivid-a50, transparent),
+      radial-gradient(1.5px 1.5px at 15% 85%, $color-engine-violet-vivid-a40, transparent);
     background-size: 
       350px 350px,
       250px 250px,
@@ -282,8 +282,8 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, $color-engine-violet-rich-a03 1px, transparent 1px),
-      linear-gradient($color-engine-violet-rich-a03 1px, transparent 1px);
+      linear-gradient(90deg, $color-engine-violet-vivid-a05 1px, transparent 1px),
+      linear-gradient($color-engine-violet-vivid-a05 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
     pointer-events: none;
@@ -307,10 +307,10 @@
     inset: -#{$width};
     background: linear-gradient(
       90deg,
-      $color-engine-gold-pale-2,
-      $color-engine-violet-rich,
-      $color-engine-cyan-light-2,
-      $color-engine-gold-pale-2
+      $color-engine-gold-accent,
+      $color-engine-violet-vivid,
+      $color-engine-cyan-bright,
+      $color-engine-gold-accent
     );
     background-size: 300% 100%;
     border-radius: inherit;
@@ -321,10 +321,10 @@
 
 /// Pulsing neon border
 @mixin border-pulse-neon {
-  border: 2px solid $color-engine-gold-pale-3;
+  border: 2px solid $color-engine-gold-accent;
   box-shadow: 
-    0 0 10px $color-engine-gold-pale-a50-3,
-    inset 0 0 10px $color-engine-gold-pale-a10-2;
+    0 0 10px $color-engine-gold-accent-a50,
+    inset 0 0 10px $color-engine-gold-accent-a10;
   animation: border-pulse 2s ease-in-out infinite;
 }
 
@@ -336,9 +336,9 @@
 @mixin text-gradient-transcendent {
   background: linear-gradient(
     135deg,
-    $color-engine-gold-bright-2 0%,
-    $color-engine-neutral-luminous-5 50%,
-    $color-engine-cyan-light-2 100%
+    $color-engine-gold-bright 0%,
+    $color-engine-neutral-bright 50%,
+    $color-engine-cyan-bright 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -347,7 +347,7 @@
 }
 
 /// Glowing text effect
-@mixin text-glow($color: $color-engine-gold-pale-2) {
+@mixin text-glow($color: $color-engine-gold-accent) {
   text-shadow:
     0 0 10px $color,
     0 0 20px oklch(from $color l c h / 0.5), // stylelint-disable-line declaration-property-value-disallowed-list
@@ -358,10 +358,10 @@
 @mixin text-holographic {
   background: linear-gradient(
     90deg,
-    $color-engine-gold-pale-2,
-    $color-engine-cyan-light-2,
-    $color-engine-violet-rich,
-    $color-engine-gold-pale-2
+    $color-engine-gold-accent,
+    $color-engine-cyan-bright,
+    $color-engine-violet-vivid,
+    $color-engine-gold-accent
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -383,8 +383,8 @@
   &:hover {
     transform: translateY(-4px) scale(1.01);
     box-shadow:
-      0 12px 40px $color-engine-neutral-void-a30-3,
-      0 0 30px $color-engine-gold-pale-a15-2;
+      0 12px 40px $color-engine-neutral-void-a30,
+      0 0 30px $color-engine-gold-accent-a15;
   }
   
   &:active {
@@ -406,7 +406,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, $color-engine-violet-rich, $color-engine-cyan-light-2);
+    background: linear-gradient(90deg, $color-engine-violet-vivid, $color-engine-cyan-bright);
     transition: width var(--motion-neural) var(--ease-quantum);
     will-change: width;
   }
@@ -475,16 +475,16 @@
 
 @keyframes border-pulse {
   0%, 100% {
-    border-color: $color-engine-gold-pale-3;
+    border-color: $color-engine-gold-accent;
     box-shadow: 
-      0 0 10px $color-engine-gold-pale-a50-3,
-      inset 0 0 10px $color-engine-gold-pale-a10-2;
+      0 0 10px $color-engine-gold-accent-a50,
+      inset 0 0 10px $color-engine-gold-accent-a10;
   }
   50% {
-    border-color: $color-engine-violet-rich;
+    border-color: $color-engine-violet-vivid;
     box-shadow: 
-      0 0 20px $color-engine-violet-rich-a60,
-      inset 0 0 15px $color-engine-violet-rich-a15;
+      0 0 20px $color-engine-violet-vivid-a60,
+      inset 0 0 15px $color-engine-violet-vivid-a15;
   }
 }
 
@@ -506,10 +506,10 @@
 
 @keyframes neural-pulse {
   0%, 100% {
-    box-shadow: 0 0 20px $color-engine-violet-rich-a40-2;
+    box-shadow: 0 0 20px $color-engine-violet-vivid-a40;
   }
   50% {
-    box-shadow: 0 0 40px $color-engine-violet-rich-a70;
+    box-shadow: 0 0 40px $color-engine-violet-vivid-a70;
   }
 }
 

@@ -45,12 +45,12 @@
       "neon-blue": {
         "$type": "color",
         "$value": "oklch(0.65 0.25 230)",
-        "$description": "Electric neon blue — primary accent. L=0.65 (luminance-parity anchor)"
+        "$description": "Electric neon blue \u2014 primary accent. L=0.65 (luminance-parity anchor)"
       },
       "neon-blue-bright": {
         "$type": "color",
         "$value": "oklch(0.75 0.28 225)",
-        "$description": "Bright electric blue — hover/active state"
+        "$description": "Bright electric blue \u2014 hover/active state"
       },
       "neon-blue-glow": {
         "$type": "color",
@@ -60,32 +60,32 @@
       "neon-blue-accessible": {
         "$type": "color",
         "$value": "oklch(0.50 0.20 230)",
-        "$description": "Darker neon blue — WCAG AA on white (4.5:1)"
+        "$description": "Darker neon blue \u2014 WCAG AA on white (4.5:1)"
       },
       "neon-blue-subtle": {
         "$type": "color",
         "$value": "oklch(0.65 0.25 230 / 0.10)",
-        "$description": "Neon blue at 10% — subtle accent tint"
+        "$description": "Neon blue at 10% \u2014 subtle accent tint"
       },
       "neon-blue-border": {
         "$type": "color",
         "$value": "oklch(0.65 0.25 230 / 0.3)",
-        "$description": "Neon blue at 30% — accent border simulation"
+        "$description": "Neon blue at 30% \u2014 accent border simulation"
       },
       "gold": {
         "$type": "color",
         "$value": "oklch(0.70 0.15 85)",
-        "$description": "Sacred gold accent — subtle secondary accent"
+        "$description": "Sacred gold accent \u2014 subtle secondary accent"
       },
       "gold-bright": {
         "$type": "color",
         "$value": "oklch(0.75 0.18 82)",
-        "$description": "Bright gold — hover state"
+        "$description": "Bright gold \u2014 hover state"
       },
       "gold-muted": {
         "$type": "color",
         "$value": "oklch(0.60 0.10 88)",
-        "$description": "Very muted gold — minimal emphasis"
+        "$description": "Very muted gold \u2014 minimal emphasis"
       },
       "gold-accessible": {
         "$type": "color",
@@ -355,7 +355,7 @@
         "bg": {
           "$type": "color",
           "$value": "oklch(0.98 0.005 90)",
-          "$description": "Light mode page background — warm white"
+          "$description": "Light mode page background \u2014 warm white"
         },
         "bg-surface": {
           "$type": "color",
@@ -365,7 +365,7 @@
         "body-color": {
           "$type": "color",
           "$value": "oklch(0.18 0.01 250)",
-          "$description": "Light mode body text — near-black"
+          "$description": "Light mode body text \u2014 near-black"
         },
         "section-bg": {
           "$type": "color",
@@ -425,7 +425,7 @@
         "link": {
           "$type": "color",
           "$value": "{color.accent.neon-blue-accessible}",
-          "$description": "Light mode link color — WCAG AA on white"
+          "$description": "Light mode link color \u2014 WCAG AA on white"
         },
         "text-secondary": {
           "$type": "color",
@@ -440,19 +440,19 @@
         "accent": {
           "$type": "color",
           "$value": "{color.accent.neon-blue-accessible}",
-          "$description": "Light mode primary accent — WCAG AA"
+          "$description": "Light mode primary accent \u2014 WCAG AA"
         },
         "accent-secondary": {
           "$type": "color",
           "$value": "{color.accent.gold-accessible}",
-          "$description": "Light mode secondary accent — WCAG AA gold"
+          "$description": "Light mode secondary accent \u2014 WCAG AA gold"
         }
       },
       "dark": {
         "bg": {
           "$type": "color",
           "$value": "oklch(0.04 0.01 260)",
-          "$description": "Dark mode page background — deep blue-black"
+          "$description": "Dark mode page background \u2014 deep blue-black"
         },
         "bg-surface": {
           "$type": "color",
@@ -462,7 +462,7 @@
         "body-color": {
           "$type": "color",
           "$value": "oklch(0.90 0.005 90)",
-          "$description": "Dark mode body text — near-white"
+          "$description": "Dark mode body text \u2014 near-white"
         },
         "section-bg": {
           "$type": "color",
@@ -532,22 +532,22 @@
         "link": {
           "$type": "color",
           "$value": "{color.accent.gold}",
-          "$description": "Dark mode link color — gold for visibility"
+          "$description": "Dark mode link color \u2014 gold for visibility"
         },
         "text-secondary": {
           "$type": "color",
           "$value": "oklch(0.70 0.005 220)",
-          "$description": "Dark mode secondary text — muted silver"
+          "$description": "Dark mode secondary text \u2014 muted silver"
         },
         "accent": {
           "$type": "color",
           "$value": "{color.accent.neon-blue}",
-          "$description": "Dark mode primary accent — full neon blue"
+          "$description": "Dark mode primary accent \u2014 full neon blue"
         },
         "accent-secondary": {
           "$type": "color",
           "$value": "{color.accent.gold-bright}",
-          "$description": "Dark mode secondary accent — bright gold"
+          "$description": "Dark mode secondary accent \u2014 bright gold"
         }
       }
     },
@@ -575,12 +575,12 @@
       "social-bg": {
         "$type": "color",
         "$value": "oklch(0.65 0.25 230 / 0.2)",
-        "$description": "Social action background — neon blue tint"
+        "$description": "Social action background \u2014 neon blue tint"
       },
       "social-hover": {
         "$type": "color",
         "$value": "oklch(0.65 0.25 230 / 0.4)",
-        "$description": "Social action hover/glow — neon blue 40%"
+        "$description": "Social action hover/glow \u2014 neon blue 40%"
       },
       "warning": {
         "$type": "color",
@@ -592,7 +592,7 @@
       "deep": {
         "$type": "color",
         "$value": "oklch(0.03 0.01 260)",
-        "$description": "Deepest void — near-absolute darkness"
+        "$description": "Deepest void \u2014 near-absolute darkness"
       }
     },
     "brand": {
@@ -609,1612 +609,977 @@
     },
     "engine": {
       "neutral": {
-        "abyss-a00": {
-          "$type": "color",
-          "$value": "oklch(0 0 0 / 0)",
-          "$description": "Neutral L=0.00 at 0% opacity"
-        },
-        "abyss-a70": {
-          "$type": "color",
-          "$value": "oklch(0 0 0 / 0.7)",
-          "$description": "Neutral L=0.00 at 70% opacity"
-        },
-        "abyss": {
-          "$type": "color",
-          "$value": "oklch(0.03 0.01 250)",
-          "$description": "Neutral L=0.03"
-        },
-        "abyss-a30": {
-          "$type": "color",
-          "$value": "oklch(0.03 0.02 250 / 0.3)",
-          "$description": "Neutral L=0.03 at 30% opacity"
-        },
-        "abyss-a50": {
-          "$type": "color",
-          "$value": "oklch(0.03 0.02 250 / 0.5)",
-          "$description": "Neutral L=0.03 at 50% opacity"
-        },
-        "abyss-a60": {
-          "$type": "color",
-          "$value": "oklch(0.03 0.02 250 / 0.6)",
-          "$description": "Neutral L=0.03 at 60% opacity"
-        },
-        "abyss-2": {
+        "space": {
           "$type": "color",
           "$value": "oklch(0.04 0.01 250)",
-          "$description": "Neutral L=0.04"
-        },
-        "abyss-3": {
-          "$type": "color",
-          "$value": "oklch(0.05 0 0)",
-          "$description": "Neutral L=0.05"
-        },
-        "abyss-a30-2": {
-          "$type": "color",
-          "$value": "oklch(0.05 0.01 250 / 0.3)",
-          "$description": "Neutral L=0.05 at 30% opacity"
-        },
-        "abyss-a30-3": {
-          "$type": "color",
-          "$value": "oklch(0.05 0.01 260 / 0.3)",
-          "$description": "Neutral L=0.05 at 30% opacity"
-        },
-        "abyss-a40": {
-          "$type": "color",
-          "$value": "oklch(0.05 0.01 260 / 0.4)",
-          "$description": "Neutral L=0.05 at 40% opacity"
-        },
-        "abyss-4": {
-          "$type": "color",
-          "$value": "oklch(0.05 0.01 260)",
-          "$description": "Neutral L=0.05"
-        },
-        "abyss-5": {
-          "$type": "color",
-          "$value": "oklch(0.05 0.01 265)",
-          "$description": "Neutral L=0.05"
-        },
-        "abyss-a40-2": {
-          "$type": "color",
-          "$value": "oklch(0.05 0.02 250 / 0.4)",
-          "$description": "Neutral L=0.05 at 40% opacity"
-        },
-        "abyss-a24": {
-          "$type": "color",
-          "$value": "oklch(0.05 0.02 260 / 0.24)",
-          "$description": "Neutral L=0.05 at 24% opacity"
-        },
-        "abyss-a58": {
-          "$type": "color",
-          "$value": "oklch(0.05 0.02 260 / 0.58)",
-          "$description": "Neutral L=0.05 at 58% opacity"
-        },
-        "abyss-a88": {
-          "$type": "color",
-          "$value": "oklch(0.05 0.02 260 / 0.88)",
-          "$description": "Neutral L=0.05 at 88% opacity"
-        },
-        "void-a97": {
-          "$type": "color",
-          "$value": "oklch(0.06 0.015 250 / 0.97)",
-          "$description": "Neutral L=0.06 at 97% opacity"
+          "$description": "Absolute void \u2014 deepest black for space scenes and star fields"
         },
         "void": {
           "$type": "color",
-          "$value": "oklch(0.06 0.02 260)",
-          "$description": "Neutral L=0.06"
-        },
-        "void-2": {
-          "$type": "color",
-          "$value": "oklch(0.08 0 0)",
-          "$description": "Neutral L=0.08"
-        },
-        "void-a00": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.01 250 / 0)",
-          "$description": "Neutral L=0.08 at 0% opacity"
-        },
-        "void-a02": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.01 250 / 0.02)",
-          "$description": "Neutral L=0.08 at 2% opacity"
-        },
-        "void-a05": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.01 250 / 0.05)",
-          "$description": "Neutral L=0.08 at 5% opacity"
-        },
-        "void-a06": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.01 250 / 0.06)",
-          "$description": "Neutral L=0.08 at 6% opacity"
-        },
-        "void-a10": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.01 250 / 0.1)",
-          "$description": "Neutral L=0.08 at 10% opacity"
-        },
-        "void-a12": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.01 250 / 0.125)",
-          "$description": "Neutral L=0.08 at 12% opacity"
-        },
-        "void-a15": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.01 250 / 0.15)",
-          "$description": "Neutral L=0.08 at 15% opacity"
-        },
-        "void-a30": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.01 250 / 0.3)",
-          "$description": "Neutral L=0.08 at 30% opacity"
-        },
-        "void-a40": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.01 250 / 0.4)",
-          "$description": "Neutral L=0.08 at 40% opacity"
-        },
-        "void-a50": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.01 250 / 0.5)",
-          "$description": "Neutral L=0.08 at 50% opacity"
-        },
-        "void-a60": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.01 250 / 0.6)",
-          "$description": "Neutral L=0.08 at 60% opacity"
-        },
-        "void-a80": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.01 250 / 0.8)",
-          "$description": "Neutral L=0.08 at 80% opacity"
-        },
-        "void-a95": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.01 250 / 0.95)",
-          "$description": "Neutral L=0.08 at 95% opacity"
-        },
-        "void-a15-2": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.01 260 / 0.15)",
-          "$description": "Neutral L=0.08 at 15% opacity"
-        },
-        "void-a20": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.01 260 / 0.2)",
-          "$description": "Neutral L=0.08 at 20% opacity"
-        },
-        "void-a98": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.015 250 / 0.98)",
-          "$description": "Neutral L=0.08 at 98% opacity"
-        },
-        "void-a97-2": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.02 250 / 0.97)",
-          "$description": "Neutral L=0.08 at 97% opacity"
-        },
-        "void-a30-2": {
-          "$type": "color",
-          "$value": "oklch(0.08 0.02 260 / 0.3)",
-          "$description": "Neutral L=0.08 at 30% opacity"
-        },
-        "void-3": {
-          "$type": "color",
           "$value": "oklch(0.08 0.02 260)",
-          "$description": "Neutral L=0.08"
-        },
-        "void-4": {
-          "$type": "color",
-          "$value": "oklch(0.09 0.02 255)",
-          "$description": "Neutral L=0.09"
-        },
-        "void-a30-3": {
-          "$type": "color",
-          "$value": "oklch(0.10 0.02 255 / 0.3)",
-          "$description": "Neutral L=0.10 at 30% opacity"
-        },
-        "void-a35": {
-          "$type": "color",
-          "$value": "oklch(0.10 0.02 255 / 0.35)",
-          "$description": "Neutral L=0.10 at 35% opacity"
-        },
-        "void-a40-2": {
-          "$type": "color",
-          "$value": "oklch(0.10 0.02 255 / 0.4)",
-          "$description": "Neutral L=0.10 at 40% opacity"
-        },
-        "void-5": {
-          "$type": "color",
-          "$value": "oklch(0.10 0.02 255)",
-          "$description": "Neutral L=0.10"
+          "$description": "Page background \u2014 primary dark-mode application surface"
         },
         "deep": {
           "$type": "color",
-          "$value": "oklch(0.12 0.02 250)",
-          "$description": "Neutral L=0.12"
-        },
-        "deep-a80": {
-          "$type": "color",
-          "$value": "oklch(0.14 0.02 250 / 0.8)",
-          "$description": "Neutral L=0.14 at 80% opacity"
-        },
-        "deep-2": {
-          "$type": "color",
           "$value": "oklch(0.14 0.02 250)",
-          "$description": "Neutral L=0.14"
-        },
-        "deep-3": {
-          "$type": "color",
-          "$value": "oklch(0.15 0 0)",
-          "$description": "Neutral L=0.15"
-        },
-        "deep-4": {
-          "$type": "color",
-          "$value": "oklch(0.15 0.01 250)",
-          "$description": "Neutral L=0.15"
-        },
-        "deep-a85": {
-          "$type": "color",
-          "$value": "oklch(0.15 0.02 250 / 0.85)",
-          "$description": "Neutral L=0.15 at 85% opacity"
-        },
-        "deep-5": {
-          "$type": "color",
-          "$value": "oklch(0.15 0.02 250)",
-          "$description": "Neutral L=0.15"
-        },
-        "deep-a40": {
-          "$type": "color",
-          "$value": "oklch(0.16 0.02 248 / 0.4)",
-          "$description": "Neutral L=0.16 at 40% opacity"
-        },
-        "deep-a40-2": {
-          "$type": "color",
-          "$value": "oklch(0.16 0.02 250 / 0.4)",
-          "$description": "Neutral L=0.16 at 40% opacity"
+          "$description": "Card surface \u2014 primary container on dark-mode background"
         },
         "dark": {
           "$type": "color",
-          "$value": "oklch(0.20 0.01 250)",
-          "$description": "Neutral L=0.20"
-        },
-        "dark-2": {
-          "$type": "color",
           "$value": "oklch(0.20 0.02 250)",
-          "$description": "Neutral L=0.20"
-        },
-        "dark-3": {
-          "$type": "color",
-          "$value": "oklch(0.25 0 0)",
-          "$description": "Neutral L=0.25"
-        },
-        "dark-4": {
-          "$type": "color",
-          "$value": "oklch(0.25 0.02 250)",
-          "$description": "Neutral L=0.25"
+          "$description": "Elevated panel \u2014 secondary container, slightly lifted"
         },
         "dim": {
           "$type": "color",
-          "$value": "oklch(0.30 0 0)",
-          "$description": "Neutral L=0.30"
-        },
-        "dim-2": {
-          "$type": "color",
           "$value": "oklch(0.30 0.01 230)",
-          "$description": "Neutral L=0.30"
-        },
-        "dim-3": {
-          "$type": "color",
-          "$value": "oklch(0.35 0.01 230)",
-          "$description": "Neutral L=0.35"
+          "$description": "Chip surface \u2014 tertiary container, muted elevation"
         },
         "mid": {
           "$type": "color",
-          "$value": "oklch(0.40 0.01 230)",
-          "$description": "Neutral L=0.40"
-        },
-        "mid-a70": {
-          "$type": "color",
-          "$value": "oklch(0.45 0.01 220 / 0.7)",
-          "$description": "Neutral L=0.45 at 70% opacity"
-        },
-        "mid-a20": {
-          "$type": "color",
-          "$value": "oklch(0.50 0.02 220 / 0.2)",
-          "$description": "Neutral L=0.50 at 20% opacity"
-        },
-        "mid-a50": {
-          "$type": "color",
-          "$value": "oklch(0.50 0.02 220 / 0.5)",
-          "$description": "Neutral L=0.50 at 50% opacity"
-        },
-        "mid-2": {
-          "$type": "color",
           "$value": "oklch(0.50 0.02 220)",
-          "$description": "Neutral L=0.50"
-        },
-        "rich": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.02 230)",
-          "$description": "Neutral L=0.55"
-        },
-        "rich-2": {
-          "$type": "color",
-          "$value": "oklch(0.60 0.01 230)",
-          "$description": "Neutral L=0.60"
-        },
-        "rich-3": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.01 230)",
-          "$description": "Neutral L=0.65"
-        },
-        "rich-a05": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.02 220 / 0.05)",
-          "$description": "Neutral L=0.65 at 5% opacity"
-        },
-        "rich-a10": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.02 220 / 0.1)",
-          "$description": "Neutral L=0.65 at 10% opacity"
-        },
-        "rich-a20": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.02 220 / 0.2)",
-          "$description": "Neutral L=0.65 at 20% opacity"
-        },
-        "rich-a30": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.02 220 / 0.3)",
-          "$description": "Neutral L=0.65 at 30% opacity"
-        },
-        "rich-a80": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.02 220 / 0.8)",
-          "$description": "Neutral L=0.65 at 80% opacity"
-        },
-        "rich-a90": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.02 220 / 0.9)",
-          "$description": "Neutral L=0.65 at 90% opacity"
-        },
-        "rich-a95": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.02 220 / 0.95)",
-          "$description": "Neutral L=0.65 at 95% opacity"
-        },
-        "rich-4": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.02 230)",
-          "$description": "Neutral L=0.65"
+          "$description": "Midpoint gray \u2014 separators, dividers, input field backgrounds"
         },
         "light": {
           "$type": "color",
-          "$value": "oklch(0.70 0 0)",
-          "$description": "Neutral L=0.70"
-        },
-        "light-2": {
-          "$type": "color",
           "$value": "oklch(0.70 0.01 230)",
-          "$description": "Neutral L=0.70"
-        },
-        "light-3": {
-          "$type": "color",
-          "$value": "oklch(0.70 0.02 220)",
-          "$description": "Neutral L=0.70"
+          "$description": "Secondary text \u2014 placeholder text, muted labels and captions"
         },
         "pale": {
           "$type": "color",
-          "$value": "oklch(0.80 0.02 230)",
-          "$description": "Neutral L=0.80"
-        },
-        "pale-2": {
-          "$type": "color",
-          "$value": "oklch(0.82 0.01 220)",
-          "$description": "Neutral L=0.82"
-        },
-        "pale-3": {
-          "$type": "color",
-          "$value": "oklch(0.85 0 0)",
-          "$description": "Neutral L=0.85"
-        },
-        "pale-4": {
-          "$type": "color",
           "$value": "oklch(0.85 0.005 220)",
-          "$description": "Neutral L=0.85"
-        },
-        "pale-a08": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.01 220 / 0.08)",
-          "$description": "Neutral L=0.85 at 8% opacity"
-        },
-        "pale-a10": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.01 220 / 0.1)",
-          "$description": "Neutral L=0.85 at 10% opacity"
-        },
-        "pale-a15": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.01 220 / 0.15)",
-          "$description": "Neutral L=0.85 at 15% opacity"
-        },
-        "pale-a30": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.01 220 / 0.3)",
-          "$description": "Neutral L=0.85 at 30% opacity"
-        },
-        "pale-a40": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.01 220 / 0.4)",
-          "$description": "Neutral L=0.85 at 40% opacity"
-        },
-        "pale-a50": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.01 220 / 0.5)",
-          "$description": "Neutral L=0.85 at 50% opacity"
-        },
-        "pale-a60": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.01 220 / 0.6)",
-          "$description": "Neutral L=0.85 at 60% opacity"
-        },
-        "pale-a80": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.01 220 / 0.8)",
-          "$description": "Neutral L=0.85 at 80% opacity"
-        },
-        "pale-5": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.02 220)",
-          "$description": "Neutral L=0.85"
-        },
-        "pale-6": {
-          "$type": "color",
-          "$value": "oklch(0.87 0.005 220)",
-          "$description": "Neutral L=0.87"
+          "$description": "Default border \u2014 hairline borders and light-mode card rims"
         },
         "bright": {
           "$type": "color",
-          "$value": "oklch(0.88 0.005 220)",
-          "$description": "Neutral L=0.88"
-        },
-        "bright-2": {
-          "$type": "color",
-          "$value": "oklch(0.90 0.005 220)",
-          "$description": "Neutral L=0.90"
-        },
-        "bright-3": {
-          "$type": "color",
           "$value": "oklch(0.94 0.005 220)",
-          "$description": "Neutral L=0.94"
+          "$description": "Light surface \u2014 hover states and subtle light backgrounds"
         },
         "luminous": {
           "$type": "color",
-          "$value": "oklch(0.95 0.005 90)",
-          "$description": "Neutral L=0.95"
-        },
-        "luminous-2": {
-          "$type": "color",
-          "$value": "oklch(0.95 0.01 220)",
-          "$description": "Neutral L=0.95"
-        },
-        "luminous-a90": {
-          "$type": "color",
-          "$value": "oklch(0.95 0.02 90 / 0.9)",
-          "$description": "Neutral L=0.95 at 90% opacity"
-        },
-        "luminous-3": {
-          "$type": "color",
-          "$value": "oklch(0.96 0.003 220)",
-          "$description": "Neutral L=0.96"
-        },
-        "luminous-4": {
-          "$type": "color",
-          "$value": "oklch(0.97 0.005 220)",
-          "$description": "Neutral L=0.97"
-        },
-        "luminous-a06": {
-          "$type": "color",
-          "$value": "oklch(0.98 0.01 90 / 0.06)",
-          "$description": "Neutral L=0.98 at 6% opacity"
-        },
-        "luminous-a08": {
-          "$type": "color",
-          "$value": "oklch(0.98 0.01 90 / 0.08)",
-          "$description": "Neutral L=0.98 at 8% opacity"
-        },
-        "luminous-a10": {
-          "$type": "color",
-          "$value": "oklch(0.98 0.01 90 / 0.1)",
-          "$description": "Neutral L=0.98 at 10% opacity"
-        },
-        "luminous-a20": {
-          "$type": "color",
-          "$value": "oklch(0.98 0.01 90 / 0.2)",
-          "$description": "Neutral L=0.98 at 20% opacity"
-        },
-        "luminous-a30": {
-          "$type": "color",
-          "$value": "oklch(0.98 0.01 90 / 0.3)",
-          "$description": "Neutral L=0.98 at 30% opacity"
-        },
-        "luminous-5": {
-          "$type": "color",
           "$value": "oklch(0.98 0.01 90)",
-          "$description": "Neutral L=0.98"
+          "$description": "Near-white \u2014 text on dark, star particles, high-contrast labels"
         },
-        "luminous-a20-2": {
+        "void-a00": {
           "$type": "color",
-          "$value": "oklch(0.99 0 0 / 0.2)",
-          "$description": "Neutral L=0.99 at 20% opacity"
+          "$value": "oklch(0.08 0.02 260 / 0)",
+          "$description": "Page-bg transparent \u2014 gradient fade-to-transparent stop"
         },
-        "luminous-a25": {
+        "void-a05": {
           "$type": "color",
-          "$value": "oklch(0.99 0 0 / 0.25)",
-          "$description": "Neutral L=0.99 at 25% opacity"
+          "$value": "oklch(0.08 0.02 260 / 0.05)",
+          "$description": "Page-bg 5% \u2014 barely-visible hairline shadow"
         },
-        "luminous-a30-2": {
+        "void-a10": {
           "$type": "color",
-          "$value": "oklch(0.99 0 0 / 0.3)",
-          "$description": "Neutral L=0.99 at 30% opacity"
+          "$value": "oklch(0.08 0.02 260 / 0.10)",
+          "$description": "Page-bg 10% \u2014 subtle depth shadow on light surfaces"
         },
-        "luminous-6": {
+        "void-a15": {
           "$type": "color",
-          "$value": "oklch(0.99 0 0)",
-          "$description": "Neutral L=0.99"
+          "$value": "oklch(0.08 0.02 260 / 0.15)",
+          "$description": "Page-bg 15% \u2014 standard card drop-shadow"
         },
-        "luminous-a20-3": {
-          "$type": "color",
-          "$value": "oklch(0.99 0.005 90 / 0.2)",
-          "$description": "Neutral L=0.99 at 20% opacity"
-        },
-        "luminous-a30-3": {
-          "$type": "color",
-          "$value": "oklch(0.99 0.005 90 / 0.3)",
-          "$description": "Neutral L=0.99 at 30% opacity"
-        },
-        "luminous-a40": {
-          "$type": "color",
-          "$value": "oklch(0.99 0.005 90 / 0.4)",
-          "$description": "Neutral L=0.99 at 40% opacity"
-        },
-        "luminous-a70": {
-          "$type": "color",
-          "$value": "oklch(0.99 0.005 90 / 0.7)",
-          "$description": "Neutral L=0.99 at 70% opacity"
-        },
-        "luminous-a80": {
-          "$type": "color",
-          "$value": "oklch(0.99 0.005 90 / 0.8)",
-          "$description": "Neutral L=0.99 at 80% opacity"
-        },
-        "luminous-a90-2": {
-          "$type": "color",
-          "$value": "oklch(0.99 0.005 90 / 0.9)",
-          "$description": "Neutral L=0.99 at 90% opacity"
-        },
-        "luminous-a95": {
-          "$type": "color",
-          "$value": "oklch(0.99 0.005 90 / 0.95)",
-          "$description": "Neutral L=0.99 at 95% opacity"
-        },
-        "luminous-a98": {
-          "$type": "color",
-          "$value": "oklch(0.99 0.005 90 / 0.98)",
-          "$description": "Neutral L=0.99 at 98% opacity"
-        },
-        "luminous-a100": {
-          "$type": "color",
-          "$value": "oklch(0.99 0.005 90 / 1)",
-          "$description": "Neutral L=0.99 at 100% opacity"
-        }
-      },
-      "indigo": {
         "void-a20": {
           "$type": "color",
-          "$value": "oklch(0.10 0.03 250 / 0.2)",
-          "$description": "Indigo L=0.10 at 20% opacity"
+          "$value": "oklch(0.08 0.02 260 / 0.20)",
+          "$description": "Page-bg 20% \u2014 medium shadow, hover overlay"
+        },
+        "void-a30": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.02 260 / 0.30)",
+          "$description": "Page-bg 30% \u2014 overlay backdrop, focus dimming"
         },
         "void-a40": {
           "$type": "color",
-          "$value": "oklch(0.10 0.03 250 / 0.4)",
-          "$description": "Indigo L=0.10 at 40% opacity"
+          "$value": "oklch(0.08 0.02 260 / 0.40)",
+          "$description": "Page-bg 40% \u2014 modal scrim, glassmorphism backing"
+        },
+        "void-a50": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.02 260 / 0.50)",
+          "$description": "Page-bg 50% \u2014 half-opaque modal curtain"
         },
         "void-a60": {
           "$type": "color",
-          "$value": "oklch(0.10 0.03 250 / 0.6)",
-          "$description": "Indigo L=0.10 at 60% opacity"
+          "$value": "oklch(0.08 0.02 260 / 0.60)",
+          "$description": "Page-bg 60% \u2014 dense overlay for drawers and panels"
         },
-        "deep-a90": {
+        "void-a70": {
           "$type": "color",
-          "$value": "oklch(0.12 0.03 250 / 0.9)",
-          "$description": "Indigo L=0.12 at 90% opacity"
+          "$value": "oklch(0.08 0.02 260 / 0.70)",
+          "$description": "Page-bg 70% \u2014 dark overlay for tooltips and dropdowns"
         },
-        "deep": {
+        "void-a80": {
           "$type": "color",
-          "$value": "oklch(0.12 0.03 250)",
-          "$description": "Indigo L=0.12"
+          "$value": "oklch(0.08 0.02 260 / 0.80)",
+          "$description": "Page-bg 80% \u2014 near-opaque dark panel tint"
         },
-        "deep-2": {
+        "void-a90": {
           "$type": "color",
-          "$value": "oklch(0.12 0.03 255)",
-          "$description": "Indigo L=0.12"
+          "$value": "oklch(0.08 0.02 260 / 0.90)",
+          "$description": "Page-bg 90% \u2014 almost fully opaque dark surface"
         },
-        "deep-3": {
+        "void-a95": {
           "$type": "color",
-          "$value": "oklch(0.12 0.03 260)",
-          "$description": "Indigo L=0.12"
+          "$value": "oklch(0.08 0.02 260 / 0.95)",
+          "$description": "Page-bg 95% \u2014 frosted glass with ghost of transparency"
         },
-        "deep-4": {
+        "void-a98": {
           "$type": "color",
-          "$value": "oklch(0.12 0.04 250)",
-          "$description": "Indigo L=0.12"
+          "$value": "oklch(0.08 0.02 260 / 0.98)",
+          "$description": "Page-bg 98% \u2014 virtually opaque, glassmorphism cap"
+        },
+        "deep-a40": {
+          "$type": "color",
+          "$value": "oklch(0.14 0.02 250 / 0.40)",
+          "$description": "Card-glass 40% \u2014 glass input fields and subtle glass panels"
         },
         "deep-a80": {
           "$type": "color",
-          "$value": "oklch(0.12 0.04 260 / 0.8)",
-          "$description": "Indigo L=0.12 at 80% opacity"
+          "$value": "oklch(0.14 0.02 250 / 0.80)",
+          "$description": "Card-glass 80% \u2014 near-solid card glass with depth"
         },
-        "deep-a50": {
+        "pale-a05": {
           "$type": "color",
-          "$value": "oklch(0.14 0.03 255 / 0.5)",
-          "$description": "Indigo L=0.14 at 50% opacity"
+          "$value": "oklch(0.85 0.005 220 / 0.05)",
+          "$description": "Border-shimmer 5% \u2014 star-field particle, barely-visible dot"
         },
-        "deep-a10": {
+        "pale-a10": {
           "$type": "color",
-          "$value": "oklch(0.15 0.03 250 / 0.1)",
-          "$description": "Indigo L=0.15 at 10% opacity"
+          "$value": "oklch(0.85 0.005 220 / 0.10)",
+          "$description": "Border-shimmer 10% \u2014 gentle shimmer particle"
         },
-        "deep-a35": {
+        "pale-a15": {
           "$type": "color",
-          "$value": "oklch(0.15 0.03 250 / 0.35)",
-          "$description": "Indigo L=0.15 at 35% opacity"
+          "$value": "oklch(0.85 0.005 220 / 0.15)",
+          "$description": "Border-shimmer 15% \u2014 faint constellation point"
         },
-        "deep-a85": {
+        "pale-a30": {
           "$type": "color",
-          "$value": "oklch(0.15 0.03 250 / 0.85)",
-          "$description": "Indigo L=0.15 at 85% opacity"
+          "$value": "oklch(0.85 0.005 220 / 0.30)",
+          "$description": "Border-shimmer 30% \u2014 visible particle glow"
         },
-        "deep-5": {
+        "pale-a40": {
           "$type": "color",
-          "$value": "oklch(0.15 0.03 250)",
-          "$description": "Indigo L=0.15"
+          "$value": "oklch(0.85 0.005 220 / 0.40)",
+          "$description": "Border-shimmer 40% \u2014 medium shimmer cluster"
         },
-        "deep-6": {
+        "pale-a50": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.005 220 / 0.50)",
+          "$description": "Border-shimmer 50% \u2014 half-opaque shimmer layer"
+        },
+        "pale-a60": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.005 220 / 0.60)",
+          "$description": "Border-shimmer 60% \u2014 dense shimmer overlay"
+        },
+        "pale-a80": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.005 220 / 0.80)",
+          "$description": "Border-shimmer 80% \u2014 near-solid light shimmer"
+        },
+        "luminous-a05": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.01 90 / 0.05)",
+          "$description": "Near-white 5% \u2014 micro-glint star particle"
+        },
+        "luminous-a10": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.01 90 / 0.10)",
+          "$description": "Near-white 10% \u2014 subtle white shine"
+        },
+        "luminous-a20": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.01 90 / 0.20)",
+          "$description": "Near-white 20% \u2014 soft white glow particle"
+        },
+        "luminous-a30": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.01 90 / 0.30)",
+          "$description": "Near-white 30% \u2014 visible star-field dot"
+        },
+        "luminous-a40": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.01 90 / 0.40)",
+          "$description": "Near-white 40% \u2014 medium white shimmer"
+        },
+        "luminous-a50": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.01 90 / 0.50)",
+          "$description": "Near-white 50% \u2014 half-opaque white glow"
+        },
+        "luminous-a70": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.01 90 / 0.70)",
+          "$description": "Near-white 70% \u2014 high-brightness light ray"
+        },
+        "luminous-a80": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.01 90 / 0.80)",
+          "$description": "Near-white 80% \u2014 strong white glow"
+        },
+        "luminous-a90": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.01 90 / 0.90)",
+          "$description": "Near-white 90% \u2014 near-full white, frost glow"
+        },
+        "luminous-a95": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.01 90 / 0.95)",
+          "$description": "Near-white 95% \u2014 glass-frosted white surface"
+        },
+        "luminous-a98": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.01 90 / 0.98)",
+          "$description": "Near-white 98% \u2014 virtually solid white tint"
+        },
+        "light-a05": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.01 230 / 0.05)",
+          "$description": "Secondary-text 5% \u2014 barely visible label ghost"
+        },
+        "light-a10": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.01 230 / 0.10)",
+          "$description": "Secondary-text 10% \u2014 faint text overlay"
+        },
+        "light-a20": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.01 230 / 0.20)",
+          "$description": "Secondary-text 20% \u2014 translucent label"
+        },
+        "light-a30": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.01 230 / 0.30)",
+          "$description": "Secondary-text 30% \u2014 muted text tint"
+        },
+        "light-a80": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.01 230 / 0.80)",
+          "$description": "Secondary-text 80% \u2014 near-solid muted text"
+        },
+        "light-a90": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.01 230 / 0.90)",
+          "$description": "Secondary-text 90% \u2014 nearly opaque muted text"
+        },
+        "light-a95": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.01 230 / 0.95)",
+          "$description": "Secondary-text 95% \u2014 almost-solid secondary color"
+        },
+        "mid-a20": {
+          "$type": "color",
+          "$value": "oklch(0.50 0.02 220 / 0.20)",
+          "$description": "Midgray 20% \u2014 badge background tint"
+        },
+        "mid-a50": {
+          "$type": "color",
+          "$value": "oklch(0.50 0.02 220 / 0.50)",
+          "$description": "Midgray 50% \u2014 badge border stroke"
+        },
+        "mid-a70": {
+          "$type": "color",
+          "$value": "oklch(0.50 0.02 220 / 0.70)",
+          "$description": "Midgray 70% \u2014 muted indicator color"
+        }
+      },
+      "gold": {
+        "muted": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.13 88)",
+          "$description": "Muted gold \u2014 low-saturation deep gold for backgrounds and gradients"
+        },
+        "vivid": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 85)",
+          "$description": "Vivid gold \u2014 primary gold glow overlay base"
+        },
+        "accent": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.18 95)",
+          "$description": "Accent gold \u2014 standard gold for text, borders and solid accents"
+        },
+        "bright": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.18 95)",
+          "$description": "Bright gold \u2014 high-luminance gold for highlights and active states"
+        },
+        "vivid-a00": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 85 / 0)",
+          "$description": "Gold-glow transparent \u2014 gradient fade-to-transparent stop"
+        },
+        "vivid-a05": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 85 / 0.05)",
+          "$description": "Gold-glow 5% \u2014 barely-visible gold shimmer"
+        },
+        "vivid-a10": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 85 / 0.10)",
+          "$description": "Gold-glow 10% \u2014 subtle gold aura"
+        },
+        "vivid-a15": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 85 / 0.15)",
+          "$description": "Gold-glow 15% \u2014 light gold glow background"
+        },
+        "vivid-a20": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 85 / 0.20)",
+          "$description": "Gold-glow 20% \u2014 visible gold overlay"
+        },
+        "vivid-a30": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 85 / 0.30)",
+          "$description": "Gold-glow 30% \u2014 medium gold tint panel"
+        },
+        "vivid-a40": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 85 / 0.40)",
+          "$description": "Gold-glow 40% \u2014 gold-tinted glass surface"
+        },
+        "vivid-a50": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 85 / 0.50)",
+          "$description": "Gold-glow 50% \u2014 half-opaque gold panel"
+        },
+        "vivid-a60": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 85 / 0.60)",
+          "$description": "Gold-glow 60% \u2014 saturated gold overlay"
+        },
+        "vivid-a70": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 85 / 0.70)",
+          "$description": "Gold-glow 70% \u2014 dense gold aura"
+        },
+        "vivid-a80": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 85 / 0.80)",
+          "$description": "Gold-glow 80% \u2014 near-solid gold tint"
+        },
+        "vivid-a90": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 85 / 0.90)",
+          "$description": "Gold-glow 90% \u2014 almost-solid gold highlight"
+        },
+        "accent-a05": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.18 95 / 0.05)",
+          "$description": "Accent-gold 5% \u2014 faintest gold hint"
+        },
+        "accent-a10": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.18 95 / 0.10)",
+          "$description": "Accent-gold 10% \u2014 subtle gold tint"
+        },
+        "accent-a15": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.18 95 / 0.15)",
+          "$description": "Accent-gold 15% \u2014 light gold indicator"
+        },
+        "accent-a20": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.18 95 / 0.20)",
+          "$description": "Accent-gold 20% \u2014 visible gold tint"
+        },
+        "accent-a30": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.18 95 / 0.30)",
+          "$description": "Accent-gold 30% \u2014 medium gold overlay"
+        },
+        "accent-a40": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.18 95 / 0.40)",
+          "$description": "Accent-gold 40% \u2014 medium gold background"
+        },
+        "accent-a50": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.18 95 / 0.50)",
+          "$description": "Accent-gold 50% \u2014 half-opaque gold surface"
+        },
+        "accent-a60": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.18 95 / 0.60)",
+          "$description": "Accent-gold 60% \u2014 dense gold overlay"
+        },
+        "bright-a10": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.18 95 / 0.10)",
+          "$description": "Bright-gold 10% \u2014 high-luminance gold glow hint"
+        },
+        "bright-a15": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.18 95 / 0.15)",
+          "$description": "Bright-gold 15% \u2014 bright gold aura ring"
+        },
+        "bright-a20": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.18 95 / 0.20)",
+          "$description": "Bright-gold 20% \u2014 bright gold sheen"
+        },
+        "bright-a40": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.18 95 / 0.40)",
+          "$description": "Bright-gold 40% \u2014 bright gold panel"
+        },
+        "bright-a50": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.18 95 / 0.50)",
+          "$description": "Bright-gold 50% \u2014 half-opaque bright gold"
+        },
+        "bright-a70": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.18 95 / 0.70)",
+          "$description": "Bright-gold 70% \u2014 prominent bright gold glow"
+        },
+        "muted-a70": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.13 88 / 0.70)",
+          "$description": "Muted-gold 70% \u2014 dark gold overlay for code/pre backgrounds"
+        }
+      },
+      "indigo": {
+        "void": {
+          "$type": "color",
+          "$value": "oklch(0.10 0.03 260)",
+          "$description": "Indigo void \u2014 near-black indigo for cosmic scenes and space backdrops"
+        },
+        "deep": {
           "$type": "color",
           "$value": "oklch(0.16 0.03 250)",
-          "$description": "Indigo L=0.16"
-        },
-        "deep-a50-2": {
-          "$type": "color",
-          "$value": "oklch(0.16 0.03 252 / 0.5)",
-          "$description": "Indigo L=0.16 at 50% opacity"
-        },
-        "deep-a60": {
-          "$type": "color",
-          "$value": "oklch(0.16 0.03 252 / 0.6)",
-          "$description": "Indigo L=0.16 at 60% opacity"
-        },
-        "deep-a75": {
-          "$type": "color",
-          "$value": "oklch(0.16 0.03 252 / 0.75)",
-          "$description": "Indigo L=0.16 at 75% opacity"
-        },
-        "deep-a95": {
-          "$type": "color",
-          "$value": "oklch(0.16 0.03 252 / 0.95)",
-          "$description": "Indigo L=0.16 at 95% opacity"
-        },
-        "deep-a60-2": {
-          "$type": "color",
-          "$value": "oklch(0.18 0.03 248 / 0.6)",
-          "$description": "Indigo L=0.18 at 60% opacity"
-        },
-        "deep-a95-2": {
-          "$type": "color",
-          "$value": "oklch(0.18 0.03 248 / 0.95)",
-          "$description": "Indigo L=0.18 at 95% opacity"
-        },
-        "deep-7": {
-          "$type": "color",
-          "$value": "oklch(0.18 0.03 250)",
-          "$description": "Indigo L=0.18"
-        },
-        "deep-a95-3": {
-          "$type": "color",
-          "$value": "oklch(0.18 0.04 250 / 0.95)",
-          "$description": "Indigo L=0.18 at 95% opacity"
-        },
-        "deep-8": {
-          "$type": "color",
-          "$value": "oklch(0.18 0.04 250)",
-          "$description": "Indigo L=0.18"
+          "$description": "Indigo deep \u2014 dark indigo card surface"
         },
         "dark": {
           "$type": "color",
-          "$value": "oklch(0.20 0.03 250)",
-          "$description": "Indigo L=0.20"
-        },
-        "dark-a40": {
-          "$type": "color",
-          "$value": "oklch(0.20 0.03 260 / 0.4)",
-          "$description": "Indigo L=0.20 at 40% opacity"
-        },
-        "dark-2": {
-          "$type": "color",
-          "$value": "oklch(0.20 0.04 250)",
-          "$description": "Indigo L=0.20"
-        },
-        "dark-a90": {
-          "$type": "color",
-          "$value": "oklch(0.20 0.05 260 / 0.9)",
-          "$description": "Indigo L=0.20 at 90% opacity"
-        },
-        "dark-3": {
-          "$type": "color",
-          "$value": "oklch(0.22 0.03 250)",
-          "$description": "Indigo L=0.22"
-        },
-        "dark-4": {
-          "$type": "color",
           "$value": "oklch(0.22 0.04 250)",
-          "$description": "Indigo L=0.22"
-        },
-        "dark-5": {
-          "$type": "color",
-          "$value": "oklch(0.22 0.06 260)",
-          "$description": "Indigo L=0.22"
-        },
-        "dark-a30": {
-          "$type": "color",
-          "$value": "oklch(0.25 0.03 250 / 0.3)",
-          "$description": "Indigo L=0.25 at 30% opacity"
-        },
-        "dark-6": {
-          "$type": "color",
-          "$value": "oklch(0.25 0.03 250)",
-          "$description": "Indigo L=0.25"
-        },
-        "dark-7": {
-          "$type": "color",
-          "$value": "oklch(0.25 0.08 250)",
-          "$description": "Indigo L=0.25"
-        },
-        "dim-a30": {
-          "$type": "color",
-          "$value": "oklch(0.30 0.04 250 / 0.3)",
-          "$description": "Indigo L=0.30 at 30% opacity"
-        },
-        "dim-a50": {
-          "$type": "color",
-          "$value": "oklch(0.30 0.04 250 / 0.5)",
-          "$description": "Indigo L=0.30 at 50% opacity"
+          "$description": "Indigo dark \u2014 elevated dark indigo panel"
         },
         "dim": {
           "$type": "color",
           "$value": "oklch(0.30 0.04 250)",
-          "$description": "Indigo L=0.30"
+          "$description": "Indigo dim \u2014 mid-dark indigo container"
+        },
+        "vivid": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.20 260)",
+          "$description": "Indigo vivid \u2014 saturated indigo accent color"
+        },
+        "void-a20": {
+          "$type": "color",
+          "$value": "oklch(0.10 0.03 260 / 0.20)",
+          "$description": "Indigo-void 20% \u2014 cosmic depth tint"
+        },
+        "void-a40": {
+          "$type": "color",
+          "$value": "oklch(0.10 0.03 260 / 0.40)",
+          "$description": "Indigo-void 40% \u2014 space backdrop overlay"
+        },
+        "void-a60": {
+          "$type": "color",
+          "$value": "oklch(0.10 0.03 260 / 0.60)",
+          "$description": "Indigo-void 60% \u2014 deep space atmosphere overlay"
+        },
+        "deep-a10": {
+          "$type": "color",
+          "$value": "oklch(0.16 0.03 250 / 0.10)",
+          "$description": "Indigo-deep 10% \u2014 faint dark indigo tint"
+        },
+        "deep-a30": {
+          "$type": "color",
+          "$value": "oklch(0.16 0.03 250 / 0.30)",
+          "$description": "Indigo-deep 30% \u2014 cosmic glow gradient start"
+        },
+        "deep-a50": {
+          "$type": "color",
+          "$value": "oklch(0.16 0.03 250 / 0.50)",
+          "$description": "Indigo-deep 50% \u2014 half-opaque dark indigo panel"
+        },
+        "deep-a60": {
+          "$type": "color",
+          "$value": "oklch(0.16 0.03 250 / 0.60)",
+          "$description": "Indigo-deep 60% \u2014 dense dark indigo overlay"
+        },
+        "deep-a80": {
+          "$type": "color",
+          "$value": "oklch(0.16 0.03 250 / 0.80)",
+          "$description": "Indigo-deep 80% \u2014 near-opaque indigo surface"
+        },
+        "deep-a90": {
+          "$type": "color",
+          "$value": "oklch(0.16 0.03 250 / 0.90)",
+          "$description": "Indigo-deep 90% \u2014 very dense indigo tint"
+        },
+        "deep-a95": {
+          "$type": "color",
+          "$value": "oklch(0.16 0.03 250 / 0.95)",
+          "$description": "Indigo-deep 95% \u2014 frosted-glass indigo panel"
+        },
+        "dark-a30": {
+          "$type": "color",
+          "$value": "oklch(0.22 0.04 250 / 0.30)",
+          "$description": "Indigo-dark 30% \u2014 mid-dark indigo overlay"
+        },
+        "dark-a40": {
+          "$type": "color",
+          "$value": "oklch(0.22 0.04 250 / 0.40)",
+          "$description": "Indigo-dark 40% \u2014 elevated dark indigo glass"
+        },
+        "dark-a90": {
+          "$type": "color",
+          "$value": "oklch(0.22 0.04 250 / 0.90)",
+          "$description": "Indigo-dark 90% \u2014 near-solid dark indigo"
+        },
+        "dim-a30": {
+          "$type": "color",
+          "$value": "oklch(0.30 0.04 250 / 0.30)",
+          "$description": "Indigo-dim 30% \u2014 mid-depth indigo overlay"
         },
         "dim-a40": {
           "$type": "color",
-          "$value": "oklch(0.30 0.05 260 / 0.4)",
-          "$description": "Indigo L=0.30 at 40% opacity"
+          "$value": "oklch(0.30 0.04 250 / 0.40)",
+          "$description": "Indigo-dim 40% \u2014 semi-transparent indigo panel"
         },
-        "dim-a25": {
+        "dim-a50": {
           "$type": "color",
-          "$value": "oklch(0.30 0.12 250 / 0.25)",
-          "$description": "Indigo L=0.30 at 25% opacity"
+          "$value": "oklch(0.30 0.04 250 / 0.50)",
+          "$description": "Indigo-dim 50% \u2014 half-opaque indigo surface"
+        }
+      },
+      "blue": {
+        "deep": {
+          "$type": "color",
+          "$value": "oklch(0.22 0.05 230)",
+          "$description": "Neon-blue deep \u2014 dark blue surface for code blocks and glass panels"
         },
-        "dim-a30-2": {
+        "mid": {
           "$type": "color",
-          "$value": "oklch(0.35 0.05 248 / 0.3)",
-          "$description": "Indigo L=0.35 at 30% opacity"
+          "$value": "oklch(0.45 0.20 230)",
+          "$description": "Neon-blue mid \u2014 vivid mid-range blue for state transitions"
         },
-        "dim-a40-2": {
+        "vivid": {
           "$type": "color",
-          "$value": "oklch(0.35 0.05 248 / 0.4)",
-          "$description": "Indigo L=0.35 at 40% opacity"
+          "$value": "oklch(0.55 0.22 228)",
+          "$description": "Neon-blue vivid \u2014 primary electric blue accent"
         },
-        "dim-a50-2": {
+        "light": {
           "$type": "color",
-          "$value": "oklch(0.35 0.05 248 / 0.5)",
-          "$description": "Indigo L=0.35 at 50% opacity"
+          "$value": "oklch(0.70 0.27 228)",
+          "$description": "Neon-blue light \u2014 lighter electric blue for hover and focus"
         },
-        "dim-a60": {
+        "bright": {
           "$type": "color",
-          "$value": "oklch(0.35 0.05 248 / 0.6)",
-          "$description": "Indigo L=0.35 at 60% opacity"
+          "$value": "oklch(0.90 0.10 230)",
+          "$description": "Neon-blue bright \u2014 pale blue for subtle backgrounds"
         },
-        "mid-a25": {
+        "luminous": {
           "$type": "color",
-          "$value": "oklch(0.40 0.06 250 / 0.25)",
-          "$description": "Indigo L=0.40 at 25% opacity"
+          "$value": "oklch(0.95 0.03 235)",
+          "$description": "Neon-blue luminous \u2014 near-white blue for links on dark surfaces"
         },
-        "mid-a35": {
+        "deep-a60": {
           "$type": "color",
-          "$value": "oklch(0.45 0.07 248 / 0.35)",
-          "$description": "Indigo L=0.45 at 35% opacity"
+          "$value": "oklch(0.22 0.05 230 / 0.60)",
+          "$description": "Neon-blue-deep 60% \u2014 semi-opaque dark blue overlay"
         },
-        "rich": {
+        "deep-a70": {
           "$type": "color",
-          "$value": "oklch(0.65 0.20 260)",
-          "$description": "Indigo L=0.65"
+          "$value": "oklch(0.22 0.05 230 / 0.70)",
+          "$description": "Neon-blue-deep 70% \u2014 hover state on dark inputs"
+        },
+        "deep-a75": {
+          "$type": "color",
+          "$value": "oklch(0.22 0.05 230 / 0.75)",
+          "$description": "Neon-blue-deep 75% \u2014 dark blue code block bg"
+        },
+        "deep-a80": {
+          "$type": "color",
+          "$value": "oklch(0.22 0.05 230 / 0.80)",
+          "$description": "Neon-blue-deep 80% \u2014 focused input background"
+        },
+        "deep-a85": {
+          "$type": "color",
+          "$value": "oklch(0.22 0.05 230 / 0.85)",
+          "$description": "Neon-blue-deep 85% \u2014 selected code highlight"
+        },
+        "deep-a95": {
+          "$type": "color",
+          "$value": "oklch(0.22 0.05 230 / 0.95)",
+          "$description": "Neon-blue-deep 95% \u2014 glass-elevated blue panel"
+        },
+        "vivid-a00": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.22 228 / 0)",
+          "$description": "Neon-blue transparent \u2014 gradient fade-to-transparent"
+        },
+        "vivid-a05": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.22 228 / 0.05)",
+          "$description": "Neon-blue 5% \u2014 barely-visible blue shimmer"
+        },
+        "vivid-a10": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.22 228 / 0.10)",
+          "$description": "Neon-blue 10% \u2014 subtle neon blue aura"
+        },
+        "vivid-a15": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.22 228 / 0.15)",
+          "$description": "Neon-blue 15% \u2014 light blue glow"
+        },
+        "vivid-a20": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.22 228 / 0.20)",
+          "$description": "Neon-blue 20% \u2014 visible blue overlay"
+        },
+        "vivid-a25": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.22 228 / 0.25)",
+          "$description": "Neon-blue 25% \u2014 medium blue tint"
+        },
+        "vivid-a60": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.22 228 / 0.60)",
+          "$description": "Neon-blue 60% \u2014 dense neon glow layer"
+        },
+        "vivid-a90": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.22 228 / 0.90)",
+          "$description": "Neon-blue 90% \u2014 near-solid neon blue"
+        },
+        "mid-a70": {
+          "$type": "color",
+          "$value": "oklch(0.45 0.20 230 / 0.70)",
+          "$description": "Neon-blue-mid 70% \u2014 deep blue selected state"
+        },
+        "light-a50": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.27 228 / 0.50)",
+          "$description": "Neon-blue-light 50% \u2014 half-opaque lighter blue"
         }
       },
       "violet": {
         "void": {
           "$type": "color",
-          "$value": "oklch(0.10 0.03 280)",
-          "$description": "Violet L=0.10"
+          "$value": "oklch(0.12 0.04 280)",
+          "$description": "Violet void \u2014 near-black violet for darkest surface contexts"
         },
         "deep": {
           "$type": "color",
-          "$value": "oklch(0.12 0.04 280)",
-          "$description": "Violet L=0.12"
-        },
-        "deep-2": {
-          "$type": "color",
-          "$value": "oklch(0.13 0.04 280)",
-          "$description": "Violet L=0.13"
-        },
-        "deep-3": {
-          "$type": "color",
-          "$value": "oklch(0.14 0.03 280)",
-          "$description": "Violet L=0.14"
-        },
-        "deep-a80": {
-          "$type": "color",
-          "$value": "oklch(0.14 0.04 280 / 0.8)",
-          "$description": "Violet L=0.14 at 80% opacity"
-        },
-        "deep-4": {
-          "$type": "color",
-          "$value": "oklch(0.14 0.04 280)",
-          "$description": "Violet L=0.14"
-        },
-        "deep-5": {
-          "$type": "color",
-          "$value": "oklch(0.14 0.05 270)",
-          "$description": "Violet L=0.14"
-        },
-        "deep-a95": {
-          "$type": "color",
-          "$value": "oklch(0.14 0.05 280 / 0.95)",
-          "$description": "Violet L=0.14 at 95% opacity"
-        },
-        "deep-6": {
-          "$type": "color",
           "$value": "oklch(0.15 0.04 280)",
-          "$description": "Violet L=0.15"
-        },
-        "deep-a90": {
-          "$type": "color",
-          "$value": "oklch(0.16 0.04 280 / 0.9)",
-          "$description": "Violet L=0.16 at 90% opacity"
-        },
-        "deep-7": {
-          "$type": "color",
-          "$value": "oklch(0.16 0.05 280)",
-          "$description": "Violet L=0.16"
-        },
-        "deep-8": {
-          "$type": "color",
-          "$value": "oklch(0.18 0.05 270)",
-          "$description": "Violet L=0.18"
-        },
-        "deep-9": {
-          "$type": "color",
-          "$value": "oklch(0.18 0.06 280)",
-          "$description": "Violet L=0.18"
-        },
-        "dark-a15": {
-          "$type": "color",
-          "$value": "oklch(0.20 0.08 290 / 0.15)",
-          "$description": "Violet L=0.20 at 15% opacity"
+          "$description": "Violet deep \u2014 dark violet card surface"
         },
         "dark": {
           "$type": "color",
           "$value": "oklch(0.25 0.06 280)",
-          "$description": "Violet L=0.25"
+          "$description": "Violet dark \u2014 elevated dark violet panel"
         },
         "dim": {
           "$type": "color",
-          "$value": "oklch(0.30 0.08 280)",
-          "$description": "Violet L=0.30"
+          "$value": "oklch(0.30 0.10 280)",
+          "$description": "Violet dim \u2014 mid-dark violet container"
         },
-        "dim-2": {
-          "$type": "color",
-          "$value": "oklch(0.30 0.15 280)",
-          "$description": "Violet L=0.30"
-        },
-        "rich-a40": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.20 290 / 0.4)",
-          "$description": "Violet L=0.55 at 40% opacity"
-        },
-        "rich-a03": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.25 290 / 0.03)",
-          "$description": "Violet L=0.55 at 3% opacity"
-        },
-        "rich-a05": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.25 290 / 0.05)",
-          "$description": "Violet L=0.55 at 5% opacity"
-        },
-        "rich-a08": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.25 290 / 0.08)",
-          "$description": "Violet L=0.55 at 8% opacity"
-        },
-        "rich-a15": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.25 290 / 0.15)",
-          "$description": "Violet L=0.55 at 15% opacity"
-        },
-        "rich-a20": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.25 290 / 0.2)",
-          "$description": "Violet L=0.55 at 20% opacity"
-        },
-        "rich-a25": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.25 290 / 0.25)",
-          "$description": "Violet L=0.55 at 25% opacity"
-        },
-        "rich-a30": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.25 290 / 0.3)",
-          "$description": "Violet L=0.55 at 30% opacity"
-        },
-        "rich-a35": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.25 290 / 0.35)",
-          "$description": "Violet L=0.55 at 35% opacity"
-        },
-        "rich-a40-2": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.25 290 / 0.4)",
-          "$description": "Violet L=0.55 at 40% opacity"
-        },
-        "rich-a50": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.25 290 / 0.5)",
-          "$description": "Violet L=0.55 at 50% opacity"
-        },
-        "rich-a60": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.25 290 / 0.6)",
-          "$description": "Violet L=0.55 at 60% opacity"
-        },
-        "rich-a70": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.25 290 / 0.7)",
-          "$description": "Violet L=0.55 at 70% opacity"
-        },
-        "rich": {
+        "vivid": {
           "$type": "color",
           "$value": "oklch(0.55 0.25 290)",
-          "$description": "Violet L=0.55"
-        },
-        "rich-2": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.20 280)",
-          "$description": "Violet L=0.65"
-        }
-      },
-      "blue": {
-        "deep-a60": {
-          "$type": "color",
-          "$value": "oklch(0.18 0.03 246 / 0.6)",
-          "$description": "Blue L=0.18 at 60% opacity"
-        },
-        "dark": {
-          "$type": "color",
-          "$value": "oklch(0.20 0.04 230)",
-          "$description": "Blue L=0.20"
-        },
-        "dark-a75": {
-          "$type": "color",
-          "$value": "oklch(0.20 0.04 245 / 0.75)",
-          "$description": "Blue L=0.20 at 75% opacity"
-        },
-        "dark-a80": {
-          "$type": "color",
-          "$value": "oklch(0.20 0.04 245 / 0.8)",
-          "$description": "Blue L=0.20 at 80% opacity"
-        },
-        "dark-a95": {
-          "$type": "color",
-          "$value": "oklch(0.20 0.04 245 / 0.95)",
-          "$description": "Blue L=0.20 at 95% opacity"
-        },
-        "dark-2": {
-          "$type": "color",
-          "$value": "oklch(0.20 0.06 230)",
-          "$description": "Blue L=0.20"
-        },
-        "dark-a70": {
-          "$type": "color",
-          "$value": "oklch(0.22 0.04 246 / 0.7)",
-          "$description": "Blue L=0.22 at 70% opacity"
-        },
-        "dark-3": {
-          "$type": "color",
-          "$value": "oklch(0.22 0.04 246)",
-          "$description": "Blue L=0.22"
-        },
-        "dark-a85": {
-          "$type": "color",
-          "$value": "oklch(0.24 0.05 244 / 0.85)",
-          "$description": "Blue L=0.24 at 85% opacity"
-        },
-        "mid-a70": {
-          "$type": "color",
-          "$value": "oklch(0.45 0.20 230 / 0.7)",
-          "$description": "Blue L=0.45 at 70% opacity"
-        },
-        "mid": {
-          "$type": "color",
-          "$value": "oklch(0.45 0.20 230)",
-          "$description": "Blue L=0.45"
-        },
-        "mid-2": {
-          "$type": "color",
-          "$value": "oklch(0.50 0.25 230)",
-          "$description": "Blue L=0.50"
-        },
-        "rich-a90": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.22 228 / 0.9)",
-          "$description": "Blue L=0.55 at 90% opacity"
-        },
-        "rich": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.22 228)",
-          "$description": "Blue L=0.55"
-        },
-        "rich-2": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.25 220)",
-          "$description": "Blue L=0.55"
-        },
-        "rich-3": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.25 240)",
-          "$description": "Blue L=0.55"
-        },
-        "rich-4": {
-          "$type": "color",
-          "$value": "oklch(0.60 0.23 228)",
-          "$description": "Blue L=0.60"
-        },
-        "rich-5": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.20 220)",
-          "$description": "Blue L=0.65"
-        },
-        "rich-6": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 220)",
-          "$description": "Blue L=0.65"
-        },
-        "rich-a00": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 230 / 0)",
-          "$description": "Blue L=0.65 at 0% opacity"
-        },
-        "rich-a05": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 230 / 0.05)",
-          "$description": "Blue L=0.65 at 5% opacity"
-        },
-        "rich-a06": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 230 / 0.06)",
-          "$description": "Blue L=0.65 at 6% opacity"
-        },
-        "rich-a08": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 230 / 0.08)",
-          "$description": "Blue L=0.65 at 8% opacity"
-        },
-        "rich-a10": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 230 / 0.1)",
-          "$description": "Blue L=0.65 at 10% opacity"
-        },
-        "rich-a12": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 230 / 0.12)",
-          "$description": "Blue L=0.65 at 12% opacity"
-        },
-        "rich-a15": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 230 / 0.15)",
-          "$description": "Blue L=0.65 at 15% opacity"
-        },
-        "rich-a18": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 230 / 0.18)",
-          "$description": "Blue L=0.65 at 18% opacity"
-        },
-        "rich-a25": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 230 / 0.25)",
-          "$description": "Blue L=0.65 at 25% opacity"
-        },
-        "rich-a60": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 230 / 0.6)",
-          "$description": "Blue L=0.65 at 60% opacity"
-        },
-        "rich-a90-2": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 230 / 0.9)",
-          "$description": "Blue L=0.65 at 90% opacity"
-        },
-        "rich-7": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 240)",
-          "$description": "Blue L=0.65"
-        },
-        "light": {
-          "$type": "color",
-          "$value": "oklch(0.70 0.27 228)",
-          "$description": "Blue L=0.70"
-        },
-        "light-2": {
-          "$type": "color",
-          "$value": "oklch(0.75 0.20 220)",
-          "$description": "Blue L=0.75"
-        },
-        "light-3": {
-          "$type": "color",
-          "$value": "oklch(0.75 0.25 230)",
-          "$description": "Blue L=0.75"
-        },
-        "light-a50": {
-          "$type": "color",
-          "$value": "oklch(0.75 0.28 225 / 0.5)",
-          "$description": "Blue L=0.75 at 50% opacity"
+          "$description": "Violet vivid \u2014 saturated violet accent"
         },
         "bright": {
           "$type": "color",
-          "$value": "oklch(0.90 0.10 230)",
-          "$description": "Blue L=0.90"
+          "$value": "oklch(0.65 0.20 280)",
+          "$description": "Violet bright \u2014 lighter vivid violet for highlights"
         },
-        "luminous": {
+        "deep-a80": {
           "$type": "color",
-          "$value": "oklch(0.95 0.03 235)",
-          "$description": "Blue L=0.95"
+          "$value": "oklch(0.15 0.04 280 / 0.80)",
+          "$description": "Violet-deep 80% \u2014 near-opaque dark violet panel"
+        },
+        "deep-a90": {
+          "$type": "color",
+          "$value": "oklch(0.15 0.04 280 / 0.90)",
+          "$description": "Violet-deep 90% \u2014 dense dark violet overlay"
+        },
+        "deep-a95": {
+          "$type": "color",
+          "$value": "oklch(0.15 0.04 280 / 0.95)",
+          "$description": "Violet-deep 95% \u2014 frosted violet glass surface"
+        },
+        "dark-a15": {
+          "$type": "color",
+          "$value": "oklch(0.25 0.06 280 / 0.15)",
+          "$description": "Violet-dark 15% \u2014 subtle violet tint"
+        },
+        "vivid-a05": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.05)",
+          "$description": "Violet 5% \u2014 barely-visible violet shimmer"
+        },
+        "vivid-a10": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.10)",
+          "$description": "Violet 10% \u2014 faint violet aura"
+        },
+        "vivid-a15": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.15)",
+          "$description": "Violet 15% \u2014 light violet glow"
+        },
+        "vivid-a20": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.20)",
+          "$description": "Violet 20% \u2014 visible violet overlay"
+        },
+        "vivid-a30": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.30)",
+          "$description": "Violet 30% \u2014 medium violet tint panel"
+        },
+        "vivid-a40": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.40)",
+          "$description": "Violet 40% \u2014 violet glass surface"
+        },
+        "vivid-a50": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.50)",
+          "$description": "Violet 50% \u2014 half-opaque violet panel"
+        },
+        "vivid-a60": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.60)",
+          "$description": "Violet 60% \u2014 dense violet overlay"
+        },
+        "vivid-a70": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.70)",
+          "$description": "Violet 70% \u2014 prominent violet glow"
         }
       },
       "cyan": {
-        "deep-a12": {
+        "deep": {
           "$type": "color",
-          "$value": "oklch(0.18 0.06 210 / 0.12)",
-          "$description": "Cyan L=0.18 at 12% opacity"
+          "$value": "oklch(0.42 0.15 200)",
+          "$description": "Cyan deep \u2014 dark teal for glass backgrounds"
         },
-        "mid": {
+        "vivid": {
           "$type": "color",
-          "$value": "oklch(0.42 0.18 200)",
-          "$description": "Cyan L=0.42"
-        },
-        "light-a05": {
-          "$type": "color",
-          "$value": "oklch(0.75 0.15 210 / 0.05)",
-          "$description": "Cyan L=0.75 at 5% opacity"
-        },
-        "light-a50": {
-          "$type": "color",
-          "$value": "oklch(0.75 0.15 210 / 0.5)",
-          "$description": "Cyan L=0.75 at 50% opacity"
-        },
-        "light": {
-          "$type": "color",
-          "$value": "oklch(0.75 0.15 210)",
-          "$description": "Cyan L=0.75"
-        },
-        "light-a15": {
-          "$type": "color",
-          "$value": "oklch(0.75 0.18 195 / 0.15)",
-          "$description": "Cyan L=0.75 at 15% opacity"
-        },
-        "light-2": {
-          "$type": "color",
-          "$value": "oklch(0.75 0.18 195)",
-          "$description": "Cyan L=0.75"
-        }
-      },
-      "gold": {
-        "dark-a70": {
-          "$type": "color",
-          "$value": "oklch(0.22 0.06 85 / 0.7)",
-          "$description": "Gold L=0.22 at 70% opacity"
-        },
-        "rich": {
-          "$type": "color",
-          "$value": "oklch(0.60 0.12 88)",
-          "$description": "Gold L=0.60"
-        },
-        "rich-2": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.13 88)",
-          "$description": "Gold L=0.65"
-        },
-        "light-a00": {
-          "$type": "color",
-          "$value": "oklch(0.70 0.15 85 / 0)",
-          "$description": "Gold L=0.70 at 0% opacity"
-        },
-        "light-a05": {
-          "$type": "color",
-          "$value": "oklch(0.70 0.15 85 / 0.05)",
-          "$description": "Gold L=0.70 at 5% opacity"
-        },
-        "light-a10": {
-          "$type": "color",
-          "$value": "oklch(0.70 0.15 85 / 0.1)",
-          "$description": "Gold L=0.70 at 10% opacity"
-        },
-        "light-a15": {
-          "$type": "color",
-          "$value": "oklch(0.70 0.15 85 / 0.15)",
-          "$description": "Gold L=0.70 at 15% opacity"
-        },
-        "light-a20": {
-          "$type": "color",
-          "$value": "oklch(0.70 0.15 85 / 0.2)",
-          "$description": "Gold L=0.70 at 20% opacity"
-        },
-        "light-a25": {
-          "$type": "color",
-          "$value": "oklch(0.70 0.15 85 / 0.25)",
-          "$description": "Gold L=0.70 at 25% opacity"
-        },
-        "light-a30": {
-          "$type": "color",
-          "$value": "oklch(0.70 0.15 85 / 0.3)",
-          "$description": "Gold L=0.70 at 30% opacity"
-        },
-        "light-a40": {
-          "$type": "color",
-          "$value": "oklch(0.70 0.15 85 / 0.4)",
-          "$description": "Gold L=0.70 at 40% opacity"
-        },
-        "light-a50": {
-          "$type": "color",
-          "$value": "oklch(0.70 0.15 85 / 0.5)",
-          "$description": "Gold L=0.70 at 50% opacity"
-        },
-        "light-a60": {
-          "$type": "color",
-          "$value": "oklch(0.70 0.15 85 / 0.6)",
-          "$description": "Gold L=0.70 at 60% opacity"
-        },
-        "light-a70": {
-          "$type": "color",
-          "$value": "oklch(0.70 0.15 85 / 0.7)",
-          "$description": "Gold L=0.70 at 70% opacity"
-        },
-        "light-a80": {
-          "$type": "color",
-          "$value": "oklch(0.70 0.15 85 / 0.8)",
-          "$description": "Gold L=0.70 at 80% opacity"
-        },
-        "light-a90": {
-          "$type": "color",
-          "$value": "oklch(0.70 0.15 85 / 0.9)",
-          "$description": "Gold L=0.70 at 90% opacity"
-        },
-        "light-a20-2": {
-          "$type": "color",
-          "$value": "oklch(0.75 0.25 85 / 0.2)",
-          "$description": "Gold L=0.75 at 20% opacity"
-        },
-        "light-a50-2": {
-          "$type": "color",
-          "$value": "oklch(0.75 0.25 85 / 0.5)",
-          "$description": "Gold L=0.75 at 50% opacity"
-        },
-        "light": {
-          "$type": "color",
-          "$value": "oklch(0.75 0.25 85)",
-          "$description": "Gold L=0.75"
-        },
-        "pale": {
-          "$type": "color",
-          "$value": "oklch(0.80 0.20 70)",
-          "$description": "Gold L=0.80"
-        },
-        "pale-a03": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.16 85 / 0.03)",
-          "$description": "Gold L=0.85 at 3% opacity"
-        },
-        "pale-a10": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.16 85 / 0.1)",
-          "$description": "Gold L=0.85 at 10% opacity"
-        },
-        "pale-a15": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.16 85 / 0.15)",
-          "$description": "Gold L=0.85 at 15% opacity"
-        },
-        "pale-a30": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.16 85 / 0.3)",
-          "$description": "Gold L=0.85 at 30% opacity"
-        },
-        "pale-a40": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.16 85 / 0.4)",
-          "$description": "Gold L=0.85 at 40% opacity"
-        },
-        "pale-a50": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.16 85 / 0.5)",
-          "$description": "Gold L=0.85 at 50% opacity"
-        },
-        "pale-a60": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.16 85 / 0.6)",
-          "$description": "Gold L=0.85 at 60% opacity"
-        },
-        "pale-a15-2": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.18 85 / 0.15)",
-          "$description": "Gold L=0.85 at 15% opacity"
-        },
-        "pale-a40-2": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.18 85 / 0.4)",
-          "$description": "Gold L=0.85 at 40% opacity"
-        },
-        "pale-a50-2": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.18 85 / 0.5)",
-          "$description": "Gold L=0.85 at 50% opacity"
-        },
-        "pale-a60-2": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.18 85 / 0.6)",
-          "$description": "Gold L=0.85 at 60% opacity"
-        },
-        "pale-2": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.18 85)",
-          "$description": "Gold L=0.85"
-        },
-        "pale-a10-2": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.18 95 / 0.1)",
-          "$description": "Gold L=0.85 at 10% opacity"
-        },
-        "pale-a50-3": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.18 95 / 0.5)",
-          "$description": "Gold L=0.85 at 50% opacity"
-        },
-        "pale-3": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.18 95)",
-          "$description": "Gold L=0.85"
-        },
-        "pale-4": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.25 85)",
-          "$description": "Gold L=0.85"
-        },
-        "bright-a08": {
-          "$type": "color",
-          "$value": "oklch(0.88 0.18 95 / 0.08)",
-          "$description": "Gold L=0.88 at 8% opacity"
-        },
-        "bright-a10": {
-          "$type": "color",
-          "$value": "oklch(0.88 0.18 95 / 0.1)",
-          "$description": "Gold L=0.88 at 10% opacity"
-        },
-        "bright-a15": {
-          "$type": "color",
-          "$value": "oklch(0.88 0.18 95 / 0.15)",
-          "$description": "Gold L=0.88 at 15% opacity"
-        },
-        "bright-a20": {
-          "$type": "color",
-          "$value": "oklch(0.88 0.18 95 / 0.2)",
-          "$description": "Gold L=0.88 at 20% opacity"
-        },
-        "bright-a25": {
-          "$type": "color",
-          "$value": "oklch(0.88 0.18 95 / 0.25)",
-          "$description": "Gold L=0.88 at 25% opacity"
-        },
-        "bright-a40": {
-          "$type": "color",
-          "$value": "oklch(0.88 0.18 95 / 0.4)",
-          "$description": "Gold L=0.88 at 40% opacity"
-        },
-        "bright-a50": {
-          "$type": "color",
-          "$value": "oklch(0.88 0.18 95 / 0.5)",
-          "$description": "Gold L=0.88 at 50% opacity"
+          "$value": "oklch(0.75 0.15 195)",
+          "$description": "Cyan vivid \u2014 primary teal accent"
         },
         "bright": {
           "$type": "color",
-          "$value": "oklch(0.88 0.18 95)",
-          "$description": "Gold L=0.88"
+          "$value": "oklch(0.85 0.10 195)",
+          "$description": "Cyan bright \u2014 light teal highlight"
         },
-        "bright-a70": {
+        "deep-a60": {
           "$type": "color",
-          "$value": "oklch(0.90 0.03 90 / 0.7)",
-          "$description": "Gold L=0.90 at 70% opacity"
+          "$value": "oklch(0.42 0.15 200 / 0.60)",
+          "$description": "Cyan-deep 60% \u2014 teal glass overlay"
         },
-        "bright-2": {
+        "vivid-a05": {
           "$type": "color",
-          "$value": "oklch(0.90 0.16 85)",
-          "$description": "Gold L=0.90"
+          "$value": "oklch(0.75 0.15 195 / 0.05)",
+          "$description": "Cyan 5% \u2014 barely-visible teal shimmer"
         },
-        "bright-3": {
+        "vivid-a10": {
           "$type": "color",
-          "$value": "oklch(0.92 0.20 95)",
-          "$description": "Gold L=0.92"
-        }
-      },
-      "rose": {
-        "mid": {
-          "$type": "color",
-          "$value": "oklch(0.42 0.18 340)",
-          "$description": "Rose L=0.42"
-        }
-      },
-      "error": {
-        "mid-a15": {
-          "$type": "color",
-          "$value": "oklch(0.45 0.22 25 / 0.15)",
-          "$description": "Error L=0.45 at 15% opacity"
+          "$value": "oklch(0.75 0.15 195 / 0.10)",
+          "$description": "Cyan 10% \u2014 subtle teal aura"
         },
-        "mid-a50": {
+        "vivid-a15": {
           "$type": "color",
-          "$value": "oklch(0.45 0.22 25 / 0.5)",
-          "$description": "Error L=0.45 at 50% opacity"
+          "$value": "oklch(0.75 0.15 195 / 0.15)",
+          "$description": "Cyan 15% \u2014 faint teal glow"
         },
-        "mid": {
+        "vivid-a30": {
           "$type": "color",
-          "$value": "oklch(0.45 0.22 25)",
-          "$description": "Error L=0.45"
+          "$value": "oklch(0.75 0.15 195 / 0.30)",
+          "$description": "Cyan 30% \u2014 teal glow overlay"
         },
-        "mid-2": {
+        "vivid-a50": {
           "$type": "color",
-          "$value": "oklch(0.50 0.24 25)",
-          "$description": "Error L=0.50"
+          "$value": "oklch(0.75 0.15 195 / 0.50)",
+          "$description": "Cyan 50% \u2014 half-opaque teal"
         },
-        "rich-a20": {
+        "vivid-a90": {
           "$type": "color",
-          "$value": "oklch(0.55 0.25 25 / 0.2)",
-          "$description": "Error L=0.55 at 20% opacity"
-        },
-        "rich-a50": {
-          "$type": "color",
-          "$value": "oklch(0.55 0.25 25 / 0.5)",
-          "$description": "Error L=0.55 at 50% opacity"
-        },
-        "rich": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 25)",
-          "$description": "Error L=0.65"
-        }
-      },
-      "purple": {
-        "mid": {
-          "$type": "color",
-          "$value": "oklch(0.45 0.25 300)",
-          "$description": "Purple L=0.45"
-        },
-        "rich": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 320)",
-          "$description": "Purple L=0.65"
+          "$value": "oklch(0.75 0.15 195 / 0.90)",
+          "$description": "Cyan 90% \u2014 near-solid teal panel"
         }
       },
       "green": {
-        "rich-a20": {
+        "vivid": {
           "$type": "color",
-          "$value": "oklch(0.65 0.25 150 / 0.2)",
-          "$description": "Green L=0.65 at 20% opacity"
-        },
-        "rich-a30": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 150 / 0.3)",
-          "$description": "Green L=0.65 at 30% opacity"
-        },
-        "rich-a50": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 150 / 0.5)",
-          "$description": "Green L=0.65 at 50% opacity"
-        },
-        "rich-a60": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 150 / 0.6)",
-          "$description": "Green L=0.65 at 60% opacity"
-        },
-        "rich": {
-          "$type": "color",
-          "$value": "oklch(0.65 0.25 150)",
-          "$description": "Green L=0.65"
-        },
-        "light-a05": {
-          "$type": "color",
-          "$value": "oklch(0.75 0.25 150 / 0.05)",
-          "$description": "Green L=0.75 at 5% opacity"
-        },
-        "light-a20": {
-          "$type": "color",
-          "$value": "oklch(0.75 0.25 150 / 0.2)",
-          "$description": "Green L=0.75 at 20% opacity"
-        },
-        "light": {
-          "$type": "color",
-          "$value": "oklch(0.75 0.25 150)",
-          "$description": "Green L=0.75"
-        }
-      },
-      "amber": {
-        "light": {
-          "$type": "color",
-          "$value": "oklch(0.70 0.22 50)",
-          "$description": "Amber L=0.70"
-        },
-        "light-2": {
-          "$type": "color",
-          "$value": "oklch(0.75 0.18 65)",
-          "$description": "Amber L=0.75"
-        },
-        "pale": {
-          "$type": "color",
-          "$value": "oklch(0.85 0.16 50)",
-          "$description": "Amber L=0.85"
+          "$value": "oklch(0.65 0.18 145)",
+          "$description": "Green vivid \u2014 primary success and nature accent"
         },
         "bright": {
           "$type": "color",
-          "$value": "oklch(0.88 0.18 50)",
-          "$description": "Amber L=0.88"
+          "$value": "oklch(0.75 0.15 145)",
+          "$description": "Green bright \u2014 lighter success highlight"
+        },
+        "vivid-a05": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.18 145 / 0.05)",
+          "$description": "Green 5% \u2014 barely-visible success tint"
+        },
+        "vivid-a10": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.18 145 / 0.10)",
+          "$description": "Green 10% \u2014 subtle success tint"
+        },
+        "vivid-a20": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.18 145 / 0.20)",
+          "$description": "Green 20% \u2014 visible success overlay"
+        },
+        "vivid-a30": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.18 145 / 0.30)",
+          "$description": "Green 30% \u2014 medium success indicator"
+        },
+        "vivid-a50": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.18 145 / 0.50)",
+          "$description": "Green 50% \u2014 half-opaque success panel"
+        },
+        "vivid-a60": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.18 145 / 0.60)",
+          "$description": "Green 60% \u2014 dense success glow"
+        },
+        "vivid-a90": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.18 145 / 0.90)",
+          "$description": "Green 90% \u2014 near-solid success tint"
+        }
+      },
+      "error": {
+        "deep": {
+          "$type": "color",
+          "$value": "oklch(0.45 0.20 25)",
+          "$description": "Error deep \u2014 dark red for error backgrounds"
+        },
+        "vivid": {
+          "$type": "color",
+          "$value": "oklch(0.50 0.22 25)",
+          "$description": "Error vivid \u2014 primary error and danger accent"
+        },
+        "bright": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.18 25)",
+          "$description": "Error bright \u2014 lighter error highlight"
+        },
+        "vivid-a10": {
+          "$type": "color",
+          "$value": "oklch(0.50 0.22 25 / 0.10)",
+          "$description": "Error 10% \u2014 faint error tint"
+        },
+        "vivid-a15": {
+          "$type": "color",
+          "$value": "oklch(0.50 0.22 25 / 0.15)",
+          "$description": "Error 15% \u2014 subtle error indicator"
+        },
+        "vivid-a20": {
+          "$type": "color",
+          "$value": "oklch(0.50 0.22 25 / 0.20)",
+          "$description": "Error 20% \u2014 light error overlay"
+        },
+        "vivid-a30": {
+          "$type": "color",
+          "$value": "oklch(0.50 0.22 25 / 0.30)",
+          "$description": "Error 30% \u2014 error overlay"
+        },
+        "vivid-a50": {
+          "$type": "color",
+          "$value": "oklch(0.50 0.22 25 / 0.50)",
+          "$description": "Error 50% \u2014 half-opaque error panel"
+        },
+        "vivid-a80": {
+          "$type": "color",
+          "$value": "oklch(0.50 0.22 25 / 0.80)",
+          "$description": "Error 80% \u2014 dense error background"
+        }
+      },
+      "amber": {
+        "deep": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.15 70)",
+          "$description": "Amber deep \u2014 dark amber for strong warnings"
+        },
+        "vivid": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.18 75)",
+          "$description": "Amber vivid \u2014 primary amber warning accent"
+        },
+        "bright": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.16 75)",
+          "$description": "Amber bright \u2014 light amber highlight"
+        },
+        "pale": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.14 75)",
+          "$description": "Amber pale \u2014 very light amber background tint"
+        }
+      },
+      "purple": {
+        "dark": {
+          "$type": "color",
+          "$value": "oklch(0.45 0.22 305)",
+          "$description": "Purple dark \u2014 deeper purple for backgrounds"
+        },
+        "vivid": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 300)",
+          "$description": "Purple vivid \u2014 primary purple accent"
+        },
+        "bright": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.18 305)",
+          "$description": "Purple bright \u2014 lighter purple accent"
+        }
+      },
+      "rose": {
+        "vivid": {
+          "$type": "color",
+          "$value": "oklch(0.42 0.18 350)",
+          "$description": "Rose vivid \u2014 primary rose and pink accent"
         }
       },
       "sacred": {
         "gold-pure": {
           "$type": "color",
-          "$value": "#FFD700",
-          "$description": "Pure gold — used in luminous-gold-accessible gradient"
+          "$value": "oklch(0.80 0.22 85)",
+          "$description": "Sacred pure gold \u2014 radiant gold for sacred UI themes"
         },
         "gold-lemon": {
           "$type": "color",
-          "$value": "#FFFACD",
-          "$description": "Lemon chiffon — used in luminous-gold-accessible gradient"
-        },
-        "purple-lavender": {
-          "$type": "color",
-          "$value": "#e0c3fc",
-          "$description": "Soft lavender purple — used in transcendent-overlay gradient"
-        },
-        "blue-cornflower": {
-          "$type": "color",
-          "$value": "#8ec5fc",
-          "$description": "Cornflower blue — used in transcendent-overlay gradient"
+          "$value": "oklch(0.88 0.20 90)",
+          "$description": "Sacred lemon gold \u2014 bright warm gold for divine gradients"
         },
         "blue-royal": {
           "$type": "color",
-          "$value": "#3a3ad6",
-          "$description": "Royal blue — used in consciousness-royal gradient"
+          "$value": "oklch(0.45 0.20 255)",
+          "$description": "Sacred royal blue \u2014 deep royal blue for sacred themes"
         },
         "blue-royal-mid": {
           "$type": "color",
-          "$value": "#6e6ee6",
-          "$description": "Medium royal blue — used in consciousness-royal gradient"
+          "$value": "oklch(0.55 0.20 255)",
+          "$description": "Sacred royal blue mid \u2014 mid royal blue for gradient stops"
+        },
+        "blue-cornflower": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.16 265)",
+          "$description": "Sacred cornflower \u2014 cornflower blue for divine palettes"
+        },
+        "purple-lavender": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.18 295)",
+          "$description": "Sacred lavender \u2014 lavender purple for consciousness themes"
         }
       }
     }

@@ -49,7 +49,7 @@
     }
     
     &:hover {
-      color: var(--accent-neon, $color-engine-blue-mid-2);
+      color: var(--accent-neon, $color-engine-blue-mid);
       text-decoration-thickness: 2px;
     }
     
@@ -86,7 +86,7 @@
     }
     
     &:hover {
-      background: $color-engine-neutral-deep-4;  // Slightly lighter black
+      background: $color-engine-neutral-deep;  // Slightly lighter black
       border-color: var(--accent-neon, $color-accent-neon-blue);  // Neon blue border (purposeful)
       box-shadow: 0 0 16px var(--accent-neon, $color-accent-neon-blue-border);  // Neon blue glow
       transform: translateY(-1px);
@@ -107,8 +107,8 @@
     align-items: center;
     gap: 0.5em;
     padding: var(--padding-button-sm, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
-    background: var(--glass-light, $color-engine-indigo-deep-a60-2);
-    color: var(--text-primary, $color-engine-neutral-luminous-5);
+    background: var(--glass-light, $color-engine-indigo-deep-a60);
+    color: var(--text-primary, $color-engine-neutral-bright);
     border: 1px solid var(--border-subtle, $color-engine-indigo-dim);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     
@@ -124,12 +124,12 @@
     }
     
     &:hover {
-      background: var(--glass-hover, $color-engine-blue-dark-3);
-      border-color: var(--accent-low, $color-engine-gold-pale-a40);
+      background: var(--glass-hover, $color-engine-blue-deep);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-pale-a50);
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -139,8 +139,8 @@
     align-items: center;
     justify-content: center;
     padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
-    background: var(--danger-bg, $color-engine-error-mid);
-    color: var(--text-primary, $color-engine-neutral-luminous-5);
+    background: var(--danger-bg, $color-engine-error-deep);
+    color: var(--text-primary, $color-engine-neutral-bright);
     border: 1px solid var(--danger-border, $color-status-error);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     
@@ -156,8 +156,8 @@
     }
     
     &:hover {
-      background: var(--danger-hover, $color-engine-error-mid-2);
-      box-shadow: 0 0 15px var(--danger-glow, $color-engine-error-mid-a50);
+      background: var(--danger-hover, $color-engine-error-vivid);
+      box-shadow: 0 0 15px var(--danger-glow, $color-engine-error-vivid-a50);
     }
     
     &:focus-visible {
@@ -172,9 +172,9 @@
     justify-content: center;
     gap: 0.5em;
     padding: var(--padding-button-sm, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
-    background: var(--social-bg, $color-engine-violet-rich-a30);
-    color: var(--text-primary, $color-engine-neutral-luminous-5);
-    border: 1px solid var(--social-border, $color-engine-violet-rich);
+    background: var(--social-bg, $color-engine-violet-vivid-a30);
+    color: var(--text-primary, $color-engine-neutral-bright);
+    border: 1px solid var(--social-border, $color-engine-violet-vivid);
     border-radius: 999px;
     text-decoration: none;
     
@@ -199,12 +199,12 @@
     }
     
     &:hover {
-      background: var(--social-hover, $color-engine-violet-rich-a50);
-      box-shadow: 0 0 15px var(--social-glow, $color-engine-violet-rich-a40-2);
+      background: var(--social-hover, $color-engine-violet-vivid-a50);
+      box-shadow: 0 0 15px var(--social-glow, $color-engine-violet-vivid-a40);
     }
     
     &:focus-visible {
-      outline: 2px solid var(--social-border, $color-engine-violet-rich);
+      outline: 2px solid var(--social-border, $color-engine-violet-vivid);
       outline-offset: 2px;
     }
   }
@@ -215,8 +215,8 @@
     font-size: 1rem; // 16px minimum prevents iOS zoom
     padding: 0.75rem 1rem;
     border-radius: var(--radius-input, clamp(0.375rem, 0.75vw, 0.5rem));
-    background: var(--input-bg, $color-engine-indigo-deep-a60-2);
-    color: var(--text-primary, $color-engine-neutral-luminous-5);
+    background: var(--input-bg, $color-engine-indigo-deep-a60);
+    color: var(--text-primary, $color-engine-neutral-bright);
     border: 1px solid var(--border-input, $color-engine-indigo-dim-a50);
     transition: all var(--motion-snap, 0.2s ease);
     
@@ -240,13 +240,13 @@
     }
     
     &:hover {
-      background: var(--input-hover, $color-engine-blue-dark-a70);
-      border-color: var(--accent-low, $color-engine-gold-pale-a60);
+      background: var(--input-hover, $color-engine-blue-deep-a70);
+      border-color: var(--accent-low, $color-engine-gold-accent-a60);
     }
     
     &:focus {
       outline: none;
-      background: var(--input-focus, $color-engine-blue-dark-a80);
+      background: var(--input-focus, $color-engine-blue-deep-a80);
       border-color: var(--accent-neon, $color-engine-gold-bright);
       box-shadow: 0 0 0 3px var(--accent-neon, $color-engine-gold-bright-a20);
     }
@@ -254,7 +254,7 @@
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
-      background: var(--input-disabled, $color-engine-neutral-deep-a40-2);
+      background: var(--input-disabled, $color-engine-neutral-deep-a40);
     }
     
     // Invalid state
@@ -263,7 +263,7 @@
       border-color: var(--danger-border, $color-status-error);
       
       &:focus {
-        box-shadow: 0 0 0 3px var(--danger-border, $color-engine-error-rich-a20);
+        box-shadow: 0 0 0 3px var(--danger-border, $color-engine-error-vivid-a20);
       }
     }
   }
@@ -273,8 +273,8 @@
     align-items: center;
     justify-content: center;
     padding: var(--padding-pagination, clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1.5vw, 1rem));
-    background: var(--glass-light, $color-engine-indigo-deep-a60-2);
-    color: var(--text-primary, $color-engine-neutral-luminous-5);
+    background: var(--glass-light, $color-engine-indigo-deep-a60);
+    color: var(--text-primary, $color-engine-neutral-bright);
     border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     text-decoration: none;
@@ -298,15 +298,15 @@
     }
     
     &:hover:not(.disabled) {
-      background: var(--glass-hover, $color-engine-blue-dark-3);
-      border-color: var(--accent-low, $color-engine-gold-pale-a40);
+      background: var(--glass-hover, $color-engine-blue-deep);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
     }
     
     // Active/current page state
     &.active,
     &[aria-current="page"] {
       background: var(--accent-neon, $color-engine-gold-bright);
-      color: var(--text-inverse, $color-engine-indigo-deep-5);
+      color: var(--text-inverse, $color-engine-indigo-void);
       border-color: var(--accent-neon, $color-engine-gold-bright);
       font-weight: 700;
     }
@@ -320,7 +320,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-pale-a50);
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -331,8 +331,8 @@
     justify-content: space-between;
     width: 100%;
     padding: var(--padding-toggle, clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem));
-    background: var(--glass-light, $color-engine-indigo-deep-a60-2);
-    color: var(--text-primary, $color-engine-neutral-luminous-5);
+    background: var(--glass-light, $color-engine-indigo-deep-a60);
+    color: var(--text-primary, $color-engine-neutral-bright);
     border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     text-align: left;
@@ -345,8 +345,8 @@
     }
     
     &:hover {
-      background: var(--glass-hover, $color-engine-blue-dark-3);
-      border-color: var(--accent-low, $color-engine-gold-pale-a40);
+      background: var(--glass-hover, $color-engine-blue-deep);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
     }
     
     // Expanded state indicator
@@ -357,7 +357,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-pale-a50);
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
     
@@ -376,7 +376,7 @@
     align-items: center;
     gap: 0.5em;
     padding: var(--padding-anchor, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
-    color: var(--text-link, $color-engine-cyan-light);
+    color: var(--text-link, $color-engine-cyan-vivid);
     text-decoration: none;
     border-left: 2px solid transparent;
     transition: all var(--motion-snap, 0.2s ease);
@@ -402,7 +402,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-pale-a50);
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
     
@@ -413,7 +413,7 @@
       left: 0;
       padding: 1rem 1.5rem;
       background: var(--accent-neon, $color-engine-gold-bright);
-      color: var(--text-inverse, $color-engine-indigo-deep-5);
+      color: var(--text-inverse, $color-engine-indigo-void);
       font-weight: 600;
       z-index: 9999;
       
@@ -428,7 +428,7 @@
     align-items: center;
     justify-content: center;
     padding: var(--padding-tab, clamp(0.75rem, 1.5vw, 1rem) clamp(1.25rem, 2.5vw, 1.75rem));
-    color: var(--text-secondary, $color-engine-neutral-light-3);
+    color: var(--text-secondary, $color-engine-neutral-light);
     background: transparent;
     border: none;
     border-bottom: 3px solid transparent;
@@ -444,7 +444,7 @@
     }
     
     &:hover:not([aria-selected="true"]) {
-      color: var(--text-primary, $color-engine-neutral-luminous-5);
+      color: var(--text-primary, $color-engine-neutral-bright);
       border-bottom-color: var(--border-subtle, $color-engine-indigo-dim-a50);
     }
     
@@ -456,7 +456,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-pale-a50);
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -466,7 +466,7 @@
     align-items: center;
     gap: 0.75rem;
     padding: var(--padding-step, clamp(0.75rem, 1.5vw, 1rem));
-    color: var(--text-secondary, $color-engine-neutral-light-3);
+    color: var(--text-secondary, $color-engine-neutral-light);
     background: var(--glass-subtle, $color-engine-neutral-deep-a40);
     border: 2px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
@@ -495,11 +495,11 @@
     // Completed step
     &.completed,
     &[aria-current="step"][data-status="complete"] {
-      color: var(--text-primary, $color-engine-neutral-luminous-5);
-      border-color: var(--accent-low, $color-engine-gold-pale-a40);
+      color: var(--text-primary, $color-engine-neutral-bright);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
       
       .step-number {
-        background: var(--accent-low, $color-engine-gold-pale-a40);
+        background: var(--accent-low, $color-engine-gold-accent-a40);
       }
     }
     
@@ -508,12 +508,12 @@
     &[aria-current="step"] {
       color: var(--accent-neon, $color-engine-gold-bright);
       border-color: var(--accent-neon, $color-engine-gold-bright);
-      background: var(--glass-light, $color-engine-indigo-deep-a60-2);
+      background: var(--glass-light, $color-engine-indigo-deep-a60);
       font-weight: 600;
       
       .step-number {
         background: var(--accent-neon, $color-engine-gold-bright);
-        color: var(--text-inverse, $color-engine-indigo-deep-5);
+        color: var(--text-inverse, $color-engine-indigo-void);
       }
     }
     
@@ -526,8 +526,8 @@
     }
     
     &:hover {
-      background: var(--glass-hover, $color-engine-blue-dark-3);
-      border-color: var(--accent-low, $color-engine-gold-pale-a40);
+      background: var(--glass-hover, $color-engine-blue-deep);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
     }
     
     &.active:hover,
@@ -537,7 +537,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-pale-a50);
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -549,7 +549,7 @@
     min-width: 2.5em;
     padding: var(--padding-react, clamp(0.375rem, 0.75vw, 0.5rem) clamp(0.625rem, 1.25vw, 0.875rem));
     background: var(--glass-subtle, $color-engine-neutral-deep-a40);
-    color: var(--text-secondary, $color-engine-neutral-light-3);
+    color: var(--text-secondary, $color-engine-neutral-light);
     border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     border-radius: 999px; // Pill shape for reactions
     cursor: pointer;
@@ -565,8 +565,8 @@
     }
     
     &:hover {
-      background: var(--glass-light, $color-engine-indigo-deep-a60-2);
-      border-color: var(--accent-low, $color-engine-gold-pale-a40);
+      background: var(--glass-light, $color-engine-indigo-deep-a60);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
       transform: scale(1.05);
     }
     
@@ -592,7 +592,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-pale-a50);
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -603,7 +603,7 @@
     justify-content: center;
     padding: var(--padding-vote, clamp(0.5rem, 1vw, 0.625rem));
     background: transparent;
-    color: var(--text-secondary, $color-engine-neutral-light-3);
+    color: var(--text-secondary, $color-engine-neutral-light);
     border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     border-radius: var(--radius-button, clamp(0.375rem, 0.75vw, 0.5rem));
     cursor: pointer;
@@ -622,13 +622,13 @@
     
     &:hover {
       background: var(--glass-subtle, $color-engine-neutral-deep-a40);
-      border-color: var(--accent-low, $color-engine-gold-pale-a40);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
     }
     
     // Upvoted state
     &.upvoted,
     &[data-vote="up"] {
-      background: var(--vote-up-bg, $color-engine-gold-pale-a15);
+      background: var(--vote-up-bg, $color-engine-gold-accent-a15);
       border-color: var(--vote-up, $color-engine-gold-bright);
       color: var(--vote-up, $color-engine-gold-bright);
     }
@@ -636,7 +636,7 @@
     // Downvoted state
     &.downvoted,
     &[data-vote="down"] {
-      background: var(--vote-down-bg, $color-engine-error-mid-a15);
+      background: var(--vote-down-bg, $color-engine-error-vivid-a15);
       border-color: var(--vote-down, $color-status-error);
       color: var(--vote-down, $color-status-error);
     }
@@ -645,7 +645,7 @@
     &.star-rating {
       border: none;
       padding: 0.25rem;
-      color: var(--star-inactive, $color-engine-neutral-mid-2);
+      color: var(--star-inactive, $color-engine-neutral-mid);
       
       &.rated,
       &[aria-checked="true"] {
@@ -659,7 +659,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-pale-a50);
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -669,8 +669,8 @@
     align-items: center;
     gap: 0.5em;
     padding: var(--padding-comment, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.25rem));
-    background: var(--glass-light, $color-engine-indigo-deep-a60-2);
-    color: var(--text-primary, $color-engine-neutral-luminous-5);
+    background: var(--glass-light, $color-engine-indigo-deep-a60);
+    color: var(--text-primary, $color-engine-neutral-bright);
     border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     text-decoration: none;
@@ -684,8 +684,8 @@
     }
     
     &:hover {
-      background: var(--glass-hover, $color-engine-blue-dark-3);
-      border-color: var(--accent-low, $color-engine-gold-pale-a40);
+      background: var(--glass-hover, $color-engine-blue-deep);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
     }
     
     // Comment count badge
@@ -703,7 +703,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-pale-a50);
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -714,8 +714,8 @@
     justify-content: center;
     gap: 0.5em;
     padding: var(--padding-share, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.25rem));
-    background: var(--glass-light, $color-engine-indigo-deep-a60-2);
-    color: var(--text-primary, $color-engine-neutral-luminous-5);
+    background: var(--glass-light, $color-engine-indigo-deep-a60);
+    color: var(--text-primary, $color-engine-neutral-bright);
     border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     cursor: pointer;
@@ -729,30 +729,30 @@
     }
     
     &:hover {
-      background: var(--glass-hover, $color-engine-blue-dark-3);
-      border-color: var(--accent-low, $color-engine-gold-pale-a40);
+      background: var(--glass-hover, $color-engine-blue-deep);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
       box-shadow: 0 4px 12px $color-engine-indigo-void-a20;
     }
     
     // Platform-specific variants
     &.share-twitter {
       &:hover {
-        border-color: $color-engine-blue-rich-5;
-        color: $color-engine-blue-light-2;
+        border-color: $color-engine-blue-vivid;
+        color: $color-engine-blue-light;
       }
     }
     
     &.share-facebook {
       &:hover {
-        border-color: $color-engine-blue-rich-3;
-        color: $color-engine-blue-rich-7;
+        border-color: $color-engine-blue-vivid;
+        color: $color-engine-blue-vivid;
       }
     }
     
     &.share-linkedin {
       &:hover {
-        border-color: $color-engine-blue-rich-2;
-        color: $color-engine-blue-rich-6;
+        border-color: $color-engine-blue-vivid;
+        color: $color-engine-blue-vivid;
       }
     }
     
@@ -765,7 +765,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-pale-a50);
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -776,8 +776,8 @@
     justify-content: center;
     position: relative;
     padding: var(--padding-notify, clamp(0.5rem, 1vw, 0.75rem));
-    background: var(--glass-light, $color-engine-indigo-deep-a60-2);
-    color: var(--text-primary, $color-engine-neutral-luminous-5);
+    background: var(--glass-light, $color-engine-indigo-deep-a60);
+    color: var(--text-primary, $color-engine-neutral-bright);
     border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     cursor: pointer;
@@ -790,8 +790,8 @@
     }
     
     &:hover {
-      background: var(--glass-hover, $color-engine-blue-dark-3);
-      border-color: var(--accent-low, $color-engine-gold-pale-a40);
+      background: var(--glass-hover, $color-engine-blue-deep);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
     }
     
     // Notification badge (unread count)
@@ -806,21 +806,21 @@
       height: 1.25rem;
       padding: 0 0.375rem;
       background: var(--badge-urgent, $color-status-error);
-      color: var(--text-inverse, $color-engine-neutral-luminous-5);
+      color: var(--text-inverse, $color-engine-neutral-bright);
       border-radius: 999px;
       font-size: 0.625rem;
       font-weight: 700;
-      border: 2px solid var(--bg-primary, $color-engine-indigo-deep-5);
+      border: 2px solid var(--bg-primary, $color-engine-indigo-void);
     }
     
     // Active/open state
     &[aria-expanded="true"] {
-      background: var(--glass-hover, $color-engine-blue-dark-3);
+      background: var(--glass-hover, $color-engine-blue-deep);
       border-color: var(--accent-neon, $color-engine-gold-bright);
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-pale-a50);
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -837,20 +837,20 @@
     transition: all var(--motion-snap, 0.2s ease);
     
     &:hover {
-      background: var(--mention-hover, $color-engine-gold-bright-a25);
+      background: var(--mention-hover, $color-engine-gold-bright-a20);
       color: var(--accent-neon, $color-engine-gold-bright);
     }
     
     // Current user mention (highlight)
     &.mention-self,
     &[data-mention-self="true"] {
-      background: var(--mention-self-bg, $color-engine-gold-pale-a30);
-      color: var(--mention-self-text, $color-engine-neutral-luminous-5);
+      background: var(--mention-self-bg, $color-engine-gold-accent-a30);
+      color: var(--mention-self-text, $color-engine-neutral-bright);
       font-weight: 700;
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-pale-a50);
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
       border-radius: 0.25em;
     }
@@ -864,7 +864,7 @@
     justify-content: center;
     gap: 0.5em;
     padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
-    background: linear-gradient(135deg, $color-engine-neutral-deep, $color-engine-neutral-void-3);
+    background: linear-gradient(135deg, $color-engine-neutral-deep, $color-engine-neutral-void);
     color: $color-light-white;  // White text
     border: 1px solid $color-theme-dark-header-border;  // Consciousness border
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
@@ -882,7 +882,7 @@
       border-color: $color-accent-neon-blue;  // Neon blue
       box-shadow:
         0 0 20px $color-accent-neon-blue-border,
-        inset 0 0 10px $color-engine-blue-rich-a10;
+        inset 0 0 10px $color-engine-blue-vivid-a10;
       transform: translateY(-1px);
     }
     
@@ -906,7 +906,7 @@
     padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
     background: $color-light-white;  // White
     color: $color-theme-dark-card-bg;  // Black text
-    border: 2px solid $color-engine-green-rich;  // Green — affirmative
+    border: 2px solid $color-engine-green-vivid;  // Green — affirmative
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     font-weight: 600;
     font-size: var(--size-button, clamp(0.95rem, 1.2vw, 1.05rem));
@@ -919,9 +919,9 @@
     }
     
     &:hover {
-      background: $color-engine-green-rich;  // Green fill
+      background: $color-engine-green-vivid;  // Green fill
       color: $color-light-white;  // White text on green
-      box-shadow: 0 0 12px $color-engine-green-rich-a30;
+      box-shadow: 0 0 12px $color-engine-green-vivid-a30;
       transform: translateY(-1px);
     }
     
@@ -930,7 +930,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid $color-engine-green-rich-a50;
+      outline: 2px solid $color-engine-green-vivid-a50;
       outline-offset: 2px;
     }
   }

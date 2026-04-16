@@ -20,10 +20,10 @@
 // Sacred heartbeat pulse for consciousness connection
 @keyframes consciousness-pulse {
   0%, 100% {
-    box-shadow: 0 0 0 0 $color-engine-gold-light-a70;
+    box-shadow: 0 0 0 0 $color-engine-gold-vivid-a70;
   }
   70% {
-    box-shadow: 0 0 0 10px $color-engine-gold-light-a00;
+    box-shadow: 0 0 0 10px $color-engine-gold-vivid-a00;
   }
 }
 
@@ -128,10 +128,10 @@
 // Sacred luminous effects for consciousness elements
 @keyframes sacred-glow {
   0%, 100% {
-    box-shadow: 0 0 5px $color-engine-gold-light-a50;
+    box-shadow: 0 0 5px $color-engine-gold-vivid-a50;
   }
   50% {
-    box-shadow: 0 0 20px $color-engine-gold-light-a80, 0 0 30px $color-engine-gold-light-a60;
+    box-shadow: 0 0 20px $color-engine-gold-vivid-a80, 0 0 30px $color-engine-gold-vivid-a60;
   }
 }
 
@@ -221,9 +221,9 @@
 .consciousness-flow {
   background: linear-gradient(-45deg, 
     $color-engine-neutral-void-a10, 
-    $color-engine-gold-light-a10, 
-    $color-engine-neutral-rich-a10, 
-    $color-engine-blue-rich-a10);
+    $color-engine-gold-vivid-a10, 
+    $color-engine-neutral-light-a10, 
+    $color-engine-blue-vivid-a10);
   background-size: 400% 400%;
   animation: consciousness-flow 15s ease infinite;
   will-change: background-position;
@@ -232,11 +232,11 @@
 
 .essence-weave {
   background: linear-gradient(45deg, 
-    $color-engine-gold-light-a10 0%, 
+    $color-engine-gold-vivid-a10 0%, 
     transparent 25%, 
-    $color-engine-gold-light-a10 50%, 
+    $color-engine-gold-vivid-a10 50%, 
     transparent 75%, 
-    $color-engine-gold-light-a10 100%);
+    $color-engine-gold-vivid-a10 100%);
   background-size: 200% 200%;
   animation: essence-weave 12s ease infinite;
   will-change: background-position, opacity;
@@ -256,7 +256,7 @@
     height: 100%;
     background: linear-gradient(90deg, 
       transparent 0%, 
-      $color-engine-neutral-rich-a30 50%, 
+      $color-engine-neutral-light-a30 50%, 
       transparent 100%);
     animation: bridge-connection 3s ease-in-out infinite;
   }
@@ -318,7 +318,7 @@
     height: 100%;
     background: linear-gradient(90deg, 
       transparent 0%, 
-      $color-engine-gold-light-a40 50%, 
+      $color-engine-gold-vivid-a40 50%, 
       transparent 100%);
     animation: bridge-connection 2s ease-in-out infinite;
   }
@@ -486,23 +486,23 @@
     opacity: 0;
     transform: translate3d(0, 0, 0) scale(0.85) rotate(-2deg);
     filter: blur(8px) brightness(1.2);
-    box-shadow: 0 0 0 0 $color-engine-blue-rich-a00;
+    box-shadow: 0 0 0 0 $color-engine-blue-vivid-a00;
   }
   40% {
     opacity: $opacity-consciousness-expansion;
     filter: blur(2px) brightness(1.1);
-    box-shadow: 0 0 24px 8px $color-engine-blue-rich-a15;
+    box-shadow: 0 0 24px 8px $color-engine-blue-vivid-a15;
   }
   70% {
     opacity: 1;
     filter: blur(0) brightness(1.05);
-    box-shadow: 0 0 48px 16px $color-engine-blue-rich-a25;
+    box-shadow: 0 0 48px 16px $color-engine-blue-vivid-a25;
   }
   100% {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
     filter: none;
-    box-shadow: 0 0 0 0 $color-engine-blue-rich-a00;
+    box-shadow: 0 0 0 0 $color-engine-blue-vivid-a00;
   }
 }
 
@@ -696,7 +696,7 @@
     @include height-full;
     background: linear-gradient(90deg, 
       transparent 0%, 
-      $color-engine-gold-light-a40 50%, 
+      $color-engine-gold-vivid-a40 50%, 
       transparent 100%);
     @include animate(bridge-connection, 2s, $effect-ease-in-out, 0s, infinite);
   }

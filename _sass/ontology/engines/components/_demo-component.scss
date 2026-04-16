@@ -26,7 +26,7 @@
     @include flex-center;
     touch-action: pan-y;
     @include overflow-hidden;
-    background: var(--void-deep, $color-engine-neutral-void-3);
+    background: var(--void-deep, $color-engine-neutral-void);
   }
 
   .hero-background {
@@ -39,7 +39,7 @@
     background-image:
       radial-gradient(1.5px 1.5px at 25% 35%, $color-engine-neutral-luminous-a90, transparent),
       radial-gradient(1px 1px at 75% 25%, $color-engine-gold-bright-a70, transparent),
-      radial-gradient(2px 2px at 45% 75%, $color-engine-gold-pale-a60-2, transparent);
+      radial-gradient(2px 2px at 45% 75%, $color-engine-gold-accent-a60, transparent);
     background-size: 350px 350px, 250px 250px, 400px 400px;
     animation: starfield-drift 120s linear infinite;
   }
@@ -47,8 +47,8 @@
   .neural-mesh {
     @include absolute-fill;
     background:
-      linear-gradient(90deg, $color-engine-violet-rich-a03 1px, transparent 1px),
-      linear-gradient($color-engine-violet-rich-a03 1px, transparent 1px);
+      linear-gradient(90deg, $color-engine-violet-vivid-a05 1px, transparent 1px),
+      linear-gradient($color-engine-violet-vivid-a05 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
   }
@@ -61,8 +61,8 @@
     height: 800px;
     transform: translate(-50%, -50%);
     background: radial-gradient(circle,
-        $color-engine-gold-pale-a15-2 0%,
-        $color-engine-violet-rich-a08 40%,
+        $color-engine-gold-accent-a15 0%,
+        $color-engine-violet-vivid-a10 40%,
         transparent 70%);
     animation: consciousness-breathe 8s ease-in-out infinite;
   }
@@ -79,7 +79,7 @@
     font-weight: 800;
     letter-spacing: -0.03em;
     margin-bottom: clamp(1rem, 2vw, 1.5rem);
-    background: linear-gradient(135deg, $color-engine-gold-bright-2, $color-engine-neutral-luminous-5, $color-engine-cyan-light-2);
+    background: linear-gradient(135deg, $color-engine-gold-bright, $color-engine-neutral-bright, $color-engine-cyan-bright);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -88,7 +88,7 @@
 
   .hero-subtitle {
     font-size: clamp(1rem, calc(0.9rem + 0.75vw), 1.25rem);
-    color: $color-engine-neutral-pale-5;
+    color: $color-engine-neutral-pale;
     max-width: 50ch;
     margin: 0 auto clamp(2rem, 4vw, 3rem);
     line-height: 1.6;
@@ -115,7 +115,7 @@
     transform: translateX(-50%);
     width: 30px;
     height: 50px;
-    border: 2px solid $color-engine-gold-pale-a50-2;
+    border: 2px solid $color-engine-gold-accent-a50;
     border-radius: 25px;
 
     span {
@@ -125,7 +125,7 @@
       width: 6px;
       height: 6px;
       margin-left: -3px;
-      background: $color-engine-gold-pale-2;
+      background: $color-engine-gold-accent;
       border-radius: 50%;
       animation: scroll-bounce 2s infinite;
     }
@@ -139,18 +139,18 @@
     padding: clamp(3rem, 8vw, 6rem) 0;
 
     &--void {
-      background: linear-gradient(180deg, $color-engine-neutral-void-3, $color-engine-indigo-deep-2);
+      background: linear-gradient(180deg, $color-engine-neutral-void, $color-engine-indigo-void);
     }
 
     &--vibrant {
       background: $color-engine-violet-deep-a95;
-      border-top: 1px solid $color-engine-violet-rich-a30;
-      border-bottom: 1px solid $color-engine-violet-rich-a30;
+      border-top: 1px solid $color-engine-violet-vivid-a30;
+      border-bottom: 1px solid $color-engine-violet-vivid-a30;
     }
 
     &--compact {
       padding: 1rem 0;
-      background: $color-engine-neutral-void-5;
+      background: $color-engine-neutral-void;
     }
   }
 
@@ -167,13 +167,13 @@
     h2 {
       font-size: clamp(1.75rem, calc(1.5rem + 2vw), 2.5rem);
       font-weight: 700;
-      color: $color-engine-neutral-luminous-5;
+      color: $color-engine-neutral-bright;
       margin-bottom: 0.75rem;
     }
 
     p {
       font-size: clamp(1rem, calc(0.9rem + 0.5vw), 1.125rem);
-      color: $color-engine-neutral-light-3;
+      color: $color-engine-neutral-light;
       max-width: 50ch;
       @include margin-inline-auto;
     }
@@ -203,45 +203,45 @@
 
   .btn-genesis-primary {
     background: $color-engine-gold-bright;
-    color: $color-engine-indigo-deep-5;
+    color: $color-engine-indigo-void;
 
     &:hover {
-      background: $color-engine-gold-bright-3;
+      background: $color-engine-gold-bright;
       box-shadow: 0 4px 20px $color-engine-gold-bright-a40;
       transform: translateY(-2px);
     }
   }
 
   .btn-genesis-secondary {
-    background: $color-engine-indigo-deep-a60-2;
-    color: $color-engine-neutral-luminous-5;
+    background: $color-engine-indigo-deep-a60;
+    color: $color-engine-neutral-bright;
     border: 1px solid $color-engine-indigo-dim;
 
     &:hover {
-      background: $color-engine-blue-dark-3;
-      border-color: $color-engine-gold-pale-a40;
+      background: $color-engine-blue-deep;
+      border-color: $color-engine-gold-accent-a40;
     }
   }
 
   .btn-genesis-neural {
-    background: $color-engine-violet-rich-a30;
-    color: $color-engine-neutral-luminous-5;
-    border: 1px solid $color-engine-violet-rich;
+    background: $color-engine-violet-vivid-a30;
+    color: $color-engine-neutral-bright;
+    border: 1px solid $color-engine-violet-vivid;
 
     &:hover {
-      background: $color-engine-violet-rich-a50;
-      box-shadow: 0 0 20px $color-engine-violet-rich-a40-2;
+      background: $color-engine-violet-vivid-a50;
+      box-shadow: 0 0 20px $color-engine-violet-vivid-a40;
     }
   }
 
   .btn-genesis-destructive {
-    background: $color-engine-error-mid;
-    color: $color-engine-neutral-luminous-5;
+    background: $color-engine-error-deep;
+    color: $color-engine-neutral-bright;
     border: 1px solid $color-status-error;
 
     &:hover {
-      background: $color-engine-error-mid-2;
-      box-shadow: 0 0 15px $color-engine-error-mid-a50;
+      background: $color-engine-error-vivid;
+      box-shadow: 0 0 15px $color-engine-error-vivid-a50;
     }
   }
 
@@ -261,25 +261,25 @@
   }
 
   .bento-card {
-    background: $color-engine-blue-dark-a75;
+    background: $color-engine-blue-deep-a75;
     backdrop-filter: blur(12px);
     padding: clamp(1.25rem, 3vw, 2rem);
     border-radius: clamp(0.75rem, 1.5vw, 1.25rem);
-    border: 1px solid $color-engine-indigo-dim-a40-2;
+    border: 1px solid $color-engine-indigo-dim-a40;
     transition: all 0.3s ease;
     @include full-width;
     box-sizing: border-box;
 
     &:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 40px $color-engine-neutral-void-a30-3;
-      border-color: $color-engine-gold-pale-a40;
+      box-shadow: 0 12px 40px $color-engine-neutral-void-a30;
+      border-color: $color-engine-gold-accent-a40;
     }
 
     h3 {
       font-size: clamp(1.125rem, calc(1rem + 0.5vw), 1.25rem);
       font-weight: 600;
-      color: $color-engine-neutral-luminous-5;
+      color: $color-engine-neutral-bright;
       margin-bottom: 0.75rem;
     }
 
@@ -296,14 +296,14 @@
       padding: 0.25em 0.5em;
       background: $color-engine-neutral-deep-a80;
       border-radius: 0.25rem;
-      color: $color-engine-cyan-light;
+      color: $color-engine-cyan-vivid;
       border: 1px solid $color-theme-dark-header-border;
     }
 
     &--featured {
       grid-column: 1 / -1;
       background: linear-gradient(135deg, $color-engine-violet-deep-a90, $color-engine-indigo-dark-a90);
-      border-color: $color-engine-violet-rich-a40-2;
+      border-color: $color-engine-violet-vivid-a40;
 
       @media (min-width: 768px) {
         grid-column: span 2;
@@ -311,13 +311,13 @@
     }
 
     &--neural {
-      border-color: $color-engine-violet-rich-a50;
-      box-shadow: 0 0 20px $color-engine-violet-rich-a15;
+      border-color: $color-engine-violet-vivid-a50;
+      box-shadow: 0 0 20px $color-engine-violet-vivid-a15;
     }
 
     &--accent {
-      border-color: $color-engine-gold-pale-a40;
-      box-shadow: 0 0 20px $color-engine-gold-pale-a10;
+      border-color: $color-engine-gold-accent-a40;
+      box-shadow: 0 0 20px $color-engine-gold-accent-a10;
     }
   }
 
@@ -328,7 +328,7 @@
     font-weight: 600;
     @include text-uppercase;
     letter-spacing: 0.05em;
-    color: $color-engine-indigo-deep-5;
+    color: $color-engine-indigo-void;
     background: $color-engine-gold-bright;
     @include border-radius-pill;
     margin-bottom: 1rem;
@@ -356,11 +356,11 @@
     font-weight: 600;
     @include text-uppercase;
     letter-spacing: 0.1em;
-    color: $color-engine-violet-rich;
+    color: $color-engine-violet-vivid;
   }
 
   .type-sample {
-    color: $color-engine-neutral-luminous-5;
+    color: $color-engine-neutral-bright;
   }
 
   .type-display .type-sample {
@@ -391,13 +391,13 @@
 
   .type-sm .type-sample {
     font-size: clamp(0.875rem, calc(0.8rem + 0.35vw), 0.95rem);
-    color: $color-engine-neutral-light-3;
+    color: $color-engine-neutral-light;
   }
 
   .type-value {
     font-size: 0.8rem;
     font-family: monospace;
-    color: $color-engine-cyan-light;
+    color: $color-engine-cyan-vivid;
   }
 
   // ----------------------------------------
@@ -420,7 +420,7 @@
     h3 {
       font-size: 1.125rem;
       font-weight: 600;
-      color: $color-engine-gold-pale-2;
+      color: $color-engine-gold-accent;
       margin-bottom: 1.5rem;
     }
 
@@ -450,7 +450,7 @@
     label {
       font-size: 0.9rem;
       font-weight: 500;
-      color: $color-engine-neutral-pale-5;
+      color: $color-engine-neutral-pale;
     }
 
     input,
@@ -458,10 +458,10 @@
     textarea {
       padding: 0.75rem 1rem;
       font-size: 1rem;
-      background: $color-engine-indigo-deep-a60-2;
+      background: $color-engine-indigo-deep-a60;
       border: 1px solid $color-engine-indigo-dim-a50;
       border-radius: 0.5rem;
-      color: $color-engine-neutral-luminous-5;
+      color: $color-engine-neutral-bright;
       transition: all 0.2s ease;
       min-height: 44px;
 
@@ -489,37 +489,37 @@
     h4 {
       font-size: 1rem;
       font-weight: 600;
-      color: $color-engine-neutral-luminous-5;
+      color: $color-engine-neutral-bright;
       margin-bottom: 0.5rem;
     }
 
     p {
       font-size: 0.85rem;
-      color: $color-engine-neutral-light-3;
+      color: $color-engine-neutral-light;
     }
 
     &--glass {
-      background: $color-engine-indigo-deep-a75;
+      background: $color-engine-indigo-deep-a80;
       backdrop-filter: blur(24px);
-      border: 1px solid $color-engine-indigo-mid-a25;
-      box-shadow: 0 4px 24px $color-engine-neutral-void-a35;
+      border: 1px solid $color-engine-indigo-dim-a30;
+      box-shadow: 0 4px 24px $color-engine-neutral-void-a30;
     }
 
     &--neural {
       background: $color-engine-violet-deep-a80;
-      border: 1px solid $color-engine-violet-rich-a35;
-      box-shadow: 0 0 40px $color-engine-violet-rich-a20;
+      border: 1px solid $color-engine-violet-vivid-a30;
+      box-shadow: 0 0 40px $color-engine-violet-vivid-a20;
       animation: neural-pulse 3s ease-in-out infinite;
     }
 
     &--ethereal {
-      background: $color-engine-neutral-luminous-a08;
+      background: $color-engine-neutral-luminous-a10;
       backdrop-filter: blur(40px);
       border: 1px solid $color-engine-neutral-luminous-a20;
     }
 
     &--gradient {
-      background: linear-gradient(-45deg, $color-engine-indigo-deep-3, $color-engine-violet-deep-6, $color-engine-indigo-deep-4);
+      background: linear-gradient(-45deg, $color-engine-indigo-void, $color-engine-violet-void, $color-engine-indigo-void);
       background-size: 400% 400%;
       border: 1px solid $color-engine-indigo-dim-a40;
       animation: gradient-shift 10s ease infinite;
@@ -550,7 +550,7 @@
 
   .nav-link {
     padding: 0.75rem 1.25rem;
-    color: $color-engine-neutral-pale-5;
+    color: $color-engine-neutral-pale;
     @include text-decoration-none;
     border-radius: 0.5rem;
     transition: all 0.2s ease;
@@ -559,13 +559,13 @@
     align-items: center;
 
     &:hover {
-      background: $color-engine-violet-rich-a20;
-      color: $color-engine-neutral-luminous-5;
+      background: $color-engine-violet-vivid-a20;
+      color: $color-engine-neutral-bright;
     }
 
     &--active {
-      background: $color-engine-violet-rich-a30;
-      color: $color-engine-neutral-luminous-5;
+      background: $color-engine-violet-vivid-a30;
+      color: $color-engine-neutral-bright;
       font-weight: 600;
     }
   }
@@ -581,24 +581,24 @@
 
     li {
       padding: 1rem 1.25rem;
-      background: $color-engine-indigo-deep-a50-2;
+      background: $color-engine-indigo-deep-a50;
       border-radius: 0.75rem;
-      border-left: 3px solid $color-engine-cyan-light-2;
+      border-left: 3px solid $color-engine-cyan-bright;
       font-size: 0.95rem;
-      color: $color-engine-neutral-pale-5;
+      color: $color-engine-neutral-pale;
       line-height: 1.6;
     }
 
     strong {
-      color: $color-engine-neutral-luminous-5;
+      color: $color-engine-neutral-bright;
     }
 
     code {
       font-size: 0.85em;
       padding: 0.15em 0.4em;
-      background: $color-engine-neutral-deep-2;
+      background: $color-engine-neutral-deep;
       border-radius: 0.25rem;
-      color: $color-engine-cyan-light;
+      color: $color-engine-cyan-vivid;
     }
   }
 
@@ -612,7 +612,7 @@
   }
 
   .viewport-label {
-    color: $color-engine-neutral-light-3;
+    color: $color-engine-neutral-light;
     margin-right: 0.5rem;
   }
 
@@ -620,8 +620,8 @@
     @include display-none;
     font-weight: 600;
     padding: 0.25em 0.75em;
-    background: $color-engine-violet-rich;
-    color: $color-engine-neutral-luminous-5;
+    background: $color-engine-violet-vivid;
+    color: $color-engine-neutral-bright;
     border-radius: 0.25rem;
   }
 
@@ -702,11 +702,11 @@
 
   @keyframes neural-pulse {
     0%, 100% {
-      box-shadow: 0 0 20px $color-engine-violet-rich-a30;
+      box-shadow: 0 0 20px $color-engine-violet-vivid-a30;
     }
 
     50% {
-      box-shadow: 0 0 40px $color-engine-violet-rich-a50;
+      box-shadow: 0 0 40px $color-engine-violet-vivid-a50;
     }
   }
 

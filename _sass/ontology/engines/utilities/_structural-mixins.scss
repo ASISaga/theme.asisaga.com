@@ -221,19 +221,19 @@
 // BORDER UTILITIES
 // ----------------------------------------
 
-@mixin border-separator-bottom($color: $color-engine-indigo-dark-2) {
+@mixin border-separator-bottom($color: $color-engine-indigo-dark) {
   border-bottom: 1px solid $color;
 }
 
-@mixin border-separator-top($color: $color-engine-indigo-dark-2) {
+@mixin border-separator-top($color: $color-engine-indigo-dark) {
   border-top: 1px solid $color;
 }
 
-@mixin border-separator-left($color: $color-engine-indigo-dark-2) {
+@mixin border-separator-left($color: $color-engine-indigo-dark) {
   border-left: 1px solid $color;
 }
 
-@mixin border-subtle($color: $color-engine-indigo-dark-6, $width: 1px) {
+@mixin border-subtle($color: $color-engine-indigo-dark, $width: 1px) {
   border: $width solid $color;
 }
 
@@ -276,8 +276,8 @@
 // COLOR UTILITIES (ontological tokens)
 // ----------------------------------------
 
-@mixin color-text-light { color: var(--genesis-body-color, $color-engine-neutral-luminous); }
-@mixin color-text-muted { color: var(--text-secondary, $color-engine-neutral-rich); }
+@mixin color-text-light { color: var(--genesis-body-color, $color-engine-neutral-bright); }
+@mixin color-text-muted { color: var(--text-secondary, $color-engine-neutral-mid); }
 @mixin color-text-dim { color: var(--text-secondary, $color-engine-neutral-mid); }
 @mixin color-neon-accent { color: $color-accent-neon-blue; }
 
