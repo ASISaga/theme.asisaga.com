@@ -19,6 +19,10 @@ samples:
   heading: "Samples"
   description: "Quick links to example pages in this theme."
   categories:
+    - label: "Curated"
+      items:
+        - title: "Genesis Chronicle (Full Index)"
+          url: "/samples/index.html"
     - label: "Application"
       items:
         - title: "Chatroom"
@@ -39,6 +43,16 @@ samples:
           url: "/samples/content-driven/post.html"
         - title: "Profile"
           url: "/samples/content-driven/profile.html"
+        - title: "Property Ownership"
+          url: "/samples/content-driven/property-ownership.html"
+        - title: "OKLCH"
+          url: "/samples/content-driven/oklch.html"
+        - title: "Atmosphere"
+          url: "/samples/content-driven/atmosphere.html"
+        - title: "Accessibility"
+          url: "/samples/content-driven/accessibility.html"
+        - title: "Web Components"
+          url: "/samples/content-driven/web-components.html"
     - label: "Knowledge"
       items:
         - title: "Docs"
@@ -59,6 +73,12 @@ samples:
           url: "/samples/utility/404.html"
         - title: "Splash"
           url: "/samples/utility/splash.html"
+    - label: "Experimental"
+      items:
+        - title: "Enhanced Showcase"
+          url: "/enhanced-showcase/"
+        - title: "Ontology Examples"
+          url: "/ontology-examples/"
 
 # --- Hero Section ------------------------------------------------------------
 hero:
