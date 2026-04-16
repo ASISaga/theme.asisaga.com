@@ -36,7 +36,7 @@
       background: linear-gradient(
         90deg,
         transparent,
-        var(--accent-neon, $color-engine-gold-bright),
+        var(--accent-neon, $color-wisdom-brilliance),
         transparent
       );
       animation: evolving-sweep 2s infinite;
@@ -54,7 +54,7 @@
       top: -0.5em;
       right: -0.5em;
       font-size: 0.75em;
-      color: var(--warning-color, $color-engine-amber-bright);
+      color: var(--warning-color, $color-caution-glow);
     }
   }
   @else if $condition == 'locked' {
@@ -79,14 +79,14 @@
     // Data is a projection, not a live log
     // outline used instead of border so it does not affect layout or conflict with genesis-entity.
     // Note: outlines may extend beyond elements with overflow:hidden; this is expected behavior.
-    outline: 2px dashed var(--border-simulation, $color-engine-cyan-vivid-a50);
+    outline: 2px dashed var(--border-simulation, $color-bridge-vivid-presence);
     outline-offset: 2px;
     background: repeating-linear-gradient(
       45deg,
       transparent,
       transparent 10px,
-      $color-engine-cyan-vivid-a05 10px,
-      $color-engine-cyan-vivid-a05 20px
+      $color-bridge-vivid-whisper 10px,
+      $color-bridge-vivid-whisper 20px
     );
   }
   @else if $condition == 'scroll-triggered' {
@@ -136,13 +136,13 @@
       left: 0;
       width: 100%;
       height: 3px;
-      background: var(--accent-neon, $color-engine-gold-bright);
+      background: var(--accent-neon, $color-wisdom-brilliance);
       border-radius: 2px 2px 0 0;
     }
     
     // Alternative: left border for vertical navigation
     &.vertical-nav {
-      border-left: 3px solid var(--accent-neon, $color-engine-gold-bright);
+      border-left: 3px solid var(--accent-neon, $color-wisdom-brilliance);
       padding-left: calc(1rem - 3px);
       
       &::after {
@@ -199,17 +199,17 @@
     // border-left and padding-left omitted: border/padding responsibility belongs to genesis-entity.
     // For stronger visual distinction, combine with genesis-entity using a custom --notification-accent.
     // The background highlight meets WCAG for informational styling; use genesis-entity for structural emphasis.
-    background: var(--mention-highlight, $color-engine-gold-bright-a10);
+    background: var(--mention-highlight, $color-wisdom-brilliance-whisper);
     
     // Subtle animation on load
     animation: mention-pulse 0.6s ease-out;
     
     @keyframes mention-pulse {
       0% {
-        background: var(--mention-highlight, $color-engine-gold-bright-a20);
+        background: var(--mention-highlight, $color-wisdom-brilliance-veil);
       }
       100% {
-        background: var(--mention-highlight, $color-engine-gold-bright-a10);
+        background: var(--mention-highlight, $color-wisdom-brilliance-whisper);
       }
     }
     
@@ -221,7 +221,7 @@
   @else if $condition == 'unread' {
     // Unread notifications/messages/content
     position: relative;
-    background: var(--unread-bg, $color-engine-gold-bright-a10);
+    background: var(--unread-bg, $color-wisdom-brilliance-whisper);
     
     // Unread indicator dot
     &::before {
@@ -234,7 +234,7 @@
       height: 0.5rem;
       border-radius: 50%;
       background: var(--unread-indicator, $color-accent-neon-blue);
-      box-shadow: 0 0 8px var(--unread-indicator, $color-engine-blue-vivid-a60);
+      box-shadow: 0 0 8px var(--unread-indicator, $color-spark-vivid-presence);
     }
     
     // Alternative: subtle glow effect
@@ -254,9 +254,9 @@
       right: 0;
       width: 1.5rem;
       height: 1.5rem;
-      background: var(--reacted-indicator, $color-engine-green-vivid-a20);
+      background: var(--reacted-indicator, $color-life-vivid-veil);
       border-radius: 50%;
-      border: 2px solid var(--reacted-border, $color-engine-green-bright);
+      border: 2px solid var(--reacted-border, $color-life-glow);
       opacity: 0.8;
     }
     
@@ -265,7 +265,7 @@
       background: linear-gradient(
         135deg,
         transparent 0%,
-        var(--reacted-tint, $color-engine-green-vivid-a05) 100%
+        var(--reacted-tint, $color-life-vivid-whisper) 100%
       );
     }
   }
@@ -283,12 +283,12 @@
       width: 0.5rem;
       height: 0.5rem;
       border-radius: 50%;
-      background: $color-engine-green-vivid;  // Green — life indicator
-      box-shadow: 0 0 8px $color-engine-green-vivid-a60;
+      background: $color-life-vivid;  // Green — life indicator
+      box-shadow: 0 0 8px $color-life-vivid-presence;
     }
     
     // Subtle new-content glow
-    box-shadow: inset 0 0 0 1px $color-engine-green-vivid-a20;
+    box-shadow: inset 0 0 0 1px $color-life-vivid-veil;
     
     @media (prefers-reduced-motion: reduce) {
       &::after {
@@ -309,9 +309,9 @@
       inset: 0;
       background: linear-gradient(
         135deg,
-        $color-engine-blue-vivid-a05 0%,
-        $color-engine-gold-vivid-a05 50%,
-        $color-engine-blue-vivid-a05 100%
+        $color-spark-vivid-whisper 0%,
+        $color-wisdom-glow-whisper 50%,
+        $color-spark-vivid-whisper 100%
       );
       background-size: 200% 200%;
       animation: transcendence-flow 3s ease-in-out infinite;
@@ -327,7 +327,7 @@
     @media (prefers-reduced-motion: reduce) {
       &::after {
         animation: none;
-        background: $color-engine-blue-vivid-a05;
+        background: $color-spark-vivid-whisper;
       }
     }
   }

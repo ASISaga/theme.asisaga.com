@@ -15,17 +15,17 @@
 
     // Deep void background
     backdrop-filter: blur(20px);
-    background: var(--genesis-bg-surface, $color-engine-neutral-void-a98);
-    @include border-separator-top(var(--genesis-card-border, $color-engine-indigo-dark));
+    background: var(--genesis-bg-surface, $color-ether-void-frost);
+    @include border-separator-top(var(--genesis-card-border, $color-cosmos-shadow));
 
     // Subtle upward glow
     box-shadow:
-      0 -1px 0 $color-engine-blue-vivid-a05,
-      0 -4px 24px var(--genesis-header-shadow, $color-engine-neutral-void-a30);
+      0 -1px 0 $color-spark-vivid-whisper,
+      0 -4px 24px var(--genesis-header-shadow, $color-ether-void-glass);
 
     @media (prefers-contrast: high) {
-      background: $color-engine-neutral-space;
-      border-top: 2px solid $color-engine-neutral-dim;
+      background: $color-ether-abyss;
+      border-top: 2px solid $color-ether-dusk;
       backdrop-filter: none;
     }
 
@@ -70,7 +70,7 @@
       @include genesis-cognition('axiom');
       font-family: $font-family-consciousness;
       font-size: clamp(1.125rem, calc(1rem + 0.75vw), 1.5rem);
-      color: var(--genesis-body-color, $color-engine-neutral-bright);
+      color: var(--genesis-body-color, $color-ether-glow);
       font-weight: 600;
       letter-spacing: 0.03em;
       @include text-uppercase;
@@ -113,7 +113,7 @@
 
     &__nav-link {
       @include genesis-synapse('navigate');
-      color: var(--text-secondary, $color-engine-neutral-mid);
+      color: var(--text-secondary, $color-ether-twilight);
       @include text-decoration-none;
       font-family: $font-family-consciousness;
       font-size: 0.8125rem;
@@ -158,24 +158,24 @@
       @include genesis-synapse('execute');
       @include size-square(40px);
       @include flex-center;
-      background: var(--genesis-card-bg, $color-engine-neutral-deep);
-      @include border-subtle(var(--genesis-card-border, $color-engine-indigo-dark));
+      background: var(--genesis-card-bg, $color-ether-depth);
+      @include border-subtle(var(--genesis-card-border, $color-cosmos-shadow));
       @include border-radius-rounded;
-      color: var(--text-secondary, $color-engine-neutral-mid);
+      color: var(--text-secondary, $color-ether-twilight);
       font-size: 1rem;
 
       @include transition-smooth(color background border-color box-shadow);
 
       &:hover,
       &:focus {
-        background: var(--glass-hover, $color-engine-indigo-void);
+        background: var(--glass-hover, $color-cosmos-void);
         border-color: var(--accent-neon, $color-semantic-focus-ring);
         color: var(--genesis-body-color, $color-theme-dark-body-color);
         @include shadow-glow(var(--accent-neon, $color-accent-neon-blue), 0.15);
       }
 
       &:active {
-        background: var(--glass-hover, $color-engine-indigo-dark);
+        background: var(--glass-hover, $color-cosmos-shadow);
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -186,7 +186,7 @@
     // Copyright Bar — the final anchor
     &__copyright {
       padding: 1.25rem 0 0;
-      @include border-separator-top(var(--genesis-card-border, $color-engine-neutral-deep));
+      @include border-separator-top(var(--genesis-card-border, $color-ether-depth));
       @include text-align-center;
 
       p {
@@ -206,10 +206,10 @@
     @include fixed-position(null, 1.5rem, 1.5rem, null, 999);
     @include size-square(44px);
     @include flex-center;
-    background: var(--genesis-card-bg, $color-engine-indigo-deep-a90);
+    background: var(--genesis-card-bg, $color-cosmos-depth-frost);
     @include border-subtle(var(--genesis-card-border, $color-theme-dark-header-border));
     @include border-radius-rounded(12px);
-    color: var(--text-secondary, $color-engine-neutral-light);
+    color: var(--text-secondary, $color-ether-mist);
     font-size: 1rem;
     @include cursor-pointer;
     backdrop-filter: blur(12px);
@@ -226,7 +226,7 @@
 
     &:hover,
     &:focus {
-      background: var(--glass-hover, $color-engine-indigo-deep-a95);
+      background: var(--glass-hover, $color-cosmos-depth-frost);
       border-color: var(--accent-neon, $color-accent-neon-blue);
       color: var(--genesis-body-color, $color-theme-dark-body-color);
       @include shadow-glow(var(--accent-neon, $color-accent-neon-blue), 0.2, 20px);
@@ -255,14 +255,14 @@
     }
 
     @media (prefers-contrast: high) {
-      background: $color-engine-neutral-deep;
-      border: 2px solid $color-engine-neutral-light;
+      background: $color-ether-depth;
+      border: 2px solid $color-ether-mist;
       backdrop-filter: none;
 
       &:hover,
       &:focus {
-        background: $color-engine-neutral-dark;
-        border-color: $color-engine-neutral-pale;
+        background: $color-ether-shadow;
+        border-color: $color-ether-haze;
         @include shadow-none;
       }
     }

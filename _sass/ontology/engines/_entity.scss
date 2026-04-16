@@ -16,21 +16,21 @@
   @if $nature == 'primary' {
     // Fundamental object of current view
     background: $color-light-white;
-    border: 1px solid $color-engine-neutral-pale;
-    box-shadow: 0 1px 4px $color-engine-neutral-void-a10;
+    border: 1px solid $color-ether-haze;
+    box-shadow: 0 1px 4px $color-ether-void-whisper;
     padding: var(--padding-entity-primary, clamp(1rem, 2vw, 1.5rem));
   }
   @else if $nature == 'secondary' {
     // Supportive, contextual data
     background: $color-theme-light-section-bg;
-    border: 1px solid $color-engine-neutral-bright;
+    border: 1px solid $color-ether-glow;
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem));
   }
   @else if $nature == 'editorial' {
     // Editorial content entry - typographic object without card chrome
     background: transparent;
     border: 0;
-    border-top: 1px solid var(--color-editorial-separator, $color-engine-neutral-pale);
+    border-top: 1px solid var(--color-editorial-separator, $color-ether-haze);
     border-radius: 0;
     box-shadow: none;
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem)) 0;
@@ -50,22 +50,22 @@
   }
   @else if $nature == 'latent' {
     // Backgrounded info awaiting activation
-    background: $color-engine-neutral-bright;
+    background: $color-ether-glow;
     opacity: 0.7;
     filter: grayscale(0.3);
-    border: 1px solid $color-engine-neutral-bright;
+    border: 1px solid $color-ether-glow;
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem));
   }
   @else if $nature == 'aggregate' {
     // Container summarizing multiple entities
-    background: $color-engine-neutral-bright;
-    border: 1px solid $color-engine-neutral-pale;
+    background: $color-ether-glow;
+    border: 1px solid $color-ether-haze;
     padding: var(--padding-entity-aggregate, clamp(1.25rem, 2.5vw, 2rem));
   }
   @else if $nature == 'ancestral' {
     // Archived or historical data (legacy state)
     background: $color-surface-hover;
-    border: 1px solid $color-engine-neutral-bright;
+    border: 1px solid $color-ether-glow;
     opacity: 0.8;
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem));
   }
@@ -184,19 +184,19 @@
       width: 25%;
       height: 25%;
       border-radius: 50%;
-      border: 2px solid var(--bg-primary, $color-engine-indigo-void);
+      border: 2px solid var(--bg-primary, $color-cosmos-void);
       display: none; // Hidden by default
     }
     
     // Status states
     &.status-online::after {
       display: block;
-      background: var(--status-online, $color-engine-green-vivid); // Green
+      background: var(--status-online, $color-life-vivid); // Green
     }
     
     &.status-away::after {
       display: block;
-      background: var(--status-away, $color-engine-gold-vivid); // Yellow
+      background: var(--status-away, $color-wisdom-glow); // Yellow
     }
     
     &.status-busy::after {
@@ -206,7 +206,7 @@
     
     &.status-offline::after {
       display: block;
-      background: var(--status-offline, $color-engine-neutral-mid); // Gray
+      background: var(--status-offline, $color-ether-twilight); // Gray
     }
     
     // Size modifiers
@@ -236,9 +236,9 @@
     align-items: center;
     gap: 0.375em;
     padding: var(--badge-padding, 0.25em 0.75em);
-    background: var(--badge-bg, $color-engine-gold-bright-a20);
-    color: var(--badge-text, $color-engine-gold-bright);
-    border: 1px solid var(--badge-border, $color-engine-gold-bright-a50);
+    background: var(--badge-bg, $color-wisdom-brilliance-veil);
+    color: var(--badge-text, $color-wisdom-brilliance);
+    border: 1px solid var(--badge-border, $color-wisdom-brilliance-glass);
     border-radius: 999px;
     font-size: 0.75rem;
     font-weight: 700;
@@ -257,33 +257,33 @@
     
     // Variant types
     &.badge-success {
-      --badge-bg: #{$color-engine-green-vivid-a20};
-      --badge-text: #{$color-engine-green-bright};
-      --badge-border: #{$color-engine-green-vivid-a50};
+      --badge-bg: #{$color-life-vivid-veil};
+      --badge-text: #{$color-life-glow};
+      --badge-border: #{$color-life-vivid-presence};
     }
     
     &.badge-warning {
-      --badge-bg: #{$color-engine-gold-vivid-a20};
-      --badge-text: #{$color-engine-gold-vivid};
-      --badge-border: #{$color-engine-gold-vivid-a50};
+      --badge-bg: #{$color-wisdom-glow-veil};
+      --badge-text: #{$color-wisdom-glow};
+      --badge-border: #{$color-wisdom-glow-presence};
     }
     
     &.badge-danger {
-      --badge-bg: #{$color-engine-error-vivid-a20};
-      --badge-text: #{$color-engine-error-bright};
-      --badge-border: #{$color-engine-error-vivid-a50};
+      --badge-bg: #{$color-alert-vivid-veil};
+      --badge-text: #{$color-alert-glow};
+      --badge-border: #{$color-alert-vivid-presence};
     }
     
     &.badge-info {
       --badge-bg: #{$color-synapse-social-bg};
-      --badge-text: #{$color-engine-blue-light};
+      --badge-text: #{$color-spark-arc};
       --badge-border: #{$color-semantic-focus-ring};
     }
     
     &.badge-neutral {
-      --badge-bg: #{$color-engine-neutral-mid-a20};
-      --badge-text: #{$color-engine-neutral-light};
-      --badge-border: #{$color-engine-neutral-mid-a50};
+      --badge-bg: #{$color-ether-twilight-veil};
+      --badge-text: #{$color-ether-mist};
+      --badge-border: #{$color-ether-twilight-presence};
     }
   }
   @else if $nature == 'notification' {
@@ -291,22 +291,22 @@
     display: flex;
     gap: 0.75rem;
     padding: var(--notification-padding, clamp(0.625rem, 1.25vw, 0.875rem));
-    background: var(--glass-light, $color-engine-indigo-deep-a60);
-    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
-    border-left: 3px solid var(--notification-accent, $color-engine-gold-bright);
+    background: var(--glass-light, $color-cosmos-depth-presence);
+    border: 1px solid var(--border-subtle, $color-cosmos-dusk-glass);
+    border-left: 3px solid var(--notification-accent, $color-wisdom-brilliance);
     border-radius: var(--radius-bento, 0.5rem);
     transition: all var(--motion-snap, 0.2s ease);
     
     // Unread state
     &.unread,
     &[aria-label*="unread"] {
-      background: var(--notification-unread, $color-engine-gold-bright-a10);
+      background: var(--notification-unread, $color-wisdom-brilliance-whisper);
       border-left-width: 4px;
     }
     
     // Notification types
     &.notification-mention {
-      --notification-accent: #{$color-engine-gold-bright};
+      --notification-accent: #{$color-wisdom-brilliance};
     }
     
     &.notification-comment {
@@ -314,11 +314,11 @@
     }
     
     &.notification-reaction {
-      --notification-accent: #{$color-engine-green-bright};
+      --notification-accent: #{$color-life-glow};
     }
     
     &.notification-system {
-      --notification-accent: #{$color-engine-neutral-light};
+      --notification-accent: #{$color-ether-mist};
     }
     
     &.notification-urgent {
@@ -327,8 +327,8 @@
     
     // Hover state for interactive notifications
     &:hover {
-      background: var(--glass-hover, $color-engine-blue-deep);
-      border-color: var(--accent-low, $color-engine-gold-accent-a40);
+      background: var(--glass-hover, $color-spark-depth);
+      border-color: var(--accent-low, $color-wisdom-radiance-glass);
       cursor: pointer;
     }
   }
@@ -338,10 +338,10 @@
     flex-wrap: wrap;
     gap: var(--picker-gap, clamp(0.25rem, 0.5vw, 0.375rem));
     padding: var(--picker-padding, clamp(0.5rem, 1vw, 0.75rem));
-    background: var(--glass-elevated, $color-engine-blue-deep-a95);
-    border: 1px solid var(--border-accent, $color-engine-indigo-dim-a50);
+    background: var(--glass-elevated, $color-spark-depth-frost);
+    border: 1px solid var(--border-accent, $color-cosmos-dusk-presence);
     border-radius: var(--radius-bento, 0.5rem);
-    box-shadow: 0 4px 16px $color-engine-indigo-void-a20;
+    box-shadow: 0 4px 16px $color-cosmos-void-veil;
     backdrop-filter: blur(20px);
     max-width: 280px;
     
@@ -359,7 +359,7 @@
       font-size: 1.25rem;
       
       &:hover {
-        background: var(--glass-hover, $color-engine-blue-deep);
+        background: var(--glass-hover, $color-spark-depth);
         transform: scale(1.15);
       }
       
@@ -372,7 +372,7 @@
     .reaction-category {
       width: 100%;
       padding-top: 0.5rem;
-      border-top: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
+      border-top: 1px solid var(--border-subtle, $color-cosmos-dusk-glass);
       
       &:first-child {
         padding-top: 0;
@@ -383,7 +383,7 @@
     .reaction-category-label {
       font-size: 0.75rem;
       font-weight: 600;
-      color: var(--text-secondary, $color-engine-neutral-light);
+      color: var(--text-secondary, $color-ether-mist);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 0.5rem;
@@ -395,16 +395,16 @@
     flex-direction: column;
     gap: 0.75rem;
     padding: var(--card-padding, clamp(0.75rem, 1.5vw, 1rem));
-    background: var(--glass-light, $color-engine-indigo-deep-a60);
-    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
+    background: var(--glass-light, $color-cosmos-depth-presence);
+    border: 1px solid var(--border-subtle, $color-cosmos-dusk-glass);
     border-radius: var(--radius-bento, 0.5rem);
     transition: all var(--motion-fluid, 0.3s ease);
     backdrop-filter: blur(10px);
     
     &:hover {
-      background: var(--glass-hover, $color-engine-blue-deep);
-      border-color: var(--accent-low, $color-engine-gold-accent-a40);
-      box-shadow: 0 4px 16px $color-engine-indigo-void-a20;
+      background: var(--glass-hover, $color-spark-depth);
+      border-color: var(--accent-low, $color-wisdom-radiance-glass);
+      box-shadow: 0 4px 16px $color-cosmos-void-veil;
       transform: translateY(-1px);
     }
     
@@ -425,7 +425,7 @@
       display: flex;
       gap: 0.375rem;
       padding-top: 0.5rem;
-      border-top: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
+      border-top: 1px solid var(--border-subtle, $color-cosmos-dusk-glass);
     }
     
     .user-stats {
@@ -440,12 +440,12 @@
         .stat-value {
           font-weight: 700;
           font-size: 1.125rem;
-          color: var(--text-primary, $color-engine-neutral-bright);
+          color: var(--text-primary, $color-ether-glow);
         }
         
         .stat-label {
           font-size: 0.75rem;
-          color: var(--text-secondary, $color-engine-neutral-light);
+          color: var(--text-secondary, $color-ether-mist);
           text-transform: uppercase;
           letter-spacing: 0.05em;
         }
@@ -455,34 +455,34 @@
   @else if $nature == 'surface-glass' {
     // Dark glassmorphism surface for headers/navigation
     // Purpose: High-contrast surface with white text on dark background
-    background: $color-engine-neutral-deep-a80;  // Deep dark blue with transparency
+    background: $color-ether-depth-dense;  // Deep dark blue with transparency
     backdrop-filter: blur(20px);
     border-radius: 0;  // Headers typically don't have border radius
     padding: 0;  // Headers control their own internal padding
     
     // Subtle border for definition
-    border-bottom: 1px solid $color-engine-neutral-dark;
+    border-bottom: 1px solid $color-ether-shadow;
     
     // Shadow for depth
-    box-shadow: 0 2px 8px $color-engine-neutral-void-a30;
+    box-shadow: 0 2px 8px $color-ether-void-glass;
     
     // High contrast mode - ensure pure black background
     @media (prefers-contrast: high) {
-      background: $color-engine-neutral-void;  // Pure black
-      border-bottom: 2px solid $color-engine-neutral-dim;
+      background: $color-ether-void;  // Pure black
+      border-bottom: 2px solid $color-ether-dusk;
       backdrop-filter: none;
       box-shadow: none;
     }
   }
   @else if $nature == 'transcendent' {
     // Sacred, mission-critical prominence — hero sections, genesis-level content
-    background: $color-engine-neutral-void;
+    background: $color-ether-void;
     color: $color-light-white;
     padding: clamp(2rem, 4vw, 3rem);
-    border: 1px solid $color-engine-indigo-dark;
+    border: 1px solid $color-cosmos-shadow;
     box-shadow:
-      0 0 24px $color-engine-blue-vivid-a10,
-      inset 0 0 40px $color-engine-neutral-void-a30;
+      0 0 24px $color-spark-vivid-whisper,
+      inset 0 0 40px $color-ether-void-glass;
     position: relative;
     overflow: hidden;
     
@@ -493,24 +493,24 @@
       inset: 0;
       background: linear-gradient(
         175deg,
-        $color-engine-indigo-void-a40 0%,
+        $color-cosmos-void-glass 0%,
         transparent 50%,
-        $color-engine-neutral-void-a30 100%
+        $color-ether-void-glass 100%
       );
       pointer-events: none;
     }
     
     @media (prefers-contrast: high) {
-      background: $color-engine-neutral-space;
-      border: 2px solid $color-engine-neutral-dim;
+      background: $color-ether-abyss;
+      border: 2px solid $color-ether-dusk;
       box-shadow: none;
     }
   }
   @else if $nature == 'ephemeral' {
     // Transient, auto-dismissing content — toast notifications, flash messages
     background: $color-light-white;
-    border: 1px solid $color-engine-neutral-pale;
-    box-shadow: 0 2px 8px $color-engine-neutral-void-a15;
+    border: 1px solid $color-ether-haze;
+    box-shadow: 0 2px 8px $color-ether-void-veil;
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem));
     position: fixed;
     z-index: 1000;

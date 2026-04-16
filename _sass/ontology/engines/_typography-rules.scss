@@ -184,7 +184,7 @@ p, .body-text {
 blockquote {
   padding: 1.5rem;
   @include border-color($color-accent-gold);
-  background: $color-engine-gold-vivid-a05;
+  background: $color-wisdom-glow-whisper;
   font-style: italic;
   font-family: $font-family-wisdom;
   line-height: $line-height-consciousness;
@@ -194,7 +194,7 @@ blockquote {
   &::before {
     content: '"';
     font-size: 3rem;
-    color: $color-engine-gold-vivid-a30;
+    color: $color-wisdom-glow-glass;
     position: absolute;
     top: -0.5rem;
     left: 1rem;
@@ -299,7 +299,7 @@ a {
 
   &:focus {
     border-color: $color-accent-gold;
-    box-shadow: 0 0 0 0.2rem $color-engine-gold-vivid-a20;
+    box-shadow: 0 0 0 0.2rem $color-wisdom-glow-veil;
   }
 }
 
@@ -319,62 +319,62 @@ a {
 // ============================================================================
 
 .material-glass {
-  background: $color-engine-blue-deep-a75;
+  background: $color-spark-depth-dense;
   backdrop-filter: $effect-blur-glass-md;
   -webkit-backdrop-filter: $effect-blur-glass-md;
-  border: 1px solid $color-engine-indigo-dim-a40;
+  border: 1px solid $color-cosmos-dusk-glass;
 }
 
 .material-glass-elevated {
-  background: $color-engine-blue-deep-a85;
+  background: $color-spark-depth-dense;
   backdrop-filter: $effect-blur-glass-md;
   -webkit-backdrop-filter: $effect-blur-glass-md;
-  border: 1px solid $color-engine-indigo-dim-a50;
+  border: 1px solid $color-cosmos-dusk-presence;
 }
 
 .material-glass-subtle {
-  background: $color-engine-blue-deep-a60;
+  background: $color-spark-depth-presence;
   backdrop-filter: $effect-blur-glass-sm;
   -webkit-backdrop-filter: $effect-blur-glass-sm;
-  border: 1px solid $color-engine-indigo-dim-a30;
+  border: 1px solid $color-cosmos-dusk-glass;
 }
 
 .material-glass-accent {
-  background: $color-engine-gold-muted-a70;
+  background: $color-wisdom-deep-dense;
   backdrop-filter: $effect-blur-glass-md;
   -webkit-backdrop-filter: $effect-blur-glass-md;
-  border: 1px solid $color-engine-gold-accent-a40;
+  border: 1px solid $color-wisdom-radiance-glass;
 }
 
 .material-header {
-  background: $color-engine-indigo-deep-a95;
+  background: $color-cosmos-depth-frost;
   backdrop-filter: $effect-blur-glass-lg;
   -webkit-backdrop-filter: $effect-blur-glass-lg;
-  border-bottom: 1px solid $color-engine-indigo-dim-a30;
+  border-bottom: 1px solid $color-cosmos-dusk-glass;
   box-shadow: $effect-shadow-ambient;
 }
 
 .material-footer {
-  background: $color-engine-indigo-deep-a95;
+  background: $color-cosmos-depth-frost;
   backdrop-filter: $effect-blur-glass-lg;
   -webkit-backdrop-filter: $effect-blur-glass-lg;
-  border-top: 1px solid $color-engine-indigo-dim-a30;
+  border-top: 1px solid $color-cosmos-dusk-glass;
 }
 
 .material-overlay {
-  background: $color-engine-indigo-deep-a80;
+  background: $color-cosmos-depth-dense;
   backdrop-filter: $effect-blur-glass-xl;
   -webkit-backdrop-filter: $effect-blur-glass-xl;
 }
 
 .material-modal {
-  background: $color-engine-indigo-deep-a95;
+  background: $color-cosmos-depth-frost;
   backdrop-filter: $effect-blur-glass-lg;
   -webkit-backdrop-filter: $effect-blur-glass-lg;
-  border: 1px solid $color-engine-indigo-dim-a50;
+  border: 1px solid $color-cosmos-dusk-presence;
   box-shadow:
-    0 20px 50px $color-engine-indigo-deep-a30,
-    0 0 20px $color-engine-gold-accent-a10;
+    0 20px 50px $color-cosmos-depth-glass,
+    0 0 20px $color-wisdom-radiance-whisper;
 }
 
 // Gradient fade masks
@@ -416,7 +416,7 @@ a {
     color: $color-accent-gold;
 
     &:hover {
-      color: $color-engine-gold-muted;
+      color: $color-wisdom-deep;
     }
   }
 

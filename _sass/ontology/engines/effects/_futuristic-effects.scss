@@ -18,19 +18,19 @@
   --glow-intensity-intense: 0.85;
 
   // Neural network colors
-  --neural-primary: #{$color-engine-violet-vivid};
-  --neural-secondary: #{$color-engine-violet-bright};
-  --neural-tertiary: #{$color-engine-cyan-vivid};
+  --neural-primary: #{$color-conscious-vivid};
+  --neural-secondary: #{$color-conscious-glow};
+  --neural-tertiary: #{$color-bridge-vivid};
 
   // Quantum field colors
-  --quantum-cyan: #{$color-engine-cyan-bright};
-  --quantum-magenta: #{$color-engine-purple-vivid};
+  --quantum-cyan: #{$color-bridge-glow};
+  --quantum-magenta: #{$color-sovereign-vivid};
   --quantum-gold: #{$color-accent-gold};
 
   // Consciousness depth — use generated effect-glass-* where possible
-  --void-deep: #{$color-engine-neutral-void};
-  --void-medium: #{$color-engine-indigo-void};
-  --void-surface: #{$color-engine-indigo-void};
+  --void-deep: #{$color-ether-void};
+  --void-medium: #{$color-cosmos-void};
+  --void-surface: #{$color-cosmos-void};
 
   // Animation timing — reference generated durations
   --motion-quantum: 0.15s;
@@ -56,12 +56,12 @@
   background: $effect-glass-consciousness;
   backdrop-filter: $effect-blur-glass-lg;
   -webkit-backdrop-filter: $effect-blur-glass-lg;
-  border: 1px solid $color-engine-indigo-dim-a30;
+  border: 1px solid $color-cosmos-dusk-glass;
   box-shadow:
-    0 4px 24px $color-engine-neutral-void-a30,
-    0 1px 3px $color-engine-neutral-void-a15,
-    inset 0 1px 0 $color-engine-neutral-luminous-a05,
-    inset 0 0 80px $color-engine-violet-vivid-a05;
+    0 4px 24px $color-ether-void-glass,
+    0 1px 3px $color-ether-void-veil,
+    inset 0 1px 0 $color-ether-radiance-whisper,
+    inset 0 0 80px $color-conscious-vivid-whisper;
   will-change: transform;
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
@@ -72,12 +72,12 @@
   background: $effect-glass-elevated;
   backdrop-filter: $effect-blur-glass-xl;
   -webkit-backdrop-filter: $effect-blur-glass-xl;
-  border: 1px solid $color-engine-indigo-dim-a30;
+  border: 1px solid $color-cosmos-dusk-glass;
   box-shadow:
-    0 8px 32px $color-engine-neutral-void-a40,
-    0 2px 8px $color-engine-neutral-void-a20,
-    inset 0 1px 0 $color-engine-neutral-luminous-a10,
-    inset 0 0 60px $color-engine-gold-accent-a05;
+    0 8px 32px $color-ether-void-glass,
+    0 2px 8px $color-ether-void-veil,
+    inset 0 1px 0 $color-ether-radiance-whisper,
+    inset 0 0 60px $color-wisdom-radiance-whisper;
   will-change: transform, box-shadow;
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
@@ -85,13 +85,13 @@
 
 /// Ethereal glass — light, transcendent feel
 @mixin glass-ethereal {
-  background: $color-engine-neutral-luminous-a10;
+  background: $color-ether-radiance-whisper;
   backdrop-filter: blur(40px) saturate(1.8) brightness(1.05);
   -webkit-backdrop-filter: blur(40px) saturate(1.8) brightness(1.05);
-  border: 1px solid $color-engine-neutral-luminous-a20;
+  border: 1px solid $color-ether-radiance-veil;
   box-shadow:
-    0 4px 16px $color-engine-indigo-deep-a10,
-    inset 0 0 40px $color-engine-neutral-luminous-a10;
+    0 4px 16px $color-cosmos-depth-whisper,
+    inset 0 0 40px $color-ether-radiance-whisper;
   will-change: transform;
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
@@ -99,13 +99,13 @@
 
 /// Neural glass — AI consciousness aesthetic
 @mixin glass-neural {
-  background: $color-engine-violet-deep-a80;
+  background: $color-conscious-depth-dense;
   backdrop-filter: blur(28px) saturate(1.5);
   -webkit-backdrop-filter: blur(28px) saturate(1.5);
-  border: 1px solid $color-engine-violet-vivid-a30;
+  border: 1px solid $color-conscious-vivid-glass;
   box-shadow:
-    0 0 40px $color-engine-violet-vivid-a20,
-    inset 0 0 60px $color-engine-violet-vivid-a05;
+    0 0 40px $color-conscious-vivid-veil,
+    inset 0 0 60px $color-conscious-vivid-whisper;
   will-change: transform, box-shadow;
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
@@ -116,7 +116,7 @@
   background: $effect-glass-subtle;
   backdrop-filter: $effect-blur-glass-sm;
   -webkit-backdrop-filter: $effect-blur-glass-sm;
-  border: 1px solid $color-engine-indigo-dim-a30;
+  border: 1px solid $color-cosmos-dusk-glass;
 }
 
 /// Void glass — overlays and deep UI layers
@@ -124,7 +124,7 @@
   background: $effect-glass-void;
   backdrop-filter: $effect-blur-glass-xl;
   -webkit-backdrop-filter: $effect-blur-glass-xl;
-  border: 1px solid $color-engine-indigo-dark-a40;
+  border: 1px solid $color-cosmos-shadow-glass;
 }
 
 // ============================================================================
@@ -171,9 +171,9 @@
 /// Multi-spectrum transcendent glow
 @mixin glow-transcendent {
   box-shadow:
-    0 0 20px $color-engine-gold-accent-a40,
-    0 0 40px $color-engine-violet-vivid-a20,
-    0 0 60px $color-engine-cyan-vivid-a15;
+    0 0 20px $color-wisdom-radiance-glass,
+    0 0 40px $color-conscious-vivid-veil,
+    0 0 60px $color-bridge-vivid-veil;
 }
 
 // ============================================================================
@@ -184,11 +184,11 @@
 @mixin gradient-consciousness($angle: 135deg) {
   background: linear-gradient(
     #{$angle},
-    $color-engine-neutral-void 0%,
-    $color-engine-violet-void 25%,
-    $color-engine-violet-void 50%,
-    $color-engine-indigo-dark 75%,
-    $color-engine-indigo-dark 100%
+    $color-ether-void 0%,
+    $color-conscious-void 25%,
+    $color-conscious-void 50%,
+    $color-cosmos-shadow 75%,
+    $color-cosmos-shadow 100%
   );
 }
 
@@ -196,11 +196,11 @@
 @mixin gradient-genesis($angle: 135deg) {
   background: linear-gradient(
     #{$angle},
-    $color-engine-gold-accent 0%,
-    $color-engine-gold-accent 25%,
-    $color-engine-amber-pale 50%,
-    $color-engine-purple-vivid 75%,
-    $color-engine-cyan-bright 100%
+    $color-wisdom-radiance 0%,
+    $color-wisdom-radiance 25%,
+    $color-caution-haze 50%,
+    $color-sovereign-vivid 75%,
+    $color-bridge-glow 100%
   );
 }
 
@@ -208,10 +208,10 @@
 @mixin gradient-neural($angle: 135deg) {
   background: linear-gradient(
     #{$angle},
-    $color-engine-purple-dark 0%,
-    $color-engine-violet-vivid 33%,
-    $color-engine-indigo-vivid 66%,
-    $color-engine-cyan-bright 100%
+    $color-sovereign-depth 0%,
+    $color-conscious-vivid 33%,
+    $color-cosmos-vivid 66%,
+    $color-bridge-glow 100%
   );
 }
 
@@ -219,10 +219,10 @@
 @mixin gradient-void($angle: 180deg) {
   background: linear-gradient(
     #{$angle},
-    $color-engine-neutral-space 0%,
-    $color-engine-neutral-void 30%,
-    $color-engine-neutral-void 60%,
-    $color-engine-indigo-void 100%
+    $color-ether-abyss 0%,
+    $color-ether-void 30%,
+    $color-ether-void 60%,
+    $color-cosmos-void 100%
   );
 }
 
@@ -230,10 +230,10 @@
 @mixin gradient-mesh-animated {
   background: linear-gradient(
     -45deg,
-    $color-engine-indigo-void,
-    $color-engine-violet-void,
-    $color-engine-indigo-void,
-    $color-engine-violet-void
+    $color-cosmos-void,
+    $color-conscious-void,
+    $color-cosmos-void,
+    $color-conscious-void
   );
   background-size: 400% 400%;
   animation: gradient-shift 15s ease infinite;
@@ -254,11 +254,11 @@
     position: absolute;
     inset: 0;
     background-image:
-      radial-gradient(1.5px 1.5px at 25% 35%, $color-engine-neutral-luminous-a90, transparent),
-      radial-gradient(1px 1px at 75% 25%, $color-engine-gold-bright-a70, transparent),
-      radial-gradient(2px 2px at 45% 75%, $color-engine-gold-accent-a60, transparent),
-      radial-gradient(1px 1px at 85% 65%, $color-engine-cyan-vivid-a50, transparent),
-      radial-gradient(1.5px 1.5px at 15% 85%, $color-engine-violet-vivid-a40, transparent);
+      radial-gradient(1.5px 1.5px at 25% 35%, $color-ether-radiance-dense, transparent),
+      radial-gradient(1px 1px at 75% 25%, $color-wisdom-brilliance-dense, transparent),
+      radial-gradient(2px 2px at 45% 75%, $color-wisdom-radiance-presence, transparent),
+      radial-gradient(1px 1px at 85% 65%, $color-bridge-vivid-presence, transparent),
+      radial-gradient(1.5px 1.5px at 15% 85%, $color-conscious-vivid-glass, transparent);
     background-size: 
       350px 350px,
       250px 250px,
@@ -282,8 +282,8 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, $color-engine-violet-vivid-a05 1px, transparent 1px),
-      linear-gradient($color-engine-violet-vivid-a05 1px, transparent 1px);
+      linear-gradient(90deg, $color-conscious-vivid-whisper 1px, transparent 1px),
+      linear-gradient($color-conscious-vivid-whisper 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
     pointer-events: none;
@@ -307,10 +307,10 @@
     inset: -#{$width};
     background: linear-gradient(
       90deg,
-      $color-engine-gold-accent,
-      $color-engine-violet-vivid,
-      $color-engine-cyan-bright,
-      $color-engine-gold-accent
+      $color-wisdom-radiance,
+      $color-conscious-vivid,
+      $color-bridge-glow,
+      $color-wisdom-radiance
     );
     background-size: 300% 100%;
     border-radius: inherit;
@@ -321,10 +321,10 @@
 
 /// Pulsing neon border
 @mixin border-pulse-neon {
-  border: 2px solid $color-engine-gold-accent;
+  border: 2px solid $color-wisdom-radiance;
   box-shadow: 
-    0 0 10px $color-engine-gold-accent-a50,
-    inset 0 0 10px $color-engine-gold-accent-a10;
+    0 0 10px $color-wisdom-radiance-presence,
+    inset 0 0 10px $color-wisdom-radiance-whisper;
   animation: border-pulse 2s ease-in-out infinite;
 }
 
@@ -336,9 +336,9 @@
 @mixin text-gradient-transcendent {
   background: linear-gradient(
     135deg,
-    $color-engine-gold-bright 0%,
-    $color-engine-neutral-bright 50%,
-    $color-engine-cyan-bright 100%
+    $color-wisdom-brilliance 0%,
+    $color-ether-glow 50%,
+    $color-bridge-glow 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -347,7 +347,7 @@
 }
 
 /// Glowing text effect
-@mixin text-glow($color: $color-engine-gold-accent) {
+@mixin text-glow($color: $color-wisdom-radiance) {
   text-shadow:
     0 0 10px $color,
     0 0 20px oklch(from $color l c h / 0.5), // stylelint-disable-line declaration-property-value-disallowed-list
@@ -358,10 +358,10 @@
 @mixin text-holographic {
   background: linear-gradient(
     90deg,
-    $color-engine-gold-accent,
-    $color-engine-cyan-bright,
-    $color-engine-violet-vivid,
-    $color-engine-gold-accent
+    $color-wisdom-radiance,
+    $color-bridge-glow,
+    $color-conscious-vivid,
+    $color-wisdom-radiance
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -383,8 +383,8 @@
   &:hover {
     transform: translateY(-4px) scale(1.01);
     box-shadow:
-      0 12px 40px $color-engine-neutral-void-a30,
-      0 0 30px $color-engine-gold-accent-a15;
+      0 12px 40px $color-ether-void-glass,
+      0 0 30px $color-wisdom-radiance-veil;
   }
   
   &:active {
@@ -406,7 +406,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, $color-engine-violet-vivid, $color-engine-cyan-bright);
+    background: linear-gradient(90deg, $color-conscious-vivid, $color-bridge-glow);
     transition: width var(--motion-neural) var(--ease-quantum);
     will-change: width;
   }
@@ -429,7 +429,7 @@
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: $color-engine-neutral-luminous-a30;
+    background: $color-ether-radiance-veil;
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s, opacity 0.6s;
     opacity: 0;
@@ -475,16 +475,16 @@
 
 @keyframes border-pulse {
   0%, 100% {
-    border-color: $color-engine-gold-accent;
+    border-color: $color-wisdom-radiance;
     box-shadow: 
-      0 0 10px $color-engine-gold-accent-a50,
-      inset 0 0 10px $color-engine-gold-accent-a10;
+      0 0 10px $color-wisdom-radiance-presence,
+      inset 0 0 10px $color-wisdom-radiance-whisper;
   }
   50% {
-    border-color: $color-engine-violet-vivid;
+    border-color: $color-conscious-vivid;
     box-shadow: 
-      0 0 20px $color-engine-violet-vivid-a60,
-      inset 0 0 15px $color-engine-violet-vivid-a15;
+      0 0 20px $color-conscious-vivid-presence,
+      inset 0 0 15px $color-conscious-vivid-veil;
   }
 }
 
@@ -506,10 +506,10 @@
 
 @keyframes neural-pulse {
   0%, 100% {
-    box-shadow: 0 0 20px $color-engine-violet-vivid-a40;
+    box-shadow: 0 0 20px $color-conscious-vivid-glass;
   }
   50% {
-    box-shadow: 0 0 40px $color-engine-violet-vivid-a70;
+    box-shadow: 0 0 40px $color-conscious-vivid-dense;
   }
 }
 
