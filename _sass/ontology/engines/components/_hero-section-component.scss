@@ -11,8 +11,6 @@
     @include genesis-atmosphere('vibrant');
     @include genesis-environment('viewport-hero');
     @include genesis-atmosphere('spacious-mobile');
-    background: var(--genesis-bg-surface, oklch(0.99 0.005 90));
-    color: var(--genesis-body-color, oklch(0.12 0.015 250));
 
     &-sm {
       @include genesis-entity('secondary');
@@ -63,22 +61,18 @@
 
   .hero-title {
     @include genesis-cognition('axiom');
-    color: var(--genesis-body-color, oklch(0.12 0.015 250));
   }
 
   .hero-section__title {
     @include genesis-cognition('axiom');
-    color: var(--genesis-body-color, oklch(0.12 0.015 250));
   }
 
   .hero-description {
     @include genesis-cognition('discourse');
-    color: var(--text-secondary, oklch(0.45 0.01 250));
   }
 
   .hero-section__description {
     @include genesis-cognition('discourse');
-    color: var(--text-secondary, oklch(0.45 0.01 250));
   }
 
   .hero-cta {

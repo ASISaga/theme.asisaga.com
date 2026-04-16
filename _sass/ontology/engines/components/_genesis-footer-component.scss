@@ -15,7 +15,6 @@
 
     // Deep void background
     backdrop-filter: blur(20px);
-    background: var(--genesis-bg-surface, oklch(0.06 0.015 250 / 0.97));
     @include border-separator-top(var(--genesis-card-border, oklch(0.20 0.04 250)));
 
     // Subtle upward glow

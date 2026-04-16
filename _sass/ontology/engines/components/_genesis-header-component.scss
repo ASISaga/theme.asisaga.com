@@ -28,7 +28,7 @@
 
     // Scrolled state — condensed, more opaque, stronger presence
     &.scrolled {
-      background: var(--genesis-header-bg, oklch(0.06 0.015 255 / 0.92));
+      @include bg-glass(0.96);
       border-bottom-color: var(--genesis-header-border, oklch(0.20 0.06 230));
       box-shadow:
         0 1px 0 oklch(0.65 0.25 230 / 0.15),
