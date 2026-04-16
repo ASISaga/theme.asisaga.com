@@ -35,8 +35,18 @@
           <h2 id="social-heading" class="genesis-footer__social-title">{{ _ui.nav.social_heading }}</h2>
           <div class="genesis-footer__social-links">
             {% for link in site.data.nav.social_links %}
+            {% assign icon_input = link.icon | default: link.platform | default: link.name | default: "link" %}
+            {% assign normalized_icon_name = icon_input | downcase | replace: " ", "-" %}
+            {% if icon_input contains "fa-" %}
+            {% assign icon_class = icon_input | replace: "fab ", "fa-brands " | replace: "fab-", "fa-brands fa-" | replace: "fas ", "fa-solid " | replace: "far ", "fa-regular " | replace: "fal ", "fa-light " %}
+            {% unless icon_class contains "fa-brands" or icon_class contains "fa-solid" or icon_class contains "fa-regular" or icon_class contains "fa-light" %}
+            {% assign icon_class = "fa-brands " | append: icon_class %}
+            {% endunless %}
+            {% else %}
+            {% assign icon_class = "fa-brands fa-" | append: normalized_icon_name %}
+            {% endif %}
             <a href="{{ link.url }}" class="genesis-footer__social-link" aria-label="{{ link.aria_label | default: link.name }}">
-              <i class="{{ link.icon }}" aria-hidden="true"></i>
+              <i class="{{ icon_class }}" aria-hidden="true"></i>
               <span class="sr-only">{{ link.name }}</span>
             </a>
             {% endfor %}
