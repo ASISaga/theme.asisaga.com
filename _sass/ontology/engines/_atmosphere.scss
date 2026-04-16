@@ -39,7 +39,9 @@
     backdrop-filter: blur(8px);
   }
   @else if $vibe == 'cosmic' {
-    // Deep-space backdrop for editorial and mission-adjacent sections
+    // Deep-space backdrop for editorial and mission-adjacent sections.
+    // Use where the content should feel like gazing into the infinite expanse.
+    // Pairs with cognition('oracle') and cognition('discourse') for text readability.
     // Intent: The infinite expanse — user should feel they are looking into deep space
     background:
       radial-gradient(
