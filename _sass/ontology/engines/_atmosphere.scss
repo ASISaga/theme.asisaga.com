@@ -32,7 +32,7 @@
   @else if $vibe == 'vibrant' {
     // High-energy, data-saturated
     background: var(--genesis-bg-surface, oklch(0.99 0.005 90));
-    color: var(--genesis-body-color, oklch(0.12 0.015 250));
+    color: var(--genesis-body-color, oklch(0.10 0.01 250));
     box-shadow: 
       0 0 12px oklch(0.65 0.25 230 / 0.15),
       0 2px 8px oklch(0.08 0.01 250 / 0.1);

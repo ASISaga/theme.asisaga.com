@@ -15,6 +15,7 @@
 
     // Deep void background
     backdrop-filter: blur(20px);
+    background: var(--genesis-bg-surface, oklch(0.06 0.015 250 / 0.97));
     @include border-separator-top(var(--genesis-card-border, oklch(0.20 0.04 250)));
 
     // Subtle upward glow
@@ -168,7 +169,7 @@
       &:hover,
       &:focus {
         background: var(--glass-hover, oklch(0.16 0.03 250));
-        border-color: var(--accent-neon, oklch(0.65 0.25 230));
+        border-color: oklch(from var(--accent-neon, oklch(0.65 0.25 230)) l c h / 0.5);
         color: var(--genesis-body-color, oklch(0.90 0.005 90));
         @include shadow-glow(var(--accent-neon, oklch(0.65 0.25 230)), 0.15);
       }
