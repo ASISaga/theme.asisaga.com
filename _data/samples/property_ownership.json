@@ -1,0 +1,38 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Property Ownership: The Rule That Makes CSS Conflicts Impossible",
+  "alternativeHeadline": "When each category owns its own properties, specificity wars disappear by design",
+  "description": "A practical deep dive into Genesis property ownership: why each CSS concern belongs to exactly one ontological category, and how that turns refactoring from risk into routine.",
+  "datePublished": "2026-03-18",
+  "dateModified": "2026-04-16",
+  "author": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  },
+  "keywords": ["Property Ownership", "Specificity", "Ontological CSS", "Architecture", "Refactoring"],
+  "articleSection": "Architecture",
+  "wordCount": 1150,
+  "opening": "Most CSS conflicts are not bugs in syntax. They are bugs in ownership.",
+  "sections": {
+    "ownershipProblem": [
+      "In traditional styling systems, multiple layers can edit the same property. A utility class changes padding. A component stylesheet changes padding. A page override changes padding again. The cascade resolves the argument, but the argument itself never ends.",
+      "Genesis removes the argument by assigning ownership. Padding belongs to entity. Typography belongs to cognition. Grid and flow belong to environment. Hover and focus belong to synapse. Animation belongs to state. Mood and surface light belong to atmosphere."
+    ],
+    "exclusiveCategories": [
+      "The important detail is that ownership is exclusive, not advisory. If a concern belongs to one category, other categories do not touch it.",
+      "Two mixins can coexist on the same element without fighting over declarations because their property domains do not overlap."
+    ],
+    "refactoringWithoutFear": [
+      "This is why refactors become safer. You can change cognition variants without worrying about borders. You can evolve atmosphere tokens without breaking button interactions. Architectural boundaries become executable constraints.",
+      "Property ownership also clarifies design review. Feedback shifts from 'this looks off' to 'this concern belongs in the wrong category.' The conversation becomes structural and repeatable.",
+      "When people ask why Genesis feels easier to maintain at scale, this is the answer. Not more utility classes. Not stronger naming conventions. A clear ownership model that turns CSS from an inheritance problem into a composition system."
+    ]
+  }
+}

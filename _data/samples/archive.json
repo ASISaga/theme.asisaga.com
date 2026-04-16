@@ -14,6 +14,14 @@
     },
     {
       "@type": "BlogPosting",
+      "headline": "Property Ownership: The Rule That Makes CSS Conflicts Impossible",
+      "datePublished": "2026-03-18",
+      "description": "Why each CSS concern belongs to exactly one ontological category — and how that makes specificity conflicts structurally impossible.",
+      "url": "/samples/content-driven/property-ownership.html",
+      "keywords": ["Property Ownership", "Specificity", "Architecture"]
+    },
+    {
+      "@type": "BlogPosting",
       "headline": "Web Components Without the Framework Tax",
       "datePublished": "2026-03-25",
       "description": "17 Lit-based custom elements that enhance semantic HTML without a build step, a virtual DOM, or a runtime framework.",
