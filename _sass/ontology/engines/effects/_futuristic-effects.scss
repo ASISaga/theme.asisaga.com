@@ -136,7 +136,7 @@
   box-shadow: $effect-glow-gold;
 
   @supports (filter: drop-shadow(0 0 1px white)) {
-    filter: drop-shadow(0 0 20px oklch(0.70 0.15 85 / #{$intensity}));
+    filter: drop-shadow(0 0 20px oklch(0.70 0.15 85 / #{$intensity})); // stylelint-disable-line declaration-property-value-disallowed-list
   }
 }
 
@@ -145,7 +145,7 @@
   box-shadow: 0 0 40px oklch(0.55 0.25 290 / #{$intensity}); // stylelint-disable-line declaration-property-value-disallowed-list
 
   @supports (filter: drop-shadow(0 0 1px white)) {
-    filter: drop-shadow(0 0 25px oklch(0.55 0.25 290 / #{$intensity}));
+    filter: drop-shadow(0 0 25px oklch(0.55 0.25 290 / #{$intensity})); // stylelint-disable-line declaration-property-value-disallowed-list
   }
 }
 
@@ -154,7 +154,7 @@
   box-shadow: 0 0 35px oklch(0.75 0.18 195 / #{$intensity}); // stylelint-disable-line declaration-property-value-disallowed-list
 
   @supports (filter: drop-shadow(0 0 1px white)) {
-    filter: drop-shadow(0 0 22px oklch(0.75 0.18 195 / #{$intensity}));
+    filter: drop-shadow(0 0 22px oklch(0.75 0.18 195 / #{$intensity})); // stylelint-disable-line declaration-property-value-disallowed-list
   }
 }
 
@@ -350,8 +350,8 @@
 @mixin text-glow($color: $color-engine-gold-pale-2) {
   text-shadow:
     0 0 10px $color,
-    0 0 20px oklch(from $color l c h / 0.5),
-    0 0 40px oklch(from $color l c h / 0.25);
+    0 0 20px oklch(from $color l c h / 0.5), // stylelint-disable-line declaration-property-value-disallowed-list
+    0 0 40px oklch(from $color l c h / 0.25); // stylelint-disable-line declaration-property-value-disallowed-list
 }
 
 /// Holographic text shimmer

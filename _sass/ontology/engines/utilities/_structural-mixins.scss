@@ -249,7 +249,7 @@
 
 /// Dynamic-alpha shadow using CSS relative color syntax.
 /// The intensity parameter drives the alpha channel at call-site, so this
-/// cannot resolve to a single static token; the base colour comes from
+/// cannot resolve to a single static token; the base color comes from
 /// $color (a $color-* token) and is re-expressed via oklch(from ...).
 @mixin shadow-glow($color: $color-accent-neon-blue, $intensity: 0.15, $spread: 16px) {
   box-shadow: 0 0 #{$spread} oklch(from #{$color} l c h / #{$intensity}); // stylelint-disable-line declaration-property-value-disallowed-list
