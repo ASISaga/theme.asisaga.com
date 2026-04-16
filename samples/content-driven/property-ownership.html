@@ -10,25 +10,28 @@ share: true
 
 {% assign ownership = site.data.samples.property_ownership %}
 
-{{ ownership.articleBody | split: "\n\n" | first }}
+{{ ownership.opening }}
 
 ## The Ownership Problem
 
-{{ ownership.articleBody | split: "\n\n" | slice: 1, 2 | join: "
+{% for paragraph in ownership.sections.ownershipProblem %}
+{{ paragraph }}
 
-" }}
+{% endfor %}
 
 ## Exclusive Categories, Not Suggestions
 
-{{ ownership.articleBody | split: "\n\n" | slice: 3, 2 | join: "
+{% for paragraph in ownership.sections.exclusiveCategories %}
+{{ paragraph }}
 
-" }}
+{% endfor %}
 
 ## Refactoring Without Fear
 
-{{ ownership.articleBody | split: "\n\n" | slice: 5, 2 | join: "
+{% for paragraph in ownership.sections.refactoringWithoutFear %}
+{{ paragraph }}
 
-" }}
+{% endfor %}
 
 ## Keep Reading
 
