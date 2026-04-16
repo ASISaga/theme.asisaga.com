@@ -4,7 +4,15 @@
  * Defines the nature and frequency of the information being transmitted.
  * 
  * This is part of the Engine Layer where raw CSS properties are allowed.
- * All values MUST use CSS custom properties defined in the design token system.
+ * All values MUST use design tokens ($color-*, $effect-*, $font-*) — never raw literals.
+ *
+ * Emotional intent mapping (from _design/emotional-intent.md):
+ *   §4 "There is space for every thought to breathe" — wide tracking, generous leading
+ *   §5 Each font family carries a philosophical voice:
+ *     consciousness (Inter) → clarity and precision
+ *     wisdom (Crimson Text) → embedded human wisdom
+ *     sacred (Montserrat)   → proclamation and mission
+ *     mono (SF Mono)        → technical proof and protocol
  */
 
 // ============================================================================
@@ -12,52 +20,52 @@
 // ============================================================================
 @mixin _theme-engine-cognition($intent) {
   @if $intent == 'axiom' {
-    // Foundational thesis or headline
+    // Foundational thesis or headline — the primary declaration
     font-size: var(--size-hero, clamp(1.75rem, 4vw, 3rem));
-    font-weight: 800;
+    font-weight: $font-weight-sacred;
     letter-spacing: -0.02em;
     line-height: 1.25;
     color: var(--genesis-body-color, $color-theme-dark-card-bg);
-    font-family: var(--font-consciousness, 'Inter', 'SF Pro Display', system-ui, -apple-system, "Segoe UI", sans-serif);
+    font-family: var(--font-consciousness, #{$font-family-consciousness});
   }
   @else if $intent == 'discourse' {
-    // Standard information exchange (prose)
+    // §4 "Space for every thought to breathe" — standard prose
     font-size: var(--size-body, clamp(0.9375rem, 1.25vw, 1.0625rem));
-    font-weight: 400;
+    font-weight: $font-weight-normal;
     line-height: 1.6;
     color: var(--genesis-body-color, $color-text-primary);
     font-family: var(--font-body, #{$font-family-body});
   }
   @else if $intent == 'protocol' {
-    // Technical/mathematical proof (code/logs)
-    font-family: var(--font-mono, "SF Mono", Monaco, "Cascadia Code", monospace);
+    // Technical/mathematical proof — the code voice
+    font-family: var(--font-mono, #{$font-family-mono});
     font-size: var(--size-data, clamp(0.8125rem, 0.9vw, 0.875rem));
     line-height: 1.5;
     background: $color-ether-glow;
     color: $color-ether-depth;
     padding: 0.15em 0.4em;
-    border-radius: 0.25em;
-    border: 1px solid $color-ether-haze;
+    border-radius: $border-radius-sm;
+    border: $border-width-separator solid $color-ether-haze;
   }
   @else if $intent == 'gloss' {
-    // Minor annotations or citations
+    // Minor annotations or citations — the whisper
     font-size: var(--size-small, clamp(0.8125rem, 1vw, 0.875rem));
-    font-weight: 400;
+    font-weight: $font-weight-normal;
     line-height: 1.5;
     color: var(--text-secondary, $color-ether-dusk);
   }
   @else if $intent == 'motive' {
-    // Persuasive or instructional guidance
+    // Persuasive or instructional guidance — the sacred proclamation
     font-size: var(--size-body, clamp(0.9375rem, 1.25vw, 1.0625rem));
-    font-weight: 600;
+    font-weight: $font-weight-semibold;
     line-height: 1.5;
     color: $color-text-primary;
-    font-family: var(--font-sacred, Montserrat, sans-serif);
+    font-family: var(--font-sacred, #{$font-family-sacred});
   }
   @else if $intent == 'quantum' {
-    // Small, high-density fragments (tags/chips)
+    // Small, high-density fragments (tags/chips) — the data particle
     font-size: var(--size-tiny, clamp(0.6875rem, 0.8vw, 0.75rem));
-    font-weight: 600;
+    font-weight: $font-weight-semibold;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: $color-ether-depth;
@@ -65,26 +73,26 @@
     background: $color-surface-hover;
     border-radius: 999px;
     display: inline-block;
-    border: 1px solid $color-ether-haze;
+    border: $border-width-separator solid $color-ether-haze;
   }
   @else if $intent == 'oracle' {
     // AI-generated or predictive content — the voice of superintelligence
-    // Designed for dark surface contexts (atmosphere('void') or 'neutral')
-    // $color-ether-mist (L=0.70) provides ≥4.5:1 contrast on dark backgrounds
+    // §5 Ether: "the space between thoughts — alive, not dead grey"
+    // $color-ether-mist (L=0.70) provides >= 4.5:1 contrast on dark backgrounds
     font-size: var(--size-body, clamp(0.9375rem, 1.25vw, 1.0625rem));
-    font-weight: 400;
+    font-weight: $font-weight-normal;
     line-height: 1.6;
     color: $color-ether-mist;
-    font-family: var(--font-consciousness, 'Inter', 'SF Pro Display', system-ui, -apple-system, "Segoe UI", sans-serif);
+    font-family: var(--font-consciousness, #{$font-family-consciousness});
     font-style: italic;
   }
   @else if $intent == 'testimony' {
-    // Quoted speech, testimonials, attributed statements
+    // Quoted speech, testimonials — §5 Wisdom: "human essence and embedded wisdom"
     font-size: clamp(1rem, 1.75vw, 1.25rem);
-    font-weight: 400;
+    font-weight: $font-weight-normal;
     line-height: 1.6;
     color: $color-ether-depth;
-    font-family: var(--font-wisdom, 'Crimson Text', 'Times New Roman', Georgia, serif);
+    font-family: var(--font-wisdom, #{$font-family-wisdom});
     font-style: italic;
     position: relative;
     padding-left: 1.25em;

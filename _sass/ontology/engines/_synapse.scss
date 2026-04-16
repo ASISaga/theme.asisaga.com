@@ -4,7 +4,12 @@
  * Defines how an observer navigates or modifies the system.
  * 
  * This is part of the Engine Layer where raw CSS properties are allowed.
- * All values MUST use CSS custom properties defined in the design token system.
+ * All values MUST use design tokens ($color-*, $effect-*) — never raw literals.
+ *
+ * Emotional intent mapping (from _design/emotional-intent.md):
+ *   §2 "Translucency Scale: Layered Truths" — glass-button surfaces
+ *   §3 "Temporal Fluidity" — interaction timing
+ *   §4 "This is the spark of superintelligent logic" — neon accent glow
  *
  * Internal base: _synapse-glass-base provides the shared glass-button pattern
  * used by inquiry, paginate, toggle, comment, share, notify, react, vote, step, anchor, tab.
@@ -13,21 +18,20 @@
 // ============================================================================
 // SHARED GLASS-BUTTON BASE (internal — not part of the public API)
 // ============================================================================
-// The common "glass-surface interactive" pattern extracted from 12+ synapse variants.
-// Callers customise via CSS custom properties and overrides after @include.
+// §2 "Translucency Scale": background uses glass tokens for "Layered Truth"
 @mixin _synapse-glass-base($padding: var(--padding-button-sm, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem))) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5em;
   padding: $padding;
-  background: var(--glass-light, $color-cosmos-depth-presence);
+  background: var(--glass-light, $effect-glass-consciousness);
   color: var(--text-primary, $color-ether-glow);
-  border: 1px solid var(--border-subtle, $color-cosmos-dusk-glass);
+  border: $border-width-default solid var(--border-subtle, $color-cosmos-dusk-glass);
   border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
   text-decoration: none;
   cursor: pointer;
-  transition: all var(--motion-snap, 0.2s ease);
+  transition: all var(--motion-snap, #{$effect-duration-normal} #{$effect-ease-in-out});
 
   // WCAG 2.5.5: Minimum 44×44px touch target on mobile
   @media (max-width: 767px) {
@@ -37,12 +41,12 @@
   }
 
   &:hover {
-    background: var(--glass-hover, $color-spark-depth);
+    background: var(--glass-hover, $effect-glass-elevated);
     border-color: var(--accent-low, $color-wisdom-radiance-glass);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--focus-ring, $color-wisdom-radiance-presence);
+    outline: $border-width-thick solid var(--focus-ring, $color-wisdom-radiance-presence);
     outline-offset: 2px;
   }
 }
@@ -51,7 +55,7 @@
 // INTERACTION ENGINE - Synapse Vectors
 // ============================================================================
 @mixin _theme-engine-synapse($vector) {
-  transition: all var(--motion-snap, 0.2s ease);
+  transition: all var(--motion-snap, #{$effect-duration-normal} #{$effect-ease-in-out});
   cursor: pointer;
   
   @if $vector == 'navigate' {

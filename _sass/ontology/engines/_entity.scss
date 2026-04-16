@@ -4,7 +4,13 @@
  * Defines the "Presence" and "Weight" of an object in the system.
  * 
  * This is part of the Engine Layer where raw CSS properties are allowed.
- * All values MUST use CSS custom properties defined in the design token system.
+ * All values MUST use design tokens ($color-*, $effect-*) — never raw literals.
+ *
+ * Emotional intent mapping (from _design/emotional-intent.md):
+ *   primary      → "The fundamental node" — clear, grounded presence
+ *   surface-glass→ §2 "Translucency Scale: Layered Truths" — the system is complex but transparent
+ *   transcendent → §1 "Weightlessness: surfaces float" + §2 "Internal Glow"
+ *   ephemeral    → §3 "Non-linear Presence" — arrives slowly, then all at once
  */
 
 // ============================================================================
@@ -14,10 +20,10 @@
   border-radius: var(--radius-bento, 0.5rem);
   
   @if $nature == 'primary' {
-    // Fundamental object of current view
+    // Fundamental object — clear, present, grounded
     background: $color-light-white;
     border: 1px solid $color-ether-haze;
-    box-shadow: 0 1px 4px $color-ether-void-whisper;
+    box-shadow: $effect-shadow-ambient;
     padding: var(--padding-entity-primary, clamp(1rem, 2vw, 1.5rem));
   }
   @else if $nature == 'secondary' {
@@ -27,29 +33,30 @@
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem));
   }
   @else if $nature == 'editorial' {
-    // Editorial content entry - typographic object without card chrome
+    // Editorial content entry — typographic object without card chrome
+    // §1 "Precision as Philosophy": the hairline border signals sovereign refinement
     background: transparent;
     border: 0;
-    border-top: 1px solid $color-ether-haze;
+    border-top: $border-width-separator solid $color-ether-haze;
     border-radius: 0;
     box-shadow: none;
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem)) 0;
 
     &.editorial-featured {
-      border-top: 2px solid $color-accent-gold;
+      border-top: $border-width-thick solid $color-accent-gold;
       padding-top: var(--padding-entity-aggregate, clamp(1.25rem, 2.5vw, 2rem));
     }
   }
   @else if $nature == 'imperative' {
-    // System-critical, high-urgency signal
+    // System-critical, high-urgency signal — pulsing neon border
     background: $color-light-white;
-    border: 2px solid $color-accent-neon-blue;
-    box-shadow: 0 0 12px $color-synapse-social-bg;
-    animation: pulse-border 2s infinite;
+    border: $border-width-thick solid $color-accent-neon-blue;
+    box-shadow: $effect-glow-neon-blue;
+    animation: pulse-border $effect-duration-sacred infinite;
     padding: var(--padding-entity-primary, clamp(1rem, 2vw, 1.5rem));
   }
   @else if $nature == 'latent' {
-    // Backgrounded info awaiting activation
+    // Backgrounded info awaiting activation — the "whisper" state
     background: $color-ether-glow;
     opacity: 0.7;
     filter: grayscale(0.3);
@@ -191,35 +198,36 @@
     }
   }
   @else if $nature == 'surface-glass' {
-    // Dark glassmorphism surface for headers/navigation
-    // Purpose: High-contrast surface with white text on dark background
-    background: $color-ether-depth-dense;  // Deep dark blue with transparency
-    backdrop-filter: blur(20px);
+    // §2 "Translucency Scale: the system is complex, but transparent"
+    // Dark glassmorphism surface — deep blur + transparency = Layered Truth
+    background: $effect-glass-consciousness;
+    backdrop-filter: $effect-blur-glass-md;
     border-radius: 0;  // Headers typically don't have border radius
     padding: 0;  // Headers control their own internal padding
     
-    // Subtle border for definition
-    border-bottom: 1px solid $color-ether-shadow;
+    // Hairline border: "Structure is made of light, not lead"
+    border-bottom: $border-width-separator solid $color-ether-shadow;
     
-    // Shadow for depth
-    box-shadow: 0 2px 8px $color-ether-void-glass;
+    // Shadow for floating depth
+    box-shadow: $effect-shadow-ambient;
     
-    // High contrast mode - ensure pure black background
+    // High contrast mode — ensure pure black background
     @media (prefers-contrast: high) {
       background: $color-ether-void;  // Pure black
-      border-bottom: 2px solid $color-ether-dusk;
+      border-bottom: $border-width-thick solid $color-ether-dusk;
       backdrop-filter: none;
       box-shadow: none;
     }
   }
   @else if $nature == 'transcendent' {
+    // §1 "Weightlessness" + §2 "Internal Glow": self-illuminated void surface
     // Sacred, mission-critical prominence — hero sections, genesis-level content
     background: $color-ether-void;
     color: $color-light-white;
     padding: clamp(2rem, 4vw, 3rem);
     border: 1px solid $color-cosmos-shadow;
     box-shadow:
-      0 0 24px $color-spark-vivid-whisper,
+      $effect-glow-neon-blue,
       inset 0 0 40px $color-ether-void-glass;
     position: relative;
     overflow: hidden;
@@ -240,22 +248,23 @@
     
     @media (prefers-contrast: high) {
       background: $color-ether-abyss;
-      border: 2px solid $color-ether-dusk;
+      border: $border-width-thick solid $color-ether-dusk;
       box-shadow: none;
     }
   }
   @else if $nature == 'ephemeral' {
+    // §3 "Non-linear Presence": arrives slowly, then all at once
     // Transient, auto-dismissing content — toast notifications, flash messages
     background: $color-light-white;
     border: 1px solid $color-ether-haze;
-    box-shadow: 0 2px 8px $color-ether-void-veil;
+    box-shadow: $effect-shadow-ambient;
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem));
     position: fixed;
     z-index: $z-index-transcendent;
-    animation: ephemeral-enter 0.3s ease-out;
+    animation: ephemeral-enter $effect-duration-normal $effect-ease-transcendent;
     
     &.dismissing {
-      animation: ephemeral-exit 0.3s ease-in forwards;
+      animation: ephemeral-exit $effect-duration-normal $effect-ease-consciousness forwards;
     }
     
     @keyframes ephemeral-enter {
@@ -294,12 +303,6 @@
     // terminal element carries the component surface.  Use on intermediate
     // wrappers or inner elements that live inside another entity context but
     // must not duplicate the parent's border/background/shadow.
-    //
-    // Typical HTML hierarchy where 'nested' solves box-model redundancy:
-    //   .card          → genesis-entity('primary')      ← parent surface
-    //     .card__row   → genesis-entity('nested')       ← structural wrapper (no chrome)
-    //       .card__body → genesis-entity('secondary')   ← child surface
-    //
     background: transparent;
     border: none;
     box-shadow: none;

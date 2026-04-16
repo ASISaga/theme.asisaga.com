@@ -4,7 +4,12 @@
  * Defines the organizational laws of the digital dimension.
  * 
  * This is part of the Engine Layer where raw CSS properties are allowed.
- * All values MUST use CSS custom properties defined in the design token system.
+ * All values MUST use design tokens (CSS custom properties, $color-*, $effect-*).
+ *
+ * Emotional intent mapping (from _design/emotional-intent.md):
+ *   §1 "Geometry of the Infinite" — layout logic determines spatial relationships
+ *   §1 "Negative Space as Ether" — spacing gaps are "breath", not mere margins
+ *   §1 "Precision as Philosophy" — grid calculations at atomic precision
  */
 
 // ============================================================================

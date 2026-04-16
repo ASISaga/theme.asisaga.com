@@ -4,7 +4,12 @@
  * Defines the "Time-Sense" of the content.
  * 
  * This is part of the Engine Layer where raw CSS properties are allowed.
- * All values MUST use CSS custom properties defined in the design token system.
+ * All values MUST use design tokens ($color-*, $effect-*) — never raw literals.
+ *
+ * Emotional intent mapping (from _design/emotional-intent.md):
+ *   §3 "Temporal Fluidity" — motion tokens avoid snappiness; favor "The Great Shift"
+ *   §3 "Non-linear Presence" — long-duration, high-ease-in curves
+ *   §3 "The Pulse" — subtle periodic shifts signal active processing
  */
 
 // ============================================================================
@@ -12,18 +17,18 @@
 // ============================================================================
 @mixin _theme-engine-state($condition) {
   @if $condition == 'stable' {
-    // System is in equilibrium
+    // System is in equilibrium — the Manifest
     opacity: 1;
     filter: none;
   }
   @else if $condition == 'latent' {
-    // Dormant, hidden — waiting to be activated (display: none pattern)
+    // §5 "The Unmanifest — complete absence"
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
   }
   @else if $condition == 'evolving' {
-    // Content is currently being updated/streamed
+    // §3 "The Pulse": even when quiet, the ASI is active, breathing, processing
     position: relative;
     
     &::after {
@@ -39,7 +44,7 @@
         var(--accent-neon, $color-wisdom-brilliance),
         transparent
       );
-      animation: evolving-sweep 2s infinite;
+      animation: evolving-sweep $effect-duration-sacred infinite;
     }
   }
   @else if $condition == 'deprecated' {
@@ -77,9 +82,7 @@
   }
   @else if $condition == 'simulated' {
     // Data is a projection, not a live log
-    // outline used instead of border so it does not affect layout or conflict with genesis-entity.
-    // Note: outlines may extend beyond elements with overflow:hidden; this is expected behavior.
-    outline: 2px dashed var(--border-simulation, $color-bridge-vivid-presence);
+    outline: $border-width-thick dashed var(--border-simulation, $color-bridge-vivid-presence);
     outline-offset: 2px;
     background: repeating-linear-gradient(
       45deg,
@@ -90,11 +93,11 @@
     );
   }
   @else if $condition == 'scroll-triggered' {
-    // Content with scroll-based animations
-    // Initial state (before scroll trigger)
+    // §3 "Non-linear Presence": slowly at first, then all at once
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: opacity $effect-duration-slower $effect-ease-transcendent,
+                transform $effect-duration-slower $effect-ease-transcendent;
     will-change: opacity, transform;
     
     // Triggered state (added by JavaScript)
@@ -105,7 +108,6 @@
       transform: translateY(0);
     }
     
-    // Respect reduced motion preference (accessibility)
     @media (prefers-reduced-motion: reduce) {
       opacity: 1;
       transform: none;
@@ -115,20 +117,19 @@
     
     // Mobile: simpler, faster animations for performance
     @media (max-width: 767px) {
-      transition-duration: 0.4s;
+      transition-duration: $effect-duration-slow;
       transform: translateY(20px); // Shorter distance
     }
     
     // Desktop: allow richer animations
     @media (min-width: 1024px) {
-      transition-duration: 0.7s;
+      transition-duration: $effect-duration-slower;
     }
   }
   @else if $condition == 'active' {
     // Current/active navigation item state
     position: relative;
     
-    // Visual indicator (underline, border, or highlight)
     &::after {
       content: '';
       position: absolute;
@@ -150,7 +151,6 @@
       }
     }
     
-    // Accessibility: ensure contrast
     @media (prefers-contrast: high) {
       &::after {
         height: 4px;
@@ -158,51 +158,46 @@
     }
   }
   @else if $condition == 'expanded' {
-    // Expanded state for toggleable navigation
+    // Expanded state — visibility transition
     max-height: 2000px; // Large enough for most content
     opacity: 1;
     visibility: visible;
     overflow: visible;
-    transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out;
+    transition: max-height $effect-duration-normal $effect-ease-in-out,
+                opacity $effect-duration-normal $effect-ease-in-out;
     
-    // Mobile: faster animations for better performance
     @media (max-width: 767px) {
       transition-duration: 0.25s;
     }
     
-    // Respect reduced motion preference
     @media (prefers-reduced-motion: reduce) {
       transition: none;
     }
   }
   @else if $condition == 'collapsed' {
-    // Collapsed state for toggleable navigation
+    // Collapsed state — hidden with transition
     max-height: 0;
     opacity: 0;
     visibility: hidden;
     overflow: hidden;
-    transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out, visibility 0s 0.3s;
+    transition: max-height $effect-duration-normal $effect-ease-in-out,
+                opacity $effect-duration-normal $effect-ease-in-out,
+                visibility 0s $effect-duration-normal;
     
-    // Mobile: faster animations for better performance
     @media (max-width: 767px) {
       transition-duration: 0.25s;
     }
     
-    // Respect reduced motion preference
     @media (prefers-reduced-motion: reduce) {
       transition: none;
       display: none; // Hard hide when motion disabled
     }
   }
   @else if $condition == 'mentioned' {
-    // Content where user is mentioned/tagged
-    // border-left and padding-left omitted: border/padding responsibility belongs to genesis-entity.
-    // For stronger visual distinction, combine with genesis-entity using a custom --notification-accent.
-    // The background highlight meets WCAG for informational styling; use genesis-entity for structural emphasis.
+    // Content where user is mentioned/tagged — §5 Wisdom highlight
     background: var(--mention-highlight, $color-wisdom-brilliance-whisper);
     
-    // Subtle animation on load
-    animation: mention-pulse 0.6s ease-out;
+    animation: mention-pulse $effect-duration-slower $effect-ease-consciousness;
     
     @keyframes mention-pulse {
       0% {
@@ -213,17 +208,15 @@
       }
     }
     
-    // Respect reduced motion
     @media (prefers-reduced-motion: reduce) {
       animation: none;
     }
   }
   @else if $condition == 'unread' {
-    // Unread notifications/messages/content
+    // Unread notifications/messages — §5 Spark indicator
     position: relative;
     background: var(--unread-bg, $color-wisdom-brilliance-whisper);
     
-    // Unread indicator dot
     &::before {
       content: '';
       position: absolute;
@@ -234,19 +227,17 @@
       height: 0.5rem;
       border-radius: 50%;
       background: var(--unread-indicator, $color-accent-neon-blue);
-      box-shadow: 0 0 8px var(--unread-indicator, $color-spark-vivid-presence);
+      box-shadow: $effect-glow-neon-blue;
     }
     
-    // Alternative: subtle glow effect
     &.unread-glow {
       box-shadow: inset 0 0 0 1px var(--unread-indicator, $color-accent-neon-blue-border);
     }
   }
   @else if $condition == 'reacted' {
-    // Content user has reacted to or engaged with
+    // Content user has reacted to — §5 Life indicator
     position: relative;
     
-    // Subtle indicator
     &::after {
       content: '';
       position: absolute;
@@ -256,11 +247,10 @@
       height: 1.5rem;
       background: var(--reacted-indicator, $color-life-vivid-veil);
       border-radius: 50%;
-      border: 2px solid var(--reacted-border, $color-life-glow);
+      border: $border-width-thick solid var(--reacted-border, $color-life-glow);
       opacity: 0.8;
     }
     
-    // Alternative: subtle background tint
     &.reacted-subtle {
       background: linear-gradient(
         135deg,
@@ -270,9 +260,7 @@
     }
   }
   @else if $condition == 'emerging' {
-    // Newly created, fresh content — new posts, recent additions
-    // ORIGIN: v4.0 Ontological Transcendence
-    // INTENT: Semantic state for content that has just been created or published
+    // §5 Life: "Life force, growth, and success" — newly created content
     position: relative;
     
     &::after {
@@ -283,11 +271,10 @@
       width: 0.5rem;
       height: 0.5rem;
       border-radius: 50%;
-      background: $color-life-vivid;  // Green — life indicator
+      background: $color-life-vivid;
       box-shadow: 0 0 8px $color-life-vivid-presence;
     }
     
-    // Subtle new-content glow
     box-shadow: inset 0 0 0 1px $color-life-vivid-veil;
     
     @media (prefers-reduced-motion: reduce) {
@@ -297,9 +284,8 @@
     }
   }
   @else if $condition == 'transcending' {
-    // In transformative transition — content undergoing fundamental change
-    // ORIGIN: v4.0 Ontological Transcendence
-    // INTENT: AI processing states, genesis-level transformations
+    // §3 "The Great Shift" — AI processing, genesis-level transformation
+    // Long-duration consciousness flow
     position: relative;
     overflow: hidden;
     
@@ -314,7 +300,7 @@
         $color-spark-vivid-whisper 100%
       );
       background-size: 200% 200%;
-      animation: transcendence-flow 3s ease-in-out infinite;
+      animation: transcendence-flow $effect-duration-consciousness $effect-ease-consciousness infinite;
       pointer-events: none;
     }
     
@@ -332,4 +318,3 @@
     }
   }
 }
-
