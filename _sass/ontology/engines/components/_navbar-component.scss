@@ -40,7 +40,7 @@
       // Active state — neural pulse indicator
       &--active {
         .navbar__link {
-          @include color-text-light;
+          color: var(--genesis-body-color, oklch(0.95 0.005 90));
           font-weight: 500;
         }
       }
@@ -73,7 +73,7 @@
       @include flex-between;
       gap: 0.5rem;
       @include full-width;
-      color: oklch(0.70 0.01 230);
+      color: var(--text-secondary, oklch(0.70 0.01 230));
       @include text-decoration-none;
       font-family: $font-family-consciousness;
       font-size: 0.875rem;
@@ -95,9 +95,9 @@
 
       &:hover,
       &:focus {
-        @include color-text-light;
-        background: oklch(0.15 0.02 250);
-        border-color: oklch(0.25 0.04 250);
+        color: var(--genesis-body-color, oklch(0.95 0.005 90));
+        background: var(--glass-hover, oklch(0.15 0.02 250));
+        border-color: var(--genesis-card-border, oklch(0.25 0.04 250));
       }
 
       // Dropdown toggle variant
@@ -136,8 +136,8 @@
       @include genesis-entity('primary');
       @include genesis-atmosphere('void');
       backdrop-filter: blur(20px);
-      background: oklch(0.08 0.02 250 / 0.97);
-      @include border-subtle(oklch(0.22 0.04 250));
+      background: var(--genesis-bg-surface, oklch(0.08 0.02 250 / 0.97));
+      @include border-subtle(var(--genesis-card-border, oklch(0.22 0.04 250)));
       @include border-radius-rounded(12px);
 
       box-shadow:
@@ -199,7 +199,7 @@
       padding: 0.625rem 0.875rem;
       @include flex-row;
       align-items: center;
-      color: oklch(0.65 0.01 230);
+      color: var(--text-secondary, oklch(0.65 0.01 230));
       @include text-decoration-none;
       font-family: $font-family-consciousness;
       font-size: 0.8125rem;
@@ -210,16 +210,16 @@
 
       &:hover,
       &:focus {
-        @include color-text-light;
-        background: oklch(0.14 0.02 250);
+        color: var(--genesis-body-color, oklch(0.95 0.005 90));
+        background: var(--glass-hover, oklch(0.14 0.02 250));
         padding-left: 1.125rem;
       }
 
       &[aria-current="page"] {
-        @include color-text-light;
-        background: oklch(0.12 0.03 250);
+        color: var(--genesis-body-color, oklch(0.95 0.005 90));
+        background: var(--glass-hover, oklch(0.12 0.03 250));
         font-weight: 500;
-        border-left: 2px solid oklch(0.65 0.25 230);
+        border-left: 2px solid var(--accent-neon, oklch(0.65 0.25 230));
         padding-left: 0.75rem;
       }
     }

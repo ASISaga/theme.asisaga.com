@@ -28,7 +28,7 @@
 
     // Scrolled state — condensed, more opaque, stronger presence
     &.scrolled {
-      @include bg-glass(0.96);
+      background: var(--genesis-header-bg, oklch(0.06 0.015 255 / 0.92));
       border-bottom-color: var(--genesis-header-border, oklch(0.20 0.06 230));
       box-shadow:
         0 1px 0 oklch(0.65 0.25 230 / 0.15),
@@ -69,12 +69,12 @@
       &:hover,
       &:focus {
         .genesis-header__title {
-          @include color-text-light;
-          text-shadow: 0 0 20px oklch(0.65 0.25 230 / 0.4);
+          color: var(--genesis-body-color, oklch(0.95 0.005 90));
+          text-shadow: 0 0 20px var(--accent-neon, oklch(0.65 0.25 230 / 0.4));
         }
 
         .genesis-header__logo {
-          @include shadow-glow(oklch(0.65 0.25 230), 0.3);
+          @include shadow-glow(var(--accent-neon, oklch(0.65 0.25 230)), 0.3);
         }
       }
     }
@@ -82,7 +82,7 @@
     &__logo {
       @include size-square(36px);
       @include border-radius-rounded;
-      @include border-subtle(oklch(0.30 0.04 250));
+      @include border-subtle(var(--genesis-card-border, oklch(0.30 0.04 250)));
       @include transition-smooth(box-shadow border-color);
 
       @include from(md) {
@@ -101,7 +101,7 @@
       font-weight: 600;
       letter-spacing: 0.04em;
       @include text-uppercase;
-      color: oklch(0.95 0.005 90);
+      color: var(--genesis-body-color, oklch(0.95 0.005 90));
       @include transition-smooth(color text-shadow);
     }
 
@@ -125,23 +125,23 @@
       @include flex-center;
       @include size-square(44px);
       @include padding-reset;
-      background: oklch(0.12 0.02 250);
-      @include border-subtle(oklch(0.25 0.03 250));
+      background: var(--genesis-card-bg, oklch(0.12 0.02 250));
+      @include border-subtle(var(--genesis-card-border, oklch(0.25 0.03 250)));
       @include border-radius-rounded;
       @include cursor-pointer;
       @include transition-consciousness;
 
       &:hover,
       &:focus {
-        background: oklch(0.18 0.03 250);
-        border-color: oklch(0.65 0.25 230);
-        @include shadow-glow(oklch(0.65 0.25 230), 0.2);
+        background: var(--glass-hover, oklch(0.18 0.03 250));
+        border-color: var(--accent-neon, oklch(0.65 0.25 230));
+        @include shadow-glow(var(--accent-neon, oklch(0.65 0.25 230)), 0.2);
       }
 
       &[aria-expanded="true"] {
-        background: oklch(0.20 0.04 230);
-        border-color: oklch(0.65 0.25 230);
-        @include shadow-glow(oklch(0.65 0.25 230), 0.25, 20px);
+        background: var(--glass-hover, oklch(0.20 0.04 230));
+        border-color: var(--accent-neon, oklch(0.65 0.25 230));
+        @include shadow-glow(var(--accent-neon, oklch(0.65 0.25 230)), 0.25, 20px);
       }
 
       @include from(lg) {
@@ -165,8 +165,8 @@
       @include genesis-atmosphere('void');
 
       // Deep void background
-      background: oklch(0.08 0.015 250 / 0.98) !important;
-      @include border-separator-left(oklch(0.20 0.06 230));
+      background: var(--genesis-bg-surface, oklch(0.08 0.015 250 / 0.98)) !important;
+      @include border-separator-left(var(--genesis-card-border, oklch(0.20 0.06 230)));
       padding: 5rem 1.5rem 2rem;
       @include overflow-scroll-y;
       -webkit-overflow-scrolling: touch;

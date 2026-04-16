@@ -15,13 +15,13 @@
 
     // Deep void background
     backdrop-filter: blur(20px);
-    background: oklch(0.06 0.015 250 / 0.97);
-    @include border-separator-top(oklch(0.20 0.04 250));
+    background: var(--genesis-bg-surface, oklch(0.06 0.015 250 / 0.97));
+    @include border-separator-top(var(--genesis-card-border, oklch(0.20 0.04 250)));
 
     // Subtle upward glow
     box-shadow:
       0 -1px 0 oklch(0.65 0.25 230 / 0.06),
-      0 -4px 24px oklch(0.03 0.02 250 / 0.3);
+      0 -4px 24px var(--genesis-header-shadow, oklch(0.03 0.02 250 / 0.3));
 
     @media (prefers-contrast: high) {
       background: oklch(0.05 0 0);
@@ -70,7 +70,7 @@
       @include genesis-cognition('axiom');
       font-family: $font-family-consciousness;
       font-size: clamp(1.125rem, calc(1rem + 0.75vw), 1.5rem);
-      @include color-text-light;
+      color: var(--genesis-body-color, oklch(0.95 0.005 90));
       font-weight: 600;
       letter-spacing: 0.03em;
       @include text-uppercase;
@@ -113,7 +113,7 @@
 
     &__nav-link {
       @include genesis-synapse('navigate');
-      color: oklch(0.60 0.01 230);
+      color: var(--text-secondary, oklch(0.60 0.01 230));
       @include text-decoration-none;
       font-family: $font-family-consciousness;
       font-size: 0.8125rem;
@@ -126,7 +126,7 @@
 
       &:hover,
       &:focus {
-        color: oklch(0.90 0.005 90);
+        color: var(--genesis-body-color, oklch(0.90 0.005 90));
       }
     }
 
@@ -158,24 +158,24 @@
       @include genesis-synapse('execute');
       @include size-square(40px);
       @include flex-center;
-      background: oklch(0.12 0.02 250);
-      @include border-subtle(oklch(0.22 0.03 250));
+      background: var(--genesis-card-bg, oklch(0.12 0.02 250));
+      @include border-subtle(var(--genesis-card-border, oklch(0.22 0.03 250)));
       @include border-radius-rounded;
-      @include color-text-muted;
+      color: var(--text-secondary, oklch(0.55 0.02 230));
       font-size: 1rem;
 
       @include transition-smooth(color background border-color box-shadow);
 
       &:hover,
       &:focus {
-        background: oklch(0.16 0.03 250);
-        border-color: oklch(0.65 0.25 230 / 0.5);
-        color: oklch(0.90 0.005 90);
-        @include shadow-glow(oklch(0.65 0.25 230), 0.15);
+        background: var(--glass-hover, oklch(0.16 0.03 250));
+        border-color: var(--accent-neon, oklch(0.65 0.25 230));
+        color: var(--genesis-body-color, oklch(0.90 0.005 90));
+        @include shadow-glow(var(--accent-neon, oklch(0.65 0.25 230)), 0.15);
       }
 
       &:active {
-        background: oklch(0.20 0.04 250);
+        background: var(--glass-hover, oklch(0.20 0.04 250));
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -186,7 +186,7 @@
     // Copyright Bar — the final anchor
     &__copyright {
       padding: 1.25rem 0 0;
-      @include border-separator-top(oklch(0.15 0.02 250));
+      @include border-separator-top(var(--genesis-card-border, oklch(0.15 0.02 250)));
       @include text-align-center;
 
       p {
@@ -206,10 +206,10 @@
     @include fixed-position(null, 1.5rem, 1.5rem, null, 999);
     @include size-square(44px);
     @include flex-center;
-    background: oklch(0.12 0.03 250 / 0.9);
-    @include border-subtle(oklch(0.25 0.04 250));
+    background: var(--genesis-card-bg, oklch(0.12 0.03 250 / 0.9));
+    @include border-subtle(var(--genesis-card-border, oklch(0.25 0.04 250)));
     @include border-radius-rounded(12px);
-    color: oklch(0.65 0.02 230);
+    color: var(--text-secondary, oklch(0.65 0.02 230));
     font-size: 1rem;
     @include cursor-pointer;
     backdrop-filter: blur(12px);
@@ -226,10 +226,10 @@
 
     &:hover,
     &:focus {
-      background: oklch(0.18 0.04 250 / 0.95);
-      border-color: oklch(0.65 0.25 230 / 0.5);
-      color: oklch(0.90 0.005 90);
-      @include shadow-glow(oklch(0.65 0.25 230), 0.2, 20px);
+      background: var(--glass-hover, oklch(0.18 0.04 250 / 0.95));
+      border-color: var(--accent-neon, oklch(0.65 0.25 230));
+      color: var(--genesis-body-color, oklch(0.90 0.005 90));
+      @include shadow-glow(var(--accent-neon, oklch(0.65 0.25 230)), 0.2, 20px);
       transform: translateY(-2px);
     }
 
