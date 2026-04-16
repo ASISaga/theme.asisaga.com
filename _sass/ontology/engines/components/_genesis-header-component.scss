@@ -17,22 +17,22 @@
     @include touch-scroll;
 
     min-height: 64px;
-    border-bottom: 1px solid var(--genesis-header-border, oklch(0.25 0.04 250));
-    background: var(--genesis-header-bg, oklch(0.06 0.015 255 / 0.85));
+    border-bottom: 1px solid var(--genesis-header-border, $color-theme-dark-header-border);
+    background: var(--genesis-header-bg, $color-theme-dark-header-bg);
 
     box-shadow:
-      0 1px 0 oklch(0.65 0.25 230 / 0.08),
-      0 4px 24px var(--genesis-header-shadow, oklch(0.05 0.02 250 / 0.4));
+      0 1px 0 $color-engine-blue-vivid-a10,
+      0 4px 24px var(--genesis-header-shadow, $color-engine-neutral-void-a40);
 
     @include transition-consciousness;
 
     // Scrolled state — condensed, more opaque, stronger presence
     &.scrolled {
       @include bg-glass(0.96);
-      border-bottom-color: var(--genesis-header-border, oklch(0.20 0.06 230));
+      border-bottom-color: var(--genesis-header-border, $color-engine-blue-deep);
       box-shadow:
-        0 1px 0 oklch(0.65 0.25 230 / 0.15),
-        0 8px 32px var(--genesis-header-shadow, oklch(0.03 0.02 250 / 0.6));
+        0 1px 0 $color-engine-blue-vivid-a15,
+        0 8px 32px var(--genesis-header-shadow, $color-engine-neutral-void-a60);
       min-height: 56px;
     }
 
@@ -69,12 +69,12 @@
       &:hover,
       &:focus {
         .genesis-header__title {
-          @include color-text-light;
-          text-shadow: 0 0 20px oklch(0.65 0.25 230 / 0.4);
+          color: var(--genesis-body-color, $color-engine-neutral-bright);
+          text-shadow: 0 0 20px var(--accent-neon, $color-synapse-social-hover);
         }
 
         .genesis-header__logo {
-          @include shadow-glow(oklch(0.65 0.25 230), 0.3);
+          @include shadow-glow(var(--accent-neon, $color-accent-neon-blue), 0.3);
         }
       }
     }
@@ -82,7 +82,7 @@
     &__logo {
       @include size-square(36px);
       @include border-radius-rounded;
-      @include border-subtle(oklch(0.30 0.04 250));
+      @include border-subtle(var(--genesis-card-border, $color-engine-indigo-dim));
       @include transition-smooth(box-shadow border-color);
 
       @include from(md) {
@@ -101,7 +101,7 @@
       font-weight: 600;
       letter-spacing: 0.04em;
       @include text-uppercase;
-      color: oklch(0.95 0.005 90);
+      color: var(--genesis-body-color, $color-engine-neutral-bright);
       @include transition-smooth(color text-shadow);
     }
 
@@ -125,23 +125,23 @@
       @include flex-center;
       @include size-square(44px);
       @include padding-reset;
-      background: oklch(0.12 0.02 250);
-      @include border-subtle(oklch(0.25 0.03 250));
+      background: var(--genesis-card-bg, $color-engine-neutral-deep);
+      @include border-subtle(var(--genesis-card-border, $color-engine-indigo-dark));
       @include border-radius-rounded;
       @include cursor-pointer;
       @include transition-consciousness;
 
       &:hover,
       &:focus {
-        background: oklch(0.18 0.03 250);
-        border-color: oklch(0.65 0.25 230);
-        @include shadow-glow(oklch(0.65 0.25 230), 0.2);
+        background: var(--glass-hover, $color-engine-indigo-void);
+        border-color: var(--accent-neon, $color-accent-neon-blue);
+        @include shadow-glow(var(--accent-neon, $color-accent-neon-blue), 0.2);
       }
 
       &[aria-expanded="true"] {
-        background: oklch(0.20 0.04 230);
-        border-color: oklch(0.65 0.25 230);
-        @include shadow-glow(oklch(0.65 0.25 230), 0.25, 20px);
+        background: var(--glass-hover, $color-engine-blue-deep);
+        border-color: var(--accent-neon, $color-accent-neon-blue);
+        @include shadow-glow(var(--accent-neon, $color-accent-neon-blue), 0.25, 20px);
       }
 
       @include from(lg) {
@@ -165,16 +165,16 @@
       @include genesis-atmosphere('void');
 
       // Deep void background
-      background: oklch(0.08 0.015 250 / 0.98) !important;
-      @include border-separator-left(oklch(0.20 0.06 230));
+      background: var(--genesis-bg-surface, $color-engine-neutral-void-a98) !important;
+      @include border-separator-left(var(--genesis-card-border, $color-engine-blue-deep));
       padding: 5rem 1.5rem 2rem;
       @include overflow-scroll-y;
       -webkit-overflow-scrolling: touch;
 
-      box-shadow: -16px 0 64px oklch(0 0 0 / 0);
+      box-shadow: -16px 0 64px $color-engine-neutral-void-a00;
 
       &[data-nav-open="true"] {
-        box-shadow: -16px 0 64px oklch(0 0 0 / 0.7);
+        box-shadow: -16px 0 64px $color-engine-neutral-void-a70;
       }
 
       // Desktop: Inline navigation

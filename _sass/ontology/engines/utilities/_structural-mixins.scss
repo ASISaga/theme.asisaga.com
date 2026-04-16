@@ -221,19 +221,19 @@
 // BORDER UTILITIES
 // ----------------------------------------
 
-@mixin border-separator-bottom($color: oklch(0.20 0.04 250)) {
+@mixin border-separator-bottom($color: $color-engine-indigo-dark) {
   border-bottom: 1px solid $color;
 }
 
-@mixin border-separator-top($color: oklch(0.20 0.04 250)) {
+@mixin border-separator-top($color: $color-engine-indigo-dark) {
   border-top: 1px solid $color;
 }
 
-@mixin border-separator-left($color: oklch(0.20 0.04 250)) {
+@mixin border-separator-left($color: $color-engine-indigo-dark) {
   border-left: 1px solid $color;
 }
 
-@mixin border-subtle($color: oklch(0.25 0.03 250), $width: 1px) {
+@mixin border-subtle($color: $color-engine-indigo-dark, $width: 1px) {
   border: $width solid $color;
 }
 
@@ -247,12 +247,16 @@
 // SHADOW UTILITIES
 // ----------------------------------------
 
-@mixin shadow-glow($color: oklch(0.65 0.25 230), $intensity: 0.15, $spread: 16px) {
-  box-shadow: 0 0 #{$spread} oklch(from #{$color} l c h / #{$intensity});
+/// Dynamic-alpha shadow using CSS relative color syntax.
+/// The intensity parameter drives the alpha channel at call-site, so this
+/// cannot resolve to a single static token; the base color comes from
+/// $color (a $color-* token) and is re-expressed via oklch(from ...).
+@mixin shadow-glow($color: $color-accent-neon-blue, $intensity: 0.15, $spread: 16px) {
+  box-shadow: 0 0 #{$spread} oklch(from #{$color} l c h / #{$intensity}); // stylelint-disable-line declaration-property-value-disallowed-list
 }
 
 @mixin shadow-depth($opacity: 0.4) {
-  box-shadow: 0 4px 24px oklch(0.05 0.02 250 / #{$opacity});
+  box-shadow: 0 4px 24px oklch(0.05 0.02 250 / #{$opacity}); // stylelint-disable-line declaration-property-value-disallowed-list
 }
 
 @mixin shadow-none { box-shadow: none; }
@@ -264,7 +268,7 @@
 @mixin bg-transparent { background: transparent; }
 
 @mixin bg-glass($opacity: 0.9, $blur: 20px) {
-  background: oklch(0.06 0.015 250 / $opacity);
+  background: var(--genesis-header-bg, oklch(0.06 0.015 250 / #{$opacity})); // stylelint-disable-line declaration-property-value-disallowed-list
   backdrop-filter: blur($blur);
 }
 
@@ -272,10 +276,10 @@
 // COLOR UTILITIES (ontological tokens)
 // ----------------------------------------
 
-@mixin color-text-light { color: oklch(0.95 0.005 90); }
-@mixin color-text-muted { color: oklch(0.55 0.02 230); }
-@mixin color-text-dim { color: oklch(0.40 0.01 230); }
-@mixin color-neon-accent { color: oklch(0.65 0.25 230); }
+@mixin color-text-light { color: var(--genesis-body-color, $color-engine-neutral-bright); }
+@mixin color-text-muted { color: var(--text-secondary, $color-engine-neutral-mid); }
+@mixin color-text-dim { color: var(--text-secondary, $color-engine-neutral-mid); }
+@mixin color-neon-accent { color: $color-accent-neon-blue; }
 
 // ----------------------------------------
 // TRANSITION UTILITIES
@@ -369,7 +373,7 @@
 // ANIMATED UNDERLINE (for nav links)
 // ----------------------------------------
 
-@mixin animated-underline($color: oklch(0.65 0.25 230 / 0.5), $height: 1px) {
+@mixin animated-underline($color: $color-semantic-focus-ring, $height: 1px) {
   position: relative;
 
   &::after {
@@ -393,7 +397,7 @@
 // ICON TOGGLE (hamburger menu)
 // ----------------------------------------
 
-@mixin hamburger-icon($line-width: 18px, $line-height: 1.5px, $line-gap: 5px, $color: oklch(0.80 0.02 230)) {
+@mixin hamburger-icon($line-width: 18px, $line-height: 1.5px, $line-gap: 5px, $color: $color-engine-neutral-pale) {
   position: relative;
   width: $line-width;
   height: $line-height;
@@ -408,7 +412,7 @@
     left: 0;
     width: 100%;
     height: $line-height;
-    background: oklch(0.90 0.005 90);
+    background: $color-theme-dark-body-color;
     border-radius: 1px;
 
     @include transition-consciousness;

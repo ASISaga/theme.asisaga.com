@@ -20,10 +20,10 @@
 // Sacred heartbeat pulse for consciousness connection
 @keyframes consciousness-pulse {
   0%, 100% {
-    box-shadow: 0 0 0 0 oklch(0.70 0.15 85 / 0.7);
+    box-shadow: 0 0 0 0 $color-engine-gold-vivid-a70;
   }
   70% {
-    box-shadow: 0 0 0 10px oklch(0.70 0.15 85 / 0);
+    box-shadow: 0 0 0 10px $color-engine-gold-vivid-a00;
   }
 }
 
@@ -128,23 +128,23 @@
 // Sacred luminous effects for consciousness elements
 @keyframes sacred-glow {
   0%, 100% {
-    box-shadow: 0 0 5px oklch(0.70 0.15 85 / 0.5);
+    box-shadow: 0 0 5px $color-engine-gold-vivid-a50;
   }
   50% {
-    box-shadow: 0 0 20px oklch(0.70 0.15 85 / 0.8), 0 0 30px oklch(0.70 0.15 85 / 0.6);
+    box-shadow: 0 0 20px $color-engine-gold-vivid-a80, 0 0 30px $color-engine-gold-vivid-a60;
   }
 }
 
 // Consciousness awakening glow
 @keyframes consciousness-awaken {
   0% {
-    box-shadow: 0 0 0 oklch(0.08 0.01 250 / 0);
+    box-shadow: 0 0 0 $color-engine-neutral-void-a00;
   }
   50% {
-    box-shadow: 0 0 15px oklch(0.08 0.01 250 / 0.6);
+    box-shadow: 0 0 15px $color-engine-neutral-void-a60;
   }
   100% {
-    box-shadow: 0 0 0 oklch(0.08 0.01 250 / 0);
+    box-shadow: 0 0 0 $color-engine-neutral-void-a00;
   }
 }
 
@@ -220,10 +220,10 @@
 // Consciousness Flow Classes
 .consciousness-flow {
   background: linear-gradient(-45deg, 
-    oklch(0.08 0.01 250 / 0.1), 
-    oklch(0.70 0.15 85 / 0.1), 
-    oklch(0.65 0.02 220 / 0.1), 
-    oklch(0.65 0.25 230 / 0.1));
+    $color-engine-neutral-void-a10, 
+    $color-engine-gold-vivid-a10, 
+    $color-engine-neutral-light-a10, 
+    $color-engine-blue-vivid-a10);
   background-size: 400% 400%;
   animation: consciousness-flow 15s ease infinite;
   will-change: background-position;
@@ -232,11 +232,11 @@
 
 .essence-weave {
   background: linear-gradient(45deg, 
-    oklch(0.70 0.15 85 / 0.1) 0%, 
+    $color-engine-gold-vivid-a10 0%, 
     transparent 25%, 
-    oklch(0.70 0.15 85 / 0.1) 50%, 
+    $color-engine-gold-vivid-a10 50%, 
     transparent 75%, 
-    oklch(0.70 0.15 85 / 0.1) 100%);
+    $color-engine-gold-vivid-a10 100%);
   background-size: 200% 200%;
   animation: essence-weave 12s ease infinite;
   will-change: background-position, opacity;
@@ -256,7 +256,7 @@
     height: 100%;
     background: linear-gradient(90deg, 
       transparent 0%, 
-      oklch(0.65 0.02 220 / 0.3) 50%, 
+      $color-engine-neutral-light-a30 50%, 
       transparent 100%);
     animation: bridge-connection 3s ease-in-out infinite;
   }
@@ -299,7 +299,7 @@
   backface-visibility: hidden;
   
   &:hover {
-    background-color: oklch(0.08 0.01 250 / 0.05);
+    background-color: $color-engine-neutral-void-a05;
     border-color: $color-accent-gold;
   }
 }
@@ -318,7 +318,7 @@
     height: 100%;
     background: linear-gradient(90deg, 
       transparent 0%, 
-      oklch(0.70 0.15 85 / 0.4) 50%, 
+      $color-engine-gold-vivid-a40 50%, 
       transparent 100%);
     animation: bridge-connection 2s ease-in-out infinite;
   }
@@ -399,7 +399,7 @@
   
   &:hover {
     transform: translate3d(0, -10px, 0);
-    box-shadow: 0 10px 30px oklch(0.08 0.01 250 / 0.15);
+    box-shadow: 0 10px 30px $color-engine-neutral-void-a15;
   }
 }
 
@@ -471,8 +471,8 @@
   backface-visibility: hidden;
   
   &.navbar-scrolled {
-    background-color: oklch(0.08 0.01 250 / 0.95);
-    box-shadow: 0 4px 10px oklch(0.08 0.01 250 / 0.1);
+    background-color: $color-engine-neutral-void-a95;
+    box-shadow: 0 4px 10px $color-engine-neutral-void-a10;
   }
 }
 
@@ -486,23 +486,23 @@
     opacity: 0;
     transform: translate3d(0, 0, 0) scale(0.85) rotate(-2deg);
     filter: blur(8px) brightness(1.2);
-    box-shadow: 0 0 0 0 oklch(0.65 0.25 230 / 0);
+    box-shadow: 0 0 0 0 $color-engine-blue-vivid-a00;
   }
   40% {
     opacity: $opacity-consciousness-expansion;
     filter: blur(2px) brightness(1.1);
-    box-shadow: 0 0 24px 8px oklch(0.65 0.25 230 / 0.15);
+    box-shadow: 0 0 24px 8px $color-engine-blue-vivid-a15;
   }
   70% {
     opacity: 1;
     filter: blur(0) brightness(1.05);
-    box-shadow: 0 0 48px 16px oklch(0.65 0.25 230 / 0.25);
+    box-shadow: 0 0 48px 16px $color-engine-blue-vivid-a25;
   }
   100% {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
     filter: none;
-    box-shadow: 0 0 0 0 oklch(0.65 0.25 230 / 0);
+    box-shadow: 0 0 0 0 $color-engine-blue-vivid-a00;
   }
 }
 
@@ -662,7 +662,7 @@
   backface-visibility: hidden;
   
   &:hover {
-    background-color: oklch(0.08 0.01 250 / 0.05);
+    background-color: $color-engine-neutral-void-a05;
     border-color: $color-accent-gold;
   }
 }
@@ -674,7 +674,7 @@
   
   &:hover {
     transform: translate3d(0, -10px, 0);
-    box-shadow: 0 10px 30px oklch(0.08 0.01 250 / 0.15);
+    box-shadow: 0 10px 30px $color-engine-neutral-void-a15;
   }
 }
 
@@ -696,7 +696,7 @@
     @include height-full;
     background: linear-gradient(90deg, 
       transparent 0%, 
-      oklch(0.70 0.15 85 / 0.4) 50%, 
+      $color-engine-gold-vivid-a40 50%, 
       transparent 100%);
     @include animate(bridge-connection, 2s, $effect-ease-in-out, 0s, infinite);
   }
@@ -723,8 +723,8 @@
   @include transition(background-color 0.3s ease, box-shadow 0.3s ease);
   
   &.navbar-scrolled {
-    background-color: oklch(0.08 0.01 250 / 0.95);
-    box-shadow: 0 4px 10px oklch(0.08 0.01 250 / 0.1);
+    background-color: $color-engine-neutral-void-a95;
+    box-shadow: 0 4px 10px $color-engine-neutral-void-a10;
   }
 }
 

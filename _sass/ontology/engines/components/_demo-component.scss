@@ -26,7 +26,7 @@
     @include flex-center;
     touch-action: pan-y;
     @include overflow-hidden;
-    background: var(--void-deep, oklch(0.08 0.02 260));
+    background: var(--void-deep, $color-engine-neutral-void);
   }
 
   .hero-background {
@@ -37,9 +37,9 @@
   .cosmic-particles {
     @include absolute-fill;
     background-image:
-      radial-gradient(1.5px 1.5px at 25% 35%, oklch(0.95 0.02 90 / 0.9), transparent),
-      radial-gradient(1px 1px at 75% 25%, oklch(0.90 0.03 90 / 0.7), transparent),
-      radial-gradient(2px 2px at 45% 75%, oklch(0.85 0.18 85 / 0.6), transparent);
+      radial-gradient(1.5px 1.5px at 25% 35%, $color-engine-neutral-luminous-a90, transparent),
+      radial-gradient(1px 1px at 75% 25%, $color-engine-gold-bright-a70, transparent),
+      radial-gradient(2px 2px at 45% 75%, $color-engine-gold-accent-a60, transparent);
     background-size: 350px 350px, 250px 250px, 400px 400px;
     animation: starfield-drift 120s linear infinite;
   }
@@ -47,8 +47,8 @@
   .neural-mesh {
     @include absolute-fill;
     background:
-      linear-gradient(90deg, oklch(0.55 0.25 290 / 0.03) 1px, transparent 1px),
-      linear-gradient(oklch(0.55 0.25 290 / 0.03) 1px, transparent 1px);
+      linear-gradient(90deg, $color-engine-violet-vivid-a05 1px, transparent 1px),
+      linear-gradient($color-engine-violet-vivid-a05 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
   }
@@ -61,8 +61,8 @@
     height: 800px;
     transform: translate(-50%, -50%);
     background: radial-gradient(circle,
-        oklch(0.85 0.18 85 / 0.15) 0%,
-        oklch(0.55 0.25 290 / 0.08) 40%,
+        $color-engine-gold-accent-a15 0%,
+        $color-engine-violet-vivid-a10 40%,
         transparent 70%);
     animation: consciousness-breathe 8s ease-in-out infinite;
   }
@@ -79,7 +79,7 @@
     font-weight: 800;
     letter-spacing: -0.03em;
     margin-bottom: clamp(1rem, 2vw, 1.5rem);
-    background: linear-gradient(135deg, oklch(0.90 0.16 85), oklch(0.98 0.01 90), oklch(0.75 0.18 195));
+    background: linear-gradient(135deg, $color-engine-gold-bright, $color-engine-neutral-bright, $color-engine-cyan-bright);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -88,7 +88,7 @@
 
   .hero-subtitle {
     font-size: clamp(1rem, calc(0.9rem + 0.75vw), 1.25rem);
-    color: oklch(0.85 0.02 220);
+    color: $color-engine-neutral-pale;
     max-width: 50ch;
     margin: 0 auto clamp(2rem, 4vw, 3rem);
     line-height: 1.6;
@@ -115,7 +115,7 @@
     transform: translateX(-50%);
     width: 30px;
     height: 50px;
-    border: 2px solid oklch(0.85 0.18 85 / 0.5);
+    border: 2px solid $color-engine-gold-accent-a50;
     border-radius: 25px;
 
     span {
@@ -125,7 +125,7 @@
       width: 6px;
       height: 6px;
       margin-left: -3px;
-      background: oklch(0.85 0.18 85);
+      background: $color-engine-gold-accent;
       border-radius: 50%;
       animation: scroll-bounce 2s infinite;
     }
@@ -139,18 +139,18 @@
     padding: clamp(3rem, 8vw, 6rem) 0;
 
     &--void {
-      background: linear-gradient(180deg, oklch(0.08 0.02 260), oklch(0.12 0.03 255));
+      background: linear-gradient(180deg, $color-engine-neutral-void, $color-engine-indigo-void);
     }
 
     &--vibrant {
-      background: oklch(0.14 0.05 280 / 0.95);
-      border-top: 1px solid oklch(0.55 0.25 290 / 0.3);
-      border-bottom: 1px solid oklch(0.55 0.25 290 / 0.3);
+      background: $color-engine-violet-deep-a95;
+      border-top: 1px solid $color-engine-violet-vivid-a30;
+      border-bottom: 1px solid $color-engine-violet-vivid-a30;
     }
 
     &--compact {
       padding: 1rem 0;
-      background: oklch(0.10 0.02 255);
+      background: $color-engine-neutral-void;
     }
   }
 
@@ -167,13 +167,13 @@
     h2 {
       font-size: clamp(1.75rem, calc(1.5rem + 2vw), 2.5rem);
       font-weight: 700;
-      color: oklch(0.98 0.01 90);
+      color: $color-engine-neutral-bright;
       margin-bottom: 0.75rem;
     }
 
     p {
       font-size: clamp(1rem, calc(0.9rem + 0.5vw), 1.125rem);
-      color: oklch(0.70 0.02 220);
+      color: $color-engine-neutral-light;
       max-width: 50ch;
       @include margin-inline-auto;
     }
@@ -202,46 +202,46 @@
   }
 
   .btn-genesis-primary {
-    background: oklch(0.88 0.18 95);
-    color: oklch(0.15 0.03 250);
+    background: $color-engine-gold-bright;
+    color: $color-engine-indigo-void;
 
     &:hover {
-      background: oklch(0.92 0.20 95);
-      box-shadow: 0 4px 20px oklch(0.88 0.18 95 / 0.4);
+      background: $color-engine-gold-bright;
+      box-shadow: 0 4px 20px $color-engine-gold-bright-a40;
       transform: translateY(-2px);
     }
   }
 
   .btn-genesis-secondary {
-    background: oklch(0.18 0.03 248 / 0.6);
-    color: oklch(0.98 0.01 90);
-    border: 1px solid oklch(0.30 0.04 250);
+    background: $color-engine-indigo-deep-a60;
+    color: $color-engine-neutral-bright;
+    border: 1px solid $color-engine-indigo-dim;
 
     &:hover {
-      background: oklch(0.22 0.04 246);
-      border-color: oklch(0.85 0.16 85 / 0.4);
+      background: $color-engine-blue-deep;
+      border-color: $color-engine-gold-accent-a40;
     }
   }
 
   .btn-genesis-neural {
-    background: oklch(0.55 0.25 290 / 0.3);
-    color: oklch(0.98 0.01 90);
-    border: 1px solid oklch(0.55 0.25 290);
+    background: $color-engine-violet-vivid-a30;
+    color: $color-engine-neutral-bright;
+    border: 1px solid $color-engine-violet-vivid;
 
     &:hover {
-      background: oklch(0.55 0.25 290 / 0.5);
-      box-shadow: 0 0 20px oklch(0.55 0.25 290 / 0.4);
+      background: $color-engine-violet-vivid-a50;
+      box-shadow: 0 0 20px $color-engine-violet-vivid-a40;
     }
   }
 
   .btn-genesis-destructive {
-    background: oklch(0.45 0.22 25);
-    color: oklch(0.98 0.01 90);
-    border: 1px solid oklch(0.55 0.25 25);
+    background: $color-engine-error-deep;
+    color: $color-engine-neutral-bright;
+    border: 1px solid $color-status-error;
 
     &:hover {
-      background: oklch(0.50 0.24 25);
-      box-shadow: 0 0 15px oklch(0.45 0.22 25 / 0.5);
+      background: $color-engine-error-vivid;
+      box-shadow: 0 0 15px $color-engine-error-vivid-a50;
     }
   }
 
@@ -261,31 +261,31 @@
   }
 
   .bento-card {
-    background: oklch(0.20 0.04 245 / 0.75);
+    background: $color-engine-blue-deep-a75;
     backdrop-filter: blur(12px);
     padding: clamp(1.25rem, 3vw, 2rem);
     border-radius: clamp(0.75rem, 1.5vw, 1.25rem);
-    border: 1px solid oklch(0.35 0.05 248 / 0.4);
+    border: 1px solid $color-engine-indigo-dim-a40;
     transition: all 0.3s ease;
     @include full-width;
     box-sizing: border-box;
 
     &:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 40px oklch(0.10 0.02 255 / 0.3);
-      border-color: oklch(0.85 0.16 85 / 0.4);
+      box-shadow: 0 12px 40px $color-engine-neutral-void-a30;
+      border-color: $color-engine-gold-accent-a40;
     }
 
     h3 {
       font-size: clamp(1.125rem, calc(1rem + 0.5vw), 1.25rem);
       font-weight: 600;
-      color: oklch(0.98 0.01 90);
+      color: $color-engine-neutral-bright;
       margin-bottom: 0.75rem;
     }
 
     p {
       font-size: clamp(0.9rem, calc(0.85rem + 0.25vw), 1rem);
-      color: oklch(0.75 0.02 220);
+      color: $color-border-elevated;
       line-height: 1.6;
       margin-bottom: 1rem;
     }
@@ -294,16 +294,16 @@
       @include display-inline-block;
       font-size: 0.8rem;
       padding: 0.25em 0.5em;
-      background: oklch(0.14 0.02 250 / 0.8);
+      background: $color-engine-neutral-deep-a80;
       border-radius: 0.25rem;
-      color: oklch(0.75 0.15 210);
-      border: 1px solid oklch(0.25 0.04 250);
+      color: $color-engine-cyan-vivid;
+      border: 1px solid $color-theme-dark-header-border;
     }
 
     &--featured {
       grid-column: 1 / -1;
-      background: linear-gradient(135deg, oklch(0.16 0.04 280 / 0.9), oklch(0.20 0.05 260 / 0.9));
-      border-color: oklch(0.55 0.25 290 / 0.4);
+      background: linear-gradient(135deg, $color-engine-violet-deep-a90, $color-engine-indigo-dark-a90);
+      border-color: $color-engine-violet-vivid-a40;
 
       @media (min-width: 768px) {
         grid-column: span 2;
@@ -311,13 +311,13 @@
     }
 
     &--neural {
-      border-color: oklch(0.55 0.25 290 / 0.5);
-      box-shadow: 0 0 20px oklch(0.55 0.25 290 / 0.15);
+      border-color: $color-engine-violet-vivid-a50;
+      box-shadow: 0 0 20px $color-engine-violet-vivid-a15;
     }
 
     &--accent {
-      border-color: oklch(0.85 0.16 85 / 0.4);
-      box-shadow: 0 0 20px oklch(0.85 0.16 85 / 0.1);
+      border-color: $color-engine-gold-accent-a40;
+      box-shadow: 0 0 20px $color-engine-gold-accent-a10;
     }
   }
 
@@ -328,8 +328,8 @@
     font-weight: 600;
     @include text-uppercase;
     letter-spacing: 0.05em;
-    color: oklch(0.15 0.03 250);
-    background: oklch(0.88 0.18 95);
+    color: $color-engine-indigo-void;
+    background: $color-engine-gold-bright;
     @include border-radius-pill;
     margin-bottom: 1rem;
   }
@@ -346,9 +346,9 @@
     display: grid;
     gap: 0.5rem;
     padding: clamp(1rem, 2vw, 1.5rem);
-    background: oklch(0.14 0.03 255 / 0.5);
+    background: $color-engine-indigo-deep-a50;
     border-radius: 0.75rem;
-    border: 1px solid oklch(0.25 0.03 250 / 0.3);
+    border: 1px solid $color-engine-indigo-dark-a30;
   }
 
   .type-label {
@@ -356,11 +356,11 @@
     font-weight: 600;
     @include text-uppercase;
     letter-spacing: 0.1em;
-    color: oklch(0.55 0.25 290);
+    color: $color-engine-violet-vivid;
   }
 
   .type-sample {
-    color: oklch(0.98 0.01 90);
+    color: $color-engine-neutral-bright;
   }
 
   .type-display .type-sample {
@@ -391,13 +391,13 @@
 
   .type-sm .type-sample {
     font-size: clamp(0.875rem, calc(0.8rem + 0.35vw), 0.95rem);
-    color: oklch(0.70 0.02 220);
+    color: $color-engine-neutral-light;
   }
 
   .type-value {
     font-size: 0.8rem;
     font-family: monospace;
-    color: oklch(0.75 0.15 210);
+    color: $color-engine-cyan-vivid;
   }
 
   // ----------------------------------------
@@ -410,17 +410,17 @@
   }
 
   .component-group {
-    background: oklch(0.16 0.03 252 / 0.6);
+    background: $color-engine-indigo-deep-a60;
     padding: clamp(1.5rem, 3vw, 2rem);
     @include border-radius-rounded(1rem);
-    border: 1px solid oklch(0.30 0.04 250 / 0.3);
+    border: 1px solid $color-engine-indigo-dim-a30;
     @include full-width;
     box-sizing: border-box;
 
     h3 {
       font-size: 1.125rem;
       font-weight: 600;
-      color: oklch(0.85 0.18 85);
+      color: $color-engine-gold-accent;
       margin-bottom: 1.5rem;
     }
 
@@ -450,7 +450,7 @@
     label {
       font-size: 0.9rem;
       font-weight: 500;
-      color: oklch(0.85 0.02 220);
+      color: $color-engine-neutral-pale;
     }
 
     input,
@@ -458,17 +458,17 @@
     textarea {
       padding: 0.75rem 1rem;
       font-size: 1rem;
-      background: oklch(0.18 0.03 248 / 0.6);
-      border: 1px solid oklch(0.30 0.04 250 / 0.5);
+      background: $color-engine-indigo-deep-a60;
+      border: 1px solid $color-engine-indigo-dim-a50;
       border-radius: 0.5rem;
-      color: oklch(0.98 0.01 90);
+      color: $color-engine-neutral-bright;
       transition: all 0.2s ease;
       min-height: 44px;
 
       &:focus {
         outline: none;
-        border-color: oklch(0.88 0.18 95);
-        box-shadow: 0 0 0 3px oklch(0.88 0.18 95 / 0.2);
+        border-color: $color-engine-gold-bright;
+        box-shadow: 0 0 0 3px $color-engine-gold-bright-a20;
       }
     }
   }
@@ -489,39 +489,39 @@
     h4 {
       font-size: 1rem;
       font-weight: 600;
-      color: oklch(0.98 0.01 90);
+      color: $color-engine-neutral-bright;
       margin-bottom: 0.5rem;
     }
 
     p {
       font-size: 0.85rem;
-      color: oklch(0.70 0.02 220);
+      color: $color-engine-neutral-light;
     }
 
     &--glass {
-      background: oklch(0.16 0.03 252 / 0.75);
+      background: $color-engine-indigo-deep-a80;
       backdrop-filter: blur(24px);
-      border: 1px solid oklch(0.40 0.06 250 / 0.25);
-      box-shadow: 0 4px 24px oklch(0.10 0.02 255 / 0.35);
+      border: 1px solid $color-engine-indigo-dim-a30;
+      box-shadow: 0 4px 24px $color-engine-neutral-void-a30;
     }
 
     &--neural {
-      background: oklch(0.14 0.04 280 / 0.8);
-      border: 1px solid oklch(0.55 0.25 290 / 0.35);
-      box-shadow: 0 0 40px oklch(0.55 0.25 290 / 0.2);
+      background: $color-engine-violet-deep-a80;
+      border: 1px solid $color-engine-violet-vivid-a30;
+      box-shadow: 0 0 40px $color-engine-violet-vivid-a20;
       animation: neural-pulse 3s ease-in-out infinite;
     }
 
     &--ethereal {
-      background: oklch(0.98 0.01 90 / 0.08);
+      background: $color-engine-neutral-luminous-a10;
       backdrop-filter: blur(40px);
-      border: 1px solid oklch(0.98 0.01 90 / 0.2);
+      border: 1px solid $color-engine-neutral-luminous-a20;
     }
 
     &--gradient {
-      background: linear-gradient(-45deg, oklch(0.12 0.03 260), oklch(0.15 0.04 280), oklch(0.12 0.04 250));
+      background: linear-gradient(-45deg, $color-engine-indigo-void, $color-engine-violet-void, $color-engine-indigo-void);
       background-size: 400% 400%;
-      border: 1px solid oklch(0.30 0.05 260 / 0.4);
+      border: 1px solid $color-engine-indigo-dim-a40;
       animation: gradient-shift 10s ease infinite;
     }
   }
@@ -536,7 +536,7 @@
 
   .demo-instruction {
     font-size: 0.9rem;
-    color: oklch(0.75 0.02 220);
+    color: $color-border-elevated;
     margin-bottom: 2rem;
     line-height: 1.7;
   }
@@ -550,7 +550,7 @@
 
   .nav-link {
     padding: 0.75rem 1.25rem;
-    color: oklch(0.85 0.02 220);
+    color: $color-engine-neutral-pale;
     @include text-decoration-none;
     border-radius: 0.5rem;
     transition: all 0.2s ease;
@@ -559,13 +559,13 @@
     align-items: center;
 
     &:hover {
-      background: oklch(0.55 0.25 290 / 0.2);
-      color: oklch(0.98 0.01 90);
+      background: $color-engine-violet-vivid-a20;
+      color: $color-engine-neutral-bright;
     }
 
     &--active {
-      background: oklch(0.55 0.25 290 / 0.3);
-      color: oklch(0.98 0.01 90);
+      background: $color-engine-violet-vivid-a30;
+      color: $color-engine-neutral-bright;
       font-weight: 600;
     }
   }
@@ -581,24 +581,24 @@
 
     li {
       padding: 1rem 1.25rem;
-      background: oklch(0.16 0.03 252 / 0.5);
+      background: $color-engine-indigo-deep-a50;
       border-radius: 0.75rem;
-      border-left: 3px solid oklch(0.75 0.18 195);
+      border-left: 3px solid $color-engine-cyan-bright;
       font-size: 0.95rem;
-      color: oklch(0.85 0.02 220);
+      color: $color-engine-neutral-pale;
       line-height: 1.6;
     }
 
     strong {
-      color: oklch(0.98 0.01 90);
+      color: $color-engine-neutral-bright;
     }
 
     code {
       font-size: 0.85em;
       padding: 0.15em 0.4em;
-      background: oklch(0.14 0.02 250);
+      background: $color-engine-neutral-deep;
       border-radius: 0.25rem;
-      color: oklch(0.75 0.15 210);
+      color: $color-engine-cyan-vivid;
     }
   }
 
@@ -612,7 +612,7 @@
   }
 
   .viewport-label {
-    color: oklch(0.70 0.02 220);
+    color: $color-engine-neutral-light;
     margin-right: 0.5rem;
   }
 
@@ -620,8 +620,8 @@
     @include display-none;
     font-weight: 600;
     padding: 0.25em 0.75em;
-    background: oklch(0.55 0.25 290);
-    color: oklch(0.98 0.01 90);
+    background: $color-engine-violet-vivid;
+    color: $color-engine-neutral-bright;
     border-radius: 0.25rem;
   }
 
@@ -702,11 +702,11 @@
 
   @keyframes neural-pulse {
     0%, 100% {
-      box-shadow: 0 0 20px oklch(0.55 0.25 290 / 0.3);
+      box-shadow: 0 0 20px $color-engine-violet-vivid-a30;
     }
 
     50% {
-      box-shadow: 0 0 40px oklch(0.55 0.25 290 / 0.5);
+      box-shadow: 0 0 40px $color-engine-violet-vivid-a50;
     }
   }
 

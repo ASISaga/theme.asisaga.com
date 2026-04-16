@@ -15,57 +15,57 @@
   
   @if $nature == 'primary' {
     // Fundamental object of current view
-    background: oklch(0.99 0.005 90);
-    border: 1px solid oklch(0.85 0.005 220);
-    box-shadow: 0 1px 4px oklch(0.08 0.01 250 / 0.1);
+    background: $color-light-white;
+    border: 1px solid $color-engine-neutral-pale;
+    box-shadow: 0 1px 4px $color-engine-neutral-void-a10;
     padding: var(--padding-entity-primary, clamp(1rem, 2vw, 1.5rem));
   }
   @else if $nature == 'secondary' {
     // Supportive, contextual data
-    background: oklch(0.96 0.005 220);
-    border: 1px solid oklch(0.88 0.005 220);
+    background: $color-theme-light-section-bg;
+    border: 1px solid $color-engine-neutral-bright;
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem));
   }
   @else if $nature == 'editorial' {
     // Editorial content entry - typographic object without card chrome
     background: transparent;
     border: 0;
-    border-top: 1px solid var(--color-editorial-separator, oklch(0.82 0.01 220));
+    border-top: 1px solid var(--color-editorial-separator, $color-engine-neutral-pale);
     border-radius: 0;
     box-shadow: none;
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem)) 0;
 
     &.editorial-featured {
-      border-top: 2px solid oklch(0.70 0.15 85);
+      border-top: 2px solid $color-accent-gold;
       padding-top: var(--padding-entity-aggregate, clamp(1.25rem, 2.5vw, 2rem));
     }
   }
   @else if $nature == 'imperative' {
     // System-critical, high-urgency signal
-    background: oklch(0.99 0.005 90);
-    border: 2px solid oklch(0.65 0.25 230);
-    box-shadow: 0 0 12px oklch(0.65 0.25 230 / 0.2);
+    background: $color-light-white;
+    border: 2px solid $color-accent-neon-blue;
+    box-shadow: 0 0 12px $color-synapse-social-bg;
     animation: pulse-border 2s infinite;
     padding: var(--padding-entity-primary, clamp(1rem, 2vw, 1.5rem));
   }
   @else if $nature == 'latent' {
     // Backgrounded info awaiting activation
-    background: oklch(0.94 0.005 220);
+    background: $color-engine-neutral-bright;
     opacity: 0.7;
     filter: grayscale(0.3);
-    border: 1px solid oklch(0.90 0.005 220);
+    border: 1px solid $color-engine-neutral-bright;
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem));
   }
   @else if $nature == 'aggregate' {
     // Container summarizing multiple entities
-    background: oklch(0.97 0.005 220);
-    border: 1px solid oklch(0.87 0.005 220);
+    background: $color-engine-neutral-bright;
+    border: 1px solid $color-engine-neutral-pale;
     padding: var(--padding-entity-aggregate, clamp(1.25rem, 2.5vw, 2rem));
   }
   @else if $nature == 'ancestral' {
     // Archived or historical data (legacy state)
-    background: oklch(0.95 0.005 220);
-    border: 1px solid oklch(0.88 0.005 220);
+    background: $color-surface-hover;
+    border: 1px solid $color-engine-neutral-bright;
     opacity: 0.8;
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem));
   }
@@ -160,7 +160,7 @@
     position: relative;
     border-radius: 50%;
     overflow: hidden;
-    background: var(--avatar-bg, oklch(0.25 0.04 250));
+    background: var(--avatar-bg, $color-theme-dark-header-border);
     flex-shrink: 0;
     
     // Size variants via CSS custom properties
@@ -184,29 +184,29 @@
       width: 25%;
       height: 25%;
       border-radius: 50%;
-      border: 2px solid var(--bg-primary, oklch(0.15 0.03 250));
+      border: 2px solid var(--bg-primary, $color-engine-indigo-void);
       display: none; // Hidden by default
     }
     
     // Status states
     &.status-online::after {
       display: block;
-      background: var(--status-online, oklch(0.65 0.25 150)); // Green
+      background: var(--status-online, $color-engine-green-vivid); // Green
     }
     
     &.status-away::after {
       display: block;
-      background: var(--status-away, oklch(0.75 0.25 85)); // Yellow
+      background: var(--status-away, $color-engine-gold-vivid); // Yellow
     }
     
     &.status-busy::after {
       display: block;
-      background: var(--status-busy, oklch(0.55 0.25 25)); // Red
+      background: var(--status-busy, $color-status-error); // Red
     }
     
     &.status-offline::after {
       display: block;
-      background: var(--status-offline, oklch(0.50 0.02 220)); // Gray
+      background: var(--status-offline, $color-engine-neutral-mid); // Gray
     }
     
     // Size modifiers
@@ -236,9 +236,9 @@
     align-items: center;
     gap: 0.375em;
     padding: var(--badge-padding, 0.25em 0.75em);
-    background: var(--badge-bg, oklch(0.88 0.18 95 / 0.2));
-    color: var(--badge-text, oklch(0.88 0.18 95));
-    border: 1px solid var(--badge-border, oklch(0.88 0.18 95 / 0.5));
+    background: var(--badge-bg, $color-engine-gold-bright-a20);
+    color: var(--badge-text, $color-engine-gold-bright);
+    border: 1px solid var(--badge-border, $color-engine-gold-bright-a50);
     border-radius: 999px;
     font-size: 0.75rem;
     font-weight: 700;
@@ -257,33 +257,33 @@
     
     // Variant types
     &.badge-success {
-      --badge-bg: oklch(0.65 0.25 150 / 0.2);
-      --badge-text: oklch(0.75 0.25 150);
-      --badge-border: oklch(0.65 0.25 150 / 0.5);
+      --badge-bg: #{$color-engine-green-vivid-a20};
+      --badge-text: #{$color-engine-green-bright};
+      --badge-border: #{$color-engine-green-vivid-a50};
     }
     
     &.badge-warning {
-      --badge-bg: oklch(0.75 0.25 85 / 0.2);
-      --badge-text: oklch(0.85 0.25 85);
-      --badge-border: oklch(0.75 0.25 85 / 0.5);
+      --badge-bg: #{$color-engine-gold-vivid-a20};
+      --badge-text: #{$color-engine-gold-vivid};
+      --badge-border: #{$color-engine-gold-vivid-a50};
     }
     
     &.badge-danger {
-      --badge-bg: oklch(0.55 0.25 25 / 0.2);
-      --badge-text: oklch(0.65 0.25 25);
-      --badge-border: oklch(0.55 0.25 25 / 0.5);
+      --badge-bg: #{$color-engine-error-vivid-a20};
+      --badge-text: #{$color-engine-error-bright};
+      --badge-border: #{$color-engine-error-vivid-a50};
     }
     
     &.badge-info {
-      --badge-bg: oklch(0.65 0.25 230 / 0.2);
-      --badge-text: oklch(0.75 0.25 230);
-      --badge-border: oklch(0.65 0.25 230 / 0.5);
+      --badge-bg: #{$color-synapse-social-bg};
+      --badge-text: #{$color-engine-blue-light};
+      --badge-border: #{$color-semantic-focus-ring};
     }
     
     &.badge-neutral {
-      --badge-bg: oklch(0.50 0.02 220 / 0.2);
-      --badge-text: oklch(0.70 0.02 220);
-      --badge-border: oklch(0.50 0.02 220 / 0.5);
+      --badge-bg: #{$color-engine-neutral-mid-a20};
+      --badge-text: #{$color-engine-neutral-light};
+      --badge-border: #{$color-engine-neutral-mid-a50};
     }
   }
   @else if $nature == 'notification' {
@@ -291,44 +291,44 @@
     display: flex;
     gap: 0.75rem;
     padding: var(--notification-padding, clamp(0.625rem, 1.25vw, 0.875rem));
-    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
-    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
-    border-left: 3px solid var(--notification-accent, oklch(0.88 0.18 95));
+    background: var(--glass-light, $color-engine-indigo-deep-a60);
+    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
+    border-left: 3px solid var(--notification-accent, $color-engine-gold-bright);
     border-radius: var(--radius-bento, 0.5rem);
     transition: all var(--motion-snap, 0.2s ease);
     
     // Unread state
     &.unread,
     &[aria-label*="unread"] {
-      background: var(--notification-unread, oklch(0.88 0.18 95 / 0.1));
+      background: var(--notification-unread, $color-engine-gold-bright-a10);
       border-left-width: 4px;
     }
     
     // Notification types
     &.notification-mention {
-      --notification-accent: oklch(0.88 0.18 95);
+      --notification-accent: #{$color-engine-gold-bright};
     }
     
     &.notification-comment {
-      --notification-accent: oklch(0.65 0.25 230);
+      --notification-accent: #{$color-accent-neon-blue};
     }
     
     &.notification-reaction {
-      --notification-accent: oklch(0.75 0.25 150);
+      --notification-accent: #{$color-engine-green-bright};
     }
     
     &.notification-system {
-      --notification-accent: oklch(0.70 0.02 220);
+      --notification-accent: #{$color-engine-neutral-light};
     }
     
     &.notification-urgent {
-      --notification-accent: oklch(0.55 0.25 25);
+      --notification-accent: #{$color-status-error};
     }
     
     // Hover state for interactive notifications
     &:hover {
-      background: var(--glass-hover, oklch(0.22 0.04 246));
-      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+      background: var(--glass-hover, $color-engine-blue-deep);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
       cursor: pointer;
     }
   }
@@ -338,10 +338,10 @@
     flex-wrap: wrap;
     gap: var(--picker-gap, clamp(0.25rem, 0.5vw, 0.375rem));
     padding: var(--picker-padding, clamp(0.5rem, 1vw, 0.75rem));
-    background: var(--glass-elevated, oklch(0.20 0.04 245 / 0.95));
-    border: 1px solid var(--border-accent, oklch(0.30 0.04 250 / 0.5));
+    background: var(--glass-elevated, $color-engine-blue-deep-a95);
+    border: 1px solid var(--border-accent, $color-engine-indigo-dim-a50);
     border-radius: var(--radius-bento, 0.5rem);
-    box-shadow: 0 4px 16px oklch(0.10 0.03 250 / 0.2);
+    box-shadow: 0 4px 16px $color-engine-indigo-void-a20;
     backdrop-filter: blur(20px);
     max-width: 280px;
     
@@ -359,7 +359,7 @@
       font-size: 1.25rem;
       
       &:hover {
-        background: var(--glass-hover, oklch(0.22 0.04 246));
+        background: var(--glass-hover, $color-engine-blue-deep);
         transform: scale(1.15);
       }
       
@@ -372,7 +372,7 @@
     .reaction-category {
       width: 100%;
       padding-top: 0.5rem;
-      border-top: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+      border-top: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
       
       &:first-child {
         padding-top: 0;
@@ -383,7 +383,7 @@
     .reaction-category-label {
       font-size: 0.75rem;
       font-weight: 600;
-      color: var(--text-secondary, oklch(0.70 0.02 220));
+      color: var(--text-secondary, $color-engine-neutral-light);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 0.5rem;
@@ -395,16 +395,16 @@
     flex-direction: column;
     gap: 0.75rem;
     padding: var(--card-padding, clamp(0.75rem, 1.5vw, 1rem));
-    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
-    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    background: var(--glass-light, $color-engine-indigo-deep-a60);
+    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     border-radius: var(--radius-bento, 0.5rem);
     transition: all var(--motion-fluid, 0.3s ease);
     backdrop-filter: blur(10px);
     
     &:hover {
-      background: var(--glass-hover, oklch(0.22 0.04 246));
-      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
-      box-shadow: 0 4px 16px oklch(0.10 0.03 250 / 0.2);
+      background: var(--glass-hover, $color-engine-blue-deep);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
+      box-shadow: 0 4px 16px $color-engine-indigo-void-a20;
       transform: translateY(-1px);
     }
     
@@ -425,7 +425,7 @@
       display: flex;
       gap: 0.375rem;
       padding-top: 0.5rem;
-      border-top: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+      border-top: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     }
     
     .user-stats {
@@ -440,12 +440,12 @@
         .stat-value {
           font-weight: 700;
           font-size: 1.125rem;
-          color: var(--text-primary, oklch(0.98 0.01 90));
+          color: var(--text-primary, $color-engine-neutral-bright);
         }
         
         .stat-label {
           font-size: 0.75rem;
-          color: var(--text-secondary, oklch(0.70 0.02 220));
+          color: var(--text-secondary, $color-engine-neutral-light);
           text-transform: uppercase;
           letter-spacing: 0.05em;
         }
@@ -455,34 +455,34 @@
   @else if $nature == 'surface-glass' {
     // Dark glassmorphism surface for headers/navigation
     // Purpose: High-contrast surface with white text on dark background
-    background: oklch(0.15 0.02 250 / 0.85);  // Deep dark blue with transparency
+    background: $color-engine-neutral-deep-a80;  // Deep dark blue with transparency
     backdrop-filter: blur(20px);
     border-radius: 0;  // Headers typically don't have border radius
     padding: 0;  // Headers control their own internal padding
     
     // Subtle border for definition
-    border-bottom: 1px solid oklch(0.25 0.02 250);
+    border-bottom: 1px solid $color-engine-neutral-dark;
     
     // Shadow for depth
-    box-shadow: 0 2px 8px oklch(0.05 0.01 250 / 0.3);
+    box-shadow: 0 2px 8px $color-engine-neutral-void-a30;
     
     // High contrast mode - ensure pure black background
     @media (prefers-contrast: high) {
-      background: oklch(0.08 0 0);  // Pure black
-      border-bottom: 2px solid oklch(0.30 0 0);
+      background: $color-engine-neutral-void;  // Pure black
+      border-bottom: 2px solid $color-engine-neutral-dim;
       backdrop-filter: none;
       box-shadow: none;
     }
   }
   @else if $nature == 'transcendent' {
     // Sacred, mission-critical prominence — hero sections, genesis-level content
-    background: oklch(0.06 0.02 260);
-    color: oklch(0.99 0.005 90);
+    background: $color-engine-neutral-void;
+    color: $color-light-white;
     padding: clamp(2rem, 4vw, 3rem);
-    border: 1px solid oklch(0.20 0.04 250);
+    border: 1px solid $color-engine-indigo-dark;
     box-shadow:
-      0 0 24px oklch(0.65 0.25 230 / 0.1),
-      inset 0 0 40px oklch(0.05 0.01 260 / 0.3);
+      0 0 24px $color-engine-blue-vivid-a10,
+      inset 0 0 40px $color-engine-neutral-void-a30;
     position: relative;
     overflow: hidden;
     
@@ -493,24 +493,24 @@
       inset: 0;
       background: linear-gradient(
         175deg,
-        oklch(0.10 0.03 250 / 0.4) 0%,
+        $color-engine-indigo-void-a40 0%,
         transparent 50%,
-        oklch(0.08 0.02 260 / 0.3) 100%
+        $color-engine-neutral-void-a30 100%
       );
       pointer-events: none;
     }
     
     @media (prefers-contrast: high) {
-      background: oklch(0.05 0 0);
-      border: 2px solid oklch(0.30 0 0);
+      background: $color-engine-neutral-space;
+      border: 2px solid $color-engine-neutral-dim;
       box-shadow: none;
     }
   }
   @else if $nature == 'ephemeral' {
     // Transient, auto-dismissing content — toast notifications, flash messages
-    background: oklch(0.99 0.005 90);
-    border: 1px solid oklch(0.85 0.005 220);
-    box-shadow: 0 2px 8px oklch(0.08 0.01 250 / 0.15);
+    background: $color-light-white;
+    border: 1px solid $color-engine-neutral-pale;
+    box-shadow: 0 2px 8px $color-engine-neutral-void-a15;
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem));
     position: fixed;
     z-index: 1000;

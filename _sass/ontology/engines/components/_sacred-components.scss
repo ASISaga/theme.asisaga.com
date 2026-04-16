@@ -24,7 +24,7 @@
     @include transition-smooth;
     &:hover {
       transform: scale(1.1);
-      /* text-shadow: 0 0 3px oklch(0.70 0.15 85 / 0.6); */ /* Removed for accessibility - can interfere with text readability */
+      /* text-shadow: 0 0 3px $color-engine-gold-vivid-a60; */ /* Removed for accessibility - can interfere with text readability */
     }
   }
 
@@ -86,29 +86,29 @@
   // ----------------------------------------
   .sacred-background {
     background: linear-gradient(135deg, 
-      oklch(0.08 0.01 250 / 0.95) 0%, 
-      oklch(0.08 0.01 250 / 0.8) 50%, 
-      oklch(0.65 0.25 230 / 0.1) 100%);
+      $color-engine-neutral-void-a95 0%, 
+      $color-engine-neutral-void-a80 50%, 
+      $color-engine-blue-vivid-a10 100%);
     color: $color-light-white;
   }
 
   .consciousness-background {
     background: radial-gradient(circle at center, 
-      oklch(0.08 0.01 250 / 0.1) 0%, 
-      oklch(0.70 0.15 85 / 0.05) 50%, 
+      $color-engine-neutral-void-a10 0%, 
+      $color-engine-gold-vivid-a05 50%, 
       transparent 100%);
   }
 
   .essence-weave-background {
     background-image: 
       repeating-linear-gradient(45deg, 
-        oklch(0.70 0.15 85 / 0.1) 0, 
-        oklch(0.70 0.15 85 / 0.1) 1px, 
+        $color-engine-gold-vivid-a10 0, 
+        $color-engine-gold-vivid-a10 1px, 
         transparent 1px, 
         transparent 20px),
       repeating-linear-gradient(-45deg, 
-        oklch(0.65 0.02 220 / 0.05) 0, 
-        oklch(0.65 0.02 220 / 0.05) 1px, 
+        $color-engine-neutral-light-a05 0, 
+        $color-engine-neutral-light-a05 1px, 
         transparent 1px, 
         transparent 20px);
   }
@@ -119,8 +119,8 @@
   .sacred-container {
     padding: 2rem;
     border-radius: 0.5rem;
-    background: oklch(0.99 0.005 90 / 0.95);
-    border: 1px solid oklch(0.70 0.15 85 / 0.2);
+    background: $color-engine-neutral-luminous-a95;
+    border: 1px solid $color-engine-gold-vivid-a20;
     box-shadow: $effect-shadow-consciousness-depth;
     position: relative;
     @include overflow-hidden;
@@ -174,13 +174,13 @@
     transition: all 0.5s ease;
 
     &:hover {
-      background-color: oklch(0.08 0.01 250 / 0.05);
+      background-color: $color-engine-neutral-void-a05;
 
       &::after {
         content: '';
         position: absolute;
         inset: 0 0 0 0;
-        border: 2px solid oklch(0.70 0.15 85 / 0.3);
+        border: 2px solid $color-engine-gold-vivid-a30;
         border-radius: inherit;
         @include pointer-events-none;
       }
@@ -198,8 +198,8 @@
     background: conic-gradient(
       $color-accent-gold 0deg,
       $color-accent-gold calc(var(--progress, 0) * 3.6deg),
-      oklch(0.65 0.02 220 / 0.2) calc(var(--progress, 0) * 3.6deg),
-      oklch(0.65 0.02 220 / 0.2) 360deg
+      $color-engine-neutral-light-a20 calc(var(--progress, 0) * 3.6deg),
+      $color-engine-neutral-light-a20 360deg
     );
 
     &::before {
@@ -233,21 +233,21 @@
     letter-spacing: 0.5px;
 
     &.stage-awakening {
-      background: oklch(0.65 0.25 230 / 0.1);
+      background: $color-engine-blue-vivid-a10;
       color: $color-accent-neon-blue;
-      border: 1px solid oklch(0.65 0.25 230 / 0.3);
+      border: 1px solid $color-accent-neon-blue-border;
     }
 
     &.stage-integration {
-      background: oklch(0.70 0.15 85 / 0.1);
+      background: $color-engine-gold-vivid-a10;
       color: $color-accent-gold;
-      border: 1px solid oklch(0.70 0.15 85 / 0.3);
+      border: 1px solid $color-engine-gold-vivid-a30;
     }
 
     &.stage-mastery {
-      background: oklch(0.65 0.25 230 / 0.1);
+      background: $color-engine-blue-vivid-a10;
       color: $color-accent-neon-blue;
-      border: 1px solid oklch(0.65 0.25 230 / 0.3);
+      border: 1px solid $color-accent-neon-blue-border;
     }
   }
 
@@ -314,12 +314,12 @@
   // Sacred Primary Navigation
   // ----------------------------------------
   .sacred-navbar {
-    background: oklch(0.99 0.005 90 / 0.95);
+    background: $color-engine-neutral-luminous-a95;
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid oklch(0.70 0.15 85 / 0.2);
+    border-bottom: 1px solid $color-engine-gold-vivid-a20;
     @include transition-smooth;
     &.scrolled {
-      background: oklch(0.08 0.01 250 / 0.95);
+      background: $color-engine-neutral-void-a95;
 
       .navbar-brand,
       .nav-link {
@@ -380,7 +380,7 @@
 
     &:hover {
       color: $color-accent-gold;
-      background: oklch(0.70 0.15 85 / 0.1);
+      background: $color-engine-gold-vivid-a10;
       transform: translateY(-2px);
 
       &::after {
@@ -406,8 +406,8 @@
       position: absolute;
       top: 100%;
       left: 0;
-      background: oklch(0.99 0.005 90 / 0.98);
-      border: 1px solid oklch(0.70 0.15 85 / 0.2);
+      background: $color-engine-neutral-luminous-a98;
+      border: 1px solid $color-engine-gold-vivid-a20;
       border-radius: 0.75rem;
       box-shadow: $effect-shadow-consciousness-depth;
       padding: 1rem 0;
@@ -434,7 +434,7 @@
     font-family: $font-family-consciousness;
     @include transition-smooth;
     &:hover {
-      background: oklch(0.70 0.15 85 / 0.1);
+      background: $color-engine-gold-vivid-a10;
       color: $color-accent-gold;
       transform: translateX(5px);
     }
@@ -483,8 +483,8 @@
   .sacred-sidenav {
     width: 280px;
     max-width: 85vw;  // Prevent overflow on small viewports (320px = 272px max)
-    background: oklch(0.99 0.005 90 / 0.98);
-    border-right: 1px solid oklch(0.70 0.15 85 / 0.2);
+    background: $color-engine-neutral-luminous-a98;
+    border-right: 1px solid $color-engine-gold-vivid-a20;
     padding: 2rem 0;
     height: 100vh;
     position: fixed;
@@ -502,7 +502,7 @@
 
     .sidenav-header {
       padding: 0 1.5rem 1.5rem;
-      border-bottom: 1px solid oklch(0.70 0.15 85 / 0.1);
+      border-bottom: 1px solid $color-engine-gold-vivid-a10;
       margin-bottom: 1rem;
 
       h3 {
@@ -546,7 +546,7 @@
       }
 
       &:hover {
-        background: oklch(0.70 0.15 85 / 0.1);
+        background: $color-engine-gold-vivid-a10;
         color: $color-accent-gold;
         transform: translateX(5px);
 
@@ -556,7 +556,7 @@
       }
 
       &.active {
-        background: oklch(0.70 0.15 85 / 0.15);
+        background: $color-engine-gold-vivid-a15;
         color: $color-accent-gold;
         font-weight: $font-weight-semibold;
 
@@ -703,7 +703,7 @@
       visibility: visible;
       box-shadow: none;
       border: none;
-      background: oklch(0.70 0.15 85 / 0.05);
+      background: $color-engine-gold-vivid-a05;
       margin-top: 0.5rem;
     }
   }
@@ -722,15 +722,15 @@
 }
 
 @mixin bg-luminous-gold-accessible {
-  background: linear-gradient(90deg, #FFD700 0%, #FFFACD 100%);
+  background: linear-gradient(90deg, $color-engine-sacred-gold-pure 0%, $color-engine-sacred-gold-lemon 100%);
 }
 
 @mixin bg-gradient-transcendent-overlay {
-  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+  background: linear-gradient(135deg, $color-engine-sacred-purple-lavender 0%, $color-engine-sacred-blue-cornflower 100%);
 }
 
 @mixin bg-gradient-consciousness-royal {
-  background: linear-gradient(90deg, #3a3ad6, #6e6ee6);
+  background: linear-gradient(90deg, $color-engine-sacred-blue-royal, $color-engine-sacred-blue-royal-mid);
 }
 
 @mixin font-size-xl {
@@ -823,14 +823,14 @@
     @include text-transcendent-white;
 
     &:hover {
-      background-color: oklch(0.55 0.22 228);
-      border-color: oklch(0.55 0.22 228);
+      background-color: $color-engine-blue-vivid;
+      border-color: $color-engine-blue-vivid;
       @include animate-hover-lift;
-      box-shadow: 0 0 20px oklch(0.65 0.25 230 / 0.6), 0 0 40px oklch(0.65 0.25 230 / 0.3);
+      box-shadow: 0 0 20px $color-engine-blue-vivid-a60, 0 0 40px $color-accent-neon-blue-border;
     }
 
     &:focus {
-      box-shadow: 0 0 0 3px oklch(0.65 0.25 230 / 0.5);
+      box-shadow: 0 0 0 3px $color-semantic-focus-ring;
     }
   }
 
@@ -895,7 +895,7 @@
     display: inline-flex;
     border-radius: 0.5rem;
     @include overflow-hidden;
-    box-shadow: 0 4px 12px oklch(0.08 0.01 250 / 0.15);
+    box-shadow: 0 4px 12px $color-engine-neutral-void-a15;
 
     .btn-sacred {
       border-radius: 0;
@@ -912,7 +912,7 @@
       }
 
       &:not(:last-child) {
-        border-right: 1px solid oklch(0.99 0.005 90 / 0.2);
+        border-right: 1px solid $color-engine-neutral-luminous-a20;
       }
     }
   }
@@ -1008,7 +1008,7 @@
       height: 200%;
       background: linear-gradient(45deg, 
         transparent 30%, 
-        oklch(0.99 0.005 90 / 0.3) 50%, 
+        $color-engine-neutral-luminous-a30 50%, 
         transparent 70%);
       transform: rotate(45deg);
       transition: all 0.6s ease;
@@ -1017,7 +1017,7 @@
 
     &:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 30px oklch(0.70 0.15 85 / 0.4);
+      box-shadow: 0 10px 30px $color-engine-gold-vivid-a40;
 
       &::before {
         opacity: 1;
@@ -1141,8 +1141,8 @@
   // Sacred Form Container
   // ----------------------------------------
   .form-sacred {
-    background: oklch(0.99 0.005 90 / 0.98);
-    border: 1px solid oklch(0.70 0.15 85 / 0.2);
+    background: $color-engine-neutral-luminous-a98;
+    border: 1px solid $color-engine-gold-vivid-a20;
     border-radius: 0.5rem;
     padding: 2rem;
     box-shadow: $effect-shadow-consciousness-depth;
@@ -1173,21 +1173,21 @@
     font-family: $font-family-interface;
     font-size: 1rem;
     @include transition-smooth;
-    background: oklch(0.99 0.005 90 / 0.8);
+    background: $color-engine-neutral-luminous-a80;
 
     &:focus {
       border-color: $color-accent-gold;
-      box-shadow: 0 0 0 0.2rem oklch(0.70 0.15 85 / 0.25);
+      box-shadow: 0 0 0 0.2rem $color-engine-gold-vivid-a20;
       background: $color-light-white;
       outline: none;
     }
 
     &:hover {
-      border-color: oklch(0.70 0.15 85 / 0.5);
+      border-color: $color-engine-gold-vivid-a50;
     }
 
     &::placeholder {
-      color: oklch(0.45 0.01 220 / 0.7);
+      color: $color-engine-neutral-mid-a70;
       font-style: italic;
     }
   }
@@ -1231,8 +1231,8 @@
   }
 
   .form-help-sacred {
-    background: oklch(0.70 0.15 85 / 0.1);
-    border: 1px solid oklch(0.70 0.15 85 / 0.2);
+    background: $color-engine-gold-vivid-a10;
+    border: 1px solid $color-engine-gold-vivid-a20;
     border-radius: 0.5rem;
     padding: 0.75rem;
     margin-top: 0.5rem;
@@ -1312,7 +1312,7 @@
       }
 
       &:focus {
-        box-shadow: 0 0 0 0.2rem oklch(0.70 0.15 85 / 0.25);
+        box-shadow: 0 0 0 0.2rem $color-engine-gold-vivid-a20;
       }
     }
 
@@ -1358,14 +1358,14 @@
       min-height: 100px;
       border: 2px dashed $color-border-silver;
       border-radius: 0.5rem;
-      background: oklch(0.70 0.15 85 / 0.05);
+      background: $color-engine-gold-vivid-a05;
       color: $color-dark-profound-black;
       font-family: $font-family-consciousness;
       @include cursor-pointer;
       @include transition-smooth;
       &:hover {
         border-color: $color-accent-gold;
-        background: oklch(0.70 0.15 85 / 0.1);
+        background: $color-engine-gold-vivid-a10;
       }
 
       &::before {
@@ -1377,7 +1377,7 @@
 
     &.has-file .form-file-label {
       border-color: $color-accent-neon-blue;
-      background: oklch(0.65 0.25 230 / 0.1);
+      background: $color-engine-blue-vivid-a10;
 
       &::before {
         content: "✅ ";
@@ -1394,7 +1394,7 @@
 
       &:focus {
         border-color: $color-accent-neon-blue;
-        box-shadow: 0 0 0 0.2rem oklch(0.65 0.25 230 / 0.25);
+        box-shadow: 0 0 0 0.2rem $color-engine-blue-vivid-a25;
       }
     }
 
@@ -1403,7 +1403,7 @@
 
       &:focus {
         border-color: $color-accent-neon-blue;
-        box-shadow: 0 0 0 0.2rem oklch(0.65 0.25 230 / 0.25);
+        box-shadow: 0 0 0 0.2rem $color-engine-blue-vivid-a25;
       }
     }
   }
@@ -1434,18 +1434,18 @@
   // Sacred Form Sections
   // ----------------------------------------
   .form-section-sacred {
-    border: 1px solid oklch(0.65 0.02 220 / 0.3);
+    border: 1px solid $color-engine-neutral-light-a30;
     border-radius: 0.5rem;
     padding: 1.5rem;
     margin-bottom: 2rem;
-    background: oklch(0.08 0.01 250 / 0.02);
+    background: $color-engine-neutral-void-a00;
 
     .form-section-header {
       display: flex;
       align-items: center;
       margin-bottom: 1.5rem;
       padding-bottom: 0.75rem;
-      border-bottom: 1px solid oklch(0.70 0.15 85 / 0.2);
+      border-bottom: 1px solid $color-engine-gold-vivid-a20;
 
       .section-icon {
         color: $color-accent-gold;
@@ -1542,7 +1542,7 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 1.5rem;
-    border-top: 1px solid oklch(0.70 0.15 85 / 0.2);
+    border-top: 1px solid $color-engine-gold-vivid-a20;
     margin-top: 2rem;
 
     .actions-left,
@@ -1571,7 +1571,7 @@
     input:focus,
     textarea:focus,
     select:focus {
-      outline: 3px solid oklch(0.70 0.15 85 / 0.5);
+      outline: 3px solid $color-engine-gold-vivid-a50;
       outline-offset: 2px;
     }
 
@@ -1808,7 +1808,7 @@
       @include genesis-entity('primary');
       border: none;
       border-radius: 0.5rem;
-      background: oklch(0.99 0.005 90 / 0.98);
+      background: $color-engine-neutral-luminous-a98;
       position: relative;
 
       &::before {
@@ -1827,7 +1827,7 @@
     }
 
     .modal-header {
-      border-bottom: 1px solid oklch(0.70 0.15 85 / 0.2);
+      border-bottom: 1px solid $color-engine-gold-vivid-a20;
       padding: 1.5rem;
 
       .modal-title {
@@ -1855,7 +1855,7 @@
     }
 
     .modal-footer {
-      border-top: 1px solid oklch(0.70 0.15 85 / 0.2);
+      border-top: 1px solid $color-engine-gold-vivid-a20;
       padding: 1.5rem;
       display: flex;
       justify-content: space-between;
@@ -1873,8 +1873,8 @@
     .modal-content {
       @include genesis-atmosphere('vibrant');
       background: linear-gradient(135deg, 
-        oklch(0.08 0.01 250 / 0.95) 0%, 
-        oklch(0.65 0.25 230 / 0.9) 100%);
+        $color-engine-neutral-void-a95 0%, 
+        $color-engine-blue-vivid-a90 100%);
       color: $color-light-white;
     }
   }
@@ -1900,9 +1900,9 @@
 
   .transcendent-hero {
     --transcendent-hero-content-max-width: 42rem;
-    --transcendent-image-scrim-strong: oklch(0.05 0.02 260 / 0.88);
-    --transcendent-image-scrim-mid: oklch(0.05 0.02 260 / 0.58);
-    --transcendent-image-scrim-light: oklch(0.05 0.02 260 / 0.24);
+    --transcendent-image-scrim-strong: #{$color-engine-neutral-void-a90};
+    --transcendent-image-scrim-mid: #{$color-engine-neutral-void-a60};
+    --transcendent-image-scrim-light: #{$color-engine-neutral-void-a20};
     --transcendent-image-scrim-midpoint: 48%;
     position: relative;
     min-height: 100vh;
@@ -1917,9 +1917,9 @@
       background: linear-gradient(
         135deg,
         $color-dark-profound-black 0%,
-        oklch(0.03 0.01 250) 25%,  // Slightly darker profound black
+        $color-engine-neutral-space 25%,  // Slightly darker profound black
         $color-accent-neon-blue 50%,
-        oklch(0.70 0.27 228) 75%,  // Slightly lighter neon blue
+        $color-engine-blue-light 75%,  // Slightly lighter neon blue
         $color-accent-gold 100%
       );
     }
@@ -2011,10 +2011,10 @@
       @include width-full;
       @include height-full;
       background-image: 
-        radial-gradient(2px 2px at 20px 30px, oklch(0.70 0.15 85 / 0.3), transparent),
-        radial-gradient(2px 2px at 40px 70px, oklch(0.65 0.25 230 / 0.4), transparent),
-        radial-gradient(1px 1px at 90px 40px, oklch(0.85 0.01 220 / 0.3), transparent),
-        radial-gradient(1px 1px at 130px 80px, oklch(0.65 0.02 220 / 0.2), transparent);
+        radial-gradient(2px 2px at 20px 30px, $color-engine-gold-vivid-a30, transparent),
+        radial-gradient(2px 2px at 40px 70px, $color-synapse-social-hover, transparent),
+        radial-gradient(1px 1px at 90px 40px, $color-engine-neutral-pale-a30, transparent),
+        radial-gradient(1px 1px at 130px 80px, $color-engine-neutral-light-a20, transparent);
       background-repeat: repeat;
       background-size: 150px 150px, 200px 200px, 100px 100px, 250px 250px;
       animation: cosmicDrift 60s linear infinite;
@@ -2027,7 +2027,7 @@
       background: linear-gradient(
         45deg,
         transparent 30%,
-        oklch(0.85 0.01 220 / 0.1) 50%,
+        $color-engine-neutral-pale-a10 50%,
         transparent 70%
       );
       animation: essenceFlow 20s ease-in-out infinite alternate;
@@ -2041,8 +2041,8 @@
       transform: translate(-50%, -50%);
       background: radial-gradient(
         circle,
-        oklch(0.70 0.15 85 / 0.1) 0%,
-        oklch(0.65 0.25 230 / 0.05) 50%,
+        $color-engine-gold-vivid-a10 0%,
+        $color-engine-blue-vivid-a05 50%,
         transparent 100%
       );
       animation: transcendentPulsation 8s ease-in-out infinite;
@@ -2093,7 +2093,7 @@
     max-width: min(600px, 100%);
     margin-left: auto;
     margin-right: auto;
-    color: oklch(0.99 0.005 90 / 0.9);
+    color: $color-engine-neutral-luminous-a90;
     line-height: $line-height-transcendent;
   }
 
@@ -2212,7 +2212,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: oklch(0.99 0.005 90 / 0.7);
+    color: $color-engine-neutral-luminous-a70;
     transition: color 0.3s ease;
     @include cursor-pointer;
     &:hover {
@@ -2531,9 +2531,9 @@
       background: conic-gradient(
         from 0deg,
         transparent,
-        oklch(0.70 0.15 85 / 0.1),
+        $color-engine-gold-vivid-a10,
         transparent,
-        oklch(0.65 0.25 230 / 0.1),
+        $color-engine-blue-vivid-a10,
         transparent
       );
       animation: consciousnessFlow 20s linear infinite;
@@ -2549,7 +2549,7 @@
       right: 20px;
       width: 40px;
       height: 40px;
-      border: 2px solid oklch(0.70 0.15 85 / 0.3);
+      border: 2px solid $color-engine-gold-vivid-a30;
       @include border-radius-rounded(50%);
       opacity: 0;
       transform: scale(0);
@@ -2559,8 +2559,8 @@
     &:hover {
       transform: translateY(-15px) scale(1.02);
       box-shadow: 
-        0 20px 60px oklch(0.08 0.01 250 / 0.4),
-        0 0 40px oklch(0.70 0.15 85 / 0.2);
+        0 20px 60px $color-engine-neutral-void-a40,
+        0 0 40px $color-engine-gold-vivid-a20;
 
       &::before {
         opacity: 1;
@@ -2587,13 +2587,13 @@
 
       &:hover {
         box-shadow: 
-          0 20px 60px oklch(0.08 0.01 250 / 0.4),
-          0 0 40px oklch(0.85 0.01 220 / 0.3);
+          0 20px 60px $color-engine-neutral-void-a40,
+          0 0 40px $color-engine-neutral-pale-a30;
       }
 
       .genesis-block-icon {
         color: $color-border-light;
-        background: radial-gradient(circle, oklch(0.85 0.01 220 / 0.1), transparent);
+        background: radial-gradient(circle, $color-engine-neutral-pale-a10, transparent);
       }
     }
 
@@ -2602,13 +2602,13 @@
 
       &:hover {
         box-shadow: 
-          0 20px 60px oklch(0.08 0.01 250 / 0.4),
-          0 0 40px oklch(0.70 0.15 85 / 0.4);
+          0 20px 60px $color-engine-neutral-void-a40,
+          0 0 40px $color-engine-gold-vivid-a40;
       }
 
       .genesis-block-icon {
         color: $color-accent-gold;
-        background: radial-gradient(circle, oklch(0.70 0.15 85 / 0.1), transparent);
+        background: radial-gradient(circle, $color-engine-gold-vivid-a10, transparent);
       }
     }
 
@@ -2617,13 +2617,13 @@
 
       &:hover {
         box-shadow: 
-          0 20px 60px oklch(0.08 0.01 250 / 0.4),
-          0 0 40px oklch(0.65 0.25 230 / 0.3);
+          0 20px 60px $color-engine-neutral-void-a40,
+          0 0 40px $color-accent-neon-blue-border;
       }
 
       .genesis-block-icon {
         color: $color-accent-neon-blue;
-        background: radial-gradient(circle, oklch(0.65 0.25 230 / 0.1), transparent);
+        background: radial-gradient(circle, $color-engine-blue-vivid-a10, transparent);
       }
     }
   }
@@ -2681,7 +2681,7 @@
 
   .genesis-block-text {
     @include body-text-large;
-    color: oklch(0.65 0.02 220 / 0.9);
+    color: $color-engine-neutral-light-a90;
     line-height: $line-height-transcendent;
     margin-bottom: auto;
     padding-bottom: $spacing-xl;
@@ -2709,7 +2709,7 @@
         background: linear-gradient(
           90deg,
           transparent,
-          oklch(0.99 0.005 90 / 0.2),
+          $color-engine-neutral-luminous-a20,
           transparent
         );
         transition: left 0.6s ease;
@@ -2722,8 +2722,8 @@
       // Transcendent glow on hover
       &:hover {
         box-shadow: 
-          0 8px 25px oklch(0.70 0.15 85 / 0.3),
-          0 0 20px oklch(0.70 0.15 85 / 0.2);
+          0 8px 25px $color-engine-gold-vivid-a30,
+          0 0 20px $color-engine-gold-vivid-a20;
       }
     }
   }
@@ -2753,7 +2753,7 @@
 
     .section-subtitle {
       @include body-text-large;
-      color: oklch(0.99 0.005 90 / 0.8);
+      color: $color-engine-neutral-luminous-a80;
       max-width: min(600px, 100%);
       margin: 0 auto;
       font-style: italic;
@@ -2920,11 +2920,11 @@
     position: relative;
     background: linear-gradient(
       135deg,
-      oklch(0.08 0.01 250 / 0.95) 0%,
-    oklch(0.55 0.22 228 / 0.9) 30%,
-      oklch(0.65 0.25 230 / 0.9) 50%,
-    oklch(0.55 0.22 228 / 0.9) 70%,
-      oklch(0.08 0.01 250 / 0.95) 100%
+      $color-engine-neutral-void-a95 0%,
+    $color-engine-blue-vivid-a90 30%,
+      $color-engine-blue-vivid-a90 50%,
+    $color-engine-blue-vivid-a90 70%,
+      $color-engine-neutral-void-a95 100%
     );
     overflow: hidden;  // Already present - ensures animations stay contained
     max-width: 100%;  // Add explicit max-width for containment
@@ -2938,9 +2938,9 @@
       width: 100%;
       height: 100%;
       background: 
-        radial-gradient(circle at 20% 20%, oklch(0.70 0.15 85 / 0.1) 1px, transparent 1px),
-        radial-gradient(circle at 80% 80%, oklch(0.85 0.01 220 / 0.08) 1px, transparent 1px),
-        radial-gradient(circle at 40% 60%, oklch(0.65 0.25 230 / 0.06) 1px, transparent 1px);
+        radial-gradient(circle at 20% 20%, $color-engine-gold-vivid-a10 1px, transparent 1px),
+        radial-gradient(circle at 80% 80%, $color-engine-neutral-pale-a10 1px, transparent 1px),
+        radial-gradient(circle at 40% 60%, $color-engine-blue-vivid-a05 1px, transparent 1px);
       background-size: 50px 50px, 80px 80px, 120px 120px;
       animation: thresholdPattern 40s linear infinite;
       opacity: 0.9 /* Increased for accessibility */;
@@ -3001,7 +3001,7 @@
       background: linear-gradient(
         to right,
         $color-accent-gold,
-        oklch(0.70 0.15 85 / 0.5),
+        $color-engine-gold-vivid-a50,
         transparent
       );
 
@@ -3013,18 +3013,18 @@
 
     // Consciousness pulse on hover
     &:hover {
-      /* text-shadow: 0 0 20px oklch(0.70 0.15 85 / 0.6); */ /* Removed for accessibility - can interfere with text readability */
+      /* text-shadow: 0 0 20px $color-engine-gold-vivid-a60; */ /* Removed for accessibility - can interfere with text readability */
     }
   }
 
   .threshold-description {
     @include body-text-large;
-    color: oklch(0.99 0.005 90 / 0.95);
+    color: $color-engine-neutral-luminous-a95;
     line-height: $line-height-transcendent;
     font-weight: $font-weight-normal;
 
     // Enhanced readability with subtle glow
-    /* text-shadow: 0 1px 2px oklch(0.08 0.01 250 / 0.5); */ /* Removed for accessibility - can interfere with text readability */
+    /* text-shadow: 0 1px 2px $color-engine-neutral-void-a50; */ /* Removed for accessibility - can interfere with text readability */
   }
 
   .threshold-cta {
@@ -3094,9 +3094,9 @@
       @include size(140px);
       background: radial-gradient(
         circle,
-        oklch(0.85 0.01 220 / 0.8) 0%,
-        oklch(0.85 0.01 220 / 0.4) 50%,
-        oklch(0.85 0.01 220 / 0.1) 100%
+        $color-engine-neutral-pale-a80 0%,
+        $color-engine-neutral-pale-a40 50%,
+        $color-engine-neutral-pale-a10 100%
       );
       top: 15%;
       left: 5%;
@@ -3112,9 +3112,9 @@
         background: $color-border-light;
         @include border-radius-rounded(50%);
         box-shadow: 
-          20px 30px 0 -2px oklch(0.85 0.01 220 / 0.6),
-          40px 10px 0 -3px oklch(0.85 0.01 220 / 0.4),
-          60px 40px 0 -1px oklch(0.85 0.01 220 / 0.5);
+          20px 30px 0 -2px $color-engine-neutral-pale-a60,
+          40px 10px 0 -3px $color-engine-neutral-pale-a40,
+          60px 40px 0 -1px $color-engine-neutral-pale-a50;
         animation: essenceParticles 4s ease-in-out infinite;
       }
     }
@@ -3124,9 +3124,9 @@
       @include size(220px);
       background: radial-gradient(
         circle,
-        oklch(0.65 0.25 230 / 0.6) 0%,
-        oklch(0.65 0.25 230 / 0.3) 40%,
-        oklch(0.65 0.25 230 / 0.08) 80%,
+        $color-engine-blue-vivid-a60 0%,
+        $color-accent-neon-blue-border 40%,
+        $color-engine-blue-vivid-a10 80%,
         transparent 100%
       );
       top: 25%;
@@ -3141,7 +3141,7 @@
         left: 30%;
         @include width(40%);
         @include height(40%);
-        border: 2px solid oklch(0.65 0.25 230 / 0.4);
+        border: 2px solid $color-synapse-social-hover;
         @include border-radius-rounded(50%);
         animation: consciousnessRings 8s linear infinite;
       }
@@ -3153,7 +3153,7 @@
         left: 20%;
         @include width(60%);
         @include height(60%);
-        border: 1px solid oklch(0.65 0.25 230 / 0.2);
+        border: 1px solid $color-synapse-social-bg;
         @include border-radius-rounded(50%);
         animation: consciousnessRings 12s linear infinite reverse;
       }
@@ -3164,9 +3164,9 @@
       @include size(100px);
       background: radial-gradient(
         circle,
-        oklch(0.70 0.15 85 / 0.9) 0%,
-        oklch(0.70 0.15 85 / 0.6) 30%,
-        oklch(0.70 0.15 85 / 0.2) 70%,
+        $color-engine-gold-vivid-a90 0%,
+        $color-engine-gold-vivid-a60 30%,
+        $color-engine-gold-vivid-a20 70%,
         transparent 100%
       );
       top: 50%;
@@ -3185,7 +3185,7 @@
         font-size: $font-size-3xl;
         color: $color-dark-profound-black;
         font-weight: $font-weight-bold;
-        /* text-shadow: 0 0 10px oklch(0.70 0.15 85 / 0.8); */ /* Removed for accessibility - can interfere with text readability */
+        /* text-shadow: 0 0 10px $color-engine-gold-vivid-a80; */ /* Removed for accessibility - can interfere with text readability */
         animation: infinitySymbol 10s ease-in-out infinite;
       }
 
@@ -3198,7 +3198,7 @@
         @include width(200%);
         @include height(200%);
         transform: translate(-50%, -50%);
-        border: 1px solid oklch(0.70 0.15 85 / 0.3);
+        border: 1px solid $color-engine-gold-vivid-a30;
         @include border-radius-rounded(50%);
         animation: energyWaves 3s ease-out infinite;
       }
@@ -3230,7 +3230,7 @@
 
     .section-subtitle {
       @include body-text-large;
-      color: oklch(0.65 0.02 220 / 0.9);
+      color: $color-engine-neutral-light-a90;
       @include max-width(700px);
       margin: 0 auto;
       font-style: italic;
@@ -3331,11 +3331,11 @@
   @keyframes diamondGlow {
     0%, 100% { 
       opacity: 0.9 /* Increased for accessibility */; 
-      filter: drop-shadow(0 0 5px oklch(0.70 0.15 85 / 0.5)); 
+      filter: drop-shadow(0 0 5px $color-engine-gold-vivid-a50); 
     }
     50% { 
       opacity: 1; 
-      filter: drop-shadow(0 0 15px oklch(0.70 0.15 85 / 0.8)); 
+      filter: drop-shadow(0 0 15px $color-engine-gold-vivid-a80); 
     }
   }
 
@@ -3444,9 +3444,9 @@
       background: linear-gradient(
         45deg,
         $color-dark-profound-black 0%,
-        oklch(0.03 0.01 250) 25%,  // Slightly darker profound black
+        $color-engine-neutral-space 25%,  // Slightly darker profound black
         $color-accent-neon-blue 50%,
-        oklch(0.60 0.23 228) 75%,  // Slightly darker neon blue
+        $color-engine-blue-vivid 75%,  // Slightly darker neon blue
         $color-dark-profound-black 100%
       );
     }
@@ -3461,11 +3461,11 @@
         width: 100%;
         height: 100%;
         background-image: 
-          radial-gradient(2px 2px at 20px 30px, oklch(0.70 0.15 85 / 0.4), transparent),
-          radial-gradient(2px 2px at 40px 70px, oklch(0.65 0.02 220 / 0.3), transparent),
-          radial-gradient(1px 1px at 90px 40px, oklch(0.65 0.25 230 / 0.5), transparent),
-          radial-gradient(1px 1px at 130px 80px, oklch(0.85 0.01 220 / 0.3), transparent),
-          radial-gradient(2px 2px at 160px 30px, oklch(0.70 0.15 85 / 0.2), transparent);
+          radial-gradient(2px 2px at 20px 30px, $color-engine-gold-vivid-a40, transparent),
+          radial-gradient(2px 2px at 40px 70px, $color-engine-neutral-light-a30, transparent),
+          radial-gradient(1px 1px at 90px 40px, $color-semantic-focus-ring, transparent),
+          radial-gradient(1px 1px at 130px 80px, $color-engine-neutral-pale-a30, transparent),
+          radial-gradient(2px 2px at 160px 30px, $color-engine-gold-vivid-a20, transparent);
         background-repeat: repeat;
         background-size: 200px 200px, 250px 250px, 150px 150px, 300px 300px, 180px 180px;
         animation: starfieldDrift 80s linear infinite;
@@ -3493,9 +3493,9 @@
       width: 100%;
       height: 100%;
       background: 
-        radial-gradient(circle at 25% 25%, oklch(0.70 0.15 85 / 0.3) 1px, transparent 1px),
-        radial-gradient(circle at 75% 75%, oklch(0.65 0.02 220 / 0.2) 1px, transparent 1px),
-        radial-gradient(circle at 50% 10%, oklch(0.65 0.25 230 / 0.25) 1px, transparent 1px);
+        radial-gradient(circle at 25% 25%, $color-engine-gold-vivid-a30 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, $color-engine-neutral-light-a20 1px, transparent 1px),
+        radial-gradient(circle at 50% 10%, $color-engine-blue-vivid-a25 1px, transparent 1px);
       background-size: 100px 100px, 150px 150px, 200px 200px;
       animation: cosmicRotation 120s linear infinite;
     }
@@ -3509,7 +3509,7 @@
       background: linear-gradient(
         45deg,
         transparent 40%,
-        oklch(0.85 0.01 220 / 0.1) 50%,
+        $color-engine-neutral-pale-a10 50%,
         transparent 60%
       );
       animation: consciousnessWaveFlow 25s ease-in-out infinite alternate;
@@ -3524,9 +3524,9 @@
       background: linear-gradient(
         90deg,
         transparent 0%,
-        oklch(0.70 0.15 85 / 0.1) 25%,
-        oklch(0.65 0.25 230 / 0.15) 50%,
-        oklch(0.85 0.01 220 / 0.1) 75%,
+        $color-engine-gold-vivid-a10 25%,
+        $color-engine-blue-vivid-a15 50%,
+        $color-engine-neutral-pale-a10 75%,
         transparent 100%
       );
       @include border-radius-rounded(50%);
@@ -3548,11 +3548,11 @@
       color: $color-accent-gold;
       background: radial-gradient(
         circle,
-        oklch(0.70 0.15 85 / 0.2) 0%,
-        oklch(0.65 0.25 230 / 0.1) 50%,
+        $color-engine-gold-vivid-a20 0%,
+        $color-engine-blue-vivid-a10 50%,
         transparent 100%
       );
-      border: 2px solid oklch(0.70 0.15 85 / 0.4);
+      border: 2px solid $color-engine-gold-vivid-a40;
       position: relative;
       z-index: 3;
       animation: coreRotation 20s linear infinite;
@@ -3567,7 +3567,7 @@
       .ring {
         position: absolute;
         @include border-radius-rounded(50%);
-        border: 1px solid oklch(0.70 0.15 85 / 0.3);
+        border: 1px solid $color-engine-gold-vivid-a30;
         animation-timing-function: ease-in-out;
         animation-iteration-count: infinite;
 
@@ -3585,7 +3585,7 @@
           top: -2rem;
           left: -2rem;
           animation: ringPulse2 6s infinite;
-          border-color: oklch(0.65 0.25 230 / 0.2);
+          border-color: $color-synapse-social-bg;
         }
 
         &.ring-3 {
@@ -3594,7 +3594,7 @@
           top: -3rem;
           left: -3rem;
           animation: ringPulse3 8s infinite;
-          border-color: oklch(0.85 0.01 220 / 0.15);
+          border-color: $color-engine-neutral-pale-a15;
         }
       }
     }
@@ -3628,14 +3628,14 @@
 
   .genesis-invitation-description {
     @include body-text-large;
-    color: oklch(0.65 0.02 220 / 0.95);
+    color: $color-engine-neutral-light-a95;
     margin-bottom: $spacing-4xl;
     max-width: min(700px, 100%);
     margin-left: auto;
     margin-right: auto;
     line-height: $line-height-transcendent;
     font-weight: $font-weight-normal;
-    /* text-shadow: 0 1px 3px oklch(0.08 0.01 250 / 0.5); */ /* Removed for accessibility - can interfere with text readability */
+    /* text-shadow: 0 1px 3px $color-engine-neutral-void-a50; */ /* Removed for accessibility - can interfere with text readability */
   }
 
   // Genesis Actions
@@ -3665,13 +3665,13 @@
 
       &.transcendent-glow-btn {
         box-shadow: 
-          0 8px 32px oklch(0.70 0.15 85 / 0.3),
-          0 0 20px oklch(0.70 0.15 85 / 0.2);
+          0 8px 32px $color-engine-gold-vivid-a30,
+          0 0 20px $color-engine-gold-vivid-a20;
 
         &:hover {
           box-shadow: 
-            0 12px 40px oklch(0.70 0.15 85 / 0.4),
-            0 0 30px oklch(0.70 0.15 85 / 0.3);
+            0 12px 40px $color-engine-gold-vivid-a40,
+            0 0 30px $color-engine-gold-vivid-a30;
           transform: translateY(-3px) scale(1.02);
         }
       }
@@ -3695,7 +3695,7 @@
       background: linear-gradient(
         90deg,
         transparent,
-        oklch(0.99 0.005 90 / 0.4),
+        $color-engine-neutral-luminous-a40,
         transparent
       );
       animation: energyFlow 3s ease-in-out infinite;
@@ -3747,7 +3747,7 @@
         flex: 1;
         height: 2px;
         position: relative;
-        background: oklch(0.65 0.02 220 / 0.2);
+        background: $color-engine-neutral-light-a20;
         border-radius: 1px;
 
         &::before {
@@ -3828,12 +3828,12 @@
     .consciousness-field {
       width: 100%;
       height: 100%;
-      border: 2px solid oklch(0.70 0.15 85 / 0.4);
+      border: 2px solid $color-engine-gold-vivid-a40;
       @include border-radius-rounded(50%);
       background: radial-gradient(
         circle,
-        oklch(0.70 0.15 85 / 0.1),
-        oklch(0.65 0.25 230 / 0.05),
+        $color-engine-gold-vivid-a10,
+        $color-engine-blue-vivid-a05,
         transparent
       );
       animation: consciousnessFieldPulse 3s ease-in-out infinite;
@@ -3844,7 +3844,7 @@
   .transcendent-community {
     .community-text {
       @include body-text;
-      color: oklch(0.65 0.02 220 / 0.8);
+      color: $color-engine-neutral-light-a80;
       margin-bottom: $spacing-lg;
 
       .community-count {
@@ -3852,7 +3852,7 @@
           color: $color-accent-gold;
           font-weight: $font-weight-bold;
           font-size: $font-size-lg;
-          /* text-shadow: 0 0 10px oklch(0.70 0.15 85 / 0.5); */ /* Removed for accessibility - can interfere with text readability */
+          /* text-shadow: 0 0 10px $color-engine-gold-vivid-a50; */ /* Removed for accessibility - can interfere with text readability */
         }
       }
     }
@@ -3934,11 +3934,11 @@
   @keyframes consciousnessFieldPulse {
     0%, 100% { 
       transform: scale(1); 
-      border-color: oklch(0.70 0.15 85 / 0.4); 
+      border-color: $color-engine-gold-vivid-a40; 
     }
     50% { 
       transform: scale(1.1); 
-      border-color: oklch(0.70 0.15 85 / 0.7); 
+      border-color: $color-engine-gold-vivid-a70; 
     }
   }
 
@@ -4064,13 +4064,13 @@
     padding: $spacing-lg $spacing-3xl;
     min-width: 220px;
     box-shadow: 
-      0 8px 32px oklch(0.70 0.15 85 / 0.3),
-      0 0 20px oklch(0.70 0.15 85 / 0.2);
+      0 8px 32px $color-engine-gold-vivid-a30,
+      0 0 20px $color-engine-gold-vivid-a20;
 
     &:hover {
       box-shadow: 
-        0 12px 40px oklch(0.70 0.15 85 / 0.4),
-        0 0 30px oklch(0.70 0.15 85 / 0.3);
+        0 12px 40px $color-engine-gold-vivid-a40,
+        0 0 30px $color-engine-gold-vivid-a30;
       transform: translateY(-3px) scale(1.02);
     }
   }

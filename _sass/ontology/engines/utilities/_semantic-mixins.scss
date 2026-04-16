@@ -232,17 +232,17 @@
 // ----------------------------------------
 
 @mixin glass-surface($opacity: 0.75, $blur: 12px) {
-  background: oklch(0.20 0.04 245 / $opacity);
+  background: oklch(0.20 0.04 245 / $opacity); // stylelint-disable-line declaration-property-value-disallowed-list
   backdrop-filter: blur($blur) saturate(1.5);
   -webkit-backdrop-filter: blur($blur) saturate(1.5);
 }
 
 @mixin glass-border($opacity: 0.4) {
-  border: 1px solid oklch(0.35 0.05 248 / $opacity);
+  border: 1px solid oklch(0.35 0.05 248 / $opacity); // stylelint-disable-line declaration-property-value-disallowed-list
 }
 
 @mixin glass-glow($color: $accent-glow, $intensity: 0.15) {
-  box-shadow: 0 0 20px oklch(0.70 0.15 85 / $intensity);
+  box-shadow: 0 0 20px oklch(0.70 0.15 85 / $intensity); // stylelint-disable-line declaration-property-value-disallowed-list
 }
 
 // ----------------------------------------
@@ -431,23 +431,23 @@
 // ----------------------------------------
 
 @mixin bg-gradient-sacred-shimmer {
-  background: linear-gradient(90deg, oklch(0.75 0.18 82) 0%, oklch(0.70 0.15 85) 50%, oklch(0.60 0.12 88) 100%);
+  background: linear-gradient(90deg, $color-accent-gold-bright 0%, $color-accent-gold 50%, $color-engine-gold-muted 100%);
 }
 
 @mixin bg-gradient-consciousness-accent {
-  background: linear-gradient(135deg, oklch(0.08 0.01 250) 0%, oklch(0.70 0.15 85) 100%);
+  background: linear-gradient(135deg, $color-dark-profound-black 0%, $color-accent-gold 100%);
 }
 
 @mixin bg-gradient-genesis-subtle {
-  background: linear-gradient(135deg, oklch(0.70 0.15 85) 0%, oklch(0.75 0.18 82) 100%);
+  background: linear-gradient(135deg, $color-accent-gold 0%, $color-accent-gold-bright 100%);
 }
 
 @mixin gradient-consciousness {
-  background: linear-gradient(135deg, oklch(0.08 0.01 250) 0%, oklch(0.70 0.15 85) 100%);
+  background: linear-gradient(135deg, $color-dark-profound-black 0%, $color-accent-gold 100%);
 }
 
 @mixin bg-gradient-primary-light {
-  background: linear-gradient(135deg, oklch(0.65 0.25 230) 0%, oklch(0.75 0.28 225) 100%);
+  background: linear-gradient(135deg, $color-accent-neon-blue 0%, $color-accent-neon-blue-bright 100%);
 }
 
 // ----------------------------------------
@@ -455,23 +455,23 @@
 // ----------------------------------------
 
 @mixin text-cosmic-deep-blue {
-  color: oklch(0.08 0.01 250);
+  color: $color-dark-profound-black;
 }
 
 @mixin text-sacred {
-  color: oklch(0.70 0.15 85);
+  color: $color-accent-gold;
 }
 
 @mixin text-transcendent {
-  color: oklch(0.99 0.005 90);
+  color: $color-light-white;
 }
 
 @mixin text-transcendent-white {
-  color: oklch(0.99 0.005 90);
+  color: $color-light-white;
 }
 
 @mixin text-bridge {
-  color: oklch(0.65 0.02 220);
+  color: $color-border-silver;
 }
 
 @mixin text-consciousness {
@@ -479,15 +479,15 @@
 }
 
 @mixin text-primary {
-  color: oklch(0.12 0.01 250);
+  color: $color-text-primary;
 }
 
 @mixin text-secondary {
-  color: oklch(0.25 0.01 230);
+  color: $color-text-secondary;
 }
 
 @mixin text-muted {
-  color: oklch(0.45 0.01 220);
+  color: $color-text-muted;
 }
 
 // ----------------------------------------
@@ -495,47 +495,47 @@
 // ----------------------------------------
 
 @mixin bg-sacred-gold-dark {
-  background-color: oklch(0.60 0.12 88);
+  background-color: $color-engine-gold-muted;
 }
 
 @mixin bg-luminous-gold {
-  background-color: oklch(0.70 0.15 85);
+  background-color: $color-accent-gold;
 }
 
 @mixin bg-sacred {
-  background-color: oklch(0.70 0.15 85 / 0.1);
+  background-color: $color-engine-gold-vivid-a10;
 }
 
 @mixin bg-consciousness {
-  background-color: oklch(0.65 0.25 230 / 0.05);
+  background-color: $color-engine-blue-vivid-a05;
 }
 
 @mixin bg-transcendent {
-  background-color: oklch(0.99 0.005 90);
+  background-color: $color-light-white;
 }
 
 @mixin bg-transcendent-white {
-  background-color: oklch(0.99 0.005 90);
+  background-color: $color-light-white;
 }
 
 @mixin bg-transcendent-white-subtle {
-  background-color: oklch(0.96 0.01 90);
+  background-color: $color-light-surface;
 }
 
 @mixin bg-primary {
-  background-color: oklch(0.65 0.25 230);
+  background-color: $color-accent-neon-blue;
 }
 
 @mixin bg-secondary {
-  background-color: oklch(0.25 0.01 230);
+  background-color: $color-text-secondary;
 }
 
 @mixin bg-light {
-  background-color: oklch(0.95 0.01 220);
+  background-color: $color-engine-neutral-bright;
 }
 
 @mixin bg-dark {
-  background-color: oklch(0.08 0.01 250);
+  background-color: $color-dark-profound-black;
 }
 
 // ----------------------------------------
@@ -543,39 +543,39 @@
 // ----------------------------------------
 
 @mixin border-sacred-gold-dark {
-  border-color: oklch(0.60 0.12 88);
+  border-color: $color-engine-gold-muted;
 }
 
 @mixin border-luminous-gold {
-  border-color: oklch(0.70 0.15 85);
+  border-color: $color-accent-gold;
 }
 
 @mixin border-sacred {
-  border-color: oklch(0.70 0.15 85);
+  border-color: $color-accent-gold;
 }
 
 @mixin border-primary {
-  border-color: oklch(0.65 0.25 230);
+  border-color: $color-accent-neon-blue;
 }
 
 @mixin border-primary-dark {
-  border-color: oklch(0.55 0.22 228);
+  border-color: $color-engine-blue-vivid;
 }
 
 @mixin border-secondary {
-  border-color: oklch(0.25 0.01 230);
+  border-color: $color-text-secondary;
 }
 
 @mixin border-luminous-gold-medium {
-  border-color: oklch(0.70 0.15 85);
+  border-color: $color-accent-gold;
 }
 
 @mixin border-left-primary($width: 2px) {
-  border-left: $width solid oklch(0.65 0.25 230);
+  border-left: $width solid $color-accent-neon-blue;
 }
 
 @mixin border-bottom-transcendent-white($width: 2px) {
-  border-bottom: $width solid oklch(0.99 0.005 90);
+  border-bottom: $width solid $color-light-white;
 }
 
 // ----------------------------------------
@@ -583,15 +583,15 @@
 // ----------------------------------------
 
 @mixin gradient-transcendent {
-  background: linear-gradient(135deg, oklch(0.99 0.005 90) 0%, oklch(0.96 0.01 90) 100%);
+  background: linear-gradient(135deg, $color-light-white 0%, $color-light-surface 100%);
 }
 
 @mixin gradient-sacred {
-  background: linear-gradient(135deg, oklch(0.70 0.15 85) 0%, oklch(0.75 0.18 82) 100%);
+  background: linear-gradient(135deg, $color-accent-gold 0%, $color-accent-gold-bright 100%);
 }
 
 @mixin bg-gradient-primary-dark {
-  background: linear-gradient(135deg, oklch(0.55 0.22 228) 0%, oklch(0.65 0.25 230) 100%);
+  background: linear-gradient(135deg, $color-engine-blue-vivid 0%, $color-accent-neon-blue 100%);
 }
 
 // ----------------------------------------
@@ -599,23 +599,23 @@
 // ----------------------------------------
 
 @mixin shadow-sacred-glow {
-  box-shadow: 0 0 0.5rem oklch(0.70 0.15 85 / 0.3);
+  box-shadow: 0 0 0.5rem $color-engine-gold-vivid-a30;
 }
 
 @mixin shadow-sacred {
-  box-shadow: 0 0 0.5rem oklch(0.70 0.15 85 / 0.3);
+  box-shadow: 0 0 0.5rem $color-engine-gold-vivid-a30;
 }
 
 @mixin shadow-consciousness {
-  box-shadow: 0 0.25rem 2rem oklch(0.08 0.01 250 / 0.4);
+  box-shadow: 0 0.25rem 2rem $color-engine-neutral-void-a40;
 }
 
 @mixin shadow-focus-luminous-gold {
-  box-shadow: 0 0 0 0.2rem oklch(0.70 0.15 85 / 0.5);
+  box-shadow: 0 0 0 0.2rem $color-engine-gold-vivid-a50;
 }
 
 @mixin bg-cosmic-deep-blue {
-  background-color: oklch(0.08 0.01 250);
+  background-color: $color-dark-profound-black;
 }
 
 // ----------------------------------------
@@ -623,38 +623,38 @@
 // ----------------------------------------
 
 @mixin border-cosmic-deep-blue($width) {
-  border: $width solid oklch(0.08 0.01 250);
+  border: $width solid $color-dark-profound-black;
 }
 
 @mixin border-cosmic-deep-blue-accessible {
-  border: 2px solid oklch(0.08 0.01 250);
+  border: 2px solid $color-dark-profound-black;
 }
 
 @mixin shadow-focus-cosmic-deep-blue {
-  box-shadow: 0 0 0 0.2rem oklch(0.08 0.01 250 / 0.5);
+  box-shadow: 0 0 0 0.2rem $color-engine-neutral-void-a50;
 }
 
 @mixin shadow-soft-luminous-gold {
-  box-shadow: 0 2px 8px 0 oklch(0.70 0.15 85 / 0.15);
+  box-shadow: 0 2px 8px 0 $color-engine-gold-vivid-a15;
 }
 
 @mixin bg-luminous-gold-light {
-  background-color: oklch(0.75 0.18 82);
+  background-color: $color-accent-gold-bright;
 }
 
 // REMOVED: Legacy green/purple shadow mixins - use neon blue directly
-// Use: box-shadow: 0 0 8px 2px oklch(0.65 0.25 230 / 0.4);
+// Use: box-shadow: 0 0 8px 2px $color-synapse-social-hover;
 
 @mixin gradient-transformation {
-  background: linear-gradient(135deg, oklch(0.65 0.25 230) 0%, oklch(0.65 0.25 230) 100%);
+  background: linear-gradient(135deg, $color-accent-neon-blue 0%, $color-accent-neon-blue 100%);
 }
 
 @mixin bg-primary-dark {
-  background-color: oklch(0.55 0.22 228);
+  background-color: $color-engine-blue-vivid;
 }
 
 @mixin shadow-consciousness-depth {
-  box-shadow: 0 0.25rem 2rem oklch(0.08 0.01 250 / 0.4);
+  box-shadow: 0 0.25rem 2rem $color-engine-neutral-void-a40;
 }
 
 // ----------------------------------------
@@ -667,7 +667,7 @@
 }
 
 // REMOVED: Legacy purple/green background mixins - use neon blue directly
-// Use: background-color: oklch(0.55 0.22 228);
+// Use: background-color: $color-engine-blue-vivid;
 
 @mixin bg-luminous-gold-accessible {
   background-color: $color-accent-gold;
@@ -682,12 +682,12 @@
 }
 
 @mixin bg-gradient-transcendent-overlay {
-  background: linear-gradient(135deg, oklch(0.70 0.15 85 / 0.2), oklch(0.65 0.25 230 / 0.2));
+  background: linear-gradient(135deg, $color-engine-gold-vivid-a20, $color-synapse-social-bg);
 }
 
 // Border mixins
 // REMOVED: Legacy purple/green border mixins - use neon blue directly
-// Use: border-color: oklch(0.55 0.22 228);
+// Use: border-color: $color-engine-blue-vivid;
 
 @mixin border-luminous-gold-accessible {
   border: 2px solid $color-accent-gold;
@@ -695,11 +695,11 @@
 
 // Shadow mixins
 @mixin shadow-glow-transformation-purple {
-  box-shadow: 0 0 1rem oklch(0.65 0.25 230 / 0.4);
+  box-shadow: 0 0 1rem $color-synapse-social-hover;
 }
 
 @mixin shadow-focus-transformation-purple {
-  box-shadow: 0 0 0 0.25rem oklch(0.65 0.25 230 / 0.3);
+  box-shadow: 0 0 0 0.25rem $color-accent-neon-blue-border;
 }
 
 // Font/Typography mixins
@@ -759,7 +759,7 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background: radial-gradient(circle, oklch(0.70 0.15 85 / 0.2), transparent);
+  background: radial-gradient(circle, $color-engine-gold-vivid-a20, transparent);
   color: $color-accent-gold;
   font-size: 1.5rem;
 }
@@ -797,10 +797,10 @@
   
   @keyframes consciousnessPulseBtn {
     0%, 100% {
-      box-shadow: 0 0 15px oklch(0.70 0.15 85 / 0.3);
+      box-shadow: 0 0 15px $color-engine-gold-vivid-a30;
     }
     50% {
-      box-shadow: 0 0 30px oklch(0.70 0.15 85 / 0.6);
+      box-shadow: 0 0 30px $color-engine-gold-vivid-a60;
     }
   }
 }
@@ -810,10 +810,10 @@
   
   @keyframes sacredGlow {
     0%, 100% {
-      filter: drop-shadow(0 0 10px oklch(0.70 0.15 85 / 0.5));
+      filter: drop-shadow(0 0 10px $color-engine-gold-vivid-a50);
     }
     50% {
-      filter: drop-shadow(0 0 20px oklch(0.70 0.15 85 / 0.8));
+      filter: drop-shadow(0 0 20px $color-engine-gold-vivid-a80);
     }
   }
 }

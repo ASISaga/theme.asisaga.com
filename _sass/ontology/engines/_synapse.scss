@@ -16,7 +16,7 @@
   
   @if $vector == 'navigate' {
     // Portal to different semantic coordinate
-    color: var(--text-link, oklch(0.45 0.20 230));
+    color: var(--text-link, $color-engine-blue-mid);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 0.15em;
@@ -49,12 +49,12 @@
     }
     
     &:hover {
-      color: var(--accent-neon, oklch(0.50 0.25 230));
+      color: var(--accent-neon, $color-engine-blue-mid);
       text-decoration-thickness: 2px;
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, oklch(0.45 0.20 230 / 0.7));
+      outline: 2px solid var(--focus-ring, $color-engine-blue-mid-a70);
       outline-offset: 2px;
       border-radius: 2px;
     }
@@ -65,9 +65,9 @@
     align-items: center;
     justify-content: center;
     padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
-    background: oklch(0.10 0.01 250);  // Black background
-    color: oklch(0.99 0.005 90);  // White text
-    border: 1px solid oklch(0.20 0.01 250);  // Subtle border
+    background: $color-theme-dark-card-bg;  // Black background
+    color: $color-light-white;  // White text
+    border: 1px solid $color-engine-neutral-dark;  // Subtle border
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     font-weight: 600;
     font-size: var(--size-button, clamp(0.95rem, 1.2vw, 1.05rem));
@@ -86,9 +86,9 @@
     }
     
     &:hover {
-      background: oklch(0.15 0.01 250);  // Slightly lighter black
-      border-color: var(--accent-neon, oklch(0.65 0.25 230));  // Neon blue border (purposeful)
-      box-shadow: 0 0 16px var(--accent-neon, oklch(0.65 0.25 230 / 0.3));  // Neon blue glow
+      background: $color-engine-neutral-deep;  // Slightly lighter black
+      border-color: var(--accent-neon, $color-accent-neon-blue);  // Neon blue border (purposeful)
+      box-shadow: 0 0 16px var(--accent-neon, $color-accent-neon-blue-border);  // Neon blue glow
       transform: translateY(-1px);
     }
     
@@ -97,7 +97,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, oklch(0.65 0.25 230 / 0.5));
+      outline: 2px solid var(--focus-ring, $color-semantic-focus-ring);
       outline-offset: 2px;
     }
   }
@@ -107,9 +107,9 @@
     align-items: center;
     gap: 0.5em;
     padding: var(--padding-button-sm, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
-    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
-    color: var(--text-primary, oklch(0.98 0.01 90));
-    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250));
+    background: var(--glass-light, $color-engine-indigo-deep-a60);
+    color: var(--text-primary, $color-engine-neutral-bright);
+    border: 1px solid var(--border-subtle, $color-engine-indigo-dim);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     
     // WCAG 2.5.5: Minimum 44x44px touch target on mobile
@@ -124,12 +124,12 @@
     }
     
     &:hover {
-      background: var(--glass-hover, oklch(0.22 0.04 246));
-      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+      background: var(--glass-hover, $color-engine-blue-deep);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -139,9 +139,9 @@
     align-items: center;
     justify-content: center;
     padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
-    background: var(--danger-bg, oklch(0.45 0.22 25));
-    color: var(--text-primary, oklch(0.98 0.01 90));
-    border: 1px solid var(--danger-border, oklch(0.55 0.25 25));
+    background: var(--danger-bg, $color-engine-error-deep);
+    color: var(--text-primary, $color-engine-neutral-bright);
+    border: 1px solid var(--danger-border, $color-status-error);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     
     // WCAG 2.5.5: Minimum 44x44px touch target on mobile
@@ -156,12 +156,12 @@
     }
     
     &:hover {
-      background: var(--danger-hover, oklch(0.50 0.24 25));
-      box-shadow: 0 0 15px var(--danger-glow, oklch(0.45 0.22 25 / 0.5));
+      background: var(--danger-hover, $color-engine-error-vivid);
+      box-shadow: 0 0 15px var(--danger-glow, $color-engine-error-vivid-a50);
     }
     
     &:focus-visible {
-      outline: 2px solid var(--danger-border, oklch(0.55 0.25 25));
+      outline: 2px solid var(--danger-border, $color-status-error);
       outline-offset: 2px;
     }
   }
@@ -172,9 +172,9 @@
     justify-content: center;
     gap: 0.5em;
     padding: var(--padding-button-sm, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
-    background: var(--social-bg, oklch(0.55 0.25 290 / 0.3));
-    color: var(--text-primary, oklch(0.98 0.01 90));
-    border: 1px solid var(--social-border, oklch(0.55 0.25 290));
+    background: var(--social-bg, $color-engine-violet-vivid-a30);
+    color: var(--text-primary, $color-engine-neutral-bright);
+    border: 1px solid var(--social-border, $color-engine-violet-vivid);
     border-radius: 999px;
     text-decoration: none;
     
@@ -199,12 +199,12 @@
     }
     
     &:hover {
-      background: var(--social-hover, oklch(0.55 0.25 290 / 0.5));
-      box-shadow: 0 0 15px var(--social-glow, oklch(0.55 0.25 290 / 0.4));
+      background: var(--social-hover, $color-engine-violet-vivid-a50);
+      box-shadow: 0 0 15px var(--social-glow, $color-engine-violet-vivid-a40);
     }
     
     &:focus-visible {
-      outline: 2px solid var(--social-border, oklch(0.55 0.25 290));
+      outline: 2px solid var(--social-border, $color-engine-violet-vivid);
       outline-offset: 2px;
     }
   }
@@ -215,9 +215,9 @@
     font-size: 1rem; // 16px minimum prevents iOS zoom
     padding: 0.75rem 1rem;
     border-radius: var(--radius-input, clamp(0.375rem, 0.75vw, 0.5rem));
-    background: var(--input-bg, oklch(0.18 0.03 248 / 0.6));
-    color: var(--text-primary, oklch(0.98 0.01 90));
-    border: 1px solid var(--border-input, oklch(0.30 0.04 250 / 0.5));
+    background: var(--input-bg, $color-engine-indigo-deep-a60);
+    color: var(--text-primary, $color-engine-neutral-bright);
+    border: 1px solid var(--border-input, $color-engine-indigo-dim-a50);
     transition: all var(--motion-snap, 0.2s ease);
     
     // Mobile: larger touch target
@@ -240,30 +240,30 @@
     }
     
     &:hover {
-      background: var(--input-hover, oklch(0.22 0.04 246 / 0.7));
-      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.6));
+      background: var(--input-hover, $color-engine-blue-deep-a70);
+      border-color: var(--accent-low, $color-engine-gold-accent-a60);
     }
     
     &:focus {
       outline: none;
-      background: var(--input-focus, oklch(0.20 0.04 245 / 0.8));
-      border-color: var(--accent-neon, oklch(0.88 0.18 95));
-      box-shadow: 0 0 0 3px var(--accent-neon, oklch(0.88 0.18 95 / 0.2));
+      background: var(--input-focus, $color-engine-blue-deep-a80);
+      border-color: var(--accent-neon, $color-engine-gold-bright);
+      box-shadow: 0 0 0 3px var(--accent-neon, $color-engine-gold-bright-a20);
     }
     
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
-      background: var(--input-disabled, oklch(0.16 0.02 250 / 0.4));
+      background: var(--input-disabled, $color-engine-neutral-deep-a40);
     }
     
     // Invalid state
     &:invalid,
     &.error {
-      border-color: var(--danger-border, oklch(0.55 0.25 25));
+      border-color: var(--danger-border, $color-status-error);
       
       &:focus {
-        box-shadow: 0 0 0 3px var(--danger-border, oklch(0.55 0.25 25 / 0.2));
+        box-shadow: 0 0 0 3px var(--danger-border, $color-engine-error-vivid-a20);
       }
     }
   }
@@ -273,9 +273,9 @@
     align-items: center;
     justify-content: center;
     padding: var(--padding-pagination, clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1.5vw, 1rem));
-    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
-    color: var(--text-primary, oklch(0.98 0.01 90));
-    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    background: var(--glass-light, $color-engine-indigo-deep-a60);
+    color: var(--text-primary, $color-engine-neutral-bright);
+    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     text-decoration: none;
     font-weight: 500;
@@ -298,16 +298,16 @@
     }
     
     &:hover:not(.disabled) {
-      background: var(--glass-hover, oklch(0.22 0.04 246));
-      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+      background: var(--glass-hover, $color-engine-blue-deep);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
     }
     
     // Active/current page state
     &.active,
     &[aria-current="page"] {
-      background: var(--accent-neon, oklch(0.88 0.18 95));
-      color: var(--text-inverse, oklch(0.15 0.03 250));
-      border-color: var(--accent-neon, oklch(0.88 0.18 95));
+      background: var(--accent-neon, $color-engine-gold-bright);
+      color: var(--text-inverse, $color-engine-indigo-void);
+      border-color: var(--accent-neon, $color-engine-gold-bright);
       font-weight: 700;
     }
     
@@ -320,7 +320,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -331,9 +331,9 @@
     justify-content: space-between;
     width: 100%;
     padding: var(--padding-toggle, clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem));
-    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
-    color: var(--text-primary, oklch(0.98 0.01 90));
-    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    background: var(--glass-light, $color-engine-indigo-deep-a60);
+    color: var(--text-primary, $color-engine-neutral-bright);
+    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     text-align: left;
     cursor: pointer;
@@ -345,8 +345,8 @@
     }
     
     &:hover {
-      background: var(--glass-hover, oklch(0.22 0.04 246));
-      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+      background: var(--glass-hover, $color-engine-blue-deep);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
     }
     
     // Expanded state indicator
@@ -357,7 +357,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
     
@@ -376,7 +376,7 @@
     align-items: center;
     gap: 0.5em;
     padding: var(--padding-anchor, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
-    color: var(--text-link, oklch(0.75 0.15 210));
+    color: var(--text-link, $color-engine-cyan-vivid);
     text-decoration: none;
     border-left: 2px solid transparent;
     transition: all var(--motion-snap, 0.2s ease);
@@ -388,21 +388,21 @@
     }
     
     &:hover {
-      color: var(--accent-neon, oklch(0.88 0.18 95));
-      border-left-color: var(--accent-neon, oklch(0.88 0.18 95));
+      color: var(--accent-neon, $color-engine-gold-bright);
+      border-left-color: var(--accent-neon, $color-engine-gold-bright);
       padding-left: calc(clamp(1rem, 2vw, 1.5rem) + 0.25rem);
     }
     
     // Active anchor (current section in TOC)
     &.active,
     &[aria-current="location"] {
-      color: var(--accent-neon, oklch(0.88 0.18 95));
-      border-left-color: var(--accent-neon, oklch(0.88 0.18 95));
+      color: var(--accent-neon, $color-engine-gold-bright);
+      border-left-color: var(--accent-neon, $color-engine-gold-bright);
       font-weight: 600;
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
     
@@ -412,8 +412,8 @@
       top: -100%;
       left: 0;
       padding: 1rem 1.5rem;
-      background: var(--accent-neon, oklch(0.88 0.18 95));
-      color: var(--text-inverse, oklch(0.15 0.03 250));
+      background: var(--accent-neon, $color-engine-gold-bright);
+      color: var(--text-inverse, $color-engine-indigo-void);
       font-weight: 600;
       z-index: 9999;
       
@@ -428,7 +428,7 @@
     align-items: center;
     justify-content: center;
     padding: var(--padding-tab, clamp(0.75rem, 1.5vw, 1rem) clamp(1.25rem, 2.5vw, 1.75rem));
-    color: var(--text-secondary, oklch(0.70 0.02 220));
+    color: var(--text-secondary, $color-engine-neutral-light);
     background: transparent;
     border: none;
     border-bottom: 3px solid transparent;
@@ -444,19 +444,19 @@
     }
     
     &:hover:not([aria-selected="true"]) {
-      color: var(--text-primary, oklch(0.98 0.01 90));
-      border-bottom-color: var(--border-subtle, oklch(0.30 0.04 250 / 0.5));
+      color: var(--text-primary, $color-engine-neutral-bright);
+      border-bottom-color: var(--border-subtle, $color-engine-indigo-dim-a50);
     }
     
     // Selected/active tab
     &[aria-selected="true"] {
-      color: var(--accent-neon, oklch(0.88 0.18 95));
-      border-bottom-color: var(--accent-neon, oklch(0.88 0.18 95));
+      color: var(--accent-neon, $color-engine-gold-bright);
+      border-bottom-color: var(--accent-neon, $color-engine-gold-bright);
       font-weight: 700;
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -466,9 +466,9 @@
     align-items: center;
     gap: 0.75rem;
     padding: var(--padding-step, clamp(0.75rem, 1.5vw, 1rem));
-    color: var(--text-secondary, oklch(0.70 0.02 220));
-    background: var(--glass-subtle, oklch(0.16 0.02 248 / 0.4));
-    border: 2px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    color: var(--text-secondary, $color-engine-neutral-light);
+    background: var(--glass-subtle, $color-engine-neutral-deep-a40);
+    border: 2px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     text-decoration: none;
     font-weight: 500;
@@ -487,7 +487,7 @@
       width: 2em;
       height: 2em;
       border-radius: 50%;
-      background: var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+      background: var(--border-subtle, $color-engine-indigo-dim-a30);
       font-weight: 700;
       font-size: 0.875em;
     }
@@ -495,25 +495,25 @@
     // Completed step
     &.completed,
     &[aria-current="step"][data-status="complete"] {
-      color: var(--text-primary, oklch(0.98 0.01 90));
-      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+      color: var(--text-primary, $color-engine-neutral-bright);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
       
       .step-number {
-        background: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+        background: var(--accent-low, $color-engine-gold-accent-a40);
       }
     }
     
     // Current/active step
     &.active,
     &[aria-current="step"] {
-      color: var(--accent-neon, oklch(0.88 0.18 95));
-      border-color: var(--accent-neon, oklch(0.88 0.18 95));
-      background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
+      color: var(--accent-neon, $color-engine-gold-bright);
+      border-color: var(--accent-neon, $color-engine-gold-bright);
+      background: var(--glass-light, $color-engine-indigo-deep-a60);
       font-weight: 600;
       
       .step-number {
-        background: var(--accent-neon, oklch(0.88 0.18 95));
-        color: var(--text-inverse, oklch(0.15 0.03 250));
+        background: var(--accent-neon, $color-engine-gold-bright);
+        color: var(--text-inverse, $color-engine-indigo-void);
       }
     }
     
@@ -526,18 +526,18 @@
     }
     
     &:hover {
-      background: var(--glass-hover, oklch(0.22 0.04 246));
-      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+      background: var(--glass-hover, $color-engine-blue-deep);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
     }
     
     &.active:hover,
     &.disabled:hover {
-      background: var(--glass-subtle, oklch(0.16 0.02 248 / 0.4));
-      border-color: var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+      background: var(--glass-subtle, $color-engine-neutral-deep-a40);
+      border-color: var(--border-subtle, $color-engine-indigo-dim-a30);
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -548,9 +548,9 @@
     justify-content: center;
     min-width: 2.5em;
     padding: var(--padding-react, clamp(0.375rem, 0.75vw, 0.5rem) clamp(0.625rem, 1.25vw, 0.875rem));
-    background: var(--glass-subtle, oklch(0.16 0.02 248 / 0.4));
-    color: var(--text-secondary, oklch(0.70 0.02 220));
-    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    background: var(--glass-subtle, $color-engine-neutral-deep-a40);
+    color: var(--text-secondary, $color-engine-neutral-light);
+    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     border-radius: 999px; // Pill shape for reactions
     cursor: pointer;
     font-size: 0.875rem;
@@ -565,17 +565,17 @@
     }
     
     &:hover {
-      background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
-      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+      background: var(--glass-light, $color-engine-indigo-deep-a60);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
       transform: scale(1.05);
     }
     
     // Reacted state (user has reacted)
     &.reacted,
     &[aria-pressed="true"] {
-      background: var(--accent-subtle, oklch(0.88 0.18 95 / 0.15));
-      border-color: var(--accent-neon, oklch(0.88 0.18 95));
-      color: var(--accent-neon, oklch(0.88 0.18 95));
+      background: var(--accent-subtle, $color-engine-gold-bright-a15);
+      border-color: var(--accent-neon, $color-engine-gold-bright);
+      color: var(--accent-neon, $color-engine-gold-bright);
       font-weight: 600;
     }
     
@@ -592,7 +592,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -603,8 +603,8 @@
     justify-content: center;
     padding: var(--padding-vote, clamp(0.5rem, 1vw, 0.625rem));
     background: transparent;
-    color: var(--text-secondary, oklch(0.70 0.02 220));
-    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    color: var(--text-secondary, $color-engine-neutral-light);
+    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     border-radius: var(--radius-button, clamp(0.375rem, 0.75vw, 0.5rem));
     cursor: pointer;
     transition: all var(--motion-snap, 0.2s ease);
@@ -621,45 +621,45 @@
     }
     
     &:hover {
-      background: var(--glass-subtle, oklch(0.16 0.02 248 / 0.4));
-      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+      background: var(--glass-subtle, $color-engine-neutral-deep-a40);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
     }
     
     // Upvoted state
     &.upvoted,
     &[data-vote="up"] {
-      background: var(--vote-up-bg, oklch(0.85 0.16 85 / 0.15));
-      border-color: var(--vote-up, oklch(0.88 0.18 95));
-      color: var(--vote-up, oklch(0.88 0.18 95));
+      background: var(--vote-up-bg, $color-engine-gold-accent-a15);
+      border-color: var(--vote-up, $color-engine-gold-bright);
+      color: var(--vote-up, $color-engine-gold-bright);
     }
     
     // Downvoted state
     &.downvoted,
     &[data-vote="down"] {
-      background: var(--vote-down-bg, oklch(0.45 0.22 25 / 0.15));
-      border-color: var(--vote-down, oklch(0.55 0.25 25));
-      color: var(--vote-down, oklch(0.55 0.25 25));
+      background: var(--vote-down-bg, $color-engine-error-vivid-a15);
+      border-color: var(--vote-down, $color-status-error);
+      color: var(--vote-down, $color-status-error);
     }
     
     // Star rating variant
     &.star-rating {
       border: none;
       padding: 0.25rem;
-      color: var(--star-inactive, oklch(0.50 0.02 220));
+      color: var(--star-inactive, $color-engine-neutral-mid);
       
       &.rated,
       &[aria-checked="true"] {
-        color: var(--star-active, oklch(0.88 0.18 50)); // Gold/yellow
+        color: var(--star-active, $color-engine-amber-bright); // Gold/yellow
       }
       
       &:hover {
         background: transparent;
-        color: var(--star-hover, oklch(0.85 0.16 50));
+        color: var(--star-hover, $color-engine-amber-pale);
       }
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -669,9 +669,9 @@
     align-items: center;
     gap: 0.5em;
     padding: var(--padding-comment, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.25rem));
-    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
-    color: var(--text-primary, oklch(0.98 0.01 90));
-    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    background: var(--glass-light, $color-engine-indigo-deep-a60);
+    color: var(--text-primary, $color-engine-neutral-bright);
+    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     text-decoration: none;
     cursor: pointer;
@@ -684,8 +684,8 @@
     }
     
     &:hover {
-      background: var(--glass-hover, oklch(0.22 0.04 246));
-      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+      background: var(--glass-hover, $color-engine-blue-deep);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
     }
     
     // Comment count badge
@@ -695,15 +695,15 @@
       justify-content: center;
       min-width: 1.5em;
       padding: 0.125em 0.5em;
-      background: var(--accent-subtle, oklch(0.88 0.18 95 / 0.15));
-      color: var(--accent-neon, oklch(0.88 0.18 95));
+      background: var(--accent-subtle, $color-engine-gold-bright-a15);
+      color: var(--accent-neon, $color-engine-gold-bright);
       border-radius: 999px;
       font-size: 0.75em;
       font-weight: 700;
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -714,9 +714,9 @@
     justify-content: center;
     gap: 0.5em;
     padding: var(--padding-share, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.25rem));
-    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
-    color: var(--text-primary, oklch(0.98 0.01 90));
-    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    background: var(--glass-light, $color-engine-indigo-deep-a60);
+    color: var(--text-primary, $color-engine-neutral-bright);
+    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     cursor: pointer;
     transition: all var(--motion-snap, 0.2s ease);
@@ -729,43 +729,43 @@
     }
     
     &:hover {
-      background: var(--glass-hover, oklch(0.22 0.04 246));
-      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
-      box-shadow: 0 4px 12px oklch(0.10 0.03 250 / 0.2);
+      background: var(--glass-hover, $color-engine-blue-deep);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
+      box-shadow: 0 4px 12px $color-engine-indigo-void-a20;
     }
     
     // Platform-specific variants
     &.share-twitter {
       &:hover {
-        border-color: oklch(0.65 0.20 220);
-        color: oklch(0.75 0.20 220);
+        border-color: $color-engine-blue-vivid;
+        color: $color-engine-blue-light;
       }
     }
     
     &.share-facebook {
       &:hover {
-        border-color: oklch(0.55 0.25 240);
-        color: oklch(0.65 0.25 240);
+        border-color: $color-engine-blue-vivid;
+        color: $color-engine-blue-vivid;
       }
     }
     
     &.share-linkedin {
       &:hover {
-        border-color: oklch(0.55 0.25 220);
-        color: oklch(0.65 0.25 220);
+        border-color: $color-engine-blue-vivid;
+        color: $color-engine-blue-vivid;
       }
     }
     
     &.share-copy {
       &.copied {
-        background: var(--accent-subtle, oklch(0.88 0.18 95 / 0.15));
-        border-color: var(--accent-neon, oklch(0.88 0.18 95));
-        color: var(--accent-neon, oklch(0.88 0.18 95));
+        background: var(--accent-subtle, $color-engine-gold-bright-a15);
+        border-color: var(--accent-neon, $color-engine-gold-bright);
+        color: var(--accent-neon, $color-engine-gold-bright);
       }
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -776,9 +776,9 @@
     justify-content: center;
     position: relative;
     padding: var(--padding-notify, clamp(0.5rem, 1vw, 0.75rem));
-    background: var(--glass-light, oklch(0.18 0.03 248 / 0.6));
-    color: var(--text-primary, oklch(0.98 0.01 90));
-    border: 1px solid var(--border-subtle, oklch(0.30 0.04 250 / 0.3));
+    background: var(--glass-light, $color-engine-indigo-deep-a60);
+    color: var(--text-primary, $color-engine-neutral-bright);
+    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     cursor: pointer;
     transition: all var(--motion-snap, 0.2s ease);
@@ -790,8 +790,8 @@
     }
     
     &:hover {
-      background: var(--glass-hover, oklch(0.22 0.04 246));
-      border-color: var(--accent-low, oklch(0.85 0.16 85 / 0.4));
+      background: var(--glass-hover, $color-engine-blue-deep);
+      border-color: var(--accent-low, $color-engine-gold-accent-a40);
     }
     
     // Notification badge (unread count)
@@ -805,22 +805,22 @@
       min-width: 1.25rem;
       height: 1.25rem;
       padding: 0 0.375rem;
-      background: var(--badge-urgent, oklch(0.55 0.25 25));
-      color: var(--text-inverse, oklch(0.98 0.01 90));
+      background: var(--badge-urgent, $color-status-error);
+      color: var(--text-inverse, $color-engine-neutral-bright);
       border-radius: 999px;
       font-size: 0.625rem;
       font-weight: 700;
-      border: 2px solid var(--bg-primary, oklch(0.15 0.03 250));
+      border: 2px solid var(--bg-primary, $color-engine-indigo-void);
     }
     
     // Active/open state
     &[aria-expanded="true"] {
-      background: var(--glass-hover, oklch(0.22 0.04 246));
-      border-color: var(--accent-neon, oklch(0.88 0.18 95));
+      background: var(--glass-hover, $color-engine-blue-deep);
+      border-color: var(--accent-neon, $color-engine-gold-bright);
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
     }
   }
@@ -828,8 +828,8 @@
     // @mention and tagging interactions
     display: inline;
     padding: 0.125em 0.375em;
-    background: var(--mention-bg, oklch(0.88 0.18 95 / 0.15));
-    color: var(--mention-text, oklch(0.88 0.18 95));
+    background: var(--mention-bg, $color-engine-gold-bright-a15);
+    color: var(--mention-text, $color-engine-gold-bright);
     border-radius: 0.25em;
     font-weight: 600;
     text-decoration: none;
@@ -837,20 +837,20 @@
     transition: all var(--motion-snap, 0.2s ease);
     
     &:hover {
-      background: var(--mention-hover, oklch(0.88 0.18 95 / 0.25));
-      color: var(--accent-neon, oklch(0.88 0.18 95));
+      background: var(--mention-hover, $color-engine-gold-bright-a20);
+      color: var(--accent-neon, $color-engine-gold-bright);
     }
     
     // Current user mention (highlight)
     &.mention-self,
     &[data-mention-self="true"] {
-      background: var(--mention-self-bg, oklch(0.85 0.16 85 / 0.3));
-      color: var(--mention-self-text, oklch(0.98 0.01 90));
+      background: var(--mention-self-bg, $color-engine-gold-accent-a30);
+      color: var(--mention-self-text, $color-engine-neutral-bright);
       font-weight: 700;
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, oklch(0.85 0.16 85 / 0.5));
+      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
       outline-offset: 2px;
       border-radius: 0.25em;
     }
@@ -864,9 +864,9 @@
     justify-content: center;
     gap: 0.5em;
     padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
-    background: linear-gradient(135deg, oklch(0.12 0.02 250), oklch(0.08 0.02 260));
-    color: oklch(0.99 0.005 90);  // White text
-    border: 1px solid oklch(0.25 0.04 250);  // Consciousness border
+    background: linear-gradient(135deg, $color-engine-neutral-deep, $color-engine-neutral-void);
+    color: $color-light-white;  // White text
+    border: 1px solid $color-theme-dark-header-border;  // Consciousness border
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     font-weight: 600;
     font-size: var(--size-button, clamp(0.95rem, 1.2vw, 1.05rem));
@@ -879,10 +879,10 @@
     }
     
     &:hover {
-      border-color: oklch(0.65 0.25 230);  // Neon blue
+      border-color: $color-accent-neon-blue;  // Neon blue
       box-shadow:
-        0 0 20px oklch(0.65 0.25 230 / 0.3),
-        inset 0 0 10px oklch(0.65 0.25 230 / 0.1);
+        0 0 20px $color-accent-neon-blue-border,
+        inset 0 0 10px $color-engine-blue-vivid-a10;
       transform: translateY(-1px);
     }
     
@@ -891,7 +891,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid oklch(0.65 0.25 230 / 0.5);
+      outline: 2px solid $color-semantic-focus-ring;
       outline-offset: 2px;
     }
   }
@@ -904,9 +904,9 @@
     justify-content: center;
     gap: 0.5em;
     padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
-    background: oklch(0.99 0.005 90);  // White
-    color: oklch(0.10 0.01 250);  // Black text
-    border: 2px solid oklch(0.65 0.25 150);  // Green — affirmative
+    background: $color-light-white;  // White
+    color: $color-theme-dark-card-bg;  // Black text
+    border: 2px solid $color-engine-green-vivid;  // Green — affirmative
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     font-weight: 600;
     font-size: var(--size-button, clamp(0.95rem, 1.2vw, 1.05rem));
@@ -919,9 +919,9 @@
     }
     
     &:hover {
-      background: oklch(0.65 0.25 150);  // Green fill
-      color: oklch(0.99 0.005 90);  // White text on green
-      box-shadow: 0 0 12px oklch(0.65 0.25 150 / 0.3);
+      background: $color-engine-green-vivid;  // Green fill
+      color: $color-light-white;  // White text on green
+      box-shadow: 0 0 12px $color-engine-green-vivid-a30;
       transform: translateY(-1px);
     }
     
@@ -930,7 +930,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid oklch(0.65 0.25 150 / 0.5);
+      outline: 2px solid $color-engine-green-vivid-a50;
       outline-offset: 2px;
     }
   }
