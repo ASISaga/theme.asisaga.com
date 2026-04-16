@@ -184,7 +184,7 @@ p, .body-text {
 blockquote {
   padding: 1.5rem;
   @include border-color($color-accent-gold);
-  background: oklch(0.70 0.15 85 / 0.05);
+  background: $color-engine-gold-light-a05;
   font-style: italic;
   font-family: $font-family-wisdom;
   line-height: $line-height-consciousness;
@@ -194,7 +194,7 @@ blockquote {
   &::before {
     content: '"';
     font-size: 3rem;
-    color: oklch(0.70 0.15 85 / 0.3);
+    color: $color-engine-gold-light-a30;
     position: absolute;
     top: -0.5rem;
     left: 1rem;
@@ -299,7 +299,7 @@ a {
 
   &:focus {
     border-color: $color-accent-gold;
-    box-shadow: 0 0 0 0.2rem oklch(0.70 0.15 85 / 0.25);
+    box-shadow: 0 0 0 0.2rem $color-engine-gold-light-a25;
   }
 }
 
@@ -319,62 +319,62 @@ a {
 // ============================================================================
 
 .material-glass {
-  background: oklch(0.20 0.04 245 / 0.75);
+  background: $color-engine-blue-dark-a75;
   backdrop-filter: $effect-blur-glass-md;
   -webkit-backdrop-filter: $effect-blur-glass-md;
-  border: 1px solid oklch(0.35 0.05 248 / 0.4);
+  border: 1px solid $color-engine-indigo-dim-a40-2;
 }
 
 .material-glass-elevated {
-  background: oklch(0.24 0.05 244 / 0.85);
+  background: $color-engine-blue-dark-a85;
   backdrop-filter: $effect-blur-glass-md;
   -webkit-backdrop-filter: $effect-blur-glass-md;
-  border: 1px solid oklch(0.35 0.05 248 / 0.6);
+  border: 1px solid $color-engine-indigo-dim-a60;
 }
 
 .material-glass-subtle {
-  background: oklch(0.18 0.03 246 / 0.6);
+  background: $color-engine-blue-deep-a60;
   backdrop-filter: $effect-blur-glass-sm;
   -webkit-backdrop-filter: $effect-blur-glass-sm;
-  border: 1px solid oklch(0.35 0.05 248 / 0.3);
+  border: 1px solid $color-engine-indigo-dim-a30-2;
 }
 
 .material-glass-accent {
-  background: oklch(0.22 0.06 85 / 0.7);
+  background: $color-engine-gold-dark-a70;
   backdrop-filter: $effect-blur-glass-md;
   -webkit-backdrop-filter: $effect-blur-glass-md;
-  border: 1px solid oklch(0.85 0.16 85 / 0.4);
+  border: 1px solid $color-engine-gold-pale-a40;
 }
 
 .material-header {
-  background: oklch(0.18 0.03 248 / 0.95);
+  background: $color-engine-indigo-deep-a95-2;
   backdrop-filter: $effect-blur-glass-lg;
   -webkit-backdrop-filter: $effect-blur-glass-lg;
-  border-bottom: 1px solid oklch(0.35 0.05 248 / 0.3);
+  border-bottom: 1px solid $color-engine-indigo-dim-a30-2;
   box-shadow: $effect-shadow-ambient;
 }
 
 .material-footer {
-  background: oklch(0.16 0.03 252 / 0.95);
+  background: $color-engine-indigo-deep-a95;
   backdrop-filter: $effect-blur-glass-lg;
   -webkit-backdrop-filter: $effect-blur-glass-lg;
-  border-top: 1px solid oklch(0.35 0.05 248 / 0.3);
+  border-top: 1px solid $color-engine-indigo-dim-a30-2;
 }
 
 .material-overlay {
-  background: oklch(0.15 0.03 250 / 0.85);
+  background: $color-engine-indigo-deep-a85;
   backdrop-filter: $effect-blur-glass-xl;
   -webkit-backdrop-filter: $effect-blur-glass-xl;
 }
 
 .material-modal {
-  background: oklch(0.18 0.03 248 / 0.95);
+  background: $color-engine-indigo-deep-a95-2;
   backdrop-filter: $effect-blur-glass-lg;
   -webkit-backdrop-filter: $effect-blur-glass-lg;
-  border: 1px solid oklch(0.35 0.05 248 / 0.5);
+  border: 1px solid $color-engine-indigo-dim-a50-2;
   box-shadow:
-    0 20px 50px oklch(0.15 0.03 250 / 0.35),
-    0 0 20px oklch(0.85 0.16 85 / 0.1);
+    0 20px 50px $color-engine-indigo-deep-a35,
+    0 0 20px $color-engine-gold-pale-a10;
 }
 
 // Gradient fade masks
@@ -416,7 +416,7 @@ a {
     color: $color-accent-gold;
 
     &:hover {
-      color: oklch(0.65 0.13 88);
+      color: $color-engine-gold-rich-2;
     }
   }
 

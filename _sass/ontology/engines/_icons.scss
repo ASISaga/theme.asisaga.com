@@ -128,7 +128,7 @@
   
   &:hover {
     color: $color-accent-gold-dark;
-    filter: drop-shadow(0 0 8px oklch(0.70 0.15 85 / 0.5));
+    filter: drop-shadow(0 0 8px $color-engine-gold-light-a50);
   }
 }
 
@@ -137,7 +137,7 @@
   
   &:hover {
     color: $color-light-surface;
-    filter: drop-shadow(0 0 8px oklch(0.08 0.01 250 / 0.3));
+    filter: drop-shadow(0 0 8px $color-engine-neutral-void-a30);
   }
 }
 

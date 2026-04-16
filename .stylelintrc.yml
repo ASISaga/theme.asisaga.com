@@ -327,6 +327,24 @@ overrides:
         - message: "Use a $variable from _sass/design/_colors.scss instead of a raw colour literal. Raw oklch/hex/rgb/hsl values in layout files bypass the design-token system."
           severity: error
 
+  # Enforce design-token usage for colour values in ontology engine SCSS.
+  # All oklch() literals (and hex / rgb() / hsl()) must use $color-* variables from
+  # _sass/design/_colors-generated.scss. Adding a new colour? Add it to
+  # _design/tokens/2-color.json and run `npm run tokens:build` to regenerate.
+  - files:
+      - "_sass/ontology/**/*.scss"
+      - "_sass/components/**/*.scss"
+      - "_sass/includes/**/*.scss"
+    rules:
+      declaration-property-value-disallowed-list:
+        - "/^(color|background-color|background|border|border-top|border-right|border-bottom|border-left|border-color|outline|outline-color|box-shadow|fill|stroke|text-decoration-color|column-rule-color|caret-color|accent-color)$/":
+            - "/oklch\\s*\\(/"
+            - "/#[0-9a-fA-F]{3,8}/"
+            - "/^rgb\\s*\\(/"
+            - "/^hsl\\s*\\(/"
+        - message: "Use a $variable from _sass/design/_colors-generated.scss instead of a raw colour literal."
+          severity: error
+
 # Ignore patterns
 ignoreFiles:
   - "node_modules/**"

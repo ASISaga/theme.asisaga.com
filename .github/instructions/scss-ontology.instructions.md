@@ -69,13 +69,63 @@ Each engine provides one or more `@mixin` definitions dispatched by variant name
 
 The `_interface.scss` re-exports all 6 mixins as the public API.
 
+## Colour Values (CRITICAL — NO RAW oklch() IN ENGINE FILES)
+
+**All colour values in `_sass/ontology/engines/` MUST use `$color-*` Sass variables.**  
+Raw `oklch()`, `hex`, `rgb()`, and `hsl()` literals are **forbidden** in engine files.  
+This is enforced by stylelint (`declaration-property-value-disallowed-list`).
+
+### Three usage contexts
+
+```scss
+// 1. Regular CSS property → plain $color-* variable
+background: $color-dark-profound-black;
+color: $color-accent-neon-blue;
+
+// 2. CSS custom property definition → #{} interpolation REQUIRED
+--badge-bg: #{$color-accent-neon-blue};        // ✅ correct
+--badge-bg: $color-accent-neon-blue;           // ❌ Sass treats RHS as literal string
+
+// 3. var() fallback → plain variable, no interpolation needed
+background: var(--genesis-bg-surface, $color-dark-profound-black);  // ✅
+```
+
+### Adding a new colour
+
+1. Add the token to `_design/tokens/2-color.json`:
+   ```json
+   "color": {
+     "engine": {
+       "gold": {
+         "my-new-shade": {
+           "$type": "color",
+           "$value": "oklch(0.85 0.18 95)",
+           "$description": "Brief description"
+         }
+       }
+     }
+   }
+   ```
+2. Regenerate: `npm run tokens:build`
+3. Reference: `$color-engine-gold-my-new-shade`
+
+### Token locations
+
+| Purpose | File | Variable prefix |
+|---------|------|----------------|
+| Existing semantic tokens (brand, status, etc.) | `_sass/design/_colors-generated.scss` | `$color-*` |
+| Engine-specific new colours | `_design/tokens/2-color.json` → `color.engine.*` | `$color-engine-*` |
+
+**NEVER** declare `$color-*` variables inside engine files — those belong exclusively in `_sass/design/`.
+
 ## Adding New Variants
 
 1. Review existing variants in the engine file
 2. Verify the gap cannot be expressed by combining existing variants
 3. Add the new `@else if` branch in the appropriate engine
-4. Update `/docs/specifications/scss-ontology-system.md`
-5. Update `GENOME.md` with the evolution entry
+4. **Use only `$color-*` variables for all colour values** (see section above)
+5. Update `/docs/specifications/scss-ontology-system.md`
+6. Update `GENOME.md` with the evolution entry
 
 → **Ontology system spec**: `/docs/specifications/scss-ontology-system.md`  
 → **Integration guide**: `_sass/ontology/INTEGRATION-GUIDE.md`  

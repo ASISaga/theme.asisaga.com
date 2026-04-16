@@ -53,7 +53,7 @@
     .interactive-module-overlay {
       @include genesis-atmosphere('void');
       @include absolute-fill;
-      background: linear-gradient(to bottom, oklch(0.08 0.01 250 / 0.3) 0%, oklch(0.08 0.01 250 / 0.8) 100%);
+      background: linear-gradient(to bottom, $color-engine-neutral-void-a30 0%, $color-engine-neutral-void-a80 100%);
       @include flex-column;
       justify-content: space-between;
       padding: $spacing-md;

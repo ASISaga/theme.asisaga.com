@@ -14,8 +14,8 @@
     scroll-behavior: auto;
     grid-template-rows: auto 1fr auto;
     gap: 0;
-    background: var(--genesis-bg, oklch(0.04 0.01 260));
-    color: var(--genesis-body-color, oklch(0.90 0.005 90));
+    background: var(--genesis-bg, $color-theme-dark-bg);
+    color: var(--genesis-body-color, $color-theme-dark-body-color);
   }
 
   // Main Content Area — transparent pass-through
@@ -195,14 +195,14 @@
 
     background: linear-gradient(
       175deg,
-      var(--genesis-ambient-from, oklch(0.06 0.02 270)) 0%,
-      var(--genesis-ambient-mid,  oklch(0.04 0.01 260)) 40%,
-      var(--genesis-ambient-to,   oklch(0.05 0.015 255)) 100%
+      var(--genesis-ambient-from, $color-theme-dark-ambient-from) 0%,
+      var(--genesis-ambient-mid,  $color-theme-dark-bg) 40%,
+      var(--genesis-ambient-to,   $color-theme-dark-ambient-to) 100%
     );
     opacity: var(--genesis-ambient-opacity, 1);
 
     @media (prefers-contrast: high) {
-      background: oklch(0.05 0 0);
+      background: $color-engine-neutral-abyss-3;
     }
 
     &__particles {
@@ -210,10 +210,10 @@
       opacity: 0.15;
 
       background-image:
-        radial-gradient(1px 1px at 15% 25%, oklch(0.65 0.25 230 / 0.5) 0%, transparent 100%),
-        radial-gradient(1px 1px at 75% 65%, oklch(0.70 0.15 85 / 0.3) 0%, transparent 100%),
-        radial-gradient(1px 1px at 45% 85%, oklch(0.65 0.25 230 / 0.4) 0%, transparent 100%),
-        radial-gradient(1px 1px at 90% 20%, oklch(0.70 0.15 85 / 0.3) 0%, transparent 100%);
+        radial-gradient(1px 1px at 15% 25%, $color-semantic-focus-ring 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 65%, $color-engine-gold-light-a30 0%, transparent 100%),
+        radial-gradient(1px 1px at 45% 85%, $color-synapse-social-hover 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 20%, $color-engine-gold-light-a30 0%, transparent 100%);
       background-size: 100% 100%;
 
       @media (prefers-reduced-motion: no-preference) {
@@ -231,7 +231,7 @@
 
       background: radial-gradient(
         ellipse 60% 40% at 50% 0%,
-        oklch(0.30 0.12 250 / 0.25) 0%,
+        $color-engine-indigo-dim-a25 0%,
         transparent 70%
       );
 

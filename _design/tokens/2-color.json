@@ -606,6 +606,1617 @@
         "$value": "#00568a",
         "$description": "LinkedIn brand blue hover state"
       }
+    },
+    "engine": {
+      "neutral": {
+        "abyss-a00": {
+          "$type": "color",
+          "$value": "oklch(0 0 0 / 0)",
+          "$description": "Neutral L=0.00 at 0% opacity"
+        },
+        "abyss-a70": {
+          "$type": "color",
+          "$value": "oklch(0 0 0 / 0.7)",
+          "$description": "Neutral L=0.00 at 70% opacity"
+        },
+        "abyss": {
+          "$type": "color",
+          "$value": "oklch(0.03 0.01 250)",
+          "$description": "Neutral L=0.03"
+        },
+        "abyss-a30": {
+          "$type": "color",
+          "$value": "oklch(0.03 0.02 250 / 0.3)",
+          "$description": "Neutral L=0.03 at 30% opacity"
+        },
+        "abyss-a50": {
+          "$type": "color",
+          "$value": "oklch(0.03 0.02 250 / 0.5)",
+          "$description": "Neutral L=0.03 at 50% opacity"
+        },
+        "abyss-a60": {
+          "$type": "color",
+          "$value": "oklch(0.03 0.02 250 / 0.6)",
+          "$description": "Neutral L=0.03 at 60% opacity"
+        },
+        "abyss-2": {
+          "$type": "color",
+          "$value": "oklch(0.04 0.01 250)",
+          "$description": "Neutral L=0.04"
+        },
+        "abyss-3": {
+          "$type": "color",
+          "$value": "oklch(0.05 0 0)",
+          "$description": "Neutral L=0.05"
+        },
+        "abyss-a30-2": {
+          "$type": "color",
+          "$value": "oklch(0.05 0.01 250 / 0.3)",
+          "$description": "Neutral L=0.05 at 30% opacity"
+        },
+        "abyss-a30-3": {
+          "$type": "color",
+          "$value": "oklch(0.05 0.01 260 / 0.3)",
+          "$description": "Neutral L=0.05 at 30% opacity"
+        },
+        "abyss-a40": {
+          "$type": "color",
+          "$value": "oklch(0.05 0.01 260 / 0.4)",
+          "$description": "Neutral L=0.05 at 40% opacity"
+        },
+        "abyss-4": {
+          "$type": "color",
+          "$value": "oklch(0.05 0.01 260)",
+          "$description": "Neutral L=0.05"
+        },
+        "abyss-5": {
+          "$type": "color",
+          "$value": "oklch(0.05 0.01 265)",
+          "$description": "Neutral L=0.05"
+        },
+        "abyss-a40-2": {
+          "$type": "color",
+          "$value": "oklch(0.05 0.02 250 / 0.4)",
+          "$description": "Neutral L=0.05 at 40% opacity"
+        },
+        "abyss-a24": {
+          "$type": "color",
+          "$value": "oklch(0.05 0.02 260 / 0.24)",
+          "$description": "Neutral L=0.05 at 24% opacity"
+        },
+        "abyss-a58": {
+          "$type": "color",
+          "$value": "oklch(0.05 0.02 260 / 0.58)",
+          "$description": "Neutral L=0.05 at 58% opacity"
+        },
+        "abyss-a88": {
+          "$type": "color",
+          "$value": "oklch(0.05 0.02 260 / 0.88)",
+          "$description": "Neutral L=0.05 at 88% opacity"
+        },
+        "void-a97": {
+          "$type": "color",
+          "$value": "oklch(0.06 0.015 250 / 0.97)",
+          "$description": "Neutral L=0.06 at 97% opacity"
+        },
+        "void": {
+          "$type": "color",
+          "$value": "oklch(0.06 0.02 260)",
+          "$description": "Neutral L=0.06"
+        },
+        "void-2": {
+          "$type": "color",
+          "$value": "oklch(0.08 0 0)",
+          "$description": "Neutral L=0.08"
+        },
+        "void-a00": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.01 250 / 0)",
+          "$description": "Neutral L=0.08 at 0% opacity"
+        },
+        "void-a02": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.01 250 / 0.02)",
+          "$description": "Neutral L=0.08 at 2% opacity"
+        },
+        "void-a05": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.01 250 / 0.05)",
+          "$description": "Neutral L=0.08 at 5% opacity"
+        },
+        "void-a06": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.01 250 / 0.06)",
+          "$description": "Neutral L=0.08 at 6% opacity"
+        },
+        "void-a10": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.01 250 / 0.1)",
+          "$description": "Neutral L=0.08 at 10% opacity"
+        },
+        "void-a12": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.01 250 / 0.125)",
+          "$description": "Neutral L=0.08 at 12% opacity"
+        },
+        "void-a15": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.01 250 / 0.15)",
+          "$description": "Neutral L=0.08 at 15% opacity"
+        },
+        "void-a30": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.01 250 / 0.3)",
+          "$description": "Neutral L=0.08 at 30% opacity"
+        },
+        "void-a40": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.01 250 / 0.4)",
+          "$description": "Neutral L=0.08 at 40% opacity"
+        },
+        "void-a50": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.01 250 / 0.5)",
+          "$description": "Neutral L=0.08 at 50% opacity"
+        },
+        "void-a60": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.01 250 / 0.6)",
+          "$description": "Neutral L=0.08 at 60% opacity"
+        },
+        "void-a80": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.01 250 / 0.8)",
+          "$description": "Neutral L=0.08 at 80% opacity"
+        },
+        "void-a95": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.01 250 / 0.95)",
+          "$description": "Neutral L=0.08 at 95% opacity"
+        },
+        "void-a15-2": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.01 260 / 0.15)",
+          "$description": "Neutral L=0.08 at 15% opacity"
+        },
+        "void-a20": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.01 260 / 0.2)",
+          "$description": "Neutral L=0.08 at 20% opacity"
+        },
+        "void-a98": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.015 250 / 0.98)",
+          "$description": "Neutral L=0.08 at 98% opacity"
+        },
+        "void-a97-2": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.02 250 / 0.97)",
+          "$description": "Neutral L=0.08 at 97% opacity"
+        },
+        "void-a30-2": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.02 260 / 0.3)",
+          "$description": "Neutral L=0.08 at 30% opacity"
+        },
+        "void-3": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.02 260)",
+          "$description": "Neutral L=0.08"
+        },
+        "void-4": {
+          "$type": "color",
+          "$value": "oklch(0.09 0.02 255)",
+          "$description": "Neutral L=0.09"
+        },
+        "void-a30-3": {
+          "$type": "color",
+          "$value": "oklch(0.10 0.02 255 / 0.3)",
+          "$description": "Neutral L=0.10 at 30% opacity"
+        },
+        "void-a35": {
+          "$type": "color",
+          "$value": "oklch(0.10 0.02 255 / 0.35)",
+          "$description": "Neutral L=0.10 at 35% opacity"
+        },
+        "void-a40-2": {
+          "$type": "color",
+          "$value": "oklch(0.10 0.02 255 / 0.4)",
+          "$description": "Neutral L=0.10 at 40% opacity"
+        },
+        "void-5": {
+          "$type": "color",
+          "$value": "oklch(0.10 0.02 255)",
+          "$description": "Neutral L=0.10"
+        },
+        "deep": {
+          "$type": "color",
+          "$value": "oklch(0.12 0.02 250)",
+          "$description": "Neutral L=0.12"
+        },
+        "deep-a80": {
+          "$type": "color",
+          "$value": "oklch(0.14 0.02 250 / 0.8)",
+          "$description": "Neutral L=0.14 at 80% opacity"
+        },
+        "deep-2": {
+          "$type": "color",
+          "$value": "oklch(0.14 0.02 250)",
+          "$description": "Neutral L=0.14"
+        },
+        "deep-3": {
+          "$type": "color",
+          "$value": "oklch(0.15 0 0)",
+          "$description": "Neutral L=0.15"
+        },
+        "deep-4": {
+          "$type": "color",
+          "$value": "oklch(0.15 0.01 250)",
+          "$description": "Neutral L=0.15"
+        },
+        "deep-a85": {
+          "$type": "color",
+          "$value": "oklch(0.15 0.02 250 / 0.85)",
+          "$description": "Neutral L=0.15 at 85% opacity"
+        },
+        "deep-5": {
+          "$type": "color",
+          "$value": "oklch(0.15 0.02 250)",
+          "$description": "Neutral L=0.15"
+        },
+        "deep-a40": {
+          "$type": "color",
+          "$value": "oklch(0.16 0.02 248 / 0.4)",
+          "$description": "Neutral L=0.16 at 40% opacity"
+        },
+        "deep-a40-2": {
+          "$type": "color",
+          "$value": "oklch(0.16 0.02 250 / 0.4)",
+          "$description": "Neutral L=0.16 at 40% opacity"
+        },
+        "dark": {
+          "$type": "color",
+          "$value": "oklch(0.20 0.01 250)",
+          "$description": "Neutral L=0.20"
+        },
+        "dark-2": {
+          "$type": "color",
+          "$value": "oklch(0.20 0.02 250)",
+          "$description": "Neutral L=0.20"
+        },
+        "dark-3": {
+          "$type": "color",
+          "$value": "oklch(0.25 0 0)",
+          "$description": "Neutral L=0.25"
+        },
+        "dark-4": {
+          "$type": "color",
+          "$value": "oklch(0.25 0.02 250)",
+          "$description": "Neutral L=0.25"
+        },
+        "dim": {
+          "$type": "color",
+          "$value": "oklch(0.30 0 0)",
+          "$description": "Neutral L=0.30"
+        },
+        "dim-2": {
+          "$type": "color",
+          "$value": "oklch(0.30 0.01 230)",
+          "$description": "Neutral L=0.30"
+        },
+        "dim-3": {
+          "$type": "color",
+          "$value": "oklch(0.35 0.01 230)",
+          "$description": "Neutral L=0.35"
+        },
+        "mid": {
+          "$type": "color",
+          "$value": "oklch(0.40 0.01 230)",
+          "$description": "Neutral L=0.40"
+        },
+        "mid-a70": {
+          "$type": "color",
+          "$value": "oklch(0.45 0.01 220 / 0.7)",
+          "$description": "Neutral L=0.45 at 70% opacity"
+        },
+        "mid-a20": {
+          "$type": "color",
+          "$value": "oklch(0.50 0.02 220 / 0.2)",
+          "$description": "Neutral L=0.50 at 20% opacity"
+        },
+        "mid-a50": {
+          "$type": "color",
+          "$value": "oklch(0.50 0.02 220 / 0.5)",
+          "$description": "Neutral L=0.50 at 50% opacity"
+        },
+        "mid-2": {
+          "$type": "color",
+          "$value": "oklch(0.50 0.02 220)",
+          "$description": "Neutral L=0.50"
+        },
+        "rich": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.02 230)",
+          "$description": "Neutral L=0.55"
+        },
+        "rich-2": {
+          "$type": "color",
+          "$value": "oklch(0.60 0.01 230)",
+          "$description": "Neutral L=0.60"
+        },
+        "rich-3": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.01 230)",
+          "$description": "Neutral L=0.65"
+        },
+        "rich-a05": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.02 220 / 0.05)",
+          "$description": "Neutral L=0.65 at 5% opacity"
+        },
+        "rich-a10": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.02 220 / 0.1)",
+          "$description": "Neutral L=0.65 at 10% opacity"
+        },
+        "rich-a20": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.02 220 / 0.2)",
+          "$description": "Neutral L=0.65 at 20% opacity"
+        },
+        "rich-a30": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.02 220 / 0.3)",
+          "$description": "Neutral L=0.65 at 30% opacity"
+        },
+        "rich-a80": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.02 220 / 0.8)",
+          "$description": "Neutral L=0.65 at 80% opacity"
+        },
+        "rich-a90": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.02 220 / 0.9)",
+          "$description": "Neutral L=0.65 at 90% opacity"
+        },
+        "rich-a95": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.02 220 / 0.95)",
+          "$description": "Neutral L=0.65 at 95% opacity"
+        },
+        "rich-4": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.02 230)",
+          "$description": "Neutral L=0.65"
+        },
+        "light": {
+          "$type": "color",
+          "$value": "oklch(0.70 0 0)",
+          "$description": "Neutral L=0.70"
+        },
+        "light-2": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.01 230)",
+          "$description": "Neutral L=0.70"
+        },
+        "light-3": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.02 220)",
+          "$description": "Neutral L=0.70"
+        },
+        "pale": {
+          "$type": "color",
+          "$value": "oklch(0.80 0.02 230)",
+          "$description": "Neutral L=0.80"
+        },
+        "pale-2": {
+          "$type": "color",
+          "$value": "oklch(0.82 0.01 220)",
+          "$description": "Neutral L=0.82"
+        },
+        "pale-3": {
+          "$type": "color",
+          "$value": "oklch(0.85 0 0)",
+          "$description": "Neutral L=0.85"
+        },
+        "pale-4": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.005 220)",
+          "$description": "Neutral L=0.85"
+        },
+        "pale-a08": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.01 220 / 0.08)",
+          "$description": "Neutral L=0.85 at 8% opacity"
+        },
+        "pale-a10": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.01 220 / 0.1)",
+          "$description": "Neutral L=0.85 at 10% opacity"
+        },
+        "pale-a15": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.01 220 / 0.15)",
+          "$description": "Neutral L=0.85 at 15% opacity"
+        },
+        "pale-a30": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.01 220 / 0.3)",
+          "$description": "Neutral L=0.85 at 30% opacity"
+        },
+        "pale-a40": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.01 220 / 0.4)",
+          "$description": "Neutral L=0.85 at 40% opacity"
+        },
+        "pale-a50": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.01 220 / 0.5)",
+          "$description": "Neutral L=0.85 at 50% opacity"
+        },
+        "pale-a60": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.01 220 / 0.6)",
+          "$description": "Neutral L=0.85 at 60% opacity"
+        },
+        "pale-a80": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.01 220 / 0.8)",
+          "$description": "Neutral L=0.85 at 80% opacity"
+        },
+        "pale-5": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.02 220)",
+          "$description": "Neutral L=0.85"
+        },
+        "pale-6": {
+          "$type": "color",
+          "$value": "oklch(0.87 0.005 220)",
+          "$description": "Neutral L=0.87"
+        },
+        "bright": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.005 220)",
+          "$description": "Neutral L=0.88"
+        },
+        "bright-2": {
+          "$type": "color",
+          "$value": "oklch(0.90 0.005 220)",
+          "$description": "Neutral L=0.90"
+        },
+        "bright-3": {
+          "$type": "color",
+          "$value": "oklch(0.94 0.005 220)",
+          "$description": "Neutral L=0.94"
+        },
+        "luminous": {
+          "$type": "color",
+          "$value": "oklch(0.95 0.005 90)",
+          "$description": "Neutral L=0.95"
+        },
+        "luminous-2": {
+          "$type": "color",
+          "$value": "oklch(0.95 0.01 220)",
+          "$description": "Neutral L=0.95"
+        },
+        "luminous-a90": {
+          "$type": "color",
+          "$value": "oklch(0.95 0.02 90 / 0.9)",
+          "$description": "Neutral L=0.95 at 90% opacity"
+        },
+        "luminous-3": {
+          "$type": "color",
+          "$value": "oklch(0.96 0.003 220)",
+          "$description": "Neutral L=0.96"
+        },
+        "luminous-4": {
+          "$type": "color",
+          "$value": "oklch(0.97 0.005 220)",
+          "$description": "Neutral L=0.97"
+        },
+        "luminous-a06": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.01 90 / 0.06)",
+          "$description": "Neutral L=0.98 at 6% opacity"
+        },
+        "luminous-a08": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.01 90 / 0.08)",
+          "$description": "Neutral L=0.98 at 8% opacity"
+        },
+        "luminous-a10": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.01 90 / 0.1)",
+          "$description": "Neutral L=0.98 at 10% opacity"
+        },
+        "luminous-a20": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.01 90 / 0.2)",
+          "$description": "Neutral L=0.98 at 20% opacity"
+        },
+        "luminous-a30": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.01 90 / 0.3)",
+          "$description": "Neutral L=0.98 at 30% opacity"
+        },
+        "luminous-5": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.01 90)",
+          "$description": "Neutral L=0.98"
+        },
+        "luminous-a20-2": {
+          "$type": "color",
+          "$value": "oklch(0.99 0 0 / 0.2)",
+          "$description": "Neutral L=0.99 at 20% opacity"
+        },
+        "luminous-a25": {
+          "$type": "color",
+          "$value": "oklch(0.99 0 0 / 0.25)",
+          "$description": "Neutral L=0.99 at 25% opacity"
+        },
+        "luminous-a30-2": {
+          "$type": "color",
+          "$value": "oklch(0.99 0 0 / 0.3)",
+          "$description": "Neutral L=0.99 at 30% opacity"
+        },
+        "luminous-6": {
+          "$type": "color",
+          "$value": "oklch(0.99 0 0)",
+          "$description": "Neutral L=0.99"
+        },
+        "luminous-a20-3": {
+          "$type": "color",
+          "$value": "oklch(0.99 0.005 90 / 0.2)",
+          "$description": "Neutral L=0.99 at 20% opacity"
+        },
+        "luminous-a30-3": {
+          "$type": "color",
+          "$value": "oklch(0.99 0.005 90 / 0.3)",
+          "$description": "Neutral L=0.99 at 30% opacity"
+        },
+        "luminous-a40": {
+          "$type": "color",
+          "$value": "oklch(0.99 0.005 90 / 0.4)",
+          "$description": "Neutral L=0.99 at 40% opacity"
+        },
+        "luminous-a70": {
+          "$type": "color",
+          "$value": "oklch(0.99 0.005 90 / 0.7)",
+          "$description": "Neutral L=0.99 at 70% opacity"
+        },
+        "luminous-a80": {
+          "$type": "color",
+          "$value": "oklch(0.99 0.005 90 / 0.8)",
+          "$description": "Neutral L=0.99 at 80% opacity"
+        },
+        "luminous-a90-2": {
+          "$type": "color",
+          "$value": "oklch(0.99 0.005 90 / 0.9)",
+          "$description": "Neutral L=0.99 at 90% opacity"
+        },
+        "luminous-a95": {
+          "$type": "color",
+          "$value": "oklch(0.99 0.005 90 / 0.95)",
+          "$description": "Neutral L=0.99 at 95% opacity"
+        },
+        "luminous-a98": {
+          "$type": "color",
+          "$value": "oklch(0.99 0.005 90 / 0.98)",
+          "$description": "Neutral L=0.99 at 98% opacity"
+        },
+        "luminous-a100": {
+          "$type": "color",
+          "$value": "oklch(0.99 0.005 90 / 1)",
+          "$description": "Neutral L=0.99 at 100% opacity"
+        }
+      },
+      "indigo": {
+        "void-a20": {
+          "$type": "color",
+          "$value": "oklch(0.10 0.03 250 / 0.2)",
+          "$description": "Indigo L=0.10 at 20% opacity"
+        },
+        "void-a40": {
+          "$type": "color",
+          "$value": "oklch(0.10 0.03 250 / 0.4)",
+          "$description": "Indigo L=0.10 at 40% opacity"
+        },
+        "void-a60": {
+          "$type": "color",
+          "$value": "oklch(0.10 0.03 250 / 0.6)",
+          "$description": "Indigo L=0.10 at 60% opacity"
+        },
+        "deep-a90": {
+          "$type": "color",
+          "$value": "oklch(0.12 0.03 250 / 0.9)",
+          "$description": "Indigo L=0.12 at 90% opacity"
+        },
+        "deep": {
+          "$type": "color",
+          "$value": "oklch(0.12 0.03 250)",
+          "$description": "Indigo L=0.12"
+        },
+        "deep-2": {
+          "$type": "color",
+          "$value": "oklch(0.12 0.03 255)",
+          "$description": "Indigo L=0.12"
+        },
+        "deep-3": {
+          "$type": "color",
+          "$value": "oklch(0.12 0.03 260)",
+          "$description": "Indigo L=0.12"
+        },
+        "deep-4": {
+          "$type": "color",
+          "$value": "oklch(0.12 0.04 250)",
+          "$description": "Indigo L=0.12"
+        },
+        "deep-a80": {
+          "$type": "color",
+          "$value": "oklch(0.12 0.04 260 / 0.8)",
+          "$description": "Indigo L=0.12 at 80% opacity"
+        },
+        "deep-a50": {
+          "$type": "color",
+          "$value": "oklch(0.14 0.03 255 / 0.5)",
+          "$description": "Indigo L=0.14 at 50% opacity"
+        },
+        "deep-a10": {
+          "$type": "color",
+          "$value": "oklch(0.15 0.03 250 / 0.1)",
+          "$description": "Indigo L=0.15 at 10% opacity"
+        },
+        "deep-a35": {
+          "$type": "color",
+          "$value": "oklch(0.15 0.03 250 / 0.35)",
+          "$description": "Indigo L=0.15 at 35% opacity"
+        },
+        "deep-a85": {
+          "$type": "color",
+          "$value": "oklch(0.15 0.03 250 / 0.85)",
+          "$description": "Indigo L=0.15 at 85% opacity"
+        },
+        "deep-5": {
+          "$type": "color",
+          "$value": "oklch(0.15 0.03 250)",
+          "$description": "Indigo L=0.15"
+        },
+        "deep-6": {
+          "$type": "color",
+          "$value": "oklch(0.16 0.03 250)",
+          "$description": "Indigo L=0.16"
+        },
+        "deep-a50-2": {
+          "$type": "color",
+          "$value": "oklch(0.16 0.03 252 / 0.5)",
+          "$description": "Indigo L=0.16 at 50% opacity"
+        },
+        "deep-a60": {
+          "$type": "color",
+          "$value": "oklch(0.16 0.03 252 / 0.6)",
+          "$description": "Indigo L=0.16 at 60% opacity"
+        },
+        "deep-a75": {
+          "$type": "color",
+          "$value": "oklch(0.16 0.03 252 / 0.75)",
+          "$description": "Indigo L=0.16 at 75% opacity"
+        },
+        "deep-a95": {
+          "$type": "color",
+          "$value": "oklch(0.16 0.03 252 / 0.95)",
+          "$description": "Indigo L=0.16 at 95% opacity"
+        },
+        "deep-a60-2": {
+          "$type": "color",
+          "$value": "oklch(0.18 0.03 248 / 0.6)",
+          "$description": "Indigo L=0.18 at 60% opacity"
+        },
+        "deep-a95-2": {
+          "$type": "color",
+          "$value": "oklch(0.18 0.03 248 / 0.95)",
+          "$description": "Indigo L=0.18 at 95% opacity"
+        },
+        "deep-7": {
+          "$type": "color",
+          "$value": "oklch(0.18 0.03 250)",
+          "$description": "Indigo L=0.18"
+        },
+        "deep-a95-3": {
+          "$type": "color",
+          "$value": "oklch(0.18 0.04 250 / 0.95)",
+          "$description": "Indigo L=0.18 at 95% opacity"
+        },
+        "deep-8": {
+          "$type": "color",
+          "$value": "oklch(0.18 0.04 250)",
+          "$description": "Indigo L=0.18"
+        },
+        "dark": {
+          "$type": "color",
+          "$value": "oklch(0.20 0.03 250)",
+          "$description": "Indigo L=0.20"
+        },
+        "dark-a40": {
+          "$type": "color",
+          "$value": "oklch(0.20 0.03 260 / 0.4)",
+          "$description": "Indigo L=0.20 at 40% opacity"
+        },
+        "dark-2": {
+          "$type": "color",
+          "$value": "oklch(0.20 0.04 250)",
+          "$description": "Indigo L=0.20"
+        },
+        "dark-a90": {
+          "$type": "color",
+          "$value": "oklch(0.20 0.05 260 / 0.9)",
+          "$description": "Indigo L=0.20 at 90% opacity"
+        },
+        "dark-3": {
+          "$type": "color",
+          "$value": "oklch(0.22 0.03 250)",
+          "$description": "Indigo L=0.22"
+        },
+        "dark-4": {
+          "$type": "color",
+          "$value": "oklch(0.22 0.04 250)",
+          "$description": "Indigo L=0.22"
+        },
+        "dark-5": {
+          "$type": "color",
+          "$value": "oklch(0.22 0.06 260)",
+          "$description": "Indigo L=0.22"
+        },
+        "dark-a30": {
+          "$type": "color",
+          "$value": "oklch(0.25 0.03 250 / 0.3)",
+          "$description": "Indigo L=0.25 at 30% opacity"
+        },
+        "dark-6": {
+          "$type": "color",
+          "$value": "oklch(0.25 0.03 250)",
+          "$description": "Indigo L=0.25"
+        },
+        "dark-7": {
+          "$type": "color",
+          "$value": "oklch(0.25 0.08 250)",
+          "$description": "Indigo L=0.25"
+        },
+        "dim-a30": {
+          "$type": "color",
+          "$value": "oklch(0.30 0.04 250 / 0.3)",
+          "$description": "Indigo L=0.30 at 30% opacity"
+        },
+        "dim-a50": {
+          "$type": "color",
+          "$value": "oklch(0.30 0.04 250 / 0.5)",
+          "$description": "Indigo L=0.30 at 50% opacity"
+        },
+        "dim": {
+          "$type": "color",
+          "$value": "oklch(0.30 0.04 250)",
+          "$description": "Indigo L=0.30"
+        },
+        "dim-a40": {
+          "$type": "color",
+          "$value": "oklch(0.30 0.05 260 / 0.4)",
+          "$description": "Indigo L=0.30 at 40% opacity"
+        },
+        "dim-a25": {
+          "$type": "color",
+          "$value": "oklch(0.30 0.12 250 / 0.25)",
+          "$description": "Indigo L=0.30 at 25% opacity"
+        },
+        "dim-a30-2": {
+          "$type": "color",
+          "$value": "oklch(0.35 0.05 248 / 0.3)",
+          "$description": "Indigo L=0.35 at 30% opacity"
+        },
+        "dim-a40-2": {
+          "$type": "color",
+          "$value": "oklch(0.35 0.05 248 / 0.4)",
+          "$description": "Indigo L=0.35 at 40% opacity"
+        },
+        "dim-a50-2": {
+          "$type": "color",
+          "$value": "oklch(0.35 0.05 248 / 0.5)",
+          "$description": "Indigo L=0.35 at 50% opacity"
+        },
+        "dim-a60": {
+          "$type": "color",
+          "$value": "oklch(0.35 0.05 248 / 0.6)",
+          "$description": "Indigo L=0.35 at 60% opacity"
+        },
+        "mid-a25": {
+          "$type": "color",
+          "$value": "oklch(0.40 0.06 250 / 0.25)",
+          "$description": "Indigo L=0.40 at 25% opacity"
+        },
+        "mid-a35": {
+          "$type": "color",
+          "$value": "oklch(0.45 0.07 248 / 0.35)",
+          "$description": "Indigo L=0.45 at 35% opacity"
+        },
+        "rich": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.20 260)",
+          "$description": "Indigo L=0.65"
+        }
+      },
+      "violet": {
+        "void": {
+          "$type": "color",
+          "$value": "oklch(0.10 0.03 280)",
+          "$description": "Violet L=0.10"
+        },
+        "deep": {
+          "$type": "color",
+          "$value": "oklch(0.12 0.04 280)",
+          "$description": "Violet L=0.12"
+        },
+        "deep-2": {
+          "$type": "color",
+          "$value": "oklch(0.13 0.04 280)",
+          "$description": "Violet L=0.13"
+        },
+        "deep-3": {
+          "$type": "color",
+          "$value": "oklch(0.14 0.03 280)",
+          "$description": "Violet L=0.14"
+        },
+        "deep-a80": {
+          "$type": "color",
+          "$value": "oklch(0.14 0.04 280 / 0.8)",
+          "$description": "Violet L=0.14 at 80% opacity"
+        },
+        "deep-4": {
+          "$type": "color",
+          "$value": "oklch(0.14 0.04 280)",
+          "$description": "Violet L=0.14"
+        },
+        "deep-5": {
+          "$type": "color",
+          "$value": "oklch(0.14 0.05 270)",
+          "$description": "Violet L=0.14"
+        },
+        "deep-a95": {
+          "$type": "color",
+          "$value": "oklch(0.14 0.05 280 / 0.95)",
+          "$description": "Violet L=0.14 at 95% opacity"
+        },
+        "deep-6": {
+          "$type": "color",
+          "$value": "oklch(0.15 0.04 280)",
+          "$description": "Violet L=0.15"
+        },
+        "deep-a90": {
+          "$type": "color",
+          "$value": "oklch(0.16 0.04 280 / 0.9)",
+          "$description": "Violet L=0.16 at 90% opacity"
+        },
+        "deep-7": {
+          "$type": "color",
+          "$value": "oklch(0.16 0.05 280)",
+          "$description": "Violet L=0.16"
+        },
+        "deep-8": {
+          "$type": "color",
+          "$value": "oklch(0.18 0.05 270)",
+          "$description": "Violet L=0.18"
+        },
+        "deep-9": {
+          "$type": "color",
+          "$value": "oklch(0.18 0.06 280)",
+          "$description": "Violet L=0.18"
+        },
+        "dark-a15": {
+          "$type": "color",
+          "$value": "oklch(0.20 0.08 290 / 0.15)",
+          "$description": "Violet L=0.20 at 15% opacity"
+        },
+        "dark": {
+          "$type": "color",
+          "$value": "oklch(0.25 0.06 280)",
+          "$description": "Violet L=0.25"
+        },
+        "dim": {
+          "$type": "color",
+          "$value": "oklch(0.30 0.08 280)",
+          "$description": "Violet L=0.30"
+        },
+        "dim-2": {
+          "$type": "color",
+          "$value": "oklch(0.30 0.15 280)",
+          "$description": "Violet L=0.30"
+        },
+        "rich-a40": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.20 290 / 0.4)",
+          "$description": "Violet L=0.55 at 40% opacity"
+        },
+        "rich-a03": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.03)",
+          "$description": "Violet L=0.55 at 3% opacity"
+        },
+        "rich-a05": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.05)",
+          "$description": "Violet L=0.55 at 5% opacity"
+        },
+        "rich-a08": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.08)",
+          "$description": "Violet L=0.55 at 8% opacity"
+        },
+        "rich-a15": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.15)",
+          "$description": "Violet L=0.55 at 15% opacity"
+        },
+        "rich-a20": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.2)",
+          "$description": "Violet L=0.55 at 20% opacity"
+        },
+        "rich-a25": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.25)",
+          "$description": "Violet L=0.55 at 25% opacity"
+        },
+        "rich-a30": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.3)",
+          "$description": "Violet L=0.55 at 30% opacity"
+        },
+        "rich-a35": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.35)",
+          "$description": "Violet L=0.55 at 35% opacity"
+        },
+        "rich-a40-2": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.4)",
+          "$description": "Violet L=0.55 at 40% opacity"
+        },
+        "rich-a50": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.5)",
+          "$description": "Violet L=0.55 at 50% opacity"
+        },
+        "rich-a60": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.6)",
+          "$description": "Violet L=0.55 at 60% opacity"
+        },
+        "rich-a70": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290 / 0.7)",
+          "$description": "Violet L=0.55 at 70% opacity"
+        },
+        "rich": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 290)",
+          "$description": "Violet L=0.55"
+        },
+        "rich-2": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.20 280)",
+          "$description": "Violet L=0.65"
+        }
+      },
+      "blue": {
+        "deep-a60": {
+          "$type": "color",
+          "$value": "oklch(0.18 0.03 246 / 0.6)",
+          "$description": "Blue L=0.18 at 60% opacity"
+        },
+        "dark": {
+          "$type": "color",
+          "$value": "oklch(0.20 0.04 230)",
+          "$description": "Blue L=0.20"
+        },
+        "dark-a75": {
+          "$type": "color",
+          "$value": "oklch(0.20 0.04 245 / 0.75)",
+          "$description": "Blue L=0.20 at 75% opacity"
+        },
+        "dark-a80": {
+          "$type": "color",
+          "$value": "oklch(0.20 0.04 245 / 0.8)",
+          "$description": "Blue L=0.20 at 80% opacity"
+        },
+        "dark-a95": {
+          "$type": "color",
+          "$value": "oklch(0.20 0.04 245 / 0.95)",
+          "$description": "Blue L=0.20 at 95% opacity"
+        },
+        "dark-2": {
+          "$type": "color",
+          "$value": "oklch(0.20 0.06 230)",
+          "$description": "Blue L=0.20"
+        },
+        "dark-a70": {
+          "$type": "color",
+          "$value": "oklch(0.22 0.04 246 / 0.7)",
+          "$description": "Blue L=0.22 at 70% opacity"
+        },
+        "dark-3": {
+          "$type": "color",
+          "$value": "oklch(0.22 0.04 246)",
+          "$description": "Blue L=0.22"
+        },
+        "dark-a85": {
+          "$type": "color",
+          "$value": "oklch(0.24 0.05 244 / 0.85)",
+          "$description": "Blue L=0.24 at 85% opacity"
+        },
+        "mid-a70": {
+          "$type": "color",
+          "$value": "oklch(0.45 0.20 230 / 0.7)",
+          "$description": "Blue L=0.45 at 70% opacity"
+        },
+        "mid": {
+          "$type": "color",
+          "$value": "oklch(0.45 0.20 230)",
+          "$description": "Blue L=0.45"
+        },
+        "mid-2": {
+          "$type": "color",
+          "$value": "oklch(0.50 0.25 230)",
+          "$description": "Blue L=0.50"
+        },
+        "rich-a90": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.22 228 / 0.9)",
+          "$description": "Blue L=0.55 at 90% opacity"
+        },
+        "rich": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.22 228)",
+          "$description": "Blue L=0.55"
+        },
+        "rich-2": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 220)",
+          "$description": "Blue L=0.55"
+        },
+        "rich-3": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 240)",
+          "$description": "Blue L=0.55"
+        },
+        "rich-4": {
+          "$type": "color",
+          "$value": "oklch(0.60 0.23 228)",
+          "$description": "Blue L=0.60"
+        },
+        "rich-5": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.20 220)",
+          "$description": "Blue L=0.65"
+        },
+        "rich-6": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 220)",
+          "$description": "Blue L=0.65"
+        },
+        "rich-a00": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 230 / 0)",
+          "$description": "Blue L=0.65 at 0% opacity"
+        },
+        "rich-a05": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 230 / 0.05)",
+          "$description": "Blue L=0.65 at 5% opacity"
+        },
+        "rich-a06": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 230 / 0.06)",
+          "$description": "Blue L=0.65 at 6% opacity"
+        },
+        "rich-a08": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 230 / 0.08)",
+          "$description": "Blue L=0.65 at 8% opacity"
+        },
+        "rich-a10": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 230 / 0.1)",
+          "$description": "Blue L=0.65 at 10% opacity"
+        },
+        "rich-a12": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 230 / 0.12)",
+          "$description": "Blue L=0.65 at 12% opacity"
+        },
+        "rich-a15": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 230 / 0.15)",
+          "$description": "Blue L=0.65 at 15% opacity"
+        },
+        "rich-a18": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 230 / 0.18)",
+          "$description": "Blue L=0.65 at 18% opacity"
+        },
+        "rich-a25": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 230 / 0.25)",
+          "$description": "Blue L=0.65 at 25% opacity"
+        },
+        "rich-a60": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 230 / 0.6)",
+          "$description": "Blue L=0.65 at 60% opacity"
+        },
+        "rich-a90-2": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 230 / 0.9)",
+          "$description": "Blue L=0.65 at 90% opacity"
+        },
+        "rich-7": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 240)",
+          "$description": "Blue L=0.65"
+        },
+        "light": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.27 228)",
+          "$description": "Blue L=0.70"
+        },
+        "light-2": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.20 220)",
+          "$description": "Blue L=0.75"
+        },
+        "light-3": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 230)",
+          "$description": "Blue L=0.75"
+        },
+        "light-a50": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.28 225 / 0.5)",
+          "$description": "Blue L=0.75 at 50% opacity"
+        },
+        "bright": {
+          "$type": "color",
+          "$value": "oklch(0.90 0.10 230)",
+          "$description": "Blue L=0.90"
+        },
+        "luminous": {
+          "$type": "color",
+          "$value": "oklch(0.95 0.03 235)",
+          "$description": "Blue L=0.95"
+        }
+      },
+      "cyan": {
+        "deep-a12": {
+          "$type": "color",
+          "$value": "oklch(0.18 0.06 210 / 0.12)",
+          "$description": "Cyan L=0.18 at 12% opacity"
+        },
+        "mid": {
+          "$type": "color",
+          "$value": "oklch(0.42 0.18 200)",
+          "$description": "Cyan L=0.42"
+        },
+        "light-a05": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.15 210 / 0.05)",
+          "$description": "Cyan L=0.75 at 5% opacity"
+        },
+        "light-a50": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.15 210 / 0.5)",
+          "$description": "Cyan L=0.75 at 50% opacity"
+        },
+        "light": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.15 210)",
+          "$description": "Cyan L=0.75"
+        },
+        "light-a15": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.18 195 / 0.15)",
+          "$description": "Cyan L=0.75 at 15% opacity"
+        },
+        "light-2": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.18 195)",
+          "$description": "Cyan L=0.75"
+        }
+      },
+      "gold": {
+        "dark-a70": {
+          "$type": "color",
+          "$value": "oklch(0.22 0.06 85 / 0.7)",
+          "$description": "Gold L=0.22 at 70% opacity"
+        },
+        "rich": {
+          "$type": "color",
+          "$value": "oklch(0.60 0.12 88)",
+          "$description": "Gold L=0.60"
+        },
+        "rich-2": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.13 88)",
+          "$description": "Gold L=0.65"
+        },
+        "light-a00": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.15 85 / 0)",
+          "$description": "Gold L=0.70 at 0% opacity"
+        },
+        "light-a05": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.15 85 / 0.05)",
+          "$description": "Gold L=0.70 at 5% opacity"
+        },
+        "light-a10": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.15 85 / 0.1)",
+          "$description": "Gold L=0.70 at 10% opacity"
+        },
+        "light-a15": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.15 85 / 0.15)",
+          "$description": "Gold L=0.70 at 15% opacity"
+        },
+        "light-a20": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.15 85 / 0.2)",
+          "$description": "Gold L=0.70 at 20% opacity"
+        },
+        "light-a25": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.15 85 / 0.25)",
+          "$description": "Gold L=0.70 at 25% opacity"
+        },
+        "light-a30": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.15 85 / 0.3)",
+          "$description": "Gold L=0.70 at 30% opacity"
+        },
+        "light-a40": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.15 85 / 0.4)",
+          "$description": "Gold L=0.70 at 40% opacity"
+        },
+        "light-a50": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.15 85 / 0.5)",
+          "$description": "Gold L=0.70 at 50% opacity"
+        },
+        "light-a60": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.15 85 / 0.6)",
+          "$description": "Gold L=0.70 at 60% opacity"
+        },
+        "light-a70": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.15 85 / 0.7)",
+          "$description": "Gold L=0.70 at 70% opacity"
+        },
+        "light-a80": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.15 85 / 0.8)",
+          "$description": "Gold L=0.70 at 80% opacity"
+        },
+        "light-a90": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.15 85 / 0.9)",
+          "$description": "Gold L=0.70 at 90% opacity"
+        },
+        "light-a20-2": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 85 / 0.2)",
+          "$description": "Gold L=0.75 at 20% opacity"
+        },
+        "light-a50-2": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 85 / 0.5)",
+          "$description": "Gold L=0.75 at 50% opacity"
+        },
+        "light": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 85)",
+          "$description": "Gold L=0.75"
+        },
+        "pale": {
+          "$type": "color",
+          "$value": "oklch(0.80 0.20 70)",
+          "$description": "Gold L=0.80"
+        },
+        "pale-a03": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.16 85 / 0.03)",
+          "$description": "Gold L=0.85 at 3% opacity"
+        },
+        "pale-a10": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.16 85 / 0.1)",
+          "$description": "Gold L=0.85 at 10% opacity"
+        },
+        "pale-a15": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.16 85 / 0.15)",
+          "$description": "Gold L=0.85 at 15% opacity"
+        },
+        "pale-a30": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.16 85 / 0.3)",
+          "$description": "Gold L=0.85 at 30% opacity"
+        },
+        "pale-a40": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.16 85 / 0.4)",
+          "$description": "Gold L=0.85 at 40% opacity"
+        },
+        "pale-a50": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.16 85 / 0.5)",
+          "$description": "Gold L=0.85 at 50% opacity"
+        },
+        "pale-a60": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.16 85 / 0.6)",
+          "$description": "Gold L=0.85 at 60% opacity"
+        },
+        "pale-a15-2": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.18 85 / 0.15)",
+          "$description": "Gold L=0.85 at 15% opacity"
+        },
+        "pale-a40-2": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.18 85 / 0.4)",
+          "$description": "Gold L=0.85 at 40% opacity"
+        },
+        "pale-a50-2": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.18 85 / 0.5)",
+          "$description": "Gold L=0.85 at 50% opacity"
+        },
+        "pale-a60-2": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.18 85 / 0.6)",
+          "$description": "Gold L=0.85 at 60% opacity"
+        },
+        "pale-2": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.18 85)",
+          "$description": "Gold L=0.85"
+        },
+        "pale-a10-2": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.18 95 / 0.1)",
+          "$description": "Gold L=0.85 at 10% opacity"
+        },
+        "pale-a50-3": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.18 95 / 0.5)",
+          "$description": "Gold L=0.85 at 50% opacity"
+        },
+        "pale-3": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.18 95)",
+          "$description": "Gold L=0.85"
+        },
+        "pale-4": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.25 85)",
+          "$description": "Gold L=0.85"
+        },
+        "bright-a08": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.18 95 / 0.08)",
+          "$description": "Gold L=0.88 at 8% opacity"
+        },
+        "bright-a10": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.18 95 / 0.1)",
+          "$description": "Gold L=0.88 at 10% opacity"
+        },
+        "bright-a15": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.18 95 / 0.15)",
+          "$description": "Gold L=0.88 at 15% opacity"
+        },
+        "bright-a20": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.18 95 / 0.2)",
+          "$description": "Gold L=0.88 at 20% opacity"
+        },
+        "bright-a25": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.18 95 / 0.25)",
+          "$description": "Gold L=0.88 at 25% opacity"
+        },
+        "bright-a40": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.18 95 / 0.4)",
+          "$description": "Gold L=0.88 at 40% opacity"
+        },
+        "bright-a50": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.18 95 / 0.5)",
+          "$description": "Gold L=0.88 at 50% opacity"
+        },
+        "bright": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.18 95)",
+          "$description": "Gold L=0.88"
+        },
+        "bright-a70": {
+          "$type": "color",
+          "$value": "oklch(0.90 0.03 90 / 0.7)",
+          "$description": "Gold L=0.90 at 70% opacity"
+        },
+        "bright-2": {
+          "$type": "color",
+          "$value": "oklch(0.90 0.16 85)",
+          "$description": "Gold L=0.90"
+        },
+        "bright-3": {
+          "$type": "color",
+          "$value": "oklch(0.92 0.20 95)",
+          "$description": "Gold L=0.92"
+        }
+      },
+      "rose": {
+        "mid": {
+          "$type": "color",
+          "$value": "oklch(0.42 0.18 340)",
+          "$description": "Rose L=0.42"
+        }
+      },
+      "error": {
+        "mid-a15": {
+          "$type": "color",
+          "$value": "oklch(0.45 0.22 25 / 0.15)",
+          "$description": "Error L=0.45 at 15% opacity"
+        },
+        "mid-a50": {
+          "$type": "color",
+          "$value": "oklch(0.45 0.22 25 / 0.5)",
+          "$description": "Error L=0.45 at 50% opacity"
+        },
+        "mid": {
+          "$type": "color",
+          "$value": "oklch(0.45 0.22 25)",
+          "$description": "Error L=0.45"
+        },
+        "mid-2": {
+          "$type": "color",
+          "$value": "oklch(0.50 0.24 25)",
+          "$description": "Error L=0.50"
+        },
+        "rich-a20": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 25 / 0.2)",
+          "$description": "Error L=0.55 at 20% opacity"
+        },
+        "rich-a50": {
+          "$type": "color",
+          "$value": "oklch(0.55 0.25 25 / 0.5)",
+          "$description": "Error L=0.55 at 50% opacity"
+        },
+        "rich": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 25)",
+          "$description": "Error L=0.65"
+        }
+      },
+      "purple": {
+        "mid": {
+          "$type": "color",
+          "$value": "oklch(0.45 0.25 300)",
+          "$description": "Purple L=0.45"
+        },
+        "rich": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 320)",
+          "$description": "Purple L=0.65"
+        }
+      },
+      "green": {
+        "rich-a20": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 150 / 0.2)",
+          "$description": "Green L=0.65 at 20% opacity"
+        },
+        "rich-a30": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 150 / 0.3)",
+          "$description": "Green L=0.65 at 30% opacity"
+        },
+        "rich-a50": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 150 / 0.5)",
+          "$description": "Green L=0.65 at 50% opacity"
+        },
+        "rich-a60": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 150 / 0.6)",
+          "$description": "Green L=0.65 at 60% opacity"
+        },
+        "rich": {
+          "$type": "color",
+          "$value": "oklch(0.65 0.25 150)",
+          "$description": "Green L=0.65"
+        },
+        "light-a05": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 150 / 0.05)",
+          "$description": "Green L=0.75 at 5% opacity"
+        },
+        "light-a20": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 150 / 0.2)",
+          "$description": "Green L=0.75 at 20% opacity"
+        },
+        "light": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.25 150)",
+          "$description": "Green L=0.75"
+        }
+      },
+      "amber": {
+        "light": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.22 50)",
+          "$description": "Amber L=0.70"
+        },
+        "light-2": {
+          "$type": "color",
+          "$value": "oklch(0.75 0.18 65)",
+          "$description": "Amber L=0.75"
+        },
+        "pale": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.16 50)",
+          "$description": "Amber L=0.85"
+        },
+        "bright": {
+          "$type": "color",
+          "$value": "oklch(0.88 0.18 50)",
+          "$description": "Amber L=0.88"
+        }
+      },
+      "sacred": {
+        "gold-pure": {
+          "$type": "color",
+          "$value": "#FFD700",
+          "$description": "Pure gold — used in luminous-gold-accessible gradient"
+        },
+        "gold-lemon": {
+          "$type": "color",
+          "$value": "#FFFACD",
+          "$description": "Lemon chiffon — used in luminous-gold-accessible gradient"
+        },
+        "purple-lavender": {
+          "$type": "color",
+          "$value": "#e0c3fc",
+          "$description": "Soft lavender purple — used in transcendent-overlay gradient"
+        },
+        "blue-cornflower": {
+          "$type": "color",
+          "$value": "#8ec5fc",
+          "$description": "Cornflower blue — used in transcendent-overlay gradient"
+        },
+        "blue-royal": {
+          "$type": "color",
+          "$value": "#3a3ad6",
+          "$description": "Royal blue — used in consciousness-royal gradient"
+        },
+        "blue-royal-mid": {
+          "$type": "color",
+          "$value": "#6e6ee6",
+          "$description": "Medium royal blue — used in consciousness-royal gradient"
+        }
+      }
     }
   }
 }

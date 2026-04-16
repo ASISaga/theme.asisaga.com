@@ -18,24 +18,24 @@
   @else if $vibe == 'ethereal' {
     // High-transparency, light-based focus
     backdrop-filter: blur(10px) brightness(1.02);
-    background: oklch(0.99 0.005 90);
-    box-shadow: 0 1px 4px oklch(0.08 0.01 250 / 0.06);
+    background: $color-light-white;
+    box-shadow: 0 1px 4px $color-engine-neutral-void-a06;
   }
   @else if $vibe == 'void' {
     // Deep-space, profound black, ultra high-contrast
-    background: var(--genesis-bg-surface, oklch(0.08 0.01 250));
-    color: var(--genesis-body-color, oklch(0.99 0.005 90));
+    background: var(--genesis-bg-surface, $color-dark-profound-black);
+    color: var(--genesis-body-color, $color-light-white);
     box-shadow: 
-      inset 0 0 20px oklch(0.05 0.01 260),
-      0 1px 8px oklch(0.05 0.01 260 / 0.4);
+      inset 0 0 20px $color-engine-neutral-abyss-4,
+      0 1px 8px $color-engine-neutral-abyss-a40;
   }
   @else if $vibe == 'vibrant' {
     // High-energy, data-saturated
-    background: var(--genesis-bg-surface, oklch(0.99 0.005 90));
-    color: var(--genesis-body-color, oklch(0.10 0.01 250));
+    background: var(--genesis-bg-surface, $color-light-white);
+    color: var(--genesis-body-color, $color-theme-dark-card-bg);
     box-shadow: 
-      0 0 12px oklch(0.65 0.25 230 / 0.15),
-      0 2px 8px oklch(0.08 0.01 250 / 0.1);
+      0 0 12px $color-engine-blue-rich-a15,
+      0 2px 8px $color-engine-neutral-void-a10;
     backdrop-filter: blur(8px);
   }
   @else if $vibe == 'cosmic' {
@@ -43,16 +43,16 @@
     background:
       radial-gradient(
         ellipse at 20% 50%,
-        oklch(0.12 0.04 260 / 0.8) 0%,
+        $color-engine-indigo-deep-a80 0%,
         transparent 60%
       ),
       radial-gradient(
         ellipse at 80% 20%,
-        oklch(0.10 0.03 250 / 0.6) 0%,
+        $color-engine-indigo-void-a60 0%,
         transparent 50%
       ),
-      oklch(0.09 0.02 255);
-    color: oklch(0.92 0.005 90);
+      $color-engine-neutral-void-4;
+    color: $color-boardroom-text;
     position: relative;
 
     h1,
@@ -68,11 +68,11 @@
     small,
     time,
     span {
-      color: oklch(0.92 0.005 90);
+      color: $color-boardroom-text;
     }
 
     a {
-      color: oklch(0.95 0.03 235);
+      color: $color-engine-blue-luminous;
     }
 
     &::before {
@@ -80,9 +80,9 @@
       position: absolute;
       inset: 0;
       background-image:
-        radial-gradient(1px 1px at 20% 30%, oklch(0.99 0 0 / 0.3) 0%, transparent 100%),
-        radial-gradient(1px 1px at 40% 70%, oklch(0.99 0 0 / 0.2) 0%, transparent 100%),
-        radial-gradient(1px 1px at 60% 15%, oklch(0.99 0 0 / 0.25) 0%, transparent 100%);
+        radial-gradient(1px 1px at 20% 30%, $color-engine-neutral-luminous-a30-2 0%, transparent 100%),
+        radial-gradient(1px 1px at 40% 70%, $color-engine-neutral-luminous-a20-2 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 15%, $color-engine-neutral-luminous-a25 0%, transparent 100%);
       pointer-events: none;
       z-index: 0;
     }
@@ -93,8 +93,8 @@
     }
 
     @media (prefers-contrast: high) {
-      background: oklch(0.05 0 0);
-      color: oklch(0.99 0 0);
+      background: $color-engine-neutral-abyss-3;
+      color: $color-engine-neutral-luminous-6;
 
       h1,
       h2,
@@ -110,7 +110,7 @@
       time,
       span,
       a {
-        color: oklch(0.99 0 0);
+        color: $color-engine-neutral-luminous-6;
       }
 
       &::before {
@@ -138,11 +138,11 @@
     // Reverent, mission-critical tone
     background: linear-gradient(
       175deg,
-      oklch(0.06 0.02 260) 0%,
-      oklch(0.04 0.01 250) 60%,
-      oklch(0.06 0.02 260) 100%
+      $color-engine-neutral-void 0%,
+      $color-engine-neutral-abyss-2 60%,
+      $color-engine-neutral-void 100%
     );
-    color: oklch(0.99 0.005 90);
+    color: $color-light-white;
     position: relative;
     
     &::before {
@@ -156,7 +156,7 @@
       background: linear-gradient(
         90deg,
         transparent,
-        oklch(0.70 0.15 85 / 0.6),
+        $color-engine-gold-light-a60,
         transparent
       );
     }
@@ -168,12 +168,12 @@
 // ============================================================================
 @keyframes pulse-border {
   0%, 100% {
-    border-color: oklch(0.65 0.25 230);  // Neon blue
-    box-shadow: 0 0 16px oklch(0.65 0.25 230 / 0.4);
+    border-color: $color-accent-neon-blue;  // Neon blue
+    box-shadow: 0 0 16px $color-synapse-social-hover;
   }
   50% {
-    border-color: oklch(0.75 0.28 225);  // Brighter neon blue
-    box-shadow: 0 0 24px oklch(0.75 0.28 225 / 0.5);
+    border-color: $color-accent-neon-blue-bright;  // Brighter neon blue
+    box-shadow: 0 0 24px $color-engine-blue-light-a50;
   }
 }
 
