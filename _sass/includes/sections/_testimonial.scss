@@ -5,7 +5,6 @@
 .testimonial-section {
   @include genesis-environment('focused');
   @include genesis-atmosphere('ethereal');
-  @include genesis-atmosphere('spacious-mobile');
   
   .testimonial-container {
     @include genesis-environment('focused');

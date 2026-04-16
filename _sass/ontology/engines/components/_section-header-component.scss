@@ -7,7 +7,6 @@
 @mixin section-header-component {
   .section-header {
     @include genesis-environment('focused');
-    @include genesis-atmosphere('spacious-mobile');
     padding-inline: 1.5rem;
 
     .section-title {

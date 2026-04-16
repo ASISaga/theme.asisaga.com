@@ -73,9 +73,9 @@
   /* ============================================================================
      SHADOW TOKENS
      ============================================================================ */
-  --shadow-ambient: 0 4px 12px oklch(0.08 0.01 250 / 0.30);
-  --shadow-void-inset: oklch(0.05 0.01 260);
-  --shadow-profound: 0 8px 32px oklch(0.05 0.01 250 / 0.5);
+  --shadow-ambient: 0 4px 12px #{$color-ether-void-veil};
+  --shadow-void-inset: #{$color-ether-abyss};
+  --shadow-profound: 0 8px 32px #{$color-ether-void-presence};
   
   /* ============================================================================
      RESPONSIVE TOKENS (Dynamic Viewport Units)

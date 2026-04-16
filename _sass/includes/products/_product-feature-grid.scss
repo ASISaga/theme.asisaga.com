@@ -4,7 +4,6 @@
 
 .product-feature-grid {
   @include genesis-environment('distributed');
-  @include genesis-atmosphere('spacious-mobile');
   
   // Individual feature cards
   .product-card {

@@ -40,6 +40,7 @@
   }
   @else if $vibe == 'cosmic' {
     // Deep-space backdrop for editorial and mission-adjacent sections
+    // Intent: The infinite expanse — user should feel they are looking into deep space
     background:
       radial-gradient(
         ellipse at 20% 50%,
@@ -55,26 +56,7 @@
     color: $color-boardroom-text;
     position: relative;
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    li,
-    blockquote,
-    figcaption,
-    small,
-    time,
-    span {
-      color: $color-boardroom-text;
-    }
-
-    a {
-      color: $color-spark-zenith;
-    }
-
+    // Starfield effect — points of distant light in the infinite
     &::before {
       content: '';
       position: absolute;
@@ -96,43 +78,10 @@
       background: $color-ether-abyss;
       color: $color-ether-glow;
 
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p,
-      li,
-      blockquote,
-      figcaption,
-      small,
-      time,
-      span,
-      a {
-        color: $color-ether-glow;
-      }
-
       &::before {
         display: none;
       }
     }
-  }
-  @else if $vibe == 'spacious-mobile' {
-    // Content that needs generous spacing on mobile for touch-friendliness
-    // padding/margin responsibility belongs to genesis-entity and genesis-environment.
-    // Migration: use genesis-entity('aggregate') for container padding,
-    // and genesis-environment('distributed') or 'focused' for item-level gap/spacing.
-  }
-  @else if $vibe == 'dense-desktop' {
-    // DEPRECATED: Layout properties moved to genesis-environment('dense-grid').
-    // Atmosphere must not set display, grid-template-columns, or gap — those are environment territory.
-    // Migration: replace genesis-atmosphere('dense-desktop') with genesis-environment('dense-grid').
-  }
-  @else if $vibe == 'viewport-aware' {
-    // DEPRECATED: Layout properties moved to genesis-environment('viewport-hero').
-    // Atmosphere must not set display, flex-direction, or min-height — those are environment territory.
-    // Migration: replace genesis-atmosphere('viewport-aware') with genesis-environment('viewport-hero').
   }
   @else if $vibe == 'sacred' {
     // Reverent, mission-critical tone

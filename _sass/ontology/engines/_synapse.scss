@@ -5,7 +5,47 @@
  * 
  * This is part of the Engine Layer where raw CSS properties are allowed.
  * All values MUST use CSS custom properties defined in the design token system.
+ *
+ * Internal base: _synapse-glass-base provides the shared glass-button pattern
+ * used by inquiry, paginate, toggle, comment, share, notify, react, vote, step, anchor, tab.
  */
+
+// ============================================================================
+// SHARED GLASS-BUTTON BASE (internal — not part of the public API)
+// ============================================================================
+// The common "glass-surface interactive" pattern extracted from 12+ synapse variants.
+// Callers customise via CSS custom properties and overrides after @include.
+@mixin _synapse-glass-base($padding: var(--padding-button-sm, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem))) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: $padding;
+  background: var(--glass-light, $color-cosmos-depth-presence);
+  color: var(--text-primary, $color-ether-glow);
+  border: 1px solid var(--border-subtle, $color-cosmos-dusk-glass);
+  border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--motion-snap, 0.2s ease);
+
+  // WCAG 2.5.5: Minimum 44×44px touch target on mobile
+  @media (max-width: 767px) {
+    min-height: var(--touch-min, 44px);
+    min-width: var(--touch-min, 44px);
+    padding: 0.75rem 1rem;
+  }
+
+  &:hover {
+    background: var(--glass-hover, $color-spark-depth);
+    border-color: var(--accent-low, $color-wisdom-radiance-glass);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus-ring, $color-wisdom-radiance-presence);
+    outline-offset: 2px;
+  }
+}
 
 // ============================================================================
 // INTERACTION ENGINE - Synapse Vectors
@@ -103,35 +143,7 @@
   }
   @else if $vector == 'inquiry' {
     // Request for more data (expand/search)
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    padding: var(--padding-button-sm, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
-    background: var(--glass-light, $color-cosmos-depth-presence);
-    color: var(--text-primary, $color-ether-glow);
-    border: 1px solid var(--border-subtle, $color-cosmos-dusk);
-    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-height: 44px;
-      min-width: 44px;
-      padding: 0.75rem 1.5rem;
-    }
-    
-    @media (min-width: 768px) and (max-width: 1023px) {
-      min-height: 42px;
-    }
-    
-    &:hover {
-      background: var(--glass-hover, $color-spark-depth);
-      border-color: var(--accent-low, $color-wisdom-radiance-glass);
-    }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-wisdom-radiance-presence);
-      outline-offset: 2px;
-    }
+    @include _synapse-glass-base;
   }
   @else if $vector == 'destructive' {
     // Permanent removal or system reset
@@ -166,43 +178,17 @@
     }
   }
   @else if $vector == 'social' {
-    // Neural link to other observers
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    padding: var(--padding-button-sm, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
+    // Neural link to other observers — pill-shaped social action
+    @include _synapse-glass-base;
     background: var(--social-bg, $color-conscious-vivid-glass);
-    color: var(--text-primary, $color-ether-glow);
-    border: 1px solid var(--social-border, $color-conscious-vivid);
+    border-color: var(--social-border, $color-conscious-vivid);
     border-radius: 999px;
-    text-decoration: none;
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-width: 44px;
-      min-height: 44px;
-      padding: 0.875rem 1rem;
-    }
-    
-    // Tablet: balanced sizing
-    @media (min-width: 768px) and (max-width: 1023px) {
-      min-width: 40px;
-      min-height: 40px;
-      padding: 0.75rem;
-    }
-    
-    // Desktop: can be more compact
-    @media (min-width: 1024px) {
-      min-width: 36px;
-      min-height: 36px;
-    }
-    
+
     &:hover {
       background: var(--social-hover, $color-conscious-vivid-presence);
       box-shadow: 0 0 15px var(--social-glow, $color-conscious-vivid-glass);
     }
-    
+
     &:focus-visible {
       outline: 2px solid var(--social-border, $color-conscious-vivid);
       outline-offset: 2px;
@@ -210,58 +196,36 @@
   }
   @else if $vector == 'input-primary' {
     // Primary form input with responsive touch optimization
+    @include _synapse-glass-base(0.75rem 1rem);
     display: block;
     width: 100%;
     font-size: 1rem; // 16px minimum prevents iOS zoom
-    padding: 0.75rem 1rem;
-    border-radius: var(--radius-input, clamp(0.375rem, 0.75vw, 0.5rem));
     background: var(--input-bg, $color-cosmos-depth-presence);
-    color: var(--text-primary, $color-ether-glow);
-    border: 1px solid var(--border-input, $color-cosmos-dusk-presence);
-    transition: all var(--motion-snap, 0.2s ease);
-    
-    // Mobile: larger touch target
-    @media (max-width: 767px) {
-      min-height: 44px;
-      padding: 0.875rem 1rem;
-      font-size: 1rem; // Ensure 16px to prevent zoom
-    }
-    
-    // Tablet: balanced sizing
-    @media (min-width: 768px) and (max-width: 1023px) {
-      min-height: 42px;
-      padding: 0.75rem 1rem;
-    }
-    
-    // Desktop: standard sizing
-    @media (min-width: 1024px) {
-      min-height: 40px;
-      padding: 0.625rem 1rem;
-    }
-    
+    border-color: var(--border-input, $color-cosmos-dusk-presence);
+    cursor: text;
+
     &:hover {
       background: var(--input-hover, $color-spark-depth-dense);
       border-color: var(--accent-low, $color-wisdom-radiance-presence);
     }
-    
+
     &:focus {
       outline: none;
       background: var(--input-focus, $color-spark-depth-dense);
       border-color: var(--accent-neon, $color-wisdom-brilliance);
       box-shadow: 0 0 0 3px var(--accent-neon, $color-wisdom-brilliance-veil);
     }
-    
+
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
       background: var(--input-disabled, $color-ether-depth-glass);
     }
-    
-    // Invalid state
+
     &:invalid,
     &.error {
       border-color: var(--danger-border, $color-status-error);
-      
+
       &:focus {
         box-shadow: 0 0 0 3px var(--danger-border, $color-alert-vivid-veil);
       }
@@ -269,39 +233,9 @@
   }
   @else if $vector == 'paginate' {
     // Pagination navigation controls (numbered pages, prev/next)
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--padding-pagination, clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1.5vw, 1rem));
-    background: var(--glass-light, $color-cosmos-depth-presence);
-    color: var(--text-primary, $color-ether-glow);
-    border: 1px solid var(--border-subtle, $color-cosmos-dusk-glass);
-    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
-    text-decoration: none;
+    @include _synapse-glass-base(clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1.5vw, 1rem));
     font-weight: 500;
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-width: 44px;
-      min-height: 44px;
-      padding: 0.75rem;
-    }
-    
-    @media (min-width: 768px) and (max-width: 1023px) {
-      min-width: 40px;
-      min-height: 40px;
-    }
-    
-    @media (min-width: 1024px) {
-      min-width: 36px;
-      min-height: 36px;
-    }
-    
-    &:hover:not(.disabled) {
-      background: var(--glass-hover, $color-spark-depth);
-      border-color: var(--accent-low, $color-wisdom-radiance-glass);
-    }
-    
+
     // Active/current page state
     &.active,
     &[aria-current="page"] {
@@ -310,7 +244,7 @@
       border-color: var(--accent-neon, $color-wisdom-brilliance);
       font-weight: 700;
     }
-    
+
     // Disabled state
     &.disabled,
     &[aria-disabled="true"] {
@@ -318,81 +252,47 @@
       cursor: not-allowed;
       pointer-events: none;
     }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-wisdom-radiance-presence);
-      outline-offset: 2px;
-    }
   }
   @else if $vector == 'toggle' {
     // Toggle/expand/collapse interaction (accordion, mobile menu)
+    @include _synapse-glass-base(clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem));
     display: flex;
-    align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: var(--padding-toggle, clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem));
-    background: var(--glass-light, $color-cosmos-depth-presence);
-    color: var(--text-primary, $color-ether-glow);
-    border: 1px solid var(--border-subtle, $color-cosmos-dusk-glass);
-    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     text-align: left;
-    cursor: pointer;
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-height: 44px;
-      padding: 0.875rem 1rem;
-    }
-    
-    &:hover {
-      background: var(--glass-hover, $color-spark-depth);
-      border-color: var(--accent-low, $color-wisdom-radiance-glass);
-    }
-    
+
     // Expanded state indicator
     &[aria-expanded="true"] {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
       border-bottom-color: transparent;
     }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-wisdom-radiance-presence);
-      outline-offset: 2px;
-    }
-    
+
     // Optional icon/chevron rotation
     .toggle-icon {
       transition: transform 0.2s ease;
     }
-    
+
     &[aria-expanded="true"] .toggle-icon {
       transform: rotate(180deg);
     }
   }
   @else if $vector == 'anchor' {
     // In-page anchor navigation (TOC, skip links, back to top)
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    padding: var(--padding-anchor, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
-    color: var(--text-link, $color-bridge-vivid);
-    text-decoration: none;
+    @include _synapse-glass-base(clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
+    background: transparent;
+    border: none;
     border-left: 2px solid transparent;
-    transition: all var(--motion-snap, 0.2s ease);
-    
-    // Mobile: ensure adequate touch target
-    @media (max-width: 767px) {
-      min-height: 44px;
-      padding: 0.75rem 1rem;
-    }
-    
+    color: var(--text-link, $color-bridge-vivid);
+    border-radius: 0;
+
     &:hover {
       color: var(--accent-neon, $color-wisdom-brilliance);
-      border-left-color: var(--accent-neon, $color-wisdom-brilliance);
       padding-left: calc(clamp(1rem, 2vw, 1.5rem) + 0.25rem);
+      background: transparent;
+      border-left-color: var(--accent-neon, $color-wisdom-brilliance);
     }
-    
+
     // Active anchor (current section in TOC)
     &.active,
     &[aria-current="location"] {
@@ -400,12 +300,7 @@
       border-left-color: var(--accent-neon, $color-wisdom-brilliance);
       font-weight: 600;
     }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-wisdom-radiance-presence);
-      outline-offset: 2px;
-    }
-    
+
     // Skip link specific styling (screen reader and keyboard users)
     &.skip-link {
       position: absolute;
@@ -415,8 +310,8 @@
       background: var(--accent-neon, $color-wisdom-brilliance);
       color: var(--text-inverse, $color-cosmos-void);
       font-weight: 600;
-      z-index: 9999;
-      
+      z-index: $z-index-genesis;
+
       &:focus {
         top: 0;
       }
@@ -424,61 +319,36 @@
   }
   @else if $vector == 'tab' {
     // Tab switching control for content panels
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--padding-tab, clamp(0.75rem, 1.5vw, 1rem) clamp(1.25rem, 2.5vw, 1.75rem));
-    color: var(--text-secondary, $color-ether-mist);
+    @include _synapse-glass-base(clamp(0.75rem, 1.5vw, 1rem) clamp(1.25rem, 2.5vw, 1.75rem));
     background: transparent;
     border: none;
     border-bottom: 3px solid transparent;
-    cursor: pointer;
+    border-radius: 0;
+    color: var(--text-secondary, $color-ether-mist);
     font-weight: 500;
-    transition: all var(--motion-snap, 0.2s ease);
     white-space: nowrap;
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-height: 44px;
-      padding: 0.875rem 1.25rem;
-    }
-    
+
     &:hover:not([aria-selected="true"]) {
       color: var(--text-primary, $color-ether-glow);
       border-bottom-color: var(--border-subtle, $color-cosmos-dusk-presence);
+      background: transparent;
     }
-    
+
     // Selected/active tab
     &[aria-selected="true"] {
       color: var(--accent-neon, $color-wisdom-brilliance);
       border-bottom-color: var(--accent-neon, $color-wisdom-brilliance);
       font-weight: 700;
     }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-wisdom-radiance-presence);
-      outline-offset: 2px;
-    }
   }
   @else if $vector == 'step' {
     // Multi-step process navigation (wizard, stepper)
-    display: inline-flex;
-    align-items: center;
+    @include _synapse-glass-base(clamp(0.75rem, 1.5vw, 1rem));
     gap: 0.75rem;
-    padding: var(--padding-step, clamp(0.75rem, 1.5vw, 1rem));
-    color: var(--text-secondary, $color-ether-mist);
     background: var(--glass-subtle, $color-ether-depth-glass);
-    border: 2px solid var(--border-subtle, $color-cosmos-dusk-glass);
-    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
-    text-decoration: none;
+    border-width: 2px;
     font-weight: 500;
-    
-    // Mobile: compact layout
-    @media (max-width: 767px) {
-      min-height: 44px;
-      font-size: 0.875rem;
-    }
-    
+
     // Step number/icon
     .step-number {
       display: inline-flex;
@@ -491,18 +361,18 @@
       font-weight: 700;
       font-size: 0.875em;
     }
-    
+
     // Completed step
     &.completed,
     &[aria-current="step"][data-status="complete"] {
       color: var(--text-primary, $color-ether-glow);
       border-color: var(--accent-low, $color-wisdom-radiance-glass);
-      
+
       .step-number {
         background: var(--accent-low, $color-wisdom-radiance-glass);
       }
     }
-    
+
     // Current/active step
     &.active,
     &[aria-current="step"] {
@@ -510,13 +380,13 @@
       border-color: var(--accent-neon, $color-wisdom-brilliance);
       background: var(--glass-light, $color-cosmos-depth-presence);
       font-weight: 600;
-      
+
       .step-number {
         background: var(--accent-neon, $color-wisdom-brilliance);
         color: var(--text-inverse, $color-cosmos-void);
       }
     }
-    
+
     // Future/incomplete step
     &.disabled,
     &[aria-disabled="true"] {
@@ -524,52 +394,22 @@
       cursor: not-allowed;
       pointer-events: none;
     }
-    
-    &:hover {
-      background: var(--glass-hover, $color-spark-depth);
-      border-color: var(--accent-low, $color-wisdom-radiance-glass);
-    }
-    
-    &.active:hover,
-    &.disabled:hover {
-      background: var(--glass-subtle, $color-ether-depth-glass);
-      border-color: var(--border-subtle, $color-cosmos-dusk-glass);
-    }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-wisdom-radiance-presence);
-      outline-offset: 2px;
-    }
   }
   @else if $vector == 'react' {
     // Emoji reactions and quick responses (like, heart, emoji picker)
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    @include _synapse-glass-base(clamp(0.375rem, 0.75vw, 0.5rem) clamp(0.625rem, 1.25vw, 0.875rem));
     min-width: 2.5em;
-    padding: var(--padding-react, clamp(0.375rem, 0.75vw, 0.5rem) clamp(0.625rem, 1.25vw, 0.875rem));
     background: var(--glass-subtle, $color-ether-depth-glass);
     color: var(--text-secondary, $color-ether-mist);
-    border: 1px solid var(--border-subtle, $color-cosmos-dusk-glass);
-    border-radius: 999px; // Pill shape for reactions
-    cursor: pointer;
+    border-radius: 999px;
     font-size: 0.875rem;
-    transition: all var(--motion-snap, 0.2s ease);
-    gap: 0.375em;
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-height: 44px;
-      min-width: 44px;
-      padding: 0.5rem 0.875rem;
-    }
-    
+
     &:hover {
       background: var(--glass-light, $color-cosmos-depth-presence);
       border-color: var(--accent-low, $color-wisdom-radiance-glass);
       transform: scale(1.05);
     }
-    
+
     // Reacted state (user has reacted)
     &.reacted,
     &[aria-pressed="true"] {
@@ -578,53 +418,24 @@
       color: var(--accent-neon, $color-wisdom-brilliance);
       font-weight: 600;
     }
-    
+
     // Reaction count
     .reaction-count {
       font-weight: 600;
       font-size: 0.75em;
     }
-    
+
     // Emoji
     .reaction-emoji {
       font-size: 1.125em;
       line-height: 1;
     }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-wisdom-radiance-presence);
-      outline-offset: 2px;
-    }
   }
   @else if $vector == 'vote' {
     // Voting and rating interactions (upvote, downvote, star rating)
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--padding-vote, clamp(0.5rem, 1vw, 0.625rem));
+    @include _synapse-glass-base(clamp(0.5rem, 1vw, 0.625rem));
     background: transparent;
-    color: var(--text-secondary, $color-ether-mist);
-    border: 1px solid var(--border-subtle, $color-cosmos-dusk-glass);
-    border-radius: var(--radius-button, clamp(0.375rem, 0.75vw, 0.5rem));
-    cursor: pointer;
-    transition: all var(--motion-snap, 0.2s ease);
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-width: 44px;
-      min-height: 44px;
-    }
-    
-    @media (min-width: 768px) {
-      min-width: 36px;
-      min-height: 36px;
-    }
-    
-    &:hover {
-      background: var(--glass-subtle, $color-ether-depth-glass);
-      border-color: var(--accent-low, $color-wisdom-radiance-glass);
-    }
-    
+
     // Upvoted state
     &.upvoted,
     &[data-vote="up"] {
@@ -632,7 +443,7 @@
       border-color: var(--vote-up, $color-wisdom-brilliance);
       color: var(--vote-up, $color-wisdom-brilliance);
     }
-    
+
     // Downvoted state
     &.downvoted,
     &[data-vote="down"] {
@@ -640,54 +451,28 @@
       border-color: var(--vote-down, $color-status-error);
       color: var(--vote-down, $color-status-error);
     }
-    
+
     // Star rating variant
     &.star-rating {
       border: none;
       padding: 0.25rem;
       color: var(--star-inactive, $color-ether-twilight);
-      
+
       &.rated,
       &[aria-checked="true"] {
-        color: var(--star-active, $color-caution-glow); // Gold/yellow
+        color: var(--star-active, $color-caution-glow);
       }
-      
+
       &:hover {
         background: transparent;
         color: var(--star-hover, $color-caution-haze);
       }
     }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-wisdom-radiance-presence);
-      outline-offset: 2px;
-    }
   }
   @else if $vector == 'comment' {
     // Comment and reply interactions
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    padding: var(--padding-comment, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.25rem));
-    background: var(--glass-light, $color-cosmos-depth-presence);
-    color: var(--text-primary, $color-ether-glow);
-    border: 1px solid var(--border-subtle, $color-cosmos-dusk-glass);
-    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
-    text-decoration: none;
-    cursor: pointer;
-    transition: all var(--motion-snap, 0.2s ease);
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-height: 44px;
-      padding: 0.75rem 1rem;
-    }
-    
-    &:hover {
-      background: var(--glass-hover, $color-spark-depth);
-      border-color: var(--accent-low, $color-wisdom-radiance-glass);
-    }
-    
+    @include _synapse-glass-base;
+
     // Comment count badge
     .comment-count {
       display: inline-flex;
@@ -701,99 +486,29 @@
       font-size: 0.75em;
       font-weight: 700;
     }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-wisdom-radiance-presence);
-      outline-offset: 2px;
-    }
   }
   @else if $vector == 'share' {
-    // Enhanced sharing with multiple platforms
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    padding: var(--padding-share, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.25rem));
-    background: var(--glass-light, $color-cosmos-depth-presence);
-    color: var(--text-primary, $color-ether-glow);
-    border: 1px solid var(--border-subtle, $color-cosmos-dusk-glass);
-    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
-    cursor: pointer;
-    transition: all var(--motion-snap, 0.2s ease);
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-height: 44px;
-      min-width: 44px;
-      padding: 0.75rem 1rem;
-    }
-    
+    // Sharing interaction — platform-neutral
+    @include _synapse-glass-base;
+
     &:hover {
       background: var(--glass-hover, $color-spark-depth);
       border-color: var(--accent-low, $color-wisdom-radiance-glass);
       box-shadow: 0 4px 12px $color-cosmos-void-veil;
     }
-    
-    // Platform-specific variants
-    &.share-twitter {
-      &:hover {
-        border-color: $color-spark-vivid;
-        color: $color-spark-arc;
-      }
-    }
-    
-    &.share-facebook {
-      &:hover {
-        border-color: $color-spark-vivid;
-        color: $color-spark-vivid;
-      }
-    }
-    
-    &.share-linkedin {
-      &:hover {
-        border-color: $color-spark-vivid;
-        color: $color-spark-vivid;
-      }
-    }
-    
-    &.share-copy {
-      &.copied {
-        background: var(--accent-subtle, $color-wisdom-brilliance-whisper);
-        border-color: var(--accent-neon, $color-wisdom-brilliance);
-        color: var(--accent-neon, $color-wisdom-brilliance);
-      }
-    }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-wisdom-radiance-presence);
-      outline-offset: 2px;
+
+    // Copied-to-clipboard confirmation state
+    &.copied {
+      background: var(--accent-subtle, $color-wisdom-brilliance-whisper);
+      border-color: var(--accent-neon, $color-wisdom-brilliance);
+      color: var(--accent-neon, $color-wisdom-brilliance);
     }
   }
   @else if $vector == 'notify' {
     // Notification and alert interactions
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    @include _synapse-glass-base(clamp(0.5rem, 1vw, 0.75rem));
     position: relative;
-    padding: var(--padding-notify, clamp(0.5rem, 1vw, 0.75rem));
-    background: var(--glass-light, $color-cosmos-depth-presence);
-    color: var(--text-primary, $color-ether-glow);
-    border: 1px solid var(--border-subtle, $color-cosmos-dusk-glass);
-    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
-    cursor: pointer;
-    transition: all var(--motion-snap, 0.2s ease);
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-width: 44px;
-      min-height: 44px;
-    }
-    
-    &:hover {
-      background: var(--glass-hover, $color-spark-depth);
-      border-color: var(--accent-low, $color-wisdom-radiance-glass);
-    }
-    
+
     // Notification badge (unread count)
     .notify-badge {
       position: absolute;
@@ -812,16 +527,11 @@
       font-weight: 700;
       border: 2px solid var(--bg-primary, $color-cosmos-void);
     }
-    
+
     // Active/open state
     &[aria-expanded="true"] {
       background: var(--glass-hover, $color-spark-depth);
       border-color: var(--accent-neon, $color-wisdom-brilliance);
-    }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-wisdom-radiance-presence);
-      outline-offset: 2px;
     }
   }
   @else if $vector == 'mention' {
@@ -833,14 +543,12 @@
     border-radius: 0.25em;
     font-weight: 600;
     text-decoration: none;
-    cursor: pointer;
-    transition: all var(--motion-snap, 0.2s ease);
-    
+
     &:hover {
       background: var(--mention-hover, $color-wisdom-brilliance-veil);
       color: var(--accent-neon, $color-wisdom-brilliance);
     }
-    
+
     // Current user mention (highlight)
     &.mention-self,
     &[data-mention-self="true"] {
@@ -848,7 +556,7 @@
       color: var(--mention-self-text, $color-ether-glow);
       font-weight: 700;
     }
-    
+
     &:focus-visible {
       outline: 2px solid var(--focus-ring, $color-wisdom-radiance-presence);
       outline-offset: 2px;

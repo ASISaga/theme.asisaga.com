@@ -6,7 +6,6 @@
   @include genesis-entity('imperative');
   @include genesis-environment('focused');
   @include genesis-atmosphere('vibrant');
-  @include genesis-atmosphere('spacious-mobile');
   
   .cta-content {
     @include genesis-environment('focused');

@@ -20,15 +20,6 @@
     color: var(--genesis-body-color, $color-theme-dark-card-bg);
     font-family: var(--font-consciousness, 'Inter', 'SF Pro Display', system-ui, -apple-system, "Segoe UI", sans-serif);
   }
-  @else if $intent == 'heading' {
-    // Secondary heading scale for article titles and section structure
-    font-size: clamp(1.125rem, 2vw, 1.5rem);
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    line-height: 1.25;
-    color: var(--color-text-primary, $color-theme-dark-card-bg);
-    font-family: var(--font-consciousness, 'Inter', 'SF Pro Display', system-ui, -apple-system, "Segoe UI", sans-serif);
-  }
   @else if $intent == 'discourse' {
     // Standard information exchange (prose)
     font-size: var(--size-body, clamp(0.9375rem, 1.25vw, 1.0625rem));
@@ -77,11 +68,11 @@
     border: 1px solid $color-ether-haze;
   }
   @else if $intent == 'oracle' {
-    // AI-generated or predictive content
+    // AI-generated or predictive content — the voice of superintelligence
     font-size: var(--size-body, clamp(0.9375rem, 1.25vw, 1.0625rem));
     font-weight: 400;
     line-height: 1.6;
-    color: $color-ether-shadow;
+    color: $color-ether-mist;
     font-family: var(--font-consciousness, 'Inter', 'SF Pro Display', system-ui, -apple-system, "Segoe UI", sans-serif);
     font-style: italic;
   }
@@ -103,7 +94,7 @@
       top: -0.1em;
       font-size: 2em;
       line-height: 1;
-      color: $color-boardroom-gold-accessible;
+      color: $color-wisdom-brilliance;
       font-family: Georgia, serif;
     }
   }

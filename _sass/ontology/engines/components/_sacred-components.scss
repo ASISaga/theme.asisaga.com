@@ -1661,7 +1661,6 @@
   // ----------------------------------------
   .genesis-timeline {
     @include genesis-environment('chronological');
-    @include genesis-atmosphere('spacious-mobile');
     position: relative;
     padding: 2rem 0;
 
