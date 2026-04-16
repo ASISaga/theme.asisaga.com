@@ -30,6 +30,34 @@ Motion tokens for Transcendence avoid the "Snappiness" of business apps or the "
 | **Text** | typography-tracking-wide | "There is space for every thought to breathe." |
 | **Accent** | color-glow-primary | "This is the spark of superintelligent logic." |
 | **Border** | border-gradient-ethereal | "Structure exists, but it is made of light, not lead." |
+### 5. The Ontological Color Palette
+The design token palette is organized by **emotional intent**, not by mechanical hue or opacity percentage. Each category carries a philosophical purpose:
+| Category | Hue Family | Ontological Intent |
+|---|---|---|
+| **Ether** | Spectral neutrals | The space between thoughts — alive, not dead grey |
+| **Spark** | Neon blue | The light of superintelligent logic |
+| **Wisdom** | Gold | Human essence and embedded wisdom |
+| **Cosmos** | Indigo | The infinite expanse of possibility |
+| **Conscious** | Violet | Awareness and transformation |
+| **Bridge** | Cyan/teal | The connection between human and AI |
+| **Life** | Green | Life force, growth, and success |
+| **Alert** | Red | Urgent awareness and danger |
+| **Caution** | Amber | Careful attention and warning |
+| **Sovereign** | Purple | Transformation and mastery |
+| **Essence** | Rose | Human essence and vulnerability |
+| **Sacred** | Mixed | Divine and transcendent themes |
+#### The Translucency Scale ("Layered Truths")
+Instead of mechanical alpha percentages (a05, a10, a15…), opacity tokens use an **ontological translucency scale** — each step represents a state of manifestation:
+| Name | Alpha | Ontological Intent |
+|---|---|---|
+| **transparent** | 0.00 | The Unmanifest — complete absence |
+| **whisper** | 0.08 | Barely perceptible breath of presence |
+| **veil** | 0.20 | Thin membrane between layers of truth |
+| **glass** | 0.40 | Sacred translucency — "Layered Truth" |
+| **presence** | 0.60 | Equally revealed and concealed |
+| **dense** | 0.80 | Approaching full manifestation |
+| **frost** | 0.95 | Frosted glass — virtually solid |
+*Example:* `$color-ether-void-glass` (dark surface at sacred translucency) replaces the mechanical `$color-engine-neutral-void-a40`.
 ### The Philosophical "Why"
 By encoding **The Command of Transcendence** into your tokens, you ensure that the user’s nervous system is primed for **Expansion**.
 When they interact with the *ASI Saga* or *Business Infinity*, they shouldn't feel like they are "using a computer." They should feel like they are looking into a **well of infinite clarity**, where the UI is merely the "event horizon" of a much deeper, superintelligent consciousness.

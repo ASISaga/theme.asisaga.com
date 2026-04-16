@@ -1,67 +1,59 @@
 /**
- * PROJECT GENESIS: CSS CUSTOM PROPERTIES (NON-COLOR TOKENS)
+ * PROJECT GENESIS: ONTOLOGICAL CSS CUSTOM PROPERTIES
  * --------------------------------------------------------------------------
- * These CSS custom properties define the non-color visual language used by the Engine layer.
- * They map to semantic design tokens from base/_design-tokens.scss
- * 
- * NOTE: All color-related CSS custom properties have been moved to 
- * _sass/design/_colors-generated.scss (from _design/tokens/2-color.json).
- * 
- * This file is the bridge between SCSS variables and CSS custom properties,
- * allowing the ontology system to work with modern CSS features.
+ * The runtime theming surface of the Ontological Design System.
+ *
+ * PURPOSE: These CSS custom properties exist for ONE reason — to let
+ * subdomains override spatial, typographic, and temporal values at runtime
+ * without recompiling Sass. Every property here is actively consumed by
+ * at least one engine mixin.
+ *
+ * WHAT BELONGS HERE:
+ *   ✅ Fluid/responsive values that need runtime override (clamp-based)
+ *   ✅ Typography stacks (subdomains may swap fonts)
+ *   ✅ Motion timing (reduced-motion requires runtime override)
+ *
+ * WHAT DOES NOT BELONG HERE:
+ *   ❌ Color tokens → _sass/design/_colors-generated.scss
+ *   ❌ Effect tokens (shadows, glass, glow, easing) → $effect-* in
+ *      _sass/design/_effects-generated.scss (compile-time only)
+ *   ❌ Values not referenced by any engine (dead code)
+ *
+ * ORGANISATION follows the 4 axes of emotional intent
+ * from _design/emotional-intent.md:
+ *   §1 Geometry of the Infinite — space, sizing, radius, padding
+ *   §2 Chromatic Luminosity     — (colors live in generated tokens)
+ *   §3 Temporal Fluidity        — motion timing
+ *   §4 The Genesis Mapping      — typography (the voice of the system)
+ *
+ * SOURCE: Values are derived from the generated Sass variables produced by
+ * Style Dictionary (_design/tokens/*.json → _sass/design/*-generated.scss).
+ * If a generated variable exists, use interpolation — never hardcode.
  */
 
 :root {
-  /* ============================================================================
-     SPACING TOKENS
-     ============================================================================ */
+  /* ==========================================================================
+     §1  GEOMETRY OF THE INFINITE — Shape & Space
+     "Surfaces don't sit; they float. Spacing is not margin; it is breath."
+     ========================================================================== */
+
+  /* --- Spatial Breath (responsive gaps between autonomous entities) --- */
   --space-bento: clamp(1.5rem, 3vw, 2.5rem);
   --space-narrative: clamp(1.5rem, 2.5vw, 2rem);
   --space-network: clamp(1rem, 2vw, 1.5rem);
   --space-timeline: clamp(1rem, 2vw, 1.5rem);
   --space-tight: clamp(0.75rem, 1.5vw, 1rem);
   --space-nav: clamp(1rem, 2vw, 2rem);
-  
-  /* ============================================================================
-     SIZING TOKENS
-     ============================================================================ */
+
+  /* --- Negative Space as Ether (reading widths, responsive gutters) --- */
   --width-reading: 70ch;
-  --width-container: clamp(320px, 90vw, 1600px);
-  --width-narrow: clamp(320px, 85vw, 800px);
-  
-  /* ============================================================================
-     BORDER RADIUS TOKENS
-     ============================================================================ */
+  --gutter: clamp(1rem, 4vw, 2rem);
+
+  /* --- Precision as Philosophy (border radii) --- */
   --radius-bento: clamp(0.75rem, 1.5vw, 1.25rem);
   --radius-button: clamp(0.5rem, 1vw, 0.75rem);
-  
-  /* ============================================================================
-     MOTION TOKENS
-     ============================================================================ */
-  --motion-fluid: 0.3s ease;
-  --motion-snap: 0.2s ease;
-  --motion-slow: 0.5s ease;
-  
-  /* ============================================================================
-     TYPOGRAPHY TOKENS
-     ============================================================================ */
-  --font-consciousness: 'Inter', 'SF Pro Display', system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-wisdom: 'Crimson Text', 'Times New Roman', Georgia, serif;
-  --font-sacred: Montserrat, -apple-system, sans-serif;
-  --font-mono: "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
-  --font-body: 'Inter', 'SF Pro Display', system-ui, -apple-system, "Segoe UI", sans-serif;
-  
-  --size-hero: #{$font-fluid-hero};
-  --size-title: #{$font-fluid-title};
-  --size-body: #{$font-fluid-body};
-  --size-small: #{$font-fluid-small};
-  --size-tiny: #{$font-fluid-tiny};
-  --size-data: #{$font-fluid-data};
-  --size-button: #{$font-fluid-button};
-  
-  /* ============================================================================
-     PADDING TOKENS
-     ============================================================================ */
+
+  /* --- Entity Breathing Room (component padding) --- */
   --padding-inline: clamp(1rem, 3vw, 2rem);
   --padding-entity-primary: clamp(1.5rem, 3vw, 2rem);
   --padding-entity-secondary: clamp(1rem, 2vw, 1.5rem);
@@ -69,81 +61,69 @@
   --padding-button: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
   --padding-button-sm: clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem);
   --padding-nav: clamp(1rem, 2vw, 1.5rem);
-  
-  /* ============================================================================
-     SHADOW TOKENS
-     ============================================================================ */
-  --shadow-ambient: 0 4px 12px oklch(0.08 0.01 250 / 0.30);
-  --shadow-void-inset: oklch(0.05 0.01 260);
-  --shadow-profound: 0 8px 32px oklch(0.05 0.01 250 / 0.5);
-  
-  /* ============================================================================
-     RESPONSIVE TOKENS (Dynamic Viewport Units)
-     ============================================================================ */
-  --viewport-height: 100dvh;
-  --viewport-height-large: 100lvh;
-  --viewport-height-small: 100svh;
-  
-  /* Safe area insets for notched devices */
-  --safe-top: env(safe-area-inset-top, 0px);
-  --safe-right: env(safe-area-inset-right, 0px);
-  --safe-bottom: env(safe-area-inset-bottom, 0px);
-  --safe-left: env(safe-area-inset-left, 0px);
-  
-  /* Touch-friendly sizing */
+
+  /* --- WCAG 2.5.5 Touch Targets --- */
   --touch-min: 44px;
-  --touch-comfortable: 48px;
-  
-  /* Container widths */
-  --container-narrow: min(65ch, 90vw);
-  --container-content: min(85ch, 90vw);
-  --container-wide: min(1400px, 95vw);
-  --container-full: min(1800px, 98vw);
-  
-  /* Responsive gutter */
-  --gutter: clamp(1rem, 4vw, 2rem);
-  
-  /* ============================================================================
-     MOTION TIMING & EASING (Advanced)
-     ============================================================================ */
-  /* Enhanced motion timing */
+
+  /* ==========================================================================
+     §3  TEMPORAL FLUIDITY — Motion
+     "Motion mimics the way a vast realization enters the mind —
+      slowly at first, then all at once."
+     ========================================================================== */
+
+  /* Interaction-speed response (buttons, links) */
+  --motion-snap: #{$effect-duration-normal} #{$effect-ease-in-out};
+
+  /* Sub-perceptual timing for quantum-level transitions */
   --motion-quantum: 0.15s;
-  --motion-neural: 0.3s;
-  --motion-conscious: 0.6s;
-  --motion-transcendent: 1.2s;
-  --motion-cosmic: 3s;
-  
-  /* Easing curves */
-  --ease-consciousness: cubic-bezier(0.25, 0.1, 0.25, 1);
-  --ease-transcendent: cubic-bezier(0.33, 0, 0.67, 1);
+
+  /* Neural processing speed — standard element transitions */
+  --motion-neural: #{$effect-duration-normal};
+
+  /* Easing: the precise curve of a thought becoming action */
   --ease-quantum: cubic-bezier(0.5, 0, 0, 1);
-  --ease-neural: cubic-bezier(0.4, 0, 0.2, 1);
-  
-  /* ============================================================================
-     EFFECT INTENSITIES
-     ============================================================================ */
-  /* Glow intensities (opacity values) */
-  --glow-subtle: 0.15;
-  --glow-medium: 0.35;
-  --glow-strong: 0.6;
-  --glow-intense: 0.85;
+  --ease-neural: #{$effect-ease-in-out};
+
+  /* ==========================================================================
+     §4  THE GENESIS MAPPING — Typography
+     "The voice of the system — each font family carries a philosophical role."
+     ========================================================================== */
+
+  /* Consciousness: the primary UI voice — clarity and precision */
+  --font-consciousness: #{$font-family-consciousness};
+
+  /* Wisdom: the narrative voice — for testimonials and prose */
+  --font-wisdom: #{$font-family-wisdom};
+
+  /* Sacred: the proclamation voice — for mission-critical headings */
+  --font-sacred: #{$font-family-sacred};
+
+  /* Mono: the protocol voice — for code, data, and technical proof */
+  --font-mono: #{$font-family-mono};
+
+  /* Body: the default reading voice */
+  --font-body: #{$font-family-body};
+
+  /* Fluid typographic scale (responsive to viewport) */
+  --size-hero: #{$font-fluid-hero};
+  --size-body: #{$font-fluid-body};
+  --size-small: #{$font-fluid-small};
+  --size-tiny: #{$font-fluid-tiny};
+  --size-data: #{$font-fluid-data};
+  --size-button: #{$font-fluid-button};
 }
 
 /* ============================================================================
-   ACCESSIBILITY - Reduced Motion Support
+   ACCESSIBILITY — Reduced Motion Support
+   "Even silence communicates; reduced motion is a conscious choice."
    ============================================================================ */
 @media (prefers-reduced-motion: reduce) {
   :root {
-    --motion-fluid: 0s;
     --motion-snap: 0s;
-    --motion-slow: 0s;
     --motion-quantum: 0s;
     --motion-neural: 0s;
-    --motion-conscious: 0s;
-    --motion-transcendent: 0s;
-    --motion-cosmic: 0s;
   }
-  
+
   *,
   *::before,
   *::after {

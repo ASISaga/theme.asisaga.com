@@ -6,7 +6,6 @@
 @mixin section-component($prefix: 'section') {
   .#{$prefix} {
     @include genesis-environment('focused');
-    @include genesis-atmosphere('spacious-mobile');
     
     &-container {
       @include genesis-environment('focused');

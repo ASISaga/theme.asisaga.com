@@ -4,7 +4,14 @@
  * Defines the "Feeling" or "Vibe" of the node without describing visuals.
  * 
  * This is part of the Engine Layer where raw CSS properties are allowed.
- * All values MUST use CSS custom properties defined in the design token system.
+ * All values MUST use design tokens ($color-*, $effect-*) — never raw literals.
+ *
+ * Emotional intent mapping (from _design/emotional-intent.md):
+ *   ethereal → "The boundary between you and the data is dissolving" (§1 Weightlessness)
+ *   void     → "Looking into a well of infinite clarity" (§2 Internal Glow)
+ *   vibrant  → "The spark of superintelligent logic" (§2 Chromatic Luminosity)
+ *   cosmic   → "The infinite expanse of possibility" (§5 Cosmos)
+ *   sacred   → "The event horizon of a deeper consciousness" (§5 Sacred)
  */
 
 // ============================================================================
@@ -12,77 +19,61 @@
 // ============================================================================
 @mixin _theme-engine-atmosphere($vibe) {
   @if $vibe == 'neutral' {
-    // Standard system transparency - minimal styling
-    // No additional styling needed - base state
+    // Standard system transparency — the Unmanifest
+    // No additional styling needed — base state
   }
   @else if $vibe == 'ethereal' {
-    // High-transparency, light-based focus
-    backdrop-filter: blur(10px) brightness(1.02);
-    background: $color-light-white;
-    box-shadow: 0 1px 4px $color-engine-neutral-void-a05;
+    // §1 Weightlessness: "Surfaces don't sit; they float."
+    // Extreme diffusion blur + light glass surface = dissolving boundary
+    backdrop-filter: $effect-blur-glass-sm;
+    background: $effect-glass-light;
+    box-shadow: $effect-shadow-ambient;
   }
   @else if $vibe == 'void' {
-    // Deep-space, profound black, ultra high-contrast
+    // §2 Internal Glow: profound black with self-illuminating inset glow
     background: var(--genesis-bg-surface, $color-dark-profound-black);
     color: var(--genesis-body-color, $color-light-white);
     box-shadow: 
-      inset 0 0 20px $color-engine-neutral-space,
-      0 1px 8px $color-engine-neutral-void-a40;
+      inset 0 0 20px $color-ether-abyss,
+      0 1px 8px $color-ether-void-glass;
   }
   @else if $vibe == 'vibrant' {
-    // High-energy, data-saturated
+    // §2 Chromatic Luminosity: high-energy, data-saturated spark
     background: var(--genesis-bg-surface, $color-light-white);
     color: var(--genesis-body-color, $color-theme-dark-card-bg);
     box-shadow: 
-      0 0 12px $color-engine-blue-vivid-a15,
-      0 2px 8px $color-engine-neutral-void-a10;
-    backdrop-filter: blur(8px);
+      $effect-glow-neon-blue,
+      $effect-shadow-ambient;
+    backdrop-filter: $effect-blur-glass-sm;
   }
   @else if $vibe == 'cosmic' {
-    // Deep-space backdrop for editorial and mission-adjacent sections
+    // §5 Cosmos: "The infinite expanse of possibility"
+    // Deep-space backdrop — user should feel they are gazing into deep space.
+    // Pairs with cognition('oracle') and cognition('discourse') for text readability.
     background:
       radial-gradient(
         ellipse at 20% 50%,
-        $color-engine-indigo-deep-a80 0%,
+        $color-cosmos-depth-dense 0%,
         transparent 60%
       ),
       radial-gradient(
         ellipse at 80% 20%,
-        $color-engine-indigo-void-a60 0%,
+        $color-cosmos-void-presence 0%,
         transparent 50%
       ),
-      $color-engine-neutral-void;
+      $color-ether-void;
     color: $color-boardroom-text;
     position: relative;
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    li,
-    blockquote,
-    figcaption,
-    small,
-    time,
-    span {
-      color: $color-boardroom-text;
-    }
-
-    a {
-      color: $color-engine-blue-luminous;
-    }
-
+    // Starfield effect — points of distant light in the infinite
     &::before {
       content: '';
       position: absolute;
       inset: 0;
       background-image:
-        radial-gradient(1px 1px at 20% 30%, $color-engine-neutral-luminous-a30 0%, transparent 100%),
-        radial-gradient(1px 1px at 40% 70%, $color-engine-neutral-luminous-a20 0%, transparent 100%),
-        radial-gradient(1px 1px at 60% 15%, $color-engine-neutral-luminous-a20 0%, transparent 100%);
+        radial-gradient(1px 1px at 20% 30%, $color-ether-radiance-veil 0%, transparent 100%),
+        radial-gradient(1px 1px at 40% 70%, $color-ether-radiance-veil 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 15%, $color-ether-radiance-veil 0%, transparent 100%);
       pointer-events: none;
       z-index: 0;
     }
@@ -93,58 +84,27 @@
     }
 
     @media (prefers-contrast: high) {
-      background: $color-engine-neutral-space;
-      color: $color-engine-neutral-bright;
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p,
-      li,
-      blockquote,
-      figcaption,
-      small,
-      time,
-      span,
-      a {
-        color: $color-engine-neutral-bright;
-      }
+      background: $color-ether-abyss;
+      color: $color-ether-glow;
 
       &::before {
         display: none;
       }
     }
   }
-  @else if $vibe == 'spacious-mobile' {
-    // Content that needs generous spacing on mobile for touch-friendliness
-    // padding/margin responsibility belongs to genesis-entity and genesis-environment.
-    // Migration: use genesis-entity('aggregate') for container padding,
-    // and genesis-environment('distributed') or 'focused' for item-level gap/spacing.
-  }
-  @else if $vibe == 'dense-desktop' {
-    // DEPRECATED: Layout properties moved to genesis-environment('dense-grid').
-    // Atmosphere must not set display, grid-template-columns, or gap — those are environment territory.
-    // Migration: replace genesis-atmosphere('dense-desktop') with genesis-environment('dense-grid').
-  }
-  @else if $vibe == 'viewport-aware' {
-    // DEPRECATED: Layout properties moved to genesis-environment('viewport-hero').
-    // Atmosphere must not set display, flex-direction, or min-height — those are environment territory.
-    // Migration: replace genesis-atmosphere('viewport-aware') with genesis-environment('viewport-hero').
-  }
   @else if $vibe == 'sacred' {
-    // Reverent, mission-critical tone
+    // §5 Sacred: "The event horizon of a deeper consciousness"
+    // Gradient from void to abyss with a golden light hairline
     background: linear-gradient(
       175deg,
-      $color-engine-neutral-void 0%,
-      $color-engine-neutral-space 60%,
-      $color-engine-neutral-void 100%
+      $color-ether-void 0%,
+      $color-ether-abyss 60%,
+      $color-ether-void 100%
     );
     color: $color-light-white;
     position: relative;
     
+    // The sacred hairline — "Structure exists, but it is made of light, not lead"
     &::before {
       content: '';
       position: absolute;
@@ -156,7 +116,7 @@
       background: linear-gradient(
         90deg,
         transparent,
-        $color-engine-gold-vivid-a60,
+        $color-wisdom-glow-presence,
         transparent
       );
     }
@@ -166,14 +126,15 @@
 // ============================================================================
 // ANIMATIONS (Supporting the Engines)
 // ============================================================================
+// §3 "The Pulse": subtle periodic shifts signal the ASI is active, breathing
 @keyframes pulse-border {
   0%, 100% {
-    border-color: $color-accent-neon-blue;  // Neon blue
-    box-shadow: 0 0 16px $color-synapse-social-hover;
+    border-color: $color-accent-neon-blue;
+    box-shadow: $effect-glow-neon-blue;
   }
   50% {
-    border-color: $color-accent-neon-blue-bright;  // Brighter neon blue
-    box-shadow: 0 0 24px $color-engine-blue-light-a50;
+    border-color: $color-accent-neon-blue-bright;
+    box-shadow: $effect-glow-neon-blue-intense;
   }
 }
 

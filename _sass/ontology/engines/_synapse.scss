@@ -4,19 +4,63 @@
  * Defines how an observer navigates or modifies the system.
  * 
  * This is part of the Engine Layer where raw CSS properties are allowed.
- * All values MUST use CSS custom properties defined in the design token system.
+ * All values MUST use design tokens ($color-*, $effect-*) — never raw literals.
+ *
+ * Emotional intent mapping (from _design/emotional-intent.md):
+ *   §2 "Translucency Scale: Layered Truths" — glass-button surfaces
+ *   §3 "Temporal Fluidity" — interaction timing
+ *   §4 "This is the spark of superintelligent logic" — neon accent glow
+ *
+ * Internal base: _synapse-glass-base provides the shared glass-button pattern
+ * used by inquiry, paginate, toggle, comment, share, notify, react, vote, step, anchor, tab.
  */
+
+// ============================================================================
+// SHARED GLASS-BUTTON BASE (internal — not part of the public API)
+// ============================================================================
+// §2 "Translucency Scale": background uses glass tokens for "Layered Truth"
+@mixin _synapse-glass-base($padding: var(--padding-button-sm, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem))) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: $padding;
+  background: var(--glass-light, $effect-glass-consciousness);
+  color: var(--text-primary, $color-ether-glow);
+  border: $border-width-default solid var(--border-subtle, $color-cosmos-dusk-glass);
+  border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--motion-snap, #{$effect-duration-normal} #{$effect-ease-in-out});
+
+  // WCAG 2.5.5: Minimum 44×44px touch target on mobile
+  @media (max-width: 767px) {
+    min-height: var(--touch-min, 44px);
+    min-width: var(--touch-min, 44px);
+    padding: 0.75rem 1rem;
+  }
+
+  &:hover {
+    background: var(--glass-hover, $effect-glass-elevated);
+    border-color: var(--accent-low, $color-wisdom-radiance-glass);
+  }
+
+  &:focus-visible {
+    outline: $border-width-thick solid var(--focus-ring, $color-wisdom-radiance-presence);
+    outline-offset: 2px;
+  }
+}
 
 // ============================================================================
 // INTERACTION ENGINE - Synapse Vectors
 // ============================================================================
 @mixin _theme-engine-synapse($vector) {
-  transition: all var(--motion-snap, 0.2s ease);
+  transition: all var(--motion-snap, #{$effect-duration-normal} #{$effect-ease-in-out});
   cursor: pointer;
   
   @if $vector == 'navigate' {
     // Portal to different semantic coordinate
-    color: var(--text-link, $color-engine-blue-mid);
+    color: var(--text-link, $color-spark-core);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 0.15em;
@@ -49,12 +93,12 @@
     }
     
     &:hover {
-      color: var(--accent-neon, $color-engine-blue-mid);
+      color: var(--accent-neon, $color-spark-core);
       text-decoration-thickness: 2px;
     }
     
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-blue-mid-a70);
+      outline: 2px solid var(--focus-ring, $color-spark-core-dense);
       outline-offset: 2px;
       border-radius: 2px;
     }
@@ -67,7 +111,7 @@
     padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
     background: $color-theme-dark-card-bg;  // Black background
     color: $color-light-white;  // White text
-    border: 1px solid $color-engine-neutral-dark;  // Subtle border
+    border: 1px solid $color-ether-shadow;  // Subtle border
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     font-weight: 600;
     font-size: var(--size-button, clamp(0.95rem, 1.2vw, 1.05rem));
@@ -86,7 +130,7 @@
     }
     
     &:hover {
-      background: $color-engine-neutral-deep;  // Slightly lighter black
+      background: $color-ether-depth;  // Slightly lighter black
       border-color: var(--accent-neon, $color-accent-neon-blue);  // Neon blue border (purposeful)
       box-shadow: 0 0 16px var(--accent-neon, $color-accent-neon-blue-border);  // Neon blue glow
       transform: translateY(-1px);
@@ -103,35 +147,7 @@
   }
   @else if $vector == 'inquiry' {
     // Request for more data (expand/search)
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    padding: var(--padding-button-sm, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
-    background: var(--glass-light, $color-engine-indigo-deep-a60);
-    color: var(--text-primary, $color-engine-neutral-bright);
-    border: 1px solid var(--border-subtle, $color-engine-indigo-dim);
-    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-height: 44px;
-      min-width: 44px;
-      padding: 0.75rem 1.5rem;
-    }
-    
-    @media (min-width: 768px) and (max-width: 1023px) {
-      min-height: 42px;
-    }
-    
-    &:hover {
-      background: var(--glass-hover, $color-engine-blue-deep);
-      border-color: var(--accent-low, $color-engine-gold-accent-a40);
-    }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
-      outline-offset: 2px;
-    }
+    @include _synapse-glass-base;
   }
   @else if $vector == 'destructive' {
     // Permanent removal or system reset
@@ -139,8 +155,8 @@
     align-items: center;
     justify-content: center;
     padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
-    background: var(--danger-bg, $color-engine-error-deep);
-    color: var(--text-primary, $color-engine-neutral-bright);
+    background: var(--danger-bg, $color-alert-depth);
+    color: var(--text-primary, $color-ether-glow);
     border: 1px solid var(--danger-border, $color-status-error);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     
@@ -156,8 +172,8 @@
     }
     
     &:hover {
-      background: var(--danger-hover, $color-engine-error-vivid);
-      box-shadow: 0 0 15px var(--danger-glow, $color-engine-error-vivid-a50);
+      background: var(--danger-hover, $color-alert-vivid);
+      box-shadow: 0 0 15px var(--danger-glow, $color-alert-vivid-presence);
     }
     
     &:focus-visible {
@@ -166,151 +182,73 @@
     }
   }
   @else if $vector == 'social' {
-    // Neural link to other observers
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    padding: var(--padding-button-sm, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
-    background: var(--social-bg, $color-engine-violet-vivid-a30);
-    color: var(--text-primary, $color-engine-neutral-bright);
-    border: 1px solid var(--social-border, $color-engine-violet-vivid);
+    // Neural link to other observers — pill-shaped social action
+    @include _synapse-glass-base;
+    background: var(--social-bg, $color-conscious-vivid-glass);
+    border-color: var(--social-border, $color-conscious-vivid);
     border-radius: 999px;
-    text-decoration: none;
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-width: 44px;
-      min-height: 44px;
-      padding: 0.875rem 1rem;
-    }
-    
-    // Tablet: balanced sizing
-    @media (min-width: 768px) and (max-width: 1023px) {
-      min-width: 40px;
-      min-height: 40px;
-      padding: 0.75rem;
-    }
-    
-    // Desktop: can be more compact
-    @media (min-width: 1024px) {
-      min-width: 36px;
-      min-height: 36px;
-    }
-    
+
     &:hover {
-      background: var(--social-hover, $color-engine-violet-vivid-a50);
-      box-shadow: 0 0 15px var(--social-glow, $color-engine-violet-vivid-a40);
+      background: var(--social-hover, $color-conscious-vivid-presence);
+      box-shadow: 0 0 15px var(--social-glow, $color-conscious-vivid-glass);
     }
-    
+
     &:focus-visible {
-      outline: 2px solid var(--social-border, $color-engine-violet-vivid);
+      outline: 2px solid var(--social-border, $color-conscious-vivid);
       outline-offset: 2px;
     }
   }
   @else if $vector == 'input-primary' {
     // Primary form input with responsive touch optimization
+    @include _synapse-glass-base(0.75rem 1rem);
     display: block;
     width: 100%;
     font-size: 1rem; // 16px minimum prevents iOS zoom
-    padding: 0.75rem 1rem;
-    border-radius: var(--radius-input, clamp(0.375rem, 0.75vw, 0.5rem));
-    background: var(--input-bg, $color-engine-indigo-deep-a60);
-    color: var(--text-primary, $color-engine-neutral-bright);
-    border: 1px solid var(--border-input, $color-engine-indigo-dim-a50);
-    transition: all var(--motion-snap, 0.2s ease);
-    
-    // Mobile: larger touch target
-    @media (max-width: 767px) {
-      min-height: 44px;
-      padding: 0.875rem 1rem;
-      font-size: 1rem; // Ensure 16px to prevent zoom
-    }
-    
-    // Tablet: balanced sizing
-    @media (min-width: 768px) and (max-width: 1023px) {
-      min-height: 42px;
-      padding: 0.75rem 1rem;
-    }
-    
-    // Desktop: standard sizing
-    @media (min-width: 1024px) {
-      min-height: 40px;
-      padding: 0.625rem 1rem;
-    }
-    
+    background: var(--input-bg, $color-cosmos-depth-presence);
+    border-color: var(--border-input, $color-cosmos-dusk-presence);
+    cursor: text;
+
     &:hover {
-      background: var(--input-hover, $color-engine-blue-deep-a70);
-      border-color: var(--accent-low, $color-engine-gold-accent-a60);
+      background: var(--input-hover, $color-spark-depth-dense);
+      border-color: var(--accent-low, $color-wisdom-radiance-presence);
     }
-    
+
     &:focus {
       outline: none;
-      background: var(--input-focus, $color-engine-blue-deep-a80);
-      border-color: var(--accent-neon, $color-engine-gold-bright);
-      box-shadow: 0 0 0 3px var(--accent-neon, $color-engine-gold-bright-a20);
+      background: var(--input-focus, $color-spark-depth-dense);
+      border-color: var(--accent-neon, $color-wisdom-brilliance);
+      box-shadow: 0 0 0 3px var(--accent-neon, $color-wisdom-brilliance-veil);
     }
-    
+
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
-      background: var(--input-disabled, $color-engine-neutral-deep-a40);
+      background: var(--input-disabled, $color-ether-depth-glass);
     }
-    
-    // Invalid state
+
     &:invalid,
     &.error {
       border-color: var(--danger-border, $color-status-error);
-      
+
       &:focus {
-        box-shadow: 0 0 0 3px var(--danger-border, $color-engine-error-vivid-a20);
+        box-shadow: 0 0 0 3px var(--danger-border, $color-alert-vivid-veil);
       }
     }
   }
   @else if $vector == 'paginate' {
     // Pagination navigation controls (numbered pages, prev/next)
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--padding-pagination, clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1.5vw, 1rem));
-    background: var(--glass-light, $color-engine-indigo-deep-a60);
-    color: var(--text-primary, $color-engine-neutral-bright);
-    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
-    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
-    text-decoration: none;
+    @include _synapse-glass-base(clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1.5vw, 1rem));
     font-weight: 500;
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-width: 44px;
-      min-height: 44px;
-      padding: 0.75rem;
-    }
-    
-    @media (min-width: 768px) and (max-width: 1023px) {
-      min-width: 40px;
-      min-height: 40px;
-    }
-    
-    @media (min-width: 1024px) {
-      min-width: 36px;
-      min-height: 36px;
-    }
-    
-    &:hover:not(.disabled) {
-      background: var(--glass-hover, $color-engine-blue-deep);
-      border-color: var(--accent-low, $color-engine-gold-accent-a40);
-    }
-    
+
     // Active/current page state
     &.active,
     &[aria-current="page"] {
-      background: var(--accent-neon, $color-engine-gold-bright);
-      color: var(--text-inverse, $color-engine-indigo-void);
-      border-color: var(--accent-neon, $color-engine-gold-bright);
+      background: var(--accent-neon, $color-wisdom-brilliance);
+      color: var(--text-inverse, $color-cosmos-void);
+      border-color: var(--accent-neon, $color-wisdom-brilliance);
       font-weight: 700;
     }
-    
+
     // Disabled state
     &.disabled,
     &[aria-disabled="true"] {
@@ -318,105 +256,66 @@
       cursor: not-allowed;
       pointer-events: none;
     }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
-      outline-offset: 2px;
-    }
   }
   @else if $vector == 'toggle' {
     // Toggle/expand/collapse interaction (accordion, mobile menu)
+    @include _synapse-glass-base(clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem));
     display: flex;
-    align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: var(--padding-toggle, clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem));
-    background: var(--glass-light, $color-engine-indigo-deep-a60);
-    color: var(--text-primary, $color-engine-neutral-bright);
-    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
-    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     text-align: left;
-    cursor: pointer;
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-height: 44px;
-      padding: 0.875rem 1rem;
-    }
-    
-    &:hover {
-      background: var(--glass-hover, $color-engine-blue-deep);
-      border-color: var(--accent-low, $color-engine-gold-accent-a40);
-    }
-    
+
     // Expanded state indicator
     &[aria-expanded="true"] {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
       border-bottom-color: transparent;
     }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
-      outline-offset: 2px;
-    }
-    
+
     // Optional icon/chevron rotation
     .toggle-icon {
       transition: transform 0.2s ease;
     }
-    
+
     &[aria-expanded="true"] .toggle-icon {
       transform: rotate(180deg);
     }
   }
   @else if $vector == 'anchor' {
     // In-page anchor navigation (TOC, skip links, back to top)
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    padding: var(--padding-anchor, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
-    color: var(--text-link, $color-engine-cyan-vivid);
-    text-decoration: none;
+    @include _synapse-glass-base(clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem));
+    background: transparent;
+    border: none;
     border-left: 2px solid transparent;
-    transition: all var(--motion-snap, 0.2s ease);
-    
-    // Mobile: ensure adequate touch target
-    @media (max-width: 767px) {
-      min-height: 44px;
-      padding: 0.75rem 1rem;
-    }
-    
+    color: var(--text-link, $color-bridge-vivid);
+    border-radius: 0;
+
     &:hover {
-      color: var(--accent-neon, $color-engine-gold-bright);
-      border-left-color: var(--accent-neon, $color-engine-gold-bright);
+      color: var(--accent-neon, $color-wisdom-brilliance);
       padding-left: calc(clamp(1rem, 2vw, 1.5rem) + 0.25rem);
+      background: transparent;
+      border-left-color: var(--accent-neon, $color-wisdom-brilliance);
     }
-    
+
     // Active anchor (current section in TOC)
     &.active,
     &[aria-current="location"] {
-      color: var(--accent-neon, $color-engine-gold-bright);
-      border-left-color: var(--accent-neon, $color-engine-gold-bright);
+      color: var(--accent-neon, $color-wisdom-brilliance);
+      border-left-color: var(--accent-neon, $color-wisdom-brilliance);
       font-weight: 600;
     }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
-      outline-offset: 2px;
-    }
-    
+
     // Skip link specific styling (screen reader and keyboard users)
     &.skip-link {
       position: absolute;
       top: -100%;
       left: 0;
       padding: 1rem 1.5rem;
-      background: var(--accent-neon, $color-engine-gold-bright);
-      color: var(--text-inverse, $color-engine-indigo-void);
+      background: var(--accent-neon, $color-wisdom-brilliance);
+      color: var(--text-inverse, $color-cosmos-void);
       font-weight: 600;
-      z-index: 9999;
-      
+      z-index: $z-index-genesis;
+
       &:focus {
         top: 0;
       }
@@ -424,61 +323,36 @@
   }
   @else if $vector == 'tab' {
     // Tab switching control for content panels
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--padding-tab, clamp(0.75rem, 1.5vw, 1rem) clamp(1.25rem, 2.5vw, 1.75rem));
-    color: var(--text-secondary, $color-engine-neutral-light);
+    @include _synapse-glass-base(clamp(0.75rem, 1.5vw, 1rem) clamp(1.25rem, 2.5vw, 1.75rem));
     background: transparent;
     border: none;
     border-bottom: 3px solid transparent;
-    cursor: pointer;
+    border-radius: 0;
+    color: var(--text-secondary, $color-ether-mist);
     font-weight: 500;
-    transition: all var(--motion-snap, 0.2s ease);
     white-space: nowrap;
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-height: 44px;
-      padding: 0.875rem 1.25rem;
-    }
-    
+
     &:hover:not([aria-selected="true"]) {
-      color: var(--text-primary, $color-engine-neutral-bright);
-      border-bottom-color: var(--border-subtle, $color-engine-indigo-dim-a50);
+      color: var(--text-primary, $color-ether-glow);
+      border-bottom-color: var(--border-subtle, $color-cosmos-dusk-presence);
+      background: transparent;
     }
-    
+
     // Selected/active tab
     &[aria-selected="true"] {
-      color: var(--accent-neon, $color-engine-gold-bright);
-      border-bottom-color: var(--accent-neon, $color-engine-gold-bright);
+      color: var(--accent-neon, $color-wisdom-brilliance);
+      border-bottom-color: var(--accent-neon, $color-wisdom-brilliance);
       font-weight: 700;
-    }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
-      outline-offset: 2px;
     }
   }
   @else if $vector == 'step' {
     // Multi-step process navigation (wizard, stepper)
-    display: inline-flex;
-    align-items: center;
+    @include _synapse-glass-base(clamp(0.75rem, 1.5vw, 1rem));
     gap: 0.75rem;
-    padding: var(--padding-step, clamp(0.75rem, 1.5vw, 1rem));
-    color: var(--text-secondary, $color-engine-neutral-light);
-    background: var(--glass-subtle, $color-engine-neutral-deep-a40);
-    border: 2px solid var(--border-subtle, $color-engine-indigo-dim-a30);
-    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
-    text-decoration: none;
+    background: var(--glass-subtle, $color-ether-depth-glass);
+    border-width: 2px;
     font-weight: 500;
-    
-    // Mobile: compact layout
-    @media (max-width: 767px) {
-      min-height: 44px;
-      font-size: 0.875rem;
-    }
-    
+
     // Step number/icon
     .step-number {
       display: inline-flex;
@@ -487,36 +361,36 @@
       width: 2em;
       height: 2em;
       border-radius: 50%;
-      background: var(--border-subtle, $color-engine-indigo-dim-a30);
+      background: var(--border-subtle, $color-cosmos-dusk-glass);
       font-weight: 700;
       font-size: 0.875em;
     }
-    
+
     // Completed step
     &.completed,
     &[aria-current="step"][data-status="complete"] {
-      color: var(--text-primary, $color-engine-neutral-bright);
-      border-color: var(--accent-low, $color-engine-gold-accent-a40);
-      
+      color: var(--text-primary, $color-ether-glow);
+      border-color: var(--accent-low, $color-wisdom-radiance-glass);
+
       .step-number {
-        background: var(--accent-low, $color-engine-gold-accent-a40);
+        background: var(--accent-low, $color-wisdom-radiance-glass);
       }
     }
-    
+
     // Current/active step
     &.active,
     &[aria-current="step"] {
-      color: var(--accent-neon, $color-engine-gold-bright);
-      border-color: var(--accent-neon, $color-engine-gold-bright);
-      background: var(--glass-light, $color-engine-indigo-deep-a60);
+      color: var(--accent-neon, $color-wisdom-brilliance);
+      border-color: var(--accent-neon, $color-wisdom-brilliance);
+      background: var(--glass-light, $color-cosmos-depth-presence);
       font-weight: 600;
-      
+
       .step-number {
-        background: var(--accent-neon, $color-engine-gold-bright);
-        color: var(--text-inverse, $color-engine-indigo-void);
+        background: var(--accent-neon, $color-wisdom-brilliance);
+        color: var(--text-inverse, $color-cosmos-void);
       }
     }
-    
+
     // Future/incomplete step
     &.disabled,
     &[aria-disabled="true"] {
@@ -524,170 +398,85 @@
       cursor: not-allowed;
       pointer-events: none;
     }
-    
-    &:hover {
-      background: var(--glass-hover, $color-engine-blue-deep);
-      border-color: var(--accent-low, $color-engine-gold-accent-a40);
-    }
-    
-    &.active:hover,
-    &.disabled:hover {
-      background: var(--glass-subtle, $color-engine-neutral-deep-a40);
-      border-color: var(--border-subtle, $color-engine-indigo-dim-a30);
-    }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
-      outline-offset: 2px;
-    }
   }
   @else if $vector == 'react' {
     // Emoji reactions and quick responses (like, heart, emoji picker)
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    @include _synapse-glass-base(clamp(0.375rem, 0.75vw, 0.5rem) clamp(0.625rem, 1.25vw, 0.875rem));
     min-width: 2.5em;
-    padding: var(--padding-react, clamp(0.375rem, 0.75vw, 0.5rem) clamp(0.625rem, 1.25vw, 0.875rem));
-    background: var(--glass-subtle, $color-engine-neutral-deep-a40);
-    color: var(--text-secondary, $color-engine-neutral-light);
-    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
-    border-radius: 999px; // Pill shape for reactions
-    cursor: pointer;
+    background: var(--glass-subtle, $color-ether-depth-glass);
+    color: var(--text-secondary, $color-ether-mist);
+    border-radius: 999px;
     font-size: 0.875rem;
-    transition: all var(--motion-snap, 0.2s ease);
-    gap: 0.375em;
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-height: 44px;
-      min-width: 44px;
-      padding: 0.5rem 0.875rem;
-    }
-    
+
     &:hover {
-      background: var(--glass-light, $color-engine-indigo-deep-a60);
-      border-color: var(--accent-low, $color-engine-gold-accent-a40);
+      background: var(--glass-light, $color-cosmos-depth-presence);
+      border-color: var(--accent-low, $color-wisdom-radiance-glass);
       transform: scale(1.05);
     }
-    
+
     // Reacted state (user has reacted)
     &.reacted,
     &[aria-pressed="true"] {
-      background: var(--accent-subtle, $color-engine-gold-bright-a15);
-      border-color: var(--accent-neon, $color-engine-gold-bright);
-      color: var(--accent-neon, $color-engine-gold-bright);
+      background: var(--accent-subtle, $color-wisdom-brilliance-whisper);
+      border-color: var(--accent-neon, $color-wisdom-brilliance);
+      color: var(--accent-neon, $color-wisdom-brilliance);
       font-weight: 600;
     }
-    
+
     // Reaction count
     .reaction-count {
       font-weight: 600;
       font-size: 0.75em;
     }
-    
+
     // Emoji
     .reaction-emoji {
       font-size: 1.125em;
       line-height: 1;
     }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
-      outline-offset: 2px;
-    }
   }
   @else if $vector == 'vote' {
     // Voting and rating interactions (upvote, downvote, star rating)
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--padding-vote, clamp(0.5rem, 1vw, 0.625rem));
+    @include _synapse-glass-base(clamp(0.5rem, 1vw, 0.625rem));
     background: transparent;
-    color: var(--text-secondary, $color-engine-neutral-light);
-    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
-    border-radius: var(--radius-button, clamp(0.375rem, 0.75vw, 0.5rem));
-    cursor: pointer;
-    transition: all var(--motion-snap, 0.2s ease);
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-width: 44px;
-      min-height: 44px;
-    }
-    
-    @media (min-width: 768px) {
-      min-width: 36px;
-      min-height: 36px;
-    }
-    
-    &:hover {
-      background: var(--glass-subtle, $color-engine-neutral-deep-a40);
-      border-color: var(--accent-low, $color-engine-gold-accent-a40);
-    }
-    
+
     // Upvoted state
     &.upvoted,
     &[data-vote="up"] {
-      background: var(--vote-up-bg, $color-engine-gold-accent-a15);
-      border-color: var(--vote-up, $color-engine-gold-bright);
-      color: var(--vote-up, $color-engine-gold-bright);
+      background: var(--vote-up-bg, $color-wisdom-radiance-veil);
+      border-color: var(--vote-up, $color-wisdom-brilliance);
+      color: var(--vote-up, $color-wisdom-brilliance);
     }
-    
+
     // Downvoted state
     &.downvoted,
     &[data-vote="down"] {
-      background: var(--vote-down-bg, $color-engine-error-vivid-a15);
+      background: var(--vote-down-bg, $color-alert-vivid-veil);
       border-color: var(--vote-down, $color-status-error);
       color: var(--vote-down, $color-status-error);
     }
-    
+
     // Star rating variant
     &.star-rating {
       border: none;
       padding: 0.25rem;
-      color: var(--star-inactive, $color-engine-neutral-mid);
-      
+      color: var(--star-inactive, $color-ether-twilight);
+
       &.rated,
       &[aria-checked="true"] {
-        color: var(--star-active, $color-engine-amber-bright); // Gold/yellow
+        color: var(--star-active, $color-caution-glow);
       }
-      
+
       &:hover {
         background: transparent;
-        color: var(--star-hover, $color-engine-amber-pale);
+        color: var(--star-hover, $color-caution-haze);
       }
-    }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
-      outline-offset: 2px;
     }
   }
   @else if $vector == 'comment' {
     // Comment and reply interactions
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    padding: var(--padding-comment, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.25rem));
-    background: var(--glass-light, $color-engine-indigo-deep-a60);
-    color: var(--text-primary, $color-engine-neutral-bright);
-    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
-    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
-    text-decoration: none;
-    cursor: pointer;
-    transition: all var(--motion-snap, 0.2s ease);
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-height: 44px;
-      padding: 0.75rem 1rem;
-    }
-    
-    &:hover {
-      background: var(--glass-hover, $color-engine-blue-deep);
-      border-color: var(--accent-low, $color-engine-gold-accent-a40);
-    }
-    
+    @include _synapse-glass-base;
+
     // Comment count badge
     .comment-count {
       display: inline-flex;
@@ -695,105 +484,35 @@
       justify-content: center;
       min-width: 1.5em;
       padding: 0.125em 0.5em;
-      background: var(--accent-subtle, $color-engine-gold-bright-a15);
-      color: var(--accent-neon, $color-engine-gold-bright);
+      background: var(--accent-subtle, $color-wisdom-brilliance-whisper);
+      color: var(--accent-neon, $color-wisdom-brilliance);
       border-radius: 999px;
       font-size: 0.75em;
       font-weight: 700;
     }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
-      outline-offset: 2px;
-    }
   }
   @else if $vector == 'share' {
-    // Enhanced sharing with multiple platforms
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    padding: var(--padding-share, clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.25rem));
-    background: var(--glass-light, $color-engine-indigo-deep-a60);
-    color: var(--text-primary, $color-engine-neutral-bright);
-    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
-    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
-    cursor: pointer;
-    transition: all var(--motion-snap, 0.2s ease);
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-height: 44px;
-      min-width: 44px;
-      padding: 0.75rem 1rem;
-    }
-    
+    // Sharing interaction — platform-neutral
+    @include _synapse-glass-base;
+
     &:hover {
-      background: var(--glass-hover, $color-engine-blue-deep);
-      border-color: var(--accent-low, $color-engine-gold-accent-a40);
-      box-shadow: 0 4px 12px $color-engine-indigo-void-a20;
+      background: var(--glass-hover, $color-spark-depth);
+      border-color: var(--accent-low, $color-wisdom-radiance-glass);
+      box-shadow: 0 4px 12px $color-cosmos-void-veil;
     }
-    
-    // Platform-specific variants
-    &.share-twitter {
-      &:hover {
-        border-color: $color-engine-blue-vivid;
-        color: $color-engine-blue-light;
-      }
-    }
-    
-    &.share-facebook {
-      &:hover {
-        border-color: $color-engine-blue-vivid;
-        color: $color-engine-blue-vivid;
-      }
-    }
-    
-    &.share-linkedin {
-      &:hover {
-        border-color: $color-engine-blue-vivid;
-        color: $color-engine-blue-vivid;
-      }
-    }
-    
-    &.share-copy {
-      &.copied {
-        background: var(--accent-subtle, $color-engine-gold-bright-a15);
-        border-color: var(--accent-neon, $color-engine-gold-bright);
-        color: var(--accent-neon, $color-engine-gold-bright);
-      }
-    }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
-      outline-offset: 2px;
+
+    // Copied-to-clipboard confirmation state
+    &.copied {
+      background: var(--accent-subtle, $color-wisdom-brilliance-whisper);
+      border-color: var(--accent-neon, $color-wisdom-brilliance);
+      color: var(--accent-neon, $color-wisdom-brilliance);
     }
   }
   @else if $vector == 'notify' {
     // Notification and alert interactions
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    @include _synapse-glass-base(clamp(0.5rem, 1vw, 0.75rem));
     position: relative;
-    padding: var(--padding-notify, clamp(0.5rem, 1vw, 0.75rem));
-    background: var(--glass-light, $color-engine-indigo-deep-a60);
-    color: var(--text-primary, $color-engine-neutral-bright);
-    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
-    border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
-    cursor: pointer;
-    transition: all var(--motion-snap, 0.2s ease);
-    
-    // WCAG 2.5.5: Minimum 44x44px touch target on mobile
-    @media (max-width: 767px) {
-      min-width: 44px;
-      min-height: 44px;
-    }
-    
-    &:hover {
-      background: var(--glass-hover, $color-engine-blue-deep);
-      border-color: var(--accent-low, $color-engine-gold-accent-a40);
-    }
-    
+
     // Notification badge (unread count)
     .notify-badge {
       position: absolute;
@@ -806,51 +525,44 @@
       height: 1.25rem;
       padding: 0 0.375rem;
       background: var(--badge-urgent, $color-status-error);
-      color: var(--text-inverse, $color-engine-neutral-bright);
+      color: var(--text-inverse, $color-ether-glow);
       border-radius: 999px;
       font-size: 0.625rem;
       font-weight: 700;
-      border: 2px solid var(--bg-primary, $color-engine-indigo-void);
+      border: 2px solid var(--bg-primary, $color-cosmos-void);
     }
-    
+
     // Active/open state
     &[aria-expanded="true"] {
-      background: var(--glass-hover, $color-engine-blue-deep);
-      border-color: var(--accent-neon, $color-engine-gold-bright);
-    }
-    
-    &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
-      outline-offset: 2px;
+      background: var(--glass-hover, $color-spark-depth);
+      border-color: var(--accent-neon, $color-wisdom-brilliance);
     }
   }
   @else if $vector == 'mention' {
     // @mention and tagging interactions
     display: inline;
     padding: 0.125em 0.375em;
-    background: var(--mention-bg, $color-engine-gold-bright-a15);
-    color: var(--mention-text, $color-engine-gold-bright);
+    background: var(--mention-bg, $color-wisdom-brilliance-whisper);
+    color: var(--mention-text, $color-wisdom-brilliance);
     border-radius: 0.25em;
     font-weight: 600;
     text-decoration: none;
-    cursor: pointer;
-    transition: all var(--motion-snap, 0.2s ease);
-    
+
     &:hover {
-      background: var(--mention-hover, $color-engine-gold-bright-a20);
-      color: var(--accent-neon, $color-engine-gold-bright);
+      background: var(--mention-hover, $color-wisdom-brilliance-veil);
+      color: var(--accent-neon, $color-wisdom-brilliance);
     }
-    
+
     // Current user mention (highlight)
     &.mention-self,
     &[data-mention-self="true"] {
-      background: var(--mention-self-bg, $color-engine-gold-accent-a30);
-      color: var(--mention-self-text, $color-engine-neutral-bright);
+      background: var(--mention-self-bg, $color-wisdom-radiance-glass);
+      color: var(--mention-self-text, $color-ether-glow);
       font-weight: 700;
     }
-    
+
     &:focus-visible {
-      outline: 2px solid var(--focus-ring, $color-engine-gold-accent-a50);
+      outline: 2px solid var(--focus-ring, $color-wisdom-radiance-presence);
       outline-offset: 2px;
       border-radius: 0.25em;
     }
@@ -864,7 +576,7 @@
     justify-content: center;
     gap: 0.5em;
     padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
-    background: linear-gradient(135deg, $color-engine-neutral-deep, $color-engine-neutral-void);
+    background: linear-gradient(135deg, $color-ether-depth, $color-ether-void);
     color: $color-light-white;  // White text
     border: 1px solid $color-theme-dark-header-border;  // Consciousness border
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
@@ -882,7 +594,7 @@
       border-color: $color-accent-neon-blue;  // Neon blue
       box-shadow:
         0 0 20px $color-accent-neon-blue-border,
-        inset 0 0 10px $color-engine-blue-vivid-a10;
+        inset 0 0 10px $color-spark-vivid-whisper;
       transform: translateY(-1px);
     }
     
@@ -906,7 +618,7 @@
     padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
     background: $color-light-white;  // White
     color: $color-theme-dark-card-bg;  // Black text
-    border: 2px solid $color-engine-green-vivid;  // Green — affirmative
+    border: 2px solid $color-life-vivid;  // Green — affirmative
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     font-weight: 600;
     font-size: var(--size-button, clamp(0.95rem, 1.2vw, 1.05rem));
@@ -919,9 +631,9 @@
     }
     
     &:hover {
-      background: $color-engine-green-vivid;  // Green fill
+      background: $color-life-vivid;  // Green fill
       color: $color-light-white;  // White text on green
-      box-shadow: 0 0 12px $color-engine-green-vivid-a30;
+      box-shadow: 0 0 12px $color-life-vivid-glass;
       transform: translateY(-1px);
     }
     
@@ -930,7 +642,7 @@
     }
     
     &:focus-visible {
-      outline: 2px solid $color-engine-green-vivid-a50;
+      outline: 2px solid $color-life-vivid-presence;
       outline-offset: 2px;
     }
   }

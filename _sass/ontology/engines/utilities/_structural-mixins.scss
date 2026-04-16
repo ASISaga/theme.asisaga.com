@@ -221,19 +221,19 @@
 // BORDER UTILITIES
 // ----------------------------------------
 
-@mixin border-separator-bottom($color: $color-engine-indigo-dark) {
+@mixin border-separator-bottom($color: $color-cosmos-shadow) {
   border-bottom: 1px solid $color;
 }
 
-@mixin border-separator-top($color: $color-engine-indigo-dark) {
+@mixin border-separator-top($color: $color-cosmos-shadow) {
   border-top: 1px solid $color;
 }
 
-@mixin border-separator-left($color: $color-engine-indigo-dark) {
+@mixin border-separator-left($color: $color-cosmos-shadow) {
   border-left: 1px solid $color;
 }
 
-@mixin border-subtle($color: $color-engine-indigo-dark, $width: 1px) {
+@mixin border-subtle($color: $color-cosmos-shadow, $width: 1px) {
   border: $width solid $color;
 }
 
@@ -276,9 +276,9 @@
 // COLOR UTILITIES (ontological tokens)
 // ----------------------------------------
 
-@mixin color-text-light { color: var(--genesis-body-color, $color-engine-neutral-bright); }
-@mixin color-text-muted { color: var(--text-secondary, $color-engine-neutral-mid); }
-@mixin color-text-dim { color: var(--text-secondary, $color-engine-neutral-mid); }
+@mixin color-text-light { color: var(--genesis-body-color, $color-ether-glow); }
+@mixin color-text-muted { color: var(--text-secondary, $color-ether-twilight); }
+@mixin color-text-dim { color: var(--text-secondary, $color-ether-twilight); }
 @mixin color-neon-accent { color: $color-accent-neon-blue; }
 
 // ----------------------------------------
@@ -397,7 +397,7 @@
 // ICON TOGGLE (hamburger menu)
 // ----------------------------------------
 
-@mixin hamburger-icon($line-width: 18px, $line-height: 1.5px, $line-gap: 5px, $color: $color-engine-neutral-pale) {
+@mixin hamburger-icon($line-width: 18px, $line-height: 1.5px, $line-gap: 5px, $color: $color-ether-haze) {
   position: relative;
   width: $line-width;
   height: $line-height;

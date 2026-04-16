@@ -24,7 +24,7 @@
     @include transition-smooth;
     &:hover {
       transform: scale(1.1);
-      /* text-shadow: 0 0 3px $color-engine-gold-vivid-a60; */ /* Removed for accessibility - can interfere with text readability */
+      /* text-shadow: 0 0 3px $color-wisdom-glow-presence; */ /* Removed for accessibility - can interfere with text readability */
     }
   }
 
@@ -86,29 +86,29 @@
   // ----------------------------------------
   .sacred-background {
     background: linear-gradient(135deg, 
-      $color-engine-neutral-void-a95 0%, 
-      $color-engine-neutral-void-a80 50%, 
-      $color-engine-blue-vivid-a10 100%);
+      $color-ether-void-frost 0%, 
+      $color-ether-void-dense 50%, 
+      $color-spark-vivid-whisper 100%);
     color: $color-light-white;
   }
 
   .consciousness-background {
     background: radial-gradient(circle at center, 
-      $color-engine-neutral-void-a10 0%, 
-      $color-engine-gold-vivid-a05 50%, 
+      $color-ether-void-whisper 0%, 
+      $color-wisdom-glow-whisper 50%, 
       transparent 100%);
   }
 
   .essence-weave-background {
     background-image: 
       repeating-linear-gradient(45deg, 
-        $color-engine-gold-vivid-a10 0, 
-        $color-engine-gold-vivid-a10 1px, 
+        $color-wisdom-glow-whisper 0, 
+        $color-wisdom-glow-whisper 1px, 
         transparent 1px, 
         transparent 20px),
       repeating-linear-gradient(-45deg, 
-        $color-engine-neutral-light-a05 0, 
-        $color-engine-neutral-light-a05 1px, 
+        $color-ether-mist-whisper 0, 
+        $color-ether-mist-whisper 1px, 
         transparent 1px, 
         transparent 20px);
   }
@@ -119,8 +119,8 @@
   .sacred-container {
     padding: 2rem;
     border-radius: 0.5rem;
-    background: $color-engine-neutral-luminous-a95;
-    border: 1px solid $color-engine-gold-vivid-a20;
+    background: $color-ether-radiance-frost;
+    border: 1px solid $color-wisdom-glow-veil;
     box-shadow: $effect-shadow-consciousness-depth;
     position: relative;
     @include overflow-hidden;
@@ -174,13 +174,13 @@
     transition: all 0.5s ease;
 
     &:hover {
-      background-color: $color-engine-neutral-void-a05;
+      background-color: $color-ether-void-whisper;
 
       &::after {
         content: '';
         position: absolute;
         inset: 0 0 0 0;
-        border: 2px solid $color-engine-gold-vivid-a30;
+        border: 2px solid $color-wisdom-glow-glass;
         border-radius: inherit;
         @include pointer-events-none;
       }
@@ -198,8 +198,8 @@
     background: conic-gradient(
       $color-accent-gold 0deg,
       $color-accent-gold calc(var(--progress, 0) * 3.6deg),
-      $color-engine-neutral-light-a20 calc(var(--progress, 0) * 3.6deg),
-      $color-engine-neutral-light-a20 360deg
+      $color-ether-mist-veil calc(var(--progress, 0) * 3.6deg),
+      $color-ether-mist-veil 360deg
     );
 
     &::before {
@@ -233,19 +233,19 @@
     letter-spacing: 0.5px;
 
     &.stage-awakening {
-      background: $color-engine-blue-vivid-a10;
+      background: $color-spark-vivid-whisper;
       color: $color-accent-neon-blue;
       border: 1px solid $color-accent-neon-blue-border;
     }
 
     &.stage-integration {
-      background: $color-engine-gold-vivid-a10;
+      background: $color-wisdom-glow-whisper;
       color: $color-accent-gold;
-      border: 1px solid $color-engine-gold-vivid-a30;
+      border: 1px solid $color-wisdom-glow-glass;
     }
 
     &.stage-mastery {
-      background: $color-engine-blue-vivid-a10;
+      background: $color-spark-vivid-whisper;
       color: $color-accent-neon-blue;
       border: 1px solid $color-accent-neon-blue-border;
     }
@@ -314,12 +314,12 @@
   // Sacred Primary Navigation
   // ----------------------------------------
   .sacred-navbar {
-    background: $color-engine-neutral-luminous-a95;
+    background: $color-ether-radiance-frost;
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid $color-engine-gold-vivid-a20;
+    border-bottom: 1px solid $color-wisdom-glow-veil;
     @include transition-smooth;
     &.scrolled {
-      background: $color-engine-neutral-void-a95;
+      background: $color-ether-void-frost;
 
       .navbar-brand,
       .nav-link {
@@ -380,7 +380,7 @@
 
     &:hover {
       color: $color-accent-gold;
-      background: $color-engine-gold-vivid-a10;
+      background: $color-wisdom-glow-whisper;
       transform: translateY(-2px);
 
       &::after {
@@ -406,8 +406,8 @@
       position: absolute;
       top: 100%;
       left: 0;
-      background: $color-engine-neutral-luminous-a98;
-      border: 1px solid $color-engine-gold-vivid-a20;
+      background: $color-ether-radiance-frost;
+      border: 1px solid $color-wisdom-glow-veil;
       border-radius: 0.75rem;
       box-shadow: $effect-shadow-consciousness-depth;
       padding: 1rem 0;
@@ -434,7 +434,7 @@
     font-family: $font-family-consciousness;
     @include transition-smooth;
     &:hover {
-      background: $color-engine-gold-vivid-a10;
+      background: $color-wisdom-glow-whisper;
       color: $color-accent-gold;
       transform: translateX(5px);
     }
@@ -483,8 +483,8 @@
   .sacred-sidenav {
     width: 280px;
     max-width: 85vw;  // Prevent overflow on small viewports (320px = 272px max)
-    background: $color-engine-neutral-luminous-a98;
-    border-right: 1px solid $color-engine-gold-vivid-a20;
+    background: $color-ether-radiance-frost;
+    border-right: 1px solid $color-wisdom-glow-veil;
     padding: 2rem 0;
     height: 100vh;
     position: fixed;
@@ -502,7 +502,7 @@
 
     .sidenav-header {
       padding: 0 1.5rem 1.5rem;
-      border-bottom: 1px solid $color-engine-gold-vivid-a10;
+      border-bottom: 1px solid $color-wisdom-glow-whisper;
       margin-bottom: 1rem;
 
       h3 {
@@ -546,7 +546,7 @@
       }
 
       &:hover {
-        background: $color-engine-gold-vivid-a10;
+        background: $color-wisdom-glow-whisper;
         color: $color-accent-gold;
         transform: translateX(5px);
 
@@ -556,7 +556,7 @@
       }
 
       &.active {
-        background: $color-engine-gold-vivid-a15;
+        background: $color-wisdom-glow-veil;
         color: $color-accent-gold;
         font-weight: $font-weight-semibold;
 
@@ -703,7 +703,7 @@
       visibility: visible;
       box-shadow: none;
       border: none;
-      background: $color-engine-gold-vivid-a05;
+      background: $color-wisdom-glow-whisper;
       margin-top: 0.5rem;
     }
   }
@@ -722,15 +722,15 @@
 }
 
 @mixin bg-luminous-gold-accessible {
-  background: linear-gradient(90deg, $color-engine-sacred-gold-pure 0%, $color-engine-sacred-gold-lemon 100%);
+  background: linear-gradient(90deg, $color-sacred-gold-pure 0%, $color-sacred-gold-lemon 100%);
 }
 
 @mixin bg-gradient-transcendent-overlay {
-  background: linear-gradient(135deg, $color-engine-sacred-purple-lavender 0%, $color-engine-sacred-blue-cornflower 100%);
+  background: linear-gradient(135deg, $color-sacred-purple-lavender 0%, $color-sacred-blue-cornflower 100%);
 }
 
 @mixin bg-gradient-consciousness-royal {
-  background: linear-gradient(90deg, $color-engine-sacred-blue-royal, $color-engine-sacred-blue-royal-mid);
+  background: linear-gradient(90deg, $color-sacred-blue-royal, $color-sacred-blue-royal-mid);
 }
 
 @mixin font-size-xl {
@@ -823,10 +823,10 @@
     @include text-transcendent-white;
 
     &:hover {
-      background-color: $color-engine-blue-vivid;
-      border-color: $color-engine-blue-vivid;
+      background-color: $color-spark-vivid;
+      border-color: $color-spark-vivid;
       @include animate-hover-lift;
-      box-shadow: 0 0 20px $color-engine-blue-vivid-a60, 0 0 40px $color-accent-neon-blue-border;
+      box-shadow: 0 0 20px $color-spark-vivid-presence, 0 0 40px $color-accent-neon-blue-border;
     }
 
     &:focus {
@@ -895,7 +895,7 @@
     display: inline-flex;
     border-radius: 0.5rem;
     @include overflow-hidden;
-    box-shadow: 0 4px 12px $color-engine-neutral-void-a15;
+    box-shadow: 0 4px 12px $color-ether-void-veil;
 
     .btn-sacred {
       border-radius: 0;
@@ -912,7 +912,7 @@
       }
 
       &:not(:last-child) {
-        border-right: 1px solid $color-engine-neutral-luminous-a20;
+        border-right: 1px solid $color-ether-radiance-veil;
       }
     }
   }
@@ -1008,7 +1008,7 @@
       height: 200%;
       background: linear-gradient(45deg, 
         transparent 30%, 
-        $color-engine-neutral-luminous-a30 50%, 
+        $color-ether-radiance-veil 50%, 
         transparent 70%);
       transform: rotate(45deg);
       transition: all 0.6s ease;
@@ -1017,7 +1017,7 @@
 
     &:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 30px $color-engine-gold-vivid-a40;
+      box-shadow: 0 10px 30px $color-wisdom-glow-glass;
 
       &::before {
         opacity: 1;
@@ -1141,8 +1141,8 @@
   // Sacred Form Container
   // ----------------------------------------
   .form-sacred {
-    background: $color-engine-neutral-luminous-a98;
-    border: 1px solid $color-engine-gold-vivid-a20;
+    background: $color-ether-radiance-frost;
+    border: 1px solid $color-wisdom-glow-veil;
     border-radius: 0.5rem;
     padding: 2rem;
     box-shadow: $effect-shadow-consciousness-depth;
@@ -1173,21 +1173,21 @@
     font-family: $font-family-interface;
     font-size: 1rem;
     @include transition-smooth;
-    background: $color-engine-neutral-luminous-a80;
+    background: $color-ether-radiance-dense;
 
     &:focus {
       border-color: $color-accent-gold;
-      box-shadow: 0 0 0 0.2rem $color-engine-gold-vivid-a20;
+      box-shadow: 0 0 0 0.2rem $color-wisdom-glow-veil;
       background: $color-light-white;
       outline: none;
     }
 
     &:hover {
-      border-color: $color-engine-gold-vivid-a50;
+      border-color: $color-wisdom-glow-presence;
     }
 
     &::placeholder {
-      color: $color-engine-neutral-mid-a70;
+      color: $color-ether-twilight-dense;
       font-style: italic;
     }
   }
@@ -1231,8 +1231,8 @@
   }
 
   .form-help-sacred {
-    background: $color-engine-gold-vivid-a10;
-    border: 1px solid $color-engine-gold-vivid-a20;
+    background: $color-wisdom-glow-whisper;
+    border: 1px solid $color-wisdom-glow-veil;
     border-radius: 0.5rem;
     padding: 0.75rem;
     margin-top: 0.5rem;
@@ -1312,7 +1312,7 @@
       }
 
       &:focus {
-        box-shadow: 0 0 0 0.2rem $color-engine-gold-vivid-a20;
+        box-shadow: 0 0 0 0.2rem $color-wisdom-glow-veil;
       }
     }
 
@@ -1358,14 +1358,14 @@
       min-height: 100px;
       border: 2px dashed $color-border-silver;
       border-radius: 0.5rem;
-      background: $color-engine-gold-vivid-a05;
+      background: $color-wisdom-glow-whisper;
       color: $color-dark-profound-black;
       font-family: $font-family-consciousness;
       @include cursor-pointer;
       @include transition-smooth;
       &:hover {
         border-color: $color-accent-gold;
-        background: $color-engine-gold-vivid-a10;
+        background: $color-wisdom-glow-whisper;
       }
 
       &::before {
@@ -1377,7 +1377,7 @@
 
     &.has-file .form-file-label {
       border-color: $color-accent-neon-blue;
-      background: $color-engine-blue-vivid-a10;
+      background: $color-spark-vivid-whisper;
 
       &::before {
         content: "✅ ";
@@ -1394,7 +1394,7 @@
 
       &:focus {
         border-color: $color-accent-neon-blue;
-        box-shadow: 0 0 0 0.2rem $color-engine-blue-vivid-a25;
+        box-shadow: 0 0 0 0.2rem $color-spark-vivid-veil;
       }
     }
 
@@ -1403,7 +1403,7 @@
 
       &:focus {
         border-color: $color-accent-neon-blue;
-        box-shadow: 0 0 0 0.2rem $color-engine-blue-vivid-a25;
+        box-shadow: 0 0 0 0.2rem $color-spark-vivid-veil;
       }
     }
   }
@@ -1434,18 +1434,18 @@
   // Sacred Form Sections
   // ----------------------------------------
   .form-section-sacred {
-    border: 1px solid $color-engine-neutral-light-a30;
+    border: 1px solid $color-ether-mist-veil;
     border-radius: 0.5rem;
     padding: 1.5rem;
     margin-bottom: 2rem;
-    background: $color-engine-neutral-void-a00;
+    background: $color-ether-void-transparent;
 
     .form-section-header {
       display: flex;
       align-items: center;
       margin-bottom: 1.5rem;
       padding-bottom: 0.75rem;
-      border-bottom: 1px solid $color-engine-gold-vivid-a20;
+      border-bottom: 1px solid $color-wisdom-glow-veil;
 
       .section-icon {
         color: $color-accent-gold;
@@ -1542,7 +1542,7 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 1.5rem;
-    border-top: 1px solid $color-engine-gold-vivid-a20;
+    border-top: 1px solid $color-wisdom-glow-veil;
     margin-top: 2rem;
 
     .actions-left,
@@ -1571,7 +1571,7 @@
     input:focus,
     textarea:focus,
     select:focus {
-      outline: 3px solid $color-engine-gold-vivid-a50;
+      outline: 3px solid $color-wisdom-glow-presence;
       outline-offset: 2px;
     }
 
@@ -1661,7 +1661,6 @@
   // ----------------------------------------
   .genesis-timeline {
     @include genesis-environment('chronological');
-    @include genesis-atmosphere('spacious-mobile');
     position: relative;
     padding: 2rem 0;
 
@@ -1808,7 +1807,7 @@
       @include genesis-entity('primary');
       border: none;
       border-radius: 0.5rem;
-      background: $color-engine-neutral-luminous-a98;
+      background: $color-ether-radiance-frost;
       position: relative;
 
       &::before {
@@ -1827,7 +1826,7 @@
     }
 
     .modal-header {
-      border-bottom: 1px solid $color-engine-gold-vivid-a20;
+      border-bottom: 1px solid $color-wisdom-glow-veil;
       padding: 1.5rem;
 
       .modal-title {
@@ -1855,7 +1854,7 @@
     }
 
     .modal-footer {
-      border-top: 1px solid $color-engine-gold-vivid-a20;
+      border-top: 1px solid $color-wisdom-glow-veil;
       padding: 1.5rem;
       display: flex;
       justify-content: space-between;
@@ -1873,8 +1872,8 @@
     .modal-content {
       @include genesis-atmosphere('vibrant');
       background: linear-gradient(135deg, 
-        $color-engine-neutral-void-a95 0%, 
-        $color-engine-blue-vivid-a90 100%);
+        $color-ether-void-frost 0%, 
+        $color-spark-vivid-frost 100%);
       color: $color-light-white;
     }
   }
@@ -1900,9 +1899,9 @@
 
   .transcendent-hero {
     --transcendent-hero-content-max-width: 42rem;
-    --transcendent-image-scrim-strong: #{$color-engine-neutral-void-a90};
-    --transcendent-image-scrim-mid: #{$color-engine-neutral-void-a60};
-    --transcendent-image-scrim-light: #{$color-engine-neutral-void-a20};
+    --transcendent-image-scrim-strong: #{$color-ether-void-frost};
+    --transcendent-image-scrim-mid: #{$color-ether-void-presence};
+    --transcendent-image-scrim-light: #{$color-ether-void-veil};
     --transcendent-image-scrim-midpoint: 48%;
     position: relative;
     min-height: 100vh;
@@ -1917,9 +1916,9 @@
       background: linear-gradient(
         135deg,
         $color-dark-profound-black 0%,
-        $color-engine-neutral-space 25%,  // Slightly darker profound black
+        $color-ether-abyss 25%,  // Slightly darker profound black
         $color-accent-neon-blue 50%,
-        $color-engine-blue-light 75%,  // Slightly lighter neon blue
+        $color-spark-arc 75%,  // Slightly lighter neon blue
         $color-accent-gold 100%
       );
     }
@@ -2011,10 +2010,10 @@
       @include width-full;
       @include height-full;
       background-image: 
-        radial-gradient(2px 2px at 20px 30px, $color-engine-gold-vivid-a30, transparent),
+        radial-gradient(2px 2px at 20px 30px, $color-wisdom-glow-glass, transparent),
         radial-gradient(2px 2px at 40px 70px, $color-synapse-social-hover, transparent),
-        radial-gradient(1px 1px at 90px 40px, $color-engine-neutral-pale-a30, transparent),
-        radial-gradient(1px 1px at 130px 80px, $color-engine-neutral-light-a20, transparent);
+        radial-gradient(1px 1px at 90px 40px, $color-ether-haze-glass, transparent),
+        radial-gradient(1px 1px at 130px 80px, $color-ether-mist-veil, transparent);
       background-repeat: repeat;
       background-size: 150px 150px, 200px 200px, 100px 100px, 250px 250px;
       animation: cosmicDrift 60s linear infinite;
@@ -2027,7 +2026,7 @@
       background: linear-gradient(
         45deg,
         transparent 30%,
-        $color-engine-neutral-pale-a10 50%,
+        $color-ether-haze-whisper 50%,
         transparent 70%
       );
       animation: essenceFlow 20s ease-in-out infinite alternate;
@@ -2041,8 +2040,8 @@
       transform: translate(-50%, -50%);
       background: radial-gradient(
         circle,
-        $color-engine-gold-vivid-a10 0%,
-        $color-engine-blue-vivid-a05 50%,
+        $color-wisdom-glow-whisper 0%,
+        $color-spark-vivid-whisper 50%,
         transparent 100%
       );
       animation: transcendentPulsation 8s ease-in-out infinite;
@@ -2093,7 +2092,7 @@
     max-width: min(600px, 100%);
     margin-left: auto;
     margin-right: auto;
-    color: $color-engine-neutral-luminous-a90;
+    color: $color-ether-radiance-dense;
     line-height: $line-height-transcendent;
   }
 
@@ -2212,7 +2211,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: $color-engine-neutral-luminous-a70;
+    color: $color-ether-radiance-presence;
     transition: color 0.3s ease;
     @include cursor-pointer;
     &:hover {
@@ -2531,9 +2530,9 @@
       background: conic-gradient(
         from 0deg,
         transparent,
-        $color-engine-gold-vivid-a10,
+        $color-wisdom-glow-whisper,
         transparent,
-        $color-engine-blue-vivid-a10,
+        $color-spark-vivid-whisper,
         transparent
       );
       animation: consciousnessFlow 20s linear infinite;
@@ -2549,7 +2548,7 @@
       right: 20px;
       width: 40px;
       height: 40px;
-      border: 2px solid $color-engine-gold-vivid-a30;
+      border: 2px solid $color-wisdom-glow-glass;
       @include border-radius-rounded(50%);
       opacity: 0;
       transform: scale(0);
@@ -2559,8 +2558,8 @@
     &:hover {
       transform: translateY(-15px) scale(1.02);
       box-shadow: 
-        0 20px 60px $color-engine-neutral-void-a40,
-        0 0 40px $color-engine-gold-vivid-a20;
+        0 20px 60px $color-ether-void-glass,
+        0 0 40px $color-wisdom-glow-veil;
 
       &::before {
         opacity: 1;
@@ -2587,13 +2586,13 @@
 
       &:hover {
         box-shadow: 
-          0 20px 60px $color-engine-neutral-void-a40,
-          0 0 40px $color-engine-neutral-pale-a30;
+          0 20px 60px $color-ether-void-glass,
+          0 0 40px $color-ether-haze-glass;
       }
 
       .genesis-block-icon {
         color: $color-border-light;
-        background: radial-gradient(circle, $color-engine-neutral-pale-a10, transparent);
+        background: radial-gradient(circle, $color-ether-haze-whisper, transparent);
       }
     }
 
@@ -2602,13 +2601,13 @@
 
       &:hover {
         box-shadow: 
-          0 20px 60px $color-engine-neutral-void-a40,
-          0 0 40px $color-engine-gold-vivid-a40;
+          0 20px 60px $color-ether-void-glass,
+          0 0 40px $color-wisdom-glow-glass;
       }
 
       .genesis-block-icon {
         color: $color-accent-gold;
-        background: radial-gradient(circle, $color-engine-gold-vivid-a10, transparent);
+        background: radial-gradient(circle, $color-wisdom-glow-whisper, transparent);
       }
     }
 
@@ -2617,13 +2616,13 @@
 
       &:hover {
         box-shadow: 
-          0 20px 60px $color-engine-neutral-void-a40,
+          0 20px 60px $color-ether-void-glass,
           0 0 40px $color-accent-neon-blue-border;
       }
 
       .genesis-block-icon {
         color: $color-accent-neon-blue;
-        background: radial-gradient(circle, $color-engine-blue-vivid-a10, transparent);
+        background: radial-gradient(circle, $color-spark-vivid-whisper, transparent);
       }
     }
   }
@@ -2681,7 +2680,7 @@
 
   .genesis-block-text {
     @include body-text-large;
-    color: $color-engine-neutral-light-a90;
+    color: $color-ether-mist-frost;
     line-height: $line-height-transcendent;
     margin-bottom: auto;
     padding-bottom: $spacing-xl;
@@ -2709,7 +2708,7 @@
         background: linear-gradient(
           90deg,
           transparent,
-          $color-engine-neutral-luminous-a20,
+          $color-ether-radiance-veil,
           transparent
         );
         transition: left 0.6s ease;
@@ -2722,8 +2721,8 @@
       // Transcendent glow on hover
       &:hover {
         box-shadow: 
-          0 8px 25px $color-engine-gold-vivid-a30,
-          0 0 20px $color-engine-gold-vivid-a20;
+          0 8px 25px $color-wisdom-glow-glass,
+          0 0 20px $color-wisdom-glow-veil;
       }
     }
   }
@@ -2753,7 +2752,7 @@
 
     .section-subtitle {
       @include body-text-large;
-      color: $color-engine-neutral-luminous-a80;
+      color: $color-ether-radiance-dense;
       max-width: min(600px, 100%);
       margin: 0 auto;
       font-style: italic;
@@ -2920,11 +2919,11 @@
     position: relative;
     background: linear-gradient(
       135deg,
-      $color-engine-neutral-void-a95 0%,
-    $color-engine-blue-vivid-a90 30%,
-      $color-engine-blue-vivid-a90 50%,
-    $color-engine-blue-vivid-a90 70%,
-      $color-engine-neutral-void-a95 100%
+      $color-ether-void-frost 0%,
+    $color-spark-vivid-frost 30%,
+      $color-spark-vivid-frost 50%,
+    $color-spark-vivid-frost 70%,
+      $color-ether-void-frost 100%
     );
     overflow: hidden;  // Already present - ensures animations stay contained
     max-width: 100%;  // Add explicit max-width for containment
@@ -2938,9 +2937,9 @@
       width: 100%;
       height: 100%;
       background: 
-        radial-gradient(circle at 20% 20%, $color-engine-gold-vivid-a10 1px, transparent 1px),
-        radial-gradient(circle at 80% 80%, $color-engine-neutral-pale-a10 1px, transparent 1px),
-        radial-gradient(circle at 40% 60%, $color-engine-blue-vivid-a05 1px, transparent 1px);
+        radial-gradient(circle at 20% 20%, $color-wisdom-glow-whisper 1px, transparent 1px),
+        radial-gradient(circle at 80% 80%, $color-ether-haze-whisper 1px, transparent 1px),
+        radial-gradient(circle at 40% 60%, $color-spark-vivid-whisper 1px, transparent 1px);
       background-size: 50px 50px, 80px 80px, 120px 120px;
       animation: thresholdPattern 40s linear infinite;
       opacity: 0.9 /* Increased for accessibility */;
@@ -3001,7 +3000,7 @@
       background: linear-gradient(
         to right,
         $color-accent-gold,
-        $color-engine-gold-vivid-a50,
+        $color-wisdom-glow-presence,
         transparent
       );
 
@@ -3013,18 +3012,18 @@
 
     // Consciousness pulse on hover
     &:hover {
-      /* text-shadow: 0 0 20px $color-engine-gold-vivid-a60; */ /* Removed for accessibility - can interfere with text readability */
+      /* text-shadow: 0 0 20px $color-wisdom-glow-presence; */ /* Removed for accessibility - can interfere with text readability */
     }
   }
 
   .threshold-description {
     @include body-text-large;
-    color: $color-engine-neutral-luminous-a95;
+    color: $color-ether-radiance-frost;
     line-height: $line-height-transcendent;
     font-weight: $font-weight-normal;
 
     // Enhanced readability with subtle glow
-    /* text-shadow: 0 1px 2px $color-engine-neutral-void-a50; */ /* Removed for accessibility - can interfere with text readability */
+    /* text-shadow: 0 1px 2px $color-ether-void-presence; */ /* Removed for accessibility - can interfere with text readability */
   }
 
   .threshold-cta {
@@ -3094,9 +3093,9 @@
       @include size(140px);
       background: radial-gradient(
         circle,
-        $color-engine-neutral-pale-a80 0%,
-        $color-engine-neutral-pale-a40 50%,
-        $color-engine-neutral-pale-a10 100%
+        $color-ether-haze-dense 0%,
+        $color-ether-haze-glass 50%,
+        $color-ether-haze-whisper 100%
       );
       top: 15%;
       left: 5%;
@@ -3112,9 +3111,9 @@
         background: $color-border-light;
         @include border-radius-rounded(50%);
         box-shadow: 
-          20px 30px 0 -2px $color-engine-neutral-pale-a60,
-          40px 10px 0 -3px $color-engine-neutral-pale-a40,
-          60px 40px 0 -1px $color-engine-neutral-pale-a50;
+          20px 30px 0 -2px $color-ether-haze-presence,
+          40px 10px 0 -3px $color-ether-haze-glass,
+          60px 40px 0 -1px $color-ether-haze-presence;
         animation: essenceParticles 4s ease-in-out infinite;
       }
     }
@@ -3124,9 +3123,9 @@
       @include size(220px);
       background: radial-gradient(
         circle,
-        $color-engine-blue-vivid-a60 0%,
+        $color-spark-vivid-presence 0%,
         $color-accent-neon-blue-border 40%,
-        $color-engine-blue-vivid-a10 80%,
+        $color-spark-vivid-whisper 80%,
         transparent 100%
       );
       top: 25%;
@@ -3164,9 +3163,9 @@
       @include size(100px);
       background: radial-gradient(
         circle,
-        $color-engine-gold-vivid-a90 0%,
-        $color-engine-gold-vivid-a60 30%,
-        $color-engine-gold-vivid-a20 70%,
+        $color-wisdom-glow-frost 0%,
+        $color-wisdom-glow-presence 30%,
+        $color-wisdom-glow-veil 70%,
         transparent 100%
       );
       top: 50%;
@@ -3185,7 +3184,7 @@
         font-size: $font-size-3xl;
         color: $color-dark-profound-black;
         font-weight: $font-weight-bold;
-        /* text-shadow: 0 0 10px $color-engine-gold-vivid-a80; */ /* Removed for accessibility - can interfere with text readability */
+        /* text-shadow: 0 0 10px $color-wisdom-glow-dense; */ /* Removed for accessibility - can interfere with text readability */
         animation: infinitySymbol 10s ease-in-out infinite;
       }
 
@@ -3198,7 +3197,7 @@
         @include width(200%);
         @include height(200%);
         transform: translate(-50%, -50%);
-        border: 1px solid $color-engine-gold-vivid-a30;
+        border: 1px solid $color-wisdom-glow-glass;
         @include border-radius-rounded(50%);
         animation: energyWaves 3s ease-out infinite;
       }
@@ -3230,7 +3229,7 @@
 
     .section-subtitle {
       @include body-text-large;
-      color: $color-engine-neutral-light-a90;
+      color: $color-ether-mist-frost;
       @include max-width(700px);
       margin: 0 auto;
       font-style: italic;
@@ -3331,11 +3330,11 @@
   @keyframes diamondGlow {
     0%, 100% { 
       opacity: 0.9 /* Increased for accessibility */; 
-      filter: drop-shadow(0 0 5px $color-engine-gold-vivid-a50); 
+      filter: drop-shadow(0 0 5px $color-wisdom-glow-presence); 
     }
     50% { 
       opacity: 1; 
-      filter: drop-shadow(0 0 15px $color-engine-gold-vivid-a80); 
+      filter: drop-shadow(0 0 15px $color-wisdom-glow-dense); 
     }
   }
 
@@ -3444,9 +3443,9 @@
       background: linear-gradient(
         45deg,
         $color-dark-profound-black 0%,
-        $color-engine-neutral-space 25%,  // Slightly darker profound black
+        $color-ether-abyss 25%,  // Slightly darker profound black
         $color-accent-neon-blue 50%,
-        $color-engine-blue-vivid 75%,  // Slightly darker neon blue
+        $color-spark-vivid 75%,  // Slightly darker neon blue
         $color-dark-profound-black 100%
       );
     }
@@ -3461,11 +3460,11 @@
         width: 100%;
         height: 100%;
         background-image: 
-          radial-gradient(2px 2px at 20px 30px, $color-engine-gold-vivid-a40, transparent),
-          radial-gradient(2px 2px at 40px 70px, $color-engine-neutral-light-a30, transparent),
+          radial-gradient(2px 2px at 20px 30px, $color-wisdom-glow-glass, transparent),
+          radial-gradient(2px 2px at 40px 70px, $color-ether-mist-veil, transparent),
           radial-gradient(1px 1px at 90px 40px, $color-semantic-focus-ring, transparent),
-          radial-gradient(1px 1px at 130px 80px, $color-engine-neutral-pale-a30, transparent),
-          radial-gradient(2px 2px at 160px 30px, $color-engine-gold-vivid-a20, transparent);
+          radial-gradient(1px 1px at 130px 80px, $color-ether-haze-glass, transparent),
+          radial-gradient(2px 2px at 160px 30px, $color-wisdom-glow-veil, transparent);
         background-repeat: repeat;
         background-size: 200px 200px, 250px 250px, 150px 150px, 300px 300px, 180px 180px;
         animation: starfieldDrift 80s linear infinite;
@@ -3493,9 +3492,9 @@
       width: 100%;
       height: 100%;
       background: 
-        radial-gradient(circle at 25% 25%, $color-engine-gold-vivid-a30 1px, transparent 1px),
-        radial-gradient(circle at 75% 75%, $color-engine-neutral-light-a20 1px, transparent 1px),
-        radial-gradient(circle at 50% 10%, $color-engine-blue-vivid-a25 1px, transparent 1px);
+        radial-gradient(circle at 25% 25%, $color-wisdom-glow-glass 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, $color-ether-mist-veil 1px, transparent 1px),
+        radial-gradient(circle at 50% 10%, $color-spark-vivid-veil 1px, transparent 1px);
       background-size: 100px 100px, 150px 150px, 200px 200px;
       animation: cosmicRotation 120s linear infinite;
     }
@@ -3509,7 +3508,7 @@
       background: linear-gradient(
         45deg,
         transparent 40%,
-        $color-engine-neutral-pale-a10 50%,
+        $color-ether-haze-whisper 50%,
         transparent 60%
       );
       animation: consciousnessWaveFlow 25s ease-in-out infinite alternate;
@@ -3524,9 +3523,9 @@
       background: linear-gradient(
         90deg,
         transparent 0%,
-        $color-engine-gold-vivid-a10 25%,
-        $color-engine-blue-vivid-a15 50%,
-        $color-engine-neutral-pale-a10 75%,
+        $color-wisdom-glow-whisper 25%,
+        $color-spark-vivid-veil 50%,
+        $color-ether-haze-whisper 75%,
         transparent 100%
       );
       @include border-radius-rounded(50%);
@@ -3548,11 +3547,11 @@
       color: $color-accent-gold;
       background: radial-gradient(
         circle,
-        $color-engine-gold-vivid-a20 0%,
-        $color-engine-blue-vivid-a10 50%,
+        $color-wisdom-glow-veil 0%,
+        $color-spark-vivid-whisper 50%,
         transparent 100%
       );
-      border: 2px solid $color-engine-gold-vivid-a40;
+      border: 2px solid $color-wisdom-glow-glass;
       position: relative;
       z-index: 3;
       animation: coreRotation 20s linear infinite;
@@ -3567,7 +3566,7 @@
       .ring {
         position: absolute;
         @include border-radius-rounded(50%);
-        border: 1px solid $color-engine-gold-vivid-a30;
+        border: 1px solid $color-wisdom-glow-glass;
         animation-timing-function: ease-in-out;
         animation-iteration-count: infinite;
 
@@ -3594,7 +3593,7 @@
           top: -3rem;
           left: -3rem;
           animation: ringPulse3 8s infinite;
-          border-color: $color-engine-neutral-pale-a15;
+          border-color: $color-ether-haze-veil;
         }
       }
     }
@@ -3628,14 +3627,14 @@
 
   .genesis-invitation-description {
     @include body-text-large;
-    color: $color-engine-neutral-light-a95;
+    color: $color-ether-mist-frost;
     margin-bottom: $spacing-4xl;
     max-width: min(700px, 100%);
     margin-left: auto;
     margin-right: auto;
     line-height: $line-height-transcendent;
     font-weight: $font-weight-normal;
-    /* text-shadow: 0 1px 3px $color-engine-neutral-void-a50; */ /* Removed for accessibility - can interfere with text readability */
+    /* text-shadow: 0 1px 3px $color-ether-void-presence; */ /* Removed for accessibility - can interfere with text readability */
   }
 
   // Genesis Actions
@@ -3665,13 +3664,13 @@
 
       &.transcendent-glow-btn {
         box-shadow: 
-          0 8px 32px $color-engine-gold-vivid-a30,
-          0 0 20px $color-engine-gold-vivid-a20;
+          0 8px 32px $color-wisdom-glow-glass,
+          0 0 20px $color-wisdom-glow-veil;
 
         &:hover {
           box-shadow: 
-            0 12px 40px $color-engine-gold-vivid-a40,
-            0 0 30px $color-engine-gold-vivid-a30;
+            0 12px 40px $color-wisdom-glow-glass,
+            0 0 30px $color-wisdom-glow-glass;
           transform: translateY(-3px) scale(1.02);
         }
       }
@@ -3695,7 +3694,7 @@
       background: linear-gradient(
         90deg,
         transparent,
-        $color-engine-neutral-luminous-a40,
+        $color-ether-radiance-glass,
         transparent
       );
       animation: energyFlow 3s ease-in-out infinite;
@@ -3747,7 +3746,7 @@
         flex: 1;
         height: 2px;
         position: relative;
-        background: $color-engine-neutral-light-a20;
+        background: $color-ether-mist-veil;
         border-radius: 1px;
 
         &::before {
@@ -3828,12 +3827,12 @@
     .consciousness-field {
       width: 100%;
       height: 100%;
-      border: 2px solid $color-engine-gold-vivid-a40;
+      border: 2px solid $color-wisdom-glow-glass;
       @include border-radius-rounded(50%);
       background: radial-gradient(
         circle,
-        $color-engine-gold-vivid-a10,
-        $color-engine-blue-vivid-a05,
+        $color-wisdom-glow-whisper,
+        $color-spark-vivid-whisper,
         transparent
       );
       animation: consciousnessFieldPulse 3s ease-in-out infinite;
@@ -3844,7 +3843,7 @@
   .transcendent-community {
     .community-text {
       @include body-text;
-      color: $color-engine-neutral-light-a80;
+      color: $color-ether-mist-dense;
       margin-bottom: $spacing-lg;
 
       .community-count {
@@ -3852,7 +3851,7 @@
           color: $color-accent-gold;
           font-weight: $font-weight-bold;
           font-size: $font-size-lg;
-          /* text-shadow: 0 0 10px $color-engine-gold-vivid-a50; */ /* Removed for accessibility - can interfere with text readability */
+          /* text-shadow: 0 0 10px $color-wisdom-glow-presence; */ /* Removed for accessibility - can interfere with text readability */
         }
       }
     }
@@ -3934,11 +3933,11 @@
   @keyframes consciousnessFieldPulse {
     0%, 100% { 
       transform: scale(1); 
-      border-color: $color-engine-gold-vivid-a40; 
+      border-color: $color-wisdom-glow-glass; 
     }
     50% { 
       transform: scale(1.1); 
-      border-color: $color-engine-gold-vivid-a70; 
+      border-color: $color-wisdom-glow-dense; 
     }
   }
 
@@ -4064,13 +4063,13 @@
     padding: $spacing-lg $spacing-3xl;
     min-width: 220px;
     box-shadow: 
-      0 8px 32px $color-engine-gold-vivid-a30,
-      0 0 20px $color-engine-gold-vivid-a20;
+      0 8px 32px $color-wisdom-glow-glass,
+      0 0 20px $color-wisdom-glow-veil;
 
     &:hover {
       box-shadow: 
-        0 12px 40px $color-engine-gold-vivid-a40,
-        0 0 30px $color-engine-gold-vivid-a30;
+        0 12px 40px $color-wisdom-glow-glass,
+        0 0 30px $color-wisdom-glow-glass;
       transform: translateY(-3px) scale(1.02);
     }
   }

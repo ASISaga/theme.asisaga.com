@@ -30,8 +30,7 @@
  */
 @mixin genesis-entity($nature: 'primary') {
   // Variants: primary, secondary, editorial, imperative, latent, aggregate, ancestral,
-  // transcendent, ephemeral, image-adaptive, embed-responsive, avatar, badge,
-  // notification, reaction-picker, user-card, surface-glass, nested
+  // transcendent, ephemeral, image-adaptive, avatar, surface-glass, nested
   @include _theme-engine-entity($nature);
 }
 
@@ -40,7 +39,7 @@
  * Defines the nature and frequency of the information being transmitted.
  */
 @mixin genesis-cognition($intent: 'discourse') {
-  // Variants: axiom, heading, discourse, protocol, gloss, motive, quantum, oracle, testimony
+  // Variants: axiom, discourse, protocol, gloss, motive, quantum, oracle, testimony
   @include _theme-engine-cognition($intent);
 }
 
@@ -71,8 +70,7 @@
  * Defines the "Feeling" or "Vibe" of the node without describing visuals.
  */
 @mixin genesis-atmosphere($vibe: 'neutral') {
-  // Variants: neutral, ethereal, void, vibrant, cosmic, sacred,
-  // spacious-mobile, dense-desktop, viewport-aware
+  // Variants: neutral, ethereal, void, vibrant, cosmic, sacred
   @include _theme-engine-atmosphere($vibe);
 }
 

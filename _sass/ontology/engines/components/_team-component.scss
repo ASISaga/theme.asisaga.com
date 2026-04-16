@@ -8,7 +8,6 @@
     &-section {
       @include genesis-environment('focused');
       @include genesis-atmosphere('ethereal');
-      @include genesis-atmosphere('spacious-mobile');
     }
     
     &-title {

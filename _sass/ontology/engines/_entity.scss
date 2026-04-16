@@ -4,7 +4,13 @@
  * Defines the "Presence" and "Weight" of an object in the system.
  * 
  * This is part of the Engine Layer where raw CSS properties are allowed.
- * All values MUST use CSS custom properties defined in the design token system.
+ * All values MUST use design tokens ($color-*, $effect-*) — never raw literals.
+ *
+ * Emotional intent mapping (from _design/emotional-intent.md):
+ *   primary      → "The fundamental node" — clear, grounded presence
+ *   surface-glass→ §2 "Translucency Scale: Layered Truths" — the system is complex but transparent
+ *   transcendent → §1 "Weightlessness: surfaces float" + §2 "Internal Glow"
+ *   ephemeral    → §3 "Non-linear Presence" — arrives slowly, then all at once
  */
 
 // ============================================================================
@@ -14,58 +20,59 @@
   border-radius: var(--radius-bento, 0.5rem);
   
   @if $nature == 'primary' {
-    // Fundamental object of current view
+    // Fundamental object — clear, present, grounded
     background: $color-light-white;
-    border: 1px solid $color-engine-neutral-pale;
-    box-shadow: 0 1px 4px $color-engine-neutral-void-a10;
+    border: 1px solid $color-ether-haze;
+    box-shadow: $effect-shadow-ambient;
     padding: var(--padding-entity-primary, clamp(1rem, 2vw, 1.5rem));
   }
   @else if $nature == 'secondary' {
     // Supportive, contextual data
     background: $color-theme-light-section-bg;
-    border: 1px solid $color-engine-neutral-bright;
+    border: 1px solid $color-ether-glow;
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem));
   }
   @else if $nature == 'editorial' {
-    // Editorial content entry - typographic object without card chrome
+    // Editorial content entry — typographic object without card chrome
+    // §1 "Precision as Philosophy": the hairline border signals sovereign refinement
     background: transparent;
     border: 0;
-    border-top: 1px solid var(--color-editorial-separator, $color-engine-neutral-pale);
+    border-top: $border-width-separator solid $color-ether-haze;
     border-radius: 0;
     box-shadow: none;
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem)) 0;
 
     &.editorial-featured {
-      border-top: 2px solid $color-accent-gold;
+      border-top: $border-width-thick solid $color-accent-gold;
       padding-top: var(--padding-entity-aggregate, clamp(1.25rem, 2.5vw, 2rem));
     }
   }
   @else if $nature == 'imperative' {
-    // System-critical, high-urgency signal
+    // System-critical, high-urgency signal — pulsing neon border
     background: $color-light-white;
-    border: 2px solid $color-accent-neon-blue;
-    box-shadow: 0 0 12px $color-synapse-social-bg;
-    animation: pulse-border 2s infinite;
+    border: $border-width-thick solid $color-accent-neon-blue;
+    box-shadow: $effect-glow-neon-blue;
+    animation: pulse-border $effect-duration-sacred infinite;
     padding: var(--padding-entity-primary, clamp(1rem, 2vw, 1.5rem));
   }
   @else if $nature == 'latent' {
-    // Backgrounded info awaiting activation
-    background: $color-engine-neutral-bright;
+    // Backgrounded info awaiting activation — the "whisper" state
+    background: $color-ether-glow;
     opacity: 0.7;
     filter: grayscale(0.3);
-    border: 1px solid $color-engine-neutral-bright;
+    border: 1px solid $color-ether-glow;
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem));
   }
   @else if $nature == 'aggregate' {
     // Container summarizing multiple entities
-    background: $color-engine-neutral-bright;
-    border: 1px solid $color-engine-neutral-pale;
+    background: $color-ether-glow;
+    border: 1px solid $color-ether-haze;
     padding: var(--padding-entity-aggregate, clamp(1.25rem, 2.5vw, 2rem));
   }
   @else if $nature == 'ancestral' {
     // Archived or historical data (legacy state)
     background: $color-surface-hover;
-    border: 1px solid $color-engine-neutral-bright;
+    border: 1px solid $color-ether-glow;
     opacity: 0.8;
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem));
   }
@@ -114,46 +121,6 @@
       --aspect-ratio: 133.33%; // 3:4 portrait
     }
   }
-  @else if $nature == 'embed-responsive' {
-    // Embedded content (iframe, video) that maintains aspect ratio
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    border-radius: var(--radius-bento, 0.5rem);
-    
-    // Aspect ratio preservation (configurable via CSS custom property)
-    // Default: 16:9 (56.25%), also supports: 4:3 (75%), 1:1 (100%), 21:9 (42.86%)
-    padding-top: var(--aspect-ratio, 56.25%); // Default 16:9
-    
-    iframe,
-    embed,
-    object,
-    video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-    
-    // Common aspect ratio modifiers
-    &.ratio-square {
-      --aspect-ratio: 100%; // 1:1
-    }
-    
-    &.ratio-4-3 {
-      --aspect-ratio: 75%; // 4:3 (traditional video)
-    }
-    
-    &.ratio-21-9 {
-      --aspect-ratio: 42.86%; // 21:9 ultrawide
-    }
-    
-    &.ratio-9-16 {
-      --aspect-ratio: 177.78%; // 9:16 vertical video (TikTok, Stories)
-    }
-  }
   @else if $nature == 'avatar' {
     // User avatar/profile picture display with status indicator
     display: inline-block;
@@ -184,19 +151,19 @@
       width: 25%;
       height: 25%;
       border-radius: 50%;
-      border: 2px solid var(--bg-primary, $color-engine-indigo-void);
+      border: 2px solid var(--bg-primary, $color-cosmos-void);
       display: none; // Hidden by default
     }
     
     // Status states
     &.status-online::after {
       display: block;
-      background: var(--status-online, $color-engine-green-vivid); // Green
+      background: var(--status-online, $color-life-vivid); // Green
     }
     
     &.status-away::after {
       display: block;
-      background: var(--status-away, $color-engine-gold-vivid); // Yellow
+      background: var(--status-away, $color-wisdom-glow); // Yellow
     }
     
     &.status-busy::after {
@@ -206,7 +173,7 @@
     
     &.status-offline::after {
       display: block;
-      background: var(--status-offline, $color-engine-neutral-mid); // Gray
+      background: var(--status-offline, $color-ether-twilight); // Gray
     }
     
     // Size modifiers
@@ -230,259 +197,38 @@
       --avatar-size: 5rem;
     }
   }
-  @else if $nature == 'badge' {
-    // Achievement badges and status indicators
-    display: inline-flex;
-    align-items: center;
-    gap: 0.375em;
-    padding: var(--badge-padding, 0.25em 0.75em);
-    background: var(--badge-bg, $color-engine-gold-bright-a20);
-    color: var(--badge-text, $color-engine-gold-bright);
-    border: 1px solid var(--badge-border, $color-engine-gold-bright-a50);
-    border-radius: 999px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    white-space: nowrap;
-    
-    // Badge icon
-    .badge-icon {
-      width: 1em;
-      height: 1em;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    // Variant types
-    &.badge-success {
-      --badge-bg: #{$color-engine-green-vivid-a20};
-      --badge-text: #{$color-engine-green-bright};
-      --badge-border: #{$color-engine-green-vivid-a50};
-    }
-    
-    &.badge-warning {
-      --badge-bg: #{$color-engine-gold-vivid-a20};
-      --badge-text: #{$color-engine-gold-vivid};
-      --badge-border: #{$color-engine-gold-vivid-a50};
-    }
-    
-    &.badge-danger {
-      --badge-bg: #{$color-engine-error-vivid-a20};
-      --badge-text: #{$color-engine-error-bright};
-      --badge-border: #{$color-engine-error-vivid-a50};
-    }
-    
-    &.badge-info {
-      --badge-bg: #{$color-synapse-social-bg};
-      --badge-text: #{$color-engine-blue-light};
-      --badge-border: #{$color-semantic-focus-ring};
-    }
-    
-    &.badge-neutral {
-      --badge-bg: #{$color-engine-neutral-mid-a20};
-      --badge-text: #{$color-engine-neutral-light};
-      --badge-border: #{$color-engine-neutral-mid-a50};
-    }
-  }
-  @else if $nature == 'notification' {
-    // Notification cards and alert displays
-    display: flex;
-    gap: 0.75rem;
-    padding: var(--notification-padding, clamp(0.625rem, 1.25vw, 0.875rem));
-    background: var(--glass-light, $color-engine-indigo-deep-a60);
-    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
-    border-left: 3px solid var(--notification-accent, $color-engine-gold-bright);
-    border-radius: var(--radius-bento, 0.5rem);
-    transition: all var(--motion-snap, 0.2s ease);
-    
-    // Unread state
-    &.unread,
-    &[aria-label*="unread"] {
-      background: var(--notification-unread, $color-engine-gold-bright-a10);
-      border-left-width: 4px;
-    }
-    
-    // Notification types
-    &.notification-mention {
-      --notification-accent: #{$color-engine-gold-bright};
-    }
-    
-    &.notification-comment {
-      --notification-accent: #{$color-accent-neon-blue};
-    }
-    
-    &.notification-reaction {
-      --notification-accent: #{$color-engine-green-bright};
-    }
-    
-    &.notification-system {
-      --notification-accent: #{$color-engine-neutral-light};
-    }
-    
-    &.notification-urgent {
-      --notification-accent: #{$color-status-error};
-    }
-    
-    // Hover state for interactive notifications
-    &:hover {
-      background: var(--glass-hover, $color-engine-blue-deep);
-      border-color: var(--accent-low, $color-engine-gold-accent-a40);
-      cursor: pointer;
-    }
-  }
-  @else if $nature == 'reaction-picker' {
-    // Emoji/reaction selector UI component
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--picker-gap, clamp(0.25rem, 0.5vw, 0.375rem));
-    padding: var(--picker-padding, clamp(0.5rem, 1vw, 0.75rem));
-    background: var(--glass-elevated, $color-engine-blue-deep-a95);
-    border: 1px solid var(--border-accent, $color-engine-indigo-dim-a50);
-    border-radius: var(--radius-bento, 0.5rem);
-    box-shadow: 0 4px 16px $color-engine-indigo-void-a20;
-    backdrop-filter: blur(20px);
-    max-width: 280px;
-    
-    // Individual reaction options
-    .reaction-option {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 2.5rem;
-      min-height: 2.5rem;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      transition: all var(--motion-snap, 0.2s ease);
-      font-size: 1.25rem;
-      
-      &:hover {
-        background: var(--glass-hover, $color-engine-blue-deep);
-        transform: scale(1.15);
-      }
-      
-      &:active {
-        transform: scale(0.95);
-      }
-    }
-    
-    // Categories/sections
-    .reaction-category {
-      width: 100%;
-      padding-top: 0.5rem;
-      border-top: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
-      
-      &:first-child {
-        padding-top: 0;
-        border-top: none;
-      }
-    }
-    
-    .reaction-category-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--text-secondary, $color-engine-neutral-light);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
-    }
-  }
-  @else if $nature == 'user-card' {
-    // User profile preview card with hover actions
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    padding: var(--card-padding, clamp(0.75rem, 1.5vw, 1rem));
-    background: var(--glass-light, $color-engine-indigo-deep-a60);
-    border: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
-    border-radius: var(--radius-bento, 0.5rem);
-    transition: all var(--motion-fluid, 0.3s ease);
-    backdrop-filter: blur(10px);
-    
-    &:hover {
-      background: var(--glass-hover, $color-engine-blue-deep);
-      border-color: var(--accent-low, $color-engine-gold-accent-a40);
-      box-shadow: 0 4px 16px $color-engine-indigo-void-a20;
-      transform: translateY(-1px);
-    }
-    
-    // Card sections
-    .user-card-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    
-    .user-card-body {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    
-    .user-card-footer {
-      display: flex;
-      gap: 0.375rem;
-      padding-top: 0.5rem;
-      border-top: 1px solid var(--border-subtle, $color-engine-indigo-dim-a30);
-    }
-    
-    .user-stats {
-      display: flex;
-      gap: 0.75rem;
-      
-      .stat-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        
-        .stat-value {
-          font-weight: 700;
-          font-size: 1.125rem;
-          color: var(--text-primary, $color-engine-neutral-bright);
-        }
-        
-        .stat-label {
-          font-size: 0.75rem;
-          color: var(--text-secondary, $color-engine-neutral-light);
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-        }
-      }
-    }
-  }
   @else if $nature == 'surface-glass' {
-    // Dark glassmorphism surface for headers/navigation
-    // Purpose: High-contrast surface with white text on dark background
-    background: $color-engine-neutral-deep-a80;  // Deep dark blue with transparency
-    backdrop-filter: blur(20px);
+    // §2 "Translucency Scale: the system is complex, but transparent"
+    // Dark glassmorphism surface — deep blur + transparency = Layered Truth
+    background: $effect-glass-consciousness;
+    backdrop-filter: $effect-blur-glass-md;
     border-radius: 0;  // Headers typically don't have border radius
     padding: 0;  // Headers control their own internal padding
     
-    // Subtle border for definition
-    border-bottom: 1px solid $color-engine-neutral-dark;
+    // Hairline border: "Structure is made of light, not lead"
+    border-bottom: $border-width-separator solid $color-ether-shadow;
     
-    // Shadow for depth
-    box-shadow: 0 2px 8px $color-engine-neutral-void-a30;
+    // Shadow for floating depth
+    box-shadow: $effect-shadow-ambient;
     
-    // High contrast mode - ensure pure black background
+    // High contrast mode — ensure pure black background
     @media (prefers-contrast: high) {
-      background: $color-engine-neutral-void;  // Pure black
-      border-bottom: 2px solid $color-engine-neutral-dim;
+      background: $color-ether-void;  // Pure black
+      border-bottom: $border-width-thick solid $color-ether-dusk;
       backdrop-filter: none;
       box-shadow: none;
     }
   }
   @else if $nature == 'transcendent' {
+    // §1 "Weightlessness" + §2 "Internal Glow": self-illuminated void surface
     // Sacred, mission-critical prominence — hero sections, genesis-level content
-    background: $color-engine-neutral-void;
+    background: $color-ether-void;
     color: $color-light-white;
     padding: clamp(2rem, 4vw, 3rem);
-    border: 1px solid $color-engine-indigo-dark;
+    border: 1px solid $color-cosmos-shadow;
     box-shadow:
-      0 0 24px $color-engine-blue-vivid-a10,
-      inset 0 0 40px $color-engine-neutral-void-a30;
+      $effect-glow-neon-blue,
+      inset 0 0 40px $color-ether-void-glass;
     position: relative;
     overflow: hidden;
     
@@ -493,31 +239,32 @@
       inset: 0;
       background: linear-gradient(
         175deg,
-        $color-engine-indigo-void-a40 0%,
+        $color-cosmos-void-glass 0%,
         transparent 50%,
-        $color-engine-neutral-void-a30 100%
+        $color-ether-void-glass 100%
       );
       pointer-events: none;
     }
     
     @media (prefers-contrast: high) {
-      background: $color-engine-neutral-space;
-      border: 2px solid $color-engine-neutral-dim;
+      background: $color-ether-abyss;
+      border: $border-width-thick solid $color-ether-dusk;
       box-shadow: none;
     }
   }
   @else if $nature == 'ephemeral' {
+    // §3 "Non-linear Presence": arrives slowly, then all at once
     // Transient, auto-dismissing content — toast notifications, flash messages
     background: $color-light-white;
-    border: 1px solid $color-engine-neutral-pale;
-    box-shadow: 0 2px 8px $color-engine-neutral-void-a15;
+    border: 1px solid $color-ether-haze;
+    box-shadow: $effect-shadow-ambient;
     padding: var(--padding-entity-secondary, clamp(0.75rem, 1.5vw, 1rem));
     position: fixed;
-    z-index: 1000;
-    animation: ephemeral-enter 0.3s ease-out;
+    z-index: $z-index-transcendent;
+    animation: ephemeral-enter $effect-duration-normal $effect-ease-transcendent;
     
     &.dismissing {
-      animation: ephemeral-exit 0.3s ease-in forwards;
+      animation: ephemeral-exit $effect-duration-normal $effect-ease-consciousness forwards;
     }
     
     @keyframes ephemeral-enter {
@@ -556,12 +303,6 @@
     // terminal element carries the component surface.  Use on intermediate
     // wrappers or inner elements that live inside another entity context but
     // must not duplicate the parent's border/background/shadow.
-    //
-    // Typical HTML hierarchy where 'nested' solves box-model redundancy:
-    //   .card          → genesis-entity('primary')      ← parent surface
-    //     .card__row   → genesis-entity('nested')       ← structural wrapper (no chrome)
-    //       .card__body → genesis-entity('secondary')   ← child surface
-    //
     background: transparent;
     border: none;
     box-shadow: none;

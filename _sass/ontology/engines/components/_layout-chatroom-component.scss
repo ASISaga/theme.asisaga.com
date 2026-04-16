@@ -836,8 +836,8 @@
     }
 
     .chatroom-header {
-      background: $color-engine-violet-void;
-      @include border-separator-bottom($color-engine-violet-dark);
+      background: $color-conscious-void;
+      @include border-separator-bottom($color-conscious-shadow);
 
       &::before {
         background: linear-gradient(90deg, $color-accent-neon-blue, transparent 80%);
@@ -845,20 +845,20 @@
     }
 
     .chatroom-domain-switcher {
-      background: $color-engine-violet-void;
-      @include border-separator-bottom($color-engine-violet-dark);
+      background: $color-conscious-void;
+      @include border-separator-bottom($color-conscious-shadow);
     }
 
     .chatroom-domain-btn[aria-checked="true"] {
-      background: $color-engine-blue-vivid-a20;
+      background: $color-spark-vivid-veil;
       color: $color-accent-neon-blue;
       border-color: $color-accent-neon-blue;
     }
 
     // Party announcement banner
     .chatroom__system-message--party {
-      background: $color-engine-violet-void;
-      border: 1px solid $color-engine-violet-dim;
+      background: $color-conscious-void;
+      border: 1px solid $color-conscious-dusk;
 
       .chatroom__agenda-label {
         color: $color-accent-neon-blue;
@@ -875,18 +875,18 @@
     // border/background/shadow so each theme only needs to add its own surface.
     .chatroom__message-body {
       @include genesis-entity('nested');
-      background: $color-engine-violet-void;
+      background: $color-conscious-void;
     }
 
     // Host (DJ Bot) messages
     .chatroom__message--host {
       .chatroom__message-body {
-        background: $color-engine-violet-void;
+        background: $color-conscious-void;
         border-left: 2px solid $color-accent-neon-blue;
       }
 
       .chatroom__avatar--host {
-        background: $color-engine-violet-dim;
+        background: $color-conscious-dusk;
         color: $color-light-white;
       }
     }
@@ -894,30 +894,30 @@
     // Guest messages
     .chatroom__message--guest {
       .chatroom__message-body {
-        background: $color-engine-violet-void;
+        background: $color-conscious-void;
       }
 
       // Per-guest avatar colours — added by _fillFromSchema via data-schema-avatar
       .chatroom__avatar--guest-alice {
-        background: $color-engine-rose-vivid;
+        background: $color-essence-vivid;
         color: $color-light-white;
       }
 
       .chatroom__avatar--guest-bob {
-        background: $color-engine-cyan-deep;
+        background: $color-bridge-depth;
         color: $color-light-white;
       }
     }
 
     // Messages container background
     .chatroom-messages {
-      background: $color-engine-violet-void;
+      background: $color-conscious-void;
     }
 
     // Input area
     .chatroom-input {
-      background: $color-engine-violet-void;
-      @include border-separator-top($color-engine-violet-dark);
+      background: $color-conscious-void;
+      @include border-separator-top($color-conscious-shadow);
     }
   }
 

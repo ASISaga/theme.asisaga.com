@@ -92,29 +92,27 @@ background: var(--genesis-bg-surface, $color-dark-profound-black);  // ✅
 
 ### Adding a new colour
 
-1. Add the token to `_design/tokens/2-color.json`:
+1. Add the token to `_design/tokens/2-color.json` under the appropriate ontological category:
    ```json
    "color": {
-     "engine": {
-       "gold": {
-         "my-new-shade": {
-           "$type": "color",
-           "$value": "oklch(0.85 0.18 95)",
-           "$description": "Brief description"
-         }
+     "wisdom": {
+       "my-new-shade": {
+         "$type": "color",
+         "$value": "oklch(0.85 0.18 95)",
+         "$description": "Brief description"
        }
      }
    }
    ```
 2. Regenerate: `npm run tokens:build`
-3. Reference: `$color-engine-gold-my-new-shade`
+3. Reference: `$color-wisdom-my-new-shade`
 
 ### Token locations
 
 | Purpose | File | Variable prefix |
 |---------|------|----------------|
 | Existing semantic tokens (brand, status, etc.) | `_sass/design/_colors-generated.scss` | `$color-*` |
-| Engine-specific new colours | `_design/tokens/2-color.json` → `color.engine.*` | `$color-engine-*` |
+| Ontological palette tokens | `_design/tokens/2-color.json` → `color.{category}.*` | `$color-ether-*`, `$color-spark-*`, `$color-wisdom-*`, etc. |
 
 **NEVER** declare `$color-*` variables inside engine files — those belong exclusively in `_sass/design/`.
 

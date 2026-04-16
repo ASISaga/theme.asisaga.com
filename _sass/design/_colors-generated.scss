@@ -117,193 +117,145 @@ $color-synapse-warning: oklch(0.65 0.18 65); // Warning accent color
 $color-void-deep: oklch(0.03 0.01 260); // Deepest void — near-absolute darkness
 $color-brand-linkedin: #0077b5; // LinkedIn brand blue
 $color-brand-linkedin-hover: #00568a; // LinkedIn brand blue hover state
-$color-engine-neutral-space: oklch(0.04 0.01 250); // Absolute void — deepest black for space scenes and star fields
-$color-engine-neutral-void: oklch(0.08 0.02 260); // Page background — primary dark-mode application surface
-$color-engine-neutral-deep: oklch(0.14 0.02 250); // Card surface — primary container on dark-mode background
-$color-engine-neutral-dark: oklch(0.20 0.02 250); // Elevated panel — secondary container, slightly lifted
-$color-engine-neutral-dim: oklch(0.30 0.01 230); // Chip surface — tertiary container, muted elevation
-$color-engine-neutral-mid: oklch(0.50 0.02 220); // Midpoint gray — separators, dividers, input field backgrounds
-$color-engine-neutral-light: oklch(0.70 0.01 230); // Secondary text — placeholder text, muted labels and captions
-$color-engine-neutral-pale: oklch(0.85 0.005 220); // Default border — hairline borders and light-mode card rims
-$color-engine-neutral-bright: oklch(0.94 0.005 220); // Light surface — hover states and subtle light backgrounds
-$color-engine-neutral-luminous: oklch(0.98 0.01 90); // Near-white — text on dark, star particles, high-contrast labels
-$color-engine-neutral-void-a00: oklch(0.08 0.02 260 / 0); // Page-bg transparent — gradient fade-to-transparent stop
-$color-engine-neutral-void-a05: oklch(0.08 0.02 260 / 0.05); // Page-bg 5% — barely-visible hairline shadow
-$color-engine-neutral-void-a10: oklch(0.08 0.02 260 / 0.10); // Page-bg 10% — subtle depth shadow on light surfaces
-$color-engine-neutral-void-a15: oklch(0.08 0.02 260 / 0.15); // Page-bg 15% — standard card drop-shadow
-$color-engine-neutral-void-a20: oklch(0.08 0.02 260 / 0.20); // Page-bg 20% — medium shadow, hover overlay
-$color-engine-neutral-void-a30: oklch(0.08 0.02 260 / 0.30); // Page-bg 30% — overlay backdrop, focus dimming
-$color-engine-neutral-void-a40: oklch(0.08 0.02 260 / 0.40); // Page-bg 40% — modal scrim, glassmorphism backing
-$color-engine-neutral-void-a50: oklch(0.08 0.02 260 / 0.50); // Page-bg 50% — half-opaque modal curtain
-$color-engine-neutral-void-a60: oklch(0.08 0.02 260 / 0.60); // Page-bg 60% — dense overlay for drawers and panels
-$color-engine-neutral-void-a70: oklch(0.08 0.02 260 / 0.70); // Page-bg 70% — dark overlay for tooltips and dropdowns
-$color-engine-neutral-void-a80: oklch(0.08 0.02 260 / 0.80); // Page-bg 80% — near-opaque dark panel tint
-$color-engine-neutral-void-a90: oklch(0.08 0.02 260 / 0.90); // Page-bg 90% — almost fully opaque dark surface
-$color-engine-neutral-void-a95: oklch(0.08 0.02 260 / 0.95); // Page-bg 95% — frosted glass with ghost of transparency
-$color-engine-neutral-void-a98: oklch(0.08 0.02 260 / 0.98); // Page-bg 98% — virtually opaque, glassmorphism cap
-$color-engine-neutral-deep-a40: oklch(0.14 0.02 250 / 0.40); // Card-glass 40% — glass input fields and subtle glass panels
-$color-engine-neutral-deep-a80: oklch(0.14 0.02 250 / 0.80); // Card-glass 80% — near-solid card glass with depth
-$color-engine-neutral-pale-a05: oklch(0.85 0.005 220 / 0.05); // Border-shimmer 5% — star-field particle, barely-visible dot
-$color-engine-neutral-pale-a10: oklch(0.85 0.005 220 / 0.10); // Border-shimmer 10% — gentle shimmer particle
-$color-engine-neutral-pale-a15: oklch(0.85 0.005 220 / 0.15); // Border-shimmer 15% — faint constellation point
-$color-engine-neutral-pale-a30: oklch(0.85 0.005 220 / 0.30); // Border-shimmer 30% — visible particle glow
-$color-engine-neutral-pale-a40: oklch(0.85 0.005 220 / 0.40); // Border-shimmer 40% — medium shimmer cluster
-$color-engine-neutral-pale-a50: oklch(0.85 0.005 220 / 0.50); // Border-shimmer 50% — half-opaque shimmer layer
-$color-engine-neutral-pale-a60: oklch(0.85 0.005 220 / 0.60); // Border-shimmer 60% — dense shimmer overlay
-$color-engine-neutral-pale-a80: oklch(0.85 0.005 220 / 0.80); // Border-shimmer 80% — near-solid light shimmer
-$color-engine-neutral-luminous-a05: oklch(0.98 0.01 90 / 0.05); // Near-white 5% — micro-glint star particle
-$color-engine-neutral-luminous-a10: oklch(0.98 0.01 90 / 0.10); // Near-white 10% — subtle white shine
-$color-engine-neutral-luminous-a20: oklch(0.98 0.01 90 / 0.20); // Near-white 20% — soft white glow particle
-$color-engine-neutral-luminous-a30: oklch(0.98 0.01 90 / 0.30); // Near-white 30% — visible star-field dot
-$color-engine-neutral-luminous-a40: oklch(0.98 0.01 90 / 0.40); // Near-white 40% — medium white shimmer
-$color-engine-neutral-luminous-a50: oklch(0.98 0.01 90 / 0.50); // Near-white 50% — half-opaque white glow
-$color-engine-neutral-luminous-a70: oklch(0.98 0.01 90 / 0.70); // Near-white 70% — high-brightness light ray
-$color-engine-neutral-luminous-a80: oklch(0.98 0.01 90 / 0.80); // Near-white 80% — strong white glow
-$color-engine-neutral-luminous-a90: oklch(0.98 0.01 90 / 0.90); // Near-white 90% — near-full white, frost glow
-$color-engine-neutral-luminous-a95: oklch(0.98 0.01 90 / 0.95); // Near-white 95% — glass-frosted white surface
-$color-engine-neutral-luminous-a98: oklch(0.98 0.01 90 / 0.98); // Near-white 98% — virtually solid white tint
-$color-engine-neutral-light-a05: oklch(0.70 0.01 230 / 0.05); // Secondary-text 5% — barely visible label ghost
-$color-engine-neutral-light-a10: oklch(0.70 0.01 230 / 0.10); // Secondary-text 10% — faint text overlay
-$color-engine-neutral-light-a20: oklch(0.70 0.01 230 / 0.20); // Secondary-text 20% — translucent label
-$color-engine-neutral-light-a30: oklch(0.70 0.01 230 / 0.30); // Secondary-text 30% — muted text tint
-$color-engine-neutral-light-a80: oklch(0.70 0.01 230 / 0.80); // Secondary-text 80% — near-solid muted text
-$color-engine-neutral-light-a90: oklch(0.70 0.01 230 / 0.90); // Secondary-text 90% — nearly opaque muted text
-$color-engine-neutral-light-a95: oklch(0.70 0.01 230 / 0.95); // Secondary-text 95% — almost-solid secondary color
-$color-engine-neutral-mid-a20: oklch(0.50 0.02 220 / 0.20); // Midgray 20% — badge background tint
-$color-engine-neutral-mid-a50: oklch(0.50 0.02 220 / 0.50); // Midgray 50% — badge border stroke
-$color-engine-neutral-mid-a70: oklch(0.50 0.02 220 / 0.70); // Midgray 70% — muted indicator color
-$color-engine-gold-muted: oklch(0.65 0.13 88); // Muted gold — low-saturation deep gold for backgrounds and gradients
-$color-engine-gold-vivid: oklch(0.75 0.25 85); // Vivid gold — primary gold glow overlay base
-$color-engine-gold-accent: oklch(0.85 0.18 95); // Accent gold — standard gold for text, borders and solid accents
-$color-engine-gold-bright: oklch(0.88 0.18 95); // Bright gold — high-luminance gold for highlights and active states
-$color-engine-gold-vivid-a00: oklch(0.75 0.25 85 / 0); // Gold-glow transparent — gradient fade-to-transparent stop
-$color-engine-gold-vivid-a05: oklch(0.75 0.25 85 / 0.05); // Gold-glow 5% — barely-visible gold shimmer
-$color-engine-gold-vivid-a10: oklch(0.75 0.25 85 / 0.10); // Gold-glow 10% — subtle gold aura
-$color-engine-gold-vivid-a15: oklch(0.75 0.25 85 / 0.15); // Gold-glow 15% — light gold glow background
-$color-engine-gold-vivid-a20: oklch(0.75 0.25 85 / 0.20); // Gold-glow 20% — visible gold overlay
-$color-engine-gold-vivid-a30: oklch(0.75 0.25 85 / 0.30); // Gold-glow 30% — medium gold tint panel
-$color-engine-gold-vivid-a40: oklch(0.75 0.25 85 / 0.40); // Gold-glow 40% — gold-tinted glass surface
-$color-engine-gold-vivid-a50: oklch(0.75 0.25 85 / 0.50); // Gold-glow 50% — half-opaque gold panel
-$color-engine-gold-vivid-a60: oklch(0.75 0.25 85 / 0.60); // Gold-glow 60% — saturated gold overlay
-$color-engine-gold-vivid-a70: oklch(0.75 0.25 85 / 0.70); // Gold-glow 70% — dense gold aura
-$color-engine-gold-vivid-a80: oklch(0.75 0.25 85 / 0.80); // Gold-glow 80% — near-solid gold tint
-$color-engine-gold-vivid-a90: oklch(0.75 0.25 85 / 0.90); // Gold-glow 90% — almost-solid gold highlight
-$color-engine-gold-accent-a05: oklch(0.85 0.18 95 / 0.05); // Accent-gold 5% — faintest gold hint
-$color-engine-gold-accent-a10: oklch(0.85 0.18 95 / 0.10); // Accent-gold 10% — subtle gold tint
-$color-engine-gold-accent-a15: oklch(0.85 0.18 95 / 0.15); // Accent-gold 15% — light gold indicator
-$color-engine-gold-accent-a20: oklch(0.85 0.18 95 / 0.20); // Accent-gold 20% — visible gold tint
-$color-engine-gold-accent-a30: oklch(0.85 0.18 95 / 0.30); // Accent-gold 30% — medium gold overlay
-$color-engine-gold-accent-a40: oklch(0.85 0.18 95 / 0.40); // Accent-gold 40% — medium gold background
-$color-engine-gold-accent-a50: oklch(0.85 0.18 95 / 0.50); // Accent-gold 50% — half-opaque gold surface
-$color-engine-gold-accent-a60: oklch(0.85 0.18 95 / 0.60); // Accent-gold 60% — dense gold overlay
-$color-engine-gold-bright-a10: oklch(0.88 0.18 95 / 0.10); // Bright-gold 10% — high-luminance gold glow hint
-$color-engine-gold-bright-a15: oklch(0.88 0.18 95 / 0.15); // Bright-gold 15% — bright gold aura ring
-$color-engine-gold-bright-a20: oklch(0.88 0.18 95 / 0.20); // Bright-gold 20% — bright gold sheen
-$color-engine-gold-bright-a40: oklch(0.88 0.18 95 / 0.40); // Bright-gold 40% — bright gold panel
-$color-engine-gold-bright-a50: oklch(0.88 0.18 95 / 0.50); // Bright-gold 50% — half-opaque bright gold
-$color-engine-gold-bright-a70: oklch(0.88 0.18 95 / 0.70); // Bright-gold 70% — prominent bright gold glow
-$color-engine-gold-muted-a70: oklch(0.65 0.13 88 / 0.70); // Muted-gold 70% — dark gold overlay for code/pre backgrounds
-$color-engine-indigo-void: oklch(0.10 0.03 260); // Indigo void — near-black indigo for cosmic scenes and space backdrops
-$color-engine-indigo-deep: oklch(0.16 0.03 250); // Indigo deep — dark indigo card surface
-$color-engine-indigo-dark: oklch(0.22 0.04 250); // Indigo dark — elevated dark indigo panel
-$color-engine-indigo-dim: oklch(0.30 0.04 250); // Indigo dim — mid-dark indigo container
-$color-engine-indigo-vivid: oklch(0.65 0.20 260); // Indigo vivid — saturated indigo accent color
-$color-engine-indigo-void-a20: oklch(0.10 0.03 260 / 0.20); // Indigo-void 20% — cosmic depth tint
-$color-engine-indigo-void-a40: oklch(0.10 0.03 260 / 0.40); // Indigo-void 40% — space backdrop overlay
-$color-engine-indigo-void-a60: oklch(0.10 0.03 260 / 0.60); // Indigo-void 60% — deep space atmosphere overlay
-$color-engine-indigo-deep-a10: oklch(0.16 0.03 250 / 0.10); // Indigo-deep 10% — faint dark indigo tint
-$color-engine-indigo-deep-a30: oklch(0.16 0.03 250 / 0.30); // Indigo-deep 30% — cosmic glow gradient start
-$color-engine-indigo-deep-a50: oklch(0.16 0.03 250 / 0.50); // Indigo-deep 50% — half-opaque dark indigo panel
-$color-engine-indigo-deep-a60: oklch(0.16 0.03 250 / 0.60); // Indigo-deep 60% — dense dark indigo overlay
-$color-engine-indigo-deep-a80: oklch(0.16 0.03 250 / 0.80); // Indigo-deep 80% — near-opaque indigo surface
-$color-engine-indigo-deep-a90: oklch(0.16 0.03 250 / 0.90); // Indigo-deep 90% — very dense indigo tint
-$color-engine-indigo-deep-a95: oklch(0.16 0.03 250 / 0.95); // Indigo-deep 95% — frosted-glass indigo panel
-$color-engine-indigo-dark-a30: oklch(0.22 0.04 250 / 0.30); // Indigo-dark 30% — mid-dark indigo overlay
-$color-engine-indigo-dark-a40: oklch(0.22 0.04 250 / 0.40); // Indigo-dark 40% — elevated dark indigo glass
-$color-engine-indigo-dark-a90: oklch(0.22 0.04 250 / 0.90); // Indigo-dark 90% — near-solid dark indigo
-$color-engine-indigo-dim-a30: oklch(0.30 0.04 250 / 0.30); // Indigo-dim 30% — mid-depth indigo overlay
-$color-engine-indigo-dim-a40: oklch(0.30 0.04 250 / 0.40); // Indigo-dim 40% — semi-transparent indigo panel
-$color-engine-indigo-dim-a50: oklch(0.30 0.04 250 / 0.50); // Indigo-dim 50% — half-opaque indigo surface
-$color-engine-blue-deep: oklch(0.22 0.05 230); // Neon-blue deep — dark blue surface for code blocks and glass panels
-$color-engine-blue-mid: oklch(0.45 0.20 230); // Neon-blue mid — vivid mid-range blue for state transitions
-$color-engine-blue-vivid: oklch(0.55 0.22 228); // Neon-blue vivid — primary electric blue accent
-$color-engine-blue-light: oklch(0.70 0.27 228); // Neon-blue light — lighter electric blue for hover and focus
-$color-engine-blue-bright: oklch(0.90 0.10 230); // Neon-blue bright — pale blue for subtle backgrounds
-$color-engine-blue-luminous: oklch(0.95 0.03 235); // Neon-blue luminous — near-white blue for links on dark surfaces
-$color-engine-blue-deep-a60: oklch(0.22 0.05 230 / 0.60); // Neon-blue-deep 60% — semi-opaque dark blue overlay
-$color-engine-blue-deep-a70: oklch(0.22 0.05 230 / 0.70); // Neon-blue-deep 70% — hover state on dark inputs
-$color-engine-blue-deep-a75: oklch(0.22 0.05 230 / 0.75); // Neon-blue-deep 75% — dark blue code block bg
-$color-engine-blue-deep-a80: oklch(0.22 0.05 230 / 0.80); // Neon-blue-deep 80% — focused input background
-$color-engine-blue-deep-a85: oklch(0.22 0.05 230 / 0.85); // Neon-blue-deep 85% — selected code highlight
-$color-engine-blue-deep-a95: oklch(0.22 0.05 230 / 0.95); // Neon-blue-deep 95% — glass-elevated blue panel
-$color-engine-blue-vivid-a00: oklch(0.55 0.22 228 / 0); // Neon-blue transparent — gradient fade-to-transparent
-$color-engine-blue-vivid-a05: oklch(0.55 0.22 228 / 0.05); // Neon-blue 5% — barely-visible blue shimmer
-$color-engine-blue-vivid-a10: oklch(0.55 0.22 228 / 0.10); // Neon-blue 10% — subtle neon blue aura
-$color-engine-blue-vivid-a15: oklch(0.55 0.22 228 / 0.15); // Neon-blue 15% — light blue glow
-$color-engine-blue-vivid-a20: oklch(0.55 0.22 228 / 0.20); // Neon-blue 20% — visible blue overlay
-$color-engine-blue-vivid-a25: oklch(0.55 0.22 228 / 0.25); // Neon-blue 25% — medium blue tint
-$color-engine-blue-vivid-a60: oklch(0.55 0.22 228 / 0.60); // Neon-blue 60% — dense neon glow layer
-$color-engine-blue-vivid-a90: oklch(0.55 0.22 228 / 0.90); // Neon-blue 90% — near-solid neon blue
-$color-engine-blue-mid-a70: oklch(0.45 0.20 230 / 0.70); // Neon-blue-mid 70% — deep blue selected state
-$color-engine-blue-light-a50: oklch(0.70 0.27 228 / 0.50); // Neon-blue-light 50% — half-opaque lighter blue
-$color-engine-violet-void: oklch(0.12 0.04 280); // Violet void — near-black violet for darkest surface contexts
-$color-engine-violet-deep: oklch(0.15 0.04 280); // Violet deep — dark violet card surface
-$color-engine-violet-dark: oklch(0.25 0.06 280); // Violet dark — elevated dark violet panel
-$color-engine-violet-dim: oklch(0.30 0.10 280); // Violet dim — mid-dark violet container
-$color-engine-violet-vivid: oklch(0.55 0.25 290); // Violet vivid — saturated violet accent
-$color-engine-violet-bright: oklch(0.65 0.20 280); // Violet bright — lighter vivid violet for highlights
-$color-engine-violet-deep-a80: oklch(0.15 0.04 280 / 0.80); // Violet-deep 80% — near-opaque dark violet panel
-$color-engine-violet-deep-a90: oklch(0.15 0.04 280 / 0.90); // Violet-deep 90% — dense dark violet overlay
-$color-engine-violet-deep-a95: oklch(0.15 0.04 280 / 0.95); // Violet-deep 95% — frosted violet glass surface
-$color-engine-violet-dark-a15: oklch(0.25 0.06 280 / 0.15); // Violet-dark 15% — subtle violet tint
-$color-engine-violet-vivid-a05: oklch(0.55 0.25 290 / 0.05); // Violet 5% — barely-visible violet shimmer
-$color-engine-violet-vivid-a10: oklch(0.55 0.25 290 / 0.10); // Violet 10% — faint violet aura
-$color-engine-violet-vivid-a15: oklch(0.55 0.25 290 / 0.15); // Violet 15% — light violet glow
-$color-engine-violet-vivid-a20: oklch(0.55 0.25 290 / 0.20); // Violet 20% — visible violet overlay
-$color-engine-violet-vivid-a30: oklch(0.55 0.25 290 / 0.30); // Violet 30% — medium violet tint panel
-$color-engine-violet-vivid-a40: oklch(0.55 0.25 290 / 0.40); // Violet 40% — violet glass surface
-$color-engine-violet-vivid-a50: oklch(0.55 0.25 290 / 0.50); // Violet 50% — half-opaque violet panel
-$color-engine-violet-vivid-a60: oklch(0.55 0.25 290 / 0.60); // Violet 60% — dense violet overlay
-$color-engine-violet-vivid-a70: oklch(0.55 0.25 290 / 0.70); // Violet 70% — prominent violet glow
-$color-engine-cyan-deep: oklch(0.42 0.15 200); // Cyan deep — dark teal for glass backgrounds
-$color-engine-cyan-vivid: oklch(0.75 0.15 195); // Cyan vivid — primary teal accent
-$color-engine-cyan-bright: oklch(0.85 0.10 195); // Cyan bright — light teal highlight
-$color-engine-cyan-deep-a60: oklch(0.42 0.15 200 / 0.60); // Cyan-deep 60% — teal glass overlay
-$color-engine-cyan-vivid-a05: oklch(0.75 0.15 195 / 0.05); // Cyan 5% — barely-visible teal shimmer
-$color-engine-cyan-vivid-a10: oklch(0.75 0.15 195 / 0.10); // Cyan 10% — subtle teal aura
-$color-engine-cyan-vivid-a15: oklch(0.75 0.15 195 / 0.15); // Cyan 15% — faint teal glow
-$color-engine-cyan-vivid-a30: oklch(0.75 0.15 195 / 0.30); // Cyan 30% — teal glow overlay
-$color-engine-cyan-vivid-a50: oklch(0.75 0.15 195 / 0.50); // Cyan 50% — half-opaque teal
-$color-engine-cyan-vivid-a90: oklch(0.75 0.15 195 / 0.90); // Cyan 90% — near-solid teal panel
-$color-engine-green-vivid: oklch(0.65 0.18 145); // Green vivid — primary success and nature accent
-$color-engine-green-bright: oklch(0.75 0.15 145); // Green bright — lighter success highlight
-$color-engine-green-vivid-a05: oklch(0.65 0.18 145 / 0.05); // Green 5% — barely-visible success tint
-$color-engine-green-vivid-a10: oklch(0.65 0.18 145 / 0.10); // Green 10% — subtle success tint
-$color-engine-green-vivid-a20: oklch(0.65 0.18 145 / 0.20); // Green 20% — visible success overlay
-$color-engine-green-vivid-a30: oklch(0.65 0.18 145 / 0.30); // Green 30% — medium success indicator
-$color-engine-green-vivid-a50: oklch(0.65 0.18 145 / 0.50); // Green 50% — half-opaque success panel
-$color-engine-green-vivid-a60: oklch(0.65 0.18 145 / 0.60); // Green 60% — dense success glow
-$color-engine-green-vivid-a90: oklch(0.65 0.18 145 / 0.90); // Green 90% — near-solid success tint
-$color-engine-error-deep: oklch(0.45 0.20 25); // Error deep — dark red for error backgrounds
-$color-engine-error-vivid: oklch(0.50 0.22 25); // Error vivid — primary error and danger accent
-$color-engine-error-bright: oklch(0.65 0.18 25); // Error bright — lighter error highlight
-$color-engine-error-vivid-a10: oklch(0.50 0.22 25 / 0.10); // Error 10% — faint error tint
-$color-engine-error-vivid-a15: oklch(0.50 0.22 25 / 0.15); // Error 15% — subtle error indicator
-$color-engine-error-vivid-a20: oklch(0.50 0.22 25 / 0.20); // Error 20% — light error overlay
-$color-engine-error-vivid-a30: oklch(0.50 0.22 25 / 0.30); // Error 30% — error overlay
-$color-engine-error-vivid-a50: oklch(0.50 0.22 25 / 0.50); // Error 50% — half-opaque error panel
-$color-engine-error-vivid-a80: oklch(0.50 0.22 25 / 0.80); // Error 80% — dense error background
-$color-engine-amber-deep: oklch(0.70 0.15 70); // Amber deep — dark amber for strong warnings
-$color-engine-amber-vivid: oklch(0.75 0.18 75); // Amber vivid — primary amber warning accent
-$color-engine-amber-bright: oklch(0.85 0.16 75); // Amber bright — light amber highlight
-$color-engine-amber-pale: oklch(0.88 0.14 75); // Amber pale — very light amber background tint
-$color-engine-purple-dark: oklch(0.45 0.22 305); // Purple dark — deeper purple for backgrounds
-$color-engine-purple-vivid: oklch(0.55 0.25 300); // Purple vivid — primary purple accent
-$color-engine-purple-bright: oklch(0.65 0.18 305); // Purple bright — lighter purple accent
-$color-engine-rose-vivid: oklch(0.42 0.18 350); // Rose vivid — primary rose and pink accent
-$color-engine-sacred-gold-pure: oklch(0.80 0.22 85); // Sacred pure gold — radiant gold for sacred UI themes
-$color-engine-sacred-gold-lemon: oklch(0.88 0.20 90); // Sacred lemon gold — bright warm gold for divine gradients
-$color-engine-sacred-blue-royal: oklch(0.45 0.20 255); // Sacred royal blue — deep royal blue for sacred themes
-$color-engine-sacred-blue-royal-mid: oklch(0.55 0.20 255); // Sacred royal blue mid — mid royal blue for gradient stops
-$color-engine-sacred-blue-cornflower: oklch(0.65 0.16 265); // Sacred cornflower — cornflower blue for divine palettes
-$color-engine-sacred-purple-lavender: oklch(0.65 0.18 295); // Sacred lavender — lavender purple for consciousness themes
+$color-ether-abyss: oklch(0.04 0.01 250); // Absolute darkness — the space before creation
+$color-ether-void: oklch(0.08 0.02 260); // Primary dark surface — the canvas of consciousness
+$color-ether-depth: oklch(0.14 0.02 250); // Container surface — giving form to thought
+$color-ether-shadow: oklch(0.20 0.02 250); // Elevated surface — subtly emerging from void
+$color-ether-dusk: oklch(0.30 0.01 230); // Transition zone — between light and dark
+$color-ether-twilight: oklch(0.50 0.02 220); // The midpoint — separators and boundaries
+$color-ether-mist: oklch(0.70 0.01 230); // Soft ambient — secondary text and labels
+$color-ether-haze: oklch(0.85 0.005 220); // Light boundary — borders on bright surfaces
+$color-ether-glow: oklch(0.94 0.005 220); // Luminous surface — hover states and subtle backgrounds
+$color-ether-radiance: oklch(0.98 0.01 90); // Near-white — the brightest emanation of the ether
+$color-ether-void-transparent: oklch(0.08 0.02 260 / 0); // Ether void transparent — The Unmanifest, gradient terminus
+$color-ether-void-whisper: oklch(0.08 0.02 260 / 0.08); // Ether void whisper — barely perceptible shadow breath
+$color-ether-void-veil: oklch(0.08 0.02 260 / 0.20); // Ether void veil — thin membrane between layers
+$color-ether-void-glass: oklch(0.08 0.02 260 / 0.40); // Ether void glass — sacred translucency, modal scrim
+$color-ether-void-presence: oklch(0.08 0.02 260 / 0.60); // Ether void presence — equally revealed and concealed
+$color-ether-void-dense: oklch(0.08 0.02 260 / 0.80); // Ether void dense — approaching full manifestation
+$color-ether-void-frost: oklch(0.08 0.02 260 / 0.95); // Ether void frost — frosted glass, virtually solid
+$color-ether-radiance-whisper: oklch(0.98 0.01 90 / 0.08); // Ether radiance whisper — faintest light breath
+$color-ether-radiance-veil: oklch(0.98 0.01 90 / 0.20); // Ether radiance veil — thin luminous membrane
+$color-ether-radiance-glass: oklch(0.98 0.01 90 / 0.40); // Ether radiance glass — sacred white translucency
+$color-ether-radiance-presence: oklch(0.98 0.01 90 / 0.60); // Ether radiance presence — half-manifest light
+$color-ether-radiance-dense: oklch(0.98 0.01 90 / 0.80); // Ether radiance dense — near-solid white glow
+$color-ether-radiance-frost: oklch(0.98 0.01 90 / 0.95); // Ether radiance frost — frosted white glass
+$color-ether-haze-whisper: oklch(0.85 0.005 220 / 0.08); // Ether haze whisper — barely visible border breath
+$color-ether-haze-veil: oklch(0.85 0.005 220 / 0.20); // Ether haze veil — subtle border membrane
+$color-ether-haze-glass: oklch(0.85 0.005 220 / 0.40); // Ether haze glass — translucent border surface
+$color-ether-haze-presence: oklch(0.85 0.005 220 / 0.60); // Ether haze presence — visible border layer
+$color-ether-haze-dense: oklch(0.85 0.005 220 / 0.80); // Ether haze dense — near-solid border
+$color-ether-mist-whisper: oklch(0.70 0.01 230 / 0.08); // Ether mist whisper — faintest text shadow
+$color-ether-mist-veil: oklch(0.70 0.01 230 / 0.20); // Ether mist veil — subtle text tint
+$color-ether-mist-dense: oklch(0.70 0.01 230 / 0.80); // Ether mist dense — near-solid muted text
+$color-ether-mist-frost: oklch(0.70 0.01 230 / 0.95); // Ether mist frost — almost-solid secondary text
+$color-ether-twilight-veil: oklch(0.50 0.02 220 / 0.20); // Ether twilight veil — subtle midtone overlay
+$color-ether-twilight-presence: oklch(0.50 0.02 220 / 0.60); // Ether twilight presence — visible midtone layer
+$color-ether-twilight-dense: oklch(0.50 0.02 220 / 0.80); // Ether twilight dense — strong midtone surface
+$color-ether-depth-glass: oklch(0.14 0.02 250 / 0.40); // Ether depth glass — translucent container
+$color-ether-depth-dense: oklch(0.14 0.02 250 / 0.80); // Ether depth dense — near-solid container surface
+$color-wisdom-deep: oklch(0.65 0.13 88); // Deep wisdom — low-saturation gold for backgrounds and gradients
+$color-wisdom-glow: oklch(0.75 0.25 85); // Wisdom glow — primary gold luminescence
+$color-wisdom-radiance: oklch(0.85 0.18 95); // Wisdom radiance — standard gold for text, borders and accents
+$color-wisdom-brilliance: oklch(0.88 0.18 95); // Wisdom brilliance — high-luminance gold for highlights and active states
+$color-wisdom-glow-transparent: oklch(0.75 0.25 85 / 0); // Wisdom glow transparent — gradient terminus
+$color-wisdom-glow-whisper: oklch(0.75 0.25 85 / 0.08); // Wisdom glow whisper — barely-visible gold shimmer
+$color-wisdom-glow-veil: oklch(0.75 0.25 85 / 0.20); // Wisdom glow veil — subtle gold tint membrane
+$color-wisdom-glow-glass: oklch(0.75 0.25 85 / 0.40); // Wisdom glow glass — sacred gold translucency
+$color-wisdom-glow-presence: oklch(0.75 0.25 85 / 0.60); // Wisdom glow presence — half-manifest gold aura
+$color-wisdom-glow-dense: oklch(0.75 0.25 85 / 0.80); // Wisdom glow dense — near-solid gold surface
+$color-wisdom-glow-frost: oklch(0.75 0.25 85 / 0.95); // Wisdom glow frost — frosted gold glass
+$color-wisdom-radiance-whisper: oklch(0.85 0.18 95 / 0.08); // Wisdom radiance whisper — faintest gold hint
+$color-wisdom-radiance-veil: oklch(0.85 0.18 95 / 0.20); // Wisdom radiance veil — subtle gold overlay
+$color-wisdom-radiance-glass: oklch(0.85 0.18 95 / 0.40); // Wisdom radiance glass — gold translucent surface
+$color-wisdom-radiance-presence: oklch(0.85 0.18 95 / 0.60); // Wisdom radiance presence — visible gold layer
+$color-wisdom-brilliance-whisper: oklch(0.88 0.18 95 / 0.08); // Wisdom brilliance whisper — bright gold shimmer
+$color-wisdom-brilliance-veil: oklch(0.88 0.18 95 / 0.20); // Wisdom brilliance veil — bright gold sheen
+$color-wisdom-brilliance-glass: oklch(0.88 0.18 95 / 0.40); // Wisdom brilliance glass — bright gold panel
+$color-wisdom-brilliance-dense: oklch(0.88 0.18 95 / 0.80); // Wisdom brilliance dense — prominent bright gold
+$color-wisdom-deep-dense: oklch(0.65 0.13 88 / 0.80); // Wisdom deep dense — dark gold overlay for code backgrounds
+$color-spark-depth: oklch(0.22 0.05 230); // Spark depth — deep blue for glass panels and code blocks
+$color-spark-core: oklch(0.45 0.20 230); // Spark core — vivid mid-range blue for state transitions
+$color-spark-vivid: oklch(0.55 0.22 228); // Spark vivid — primary electric blue accent
+$color-spark-arc: oklch(0.70 0.27 228); // Spark arc — lighter blue for hover and focus arcs
+$color-spark-glow: oklch(0.90 0.10 230); // Spark glow — pale blue for subtle backgrounds
+$color-spark-zenith: oklch(0.95 0.03 235); // Spark zenith — near-white blue for links on dark surfaces
+$color-spark-vivid-transparent: oklch(0.55 0.22 228 / 0); // Spark vivid transparent — gradient terminus
+$color-spark-vivid-whisper: oklch(0.55 0.22 228 / 0.08); // Spark vivid whisper — barely-visible blue shimmer
+$color-spark-vivid-veil: oklch(0.55 0.22 228 / 0.20); // Spark vivid veil — subtle neon blue membrane
+$color-spark-vivid-presence: oklch(0.55 0.22 228 / 0.60); // Spark vivid presence — half-manifest neon glow
+$color-spark-vivid-frost: oklch(0.55 0.22 228 / 0.95); // Spark vivid frost — near-solid neon blue
+$color-spark-depth-presence: oklch(0.22 0.05 230 / 0.60); // Spark depth presence — semi-opaque dark blue overlay
+$color-spark-depth-dense: oklch(0.22 0.05 230 / 0.80); // Spark depth dense — focused input background
+$color-spark-depth-frost: oklch(0.22 0.05 230 / 0.95); // Spark depth frost — glass-elevated blue panel
+$color-spark-core-dense: oklch(0.45 0.20 230 / 0.80); // Spark core dense — deep blue selected state
+$color-spark-arc-presence: oklch(0.70 0.27 228 / 0.60); // Spark arc presence — half-opaque lighter blue
+$color-cosmos-void: oklch(0.10 0.03 260); // Cosmos void — near-black indigo for cosmic backdrops
+$color-cosmos-depth: oklch(0.16 0.03 250); // Cosmos depth — dark indigo card surface
+$color-cosmos-shadow: oklch(0.22 0.04 250); // Cosmos shadow — elevated dark indigo panel
+$color-cosmos-dusk: oklch(0.30 0.04 250); // Cosmos dusk — mid-dark indigo container
+$color-cosmos-vivid: oklch(0.65 0.20 260); // Cosmos vivid — saturated indigo accent
+$color-cosmos-void-veil: oklch(0.10 0.03 260 / 0.20); // Cosmos void veil — cosmic depth tint
+$color-cosmos-void-glass: oklch(0.10 0.03 260 / 0.40); // Cosmos void glass — space backdrop overlay
+$color-cosmos-void-presence: oklch(0.10 0.03 260 / 0.60); // Cosmos void presence — deep space atmosphere
+$color-cosmos-depth-whisper: oklch(0.16 0.03 250 / 0.08); // Cosmos depth whisper — faint dark indigo breath
+$color-cosmos-depth-glass: oklch(0.16 0.03 250 / 0.40); // Cosmos depth glass — cosmic translucency
+$color-cosmos-depth-presence: oklch(0.16 0.03 250 / 0.60); // Cosmos depth presence — half-manifest nebula
+$color-cosmos-depth-dense: oklch(0.16 0.03 250 / 0.80); // Cosmos depth dense — near-opaque indigo surface
+$color-cosmos-depth-frost: oklch(0.16 0.03 250 / 0.95); // Cosmos depth frost — frosted indigo glass
+$color-cosmos-shadow-glass: oklch(0.22 0.04 250 / 0.40); // Cosmos shadow glass — dark indigo translucency
+$color-cosmos-shadow-frost: oklch(0.22 0.04 250 / 0.95); // Cosmos shadow frost — near-solid dark indigo
+$color-cosmos-dusk-glass: oklch(0.30 0.04 250 / 0.40); // Cosmos dusk glass — mid-depth indigo translucency
+$color-cosmos-dusk-presence: oklch(0.30 0.04 250 / 0.60); // Cosmos dusk presence — half-manifest indigo surface
+$color-conscious-void: oklch(0.12 0.04 280); // Conscious void — near-black violet for darkest awareness
+$color-conscious-depth: oklch(0.15 0.04 280); // Conscious depth — dark violet surface of the subconscious
+$color-conscious-shadow: oklch(0.25 0.06 280); // Conscious shadow — elevated violet panel
+$color-conscious-dusk: oklch(0.30 0.10 280); // Conscious dusk — mid-dark violet container
+$color-conscious-vivid: oklch(0.55 0.25 290); // Conscious vivid — saturated violet of active awareness
+$color-conscious-glow: oklch(0.65 0.20 280); // Conscious glow — lighter vivid violet for highlights
+$color-conscious-depth-dense: oklch(0.15 0.04 280 / 0.80); // Conscious depth dense — near-opaque subconscious surface
+$color-conscious-depth-frost: oklch(0.15 0.04 280 / 0.95); // Conscious depth frost — frosted violet glass
+$color-conscious-shadow-veil: oklch(0.25 0.06 280 / 0.20); // Conscious shadow veil — subtle violet tint
+$color-conscious-vivid-whisper: oklch(0.55 0.25 290 / 0.08); // Conscious vivid whisper — barely-visible violet shimmer
+$color-conscious-vivid-veil: oklch(0.55 0.25 290 / 0.20); // Conscious vivid veil — violet membrane
+$color-conscious-vivid-glass: oklch(0.55 0.25 290 / 0.40); // Conscious vivid glass — violet translucency
+$color-conscious-vivid-presence: oklch(0.55 0.25 290 / 0.60); // Conscious vivid presence — half-manifest violet
+$color-conscious-vivid-dense: oklch(0.55 0.25 290 / 0.80); // Conscious vivid dense — prominent violet glow
+$color-bridge-depth: oklch(0.42 0.15 200); // Bridge depth — dark teal for glass backgrounds
+$color-bridge-vivid: oklch(0.75 0.15 195); // Bridge vivid — primary teal accent
+$color-bridge-glow: oklch(0.85 0.10 195); // Bridge glow — light teal highlight
+$color-bridge-depth-presence: oklch(0.42 0.15 200 / 0.60); // Bridge depth presence — teal glass overlay
+$color-bridge-vivid-whisper: oklch(0.75 0.15 195 / 0.08); // Bridge vivid whisper — barely-visible teal shimmer
+$color-bridge-vivid-veil: oklch(0.75 0.15 195 / 0.20); // Bridge vivid veil — subtle teal membrane
+$color-bridge-vivid-glass: oklch(0.75 0.15 195 / 0.40); // Bridge vivid glass — teal translucency
+$color-bridge-vivid-presence: oklch(0.75 0.15 195 / 0.60); // Bridge vivid presence — half-manifest teal
+$color-bridge-vivid-frost: oklch(0.75 0.15 195 / 0.95); // Bridge vivid frost — near-solid teal panel
+$color-life-vivid: oklch(0.65 0.18 145); // Life vivid — primary success and nature accent
+$color-life-glow: oklch(0.75 0.15 145); // Life glow — lighter success highlight
+$color-life-vivid-whisper: oklch(0.65 0.18 145 / 0.08); // Life vivid whisper — barely-visible success shimmer
+$color-life-vivid-veil: oklch(0.65 0.18 145 / 0.20); // Life vivid veil — subtle success membrane
+$color-life-vivid-glass: oklch(0.65 0.18 145 / 0.40); // Life vivid glass — success translucency
+$color-life-vivid-presence: oklch(0.65 0.18 145 / 0.60); // Life vivid presence — half-manifest success
+$color-life-vivid-frost: oklch(0.65 0.18 145 / 0.95); // Life vivid frost — near-solid success tint
+$color-alert-depth: oklch(0.45 0.20 25); // Alert depth — dark red for error backgrounds
+$color-alert-vivid: oklch(0.50 0.22 25); // Alert vivid — primary error and danger accent
+$color-alert-glow: oklch(0.65 0.18 25); // Alert glow — lighter error highlight
+$color-alert-vivid-whisper: oklch(0.50 0.22 25 / 0.08); // Alert vivid whisper — faint error breath
+$color-alert-vivid-veil: oklch(0.50 0.22 25 / 0.20); // Alert vivid veil — subtle error membrane
+$color-alert-vivid-glass: oklch(0.50 0.22 25 / 0.40); // Alert vivid glass — error translucency
+$color-alert-vivid-presence: oklch(0.50 0.22 25 / 0.60); // Alert vivid presence — half-manifest error
+$color-alert-vivid-dense: oklch(0.50 0.22 25 / 0.80); // Alert vivid dense — dense error background
+$color-caution-depth: oklch(0.70 0.15 70); // Caution depth — dark amber for strong warnings
+$color-caution-vivid: oklch(0.75 0.18 75); // Caution vivid — primary amber warning accent
+$color-caution-glow: oklch(0.85 0.16 75); // Caution glow — light amber highlight
+$color-caution-haze: oklch(0.88 0.14 75); // Caution haze — very light amber background tint
+$color-sovereign-depth: oklch(0.45 0.22 305); // Sovereign depth — deeper purple for backgrounds
+$color-sovereign-vivid: oklch(0.55 0.25 300); // Sovereign vivid — primary purple accent
+$color-sovereign-glow: oklch(0.65 0.18 305); // Sovereign glow — lighter purple accent
+$color-essence-vivid: oklch(0.42 0.18 350); // Essence vivid — primary rose and pink accent
+$color-sacred-gold-pure: oklch(0.80 0.22 85); // Sacred pure gold — radiant gold for sacred UI themes
+$color-sacred-gold-lemon: oklch(0.88 0.20 90); // Sacred lemon gold — bright warm gold for divine gradients
+$color-sacred-blue-royal: oklch(0.45 0.20 255); // Sacred royal blue — deep royal blue for sacred themes
+$color-sacred-blue-royal-mid: oklch(0.55 0.20 255); // Sacred royal blue mid — mid royal blue for gradient stops
+$color-sacred-blue-cornflower: oklch(0.65 0.16 265); // Sacred cornflower — cornflower blue for divine palettes
+$color-sacred-purple-lavender: oklch(0.65 0.18 295); // Sacred lavender — lavender purple for consciousness themes

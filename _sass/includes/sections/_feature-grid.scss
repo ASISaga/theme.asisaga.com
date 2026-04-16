@@ -4,7 +4,6 @@
 
 .feature-section {
   @include genesis-environment('focused');
-  @include genesis-atmosphere('spacious-mobile');
   
   .feature-title {
     @include genesis-cognition('axiom');

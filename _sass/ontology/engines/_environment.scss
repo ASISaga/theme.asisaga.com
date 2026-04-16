@@ -4,7 +4,12 @@
  * Defines the organizational laws of the digital dimension.
  * 
  * This is part of the Engine Layer where raw CSS properties are allowed.
- * All values MUST use CSS custom properties defined in the design token system.
+ * All values MUST use design tokens (CSS custom properties, $color-*, $effect-*).
+ *
+ * Emotional intent mapping (from _design/emotional-intent.md):
+ *   §1 "Geometry of the Infinite" — layout logic determines spatial relationships
+ *   §1 "Negative Space as Ether" — spacing gaps are "breath", not mere margins
+ *   §1 "Precision as Philosophy" — grid calculations at atomic precision
  */
 
 // ============================================================================
@@ -21,17 +26,17 @@
     
     @media (max-width: 767px) {
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: var(--space-tight, clamp(0.75rem, 1.5vw, 1rem));
     }
     
     @media (min-width: 768px) and (max-width: 1023px) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.75rem;
+      gap: var(--space-network, clamp(1rem, 2vw, 1.5rem));
     }
     
     @media (min-width: 1024px) {
       grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-      gap: 2rem;
+      gap: var(--space-bento, clamp(1.5rem, 3vw, 2.5rem));
     }
     
     @media (min-width: 1920px) {
@@ -98,7 +103,7 @@
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: $z-index-transcendent;
       gap: var(--space-nav, clamp(0.75rem, 1.5vw, 1.5rem));
       padding: var(--padding-nav, clamp(0.75rem, 1.5vw, 1rem));
     }
@@ -114,7 +119,7 @@
       height: 100vh;
       padding: 1.5rem 1rem;
       transition: left 0.3s ease-in-out;
-      z-index: 1001;
+      z-index: $z-index-transcendent + 1;
       overflow-y: auto;
       
       &.nav-open {
@@ -137,7 +142,7 @@
   @else if $logic == 'interaction-form' {
     // Form layout optimized for data entry
     display: grid;
-    gap: 1.25rem;
+    gap: var(--space-network, clamp(1rem, 2vw, 1.5rem));
     width: 100%;
     max-width: 100%;
     justify-items: stretch;
@@ -148,7 +153,7 @@
     
     @media (min-width: 768px) {
       grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-      gap: 1.5rem 1.25rem;
+      gap: var(--space-network, clamp(1rem, 2vw, 1.5rem)) var(--space-tight, clamp(0.75rem, 1.5vw, 1rem));
     }
     
     .form-full-width {
@@ -200,17 +205,17 @@
     
     @media (max-width: 767px) {
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: var(--space-network, clamp(1rem, 2vw, 1.5rem));
     }
     
     @media (min-width: 768px) and (max-width: 1023px) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 2rem 1.5rem;
+      gap: var(--space-bento, clamp(1.5rem, 3vw, 2.5rem)) var(--space-network, clamp(1rem, 2vw, 1.5rem));
     }
     
     @media (min-width: 1024px) {
       grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
-      gap: 2rem 1.5rem;
+      gap: var(--space-bento, clamp(1.5rem, 3vw, 2.5rem)) var(--space-network, clamp(1rem, 2vw, 1.5rem));
     }
   }
   @else if $logic == 'navigation-breadcrumb' {
@@ -301,17 +306,17 @@
     
     @media (max-width: 767px) {
       grid-template-columns: 1fr;
-      gap: 1.25rem;
+      gap: var(--space-tight, clamp(0.75rem, 1.5vw, 1rem));
     }
     
     @media (min-width: 768px) and (max-width: 1023px) {
       grid-template-columns: 240px 1fr;
-      gap: 1.5rem;
+      gap: var(--space-network, clamp(1rem, 2vw, 1.5rem));
     }
     
     @media (min-width: 1024px) {
       grid-template-columns: 280px 1fr;
-      gap: 2rem;
+      gap: var(--space-bento, clamp(1.5rem, 3vw, 2.5rem));
     }
     
     > :first-child {
@@ -404,7 +409,7 @@
 
     @media (min-width: 768px) {
       grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-      gap: 1.25rem;
+      gap: var(--space-network, clamp(1rem, 2vw, 1.5rem));
     }
   }
 }

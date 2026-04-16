@@ -21,18 +21,18 @@
     background: var(--genesis-header-bg, $color-theme-dark-header-bg);
 
     box-shadow:
-      0 1px 0 $color-engine-blue-vivid-a10,
-      0 4px 24px var(--genesis-header-shadow, $color-engine-neutral-void-a40);
+      0 1px 0 $color-spark-vivid-whisper,
+      0 4px 24px var(--genesis-header-shadow, $color-ether-void-glass);
 
     @include transition-consciousness;
 
     // Scrolled state — condensed, more opaque, stronger presence
     &.scrolled {
       @include bg-glass(0.96);
-      border-bottom-color: var(--genesis-header-border, $color-engine-blue-deep);
+      border-bottom-color: var(--genesis-header-border, $color-spark-depth);
       box-shadow:
-        0 1px 0 $color-engine-blue-vivid-a15,
-        0 8px 32px var(--genesis-header-shadow, $color-engine-neutral-void-a60);
+        0 1px 0 $color-spark-vivid-veil,
+        0 8px 32px var(--genesis-header-shadow, $color-ether-void-presence);
       min-height: 56px;
     }
 
@@ -69,7 +69,7 @@
       &:hover,
       &:focus {
         .genesis-header__title {
-          color: var(--genesis-body-color, $color-engine-neutral-bright);
+          color: var(--genesis-body-color, $color-ether-glow);
           text-shadow: 0 0 20px var(--accent-neon, $color-synapse-social-hover);
         }
 
@@ -82,7 +82,7 @@
     &__logo {
       @include size-square(36px);
       @include border-radius-rounded;
-      @include border-subtle(var(--genesis-card-border, $color-engine-indigo-dim));
+      @include border-subtle(var(--genesis-card-border, $color-cosmos-dusk));
       @include transition-smooth(box-shadow border-color);
 
       @include from(md) {
@@ -101,7 +101,7 @@
       font-weight: 600;
       letter-spacing: 0.04em;
       @include text-uppercase;
-      color: var(--genesis-body-color, $color-engine-neutral-bright);
+      color: var(--genesis-body-color, $color-ether-glow);
       @include transition-smooth(color text-shadow);
     }
 
@@ -125,21 +125,21 @@
       @include flex-center;
       @include size-square(44px);
       @include padding-reset;
-      background: var(--genesis-card-bg, $color-engine-neutral-deep);
-      @include border-subtle(var(--genesis-card-border, $color-engine-indigo-dark));
+      background: var(--genesis-card-bg, $color-ether-depth);
+      @include border-subtle(var(--genesis-card-border, $color-cosmos-shadow));
       @include border-radius-rounded;
       @include cursor-pointer;
       @include transition-consciousness;
 
       &:hover,
       &:focus {
-        background: var(--glass-hover, $color-engine-indigo-void);
+        background: var(--glass-hover, $color-cosmos-void);
         border-color: var(--accent-neon, $color-accent-neon-blue);
         @include shadow-glow(var(--accent-neon, $color-accent-neon-blue), 0.2);
       }
 
       &[aria-expanded="true"] {
-        background: var(--glass-hover, $color-engine-blue-deep);
+        background: var(--glass-hover, $color-spark-depth);
         border-color: var(--accent-neon, $color-accent-neon-blue);
         @include shadow-glow(var(--accent-neon, $color-accent-neon-blue), 0.25, 20px);
       }
@@ -165,16 +165,16 @@
       @include genesis-atmosphere('void');
 
       // Deep void background
-      background: var(--genesis-bg-surface, $color-engine-neutral-void-a98) !important;
-      @include border-separator-left(var(--genesis-card-border, $color-engine-blue-deep));
+      background: var(--genesis-bg-surface, $color-ether-void-frost) !important;
+      @include border-separator-left(var(--genesis-card-border, $color-spark-depth));
       padding: 5rem 1.5rem 2rem;
       @include overflow-scroll-y;
       -webkit-overflow-scrolling: touch;
 
-      box-shadow: -16px 0 64px $color-engine-neutral-void-a00;
+      box-shadow: -16px 0 64px $color-ether-void-transparent;
 
       &[data-nav-open="true"] {
-        box-shadow: -16px 0 64px $color-engine-neutral-void-a70;
+        box-shadow: -16px 0 64px $color-ether-void-dense;
       }
 
       // Desktop: Inline navigation

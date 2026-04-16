@@ -71,7 +71,7 @@
   .modal__header {
     @include flex-between;
     padding: $spacing-xl;
-    @include border-separator-bottom($color-engine-neutral-pale);
+    @include border-separator-bottom($color-ether-haze);
   }
 
   .modal__title {
@@ -123,7 +123,7 @@
     justify-content: flex-end;
     gap: $spacing-md;
     padding: $spacing-xl;
-    @include border-separator-top($color-engine-neutral-pale);
+    @include border-separator-top($color-ether-haze);
   }
 
   .modal__button {
@@ -196,7 +196,7 @@
     align-items: center;
     padding: $spacing-md $spacing-lg;
     @include text-decoration-none;
-    color: $color-engine-neutral-dim;
+    color: $color-ether-dusk;
     border-radius: $border-radius-md;
     @include transition-smooth;
 
@@ -213,7 +213,7 @@
 
     // Active state
     &--active {
-      background: $color-engine-blue-vivid-a10;
+      background: $color-spark-vivid-whisper;
       @include color-neon-accent;
       font-weight: 600;
       border-left: 3px solid $color-accent-neon-blue;

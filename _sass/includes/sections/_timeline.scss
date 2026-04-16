@@ -3,7 +3,6 @@
 
 .timeline-section {
   @include genesis-environment('chronological');
-  @include genesis-atmosphere('spacious-mobile');
   
   .timeline-title {
     @include genesis-cognition('axiom');

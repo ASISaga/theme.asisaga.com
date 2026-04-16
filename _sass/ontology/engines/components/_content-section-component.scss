@@ -7,7 +7,6 @@
   .#{$prefix} {
     &-section {
       @include genesis-environment('focused');
-      @include genesis-atmosphere('spacious-mobile');
     }
     
     &-container {
