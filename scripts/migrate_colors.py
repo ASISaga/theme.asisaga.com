@@ -13,7 +13,10 @@ Algorithm:
 5. Replace all hardcoded values in engine files (context-aware interpolation)
 """
 
-import re, json, subprocess, sys
+import json
+import re
+import subprocess
+import sys
 from pathlib import Path
 
 REPO          = Path(__file__).parent.parent
@@ -145,12 +148,19 @@ def generate_tokens(unmapped: set, existing_varnames: set) -> dict:
     used = set(existing_varnames)          # seed with e.g. "color-surface-primary"
     tokens = {}                            # short_key → token_def
 
+    def _has_collision(short: str) -> bool:
+        """True if `short` or its color-engine-* equivalent is already claimed."""
+        if short in used:
+            return True
+        if short.startswith("gen-"):
+            return ("color-engine-" + short[4:]) in used
+        return False
+
     for v in sorted(unmapped):             # deterministic order
         base = semantic_base(v)
         short = base
         n = 2
-        # Dedup against: short keys already chosen AND their color-engine- equivalents
-        while (short in used) or (("color-engine-" + short[4:]) in used if short.startswith("gen-") else (short in used)):
+        while _has_collision(short):
             short = f"{base}-{n}"
             n += 1
         used.add(short)
