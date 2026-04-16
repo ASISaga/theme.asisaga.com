@@ -27,11 +27,29 @@ import path from 'path';
  *   /samples/utility/404.html
  *   /samples/utility/splash.html
  *
- * Design:
- *   - Each test writes its result as a JSON file under tests/.audit-results/
- *   - afterAll aggregates all JSON files and writes the markdown report
- *   - Tests never fail (audit mode) — violations are documented, not gated
- *   - CI/CD gate on violations can be added separately via the report
+ * Design — 3-layer pipeline:
+ *
+ *  Layer 1 — Prevention (stylelint / npm test):
+ *    scss/no-dollar-variables and declaration-property-value-disallowed-list
+ *    enforce that NO raw colour literals can appear outside _sass/design/.
+ *    All colour values must originate from _design/tokens/ and be expressed
+ *    through $variables.  This is the authoritative gate for design-token
+ *    hygiene and runs on every commit via npm test.
+ *
+ *  Layer 2 — Observation (this file / axe-core):
+ *    Tests NEVER fail due to axe violations.  Every violation is recorded and
+ *    persisted to tests/.audit-results/*.json so the afterAll reporter can
+ *    aggregate them regardless of worker count or test retries.  The full
+ *    markdown report is always written to tests/accessibility-audit-report.md.
+ *
+ *  Layer 3 — Holistic review (Design System Review section):
+ *    afterAll generates a "Design System Review" section that cross-references
+ *    the axe violations with the Genesis design-token system.  Because Layer 1
+ *    guarantees all rendered colours trace back to a token in _design/tokens/,
+ *    a contrast violation in the axe report means a *token value* is wrong, not
+ *    an inline literal.  The review section surfaces which token files to update
+ *    and why, so designers/developers can trace each axe finding back to its
+ *    root cause in the design system rather than patching SCSS ad-hoc.
  */
 
 // All pages to audit (path relative to baseURL)
@@ -242,8 +260,278 @@ function writeMarkdownReport(reportPath, results) {
   );
   lines.push('');
 
+  // Append the holistic design-system review
+  for (const line of generateDesignSystemReview(results)) {
+    lines.push(line);
+  }
+
   fs.mkdirSync(path.dirname(reportPath), { recursive: true });
   fs.writeFileSync(reportPath, lines.join('\n'), 'utf8');
+}
+
+// ─── Helper: holistic design-system review ───────────────────────────────────
+//
+// Bridges Layer 2 (axe observations) and Layer 1 (design-token system).
+// Because stylelint enforces that all colour values originate from
+// _design/tokens/ via $variables in _sass/design/, every contrast violation
+// reported by axe means a *token value* is wrong, not an inline literal.
+// This section maps each axe rule to the responsible token file so that
+// fixes land in the design system rather than scattered SCSS overrides.
+
+/**
+ * Maps an axe-core rule ID to the Genesis design-system concern and the
+ * _design/tokens/ file(s) where the root cause is most likely to be found.
+ *
+ * @type {Record<string, { concern: string, tokenFiles: string[], guidance: string }>}
+ */
+const AXE_RULE_TO_TOKEN_MAP = {
+  'color-contrast': {
+    concern: 'Color – WCAG 1.4.3 minimum contrast (4.5:1 normal, 3:1 large)',
+    tokenFiles: ['_design/tokens/2-color.json'],
+    guidance:
+      'Search the failing foreground/background hex codes in `_design/tokens/2-color.json`. ' +
+      'Formal dark/light mode tokens live under `color.theme.light.*` and `color.theme.dark.*`. ' +
+      'CSS custom properties in `_sass/ontology/engines/_theme-properties.scss` reference ' +
+      'these tokens via `$color-theme-light-*` / `$color-theme-dark-*` variables. ' +
+      'Adjust the lightness (L) component of the OKLCH value until the rendered pair meets 4.5:1. ' +
+      'Use a contrast checker with OKLCH → sRGB conversion (e.g. oklch.com). ' +
+      'Never patch contrast in SCSS directly — update the token so the fix propagates everywhere.',
+  },
+  'color-contrast-enhanced': {
+    concern: 'Color – WCAG 1.4.6 enhanced contrast (7:1 normal, 4.5:1 large)',
+    tokenFiles: ['_design/tokens/2-color.json'],
+    guidance:
+      'Same remediation path as `color-contrast` but targeting the stricter AAA ratio. ' +
+      'Increase OKLCH lightness separation between `color.theme.light.*` / `color.theme.dark.*` tokens.',
+  },
+  'link-in-text-block': {
+    concern: 'Color – link distinguishability without relying solely on color',
+    tokenFiles: ['_design/tokens/2-color.json'],
+    guidance:
+      'The `genesis-synapse("navigate")` mixin must render `text-decoration: underline`. ' +
+      'Verify that `_sass/ontology/engines/_synapse.scss` sets an underline and that no ' +
+      'downstream override removes it.  If the token driving link colour is too close to ' +
+      'body text, update `color.accent.neon-blue` in `_design/tokens/2-color.json`.',
+  },
+  'focus-visible': {
+    concern: 'Interaction – keyboard focus indicator',
+    tokenFiles: ['_design/tokens/2-color.json', '_design/tokens/5-effects.json'],
+    guidance:
+      'Ensure `--genesis-focus-ring` resolves to a colour with sufficient contrast against ' +
+      'both light and dark backgrounds.  The token lives in `2-color.json` under ' +
+      '`color.state.focus`.  Minimum 3:1 against adjacent colours per WCAG 2.4.11.',
+  },
+  'aria-required-attr': {
+    concern: 'HTML structure – missing ARIA attributes',
+    tokenFiles: [],
+    guidance:
+      'This is an HTML template issue, not a token issue.  Check `_includes/` and `_layouts/` ' +
+      'for elements that declare a role without the required ARIA attributes.',
+  },
+  'aria-allowed-attr': {
+    concern: 'HTML structure – invalid ARIA attribute for element role',
+    tokenFiles: [],
+    guidance:
+      'Review the web-component definitions in `assets/js/common/` and templates in ' +
+      '`_includes/` for mismatched `role` / `aria-*` combinations.',
+  },
+  'landmark-unique': {
+    concern: 'HTML structure – duplicate landmark roles',
+    tokenFiles: [],
+    guidance:
+      'Only one `<header>`, `<main>`, `<footer>`, and `<nav>` landmark per page. ' +
+      'Secondary "footer-like" sections must use `<div role="group">` instead of `<footer>`. ' +
+      'See html.instructions.md § Landmark Elements.',
+  },
+  'heading-order': {
+    concern: 'Typography – heading hierarchy',
+    tokenFiles: ['_design/tokens/3-typography.json'],
+    guidance:
+      'Heading levels must not skip (h1→h3 without h2).  Check `_layouts/` and `_includes/` ' +
+      'layout-header includes.  If a component hardcodes `<h3>` where `<h2>` is needed, ' +
+      'fix the template — not the token.',
+  },
+  'image-alt': {
+    concern: 'HTML structure – images without alt text',
+    tokenFiles: [],
+    guidance:
+      'All `<img>` elements need an `alt` attribute.  Decorative images use `alt=""`. ' +
+      'Check `_includes/` partials and Liquid templates.',
+  },
+  'button-name': {
+    concern: 'HTML structure – buttons without accessible names',
+    tokenFiles: [],
+    guidance:
+      'Icon-only buttons need `aria-label` or visible text.  Check `_includes/` and ' +
+      'web-component templates.  The `genesis-synapse("execute")` mixin sets interaction ' +
+      'styles but HTML must supply the name.',
+  },
+};
+
+/**
+ * Generates the Design System Review section for the markdown report.
+ * Maps each unique axe violation back to the responsible _design/tokens/ file(s)
+ * so that fixes target the root cause in the design system.
+ *
+ * @param {Array<{label: string, violations: Array, error?: string}>} results
+ * @returns {string[]} Lines to append to the report
+ */
+function generateDesignSystemReview(results) {
+  const lines = [];
+
+  lines.push('---');
+  lines.push('');
+  lines.push('## Design System Review');
+  lines.push('');
+  lines.push(
+    '> **Pipeline context**: ' +
+    'Layer 1 (stylelint / `npm test`) enforces that all colour values originate from ' +
+    '`_design/tokens/` via `$variables` in `_sass/design/`. ' +
+    'Formal dark/light mode tokens (`color.theme.light.*` / `color.theme.dark.*`) flow through ' +
+    '`$color-theme-*` variables into CSS custom properties in `_theme-properties.scss`. ' +
+    'Layer 2 (this axe-core audit) observes rendered contrast and structure without blocking tests. ' +
+    'This section (Layer 3) bridges the two: because every rendered colour traces back to a token, ' +
+    'axe violations point to *token values* that need adjustment, not inline SCSS patches.'
+  );
+  lines.push('');
+
+  // Collect all unique violations across every page
+  /** @type {Map<string, {violation: object, pages: string[]}>} */
+  const allViolations = new Map();
+  for (const r of results) {
+    for (const v of r.violations) {
+      if (!allViolations.has(v.id)) {
+        allViolations.set(v.id, { violation: v, pages: [] });
+      }
+      allViolations.get(v.id).pages.push(r.label);
+    }
+  }
+
+  if (allViolations.size === 0) {
+    lines.push('✅ **No violations to review.** All axe checks passed.');
+    lines.push('');
+    return lines;
+  }
+
+  // Sort by impact (critical first)
+  const impactOrder = { critical: 0, serious: 1, moderate: 2, minor: 3 };
+  const sorted = [...allViolations.entries()].sort(
+    ([, a], [, b]) =>
+      (impactOrder[a.violation.impact] ?? 4) - (impactOrder[b.violation.impact] ?? 4)
+  );
+
+  // Group into: colour/token-traceable vs structural (HTML-only)
+  const tokenTraceable = sorted.filter(([id]) => {
+    const mapping = AXE_RULE_TO_TOKEN_MAP[id];
+    return mapping && mapping.tokenFiles.length > 0;
+  });
+  const structuralOnly = sorted.filter(([id]) => {
+    const mapping = AXE_RULE_TO_TOKEN_MAP[id];
+    return !mapping || mapping.tokenFiles.length === 0;
+  });
+
+  // ── Token-traceable violations ──────────────────────────────────────────────
+  if (tokenTraceable.length > 0) {
+    lines.push('### Token-Traceable Violations');
+    lines.push('');
+    lines.push(
+      'These violations are rooted in `_design/tokens/` values. ' +
+      'Fix the token; never patch contrast in SCSS directly.'
+    );
+    lines.push('');
+
+    for (const [id, { violation: v, pages }] of tokenTraceable) {
+      const mapping = AXE_RULE_TO_TOKEN_MAP[id] ?? {};
+      const impact = v.impact?.toUpperCase() ?? 'UNKNOWN';
+      lines.push(`#### \`${id}\` [${impact}]`);
+      lines.push('');
+      lines.push(`**Concern**: ${mapping.concern ?? v.description}`);
+      lines.push('');
+      lines.push(`**Affected pages** (${pages.length}): ${pages.join(', ')}`);
+      lines.push('');
+      if (mapping.tokenFiles.length > 0) {
+        lines.push(`**Token files to update**: ${mapping.tokenFiles.map((f) => `\`${f}\``).join(', ')}`);
+        lines.push('');
+      }
+      if (mapping.guidance) {
+        lines.push(`**How to fix**: ${mapping.guidance}`);
+        lines.push('');
+      }
+
+      // Surface unique failing foreground/background pairs from node failureSummaries
+      if (id === 'color-contrast' || id === 'color-contrast-enhanced') {
+        const pairs = new Set();
+        for (const n of v.nodes) {
+          const m = n.failureSummary?.match(
+            /foreground color:\s*(#[0-9a-fA-F]{3,8}|oklch[^,)]+(?:\))?)/i
+          );
+          const mb = n.failureSummary?.match(
+            /background color:\s*(#[0-9a-fA-F]{3,8}|oklch[^,)]+(?:\))?)/i
+          );
+          if (m && mb) pairs.add(`fg \`${m[1].trim()}\` on bg \`${mb[1].trim()}\``);
+        }
+        if (pairs.size > 0) {
+          lines.push('**Failing colour pairs** (search these in `_design/tokens/2-color.json`):');
+          lines.push('');
+          for (const p of pairs) lines.push(`- ${p}`);
+          lines.push('');
+        }
+      }
+
+      lines.push(`> axe help: <${v.helpUrl}>`);
+      lines.push('');
+    }
+  }
+
+  // ── Structural-only violations ───────────────────────────────────────────────
+  if (structuralOnly.length > 0) {
+    lines.push('### Structural Violations (HTML / Template)');
+    lines.push('');
+    lines.push(
+      'These violations require HTML or Liquid template fixes, not token changes. ' +
+      'Check `_includes/`, `_layouts/`, and web-component definitions in `assets/js/common/`.'
+    );
+    lines.push('');
+
+    for (const [id, { violation: v, pages }] of structuralOnly) {
+      const mapping = AXE_RULE_TO_TOKEN_MAP[id] ?? {};
+      const impact = v.impact?.toUpperCase() ?? 'UNKNOWN';
+      lines.push(`#### \`${id}\` [${impact}]`);
+      lines.push('');
+      lines.push(`**Concern**: ${mapping.concern ?? v.description}`);
+      lines.push('');
+      lines.push(`**Affected pages** (${pages.length}): ${pages.join(', ')}`);
+      lines.push('');
+      if (mapping.guidance) {
+        lines.push(`**How to fix**: ${mapping.guidance}`);
+        lines.push('');
+      }
+      lines.push(`> axe help: <${v.helpUrl}>`);
+      lines.push('');
+    }
+  }
+
+  // ── Unknown rule IDs (not in the map yet) ────────────────────────────────────
+  const unknown = sorted.filter(([id]) => !AXE_RULE_TO_TOKEN_MAP[id]);
+  if (unknown.length > 0) {
+    lines.push('### Unmapped Violations');
+    lines.push('');
+    lines.push(
+      'These rule IDs are not yet in `AXE_RULE_TO_TOKEN_MAP`. ' +
+      'Add an entry to map them to the responsible design-system concern.'
+    );
+    lines.push('');
+    lines.push('| Rule | Impact | Pages | axe help |');
+    lines.push('|------|--------|-------|----------|');
+    for (const [id, { violation: v, pages }] of unknown) {
+      lines.push(
+        `| \`${id}\` | ${v.impact ?? '–'} | ${pages.length} | <${v.helpUrl}> |`
+      );
+    }
+    lines.push('');
+  }
+
+  return lines;
 }
 
 // ─── Tests ────────────────────────────────────────────────────────────────────
@@ -299,6 +587,10 @@ for (let pageIndex = 0; pageIndex < PAGES.length; pageIndex++) {
           description: `critical:${criticalCount} serious:${seriousCount} moderate:${moderateCount} minor:${minorCount}`,
         });
       }
+
+      // All violations are non-blocking — they are persisted to the JSON
+      // result file and aggregated into the markdown report + Design System
+      // Review by afterAll.  Layer 1 (stylelint) is the enforcement gate.
     } catch (err) {
       result.error = err.message;
       // Re-throw so Playwright marks the test as failed (page was unreachable)

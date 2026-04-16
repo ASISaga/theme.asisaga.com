@@ -13,6 +13,8 @@ $color-accent-neon-blue: oklch(0.65 0.25 230); // Electric neon blue — primary
 $color-accent-neon-blue-bright: oklch(0.75 0.28 225); // Bright electric blue — hover/active state
 $color-accent-neon-blue-glow: oklch(0.70 0.30 228); // Glowing neon blue effect
 $color-accent-neon-blue-accessible: oklch(0.50 0.20 230); // Darker neon blue — WCAG AA on white (4.5:1)
+$color-accent-neon-blue-subtle: oklch(0.65 0.25 230 / 0.10); // Neon blue at 10% — subtle accent tint
+$color-accent-neon-blue-border: oklch(0.65 0.25 230 / 0.3); // Neon blue at 30% — accent border simulation
 $color-accent-gold: oklch(0.70 0.15 85); // Sacred gold accent — subtle secondary accent
 $color-accent-gold-bright: oklch(0.75 0.18 82); // Bright gold — hover state
 $color-accent-gold-muted: oklch(0.60 0.10 88); // Very muted gold — minimal emphasis
@@ -66,5 +68,52 @@ $color-boardroom-error-text: oklch(0.65 0.20 25); // Boardroom error text
 $color-boardroom-bg-overlay: oklch(0.08 0.01 250 / 0.60); // Boardroom overlay
 $color-boardroom-overlay-bg: oklch(0.08 0.015 250 / 0.90); // Boardroom modal overlay
 $color-boardroom-shadow-deep: oklch(0.04 0.01 250 / 0.60); // Boardroom deep shadow
+$color-theme-light-bg: oklch(0.98 0.005 90); // Light mode page background — warm white
+$color-theme-light-bg-surface: oklch(0.95 0.008 85); // Light mode elevated surface
+$color-theme-light-body-color: oklch(0.18 0.01 250); // Light mode body text — near-black
+$color-theme-light-section-bg: oklch(0.96 0.005 220); // Light mode alternating section background
+$color-theme-light-ambient-from: oklch(0.95 0.015 90); // Light mode ambient gradient start
+$color-theme-light-ambient-mid: oklch(0.97 0.008 85); // Light mode ambient gradient middle
+$color-theme-light-ambient-to: oklch(0.96 0.010 95); // Light mode ambient gradient end
+$color-theme-light-header-bg: oklch(0.99 0.005 90 / 0.92); // Light mode header glass background
+$color-theme-light-header-border: oklch(0.85 0.01 220); // Light mode header border
+$color-theme-light-header-shadow: oklch(0.70 0.01 220 / 0.12); // Light mode header shadow
+$color-theme-light-card-bg: oklch(0.99 0.005 90); // Light mode card background
+$color-theme-light-card-border: oklch(0.87 0.01 220); // Light mode card border
+$color-theme-light-glass-surface: oklch(0.99 0.005 90 / 0.85); // Light mode glass surface
+$color-theme-light-glass-hover: oklch(0.97 0.006 90 / 0.92); // Light mode glass hover surface
+$color-theme-light-link: oklch(0.50 0.20 230); // Light mode link color — WCAG AA on white
+$color-theme-light-text-secondary: oklch(0.25 0.01 230); // Light mode secondary text
+$color-theme-light-border-subtle: oklch(0.85 0.01 220); // Light mode subtle border
+$color-theme-light-accent: oklch(0.50 0.20 230); // Light mode primary accent — WCAG AA
+$color-theme-light-accent-secondary: oklch(0.50 0.12 85); // Light mode secondary accent — WCAG AA gold
+$color-theme-dark-bg: oklch(0.04 0.01 260); // Dark mode page background — deep blue-black
+$color-theme-dark-bg-surface: oklch(0.08 0.01 250); // Dark mode elevated surface
+$color-theme-dark-body-color: oklch(0.90 0.005 90); // Dark mode body text — near-white
+$color-theme-dark-section-bg: oklch(0.06 0.01 255); // Dark mode alternating section background
+$color-theme-dark-ambient-from: oklch(0.06 0.02 270); // Dark mode ambient gradient start
+$color-theme-dark-ambient-mid: oklch(0.04 0.01 260); // Dark mode ambient gradient middle
+$color-theme-dark-ambient-to: oklch(0.05 0.015 255); // Dark mode ambient gradient end
+$color-theme-dark-header-bg: oklch(0.06 0.015 255 / 0.85); // Dark mode header glass background
+$color-theme-dark-header-border: oklch(0.25 0.04 250); // Dark mode header neon-tinged border
+$color-theme-dark-header-shadow: oklch(0.05 0.02 250 / 0.40); // Dark mode header deep shadow
+$color-theme-dark-card-bg: oklch(0.10 0.01 250); // Dark mode card background
+$color-theme-dark-card-border: oklch(0.22 0.02 250); // Dark mode card border
+$color-theme-dark-border: oklch(0.35 0.01 220); // Dark mode general border
+$color-theme-dark-border-subtle: oklch(0.25 0.01 220); // Dark mode subtle border
+$color-theme-dark-glass-surface: oklch(0.12 0.015 250 / 0.85); // Dark mode glass surface
+$color-theme-dark-glass-hover: oklch(0.14 0.01 250); // Dark mode glass hover surface
+$color-theme-dark-link: oklch(0.70 0.15 85); // Dark mode link color — gold for visibility
+$color-theme-dark-text-secondary: oklch(0.70 0.005 220); // Dark mode secondary text — muted silver
+$color-theme-dark-accent: oklch(0.65 0.25 230); // Dark mode primary accent — full neon blue
+$color-theme-dark-accent-secondary: oklch(0.75 0.18 82); // Dark mode secondary accent — bright gold
+$color-synapse-danger-bg: oklch(0.50 0.22 25); // Danger/destructive action background
+$color-synapse-danger-border: oklch(0.45 0.25 25); // Danger/destructive action border
+$color-synapse-danger-hover: oklch(0.45 0.24 25); // Danger/destructive action hover
+$color-synapse-danger-glow: oklch(0.50 0.22 25 / 0.5); // Danger/destructive action glow effect
+$color-synapse-social-bg: oklch(0.65 0.25 230 / 0.2); // Social action background — neon blue tint
+$color-synapse-social-hover: oklch(0.65 0.25 230 / 0.4); // Social action hover/glow — neon blue 40%
+$color-synapse-warning: oklch(0.65 0.18 65); // Warning accent color
+$color-void-deep: oklch(0.03 0.01 260); // Deepest void — near-absolute darkness
 $color-brand-linkedin: #0077b5; // LinkedIn brand blue
 $color-brand-linkedin-hover: #00568a; // LinkedIn brand blue hover state

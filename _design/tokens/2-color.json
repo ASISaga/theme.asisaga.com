@@ -62,6 +62,16 @@
         "$value": "oklch(0.50 0.20 230)",
         "$description": "Darker neon blue — WCAG AA on white (4.5:1)"
       },
+      "neon-blue-subtle": {
+        "$type": "color",
+        "$value": "oklch(0.65 0.25 230 / 0.10)",
+        "$description": "Neon blue at 10% — subtle accent tint"
+      },
+      "neon-blue-border": {
+        "$type": "color",
+        "$value": "oklch(0.65 0.25 230 / 0.3)",
+        "$description": "Neon blue at 30% — accent border simulation"
+      },
       "gold": {
         "$type": "color",
         "$value": "oklch(0.70 0.15 85)",
@@ -338,6 +348,251 @@
         "$type": "color",
         "$value": "oklch(0.04 0.01 250 / 0.60)",
         "$description": "Boardroom deep shadow"
+      }
+    },
+    "theme": {
+      "light": {
+        "bg": {
+          "$type": "color",
+          "$value": "oklch(0.98 0.005 90)",
+          "$description": "Light mode page background — warm white"
+        },
+        "bg-surface": {
+          "$type": "color",
+          "$value": "oklch(0.95 0.008 85)",
+          "$description": "Light mode elevated surface"
+        },
+        "body-color": {
+          "$type": "color",
+          "$value": "oklch(0.18 0.01 250)",
+          "$description": "Light mode body text — near-black"
+        },
+        "section-bg": {
+          "$type": "color",
+          "$value": "oklch(0.96 0.005 220)",
+          "$description": "Light mode alternating section background"
+        },
+        "ambient-from": {
+          "$type": "color",
+          "$value": "oklch(0.95 0.015 90)",
+          "$description": "Light mode ambient gradient start"
+        },
+        "ambient-mid": {
+          "$type": "color",
+          "$value": "oklch(0.97 0.008 85)",
+          "$description": "Light mode ambient gradient middle"
+        },
+        "ambient-to": {
+          "$type": "color",
+          "$value": "oklch(0.96 0.010 95)",
+          "$description": "Light mode ambient gradient end"
+        },
+        "header-bg": {
+          "$type": "color",
+          "$value": "oklch(0.99 0.005 90 / 0.92)",
+          "$description": "Light mode header glass background"
+        },
+        "header-border": {
+          "$type": "color",
+          "$value": "oklch(0.85 0.01 220)",
+          "$description": "Light mode header border"
+        },
+        "header-shadow": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.01 220 / 0.12)",
+          "$description": "Light mode header shadow"
+        },
+        "card-bg": {
+          "$type": "color",
+          "$value": "oklch(0.99 0.005 90)",
+          "$description": "Light mode card background"
+        },
+        "card-border": {
+          "$type": "color",
+          "$value": "oklch(0.87 0.01 220)",
+          "$description": "Light mode card border"
+        },
+        "glass-surface": {
+          "$type": "color",
+          "$value": "oklch(0.99 0.005 90 / 0.85)",
+          "$description": "Light mode glass surface"
+        },
+        "glass-hover": {
+          "$type": "color",
+          "$value": "oklch(0.97 0.006 90 / 0.92)",
+          "$description": "Light mode glass hover surface"
+        },
+        "link": {
+          "$type": "color",
+          "$value": "{color.accent.neon-blue-accessible}",
+          "$description": "Light mode link color — WCAG AA on white"
+        },
+        "text-secondary": {
+          "$type": "color",
+          "$value": "{color.text.secondary}",
+          "$description": "Light mode secondary text"
+        },
+        "border-subtle": {
+          "$type": "color",
+          "$value": "{color.border.light}",
+          "$description": "Light mode subtle border"
+        },
+        "accent": {
+          "$type": "color",
+          "$value": "{color.accent.neon-blue-accessible}",
+          "$description": "Light mode primary accent — WCAG AA"
+        },
+        "accent-secondary": {
+          "$type": "color",
+          "$value": "{color.accent.gold-accessible}",
+          "$description": "Light mode secondary accent — WCAG AA gold"
+        }
+      },
+      "dark": {
+        "bg": {
+          "$type": "color",
+          "$value": "oklch(0.04 0.01 260)",
+          "$description": "Dark mode page background — deep blue-black"
+        },
+        "bg-surface": {
+          "$type": "color",
+          "$value": "oklch(0.08 0.01 250)",
+          "$description": "Dark mode elevated surface"
+        },
+        "body-color": {
+          "$type": "color",
+          "$value": "oklch(0.90 0.005 90)",
+          "$description": "Dark mode body text — near-white"
+        },
+        "section-bg": {
+          "$type": "color",
+          "$value": "oklch(0.06 0.01 255)",
+          "$description": "Dark mode alternating section background"
+        },
+        "ambient-from": {
+          "$type": "color",
+          "$value": "oklch(0.06 0.02 270)",
+          "$description": "Dark mode ambient gradient start"
+        },
+        "ambient-mid": {
+          "$type": "color",
+          "$value": "oklch(0.04 0.01 260)",
+          "$description": "Dark mode ambient gradient middle"
+        },
+        "ambient-to": {
+          "$type": "color",
+          "$value": "oklch(0.05 0.015 255)",
+          "$description": "Dark mode ambient gradient end"
+        },
+        "header-bg": {
+          "$type": "color",
+          "$value": "oklch(0.06 0.015 255 / 0.85)",
+          "$description": "Dark mode header glass background"
+        },
+        "header-border": {
+          "$type": "color",
+          "$value": "oklch(0.25 0.04 250)",
+          "$description": "Dark mode header neon-tinged border"
+        },
+        "header-shadow": {
+          "$type": "color",
+          "$value": "oklch(0.05 0.02 250 / 0.40)",
+          "$description": "Dark mode header deep shadow"
+        },
+        "card-bg": {
+          "$type": "color",
+          "$value": "oklch(0.10 0.01 250)",
+          "$description": "Dark mode card background"
+        },
+        "card-border": {
+          "$type": "color",
+          "$value": "oklch(0.22 0.02 250)",
+          "$description": "Dark mode card border"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "oklch(0.35 0.01 220)",
+          "$description": "Dark mode general border"
+        },
+        "border-subtle": {
+          "$type": "color",
+          "$value": "oklch(0.25 0.01 220)",
+          "$description": "Dark mode subtle border"
+        },
+        "glass-surface": {
+          "$type": "color",
+          "$value": "oklch(0.12 0.015 250 / 0.85)",
+          "$description": "Dark mode glass surface"
+        },
+        "glass-hover": {
+          "$type": "color",
+          "$value": "oklch(0.14 0.01 250)",
+          "$description": "Dark mode glass hover surface"
+        },
+        "link": {
+          "$type": "color",
+          "$value": "{color.accent.gold}",
+          "$description": "Dark mode link color — gold for visibility"
+        },
+        "text-secondary": {
+          "$type": "color",
+          "$value": "oklch(0.70 0.005 220)",
+          "$description": "Dark mode secondary text — muted silver"
+        },
+        "accent": {
+          "$type": "color",
+          "$value": "{color.accent.neon-blue}",
+          "$description": "Dark mode primary accent — full neon blue"
+        },
+        "accent-secondary": {
+          "$type": "color",
+          "$value": "{color.accent.gold-bright}",
+          "$description": "Dark mode secondary accent — bright gold"
+        }
+      }
+    },
+    "synapse": {
+      "danger-bg": {
+        "$type": "color",
+        "$value": "oklch(0.50 0.22 25)",
+        "$description": "Danger/destructive action background"
+      },
+      "danger-border": {
+        "$type": "color",
+        "$value": "oklch(0.45 0.25 25)",
+        "$description": "Danger/destructive action border"
+      },
+      "danger-hover": {
+        "$type": "color",
+        "$value": "oklch(0.45 0.24 25)",
+        "$description": "Danger/destructive action hover"
+      },
+      "danger-glow": {
+        "$type": "color",
+        "$value": "oklch(0.50 0.22 25 / 0.5)",
+        "$description": "Danger/destructive action glow effect"
+      },
+      "social-bg": {
+        "$type": "color",
+        "$value": "oklch(0.65 0.25 230 / 0.2)",
+        "$description": "Social action background — neon blue tint"
+      },
+      "social-hover": {
+        "$type": "color",
+        "$value": "oklch(0.65 0.25 230 / 0.4)",
+        "$description": "Social action hover/glow — neon blue 40%"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "oklch(0.65 0.18 65)",
+        "$description": "Warning accent color"
+      }
+    },
+    "void": {
+      "deep": {
+        "$type": "color",
+        "$value": "oklch(0.03 0.01 260)",
+        "$description": "Deepest void — near-absolute darkness"
       }
     },
     "brand": {

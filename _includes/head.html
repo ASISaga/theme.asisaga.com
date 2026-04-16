@@ -9,10 +9,15 @@
   <!-- Early theme init — prevents flash of wrong theme colour -->
   <script>
     (function () {
+      // Safe default — used when localStorage throws (e.g., Safari private mode)
+      var t = 'light';
       try {
-        var t = localStorage.getItem('genesis-theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', t);
+        t = localStorage.getItem('genesis-theme');
+        if (t !== 'dark' && t !== 'light') {
+          t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        }
       } catch (_) {}
+      document.documentElement.setAttribute('data-theme', t);
     })();
   </script>
 
