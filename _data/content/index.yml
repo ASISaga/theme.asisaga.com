@@ -21,8 +21,8 @@ samples:
   categories:
     - label: "Curated"
       items:
-        - title: "Genesis Chronicle (Full Index)"
-          url: "/samples/index.html"
+        - title: "Genesis Chronicle (Samples Index)"
+          url: "/samples/"
     - label: "Application"
       items:
         - title: "Chatroom"
