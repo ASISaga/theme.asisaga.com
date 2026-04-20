@@ -499,36 +499,15 @@ Content sourced from: _data/content/index.yml
 			</header>
 
 			<ul class="accessibility-list">
+				{% assign a11y_icons = "fas fa-pause-circle,fas fa-adjust,fas fa-hand-point-up,fas fa-crosshairs,fas fa-mobile-alt,fas fa-window-restore" | split: "," %}
+				{% for feature in _idx.accessibility.features %}
+				{% assign a11y_icon = a11y_icons[forloop.index0] | default: "fas fa-check" %}
 				<li>
-					<i class="fas fa-pause-circle" aria-hidden="true"></i>
-					<strong>{{ _idx.accessibility.features[0].title }}:</strong>
-					{{ _idx.accessibility.features[0].description }}
+					<i class="{{ a11y_icon }}" aria-hidden="true"></i>
+					<strong>{{ feature.title }}:</strong>
+					{{ feature.description }}
 				</li>
-				<li>
-					<i class="fas fa-adjust" aria-hidden="true"></i>
-					<strong>{{ _idx.accessibility.features[1].title }}:</strong>
-					{{ _idx.accessibility.features[1].description }}
-				</li>
-				<li>
-					<i class="fas fa-hand-point-up" aria-hidden="true"></i>
-					<strong>{{ _idx.accessibility.features[2].title }}:</strong>
-					{{ _idx.accessibility.features[2].description }}
-				</li>
-				<li>
-					<i class="fas fa-crosshairs" aria-hidden="true"></i>
-					<strong>{{ _idx.accessibility.features[3].title }}:</strong>
-					{{ _idx.accessibility.features[3].description }}
-				</li>
-				<li>
-					<i class="fas fa-mobile-alt" aria-hidden="true"></i>
-					<strong>{{ _idx.accessibility.features[4].title }}:</strong>
-					{{ _idx.accessibility.features[4].description }}
-				</li>
-				<li>
-					<i class="fas fa-window-restore" aria-hidden="true"></i>
-					<strong>{{ _idx.accessibility.features[5].title }}:</strong>
-					{{ _idx.accessibility.features[5].description }}
-				</li>
+				{% endfor %}
 			</ul>
 		</div>
 	</section>
