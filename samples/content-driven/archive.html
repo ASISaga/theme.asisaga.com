@@ -14,13 +14,22 @@ show_pagination: true
 <article class="archive-item">
   <div class="archive-item__content">
     <h3 class="archive-item__title">
-      <a href="{{ item.url }}" class="archive-item__link">{{ item.headline }}</a>
+      <a href="{{ item.url }}" class="archive-item__link">
+        <i class="fas fa-file-alt archive-item__icon" aria-hidden="true"></i>
+        {{ item.headline }}
+      </a>
     </h3>
-    <time datetime="{{ item.datePublished }}" class="archive-item__date">{{ item.datePublished | date: "%B %d, %Y" }}</time>
+    <time datetime="{{ item.datePublished }}" class="archive-item__date">
+      <i class="far fa-calendar-alt" aria-hidden="true"></i>
+      {{ item.datePublished | date: "%B %d, %Y" }}
+    </time>
     <p class="archive-item__excerpt">{{ item.description }}</p>
     <div class="archive-item__tags">
       {% for keyword in item.keywords %}
-      <span class="archive-item__tag">{{ keyword }}</span>
+      <span class="archive-item__tag">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        {{ keyword }}
+      </span>
       {% endfor %}
     </div>
   </div>
