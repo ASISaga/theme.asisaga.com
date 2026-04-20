@@ -24,7 +24,7 @@ tabs:
 
 <!-- Identity -->
 <div class="settings-pane settings-pane--active" id="identity" role="tabpanel">
-  <genesis-cognition intent="motive"><h3 class="settings-pane__heading">Theme Identity</h3></genesis-cognition>
+  <genesis-cognition intent="motive"><h3 class="settings-pane__heading"><i class="fas fa-id-card" aria-hidden="true"></i> Theme Identity</h3></genesis-cognition>
 
   <form class="settings-form">
     <div class="settings-form__row">
@@ -57,7 +57,7 @@ tabs:
 
 <!-- Ontology -->
 <div class="settings-pane" id="ontology" role="tabpanel">
-  <genesis-cognition intent="motive"><h3 class="settings-pane__heading">Ontological Categories</h3></genesis-cognition>
+  <genesis-cognition intent="motive"><h3 class="settings-pane__heading"><i class="fas fa-layer-group" aria-hidden="true"></i> Ontological Categories</h3></genesis-cognition>
 
   <form class="settings-form">
     {% for term in site.data.samples.ontology.hasDefinedTerm %}
@@ -75,7 +75,7 @@ tabs:
 
 <!-- Layouts -->
 <div class="settings-pane" id="layouts" role="tabpanel">
-  <genesis-cognition intent="motive"><h3 class="settings-pane__heading">Layout Configuration</h3></genesis-cognition>
+  <genesis-cognition intent="motive"><h3 class="settings-pane__heading"><i class="fas fa-columns" aria-hidden="true"></i> Layout Configuration</h3></genesis-cognition>
 
   <form class="settings-form">
     {% assign categories = "" | split: "" %}
@@ -104,11 +104,11 @@ tabs:
 
 <!-- Accessibility -->
 <div class="settings-pane" id="accessibility" role="tabpanel">
-  <genesis-cognition intent="motive"><h3 class="settings-pane__heading">Accessibility</h3></genesis-cognition>
+  <genesis-cognition intent="motive"><h3 class="settings-pane__heading"><i class="fas fa-universal-access" aria-hidden="true"></i> Accessibility</h3></genesis-cognition>
 
   <form class="settings-form">
     <section class="settings-form__section">
-      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">WCAG Compliance</h4></genesis-cognition>
+      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading"><i class="fas fa-check-circle" aria-hidden="true"></i> WCAG Compliance</h4></genesis-cognition>
       <label class="settings-form__toggle"><input type="checkbox" id="wcagAA" checked><span>Enforce WCAG AA contrast (4.5:1)</span></label>
       <label class="settings-form__toggle"><input type="checkbox" id="touchTargets" checked><span>44px minimum touch targets</span></label>
       <label class="settings-form__toggle"><input type="checkbox" id="skipLinks" checked><span>Skip navigation links</span></label>
@@ -116,7 +116,7 @@ tabs:
     </section>
 
     <section class="settings-form__section">
-      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">Motion & Contrast</h4></genesis-cognition>
+      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading"><i class="fas fa-running" aria-hidden="true"></i> Motion &amp; Contrast</h4></genesis-cognition>
       <label class="settings-form__toggle"><input type="checkbox" id="reducedMotion" checked><span>Respect prefers-reduced-motion</span></label>
       <label class="settings-form__toggle"><input type="checkbox" id="highContrast" checked><span>Respect prefers-contrast: more</span></label>
     </section>
@@ -125,11 +125,11 @@ tabs:
 
 <!-- Preferences -->
 <div class="settings-pane" id="preferences" role="tabpanel">
-  <genesis-cognition intent="motive"><h3 class="settings-pane__heading">Preferences</h3></genesis-cognition>
+  <genesis-cognition intent="motive"><h3 class="settings-pane__heading"><i class="fas fa-sliders-h" aria-hidden="true"></i> Preferences</h3></genesis-cognition>
 
   <form class="settings-form">
     <section class="settings-form__section">
-      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">Appearance</h4></genesis-cognition>
+      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading"><i class="fas fa-paint-brush" aria-hidden="true"></i> Appearance</h4></genesis-cognition>
       <div class="settings-form__field">
         <label for="atmosphere" class="settings-form__label">Default Atmosphere</label>
         <select class="settings-form__input settings-form__select" id="atmosphere">
@@ -152,7 +152,7 @@ tabs:
     </section>
 
     <section class="settings-form__section">
-      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading">Typography</h4></genesis-cognition>
+      <genesis-cognition intent="gloss"><h4 class="settings-form__subheading"><i class="fas fa-font" aria-hidden="true"></i> Typography</h4></genesis-cognition>
       <label class="settings-form__toggle"><input type="checkbox" id="fluidType" checked><span>Fluid clamp() typography</span></label>
       <label class="settings-form__toggle"><input type="checkbox" id="containerQueries" checked><span>Container queries for components</span></label>
     </section>

@@ -5,33 +5,36 @@ title: Genesis Theme Demo - Futuristic Design System
 
 {% assign _idx = site.data.content.index %}
 <!--
-Genesis Theme Demo - Comprehensive showcase of the ASI Saga Futuristic Design System
-This page demonstrates responsive behavior, futuristic aesthetics, and the ontological SCSS engine
+Genesis Theme Demo — Comprehensive showcase of the ASI Saga Futuristic Design System
+Also serves as the canonical Genesis Chronicle index: all sample pages, categorised by theme.
 Content sourced from: _data/content/index.yml
 -->
 <div class="genesis-demo">
-	<!-- Samples Links -->
-	<section id="samples-links" class="demo-section demo-section--compact">
-		<header class="section-header">
-			<h2>{{ _idx.samples.heading }}</h2>
-			<p>{{ _idx.samples.description }}</p>
-			<p><a href="/samples/">Open the curated Genesis Chronicle index</a></p>
-		</header>
-		<div class="samples-list">
-			<ul>
-				{% for category in _idx.samples.categories %}
-				<li><strong>{{ category.label }}:</strong>
-					<ul>
-						{% for item in category.items %}
-						<li><a href="{{ item.url }}">{{ item.title }}</a></li>
-						{% endfor %}
-					</ul>
-				</li>
-				{% endfor %}
-			</ul>
+
+	<!-- ============================================================
+	     Theme Toggle Bar — persists preference across all pages
+	============================================================ -->
+	<section class="samples-index__theme-bar" aria-label="Appearance controls">
+		<div class="samples-index__theme-bar-inner">
+			<span class="samples-index__theme-label">Appearance</span>
+			<button
+				class="samples-index__theme-toggle"
+				type="button"
+				data-theme-toggle
+				aria-pressed="true"
+				aria-label="Switch to light mode"
+				title="Switch to light mode"
+			>
+				<span class="samples-index__theme-toggle-track" aria-hidden="true">
+					<span class="samples-index__theme-toggle-thumb"></span>
+				</span>
+				<i class="fas fa-moon samples-index__theme-toggle-icon" data-theme-icon aria-hidden="true"></i>
+				<span class="samples-index__theme-toggle-text" data-theme-label>Dark</span>
+			</button>
 		</div>
 	</section>
-	<!-- Hero Section - Full Viewport Immersive Experience -->
+
+	<!-- Hero Section — Full Viewport Immersive Experience -->
 	<section class="demo-hero genesis-hero">
 		<div class="hero-background">
 			<div class="cosmic-particles"></div>
@@ -42,8 +45,14 @@ Content sourced from: _data/content/index.yml
 			<h1 class="hero-title">{{ _idx.hero.title }}</h1>
 			<p class="hero-subtitle">{{ _idx.hero.subtitle }}</p>
 			<div class="hero-actions">
-				<a href="{{ _idx.hero.primary_action.url }}" class="btn-genesis-primary">{{ _idx.hero.primary_action.text }}</a>
-				<a href="{{ _idx.hero.secondary_action.url }}" class="btn-genesis-secondary">{{ _idx.hero.secondary_action.text }}</a>
+				<a href="{{ _idx.hero.primary_action.url }}" class="btn-genesis-primary">
+					<i class="fas fa-layer-group" aria-hidden="true"></i>
+					{{ _idx.hero.primary_action.text }}
+				</a>
+				<a href="{{ _idx.hero.secondary_action.url }}" class="btn-genesis-secondary">
+					<i class="fas fa-expand-arrows-alt" aria-hidden="true"></i>
+					{{ _idx.hero.secondary_action.text }}
+				</a>
 			</div>
 		</div>
 		<div class="scroll-indicator" aria-hidden="true">
@@ -51,11 +60,296 @@ Content sourced from: _data/content/index.yml
 		</div>
 	</section>
 
+	<!-- Genesis Chronicle — Categorised Sample Pages Index -->
+	<section id="samples-links" class="samples-index" aria-labelledby="chronicle-heading">
+		<header class="samples-index__header">
+			<h2 id="chronicle-heading" class="samples-index__title">
+				<i class="fas fa-book-reader" aria-hidden="true"></i>
+				The Genesis Chronicle
+			</h2>
+			<p class="samples-index__subtitle">
+				A design system that knows why it looks the way it does. Explore the philosophy through articles,
+				the innovations through interactive layouts, and the architecture through living demonstrations.
+			</p>
+		</header>
+
+		<!-- The Thinking -->
+		<section class="samples-index__category">
+			<h3 class="samples-index__category-heading">
+				<i class="fas fa-feather-alt" aria-hidden="true"></i>
+				The Thinking
+			</h3>
+			<ul class="samples-index__list">
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/content-driven/article.html">
+						<i class="fas fa-scroll samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>The Death of Utility Classes</strong>
+							<span>A manifesto: why ontological CSS changes everything about how we build interfaces.</span>
+						</span>
+					</a>
+				</li>
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/content-driven/post.html">
+						<i class="fas fa-dna samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>Design With Memory</strong>
+							<span>How AI agents evolve a living design genome where every variant has an origin story.</span>
+						</span>
+					</a>
+				</li>
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/content-driven/property-ownership.html">
+						<i class="fas fa-sitemap samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>Property Ownership</strong>
+							<span>The architectural rule that makes CSS conflicts impossible by design.</span>
+						</span>
+					</a>
+				</li>
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/content-driven/oklch.html">
+						<i class="fas fa-eye samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>OKLCH: The Color Space Your Eyes Were Waiting For</strong>
+							<span>Why hex codes lie to your brain and how perceptual uniformity changes everything.</span>
+						</span>
+					</a>
+				</li>
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/content-driven/atmosphere.html">
+						<i class="fas fa-cloud-moon samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>The Void and the Ethereal</strong>
+							<span>How a single word — void, ethereal, sacred — sets the emotional tone of an entire page.</span>
+						</span>
+					</a>
+				</li>
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/content-driven/accessibility.html">
+						<i class="fas fa-universal-access samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>Accessibility Is Not a Feature — It Is the Architecture</strong>
+							<span>WCAG compliance as a structural guarantee. Touch targets that cannot shrink.</span>
+						</span>
+					</a>
+				</li>
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/content-driven/web-components.html">
+						<i class="fas fa-puzzle-piece samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>Web Components Without the Framework Tax</strong>
+							<span>17 Lit-based custom elements. No Shadow DOM. No build step. No framework runtime.</span>
+						</span>
+					</a>
+				</li>
+			</ul>
+		</section>
+
+		<!-- The Content Hub -->
+		<section class="samples-index__category">
+			<h3 class="samples-index__category-heading">
+				<i class="fas fa-book-open" aria-hidden="true"></i>
+				The Content Hub
+			</h3>
+			<ul class="samples-index__list">
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/content-driven/archive.html">
+						<i class="fas fa-list samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>The Chronicle Archive</strong>
+							<span>Every article, filterable by date and topic. All real links, all real content.</span>
+						</span>
+					</a>
+				</li>
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/content-driven/profile.html">
+						<i class="fas fa-users samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>The Architects of Intent</strong>
+							<span>Meet the collective and the philosophy behind the genome.</span>
+						</span>
+					</a>
+				</li>
+			</ul>
+		</section>
+
+		<!-- The Stage -->
+		<section class="samples-index__category">
+			<h3 class="samples-index__category-heading">
+				<i class="fas fa-bullhorn" aria-hidden="true"></i>
+				The Stage
+			</h3>
+			<ul class="samples-index__list">
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/marketing/landing.html">
+						<i class="fas fa-rocket samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>Your CSS Should Know Why It Exists</strong>
+							<span>The landing page that makes the case for ontological design.</span>
+						</span>
+					</a>
+				</li>
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/marketing/gallery.html">
+						<i class="fas fa-images samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>The Visual Language of Intent</strong>
+							<span>Each image represents an ontological category in visual form.</span>
+						</span>
+					</a>
+				</li>
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/marketing/form.html">
+						<i class="fas fa-flask samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>Propose a Variant</strong>
+							<span>The ontological proposition form — how the genome grows from the edges.</span>
+						</span>
+					</a>
+				</li>
+			</ul>
+		</section>
+
+		<!-- The Knowledge Base -->
+		<section class="samples-index__category">
+			<h3 class="samples-index__category-heading">
+				<i class="fas fa-graduation-cap" aria-hidden="true"></i>
+				The Knowledge Base
+			</h3>
+			<ul class="samples-index__list">
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/knowledge/docs.html">
+						<i class="fas fa-book samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>Getting Started</strong>
+							<span>From clone to first page in under ten minutes.</span>
+						</span>
+					</a>
+				</li>
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/knowledge/faq.html">
+						<i class="fas fa-question-circle samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>Questions People Actually Ask</strong>
+							<span>The real questions — about utility classes, AI reviewers, and hex code absence.</span>
+						</span>
+					</a>
+				</li>
+			</ul>
+		</section>
+
+		<!-- The Control Room -->
+		<section class="samples-index__category">
+			<h3 class="samples-index__category-heading">
+				<i class="fas fa-laptop-code" aria-hidden="true"></i>
+				The Control Room
+			</h3>
+			<ul class="samples-index__list">
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/application/dashboard.html">
+						<i class="fas fa-heartbeat samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>The Pulse of the Genome</strong>
+							<span>Metrics that tell the story of system evolution — variants, layouts, tokens.</span>
+						</span>
+					</a>
+				</li>
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/application/chatroom.html">
+						<i class="fas fa-comments samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>The Boardroom</strong>
+							<span>A real-time chat interface — glassmorphism, multi-domain, live presence.</span>
+						</span>
+					</a>
+				</li>
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/application/search.html">
+						<i class="fas fa-search samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>Explore the Genome</strong>
+							<span>Search across articles, variants, and architectural concepts.</span>
+						</span>
+					</a>
+				</li>
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/application/settings.html">
+						<i class="fas fa-cog samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>Theme Configuration</strong>
+							<span>Identity, ontology, layouts, accessibility, and preferences.</span>
+						</span>
+					</a>
+				</li>
+			</ul>
+		</section>
+
+		<!-- The Lab -->
+		<section class="samples-index__category">
+			<h3 class="samples-index__category-heading">
+				<i class="fas fa-flask" aria-hidden="true"></i>
+				The Lab
+			</h3>
+			<ul class="samples-index__list">
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/enhanced-showcase/">
+						<i class="fas fa-cubes samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>Enhanced Component Showcase</strong>
+							<span>Expanded semantic component patterns with interactive accessibility demonstrations.</span>
+						</span>
+					</a>
+				</li>
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/ontology-examples/">
+						<i class="fas fa-network-wired samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>Ontology System Examples</strong>
+							<span>Applied examples showing each ontological category in practical component structures.</span>
+						</span>
+					</a>
+				</li>
+			</ul>
+		</section>
+
+		<!-- The Edges -->
+		<section class="samples-index__category">
+			<h3 class="samples-index__category-heading">
+				<i class="fas fa-satellite" aria-hidden="true"></i>
+				The Edges
+			</h3>
+			<ul class="samples-index__list">
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/utility/splash.html">
+						<i class="fas fa-star samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>Genesis 4.0 — The Genome Evolves</strong>
+							<span>Countdown to the next major evolution of the design system.</span>
+						</span>
+					</a>
+				</li>
+				<li class="samples-index__item">
+					<a class="samples-index__link" href="/samples/utility/404.html">
+						<i class="fas fa-ghost samples-index__link-icon" aria-hidden="true"></i>
+						<span class="samples-index__link-body">
+							<strong>Lost in the Void</strong>
+							<span>Even 404 pages deserve ontological care and creative voice.</span>
+						</span>
+					</a>
+				</li>
+			</ul>
+		</section>
+	</section>
+
 	<!-- Responsive Grid Demo -->
 	<section id="responsive" class="demo-section">
 		<div class="consciousness-viewport">
 			<header class="section-header">
-				<h2>{{ _idx.grid.heading }}</h2>
+				<h2>
+					<i class="fas fa-th-large" aria-hidden="true"></i>
+					{{ _idx.grid.heading }}
+				</h2>
 				<p>{{ _idx.grid.description }}</p>
 			</header>
 
@@ -76,7 +370,10 @@ Content sourced from: _data/content/index.yml
 	<section id="typography" class="demo-section demo-section--void">
 		<div class="essence-viewport">
 			<header class="section-header">
-				<h2>{{ _idx.typography.heading }}</h2>
+				<h2>
+					<i class="fas fa-font" aria-hidden="true"></i>
+					{{ _idx.typography.heading }}
+				</h2>
 				<p>{{ _idx.typography.description }}</p>
 			</header>
 
@@ -96,14 +393,20 @@ Content sourced from: _data/content/index.yml
 	<section id="components" class="demo-section">
 		<div class="consciousness-viewport">
 			<header class="section-header">
-				<h2>{{ _idx.components.heading }}</h2>
+				<h2>
+					<i class="fas fa-hand-pointer" aria-hidden="true"></i>
+					{{ _idx.components.heading }}
+				</h2>
 				<p>{{ _idx.components.description }}</p>
 			</header>
 
 			<div class="components-grid">
 				<!-- Buttons -->
 				<div class="component-group">
-					<h3>{{ _idx.components.buttons.heading }}</h3>
+					<h3>
+						<i class="fas fa-mouse-pointer" aria-hidden="true"></i>
+						{{ _idx.components.buttons.heading }}
+					</h3>
 					<div class="button-showcase">
 						{% for btn in _idx.components.buttons.items %}
 						<button class="{{ btn.class }}">{{ btn.label }}</button>
@@ -113,7 +416,10 @@ Content sourced from: _data/content/index.yml
 
 				<!-- Form Inputs -->
 				<div class="component-group">
-					<h3>{{ _idx.components.forms.heading }}</h3>
+					<h3>
+						<i class="fas fa-edit" aria-hidden="true"></i>
+						{{ _idx.components.forms.heading }}
+					</h3>
 					<form class="demo-form" onsubmit="return false;">
 						{% for field in _idx.components.forms.fields %}
 						<div class="form-field">
@@ -136,7 +442,10 @@ Content sourced from: _data/content/index.yml
 
 				<!-- Cards with Effects -->
 				<div class="component-group component-group--wide">
-					<h3>{{ _idx.components.effects.heading }}</h3>
+					<h3>
+						<i class="fas fa-layer-group" aria-hidden="true"></i>
+						{{ _idx.components.effects.heading }}
+					</h3>
 					<div class="cards-showcase">
 						{% for card in _idx.components.effects.cards %}
 						<div class="effect-card effect-card--{{ card.variant }}">
@@ -154,13 +463,18 @@ Content sourced from: _data/content/index.yml
 	<section id="navigation" class="demo-section demo-section--vibrant">
 		<div class="consciousness-viewport">
 			<header class="section-header">
-				<h2>{{ _idx.navigation.heading }}</h2>
+				<h2>
+					<i class="fas fa-compass" aria-hidden="true"></i>
+					{{ _idx.navigation.heading }}
+				</h2>
 				<p>{{ _idx.navigation.description }}</p>
 			</header>
 
 			<div class="nav-demo">
 				<p class="demo-instruction">
+					<i class="fas fa-mobile-alt" aria-hidden="true"></i>
 					<strong>Mobile ({{ _idx.navigation.instruction.mobile_breakpoint }}):</strong> {{ _idx.navigation.instruction.mobile }}<br>
+					<i class="fas fa-desktop" aria-hidden="true"></i>
 					<strong>Desktop ({{ _idx.navigation.instruction.desktop_breakpoint }}):</strong> {{ _idx.navigation.instruction.desktop }}
 				</p>
 
@@ -177,13 +491,19 @@ Content sourced from: _data/content/index.yml
 	<section id="accessibility" class="demo-section">
 		<div class="essence-viewport">
 			<header class="section-header">
-				<h2>{{ _idx.accessibility.heading }}</h2>
+				<h2>
+					<i class="fas fa-universal-access" aria-hidden="true"></i>
+					{{ _idx.accessibility.heading }}
+				</h2>
 				<p>{{ _idx.accessibility.description }}</p>
 			</header>
 
 			<ul class="accessibility-list">
+				{% assign a11y_icons = "fas fa-pause-circle,fas fa-adjust,fas fa-hand-point-up,fas fa-crosshairs,fas fa-mobile-alt,fas fa-window-restore" | split: "," %}
 				{% for feature in _idx.accessibility.features %}
+				{% assign a11y_icon = a11y_icons[forloop.index0] | default: "fas fa-check" %}
 				<li>
+					<i class="{{ a11y_icon }}" aria-hidden="true"></i>
 					<strong>{{ feature.title }}:</strong>
 					{{ feature.description }}
 				</li>
@@ -196,6 +516,7 @@ Content sourced from: _data/content/index.yml
 	<section id="viewport-info" class="demo-section demo-section--compact">
 		<div class="consciousness-viewport">
 			<div class="viewport-display">
+				<i class="fas fa-expand-arrows-alt" aria-hidden="true"></i>
 				<span class="viewport-label">{{ _idx.viewport.label }}</span>
 				{% for bp in _idx.viewport.breakpoints %}
 				<span class="viewport-value {{ bp.class }}">{{ bp.label }}</span>

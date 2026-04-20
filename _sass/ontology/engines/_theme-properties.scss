@@ -65,6 +65,16 @@
   // Z-index (runtime override)
   --z-transcendent: 1000;
 
+  // ─── Form / Input tokens (light-safe defaults) ────────────────────────────
+  // Used by genesis-synapse('input-primary') and related input variants.
+  // Must be overridden in [data-theme="dark"] to restore dark palette.
+  --input-bg: #{$color-light-white};
+  --input-hover: #{$color-theme-light-bg-surface};
+  --input-focus: #{$color-light-white};
+  --input-disabled: #{$color-theme-light-section-bg};
+  --border-input: #{$color-border-light};
+  --bg-primary: #{$color-light-white};
+
   // ─── Theme-aware tokens (light-safe defaults) ─────────────────────────────
   // Consumed by genesis-body, genesis-ambient, and the header. Switching
   // data-theme on <html> is sufficient to re-colour the entire page.
@@ -113,6 +123,14 @@
   --glass-light: #{$color-theme-dark-glass-surface};
   --glass-hover: #{$color-theme-dark-glass-hover};
 
+  // Form / Input tokens — dark palette
+  --input-bg: #{$color-cosmos-depth-presence};
+  --input-hover: #{$color-spark-depth-dense};
+  --input-focus: #{$color-spark-depth-dense};
+  --input-disabled: #{$color-ether-depth-glass};
+  --border-input: #{$color-cosmos-dusk-presence};
+  --bg-primary: #{$color-cosmos-void};
+
   body {
     background-color: var(--genesis-bg);
     color: var(--genesis-body-color);
@@ -156,6 +174,14 @@
   --border-subtle: #{$color-theme-light-border-subtle};
   --glass-light: #{$color-theme-light-glass-surface};
   --glass-hover: #{$color-theme-light-glass-hover};
+
+  // Form / Input tokens — light palette
+  --input-bg: #{$color-light-white};
+  --input-hover: #{$color-theme-light-bg-surface};
+  --input-focus: #{$color-light-white};
+  --input-disabled: #{$color-theme-light-section-bg};
+  --border-input: #{$color-border-light};
+  --bg-primary: #{$color-light-white};
 
   body {
     background-color: var(--genesis-bg);
@@ -206,6 +232,14 @@
     --genesis-header-shadow:   #{$color-theme-dark-header-shadow};
     --genesis-card-bg:         #{$color-theme-dark-card-bg};
     --genesis-card-border:     #{$color-theme-dark-card-border};
+
+    // Form / Input tokens — dark palette
+    --input-bg: #{$color-cosmos-depth-presence};
+    --input-hover: #{$color-spark-depth-dense};
+    --input-focus: #{$color-spark-depth-dense};
+    --input-disabled: #{$color-ether-depth-glass};
+    --border-input: #{$color-cosmos-dusk-presence};
+    --bg-primary: #{$color-cosmos-void};
   }
 
   :root:not([data-theme]) body {
