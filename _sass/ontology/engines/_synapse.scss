@@ -104,14 +104,14 @@
     }
   }
   @else if $vector == 'execute' {
-    // Local function or state modification - Black background, white text
+    // Local function or state modification — theme-aware elevated action
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: var(--padding-button, clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem));
-    background: $color-theme-dark-card-bg;  // Black background
-    color: $color-light-white;  // White text
-    border: 1px solid $color-ether-shadow;  // Subtle border
+    background: var(--execute-bg, $color-theme-dark-card-bg);
+    color: var(--execute-text, $color-light-white);
+    border: 1px solid var(--execute-border, $color-ether-shadow);
     border-radius: var(--radius-button, clamp(0.5rem, 1vw, 0.75rem));
     font-weight: 600;
     font-size: var(--size-button, clamp(0.95rem, 1.2vw, 1.05rem));
@@ -130,9 +130,10 @@
     }
     
     &:hover {
-      background: $color-ether-depth;  // Slightly lighter black
-      border-color: var(--accent-neon, $color-accent-neon-blue);  // Neon blue border (purposeful)
-      box-shadow: 0 0 16px var(--accent-neon, $color-accent-neon-blue-border);  // Neon blue glow
+      background: var(--execute-hover-bg, $color-ether-depth);
+      color: var(--execute-text, $color-light-white);
+      border-color: var(--accent-neon, $color-accent-neon-blue);
+      box-shadow: 0 0 16px var(--accent-neon, $color-accent-neon-blue-border);
       transform: translateY(-1px);
     }
     
@@ -647,4 +648,3 @@
     }
   }
 }
-

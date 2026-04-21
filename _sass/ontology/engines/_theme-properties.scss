@@ -74,6 +74,10 @@
   --input-disabled: #{$color-theme-light-section-bg};
   --border-input: #{$color-border-light};
   --bg-primary: #{$color-light-white};
+  --execute-bg: #{$color-light-white};
+  --execute-hover-bg: #{$color-theme-light-bg-surface};
+  --execute-text: #{$color-text-primary};
+  --execute-border: #{$color-border-light};
 
   // ─── Theme-aware tokens (light-safe defaults) ─────────────────────────────
   // Consumed by genesis-body, genesis-ambient, and the header. Switching
@@ -130,6 +134,10 @@
   --input-disabled: #{$color-ether-depth-glass};
   --border-input: #{$color-cosmos-dusk-presence};
   --bg-primary: #{$color-cosmos-void};
+  --execute-bg: #{$color-theme-dark-card-bg};
+  --execute-hover-bg: #{$color-ether-depth};
+  --execute-text: #{$color-light-white};
+  --execute-border: #{$color-ether-shadow};
 
   body {
     background-color: var(--genesis-bg);
@@ -182,6 +190,10 @@
   --input-disabled: #{$color-theme-light-section-bg};
   --border-input: #{$color-border-light};
   --bg-primary: #{$color-light-white};
+  --execute-bg: #{$color-light-white};
+  --execute-hover-bg: #{$color-theme-light-bg-surface};
+  --execute-text: #{$color-text-primary};
+  --execute-border: #{$color-border-light};
 
   body {
     background-color: var(--genesis-bg);
@@ -240,6 +252,10 @@
     --input-disabled: #{$color-ether-depth-glass};
     --border-input: #{$color-cosmos-dusk-presence};
     --bg-primary: #{$color-cosmos-void};
+    --execute-bg: #{$color-theme-dark-card-bg};
+    --execute-hover-bg: #{$color-ether-depth};
+    --execute-text: #{$color-light-white};
+    --execute-border: #{$color-ether-shadow};
   }
 
   :root:not([data-theme]) body {
