@@ -662,6 +662,172 @@
     }
   }
 
+  [data-theme="light"] {
+    .demo-hero {
+      background: linear-gradient(180deg, $color-theme-light-bg 0%, $color-theme-light-bg-surface 100%);
+    }
+
+    .cosmic-particles,
+    .neural-mesh,
+    .consciousness-glow {
+      opacity: 0.45;
+    }
+
+    .hero-subtitle,
+    .genesis-demo .section-header p,
+    .demo-instruction,
+    .viewport-label {
+      color: $color-theme-light-text-secondary;
+    }
+
+    .scroll-indicator {
+      border-color: $color-accent-gold-accessible;
+
+      span {
+        background: $color-accent-gold-accessible;
+      }
+    }
+
+    .demo-section {
+      &--void,
+      &--compact {
+        background: $color-light-white;
+      }
+
+      &--vibrant {
+        background: $color-theme-light-section-bg;
+        border-top: 1px solid $color-theme-light-border-subtle;
+        border-bottom: 1px solid $color-theme-light-border-subtle;
+      }
+    }
+
+    .genesis-demo .section-header h2,
+    .bento-card h3,
+    .component-group h3,
+    .effect-card h4,
+    .accessibility-list strong,
+    .type-sample {
+      color: $color-text-primary;
+    }
+
+    .btn-genesis-secondary {
+      background: $color-light-white;
+      color: $color-text-primary;
+      border: 1px solid $color-theme-light-card-border;
+
+      &:hover {
+        background: $color-theme-light-bg-surface;
+        border-color: $color-accent-gold-accessible;
+      }
+    }
+
+    .bento-card,
+    .type-specimen,
+    .component-group,
+    .accessibility-list li {
+      background: $color-theme-light-card-bg;
+      border-color: $color-theme-light-card-border;
+      box-shadow: $effect-shadow-ambient;
+    }
+
+    .bento-card {
+      p {
+        color: $color-theme-light-text-secondary;
+      }
+
+      code {
+        background: $color-theme-light-bg-surface;
+        border-color: $color-theme-light-card-border;
+        color: $color-theme-light-link;
+      }
+
+      &--featured {
+        background: linear-gradient(135deg, $color-theme-light-card-bg, $color-theme-light-section-bg);
+        border-color: $color-theme-light-card-border;
+      }
+    }
+
+    .type-label {
+      color: $color-accent-gold-accessible;
+    }
+
+    .type-sm .type-sample,
+    .type-value,
+    .effect-card p,
+    .nav-link,
+    .accessibility-list li,
+    .accessibility-list code {
+      color: $color-theme-light-text-secondary;
+    }
+
+    .component-group,
+    .form-field {
+      label {
+        color: $color-text-primary;
+      }
+    }
+
+    .form-field {
+      input,
+      select,
+      textarea {
+        background: $color-light-white;
+        border-color: $color-border-light;
+        color: $color-text-primary;
+      }
+    }
+
+    .effect-card {
+      &--glass {
+        background: $color-theme-light-card-bg;
+        border-color: $color-theme-light-card-border;
+        box-shadow: $effect-shadow-ambient;
+      }
+
+      &--neural {
+        background: $color-conscious-vivid-whisper;
+        border-color: $color-conscious-vivid-glass;
+        box-shadow: 0 0 24px $color-conscious-vivid-whisper;
+      }
+
+      &--ethereal {
+        background: $color-ether-radiance-whisper;
+        border-color: $color-ether-radiance-veil;
+      }
+
+      &--gradient {
+        background: linear-gradient(
+          -45deg,
+          $color-theme-light-bg 0%,
+          $color-theme-light-bg-surface 50%,
+          $color-theme-light-card-bg 100%
+        );
+        border-color: $color-theme-light-card-border;
+      }
+    }
+
+    .nav-link {
+      &:hover {
+        background: $color-theme-light-section-bg;
+        color: $color-text-primary;
+      }
+
+      &--active {
+        background: $color-theme-light-card-bg;
+        color: $color-text-primary;
+      }
+    }
+
+    .accessibility-list code {
+      background: $color-theme-light-bg-surface;
+    }
+
+    .viewport-value {
+      color: $color-light-white;
+      background: $color-accent-gold-accessible;
+    }
+  }
+
   // ----------------------------------------
   // Animations
   // ----------------------------------------
