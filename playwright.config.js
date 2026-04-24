@@ -37,10 +37,9 @@ export default defineConfig({
   
   use: {
     // Base URL to use in actions like `await page.goto('/')`
-    // Use local server if TEST_LOCAL is set, otherwise use live GitHub Pages
-    baseURL: process.env.TEST_LOCAL 
-      ? 'http://localhost:4000' 
-      : 'https://asisaga.github.io/theme.asisaga.com',
+    // Priority: BASE_URL env var > TEST_LOCAL (local Jekyll) > live GitHub Pages
+    baseURL: process.env.BASE_URL
+      || (process.env.TEST_LOCAL ? 'http://localhost:4000' : 'https://asisaga.github.io/theme.asisaga.com'),
     
     // Collect trace when retrying the failed test
     trace: 'on-first-retry',

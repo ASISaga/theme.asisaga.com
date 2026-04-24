@@ -103,6 +103,8 @@ The structural regression tests verify:
 
 ### CI/CD Integration
 
+#### Structural Regression (`playwright.yml`)
+
 Tests run automatically via GitHub Actions (`.github/workflows/playwright.yml`):
 
 - **On push** to main branch
@@ -110,12 +112,16 @@ Tests run automatically via GitHub Actions (`.github/workflows/playwright.yml`):
 - **On schedule** (weekly, Sundays at midnight UTC)
 - **Manual trigger** via workflow_dispatch
 
-#### CI Workflow Features
+Features:
 - Installs dependencies and Playwright browsers
 - Runs tests with CI-optimized settings
 - Uploads HTML report as artifact (30-day retention)
 - Uploads screenshots on failure (7-day retention)
 - Comments on PR if tests fail
+
+#### Accessibility Audit (`accessibility-audit.yml`)
+
+Audits all site pages against WCAG 2.1 AA using axe-core, targeting the production deployment at `https://theme.asisaga.com`. See [Accessibility Audit Workflow](#accessibility-audit-workflow) for full configuration details.
 
 ## Testing Against Local Server
 
@@ -243,7 +249,92 @@ If tests timeout:
 3. Verify network conditions
 4. Review test logic for unnecessary waits
 
-## Related Documentation
+## Accessibility Audit Workflow
+
+*Last Updated: 2026-04-24*
+
+### Overview
+
+The accessibility audit workflow (`.github/workflows/accessibility-audit.yml`) navigates every page of the live site at `https://theme.asisaga.com` using Playwright and evaluates each against WCAG 2.1 Level AA using axe-core. It **never fails the build** — all violations are recorded and surfaced as a downloadable Markdown report.
+
+### Trigger Configuration
+
+| Trigger | Details |
+|---------|---------|
+| `schedule` | Weekly, every Monday at 06:00 UTC (`0 6 * * 1`) |
+| `workflow_dispatch` | Manual trigger; accepts an optional `base_url` input to target a staging URL |
+
+### Required Dependencies
+
+Both are already listed in `package.json` under `devDependencies`:
+
+```json
+"@axe-core/playwright": "^4.11.1",
+"@playwright/test": "^1.58.2"
+```
+
+No additional secrets or environment variables are needed for the default configuration.
+
+### `BASE_URL` Environment Variable
+
+`playwright.config.js` resolves the target URL in priority order:
+
+```
+BASE_URL env var  →  TEST_LOCAL=1 (localhost:4000)  →  asisaga.github.io/theme.asisaga.com
+```
+
+The workflow sets `BASE_URL=https://theme.asisaga.com`, so all 16 pages in `accessibility-audit.spec.js` are audited against the production domain.
+
+### Pages Audited
+
+| Path | Label |
+|------|-------|
+| `/` | Home |
+| `/samples/application/chatroom.html` | Application – Chatroom |
+| `/samples/application/dashboard.html` | Application – Dashboard |
+| `/samples/application/search.html` | Application – Search |
+| `/samples/application/settings.html` | Application – Settings |
+| `/samples/content-driven/archive.html` | Content-Driven – Archive |
+| `/samples/content-driven/article.html` | Content-Driven – Article |
+| `/samples/content-driven/post.html` | Content-Driven – Post |
+| `/samples/content-driven/profile.html` | Content-Driven – Profile |
+| `/samples/knowledge/docs.html` | Knowledge – Docs |
+| `/samples/knowledge/faq.html` | Knowledge – FAQ |
+| `/samples/marketing/landing.html` | Marketing – Landing |
+| `/samples/marketing/gallery.html` | Marketing – Gallery |
+| `/samples/marketing/form.html` | Marketing – Form |
+| `/samples/utility/404.html` | Utility – 404 |
+| `/samples/utility/splash.html` | Utility – Splash |
+
+### Artifacts
+
+| Artifact | Contents | Retention |
+|----------|----------|-----------|
+| `accessibility-audit-report` | `tests/accessibility-audit-report.md` + Playwright HTML report | 90 days |
+| `accessibility-audit-screenshots` | Failure screenshots (uploaded only on error) | 14 days |
+
+### Running Locally
+
+```bash
+# Against production (https://theme.asisaga.com)
+npm run test:a11y:live  # defined in package.json
+
+# Against local Jekyll server
+npm run test:a11y       # defined in package.json (requires TEST_LOCAL=1)
+
+# Against any URL
+BASE_URL=https://staging.example.com npx playwright test tests/e2e/accessibility-audit.spec.js --project=chromium
+```
+
+### Report Structure
+
+The generated `tests/accessibility-audit-report.md` contains:
+
+1. **Executive Summary** — totals by impact level (critical / serious / moderate / minor)
+2. **Page-by-Page Results** — per-page violation list with axe rule ID, description, help URL, and affected HTML nodes
+3. **Design System Review** — maps violations back to `_design/tokens/` files, enabling token-level fixes rather than ad-hoc SCSS patches
+
+
 
 - [Playwright Documentation](https://playwright.dev/)
 - [Genesis Ontological Design System](/docs/specifications/scss-ontology-system.md)
