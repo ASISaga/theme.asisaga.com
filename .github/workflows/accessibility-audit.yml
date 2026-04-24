@@ -1,0 +1,61 @@
+name: Accessibility Audit (axe-core)
+
+on:
+  # Run weekly every Monday at 06:00 UTC
+  schedule:
+    - cron: '0 6 * * 1'
+  # Allow manual trigger with optional target URL override
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: 'Site URL to audit (default: https://theme.asisaga.com)'
+        required: false
+        default: 'https://theme.asisaga.com'
+
+jobs:
+  audit:
+    name: Accessibility Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install chromium --with-deps
+
+      - name: Run accessibility audit
+        run: npx playwright test tests/e2e/accessibility-audit.spec.js --project=chromium
+        env:
+          CI: true
+          BASE_URL: ${{ github.event.inputs.base_url || 'https://theme.asisaga.com' }}
+
+      - name: Upload accessibility audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-audit-report
+          path: |
+            tests/accessibility-audit-report.md
+            playwright-report/
+          retention-days: 90
+
+      - name: Upload test screenshots on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-audit-screenshots
+          path: test-results/
+          retention-days: 14
