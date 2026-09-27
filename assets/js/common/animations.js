@@ -27,28 +27,50 @@ import {
 } from './motion-utils.js';
 
 /**
- * Resolves once window.Motion is available, or rejects after `timeout` ms.
+ * Resolves once window.Motion is available.
  *
  * Motion is loaded via a dynamic import() inside an inline
  * <script type="module"> in <head>. That import resolves asynchronously
- * and is NOT guaranteed to finish before DOMContentLoaded fires here, so
- * we poll briefly instead of assuming window.Motion already exists.
- * This closes the race condition that previously caused
- * "Motion library not loaded" errors and silently broke downstream
- * layout/animation setup.
+ * and can take longer than expected (slow CDN, network conditions), so we
+ * do NOT use a short arbitrary timeout that gives up too early. Instead:
+ *   1. If window.Motion is already set, resolve immediately.
+ *   2. Otherwise, listen for a 'motion:ready' event, which the inline
+ *      loader script dispatches on `window` the moment its import()
+ *      resolves (see the <head> snippet — update it to dispatch this
+ *      event; see comment below).
+ *   3. As a fallback safety net (in case the loader snippet hasn't been
+ *      updated to dispatch the event yet), keep polling indefinitely at a
+ *      low frequency rather than timing out and giving up.
+ *
+ * This removes the race condition entirely: there is no scenario where
+ * Motion loads successfully but this code gives up before it arrives.
  */
-function waitForMotion(timeout = 3000, interval = 20) {
-  return new Promise((resolve, reject) => {
+function waitForMotion() {
+  return new Promise((resolve) => {
     if (window.Motion) return resolve(window.Motion);
-    const start = performance.now();
-    const poll = () => {
-      if (window.Motion) return resolve(window.Motion);
-      if (performance.now() - start > timeout) {
-        return reject(new Error('Motion library did not load within timeout'));
+
+    const onReady = () => {
+      if (window.Motion) {
+        cleanup();
+        resolve(window.Motion);
       }
-      setTimeout(poll, interval);
     };
-    poll();
+    window.addEventListener('motion:ready', onReady);
+
+    // Fallback poll in case the loader snippet doesn't dispatch the event
+    // (e.g. not yet updated). Runs indefinitely at a modest interval so a
+    // slow-loading Motion library is still picked up rather than abandoned.
+    const pollId = setInterval(() => {
+      if (window.Motion) {
+        cleanup();
+        resolve(window.Motion);
+      }
+    }, 50);
+
+    function cleanup() {
+      window.removeEventListener('motion:ready', onReady);
+      clearInterval(pollId);
+    }
   });
 }
 
