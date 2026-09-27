@@ -1,0 +1,77 @@
+{% comment %}
+  Chatroom Members Sidebar — search & filter
+  ===========================================
+  Search input plus All/Online/Away filter buttons. Filtering behavior is
+  attached by chatroom-panels.js against #chatroomMembersSearchInput and
+  the [data-filter] buttons; this file defines structure only.
+{% endcomment %}
+<div class="chatroom-members-sidebar__search-container">
+  <form
+    class="chatroom-members-sidebar__search-form"
+    role="search"
+    aria-label="Search Members"
+  >
+    <div class="chatroom-members-sidebar__search-input-container">
+      <input
+        type="search"
+        class="chatroom-members-sidebar__search-input"
+        id="chatroomMembersSearchInput"
+        placeholder="Search members..."
+        aria-label="Search members"
+        aria-describedby="chatroomMembersSearchAddon"
+      />
+      <button
+        type="button"
+        class="chatroom-members-sidebar__search-clear-btn"
+        id="chatroomMembersSearchClearBtn"
+        title="Clear search"
+        aria-label="Clear search"
+      >
+        <img
+          src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/x.svg"
+          alt=""
+          width="14"
+          height="14"
+        />
+      </button>
+      <span
+        class="chatroom-members-sidebar__search-addon"
+        id="chatroomMembersSearchAddon"
+      >
+        <img
+          src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/search.svg"
+          alt=""
+          width="16"
+          height="16"
+        />
+      </span>
+    </div>
+  </form>
+
+  <div class="chatroom-members-sidebar__filters">
+    <button
+      class="chatroom-members-sidebar__filter-btn chatroom-members-sidebar__filter-btn--active"
+      type="button"
+      data-filter="all"
+      title="Show all members"
+    >
+      All
+    </button>
+    <button
+      class="chatroom-members-sidebar__filter-btn"
+      type="button"
+      data-filter="online"
+      title="Show online members"
+    >
+      Online
+    </button>
+    <button
+      class="chatroom-members-sidebar__filter-btn"
+      type="button"
+      data-filter="away"
+      title="Show away members"
+    >
+      Away
+    </button>
+  </div>
+</div>

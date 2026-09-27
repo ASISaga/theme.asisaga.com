@@ -1,0 +1,51 @@
+{% comment %}
+  Chatroom Members Sidebar — header
+  ==================================
+  Title, live count, and header actions (filter, invite). The count text
+  is a static placeholder in the markup; the consuming component's JS
+  updates #chatroomMembersCount to reflect the real participant count and
+  online state.
+{% endcomment %}
+<header class="chatroom-members-sidebar__header">
+  <div class="chatroom-members-sidebar__header-content">
+    <div class="chatroom-members-sidebar__header-left">
+      <h2 class="chatroom-members-sidebar__title">Members</h2>
+      <span
+        class="chatroom-members-sidebar__count"
+        id="chatroomMembersCount"
+      >0 online</span>
+    </div>
+
+    <div class="chatroom-members-sidebar__header-right">
+      <div class="chatroom-members-sidebar__actions">
+        <button
+          class="chatroom-members-sidebar__action-btn"
+          type="button"
+          title="Filter Members"
+          aria-label="Filter Members"
+        >
+          <img
+            src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/funnel.svg"
+            alt=""
+            width="16"
+            height="16"
+          />
+        </button>
+
+        <button
+          class="chatroom-members-sidebar__action-btn chatroom-members-sidebar__action-btn--invite"
+          type="button"
+          title="Invite Member"
+          aria-label="Invite Member"
+        >
+          <img
+            src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/person-plus.svg"
+            alt=""
+            width="16"
+            height="16"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

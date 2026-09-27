@@ -1,0 +1,97 @@
+{% comment %}
+  Chatroom Toggle Strip — generic app-shell panel
+  ================================================
+  Thin vertical action strip alongside the members sidebar: toggle the
+  sidebar open/closed, quick access to settings and notifications, and a
+  collapse control. Always rendered by the chatroom layout (see
+  _layouts/chatroom.html); runtime visibility is controlled by JS reading
+  the show-toggle-strip attribute on the chatroom component element — this
+  file has no Liquid conditionals of its own.
+
+  Paired SCSS: _sass/includes/chatroom/_toggle-strip.scss
+  Paired JS:   assets/js/chatroom-panels.js (attaches click/collapse
+               behavior; this file defines structure only)
+{% endcomment %}
+<nav
+  id="chatroomToggleStrip"
+  class="chatroom-toggle-strip"
+  aria-label="Sidebar Navigation"
+  data-chatroom-region="toggle-strip"
+>
+  <div class="chatroom-toggle-strip__content">
+    <div class="chatroom-toggle-strip__actions">
+      <button
+        id="chatroomToggleMembersBtn"
+        class="chatroom-toggle-strip__btn chatroom-toggle-strip__btn--members"
+        type="button"
+        title="Toggle Members Panel"
+        aria-label="Toggle Members Panel"
+        aria-expanded="true"
+        aria-controls="chatroomMembersSidebar"
+      >
+        <img
+          src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/people.svg"
+          alt=""
+          width="20"
+          height="20"
+          class="chatroom-toggle-strip__icon"
+        />
+      </button>
+
+      <button
+        class="chatroom-toggle-strip__btn"
+        type="button"
+        title="Settings"
+        aria-label="Settings"
+      >
+        <img
+          src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/gear.svg"
+          alt=""
+          width="20"
+          height="20"
+          class="chatroom-toggle-strip__icon"
+        />
+      </button>
+
+      <button
+        class="chatroom-toggle-strip__btn"
+        type="button"
+        title="Notifications"
+        aria-label="Notifications"
+      >
+        <img
+          src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/bell.svg"
+          alt=""
+          width="20"
+          height="20"
+          class="chatroom-toggle-strip__icon"
+        />
+        <span
+          class="chatroom-toggle-strip__badge"
+          id="chatroomNotificationBadge"
+          hidden
+        >0</span>
+      </button>
+    </div>
+
+    <div class="chatroom-toggle-strip__spacer"></div>
+
+    <button
+      class="chatroom-toggle-strip__btn chatroom-toggle-strip__btn--collapse"
+      type="button"
+      id="chatroomToggleStripCollapseBtn"
+      title="Collapse sidebar"
+      aria-label="Collapse sidebar"
+      aria-expanded="true"
+      aria-controls="chatroomMembersSidebar"
+    >
+      <img
+        src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/chevron-double-left.svg"
+        alt=""
+        width="18"
+        height="18"
+        class="chatroom-toggle-strip__icon"
+      />
+    </button>
+  </div>
+</nav>

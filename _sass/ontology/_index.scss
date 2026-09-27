@@ -63,6 +63,7 @@
 @import "engines/utilities/mixins";           // Core Sass mixins
 @import "engines/utilities/semantic-mixins";  // Semantic mixins
 @import "engines/utilities/structural-mixins"; // Structural utility mixins (positioning, flex, grid, etc.)
+@import "engines/utilities/typography-mixins"; // Text transform, alignment, wrapping, truncation
 @import "engines/utilities/accessibility";    // WCAG compliance helpers
 @import "engines/utilities/dimension-mixins"; // Dimension, spacing, padding/margin mixins
 @import "engines/utilities/common";           // Common utility styles

@@ -1,0 +1,23 @@
+{% comment %}
+  Chatroom Members Sidebar — empty state
+  =======================================
+  Shown when the member list has no items (no members yet, or search/filter
+  matched nothing). chatroom-panels.js toggles [hidden] on this element
+  based on whether #chatroomMembersList has any <li> children.
+{% endcomment %}
+<div
+  class="chatroom-members-sidebar__empty-state"
+  id="chatroomMembersEmptyState"
+>
+  <span class="chatroom-members-sidebar__empty-icon" aria-hidden="true">
+    <img
+      src="/assets/svg/members-empty.svg"
+      width="32"
+      height="32"
+      alt=""
+      class="chatroom-members-sidebar__empty-img"
+    />
+  </span>
+  <span class="chatroom-members-sidebar__empty-title">No members found.</span>
+  <span class="chatroom-members-sidebar__empty-desc">Invite people to join the conversation!</span>
+</div>

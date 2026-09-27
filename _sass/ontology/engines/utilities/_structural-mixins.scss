@@ -195,12 +195,8 @@
 // ----------------------------------------
 // TEXT UTILITIES
 // ----------------------------------------
-
-@mixin text-uppercase { text-transform: uppercase; }
-@mixin text-decoration-none { text-decoration: none; }
-@mixin text-align-center { text-align: center; }
-@mixin text-align-left { text-align: left; }
-@mixin text-no-wrap { white-space: nowrap; }
+// Moved to _typography-mixins.scss (text-uppercase, text-decoration-none,
+// text-align-center, text-align-left, text-no-wrap, text-truncate).
 
 // ----------------------------------------
 // SPACING RESET
@@ -231,6 +227,10 @@
 
 @mixin border-separator-left($color: $color-cosmos-shadow) {
   border-left: 1px solid $color;
+}
+
+@mixin border-separator-right($color: $color-cosmos-shadow) {
+  border-right: 1px solid $color;
 }
 
 @mixin border-subtle($color: $color-cosmos-shadow, $width: 1px) {

@@ -1,0 +1,51 @@
+{% comment %}
+  Chatroom Members Sidebar — generic app-shell panel
+  ===================================================
+  Sticky sidebar shell: header (title, live count, filter/invite actions),
+  search + filter controls, and an empty <ul> mount point for
+  member/participant list items. Always rendered by the chatroom layout
+  (see _layouts/chatroom.html); runtime visibility is controlled by JS
+  reading the show-members-sidebar attribute on the chatroom component
+  element — this file has no Liquid conditionals of its own.
+
+  This is a SHELL ONLY. It has no knowledge of what a "member" is —
+  populating #chatroomMembersList with actual list items (agent cards,
+  human participants, etc.) is business logic for the consuming component
+  (e.g. BoardroomApp.renderAgents()).
+
+  Paired SCSS: _sass/includes/chatroom/_members-sidebar.scss
+               _sass/includes/chatroom/members-sidebar/_header.scss
+               _sass/includes/chatroom/members-sidebar/_search-form.scss
+               _sass/includes/chatroom/members-sidebar/_empty-state.scss
+  Paired JS:   assets/js/chatroom-panels.js (attaches show/hide,
+               search-filter behavior; this file defines structure only)
+{% endcomment %}
+<aside
+  id="chatroomMembersSidebar"
+  class="chatroom-members-sidebar"
+  aria-label="Members Sidebar"
+  data-chatroom-region="members"
+>
+  {% include chatroom/members-sidebar/header.html %}
+
+  <section
+    class="chatroom-members-sidebar__section"
+    id="chatroomMembers"
+  >
+    {% include chatroom/members-sidebar/search-form.html %}
+
+    <ul
+      class="chatroom-members-sidebar__list"
+      role="list"
+      id="chatroomMembersList"
+      data-chatroom-region="members-list"
+    >
+      {% comment %}
+        Member/participant list items are injected here at runtime by the
+        consuming component's JS.
+      {% endcomment %}
+    </ul>
+
+    {% include chatroom/members-sidebar/empty-state.html %}
+  </section>
+</aside>

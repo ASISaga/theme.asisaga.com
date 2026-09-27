@@ -1,0 +1,21 @@
+// ============================================================================
+// CHATROOM INCLUDES — INDEX
+// ============================================================================
+// Lives at _sass/includes/layouts/chatroom/_index.scss.
+// Imports all SCSS partials mirroring _includes/chatroom/*.html, using paths
+// relative to this file's own location (sibling to the partials it imports).
+//
+// This file itself must be imported from wherever the includes/layouts/
+// mirror tree is assembled (e.g. _sass/includes/layouts/_index.scss or
+// _sass/includes/_index.scss), alongside the theme's other layout-specific
+// include styles.
+//
+// Order: shell/container partials first, then their sub-partials, matching
+// the include order in _includes/chatroom/members-sidebar.html.
+// ============================================================================
+
+@import "toggle-strip";
+@import "members-sidebar";
+@import "members-sidebar/header";
+@import "members-sidebar/search-form";
+@import "members-sidebar/empty-state";

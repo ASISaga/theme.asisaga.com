@@ -1,0 +1,93 @@
+// ============================================================================
+// CHATROOM MEMBERS SIDEBAR — SEARCH & FILTER
+// ============================================================================
+// Styles for _includes/chatroom/members-sidebar/search-form.html
+// ============================================================================
+
+.chatroom-members-sidebar__search-container {
+  @include flex-column($spacing-sm);
+  padding: $spacing-md;
+  @include border-separator-bottom($color-boardroom-border);
+}
+
+.chatroom-members-sidebar__search-form {
+  @include full-width;
+}
+
+.chatroom-members-sidebar__search-input-container {
+  position: relative;
+  @include flex-row;
+  align-items: center;
+}
+
+.chatroom-members-sidebar__search-input {
+  @include full-width;
+  padding: $spacing-xs $spacing-2xl $spacing-xs $spacing-sm;
+  background: $color-boardroom-bg;
+  color: $color-boardroom-text;
+  border: $border-width-default solid $color-boardroom-border;
+  @include border-radius-rounded($border-radius-sm);
+  font-size: $font-size-sm;
+
+  &::placeholder {
+    color: $color-boardroom-muted;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-boardroom-gold-accessible;
+  }
+}
+
+.chatroom-members-sidebar__search-addon {
+  position: absolute;
+  right: $spacing-sm;
+  @include flex-center;
+  @include pointer-events-none;
+  color: $color-boardroom-muted;
+}
+
+.chatroom-members-sidebar__search-clear-btn {
+  position: absolute;
+  right: $spacing-2xl;
+  @include flex-center;
+  @include size-square(20px);
+  @include padding-reset;
+  border: none;
+  @include bg-transparent;
+  color: $color-boardroom-muted;
+  @include cursor-pointer;
+  @include display-none;
+
+  &.chatroom-members-sidebar__search-clear-btn--visible {
+    @include d-flex;
+  }
+}
+
+.chatroom-members-sidebar__filters {
+  @include flex-row($spacing-xs);
+}
+
+.chatroom-members-sidebar__filter-btn {
+  @include genesis-synapse('toggle');
+  flex: 1;
+  padding: $spacing-xs $spacing-sm;
+  background: $color-boardroom-bg;
+  color: $color-boardroom-muted;
+  border: $border-width-default solid $color-boardroom-border;
+  @include border-radius-rounded($border-radius-sm);
+  font-size: $font-size-xs;
+  font-weight: 500;
+  @include cursor-pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: $color-boardroom-text;
+  }
+}
+
+.chatroom-members-sidebar__filter-btn--active {
+  background: $color-boardroom-gold-active;
+  color: $color-boardroom-gold-accessible;
+  border-color: $color-boardroom-gold-accessible;
+}

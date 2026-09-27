@@ -1,0 +1,70 @@
+// ============================================================================
+// CHATROOM MEMBERS SIDEBAR — HEADER
+// ============================================================================
+// Styles for _includes/chatroom/members-sidebar/header.html
+// ============================================================================
+
+.chatroom-members-sidebar__header {
+  @include padding-combined($spacing-md, $spacing-md);
+  @include border-separator-bottom($color-boardroom-border);
+}
+
+.chatroom-members-sidebar__header-content {
+  @include flex-row($spacing-sm);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatroom-members-sidebar__header-left {
+  @include flex-column($spacing-xs);
+  min-width: 0;
+}
+
+.chatroom-members-sidebar__title {
+  @include margin-reset;
+  @include truncate;
+  font-size: $font-size-base;
+  font-weight: 600;
+  color: $color-boardroom-text;
+}
+
+.chatroom-members-sidebar__count {
+  font-size: $font-size-sm;
+  color: $color-boardroom-muted;
+}
+
+.chatroom-members-sidebar__header-right {
+  @include flex-shrink-none;
+}
+
+.chatroom-members-sidebar__actions {
+  @include flex-row($spacing-xs);
+  align-items: center;
+}
+
+.chatroom-members-sidebar__action-btn {
+  @include genesis-synapse('execute');
+  @include flex-center;
+  @include size-square(32px);
+  @include padding-reset;
+  border: none;
+  @include bg-transparent;
+  color: $color-boardroom-muted;
+  @include border-radius-rounded($border-radius-sm);
+  @include cursor-pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $color-boardroom-bg;
+    color: $color-boardroom-gold-accessible;
+  }
+
+  &:focus {
+    outline: 2px solid $color-boardroom-gold-accessible;
+    outline-offset: 2px;
+  }
+}
+
+.chatroom-members-sidebar__action-btn--invite {
+  color: $color-boardroom-gold-accessible;
+}

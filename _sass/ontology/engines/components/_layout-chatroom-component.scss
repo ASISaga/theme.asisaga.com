@@ -104,6 +104,7 @@
     &-left {
       @include flex-row(0.875rem);
       align-items: center;
+      min-width: 0; // allow shrinking below content size so .chatroom-title can truncate
     }
 
     &-right {
@@ -119,6 +120,7 @@
 
   .chatroom-title {
     @include margin-reset;
+    @include truncate;
     font-size: $font-size-lg;
     font-weight: 600;
     letter-spacing: 0.04em;

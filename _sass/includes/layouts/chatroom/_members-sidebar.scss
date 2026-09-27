@@ -1,0 +1,34 @@
+// ============================================================================
+// CHATROOM MEMBERS SIDEBAR
+// ============================================================================
+// Styles for _includes/chatroom/members-sidebar.html
+// Sticky sidebar shell containing header, search/filter, and member list.
+// This file styles the shell only; sub-includes (header, search-form,
+// empty-state) have their own paired SCSS files in members-sidebar/.
+// ============================================================================
+
+.chatroom-members-sidebar {
+  @include genesis-environment('navigation-sidebar');
+  @include flex-column;
+  @include flex-shrink-none;
+  background: $color-boardroom-surface;
+  @include border-separator-left($color-boardroom-border);
+
+  &.chatroom-members-sidebar--hidden {
+    @include display-none;
+  }
+}
+
+.chatroom-members-sidebar__section {
+  @include flex-column;
+  @include flex-grow-fill;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.chatroom-members-sidebar__list {
+  @include flex-column($spacing-xs);
+  @include list-reset;
+  @include flex-grow-fill;
+  padding: $spacing-sm;
+}

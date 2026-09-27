@@ -1,0 +1,98 @@
+// ============================================================================
+// CHATROOM TOGGLE STRIP
+// ============================================================================
+// Styles for _includes/chatroom/toggle-strip.html
+// Thin vertical action strip alongside the members sidebar.
+// ============================================================================
+
+.chatroom-toggle-strip {
+  @include genesis-environment('navigation-sidebar');
+  @include flex-column($spacing-sm);
+  @include flex-shrink-none;
+  background: $color-boardroom-surface;
+  @include border-separator-right($color-boardroom-border);
+  padding: $spacing-sm;
+
+  &.chatroom-toggle-strip--hidden {
+    @include display-none;
+  }
+}
+
+.chatroom-toggle-strip__content {
+  @include flex-column($spacing-sm);
+  align-items: center;
+  @include full-height;
+}
+
+.chatroom-toggle-strip__actions {
+  @include flex-column($spacing-xs);
+  align-items: center;
+}
+
+.chatroom-toggle-strip__spacer {
+  @include flex-grow-fill;
+}
+
+.chatroom-toggle-strip__btn {
+  @include genesis-synapse('toggle');
+  @include flex-center;
+  @include size-square(36px);
+  @include padding-reset;
+  border: none;
+  @include bg-transparent;
+  color: $color-boardroom-muted;
+  @include border-radius-rounded($border-radius-sm);
+  @include cursor-pointer;
+  transition: all $transition-fast;
+  position: relative;
+
+  &:hover {
+    background: $color-boardroom-bg;
+    color: $color-boardroom-gold-accessible;
+  }
+
+  &:focus {
+    outline: 2px solid $color-boardroom-gold-accessible;
+    outline-offset: 2px;
+  }
+
+  &[aria-expanded="false"] {
+    color: $color-boardroom-gold-accessible;
+    background: $color-boardroom-gold-active;
+  }
+}
+
+.chatroom-toggle-strip__btn--collapse {
+  .chatroom-toggle-strip__icon {
+    transition: transform $transition-fast;
+  }
+
+  &[aria-expanded="false"] .chatroom-toggle-strip__icon {
+    transform: rotate(180deg);
+  }
+}
+
+.chatroom-toggle-strip__icon {
+  @include size-square($size-icon-sm);
+}
+
+.chatroom-toggle-strip__badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 1rem;
+  height: 1rem;
+  padding: 0 0.25rem;
+  @include border-radius-pill;
+  background: $color-boardroom-gold-accessible;
+  color: $color-boardroom-bg;
+  font-size: $font-size-tiny;
+  font-weight: 700;
+  @include flex-center;
+  line-height: 1;
+  @include pointer-events-none;
+
+  &[hidden] {
+    @include display-none;
+  }
+}

@@ -1,0 +1,39 @@
+// ============================================================================
+// TYPOGRAPHY UTILITY MIXINS
+// ============================================================================
+// Low-level text-related structural mixins: transform, alignment, wrapping,
+// and truncation. Separated from _structural-mixins.scss to keep each
+// utility file scoped to a single concern (positioning/flex/grid vs. text).
+//
+// These mixins live inside ontology/ so they are part of the foundation.
+// Files outside _sass/ontology/ should use ONLY:
+//   - genesis-* semantic mixins (6 engines)
+//   - Utility mixins from this file and other foundation utilities
+//   - Component mixins from ontology/mixins/
+//   - Sass variables from _sass/design/
+// ============================================================================
+
+// ----------------------------------------
+// TEXT TRANSFORM
+// ----------------------------------------
+
+@mixin text-uppercase { text-transform: uppercase; }
+@mixin text-decoration-none { text-decoration: none; }
+
+// ----------------------------------------
+// TEXT ALIGNMENT
+// ----------------------------------------
+
+@mixin text-align-center { text-align: center; }
+@mixin text-align-left { text-align: left; }
+
+// ----------------------------------------
+// TEXT WRAPPING & TRUNCATION
+// ----------------------------------------
+
+@mixin text-no-wrap { white-space: nowrap; }
+
+// Note: single-line truncation with ellipsis is already provided by the
+// existing @mixin truncate in _semantic-mixins.scss (overflow: hidden;
+// text-overflow: ellipsis; white-space: nowrap;) — use that directly
+// rather than a second equivalent mixin here.

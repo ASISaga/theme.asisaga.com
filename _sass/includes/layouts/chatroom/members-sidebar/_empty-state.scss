@@ -1,0 +1,37 @@
+// ============================================================================
+// CHATROOM MEMBERS SIDEBAR — EMPTY STATE
+// ============================================================================
+// Styles for _includes/chatroom/members-sidebar/empty-state.html
+// ============================================================================
+
+.chatroom-members-sidebar__empty-state {
+  @include flex-column($spacing-sm);
+  align-items: center;
+  text-align: center;
+  padding: $spacing-xl $spacing-md;
+  @include display-none;
+
+  &.chatroom-members-sidebar__empty-state--visible {
+    @include d-flex;
+  }
+}
+
+.chatroom-members-sidebar__empty-icon {
+  @include flex-center;
+  opacity: 0.6;
+}
+
+.chatroom-members-sidebar__empty-img {
+  @include size-square(32px);
+}
+
+.chatroom-members-sidebar__empty-title {
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: $color-boardroom-text;
+}
+
+.chatroom-members-sidebar__empty-desc {
+  font-size: $font-size-xs;
+  color: $color-boardroom-muted;
+}
