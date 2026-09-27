@@ -26,21 +26,58 @@ import {
   animatePageTransition,
 } from './motion-utils.js';
 
-// Wait for the DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Motion-based animations
-  initMotionAnimations();
+/**
+ * Resolves once window.Motion is available, or rejects after `timeout` ms.
+ *
+ * Motion is loaded via a dynamic import() inside an inline
+ * <script type="module"> in <head>. That import resolves asynchronously
+ * and is NOT guaranteed to finish before DOMContentLoaded fires here, so
+ * we poll briefly instead of assuming window.Motion already exists.
+ * This closes the race condition that previously caused
+ * "Motion library not loaded" errors and silently broke downstream
+ * layout/animation setup.
+ */
+function waitForMotion(timeout = 3000, interval = 20) {
+  return new Promise((resolve, reject) => {
+    if (window.Motion) return resolve(window.Motion);
+    const start = performance.now();
+    const poll = () => {
+      if (window.Motion) return resolve(window.Motion);
+      if (performance.now() - start > timeout) {
+        return reject(new Error('Motion library did not load within timeout'));
+      }
+      setTimeout(poll, interval);
+    };
+    poll();
+  });
+}
 
-  // Initialize all animations and interactions
-  initNavbarScroll();
-  initParallaxEffects();
-  initHoverEffects();
-  initTimelineInteractions();
-  initPageTransitions();
-  initScrollReveal();
-
-  // Initialize accessibility features
+// Features that must run whether or not Motion loaded successfully.
+function initNonMotionFeatures() {
   initAccessibilityFeatures();
+}
+
+// Wait for the DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    await waitForMotion();
+
+    // Initialize Motion-based animations
+    initMotionAnimations();
+
+    // Initialize all animations and interactions
+    initNavbarScroll();
+    initParallaxEffects();
+    initHoverEffects();
+    initTimelineInteractions();
+    initPageTransitions();
+    initScrollReveal();
+  } catch (err) {
+    console.warn('Motion-based animations disabled:', err.message);
+  } finally {
+    // Accessibility setup must run whether or not Motion loaded.
+    initNonMotionFeatures();
+  }
 });
 
 /**
