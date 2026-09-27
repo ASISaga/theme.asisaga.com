@@ -137,8 +137,8 @@ module_js: chatroom-app.js
     the show-toggle-strip / show-members-sidebar attributes above. See
     "Panels" in the docblock at the top of this file.
   {% endcomment %}
-  {% include chatroom/toggle-strip.html %}
-  {% include chatroom/members-sidebar.html %}
+  {% include layouts/chatroom/toggle-strip.html %}
+  {% include layouts/chatroom/members-sidebar.html %}
 
   {{ content }}
 
