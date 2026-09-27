@@ -4,4 +4,5 @@
 <script type="module">
   import * as Motion from 'https://cdn.jsdelivr.net/npm/motion@12.32.0/dist/motion.js';
   window.Motion = Motion;
+  window.dispatchEvent(new Event('motion:ready'));
 </script>
