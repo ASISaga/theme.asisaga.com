@@ -1,0 +1,122 @@
+// ============================================================================
+// CHATROOM INPUT
+// ============================================================================
+// Styles for _includes/chatroom/input.html
+// ============================================================================
+
+.chatroom-input {
+  border-top: $border-width-default solid $color-boardroom-border;
+  background: $color-boardroom-surface;
+  padding: $spacing-md $spacing-lg;
+  @include flex-shrink-none;
+}
+
+.chatroom-input-container {
+  @include flex-row($spacing-md);
+  align-items: flex-start;
+}
+
+.chatroom-input-content {
+  @include flex-grow-fill;
+  @include flex-column($spacing-xs);
+}
+
+.chatroom-input-field-container {
+  @include flex-row($spacing-xs);
+  align-items: flex-end;
+  padding: $spacing-sm;
+  border: $border-width-default solid $color-boardroom-border;
+  @include border-radius-rounded($border-radius-sm);
+  background: $color-boardroom-bg;
+
+  &:focus-within {
+    border-color: $color-boardroom-gold-accessible;
+    box-shadow: 0 0 0 1px $color-boardroom-gold-active;
+  }
+}
+
+.chatroom-input-field {
+  @include flex-grow-fill;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: $font-size-sm;
+  line-height: 1.5;
+  font-family: inherit;
+  @include bg-transparent;
+  color: $color-boardroom-text;
+  max-height: 120px;
+  overflow-y: auto;
+
+  &::placeholder {
+    color: $color-boardroom-muted;
+  }
+}
+
+.chatroom-input-toolbar {
+  @include flex-row($spacing-sm);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 $spacing-sm;
+}
+
+.chatroom-input-toolbar-left,
+.chatroom-input-toolbar-right {
+  @include flex-row($spacing-xs);
+  align-items: center;
+}
+
+.chatroom-input-toolbar--minimal {
+  justify-content: flex-end;
+}
+
+.chatroom-input-format-btn,
+.chatroom-input-action-btn {
+  @include flex-center;
+  @include size-square(28px);
+  @include padding-reset;
+  border: none;
+  @include bg-transparent;
+  color: $color-boardroom-muted;
+  @include border-radius-rounded($border-radius-sm);
+  @include cursor-pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $color-boardroom-bg;
+    color: $color-boardroom-gold-accessible;
+  }
+}
+
+.chatroom-char-count {
+  font-size: $font-size-tiny;
+  color: $color-boardroom-muted;
+  white-space: nowrap;
+}
+
+.chatroom-input-send-btn {
+  @include flex-center;
+  @include size-square(32px);
+  @include padding-reset;
+  border: none;
+  background: $color-boardroom-gold-accessible;
+  color: $color-boardroom-bg;
+  @include border-radius-rounded($border-radius-sm);
+  @include cursor-pointer;
+  transition: all $transition-fast;
+  @include flex-shrink-none;
+
+  &:hover {
+    background: $color-boardroom-gold-active;
+  }
+
+  &:focus {
+    outline: 2px solid $color-boardroom-gold-accessible;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
