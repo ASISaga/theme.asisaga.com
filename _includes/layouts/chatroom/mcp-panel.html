@@ -1,0 +1,60 @@
+{% comment %}
+  Chatroom MCP Apps Panel — static skeleton
+  ============================================
+  Slide-in panel listing AI agent tools the user can invoke, either by
+  clicking a button (pre-fills "/toolname " in the input) or typing a
+  slash command directly. Only rendered when page.mcp_apps has entries —
+  an endpoint alone with no listed tools has nothing to display, matching
+  the original _setupMcpAppsPanel()'s early return when mcpApps is empty.
+
+  The tool list itself is build-time content: page.mcp_apps is front-matter
+  data, known at Jekyll build time, not fetched at runtime. Only the
+  pending-request count badge (#chatroom-mcp-badge, shown on the toggle
+  button in header.html) and the results that appear in the chat log are
+  runtime/JS-driven.
+
+  ChatroomApp (chatroom-app.js) hydrates this: wires each button's click
+  handler and the panel's open/close behavior.
+
+  Paired SCSS: _sass/includes/layouts/chatroom/_mcp-panel.scss
+{% endcomment %}
+{% if page.mcp_apps and page.mcp_apps.size > 0 %}
+<div
+  class="chatroom-mcp-apps"
+  aria-hidden="true"
+  id="chatroom-mcp-apps-panel"
+>
+  <div class="chatroom-mcp-apps__header">
+    <h2 class="chatroom-mcp-apps__title">
+      <i class="fas fa-robot" aria-hidden="true"></i> AI Agent Tools
+    </h2>
+    <p class="chatroom-mcp-apps__hint">
+      Select an agent tool or type <code>/tool-name query</code> in the input field.
+    </p>
+  </div>
+  <ul class="chatroom-mcp-apps__list" role="list">
+    {% for app in page.mcp_apps %}
+    <li class="chatroom-mcp-apps__item">
+      <button
+        class="chatroom-mcp-apps__btn"
+        type="button"
+        data-mcp-app="{{ app.name }}"
+        {% if app.endpoint %}data-mcp-endpoint="{{ app.endpoint }}"{% endif %}
+        aria-label="Invoke {{ app.label | default: app.name }}"
+      >
+        <span class="chatroom-mcp-apps__btn-icon" aria-hidden="true">
+          <i class="{{ app.icon | default: 'fas fa-robot' }}" aria-hidden="true"></i>
+        </span>
+        <span class="chatroom-mcp-apps__btn-content">
+          <strong class="chatroom-mcp-apps__btn-label">{{ app.label | default: app.name }}</strong>
+          {% if app.description %}
+          <span class="chatroom-mcp-apps__btn-desc">{{ app.description }}</span>
+          {% endif %}
+          <code class="chatroom-mcp-apps__btn-command">/{{ app.name }}</code>
+        </span>
+      </button>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
