@@ -1,131 +1,88 @@
 /**
- * Chatroom HTML Templates — Infrastructure Templates Only
+ * Chatroom HTML Templates — Dynamic Content Only
  *
- * Defines the structural <template> elements used by the chatroom-app web
- * component.  Only chatroom infrastructure templates live here; message-type
- * templates are domain-specific and must be provided by the consuming page or
- * subdomain (see samples/application/templates/ for examples).
+ * Defines <template> elements for genuinely dynamic content: individual
+ * chat messages and tool-result rows. Structural chrome (header, messages
+ * container, input bar, toolbar, MCP panel) is NOT templated here — it is
+ * static HTML shipped by the theme's Liquid includes
+ * (_includes/chatroom/header.html, messages.html, input.html,
+ * mcp-panel.html) and rendered at Jekyll build time. ChatroomApp hydrates
+ * that static markup; it never clones or generates it.
  *
  * `ensureChatroomTemplates()` is idempotent — safe to call from multiple
- * components or subclasses. It checks whether the templates are already in the
- * DOM (e.g. injected by an older layout) before creating them.
+ * components or subclasses. It checks whether the templates are already in
+ * the DOM before creating them.
  *
- * Infrastructure template IDs (used via ChatroomApp._cloneTemplate):
- *   template-chatroom-layout          — full chatroom chrome (header, messages, input)
- *   template-chatroom-mcp-panel       — MCP apps slide-in panel
- *   template-chatroom-mcp-item        — single MCP app button row
- *   template-chatroom-input           — textarea message input
- *   template-chatroom-toolbar-full    — full send toolbar
- *   template-chatroom-toolbar-minimal — compact send button
+ * Template IDs (used via ChatroomApp._cloneTemplate):
+ *   template-chatroom-message-ai      — legacy fallback AI message (used
+ *                                        only when no domain/shared JSON-LD
+ *                                        template is registered — see
+ *                                        ChatroomApp._cloneDomainAgentTemplate)
+ *   template-chatroom-message-own     — legacy fallback own/user message
+ *   template-chatroom-message-system  — legacy fallback system/agenda divider
+ *   template-chatroom-message-typing  — legacy fallback typing indicator
  *   template-chatroom-tool-result-item — single tool-result list row (MCP)
  *
- * Domain message templates are NOT included here.  Register them via
- * ChatroomApp.registerDomain() using Schema.org JSON-LD @type keys mapped to
- * <template> element IDs provided by the consuming page.
+ * The primary, preferred message-rendering path is the JSON-LD domain
+ * system (ChatroomApp.registerDomain() / registerSharedTemplates()), using
+ * the shared templates in _layouts/chatroom/shared/*.html (agent-message,
+ * user-message, typing, system-message, join, leave, acknowledge, inform,
+ * reaction). The templates below exist only as a legacy fallback path for
+ * consumers that pass plain msg.type-style objects instead of JSON-LD.
  */
 
 /** @type {Array<{id: string, html: string}>} */
 const CHATROOM_TEMPLATES = [
     {
-        id: 'template-chatroom-layout',
-        html: `<div class="chatroom-layout">
-  <header class="chatroom-header">
-    <div class="chatroom-header-content">
-      <div class="chatroom-header-left">
-        <h1 class="chatroom-title"></h1>
-        <div class="chatroom-header-info">
-          <span class="chatroom-owner" hidden></span>
-          <span class="chatroom-participants" hidden></span>
-          <span class="chatroom-step-progress" hidden></span>
-          <span class="chatroom-typing-indicator" aria-live="polite" hidden></span>
-        </div>
-      </div>
-      <div class="chatroom-header-right">
-        <div class="chatroom-status-container" hidden>
-          <span class="chatroom-status" id="connection-status"></span>
-        </div>
-        <div class="chatroom-actions">
-          <button type="button" class="chatroom-mcp-apps-toggle"
-            aria-label="AI Agent Tools" aria-expanded="false"
-            aria-controls="chatroom-mcp-apps-panel"
-            title="AI Agent Tools" hidden>
-            <i class="fas fa-robot" aria-hidden="true"></i>
-          </button>
-          <button type="button" class="chatroom-settings-btn" aria-label="Boardroom Settings">
-            <i class="fas fa-cog" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
-  <div class="chatroom-messages" tabindex="0" role="log"
-    aria-label="Chat messages" aria-live="polite" aria-atomic="false">
-    <div class="chatroom-empty-state">No messages yet. Start the conversation!</div>
-  </div>
-</div>`,
-    },
-    {
-        id: 'template-chatroom-mcp-panel',
-        html: `<div class="chatroom-mcp-apps" aria-hidden="true" id="chatroom-mcp-apps-panel">
-  <div class="chatroom-mcp-apps__header">
-    <h2 class="chatroom-mcp-apps__title">
-      <i class="fas fa-robot" aria-hidden="true"></i> AI Agent Tools
-    </h2>
-    <p class="chatroom-mcp-apps__hint">Select an agent tool or type <code>/tool-name query</code> in the input field.</p>
-  </div>
-  <ul class="chatroom-mcp-apps__list" role="list"></ul>
-</div>`,
-    },
-    {
-        id: 'template-chatroom-mcp-item',
-        html: `<li class="chatroom-mcp-apps__item">
-  <button class="chatroom-mcp-apps__btn" type="button">
-    <span class="chatroom-mcp-apps__btn-icon" aria-hidden="true">
+        id: 'template-chatroom-message-ai',
+        html: `<div class="chatroom__message chatroom__message--ai">
+  <div class="chatroom__message-row">
+    <span class="chatroom__avatar" aria-hidden="true">
       <i class="fas fa-robot" aria-hidden="true"></i>
     </span>
-    <span class="chatroom-mcp-apps__btn-content">
-      <strong class="chatroom-mcp-apps__btn-label"></strong>
-      <span class="chatroom-mcp-apps__btn-desc" hidden></span>
-      <code class="chatroom-mcp-apps__btn-command"></code>
-    </span>
-  </button>
-</li>`,
-    },
-    {
-        id: 'template-chatroom-input',
-        html: `<div class="chatroom-input" role="group" aria-label="Message input area">
-  <div class="chatroom-input-container">
-    <div class="chatroom-input-content">
-      <div class="chatroom-input-field-container">
-        <textarea class="chatroom-input-field" id="chatroom-input-control"
-          aria-label="Message input"
-          rows="1"></textarea>
-      </div>
+    <div class="chatroom__message-body">
+      <header class="chatroom__message-meta">
+        <strong class="chatroom__author" hidden></strong>
+        <span class="chatroom__agent-role" hidden></span>
+        <time class="chatroom__time" hidden></time>
+        <span class="chatroom__tool-badge" title="Tool invoked" hidden>
+          <i class="fas fa-wrench" aria-hidden="true"></i>
+          <span class="chatroom__tool-badge-text"></span>
+        </span>
+      </header>
+      <p class="chatroom__text"></p>
+      <ul class="chatroom__tool-results" hidden></ul>
     </div>
   </div>
 </div>`,
     },
     {
-        id: 'template-chatroom-toolbar-full',
-        html: `<div class="chatroom-input-toolbar">
-  <div class="chatroom-input-toolbar-left">
-  </div>
-  <div class="chatroom-input-toolbar-right">
-    <span class="chatroom-char-count" aria-live="polite"></span>
-    <button class="chatroom-input-send-btn" type="button"
-      title="Send Message" aria-label="Send Message">
-      <i class="fas fa-paper-plane" aria-hidden="true"></i>
-    </button>
+        id: 'template-chatroom-message-own',
+        html: `<div class="chatroom__message chatroom__message--own">
+  <div class="chatroom__message-row">
+    <div class="chatroom__message-body">
+      <header class="chatroom__message-meta">
+        <strong class="chatroom__author" hidden></strong>
+        <time class="chatroom__time" hidden></time>
+      </header>
+      <p class="chatroom__text"></p>
+    </div>
+    <span class="chatroom__avatar chatroom__avatar--you" aria-hidden="true">You</span>
   </div>
 </div>`,
     },
     {
-        id: 'template-chatroom-toolbar-minimal',
-        html: `<div class="chatroom-input-toolbar chatroom-input-toolbar--minimal">
-  <button class="chatroom-input-send-btn" type="button"
-    title="Send Message" aria-label="Send Message">
-    <i class="fas fa-paper-plane" aria-hidden="true"></i>
-  </button>
+        id: 'template-chatroom-message-system',
+        html: `<div class="chatroom__system-message chatroom__system-message--default" role="status" aria-live="polite">
+  <span class="chatroom__agenda-label" hidden></span>
+  <span class="chatroom__agenda-title" hidden></span>
+</div>`,
+    },
+    {
+        id: 'template-chatroom-message-typing',
+        html: `<div class="chatroom__typing">
+  <span class="chatroom__avatar" aria-hidden="true"></span>
+  <em class="chatroom__typing-text"></em>
 </div>`,
     },
     {
@@ -138,12 +95,13 @@ const CHATROOM_TEMPLATES = [
 ];
 
 /**
- * Inject chatroom <template> elements into the document if they are not already
- * present.  Idempotent — safe to call from multiple instances or subclasses.
+ * Inject the dynamic-content <template> elements into the document if they
+ * are not already present. Idempotent — safe to call from multiple
+ * instances or subclasses.
  *
- * The templates are placed in a hidden <div id="chatroom-templates"> appended to
- * <body>.  If that container already exists (e.g. from an older layout that still
- * injects templates via Jekyll includes), only the missing templates are added.
+ * The templates are placed in a hidden <div id="chatroom-templates">
+ * appended to <body>. If that container already exists, only the missing
+ * templates are added.
  */
 export function ensureChatroomTemplates() {
     let container = document.getElementById('chatroom-templates');
