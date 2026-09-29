@@ -52,16 +52,16 @@ module_js: chatroom-app.js
     boardroom.copilotkit_runtime_url - CopilotKit AG-UI runtime URL.
 
   Panels:
-    The toggle strip (_includes/chatroom/toggle-strip.html) and members
-    sidebar (_includes/chatroom/members-sidebar.html) are always rendered
-    as part of this layout's generic shell — chatroom is the rich
-    frontend, and any subdomain using layout: chatroom gets them for free.
-    Their runtime visibility (shown vs. hidden) is controlled entirely by
-    JS reading the show-toggle-strip / show-members-sidebar attributes on
-    the component element, NOT by Liquid conditionals — the markup is
-    always present in the page so JS can toggle it without a rebuild. A
-    dedicated JS module (chatroom-panels.js) attaches this show/hide
-    behavior; it does not generate markup.
+    The toggle strip (_includes/layouts/chatroom/toggle-strip.html) and
+    members sidebar (_includes/layouts/chatroom/members-sidebar.html) are
+    always rendered as part of this layout's generic shell — chatroom is
+    the rich frontend, and any subdomain using layout: chatroom gets them
+    for free. Their runtime visibility (shown vs. hidden) is controlled
+    entirely by JS reading the show-toggle-strip / show-members-sidebar
+    attributes on the component element, NOT by Liquid conditionals — the
+    markup is always present in the page so JS can toggle it without a
+    rebuild. A dedicated JS module (chatroom-panels.js) attaches this
+    show/hide behavior; it does not generate markup.
 
     The members sidebar ships as a generic shell (search, filter, empty
     state, an empty <ul> mount point). Populating that mount point with
@@ -137,8 +137,8 @@ module_js: chatroom-app.js
     the show-toggle-strip / show-members-sidebar attributes above. See
     "Panels" in the docblock at the top of this file.
   {% endcomment %}
-  {% include chatroom/toggle-strip.html %}
-  {% include chatroom/members-sidebar.html %}
+  {% include layouts/chatroom/toggle-strip.html %}
+  {% include layouts/chatroom/members-sidebar.html %}
 
   {{ content }}
 
@@ -158,9 +158,9 @@ module_js: chatroom-app.js
     role="main"
     aria-label="Chat Area"
   >
-    {% include chatroom/header.html %}
-    {% include chatroom/messages.html %}
-    {% include chatroom/mcp-panel.html %}
-    {% include chatroom/input.html %}
+    {% include layouts/chatroom/header.html %}
+    {% include layouts/chatroom/messages.html %}
+    {% include layouts/chatroom/mcp-panel.html %}
+    {% include layouts/chatroom/input.html %}
   </section>
 </{{ _component }}>
