@@ -1,0 +1,31 @@
+// ============================================================================
+// CHATROOM MESSAGES
+// ============================================================================
+// Styles for _includes/chatroom/messages.html
+// ============================================================================
+
+.chatroom-messages {
+  @include flex-grow-fill;
+  @include flex-column($spacing-sm);
+  min-height: 0;
+  overflow-y: auto;
+  padding: $spacing-lg;
+  background: $color-boardroom-bg;
+  scrollbar-width: thin;
+  scrollbar-color: $color-boardroom-gold-active transparent;
+
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb {
+    background: $color-boardroom-gold-active;
+    @include border-radius-rounded(2px);
+  }
+}
+
+.chatroom-empty-state {
+  @include flex-center;
+  @include full-height;
+  color: $color-boardroom-muted;
+  font-size: $font-size-sm;
+  text-align: center;
+}
