@@ -1,59 +1,39 @@
 /**
  * Chatroom Web Component
  *
- * Renders the complete executive boardroom chat interface and manages
- * all interactive behaviour. Receives all configuration and initial
- * chat content as HTML attributes, builds its own DOM, then wires up
- * event handlers.
+ * Hydrates the static chatroom shell shipped by the theme's Liquid includes
+ * (_includes/chatroom/header.html, messages.html, input.html, mcp-panel.html,
+ * toggle-strip.html, members-sidebar.html) and manages all interactive
+ * behaviour. All structural chrome is static HTML rendered at Jekyll build
+ * time — this class never clones or generates structural markup. Its only
+ * generative role is inserting genuinely dynamic content: chat messages,
+ * MCP tool results, and live status/count updates.
  *
  * Built on Lit (https://lit.dev) for reactive properties and lifecycle management.
  * Extends GenesisElement (LitElement, light DOM) — the same base as all other
  * Genesis web components.
  *
- * The component is fully self-contained:
- *   - HTML templates are defined in chatroom-templates.js and injected into the
- *     DOM by the component itself on first use (no Jekyll layout required).
- *   - Viewport CSS classes (chatroom-body / chatroom-main) are applied to
- *     document.body / the nearest <main> in connectedCallback and removed in
- *     disconnectedCallback.
- *
- * Usage — drop into any layout without any special layout configuration:
- *   <chatroom-app title="My Chat" api-endpoint="/api/chat"></chatroom-app>
- *
- * Usage — via the convenience chatroom layout (maps front-matter → attributes):
+ * Usage — via the chatroom layout (maps front-matter → attributes AND emits
+ * the static shell this class hydrates):
  *   layout: chatroom
  *   title: My Chat
  *
- * Attributes / Lit reactive properties:
- *   title            — Chatroom title (default: "Chat")
- *   participants     — Agent count shown in the header
- *   placeholder      — Textarea placeholder text
- *   max-length       — Maximum input length (default: 1000)
- *   show-toolbar     — Boolean; show formatting toolbar in the input bar
- *   show-connection-status — Boolean; render the live-connection badge
- *   mcp-apps         — JSON array of MCP app descriptors
- *   mcp-endpoint     — Fallback HTTP endpoint for all MCP apps
- *   chat-data        — JSON { messages: [...] } from _data/chatroom/<name>.yml
- *   api-endpoint     — Live API base URL for sending/receiving messages
- *   auto-refresh     — Boolean; poll api-endpoint for new messages
- *   refresh-interval — Polling interval in ms (default: 3000)
+ * A page using this layout already contains, in its rendered HTML: the
+ * header, messages container, input bar, optional MCP panel, and optional
+ * toggle-strip/members-sidebar (see _layouts/chatroom.html). This class does
+ * not build any of that — it queries for it and attaches behaviour.
  */
 
 import { GenesisElement } from './common/genesis-element.js';
 import { ensureChatroomTemplates } from './chatroom-templates.js';
+import './chatroom-panels.js';
 
 export class ChatroomApp extends GenesisElement {
-    /**
-     * Lit reactive properties — replaces manual getAttribute() reads.
-     * Lit maps each kebab-case attribute to the camelCase property name
-     * automatically when the `attribute` option is given.
-     */
     static properties = {
         title:                { type: String },
         participants:         { type: String },
         placeholder:          { type: String },
         maxLength:            { type: Number,  attribute: 'max-length' },
-        showToolbar:          { type: Boolean, attribute: 'show-toolbar' },
         showConnectionStatus: { type: Boolean, attribute: 'show-connection-status' },
         mcpApps:              { type: String,  attribute: 'mcp-apps' },
         mcpEndpoint:          { type: String,  attribute: 'mcp-endpoint' },
@@ -61,49 +41,30 @@ export class ChatroomApp extends GenesisElement {
         apiEndpoint:          { type: String,  attribute: 'api-endpoint' },
         autoRefresh:          { type: Boolean, attribute: 'auto-refresh' },
         refreshInterval:      { type: Number,  attribute: 'refresh-interval' },
-        // Theme variant: applying chatroom--theme-<value> as a CSS class allows
-        // subclasses to style the component differently without a new layout file.
         theme:                { type: String },
-        // Workflow owner shown in the chatroom header info bar.
         owner:                { type: String },
-        // Step / total-steps pair for a progress indicator in the header.
         stepId:               { type: String,  attribute: 'step-id' },
         totalSteps:           { type: Number,  attribute: 'total-steps' },
     };
 
     constructor() {
         super();
-        this.config = null;   // populated in connectedCallback
+        this.config = null;
         this._mcpPendingCount = 0;
         this.refreshIntervalId = null;
         this._apiConnected = false;
-        // Domain template registry — maps JSON-LD @type → template element ID.
-        // Domain-specific templates take priority over shared templates.
-        // Null until registerDomain() is called by the consuming page.
         this._domainTemplates = null;
-        // Shared template registry — cross-domain fallback templates.
-        // Maps JSON-LD @type → template element ID.
-        // Applied when no domain-specific template is found for a @type.
-        // Null until registerSharedTemplates() is called by the consuming page.
         this._sharedTemplates = null;
-        // Default values for numeric properties (Lit leaves them undefined when absent)
         this.maxLength = 1000;
         this.refreshInterval = 3000;
     }
 
-    /**
-     * Parse the mcp-apps attribute into an array of app descriptors.
-     * Accepts JSON array or comma-separated "name:endpoint" pairs.
-     * @param {string|null} raw
-     * @returns {Array<{name: string, label: string, endpoint: string, icon: string}>}
-     */
     _parseMcpApps(raw) {
         if (!raw) return [];
         try {
             const parsed = JSON.parse(raw);
             return Array.isArray(parsed) ? parsed : [];
         } catch {
-            // Fallback: comma-separated "name:endpoint" or just "name" list
             return raw.split(',').map(token => {
                 const [name, endpoint = ''] = token.trim().split(':');
                 return { name: name.trim(), label: name.trim(), endpoint: endpoint.trim(), icon: 'fas fa-robot' };
@@ -114,20 +75,15 @@ export class ChatroomApp extends GenesisElement {
     connectedCallback() {
         super.connectedCallback();
 
-        // Ensure the HTML <template> elements are in the DOM (self-provision if
-        // the page does not use layout: chatroom to inject them via Jekyll).
+        // Dynamic-content templates (message bubbles, tool-result rows) still
+        // need to exist for the legacy msg.type fallback path and the
+        // _cloneDomainAgentTemplate() fallback — structural chrome does not
+        // use this mechanism at all, since it's already static HTML.
         ensureChatroomTemplates();
 
-        // Mark this element as a chatroom component so CSS selectors can target
-        // any subclass without hardcoding element names in the stylesheet.
         this.setAttribute('data-chatroom-component', '');
-
-        // Apply viewport classes so the component fills the full screen when used
-        // in any layout — no body_class / main_class front-matter required.
         document.body.classList.add('chatroom-body');
         this.closest('main')?.classList.add('chatroom-main');
-
-        // Apply theme variant CSS class when the theme attribute is set.
         if (this.theme) this.classList.add(`chatroom--theme-${this.theme}`);
 
         this.config = {
@@ -135,7 +91,6 @@ export class ChatroomApp extends GenesisElement {
             participants: this.participants || null,
             placeholder: this.placeholder || 'Type a message...',
             maxLength: this.maxLength || 1000,
-            showToolbar: this.showToolbar,
             showConnectionStatus: this.showConnectionStatus,
             apiEndpoint: this.apiEndpoint || null,
             autoRefresh: this.autoRefresh,
@@ -148,7 +103,7 @@ export class ChatroomApp extends GenesisElement {
             totalSteps: this.totalSteps || null,
         };
 
-        this._render();
+        this._hydrate();
         this.initializeElements();
         this.attachEventHandlers();
         this._setupMcpAppsPanel();
@@ -166,12 +121,6 @@ export class ChatroomApp extends GenesisElement {
         }));
     }
 
-    /**
-     * Lit lifecycle: called after reactive property changes.
-     * Replaces manual attribute observation for live title/participants updates.
-     * Uses `this.hasUpdated` to skip the initial render pass (Lit sets it true
-     * after the first complete update cycle).
-     */
     updated(changedProperties) {
         super.updated(changedProperties);
         if (!this.hasUpdated || !this.config) return;
@@ -181,7 +130,6 @@ export class ChatroomApp extends GenesisElement {
         if (changedProperties.has('participants')) {
             this.updateParticipants(this.participants);
         }
-        // Sync theme variant class when the theme attribute changes at runtime.
         if (changedProperties.has('theme')) {
             const prev = changedProperties.get('theme');
             if (prev) this.classList.remove(`chatroom--theme-${prev}`);
@@ -190,17 +138,12 @@ export class ChatroomApp extends GenesisElement {
     }
 
     // =========================================================================
-    // Rendering — component builds its own DOM from HTML templates
-    // Templates are defined in chatroom-templates.js and injected into the DOM
-    // by ensureChatroomTemplates() (called in connectedCallback).
+    // Hydration — the static shell already exists in the DOM (rendered by the
+    // theme's Liquid includes at build time). This class only populates
+    // dynamic content into it and calls subclass extension hooks. It never
+    // clones or builds structural markup.
     // =========================================================================
 
-    /**
-     * Parse the chat-data attribute into a messages array.
-     * Accepts { messages: [...] } or a plain array.
-     * @param {string|null} raw
-     * @returns {Array<object>}
-     */
     _parseChatData(raw) {
         if (!raw) return [];
         try {
@@ -215,8 +158,8 @@ export class ChatroomApp extends GenesisElement {
 
     /**
      * Clone an HTML <template> element by ID and return its first child element.
-     * @param {string} id  Template element ID (without leading '#')
-     * @returns {Element|null}
+     * Used only for genuinely dynamic content (messages, MCP results) — never
+     * for structural chrome, which is static HTML already in the DOM.
      */
     _cloneTemplate(id) {
         const tpl = document.getElementById(id);
@@ -225,77 +168,38 @@ export class ChatroomApp extends GenesisElement {
     }
 
     /**
-     * Build the complete chatroom DOM from the layout template and insert it
-     * into this element.  Called once from connectedCallback before event wiring.
-     *
-     * Render target resolution:
-     *   1. If a `#chatArea` child element exists (placed by the layout when page
-     *      content/panels are present), the chat UI is rendered into it — leaving
-     *      sibling panels (sidebar, toggle strip, overlay, toasts) untouched.
-     *   2. Otherwise the chat UI replaces all children of this element (original
-     *      behaviour for plain chatroom pages with no panels).
-     *
-     * Extension hooks for subclasses (override instead of _render):
-     *   _onInputBuilt(inputEl)  — called after the input bar is built; add
-     *                             toolbar buttons, file-attach, etc.
-     *   _onLayoutBuilt(layout)  — called after input is appended to layout and
-     *                             before the layout is inserted into the DOM; add
-     *                             header action buttons, badges, etc.
+     * Populate the already-static shell with initial dynamic content: title,
+     * owner, step progress, participants, MCP toggle badge, and any
+     * pre-loaded chat messages. Calls the subclass extension hooks
+     * (_onInputBuilt, _onLayoutBuilt) against the existing static input/root
+     * elements, so subclasses can still add their own buttons without any
+     * class needing to generate structural markup.
      */
-    _render() {
-        const { title, participants, placeholder, showToolbar, showConnectionStatus, mcpApps, chatMessages, owner, stepId, totalSteps } = this.config;
+    _hydrate() {
+        const { title, owner, stepId, totalSteps, participants, mcpApps, chatMessages } = this.config;
 
-        const layout = this._cloneTemplate('template-chatroom-layout');
-        if (!layout) return;
-
-        // Populate title
-        const titleEl = layout.querySelector('.chatroom-title');
+        const titleEl = this.querySelector('.chatroom-title');
         if (titleEl) titleEl.textContent = title;
 
-        // Conditionally show owner label
-        const ownerEl = layout.querySelector('.chatroom-owner');
+        const ownerEl = this.querySelector('.chatroom-owner');
         if (ownerEl && owner) {
             ownerEl.textContent = owner;
             ownerEl.hidden = false;
         }
 
-        // Conditionally show step progress
-        const stepEl = layout.querySelector('.chatroom-step-progress');
+        const stepEl = this.querySelector('.chatroom-step-progress');
         if (stepEl && stepId && totalSteps) {
             stepEl.textContent = `Step ${stepId} of ${totalSteps}`;
             stepEl.hidden = false;
         }
 
-        // Conditionally show participants count
-        const participantsEl = layout.querySelector('.chatroom-participants');
+        const participantsEl = this.querySelector('.chatroom-participants');
         if (participantsEl && participants) {
             participantsEl.textContent = `${participants} agents in session`;
             participantsEl.hidden = false;
         }
 
-        // Conditionally show connection status badge
-        const statusContainer = layout.querySelector('.chatroom-status-container');
-        if (statusContainer && showConnectionStatus) {
-            statusContainer.hidden = false;
-        }
-
-        // Conditionally show MCP apps toggle button in the header
-        const mcpToggle = layout.querySelector('.chatroom-mcp-apps-toggle');
-        if (mcpToggle && mcpApps.length > 0) {
-            mcpToggle.hidden = false;
-        }
-
-        // Insert MCP apps panel before the messages container
-        if (mcpApps.length > 0) {
-            const panel = this._buildMcpPanel(mcpApps);
-            if (panel) {
-                const messagesEl = layout.querySelector('.chatroom-messages');
-                if (messagesEl) layout.insertBefore(panel, messagesEl);
-            }
-        }
-
-        // Populate messages container
-        const messagesEl = layout.querySelector('.chatroom-messages');
+        const messagesEl = this.querySelector('.chatroom-messages');
         if (messagesEl && chatMessages.length > 0) {
             messagesEl.replaceChildren();
             chatMessages.forEach(m => {
@@ -304,103 +208,50 @@ export class ChatroomApp extends GenesisElement {
             });
         }
 
-        // Build input area and call the subclass hook before appending
-        const inputEl = this._buildInput(placeholder, showToolbar, mcpApps);
-        if (inputEl) {
-            this._onInputBuilt(inputEl);
-            layout.appendChild(inputEl);
-        }
+        const inputEl = this.querySelector('.chatroom-input');
+        if (inputEl) this._onInputBuilt(inputEl);
+        this._onLayoutBuilt(this);
 
-        // Call the subclass hook before inserting the layout into the DOM
-        this._onLayoutBuilt(layout);
-
-        // Render into #chatArea when panel siblings exist; otherwise own all children
-        const chatArea = this.querySelector('#chatArea');
-        if (chatArea) {
-            chatArea.replaceChildren(layout);
-        } else {
-            this.replaceChildren(layout);
-        }
-
-        // Scroll to bottom of the pre-loaded message list
         if (messagesEl) messagesEl.scrollTop = messagesEl.scrollHeight;
+
+        // The static MCP panel/toggle may exist from build time even if the
+        // JS-resolved mcpApps ended up empty (e.g. malformed JSON in the
+        // mcp-apps attribute) — reconcile that here.
+        const mcpToggle = this.querySelector('.chatroom-mcp-apps-toggle');
+        if (mcpToggle && mcpApps.length === 0) {
+            mcpToggle.hidden = true;
+        }
     }
 
     /**
-     * Extension hook — called after the input bar element is built and before
-     * it is appended to the layout.  Override in subclasses to add toolbar
-     * buttons, file-attach controls, or other input-area customisations.
-     * @param {Element} _inputEl  The cloned chatroom-input element.
+     * Extension hook — called with the static .chatroom-input element after
+     * hydration. Override in subclasses to add toolbar buttons, file-attach
+     * controls, or other input-area customisations into its existing
+     * .chatroom-input-toolbar-left / -right slots.
      */
     // eslint-disable-next-line no-unused-vars
     _onInputBuilt(_inputEl) { /* override in subclasses */ }
 
     /**
-     * Extension hook — called after the full chatroom layout is assembled and
-     * before it is inserted into the DOM.  Override in subclasses to add header
-     * action buttons, inject extra markup, or modify the layout tree.
-     * @param {Element} _layout  The assembled chatroom-layout element.
+     * Extension hook — called with the component root after hydration.
+     * Override in subclasses to add header action buttons, inject extra
+     * markup into the existing static header, or wire additional behavior.
      */
     // eslint-disable-next-line no-unused-vars
-    _onLayoutBuilt(_layout) { /* override in subclasses */ }
+    _onLayoutBuilt(_rootEl) { /* override in subclasses */ }
 
     // =========================================================================
     // JSON-LD Domain API
     // =========================================================================
 
-    /**
-     * Register domain-specific HTML templates mapped by JSON-LD @type.
-     * Must be called before loadDomain() or at any time to swap the domain.
-     * Domain templates take priority over shared templates.
-     *
-     * @param {Object} typeToTemplateMap
-     *   Keys are JSON-LD @type values; values are HTML <template> element IDs.
-     *   Reserved keys:
-     *     '__agent_message' — @type whose template is used for MCP agent responses.
-     *     '__user_message'  — @type whose template is used when the user sends a msg.
-     *
-     * @example
-     *   chatroom.registerDomain({
-     *     'schema:AgentMessage': 'template-business-agent-msg',
-     *     'schema:UserMessage':  'template-business-user-msg',
-     *     '__agent_message':     'schema:AgentMessage',
-     *     '__user_message':      'schema:UserMessage',
-     *   });
-     */
     registerDomain(typeToTemplateMap) {
         this._domainTemplates = Object.assign({}, typeToTemplateMap);
     }
 
-    /**
-     * Register shared (cross-domain) HTML templates mapped by JSON-LD @type.
-     * Shared templates act as fallback when no domain-specific template is found.
-     * Call once at startup before activating any domain.
-     *
-     * @param {Object} typeToTemplateMap
-     *   Keys are JSON-LD @type values; values are HTML <template> element IDs.
-     *   Reserved keys (same as registerDomain):
-     *     '__agent_message' — @type for MCP/AI agent responses (used as MCP fallback).
-     *     '__user_message'  — @type for user-sent messages.
-     *
-     * @example
-     *   chatroom.registerSharedTemplates({
-     *     'AgentMessage':      'template-shared-agent-msg',
-     *     'UserMessage':       'template-shared-user-msg',
-     *     'CommunicateAction': 'template-shared-typing',
-     *     '__agent_message':   'AgentMessage',
-     *     '__user_message':    'UserMessage',
-     *   });
-     */
     registerSharedTemplates(typeToTemplateMap) {
         this._sharedTemplates = Object.assign({}, typeToTemplateMap);
     }
 
-    /**
-     * Clear the current messages and re-render from a JSON-LD message array.
-     * Requires registerDomain() or registerSharedTemplates() to have been called.
-     *
-     * @param {Array<Object>} messages  Array of Schema.org JSON-LD objects.
-     */
     loadDomain(messages) {
         if (!Array.isArray(messages)) return;
         const container = this.elements?.messagesContainer;
@@ -413,19 +264,10 @@ export class ChatroomApp extends GenesisElement {
         container.scrollTop = container.scrollHeight;
     }
 
-    /**
-     * Build a DOM element from a JSON-LD item using the registered templates.
-     * Checks domain-specific templates first, then falls back to shared templates.
-     * Returns null if no matching template is found in either registry.
-     *
-     * @param {Object} item  JSON-LD object with an '@type' field.
-     * @returns {Element|null}
-     */
     _buildFromJsonLd(item) {
         if (!item || (!this._domainTemplates && !this._sharedTemplates)) return null;
         const type = item['@type'];
         if (!type) return null;
-        // Domain-specific template takes priority over shared template
         const templateId = this._domainTemplates?.[type] ?? this._sharedTemplates?.[type];
         if (!templateId) return null;
         const el = this._cloneTemplate(templateId);
@@ -434,26 +276,7 @@ export class ChatroomApp extends GenesisElement {
         return el;
     }
 
-    /**
-     * Fill a cloned template element's data-schema* slots from a JSON-LD object.
-     *
-     * Supported attributes on descendant elements:
-     *   data-schema="path.to.value"
-     *     Fills textContent from the dot-notation path; removes [hidden].
-     *   data-schema-avatar="id.path"
-     *     Adds chatroom__avatar--<id> CSS class; sets initials or, if
-     *     data-schema-avatar-icon="icon.path" resolves, a Font Awesome <i> icon.
-     *   data-schema-list="path"
-     *     Renders an array of { name, description } objects as tool-result-item
-     *     list rows (using template-chatroom-tool-result-item); removes [hidden].
-     *   data-schema-parent-show="path"
-     *     Removes [hidden] from this element when the path resolves to a value.
-     *
-     * @param {Element} el    Cloned template element to fill.
-     * @param {Object}  data  JSON-LD source object.
-     */
     _fillFromSchema(el, data) {
-        // Text content fill
         el.querySelectorAll('[data-schema]').forEach(field => {
             const value = this._getJsonLdValue(data, field.getAttribute('data-schema'));
             if (value !== null && value !== undefined && value !== '') {
@@ -462,7 +285,6 @@ export class ChatroomApp extends GenesisElement {
             }
         });
 
-        // Avatar fill: CSS class modifier + initials or Font Awesome icon
         el.querySelectorAll('[data-schema-avatar]').forEach(avatarEl => {
             const id = this._getJsonLdValue(data, avatarEl.getAttribute('data-schema-avatar'));
             if (!id) return;
@@ -481,7 +303,6 @@ export class ChatroomApp extends GenesisElement {
             }
         });
 
-        // List fill: render array as tool-result-item rows
         el.querySelectorAll('[data-schema-list]').forEach(listEl => {
             const items = this._getJsonLdValue(data, listEl.getAttribute('data-schema-list'));
             if (!Array.isArray(items) || !items.length) return;
@@ -495,7 +316,6 @@ export class ChatroomApp extends GenesisElement {
             listEl.removeAttribute('hidden');
         });
 
-        // Parent-show: reveal a container when a referenced path has a value
         el.querySelectorAll('[data-schema-parent-show]').forEach(parentEl => {
             const value = this._getJsonLdValue(data, parentEl.getAttribute('data-schema-parent-show'));
             if (value !== null && value !== undefined && value !== '') {
@@ -504,57 +324,28 @@ export class ChatroomApp extends GenesisElement {
         });
     }
 
-    /**
-     * Resolve a dot-notation path within a JSON-LD object.
-     * @param {Object} data  Source data.
-     * @param {string} path  Dot-notation path, e.g. "sender.name".
-     * @returns {*}  Resolved value or null if the path does not exist.
-     */
     _getJsonLdValue(data, path) {
         if (!path) return null;
         return path.split('.').reduce((obj, key) => obj?.[key] ?? null, data) ?? null;
     }
 
-    /**
-     * Clone the registered agent message template for MCP/AI responses.
-     * Resolution order:
-     *   1. Domain-specific template (registered via registerDomain)
-     *   2. Shared template (registered via registerSharedTemplates)
-     *   3. Legacy 'template-chatroom-message-ai' (no longer shipped — logs warning)
-     * @returns {Element|null}
-     */
     _cloneDomainAgentTemplate() {
-        // 1. Domain-specific agent template
         const agentType = this._domainTemplates?.['__agent_message'];
         if (agentType) {
             const id = this._domainTemplates[agentType];
             if (id) return this._cloneTemplate(id);
         }
-        // 2. Shared template fallback
         const sharedType = this._sharedTemplates?.['__agent_message'];
         if (sharedType) {
             const id = this._sharedTemplates[sharedType];
             if (id) return this._cloneTemplate(id);
         }
-        // 3. Legacy fallback (template no longer shipped — log to help developers)
         // eslint-disable-next-line no-console
         console.warn('[ChatroomApp] No agent message template found. Call registerSharedTemplates() or registerDomain() first.');
         return this._cloneTemplate('template-chatroom-message-ai');
     }
 
-    /**
-     * Build a user message element using the registered user template.
-     * Resolution order:
-     *   1. Domain-specific user template (via registerDomain)
-     *   2. Shared user template (via registerSharedTemplates)
-     *   3. Returns null — caller falls back to legacy _buildOwnMsg()
-     * @param {string} text  Message text.
-     * @returns {Element|null}
-     */
     _buildDomainUserMsg(text) {
-        // Build a synthetic user message JSON-LD object and route through
-        // _buildFromJsonLd(), which handles domain → shared lookup internally.
-        // Try domain-specific __user_message type first, then shared.
         const userType =
             this._domainTemplates?.['__user_message'] ??
             this._sharedTemplates?.['__user_message'];
@@ -568,21 +359,11 @@ export class ChatroomApp extends GenesisElement {
         return this._buildFromJsonLd(msg);
     }
 
-
-    /**
-     * Build and return a DOM element for a single message.
-     * Tries the JSON-LD domain path first, then falls back to legacy type
-     * dispatch for backward compatibility with old-style message objects.
-     * @param {object} msg
-     * @returns {Element|null}
-     */
     _buildMessage(msg) {
-        // JSON-LD path: dispatch by @type, checking domain then shared templates
         if (msg['@type'] && (this._domainTemplates || this._sharedTemplates)) {
             const el = this._buildFromJsonLd(msg);
             if (el) return el;
         }
-        // Legacy path: dispatch by msg.type for backward compatibility
         switch (msg.type) {
             case 'system':  return this._buildSystemMsg(msg);
             case 'ai':      return this._buildAiMsg(msg);
@@ -592,16 +373,10 @@ export class ChatroomApp extends GenesisElement {
         }
     }
 
-    /**
-     * Build a system/agenda divider message element.
-     * @param {object} msg
-     * @returns {Element|null}
-     */
     _buildSystemMsg(msg) {
         const el = this._cloneTemplate('template-chatroom-message-system');
         if (!el) return null;
 
-        // Replace the default kind modifier with the actual message kind
         const kind = this._safeClass(msg.kind || 'default');
         el.classList.remove('chatroom__system-message--default');
         el.classList.add(`chatroom__system-message--${kind}`);
@@ -621,16 +396,10 @@ export class ChatroomApp extends GenesisElement {
         return el;
     }
 
-    /**
-     * Build an AI agent message element.
-     * @param {object} msg
-     * @returns {Element|null}
-     */
     _buildAiMsg(msg) {
         const el = this._cloneTemplate('template-chatroom-message-ai');
         if (!el) return null;
 
-        // Avatar — icon or initials
         const avatar = msg.avatar || 'ai';
         const avatarEl = el.querySelector('.chatroom__avatar');
         if (avatarEl) {
@@ -642,33 +411,28 @@ export class ChatroomApp extends GenesisElement {
                     iconEl.setAttribute('aria-hidden', 'true');
                 }
             } else {
-                // Replace icon with initials text
                 avatarEl.textContent = avatar.toUpperCase();
             }
         }
 
-        // Author
         const authorEl = el.querySelector('.chatroom__author');
         if (authorEl && msg.author) {
             authorEl.textContent = msg.author;
             authorEl.hidden = false;
         }
 
-        // Agent role
         const roleEl = el.querySelector('.chatroom__agent-role');
         if (roleEl && msg.role) {
             roleEl.textContent = msg.role;
             roleEl.hidden = false;
         }
 
-        // Timestamp
         const timeEl = el.querySelector('.chatroom__time');
         if (timeEl && msg.time) {
             timeEl.textContent = msg.time;
             timeEl.hidden = false;
         }
 
-        // Tool badge
         const badgeEl = el.querySelector('.chatroom__tool-badge');
         if (badgeEl && msg.tool_badge) {
             const iconEl = badgeEl.querySelector('i');
@@ -681,11 +445,9 @@ export class ChatroomApp extends GenesisElement {
             badgeEl.hidden = false;
         }
 
-        // Message text
         const textEl = el.querySelector('.chatroom__text');
         if (textEl) textEl.textContent = msg.text || '';
 
-        // Tool results
         if (Array.isArray(msg.tool_results) && msg.tool_results.length) {
             const listEl = el.querySelector('.chatroom__tool-results');
             if (listEl) {
@@ -701,11 +463,6 @@ export class ChatroomApp extends GenesisElement {
         return el;
     }
 
-    /**
-     * Build a user's own message element.
-     * @param {object} msg
-     * @returns {Element|null}
-     */
     _buildOwnMsg(msg) {
         const el = this._cloneTemplate('template-chatroom-message-own');
         if (!el) return null;
@@ -731,11 +488,6 @@ export class ChatroomApp extends GenesisElement {
         return el;
     }
 
-    /**
-     * Build a typing/deliberating indicator element.
-     * @param {object} msg
-     * @returns {Element|null}
-     */
     _buildTypingMsg(msg) {
         const el = this._cloneTemplate('template-chatroom-message-typing');
         if (!el) return null;
@@ -753,126 +505,6 @@ export class ChatroomApp extends GenesisElement {
         return el;
     }
 
-    /**
-     * Build the MCP apps panel element populated with app buttons.
-     * @param {Array} apps
-     * @returns {Element|null}
-     */
-    _buildMcpPanel(apps) {
-        if (!apps.length) return null;
-
-        const panel = this._cloneTemplate('template-chatroom-mcp-panel');
-        if (!panel) return null;
-
-        const list = panel.querySelector('.chatroom-mcp-apps__list');
-        if (list) {
-            apps.forEach(app => {
-                const item = this._buildMcpItem(app);
-                if (item) list.appendChild(item);
-            });
-        }
-
-        return panel;
-    }
-
-    /**
-     * Build a single MCP app list item element.
-     * @param {object} app  { name, label, endpoint, icon, description }
-     * @returns {Element|null}
-     */
-    _buildMcpItem(app) {
-        const item = this._cloneTemplate('template-chatroom-mcp-item');
-        if (!item) return null;
-
-        const btn = item.querySelector('.chatroom-mcp-apps__btn');
-        if (btn) {
-            btn.setAttribute('data-mcp-app', app.name);
-            if (app.endpoint) btn.setAttribute('data-mcp-endpoint', app.endpoint);
-            btn.setAttribute('aria-label', `Invoke ${app.label || app.name}`);
-        }
-
-        const iconEl = item.querySelector('.chatroom-mcp-apps__btn-icon i');
-        if (iconEl) {
-            iconEl.className = this._safeIcon(app.icon || 'fas fa-robot');
-            iconEl.setAttribute('aria-hidden', 'true');
-        }
-
-        const labelEl = item.querySelector('.chatroom-mcp-apps__btn-label');
-        if (labelEl) labelEl.textContent = app.label || app.name;
-
-        const descEl = item.querySelector('.chatroom-mcp-apps__btn-desc');
-        if (descEl && app.description) {
-            descEl.textContent = app.description;
-            descEl.hidden = false;
-        }
-
-        const cmdEl = item.querySelector('.chatroom-mcp-apps__btn-command');
-        if (cmdEl) cmdEl.textContent = `/${app.name}`;
-
-        return item;
-    }
-
-    /**
-     * Build the input area element, selecting the correct toolbar variant.
-     * @param {string}  placeholder
-     * @param {boolean} showToolbar
-     * @param {Array}   apps
-     * @returns {Element|null}
-     */
-    _buildInput(placeholder, showToolbar, apps) {
-        const wrapper = this._cloneTemplate('template-chatroom-input');
-        if (!wrapper) return null;
-
-        const textarea = wrapper.querySelector('.chatroom-input-field');
-        if (textarea) {
-            textarea.setAttribute('placeholder', placeholder);
-            textarea.setAttribute('maxlength', String(this.config.maxLength));
-        }
-
-        // Build and append the correct toolbar variant
-        const toolbarTplId = showToolbar
-            ? 'template-chatroom-toolbar-full'
-            : 'template-chatroom-toolbar-minimal';
-        const toolbar = this._cloneTemplate(toolbarTplId);
-
-        if (toolbar && apps.length > 0) {
-            // Build MCP toggle button and insert into the toolbar
-            const mcpToggle = document.createElement('button');
-            mcpToggle.type = 'button';
-            mcpToggle.className = 'chatroom-mcp-apps-toggle chatroom-input-format-btn';
-            mcpToggle.setAttribute('aria-label', 'MCP Apps');
-            mcpToggle.setAttribute('aria-expanded', 'false');
-            mcpToggle.setAttribute('aria-controls', 'chatroom-mcp-apps-panel');
-            mcpToggle.title = 'MCP Apps';
-            const plugIcon = document.createElement('i');
-            plugIcon.className = 'fas fa-plug';
-            plugIcon.setAttribute('aria-hidden', 'true');
-            mcpToggle.appendChild(plugIcon);
-
-            if (showToolbar) {
-                const leftDiv = toolbar.querySelector('.chatroom-input-toolbar-left');
-                if (leftDiv) leftDiv.appendChild(mcpToggle);
-            } else {
-                // Minimal toolbar: insert before the send button
-                const sendBtn = toolbar.querySelector('.chatroom-input-send-btn');
-                if (sendBtn) toolbar.insertBefore(mcpToggle, sendBtn);
-            }
-        }
-
-        if (toolbar) {
-            const content = wrapper.querySelector('.chatroom-input-content');
-            if (content) content.appendChild(toolbar);
-        }
-
-        return wrapper;
-    }
-
-    /**
-     * Build a single tool result list item element.
-     * @param {string} label
-     * @param {string} detail
-     * @returns {Element|null}
-     */
     _buildToolResultItem(label, detail) {
         const item = this._cloneTemplate('template-chatroom-tool-result-item');
         if (!item) return null;
@@ -895,6 +527,11 @@ export class ChatroomApp extends GenesisElement {
         return item;
     }
 
+    /**
+     * Query the static shell for the elements this class needs to hydrate
+     * and wire behaviour into. Every selector below targets HTML that
+     * already exists — rendered by _includes/chatroom/*.html at build time.
+     */
     initializeElements() {
         this.elements = {
             header: this.querySelector('.chatroom-header'),
@@ -913,12 +550,10 @@ export class ChatroomApp extends GenesisElement {
     }
 
     attachEventHandlers() {
-        // Send message on button click
         if (this.elements.sendButton) {
             this.elements.sendButton.addEventListener('click', () => this.sendMessage());
         }
 
-        // Send message on Enter key (Shift+Enter for new line)
         if (this.elements.inputField) {
             this.elements.inputField.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' && !e.shiftKey) {
@@ -927,7 +562,6 @@ export class ChatroomApp extends GenesisElement {
                 }
             });
 
-            // Character count
             if (this.elements.charCount) {
                 this.elements.inputField.addEventListener('input', () => {
                     const count = this.elements.inputField.value.length;
@@ -935,7 +569,6 @@ export class ChatroomApp extends GenesisElement {
                 });
             }
 
-            // Typing indicator
             if (this.config.showTypingIndicator) {
                 let typingTimeout;
                 this.elements.inputField.addEventListener('input', () => {
@@ -945,11 +578,9 @@ export class ChatroomApp extends GenesisElement {
                 });
             }
 
-            // Slash-command hint: update placeholder when user types /
             this.elements.inputField.addEventListener('input', () => this._updateSlashHint());
         }
 
-        // MCP apps toggle button
         if (this.elements.mcpAppsToggle) {
             this.elements.mcpAppsToggle.addEventListener('click', () => this.toggleMcpAppsPanel());
         }
@@ -960,14 +591,14 @@ export class ChatroomApp extends GenesisElement {
     // =========================================================================
 
     /**
-     * Populate the MCP apps panel with app buttons (if not already rendered
-     * via Liquid) and wire up click handlers.
+     * Wire up click handlers on the static MCP app buttons already rendered
+     * by _includes/chatroom/mcp-panel.html. Does not generate any markup —
+     * the buttons and their data-mcp-app/data-mcp-endpoint attributes are
+     * already in the DOM.
      */
     _setupMcpAppsPanel() {
         if (!this.config.mcpApps.length) return;
 
-        // If a panel element already exists (rendered by Liquid), wire up
-        // click handlers on the app buttons.
         const panel = this.elements.mcpAppsPanel;
         if (panel) {
             panel.querySelectorAll('[data-mcp-app]').forEach(btn => {
@@ -979,26 +610,16 @@ export class ChatroomApp extends GenesisElement {
         }
     }
 
-    /**
-     * Activate an MCP app: pre-fill the input with `/appname ` so the user
-     * can complete the query, then focus the input.
-     * @param {string} appName
-     */
     _activateMcpApp(appName) {
         if (!this.elements.inputField) return;
         this.elements.inputField.value = `/${appName} `;
         this.elements.inputField.focus();
-        // Move cursor to end
         const len = this.elements.inputField.value.length;
         this.elements.inputField.setSelectionRange(len, len);
         this._updateSlashHint();
-        // Close panel
         this.closeMcpAppsPanel();
     }
 
-    /**
-     * Update the input placeholder hint when a slash command is detected.
-     */
     _updateSlashHint() {
         if (!this.elements.inputField) return;
         const value = this.elements.inputField.value;
@@ -1013,12 +634,6 @@ export class ChatroomApp extends GenesisElement {
         }
     }
 
-    /**
-     * Detect if the input text is a slash command for an MCP app.
-     * Returns { app, query } or null.
-     * @param {string} text
-     * @returns {{ app: object, query: string }|null}
-     */
     _detectSlashCommand(text) {
         const match = text.match(/^\/(\S+)\s*([\s\S]*)$/);
         if (!match) return null;
@@ -1028,11 +643,6 @@ export class ChatroomApp extends GenesisElement {
         return { app, query: query.trim() };
     }
 
-    /**
-     * Call an MCP app and display the result as an AI message.
-     * @param {object} app  MCP app descriptor { name, label, endpoint, icon }
-     * @param {string} query  The query text
-     */
     async callMcpApp(app, query) {
         const endpoint = app.endpoint || this.config.mcpEndpoint;
         if (!endpoint) {
@@ -1040,7 +650,6 @@ export class ChatroomApp extends GenesisElement {
             return;
         }
 
-        // Show thinking indicator
         const thinkingEl = this._appendMcpThinking(app);
         this._mcpPendingCount++;
         this._updateMcpAppsToggleBadge();
@@ -1086,11 +695,6 @@ export class ChatroomApp extends GenesisElement {
         }
     }
 
-    /**
-     * Append a "thinking" indicator message element and return it.
-     * @param {object} app
-     * @returns {HTMLElement}
-     */
     _appendMcpThinking(app) {
         const container = this.elements.messagesContainer;
         if (!container) return document.createElement('div');
@@ -1122,7 +726,6 @@ export class ChatroomApp extends GenesisElement {
             authorEl.hidden = false;
         }
 
-        // Replace the text paragraph with animated thinking dots
         const textEl = el.querySelector('.chatroom__text');
         if (textEl) {
             textEl.classList.add('chatroom__thinking-dots');
@@ -1140,12 +743,6 @@ export class ChatroomApp extends GenesisElement {
         return el;
     }
 
-    /**
-     * Append an AI response message from an MCP app.
-     * @param {object} app
-     * @param {string} query  Original user query
-     * @param {object} data   Response data from the MCP endpoint
-     */
     _appendMcpMessage(app, query, data) {
         const container = this.elements.messagesContainer;
         if (!container) return;
@@ -1211,11 +808,6 @@ export class ChatroomApp extends GenesisElement {
         container.scrollTop = container.scrollHeight;
     }
 
-    /**
-     * Append an error message for a failed MCP call.
-     * @param {object} app
-     * @param {string} errorText
-     */
     _appendMcpError(app, errorText) {
         const container = this.elements.messagesContainer;
         if (!container) return;
@@ -1265,13 +857,6 @@ export class ChatroomApp extends GenesisElement {
         container.scrollTop = container.scrollHeight;
     }
 
-    /**
-     * Append structured tool-result items to an AI message element when the
-     * response data contains a `tool_result`, `results`, `documents`, or `items`
-     * array field.
-     * @param {Element} msgEl  AI message element (cloned from template)
-     * @param {object}  data   MCP response data
-     */
     _appendToolResults(msgEl, data) {
         const results = data.tool_result || data.results || data.documents || data.items;
         if (!Array.isArray(results) || results.length === 0) return;
@@ -1304,9 +889,6 @@ export class ChatroomApp extends GenesisElement {
         listEl.hidden = false;
     }
 
-    /**
-     * Update the MCP apps toggle button badge to show pending request count.
-     */
     _updateMcpAppsToggleBadge() {
         const toggle = this.elements.mcpAppsToggle;
         if (!toggle) return;
@@ -1324,7 +906,6 @@ export class ChatroomApp extends GenesisElement {
         }
     }
 
-    /** Toggle the MCP apps panel open/closed. */
     toggleMcpAppsPanel() {
         const panel = this.elements.mcpAppsPanel;
         if (!panel) return;
@@ -1332,22 +913,12 @@ export class ChatroomApp extends GenesisElement {
         this._setPanelOpen(panel, !isOpen);
     }
 
-    /** Close the MCP apps panel. */
     closeMcpAppsPanel() {
         const panel = this.elements.mcpAppsPanel;
         if (!panel) return;
         this._setPanelOpen(panel, false);
     }
 
-    /**
-     * Set the open state of the MCP apps panel and synchronise ARIA attributes.
-     * When open:  role=region and aria-label are present so screen readers know
-     *             they are inside the "MCP Apps" landmark.
-     * When closed: role and aria-label are removed to avoid conflicting semantics
-     *              on an aria-hidden element.
-     * @param {HTMLElement} panel
-     * @param {boolean} open
-     */
     _setPanelOpen(panel, open) {
         panel.setAttribute('aria-hidden', open ? 'false' : 'true');
         panel.classList.toggle('chatroom-mcp-apps--open', open);
@@ -1370,7 +941,6 @@ export class ChatroomApp extends GenesisElement {
     async connect() {
         try {
             this.updateConnectionStatus('connecting');
-            // Override this method in subclasses for specific connection logic
             const response = await fetch(`${this.config.apiEndpoint}/connect`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' }
@@ -1421,10 +991,8 @@ export class ChatroomApp extends GenesisElement {
         const text = this.elements.inputField.value.trim();
         if (!text) return;
 
-        // Check for slash command directed at an MCP app
         const slashCmd = this._detectSlashCommand(text);
         if (slashCmd) {
-            // Append the user's slash command as a regular message first
             this._appendUserMessage(text);
             this.elements.inputField.value = '';
             this._resetPlaceholder();
@@ -1467,7 +1035,6 @@ export class ChatroomApp extends GenesisElement {
                 }));
             }
         } else {
-            // No API endpoint — append directly
             const container = this.elements.messagesContainer;
             if (container) {
                 const el = this._buildDomainUserMsg(text) ?? this._buildOwnMsg({
@@ -1484,11 +1051,6 @@ export class ChatroomApp extends GenesisElement {
         }
     }
 
-    /**
-     * Append a user message bubble directly to the messages container.
-     * Used when sending slash commands so the user sees their own text.
-     * @param {string} text
-     */
     _appendUserMessage(text) {
         const container = this.elements.messagesContainer;
         if (!container) return;
@@ -1562,7 +1124,6 @@ export class ChatroomApp extends GenesisElement {
         super.disconnectedCallback();
         this.stopAutoRefresh();
 
-        // Remove viewport classes when the last chatroom component leaves the DOM.
         if (!document.querySelector('[data-chatroom-component]')) {
             document.body.classList.remove('chatroom-body');
         }
@@ -1593,22 +1154,24 @@ export class ChatroomApp extends GenesisElement {
     }
 
     clearMessages() {
-        this.messages = [];
-        this.renderMessages();
+        const container = this.elements?.messagesContainer;
+        if (!container) return;
+        container.replaceChildren();
+        const empty = document.createElement('div');
+        empty.className = 'chatroom-empty-state';
+        empty.textContent = 'No messages yet. Start the conversation!';
+        container.appendChild(empty);
     }
 
     // =========================================================================
     // Helpers
     // =========================================================================
 
-    /** Validate and return a safe Font Awesome class string. */
     _safeIcon(icon) {
         if (!icon) return 'fas fa-robot';
-        // Allow only alphanumeric, hyphens, spaces — no injection vectors
         return /^[\w\s-]+$/.test(icon) ? icon : 'fas fa-robot';
     }
 
-    /** Sanitise a string for use as a CSS class name modifier. */
     _safeClass(value) {
         if (!value) return 'default';
         return String(value)
@@ -1618,13 +1181,11 @@ export class ChatroomApp extends GenesisElement {
             .toLowerCase() || 'default';
     }
 
-    /** Format the current time as HH:MM AM/PM. */
     _formatNow() {
         return new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
     }
 }
 
-// Register the custom element
 if (!customElements.get('chatroom-app')) {
     customElements.define('chatroom-app', ChatroomApp);
 }
