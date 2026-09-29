@@ -1,0 +1,62 @@
+{% comment %}
+  Chatroom Header — static skeleton
+  ==================================
+  Structural chrome for the chatroom header. Always rendered as part of the
+  chatroom layout (see _layouts/chatroom.html). Every element below is
+  pre-declared empty/hidden; ChatroomApp (chatroom-app.js) hydrates this at
+  runtime — it does not clone or generate any of this markup.
+
+  Category-1 elements (populated by JS from live/runtime data — title, owner,
+  participants, step-progress, typing-indicator, connection status, MCP
+  pending-count badge) are pre-declared with [hidden] where the original
+  _render() conditionally showed them, or empty text content otherwise.
+  Category-2 elements (build-time config — MCP toggle button, settings
+  button) are gated by Liquid {% raw %}{% if %}{% endraw %} on front-matter,
+  matching the page's declared capabilities.
+
+  Selectors below are queried by ChatroomApp.initializeElements() — do not
+  rename classes without updating that method.
+
+  Paired SCSS: _sass/includes/layouts/chatroom/_header.scss
+{% endcomment %}
+<header class="chatroom-header">
+  <div class="chatroom-header-content">
+    <div class="chatroom-header-left">
+      <h1 class="chatroom-title"></h1>
+      <div class="chatroom-header-info">
+        <span class="chatroom-owner" hidden></span>
+        <span class="chatroom-participants" hidden></span>
+        <span class="chatroom-step-progress" hidden></span>
+        <span class="chatroom-typing-indicator" aria-live="polite" hidden></span>
+      </div>
+    </div>
+    <div class="chatroom-header-right">
+      {% if page.show_connection_status %}
+      <div class="chatroom-status-container">
+        <span class="chatroom-status" id="connection-status"></span>
+      </div>
+      {% endif %}
+      <div class="chatroom-actions">
+        {% if page.mcp_apps and page.mcp_apps.size > 0 %}
+        <button
+          type="button"
+          class="chatroom-mcp-apps-toggle"
+          aria-label="AI Agent Tools"
+          aria-expanded="false"
+          aria-controls="chatroom-mcp-apps-panel"
+          title="AI Agent Tools"
+        >
+          <i class="fas fa-robot" aria-hidden="true"></i>
+        </button>
+        {% endif %}
+        <button
+          type="button"
+          class="chatroom-settings-btn"
+          aria-label="Boardroom Settings"
+        >
+          <i class="fas fa-cog" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
