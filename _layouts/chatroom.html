@@ -137,16 +137,30 @@ module_js: chatroom-app.js
     the show-toggle-strip / show-members-sidebar attributes above. See
     "Panels" in the docblock at the top of this file.
   {% endcomment %}
-  {% include layouts/chatroom/toggle-strip.html %}
-  {% include layouts/chatroom/members-sidebar.html %}
+  {% include chatroom/toggle-strip.html %}
+  {% include chatroom/members-sidebar.html %}
 
   {{ content }}
 
+  {% comment %}
+    #chatArea carries role="main" so it is the one child the panelled
+    mixin's mobile rule (max-width: 767px) does NOT hide — every other
+    direct child of the component (toggle-strip, members-sidebar) is
+    hidden on narrow viewports, leaving this as the full-width mobile
+    view. The chatroom shell (header, messages, input, MCP panel) must
+    live INSIDE this element, not as siblings of it, or it is hidden by
+    that same rule on mobile.
+  {% endcomment %}
   <section
     id="chatArea"
     class="chatroom-chat-area"
     data-panel="main"
     role="main"
     aria-label="Chat Area"
-  ></section>
+  >
+    {% include chatroom/header.html %}
+    {% include chatroom/messages.html %}
+    {% include chatroom/mcp-panel.html %}
+    {% include chatroom/input.html %}
+  </section>
 </{{ _component }}>
