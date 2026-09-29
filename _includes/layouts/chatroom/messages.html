@@ -1,0 +1,27 @@
+{% comment %}
+  Chatroom Messages Container — static skeleton
+  ================================================
+  Structural chrome for the chat message log. Always rendered as part of the
+  chatroom layout (see _layouts/chatroom.html). ChatroomApp
+  (chatroom-app.js) hydrates this container — it queries
+  .chatroom-messages via initializeElements() and appends/removes message
+  elements at runtime. Message content itself is never static: it either
+  arrives from chat_data (pre-loaded at build time, but still JS-inserted
+  since chatArea is the JS render target) or from a live API/stream.
+
+  The empty-state div shown here is the default, pre-load state. JS removes
+  it (via replaceChildren or similar) as soon as any message is inserted,
+  and re-adds an equivalent empty-state if the conversation is cleared.
+
+  Paired SCSS: _sass/includes/layouts/chatroom/_messages.scss
+{% endcomment %}
+<div
+  class="chatroom-messages"
+  tabindex="0"
+  role="log"
+  aria-label="Chat messages"
+  aria-live="polite"
+  aria-atomic="false"
+>
+  <div class="chatroom-empty-state">No messages yet. Start the conversation!</div>
+</div>
