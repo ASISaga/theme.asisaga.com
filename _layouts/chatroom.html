@@ -1,6 +1,5 @@
 ---
 layout: default
-module_js: chatroom-app.js
 ---
 {% comment %}
   Chatroom Layout — convenience wrapper for chat-based subdomains
@@ -13,12 +12,17 @@ module_js: chatroom-app.js
   A subdomain can use this layout for clean front-matter configuration, or
   skip it entirely and drop <chatroom-app> directly into any other layout.
 
+  Script loading: this layout does NOT load any JS itself. Every subdomain
+  repo is required to provide assets/js/script.js (the mandatory subdomain
+  entry point), which head.html loads automatically on every page, right
+  after the theme's own common.js — see _includes/head.html. script.js is
+  where the subdomain imports its actual ChatroomApp subclass (e.g.
+  boardroom's script.js imports boardroom-app-new.js, which registers the
+  <boardroom-app> custom element referenced by `component:` below).
+
   Front-matter reference:
     component     - Custom-element tag (default: chatroom-app). Set to
                     your subclass, e.g. `component: boardroom-app`.
-    module_js     - JS module to load (default: chatroom-app.js from this
-                    layout). Set to your module, e.g.
-                    `module_js: boardroom-app.js`.
     title         - Chatroom title shown in the header.
     participants  - Agent count badge.
     placeholder   - Textarea placeholder.
