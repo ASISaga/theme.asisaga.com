@@ -49,15 +49,22 @@
   <!-- Only needed on pages that use Entra authentication -->
   {% include msal-library.html %}
 
-  <!-- Genesis Theme JavaScript -->
+  <!-- Theme main entry point — loaded on every page, every subdomain -->
   <script type="module" src="{{ '/assets/js/common.js' | relative_url }}"></script>
 
-  <!-- Page-specific JavaScript -->
+  <!--
+    Subdomain entry point — MANDATORY per subdomain, loaded automatically
+    after common.js. Every subdomain repo must provide assets/js/script.js.
+    This tag was previously missing from head.html — restored here per the
+    documented architecture (theme main entry: common.js; subdomain entry:
+    script.js, loaded after common.js; see project docs, "Entry Points &
+    Structure").
+  -->
+  <script type="module" src="{{ '/assets/js/script.js' | relative_url }}"></script>
+
+  <!-- Page-specific JavaScript (optional, in addition to the mandatory
+       subdomain script.js above) -->
   {% if page.custom_js %}
   <script src="{{ '/assets/js/' | append: page.custom_js | relative_url }}" defer></script>
-  {% endif %}
-  {% assign _module_js = page.module_js | default: layout.module_js %}
-  {% if _module_js %}
-  <script type="module" src="{{ '/assets/js/' | append: _module_js | escape | relative_url }}"></script>
   {% endif %}
 </head>
