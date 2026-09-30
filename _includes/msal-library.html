@@ -1,0 +1,12 @@
+{% comment %}
+  MSAL Browser Library (https://github.com/AzureAD/microsoft-authentication-library-for-js)
+  =============================================================================
+  Loaded via CDN as a UMD global (window.msal), mirroring the existing
+  Motion library loader pattern (see motion-library.html). Only needed on
+  pages that use Entra authentication (currently: boardroom). Include this
+  before any module that calls initializeMsal() / new msal.PublicClientApplication.
+
+  This must load and execute BEFORE boardroom-app-new.js, since
+  BoardroomApp's constructor synchronously references window.msal.
+{% endcomment %}
+<script src="https://cdn.jsdelivr.net/npm/@azure/msal-browser@3/lib/msal-browser.min.js"></script>
