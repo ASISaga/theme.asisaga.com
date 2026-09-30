@@ -46,6 +46,9 @@
   <!-- Motion Library (required for animations) -->
   {% include motion-library.html %}
 
+  <!-- Only needed on pages that use Entra authentication -->
+  {% include msal-library.html %}
+
   <!-- Genesis Theme JavaScript -->
   <script type="module" src="{{ '/assets/js/common.js' | relative_url }}"></script>
 
