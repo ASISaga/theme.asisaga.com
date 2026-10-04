@@ -495,6 +495,20 @@ participants: 42
 - Participant count
 - Real-time message support (requires additional JS)
 
+**App shell**: The component element (`chatroom-app`, `boardroom-app`, or any
+subclass) is a `panelled` row whenever it contains the `#chatArea`
+(`[data-panel="main"]`) render target: toggle strip (`panel-rail`, sized to
+its buttons) + members sidebar (`panel-sidebar`, `--panel-width`) + fluid
+chat area, all at full height. Below 768px only the chat area is shown.
+
+**Extension contracts** (styled by the theme):
+- Header icon buttons added in `_onLayoutBuilt()` → `<button class="chatroom-header-btn">` inside `.chatroom-actions`
+- Member rows injected into `#chatroomMembersList` → `.chatroom-members-sidebar__item` with `__item-avatar`, `__item-info`, `__item-name`, `__item-role`, `__item-status--online|away|offline`, and `__item--active`
+
+**SCSS**: `_sass/layouts/_chatroom.scss` imports the chatroom include partials
+(`includes/layouts/chatroom/index`) itself, so a subdomain `_main.scss` only
+needs `@import "layouts/chatroom";` — do not import the include partials again.
+
 ---
 
 ### Search Layout

@@ -17,6 +17,11 @@
   Selectors below are queried by ChatroomApp.initializeElements() — do not
   rename classes without updating that method.
 
+  Extension contract: subclasses add icon buttons to .chatroom-actions from
+  the ChatroomApp._onLayoutBuilt() hook using
+  <button type="button" class="chatroom-header-btn" aria-label="...">; the
+  theme styles .chatroom-header-btn exactly like .chatroom-settings-btn.
+
   Paired SCSS: _sass/includes/layouts/chatroom/_header.scss
 {% endcomment %}
 <header class="chatroom-header">

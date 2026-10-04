@@ -236,6 +236,9 @@ export class ChatroomApp extends GenesisElement {
      * Extension hook — called with the component root after hydration.
      * Override in subclasses to add header action buttons, inject extra
      * markup into the existing static header, or wire additional behavior.
+     * Header action buttons go into `.chatroom-actions` and should use
+     * `class="chatroom-header-btn"` — the theme's styled icon-button
+     * contract (same chrome as `.chatroom-settings-btn`).
      */
     // eslint-disable-next-line no-unused-vars
     _onLayoutBuilt(_rootEl) { /* override in subclasses */ }

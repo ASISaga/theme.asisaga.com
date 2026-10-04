@@ -43,6 +43,16 @@
       min-height: 0;
       @include full-width;
       @include full-height;
+
+      // Panelled host: the chatroom layout renders the toggle strip, members
+      // sidebar and the #chatArea render target ([data-panel="main"]) as
+      // direct children of the component.  Such hosts are a panelled row,
+      // not a column — this rule must out-rank the column rule above
+      // (hence it lives here rather than on the element name, e.g.
+      // boardroom-app, whose type selector would lose the cascade).
+      &:has(> [data-panel="main"]) {
+        @include genesis-environment('panelled');
+      }
     }
   }
 
@@ -185,7 +195,11 @@
     align-items: center;
   }
 
-  .chatroom-settings-btn {
+  // .chatroom-header-btn is the extension contract for icon buttons that
+  // subclasses add to .chatroom-actions via the _onLayoutBuilt hook (e.g.
+  // boardroom video call / screen share / more) — same chrome as settings.
+  .chatroom-settings-btn,
+  .chatroom-header-btn {
     @include flex-center;
     @include size-square(36px);
     @include padding-reset;
@@ -976,7 +990,8 @@
       &.chatroom-status-offline::before    { background: $color-boardroom-status-error; }
     }
 
-    .chatroom-settings-btn {
+    .chatroom-settings-btn,
+    .chatroom-header-btn {
       color: $color-text-muted;
 
       &:hover { background: $color-light-subtle-gray; color: $color-accent-gold-accessible; }

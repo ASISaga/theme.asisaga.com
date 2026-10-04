@@ -9,8 +9,8 @@
 //   .chatroom-body                           ← viewport (from layout-chatroom-component)
 //     .chatroom-main                         ← flex-grow-fill (from layout-chatroom-component)
 //       boardroom-app                        ← panelled flex row
-//         .boardroom-toggle-strip            ← fixed panel (panel-width token)
-//         .boardroom-members-sidebar         ← fixed panel (panel-width token)
+//         .chatroom-toggle-strip             ← icon rail (environment 'panel-rail')
+//         .chatroom-members-sidebar          ← panel (environment 'panel-sidebar', --panel-width)
 //         .chatroom-chat-area#chatArea       ← fluid chat column (render target)
 //           .chatroom-layout                 ← full chatroom (from chatroom-app.js)
 //         .boardroom-loading-overlay         ← absolute, covers boardroom-app
@@ -26,11 +26,14 @@
   // APP SHELL
   // ==========================================================================
   // boardroom-app is the panelled flex row that holds all panels and the chat
-  // area.  position:relative is structural — it creates the stacking context
-  // for the absolute loading overlay.
+  // area.  The panelled row itself is applied generically by
+  // layout-chatroom-component (`.chatroom-main [data-chatroom-component]
+  // :has(> [data-panel="main"])`) — a bare `boardroom-app` type selector
+  // would lose the cascade to the chatroom column rule.  position:relative is
+  // structural — it creates the stacking context for the absolute loading
+  // overlay.
 
   boardroom-app {
-    @include genesis-environment('panelled');
     position: relative; // structural: stacking context for .boardroom-loading-overlay
   }
 
@@ -85,6 +88,20 @@
     @include flex-column(0.5rem);
     align-items: flex-end;
     pointer-events: none;
+  }
+
+  // ==========================================================================
+  // LOG-LEVEL SELECTOR
+  // ==========================================================================
+  // Injected by BoardroomApp above .chatroom-messages inside #chatArea.
+
+  .boardroom-log-level {
+    @include genesis-cognition('gloss');
+    @include flex-row($spacing-sm);
+    @include flex-shrink-none;
+    justify-content: flex-end;
+    padding: $spacing-xs $spacing-md;
+    color: $color-boardroom-muted;
   }
 
 }

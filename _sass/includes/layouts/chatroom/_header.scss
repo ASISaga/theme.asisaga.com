@@ -114,7 +114,10 @@
   align-items: center;
 }
 
+// .chatroom-header-btn: generic icon button for subclass extensions added to
+// .chatroom-actions via ChatroomApp._onLayoutBuilt (same chrome as settings).
 .chatroom-settings-btn,
+.chatroom-header-btn,
 .chatroom-mcp-apps-toggle {
   @include flex-center;
   @include size-square(36px);

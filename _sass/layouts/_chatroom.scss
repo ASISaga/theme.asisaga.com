@@ -1,3 +1,10 @@
+// Chatroom include partials (toggle strip, members sidebar, header, messages,
+// input, MCP panel).  Imported here — not from includes/_index.scss — so any
+// _main.scss that imports "layouts/chatroom" (including a subdomain _main.scss
+// that replaces the theme's) gets the complete chatroom styling.  Emitted
+// before the layout component mixins so the mixins keep cascade precedence.
+@import "includes/layouts/chatroom/index";
+
 // Chatroom layout styles — covers both chatroom-app (plain chatroom) and any
 // component-based extension (e.g. boardroom-app) that uses layout: chatroom.
 @include genesis-component('layout-chatroom');

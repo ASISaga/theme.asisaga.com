@@ -3,10 +3,13 @@
 // ============================================================================
 // Styles for _includes/chatroom/toggle-strip.html
 // Thin vertical action strip alongside the members sidebar.
+// 'panel-rail' (not 'navigation-sidebar'): this is a panel of the panelled
+// chatroom app shell — full row height, not sticky, sized to its buttons
+// (36px + 2 × $spacing-sm padding ≈ 52px) rather than --panel-width.
 // ============================================================================
 
 .chatroom-toggle-strip {
-  @include genesis-environment('navigation-sidebar');
+  @include genesis-environment('panel-rail');
   @include flex-column($spacing-sm);
   @include flex-shrink-none;
   background: $color-boardroom-surface;

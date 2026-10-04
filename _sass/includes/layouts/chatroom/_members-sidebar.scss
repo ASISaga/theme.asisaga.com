@@ -2,13 +2,15 @@
 // CHATROOM MEMBERS SIDEBAR
 // ============================================================================
 // Styles for _includes/chatroom/members-sidebar.html
-// Sticky sidebar shell containing header, search/filter, and member list.
-// This file styles the shell only; sub-includes (header, search-form,
-// empty-state) have their own paired SCSS files in members-sidebar/.
+// App-shell panel ('panel-sidebar': full row height, not sticky, width from
+// the panelled parent's --panel-width) containing header, search/filter, and
+// member list. This file styles the shell and the roster rows; sub-includes
+// (header, search-form, empty-state) have their own paired SCSS files in
+// members-sidebar/.
 // ============================================================================
 
 .chatroom-members-sidebar {
-  @include genesis-environment('navigation-sidebar');
+  @include genesis-environment('panel-sidebar');
   @include flex-column;
   @include flex-shrink-none;
   background: $color-boardroom-surface;
@@ -31,4 +33,86 @@
   @include list-reset;
   @include flex-grow-fill;
   padding: $spacing-sm;
+}
+
+// ----------------------------------------------------------------------------
+// ROSTER ROWS
+// ----------------------------------------------------------------------------
+// Contract for items the consuming component injects into
+// #chatroomMembersList (see assets/js/chatroom-panels.js):
+//
+//   <li class="chatroom-members-sidebar__item" data-status data-name>
+//     <img class="chatroom-members-sidebar__item-avatar">
+//     <div class="chatroom-members-sidebar__item-info">
+//       <div class="chatroom-members-sidebar__item-name">
+//       <div class="chatroom-members-sidebar__item-role">
+//     </div>
+//     <span class="chatroom-members-sidebar__item-status
+//                  chatroom-members-sidebar__item-status--online|away|offline">
+//   </li>
+//
+// Selected row: .chatroom-members-sidebar__item--active (or aria-current).
+// ----------------------------------------------------------------------------
+
+.chatroom-members-sidebar__item {
+  @include flex-row($spacing-sm);
+  align-items: center;
+  padding: $spacing-sm;
+  @include border-radius-rounded($border-radius-sm);
+  @include cursor-pointer;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-boardroom-bg;
+  }
+
+  &.chatroom-members-sidebar__item--active,
+  &[aria-current="true"] {
+    background: $color-boardroom-gold-active;
+  }
+
+  &[hidden] {
+    @include display-none;
+  }
+}
+
+.chatroom-members-sidebar__item-avatar {
+  @include size-square(2rem);
+  @include flex-shrink-none;
+  @include border-radius-pill;
+  object-fit: cover;
+}
+
+.chatroom-members-sidebar__item-info {
+  @include flex-column;
+  @include flex-grow-fill;
+  min-width: 0; // allow name/role to truncate
+}
+
+.chatroom-members-sidebar__item-name {
+  @include truncate;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: $color-boardroom-text;
+}
+
+.chatroom-members-sidebar__item-role {
+  @include truncate;
+  font-size: $font-size-xs;
+  color: $color-boardroom-muted;
+}
+
+.chatroom-members-sidebar__item-status {
+  @include size-square(0.5rem);
+  @include flex-shrink-none;
+  @include border-radius-pill;
+  background: $color-boardroom-muted;
+
+  &.chatroom-members-sidebar__item-status--online {
+    background: $color-boardroom-status-online;
+  }
+
+  &.chatroom-members-sidebar__item-status--away {
+    background: $color-boardroom-gold-accessible;
+  }
 }
