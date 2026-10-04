@@ -37,6 +37,9 @@
   &.env-chronological { @include genesis-environment('chronological'); }
   &.env-manifest { @include genesis-environment('manifest'); }
   &.env-convergent { @include genesis-environment('convergent'); }
+  &.env-panelled { @include genesis-environment('panelled'); }
+  &.env-panel-sidebar { @include genesis-environment('panel-sidebar'); }
+  &.env-panel-rail { @include genesis-environment('panel-rail'); }
   &.env-viewport-hero { @include genesis-environment('viewport-hero'); }
   &.env-dense-grid { @include genesis-environment('dense-grid'); }
   

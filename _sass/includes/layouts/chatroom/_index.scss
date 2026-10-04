@@ -5,10 +5,9 @@
 // Imports all SCSS partials mirroring _includes/chatroom/*.html, using paths
 // relative to this file's own location (sibling to the partials it imports).
 //
-// This file itself must be imported from wherever the includes/layouts/
-// mirror tree is assembled (e.g. _sass/includes/layouts/_index.scss or
-// _sass/includes/_index.scss), alongside the theme's other layout-specific
-// include styles.
+// This file is imported by _sass/layouts/_chatroom.scss, so importing
+// "layouts/chatroom" from any _main.scss (theme or subdomain) is enough —
+// do not import it a second time.
 //
 // Order: shell/container partials first, then their sub-partials, matching
 // the include order in _includes/chatroom/members-sidebar.html.

@@ -66,8 +66,9 @@
 // Article
 @import "layouts/article/article-toc";
 
-// Chatroom
-@import "layouts/chatroom/index";
+// Chatroom — imported by layouts/_chatroom.scss (not here) so that a
+// subdomain _main.scss importing only "layouts/chatroom" still gets the
+// toggle strip, members sidebar and other chatroom include partials.
 
 // Dashboard
 @import "layouts/dashboard/dashboard-widget";
