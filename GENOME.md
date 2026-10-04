@@ -400,6 +400,26 @@ The Genesis Semantic Engine launched with a three-tier architecture and six core
 
 The existing `convergent` variant was designed for reading-oriented two-region layouts (article + TOC, docs + sidebar) and intentionally makes its first child sticky. App shells require a structurally distinct primitive: multiple panels are possible, panels collapse (not stack) on mobile, and the sticky positioning of individual panel content is the consumer's responsibility — not an automatic behaviour. A new `panelled` variant preserves the semantic integrity of `convergent` while providing the correct layout contract for application workspaces.
 
+### v5.1.0 - App-Shell Panel Primitives (2026-10-04)
+
+**Milestone**: In-shell counterparts of `navigation-sidebar` for the supporting panels of a `panelled` app shell.
+
+**Origin**: boardroom.asisaga.com (ASISaga/theme.asisaga.com#204 — chatroom/boardroom panels mis-sized)  
+**Validation**: `npm test` clean; headless Chrome render of the chatroom/boardroom shell at 1280/900/500px
+
+**New Variants**:
+
+1. **`environment('panel-sidebar')`** - Supporting panel of a `panelled` shell
+   - Flex column, `align-self: stretch`, `min-height: 0`, internal scroll
+   - Not sticky, no header offset, no viewport-capped height; width comes from the parent's `--panel-width`
+2. **`environment('panel-rail')`** - Narrow icon rail of a `panelled` shell
+   - Same full-height, non-sticky contract, items centred
+   - Sized to its content: resets `--panel-width` / `--panel-width-tablet` to `auto`, so the parent's `flex: 0 0 var(--panel-width)` collapses to the rail's own width
+
+**Decision Rationale**:
+
+`navigation-sidebar` is a page-scroll primitive (`position: sticky`, `top: 80px`, `align-self: flex-start`, `max-height: calc(100vh - …)`). Inside a non-scrolling `panelled` app shell those rules push panels 80px down and stop them filling the row. Overriding them from `panelled` would also clobber absolutely positioned shell children (loading overlays, toasts), so the panel contract is expressed by the panel itself.
+
 ---
 
 ## 📊 Variant Registry
@@ -479,6 +499,20 @@ The existing `convergent` variant was designed for reading-oriented two-region l
 - **Usage**: Application workspaces, IDE-style layouts, split-screen dashboards, any multi-panel app shell
 - **Features**: CSS custom property–driven panel widths, panels collapse on mobile, `<main>`/`[role="main"]` identifies the fluid content area
 - **Adoption**: 0+ subdomains (new)
+
+#### `panel-sidebar` ⭐ NEW
+- **Since**: v5.1.0
+- **Origin**: App-Shell Panel Primitives
+- **Purpose**: Full-height, non-sticky supporting panel of a `panelled` shell (width from `--panel-width`)
+- **Usage**: Members/participants sidebars, inspector panels in app shells
+- **Adoption**: theme chatroom layout (`.chatroom-members-sidebar`)
+
+#### `panel-rail` ⭐ NEW
+- **Since**: v5.1.0
+- **Origin**: App-Shell Panel Primitives
+- **Purpose**: Full-height, content-sized icon rail of a `panelled` shell
+- **Usage**: Toggle strips, activity bars
+- **Adoption**: theme chatroom layout (`.chatroom-toggle-strip`)
 
 ---
 

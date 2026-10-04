@@ -41,13 +41,13 @@ Content pages with optional page-specific styling:
 
 ## Six Semantic Categories
 
-The ontology defines **89 total variants** across 6 categories. The 33 foundational variants form the core semantic vocabulary, while 56 evolved variants extend the system for specialized use cases discovered through subdomain development.
+The ontology defines **91 total variants** across 6 categories. The 35 foundational variants form the core semantic vocabulary, while 56 evolved variants extend the system for specialized use cases discovered through subdomain development.
 
-### 1. genesis-environment($logic) — 21 variants
+### 1. genesis-environment($logic) — 23 variants
 
 **Purpose**: Layout structure and spatial organization
 
-**Foundational variants** (7):
+**Foundational variants** (9):
 - `'distributed'` — Responsive auto-fit bento grid (card grids, portfolios, galleries)
 - `'focused'` — Centered narrow column, 70ch reading width (blog posts, articles, docs)
 - `'associative'` — Flex-wrap groupings (tag clouds, metadata rows, related items)
@@ -55,6 +55,8 @@ The ontology defines **89 total variants** across 6 categories. The 33 foundatio
 - `'manifest'` — High-density 12-column dashboard grid (analytics, monitoring)
 - `'convergent'` — Two-column sidebar + main content layout
 - `'panelled'` — Multi-panel app shell (three+ columns)
+- `'panel-sidebar'` — Full-height, non-sticky panel inside a `panelled` shell
+- `'panel-rail'` — Content-sized icon rail inside a `panelled` shell
 
 **Evolved variants** (14):
 - `'editorial-feed'` — Editorial content feed layout

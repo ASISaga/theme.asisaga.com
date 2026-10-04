@@ -192,6 +192,8 @@ Place this before loading the theme's common.js.
 - `'interaction-form'` ⭐ **NEW v2.2.0** - Form layout optimized for data entry
 - `'convergent'` ⭐ **NEW v4.0.0** - Sidebar + main content layout (article TOC, docs sidebar)
 - `'panelled'` ⭐ **NEW v5.0.0** - Multi-panel app shell (rigid non-wrapping row, fixed panels + fluid main)
+- `'panel-sidebar'` ⭐ **NEW v5.1.0** - Supporting panel of a `panelled` shell (full height, not sticky, width from `--panel-width`)
+- `'panel-rail'` ⭐ **NEW v5.1.0** - Icon rail of a `panelled` shell (full height, not sticky, sized to content)
 
 **Example:**
 ```scss
@@ -253,6 +255,16 @@ Place this before loading the theme's common.js.
   --panel-width: 220px;
   --panel-width-tablet: 180px;
   --space-panel-gap: 1px;  // hairline divider between panels and main
+}
+
+// New in v5.1.0: panels of a panelled shell (use instead of navigation-sidebar,
+// which is sticky / viewport-capped for page-scroll layouts)
+.app-shell__rail {
+  @include genesis-environment('panel-rail');     // Content-sized icon rail
+}
+
+.app-shell__sidebar {
+  @include genesis-environment('panel-sidebar');  // Full-height panel, --panel-width
 }
 
 ```
